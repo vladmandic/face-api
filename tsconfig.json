@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    //"allowUnreachableCode": true,
+    //"noUnusedLocals": false,
+    //"noUnusedParameters": false,
+    "removeComments": false,
+    "preserveConstEnums": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "declaration": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noFallthroughCasesInSwitch": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "strictNullChecks": true,
+    "importHelpers": true,
+    "skipLibCheck": true,
+    "outDir": "build",
+    "module": "es2020",
+    "target": "es2020",
+    "moduleResolution": "node",
+    "lib": ["es2020", "dom"],
+    "typeRoots": [
+      "typings",
+      "node_modules/@types"
+    ]
+  },
+  "formatCodeOptions": {
+    "indentSize": 2,
+    "tabSize": 2
+  },
+  "exclude": [
+    "node_modules",
+    "dist"
+  ],
+  "include": [
+    "src"
+  ]
+}

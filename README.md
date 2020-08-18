@@ -8,7 +8,7 @@ Branched from face-api.js version **0.22.2** released on March 22nd, 2020
 
 ## Note
 
-I don't plan to maintain a separate distribution of face-api, this is only a temporary repository to use latest available face-api with latest available tensorflow/js.  
+I don't plan to maintain a separate distribution of **face-api.js**, this is only a temporary repository to use latest available face-api with latest available tensorflow/js as original face-api.js is not compatible with tfjs 2.0+.  
 If original repository is updated, this one will become obsolete.
 
 ## Differences
@@ -27,7 +27,20 @@ If original repository is updated, this one will become obsolete.
   - mtcnn: Mostly obsolete
   - tinyYolov2: Non-functional since weights are missing
 
-Which means the only valid model is **tinyFaceDetector**
+Which means the only valid model is **tinyFaceDetector**  
+
+However, due to reduced code and changed build process, resulting bundle is about **2.5x smaller** than the original!  
+
+## Build
+
+Both ./build and ./dist folders are included by default, so no need for build during install.
+However, if you want to rebuild use:
+
+```shell
+npm run build
+```
+
+Which will compile everything in ./src into ./build and create standard and minified bundles and sourcemap in ./dist
 
 ## Documentation
 

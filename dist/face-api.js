@@ -1,4 +1,4 @@
-(() => {
+var faceapi = (() => {
   var __defineProperty = Object.defineProperty;
   var __hasOwnProperty = Object.prototype.hasOwnProperty;
   var __commonJS = (callback, module) => () => {
@@ -23844,6 +23844,6 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     }
     return results;
   }
-  require_build();
+  return require_build();
 })();
 //# sourceMappingURL=face-api.js.map

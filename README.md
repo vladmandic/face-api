@@ -8,7 +8,7 @@ Branched from face-api.js version **0.22.2** released on March 22nd, 2020
 
 ## Note
 
-I don't plan to maintain a separate distribution of **face-api.js**, this is only a temporary repository to use latest available face-api with latest available tensorflow/js as original face-api.js is not compatible with tfjs 2.0+.  
+I don't plan to maintain a separate distribution of **face-api.js**, this is only a temporary repository to use latest available face-api with latest available tensorflow/js as original face-api.js is not compatible with **tfjs 2.0+**.  
 If original repository is updated, this one will become obsolete.
 
 ## Differences

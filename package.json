@@ -1,9 +1,12 @@
 {
-  "name": "face-api",
+  "name": "@vladmandic/face-api",
   "version": "0.3.0",
   "description": "JavaScript API for face detection and face recognition in the browser with tensorflow.js",
   "main": "./build/index.js",
   "typings": "./build/index.d.ts",
+  "engines": {
+    "node": ">=12.0.0"
+  },
   "scripts": {
     "compile": "tsc",
     "bundle": "esbuild --bundle --outfile=./dist/face-api.js --target=es2020 --platform=browser --sourcemap --log-level=error --tsconfig=./tsconfig.json build/index.js",
@@ -20,6 +23,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vladmandic/face-api.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   },
   "author": "Vladimir Mandic <mandic00@live.com>",
   "license": "MIT",

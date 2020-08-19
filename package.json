@@ -9,8 +9,8 @@
   },
   "scripts": {
     "compile": "tsc",
-    "bundle": "esbuild --bundle --outfile=./dist/face-api.js --target=es2020 --platform=browser --format=iife --global-name=faceapi --sourcemap --log-level=error --tsconfig=./tsconfig.json build/index.js",
-    "minify": "esbuild --bundle --outfile=./dist/face-api.min.js --target=es2020 --platform=browser --sourcemap --format=iife --global-name=faceapi --log-level=error --minify --tsconfig=./tsconfig.json build/index.js",
+    "bundle": "esbuild --bundle --outfile=./dist/face-api.js --target=es2018 --platform=browser --format=iife --global-name=faceapi --sourcemap --log-level=error --tsconfig=./tsconfig.json build/index.js",
+    "minify": "esbuild --bundle --outfile=./dist/face-api.min.js --target=es2018 --platform=browser --sourcemap --format=iife --global-name=faceapi --log-level=error --minify --tsconfig=./tsconfig.json build/index.js",
     "build": "npm run compile && npm run bundle && npm run minify"
   },
   "keywords": [

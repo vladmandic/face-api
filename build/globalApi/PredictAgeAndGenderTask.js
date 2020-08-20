@@ -1,11 +1,14 @@
-import { extendWithAge } from '../factories/WithAge';
-import { extendWithGender } from '../factories/WithGender';
-import { ComposableTask } from './ComposableTask';
-import { ComputeAllFaceDescriptorsTask, ComputeSingleFaceDescriptorTask } from './ComputeFaceDescriptorsTasks';
-import { extractAllFacesAndComputeResults, extractSingleFaceAndComputeResult } from './extractFacesAndComputeResults';
-import { nets } from './nets';
-import { PredictAllFaceExpressionsTask, PredictAllFaceExpressionsWithFaceAlignmentTask, PredictSingleFaceExpressionsTask, PredictSingleFaceExpressionsWithFaceAlignmentTask, } from './PredictFaceExpressionsTask';
-export class PredictAgeAndGenderTaskBase extends ComposableTask {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.PredictSingleAgeAndGenderWithFaceAlignmentTask = exports.PredictAllAgeAndGenderWithFaceAlignmentTask = exports.PredictSingleAgeAndGenderTask = exports.PredictAllAgeAndGenderTask = exports.PredictAgeAndGenderTaskBase = void 0;
+const WithAge_1 = require("../factories/WithAge");
+const WithGender_1 = require("../factories/WithGender");
+const ComposableTask_1 = require("./ComposableTask");
+const ComputeFaceDescriptorsTasks_1 = require("./ComputeFaceDescriptorsTasks");
+const extractFacesAndComputeResults_1 = require("./extractFacesAndComputeResults");
+const nets_1 = require("./nets");
+const PredictFaceExpressionsTask_1 = require("./PredictFaceExpressionsTask");
+class PredictAgeAndGenderTaskBase extends ComposableTask_1.ComposableTask {
     constructor(parentTask, input, extractedFaces) {
         super();
         this.parentTask = parentTask;
@@ -13,46 +16,51 @@ export class PredictAgeAndGenderTaskBase extends ComposableTask {
         this.extractedFaces = extractedFaces;
     }
 }
-export class PredictAllAgeAndGenderTask extends PredictAgeAndGenderTaskBase {
+exports.PredictAgeAndGenderTaskBase = PredictAgeAndGenderTaskBase;
+class PredictAllAgeAndGenderTask extends PredictAgeAndGenderTaskBase {
     async run() {
         const parentResults = await this.parentTask;
-        const ageAndGenderByFace = await extractAllFacesAndComputeResults(parentResults, this.input, async (faces) => await Promise.all(faces.map(face => nets.ageGenderNet.predictAgeAndGender(face))), this.extractedFaces);
+        const ageAndGenderByFace = await extractFacesAndComputeResults_1.extractAllFacesAndComputeResults(parentResults, this.input, async (faces) => await Promise.all(faces.map(face => nets_1.nets.ageGenderNet.predictAgeAndGender(face))), this.extractedFaces);
         return parentResults.map((parentResult, i) => {
             const { age, gender, genderProbability } = ageAndGenderByFace[i];
-            return extendWithAge(extendWithGender(parentResult, gender, genderProbability), age);
+            return WithAge_1.extendWithAge(WithGender_1.extendWithGender(parentResult, gender, genderProbability), age);
         });
     }
     withFaceExpressions() {
-        return new PredictAllFaceExpressionsTask(this, this.input);
+        return new PredictFaceExpressionsTask_1.PredictAllFaceExpressionsTask(this, this.input);
     }
 }
-export class PredictSingleAgeAndGenderTask extends PredictAgeAndGenderTaskBase {
+exports.PredictAllAgeAndGenderTask = PredictAllAgeAndGenderTask;
+class PredictSingleAgeAndGenderTask extends PredictAgeAndGenderTaskBase {
     async run() {
         const parentResult = await this.parentTask;
         if (!parentResult) {
             return;
         }
-        const { age, gender, genderProbability } = await extractSingleFaceAndComputeResult(parentResult, this.input, face => nets.ageGenderNet.predictAgeAndGender(face), this.extractedFaces);
-        return extendWithAge(extendWithGender(parentResult, gender, genderProbability), age);
+        const { age, gender, genderProbability } = await extractFacesAndComputeResults_1.extractSingleFaceAndComputeResult(parentResult, this.input, face => nets_1.nets.ageGenderNet.predictAgeAndGender(face), this.extractedFaces);
+        return WithAge_1.extendWithAge(WithGender_1.extendWithGender(parentResult, gender, genderProbability), age);
     }
     withFaceExpressions() {
-        return new PredictSingleFaceExpressionsTask(this, this.input);
+        return new PredictFaceExpressionsTask_1.PredictSingleFaceExpressionsTask(this, this.input);
     }
 }
-export class PredictAllAgeAndGenderWithFaceAlignmentTask extends PredictAllAgeAndGenderTask {
+exports.PredictSingleAgeAndGenderTask = PredictSingleAgeAndGenderTask;
+class PredictAllAgeAndGenderWithFaceAlignmentTask extends PredictAllAgeAndGenderTask {
     withFaceExpressions() {
-        return new PredictAllFaceExpressionsWithFaceAlignmentTask(this, this.input);
+        return new PredictFaceExpressionsTask_1.PredictAllFaceExpressionsWithFaceAlignmentTask(this, this.input);
     }
     withFaceDescriptors() {
-        return new ComputeAllFaceDescriptorsTask(this, this.input);
+        return new ComputeFaceDescriptorsTasks_1.ComputeAllFaceDescriptorsTask(this, this.input);
     }
 }
-export class PredictSingleAgeAndGenderWithFaceAlignmentTask extends PredictSingleAgeAndGenderTask {
+exports.PredictAllAgeAndGenderWithFaceAlignmentTask = PredictAllAgeAndGenderWithFaceAlignmentTask;
+class PredictSingleAgeAndGenderWithFaceAlignmentTask extends PredictSingleAgeAndGenderTask {
     withFaceExpressions() {
-        return new PredictSingleFaceExpressionsWithFaceAlignmentTask(this, this.input);
+        return new PredictFaceExpressionsTask_1.PredictSingleFaceExpressionsWithFaceAlignmentTask(this, this.input);
     }
     withFaceDescriptor() {
-        return new ComputeSingleFaceDescriptorTask(this, this.input);
+        return new ComputeFaceDescriptorsTasks_1.ComputeSingleFaceDescriptorTask(this, this.input);
     }
 }
+exports.PredictSingleAgeAndGenderWithFaceAlignmentTask = PredictSingleAgeAndGenderWithFaceAlignmentTask;
 //# sourceMappingURL=PredictAgeAndGenderTask.js.map

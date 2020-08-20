@@ -1,5 +1,8 @@
-import { ObjectDetection } from './ObjectDetection';
-export class FaceDetection extends ObjectDetection {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.FaceDetection = void 0;
+const ObjectDetection_1 = require("./ObjectDetection");
+class FaceDetection extends ObjectDetection_1.ObjectDetection {
     constructor(score, relativeBox, imageDims) {
         super(score, score, '', relativeBox, imageDims);
     }
@@ -8,4 +11,5 @@ export class FaceDetection extends ObjectDetection {
         return new FaceDetection(score, relativeBox, imageDims);
     }
 }
+exports.FaceDetection = FaceDetection;
 //# sourceMappingURL=FaceDetection.js.map

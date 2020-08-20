@@ -1,10 +1,13 @@
-import * as tf from '@tensorflow/tfjs-core';
-import { Point } from '../classes';
-import { FaceLandmarks68 } from '../classes/FaceLandmarks68';
-import { toNetInput } from '../dom';
-import { FaceProcessor } from '../faceProcessor/FaceProcessor';
-import { isEven } from '../utils';
-export class FaceLandmark68NetBase extends FaceProcessor {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.FaceLandmark68NetBase = void 0;
+const tf = require("@tensorflow/tfjs-core");
+const classes_1 = require("../classes");
+const FaceLandmarks68_1 = require("../classes/FaceLandmarks68");
+const dom_1 = require("../dom");
+const FaceProcessor_1 = require("../faceProcessor/FaceProcessor");
+const utils_1 = require("../utils");
+class FaceLandmark68NetBase extends FaceProcessor_1.FaceProcessor {
     postProcess(output, inputSize, originalDimensions) {
         const inputDimensions = originalDimensions.map(({ width, height }) => {
             const scale = inputSize / Math.max(height, width);
@@ -39,16 +42,16 @@ export class FaceLandmark68NetBase extends FaceProcessor {
         });
     }
     async forward(input) {
-        return this.forwardInput(await toNetInput(input));
+        return this.forwardInput(await dom_1.toNetInput(input));
     }
     async detectLandmarks(input) {
-        const netInput = await toNetInput(input);
+        const netInput = await dom_1.toNetInput(input);
         const landmarkTensors = tf.tidy(() => tf.unstack(this.forwardInput(netInput)));
         const landmarksForBatch = await Promise.all(landmarkTensors.map(async (landmarkTensor, batchIdx) => {
             const landmarksArray = Array.from(await landmarkTensor.data());
-            const xCoords = landmarksArray.filter((_, i) => isEven(i));
-            const yCoords = landmarksArray.filter((_, i) => !isEven(i));
-            return new FaceLandmarks68(Array(68).fill(0).map((_, i) => new Point(xCoords[i], yCoords[i])), {
+            const xCoords = landmarksArray.filter((_, i) => utils_1.isEven(i));
+            const yCoords = landmarksArray.filter((_, i) => !utils_1.isEven(i));
+            return new FaceLandmarks68_1.FaceLandmarks68(Array(68).fill(0).map((_, i) => new classes_1.Point(xCoords[i], yCoords[i])), {
                 height: netInput.getInputHeight(batchIdx),
                 width: netInput.getInputWidth(batchIdx),
             });
@@ -62,4 +65,5 @@ export class FaceLandmark68NetBase extends FaceProcessor {
         return 136;
     }
 }
+exports.FaceLandmark68NetBase = FaceLandmark68NetBase;
 //# sourceMappingURL=FaceLandmark68NetBase.js.map

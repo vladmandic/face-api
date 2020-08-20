@@ -18,10 +18,10 @@
     "importHelpers": true,
     "skipLibCheck": true,
     "outDir": "build",
-    "module": "es2020",
-    "target": "es2020",
+    "module": "commonjs",
     "moduleResolution": "node",
-    "lib": ["es2020", "dom"],
+    "target": "es2018",
+    "lib": ["es2018", "dom"],
     "typeRoots": [
       "typings",
       "node_modules/@types"

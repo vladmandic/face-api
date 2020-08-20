@@ -1,8 +1,12 @@
-import { createBrowserEnv } from './createBrowserEnv';
-import { createFileSystem } from './createFileSystem';
-import { createNodejsEnv } from './createNodejsEnv';
-import { isBrowser } from './isBrowser';
-import { isNodejs } from './isNodejs';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.env = void 0;
+const tslib_1 = require("tslib");
+const createBrowserEnv_1 = require("./createBrowserEnv");
+const createFileSystem_1 = require("./createFileSystem");
+const createNodejsEnv_1 = require("./createNodejsEnv");
+const isBrowser_1 = require("./isBrowser");
+const isNodejs_1 = require("./isNodejs");
 let environment;
 function getEnv() {
     if (!environment) {
@@ -16,11 +20,11 @@ function setEnv(env) {
 function initialize() {
     // check for isBrowser() first to prevent electron renderer process
     // to be initialized with wrong environment due to isNodejs() returning true
-    if (isBrowser()) {
-        return setEnv(createBrowserEnv());
+    if (isBrowser_1.isBrowser()) {
+        return setEnv(createBrowserEnv_1.createBrowserEnv());
     }
-    if (isNodejs()) {
-        return setEnv(createNodejsEnv());
+    if (isNodejs_1.isNodejs()) {
+        return setEnv(createNodejsEnv_1.createNodejsEnv());
     }
 }
 function monkeyPatch(env) {
@@ -40,17 +44,17 @@ function monkeyPatch(env) {
     environment.fetch = env.fetch || environment.fetch;
     environment.readFile = env.readFile || environment.readFile;
 }
-export const env = {
+exports.env = {
     getEnv,
     setEnv,
     initialize,
-    createBrowserEnv,
-    createFileSystem,
-    createNodejsEnv,
+    createBrowserEnv: createBrowserEnv_1.createBrowserEnv,
+    createFileSystem: createFileSystem_1.createFileSystem,
+    createNodejsEnv: createNodejsEnv_1.createNodejsEnv,
     monkeyPatch,
-    isBrowser,
-    isNodejs
+    isBrowser: isBrowser_1.isBrowser,
+    isNodejs: isNodejs_1.isNodejs
 };
 initialize();
-export * from './types';
+tslib_1.__exportStar(require("./types"), exports);
 //# sourceMappingURL=index.js.map

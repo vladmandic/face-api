@@ -1,5 +1,8 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.validateConfig = void 0;
 const isNumber = (arg) => typeof arg === 'number';
-export function validateConfig(config) {
+function validateConfig(config) {
     if (!config) {
         throw new Error(`invalid config: ${config}`);
     }
@@ -25,4 +28,5 @@ export function validateConfig(config) {
         throw new Error(`config.meanRgb has to be an array of shape [number, number, number], have: ${JSON.stringify(config.meanRgb)}`);
     }
 }
+exports.validateConfig = validateConfig;
 //# sourceMappingURL=config.js.map

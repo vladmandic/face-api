@@ -1,5 +1,8 @@
-import { iou } from './iou';
-export function nonMaxSuppression(boxes, scores, iouThreshold, isIOU = true) {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.nonMaxSuppression = void 0;
+const iou_1 = require("./iou");
+function nonMaxSuppression(boxes, scores, iouThreshold, isIOU = true) {
     let indicesSortedByScore = scores
         .map((score, boxIndex) => ({ score, boxIndex }))
         .sort((c1, c2) => c1.score - c2.score)
@@ -14,10 +17,11 @@ export function nonMaxSuppression(boxes, scores, iouThreshold, isIOU = true) {
             const idx = indices[i];
             const currBox = boxes[curr];
             const idxBox = boxes[idx];
-            outputs.push(iou(currBox, idxBox, isIOU));
+            outputs.push(iou_1.iou(currBox, idxBox, isIOU));
         }
         indicesSortedByScore = indicesSortedByScore.filter((_, j) => outputs[j] <= iouThreshold);
     }
     return pick;
 }
+exports.nonMaxSuppression = nonMaxSuppression;
 //# sourceMappingURL=nonMaxSuppression.js.map

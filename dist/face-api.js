@@ -31,6 +31,389 @@ var faceapi = (() => {
     return __exportStar(__defineProperty({}, "default", {value: module, enumerable: true}), module);
   };
 
+  // node_modules/tslib/tslib.es6.js
+  var require_tslib_es6 = __commonJS((exports) => {
+    __export(exports, {
+      __assign: () => __assign,
+      __asyncDelegator: () => __asyncDelegator,
+      __asyncGenerator: () => __asyncGenerator,
+      __asyncValues: () => __asyncValues,
+      __await: () => __await,
+      __awaiter: () => __awaiter,
+      __classPrivateFieldGet: () => __classPrivateFieldGet,
+      __classPrivateFieldSet: () => __classPrivateFieldSet,
+      __createBinding: () => __createBinding,
+      __decorate: () => __decorate,
+      __exportStar: () => __exportStar2,
+      __extends: () => __extends,
+      __generator: () => __generator,
+      __importDefault: () => __importDefault,
+      __importStar: () => __importStar,
+      __makeTemplateObject: () => __makeTemplateObject,
+      __metadata: () => __metadata,
+      __param: () => __param,
+      __read: () => __read,
+      __rest: () => __rest,
+      __spread: () => __spread,
+      __spreadArrays: () => __spreadArrays,
+      __values: () => __values
+    });
+    /*! *****************************************************************************
+    Copyright (c) Microsoft Corporation.
+    
+    Permission to use, copy, modify, and/or distribute this software for any
+    purpose with or without fee is hereby granted.
+    
+    THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+    REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+    AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+    INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+    LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+    OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+    PERFORMANCE OF THIS SOFTWARE.
+    ***************************************************************************** */
+    var extendStatics = function(d, b) {
+      extendStatics = Object.setPrototypeOf || {__proto__: []} instanceof Array && function(d2, b2) {
+        d2.__proto__ = b2;
+      } || function(d2, b2) {
+        for (var p in b2)
+          if (Object.prototype.hasOwnProperty.call(b2, p))
+            d2[p] = b2[p];
+      };
+      return extendStatics(d, b);
+    };
+    function __extends(d, b) {
+      extendStatics(d, b);
+      function __() {
+        this.constructor = d;
+      }
+      d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    }
+    var __assign = function() {
+      __assign = Object.assign || function __assign2(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+          s = arguments[i];
+          for (var p in s)
+            if (Object.prototype.hasOwnProperty.call(s, p))
+              t[p] = s[p];
+        }
+        return t;
+      };
+      return __assign.apply(this, arguments);
+    };
+    function __rest(s, e) {
+      var t = {};
+      for (var p in s)
+        if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+          t[p] = s[p];
+      if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+          if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+            t[p[i]] = s[p[i]];
+        }
+      return t;
+    }
+    function __decorate(decorators, target, key, desc) {
+      var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+      if (typeof Reflect === "object" && typeof Reflect.decorate === "function")
+        r = Reflect.decorate(decorators, target, key, desc);
+      else
+        for (var i = decorators.length - 1; i >= 0; i--)
+          if (d = decorators[i])
+            r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+      return c > 3 && r && Object.defineProperty(target, key, r), r;
+    }
+    function __param(paramIndex, decorator) {
+      return function(target, key) {
+        decorator(target, key, paramIndex);
+      };
+    }
+    function __metadata(metadataKey, metadataValue) {
+      if (typeof Reflect === "object" && typeof Reflect.metadata === "function")
+        return Reflect.metadata(metadataKey, metadataValue);
+    }
+    function __awaiter(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
+        });
+      }
+      return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+          try {
+            step7(generator.next(value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function rejected(value) {
+          try {
+            step7(generator["throw"](value));
+          } catch (e) {
+            reject(e);
+          }
+        }
+        function step7(result) {
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step7((generator = generator.apply(thisArg, _arguments || [])).next());
+      });
+    }
+    function __generator(thisArg, body) {
+      var _ = {label: 0, sent: function() {
+        if (t[0] & 1)
+          throw t[1];
+        return t[1];
+      }, trys: [], ops: []}, f, y, t, g;
+      return g = {next: verb(0), throw: verb(1), return: verb(2)}, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+      }), g;
+      function verb(n) {
+        return function(v) {
+          return step7([n, v]);
+        };
+      }
+      function step7(op2) {
+        if (f)
+          throw new TypeError("Generator is already executing.");
+        while (_)
+          try {
+            if (f = 1, y && (t = op2[0] & 2 ? y["return"] : op2[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op2[1])).done)
+              return t;
+            if (y = 0, t)
+              op2 = [op2[0] & 2, t.value];
+            switch (op2[0]) {
+              case 0:
+              case 1:
+                t = op2;
+                break;
+              case 4:
+                _.label++;
+                return {value: op2[1], done: false};
+              case 5:
+                _.label++;
+                y = op2[1];
+                op2 = [0];
+                continue;
+              case 7:
+                op2 = _.ops.pop();
+                _.trys.pop();
+                continue;
+              default:
+                if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op2[0] === 6 || op2[0] === 2)) {
+                  _ = 0;
+                  continue;
+                }
+                if (op2[0] === 3 && (!t || op2[1] > t[0] && op2[1] < t[3])) {
+                  _.label = op2[1];
+                  break;
+                }
+                if (op2[0] === 6 && _.label < t[1]) {
+                  _.label = t[1];
+                  t = op2;
+                  break;
+                }
+                if (t && _.label < t[2]) {
+                  _.label = t[2];
+                  _.ops.push(op2);
+                  break;
+                }
+                if (t[2])
+                  _.ops.pop();
+                _.trys.pop();
+                continue;
+            }
+            op2 = body.call(thisArg, _);
+          } catch (e) {
+            op2 = [6, e];
+            y = 0;
+          } finally {
+            f = t = 0;
+          }
+        if (op2[0] & 5)
+          throw op2[1];
+        return {value: op2[0] ? op2[1] : void 0, done: true};
+      }
+    }
+    var __createBinding = Object.create ? function(o, m, k, k2) {
+      if (k2 === void 0)
+        k2 = k;
+      Object.defineProperty(o, k2, {enumerable: true, get: function() {
+        return m[k];
+      }});
+    } : function(o, m, k, k2) {
+      if (k2 === void 0)
+        k2 = k;
+      o[k2] = m[k];
+    };
+    function __exportStar2(m, o) {
+      for (var p in m)
+        if (p !== "default" && !Object.prototype.hasOwnProperty.call(o, p))
+          __createBinding(o, m, p);
+    }
+    function __values(o) {
+      var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
+      if (m)
+        return m.call(o);
+      if (o && typeof o.length === "number")
+        return {
+          next: function() {
+            if (o && i >= o.length)
+              o = void 0;
+            return {value: o && o[i++], done: !o};
+          }
+        };
+      throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
+    }
+    function __read(o, n) {
+      var m = typeof Symbol === "function" && o[Symbol.iterator];
+      if (!m)
+        return o;
+      var i = m.call(o), r, ar = [], e;
+      try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done)
+          ar.push(r.value);
+      } catch (error) {
+        e = {error};
+      } finally {
+        try {
+          if (r && !r.done && (m = i["return"]))
+            m.call(i);
+        } finally {
+          if (e)
+            throw e.error;
+        }
+      }
+      return ar;
+    }
+    function __spread() {
+      for (var ar = [], i = 0; i < arguments.length; i++)
+        ar = ar.concat(__read(arguments[i]));
+      return ar;
+    }
+    function __spreadArrays() {
+      for (var s = 0, i = 0, il = arguments.length; i < il; i++)
+        s += arguments[i].length;
+      for (var r = Array(s), k = 0, i = 0; i < il; i++)
+        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+          r[k] = a[j];
+      return r;
+    }
+    function __await(v) {
+      return this instanceof __await ? (this.v = v, this) : new __await(v);
+    }
+    function __asyncGenerator(thisArg, _arguments, generator) {
+      if (!Symbol.asyncIterator)
+        throw new TypeError("Symbol.asyncIterator is not defined.");
+      var g = generator.apply(thisArg, _arguments || []), i, q = [];
+      return i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function() {
+        return this;
+      }, i;
+      function verb(n) {
+        if (g[n])
+          i[n] = function(v) {
+            return new Promise(function(a, b) {
+              q.push([n, v, a, b]) > 1 || resume(n, v);
+            });
+          };
+      }
+      function resume(n, v) {
+        try {
+          step7(g[n](v));
+        } catch (e) {
+          settle(q[0][3], e);
+        }
+      }
+      function step7(r) {
+        r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r);
+      }
+      function fulfill(value) {
+        resume("next", value);
+      }
+      function reject(value) {
+        resume("throw", value);
+      }
+      function settle(f, v) {
+        if (f(v), q.shift(), q.length)
+          resume(q[0][0], q[0][1]);
+      }
+    }
+    function __asyncDelegator(o) {
+      var i, p;
+      return i = {}, verb("next"), verb("throw", function(e) {
+        throw e;
+      }), verb("return"), i[Symbol.iterator] = function() {
+        return this;
+      }, i;
+      function verb(n, f) {
+        i[n] = o[n] ? function(v) {
+          return (p = !p) ? {value: __await(o[n](v)), done: n === "return"} : f ? f(v) : v;
+        } : f;
+      }
+    }
+    function __asyncValues(o) {
+      if (!Symbol.asyncIterator)
+        throw new TypeError("Symbol.asyncIterator is not defined.");
+      var m = o[Symbol.asyncIterator], i;
+      return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function() {
+        return this;
+      }, i);
+      function verb(n) {
+        i[n] = o[n] && function(v) {
+          return new Promise(function(resolve, reject) {
+            v = o[n](v), settle(resolve, reject, v.done, v.value);
+          });
+        };
+      }
+      function settle(resolve, reject, d, v) {
+        Promise.resolve(v).then(function(v2) {
+          resolve({value: v2, done: d});
+        }, reject);
+      }
+    }
+    function __makeTemplateObject(cooked, raw) {
+      if (Object.defineProperty) {
+        Object.defineProperty(cooked, "raw", {value: raw});
+      } else {
+        cooked.raw = raw;
+      }
+      return cooked;
+    }
+    var __setModuleDefault = Object.create ? function(o, v) {
+      Object.defineProperty(o, "default", {enumerable: true, value: v});
+    } : function(o, v) {
+      o["default"] = v;
+    };
+    function __importStar(mod4) {
+      if (mod4 && mod4.__esModule)
+        return mod4;
+      var result = {};
+      if (mod4 != null) {
+        for (var k in mod4)
+          if (k !== "default" && Object.prototype.hasOwnProperty.call(mod4, k))
+            __createBinding(result, mod4, k);
+      }
+      __setModuleDefault(result, mod4);
+      return result;
+    }
+    function __importDefault(mod4) {
+      return mod4 && mod4.__esModule ? mod4 : {default: mod4};
+    }
+    function __classPrivateFieldGet(receiver, privateMap) {
+      if (!privateMap.has(receiver)) {
+        throw new TypeError("attempted to get private field on non-instance");
+      }
+      return privateMap.get(receiver);
+    }
+    function __classPrivateFieldSet(receiver, privateMap, value) {
+      if (!privateMap.has(receiver)) {
+        throw new TypeError("attempted to set private field on non-instance");
+      }
+      privateMap.set(receiver, value);
+      return value;
+    }
+  });
+
   // node_modules/seedrandom/lib/alea.js
   var require_alea = __commonJS((exports, module) => {
     (function(global2, module2, define2) {
@@ -671,27 +1054,1464 @@ var faceapi = (() => {
     module.exports = sr;
   });
 
+  // node_modules/@tensorflow/tfjs-core/dist/index.js
+  var require_dist = __commonJS((exports) => {
+    __export(exports, {
+      Abs: () => Abs,
+      Acos: () => Acos,
+      Acosh: () => Acosh,
+      AdadeltaOptimizer: () => AdadeltaOptimizer,
+      AdagradOptimizer: () => AdagradOptimizer,
+      AdamOptimizer: () => AdamOptimizer,
+      AdamaxOptimizer: () => AdamaxOptimizer,
+      Add: () => Add,
+      AddN: () => AddN,
+      All: () => All,
+      Any: () => Any,
+      ArgMax: () => ArgMax,
+      ArgMin: () => ArgMin,
+      Asin: () => Asin,
+      Asinh: () => Asinh,
+      Atan: () => Atan,
+      Atan2: () => Atan2,
+      Atanh: () => Atanh,
+      AvgPool: () => AvgPool,
+      AvgPool3D: () => AvgPool3D,
+      AvgPool3DBackprop: () => AvgPool3DBackprop,
+      AvgPoolBackprop: () => AvgPoolBackprop,
+      BatchMatMul: () => BatchMatMul,
+      BatchToSpaceND: () => BatchToSpaceND,
+      BroadcastTo: () => BroadcastTo,
+      Cast: () => Cast,
+      Ceil: () => Ceil,
+      ClipByValue: () => ClipByValue,
+      Complex: () => Complex,
+      Concat: () => Concat,
+      Conv2D: () => Conv2D,
+      Conv2DBackpropFilter: () => Conv2DBackpropFilter,
+      Conv2DBackpropInput: () => Conv2DBackpropInput,
+      Conv3D: () => Conv3D,
+      Conv3DBackpropFilterV2: () => Conv3DBackpropFilterV2,
+      Conv3DBackpropInputV2: () => Conv3DBackpropInputV2,
+      Cos: () => Cos,
+      Cosh: () => Cosh,
+      CropAndResize: () => CropAndResize,
+      Cumsum: () => Cumsum,
+      DataStorage: () => DataStorage,
+      DepthToSpace: () => DepthToSpace,
+      DepthwiseConv2dNative: () => DepthwiseConv2dNative,
+      DepthwiseConv2dNativeBackpropFilter: () => DepthwiseConv2dNativeBackpropFilter,
+      DepthwiseConv2dNativeBackpropInput: () => DepthwiseConv2dNativeBackpropInput,
+      Diag: () => Diag,
+      Dilation2D: () => Dilation2D,
+      Dilation2DBackpropFilter: () => Dilation2DBackpropFilter,
+      Dilation2DBackpropInput: () => Dilation2DBackpropInput,
+      Div: () => Div,
+      ENV: () => ENV,
+      Elu: () => Elu,
+      EluGrad: () => EluGrad,
+      Environment: () => Environment,
+      Equal: () => Equal,
+      Erf: () => Erf,
+      Exp: () => Exp,
+      Expm1: () => Expm1,
+      FFT: () => FFT,
+      Fill: () => Fill,
+      FlipLeftRight: () => FlipLeftRight,
+      Floor: () => Floor,
+      FloorDiv: () => FloorDiv,
+      FromPixels: () => FromPixels,
+      FusedBatchNorm: () => FusedBatchNorm,
+      FusedConv2D: () => FusedConv2D,
+      FusedDepthwiseConv2D: () => FusedDepthwiseConv2D,
+      GatherNd: () => GatherNd,
+      GatherV2: () => GatherV2,
+      Greater: () => Greater,
+      GreaterEqual: () => GreaterEqual,
+      IFFT: () => IFFT,
+      Identity: () => Identity,
+      Imag: () => Imag,
+      IsFinite: () => IsFinite,
+      IsInf: () => IsInf,
+      IsNan: () => IsNan,
+      KernelBackend: () => KernelBackend,
+      LRN: () => LRN,
+      LRNBackprop: () => LRNBackprop,
+      Less: () => Less,
+      LessEqual: () => LessEqual,
+      LinSpace: () => LinSpace,
+      Log: () => Log,
+      Log1p: () => Log1p,
+      LogSoftmax: () => LogSoftmax,
+      LogicalAnd: () => LogicalAnd,
+      LogicalNot: () => LogicalNot,
+      LogicalOr: () => LogicalOr,
+      Max: () => Max,
+      MaxPool: () => MaxPool,
+      MaxPool3D: () => MaxPool3D,
+      MaxPool3DBackprop: () => MaxPool3DBackprop,
+      MaxPoolBackprop: () => MaxPoolBackprop,
+      MaxPoolWithArgmax: () => MaxPoolWithArgmax,
+      Maximum: () => Maximum,
+      Mean: () => Mean,
+      Min: () => Min,
+      Minimum: () => Minimum,
+      Mod: () => Mod,
+      MomentumOptimizer: () => MomentumOptimizer,
+      Multiply: () => Multiply,
+      Negate: () => Negate,
+      NonMaxSuppressionV3: () => NonMaxSuppressionV3,
+      NonMaxSuppressionV4: () => NonMaxSuppressionV4,
+      NonMaxSuppressionV5: () => NonMaxSuppressionV5,
+      NotEqual: () => NotEqual,
+      OneHot: () => OneHot,
+      OnesLike: () => OnesLike,
+      Optimizer: () => Optimizer,
+      PadV2: () => PadV2,
+      Pool: () => Pool,
+      Pow: () => Pow,
+      Prelu: () => Prelu,
+      Prod: () => Prod,
+      RMSPropOptimizer: () => RMSPropOptimizer,
+      Range: () => Range,
+      Rank: () => Rank,
+      Real: () => Real,
+      Reciprocal: () => Reciprocal,
+      Reduction: () => Reduction,
+      Relu: () => Relu,
+      Relu6: () => Relu6,
+      Reshape: () => Reshape,
+      ResizeBilinear: () => ResizeBilinear,
+      ResizeBilinearGrad: () => ResizeBilinearGrad,
+      ResizeNearestNeighbor: () => ResizeNearestNeighbor,
+      ResizeNearestNeighborGrad: () => ResizeNearestNeighborGrad,
+      Reverse: () => Reverse,
+      RotateWithOffset: () => RotateWithOffset,
+      Round: () => Round,
+      Rsqrt: () => Rsqrt,
+      SGDOptimizer: () => SGDOptimizer,
+      ScatterNd: () => ScatterNd,
+      SelectV2: () => SelectV2,
+      Selu: () => Selu,
+      Sigmoid: () => Sigmoid,
+      Sign: () => Sign,
+      Sin: () => Sin,
+      Sinh: () => Sinh,
+      Slice: () => Slice,
+      Softmax: () => Softmax,
+      Softplus: () => Softplus,
+      SpaceToBatchND: () => SpaceToBatchND,
+      SparseToDense: () => SparseToDense,
+      SplitV: () => SplitV,
+      Sqrt: () => Sqrt,
+      Square: () => Square,
+      SquaredDifference: () => SquaredDifference,
+      Step: () => Step,
+      StridedSlice: () => StridedSlice,
+      Sub: () => Sub,
+      Sum: () => Sum,
+      Tan: () => Tan,
+      Tanh: () => Tanh,
+      Tensor: () => Tensor,
+      TensorBuffer: () => TensorBuffer,
+      Tile: () => Tile,
+      TopK: () => TopK,
+      Transpose: () => Transpose,
+      Unpack: () => Unpack,
+      UnsortedSegmentSum: () => UnsortedSegmentSum,
+      Variable: () => Variable,
+      ZerosLike: () => ZerosLike,
+      _FusedMatMul: () => _FusedMatMul,
+      abs: () => abs,
+      acos: () => acos,
+      acosh: () => acosh,
+      add: () => add2,
+      addN: () => addN,
+      addStrict: () => addStrict,
+      all: () => all,
+      any: () => any,
+      argMax: () => argMax,
+      argMin: () => argMin,
+      asin: () => asin,
+      asinh: () => asinh,
+      atan: () => atan,
+      atan2: () => atan2,
+      atanh: () => atanh,
+      avgPool: () => avgPool,
+      avgPool3d: () => avgPool3d,
+      backend: () => backend,
+      backend_util: () => backend_util_exports,
+      basicLSTMCell: () => basicLSTMCell,
+      batchNorm: () => batchNorm,
+      batchNorm2d: () => batchNorm2d,
+      batchNorm3d: () => batchNorm3d,
+      batchNorm4d: () => batchNorm4d,
+      batchToSpaceND: () => batchToSpaceND,
+      booleanMaskAsync: () => booleanMaskAsync,
+      broadcastTo: () => broadcastTo,
+      browser: () => browser_exports,
+      buffer: () => buffer,
+      cast: () => cast,
+      ceil: () => ceil,
+      clipByValue: () => clipByValue,
+      clone: () => clone,
+      complex: () => complex,
+      concat: () => concat,
+      concat1d: () => concat1d,
+      concat2d: () => concat2d,
+      concat3d: () => concat3d,
+      concat4d: () => concat4d,
+      conv1d: () => conv1d,
+      conv2d: () => conv2d,
+      conv2dTranspose: () => conv2dTranspose,
+      conv3d: () => conv3d,
+      conv3dTranspose: () => conv3dTranspose,
+      cos: () => cos,
+      cosh: () => cosh,
+      cosineWindow: () => cosineWindow,
+      cumsum: () => cumsum,
+      customGrad: () => customGrad,
+      deprecationWarn: () => deprecationWarn,
+      depthToSpace: () => depthToSpace,
+      depthwiseConv2d: () => depthwiseConv2d,
+      device_util: () => device_util_exports,
+      diag: () => diag,
+      dilation2d: () => dilation2d,
+      disableDeprecationWarnings: () => disableDeprecationWarnings,
+      dispose: () => dispose,
+      disposeVariables: () => disposeVariables,
+      div: () => div,
+      divNoNan: () => divNoNan,
+      divStrict: () => divStrict,
+      dot: () => dot,
+      dropout: () => dropout,
+      elu: () => elu,
+      enableDebugMode: () => enableDebugMode,
+      enableProdMode: () => enableProdMode,
+      enclosingPowerOfTwo: () => enclosingPowerOfTwo,
+      engine: () => engine22,
+      env: () => env,
+      equal: () => equal,
+      equalStrict: () => equalStrict,
+      erf: () => erf,
+      exp: () => exp,
+      expandDims: () => expandDims,
+      expm1: () => expm1,
+      eye: () => eye,
+      fft: () => fft,
+      fill: () => fill,
+      findBackend: () => findBackend,
+      findBackendFactory: () => findBackendFactory,
+      floor: () => floor,
+      floorDiv: () => floorDiv,
+      fused: () => fused_ops_exports,
+      gather: () => gather,
+      gatherND: () => gatherND,
+      gather_util: () => gather_nd_util_exports,
+      getBackend: () => getBackend,
+      getGradient: () => getGradient,
+      getKernel: () => getKernel,
+      getKernelsForBackend: () => getKernelsForBackend,
+      grad: () => grad,
+      grads: () => grads,
+      greater: () => greater,
+      greaterEqual: () => greaterEqual,
+      greaterEqualStrict: () => greaterEqualStrict,
+      greaterStrict: () => greaterStrict,
+      ifft: () => ifft,
+      imag: () => imag,
+      image: () => image,
+      inTopKAsync: () => inTopKAsync,
+      io: () => io_exports,
+      irfft: () => irfft,
+      isFinite: () => isFinite2,
+      isInf: () => isInf,
+      isNaN: () => isNaN2,
+      keep: () => keep,
+      kernel_impls: () => kernel_impls_exports,
+      leakyRelu: () => leakyRelu,
+      less: () => less,
+      lessEqual: () => lessEqual,
+      lessEqualStrict: () => lessEqualStrict,
+      lessStrict: () => lessStrict,
+      linalg: () => linalg,
+      linspace: () => linspace,
+      localResponseNormalization: () => localResponseNormalization,
+      log: () => log,
+      log1p: () => log1p,
+      logSigmoid: () => logSigmoid,
+      logSoftmax: () => logSoftmax,
+      logSumExp: () => logSumExp,
+      logicalAnd: () => logicalAnd,
+      logicalNot: () => logicalNot,
+      logicalOr: () => logicalOr,
+      logicalXor: () => logicalXor,
+      losses: () => losses,
+      matMul: () => matMul,
+      math: () => math_exports,
+      max: () => max,
+      maxPool: () => maxPool,
+      maxPool3d: () => maxPool3d,
+      maxPoolWithArgmax: () => maxPoolWithArgmax,
+      maximum: () => maximum,
+      maximumStrict: () => maximumStrict,
+      mean: () => mean,
+      memory: () => memory,
+      min: () => min,
+      minimum: () => minimum,
+      minimumStrict: () => minimumStrict,
+      mod: () => mod,
+      modStrict: () => modStrict,
+      moments: () => moments,
+      movingAverage: () => movingAverage,
+      mul: () => mul,
+      mulStrict: () => mulStrict,
+      multiRNNCell: () => multiRNNCell,
+      multinomial: () => multinomial,
+      neg: () => neg,
+      nextFrame: () => nextFrame,
+      norm: () => norm,
+      notEqual: () => notEqual,
+      notEqualStrict: () => notEqualStrict,
+      oneHot: () => oneHot,
+      ones: () => ones2,
+      onesLike: () => onesLike,
+      op: () => op,
+      outerProduct: () => outerProduct,
+      pad: () => pad,
+      pad1d: () => pad1d,
+      pad2d: () => pad2d,
+      pad3d: () => pad3d,
+      pad4d: () => pad4d,
+      pool: () => pool,
+      pow: () => pow,
+      powStrict: () => powStrict,
+      prelu: () => prelu,
+      print: () => print,
+      prod: () => prod,
+      profile: () => profile,
+      rand: () => rand,
+      randomGamma: () => randomGamma,
+      randomNormal: () => randomNormal,
+      randomUniform: () => randomUniform,
+      range: () => range,
+      ready: () => ready,
+      real: () => real,
+      reciprocal: () => reciprocal,
+      registerBackend: () => registerBackend,
+      registerGradient: () => registerGradient,
+      registerKernel: () => registerKernel,
+      relu: () => relu,
+      relu6: () => relu6,
+      removeBackend: () => removeBackend,
+      reshape: () => reshape,
+      reverse: () => reverse,
+      reverse1d: () => reverse1d,
+      reverse2d: () => reverse2d,
+      reverse3d: () => reverse3d,
+      reverse4d: () => reverse4d,
+      rfft: () => rfft,
+      round: () => round,
+      rsqrt: () => rsqrt,
+      scalar: () => scalar,
+      scatterND: () => scatterND,
+      scatter_util: () => scatter_nd_util_exports,
+      selu: () => selu,
+      separableConv2d: () => separableConv2d,
+      serialization: () => serialization_exports,
+      setBackend: () => setBackend,
+      setPlatform: () => setPlatform,
+      setdiff1dAsync: () => setdiff1dAsync,
+      sigmoid: () => sigmoid,
+      sign: () => sign,
+      signal: () => signal,
+      sin: () => sin,
+      sinh: () => sinh,
+      slice: () => slice,
+      slice1d: () => slice1d,
+      slice2d: () => slice2d,
+      slice3d: () => slice3d,
+      slice4d: () => slice4d,
+      slice_util: () => slice_util_exports,
+      softmax: () => softmax,
+      softplus: () => softplus,
+      spaceToBatchND: () => spaceToBatchND,
+      sparseToDense: () => sparseToDense,
+      spectral: () => spectral,
+      split: () => split,
+      sqrt: () => sqrt,
+      square: () => square,
+      squaredDifference: () => squaredDifference,
+      squaredDifferenceStrict: () => squaredDifferenceStrict,
+      squeeze: () => squeeze,
+      stack: () => stack,
+      step: () => step,
+      stridedSlice: () => stridedSlice,
+      sub: () => sub,
+      subStrict: () => subStrict,
+      sum: () => sum2,
+      sumOutType: () => sumOutType,
+      tan: () => tan,
+      tanh: () => tanh2,
+      tensor: () => tensor5,
+      tensor1d: () => tensor1d,
+      tensor2d: () => tensor2d,
+      tensor3d: () => tensor3d,
+      tensor4d: () => tensor4d,
+      tensor5d: () => tensor5d,
+      tensor6d: () => tensor6d,
+      tensor_util: () => tensor_util_exports,
+      test_util: () => test_util_exports,
+      tidy: () => tidy,
+      tile: () => tile,
+      time: () => time,
+      topk: () => topk,
+      train: () => train,
+      transpose: () => transpose,
+      truncatedNormal: () => truncatedNormal,
+      unregisterGradient: () => unregisterGradient,
+      unregisterKernel: () => unregisterKernel,
+      unsortedSegmentSum: () => unsortedSegmentSum,
+      unstack: () => unstack,
+      upcastType: () => upcastType,
+      util: () => util_exports,
+      valueAndGrad: () => valueAndGrad,
+      valueAndGrads: () => valueAndGrads,
+      variable: () => variable,
+      variableGrads: () => variableGrads,
+      version_core: () => version,
+      where: () => where,
+      whereAsync: () => whereAsync,
+      zeros: () => zeros,
+      zerosLike: () => zerosLike
+    });
+    /**
+     * @license
+     * Copyright 2017 Google LLC. All Rights Reserved.
+     * Licensed under the Apache License, Version 2.0 (the "License");
+     * you may not use this file except in compliance with the License.
+     * You may obtain a copy of the License at
+     *
+     * http://www.apache.org/licenses/LICENSE-2.0
+     *
+     * Unless required by applicable law or agreed to in writing, software
+     * distributed under the License is distributed on an "AS IS" BASIS,
+     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     * See the License for the specific language governing permissions and
+     * limitations under the License.
+     * =============================================================================
+     */
+  });
+
+  // build/draw/drawContour.js
+  var require_drawContour = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.drawContour = void 0;
+    function drawContour(ctx, points, isClosed = false) {
+      ctx.beginPath();
+      points.slice(1).forEach(({x, y}, prevIdx) => {
+        const from = points[prevIdx];
+        ctx.moveTo(from.x, from.y);
+        ctx.lineTo(x, y);
+      });
+      if (isClosed) {
+        const from = points[points.length - 1];
+        const to = points[0];
+        if (!from || !to) {
+          return;
+        }
+        ctx.moveTo(from.x, from.y);
+        ctx.lineTo(to.x, to.y);
+      }
+      ctx.stroke();
+    }
+    exports.drawContour = drawContour;
+  });
+
+  // build/classes/Dimensions.js
+  var require_Dimensions = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.Dimensions = void 0;
+    const utils_1 = require_utils();
+    class Dimensions {
+      constructor(width, height) {
+        if (!utils_1.isValidNumber(width) || !utils_1.isValidNumber(height)) {
+          throw new Error(`Dimensions.constructor - expected width and height to be valid numbers, instead have ${JSON.stringify({width, height})}`);
+        }
+        this._width = width;
+        this._height = height;
+      }
+      get width() {
+        return this._width;
+      }
+      get height() {
+        return this._height;
+      }
+      reverse() {
+        return new Dimensions(1 / this.width, 1 / this.height);
+      }
+    }
+    exports.Dimensions = Dimensions;
+  });
+
+  // build/utils/index.js
+  var require_utils = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.isValidProbablitiy = exports.isValidNumber = exports.range = exports.getCenterPoint = exports.computeReshapedDimensions = exports.isDimensions = exports.round = exports.isEven = exports.isFloat = exports.isTensor4D = exports.isTensor3D = exports.isTensor2D = exports.isTensor1D = exports.isTensor = void 0;
+    const tf = require_dist();
+    const classes_1 = require_classes();
+    const Dimensions_1 = require_Dimensions();
+    function isTensor(tensor17, dim) {
+      return tensor17 instanceof tf.Tensor && tensor17.shape.length === dim;
+    }
+    exports.isTensor = isTensor;
+    function isTensor1D(tensor17) {
+      return isTensor(tensor17, 1);
+    }
+    exports.isTensor1D = isTensor1D;
+    function isTensor2D(tensor17) {
+      return isTensor(tensor17, 2);
+    }
+    exports.isTensor2D = isTensor2D;
+    function isTensor3D(tensor17) {
+      return isTensor(tensor17, 3);
+    }
+    exports.isTensor3D = isTensor3D;
+    function isTensor4D(tensor17) {
+      return isTensor(tensor17, 4);
+    }
+    exports.isTensor4D = isTensor4D;
+    function isFloat(num) {
+      return num % 1 !== 0;
+    }
+    exports.isFloat = isFloat;
+    function isEven(num) {
+      return num % 2 === 0;
+    }
+    exports.isEven = isEven;
+    function round3(num, prec = 2) {
+      const f = Math.pow(10, prec);
+      return Math.floor(num * f) / f;
+    }
+    exports.round = round3;
+    function isDimensions(obj) {
+      return obj && obj.width && obj.height;
+    }
+    exports.isDimensions = isDimensions;
+    function computeReshapedDimensions({width, height}, inputSize) {
+      const scale = inputSize / Math.max(height, width);
+      return new Dimensions_1.Dimensions(Math.round(width * scale), Math.round(height * scale));
+    }
+    exports.computeReshapedDimensions = computeReshapedDimensions;
+    function getCenterPoint(pts) {
+      return pts.reduce((sum26, pt) => sum26.add(pt), new classes_1.Point(0, 0)).div(new classes_1.Point(pts.length, pts.length));
+    }
+    exports.getCenterPoint = getCenterPoint;
+    function range4(num, start, step7) {
+      return Array(num).fill(0).map((_, i) => start + i * step7);
+    }
+    exports.range = range4;
+    function isValidNumber(num) {
+      return !!num && num !== Infinity && num !== -Infinity && !isNaN(num) || num === 0;
+    }
+    exports.isValidNumber = isValidNumber;
+    function isValidProbablitiy(num) {
+      return isValidNumber(num) && 0 <= num && num <= 1;
+    }
+    exports.isValidProbablitiy = isValidProbablitiy;
+  });
+
+  // build/classes/Point.js
+  var require_Point = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.Point = void 0;
+    class Point {
+      constructor(x, y) {
+        this._x = x;
+        this._y = y;
+      }
+      get x() {
+        return this._x;
+      }
+      get y() {
+        return this._y;
+      }
+      add(pt) {
+        return new Point(this.x + pt.x, this.y + pt.y);
+      }
+      sub(pt) {
+        return new Point(this.x - pt.x, this.y - pt.y);
+      }
+      mul(pt) {
+        return new Point(this.x * pt.x, this.y * pt.y);
+      }
+      div(pt) {
+        return new Point(this.x / pt.x, this.y / pt.y);
+      }
+      abs() {
+        return new Point(Math.abs(this.x), Math.abs(this.y));
+      }
+      magnitude() {
+        return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2));
+      }
+      floor() {
+        return new Point(Math.floor(this.x), Math.floor(this.y));
+      }
+    }
+    exports.Point = Point;
+  });
+
+  // build/classes/Box.js
+  var require_Box = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.Box = void 0;
+    const utils_1 = require_utils();
+    const Point_1 = require_Point();
+    class Box {
+      constructor(_box, allowNegativeDimensions = true) {
+        const box = _box || {};
+        const isBbox = [box.left, box.top, box.right, box.bottom].every(utils_1.isValidNumber);
+        const isRect = [box.x, box.y, box.width, box.height].every(utils_1.isValidNumber);
+        if (!isRect && !isBbox) {
+          throw new Error(`Box.constructor - expected box to be IBoundingBox | IRect, instead have ${JSON.stringify(box)}`);
+        }
+        const [x, y, width, height] = isRect ? [box.x, box.y, box.width, box.height] : [box.left, box.top, box.right - box.left, box.bottom - box.top];
+        Box.assertIsValidBox({x, y, width, height}, "Box.constructor", allowNegativeDimensions);
+        this._x = x;
+        this._y = y;
+        this._width = width;
+        this._height = height;
+      }
+      static isRect(rect) {
+        return !!rect && [rect.x, rect.y, rect.width, rect.height].every(utils_1.isValidNumber);
+      }
+      static assertIsValidBox(box, callee, allowNegativeDimensions = false) {
+        if (!Box.isRect(box)) {
+          throw new Error(`${callee} - invalid box: ${JSON.stringify(box)}, expected object with properties x, y, width, height`);
+        }
+        if (!allowNegativeDimensions && (box.width < 0 || box.height < 0)) {
+          throw new Error(`${callee} - width (${box.width}) and height (${box.height}) must be positive numbers`);
+        }
+      }
+      get x() {
+        return this._x;
+      }
+      get y() {
+        return this._y;
+      }
+      get width() {
+        return this._width;
+      }
+      get height() {
+        return this._height;
+      }
+      get left() {
+        return this.x;
+      }
+      get top() {
+        return this.y;
+      }
+      get right() {
+        return this.x + this.width;
+      }
+      get bottom() {
+        return this.y + this.height;
+      }
+      get area() {
+        return this.width * this.height;
+      }
+      get topLeft() {
+        return new Point_1.Point(this.left, this.top);
+      }
+      get topRight() {
+        return new Point_1.Point(this.right, this.top);
+      }
+      get bottomLeft() {
+        return new Point_1.Point(this.left, this.bottom);
+      }
+      get bottomRight() {
+        return new Point_1.Point(this.right, this.bottom);
+      }
+      round() {
+        const [x, y, width, height] = [this.x, this.y, this.width, this.height].map((val) => Math.round(val));
+        return new Box({x, y, width, height});
+      }
+      floor() {
+        const [x, y, width, height] = [this.x, this.y, this.width, this.height].map((val) => Math.floor(val));
+        return new Box({x, y, width, height});
+      }
+      toSquare() {
+        let {x, y, width, height} = this;
+        const diff = Math.abs(width - height);
+        if (width < height) {
+          x -= diff / 2;
+          width += diff;
+        }
+        if (height < width) {
+          y -= diff / 2;
+          height += diff;
+        }
+        return new Box({x, y, width, height});
+      }
+      rescale(s) {
+        const scaleX = utils_1.isDimensions(s) ? s.width : s;
+        const scaleY = utils_1.isDimensions(s) ? s.height : s;
+        return new Box({
+          x: this.x * scaleX,
+          y: this.y * scaleY,
+          width: this.width * scaleX,
+          height: this.height * scaleY
+        });
+      }
+      pad(padX, padY) {
+        let [x, y, width, height] = [
+          this.x - padX / 2,
+          this.y - padY / 2,
+          this.width + padX,
+          this.height + padY
+        ];
+        return new Box({x, y, width, height});
+      }
+      clipAtImageBorders(imgWidth, imgHeight) {
+        const {x, y, right, bottom} = this;
+        const clippedX = Math.max(x, 0);
+        const clippedY = Math.max(y, 0);
+        const newWidth = right - clippedX;
+        const newHeight = bottom - clippedY;
+        const clippedWidth = Math.min(newWidth, imgWidth - clippedX);
+        const clippedHeight = Math.min(newHeight, imgHeight - clippedY);
+        return new Box({x: clippedX, y: clippedY, width: clippedWidth, height: clippedHeight}).floor();
+      }
+      shift(sx, sy) {
+        const {width, height} = this;
+        const x = this.x + sx;
+        const y = this.y + sy;
+        return new Box({x, y, width, height});
+      }
+      padAtBorders(imageHeight, imageWidth) {
+        const w = this.width + 1;
+        const h = this.height + 1;
+        let dx = 1;
+        let dy = 1;
+        let edx = w;
+        let edy = h;
+        let x = this.left;
+        let y = this.top;
+        let ex = this.right;
+        let ey = this.bottom;
+        if (ex > imageWidth) {
+          edx = -ex + imageWidth + w;
+          ex = imageWidth;
+        }
+        if (ey > imageHeight) {
+          edy = -ey + imageHeight + h;
+          ey = imageHeight;
+        }
+        if (x < 1) {
+          edy = 2 - x;
+          x = 1;
+        }
+        if (y < 1) {
+          edy = 2 - y;
+          y = 1;
+        }
+        return {dy, edy, dx, edx, y, ey, x, ex, w, h};
+      }
+      calibrate(region) {
+        return new Box({
+          left: this.left + region.left * this.width,
+          top: this.top + region.top * this.height,
+          right: this.right + region.right * this.width,
+          bottom: this.bottom + region.bottom * this.height
+        }).toSquare().round();
+      }
+    }
+    exports.Box = Box;
+  });
+
+  // build/classes/BoundingBox.js
+  var require_BoundingBox = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.BoundingBox = void 0;
+    const Box_1 = require_Box();
+    class BoundingBox extends Box_1.Box {
+      constructor(left, top, right, bottom, allowNegativeDimensions = false) {
+        super({left, top, right, bottom}, allowNegativeDimensions);
+      }
+    }
+    exports.BoundingBox = BoundingBox;
+  });
+
+  // build/classes/ObjectDetection.js
+  var require_ObjectDetection = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.ObjectDetection = void 0;
+    const Box_1 = require_Box();
+    const Dimensions_1 = require_Dimensions();
+    class ObjectDetection {
+      constructor(score, classScore, className, relativeBox, imageDims) {
+        this._imageDims = new Dimensions_1.Dimensions(imageDims.width, imageDims.height);
+        this._score = score;
+        this._classScore = classScore;
+        this._className = className;
+        this._box = new Box_1.Box(relativeBox).rescale(this._imageDims);
+      }
+      get score() {
+        return this._score;
+      }
+      get classScore() {
+        return this._classScore;
+      }
+      get className() {
+        return this._className;
+      }
+      get box() {
+        return this._box;
+      }
+      get imageDims() {
+        return this._imageDims;
+      }
+      get imageWidth() {
+        return this.imageDims.width;
+      }
+      get imageHeight() {
+        return this.imageDims.height;
+      }
+      get relativeBox() {
+        return new Box_1.Box(this._box).rescale(this.imageDims.reverse());
+      }
+      forSize(width, height) {
+        return new ObjectDetection(this.score, this.classScore, this.className, this.relativeBox, {width, height});
+      }
+    }
+    exports.ObjectDetection = ObjectDetection;
+  });
+
+  // build/classes/FaceDetection.js
+  var require_FaceDetection = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.FaceDetection = void 0;
+    const ObjectDetection_1 = require_ObjectDetection();
+    class FaceDetection extends ObjectDetection_1.ObjectDetection {
+      constructor(score, relativeBox, imageDims) {
+        super(score, score, "", relativeBox, imageDims);
+      }
+      forSize(width, height) {
+        const {score, relativeBox, imageDims} = super.forSize(width, height);
+        return new FaceDetection(score, relativeBox, imageDims);
+      }
+    }
+    exports.FaceDetection = FaceDetection;
+  });
+
+  // build/ops/iou.js
+  var require_iou = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.iou = void 0;
+    function iou(box1, box2, isIOU = true) {
+      const width = Math.max(0, Math.min(box1.right, box2.right) - Math.max(box1.left, box2.left));
+      const height = Math.max(0, Math.min(box1.bottom, box2.bottom) - Math.max(box1.top, box2.top));
+      const interSection = width * height;
+      return isIOU ? interSection / (box1.area + box2.area - interSection) : interSection / Math.min(box1.area, box2.area);
+    }
+    exports.iou = iou;
+  });
+
+  // build/ops/minBbox.js
+  var require_minBbox = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.minBbox = void 0;
+    const classes_1 = require_classes();
+    function minBbox(pts) {
+      const xs = pts.map((pt) => pt.x);
+      const ys = pts.map((pt) => pt.y);
+      const minX = xs.reduce((min5, x) => x < min5 ? x : min5, Infinity);
+      const minY = ys.reduce((min5, y) => y < min5 ? y : min5, Infinity);
+      const maxX = xs.reduce((max7, x) => max7 < x ? x : max7, 0);
+      const maxY = ys.reduce((max7, y) => max7 < y ? y : max7, 0);
+      return new classes_1.BoundingBox(minX, minY, maxX, maxY);
+    }
+    exports.minBbox = minBbox;
+  });
+
+  // build/ops/nonMaxSuppression.js
+  var require_nonMaxSuppression = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.nonMaxSuppression = void 0;
+    const iou_1 = require_iou();
+    function nonMaxSuppression2(boxes, scores, iouThreshold, isIOU = true) {
+      let indicesSortedByScore = scores.map((score, boxIndex) => ({score, boxIndex})).sort((c1, c2) => c1.score - c2.score).map((c) => c.boxIndex);
+      const pick = [];
+      while (indicesSortedByScore.length > 0) {
+        const curr = indicesSortedByScore.pop();
+        pick.push(curr);
+        const indices = indicesSortedByScore;
+        const outputs = [];
+        for (let i = 0; i < indices.length; i++) {
+          const idx = indices[i];
+          const currBox = boxes[curr];
+          const idxBox = boxes[idx];
+          outputs.push(iou_1.iou(currBox, idxBox, isIOU));
+        }
+        indicesSortedByScore = indicesSortedByScore.filter((_, j) => outputs[j] <= iouThreshold);
+      }
+      return pick;
+    }
+    exports.nonMaxSuppression = nonMaxSuppression2;
+  });
+
+  // build/ops/normalize.js
+  var require_normalize = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.normalize = void 0;
+    const tf = require_dist();
+    function normalize(x, meanRgb) {
+      return tf.tidy(() => {
+        const [r, g, b] = meanRgb;
+        const avg_r = tf.fill([...x.shape.slice(0, 3), 1], r);
+        const avg_g = tf.fill([...x.shape.slice(0, 3), 1], g);
+        const avg_b = tf.fill([...x.shape.slice(0, 3), 1], b);
+        const avg_rgb = tf.concat([avg_r, avg_g, avg_b], 3);
+        return tf.sub(x, avg_rgb);
+      });
+    }
+    exports.normalize = normalize;
+  });
+
+  // build/ops/padToSquare.js
+  var require_padToSquare = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.padToSquare = void 0;
+    const tf = require_dist();
+    function padToSquare(imgTensor, isCenterImage = false) {
+      return tf.tidy(() => {
+        const [height, width] = imgTensor.shape.slice(1);
+        if (height === width) {
+          return imgTensor;
+        }
+        const dimDiff = Math.abs(height - width);
+        const paddingAmount = Math.round(dimDiff * (isCenterImage ? 0.5 : 1));
+        const paddingAxis = height > width ? 2 : 1;
+        const createPaddingTensor = (paddingAmount2) => {
+          const paddingTensorShape = imgTensor.shape.slice();
+          paddingTensorShape[paddingAxis] = paddingAmount2;
+          return tf.fill(paddingTensorShape, 0);
+        };
+        const paddingTensorAppend = createPaddingTensor(paddingAmount);
+        const remainingPaddingAmount = dimDiff - paddingTensorAppend.shape[paddingAxis];
+        const paddingTensorPrepend = isCenterImage && remainingPaddingAmount ? createPaddingTensor(remainingPaddingAmount) : null;
+        const tensorsToStack = [
+          paddingTensorPrepend,
+          imgTensor,
+          paddingTensorAppend
+        ].filter((t) => !!t).map((t) => t.toFloat());
+        return tf.concat(tensorsToStack, paddingAxis);
+      });
+    }
+    exports.padToSquare = padToSquare;
+  });
+
+  // build/ops/shuffleArray.js
+  var require_shuffleArray = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.shuffleArray = void 0;
+    function shuffleArray(inputArray) {
+      const array = inputArray.slice();
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        const x = array[i];
+        array[i] = array[j];
+        array[j] = x;
+      }
+      return array;
+    }
+    exports.shuffleArray = shuffleArray;
+  });
+
+  // build/ops/index.js
+  var require_ops = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.inverseSigmoid = exports.sigmoid = void 0;
+    const tslib_1 = require_tslib_es6();
+    tslib_1.__exportStar(require_iou(), exports);
+    tslib_1.__exportStar(require_minBbox(), exports);
+    tslib_1.__exportStar(require_nonMaxSuppression(), exports);
+    tslib_1.__exportStar(require_normalize(), exports);
+    tslib_1.__exportStar(require_padToSquare(), exports);
+    tslib_1.__exportStar(require_shuffleArray(), exports);
+    function sigmoid6(x) {
+      return 1 / (1 + Math.exp(-x));
+    }
+    exports.sigmoid = sigmoid6;
+    function inverseSigmoid(x) {
+      return Math.log(x / (1 - x));
+    }
+    exports.inverseSigmoid = inverseSigmoid;
+  });
+
+  // build/classes/Rect.js
+  var require_Rect = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.Rect = void 0;
+    const Box_1 = require_Box();
+    class Rect extends Box_1.Box {
+      constructor(x, y, width, height, allowNegativeDimensions = false) {
+        super({x, y, width, height}, allowNegativeDimensions);
+      }
+    }
+    exports.Rect = Rect;
+  });
+
+  // build/classes/FaceLandmarks.js
+  var require_FaceLandmarks = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.FaceLandmarks = void 0;
+    const ops_1 = require_ops();
+    const utils_1 = require_utils();
+    const Box_1 = require_Box();
+    const Dimensions_1 = require_Dimensions();
+    const FaceDetection_1 = require_FaceDetection();
+    const Point_1 = require_Point();
+    const Rect_1 = require_Rect();
+    const relX = 0.5;
+    const relY = 0.43;
+    const relScale = 0.45;
+    class FaceLandmarks {
+      constructor(relativeFaceLandmarkPositions, imgDims, shift = new Point_1.Point(0, 0)) {
+        const {width, height} = imgDims;
+        this._imgDims = new Dimensions_1.Dimensions(width, height);
+        this._shift = shift;
+        this._positions = relativeFaceLandmarkPositions.map((pt) => pt.mul(new Point_1.Point(width, height)).add(shift));
+      }
+      get shift() {
+        return new Point_1.Point(this._shift.x, this._shift.y);
+      }
+      get imageWidth() {
+        return this._imgDims.width;
+      }
+      get imageHeight() {
+        return this._imgDims.height;
+      }
+      get positions() {
+        return this._positions;
+      }
+      get relativePositions() {
+        return this._positions.map((pt) => pt.sub(this._shift).div(new Point_1.Point(this.imageWidth, this.imageHeight)));
+      }
+      forSize(width, height) {
+        return new this.constructor(this.relativePositions, {width, height});
+      }
+      shiftBy(x, y) {
+        return new this.constructor(this.relativePositions, this._imgDims, new Point_1.Point(x, y));
+      }
+      shiftByPoint(pt) {
+        return this.shiftBy(pt.x, pt.y);
+      }
+      align(detection, options = {}) {
+        if (detection) {
+          const box = detection instanceof FaceDetection_1.FaceDetection ? detection.box.floor() : new Box_1.Box(detection);
+          return this.shiftBy(box.x, box.y).align(null, options);
+        }
+        const {useDlibAlignment, minBoxPadding} = Object.assign({}, {useDlibAlignment: false, minBoxPadding: 0.2}, options);
+        if (useDlibAlignment) {
+          return this.alignDlib();
+        }
+        return this.alignMinBbox(minBoxPadding);
+      }
+      alignDlib() {
+        const centers = this.getRefPointsForAlignment();
+        const [leftEyeCenter, rightEyeCenter, mouthCenter] = centers;
+        const distToMouth = (pt) => mouthCenter.sub(pt).magnitude();
+        const eyeToMouthDist = (distToMouth(leftEyeCenter) + distToMouth(rightEyeCenter)) / 2;
+        const size = Math.floor(eyeToMouthDist / relScale);
+        const refPoint = utils_1.getCenterPoint(centers);
+        const x = Math.floor(Math.max(0, refPoint.x - relX * size));
+        const y = Math.floor(Math.max(0, refPoint.y - relY * size));
+        return new Rect_1.Rect(x, y, Math.min(size, this.imageWidth + x), Math.min(size, this.imageHeight + y));
+      }
+      alignMinBbox(padding) {
+        const box = ops_1.minBbox(this.positions);
+        return box.pad(box.width * padding, box.height * padding);
+      }
+      getRefPointsForAlignment() {
+        throw new Error("getRefPointsForAlignment not implemented by base class");
+      }
+    }
+    exports.FaceLandmarks = FaceLandmarks;
+  });
+
+  // build/classes/FaceLandmarks5.js
+  var require_FaceLandmarks5 = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.FaceLandmarks5 = void 0;
+    const utils_1 = require_utils();
+    const FaceLandmarks_1 = require_FaceLandmarks();
+    class FaceLandmarks5 extends FaceLandmarks_1.FaceLandmarks {
+      getRefPointsForAlignment() {
+        const pts = this.positions;
+        return [
+          pts[0],
+          pts[1],
+          utils_1.getCenterPoint([pts[3], pts[4]])
+        ];
+      }
+    }
+    exports.FaceLandmarks5 = FaceLandmarks5;
+  });
+
+  // build/classes/FaceLandmarks68.js
+  var require_FaceLandmarks68 = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.FaceLandmarks68 = void 0;
+    const utils_1 = require_utils();
+    const FaceLandmarks_1 = require_FaceLandmarks();
+    class FaceLandmarks68 extends FaceLandmarks_1.FaceLandmarks {
+      getJawOutline() {
+        return this.positions.slice(0, 17);
+      }
+      getLeftEyeBrow() {
+        return this.positions.slice(17, 22);
+      }
+      getRightEyeBrow() {
+        return this.positions.slice(22, 27);
+      }
+      getNose() {
+        return this.positions.slice(27, 36);
+      }
+      getLeftEye() {
+        return this.positions.slice(36, 42);
+      }
+      getRightEye() {
+        return this.positions.slice(42, 48);
+      }
+      getMouth() {
+        return this.positions.slice(48, 68);
+      }
+      getRefPointsForAlignment() {
+        return [
+          this.getLeftEye(),
+          this.getRightEye(),
+          this.getMouth()
+        ].map(utils_1.getCenterPoint);
+      }
+    }
+    exports.FaceLandmarks68 = FaceLandmarks68;
+  });
+
+  // build/classes/FaceMatch.js
+  var require_FaceMatch = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.FaceMatch = void 0;
+    const utils_1 = require_utils();
+    class FaceMatch {
+      constructor(label, distance) {
+        this._label = label;
+        this._distance = distance;
+      }
+      get label() {
+        return this._label;
+      }
+      get distance() {
+        return this._distance;
+      }
+      toString(withDistance = true) {
+        return `${this.label}${withDistance ? ` (${utils_1.round(this.distance)})` : ""}`;
+      }
+    }
+    exports.FaceMatch = FaceMatch;
+  });
+
+  // build/classes/LabeledBox.js
+  var require_LabeledBox = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.LabeledBox = void 0;
+    const utils_1 = require_utils();
+    const Box_1 = require_Box();
+    class LabeledBox extends Box_1.Box {
+      constructor(box, label) {
+        super(box);
+        this._label = label;
+      }
+      static assertIsValidLabeledBox(box, callee) {
+        Box_1.Box.assertIsValidBox(box, callee);
+        if (!utils_1.isValidNumber(box.label)) {
+          throw new Error(`${callee} - expected property label (${box.label}) to be a number`);
+        }
+      }
+      get label() {
+        return this._label;
+      }
+    }
+    exports.LabeledBox = LabeledBox;
+  });
+
+  // build/classes/LabeledFaceDescriptors.js
+  var require_LabeledFaceDescriptors = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.LabeledFaceDescriptors = void 0;
+    class LabeledFaceDescriptors {
+      constructor(label, descriptors) {
+        if (!(typeof label === "string")) {
+          throw new Error("LabeledFaceDescriptors - constructor expected label to be a string");
+        }
+        if (!Array.isArray(descriptors) || descriptors.some((desc) => !(desc instanceof Float32Array))) {
+          throw new Error("LabeledFaceDescriptors - constructor expected descriptors to be an array of Float32Array");
+        }
+        this._label = label;
+        this._descriptors = descriptors;
+      }
+      get label() {
+        return this._label;
+      }
+      get descriptors() {
+        return this._descriptors;
+      }
+      toJSON() {
+        return {
+          label: this.label,
+          descriptors: this.descriptors.map((d) => Array.from(d))
+        };
+      }
+      static fromJSON(json) {
+        const descriptors = json.descriptors.map((d) => {
+          return new Float32Array(d);
+        });
+        return new LabeledFaceDescriptors(json.label, descriptors);
+      }
+    }
+    exports.LabeledFaceDescriptors = LabeledFaceDescriptors;
+  });
+
+  // build/classes/PredictedBox.js
+  var require_PredictedBox = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.PredictedBox = void 0;
+    const utils_1 = require_utils();
+    const LabeledBox_1 = require_LabeledBox();
+    class PredictedBox extends LabeledBox_1.LabeledBox {
+      constructor(box, label, score, classScore) {
+        super(box, label);
+        this._score = score;
+        this._classScore = classScore;
+      }
+      static assertIsValidPredictedBox(box, callee) {
+        LabeledBox_1.LabeledBox.assertIsValidLabeledBox(box, callee);
+        if (!utils_1.isValidProbablitiy(box.score) || !utils_1.isValidProbablitiy(box.classScore)) {
+          throw new Error(`${callee} - expected properties score (${box.score}) and (${box.classScore}) to be a number between [0, 1]`);
+        }
+      }
+      get score() {
+        return this._score;
+      }
+      get classScore() {
+        return this._classScore;
+      }
+    }
+    exports.PredictedBox = PredictedBox;
+  });
+
+  // build/classes/index.js
+  var require_classes = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    const tslib_1 = require_tslib_es6();
+    tslib_1.__exportStar(require_BoundingBox(), exports);
+    tslib_1.__exportStar(require_Box(), exports);
+    tslib_1.__exportStar(require_Dimensions(), exports);
+    tslib_1.__exportStar(require_FaceDetection(), exports);
+    tslib_1.__exportStar(require_FaceLandmarks(), exports);
+    tslib_1.__exportStar(require_FaceLandmarks5(), exports);
+    tslib_1.__exportStar(require_FaceLandmarks68(), exports);
+    tslib_1.__exportStar(require_FaceMatch(), exports);
+    tslib_1.__exportStar(require_LabeledBox(), exports);
+    tslib_1.__exportStar(require_LabeledFaceDescriptors(), exports);
+    tslib_1.__exportStar(require_ObjectDetection(), exports);
+    tslib_1.__exportStar(require_Point(), exports);
+    tslib_1.__exportStar(require_PredictedBox(), exports);
+    tslib_1.__exportStar(require_Rect(), exports);
+  });
+
+  // build/factories/WithFaceDetection.js
+  var require_WithFaceDetection = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.extendWithFaceDetection = exports.isWithFaceDetection = void 0;
+    const FaceDetection_1 = require_FaceDetection();
+    function isWithFaceDetection(obj) {
+      return obj["detection"] instanceof FaceDetection_1.FaceDetection;
+    }
+    exports.isWithFaceDetection = isWithFaceDetection;
+    function extendWithFaceDetection(sourceObj, detection) {
+      const extension = {detection};
+      return Object.assign({}, sourceObj, extension);
+    }
+    exports.extendWithFaceDetection = extendWithFaceDetection;
+  });
+
+  // build/env/createBrowserEnv.js
+  var require_createBrowserEnv = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.createBrowserEnv = void 0;
+    function createBrowserEnv() {
+      const fetch3 = window["fetch"] || function() {
+        throw new Error("fetch - missing fetch implementation for browser environment");
+      };
+      const readFile = function() {
+        throw new Error("readFile - filesystem not available for browser environment");
+      };
+      return {
+        Canvas: HTMLCanvasElement,
+        CanvasRenderingContext2D,
+        Image: HTMLImageElement,
+        ImageData,
+        Video: HTMLVideoElement,
+        createCanvasElement: () => document.createElement("canvas"),
+        createImageElement: () => document.createElement("img"),
+        fetch: fetch3,
+        readFile
+      };
+    }
+    exports.createBrowserEnv = createBrowserEnv;
+  });
+
+  // build/env/createFileSystem.js
+  var require_createFileSystem = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.createFileSystem = void 0;
+    function createFileSystem(fs) {
+      let requireFsError = "";
+      if (!fs) {
+        try {
+          fs = require("fs");
+        } catch (err) {
+          requireFsError = err.toString();
+        }
+      }
+      const readFile = fs ? function(filePath) {
+        return new Promise((res, rej) => {
+          fs.readFile(filePath, function(err, buffer10) {
+            return err ? rej(err) : res(buffer10);
+          });
+        });
+      } : function() {
+        throw new Error(`readFile - failed to require fs in nodejs environment with error: ${requireFsError}`);
+      };
+      return {
+        readFile
+      };
+    }
+    exports.createFileSystem = createFileSystem;
+  });
+
+  // build/env/createNodejsEnv.js
+  var require_createNodejsEnv = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.createNodejsEnv = void 0;
+    const createFileSystem_1 = require_createFileSystem();
+    function createNodejsEnv() {
+      const Canvas = global["Canvas"] || global["HTMLCanvasElement"];
+      const Image = global["Image"] || global["HTMLImageElement"];
+      const createCanvasElement = function() {
+        if (Canvas) {
+          return new Canvas();
+        }
+        throw new Error("createCanvasElement - missing Canvas implementation for nodejs environment");
+      };
+      const createImageElement = function() {
+        if (Image) {
+          return new Image();
+        }
+        throw new Error("createImageElement - missing Image implementation for nodejs environment");
+      };
+      const fetch3 = global["fetch"] || function() {
+        throw new Error("fetch - missing fetch implementation for nodejs environment");
+      };
+      const fileSystem = createFileSystem_1.createFileSystem();
+      return {
+        Canvas: Canvas || class {
+        },
+        CanvasRenderingContext2D: global["CanvasRenderingContext2D"] || class {
+        },
+        Image: Image || class {
+        },
+        ImageData: global["ImageData"] || class {
+        },
+        Video: global["HTMLVideoElement"] || class {
+        },
+        createCanvasElement,
+        createImageElement,
+        fetch: fetch3,
+        ...fileSystem
+      };
+    }
+    exports.createNodejsEnv = createNodejsEnv;
+  });
+
+  // build/env/isBrowser.js
+  var require_isBrowser = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.isBrowser = void 0;
+    function isBrowser2() {
+      return typeof window === "object" && typeof document !== "undefined" && typeof HTMLImageElement !== "undefined" && typeof HTMLCanvasElement !== "undefined" && typeof HTMLVideoElement !== "undefined" && typeof ImageData !== "undefined" && typeof CanvasRenderingContext2D !== "undefined";
+    }
+    exports.isBrowser = isBrowser2;
+  });
+
   // build/env/isNodejs.js
   var require_isNodejs = __commonJS((exports, module) => {
-    __export(exports, {
-      isNodejs: () => isNodejs
-    });
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.isNodejs = void 0;
     function isNodejs() {
       return typeof global === "object" && true && typeof module !== "undefined" && typeof process !== "undefined" && !!process.version;
     }
+    exports.isNodejs = isNodejs;
   });
 
   // build/env/types.js
-  var require_types = __commonJS(() => {
+  var require_types = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
   });
 
   // build/env/index.js
   var require_env = __commonJS((exports) => {
-    __export(exports, {
-      env: () => env30
-    });
-    const isNodejs2 = __toModule(require_isNodejs());
-    __exportStar(exports, __toModule(require_types()));
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.env = void 0;
+    const tslib_1 = require_tslib_es6();
+    const createBrowserEnv_1 = require_createBrowserEnv();
+    const createFileSystem_1 = require_createFileSystem();
+    const createNodejsEnv_1 = require_createNodejsEnv();
+    const isBrowser_1 = require_isBrowser();
+    const isNodejs_1 = require_isNodejs();
     let environment11;
     function getEnv() {
       if (!environment11) {
@@ -699,202 +2519,3839 @@ var faceapi = (() => {
       }
       return environment11;
     }
-    function setEnv(env31) {
-      environment11 = env31;
+    function setEnv(env2) {
+      environment11 = env2;
     }
     function initialize() {
-      if (isBrowser2()) {
-        return setEnv(createBrowserEnv());
+      if (isBrowser_1.isBrowser()) {
+        return setEnv(createBrowserEnv_1.createBrowserEnv());
       }
-      if (isNodejs2.isNodejs()) {
-        return setEnv(createNodejsEnv());
+      if (isNodejs_1.isNodejs()) {
+        return setEnv(createNodejsEnv_1.createNodejsEnv());
       }
     }
-    function monkeyPatch(env31) {
+    function monkeyPatch(env2) {
       if (!environment11) {
         initialize();
       }
       if (!environment11) {
         throw new Error("monkeyPatch - environment is not defined, check isNodejs() and isBrowser()");
       }
-      const {Canvas = environment11.Canvas, Image = environment11.Image} = env31;
+      const {Canvas = environment11.Canvas, Image = environment11.Image} = env2;
       environment11.Canvas = Canvas;
       environment11.Image = Image;
-      environment11.createCanvasElement = env31.createCanvasElement || (() => new Canvas());
-      environment11.createImageElement = env31.createImageElement || (() => new Image());
-      environment11.ImageData = env31.ImageData || environment11.ImageData;
-      environment11.Video = env31.Video || environment11.Video;
-      environment11.fetch = env31.fetch || environment11.fetch;
-      environment11.readFile = env31.readFile || environment11.readFile;
+      environment11.createCanvasElement = env2.createCanvasElement || (() => new Canvas());
+      environment11.createImageElement = env2.createImageElement || (() => new Image());
+      environment11.ImageData = env2.ImageData || environment11.ImageData;
+      environment11.Video = env2.Video || environment11.Video;
+      environment11.fetch = env2.fetch || environment11.fetch;
+      environment11.readFile = env2.readFile || environment11.readFile;
     }
-    const env30 = {
+    exports.env = {
       getEnv,
       setEnv,
       initialize,
-      createBrowserEnv,
-      createFileSystem,
-      createNodejsEnv,
+      createBrowserEnv: createBrowserEnv_1.createBrowserEnv,
+      createFileSystem: createFileSystem_1.createFileSystem,
+      createNodejsEnv: createNodejsEnv_1.createNodejsEnv,
       monkeyPatch,
-      isBrowser: isBrowser2,
-      isNodejs: isNodejs2.isNodejs
+      isBrowser: isBrowser_1.isBrowser,
+      isNodejs: isNodejs_1.isNodejs
     };
     initialize();
+    tslib_1.__exportStar(require_types(), exports);
+  });
+
+  // build/dom/resolveInput.js
+  var require_resolveInput = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.resolveInput = void 0;
+    const env_1 = require_env();
+    function resolveInput(arg) {
+      if (!env_1.env.isNodejs() && typeof arg === "string") {
+        return document.getElementById(arg);
+      }
+      return arg;
+    }
+    exports.resolveInput = resolveInput;
+  });
+
+  // build/dom/getContext2dOrThrow.js
+  var require_getContext2dOrThrow = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.getContext2dOrThrow = void 0;
+    const env_1 = require_env();
+    const resolveInput_1 = require_resolveInput();
+    function getContext2dOrThrow(canvasArg) {
+      const {Canvas, CanvasRenderingContext2D: CanvasRenderingContext2D2} = env_1.env.getEnv();
+      if (canvasArg instanceof CanvasRenderingContext2D2) {
+        return canvasArg;
+      }
+      const canvas = resolveInput_1.resolveInput(canvasArg);
+      if (!(canvas instanceof Canvas)) {
+        throw new Error("resolveContext2d - expected canvas to be of instance of Canvas");
+      }
+      const ctx = canvas.getContext("2d");
+      if (!ctx) {
+        throw new Error("resolveContext2d - canvas 2d context is null");
+      }
+      return ctx;
+    }
+    exports.getContext2dOrThrow = getContext2dOrThrow;
+  });
+
+  // build/draw/DrawTextField.js
+  var require_DrawTextField = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.DrawTextField = exports.DrawTextFieldOptions = exports.AnchorPosition = void 0;
+    const getContext2dOrThrow_1 = require_getContext2dOrThrow();
+    const resolveInput_1 = require_resolveInput();
+    var AnchorPosition;
+    (function(AnchorPosition2) {
+      AnchorPosition2["TOP_LEFT"] = "TOP_LEFT";
+      AnchorPosition2["TOP_RIGHT"] = "TOP_RIGHT";
+      AnchorPosition2["BOTTOM_LEFT"] = "BOTTOM_LEFT";
+      AnchorPosition2["BOTTOM_RIGHT"] = "BOTTOM_RIGHT";
+    })(AnchorPosition = exports.AnchorPosition || (exports.AnchorPosition = {}));
+    class DrawTextFieldOptions {
+      constructor(options = {}) {
+        const {anchorPosition, backgroundColor, fontColor, fontSize, fontStyle, padding} = options;
+        this.anchorPosition = anchorPosition || AnchorPosition.TOP_LEFT;
+        this.backgroundColor = backgroundColor || "rgba(0, 0, 0, 0.5)";
+        this.fontColor = fontColor || "rgba(255, 255, 255, 1)";
+        this.fontSize = fontSize || 14;
+        this.fontStyle = fontStyle || "Georgia";
+        this.padding = padding || 4;
+      }
+    }
+    exports.DrawTextFieldOptions = DrawTextFieldOptions;
+    class DrawTextField {
+      constructor(text, anchor, options = {}) {
+        this.text = typeof text === "string" ? [text] : text instanceof DrawTextField ? text.text : text;
+        this.anchor = anchor;
+        this.options = new DrawTextFieldOptions(options);
+      }
+      measureWidth(ctx) {
+        const {padding} = this.options;
+        return this.text.map((l) => ctx.measureText(l).width).reduce((w0, w1) => w0 < w1 ? w1 : w0, 0) + 2 * padding;
+      }
+      measureHeight() {
+        const {fontSize, padding} = this.options;
+        return this.text.length * fontSize + 2 * padding;
+      }
+      getUpperLeft(ctx, canvasDims) {
+        const {anchorPosition} = this.options;
+        const isShiftLeft = anchorPosition === AnchorPosition.BOTTOM_RIGHT || anchorPosition === AnchorPosition.TOP_RIGHT;
+        const isShiftTop = anchorPosition === AnchorPosition.BOTTOM_LEFT || anchorPosition === AnchorPosition.BOTTOM_RIGHT;
+        const textFieldWidth = this.measureWidth(ctx);
+        const textFieldHeight = this.measureHeight();
+        const x = isShiftLeft ? this.anchor.x - textFieldWidth : this.anchor.x;
+        const y = isShiftTop ? this.anchor.y - textFieldHeight : this.anchor.y;
+        if (canvasDims) {
+          const {width, height} = canvasDims;
+          const newX = Math.max(Math.min(x, width - textFieldWidth), 0);
+          const newY = Math.max(Math.min(y, height - textFieldHeight), 0);
+          return {x: newX, y: newY};
+        }
+        return {x, y};
+      }
+      draw(canvasArg) {
+        const canvas = resolveInput_1.resolveInput(canvasArg);
+        const ctx = getContext2dOrThrow_1.getContext2dOrThrow(canvas);
+        const {backgroundColor, fontColor, fontSize, fontStyle, padding} = this.options;
+        ctx.font = `${fontSize}px ${fontStyle}`;
+        const maxTextWidth = this.measureWidth(ctx);
+        const textHeight = this.measureHeight();
+        ctx.fillStyle = backgroundColor;
+        const upperLeft = this.getUpperLeft(ctx, canvas);
+        ctx.fillRect(upperLeft.x, upperLeft.y, maxTextWidth, textHeight);
+        ctx.fillStyle = fontColor;
+        this.text.forEach((textLine, i) => {
+          const x = padding + upperLeft.x;
+          const y = padding + upperLeft.y + (i + 1) * fontSize;
+          ctx.fillText(textLine, x, y);
+        });
+      }
+    }
+    exports.DrawTextField = DrawTextField;
+  });
+
+  // build/draw/DrawBox.js
+  var require_DrawBox = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.DrawBox = exports.DrawBoxOptions = void 0;
+    const classes_1 = require_classes();
+    const getContext2dOrThrow_1 = require_getContext2dOrThrow();
+    const DrawTextField_1 = require_DrawTextField();
+    class DrawBoxOptions {
+      constructor(options = {}) {
+        const {boxColor, lineWidth, label, drawLabelOptions} = options;
+        this.boxColor = boxColor || "rgba(0, 0, 255, 1)";
+        this.lineWidth = lineWidth || 2;
+        this.label = label;
+        const defaultDrawLabelOptions = {
+          anchorPosition: DrawTextField_1.AnchorPosition.BOTTOM_LEFT,
+          backgroundColor: this.boxColor
+        };
+        this.drawLabelOptions = new DrawTextField_1.DrawTextFieldOptions(Object.assign({}, defaultDrawLabelOptions, drawLabelOptions));
+      }
+    }
+    exports.DrawBoxOptions = DrawBoxOptions;
+    class DrawBox {
+      constructor(box, options = {}) {
+        this.box = new classes_1.Box(box);
+        this.options = new DrawBoxOptions(options);
+      }
+      draw(canvasArg) {
+        const ctx = getContext2dOrThrow_1.getContext2dOrThrow(canvasArg);
+        const {boxColor, lineWidth} = this.options;
+        const {x, y, width, height} = this.box;
+        ctx.strokeStyle = boxColor;
+        ctx.lineWidth = lineWidth;
+        ctx.strokeRect(x, y, width, height);
+        const {label} = this.options;
+        if (label) {
+          new DrawTextField_1.DrawTextField([label], {x: x - lineWidth / 2, y}, this.options.drawLabelOptions).draw(canvasArg);
+        }
+      }
+    }
+    exports.DrawBox = DrawBox;
+  });
+
+  // build/draw/drawDetections.js
+  var require_drawDetections = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.drawDetections = void 0;
+    const classes_1 = require_classes();
+    const FaceDetection_1 = require_FaceDetection();
+    const WithFaceDetection_1 = require_WithFaceDetection();
+    const utils_1 = require_utils();
+    const DrawBox_1 = require_DrawBox();
+    function drawDetections(canvasArg, detections) {
+      const detectionsArray = Array.isArray(detections) ? detections : [detections];
+      detectionsArray.forEach((det) => {
+        const score = det instanceof FaceDetection_1.FaceDetection ? det.score : WithFaceDetection_1.isWithFaceDetection(det) ? det.detection.score : void 0;
+        const box = det instanceof FaceDetection_1.FaceDetection ? det.box : WithFaceDetection_1.isWithFaceDetection(det) ? det.detection.box : new classes_1.Box(det);
+        const label = score ? `${utils_1.round(score)}` : void 0;
+        new DrawBox_1.DrawBox(box, {label}).draw(canvasArg);
+      });
+    }
+    exports.drawDetections = drawDetections;
+  });
+
+  // build/dom/isMediaLoaded.js
+  var require_isMediaLoaded = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.isMediaLoaded = void 0;
+    const env_1 = require_env();
+    function isMediaLoaded(media) {
+      const {Image, Video} = env_1.env.getEnv();
+      return media instanceof Image && media.complete || media instanceof Video && media.readyState >= 3;
+    }
+    exports.isMediaLoaded = isMediaLoaded;
+  });
+
+  // build/dom/awaitMediaLoaded.js
+  var require_awaitMediaLoaded = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.awaitMediaLoaded = void 0;
+    const env_1 = require_env();
+    const isMediaLoaded_1 = require_isMediaLoaded();
+    function awaitMediaLoaded(media) {
+      return new Promise((resolve, reject) => {
+        if (media instanceof env_1.env.getEnv().Canvas || isMediaLoaded_1.isMediaLoaded(media)) {
+          return resolve();
+        }
+        function onLoad(e) {
+          if (!e.currentTarget)
+            return;
+          e.currentTarget.removeEventListener("load", onLoad);
+          e.currentTarget.removeEventListener("error", onError);
+          resolve(e);
+        }
+        function onError(e) {
+          if (!e.currentTarget)
+            return;
+          e.currentTarget.removeEventListener("load", onLoad);
+          e.currentTarget.removeEventListener("error", onError);
+          reject(e);
+        }
+        media.addEventListener("load", onLoad);
+        media.addEventListener("error", onError);
+      });
+    }
+    exports.awaitMediaLoaded = awaitMediaLoaded;
+  });
+
+  // build/dom/bufferToImage.js
+  var require_bufferToImage = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.bufferToImage = void 0;
+    const env_1 = require_env();
+    function bufferToImage(buf) {
+      return new Promise((resolve, reject) => {
+        if (!(buf instanceof Blob)) {
+          return reject("bufferToImage - expected buf to be of type: Blob");
+        }
+        const reader = new FileReader();
+        reader.onload = () => {
+          if (typeof reader.result !== "string") {
+            return reject("bufferToImage - expected reader.result to be a string, in onload");
+          }
+          const img = env_1.env.getEnv().createImageElement();
+          img.onload = () => resolve(img);
+          img.onerror = reject;
+          img.src = reader.result;
+        };
+        reader.onerror = reject;
+        reader.readAsDataURL(buf);
+      });
+    }
+    exports.bufferToImage = bufferToImage;
+  });
+
+  // build/dom/getMediaDimensions.js
+  var require_getMediaDimensions = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.getMediaDimensions = void 0;
+    const Dimensions_1 = require_Dimensions();
+    const env_1 = require_env();
+    function getMediaDimensions(input) {
+      const {Image, Video} = env_1.env.getEnv();
+      if (input instanceof Image) {
+        return new Dimensions_1.Dimensions(input.naturalWidth, input.naturalHeight);
+      }
+      if (input instanceof Video) {
+        return new Dimensions_1.Dimensions(input.videoWidth, input.videoHeight);
+      }
+      return new Dimensions_1.Dimensions(input.width, input.height);
+    }
+    exports.getMediaDimensions = getMediaDimensions;
+  });
+
+  // build/dom/createCanvas.js
+  var require_createCanvas = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.createCanvasFromMedia = exports.createCanvas = void 0;
+    const env_1 = require_env();
+    const getContext2dOrThrow_1 = require_getContext2dOrThrow();
+    const getMediaDimensions_1 = require_getMediaDimensions();
+    const isMediaLoaded_1 = require_isMediaLoaded();
+    function createCanvas({width, height}) {
+      const {createCanvasElement} = env_1.env.getEnv();
+      const canvas = createCanvasElement();
+      canvas.width = width;
+      canvas.height = height;
+      return canvas;
+    }
+    exports.createCanvas = createCanvas;
+    function createCanvasFromMedia(media, dims) {
+      const {ImageData: ImageData2} = env_1.env.getEnv();
+      if (!(media instanceof ImageData2) && !isMediaLoaded_1.isMediaLoaded(media)) {
+        throw new Error("createCanvasFromMedia - media has not finished loading yet");
+      }
+      const {width, height} = dims || getMediaDimensions_1.getMediaDimensions(media);
+      const canvas = createCanvas({width, height});
+      if (media instanceof ImageData2) {
+        getContext2dOrThrow_1.getContext2dOrThrow(canvas).putImageData(media, 0, 0);
+      } else {
+        getContext2dOrThrow_1.getContext2dOrThrow(canvas).drawImage(media, 0, 0, width, height);
+      }
+      return canvas;
+    }
+    exports.createCanvasFromMedia = createCanvasFromMedia;
+  });
+
+  // build/dom/imageTensorToCanvas.js
+  var require_imageTensorToCanvas = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.imageTensorToCanvas = void 0;
+    const tf = require_dist();
+    const env_1 = require_env();
+    const utils_1 = require_utils();
+    async function imageTensorToCanvas(imgTensor, canvas) {
+      const targetCanvas = canvas || env_1.env.getEnv().createCanvasElement();
+      const [height, width, numChannels] = imgTensor.shape.slice(utils_1.isTensor4D(imgTensor) ? 1 : 0);
+      const imgTensor3D = tf.tidy(() => imgTensor.as3D(height, width, numChannels).toInt());
+      await tf.browser.toPixels(imgTensor3D, targetCanvas);
+      imgTensor3D.dispose();
+      return targetCanvas;
+    }
+    exports.imageTensorToCanvas = imageTensorToCanvas;
+  });
+
+  // build/dom/isMediaElement.js
+  var require_isMediaElement = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.isMediaElement = void 0;
+    const env_1 = require_env();
+    function isMediaElement(input) {
+      const {Image, Canvas, Video} = env_1.env.getEnv();
+      return input instanceof Image || input instanceof Canvas || input instanceof Video;
+    }
+    exports.isMediaElement = isMediaElement;
+  });
+
+  // build/dom/imageToSquare.js
+  var require_imageToSquare = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.imageToSquare = void 0;
+    const env_1 = require_env();
+    const createCanvas_1 = require_createCanvas();
+    const getContext2dOrThrow_1 = require_getContext2dOrThrow();
+    const getMediaDimensions_1 = require_getMediaDimensions();
+    function imageToSquare(input, inputSize, centerImage = false) {
+      const {Image, Canvas} = env_1.env.getEnv();
+      if (!(input instanceof Image || input instanceof Canvas)) {
+        throw new Error("imageToSquare - expected arg0 to be HTMLImageElement | HTMLCanvasElement");
+      }
+      const dims = getMediaDimensions_1.getMediaDimensions(input);
+      const scale = inputSize / Math.max(dims.height, dims.width);
+      const width = scale * dims.width;
+      const height = scale * dims.height;
+      const targetCanvas = createCanvas_1.createCanvas({width: inputSize, height: inputSize});
+      const inputCanvas = input instanceof Canvas ? input : createCanvas_1.createCanvasFromMedia(input);
+      const offset = Math.abs(width - height) / 2;
+      const dx = centerImage && width < height ? offset : 0;
+      const dy = centerImage && height < width ? offset : 0;
+      getContext2dOrThrow_1.getContext2dOrThrow(targetCanvas).drawImage(inputCanvas, dx, dy, width, height);
+      return targetCanvas;
+    }
+    exports.imageToSquare = imageToSquare;
+  });
+
+  // build/dom/NetInput.js
+  var require_NetInput = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.NetInput = void 0;
+    const tf = require_dist();
+    const env_1 = require_env();
+    const padToSquare_1 = require_padToSquare();
+    const utils_1 = require_utils();
+    const createCanvas_1 = require_createCanvas();
+    const imageToSquare_1 = require_imageToSquare();
+    class NetInput {
+      constructor(inputs, treatAsBatchInput = false) {
+        this._imageTensors = [];
+        this._canvases = [];
+        this._treatAsBatchInput = false;
+        this._inputDimensions = [];
+        if (!Array.isArray(inputs)) {
+          throw new Error(`NetInput.constructor - expected inputs to be an Array of TResolvedNetInput or to be instanceof tf.Tensor4D, instead have ${inputs}`);
+        }
+        this._treatAsBatchInput = treatAsBatchInput;
+        this._batchSize = inputs.length;
+        inputs.forEach((input, idx) => {
+          if (utils_1.isTensor3D(input)) {
+            this._imageTensors[idx] = input;
+            this._inputDimensions[idx] = input.shape;
+            return;
+          }
+          if (utils_1.isTensor4D(input)) {
+            const batchSize = input.shape[0];
+            if (batchSize !== 1) {
+              throw new Error(`NetInput - tf.Tensor4D with batchSize ${batchSize} passed, but not supported in input array`);
+            }
+            this._imageTensors[idx] = input;
+            this._inputDimensions[idx] = input.shape.slice(1);
+            return;
+          }
+          const canvas = input instanceof env_1.env.getEnv().Canvas ? input : createCanvas_1.createCanvasFromMedia(input);
+          this._canvases[idx] = canvas;
+          this._inputDimensions[idx] = [canvas.height, canvas.width, 3];
+        });
+      }
+      get imageTensors() {
+        return this._imageTensors;
+      }
+      get canvases() {
+        return this._canvases;
+      }
+      get isBatchInput() {
+        return this.batchSize > 1 || this._treatAsBatchInput;
+      }
+      get batchSize() {
+        return this._batchSize;
+      }
+      get inputDimensions() {
+        return this._inputDimensions;
+      }
+      get inputSize() {
+        return this._inputSize;
+      }
+      get reshapedInputDimensions() {
+        return utils_1.range(this.batchSize, 0, 1).map((_, batchIdx) => this.getReshapedInputDimensions(batchIdx));
+      }
+      getInput(batchIdx) {
+        return this.canvases[batchIdx] || this.imageTensors[batchIdx];
+      }
+      getInputDimensions(batchIdx) {
+        return this._inputDimensions[batchIdx];
+      }
+      getInputHeight(batchIdx) {
+        return this._inputDimensions[batchIdx][0];
+      }
+      getInputWidth(batchIdx) {
+        return this._inputDimensions[batchIdx][1];
+      }
+      getReshapedInputDimensions(batchIdx) {
+        if (typeof this.inputSize !== "number") {
+          throw new Error("getReshapedInputDimensions - inputSize not set, toBatchTensor has not been called yet");
+        }
+        const width = this.getInputWidth(batchIdx);
+        const height = this.getInputHeight(batchIdx);
+        return utils_1.computeReshapedDimensions({width, height}, this.inputSize);
+      }
+      toBatchTensor(inputSize, isCenterInputs = true) {
+        this._inputSize = inputSize;
+        return tf.tidy(() => {
+          const inputTensors = utils_1.range(this.batchSize, 0, 1).map((batchIdx) => {
+            const input = this.getInput(batchIdx);
+            if (input instanceof tf.Tensor) {
+              let imgTensor = utils_1.isTensor4D(input) ? input : input.expandDims();
+              imgTensor = padToSquare_1.padToSquare(imgTensor, isCenterInputs);
+              if (imgTensor.shape[1] !== inputSize || imgTensor.shape[2] !== inputSize) {
+                imgTensor = tf.image.resizeBilinear(imgTensor, [inputSize, inputSize]);
+              }
+              return imgTensor.as3D(inputSize, inputSize, 3);
+            }
+            if (input instanceof env_1.env.getEnv().Canvas) {
+              return tf.browser.fromPixels(imageToSquare_1.imageToSquare(input, inputSize, isCenterInputs));
+            }
+            throw new Error(`toBatchTensor - at batchIdx ${batchIdx}, expected input to be instanceof tf.Tensor or instanceof HTMLCanvasElement, instead have ${input}`);
+          });
+          const batchTensor = tf.stack(inputTensors.map((t) => t.toFloat())).as4D(this.batchSize, inputSize, inputSize, 3);
+          return batchTensor;
+        });
+      }
+    }
+    exports.NetInput = NetInput;
+  });
+
+  // build/dom/toNetInput.js
+  var require_toNetInput = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.toNetInput = void 0;
+    const utils_1 = require_utils();
+    const awaitMediaLoaded_1 = require_awaitMediaLoaded();
+    const isMediaElement_1 = require_isMediaElement();
+    const NetInput_1 = require_NetInput();
+    const resolveInput_1 = require_resolveInput();
+    async function toNetInput(inputs) {
+      if (inputs instanceof NetInput_1.NetInput) {
+        return inputs;
+      }
+      let inputArgArray = Array.isArray(inputs) ? inputs : [inputs];
+      if (!inputArgArray.length) {
+        throw new Error("toNetInput - empty array passed as input");
+      }
+      const getIdxHint = (idx) => Array.isArray(inputs) ? ` at input index ${idx}:` : "";
+      const inputArray = inputArgArray.map(resolveInput_1.resolveInput);
+      inputArray.forEach((input, i) => {
+        if (!isMediaElement_1.isMediaElement(input) && !utils_1.isTensor3D(input) && !utils_1.isTensor4D(input)) {
+          if (typeof inputArgArray[i] === "string") {
+            throw new Error(`toNetInput -${getIdxHint(i)} string passed, but could not resolve HTMLElement for element id ${inputArgArray[i]}`);
+          }
+          throw new Error(`toNetInput -${getIdxHint(i)} expected media to be of type HTMLImageElement | HTMLVideoElement | HTMLCanvasElement | tf.Tensor3D, or to be an element id`);
+        }
+        if (utils_1.isTensor4D(input)) {
+          const batchSize = input.shape[0];
+          if (batchSize !== 1) {
+            throw new Error(`toNetInput -${getIdxHint(i)} tf.Tensor4D with batchSize ${batchSize} passed, but not supported in input array`);
+          }
+        }
+      });
+      await Promise.all(inputArray.map((input) => isMediaElement_1.isMediaElement(input) && awaitMediaLoaded_1.awaitMediaLoaded(input)));
+      return new NetInput_1.NetInput(inputArray, Array.isArray(inputs));
+    }
+    exports.toNetInput = toNetInput;
+  });
+
+  // build/dom/extractFaces.js
+  var require_extractFaces = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.extractFaces = void 0;
+    const FaceDetection_1 = require_FaceDetection();
+    const env_1 = require_env();
+    const createCanvas_1 = require_createCanvas();
+    const getContext2dOrThrow_1 = require_getContext2dOrThrow();
+    const imageTensorToCanvas_1 = require_imageTensorToCanvas();
+    const toNetInput_1 = require_toNetInput();
+    async function extractFaces(input, detections) {
+      const {Canvas} = env_1.env.getEnv();
+      let canvas = input;
+      if (!(input instanceof Canvas)) {
+        const netInput = await toNetInput_1.toNetInput(input);
+        if (netInput.batchSize > 1) {
+          throw new Error("extractFaces - batchSize > 1 not supported");
+        }
+        const tensorOrCanvas = netInput.getInput(0);
+        canvas = tensorOrCanvas instanceof Canvas ? tensorOrCanvas : await imageTensorToCanvas_1.imageTensorToCanvas(tensorOrCanvas);
+      }
+      const ctx = getContext2dOrThrow_1.getContext2dOrThrow(canvas);
+      const boxes = detections.map((det) => det instanceof FaceDetection_1.FaceDetection ? det.forSize(canvas.width, canvas.height).box.floor() : det).map((box) => box.clipAtImageBorders(canvas.width, canvas.height));
+      return boxes.map(({x, y, width, height}) => {
+        const faceImg = createCanvas_1.createCanvas({width, height});
+        getContext2dOrThrow_1.getContext2dOrThrow(faceImg).putImageData(ctx.getImageData(x, y, width, height), 0, 0);
+        return faceImg;
+      });
+    }
+    exports.extractFaces = extractFaces;
+  });
+
+  // build/dom/extractFaceTensors.js
+  var require_extractFaceTensors = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.extractFaceTensors = void 0;
+    const tf = require_dist();
+    const FaceDetection_1 = require_FaceDetection();
+    const utils_1 = require_utils();
+    async function extractFaceTensors(imageTensor, detections) {
+      if (!utils_1.isTensor3D(imageTensor) && !utils_1.isTensor4D(imageTensor)) {
+        throw new Error("extractFaceTensors - expected image tensor to be 3D or 4D");
+      }
+      if (utils_1.isTensor4D(imageTensor) && imageTensor.shape[0] > 1) {
+        throw new Error("extractFaceTensors - batchSize > 1 not supported");
+      }
+      return tf.tidy(() => {
+        const [imgHeight, imgWidth, numChannels] = imageTensor.shape.slice(utils_1.isTensor4D(imageTensor) ? 1 : 0);
+        const boxes = detections.map((det) => det instanceof FaceDetection_1.FaceDetection ? det.forSize(imgWidth, imgHeight).box : det).map((box) => box.clipAtImageBorders(imgWidth, imgHeight));
+        const faceTensors = boxes.map(({x, y, width, height}) => tf.slice3d(imageTensor.as3D(imgHeight, imgWidth, numChannels), [y, x, 0], [height, width, numChannels]));
+        return faceTensors;
+      });
+    }
+    exports.extractFaceTensors = extractFaceTensors;
+  });
+
+  // build/dom/fetchOrThrow.js
+  var require_fetchOrThrow = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.fetchOrThrow = void 0;
+    const env_1 = require_env();
+    async function fetchOrThrow(url, init) {
+      const fetch3 = env_1.env.getEnv().fetch;
+      const res = await fetch3(url, init);
+      if (!(res.status < 400)) {
+        throw new Error(`failed to fetch: (${res.status}) ${res.statusText}, from url: ${res.url}`);
+      }
+      return res;
+    }
+    exports.fetchOrThrow = fetchOrThrow;
+  });
+
+  // build/dom/fetchImage.js
+  var require_fetchImage = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.fetchImage = void 0;
+    const bufferToImage_1 = require_bufferToImage();
+    const fetchOrThrow_1 = require_fetchOrThrow();
+    async function fetchImage(uri) {
+      const res = await fetchOrThrow_1.fetchOrThrow(uri);
+      const blob = await res.blob();
+      if (!blob.type.startsWith("image/")) {
+        throw new Error(`fetchImage - expected blob type to be of type image/*, instead have: ${blob.type}, for url: ${res.url}`);
+      }
+      return bufferToImage_1.bufferToImage(blob);
+    }
+    exports.fetchImage = fetchImage;
+  });
+
+  // build/dom/fetchJson.js
+  var require_fetchJson = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.fetchJson = void 0;
+    const fetchOrThrow_1 = require_fetchOrThrow();
+    async function fetchJson(uri) {
+      return (await fetchOrThrow_1.fetchOrThrow(uri)).json();
+    }
+    exports.fetchJson = fetchJson;
+  });
+
+  // build/dom/fetchNetWeights.js
+  var require_fetchNetWeights = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.fetchNetWeights = void 0;
+    const fetchOrThrow_1 = require_fetchOrThrow();
+    async function fetchNetWeights(uri) {
+      return new Float32Array(await (await fetchOrThrow_1.fetchOrThrow(uri)).arrayBuffer());
+    }
+    exports.fetchNetWeights = fetchNetWeights;
+  });
+
+  // build/common/getModelUris.js
+  var require_getModelUris = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.getModelUris = void 0;
+    function getModelUris(uri, defaultModelName) {
+      const defaultManifestFilename = `${defaultModelName}-weights_manifest.json`;
+      if (!uri) {
+        return {
+          modelBaseUri: "",
+          manifestUri: defaultManifestFilename
+        };
+      }
+      if (uri === "/") {
+        return {
+          modelBaseUri: "/",
+          manifestUri: `/${defaultManifestFilename}`
+        };
+      }
+      const protocol = uri.startsWith("http://") ? "http://" : uri.startsWith("https://") ? "https://" : "";
+      uri = uri.replace(protocol, "");
+      const parts = uri.split("/").filter((s) => s);
+      const manifestFile = uri.endsWith(".json") ? parts[parts.length - 1] : defaultManifestFilename;
+      let modelBaseUri = protocol + (uri.endsWith(".json") ? parts.slice(0, parts.length - 1) : parts).join("/");
+      modelBaseUri = uri.startsWith("/") ? `/${modelBaseUri}` : modelBaseUri;
+      return {
+        modelBaseUri,
+        manifestUri: modelBaseUri === "/" ? `/${manifestFile}` : `${modelBaseUri}/${manifestFile}`
+      };
+    }
+    exports.getModelUris = getModelUris;
+  });
+
+  // build/dom/loadWeightMap.js
+  var require_loadWeightMap = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.loadWeightMap = void 0;
+    const tf = require_dist();
+    const getModelUris_1 = require_getModelUris();
+    const fetchJson_1 = require_fetchJson();
+    async function loadWeightMap(uri, defaultModelName) {
+      const {manifestUri, modelBaseUri} = getModelUris_1.getModelUris(uri, defaultModelName);
+      const manifest = await fetchJson_1.fetchJson(manifestUri);
+      return tf.io.loadWeights(manifest, modelBaseUri);
+    }
+    exports.loadWeightMap = loadWeightMap;
+  });
+
+  // build/dom/matchDimensions.js
+  var require_matchDimensions = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.matchDimensions = void 0;
+    const getMediaDimensions_1 = require_getMediaDimensions();
+    function matchDimensions(input, reference, useMediaDimensions = false) {
+      const {width, height} = useMediaDimensions ? getMediaDimensions_1.getMediaDimensions(reference) : reference;
+      input.width = width;
+      input.height = height;
+      return {width, height};
+    }
+    exports.matchDimensions = matchDimensions;
   });
 
   // build/dom/types.js
-  var require_types2 = __commonJS(() => {
+  var require_types2 = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
   });
 
   // build/dom/index.js
   var require_dom = __commonJS((exports) => {
-    __export(exports, {
-      NetInput: () => NetInput,
-      awaitMediaLoaded: () => awaitMediaLoaded,
-      bufferToImage: () => bufferToImage,
-      createCanvas: () => createCanvas,
-      createCanvasFromMedia: () => createCanvasFromMedia,
-      extractFaceTensors: () => extractFaceTensors,
-      extractFaces: () => extractFaces,
-      fetchImage: () => fetchImage,
-      fetchJson: () => fetchJson,
-      fetchNetWeights: () => fetchNetWeights,
-      fetchOrThrow: () => fetchOrThrow,
-      getContext2dOrThrow: () => getContext2dOrThrow,
-      getMediaDimensions: () => getMediaDimensions,
-      imageTensorToCanvas: () => imageTensorToCanvas,
-      imageToSquare: () => imageToSquare,
-      isMediaElement: () => isMediaElement,
-      isMediaLoaded: () => isMediaLoaded,
-      loadWeightMap: () => loadWeightMap,
-      matchDimensions: () => matchDimensions,
-      resolveInput: () => resolveInput,
-      toNetInput: () => toNetInput
-    });
-    __exportStar(exports, __toModule(require_types2()));
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    const tslib_1 = require_tslib_es6();
+    tslib_1.__exportStar(require_awaitMediaLoaded(), exports);
+    tslib_1.__exportStar(require_bufferToImage(), exports);
+    tslib_1.__exportStar(require_createCanvas(), exports);
+    tslib_1.__exportStar(require_extractFaces(), exports);
+    tslib_1.__exportStar(require_extractFaceTensors(), exports);
+    tslib_1.__exportStar(require_fetchImage(), exports);
+    tslib_1.__exportStar(require_fetchJson(), exports);
+    tslib_1.__exportStar(require_fetchNetWeights(), exports);
+    tslib_1.__exportStar(require_fetchOrThrow(), exports);
+    tslib_1.__exportStar(require_getContext2dOrThrow(), exports);
+    tslib_1.__exportStar(require_getMediaDimensions(), exports);
+    tslib_1.__exportStar(require_imageTensorToCanvas(), exports);
+    tslib_1.__exportStar(require_imageToSquare(), exports);
+    tslib_1.__exportStar(require_isMediaElement(), exports);
+    tslib_1.__exportStar(require_isMediaLoaded(), exports);
+    tslib_1.__exportStar(require_loadWeightMap(), exports);
+    tslib_1.__exportStar(require_matchDimensions(), exports);
+    tslib_1.__exportStar(require_NetInput(), exports);
+    tslib_1.__exportStar(require_resolveInput(), exports);
+    tslib_1.__exportStar(require_toNetInput(), exports);
+    tslib_1.__exportStar(require_types2(), exports);
+  });
+
+  // build/NeuralNetwork.js
+  var require_NeuralNetwork = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.NeuralNetwork = void 0;
+    const tf = require_dist();
+    const getModelUris_1 = require_getModelUris();
+    const dom_1 = require_dom();
+    const env_1 = require_env();
+    class NeuralNetwork {
+      constructor(_name) {
+        this._name = _name;
+        this._params = void 0;
+        this._paramMappings = [];
+      }
+      get params() {
+        return this._params;
+      }
+      get paramMappings() {
+        return this._paramMappings;
+      }
+      get isLoaded() {
+        return !!this.params;
+      }
+      getParamFromPath(paramPath) {
+        const {obj, objProp} = this.traversePropertyPath(paramPath);
+        return obj[objProp];
+      }
+      reassignParamFromPath(paramPath, tensor17) {
+        const {obj, objProp} = this.traversePropertyPath(paramPath);
+        obj[objProp].dispose();
+        obj[objProp] = tensor17;
+      }
+      getParamList() {
+        return this._paramMappings.map(({paramPath}) => ({
+          path: paramPath,
+          tensor: this.getParamFromPath(paramPath)
+        }));
+      }
+      getTrainableParams() {
+        return this.getParamList().filter((param) => param.tensor instanceof tf.Variable);
+      }
+      getFrozenParams() {
+        return this.getParamList().filter((param) => !(param.tensor instanceof tf.Variable));
+      }
+      variable() {
+        this.getFrozenParams().forEach(({path, tensor: tensor17}) => {
+          this.reassignParamFromPath(path, tensor17.variable());
+        });
+      }
+      freeze() {
+        this.getTrainableParams().forEach(({path, tensor: variable3}) => {
+          const tensor17 = tf.tensor(variable3.dataSync());
+          variable3.dispose();
+          this.reassignParamFromPath(path, tensor17);
+        });
+      }
+      dispose(throwOnRedispose = true) {
+        this.getParamList().forEach((param) => {
+          if (throwOnRedispose && param.tensor.isDisposed) {
+            throw new Error(`param tensor has already been disposed for path ${param.path}`);
+          }
+          param.tensor.dispose();
+        });
+        this._params = void 0;
+      }
+      serializeParams() {
+        return new Float32Array(this.getParamList().map(({tensor: tensor17}) => Array.from(tensor17.dataSync())).reduce((flat, arr) => flat.concat(arr)));
+      }
+      async load(weightsOrUrl) {
+        if (weightsOrUrl instanceof Float32Array) {
+          this.extractWeights(weightsOrUrl);
+          return;
+        }
+        await this.loadFromUri(weightsOrUrl);
+      }
+      async loadFromUri(uri) {
+        if (uri && typeof uri !== "string") {
+          throw new Error(`${this._name}.loadFromUri - expected model uri`);
+        }
+        const weightMap = await dom_1.loadWeightMap(uri, this.getDefaultModelName());
+        this.loadFromWeightMap(weightMap);
+      }
+      async loadFromDisk(filePath) {
+        if (filePath && typeof filePath !== "string") {
+          throw new Error(`${this._name}.loadFromDisk - expected model file path`);
+        }
+        const {readFile} = env_1.env.getEnv();
+        const {manifestUri, modelBaseUri} = getModelUris_1.getModelUris(filePath, this.getDefaultModelName());
+        const fetchWeightsFromDisk = (filePaths) => Promise.all(filePaths.map((filePath2) => readFile(filePath2).then((buf) => buf.buffer)));
+        const loadWeights2 = tf.io.weightsLoaderFactory(fetchWeightsFromDisk);
+        const manifest = JSON.parse((await readFile(manifestUri)).toString());
+        const weightMap = await loadWeights2(manifest, modelBaseUri);
+        this.loadFromWeightMap(weightMap);
+      }
+      loadFromWeightMap(weightMap) {
+        const {paramMappings, params} = this.extractParamsFromWeigthMap(weightMap);
+        this._paramMappings = paramMappings;
+        this._params = params;
+      }
+      extractWeights(weights) {
+        const {paramMappings, params} = this.extractParams(weights);
+        this._paramMappings = paramMappings;
+        this._params = params;
+      }
+      traversePropertyPath(paramPath) {
+        if (!this.params) {
+          throw new Error(`traversePropertyPath - model has no loaded params`);
+        }
+        const result = paramPath.split("/").reduce((res, objProp2) => {
+          if (!res.nextObj.hasOwnProperty(objProp2)) {
+            throw new Error(`traversePropertyPath - object does not have property ${objProp2}, for path ${paramPath}`);
+          }
+          return {obj: res.nextObj, objProp: objProp2, nextObj: res.nextObj[objProp2]};
+        }, {nextObj: this.params});
+        const {obj, objProp} = result;
+        if (!obj || !objProp || !(obj[objProp] instanceof tf.Tensor)) {
+          throw new Error(`traversePropertyPath - parameter is not a tensor, for path ${paramPath}`);
+        }
+        return {obj, objProp};
+      }
+    }
+    exports.NeuralNetwork = NeuralNetwork;
+  });
+
+  // build/common/depthwiseSeparableConv.js
+  var require_depthwiseSeparableConv = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.depthwiseSeparableConv = void 0;
+    const tf = require_dist();
+    function depthwiseSeparableConv(x, params, stride) {
+      return tf.tidy(() => {
+        let out = tf.separableConv2d(x, params.depthwise_filter, params.pointwise_filter, stride, "same");
+        out = tf.add(out, params.bias);
+        return out;
+      });
+    }
+    exports.depthwiseSeparableConv = depthwiseSeparableConv;
+  });
+
+  // build/faceFeatureExtractor/denseBlock.js
+  var require_denseBlock = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.denseBlock4 = exports.denseBlock3 = void 0;
+    const tf = require_dist();
+    const depthwiseSeparableConv_1 = require_depthwiseSeparableConv();
+    function denseBlock3(x, denseBlockParams, isFirstLayer = false) {
+      return tf.tidy(() => {
+        const out1 = tf.relu(isFirstLayer ? tf.add(tf.conv2d(x, denseBlockParams.conv0.filters, [2, 2], "same"), denseBlockParams.conv0.bias) : depthwiseSeparableConv_1.depthwiseSeparableConv(x, denseBlockParams.conv0, [2, 2]));
+        const out2 = depthwiseSeparableConv_1.depthwiseSeparableConv(out1, denseBlockParams.conv1, [1, 1]);
+        const in3 = tf.relu(tf.add(out1, out2));
+        const out3 = depthwiseSeparableConv_1.depthwiseSeparableConv(in3, denseBlockParams.conv2, [1, 1]);
+        return tf.relu(tf.add(out1, tf.add(out2, out3)));
+      });
+    }
+    exports.denseBlock3 = denseBlock3;
+    function denseBlock4(x, denseBlockParams, isFirstLayer = false, isScaleDown = true) {
+      return tf.tidy(() => {
+        const out1 = tf.relu(isFirstLayer ? tf.add(tf.conv2d(x, denseBlockParams.conv0.filters, isScaleDown ? [2, 2] : [1, 1], "same"), denseBlockParams.conv0.bias) : depthwiseSeparableConv_1.depthwiseSeparableConv(x, denseBlockParams.conv0, isScaleDown ? [2, 2] : [1, 1]));
+        const out2 = depthwiseSeparableConv_1.depthwiseSeparableConv(out1, denseBlockParams.conv1, [1, 1]);
+        const in3 = tf.relu(tf.add(out1, out2));
+        const out3 = depthwiseSeparableConv_1.depthwiseSeparableConv(in3, denseBlockParams.conv2, [1, 1]);
+        const in4 = tf.relu(tf.add(out1, tf.add(out2, out3)));
+        const out4 = depthwiseSeparableConv_1.depthwiseSeparableConv(in4, denseBlockParams.conv3, [1, 1]);
+        return tf.relu(tf.add(out1, tf.add(out2, tf.add(out3, out4))));
+      });
+    }
+    exports.denseBlock4 = denseBlock4;
+  });
+
+  // build/common/convLayer.js
+  var require_convLayer = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.convLayer = void 0;
+    const tf = require_dist();
+    function convLayer(x, params, padding = "same", withRelu = false) {
+      return tf.tidy(() => {
+        const out = tf.add(tf.conv2d(x, params.filters, [1, 1], padding), params.bias);
+        return withRelu ? tf.relu(out) : out;
+      });
+    }
+    exports.convLayer = convLayer;
+  });
+
+  // build/common/disposeUnusedWeightTensors.js
+  var require_disposeUnusedWeightTensors = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.disposeUnusedWeightTensors = void 0;
+    function disposeUnusedWeightTensors(weightMap, paramMappings) {
+      Object.keys(weightMap).forEach((path) => {
+        if (!paramMappings.some((pm) => pm.originalPath === path)) {
+          weightMap[path].dispose();
+        }
+      });
+    }
+    exports.disposeUnusedWeightTensors = disposeUnusedWeightTensors;
+  });
+
+  // build/common/extractConvParamsFactory.js
+  var require_extractConvParamsFactory = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.extractConvParamsFactory = void 0;
+    const tf = require_dist();
+    function extractConvParamsFactory(extractWeights, paramMappings) {
+      return function(channelsIn, channelsOut, filterSize, mappedPrefix) {
+        const filters = tf.tensor4d(extractWeights(channelsIn * channelsOut * filterSize * filterSize), [filterSize, filterSize, channelsIn, channelsOut]);
+        const bias = tf.tensor1d(extractWeights(channelsOut));
+        paramMappings.push({paramPath: `${mappedPrefix}/filters`}, {paramPath: `${mappedPrefix}/bias`});
+        return {filters, bias};
+      };
+    }
+    exports.extractConvParamsFactory = extractConvParamsFactory;
+  });
+
+  // build/common/extractFCParamsFactory.js
+  var require_extractFCParamsFactory = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.extractFCParamsFactory = void 0;
+    const tf = require_dist();
+    function extractFCParamsFactory(extractWeights, paramMappings) {
+      return function(channelsIn, channelsOut, mappedPrefix) {
+        const fc_weights = tf.tensor2d(extractWeights(channelsIn * channelsOut), [channelsIn, channelsOut]);
+        const fc_bias = tf.tensor1d(extractWeights(channelsOut));
+        paramMappings.push({paramPath: `${mappedPrefix}/weights`}, {paramPath: `${mappedPrefix}/bias`});
+        return {
+          weights: fc_weights,
+          bias: fc_bias
+        };
+      };
+    }
+    exports.extractFCParamsFactory = extractFCParamsFactory;
+  });
+
+  // build/common/types.js
+  var require_types3 = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.SeparableConvParams = void 0;
+    class SeparableConvParams {
+      constructor(depthwise_filter, pointwise_filter, bias) {
+        this.depthwise_filter = depthwise_filter;
+        this.pointwise_filter = pointwise_filter;
+        this.bias = bias;
+      }
+    }
+    exports.SeparableConvParams = SeparableConvParams;
+  });
+
+  // build/common/extractSeparableConvParamsFactory.js
+  var require_extractSeparableConvParamsFactory = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.loadSeparableConvParamsFactory = exports.extractSeparableConvParamsFactory = void 0;
+    const tf = require_dist();
+    const types_1 = require_types3();
+    function extractSeparableConvParamsFactory(extractWeights, paramMappings) {
+      return function(channelsIn, channelsOut, mappedPrefix) {
+        const depthwise_filter = tf.tensor4d(extractWeights(3 * 3 * channelsIn), [3, 3, channelsIn, 1]);
+        const pointwise_filter = tf.tensor4d(extractWeights(channelsIn * channelsOut), [1, 1, channelsIn, channelsOut]);
+        const bias = tf.tensor1d(extractWeights(channelsOut));
+        paramMappings.push({paramPath: `${mappedPrefix}/depthwise_filter`}, {paramPath: `${mappedPrefix}/pointwise_filter`}, {paramPath: `${mappedPrefix}/bias`});
+        return new types_1.SeparableConvParams(depthwise_filter, pointwise_filter, bias);
+      };
+    }
+    exports.extractSeparableConvParamsFactory = extractSeparableConvParamsFactory;
+    function loadSeparableConvParamsFactory(extractWeightEntry) {
+      return function(prefix) {
+        const depthwise_filter = extractWeightEntry(`${prefix}/depthwise_filter`, 4);
+        const pointwise_filter = extractWeightEntry(`${prefix}/pointwise_filter`, 4);
+        const bias = extractWeightEntry(`${prefix}/bias`, 1);
+        return new types_1.SeparableConvParams(depthwise_filter, pointwise_filter, bias);
+      };
+    }
+    exports.loadSeparableConvParamsFactory = loadSeparableConvParamsFactory;
+  });
+
+  // build/common/extractWeightEntryFactory.js
+  var require_extractWeightEntryFactory = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.extractWeightEntryFactory = void 0;
+    const utils_1 = require_utils();
+    function extractWeightEntryFactory(weightMap, paramMappings) {
+      return function(originalPath, paramRank, mappedPath) {
+        const tensor17 = weightMap[originalPath];
+        if (!utils_1.isTensor(tensor17, paramRank)) {
+          throw new Error(`expected weightMap[${originalPath}] to be a Tensor${paramRank}D, instead have ${tensor17}`);
+        }
+        paramMappings.push({originalPath, paramPath: mappedPath || originalPath});
+        return tensor17;
+      };
+    }
+    exports.extractWeightEntryFactory = extractWeightEntryFactory;
+  });
+
+  // build/common/extractWeightsFactory.js
+  var require_extractWeightsFactory = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.extractWeightsFactory = void 0;
+    function extractWeightsFactory(weights) {
+      let remainingWeights = weights;
+      function extractWeights(numWeights) {
+        const ret = remainingWeights.slice(0, numWeights);
+        remainingWeights = remainingWeights.slice(numWeights);
+        return ret;
+      }
+      function getRemainingWeights() {
+        return remainingWeights;
+      }
+      return {
+        extractWeights,
+        getRemainingWeights
+      };
+    }
+    exports.extractWeightsFactory = extractWeightsFactory;
+  });
+
+  // build/common/index.js
+  var require_common = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    const tslib_1 = require_tslib_es6();
+    tslib_1.__exportStar(require_convLayer(), exports);
+    tslib_1.__exportStar(require_depthwiseSeparableConv(), exports);
+    tslib_1.__exportStar(require_disposeUnusedWeightTensors(), exports);
+    tslib_1.__exportStar(require_extractConvParamsFactory(), exports);
+    tslib_1.__exportStar(require_extractFCParamsFactory(), exports);
+    tslib_1.__exportStar(require_extractSeparableConvParamsFactory(), exports);
+    tslib_1.__exportStar(require_extractWeightEntryFactory(), exports);
+    tslib_1.__exportStar(require_extractWeightsFactory(), exports);
+    tslib_1.__exportStar(require_getModelUris(), exports);
+    tslib_1.__exportStar(require_types3(), exports);
+  });
+
+  // build/faceFeatureExtractor/extractorsFactory.js
+  var require_extractorsFactory = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.extractorsFactory = void 0;
+    const common_1 = require_common();
+    function extractorsFactory(extractWeights, paramMappings) {
+      const extractConvParams = common_1.extractConvParamsFactory(extractWeights, paramMappings);
+      const extractSeparableConvParams = common_1.extractSeparableConvParamsFactory(extractWeights, paramMappings);
+      function extractDenseBlock3Params(channelsIn, channelsOut, mappedPrefix, isFirstLayer = false) {
+        const conv0 = isFirstLayer ? extractConvParams(channelsIn, channelsOut, 3, `${mappedPrefix}/conv0`) : extractSeparableConvParams(channelsIn, channelsOut, `${mappedPrefix}/conv0`);
+        const conv1 = extractSeparableConvParams(channelsOut, channelsOut, `${mappedPrefix}/conv1`);
+        const conv2 = extractSeparableConvParams(channelsOut, channelsOut, `${mappedPrefix}/conv2`);
+        return {conv0, conv1, conv2};
+      }
+      function extractDenseBlock4Params(channelsIn, channelsOut, mappedPrefix, isFirstLayer = false) {
+        const {conv0, conv1, conv2} = extractDenseBlock3Params(channelsIn, channelsOut, mappedPrefix, isFirstLayer);
+        const conv3 = extractSeparableConvParams(channelsOut, channelsOut, `${mappedPrefix}/conv3`);
+        return {conv0, conv1, conv2, conv3};
+      }
+      return {
+        extractDenseBlock3Params,
+        extractDenseBlock4Params
+      };
+    }
+    exports.extractorsFactory = extractorsFactory;
+  });
+
+  // build/faceFeatureExtractor/extractParams.js
+  var require_extractParams = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.extractParams = void 0;
+    const common_1 = require_common();
+    const extractorsFactory_1 = require_extractorsFactory();
+    function extractParams(weights) {
+      const paramMappings = [];
+      const {extractWeights, getRemainingWeights} = common_1.extractWeightsFactory(weights);
+      const {extractDenseBlock4Params} = extractorsFactory_1.extractorsFactory(extractWeights, paramMappings);
+      const dense0 = extractDenseBlock4Params(3, 32, "dense0", true);
+      const dense1 = extractDenseBlock4Params(32, 64, "dense1");
+      const dense2 = extractDenseBlock4Params(64, 128, "dense2");
+      const dense3 = extractDenseBlock4Params(128, 256, "dense3");
+      if (getRemainingWeights().length !== 0) {
+        throw new Error(`weights remaing after extract: ${getRemainingWeights().length}`);
+      }
+      return {
+        paramMappings,
+        params: {dense0, dense1, dense2, dense3}
+      };
+    }
+    exports.extractParams = extractParams;
+  });
+
+  // build/common/loadConvParamsFactory.js
+  var require_loadConvParamsFactory = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.loadConvParamsFactory = void 0;
+    function loadConvParamsFactory(extractWeightEntry) {
+      return function(prefix) {
+        const filters = extractWeightEntry(`${prefix}/filters`, 4);
+        const bias = extractWeightEntry(`${prefix}/bias`, 1);
+        return {filters, bias};
+      };
+    }
+    exports.loadConvParamsFactory = loadConvParamsFactory;
+  });
+
+  // build/faceFeatureExtractor/loadParamsFactory.js
+  var require_loadParamsFactory = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.loadParamsFactory = void 0;
+    const common_1 = require_common();
+    const loadConvParamsFactory_1 = require_loadConvParamsFactory();
+    function loadParamsFactory(weightMap, paramMappings) {
+      const extractWeightEntry = common_1.extractWeightEntryFactory(weightMap, paramMappings);
+      const extractConvParams = loadConvParamsFactory_1.loadConvParamsFactory(extractWeightEntry);
+      const extractSeparableConvParams = common_1.loadSeparableConvParamsFactory(extractWeightEntry);
+      function extractDenseBlock3Params(prefix, isFirstLayer = false) {
+        const conv0 = isFirstLayer ? extractConvParams(`${prefix}/conv0`) : extractSeparableConvParams(`${prefix}/conv0`);
+        const conv1 = extractSeparableConvParams(`${prefix}/conv1`);
+        const conv2 = extractSeparableConvParams(`${prefix}/conv2`);
+        return {conv0, conv1, conv2};
+      }
+      function extractDenseBlock4Params(prefix, isFirstLayer = false) {
+        const conv0 = isFirstLayer ? extractConvParams(`${prefix}/conv0`) : extractSeparableConvParams(`${prefix}/conv0`);
+        const conv1 = extractSeparableConvParams(`${prefix}/conv1`);
+        const conv2 = extractSeparableConvParams(`${prefix}/conv2`);
+        const conv3 = extractSeparableConvParams(`${prefix}/conv3`);
+        return {conv0, conv1, conv2, conv3};
+      }
+      return {
+        extractDenseBlock3Params,
+        extractDenseBlock4Params
+      };
+    }
+    exports.loadParamsFactory = loadParamsFactory;
+  });
+
+  // build/faceFeatureExtractor/extractParamsFromWeigthMap.js
+  var require_extractParamsFromWeigthMap = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.extractParamsFromWeigthMap = void 0;
+    const common_1 = require_common();
+    const loadParamsFactory_1 = require_loadParamsFactory();
+    function extractParamsFromWeigthMap(weightMap) {
+      const paramMappings = [];
+      const {extractDenseBlock4Params} = loadParamsFactory_1.loadParamsFactory(weightMap, paramMappings);
+      const params = {
+        dense0: extractDenseBlock4Params("dense0", true),
+        dense1: extractDenseBlock4Params("dense1"),
+        dense2: extractDenseBlock4Params("dense2"),
+        dense3: extractDenseBlock4Params("dense3")
+      };
+      common_1.disposeUnusedWeightTensors(weightMap, paramMappings);
+      return {params, paramMappings};
+    }
+    exports.extractParamsFromWeigthMap = extractParamsFromWeigthMap;
+  });
+
+  // build/faceFeatureExtractor/FaceFeatureExtractor.js
+  var require_FaceFeatureExtractor = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.FaceFeatureExtractor = void 0;
+    const tf = require_dist();
+    const dom_1 = require_dom();
+    const NeuralNetwork_1 = require_NeuralNetwork();
+    const ops_1 = require_ops();
+    const denseBlock_1 = require_denseBlock();
+    const extractParams_1 = require_extractParams();
+    const extractParamsFromWeigthMap_1 = require_extractParamsFromWeigthMap();
+    class FaceFeatureExtractor extends NeuralNetwork_1.NeuralNetwork {
+      constructor() {
+        super("FaceFeatureExtractor");
+      }
+      forwardInput(input) {
+        const {params} = this;
+        if (!params) {
+          throw new Error("FaceFeatureExtractor - load model before inference");
+        }
+        return tf.tidy(() => {
+          const batchTensor = input.toBatchTensor(112, true);
+          const meanRgb = [122.782, 117.001, 104.298];
+          const normalized = ops_1.normalize(batchTensor, meanRgb).div(tf.scalar(255));
+          let out = denseBlock_1.denseBlock4(normalized, params.dense0, true);
+          out = denseBlock_1.denseBlock4(out, params.dense1);
+          out = denseBlock_1.denseBlock4(out, params.dense2);
+          out = denseBlock_1.denseBlock4(out, params.dense3);
+          out = tf.avgPool(out, [7, 7], [2, 2], "valid");
+          return out;
+        });
+      }
+      async forward(input) {
+        return this.forwardInput(await dom_1.toNetInput(input));
+      }
+      getDefaultModelName() {
+        return "face_feature_extractor_model";
+      }
+      extractParamsFromWeigthMap(weightMap) {
+        return extractParamsFromWeigthMap_1.extractParamsFromWeigthMap(weightMap);
+      }
+      extractParams(weights) {
+        return extractParams_1.extractParams(weights);
+      }
+    }
+    exports.FaceFeatureExtractor = FaceFeatureExtractor;
+  });
+
+  // build/common/fullyConnectedLayer.js
+  var require_fullyConnectedLayer = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.fullyConnectedLayer = void 0;
+    const tf = require_dist();
+    function fullyConnectedLayer(x, params) {
+      return tf.tidy(() => tf.add(tf.matMul(x, params.weights), params.bias));
+    }
+    exports.fullyConnectedLayer = fullyConnectedLayer;
+  });
+
+  // build/faceProcessor/extractParams.js
+  var require_extractParams2 = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.extractParams = void 0;
+    const common_1 = require_common();
+    function extractParams(weights, channelsIn, channelsOut) {
+      const paramMappings = [];
+      const {extractWeights, getRemainingWeights} = common_1.extractWeightsFactory(weights);
+      const extractFCParams = common_1.extractFCParamsFactory(extractWeights, paramMappings);
+      const fc = extractFCParams(channelsIn, channelsOut, "fc");
+      if (getRemainingWeights().length !== 0) {
+        throw new Error(`weights remaing after extract: ${getRemainingWeights().length}`);
+      }
+      return {
+        paramMappings,
+        params: {fc}
+      };
+    }
+    exports.extractParams = extractParams;
+  });
+
+  // build/faceProcessor/extractParamsFromWeigthMap.js
+  var require_extractParamsFromWeigthMap2 = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.extractParamsFromWeigthMap = void 0;
+    const common_1 = require_common();
+    function extractParamsFromWeigthMap(weightMap) {
+      const paramMappings = [];
+      const extractWeightEntry = common_1.extractWeightEntryFactory(weightMap, paramMappings);
+      function extractFcParams(prefix) {
+        const weights = extractWeightEntry(`${prefix}/weights`, 2);
+        const bias = extractWeightEntry(`${prefix}/bias`, 1);
+        return {weights, bias};
+      }
+      const params = {
+        fc: extractFcParams("fc")
+      };
+      common_1.disposeUnusedWeightTensors(weightMap, paramMappings);
+      return {params, paramMappings};
+    }
+    exports.extractParamsFromWeigthMap = extractParamsFromWeigthMap;
+  });
+
+  // build/faceProcessor/util.js
+  var require_util = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.seperateWeightMaps = void 0;
+    function seperateWeightMaps(weightMap) {
+      const featureExtractorMap = {};
+      const classifierMap = {};
+      Object.keys(weightMap).forEach((key) => {
+        const map = key.startsWith("fc") ? classifierMap : featureExtractorMap;
+        map[key] = weightMap[key];
+      });
+      return {featureExtractorMap, classifierMap};
+    }
+    exports.seperateWeightMaps = seperateWeightMaps;
+  });
+
+  // build/faceProcessor/FaceProcessor.js
+  var require_FaceProcessor = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.FaceProcessor = void 0;
+    const tf = require_dist();
+    const fullyConnectedLayer_1 = require_fullyConnectedLayer();
+    const dom_1 = require_dom();
+    const NeuralNetwork_1 = require_NeuralNetwork();
+    const extractParams_1 = require_extractParams2();
+    const extractParamsFromWeigthMap_1 = require_extractParamsFromWeigthMap2();
+    const util_1 = require_util();
+    class FaceProcessor extends NeuralNetwork_1.NeuralNetwork {
+      constructor(_name, faceFeatureExtractor) {
+        super(_name);
+        this._faceFeatureExtractor = faceFeatureExtractor;
+      }
+      get faceFeatureExtractor() {
+        return this._faceFeatureExtractor;
+      }
+      runNet(input) {
+        const {params} = this;
+        if (!params) {
+          throw new Error(`${this._name} - load model before inference`);
+        }
+        return tf.tidy(() => {
+          const bottleneckFeatures = input instanceof dom_1.NetInput ? this.faceFeatureExtractor.forwardInput(input) : input;
+          return fullyConnectedLayer_1.fullyConnectedLayer(bottleneckFeatures.as2D(bottleneckFeatures.shape[0], -1), params.fc);
+        });
+      }
+      dispose(throwOnRedispose = true) {
+        this.faceFeatureExtractor.dispose(throwOnRedispose);
+        super.dispose(throwOnRedispose);
+      }
+      loadClassifierParams(weights) {
+        const {params, paramMappings} = this.extractClassifierParams(weights);
+        this._params = params;
+        this._paramMappings = paramMappings;
+      }
+      extractClassifierParams(weights) {
+        return extractParams_1.extractParams(weights, this.getClassifierChannelsIn(), this.getClassifierChannelsOut());
+      }
+      extractParamsFromWeigthMap(weightMap) {
+        const {featureExtractorMap, classifierMap} = util_1.seperateWeightMaps(weightMap);
+        this.faceFeatureExtractor.loadFromWeightMap(featureExtractorMap);
+        return extractParamsFromWeigthMap_1.extractParamsFromWeigthMap(classifierMap);
+      }
+      extractParams(weights) {
+        const cIn = this.getClassifierChannelsIn();
+        const cOut = this.getClassifierChannelsOut();
+        const classifierWeightSize = cOut * cIn + cOut;
+        const featureExtractorWeights = weights.slice(0, weights.length - classifierWeightSize);
+        const classifierWeights = weights.slice(weights.length - classifierWeightSize);
+        this.faceFeatureExtractor.extractWeights(featureExtractorWeights);
+        return this.extractClassifierParams(classifierWeights);
+      }
+    }
+    exports.FaceProcessor = FaceProcessor;
+  });
+
+  // build/faceExpressionNet/FaceExpressions.js
+  var require_FaceExpressions = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.FaceExpressions = exports.FACE_EXPRESSION_LABELS = void 0;
+    exports.FACE_EXPRESSION_LABELS = ["neutral", "happy", "sad", "angry", "fearful", "disgusted", "surprised"];
+    class FaceExpressions {
+      constructor(probabilities) {
+        if (probabilities.length !== 7) {
+          throw new Error(`FaceExpressions.constructor - expected probabilities.length to be 7, have: ${probabilities.length}`);
+        }
+        exports.FACE_EXPRESSION_LABELS.forEach((expression, idx) => {
+          this[expression] = probabilities[idx];
+        });
+      }
+      asSortedArray() {
+        return exports.FACE_EXPRESSION_LABELS.map((expression) => ({expression, probability: this[expression]})).sort((e0, e1) => e1.probability - e0.probability);
+      }
+    }
+    exports.FaceExpressions = FaceExpressions;
+  });
+
+  // build/faceExpressionNet/FaceExpressionNet.js
+  var require_FaceExpressionNet = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.FaceExpressionNet = void 0;
+    const tf = require_dist();
+    const dom_1 = require_dom();
+    const FaceFeatureExtractor_1 = require_FaceFeatureExtractor();
+    const FaceProcessor_1 = require_FaceProcessor();
+    const FaceExpressions_1 = require_FaceExpressions();
+    class FaceExpressionNet extends FaceProcessor_1.FaceProcessor {
+      constructor(faceFeatureExtractor = new FaceFeatureExtractor_1.FaceFeatureExtractor()) {
+        super("FaceExpressionNet", faceFeatureExtractor);
+      }
+      forwardInput(input) {
+        return tf.tidy(() => tf.softmax(this.runNet(input)));
+      }
+      async forward(input) {
+        return this.forwardInput(await dom_1.toNetInput(input));
+      }
+      async predictExpressions(input) {
+        const netInput = await dom_1.toNetInput(input);
+        const out = await this.forwardInput(netInput);
+        const probabilitesByBatch = await Promise.all(tf.unstack(out).map(async (t) => {
+          const data = await t.data();
+          t.dispose();
+          return data;
+        }));
+        out.dispose();
+        const predictionsByBatch = probabilitesByBatch.map((probabilites) => new FaceExpressions_1.FaceExpressions(probabilites));
+        return netInput.isBatchInput ? predictionsByBatch : predictionsByBatch[0];
+      }
+      getDefaultModelName() {
+        return "face_expression_model";
+      }
+      getClassifierChannelsIn() {
+        return 256;
+      }
+      getClassifierChannelsOut() {
+        return 7;
+      }
+    }
+    exports.FaceExpressionNet = FaceExpressionNet;
+  });
+
+  // build/faceExpressionNet/index.js
+  var require_faceExpressionNet = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    const tslib_1 = require_tslib_es6();
+    tslib_1.__exportStar(require_FaceExpressionNet(), exports);
+    tslib_1.__exportStar(require_FaceExpressions(), exports);
+  });
+
+  // build/factories/WithFaceExpressions.js
+  var require_WithFaceExpressions = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.extendWithFaceExpressions = exports.isWithFaceExpressions = void 0;
+    const FaceExpressions_1 = require_FaceExpressions();
+    function isWithFaceExpressions(obj) {
+      return obj["expressions"] instanceof FaceExpressions_1.FaceExpressions;
+    }
+    exports.isWithFaceExpressions = isWithFaceExpressions;
+    function extendWithFaceExpressions(sourceObj, expressions) {
+      const extension = {expressions};
+      return Object.assign({}, sourceObj, extension);
+    }
+    exports.extendWithFaceExpressions = extendWithFaceExpressions;
+  });
+
+  // build/draw/drawFaceExpressions.js
+  var require_drawFaceExpressions = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.drawFaceExpressions = void 0;
+    const classes_1 = require_classes();
+    const faceExpressionNet_1 = require_faceExpressionNet();
+    const WithFaceDetection_1 = require_WithFaceDetection();
+    const WithFaceExpressions_1 = require_WithFaceExpressions();
+    const utils_1 = require_utils();
+    const DrawTextField_1 = require_DrawTextField();
+    function drawFaceExpressions(canvasArg, faceExpressions, minConfidence = 0.1, textFieldAnchor) {
+      const faceExpressionsArray = Array.isArray(faceExpressions) ? faceExpressions : [faceExpressions];
+      faceExpressionsArray.forEach((e) => {
+        const expr = e instanceof faceExpressionNet_1.FaceExpressions ? e : WithFaceExpressions_1.isWithFaceExpressions(e) ? e.expressions : void 0;
+        if (!expr) {
+          throw new Error("drawFaceExpressions - expected faceExpressions to be FaceExpressions | WithFaceExpressions<{}> or array thereof");
+        }
+        const sorted = expr.asSortedArray();
+        const resultsToDisplay = sorted.filter((expr2) => expr2.probability > minConfidence);
+        const anchor = WithFaceDetection_1.isWithFaceDetection(e) ? e.detection.box.bottomLeft : textFieldAnchor || new classes_1.Point(0, 0);
+        const drawTextField = new DrawTextField_1.DrawTextField(resultsToDisplay.map((expr2) => `${expr2.expression} (${utils_1.round(expr2.probability)})`), anchor);
+        drawTextField.draw(canvasArg);
+      });
+    }
+    exports.drawFaceExpressions = drawFaceExpressions;
+  });
+
+  // build/factories/WithFaceLandmarks.js
+  var require_WithFaceLandmarks = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.extendWithFaceLandmarks = exports.isWithFaceLandmarks = void 0;
+    const FaceDetection_1 = require_FaceDetection();
+    const FaceLandmarks_1 = require_FaceLandmarks();
+    const WithFaceDetection_1 = require_WithFaceDetection();
+    function isWithFaceLandmarks(obj) {
+      return WithFaceDetection_1.isWithFaceDetection(obj) && obj["landmarks"] instanceof FaceLandmarks_1.FaceLandmarks && obj["unshiftedLandmarks"] instanceof FaceLandmarks_1.FaceLandmarks && obj["alignedRect"] instanceof FaceDetection_1.FaceDetection;
+    }
+    exports.isWithFaceLandmarks = isWithFaceLandmarks;
+    function extendWithFaceLandmarks(sourceObj, unshiftedLandmarks) {
+      const {box: shift} = sourceObj.detection;
+      const landmarks = unshiftedLandmarks.shiftBy(shift.x, shift.y);
+      const rect = landmarks.align();
+      const {imageDims} = sourceObj.detection;
+      const alignedRect = new FaceDetection_1.FaceDetection(sourceObj.detection.score, rect.rescale(imageDims.reverse()), imageDims);
+      const extension = {
+        landmarks,
+        unshiftedLandmarks,
+        alignedRect
+      };
+      return Object.assign({}, sourceObj, extension);
+    }
+    exports.extendWithFaceLandmarks = extendWithFaceLandmarks;
+  });
+
+  // build/draw/DrawFaceLandmarks.js
+  var require_DrawFaceLandmarks = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.drawFaceLandmarks = exports.DrawFaceLandmarks = exports.DrawFaceLandmarksOptions = void 0;
+    const FaceLandmarks_1 = require_FaceLandmarks();
+    const FaceLandmarks68_1 = require_FaceLandmarks68();
+    const getContext2dOrThrow_1 = require_getContext2dOrThrow();
+    const WithFaceLandmarks_1 = require_WithFaceLandmarks();
+    const drawContour_1 = require_drawContour();
+    class DrawFaceLandmarksOptions {
+      constructor(options = {}) {
+        const {drawLines = true, drawPoints = true, lineWidth, lineColor, pointSize, pointColor} = options;
+        this.drawLines = drawLines;
+        this.drawPoints = drawPoints;
+        this.lineWidth = lineWidth || 1;
+        this.pointSize = pointSize || 2;
+        this.lineColor = lineColor || "rgba(0, 255, 255, 1)";
+        this.pointColor = pointColor || "rgba(255, 0, 255, 1)";
+      }
+    }
+    exports.DrawFaceLandmarksOptions = DrawFaceLandmarksOptions;
+    class DrawFaceLandmarks {
+      constructor(faceLandmarks, options = {}) {
+        this.faceLandmarks = faceLandmarks;
+        this.options = new DrawFaceLandmarksOptions(options);
+      }
+      draw(canvasArg) {
+        const ctx = getContext2dOrThrow_1.getContext2dOrThrow(canvasArg);
+        const {drawLines, drawPoints, lineWidth, lineColor, pointSize, pointColor} = this.options;
+        if (drawLines && this.faceLandmarks instanceof FaceLandmarks68_1.FaceLandmarks68) {
+          ctx.strokeStyle = lineColor;
+          ctx.lineWidth = lineWidth;
+          drawContour_1.drawContour(ctx, this.faceLandmarks.getJawOutline());
+          drawContour_1.drawContour(ctx, this.faceLandmarks.getLeftEyeBrow());
+          drawContour_1.drawContour(ctx, this.faceLandmarks.getRightEyeBrow());
+          drawContour_1.drawContour(ctx, this.faceLandmarks.getNose());
+          drawContour_1.drawContour(ctx, this.faceLandmarks.getLeftEye(), true);
+          drawContour_1.drawContour(ctx, this.faceLandmarks.getRightEye(), true);
+          drawContour_1.drawContour(ctx, this.faceLandmarks.getMouth(), true);
+        }
+        if (drawPoints) {
+          ctx.strokeStyle = pointColor;
+          ctx.fillStyle = pointColor;
+          const drawPoint = (pt) => {
+            ctx.beginPath();
+            ctx.arc(pt.x, pt.y, pointSize, 0, 2 * Math.PI);
+            ctx.fill();
+          };
+          this.faceLandmarks.positions.forEach(drawPoint);
+        }
+      }
+    }
+    exports.DrawFaceLandmarks = DrawFaceLandmarks;
+    function drawFaceLandmarks(canvasArg, faceLandmarks) {
+      const faceLandmarksArray = Array.isArray(faceLandmarks) ? faceLandmarks : [faceLandmarks];
+      faceLandmarksArray.forEach((f) => {
+        const landmarks = f instanceof FaceLandmarks_1.FaceLandmarks ? f : WithFaceLandmarks_1.isWithFaceLandmarks(f) ? f.landmarks : void 0;
+        if (!landmarks) {
+          throw new Error("drawFaceLandmarks - expected faceExpressions to be FaceLandmarks | WithFaceLandmarks<WithFaceDetection<{}>> or array thereof");
+        }
+        new DrawFaceLandmarks(landmarks).draw(canvasArg);
+      });
+    }
+    exports.drawFaceLandmarks = drawFaceLandmarks;
+  });
+
+  // build/draw/index.js
+  var require_draw = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    const tslib_1 = require_tslib_es6();
+    tslib_1.__exportStar(require_drawContour(), exports);
+    tslib_1.__exportStar(require_drawDetections(), exports);
+    tslib_1.__exportStar(require_drawFaceExpressions(), exports);
+    tslib_1.__exportStar(require_DrawBox(), exports);
+    tslib_1.__exportStar(require_DrawFaceLandmarks(), exports);
+    tslib_1.__exportStar(require_DrawTextField(), exports);
+  });
+
+  // build/xception/extractParams.js
+  var require_extractParams3 = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.extractParams = void 0;
+    const common_1 = require_common();
+    const utils_1 = require_utils();
+    function extractorsFactory(extractWeights, paramMappings) {
+      const extractConvParams = common_1.extractConvParamsFactory(extractWeights, paramMappings);
+      const extractSeparableConvParams = common_1.extractSeparableConvParamsFactory(extractWeights, paramMappings);
+      function extractReductionBlockParams(channelsIn, channelsOut, mappedPrefix) {
+        const separable_conv0 = extractSeparableConvParams(channelsIn, channelsOut, `${mappedPrefix}/separable_conv0`);
+        const separable_conv1 = extractSeparableConvParams(channelsOut, channelsOut, `${mappedPrefix}/separable_conv1`);
+        const expansion_conv = extractConvParams(channelsIn, channelsOut, 1, `${mappedPrefix}/expansion_conv`);
+        return {separable_conv0, separable_conv1, expansion_conv};
+      }
+      function extractMainBlockParams(channels, mappedPrefix) {
+        const separable_conv0 = extractSeparableConvParams(channels, channels, `${mappedPrefix}/separable_conv0`);
+        const separable_conv1 = extractSeparableConvParams(channels, channels, `${mappedPrefix}/separable_conv1`);
+        const separable_conv2 = extractSeparableConvParams(channels, channels, `${mappedPrefix}/separable_conv2`);
+        return {separable_conv0, separable_conv1, separable_conv2};
+      }
+      return {
+        extractConvParams,
+        extractSeparableConvParams,
+        extractReductionBlockParams,
+        extractMainBlockParams
+      };
+    }
+    function extractParams(weights, numMainBlocks) {
+      const paramMappings = [];
+      const {extractWeights, getRemainingWeights} = common_1.extractWeightsFactory(weights);
+      const {extractConvParams, extractSeparableConvParams, extractReductionBlockParams, extractMainBlockParams} = extractorsFactory(extractWeights, paramMappings);
+      const entry_flow_conv_in = extractConvParams(3, 32, 3, "entry_flow/conv_in");
+      const entry_flow_reduction_block_0 = extractReductionBlockParams(32, 64, "entry_flow/reduction_block_0");
+      const entry_flow_reduction_block_1 = extractReductionBlockParams(64, 128, "entry_flow/reduction_block_1");
+      const entry_flow = {
+        conv_in: entry_flow_conv_in,
+        reduction_block_0: entry_flow_reduction_block_0,
+        reduction_block_1: entry_flow_reduction_block_1
+      };
+      const middle_flow = {};
+      utils_1.range(numMainBlocks, 0, 1).forEach((idx) => {
+        middle_flow[`main_block_${idx}`] = extractMainBlockParams(128, `middle_flow/main_block_${idx}`);
+      });
+      const exit_flow_reduction_block = extractReductionBlockParams(128, 256, "exit_flow/reduction_block");
+      const exit_flow_separable_conv = extractSeparableConvParams(256, 512, "exit_flow/separable_conv");
+      const exit_flow = {
+        reduction_block: exit_flow_reduction_block,
+        separable_conv: exit_flow_separable_conv
+      };
+      if (getRemainingWeights().length !== 0) {
+        throw new Error(`weights remaing after extract: ${getRemainingWeights().length}`);
+      }
+      return {
+        paramMappings,
+        params: {entry_flow, middle_flow, exit_flow}
+      };
+    }
+    exports.extractParams = extractParams;
+  });
+
+  // build/xception/extractParamsFromWeigthMap.js
+  var require_extractParamsFromWeigthMap3 = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.extractParamsFromWeigthMap = void 0;
+    const common_1 = require_common();
+    const loadConvParamsFactory_1 = require_loadConvParamsFactory();
+    const utils_1 = require_utils();
+    function loadParamsFactory(weightMap, paramMappings) {
+      const extractWeightEntry = common_1.extractWeightEntryFactory(weightMap, paramMappings);
+      const extractConvParams = loadConvParamsFactory_1.loadConvParamsFactory(extractWeightEntry);
+      const extractSeparableConvParams = common_1.loadSeparableConvParamsFactory(extractWeightEntry);
+      function extractReductionBlockParams(mappedPrefix) {
+        const separable_conv0 = extractSeparableConvParams(`${mappedPrefix}/separable_conv0`);
+        const separable_conv1 = extractSeparableConvParams(`${mappedPrefix}/separable_conv1`);
+        const expansion_conv = extractConvParams(`${mappedPrefix}/expansion_conv`);
+        return {separable_conv0, separable_conv1, expansion_conv};
+      }
+      function extractMainBlockParams(mappedPrefix) {
+        const separable_conv0 = extractSeparableConvParams(`${mappedPrefix}/separable_conv0`);
+        const separable_conv1 = extractSeparableConvParams(`${mappedPrefix}/separable_conv1`);
+        const separable_conv2 = extractSeparableConvParams(`${mappedPrefix}/separable_conv2`);
+        return {separable_conv0, separable_conv1, separable_conv2};
+      }
+      return {
+        extractConvParams,
+        extractSeparableConvParams,
+        extractReductionBlockParams,
+        extractMainBlockParams
+      };
+    }
+    function extractParamsFromWeigthMap(weightMap, numMainBlocks) {
+      const paramMappings = [];
+      const {extractConvParams, extractSeparableConvParams, extractReductionBlockParams, extractMainBlockParams} = loadParamsFactory(weightMap, paramMappings);
+      const entry_flow_conv_in = extractConvParams("entry_flow/conv_in");
+      const entry_flow_reduction_block_0 = extractReductionBlockParams("entry_flow/reduction_block_0");
+      const entry_flow_reduction_block_1 = extractReductionBlockParams("entry_flow/reduction_block_1");
+      const entry_flow = {
+        conv_in: entry_flow_conv_in,
+        reduction_block_0: entry_flow_reduction_block_0,
+        reduction_block_1: entry_flow_reduction_block_1
+      };
+      const middle_flow = {};
+      utils_1.range(numMainBlocks, 0, 1).forEach((idx) => {
+        middle_flow[`main_block_${idx}`] = extractMainBlockParams(`middle_flow/main_block_${idx}`);
+      });
+      const exit_flow_reduction_block = extractReductionBlockParams("exit_flow/reduction_block");
+      const exit_flow_separable_conv = extractSeparableConvParams("exit_flow/separable_conv");
+      const exit_flow = {
+        reduction_block: exit_flow_reduction_block,
+        separable_conv: exit_flow_separable_conv
+      };
+      common_1.disposeUnusedWeightTensors(weightMap, paramMappings);
+      return {params: {entry_flow, middle_flow, exit_flow}, paramMappings};
+    }
+    exports.extractParamsFromWeigthMap = extractParamsFromWeigthMap;
+  });
+
+  // build/xception/TinyXception.js
+  var require_TinyXception = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.TinyXception = void 0;
+    const tf = require_dist();
+    const common_1 = require_common();
+    const dom_1 = require_dom();
+    const NeuralNetwork_1 = require_NeuralNetwork();
+    const ops_1 = require_ops();
+    const utils_1 = require_utils();
+    const extractParams_1 = require_extractParams3();
+    const extractParamsFromWeigthMap_1 = require_extractParamsFromWeigthMap3();
+    function conv(x, params, stride) {
+      return tf.add(tf.conv2d(x, params.filters, stride, "same"), params.bias);
+    }
+    function reductionBlock(x, params, isActivateInput = true) {
+      let out = isActivateInput ? tf.relu(x) : x;
+      out = common_1.depthwiseSeparableConv(out, params.separable_conv0, [1, 1]);
+      out = common_1.depthwiseSeparableConv(tf.relu(out), params.separable_conv1, [1, 1]);
+      out = tf.maxPool(out, [3, 3], [2, 2], "same");
+      out = tf.add(out, conv(x, params.expansion_conv, [2, 2]));
+      return out;
+    }
+    function mainBlock(x, params) {
+      let out = common_1.depthwiseSeparableConv(tf.relu(x), params.separable_conv0, [1, 1]);
+      out = common_1.depthwiseSeparableConv(tf.relu(out), params.separable_conv1, [1, 1]);
+      out = common_1.depthwiseSeparableConv(tf.relu(out), params.separable_conv2, [1, 1]);
+      out = tf.add(out, x);
+      return out;
+    }
+    class TinyXception extends NeuralNetwork_1.NeuralNetwork {
+      constructor(numMainBlocks) {
+        super("TinyXception");
+        this._numMainBlocks = numMainBlocks;
+      }
+      forwardInput(input) {
+        const {params} = this;
+        if (!params) {
+          throw new Error("TinyXception - load model before inference");
+        }
+        return tf.tidy(() => {
+          const batchTensor = input.toBatchTensor(112, true);
+          const meanRgb = [122.782, 117.001, 104.298];
+          const normalized = ops_1.normalize(batchTensor, meanRgb).div(tf.scalar(256));
+          let out = tf.relu(conv(normalized, params.entry_flow.conv_in, [2, 2]));
+          out = reductionBlock(out, params.entry_flow.reduction_block_0, false);
+          out = reductionBlock(out, params.entry_flow.reduction_block_1);
+          utils_1.range(this._numMainBlocks, 0, 1).forEach((idx) => {
+            out = mainBlock(out, params.middle_flow[`main_block_${idx}`]);
+          });
+          out = reductionBlock(out, params.exit_flow.reduction_block);
+          out = tf.relu(common_1.depthwiseSeparableConv(out, params.exit_flow.separable_conv, [1, 1]));
+          return out;
+        });
+      }
+      async forward(input) {
+        return this.forwardInput(await dom_1.toNetInput(input));
+      }
+      getDefaultModelName() {
+        return "tiny_xception_model";
+      }
+      extractParamsFromWeigthMap(weightMap) {
+        return extractParamsFromWeigthMap_1.extractParamsFromWeigthMap(weightMap, this._numMainBlocks);
+      }
+      extractParams(weights) {
+        return extractParams_1.extractParams(weights, this._numMainBlocks);
+      }
+    }
+    exports.TinyXception = TinyXception;
+  });
+
+  // build/ageGenderNet/extractParams.js
+  var require_extractParams4 = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.extractParams = void 0;
+    const common_1 = require_common();
+    function extractParams(weights) {
+      const paramMappings = [];
+      const {extractWeights, getRemainingWeights} = common_1.extractWeightsFactory(weights);
+      const extractFCParams = common_1.extractFCParamsFactory(extractWeights, paramMappings);
+      const age = extractFCParams(512, 1, "fc/age");
+      const gender = extractFCParams(512, 2, "fc/gender");
+      if (getRemainingWeights().length !== 0) {
+        throw new Error(`weights remaing after extract: ${getRemainingWeights().length}`);
+      }
+      return {
+        paramMappings,
+        params: {fc: {age, gender}}
+      };
+    }
+    exports.extractParams = extractParams;
+  });
+
+  // build/ageGenderNet/extractParamsFromWeigthMap.js
+  var require_extractParamsFromWeigthMap4 = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.extractParamsFromWeigthMap = void 0;
+    const common_1 = require_common();
+    function extractParamsFromWeigthMap(weightMap) {
+      const paramMappings = [];
+      const extractWeightEntry = common_1.extractWeightEntryFactory(weightMap, paramMappings);
+      function extractFcParams(prefix) {
+        const weights = extractWeightEntry(`${prefix}/weights`, 2);
+        const bias = extractWeightEntry(`${prefix}/bias`, 1);
+        return {weights, bias};
+      }
+      const params = {
+        fc: {
+          age: extractFcParams("fc/age"),
+          gender: extractFcParams("fc/gender")
+        }
+      };
+      common_1.disposeUnusedWeightTensors(weightMap, paramMappings);
+      return {params, paramMappings};
+    }
+    exports.extractParamsFromWeigthMap = extractParamsFromWeigthMap;
+  });
+
+  // build/ageGenderNet/types.js
+  var require_types4 = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.Gender = void 0;
+    var Gender;
+    (function(Gender2) {
+      Gender2["FEMALE"] = "female";
+      Gender2["MALE"] = "male";
+    })(Gender = exports.Gender || (exports.Gender = {}));
+  });
+
+  // build/ageGenderNet/AgeGenderNet.js
+  var require_AgeGenderNet = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.AgeGenderNet = void 0;
+    const tf = require_dist();
+    const fullyConnectedLayer_1 = require_fullyConnectedLayer();
+    const util_1 = require_util();
+    const TinyXception_1 = require_TinyXception();
+    const extractParams_1 = require_extractParams4();
+    const extractParamsFromWeigthMap_1 = require_extractParamsFromWeigthMap4();
+    const types_1 = require_types4();
+    const NeuralNetwork_1 = require_NeuralNetwork();
+    const dom_1 = require_dom();
+    class AgeGenderNet extends NeuralNetwork_1.NeuralNetwork {
+      constructor(faceFeatureExtractor = new TinyXception_1.TinyXception(2)) {
+        super("AgeGenderNet");
+        this._faceFeatureExtractor = faceFeatureExtractor;
+      }
+      get faceFeatureExtractor() {
+        return this._faceFeatureExtractor;
+      }
+      runNet(input) {
+        const {params} = this;
+        if (!params) {
+          throw new Error(`${this._name} - load model before inference`);
+        }
+        return tf.tidy(() => {
+          const bottleneckFeatures = input instanceof dom_1.NetInput ? this.faceFeatureExtractor.forwardInput(input) : input;
+          const pooled = tf.avgPool(bottleneckFeatures, [7, 7], [2, 2], "valid").as2D(bottleneckFeatures.shape[0], -1);
+          const age = fullyConnectedLayer_1.fullyConnectedLayer(pooled, params.fc.age).as1D();
+          const gender = fullyConnectedLayer_1.fullyConnectedLayer(pooled, params.fc.gender);
+          return {age, gender};
+        });
+      }
+      forwardInput(input) {
+        return tf.tidy(() => {
+          const {age, gender} = this.runNet(input);
+          return {age, gender: tf.softmax(gender)};
+        });
+      }
+      async forward(input) {
+        return this.forwardInput(await dom_1.toNetInput(input));
+      }
+      async predictAgeAndGender(input) {
+        const netInput = await dom_1.toNetInput(input);
+        const out = await this.forwardInput(netInput);
+        const ages = tf.unstack(out.age);
+        const genders = tf.unstack(out.gender);
+        const ageAndGenderTensors = ages.map((ageTensor, i) => ({
+          ageTensor,
+          genderTensor: genders[i]
+        }));
+        const predictionsByBatch = await Promise.all(ageAndGenderTensors.map(async ({ageTensor, genderTensor}) => {
+          const age = (await ageTensor.data())[0];
+          const probMale = (await genderTensor.data())[0];
+          const isMale = probMale > 0.5;
+          const gender = isMale ? types_1.Gender.MALE : types_1.Gender.FEMALE;
+          const genderProbability = isMale ? probMale : 1 - probMale;
+          ageTensor.dispose();
+          genderTensor.dispose();
+          return {age, gender, genderProbability};
+        }));
+        out.age.dispose();
+        out.gender.dispose();
+        return netInput.isBatchInput ? predictionsByBatch : predictionsByBatch[0];
+      }
+      getDefaultModelName() {
+        return "age_gender_model";
+      }
+      dispose(throwOnRedispose = true) {
+        this.faceFeatureExtractor.dispose(throwOnRedispose);
+        super.dispose(throwOnRedispose);
+      }
+      loadClassifierParams(weights) {
+        const {params, paramMappings} = this.extractClassifierParams(weights);
+        this._params = params;
+        this._paramMappings = paramMappings;
+      }
+      extractClassifierParams(weights) {
+        return extractParams_1.extractParams(weights);
+      }
+      extractParamsFromWeigthMap(weightMap) {
+        const {featureExtractorMap, classifierMap} = util_1.seperateWeightMaps(weightMap);
+        this.faceFeatureExtractor.loadFromWeightMap(featureExtractorMap);
+        return extractParamsFromWeigthMap_1.extractParamsFromWeigthMap(classifierMap);
+      }
+      extractParams(weights) {
+        const classifierWeightSize = 512 * 1 + 1 + (512 * 2 + 2);
+        const featureExtractorWeights = weights.slice(0, weights.length - classifierWeightSize);
+        const classifierWeights = weights.slice(weights.length - classifierWeightSize);
+        this.faceFeatureExtractor.extractWeights(featureExtractorWeights);
+        return this.extractClassifierParams(classifierWeights);
+      }
+    }
+    exports.AgeGenderNet = AgeGenderNet;
+  });
+
+  // build/ageGenderNet/index.js
+  var require_ageGenderNet = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    const tslib_1 = require_tslib_es6();
+    tslib_1.__exportStar(require_AgeGenderNet(), exports);
+    tslib_1.__exportStar(require_types4(), exports);
+  });
+
+  // build/faceLandmarkNet/FaceLandmark68NetBase.js
+  var require_FaceLandmark68NetBase = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.FaceLandmark68NetBase = void 0;
+    const tf = require_dist();
+    const classes_1 = require_classes();
+    const FaceLandmarks68_1 = require_FaceLandmarks68();
+    const dom_1 = require_dom();
+    const FaceProcessor_1 = require_FaceProcessor();
+    const utils_1 = require_utils();
+    class FaceLandmark68NetBase extends FaceProcessor_1.FaceProcessor {
+      postProcess(output, inputSize, originalDimensions) {
+        const inputDimensions = originalDimensions.map(({width, height}) => {
+          const scale = inputSize / Math.max(height, width);
+          return {
+            width: width * scale,
+            height: height * scale
+          };
+        });
+        const batchSize = inputDimensions.length;
+        return tf.tidy(() => {
+          const createInterleavedTensor = (fillX, fillY) => tf.stack([
+            tf.fill([68], fillX),
+            tf.fill([68], fillY)
+          ], 1).as2D(1, 136).as1D();
+          const getPadding = (batchIdx, cond) => {
+            const {width, height} = inputDimensions[batchIdx];
+            return cond(width, height) ? Math.abs(width - height) / 2 : 0;
+          };
+          const getPaddingX = (batchIdx) => getPadding(batchIdx, (w, h) => w < h);
+          const getPaddingY = (batchIdx) => getPadding(batchIdx, (w, h) => h < w);
+          const landmarkTensors = output.mul(tf.fill([batchSize, 136], inputSize)).sub(tf.stack(Array.from(Array(batchSize), (_, batchIdx) => createInterleavedTensor(getPaddingX(batchIdx), getPaddingY(batchIdx))))).div(tf.stack(Array.from(Array(batchSize), (_, batchIdx) => createInterleavedTensor(inputDimensions[batchIdx].width, inputDimensions[batchIdx].height))));
+          return landmarkTensors;
+        });
+      }
+      forwardInput(input) {
+        return tf.tidy(() => {
+          const out = this.runNet(input);
+          return this.postProcess(out, input.inputSize, input.inputDimensions.map(([height, width]) => ({height, width})));
+        });
+      }
+      async forward(input) {
+        return this.forwardInput(await dom_1.toNetInput(input));
+      }
+      async detectLandmarks(input) {
+        const netInput = await dom_1.toNetInput(input);
+        const landmarkTensors = tf.tidy(() => tf.unstack(this.forwardInput(netInput)));
+        const landmarksForBatch = await Promise.all(landmarkTensors.map(async (landmarkTensor, batchIdx) => {
+          const landmarksArray = Array.from(await landmarkTensor.data());
+          const xCoords = landmarksArray.filter((_, i) => utils_1.isEven(i));
+          const yCoords = landmarksArray.filter((_, i) => !utils_1.isEven(i));
+          return new FaceLandmarks68_1.FaceLandmarks68(Array(68).fill(0).map((_, i) => new classes_1.Point(xCoords[i], yCoords[i])), {
+            height: netInput.getInputHeight(batchIdx),
+            width: netInput.getInputWidth(batchIdx)
+          });
+        }));
+        landmarkTensors.forEach((t) => t.dispose());
+        return netInput.isBatchInput ? landmarksForBatch : landmarksForBatch[0];
+      }
+      getClassifierChannelsOut() {
+        return 136;
+      }
+    }
+    exports.FaceLandmark68NetBase = FaceLandmark68NetBase;
+  });
+
+  // build/faceLandmarkNet/FaceLandmark68Net.js
+  var require_FaceLandmark68Net = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.FaceLandmark68Net = void 0;
+    const FaceFeatureExtractor_1 = require_FaceFeatureExtractor();
+    const FaceLandmark68NetBase_1 = require_FaceLandmark68NetBase();
+    class FaceLandmark68Net extends FaceLandmark68NetBase_1.FaceLandmark68NetBase {
+      constructor(faceFeatureExtractor = new FaceFeatureExtractor_1.FaceFeatureExtractor()) {
+        super("FaceLandmark68Net", faceFeatureExtractor);
+      }
+      getDefaultModelName() {
+        return "face_landmark_68_model";
+      }
+      getClassifierChannelsIn() {
+        return 256;
+      }
+    }
+    exports.FaceLandmark68Net = FaceLandmark68Net;
+  });
+
+  // build/faceFeatureExtractor/extractParamsFromWeigthMapTiny.js
+  var require_extractParamsFromWeigthMapTiny = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.extractParamsFromWeigthMapTiny = void 0;
+    const common_1 = require_common();
+    const loadParamsFactory_1 = require_loadParamsFactory();
+    function extractParamsFromWeigthMapTiny(weightMap) {
+      const paramMappings = [];
+      const {extractDenseBlock3Params} = loadParamsFactory_1.loadParamsFactory(weightMap, paramMappings);
+      const params = {
+        dense0: extractDenseBlock3Params("dense0", true),
+        dense1: extractDenseBlock3Params("dense1"),
+        dense2: extractDenseBlock3Params("dense2")
+      };
+      common_1.disposeUnusedWeightTensors(weightMap, paramMappings);
+      return {params, paramMappings};
+    }
+    exports.extractParamsFromWeigthMapTiny = extractParamsFromWeigthMapTiny;
+  });
+
+  // build/faceFeatureExtractor/extractParamsTiny.js
+  var require_extractParamsTiny = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.extractParamsTiny = void 0;
+    const common_1 = require_common();
+    const extractorsFactory_1 = require_extractorsFactory();
+    function extractParamsTiny(weights) {
+      const paramMappings = [];
+      const {extractWeights, getRemainingWeights} = common_1.extractWeightsFactory(weights);
+      const {extractDenseBlock3Params} = extractorsFactory_1.extractorsFactory(extractWeights, paramMappings);
+      const dense0 = extractDenseBlock3Params(3, 32, "dense0", true);
+      const dense1 = extractDenseBlock3Params(32, 64, "dense1");
+      const dense2 = extractDenseBlock3Params(64, 128, "dense2");
+      if (getRemainingWeights().length !== 0) {
+        throw new Error(`weights remaing after extract: ${getRemainingWeights().length}`);
+      }
+      return {
+        paramMappings,
+        params: {dense0, dense1, dense2}
+      };
+    }
+    exports.extractParamsTiny = extractParamsTiny;
+  });
+
+  // build/faceFeatureExtractor/TinyFaceFeatureExtractor.js
+  var require_TinyFaceFeatureExtractor = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.TinyFaceFeatureExtractor = void 0;
+    const tf = require_dist();
+    const dom_1 = require_dom();
+    const NeuralNetwork_1 = require_NeuralNetwork();
+    const ops_1 = require_ops();
+    const denseBlock_1 = require_denseBlock();
+    const extractParamsFromWeigthMapTiny_1 = require_extractParamsFromWeigthMapTiny();
+    const extractParamsTiny_1 = require_extractParamsTiny();
+    class TinyFaceFeatureExtractor extends NeuralNetwork_1.NeuralNetwork {
+      constructor() {
+        super("TinyFaceFeatureExtractor");
+      }
+      forwardInput(input) {
+        const {params} = this;
+        if (!params) {
+          throw new Error("TinyFaceFeatureExtractor - load model before inference");
+        }
+        return tf.tidy(() => {
+          const batchTensor = input.toBatchTensor(112, true);
+          const meanRgb = [122.782, 117.001, 104.298];
+          const normalized = ops_1.normalize(batchTensor, meanRgb).div(tf.scalar(255));
+          let out = denseBlock_1.denseBlock3(normalized, params.dense0, true);
+          out = denseBlock_1.denseBlock3(out, params.dense1);
+          out = denseBlock_1.denseBlock3(out, params.dense2);
+          out = tf.avgPool(out, [14, 14], [2, 2], "valid");
+          return out;
+        });
+      }
+      async forward(input) {
+        return this.forwardInput(await dom_1.toNetInput(input));
+      }
+      getDefaultModelName() {
+        return "face_feature_extractor_tiny_model";
+      }
+      extractParamsFromWeigthMap(weightMap) {
+        return extractParamsFromWeigthMapTiny_1.extractParamsFromWeigthMapTiny(weightMap);
+      }
+      extractParams(weights) {
+        return extractParamsTiny_1.extractParamsTiny(weights);
+      }
+    }
+    exports.TinyFaceFeatureExtractor = TinyFaceFeatureExtractor;
+  });
+
+  // build/faceLandmarkNet/FaceLandmark68TinyNet.js
+  var require_FaceLandmark68TinyNet = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.FaceLandmark68TinyNet = void 0;
+    const TinyFaceFeatureExtractor_1 = require_TinyFaceFeatureExtractor();
+    const FaceLandmark68NetBase_1 = require_FaceLandmark68NetBase();
+    class FaceLandmark68TinyNet extends FaceLandmark68NetBase_1.FaceLandmark68NetBase {
+      constructor(faceFeatureExtractor = new TinyFaceFeatureExtractor_1.TinyFaceFeatureExtractor()) {
+        super("FaceLandmark68TinyNet", faceFeatureExtractor);
+      }
+      getDefaultModelName() {
+        return "face_landmark_68_tiny_model";
+      }
+      getClassifierChannelsIn() {
+        return 128;
+      }
+    }
+    exports.FaceLandmark68TinyNet = FaceLandmark68TinyNet;
+  });
+
+  // build/faceLandmarkNet/index.js
+  var require_faceLandmarkNet = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.FaceLandmarkNet = void 0;
+    const tslib_1 = require_tslib_es6();
+    const FaceLandmark68Net_1 = require_FaceLandmark68Net();
+    tslib_1.__exportStar(require_FaceLandmark68Net(), exports);
+    tslib_1.__exportStar(require_FaceLandmark68TinyNet(), exports);
+    class FaceLandmarkNet extends FaceLandmark68Net_1.FaceLandmark68Net {
+    }
+    exports.FaceLandmarkNet = FaceLandmarkNet;
+  });
+
+  // build/faceRecognitionNet/scaleLayer.js
+  var require_scaleLayer = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.scale = void 0;
+    const tf = require_dist();
+    function scale(x, params) {
+      return tf.add(tf.mul(x, params.weights), params.biases);
+    }
+    exports.scale = scale;
+  });
+
+  // build/faceRecognitionNet/convLayer.js
+  var require_convLayer2 = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.convDown = exports.convNoRelu = exports.conv = void 0;
+    const tf = require_dist();
+    const scaleLayer_1 = require_scaleLayer();
+    function convLayer(x, params, strides, withRelu, padding = "same") {
+      const {filters, bias} = params.conv;
+      let out = tf.conv2d(x, filters, strides, padding);
+      out = tf.add(out, bias);
+      out = scaleLayer_1.scale(out, params.scale);
+      return withRelu ? tf.relu(out) : out;
+    }
+    function conv(x, params) {
+      return convLayer(x, params, [1, 1], true);
+    }
+    exports.conv = conv;
+    function convNoRelu(x, params) {
+      return convLayer(x, params, [1, 1], false);
+    }
+    exports.convNoRelu = convNoRelu;
+    function convDown(x, params) {
+      return convLayer(x, params, [2, 2], true, "valid");
+    }
+    exports.convDown = convDown;
+  });
+
+  // build/faceRecognitionNet/extractParams.js
+  var require_extractParams5 = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.extractParams = void 0;
+    const tf = require_dist();
+    const common_1 = require_common();
+    const utils_1 = require_utils();
+    function extractorsFactory(extractWeights, paramMappings) {
+      function extractFilterValues(numFilterValues, numFilters, filterSize) {
+        const weights = extractWeights(numFilterValues);
+        const depth = weights.length / (numFilters * filterSize * filterSize);
+        if (utils_1.isFloat(depth)) {
+          throw new Error(`depth has to be an integer: ${depth}, weights.length: ${weights.length}, numFilters: ${numFilters}, filterSize: ${filterSize}`);
+        }
+        return tf.tidy(() => tf.transpose(tf.tensor4d(weights, [numFilters, depth, filterSize, filterSize]), [2, 3, 1, 0]));
+      }
+      function extractConvParams(numFilterValues, numFilters, filterSize, mappedPrefix) {
+        const filters = extractFilterValues(numFilterValues, numFilters, filterSize);
+        const bias = tf.tensor1d(extractWeights(numFilters));
+        paramMappings.push({paramPath: `${mappedPrefix}/filters`}, {paramPath: `${mappedPrefix}/bias`});
+        return {filters, bias};
+      }
+      function extractScaleLayerParams(numWeights, mappedPrefix) {
+        const weights = tf.tensor1d(extractWeights(numWeights));
+        const biases = tf.tensor1d(extractWeights(numWeights));
+        paramMappings.push({paramPath: `${mappedPrefix}/weights`}, {paramPath: `${mappedPrefix}/biases`});
+        return {
+          weights,
+          biases
+        };
+      }
+      function extractConvLayerParams(numFilterValues, numFilters, filterSize, mappedPrefix) {
+        const conv = extractConvParams(numFilterValues, numFilters, filterSize, `${mappedPrefix}/conv`);
+        const scale = extractScaleLayerParams(numFilters, `${mappedPrefix}/scale`);
+        return {conv, scale};
+      }
+      function extractResidualLayerParams(numFilterValues, numFilters, filterSize, mappedPrefix, isDown = false) {
+        const conv1 = extractConvLayerParams((isDown ? 0.5 : 1) * numFilterValues, numFilters, filterSize, `${mappedPrefix}/conv1`);
+        const conv2 = extractConvLayerParams(numFilterValues, numFilters, filterSize, `${mappedPrefix}/conv2`);
+        return {conv1, conv2};
+      }
+      return {
+        extractConvLayerParams,
+        extractResidualLayerParams
+      };
+    }
+    function extractParams(weights) {
+      const {extractWeights, getRemainingWeights} = common_1.extractWeightsFactory(weights);
+      const paramMappings = [];
+      const {extractConvLayerParams, extractResidualLayerParams} = extractorsFactory(extractWeights, paramMappings);
+      const conv32_down = extractConvLayerParams(4704, 32, 7, "conv32_down");
+      const conv32_1 = extractResidualLayerParams(9216, 32, 3, "conv32_1");
+      const conv32_2 = extractResidualLayerParams(9216, 32, 3, "conv32_2");
+      const conv32_3 = extractResidualLayerParams(9216, 32, 3, "conv32_3");
+      const conv64_down = extractResidualLayerParams(36864, 64, 3, "conv64_down", true);
+      const conv64_1 = extractResidualLayerParams(36864, 64, 3, "conv64_1");
+      const conv64_2 = extractResidualLayerParams(36864, 64, 3, "conv64_2");
+      const conv64_3 = extractResidualLayerParams(36864, 64, 3, "conv64_3");
+      const conv128_down = extractResidualLayerParams(147456, 128, 3, "conv128_down", true);
+      const conv128_1 = extractResidualLayerParams(147456, 128, 3, "conv128_1");
+      const conv128_2 = extractResidualLayerParams(147456, 128, 3, "conv128_2");
+      const conv256_down = extractResidualLayerParams(589824, 256, 3, "conv256_down", true);
+      const conv256_1 = extractResidualLayerParams(589824, 256, 3, "conv256_1");
+      const conv256_2 = extractResidualLayerParams(589824, 256, 3, "conv256_2");
+      const conv256_down_out = extractResidualLayerParams(589824, 256, 3, "conv256_down_out");
+      const fc = tf.tidy(() => tf.transpose(tf.tensor2d(extractWeights(256 * 128), [128, 256]), [1, 0]));
+      paramMappings.push({paramPath: `fc`});
+      if (getRemainingWeights().length !== 0) {
+        throw new Error(`weights remaing after extract: ${getRemainingWeights().length}`);
+      }
+      const params = {
+        conv32_down,
+        conv32_1,
+        conv32_2,
+        conv32_3,
+        conv64_down,
+        conv64_1,
+        conv64_2,
+        conv64_3,
+        conv128_down,
+        conv128_1,
+        conv128_2,
+        conv256_down,
+        conv256_1,
+        conv256_2,
+        conv256_down_out,
+        fc
+      };
+      return {params, paramMappings};
+    }
+    exports.extractParams = extractParams;
+  });
+
+  // build/faceRecognitionNet/extractParamsFromWeigthMap.js
+  var require_extractParamsFromWeigthMap5 = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.extractParamsFromWeigthMap = void 0;
+    const common_1 = require_common();
+    const utils_1 = require_utils();
+    function extractorsFactory(weightMap, paramMappings) {
+      const extractWeightEntry = common_1.extractWeightEntryFactory(weightMap, paramMappings);
+      function extractScaleLayerParams(prefix) {
+        const weights = extractWeightEntry(`${prefix}/scale/weights`, 1);
+        const biases = extractWeightEntry(`${prefix}/scale/biases`, 1);
+        return {weights, biases};
+      }
+      function extractConvLayerParams(prefix) {
+        const filters = extractWeightEntry(`${prefix}/conv/filters`, 4);
+        const bias = extractWeightEntry(`${prefix}/conv/bias`, 1);
+        const scale = extractScaleLayerParams(prefix);
+        return {conv: {filters, bias}, scale};
+      }
+      function extractResidualLayerParams(prefix) {
+        return {
+          conv1: extractConvLayerParams(`${prefix}/conv1`),
+          conv2: extractConvLayerParams(`${prefix}/conv2`)
+        };
+      }
+      return {
+        extractConvLayerParams,
+        extractResidualLayerParams
+      };
+    }
+    function extractParamsFromWeigthMap(weightMap) {
+      const paramMappings = [];
+      const {extractConvLayerParams, extractResidualLayerParams} = extractorsFactory(weightMap, paramMappings);
+      const conv32_down = extractConvLayerParams("conv32_down");
+      const conv32_1 = extractResidualLayerParams("conv32_1");
+      const conv32_2 = extractResidualLayerParams("conv32_2");
+      const conv32_3 = extractResidualLayerParams("conv32_3");
+      const conv64_down = extractResidualLayerParams("conv64_down");
+      const conv64_1 = extractResidualLayerParams("conv64_1");
+      const conv64_2 = extractResidualLayerParams("conv64_2");
+      const conv64_3 = extractResidualLayerParams("conv64_3");
+      const conv128_down = extractResidualLayerParams("conv128_down");
+      const conv128_1 = extractResidualLayerParams("conv128_1");
+      const conv128_2 = extractResidualLayerParams("conv128_2");
+      const conv256_down = extractResidualLayerParams("conv256_down");
+      const conv256_1 = extractResidualLayerParams("conv256_1");
+      const conv256_2 = extractResidualLayerParams("conv256_2");
+      const conv256_down_out = extractResidualLayerParams("conv256_down_out");
+      const fc = weightMap["fc"];
+      paramMappings.push({originalPath: "fc", paramPath: "fc"});
+      if (!utils_1.isTensor2D(fc)) {
+        throw new Error(`expected weightMap[fc] to be a Tensor2D, instead have ${fc}`);
+      }
+      const params = {
+        conv32_down,
+        conv32_1,
+        conv32_2,
+        conv32_3,
+        conv64_down,
+        conv64_1,
+        conv64_2,
+        conv64_3,
+        conv128_down,
+        conv128_1,
+        conv128_2,
+        conv256_down,
+        conv256_1,
+        conv256_2,
+        conv256_down_out,
+        fc
+      };
+      common_1.disposeUnusedWeightTensors(weightMap, paramMappings);
+      return {params, paramMappings};
+    }
+    exports.extractParamsFromWeigthMap = extractParamsFromWeigthMap;
+  });
+
+  // build/faceRecognitionNet/residualLayer.js
+  var require_residualLayer = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.residualDown = exports.residual = void 0;
+    const tf = require_dist();
+    const convLayer_1 = require_convLayer2();
+    function residual(x, params) {
+      let out = convLayer_1.conv(x, params.conv1);
+      out = convLayer_1.convNoRelu(out, params.conv2);
+      out = tf.add(out, x);
+      out = tf.relu(out);
+      return out;
+    }
+    exports.residual = residual;
+    function residualDown(x, params) {
+      let out = convLayer_1.convDown(x, params.conv1);
+      out = convLayer_1.convNoRelu(out, params.conv2);
+      let pooled = tf.avgPool(x, 2, 2, "valid");
+      const zeros9 = tf.zeros(pooled.shape);
+      const isPad = pooled.shape[3] !== out.shape[3];
+      const isAdjustShape = pooled.shape[1] !== out.shape[1] || pooled.shape[2] !== out.shape[2];
+      if (isAdjustShape) {
+        const padShapeX = [...out.shape];
+        padShapeX[1] = 1;
+        const zerosW = tf.zeros(padShapeX);
+        out = tf.concat([out, zerosW], 1);
+        const padShapeY = [...out.shape];
+        padShapeY[2] = 1;
+        const zerosH = tf.zeros(padShapeY);
+        out = tf.concat([out, zerosH], 2);
+      }
+      pooled = isPad ? tf.concat([pooled, zeros9], 3) : pooled;
+      out = tf.add(pooled, out);
+      out = tf.relu(out);
+      return out;
+    }
+    exports.residualDown = residualDown;
+  });
+
+  // build/faceRecognitionNet/FaceRecognitionNet.js
+  var require_FaceRecognitionNet = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.FaceRecognitionNet = void 0;
+    const tf = require_dist();
+    const dom_1 = require_dom();
+    const NeuralNetwork_1 = require_NeuralNetwork();
+    const ops_1 = require_ops();
+    const convLayer_1 = require_convLayer2();
+    const extractParams_1 = require_extractParams5();
+    const extractParamsFromWeigthMap_1 = require_extractParamsFromWeigthMap5();
+    const residualLayer_1 = require_residualLayer();
+    class FaceRecognitionNet extends NeuralNetwork_1.NeuralNetwork {
+      constructor() {
+        super("FaceRecognitionNet");
+      }
+      forwardInput(input) {
+        const {params} = this;
+        if (!params) {
+          throw new Error("FaceRecognitionNet - load model before inference");
+        }
+        return tf.tidy(() => {
+          const batchTensor = input.toBatchTensor(150, true).toFloat();
+          const meanRgb = [122.782, 117.001, 104.298];
+          const normalized = ops_1.normalize(batchTensor, meanRgb).div(tf.scalar(256));
+          let out = convLayer_1.convDown(normalized, params.conv32_down);
+          out = tf.maxPool(out, 3, 2, "valid");
+          out = residualLayer_1.residual(out, params.conv32_1);
+          out = residualLayer_1.residual(out, params.conv32_2);
+          out = residualLayer_1.residual(out, params.conv32_3);
+          out = residualLayer_1.residualDown(out, params.conv64_down);
+          out = residualLayer_1.residual(out, params.conv64_1);
+          out = residualLayer_1.residual(out, params.conv64_2);
+          out = residualLayer_1.residual(out, params.conv64_3);
+          out = residualLayer_1.residualDown(out, params.conv128_down);
+          out = residualLayer_1.residual(out, params.conv128_1);
+          out = residualLayer_1.residual(out, params.conv128_2);
+          out = residualLayer_1.residualDown(out, params.conv256_down);
+          out = residualLayer_1.residual(out, params.conv256_1);
+          out = residualLayer_1.residual(out, params.conv256_2);
+          out = residualLayer_1.residualDown(out, params.conv256_down_out);
+          const globalAvg = out.mean([1, 2]);
+          const fullyConnected = tf.matMul(globalAvg, params.fc);
+          return fullyConnected;
+        });
+      }
+      async forward(input) {
+        return this.forwardInput(await dom_1.toNetInput(input));
+      }
+      async computeFaceDescriptor(input) {
+        const netInput = await dom_1.toNetInput(input);
+        const faceDescriptorTensors = tf.tidy(() => tf.unstack(this.forwardInput(netInput)));
+        const faceDescriptorsForBatch = await Promise.all(faceDescriptorTensors.map((t) => t.data()));
+        faceDescriptorTensors.forEach((t) => t.dispose());
+        return netInput.isBatchInput ? faceDescriptorsForBatch : faceDescriptorsForBatch[0];
+      }
+      getDefaultModelName() {
+        return "face_recognition_model";
+      }
+      extractParamsFromWeigthMap(weightMap) {
+        return extractParamsFromWeigthMap_1.extractParamsFromWeigthMap(weightMap);
+      }
+      extractParams(weights) {
+        return extractParams_1.extractParams(weights);
+      }
+    }
+    exports.FaceRecognitionNet = FaceRecognitionNet;
+  });
+
+  // build/faceRecognitionNet/index.js
+  var require_faceRecognitionNet = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.createFaceRecognitionNet = void 0;
+    const tslib_1 = require_tslib_es6();
+    const FaceRecognitionNet_1 = require_FaceRecognitionNet();
+    tslib_1.__exportStar(require_FaceRecognitionNet(), exports);
+    function createFaceRecognitionNet(weights) {
+      const net = new FaceRecognitionNet_1.FaceRecognitionNet();
+      net.extractWeights(weights);
+      return net;
+    }
+    exports.createFaceRecognitionNet = createFaceRecognitionNet;
+  });
+
+  // build/factories/WithFaceDescriptor.js
+  var require_WithFaceDescriptor = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.extendWithFaceDescriptor = void 0;
+    function extendWithFaceDescriptor(sourceObj, descriptor) {
+      const extension = {descriptor};
+      return Object.assign({}, sourceObj, extension);
+    }
+    exports.extendWithFaceDescriptor = extendWithFaceDescriptor;
+  });
+
+  // build/factories/WithAge.js
+  var require_WithAge = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.extendWithAge = exports.isWithAge = void 0;
+    function isWithAge(obj) {
+      return typeof obj["age"] === "number";
+    }
+    exports.isWithAge = isWithAge;
+    function extendWithAge(sourceObj, age) {
+      const extension = {age};
+      return Object.assign({}, sourceObj, extension);
+    }
+    exports.extendWithAge = extendWithAge;
+  });
+
+  // build/factories/WithGender.js
+  var require_WithGender = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.extendWithGender = exports.isWithGender = void 0;
+    const types_1 = require_types4();
+    const utils_1 = require_utils();
+    function isWithGender(obj) {
+      return (obj["gender"] === types_1.Gender.MALE || obj["gender"] === types_1.Gender.FEMALE) && utils_1.isValidProbablitiy(obj["genderProbability"]);
+    }
+    exports.isWithGender = isWithGender;
+    function extendWithGender(sourceObj, gender, genderProbability) {
+      const extension = {gender, genderProbability};
+      return Object.assign({}, sourceObj, extension);
+    }
+    exports.extendWithGender = extendWithGender;
+  });
+
+  // build/factories/index.js
+  var require_factories = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    const tslib_1 = require_tslib_es6();
+    tslib_1.__exportStar(require_WithFaceDescriptor(), exports);
+    tslib_1.__exportStar(require_WithFaceDetection(), exports);
+    tslib_1.__exportStar(require_WithFaceExpressions(), exports);
+    tslib_1.__exportStar(require_WithFaceLandmarks(), exports);
+    tslib_1.__exportStar(require_WithAge(), exports);
+    tslib_1.__exportStar(require_WithGender(), exports);
+  });
+
+  // build/globalApi/ComposableTask.js
+  var require_ComposableTask = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.ComposableTask = void 0;
+    class ComposableTask {
+      async then(onfulfilled) {
+        return onfulfilled(await this.run());
+      }
+      async run() {
+        throw new Error("ComposableTask - run is not implemented");
+      }
+    }
+    exports.ComposableTask = ComposableTask;
+  });
+
+  // build/globalApi/extractFacesAndComputeResults.js
+  var require_extractFacesAndComputeResults = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.extractSingleFaceAndComputeResult = exports.extractAllFacesAndComputeResults = void 0;
+    const tf = require_dist();
+    const dom_1 = require_dom();
+    const WithFaceLandmarks_1 = require_WithFaceLandmarks();
+    async function extractAllFacesAndComputeResults(parentResults, input, computeResults, extractedFaces, getRectForAlignment = ({alignedRect}) => alignedRect) {
+      const faceBoxes = parentResults.map((parentResult) => WithFaceLandmarks_1.isWithFaceLandmarks(parentResult) ? getRectForAlignment(parentResult) : parentResult.detection);
+      const faces = extractedFaces || (input instanceof tf.Tensor ? await dom_1.extractFaceTensors(input, faceBoxes) : await dom_1.extractFaces(input, faceBoxes));
+      const results = await computeResults(faces);
+      faces.forEach((f) => f instanceof tf.Tensor && f.dispose());
+      return results;
+    }
+    exports.extractAllFacesAndComputeResults = extractAllFacesAndComputeResults;
+    async function extractSingleFaceAndComputeResult(parentResult, input, computeResult, extractedFaces, getRectForAlignment) {
+      return extractAllFacesAndComputeResults([parentResult], input, async (faces) => computeResult(faces[0]), extractedFaces, getRectForAlignment);
+    }
+    exports.extractSingleFaceAndComputeResult = extractSingleFaceAndComputeResult;
+  });
+
+  // build/tinyYolov2/config.js
+  var require_config = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.validateConfig = void 0;
+    const isNumber2 = (arg) => typeof arg === "number";
+    function validateConfig(config) {
+      if (!config) {
+        throw new Error(`invalid config: ${config}`);
+      }
+      if (typeof config.withSeparableConvs !== "boolean") {
+        throw new Error(`config.withSeparableConvs has to be a boolean, have: ${config.withSeparableConvs}`);
+      }
+      if (!isNumber2(config.iouThreshold) || config.iouThreshold < 0 || config.iouThreshold > 1) {
+        throw new Error(`config.iouThreshold has to be a number between [0, 1], have: ${config.iouThreshold}`);
+      }
+      if (!Array.isArray(config.classes) || !config.classes.length || !config.classes.every((c) => typeof c === "string")) {
+        throw new Error(`config.classes has to be an array class names: string[], have: ${JSON.stringify(config.classes)}`);
+      }
+      if (!Array.isArray(config.anchors) || !config.anchors.length || !config.anchors.map((a) => a || {}).every((a) => isNumber2(a.x) && isNumber2(a.y))) {
+        throw new Error(`config.anchors has to be an array of { x: number, y: number }, have: ${JSON.stringify(config.anchors)}`);
+      }
+      if (config.meanRgb && (!Array.isArray(config.meanRgb) || config.meanRgb.length !== 3 || !config.meanRgb.every(isNumber2))) {
+        throw new Error(`config.meanRgb has to be an array of shape [number, number, number], have: ${JSON.stringify(config.meanRgb)}`);
+      }
+    }
+    exports.validateConfig = validateConfig;
+  });
+
+  // build/tinyYolov2/leaky.js
+  var require_leaky = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.leaky = void 0;
+    const tf = require_dist();
+    function leaky(x) {
+      return tf.tidy(() => {
+        const min5 = tf.mul(x, tf.scalar(0.10000000149011612));
+        return tf.add(tf.relu(tf.sub(x, min5)), min5);
+      });
+    }
+    exports.leaky = leaky;
+  });
+
+  // build/tinyYolov2/convWithBatchNorm.js
+  var require_convWithBatchNorm = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.convWithBatchNorm = void 0;
+    const tf = require_dist();
+    const leaky_1 = require_leaky();
+    function convWithBatchNorm(x, params) {
+      return tf.tidy(() => {
+        let out = tf.pad(x, [[0, 0], [1, 1], [1, 1], [0, 0]]);
+        out = tf.conv2d(out, params.conv.filters, [1, 1], "valid");
+        out = tf.sub(out, params.bn.sub);
+        out = tf.mul(out, params.bn.truediv);
+        out = tf.add(out, params.conv.bias);
+        return leaky_1.leaky(out);
+      });
+    }
+    exports.convWithBatchNorm = convWithBatchNorm;
+  });
+
+  // build/tinyYolov2/depthwiseSeparableConv.js
+  var require_depthwiseSeparableConv2 = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.depthwiseSeparableConv = void 0;
+    const tf = require_dist();
+    const leaky_1 = require_leaky();
+    function depthwiseSeparableConv(x, params) {
+      return tf.tidy(() => {
+        let out = tf.pad(x, [[0, 0], [1, 1], [1, 1], [0, 0]]);
+        out = tf.separableConv2d(out, params.depthwise_filter, params.pointwise_filter, [1, 1], "valid");
+        out = tf.add(out, params.bias);
+        return leaky_1.leaky(out);
+      });
+    }
+    exports.depthwiseSeparableConv = depthwiseSeparableConv;
+  });
+
+  // build/tinyYolov2/extractParams.js
+  var require_extractParams6 = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.extractParams = void 0;
+    const tf = require_dist();
+    const common_1 = require_common();
+    const extractSeparableConvParamsFactory_1 = require_extractSeparableConvParamsFactory();
+    const extractWeightsFactory_1 = require_extractWeightsFactory();
+    function extractorsFactory(extractWeights, paramMappings) {
+      const extractConvParams = common_1.extractConvParamsFactory(extractWeights, paramMappings);
+      function extractBatchNormParams(size, mappedPrefix) {
+        const sub32 = tf.tensor1d(extractWeights(size));
+        const truediv = tf.tensor1d(extractWeights(size));
+        paramMappings.push({paramPath: `${mappedPrefix}/sub`}, {paramPath: `${mappedPrefix}/truediv`});
+        return {sub: sub32, truediv};
+      }
+      function extractConvWithBatchNormParams(channelsIn, channelsOut, mappedPrefix) {
+        const conv = extractConvParams(channelsIn, channelsOut, 3, `${mappedPrefix}/conv`);
+        const bn = extractBatchNormParams(channelsOut, `${mappedPrefix}/bn`);
+        return {conv, bn};
+      }
+      const extractSeparableConvParams = extractSeparableConvParamsFactory_1.extractSeparableConvParamsFactory(extractWeights, paramMappings);
+      return {
+        extractConvParams,
+        extractConvWithBatchNormParams,
+        extractSeparableConvParams
+      };
+    }
+    function extractParams(weights, config, boxEncodingSize, filterSizes) {
+      const {extractWeights, getRemainingWeights} = extractWeightsFactory_1.extractWeightsFactory(weights);
+      const paramMappings = [];
+      const {extractConvParams, extractConvWithBatchNormParams, extractSeparableConvParams} = extractorsFactory(extractWeights, paramMappings);
+      let params;
+      if (config.withSeparableConvs) {
+        const [s0, s1, s2, s3, s4, s5, s6, s7, s8] = filterSizes;
+        const conv0 = config.isFirstLayerConv2d ? extractConvParams(s0, s1, 3, "conv0") : extractSeparableConvParams(s0, s1, "conv0");
+        const conv1 = extractSeparableConvParams(s1, s2, "conv1");
+        const conv2 = extractSeparableConvParams(s2, s3, "conv2");
+        const conv3 = extractSeparableConvParams(s3, s4, "conv3");
+        const conv4 = extractSeparableConvParams(s4, s5, "conv4");
+        const conv5 = extractSeparableConvParams(s5, s6, "conv5");
+        const conv6 = s7 ? extractSeparableConvParams(s6, s7, "conv6") : void 0;
+        const conv7 = s8 ? extractSeparableConvParams(s7, s8, "conv7") : void 0;
+        const conv8 = extractConvParams(s8 || s7 || s6, 5 * boxEncodingSize, 1, "conv8");
+        params = {conv0, conv1, conv2, conv3, conv4, conv5, conv6, conv7, conv8};
+      } else {
+        const [s0, s1, s2, s3, s4, s5, s6, s7, s8] = filterSizes;
+        const conv0 = extractConvWithBatchNormParams(s0, s1, "conv0");
+        const conv1 = extractConvWithBatchNormParams(s1, s2, "conv1");
+        const conv2 = extractConvWithBatchNormParams(s2, s3, "conv2");
+        const conv3 = extractConvWithBatchNormParams(s3, s4, "conv3");
+        const conv4 = extractConvWithBatchNormParams(s4, s5, "conv4");
+        const conv5 = extractConvWithBatchNormParams(s5, s6, "conv5");
+        const conv6 = extractConvWithBatchNormParams(s6, s7, "conv6");
+        const conv7 = extractConvWithBatchNormParams(s7, s8, "conv7");
+        const conv8 = extractConvParams(s8, 5 * boxEncodingSize, 1, "conv8");
+        params = {conv0, conv1, conv2, conv3, conv4, conv5, conv6, conv7, conv8};
+      }
+      if (getRemainingWeights().length !== 0) {
+        throw new Error(`weights remaing after extract: ${getRemainingWeights().length}`);
+      }
+      return {params, paramMappings};
+    }
+    exports.extractParams = extractParams;
+  });
+
+  // build/tinyYolov2/extractParamsFromWeigthMap.js
+  var require_extractParamsFromWeigthMap6 = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.extractParamsFromWeigthMap = void 0;
+    const disposeUnusedWeightTensors_1 = require_disposeUnusedWeightTensors();
+    const extractSeparableConvParamsFactory_1 = require_extractSeparableConvParamsFactory();
+    const extractWeightEntryFactory_1 = require_extractWeightEntryFactory();
+    function extractorsFactory(weightMap, paramMappings) {
+      const extractWeightEntry = extractWeightEntryFactory_1.extractWeightEntryFactory(weightMap, paramMappings);
+      function extractBatchNormParams(prefix) {
+        const sub32 = extractWeightEntry(`${prefix}/sub`, 1);
+        const truediv = extractWeightEntry(`${prefix}/truediv`, 1);
+        return {sub: sub32, truediv};
+      }
+      function extractConvParams(prefix) {
+        const filters = extractWeightEntry(`${prefix}/filters`, 4);
+        const bias = extractWeightEntry(`${prefix}/bias`, 1);
+        return {filters, bias};
+      }
+      function extractConvWithBatchNormParams(prefix) {
+        const conv = extractConvParams(`${prefix}/conv`);
+        const bn = extractBatchNormParams(`${prefix}/bn`);
+        return {conv, bn};
+      }
+      const extractSeparableConvParams = extractSeparableConvParamsFactory_1.loadSeparableConvParamsFactory(extractWeightEntry);
+      return {
+        extractConvParams,
+        extractConvWithBatchNormParams,
+        extractSeparableConvParams
+      };
+    }
+    function extractParamsFromWeigthMap(weightMap, config) {
+      const paramMappings = [];
+      const {extractConvParams, extractConvWithBatchNormParams, extractSeparableConvParams} = extractorsFactory(weightMap, paramMappings);
+      let params;
+      if (config.withSeparableConvs) {
+        const numFilters = config.filterSizes && config.filterSizes.length || 9;
+        params = {
+          conv0: config.isFirstLayerConv2d ? extractConvParams("conv0") : extractSeparableConvParams("conv0"),
+          conv1: extractSeparableConvParams("conv1"),
+          conv2: extractSeparableConvParams("conv2"),
+          conv3: extractSeparableConvParams("conv3"),
+          conv4: extractSeparableConvParams("conv4"),
+          conv5: extractSeparableConvParams("conv5"),
+          conv6: numFilters > 7 ? extractSeparableConvParams("conv6") : void 0,
+          conv7: numFilters > 8 ? extractSeparableConvParams("conv7") : void 0,
+          conv8: extractConvParams("conv8")
+        };
+      } else {
+        params = {
+          conv0: extractConvWithBatchNormParams("conv0"),
+          conv1: extractConvWithBatchNormParams("conv1"),
+          conv2: extractConvWithBatchNormParams("conv2"),
+          conv3: extractConvWithBatchNormParams("conv3"),
+          conv4: extractConvWithBatchNormParams("conv4"),
+          conv5: extractConvWithBatchNormParams("conv5"),
+          conv6: extractConvWithBatchNormParams("conv6"),
+          conv7: extractConvWithBatchNormParams("conv7"),
+          conv8: extractConvParams("conv8")
+        };
+      }
+      disposeUnusedWeightTensors_1.disposeUnusedWeightTensors(weightMap, paramMappings);
+      return {params, paramMappings};
+    }
+    exports.extractParamsFromWeigthMap = extractParamsFromWeigthMap;
+  });
+
+  // build/tinyYolov2/TinyYolov2Options.js
+  var require_TinyYolov2Options = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.TinyYolov2Options = exports.TinyYolov2SizeType = void 0;
+    var TinyYolov2SizeType;
+    (function(TinyYolov2SizeType2) {
+      TinyYolov2SizeType2[TinyYolov2SizeType2["XS"] = 224] = "XS";
+      TinyYolov2SizeType2[TinyYolov2SizeType2["SM"] = 320] = "SM";
+      TinyYolov2SizeType2[TinyYolov2SizeType2["MD"] = 416] = "MD";
+      TinyYolov2SizeType2[TinyYolov2SizeType2["LG"] = 608] = "LG";
+    })(TinyYolov2SizeType = exports.TinyYolov2SizeType || (exports.TinyYolov2SizeType = {}));
+    class TinyYolov2Options {
+      constructor({inputSize, scoreThreshold} = {}) {
+        this._name = "TinyYolov2Options";
+        this._inputSize = inputSize || 416;
+        this._scoreThreshold = scoreThreshold || 0.5;
+        if (typeof this._inputSize !== "number" || this._inputSize % 32 !== 0) {
+          throw new Error(`${this._name} - expected inputSize to be a number divisible by 32`);
+        }
+        if (typeof this._scoreThreshold !== "number" || this._scoreThreshold <= 0 || this._scoreThreshold >= 1) {
+          throw new Error(`${this._name} - expected scoreThreshold to be a number between 0 and 1`);
+        }
+      }
+      get inputSize() {
+        return this._inputSize;
+      }
+      get scoreThreshold() {
+        return this._scoreThreshold;
+      }
+    }
+    exports.TinyYolov2Options = TinyYolov2Options;
+  });
+
+  // build/tinyYolov2/TinyYolov2Base.js
+  var require_TinyYolov2Base = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.TinyYolov2Base = void 0;
+    const tf = require_dist();
+    const BoundingBox_1 = require_BoundingBox();
+    const ObjectDetection_1 = require_ObjectDetection();
+    const common_1 = require_common();
+    const dom_1 = require_dom();
+    const NeuralNetwork_1 = require_NeuralNetwork();
+    const ops_1 = require_ops();
+    const nonMaxSuppression_1 = require_nonMaxSuppression();
+    const normalize_1 = require_normalize();
+    const config_1 = require_config();
+    const convWithBatchNorm_1 = require_convWithBatchNorm();
+    const depthwiseSeparableConv_1 = require_depthwiseSeparableConv2();
+    const extractParams_1 = require_extractParams6();
+    const extractParamsFromWeigthMap_1 = require_extractParamsFromWeigthMap6();
+    const leaky_1 = require_leaky();
+    const TinyYolov2Options_1 = require_TinyYolov2Options();
+    class TinyYolov2Base extends NeuralNetwork_1.NeuralNetwork {
+      constructor(config) {
+        super("TinyYolov2");
+        config_1.validateConfig(config);
+        this._config = config;
+      }
+      get config() {
+        return this._config;
+      }
+      get withClassScores() {
+        return this.config.withClassScores || this.config.classes.length > 1;
+      }
+      get boxEncodingSize() {
+        return 5 + (this.withClassScores ? this.config.classes.length : 0);
+      }
+      runTinyYolov2(x, params) {
+        let out = convWithBatchNorm_1.convWithBatchNorm(x, params.conv0);
+        out = tf.maxPool(out, [2, 2], [2, 2], "same");
+        out = convWithBatchNorm_1.convWithBatchNorm(out, params.conv1);
+        out = tf.maxPool(out, [2, 2], [2, 2], "same");
+        out = convWithBatchNorm_1.convWithBatchNorm(out, params.conv2);
+        out = tf.maxPool(out, [2, 2], [2, 2], "same");
+        out = convWithBatchNorm_1.convWithBatchNorm(out, params.conv3);
+        out = tf.maxPool(out, [2, 2], [2, 2], "same");
+        out = convWithBatchNorm_1.convWithBatchNorm(out, params.conv4);
+        out = tf.maxPool(out, [2, 2], [2, 2], "same");
+        out = convWithBatchNorm_1.convWithBatchNorm(out, params.conv5);
+        out = tf.maxPool(out, [2, 2], [1, 1], "same");
+        out = convWithBatchNorm_1.convWithBatchNorm(out, params.conv6);
+        out = convWithBatchNorm_1.convWithBatchNorm(out, params.conv7);
+        return common_1.convLayer(out, params.conv8, "valid", false);
+      }
+      runMobilenet(x, params) {
+        let out = this.config.isFirstLayerConv2d ? leaky_1.leaky(common_1.convLayer(x, params.conv0, "valid", false)) : depthwiseSeparableConv_1.depthwiseSeparableConv(x, params.conv0);
+        out = tf.maxPool(out, [2, 2], [2, 2], "same");
+        out = depthwiseSeparableConv_1.depthwiseSeparableConv(out, params.conv1);
+        out = tf.maxPool(out, [2, 2], [2, 2], "same");
+        out = depthwiseSeparableConv_1.depthwiseSeparableConv(out, params.conv2);
+        out = tf.maxPool(out, [2, 2], [2, 2], "same");
+        out = depthwiseSeparableConv_1.depthwiseSeparableConv(out, params.conv3);
+        out = tf.maxPool(out, [2, 2], [2, 2], "same");
+        out = depthwiseSeparableConv_1.depthwiseSeparableConv(out, params.conv4);
+        out = tf.maxPool(out, [2, 2], [2, 2], "same");
+        out = depthwiseSeparableConv_1.depthwiseSeparableConv(out, params.conv5);
+        out = tf.maxPool(out, [2, 2], [1, 1], "same");
+        out = params.conv6 ? depthwiseSeparableConv_1.depthwiseSeparableConv(out, params.conv6) : out;
+        out = params.conv7 ? depthwiseSeparableConv_1.depthwiseSeparableConv(out, params.conv7) : out;
+        return common_1.convLayer(out, params.conv8, "valid", false);
+      }
+      forwardInput(input, inputSize) {
+        const {params} = this;
+        if (!params) {
+          throw new Error("TinyYolov2 - load model before inference");
+        }
+        return tf.tidy(() => {
+          let batchTensor = input.toBatchTensor(inputSize, false).toFloat();
+          batchTensor = this.config.meanRgb ? normalize_1.normalize(batchTensor, this.config.meanRgb) : batchTensor;
+          batchTensor = batchTensor.div(tf.scalar(256));
+          return this.config.withSeparableConvs ? this.runMobilenet(batchTensor, params) : this.runTinyYolov2(batchTensor, params);
+        });
+      }
+      async forward(input, inputSize) {
+        return await this.forwardInput(await dom_1.toNetInput(input), inputSize);
+      }
+      async detect(input, forwardParams = {}) {
+        const {inputSize, scoreThreshold} = new TinyYolov2Options_1.TinyYolov2Options(forwardParams);
+        const netInput = await dom_1.toNetInput(input);
+        const out = await this.forwardInput(netInput, inputSize);
+        const out0 = tf.tidy(() => tf.unstack(out)[0].expandDims());
+        const inputDimensions = {
+          width: netInput.getInputWidth(0),
+          height: netInput.getInputHeight(0)
+        };
+        const results = await this.extractBoxes(out0, netInput.getReshapedInputDimensions(0), scoreThreshold);
+        out.dispose();
+        out0.dispose();
+        const boxes = results.map((res) => res.box);
+        const scores = results.map((res) => res.score);
+        const classScores = results.map((res) => res.classScore);
+        const classNames = results.map((res) => this.config.classes[res.label]);
+        const indices = nonMaxSuppression_1.nonMaxSuppression(boxes.map((box) => box.rescale(inputSize)), scores, this.config.iouThreshold, true);
+        const detections = indices.map((idx) => new ObjectDetection_1.ObjectDetection(scores[idx], classScores[idx], classNames[idx], boxes[idx], inputDimensions));
+        return detections;
+      }
+      getDefaultModelName() {
+        return "";
+      }
+      extractParamsFromWeigthMap(weightMap) {
+        return extractParamsFromWeigthMap_1.extractParamsFromWeigthMap(weightMap, this.config);
+      }
+      extractParams(weights) {
+        const filterSizes = this.config.filterSizes || TinyYolov2Base.DEFAULT_FILTER_SIZES;
+        const numFilters = filterSizes ? filterSizes.length : void 0;
+        if (numFilters !== 7 && numFilters !== 8 && numFilters !== 9) {
+          throw new Error(`TinyYolov2 - expected 7 | 8 | 9 convolutional filters, but found ${numFilters} filterSizes in config`);
+        }
+        return extractParams_1.extractParams(weights, this.config, this.boxEncodingSize, filterSizes);
+      }
+      async extractBoxes(outputTensor, inputBlobDimensions, scoreThreshold) {
+        const {width, height} = inputBlobDimensions;
+        const inputSize = Math.max(width, height);
+        const correctionFactorX = inputSize / width;
+        const correctionFactorY = inputSize / height;
+        const numCells = outputTensor.shape[1];
+        const numBoxes = this.config.anchors.length;
+        const [boxesTensor, scoresTensor, classScoresTensor] = tf.tidy(() => {
+          const reshaped = outputTensor.reshape([numCells, numCells, numBoxes, this.boxEncodingSize]);
+          const boxes = reshaped.slice([0, 0, 0, 0], [numCells, numCells, numBoxes, 4]);
+          const scores = reshaped.slice([0, 0, 0, 4], [numCells, numCells, numBoxes, 1]);
+          const classScores = this.withClassScores ? tf.softmax(reshaped.slice([0, 0, 0, 5], [numCells, numCells, numBoxes, this.config.classes.length]), 3) : tf.scalar(0);
+          return [boxes, scores, classScores];
+        });
+        const results = [];
+        const scoresData = await scoresTensor.array();
+        const boxesData = await boxesTensor.array();
+        for (let row = 0; row < numCells; row++) {
+          for (let col = 0; col < numCells; col++) {
+            for (let anchor = 0; anchor < numBoxes; anchor++) {
+              const score = ops_1.sigmoid(scoresData[row][col][anchor][0]);
+              if (!scoreThreshold || score > scoreThreshold) {
+                const ctX = (col + ops_1.sigmoid(boxesData[row][col][anchor][0])) / numCells * correctionFactorX;
+                const ctY = (row + ops_1.sigmoid(boxesData[row][col][anchor][1])) / numCells * correctionFactorY;
+                const width2 = Math.exp(boxesData[row][col][anchor][2]) * this.config.anchors[anchor].x / numCells * correctionFactorX;
+                const height2 = Math.exp(boxesData[row][col][anchor][3]) * this.config.anchors[anchor].y / numCells * correctionFactorY;
+                const x = ctX - width2 / 2;
+                const y = ctY - height2 / 2;
+                const pos = {row, col, anchor};
+                const {classScore, label} = this.withClassScores ? await this.extractPredictedClass(classScoresTensor, pos) : {classScore: 1, label: 0};
+                results.push({
+                  box: new BoundingBox_1.BoundingBox(x, y, x + width2, y + height2),
+                  score,
+                  classScore: score * classScore,
+                  label,
+                  ...pos
+                });
+              }
+            }
+          }
+        }
+        boxesTensor.dispose();
+        scoresTensor.dispose();
+        classScoresTensor.dispose();
+        return results;
+      }
+      async extractPredictedClass(classesTensor, pos) {
+        const {row, col, anchor} = pos;
+        const classesData = await classesTensor.array();
+        return Array(this.config.classes.length).fill(0).map((_, i) => classesData[row][col][anchor][i]).map((classScore, label) => ({
+          classScore,
+          label
+        })).reduce((max7, curr) => max7.classScore > curr.classScore ? max7 : curr);
+      }
+    }
+    exports.TinyYolov2Base = TinyYolov2Base;
+    TinyYolov2Base.DEFAULT_FILTER_SIZES = [
+      3,
+      16,
+      32,
+      64,
+      128,
+      256,
+      512,
+      1024,
+      1024
+    ];
+  });
+
+  // build/tinyFaceDetector/const.js
+  var require_const = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.MEAN_RGB = exports.BOX_ANCHORS = exports.IOU_THRESHOLD = void 0;
+    const classes_1 = require_classes();
+    exports.IOU_THRESHOLD = 0.4;
+    exports.BOX_ANCHORS = [
+      new classes_1.Point(1.603231, 2.094468),
+      new classes_1.Point(6.041143, 7.080126),
+      new classes_1.Point(2.882459, 3.518061),
+      new classes_1.Point(4.266906, 5.178857),
+      new classes_1.Point(9.041765, 10.66308)
+    ];
+    exports.MEAN_RGB = [117.001, 114.697, 97.404];
+  });
+
+  // build/tinyFaceDetector/TinyFaceDetector.js
+  var require_TinyFaceDetector = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.TinyFaceDetector = void 0;
+    const classes_1 = require_classes();
+    const TinyYolov2Base_1 = require_TinyYolov2Base();
+    const const_1 = require_const();
+    class TinyFaceDetector extends TinyYolov2Base_1.TinyYolov2Base {
+      constructor() {
+        const config = {
+          withSeparableConvs: true,
+          iouThreshold: const_1.IOU_THRESHOLD,
+          classes: ["face"],
+          anchors: const_1.BOX_ANCHORS,
+          meanRgb: const_1.MEAN_RGB,
+          isFirstLayerConv2d: true,
+          filterSizes: [3, 16, 32, 64, 128, 256, 512]
+        };
+        super(config);
+      }
+      get anchors() {
+        return this.config.anchors;
+      }
+      async locateFaces(input, forwardParams) {
+        const objectDetections = await this.detect(input, forwardParams);
+        return objectDetections.map((det) => new classes_1.FaceDetection(det.score, det.relativeBox, {width: det.imageWidth, height: det.imageHeight}));
+      }
+      getDefaultModelName() {
+        return "tiny_face_detector_model";
+      }
+      extractParamsFromWeigthMap(weightMap) {
+        return super.extractParamsFromWeigthMap(weightMap);
+      }
+    }
+    exports.TinyFaceDetector = TinyFaceDetector;
+  });
+
+  // build/tinyYolov2/const.js
+  var require_const2 = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.DEFAULT_MODEL_NAME_SEPARABLE_CONV = exports.DEFAULT_MODEL_NAME = exports.MEAN_RGB_SEPARABLE = exports.BOX_ANCHORS_SEPARABLE = exports.BOX_ANCHORS = exports.IOU_THRESHOLD = void 0;
+    const classes_1 = require_classes();
+    exports.IOU_THRESHOLD = 0.4;
+    exports.BOX_ANCHORS = [
+      new classes_1.Point(0.738768, 0.874946),
+      new classes_1.Point(2.42204, 2.65704),
+      new classes_1.Point(4.30971, 7.04493),
+      new classes_1.Point(10.246, 4.59428),
+      new classes_1.Point(12.6868, 11.8741)
+    ];
+    exports.BOX_ANCHORS_SEPARABLE = [
+      new classes_1.Point(1.603231, 2.094468),
+      new classes_1.Point(6.041143, 7.080126),
+      new classes_1.Point(2.882459, 3.518061),
+      new classes_1.Point(4.266906, 5.178857),
+      new classes_1.Point(9.041765, 10.66308)
+    ];
+    exports.MEAN_RGB_SEPARABLE = [117.001, 114.697, 97.404];
+    exports.DEFAULT_MODEL_NAME = "tiny_yolov2_model";
+    exports.DEFAULT_MODEL_NAME_SEPARABLE_CONV = "tiny_yolov2_separable_conv_model";
+  });
+
+  // build/tinyYolov2/TinyYolov2.js
+  var require_TinyYolov2 = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.TinyYolov2 = void 0;
+    const classes_1 = require_classes();
+    const const_1 = require_const2();
+    const TinyYolov2Base_1 = require_TinyYolov2Base();
+    class TinyYolov2 extends TinyYolov2Base_1.TinyYolov2Base {
+      constructor(withSeparableConvs = true) {
+        const config = Object.assign({}, {
+          withSeparableConvs,
+          iouThreshold: const_1.IOU_THRESHOLD,
+          classes: ["face"]
+        }, withSeparableConvs ? {
+          anchors: const_1.BOX_ANCHORS_SEPARABLE,
+          meanRgb: const_1.MEAN_RGB_SEPARABLE
+        } : {
+          anchors: const_1.BOX_ANCHORS,
+          withClassScores: true
+        });
+        super(config);
+      }
+      get withSeparableConvs() {
+        return this.config.withSeparableConvs;
+      }
+      get anchors() {
+        return this.config.anchors;
+      }
+      async locateFaces(input, forwardParams) {
+        const objectDetections = await this.detect(input, forwardParams);
+        return objectDetections.map((det) => new classes_1.FaceDetection(det.score, det.relativeBox, {width: det.imageWidth, height: det.imageHeight}));
+      }
+      getDefaultModelName() {
+        return this.withSeparableConvs ? const_1.DEFAULT_MODEL_NAME_SEPARABLE_CONV : const_1.DEFAULT_MODEL_NAME;
+      }
+      extractParamsFromWeigthMap(weightMap) {
+        return super.extractParamsFromWeigthMap(weightMap);
+      }
+    }
+    exports.TinyYolov2 = TinyYolov2;
   });
 
   // build/tinyYolov2/types.js
-  var require_types3 = __commonJS(() => {
+  var require_types5 = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
   });
 
   // build/tinyYolov2/index.js
   var require_tinyYolov2 = __commonJS((exports) => {
-    __export(exports, {
-      TinyYolov2: () => TinyYolov2,
-      TinyYolov2Options: () => TinyYolov2Options,
-      TinyYolov2SizeType: () => TinyYolov2SizeType,
-      createTinyYolov2: () => createTinyYolov2,
-      validateConfig: () => validateConfig
-    });
-    __exportStar(exports, __toModule(require_types3()));
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.createTinyYolov2 = exports.TinyYolov2 = void 0;
+    const tslib_1 = require_tslib_es6();
+    const TinyYolov2_1 = require_TinyYolov2();
+    Object.defineProperty(exports, "TinyYolov2", {enumerable: true, get: function() {
+      return TinyYolov2_1.TinyYolov2;
+    }});
+    tslib_1.__exportStar(require_TinyYolov2Options(), exports);
+    tslib_1.__exportStar(require_config(), exports);
+    tslib_1.__exportStar(require_types5(), exports);
     function createTinyYolov2(weights, withSeparableConvs = true) {
-      const net = new TinyYolov2(withSeparableConvs);
+      const net = new TinyYolov2_1.TinyYolov2(withSeparableConvs);
       net.extractWeights(weights);
       return net;
     }
+    exports.createTinyYolov2 = createTinyYolov2;
+  });
+
+  // build/globalApi/nets.js
+  var require_nets = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.detectLandmarks = exports.locateFaces = exports.loadFaceDetectionModel = exports.loadAgeGenderModel = exports.loadFaceExpressionModel = exports.loadFaceRecognitionModel = exports.loadFaceLandmarkTinyModel = exports.loadFaceLandmarkModel = exports.loadTinyYolov2Model = exports.loadTinyFaceDetectorModel = exports.predictAgeAndGender = exports.recognizeFaceExpressions = exports.computeFaceDescriptor = exports.detectFaceLandmarksTiny = exports.detectFaceLandmarks = exports.tinyFaceDetector = exports.nets = void 0;
+    const AgeGenderNet_1 = require_AgeGenderNet();
+    const FaceExpressionNet_1 = require_FaceExpressionNet();
+    const FaceLandmark68Net_1 = require_FaceLandmark68Net();
+    const FaceLandmark68TinyNet_1 = require_FaceLandmark68TinyNet();
+    const FaceRecognitionNet_1 = require_FaceRecognitionNet();
+    const TinyFaceDetector_1 = require_TinyFaceDetector();
+    const tinyYolov2_1 = require_tinyYolov2();
+    exports.nets = {
+      tinyFaceDetector: new TinyFaceDetector_1.TinyFaceDetector(),
+      tinyYolov2: new tinyYolov2_1.TinyYolov2(),
+      faceLandmark68Net: new FaceLandmark68Net_1.FaceLandmark68Net(),
+      faceLandmark68TinyNet: new FaceLandmark68TinyNet_1.FaceLandmark68TinyNet(),
+      faceRecognitionNet: new FaceRecognitionNet_1.FaceRecognitionNet(),
+      faceExpressionNet: new FaceExpressionNet_1.FaceExpressionNet(),
+      ageGenderNet: new AgeGenderNet_1.AgeGenderNet()
+    };
+    exports.tinyFaceDetector = (input, options) => exports.nets.tinyFaceDetector.locateFaces(input, options);
+    exports.detectFaceLandmarks = (input) => exports.nets.faceLandmark68Net.detectLandmarks(input);
+    exports.detectFaceLandmarksTiny = (input) => exports.nets.faceLandmark68TinyNet.detectLandmarks(input);
+    exports.computeFaceDescriptor = (input) => exports.nets.faceRecognitionNet.computeFaceDescriptor(input);
+    exports.recognizeFaceExpressions = (input) => exports.nets.faceExpressionNet.predictExpressions(input);
+    exports.predictAgeAndGender = (input) => exports.nets.ageGenderNet.predictAgeAndGender(input);
+    exports.loadTinyFaceDetectorModel = (url) => exports.nets.tinyFaceDetector.load(url);
+    exports.loadTinyYolov2Model = (url) => exports.nets.tinyYolov2.load(url);
+    exports.loadFaceLandmarkModel = (url) => exports.nets.faceLandmark68Net.load(url);
+    exports.loadFaceLandmarkTinyModel = (url) => exports.nets.faceLandmark68TinyNet.load(url);
+    exports.loadFaceRecognitionModel = (url) => exports.nets.faceRecognitionNet.load(url);
+    exports.loadFaceExpressionModel = (url) => exports.nets.faceExpressionNet.load(url);
+    exports.loadAgeGenderModel = (url) => exports.nets.ageGenderNet.load(url);
+    exports.loadFaceDetectionModel = exports.loadTinyFaceDetectorModel;
+    exports.locateFaces = TinyFaceDetector_1.TinyFaceDetector;
+    exports.detectLandmarks = exports.detectFaceLandmarks;
+  });
+
+  // build/globalApi/PredictFaceExpressionsTask.js
+  var require_PredictFaceExpressionsTask = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.PredictSingleFaceExpressionsWithFaceAlignmentTask = exports.PredictAllFaceExpressionsWithFaceAlignmentTask = exports.PredictSingleFaceExpressionsTask = exports.PredictAllFaceExpressionsTask = exports.PredictFaceExpressionsTaskBase = void 0;
+    const WithFaceExpressions_1 = require_WithFaceExpressions();
+    const ComposableTask_1 = require_ComposableTask();
+    const ComputeFaceDescriptorsTasks_1 = require_ComputeFaceDescriptorsTasks();
+    const extractFacesAndComputeResults_1 = require_extractFacesAndComputeResults();
+    const nets_1 = require_nets();
+    const PredictAgeAndGenderTask_1 = require_PredictAgeAndGenderTask();
+    class PredictFaceExpressionsTaskBase extends ComposableTask_1.ComposableTask {
+      constructor(parentTask, input, extractedFaces) {
+        super();
+        this.parentTask = parentTask;
+        this.input = input;
+        this.extractedFaces = extractedFaces;
+      }
+    }
+    exports.PredictFaceExpressionsTaskBase = PredictFaceExpressionsTaskBase;
+    class PredictAllFaceExpressionsTask extends PredictFaceExpressionsTaskBase {
+      async run() {
+        const parentResults = await this.parentTask;
+        const faceExpressionsByFace = await extractFacesAndComputeResults_1.extractAllFacesAndComputeResults(parentResults, this.input, async (faces) => await Promise.all(faces.map((face) => nets_1.nets.faceExpressionNet.predictExpressions(face))), this.extractedFaces);
+        return parentResults.map((parentResult, i) => WithFaceExpressions_1.extendWithFaceExpressions(parentResult, faceExpressionsByFace[i]));
+      }
+      withAgeAndGender() {
+        return new PredictAgeAndGenderTask_1.PredictAllAgeAndGenderTask(this, this.input);
+      }
+    }
+    exports.PredictAllFaceExpressionsTask = PredictAllFaceExpressionsTask;
+    class PredictSingleFaceExpressionsTask extends PredictFaceExpressionsTaskBase {
+      async run() {
+        const parentResult = await this.parentTask;
+        if (!parentResult) {
+          return;
+        }
+        const faceExpressions = await extractFacesAndComputeResults_1.extractSingleFaceAndComputeResult(parentResult, this.input, (face) => nets_1.nets.faceExpressionNet.predictExpressions(face), this.extractedFaces);
+        return WithFaceExpressions_1.extendWithFaceExpressions(parentResult, faceExpressions);
+      }
+      withAgeAndGender() {
+        return new PredictAgeAndGenderTask_1.PredictSingleAgeAndGenderTask(this, this.input);
+      }
+    }
+    exports.PredictSingleFaceExpressionsTask = PredictSingleFaceExpressionsTask;
+    class PredictAllFaceExpressionsWithFaceAlignmentTask extends PredictAllFaceExpressionsTask {
+      withAgeAndGender() {
+        return new PredictAgeAndGenderTask_1.PredictAllAgeAndGenderWithFaceAlignmentTask(this, this.input);
+      }
+      withFaceDescriptors() {
+        return new ComputeFaceDescriptorsTasks_1.ComputeAllFaceDescriptorsTask(this, this.input);
+      }
+    }
+    exports.PredictAllFaceExpressionsWithFaceAlignmentTask = PredictAllFaceExpressionsWithFaceAlignmentTask;
+    class PredictSingleFaceExpressionsWithFaceAlignmentTask extends PredictSingleFaceExpressionsTask {
+      withAgeAndGender() {
+        return new PredictAgeAndGenderTask_1.PredictSingleAgeAndGenderWithFaceAlignmentTask(this, this.input);
+      }
+      withFaceDescriptor() {
+        return new ComputeFaceDescriptorsTasks_1.ComputeSingleFaceDescriptorTask(this, this.input);
+      }
+    }
+    exports.PredictSingleFaceExpressionsWithFaceAlignmentTask = PredictSingleFaceExpressionsWithFaceAlignmentTask;
+  });
+
+  // build/globalApi/PredictAgeAndGenderTask.js
+  var require_PredictAgeAndGenderTask = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.PredictSingleAgeAndGenderWithFaceAlignmentTask = exports.PredictAllAgeAndGenderWithFaceAlignmentTask = exports.PredictSingleAgeAndGenderTask = exports.PredictAllAgeAndGenderTask = exports.PredictAgeAndGenderTaskBase = void 0;
+    const WithAge_1 = require_WithAge();
+    const WithGender_1 = require_WithGender();
+    const ComposableTask_1 = require_ComposableTask();
+    const ComputeFaceDescriptorsTasks_1 = require_ComputeFaceDescriptorsTasks();
+    const extractFacesAndComputeResults_1 = require_extractFacesAndComputeResults();
+    const nets_1 = require_nets();
+    const PredictFaceExpressionsTask_1 = require_PredictFaceExpressionsTask();
+    class PredictAgeAndGenderTaskBase extends ComposableTask_1.ComposableTask {
+      constructor(parentTask, input, extractedFaces) {
+        super();
+        this.parentTask = parentTask;
+        this.input = input;
+        this.extractedFaces = extractedFaces;
+      }
+    }
+    exports.PredictAgeAndGenderTaskBase = PredictAgeAndGenderTaskBase;
+    class PredictAllAgeAndGenderTask extends PredictAgeAndGenderTaskBase {
+      async run() {
+        const parentResults = await this.parentTask;
+        const ageAndGenderByFace = await extractFacesAndComputeResults_1.extractAllFacesAndComputeResults(parentResults, this.input, async (faces) => await Promise.all(faces.map((face) => nets_1.nets.ageGenderNet.predictAgeAndGender(face))), this.extractedFaces);
+        return parentResults.map((parentResult, i) => {
+          const {age, gender, genderProbability} = ageAndGenderByFace[i];
+          return WithAge_1.extendWithAge(WithGender_1.extendWithGender(parentResult, gender, genderProbability), age);
+        });
+      }
+      withFaceExpressions() {
+        return new PredictFaceExpressionsTask_1.PredictAllFaceExpressionsTask(this, this.input);
+      }
+    }
+    exports.PredictAllAgeAndGenderTask = PredictAllAgeAndGenderTask;
+    class PredictSingleAgeAndGenderTask extends PredictAgeAndGenderTaskBase {
+      async run() {
+        const parentResult = await this.parentTask;
+        if (!parentResult) {
+          return;
+        }
+        const {age, gender, genderProbability} = await extractFacesAndComputeResults_1.extractSingleFaceAndComputeResult(parentResult, this.input, (face) => nets_1.nets.ageGenderNet.predictAgeAndGender(face), this.extractedFaces);
+        return WithAge_1.extendWithAge(WithGender_1.extendWithGender(parentResult, gender, genderProbability), age);
+      }
+      withFaceExpressions() {
+        return new PredictFaceExpressionsTask_1.PredictSingleFaceExpressionsTask(this, this.input);
+      }
+    }
+    exports.PredictSingleAgeAndGenderTask = PredictSingleAgeAndGenderTask;
+    class PredictAllAgeAndGenderWithFaceAlignmentTask extends PredictAllAgeAndGenderTask {
+      withFaceExpressions() {
+        return new PredictFaceExpressionsTask_1.PredictAllFaceExpressionsWithFaceAlignmentTask(this, this.input);
+      }
+      withFaceDescriptors() {
+        return new ComputeFaceDescriptorsTasks_1.ComputeAllFaceDescriptorsTask(this, this.input);
+      }
+    }
+    exports.PredictAllAgeAndGenderWithFaceAlignmentTask = PredictAllAgeAndGenderWithFaceAlignmentTask;
+    class PredictSingleAgeAndGenderWithFaceAlignmentTask extends PredictSingleAgeAndGenderTask {
+      withFaceExpressions() {
+        return new PredictFaceExpressionsTask_1.PredictSingleFaceExpressionsWithFaceAlignmentTask(this, this.input);
+      }
+      withFaceDescriptor() {
+        return new ComputeFaceDescriptorsTasks_1.ComputeSingleFaceDescriptorTask(this, this.input);
+      }
+    }
+    exports.PredictSingleAgeAndGenderWithFaceAlignmentTask = PredictSingleAgeAndGenderWithFaceAlignmentTask;
+  });
+
+  // build/globalApi/ComputeFaceDescriptorsTasks.js
+  var require_ComputeFaceDescriptorsTasks = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.ComputeSingleFaceDescriptorTask = exports.ComputeAllFaceDescriptorsTask = exports.ComputeFaceDescriptorsTaskBase = void 0;
+    const WithFaceDescriptor_1 = require_WithFaceDescriptor();
+    const ComposableTask_1 = require_ComposableTask();
+    const extractFacesAndComputeResults_1 = require_extractFacesAndComputeResults();
+    const nets_1 = require_nets();
+    const PredictAgeAndGenderTask_1 = require_PredictAgeAndGenderTask();
+    const PredictFaceExpressionsTask_1 = require_PredictFaceExpressionsTask();
+    class ComputeFaceDescriptorsTaskBase extends ComposableTask_1.ComposableTask {
+      constructor(parentTask, input) {
+        super();
+        this.parentTask = parentTask;
+        this.input = input;
+      }
+    }
+    exports.ComputeFaceDescriptorsTaskBase = ComputeFaceDescriptorsTaskBase;
+    class ComputeAllFaceDescriptorsTask extends ComputeFaceDescriptorsTaskBase {
+      async run() {
+        const parentResults = await this.parentTask;
+        const descriptors = await extractFacesAndComputeResults_1.extractAllFacesAndComputeResults(parentResults, this.input, (faces) => Promise.all(faces.map((face) => nets_1.nets.faceRecognitionNet.computeFaceDescriptor(face))), null, (parentResult) => parentResult.landmarks.align(null, {useDlibAlignment: true}));
+        return descriptors.map((descriptor, i) => WithFaceDescriptor_1.extendWithFaceDescriptor(parentResults[i], descriptor));
+      }
+      withFaceExpressions() {
+        return new PredictFaceExpressionsTask_1.PredictAllFaceExpressionsWithFaceAlignmentTask(this, this.input);
+      }
+      withAgeAndGender() {
+        return new PredictAgeAndGenderTask_1.PredictAllAgeAndGenderWithFaceAlignmentTask(this, this.input);
+      }
+    }
+    exports.ComputeAllFaceDescriptorsTask = ComputeAllFaceDescriptorsTask;
+    class ComputeSingleFaceDescriptorTask extends ComputeFaceDescriptorsTaskBase {
+      async run() {
+        const parentResult = await this.parentTask;
+        if (!parentResult) {
+          return;
+        }
+        const descriptor = await extractFacesAndComputeResults_1.extractSingleFaceAndComputeResult(parentResult, this.input, (face) => nets_1.nets.faceRecognitionNet.computeFaceDescriptor(face), null, (parentResult2) => parentResult2.landmarks.align(null, {useDlibAlignment: true}));
+        return WithFaceDescriptor_1.extendWithFaceDescriptor(parentResult, descriptor);
+      }
+      withFaceExpressions() {
+        return new PredictFaceExpressionsTask_1.PredictSingleFaceExpressionsWithFaceAlignmentTask(this, this.input);
+      }
+      withAgeAndGender() {
+        return new PredictAgeAndGenderTask_1.PredictSingleAgeAndGenderWithFaceAlignmentTask(this, this.input);
+      }
+    }
+    exports.ComputeSingleFaceDescriptorTask = ComputeSingleFaceDescriptorTask;
+  });
+
+  // build/tinyFaceDetector/TinyFaceDetectorOptions.js
+  var require_TinyFaceDetectorOptions = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.TinyFaceDetectorOptions = void 0;
+    const tinyYolov2_1 = require_tinyYolov2();
+    class TinyFaceDetectorOptions extends tinyYolov2_1.TinyYolov2Options {
+      constructor() {
+        super(...arguments);
+        this._name = "TinyFaceDetectorOptions";
+      }
+    }
+    exports.TinyFaceDetectorOptions = TinyFaceDetectorOptions;
+  });
+
+  // build/globalApi/DetectFaceLandmarksTasks.js
+  var require_DetectFaceLandmarksTasks = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.DetectSingleFaceLandmarksTask = exports.DetectAllFaceLandmarksTask = exports.DetectFaceLandmarksTaskBase = void 0;
+    const tf = require_dist();
+    const dom_1 = require_dom();
+    const WithFaceLandmarks_1 = require_WithFaceLandmarks();
+    const ComposableTask_1 = require_ComposableTask();
+    const ComputeFaceDescriptorsTasks_1 = require_ComputeFaceDescriptorsTasks();
+    const nets_1 = require_nets();
+    const PredictAgeAndGenderTask_1 = require_PredictAgeAndGenderTask();
+    const PredictFaceExpressionsTask_1 = require_PredictFaceExpressionsTask();
+    class DetectFaceLandmarksTaskBase extends ComposableTask_1.ComposableTask {
+      constructor(parentTask, input, useTinyLandmarkNet) {
+        super();
+        this.parentTask = parentTask;
+        this.input = input;
+        this.useTinyLandmarkNet = useTinyLandmarkNet;
+      }
+      get landmarkNet() {
+        return this.useTinyLandmarkNet ? nets_1.nets.faceLandmark68TinyNet : nets_1.nets.faceLandmark68Net;
+      }
+    }
+    exports.DetectFaceLandmarksTaskBase = DetectFaceLandmarksTaskBase;
+    class DetectAllFaceLandmarksTask extends DetectFaceLandmarksTaskBase {
+      async run() {
+        const parentResults = await this.parentTask;
+        const detections = parentResults.map((res) => res.detection);
+        const faces = this.input instanceof tf.Tensor ? await dom_1.extractFaceTensors(this.input, detections) : await dom_1.extractFaces(this.input, detections);
+        const faceLandmarksByFace = await Promise.all(faces.map((face) => this.landmarkNet.detectLandmarks(face)));
+        faces.forEach((f) => f instanceof tf.Tensor && f.dispose());
+        return parentResults.map((parentResult, i) => WithFaceLandmarks_1.extendWithFaceLandmarks(parentResult, faceLandmarksByFace[i]));
+      }
+      withFaceExpressions() {
+        return new PredictFaceExpressionsTask_1.PredictAllFaceExpressionsWithFaceAlignmentTask(this, this.input);
+      }
+      withAgeAndGender() {
+        return new PredictAgeAndGenderTask_1.PredictAllAgeAndGenderWithFaceAlignmentTask(this, this.input);
+      }
+      withFaceDescriptors() {
+        return new ComputeFaceDescriptorsTasks_1.ComputeAllFaceDescriptorsTask(this, this.input);
+      }
+    }
+    exports.DetectAllFaceLandmarksTask = DetectAllFaceLandmarksTask;
+    class DetectSingleFaceLandmarksTask extends DetectFaceLandmarksTaskBase {
+      async run() {
+        const parentResult = await this.parentTask;
+        if (!parentResult) {
+          return;
+        }
+        const {detection} = parentResult;
+        const faces = this.input instanceof tf.Tensor ? await dom_1.extractFaceTensors(this.input, [detection]) : await dom_1.extractFaces(this.input, [detection]);
+        const landmarks = await this.landmarkNet.detectLandmarks(faces[0]);
+        faces.forEach((f) => f instanceof tf.Tensor && f.dispose());
+        return WithFaceLandmarks_1.extendWithFaceLandmarks(parentResult, landmarks);
+      }
+      withFaceExpressions() {
+        return new PredictFaceExpressionsTask_1.PredictSingleFaceExpressionsWithFaceAlignmentTask(this, this.input);
+      }
+      withAgeAndGender() {
+        return new PredictAgeAndGenderTask_1.PredictSingleAgeAndGenderWithFaceAlignmentTask(this, this.input);
+      }
+      withFaceDescriptor() {
+        return new ComputeFaceDescriptorsTasks_1.ComputeSingleFaceDescriptorTask(this, this.input);
+      }
+    }
+    exports.DetectSingleFaceLandmarksTask = DetectSingleFaceLandmarksTask;
+  });
+
+  // build/globalApi/DetectFacesTasks.js
+  var require_DetectFacesTasks = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.DetectSingleFaceTask = exports.DetectAllFacesTask = exports.DetectFacesTaskBase = void 0;
+    const WithFaceDetection_1 = require_WithFaceDetection();
+    const TinyFaceDetectorOptions_1 = require_TinyFaceDetectorOptions();
+    const ComposableTask_1 = require_ComposableTask();
+    const DetectFaceLandmarksTasks_1 = require_DetectFaceLandmarksTasks();
+    const nets_1 = require_nets();
+    const PredictAgeAndGenderTask_1 = require_PredictAgeAndGenderTask();
+    const PredictFaceExpressionsTask_1 = require_PredictFaceExpressionsTask();
+    class DetectFacesTaskBase extends ComposableTask_1.ComposableTask {
+      constructor(input, options = new TinyFaceDetectorOptions_1.TinyFaceDetectorOptions()) {
+        super();
+        this.input = input;
+        this.options = options;
+      }
+    }
+    exports.DetectFacesTaskBase = DetectFacesTaskBase;
+    class DetectAllFacesTask extends DetectFacesTaskBase {
+      async run() {
+        const {input, options} = this;
+        const faceDetectionFunction = options instanceof TinyFaceDetectorOptions_1.TinyFaceDetectorOptions ? (input2) => nets_1.nets.tinyFaceDetector.locateFaces(input2, options) : null;
+        if (!faceDetectionFunction) {
+          throw new Error("detectFaces - expected options to be instance of TinyFaceDetectorOptions | SsdMobilenetv1Options | MtcnnOptions | TinyYolov2Options");
+        }
+        return faceDetectionFunction(input);
+      }
+      runAndExtendWithFaceDetections() {
+        return new Promise(async (res) => {
+          const detections = await this.run();
+          return res(detections.map((detection) => WithFaceDetection_1.extendWithFaceDetection({}, detection)));
+        });
+      }
+      withFaceLandmarks(useTinyLandmarkNet = false) {
+        return new DetectFaceLandmarksTasks_1.DetectAllFaceLandmarksTask(this.runAndExtendWithFaceDetections(), this.input, useTinyLandmarkNet);
+      }
+      withFaceExpressions() {
+        return new PredictFaceExpressionsTask_1.PredictAllFaceExpressionsTask(this.runAndExtendWithFaceDetections(), this.input);
+      }
+      withAgeAndGender() {
+        return new PredictAgeAndGenderTask_1.PredictAllAgeAndGenderTask(this.runAndExtendWithFaceDetections(), this.input);
+      }
+    }
+    exports.DetectAllFacesTask = DetectAllFacesTask;
+    class DetectSingleFaceTask extends DetectFacesTaskBase {
+      async run() {
+        const faceDetections = await new DetectAllFacesTask(this.input, this.options);
+        let faceDetectionWithHighestScore = faceDetections[0];
+        faceDetections.forEach((faceDetection) => {
+          if (faceDetection.score > faceDetectionWithHighestScore.score) {
+            faceDetectionWithHighestScore = faceDetection;
+          }
+        });
+        return faceDetectionWithHighestScore;
+      }
+      runAndExtendWithFaceDetection() {
+        return new Promise(async (res) => {
+          const detection = await this.run();
+          return res(detection ? WithFaceDetection_1.extendWithFaceDetection({}, detection) : void 0);
+        });
+      }
+      withFaceLandmarks(useTinyLandmarkNet = false) {
+        return new DetectFaceLandmarksTasks_1.DetectSingleFaceLandmarksTask(this.runAndExtendWithFaceDetection(), this.input, useTinyLandmarkNet);
+      }
+      withFaceExpressions() {
+        return new PredictFaceExpressionsTask_1.PredictSingleFaceExpressionsTask(this.runAndExtendWithFaceDetection(), this.input);
+      }
+      withAgeAndGender() {
+        return new PredictAgeAndGenderTask_1.PredictSingleAgeAndGenderTask(this.runAndExtendWithFaceDetection(), this.input);
+      }
+    }
+    exports.DetectSingleFaceTask = DetectSingleFaceTask;
+  });
+
+  // build/globalApi/detectFaces.js
+  var require_detectFaces = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.detectAllFaces = exports.detectSingleFace = void 0;
+    const DetectFacesTasks_1 = require_DetectFacesTasks();
+    const TinyFaceDetectorOptions_1 = require_TinyFaceDetectorOptions();
+    function detectSingleFace(input, options = new TinyFaceDetectorOptions_1.TinyFaceDetectorOptions()) {
+      return new DetectFacesTasks_1.DetectSingleFaceTask(input, options);
+    }
+    exports.detectSingleFace = detectSingleFace;
+    function detectAllFaces(input, options = new TinyFaceDetectorOptions_1.TinyFaceDetectorOptions()) {
+      return new DetectFacesTasks_1.DetectAllFacesTask(input, options);
+    }
+    exports.detectAllFaces = detectAllFaces;
+  });
+
+  // build/euclideanDistance.js
+  var require_euclideanDistance = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.euclideanDistance = void 0;
+    function euclideanDistance(arr1, arr2) {
+      if (arr1.length !== arr2.length)
+        throw new Error("euclideanDistance: arr1.length !== arr2.length");
+      const desc1 = Array.from(arr1);
+      const desc2 = Array.from(arr2);
+      return Math.sqrt(desc1.map((val, i) => val - desc2[i]).reduce((res, diff) => res + Math.pow(diff, 2), 0));
+    }
+    exports.euclideanDistance = euclideanDistance;
+  });
+
+  // build/globalApi/FaceMatcher.js
+  var require_FaceMatcher = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.FaceMatcher = void 0;
+    const FaceMatch_1 = require_FaceMatch();
+    const LabeledFaceDescriptors_1 = require_LabeledFaceDescriptors();
+    const euclideanDistance_1 = require_euclideanDistance();
+    class FaceMatcher {
+      constructor(inputs, distanceThreshold = 0.6) {
+        this._distanceThreshold = distanceThreshold;
+        const inputArray = Array.isArray(inputs) ? inputs : [inputs];
+        if (!inputArray.length) {
+          throw new Error(`FaceRecognizer.constructor - expected atleast one input`);
+        }
+        let count = 1;
+        const createUniqueLabel = () => `person ${count++}`;
+        this._labeledDescriptors = inputArray.map((desc) => {
+          if (desc instanceof LabeledFaceDescriptors_1.LabeledFaceDescriptors) {
+            return desc;
+          }
+          if (desc instanceof Float32Array) {
+            return new LabeledFaceDescriptors_1.LabeledFaceDescriptors(createUniqueLabel(), [desc]);
+          }
+          if (desc.descriptor && desc.descriptor instanceof Float32Array) {
+            return new LabeledFaceDescriptors_1.LabeledFaceDescriptors(createUniqueLabel(), [desc.descriptor]);
+          }
+          throw new Error(`FaceRecognizer.constructor - expected inputs to be of type LabeledFaceDescriptors | WithFaceDescriptor<any> | Float32Array | Array<LabeledFaceDescriptors | WithFaceDescriptor<any> | Float32Array>`);
+        });
+      }
+      get labeledDescriptors() {
+        return this._labeledDescriptors;
+      }
+      get distanceThreshold() {
+        return this._distanceThreshold;
+      }
+      computeMeanDistance(queryDescriptor, descriptors) {
+        return descriptors.map((d) => euclideanDistance_1.euclideanDistance(d, queryDescriptor)).reduce((d1, d2) => d1 + d2, 0) / (descriptors.length || 1);
+      }
+      matchDescriptor(queryDescriptor) {
+        return this.labeledDescriptors.map(({descriptors, label}) => new FaceMatch_1.FaceMatch(label, this.computeMeanDistance(queryDescriptor, descriptors))).reduce((best, curr) => best.distance < curr.distance ? best : curr);
+      }
+      findBestMatch(queryDescriptor) {
+        const bestMatch = this.matchDescriptor(queryDescriptor);
+        return bestMatch.distance < this.distanceThreshold ? bestMatch : new FaceMatch_1.FaceMatch("unknown", bestMatch.distance);
+      }
+      toJSON() {
+        return {
+          distanceThreshold: this.distanceThreshold,
+          labeledDescriptors: this.labeledDescriptors.map((ld) => ld.toJSON())
+        };
+      }
+      static fromJSON(json) {
+        const labeledDescriptors = json.labeledDescriptors.map((ld) => LabeledFaceDescriptors_1.LabeledFaceDescriptors.fromJSON(ld));
+        return new FaceMatcher(labeledDescriptors, json.distanceThreshold);
+      }
+    }
+    exports.FaceMatcher = FaceMatcher;
   });
 
   // build/globalApi/types.js
-  var require_types4 = __commonJS(() => {
+  var require_types6 = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
   });
 
   // build/globalApi/index.js
   var require_globalApi = __commonJS((exports) => {
-    __export(exports, {
-      ComposableTask: () => ComposableTask,
-      ComputeAllFaceDescriptorsTask: () => ComputeAllFaceDescriptorsTask,
-      ComputeFaceDescriptorsTaskBase: () => ComputeFaceDescriptorsTaskBase,
-      ComputeSingleFaceDescriptorTask: () => ComputeSingleFaceDescriptorTask,
-      DetectAllFaceLandmarksTask: () => DetectAllFaceLandmarksTask,
-      DetectAllFacesTask: () => DetectAllFacesTask,
-      DetectFaceLandmarksTaskBase: () => DetectFaceLandmarksTaskBase,
-      DetectFacesTaskBase: () => DetectFacesTaskBase,
-      DetectSingleFaceLandmarksTask: () => DetectSingleFaceLandmarksTask,
-      DetectSingleFaceTask: () => DetectSingleFaceTask,
-      FaceMatcher: () => FaceMatcher,
-      computeFaceDescriptor: () => computeFaceDescriptor,
-      detectAllFaces: () => detectAllFaces,
-      detectFaceLandmarks: () => detectFaceLandmarks,
-      detectFaceLandmarksTiny: () => detectFaceLandmarksTiny,
-      detectLandmarks: () => detectLandmarks,
-      detectSingleFace: () => detectSingleFace,
-      loadAgeGenderModel: () => loadAgeGenderModel,
-      loadFaceDetectionModel: () => loadFaceDetectionModel,
-      loadFaceExpressionModel: () => loadFaceExpressionModel,
-      loadFaceLandmarkModel: () => loadFaceLandmarkModel,
-      loadFaceLandmarkTinyModel: () => loadFaceLandmarkTinyModel,
-      loadFaceRecognitionModel: () => loadFaceRecognitionModel,
-      loadTinyFaceDetectorModel: () => loadTinyFaceDetectorModel,
-      loadTinyYolov2Model: () => loadTinyYolov2Model,
-      locateFaces: () => locateFaces,
-      nets: () => nets,
-      predictAgeAndGender: () => predictAgeAndGender,
-      recognizeFaceExpressions: () => recognizeFaceExpressions,
-      tinyFaceDetector: () => tinyFaceDetector
-    });
-    __exportStar(exports, __toModule(require_types4()));
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    const tslib_1 = require_tslib_es6();
+    tslib_1.__exportStar(require_ComposableTask(), exports);
+    tslib_1.__exportStar(require_ComputeFaceDescriptorsTasks(), exports);
+    tslib_1.__exportStar(require_detectFaces(), exports);
+    tslib_1.__exportStar(require_DetectFacesTasks(), exports);
+    tslib_1.__exportStar(require_DetectFaceLandmarksTasks(), exports);
+    tslib_1.__exportStar(require_FaceMatcher(), exports);
+    tslib_1.__exportStar(require_nets(), exports);
+    tslib_1.__exportStar(require_types6(), exports);
+  });
+
+  // build/tinyFaceDetector/index.js
+  var require_tinyFaceDetector = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.createTinyFaceDetector = void 0;
+    const tslib_1 = require_tslib_es6();
+    const TinyFaceDetector_1 = require_TinyFaceDetector();
+    tslib_1.__exportStar(require_TinyFaceDetector(), exports);
+    tslib_1.__exportStar(require_TinyFaceDetectorOptions(), exports);
+    function createTinyFaceDetector(weights) {
+      const net = new TinyFaceDetector_1.TinyFaceDetector();
+      net.extractWeights(weights);
+      return net;
+    }
+    exports.createTinyFaceDetector = createTinyFaceDetector;
+  });
+
+  // build/resizeResults.js
+  var require_resizeResults = __commonJS((exports) => {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.resizeResults = void 0;
+    const classes_1 = require_classes();
+    const FaceDetection_1 = require_FaceDetection();
+    const FaceLandmarks_1 = require_FaceLandmarks();
+    const WithFaceDetection_1 = require_WithFaceDetection();
+    const WithFaceLandmarks_1 = require_WithFaceLandmarks();
+    function resizeResults(results, dimensions) {
+      const {width, height} = new classes_1.Dimensions(dimensions.width, dimensions.height);
+      if (width <= 0 || height <= 0) {
+        throw new Error(`resizeResults - invalid dimensions: ${JSON.stringify({width, height})}`);
+      }
+      if (Array.isArray(results)) {
+        return results.map((obj) => resizeResults(obj, {width, height}));
+      }
+      if (WithFaceLandmarks_1.isWithFaceLandmarks(results)) {
+        const resizedDetection = results.detection.forSize(width, height);
+        const resizedLandmarks = results.unshiftedLandmarks.forSize(resizedDetection.box.width, resizedDetection.box.height);
+        return WithFaceLandmarks_1.extendWithFaceLandmarks(WithFaceDetection_1.extendWithFaceDetection(results, resizedDetection), resizedLandmarks);
+      }
+      if (WithFaceDetection_1.isWithFaceDetection(results)) {
+        return WithFaceDetection_1.extendWithFaceDetection(results, results.detection.forSize(width, height));
+      }
+      if (results instanceof FaceLandmarks_1.FaceLandmarks || results instanceof FaceDetection_1.FaceDetection) {
+        return results.forSize(width, height);
+      }
+      return results;
+    }
+    exports.resizeResults = resizeResults;
   });
 
   // build/index.js
   var require_build = __commonJS((exports) => {
-    __export(exports, {
-      AgeGenderNet: () => AgeGenderNet,
-      BoundingBox: () => BoundingBox,
-      Box: () => Box,
-      Dimensions: () => Dimensions,
-      FACE_EXPRESSION_LABELS: () => FACE_EXPRESSION_LABELS,
-      FaceDetection: () => FaceDetection,
-      FaceExpressionNet: () => FaceExpressionNet,
-      FaceExpressions: () => FaceExpressions,
-      FaceLandmark68Net: () => FaceLandmark68Net,
-      FaceLandmark68TinyNet: () => FaceLandmark68TinyNet,
-      FaceLandmarkNet: () => FaceLandmarkNet,
-      FaceLandmarks: () => FaceLandmarks,
-      FaceLandmarks5: () => FaceLandmarks5,
-      FaceLandmarks68: () => FaceLandmarks68,
-      FaceMatch: () => FaceMatch,
-      FaceRecognitionNet: () => FaceRecognitionNet,
-      Gender: () => Gender,
-      LabeledBox: () => LabeledBox,
-      LabeledFaceDescriptors: () => LabeledFaceDescriptors,
-      NeuralNetwork: () => NeuralNetwork,
-      ObjectDetection: () => ObjectDetection,
-      Point: () => Point,
-      PredictedBox: () => PredictedBox,
-      Rect: () => Rect,
-      TinyFaceDetector: () => TinyFaceDetector,
-      TinyFaceDetectorOptions: () => TinyFaceDetectorOptions,
-      createFaceRecognitionNet: () => createFaceRecognitionNet,
-      createTinyFaceDetector: () => createTinyFaceDetector,
-      draw: () => draw_exports,
-      euclideanDistance: () => euclideanDistance,
-      extendWithAge: () => extendWithAge,
-      extendWithFaceDescriptor: () => extendWithFaceDescriptor,
-      extendWithFaceDetection: () => extendWithFaceDetection,
-      extendWithFaceExpressions: () => extendWithFaceExpressions,
-      extendWithFaceLandmarks: () => extendWithFaceLandmarks,
-      extendWithGender: () => extendWithGender,
-      inverseSigmoid: () => inverseSigmoid,
-      iou: () => iou,
-      isWithAge: () => isWithAge,
-      isWithFaceDetection: () => isWithFaceDetection,
-      isWithFaceExpressions: () => isWithFaceExpressions,
-      isWithFaceLandmarks: () => isWithFaceLandmarks,
-      isWithGender: () => isWithGender,
-      minBbox: () => minBbox,
-      nonMaxSuppression: () => nonMaxSuppression2,
-      normalize: () => normalize,
-      padToSquare: () => padToSquare,
-      resizeResults: () => resizeResults,
-      shuffleArray: () => shuffleArray,
-      sigmoid: () => sigmoid6,
-      tf: () => dist_exports,
-      utils: () => utils_exports
-    });
-    __exportStar(exports, __toModule(require_dom()));
-    __exportStar(exports, __toModule(require_env()));
-    __exportStar(exports, __toModule(require_globalApi()));
-    __exportStar(exports, __toModule(require_tinyYolov2()));
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {value: true});
+    exports.tf = exports.utils = exports.draw = void 0;
+    const tslib_1 = require_tslib_es6();
+    const tf = require_dist();
+    exports.tf = tf;
+    const draw = require_draw();
+    exports.draw = draw;
+    const utils = require_utils();
+    exports.utils = utils;
+    tslib_1.__exportStar(require_ageGenderNet(), exports);
+    tslib_1.__exportStar(require_classes(), exports);
+    tslib_1.__exportStar(require_dom(), exports);
+    tslib_1.__exportStar(require_env(), exports);
+    tslib_1.__exportStar(require_faceExpressionNet(), exports);
+    tslib_1.__exportStar(require_faceLandmarkNet(), exports);
+    tslib_1.__exportStar(require_faceRecognitionNet(), exports);
+    tslib_1.__exportStar(require_factories(), exports);
+    tslib_1.__exportStar(require_globalApi(), exports);
+    tslib_1.__exportStar(require_ops(), exports);
+    tslib_1.__exportStar(require_tinyFaceDetector(), exports);
+    tslib_1.__exportStar(require_tinyYolov2(), exports);
+    tslib_1.__exportStar(require_euclideanDistance(), exports);
+    tslib_1.__exportStar(require_NeuralNetwork(), exports);
+    tslib_1.__exportStar(require_resizeResults(), exports);
   });
 
   // node_modules/@tensorflow/tfjs-core/dist/environment.js
@@ -1271,30 +6728,30 @@ var faceapi = (() => {
       if (done) {
         break;
       }
-      const [key, config2] = value;
+      const [key, config] = value;
       const [backend2] = key.split("_");
       if (backend2 === backendName) {
-        result.push(config2);
+        result.push(config);
       }
     }
     return result;
   }
-  function registerKernel(config2) {
-    const {kernelName, backendName} = config2;
+  function registerKernel(config) {
+    const {kernelName, backendName} = config;
     const key = makeKey(kernelName, backendName);
     if (kernelRegistry.has(key)) {
       console.warn(`The kernel '${kernelName}' for backend '${backendName}' is already registered`);
     }
-    kernelRegistry.set(key, config2);
+    kernelRegistry.set(key, config);
   }
-  function registerGradient(config2) {
-    const {kernelName} = config2;
+  function registerGradient(config) {
+    const {kernelName} = config;
     if (gradRegistry.has(kernelName)) {
       if (env().getBool("DEBUG")) {
         console.warn(`Overriding the gradient for '${kernelName}'`);
       }
     }
-    gradRegistry.set(kernelName, config2);
+    gradRegistry.set(kernelName, config);
   }
   function unregisterKernel(kernelName, backendName) {
     const key = makeKey(kernelName, backendName);
@@ -5293,7 +10750,7 @@ var faceapi = (() => {
    * limitations under the License.
    * =============================================================================
    */
-  function batchNorm_(x, mean5, variance, offset, scale2, varianceEpsilon) {
+  function batchNorm_(x, mean5, variance, offset, scale, varianceEpsilon) {
     if (varianceEpsilon == null) {
       varianceEpsilon = 1e-3;
     }
@@ -5301,8 +10758,8 @@ var faceapi = (() => {
     const $mean = convertToTensor(mean5, "mean", "batchNorm");
     const $variance = convertToTensor(variance, "variance", "batchNorm");
     let $scale;
-    if (scale2 != null) {
-      $scale = convertToTensor(scale2, "scale", "batchNorm");
+    if (scale != null) {
+      $scale = convertToTensor(scale, "scale", "batchNorm");
     }
     let $offset;
     if (offset != null) {
@@ -5345,13 +10802,13 @@ var faceapi = (() => {
   const batchNorm = op({batchNorm_});
 
   // node_modules/@tensorflow/tfjs-core/dist/ops/batchnorm2d.js
-  function batchNorm2d_(x, mean5, variance, offset, scale2, varianceEpsilon) {
+  function batchNorm2d_(x, mean5, variance, offset, scale, varianceEpsilon) {
     const $x = convertToTensor(x, "x", "batchNorm");
     const $mean = convertToTensor(mean5, "mean", "batchNorm");
     const $variance = convertToTensor(variance, "variance", "batchNorm");
     let $scale;
-    if (scale2 != null) {
-      $scale = convertToTensor(scale2, "scale", "batchNorm");
+    if (scale != null) {
+      $scale = convertToTensor(scale, "scale", "batchNorm");
     }
     let $offset;
     if (offset != null) {
@@ -5371,13 +10828,13 @@ var faceapi = (() => {
   const batchNorm2d = op({batchNorm2d_});
 
   // node_modules/@tensorflow/tfjs-core/dist/ops/batchnorm3d.js
-  function batchNorm3d_(x, mean5, variance, offset, scale2, varianceEpsilon) {
+  function batchNorm3d_(x, mean5, variance, offset, scale, varianceEpsilon) {
     const $x = convertToTensor(x, "x", "batchNorm");
     const $mean = convertToTensor(mean5, "mean", "batchNorm");
     const $variance = convertToTensor(variance, "variance", "batchNorm");
     let $scale;
-    if (scale2 != null) {
-      $scale = convertToTensor(scale2, "scale", "batchNorm");
+    if (scale != null) {
+      $scale = convertToTensor(scale, "scale", "batchNorm");
     }
     let $offset;
     if (offset != null) {
@@ -5397,13 +10854,13 @@ var faceapi = (() => {
   const batchNorm3d = op({batchNorm3d_});
 
   // node_modules/@tensorflow/tfjs-core/dist/ops/batchnorm4d.js
-  function batchNorm4d_(x, mean5, variance, offset, scale2, varianceEpsilon) {
+  function batchNorm4d_(x, mean5, variance, offset, scale, varianceEpsilon) {
     const $x = convertToTensor(x, "x", "batchNorm");
     const $mean = convertToTensor(mean5, "mean", "batchNorm");
     const $variance = convertToTensor(variance, "variance", "batchNorm");
     let $scale;
-    if (scale2 != null) {
-      $scale = convertToTensor(scale2, "scale", "batchNorm");
+    if (scale != null) {
+      $scale = convertToTensor(scale, "scale", "batchNorm");
     }
     let $offset;
     if (offset != null) {
@@ -12037,7 +17494,7 @@ Expected: ${expectedFlat}.`);
       }
     }
     candidates.sort(ascendingComparator);
-    const scale2 = softNmsSigma > 0 ? -0.5 / softNmsSigma : 0;
+    const scale = softNmsSigma > 0 ? -0.5 / softNmsSigma : 0;
     const selectedIndices = [];
     const selectedScores = [];
     while (selectedIndices.length < maxOutputSize && candidates.length > 0) {
@@ -12048,12 +17505,12 @@ Expected: ${expectedFlat}.`);
       }
       let ignoreCandidate = false;
       for (let j = selectedIndices.length - 1; j >= suppressBeginIndex; --j) {
-        const iou3 = intersectionOverUnion(boxes, boxIndex, selectedIndices[j]);
-        if (iou3 >= iouThreshold) {
+        const iou = intersectionOverUnion(boxes, boxIndex, selectedIndices[j]);
+        if (iou >= iouThreshold) {
           ignoreCandidate = true;
           break;
         }
-        candidate.score = candidate.score * suppressWeight(iouThreshold, scale2, iou3);
+        candidate.score = candidate.score * suppressWeight(iouThreshold, scale, iou);
         if (candidate.score <= scoreThreshold) {
           break;
         }
@@ -12106,9 +17563,9 @@ Expected: ${expectedFlat}.`);
     const intersectionArea = Math.max(intersectionYmax - intersectionYmin, 0) * Math.max(intersectionXmax - intersectionXmin, 0);
     return intersectionArea / (areaI + areaJ - intersectionArea);
   }
-  function suppressWeight(iouThreshold, scale2, iou3) {
-    const weight = Math.exp(scale2 * iou3 * iou3);
-    return iou3 <= iouThreshold ? weight : 0;
+  function suppressWeight(iouThreshold, scale, iou) {
+    const weight = Math.exp(scale * iou * iou);
+    return iou <= iouThreshold ? weight : 0;
   }
   function ascendingComparator(c1, c2) {
     return c1.score - c2.score || c1.score === c2.score && c2.boxIndex - c1.boxIndex;
@@ -14578,8 +20035,8 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     getClassName() {
       return this.constructor.className;
     }
-    static fromConfig(cls, config2) {
-      return new cls(config2);
+    static fromConfig(cls, config) {
+      return new cls(config);
     }
   }
   class SerializationMap {
@@ -14778,8 +20235,8 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
         epsilon: this.epsilon
       };
     }
-    static fromConfig(cls, config2) {
-      return new cls(config2["learningRate"], config2["rho"], config2["epsilon"]);
+    static fromConfig(cls, config) {
+      return new cls(config["learningRate"], config["rho"], config["epsilon"]);
     }
   }
   AdadeltaOptimizer.className = "Adadelta";
@@ -14853,8 +20310,8 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
         initialAccumulatorValue: this.initialAccumulatorValue
       };
     }
-    static fromConfig(cls, config2) {
-      return new cls(config2["learningRate"], config2["initialAccumulatorValue"]);
+    static fromConfig(cls, config) {
+      return new cls(config["learningRate"], config["initialAccumulatorValue"]);
     }
   }
   AdagradOptimizer.className = "Adagrad";
@@ -14973,8 +20430,8 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
         epsilon: this.epsilon
       };
     }
-    static fromConfig(cls, config2) {
-      return new cls(config2["learningRate"], config2["beta1"], config2["beta2"], config2["epsilon"]);
+    static fromConfig(cls, config) {
+      return new cls(config["learningRate"], config["beta1"], config["beta2"], config["epsilon"]);
     }
   }
   AdamOptimizer.className = "Adam";
@@ -15080,8 +20537,8 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
         decay: this.decay
       };
     }
-    static fromConfig(cls, config2) {
-      return new cls(config2["learningRate"], config2["beta1"], config2["beta2"], config2["epsilon"], config2["decay"]);
+    static fromConfig(cls, config) {
+      return new cls(config["learningRate"], config["beta1"], config["beta2"], config["epsilon"], config["decay"]);
     }
   }
   AdamaxOptimizer.className = "Adamax";
@@ -15147,8 +20604,8 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     getConfig() {
       return {learningRate: this.learningRate};
     }
-    static fromConfig(cls, config2) {
-      return new cls(config2["learningRate"]);
+    static fromConfig(cls, config) {
+      return new cls(config["learningRate"]);
     }
   }
   SGDOptimizer.className = "SGD";
@@ -15234,8 +20691,8 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
         useNesterov: this.useNesterov
       };
     }
-    static fromConfig(cls, config2) {
-      return new cls(config2["learningRate"], config2["momentum"], config2["useNesterov"]);
+    static fromConfig(cls, config) {
+      return new cls(config["learningRate"], config["momentum"], config["useNesterov"]);
     }
   }
   MomentumOptimizer.className = "Momentum";
@@ -15375,8 +20832,8 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
         centered: this.centered
       };
     }
-    static fromConfig(cls, config2) {
-      return new cls(config2["learningRate"], config2["decay"], config2["momentum"], config2["epsilon"], config2["centered"]);
+    static fromConfig(cls, config) {
+      return new cls(config["learningRate"], config["decay"], config["momentum"], config["epsilon"], config["centered"]);
     }
   }
   RMSPropOptimizer.className = "RMSProp";
@@ -16453,7 +21910,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     resizeNearestNeighborBackprop(dy, x, alignCorners) {
       return notYetImplemented("resizeNearestNeighborBackprop");
     }
-    batchNorm(x, mean5, variance, offset, scale2, varianceEpsilon) {
+    batchNorm(x, mean5, variance, offset, scale, varianceEpsilon) {
       return notYetImplemented("batchNorm");
     }
     localResponseNormalization4D(x, radius, bias, alpha, beta) {
@@ -17807,8 +23264,8 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     inputsToSave: ["x", "mean", "variance", "scale"],
     gradFunc: (dy, saved, attrs) => {
       const {varianceEpsilon} = attrs;
-      const [x, mean5, variance, scale2] = saved;
-      const scaleValue = scale2 == null ? scalar(1) : scale2;
+      const [x, mean5, variance, scale] = saved;
+      const scaleValue = scale == null ? scalar(1) : scale;
       const reductionAxes = getReductionAxes(mean5.shape, x.shape);
       const tileShape = [];
       if (mean5.rank === 1) {
@@ -19097,8 +24554,8 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
         x: () => {
           const mask = greater(x, scalar(0));
           const scaleAlpha = scalar(SELU_SCALEALPHA);
-          const scale2 = scalar(SELU_SCALE);
-          const greaterThanZeroDer = mul(dy, scale2);
+          const scale = scalar(SELU_SCALE);
+          const greaterThanZeroDer = mul(dy, scale);
           const lessEqualZeroDer = mul(mul(dy, scaleAlpha), exp(cast(x, "float32")));
           return where(mask, greaterThanZeroDer, lessEqualZeroDer);
         }
@@ -19889,3960 +25346,6 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
   ];
   for (const gradientConfig of gradConfigs) {
     registerGradient(gradientConfig);
-  }
-
-  // node_modules/@tensorflow/tfjs-core/dist/index.js
-  const dist_exports = {};
-  __export(dist_exports, {
-    Abs: () => Abs,
-    Acos: () => Acos,
-    Acosh: () => Acosh,
-    AdadeltaOptimizer: () => AdadeltaOptimizer,
-    AdagradOptimizer: () => AdagradOptimizer,
-    AdamOptimizer: () => AdamOptimizer,
-    AdamaxOptimizer: () => AdamaxOptimizer,
-    Add: () => Add,
-    AddN: () => AddN,
-    All: () => All,
-    Any: () => Any,
-    ArgMax: () => ArgMax,
-    ArgMin: () => ArgMin,
-    Asin: () => Asin,
-    Asinh: () => Asinh,
-    Atan: () => Atan,
-    Atan2: () => Atan2,
-    Atanh: () => Atanh,
-    AvgPool: () => AvgPool,
-    AvgPool3D: () => AvgPool3D,
-    AvgPool3DBackprop: () => AvgPool3DBackprop,
-    AvgPoolBackprop: () => AvgPoolBackprop,
-    BatchMatMul: () => BatchMatMul,
-    BatchToSpaceND: () => BatchToSpaceND,
-    BroadcastTo: () => BroadcastTo,
-    Cast: () => Cast,
-    Ceil: () => Ceil,
-    ClipByValue: () => ClipByValue,
-    Complex: () => Complex,
-    Concat: () => Concat,
-    Conv2D: () => Conv2D,
-    Conv2DBackpropFilter: () => Conv2DBackpropFilter,
-    Conv2DBackpropInput: () => Conv2DBackpropInput,
-    Conv3D: () => Conv3D,
-    Conv3DBackpropFilterV2: () => Conv3DBackpropFilterV2,
-    Conv3DBackpropInputV2: () => Conv3DBackpropInputV2,
-    Cos: () => Cos,
-    Cosh: () => Cosh,
-    CropAndResize: () => CropAndResize,
-    Cumsum: () => Cumsum,
-    DataStorage: () => DataStorage,
-    DepthToSpace: () => DepthToSpace,
-    DepthwiseConv2dNative: () => DepthwiseConv2dNative,
-    DepthwiseConv2dNativeBackpropFilter: () => DepthwiseConv2dNativeBackpropFilter,
-    DepthwiseConv2dNativeBackpropInput: () => DepthwiseConv2dNativeBackpropInput,
-    Diag: () => Diag,
-    Dilation2D: () => Dilation2D,
-    Dilation2DBackpropFilter: () => Dilation2DBackpropFilter,
-    Dilation2DBackpropInput: () => Dilation2DBackpropInput,
-    Div: () => Div,
-    ENV: () => ENV,
-    Elu: () => Elu,
-    EluGrad: () => EluGrad,
-    Environment: () => Environment,
-    Equal: () => Equal,
-    Erf: () => Erf,
-    Exp: () => Exp,
-    Expm1: () => Expm1,
-    FFT: () => FFT,
-    Fill: () => Fill,
-    FlipLeftRight: () => FlipLeftRight,
-    Floor: () => Floor,
-    FloorDiv: () => FloorDiv,
-    FromPixels: () => FromPixels,
-    FusedBatchNorm: () => FusedBatchNorm,
-    FusedConv2D: () => FusedConv2D,
-    FusedDepthwiseConv2D: () => FusedDepthwiseConv2D,
-    GatherNd: () => GatherNd,
-    GatherV2: () => GatherV2,
-    Greater: () => Greater,
-    GreaterEqual: () => GreaterEqual,
-    IFFT: () => IFFT,
-    Identity: () => Identity,
-    Imag: () => Imag,
-    IsFinite: () => IsFinite,
-    IsInf: () => IsInf,
-    IsNan: () => IsNan,
-    KernelBackend: () => KernelBackend,
-    LRN: () => LRN,
-    LRNBackprop: () => LRNBackprop,
-    Less: () => Less,
-    LessEqual: () => LessEqual,
-    LinSpace: () => LinSpace,
-    Log: () => Log,
-    Log1p: () => Log1p,
-    LogSoftmax: () => LogSoftmax,
-    LogicalAnd: () => LogicalAnd,
-    LogicalNot: () => LogicalNot,
-    LogicalOr: () => LogicalOr,
-    Max: () => Max,
-    MaxPool: () => MaxPool,
-    MaxPool3D: () => MaxPool3D,
-    MaxPool3DBackprop: () => MaxPool3DBackprop,
-    MaxPoolBackprop: () => MaxPoolBackprop,
-    MaxPoolWithArgmax: () => MaxPoolWithArgmax,
-    Maximum: () => Maximum,
-    Mean: () => Mean,
-    Min: () => Min,
-    Minimum: () => Minimum,
-    Mod: () => Mod,
-    MomentumOptimizer: () => MomentumOptimizer,
-    Multiply: () => Multiply,
-    Negate: () => Negate,
-    NonMaxSuppressionV3: () => NonMaxSuppressionV3,
-    NonMaxSuppressionV4: () => NonMaxSuppressionV4,
-    NonMaxSuppressionV5: () => NonMaxSuppressionV5,
-    NotEqual: () => NotEqual,
-    OneHot: () => OneHot,
-    OnesLike: () => OnesLike,
-    Optimizer: () => Optimizer,
-    PadV2: () => PadV2,
-    Pool: () => Pool,
-    Pow: () => Pow,
-    Prelu: () => Prelu,
-    Prod: () => Prod,
-    RMSPropOptimizer: () => RMSPropOptimizer,
-    Range: () => Range,
-    Rank: () => Rank,
-    Real: () => Real,
-    Reciprocal: () => Reciprocal,
-    Reduction: () => Reduction,
-    Relu: () => Relu,
-    Relu6: () => Relu6,
-    Reshape: () => Reshape,
-    ResizeBilinear: () => ResizeBilinear,
-    ResizeBilinearGrad: () => ResizeBilinearGrad,
-    ResizeNearestNeighbor: () => ResizeNearestNeighbor,
-    ResizeNearestNeighborGrad: () => ResizeNearestNeighborGrad,
-    Reverse: () => Reverse,
-    RotateWithOffset: () => RotateWithOffset,
-    Round: () => Round,
-    Rsqrt: () => Rsqrt,
-    SGDOptimizer: () => SGDOptimizer,
-    ScatterNd: () => ScatterNd,
-    SelectV2: () => SelectV2,
-    Selu: () => Selu,
-    Sigmoid: () => Sigmoid,
-    Sign: () => Sign,
-    Sin: () => Sin,
-    Sinh: () => Sinh,
-    Slice: () => Slice,
-    Softmax: () => Softmax,
-    Softplus: () => Softplus,
-    SpaceToBatchND: () => SpaceToBatchND,
-    SparseToDense: () => SparseToDense,
-    SplitV: () => SplitV,
-    Sqrt: () => Sqrt,
-    Square: () => Square,
-    SquaredDifference: () => SquaredDifference,
-    Step: () => Step,
-    StridedSlice: () => StridedSlice,
-    Sub: () => Sub,
-    Sum: () => Sum,
-    Tan: () => Tan,
-    Tanh: () => Tanh,
-    Tensor: () => Tensor,
-    TensorBuffer: () => TensorBuffer,
-    Tile: () => Tile,
-    TopK: () => TopK,
-    Transpose: () => Transpose,
-    Unpack: () => Unpack,
-    UnsortedSegmentSum: () => UnsortedSegmentSum,
-    Variable: () => Variable,
-    ZerosLike: () => ZerosLike,
-    _FusedMatMul: () => _FusedMatMul,
-    abs: () => abs,
-    acos: () => acos,
-    acosh: () => acosh,
-    add: () => add2,
-    addN: () => addN,
-    addStrict: () => addStrict,
-    all: () => all,
-    any: () => any,
-    argMax: () => argMax,
-    argMin: () => argMin,
-    asin: () => asin,
-    asinh: () => asinh,
-    atan: () => atan,
-    atan2: () => atan2,
-    atanh: () => atanh,
-    avgPool: () => avgPool,
-    avgPool3d: () => avgPool3d,
-    backend: () => backend,
-    backend_util: () => backend_util_exports,
-    basicLSTMCell: () => basicLSTMCell,
-    batchNorm: () => batchNorm,
-    batchNorm2d: () => batchNorm2d,
-    batchNorm3d: () => batchNorm3d,
-    batchNorm4d: () => batchNorm4d,
-    batchToSpaceND: () => batchToSpaceND,
-    booleanMaskAsync: () => booleanMaskAsync,
-    broadcastTo: () => broadcastTo,
-    browser: () => browser_exports,
-    buffer: () => buffer,
-    cast: () => cast,
-    ceil: () => ceil,
-    clipByValue: () => clipByValue,
-    clone: () => clone,
-    complex: () => complex,
-    concat: () => concat,
-    concat1d: () => concat1d,
-    concat2d: () => concat2d,
-    concat3d: () => concat3d,
-    concat4d: () => concat4d,
-    conv1d: () => conv1d,
-    conv2d: () => conv2d,
-    conv2dTranspose: () => conv2dTranspose,
-    conv3d: () => conv3d,
-    conv3dTranspose: () => conv3dTranspose,
-    cos: () => cos,
-    cosh: () => cosh,
-    cosineWindow: () => cosineWindow,
-    cumsum: () => cumsum,
-    customGrad: () => customGrad,
-    deprecationWarn: () => deprecationWarn,
-    depthToSpace: () => depthToSpace,
-    depthwiseConv2d: () => depthwiseConv2d,
-    device_util: () => device_util_exports,
-    diag: () => diag,
-    dilation2d: () => dilation2d,
-    disableDeprecationWarnings: () => disableDeprecationWarnings,
-    dispose: () => dispose,
-    disposeVariables: () => disposeVariables,
-    div: () => div,
-    divNoNan: () => divNoNan,
-    divStrict: () => divStrict,
-    dot: () => dot,
-    dropout: () => dropout,
-    elu: () => elu,
-    enableDebugMode: () => enableDebugMode,
-    enableProdMode: () => enableProdMode,
-    enclosingPowerOfTwo: () => enclosingPowerOfTwo,
-    engine: () => engine22,
-    env: () => env,
-    equal: () => equal,
-    equalStrict: () => equalStrict,
-    erf: () => erf,
-    exp: () => exp,
-    expandDims: () => expandDims,
-    expm1: () => expm1,
-    eye: () => eye,
-    fft: () => fft,
-    fill: () => fill,
-    findBackend: () => findBackend,
-    findBackendFactory: () => findBackendFactory,
-    floor: () => floor,
-    floorDiv: () => floorDiv,
-    fused: () => fused_ops_exports,
-    gather: () => gather,
-    gatherND: () => gatherND,
-    gather_util: () => gather_nd_util_exports,
-    getBackend: () => getBackend,
-    getGradient: () => getGradient,
-    getKernel: () => getKernel,
-    getKernelsForBackend: () => getKernelsForBackend,
-    grad: () => grad,
-    grads: () => grads,
-    greater: () => greater,
-    greaterEqual: () => greaterEqual,
-    greaterEqualStrict: () => greaterEqualStrict,
-    greaterStrict: () => greaterStrict,
-    ifft: () => ifft,
-    imag: () => imag,
-    image: () => image,
-    inTopKAsync: () => inTopKAsync,
-    io: () => io_exports,
-    irfft: () => irfft,
-    isFinite: () => isFinite2,
-    isInf: () => isInf,
-    isNaN: () => isNaN2,
-    keep: () => keep,
-    kernel_impls: () => kernel_impls_exports,
-    leakyRelu: () => leakyRelu,
-    less: () => less,
-    lessEqual: () => lessEqual,
-    lessEqualStrict: () => lessEqualStrict,
-    lessStrict: () => lessStrict,
-    linalg: () => linalg,
-    linspace: () => linspace,
-    localResponseNormalization: () => localResponseNormalization,
-    log: () => log,
-    log1p: () => log1p,
-    logSigmoid: () => logSigmoid,
-    logSoftmax: () => logSoftmax,
-    logSumExp: () => logSumExp,
-    logicalAnd: () => logicalAnd,
-    logicalNot: () => logicalNot,
-    logicalOr: () => logicalOr,
-    logicalXor: () => logicalXor,
-    losses: () => losses,
-    matMul: () => matMul,
-    math: () => math_exports,
-    max: () => max,
-    maxPool: () => maxPool,
-    maxPool3d: () => maxPool3d,
-    maxPoolWithArgmax: () => maxPoolWithArgmax,
-    maximum: () => maximum,
-    maximumStrict: () => maximumStrict,
-    mean: () => mean,
-    memory: () => memory,
-    min: () => min,
-    minimum: () => minimum,
-    minimumStrict: () => minimumStrict,
-    mod: () => mod,
-    modStrict: () => modStrict,
-    moments: () => moments,
-    movingAverage: () => movingAverage,
-    mul: () => mul,
-    mulStrict: () => mulStrict,
-    multiRNNCell: () => multiRNNCell,
-    multinomial: () => multinomial,
-    neg: () => neg,
-    nextFrame: () => nextFrame,
-    norm: () => norm,
-    notEqual: () => notEqual,
-    notEqualStrict: () => notEqualStrict,
-    oneHot: () => oneHot,
-    ones: () => ones2,
-    onesLike: () => onesLike,
-    op: () => op,
-    outerProduct: () => outerProduct,
-    pad: () => pad,
-    pad1d: () => pad1d,
-    pad2d: () => pad2d,
-    pad3d: () => pad3d,
-    pad4d: () => pad4d,
-    pool: () => pool,
-    pow: () => pow,
-    powStrict: () => powStrict,
-    prelu: () => prelu,
-    print: () => print,
-    prod: () => prod,
-    profile: () => profile,
-    rand: () => rand,
-    randomGamma: () => randomGamma,
-    randomNormal: () => randomNormal,
-    randomUniform: () => randomUniform,
-    range: () => range,
-    ready: () => ready,
-    real: () => real,
-    reciprocal: () => reciprocal,
-    registerBackend: () => registerBackend,
-    registerGradient: () => registerGradient,
-    registerKernel: () => registerKernel,
-    relu: () => relu,
-    relu6: () => relu6,
-    removeBackend: () => removeBackend,
-    reshape: () => reshape,
-    reverse: () => reverse,
-    reverse1d: () => reverse1d,
-    reverse2d: () => reverse2d,
-    reverse3d: () => reverse3d,
-    reverse4d: () => reverse4d,
-    rfft: () => rfft,
-    round: () => round,
-    rsqrt: () => rsqrt,
-    scalar: () => scalar,
-    scatterND: () => scatterND,
-    scatter_util: () => scatter_nd_util_exports,
-    selu: () => selu,
-    separableConv2d: () => separableConv2d,
-    serialization: () => serialization_exports,
-    setBackend: () => setBackend,
-    setPlatform: () => setPlatform,
-    setdiff1dAsync: () => setdiff1dAsync,
-    sigmoid: () => sigmoid,
-    sign: () => sign,
-    signal: () => signal,
-    sin: () => sin,
-    sinh: () => sinh,
-    slice: () => slice,
-    slice1d: () => slice1d,
-    slice2d: () => slice2d,
-    slice3d: () => slice3d,
-    slice4d: () => slice4d,
-    slice_util: () => slice_util_exports,
-    softmax: () => softmax,
-    softplus: () => softplus,
-    spaceToBatchND: () => spaceToBatchND,
-    sparseToDense: () => sparseToDense,
-    spectral: () => spectral,
-    split: () => split,
-    sqrt: () => sqrt,
-    square: () => square,
-    squaredDifference: () => squaredDifference,
-    squaredDifferenceStrict: () => squaredDifferenceStrict,
-    squeeze: () => squeeze,
-    stack: () => stack,
-    step: () => step,
-    stridedSlice: () => stridedSlice,
-    sub: () => sub,
-    subStrict: () => subStrict,
-    sum: () => sum2,
-    sumOutType: () => sumOutType,
-    tan: () => tan,
-    tanh: () => tanh2,
-    tensor: () => tensor5,
-    tensor1d: () => tensor1d,
-    tensor2d: () => tensor2d,
-    tensor3d: () => tensor3d,
-    tensor4d: () => tensor4d,
-    tensor5d: () => tensor5d,
-    tensor6d: () => tensor6d,
-    tensor_util: () => tensor_util_exports,
-    test_util: () => test_util_exports,
-    tidy: () => tidy,
-    tile: () => tile,
-    time: () => time,
-    topk: () => topk,
-    train: () => train,
-    transpose: () => transpose,
-    truncatedNormal: () => truncatedNormal,
-    unregisterGradient: () => unregisterGradient,
-    unregisterKernel: () => unregisterKernel,
-    unsortedSegmentSum: () => unsortedSegmentSum,
-    unstack: () => unstack,
-    upcastType: () => upcastType,
-    util: () => util_exports,
-    valueAndGrad: () => valueAndGrad,
-    valueAndGrads: () => valueAndGrads,
-    variable: () => variable,
-    variableGrads: () => variableGrads,
-    version_core: () => version,
-    where: () => where,
-    whereAsync: () => whereAsync,
-    zeros: () => zeros,
-    zerosLike: () => zerosLike
-  });
-  /**
-   * @license
-   * Copyright 2017 Google LLC. All Rights Reserved.
-   * Licensed under the Apache License, Version 2.0 (the "License");
-   * you may not use this file except in compliance with the License.
-   * You may obtain a copy of the License at
-   *
-   * http://www.apache.org/licenses/LICENSE-2.0
-   *
-   * Unless required by applicable law or agreed to in writing, software
-   * distributed under the License is distributed on an "AS IS" BASIS,
-   * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   * See the License for the specific language governing permissions and
-   * limitations under the License.
-   * =============================================================================
-   */
-
-  // build/draw/drawContour.js
-  function drawContour(ctx, points, isClosed = false) {
-    ctx.beginPath();
-    points.slice(1).forEach(({x, y}, prevIdx) => {
-      const from = points[prevIdx];
-      ctx.moveTo(from.x, from.y);
-      ctx.lineTo(x, y);
-    });
-    if (isClosed) {
-      const from = points[points.length - 1];
-      const to = points[0];
-      if (!from || !to) {
-        return;
-      }
-      ctx.moveTo(from.x, from.y);
-      ctx.lineTo(to.x, to.y);
-    }
-    ctx.stroke();
-  }
-
-  // build/classes/Dimensions.js
-  class Dimensions {
-    constructor(width, height) {
-      if (!isValidNumber(width) || !isValidNumber(height)) {
-        throw new Error(`Dimensions.constructor - expected width and height to be valid numbers, instead have ${JSON.stringify({width, height})}`);
-      }
-      this._width = width;
-      this._height = height;
-    }
-    get width() {
-      return this._width;
-    }
-    get height() {
-      return this._height;
-    }
-    reverse() {
-      return new Dimensions(1 / this.width, 1 / this.height);
-    }
-  }
-
-  // build/utils/index.js
-  const utils_exports = {};
-  __export(utils_exports, {
-    computeReshapedDimensions: () => computeReshapedDimensions,
-    getCenterPoint: () => getCenterPoint,
-    isDimensions: () => isDimensions,
-    isEven: () => isEven,
-    isFloat: () => isFloat,
-    isTensor: () => isTensor,
-    isTensor1D: () => isTensor1D,
-    isTensor2D: () => isTensor2D,
-    isTensor3D: () => isTensor3D,
-    isTensor4D: () => isTensor4D,
-    isValidNumber: () => isValidNumber,
-    isValidProbablitiy: () => isValidProbablitiy,
-    range: () => range4,
-    round: () => round3
-  });
-  function isTensor(tensor17, dim) {
-    return tensor17 instanceof Tensor && tensor17.shape.length === dim;
-  }
-  function isTensor1D(tensor17) {
-    return isTensor(tensor17, 1);
-  }
-  function isTensor2D(tensor17) {
-    return isTensor(tensor17, 2);
-  }
-  function isTensor3D(tensor17) {
-    return isTensor(tensor17, 3);
-  }
-  function isTensor4D(tensor17) {
-    return isTensor(tensor17, 4);
-  }
-  function isFloat(num) {
-    return num % 1 !== 0;
-  }
-  function isEven(num) {
-    return num % 2 === 0;
-  }
-  function round3(num, prec = 2) {
-    const f = Math.pow(10, prec);
-    return Math.floor(num * f) / f;
-  }
-  function isDimensions(obj) {
-    return obj && obj.width && obj.height;
-  }
-  function computeReshapedDimensions({width, height}, inputSize) {
-    const scale2 = inputSize / Math.max(height, width);
-    return new Dimensions(Math.round(width * scale2), Math.round(height * scale2));
-  }
-  function getCenterPoint(pts) {
-    return pts.reduce((sum26, pt) => sum26.add(pt), new Point(0, 0)).div(new Point(pts.length, pts.length));
-  }
-  function range4(num, start, step7) {
-    return Array(num).fill(0).map((_, i) => start + i * step7);
-  }
-  function isValidNumber(num) {
-    return !!num && num !== Infinity && num !== -Infinity && !isNaN(num) || num === 0;
-  }
-  function isValidProbablitiy(num) {
-    return isValidNumber(num) && 0 <= num && num <= 1;
-  }
-
-  // build/classes/Point.js
-  class Point {
-    constructor(x, y) {
-      this._x = x;
-      this._y = y;
-    }
-    get x() {
-      return this._x;
-    }
-    get y() {
-      return this._y;
-    }
-    add(pt) {
-      return new Point(this.x + pt.x, this.y + pt.y);
-    }
-    sub(pt) {
-      return new Point(this.x - pt.x, this.y - pt.y);
-    }
-    mul(pt) {
-      return new Point(this.x * pt.x, this.y * pt.y);
-    }
-    div(pt) {
-      return new Point(this.x / pt.x, this.y / pt.y);
-    }
-    abs() {
-      return new Point(Math.abs(this.x), Math.abs(this.y));
-    }
-    magnitude() {
-      return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2));
-    }
-    floor() {
-      return new Point(Math.floor(this.x), Math.floor(this.y));
-    }
-  }
-
-  // build/classes/Box.js
-  class Box {
-    constructor(_box, allowNegativeDimensions = true) {
-      const box = _box || {};
-      const isBbox = [box.left, box.top, box.right, box.bottom].every(isValidNumber);
-      const isRect = [box.x, box.y, box.width, box.height].every(isValidNumber);
-      if (!isRect && !isBbox) {
-        throw new Error(`Box.constructor - expected box to be IBoundingBox | IRect, instead have ${JSON.stringify(box)}`);
-      }
-      const [x, y, width, height] = isRect ? [box.x, box.y, box.width, box.height] : [box.left, box.top, box.right - box.left, box.bottom - box.top];
-      Box.assertIsValidBox({x, y, width, height}, "Box.constructor", allowNegativeDimensions);
-      this._x = x;
-      this._y = y;
-      this._width = width;
-      this._height = height;
-    }
-    static isRect(rect) {
-      return !!rect && [rect.x, rect.y, rect.width, rect.height].every(isValidNumber);
-    }
-    static assertIsValidBox(box, callee, allowNegativeDimensions = false) {
-      if (!Box.isRect(box)) {
-        throw new Error(`${callee} - invalid box: ${JSON.stringify(box)}, expected object with properties x, y, width, height`);
-      }
-      if (!allowNegativeDimensions && (box.width < 0 || box.height < 0)) {
-        throw new Error(`${callee} - width (${box.width}) and height (${box.height}) must be positive numbers`);
-      }
-    }
-    get x() {
-      return this._x;
-    }
-    get y() {
-      return this._y;
-    }
-    get width() {
-      return this._width;
-    }
-    get height() {
-      return this._height;
-    }
-    get left() {
-      return this.x;
-    }
-    get top() {
-      return this.y;
-    }
-    get right() {
-      return this.x + this.width;
-    }
-    get bottom() {
-      return this.y + this.height;
-    }
-    get area() {
-      return this.width * this.height;
-    }
-    get topLeft() {
-      return new Point(this.left, this.top);
-    }
-    get topRight() {
-      return new Point(this.right, this.top);
-    }
-    get bottomLeft() {
-      return new Point(this.left, this.bottom);
-    }
-    get bottomRight() {
-      return new Point(this.right, this.bottom);
-    }
-    round() {
-      const [x, y, width, height] = [this.x, this.y, this.width, this.height].map((val) => Math.round(val));
-      return new Box({x, y, width, height});
-    }
-    floor() {
-      const [x, y, width, height] = [this.x, this.y, this.width, this.height].map((val) => Math.floor(val));
-      return new Box({x, y, width, height});
-    }
-    toSquare() {
-      let {x, y, width, height} = this;
-      const diff = Math.abs(width - height);
-      if (width < height) {
-        x -= diff / 2;
-        width += diff;
-      }
-      if (height < width) {
-        y -= diff / 2;
-        height += diff;
-      }
-      return new Box({x, y, width, height});
-    }
-    rescale(s) {
-      const scaleX = isDimensions(s) ? s.width : s;
-      const scaleY = isDimensions(s) ? s.height : s;
-      return new Box({
-        x: this.x * scaleX,
-        y: this.y * scaleY,
-        width: this.width * scaleX,
-        height: this.height * scaleY
-      });
-    }
-    pad(padX, padY) {
-      let [x, y, width, height] = [
-        this.x - padX / 2,
-        this.y - padY / 2,
-        this.width + padX,
-        this.height + padY
-      ];
-      return new Box({x, y, width, height});
-    }
-    clipAtImageBorders(imgWidth, imgHeight) {
-      const {x, y, right, bottom} = this;
-      const clippedX = Math.max(x, 0);
-      const clippedY = Math.max(y, 0);
-      const newWidth = right - clippedX;
-      const newHeight = bottom - clippedY;
-      const clippedWidth = Math.min(newWidth, imgWidth - clippedX);
-      const clippedHeight = Math.min(newHeight, imgHeight - clippedY);
-      return new Box({x: clippedX, y: clippedY, width: clippedWidth, height: clippedHeight}).floor();
-    }
-    shift(sx, sy) {
-      const {width, height} = this;
-      const x = this.x + sx;
-      const y = this.y + sy;
-      return new Box({x, y, width, height});
-    }
-    padAtBorders(imageHeight, imageWidth) {
-      const w = this.width + 1;
-      const h = this.height + 1;
-      let dx = 1;
-      let dy = 1;
-      let edx = w;
-      let edy = h;
-      let x = this.left;
-      let y = this.top;
-      let ex = this.right;
-      let ey = this.bottom;
-      if (ex > imageWidth) {
-        edx = -ex + imageWidth + w;
-        ex = imageWidth;
-      }
-      if (ey > imageHeight) {
-        edy = -ey + imageHeight + h;
-        ey = imageHeight;
-      }
-      if (x < 1) {
-        edy = 2 - x;
-        x = 1;
-      }
-      if (y < 1) {
-        edy = 2 - y;
-        y = 1;
-      }
-      return {dy, edy, dx, edx, y, ey, x, ex, w, h};
-    }
-    calibrate(region) {
-      return new Box({
-        left: this.left + region.left * this.width,
-        top: this.top + region.top * this.height,
-        right: this.right + region.right * this.width,
-        bottom: this.bottom + region.bottom * this.height
-      }).toSquare().round();
-    }
-  }
-
-  // build/classes/BoundingBox.js
-  class BoundingBox extends Box {
-    constructor(left, top, right, bottom, allowNegativeDimensions = false) {
-      super({left, top, right, bottom}, allowNegativeDimensions);
-    }
-  }
-
-  // build/classes/ObjectDetection.js
-  class ObjectDetection {
-    constructor(score, classScore, className, relativeBox, imageDims) {
-      this._imageDims = new Dimensions(imageDims.width, imageDims.height);
-      this._score = score;
-      this._classScore = classScore;
-      this._className = className;
-      this._box = new Box(relativeBox).rescale(this._imageDims);
-    }
-    get score() {
-      return this._score;
-    }
-    get classScore() {
-      return this._classScore;
-    }
-    get className() {
-      return this._className;
-    }
-    get box() {
-      return this._box;
-    }
-    get imageDims() {
-      return this._imageDims;
-    }
-    get imageWidth() {
-      return this.imageDims.width;
-    }
-    get imageHeight() {
-      return this.imageDims.height;
-    }
-    get relativeBox() {
-      return new Box(this._box).rescale(this.imageDims.reverse());
-    }
-    forSize(width, height) {
-      return new ObjectDetection(this.score, this.classScore, this.className, this.relativeBox, {width, height});
-    }
-  }
-
-  // build/classes/FaceDetection.js
-  class FaceDetection extends ObjectDetection {
-    constructor(score, relativeBox, imageDims) {
-      super(score, score, "", relativeBox, imageDims);
-    }
-    forSize(width, height) {
-      const {score, relativeBox, imageDims} = super.forSize(width, height);
-      return new FaceDetection(score, relativeBox, imageDims);
-    }
-  }
-
-  // build/ops/iou.js
-  function iou(box1, box2, isIOU = true) {
-    const width = Math.max(0, Math.min(box1.right, box2.right) - Math.max(box1.left, box2.left));
-    const height = Math.max(0, Math.min(box1.bottom, box2.bottom) - Math.max(box1.top, box2.top));
-    const interSection = width * height;
-    return isIOU ? interSection / (box1.area + box2.area - interSection) : interSection / Math.min(box1.area, box2.area);
-  }
-
-  // build/ops/minBbox.js
-  function minBbox(pts) {
-    const xs = pts.map((pt) => pt.x);
-    const ys = pts.map((pt) => pt.y);
-    const minX = xs.reduce((min5, x) => x < min5 ? x : min5, Infinity);
-    const minY = ys.reduce((min5, y) => y < min5 ? y : min5, Infinity);
-    const maxX = xs.reduce((max7, x) => max7 < x ? x : max7, 0);
-    const maxY = ys.reduce((max7, y) => max7 < y ? y : max7, 0);
-    return new BoundingBox(minX, minY, maxX, maxY);
-  }
-
-  // build/ops/nonMaxSuppression.js
-  function nonMaxSuppression2(boxes, scores, iouThreshold, isIOU = true) {
-    let indicesSortedByScore = scores.map((score, boxIndex) => ({score, boxIndex})).sort((c1, c2) => c1.score - c2.score).map((c) => c.boxIndex);
-    const pick = [];
-    while (indicesSortedByScore.length > 0) {
-      const curr = indicesSortedByScore.pop();
-      pick.push(curr);
-      const indices = indicesSortedByScore;
-      const outputs = [];
-      for (let i = 0; i < indices.length; i++) {
-        const idx = indices[i];
-        const currBox = boxes[curr];
-        const idxBox = boxes[idx];
-        outputs.push(iou(currBox, idxBox, isIOU));
-      }
-      indicesSortedByScore = indicesSortedByScore.filter((_, j) => outputs[j] <= iouThreshold);
-    }
-    return pick;
-  }
-
-  // build/ops/normalize.js
-  function normalize(x, meanRgb) {
-    return tidy(() => {
-      const [r, g, b] = meanRgb;
-      const avg_r = fill([...x.shape.slice(0, 3), 1], r);
-      const avg_g = fill([...x.shape.slice(0, 3), 1], g);
-      const avg_b = fill([...x.shape.slice(0, 3), 1], b);
-      const avg_rgb = concat([avg_r, avg_g, avg_b], 3);
-      return sub(x, avg_rgb);
-    });
-  }
-
-  // build/ops/padToSquare.js
-  function padToSquare(imgTensor, isCenterImage = false) {
-    return tidy(() => {
-      const [height, width] = imgTensor.shape.slice(1);
-      if (height === width) {
-        return imgTensor;
-      }
-      const dimDiff = Math.abs(height - width);
-      const paddingAmount = Math.round(dimDiff * (isCenterImage ? 0.5 : 1));
-      const paddingAxis = height > width ? 2 : 1;
-      const createPaddingTensor = (paddingAmount2) => {
-        const paddingTensorShape = imgTensor.shape.slice();
-        paddingTensorShape[paddingAxis] = paddingAmount2;
-        return fill(paddingTensorShape, 0);
-      };
-      const paddingTensorAppend = createPaddingTensor(paddingAmount);
-      const remainingPaddingAmount = dimDiff - paddingTensorAppend.shape[paddingAxis];
-      const paddingTensorPrepend = isCenterImage && remainingPaddingAmount ? createPaddingTensor(remainingPaddingAmount) : null;
-      const tensorsToStack = [
-        paddingTensorPrepend,
-        imgTensor,
-        paddingTensorAppend
-      ].filter((t) => !!t).map((t) => t.toFloat());
-      return concat(tensorsToStack, paddingAxis);
-    });
-  }
-
-  // build/ops/shuffleArray.js
-  function shuffleArray(inputArray) {
-    const array = inputArray.slice();
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      const x = array[i];
-      array[i] = array[j];
-      array[j] = x;
-    }
-    return array;
-  }
-
-  // build/ops/index.js
-  function sigmoid6(x) {
-    return 1 / (1 + Math.exp(-x));
-  }
-  function inverseSigmoid(x) {
-    return Math.log(x / (1 - x));
-  }
-
-  // build/classes/Rect.js
-  class Rect extends Box {
-    constructor(x, y, width, height, allowNegativeDimensions = false) {
-      super({x, y, width, height}, allowNegativeDimensions);
-    }
-  }
-
-  // build/classes/FaceLandmarks.js
-  const relX = 0.5;
-  const relY = 0.43;
-  const relScale = 0.45;
-  class FaceLandmarks {
-    constructor(relativeFaceLandmarkPositions, imgDims, shift = new Point(0, 0)) {
-      const {width, height} = imgDims;
-      this._imgDims = new Dimensions(width, height);
-      this._shift = shift;
-      this._positions = relativeFaceLandmarkPositions.map((pt) => pt.mul(new Point(width, height)).add(shift));
-    }
-    get shift() {
-      return new Point(this._shift.x, this._shift.y);
-    }
-    get imageWidth() {
-      return this._imgDims.width;
-    }
-    get imageHeight() {
-      return this._imgDims.height;
-    }
-    get positions() {
-      return this._positions;
-    }
-    get relativePositions() {
-      return this._positions.map((pt) => pt.sub(this._shift).div(new Point(this.imageWidth, this.imageHeight)));
-    }
-    forSize(width, height) {
-      return new this.constructor(this.relativePositions, {width, height});
-    }
-    shiftBy(x, y) {
-      return new this.constructor(this.relativePositions, this._imgDims, new Point(x, y));
-    }
-    shiftByPoint(pt) {
-      return this.shiftBy(pt.x, pt.y);
-    }
-    align(detection, options = {}) {
-      if (detection) {
-        const box = detection instanceof FaceDetection ? detection.box.floor() : new Box(detection);
-        return this.shiftBy(box.x, box.y).align(null, options);
-      }
-      const {useDlibAlignment, minBoxPadding} = Object.assign({}, {useDlibAlignment: false, minBoxPadding: 0.2}, options);
-      if (useDlibAlignment) {
-        return this.alignDlib();
-      }
-      return this.alignMinBbox(minBoxPadding);
-    }
-    alignDlib() {
-      const centers = this.getRefPointsForAlignment();
-      const [leftEyeCenter, rightEyeCenter, mouthCenter] = centers;
-      const distToMouth = (pt) => mouthCenter.sub(pt).magnitude();
-      const eyeToMouthDist = (distToMouth(leftEyeCenter) + distToMouth(rightEyeCenter)) / 2;
-      const size = Math.floor(eyeToMouthDist / relScale);
-      const refPoint = getCenterPoint(centers);
-      const x = Math.floor(Math.max(0, refPoint.x - relX * size));
-      const y = Math.floor(Math.max(0, refPoint.y - relY * size));
-      return new Rect(x, y, Math.min(size, this.imageWidth + x), Math.min(size, this.imageHeight + y));
-    }
-    alignMinBbox(padding) {
-      const box = minBbox(this.positions);
-      return box.pad(box.width * padding, box.height * padding);
-    }
-    getRefPointsForAlignment() {
-      throw new Error("getRefPointsForAlignment not implemented by base class");
-    }
-  }
-
-  // build/classes/FaceLandmarks5.js
-  class FaceLandmarks5 extends FaceLandmarks {
-    getRefPointsForAlignment() {
-      const pts = this.positions;
-      return [
-        pts[0],
-        pts[1],
-        getCenterPoint([pts[3], pts[4]])
-      ];
-    }
-  }
-
-  // build/classes/FaceLandmarks68.js
-  class FaceLandmarks68 extends FaceLandmarks {
-    getJawOutline() {
-      return this.positions.slice(0, 17);
-    }
-    getLeftEyeBrow() {
-      return this.positions.slice(17, 22);
-    }
-    getRightEyeBrow() {
-      return this.positions.slice(22, 27);
-    }
-    getNose() {
-      return this.positions.slice(27, 36);
-    }
-    getLeftEye() {
-      return this.positions.slice(36, 42);
-    }
-    getRightEye() {
-      return this.positions.slice(42, 48);
-    }
-    getMouth() {
-      return this.positions.slice(48, 68);
-    }
-    getRefPointsForAlignment() {
-      return [
-        this.getLeftEye(),
-        this.getRightEye(),
-        this.getMouth()
-      ].map(getCenterPoint);
-    }
-  }
-
-  // build/classes/FaceMatch.js
-  class FaceMatch {
-    constructor(label, distance) {
-      this._label = label;
-      this._distance = distance;
-    }
-    get label() {
-      return this._label;
-    }
-    get distance() {
-      return this._distance;
-    }
-    toString(withDistance = true) {
-      return `${this.label}${withDistance ? ` (${round3(this.distance)})` : ""}`;
-    }
-  }
-
-  // build/classes/LabeledBox.js
-  class LabeledBox extends Box {
-    constructor(box, label) {
-      super(box);
-      this._label = label;
-    }
-    static assertIsValidLabeledBox(box, callee) {
-      Box.assertIsValidBox(box, callee);
-      if (!isValidNumber(box.label)) {
-        throw new Error(`${callee} - expected property label (${box.label}) to be a number`);
-      }
-    }
-    get label() {
-      return this._label;
-    }
-  }
-
-  // build/classes/LabeledFaceDescriptors.js
-  class LabeledFaceDescriptors {
-    constructor(label, descriptors) {
-      if (!(typeof label === "string")) {
-        throw new Error("LabeledFaceDescriptors - constructor expected label to be a string");
-      }
-      if (!Array.isArray(descriptors) || descriptors.some((desc) => !(desc instanceof Float32Array))) {
-        throw new Error("LabeledFaceDescriptors - constructor expected descriptors to be an array of Float32Array");
-      }
-      this._label = label;
-      this._descriptors = descriptors;
-    }
-    get label() {
-      return this._label;
-    }
-    get descriptors() {
-      return this._descriptors;
-    }
-    toJSON() {
-      return {
-        label: this.label,
-        descriptors: this.descriptors.map((d) => Array.from(d))
-      };
-    }
-    static fromJSON(json) {
-      const descriptors = json.descriptors.map((d) => {
-        return new Float32Array(d);
-      });
-      return new LabeledFaceDescriptors(json.label, descriptors);
-    }
-  }
-
-  // build/classes/PredictedBox.js
-  class PredictedBox extends LabeledBox {
-    constructor(box, label, score, classScore) {
-      super(box, label);
-      this._score = score;
-      this._classScore = classScore;
-    }
-    static assertIsValidPredictedBox(box, callee) {
-      LabeledBox.assertIsValidLabeledBox(box, callee);
-      if (!isValidProbablitiy(box.score) || !isValidProbablitiy(box.classScore)) {
-        throw new Error(`${callee} - expected properties score (${box.score}) and (${box.classScore}) to be a number between [0, 1]`);
-      }
-    }
-    get score() {
-      return this._score;
-    }
-    get classScore() {
-      return this._classScore;
-    }
-  }
-
-  // build/classes/index.js
-
-  // build/factories/WithFaceDetection.js
-  function isWithFaceDetection(obj) {
-    return obj["detection"] instanceof FaceDetection;
-  }
-  function extendWithFaceDetection(sourceObj, detection) {
-    const extension = {detection};
-    return Object.assign({}, sourceObj, extension);
-  }
-
-  // build/env/createBrowserEnv.js
-  function createBrowserEnv() {
-    const fetch3 = window["fetch"] || function() {
-      throw new Error("fetch - missing fetch implementation for browser environment");
-    };
-    const readFile = function() {
-      throw new Error("readFile - filesystem not available for browser environment");
-    };
-    return {
-      Canvas: HTMLCanvasElement,
-      CanvasRenderingContext2D,
-      Image: HTMLImageElement,
-      ImageData,
-      Video: HTMLVideoElement,
-      createCanvasElement: () => document.createElement("canvas"),
-      createImageElement: () => document.createElement("img"),
-      fetch: fetch3,
-      readFile
-    };
-  }
-
-  // build/env/createFileSystem.js
-  function createFileSystem(fs) {
-    let requireFsError = "";
-    if (!fs) {
-      try {
-        fs = require("fs");
-      } catch (err) {
-        requireFsError = err.toString();
-      }
-    }
-    const readFile = fs ? function(filePath) {
-      return new Promise((res, rej) => {
-        fs.readFile(filePath, function(err, buffer10) {
-          return err ? rej(err) : res(buffer10);
-        });
-      });
-    } : function() {
-      throw new Error(`readFile - failed to require fs in nodejs environment with error: ${requireFsError}`);
-    };
-    return {
-      readFile
-    };
-  }
-
-  // build/env/createNodejsEnv.js
-  function createNodejsEnv() {
-    const Canvas = global["Canvas"] || global["HTMLCanvasElement"];
-    const Image = global["Image"] || global["HTMLImageElement"];
-    const createCanvasElement = function() {
-      if (Canvas) {
-        return new Canvas();
-      }
-      throw new Error("createCanvasElement - missing Canvas implementation for nodejs environment");
-    };
-    const createImageElement = function() {
-      if (Image) {
-        return new Image();
-      }
-      throw new Error("createImageElement - missing Image implementation for nodejs environment");
-    };
-    const fetch3 = global["fetch"] || function() {
-      throw new Error("fetch - missing fetch implementation for nodejs environment");
-    };
-    const fileSystem = createFileSystem();
-    return {
-      Canvas: Canvas || class {
-      },
-      CanvasRenderingContext2D: global["CanvasRenderingContext2D"] || class {
-      },
-      Image: Image || class {
-      },
-      ImageData: global["ImageData"] || class {
-      },
-      Video: global["HTMLVideoElement"] || class {
-      },
-      createCanvasElement,
-      createImageElement,
-      fetch: fetch3,
-      ...fileSystem
-    };
-  }
-
-  // build/env/isBrowser.js
-  function isBrowser2() {
-    return typeof window === "object" && typeof document !== "undefined" && typeof HTMLImageElement !== "undefined" && typeof HTMLCanvasElement !== "undefined" && typeof HTMLVideoElement !== "undefined" && typeof ImageData !== "undefined" && typeof CanvasRenderingContext2D !== "undefined";
-  }
-
-  // build/dom/resolveInput.js
-  const env2 = __toModule(require_env());
-  function resolveInput(arg) {
-    if (!env2.env.isNodejs() && typeof arg === "string") {
-      return document.getElementById(arg);
-    }
-    return arg;
-  }
-
-  // build/dom/getContext2dOrThrow.js
-  const env4 = __toModule(require_env());
-  function getContext2dOrThrow(canvasArg) {
-    const {Canvas, CanvasRenderingContext2D: CanvasRenderingContext2D2} = env4.env.getEnv();
-    if (canvasArg instanceof CanvasRenderingContext2D2) {
-      return canvasArg;
-    }
-    const canvas = resolveInput(canvasArg);
-    if (!(canvas instanceof Canvas)) {
-      throw new Error("resolveContext2d - expected canvas to be of instance of Canvas");
-    }
-    const ctx = canvas.getContext("2d");
-    if (!ctx) {
-      throw new Error("resolveContext2d - canvas 2d context is null");
-    }
-    return ctx;
-  }
-
-  // build/draw/DrawTextField.js
-  var AnchorPosition;
-  (function(AnchorPosition2) {
-    AnchorPosition2["TOP_LEFT"] = "TOP_LEFT";
-    AnchorPosition2["TOP_RIGHT"] = "TOP_RIGHT";
-    AnchorPosition2["BOTTOM_LEFT"] = "BOTTOM_LEFT";
-    AnchorPosition2["BOTTOM_RIGHT"] = "BOTTOM_RIGHT";
-  })(AnchorPosition || (AnchorPosition = {}));
-  class DrawTextFieldOptions {
-    constructor(options = {}) {
-      const {anchorPosition, backgroundColor, fontColor, fontSize, fontStyle, padding} = options;
-      this.anchorPosition = anchorPosition || AnchorPosition.TOP_LEFT;
-      this.backgroundColor = backgroundColor || "rgba(0, 0, 0, 0.5)";
-      this.fontColor = fontColor || "rgba(255, 255, 255, 1)";
-      this.fontSize = fontSize || 14;
-      this.fontStyle = fontStyle || "Georgia";
-      this.padding = padding || 4;
-    }
-  }
-  class DrawTextField {
-    constructor(text, anchor, options = {}) {
-      this.text = typeof text === "string" ? [text] : text instanceof DrawTextField ? text.text : text;
-      this.anchor = anchor;
-      this.options = new DrawTextFieldOptions(options);
-    }
-    measureWidth(ctx) {
-      const {padding} = this.options;
-      return this.text.map((l) => ctx.measureText(l).width).reduce((w0, w1) => w0 < w1 ? w1 : w0, 0) + 2 * padding;
-    }
-    measureHeight() {
-      const {fontSize, padding} = this.options;
-      return this.text.length * fontSize + 2 * padding;
-    }
-    getUpperLeft(ctx, canvasDims) {
-      const {anchorPosition} = this.options;
-      const isShiftLeft = anchorPosition === AnchorPosition.BOTTOM_RIGHT || anchorPosition === AnchorPosition.TOP_RIGHT;
-      const isShiftTop = anchorPosition === AnchorPosition.BOTTOM_LEFT || anchorPosition === AnchorPosition.BOTTOM_RIGHT;
-      const textFieldWidth = this.measureWidth(ctx);
-      const textFieldHeight = this.measureHeight();
-      const x = isShiftLeft ? this.anchor.x - textFieldWidth : this.anchor.x;
-      const y = isShiftTop ? this.anchor.y - textFieldHeight : this.anchor.y;
-      if (canvasDims) {
-        const {width, height} = canvasDims;
-        const newX = Math.max(Math.min(x, width - textFieldWidth), 0);
-        const newY = Math.max(Math.min(y, height - textFieldHeight), 0);
-        return {x: newX, y: newY};
-      }
-      return {x, y};
-    }
-    draw(canvasArg) {
-      const canvas = resolveInput(canvasArg);
-      const ctx = getContext2dOrThrow(canvas);
-      const {backgroundColor, fontColor, fontSize, fontStyle, padding} = this.options;
-      ctx.font = `${fontSize}px ${fontStyle}`;
-      const maxTextWidth = this.measureWidth(ctx);
-      const textHeight = this.measureHeight();
-      ctx.fillStyle = backgroundColor;
-      const upperLeft = this.getUpperLeft(ctx, canvas);
-      ctx.fillRect(upperLeft.x, upperLeft.y, maxTextWidth, textHeight);
-      ctx.fillStyle = fontColor;
-      this.text.forEach((textLine, i) => {
-        const x = padding + upperLeft.x;
-        const y = padding + upperLeft.y + (i + 1) * fontSize;
-        ctx.fillText(textLine, x, y);
-      });
-    }
-  }
-
-  // build/draw/DrawBox.js
-  class DrawBoxOptions {
-    constructor(options = {}) {
-      const {boxColor, lineWidth, label, drawLabelOptions} = options;
-      this.boxColor = boxColor || "rgba(0, 0, 255, 1)";
-      this.lineWidth = lineWidth || 2;
-      this.label = label;
-      const defaultDrawLabelOptions = {
-        anchorPosition: AnchorPosition.BOTTOM_LEFT,
-        backgroundColor: this.boxColor
-      };
-      this.drawLabelOptions = new DrawTextFieldOptions(Object.assign({}, defaultDrawLabelOptions, drawLabelOptions));
-    }
-  }
-  class DrawBox {
-    constructor(box, options = {}) {
-      this.box = new Box(box);
-      this.options = new DrawBoxOptions(options);
-    }
-    draw(canvasArg) {
-      const ctx = getContext2dOrThrow(canvasArg);
-      const {boxColor, lineWidth} = this.options;
-      const {x, y, width, height} = this.box;
-      ctx.strokeStyle = boxColor;
-      ctx.lineWidth = lineWidth;
-      ctx.strokeRect(x, y, width, height);
-      const {label} = this.options;
-      if (label) {
-        new DrawTextField([label], {x: x - lineWidth / 2, y}, this.options.drawLabelOptions).draw(canvasArg);
-      }
-    }
-  }
-
-  // build/draw/drawDetections.js
-  function drawDetections(canvasArg, detections) {
-    const detectionsArray = Array.isArray(detections) ? detections : [detections];
-    detectionsArray.forEach((det) => {
-      const score = det instanceof FaceDetection ? det.score : isWithFaceDetection(det) ? det.detection.score : void 0;
-      const box = det instanceof FaceDetection ? det.box : isWithFaceDetection(det) ? det.detection.box : new Box(det);
-      const label = score ? `${round3(score)}` : void 0;
-      new DrawBox(box, {label}).draw(canvasArg);
-    });
-  }
-
-  // build/dom/isMediaLoaded.js
-  const env6 = __toModule(require_env());
-  function isMediaLoaded(media) {
-    const {Image, Video} = env6.env.getEnv();
-    return media instanceof Image && media.complete || media instanceof Video && media.readyState >= 3;
-  }
-
-  // build/dom/awaitMediaLoaded.js
-  const env8 = __toModule(require_env());
-  function awaitMediaLoaded(media) {
-    return new Promise((resolve, reject) => {
-      if (media instanceof env8.env.getEnv().Canvas || isMediaLoaded(media)) {
-        return resolve();
-      }
-      function onLoad(e) {
-        if (!e.currentTarget)
-          return;
-        e.currentTarget.removeEventListener("load", onLoad);
-        e.currentTarget.removeEventListener("error", onError);
-        resolve(e);
-      }
-      function onError(e) {
-        if (!e.currentTarget)
-          return;
-        e.currentTarget.removeEventListener("load", onLoad);
-        e.currentTarget.removeEventListener("error", onError);
-        reject(e);
-      }
-      media.addEventListener("load", onLoad);
-      media.addEventListener("error", onError);
-    });
-  }
-
-  // build/dom/bufferToImage.js
-  const env10 = __toModule(require_env());
-  function bufferToImage(buf) {
-    return new Promise((resolve, reject) => {
-      if (!(buf instanceof Blob)) {
-        return reject("bufferToImage - expected buf to be of type: Blob");
-      }
-      const reader = new FileReader();
-      reader.onload = () => {
-        if (typeof reader.result !== "string") {
-          return reject("bufferToImage - expected reader.result to be a string, in onload");
-        }
-        const img = env10.env.getEnv().createImageElement();
-        img.onload = () => resolve(img);
-        img.onerror = reject;
-        img.src = reader.result;
-      };
-      reader.onerror = reject;
-      reader.readAsDataURL(buf);
-    });
-  }
-
-  // build/dom/getMediaDimensions.js
-  const env12 = __toModule(require_env());
-  function getMediaDimensions(input) {
-    const {Image, Video} = env12.env.getEnv();
-    if (input instanceof Image) {
-      return new Dimensions(input.naturalWidth, input.naturalHeight);
-    }
-    if (input instanceof Video) {
-      return new Dimensions(input.videoWidth, input.videoHeight);
-    }
-    return new Dimensions(input.width, input.height);
-  }
-
-  // build/dom/createCanvas.js
-  const env14 = __toModule(require_env());
-  function createCanvas({width, height}) {
-    const {createCanvasElement} = env14.env.getEnv();
-    const canvas = createCanvasElement();
-    canvas.width = width;
-    canvas.height = height;
-    return canvas;
-  }
-  function createCanvasFromMedia(media, dims) {
-    const {ImageData: ImageData2} = env14.env.getEnv();
-    if (!(media instanceof ImageData2) && !isMediaLoaded(media)) {
-      throw new Error("createCanvasFromMedia - media has not finished loading yet");
-    }
-    const {width, height} = dims || getMediaDimensions(media);
-    const canvas = createCanvas({width, height});
-    if (media instanceof ImageData2) {
-      getContext2dOrThrow(canvas).putImageData(media, 0, 0);
-    } else {
-      getContext2dOrThrow(canvas).drawImage(media, 0, 0, width, height);
-    }
-    return canvas;
-  }
-
-  // build/dom/imageTensorToCanvas.js
-  const env16 = __toModule(require_env());
-  async function imageTensorToCanvas(imgTensor, canvas) {
-    const targetCanvas = canvas || env16.env.getEnv().createCanvasElement();
-    const [height, width, numChannels] = imgTensor.shape.slice(isTensor4D(imgTensor) ? 1 : 0);
-    const imgTensor3D = tidy(() => imgTensor.as3D(height, width, numChannels).toInt());
-    await browser_exports.toPixels(imgTensor3D, targetCanvas);
-    imgTensor3D.dispose();
-    return targetCanvas;
-  }
-
-  // build/dom/isMediaElement.js
-  const env18 = __toModule(require_env());
-  function isMediaElement(input) {
-    const {Image, Canvas, Video} = env18.env.getEnv();
-    return input instanceof Image || input instanceof Canvas || input instanceof Video;
-  }
-
-  // build/dom/imageToSquare.js
-  const env20 = __toModule(require_env());
-  function imageToSquare(input, inputSize, centerImage = false) {
-    const {Image, Canvas} = env20.env.getEnv();
-    if (!(input instanceof Image || input instanceof Canvas)) {
-      throw new Error("imageToSquare - expected arg0 to be HTMLImageElement | HTMLCanvasElement");
-    }
-    const dims = getMediaDimensions(input);
-    const scale2 = inputSize / Math.max(dims.height, dims.width);
-    const width = scale2 * dims.width;
-    const height = scale2 * dims.height;
-    const targetCanvas = createCanvas({width: inputSize, height: inputSize});
-    const inputCanvas = input instanceof Canvas ? input : createCanvasFromMedia(input);
-    const offset = Math.abs(width - height) / 2;
-    const dx = centerImage && width < height ? offset : 0;
-    const dy = centerImage && height < width ? offset : 0;
-    getContext2dOrThrow(targetCanvas).drawImage(inputCanvas, dx, dy, width, height);
-    return targetCanvas;
-  }
-
-  // build/dom/NetInput.js
-  const env22 = __toModule(require_env());
-  class NetInput {
-    constructor(inputs, treatAsBatchInput = false) {
-      this._imageTensors = [];
-      this._canvases = [];
-      this._treatAsBatchInput = false;
-      this._inputDimensions = [];
-      if (!Array.isArray(inputs)) {
-        throw new Error(`NetInput.constructor - expected inputs to be an Array of TResolvedNetInput or to be instanceof tf.Tensor4D, instead have ${inputs}`);
-      }
-      this._treatAsBatchInput = treatAsBatchInput;
-      this._batchSize = inputs.length;
-      inputs.forEach((input, idx) => {
-        if (isTensor3D(input)) {
-          this._imageTensors[idx] = input;
-          this._inputDimensions[idx] = input.shape;
-          return;
-        }
-        if (isTensor4D(input)) {
-          const batchSize = input.shape[0];
-          if (batchSize !== 1) {
-            throw new Error(`NetInput - tf.Tensor4D with batchSize ${batchSize} passed, but not supported in input array`);
-          }
-          this._imageTensors[idx] = input;
-          this._inputDimensions[idx] = input.shape.slice(1);
-          return;
-        }
-        const canvas = input instanceof env22.env.getEnv().Canvas ? input : createCanvasFromMedia(input);
-        this._canvases[idx] = canvas;
-        this._inputDimensions[idx] = [canvas.height, canvas.width, 3];
-      });
-    }
-    get imageTensors() {
-      return this._imageTensors;
-    }
-    get canvases() {
-      return this._canvases;
-    }
-    get isBatchInput() {
-      return this.batchSize > 1 || this._treatAsBatchInput;
-    }
-    get batchSize() {
-      return this._batchSize;
-    }
-    get inputDimensions() {
-      return this._inputDimensions;
-    }
-    get inputSize() {
-      return this._inputSize;
-    }
-    get reshapedInputDimensions() {
-      return range4(this.batchSize, 0, 1).map((_, batchIdx) => this.getReshapedInputDimensions(batchIdx));
-    }
-    getInput(batchIdx) {
-      return this.canvases[batchIdx] || this.imageTensors[batchIdx];
-    }
-    getInputDimensions(batchIdx) {
-      return this._inputDimensions[batchIdx];
-    }
-    getInputHeight(batchIdx) {
-      return this._inputDimensions[batchIdx][0];
-    }
-    getInputWidth(batchIdx) {
-      return this._inputDimensions[batchIdx][1];
-    }
-    getReshapedInputDimensions(batchIdx) {
-      if (typeof this.inputSize !== "number") {
-        throw new Error("getReshapedInputDimensions - inputSize not set, toBatchTensor has not been called yet");
-      }
-      const width = this.getInputWidth(batchIdx);
-      const height = this.getInputHeight(batchIdx);
-      return computeReshapedDimensions({width, height}, this.inputSize);
-    }
-    toBatchTensor(inputSize, isCenterInputs = true) {
-      this._inputSize = inputSize;
-      return tidy(() => {
-        const inputTensors = range4(this.batchSize, 0, 1).map((batchIdx) => {
-          const input = this.getInput(batchIdx);
-          if (input instanceof Tensor) {
-            let imgTensor = isTensor4D(input) ? input : input.expandDims();
-            imgTensor = padToSquare(imgTensor, isCenterInputs);
-            if (imgTensor.shape[1] !== inputSize || imgTensor.shape[2] !== inputSize) {
-              imgTensor = image.resizeBilinear(imgTensor, [inputSize, inputSize]);
-            }
-            return imgTensor.as3D(inputSize, inputSize, 3);
-          }
-          if (input instanceof env22.env.getEnv().Canvas) {
-            return browser_exports.fromPixels(imageToSquare(input, inputSize, isCenterInputs));
-          }
-          throw new Error(`toBatchTensor - at batchIdx ${batchIdx}, expected input to be instanceof tf.Tensor or instanceof HTMLCanvasElement, instead have ${input}`);
-        });
-        const batchTensor = stack(inputTensors.map((t) => t.toFloat())).as4D(this.batchSize, inputSize, inputSize, 3);
-        return batchTensor;
-      });
-    }
-  }
-
-  // build/dom/toNetInput.js
-  async function toNetInput(inputs) {
-    if (inputs instanceof NetInput) {
-      return inputs;
-    }
-    let inputArgArray = Array.isArray(inputs) ? inputs : [inputs];
-    if (!inputArgArray.length) {
-      throw new Error("toNetInput - empty array passed as input");
-    }
-    const getIdxHint = (idx) => Array.isArray(inputs) ? ` at input index ${idx}:` : "";
-    const inputArray = inputArgArray.map(resolveInput);
-    inputArray.forEach((input, i) => {
-      if (!isMediaElement(input) && !isTensor3D(input) && !isTensor4D(input)) {
-        if (typeof inputArgArray[i] === "string") {
-          throw new Error(`toNetInput -${getIdxHint(i)} string passed, but could not resolve HTMLElement for element id ${inputArgArray[i]}`);
-        }
-        throw new Error(`toNetInput -${getIdxHint(i)} expected media to be of type HTMLImageElement | HTMLVideoElement | HTMLCanvasElement | tf.Tensor3D, or to be an element id`);
-      }
-      if (isTensor4D(input)) {
-        const batchSize = input.shape[0];
-        if (batchSize !== 1) {
-          throw new Error(`toNetInput -${getIdxHint(i)} tf.Tensor4D with batchSize ${batchSize} passed, but not supported in input array`);
-        }
-      }
-    });
-    await Promise.all(inputArray.map((input) => isMediaElement(input) && awaitMediaLoaded(input)));
-    return new NetInput(inputArray, Array.isArray(inputs));
-  }
-
-  // build/dom/extractFaces.js
-  const env24 = __toModule(require_env());
-  async function extractFaces(input, detections) {
-    const {Canvas} = env24.env.getEnv();
-    let canvas = input;
-    if (!(input instanceof Canvas)) {
-      const netInput = await toNetInput(input);
-      if (netInput.batchSize > 1) {
-        throw new Error("extractFaces - batchSize > 1 not supported");
-      }
-      const tensorOrCanvas = netInput.getInput(0);
-      canvas = tensorOrCanvas instanceof Canvas ? tensorOrCanvas : await imageTensorToCanvas(tensorOrCanvas);
-    }
-    const ctx = getContext2dOrThrow(canvas);
-    const boxes = detections.map((det) => det instanceof FaceDetection ? det.forSize(canvas.width, canvas.height).box.floor() : det).map((box) => box.clipAtImageBorders(canvas.width, canvas.height));
-    return boxes.map(({x, y, width, height}) => {
-      const faceImg = createCanvas({width, height});
-      getContext2dOrThrow(faceImg).putImageData(ctx.getImageData(x, y, width, height), 0, 0);
-      return faceImg;
-    });
-  }
-
-  // build/dom/extractFaceTensors.js
-  async function extractFaceTensors(imageTensor, detections) {
-    if (!isTensor3D(imageTensor) && !isTensor4D(imageTensor)) {
-      throw new Error("extractFaceTensors - expected image tensor to be 3D or 4D");
-    }
-    if (isTensor4D(imageTensor) && imageTensor.shape[0] > 1) {
-      throw new Error("extractFaceTensors - batchSize > 1 not supported");
-    }
-    return tidy(() => {
-      const [imgHeight, imgWidth, numChannels] = imageTensor.shape.slice(isTensor4D(imageTensor) ? 1 : 0);
-      const boxes = detections.map((det) => det instanceof FaceDetection ? det.forSize(imgWidth, imgHeight).box : det).map((box) => box.clipAtImageBorders(imgWidth, imgHeight));
-      const faceTensors = boxes.map(({x, y, width, height}) => slice3d(imageTensor.as3D(imgHeight, imgWidth, numChannels), [y, x, 0], [height, width, numChannels]));
-      return faceTensors;
-    });
-  }
-
-  // build/dom/fetchOrThrow.js
-  const env26 = __toModule(require_env());
-  async function fetchOrThrow(url, init) {
-    const fetch3 = env26.env.getEnv().fetch;
-    const res = await fetch3(url, init);
-    if (!(res.status < 400)) {
-      throw new Error(`failed to fetch: (${res.status}) ${res.statusText}, from url: ${res.url}`);
-    }
-    return res;
-  }
-
-  // build/dom/fetchImage.js
-  async function fetchImage(uri) {
-    const res = await fetchOrThrow(uri);
-    const blob = await res.blob();
-    if (!blob.type.startsWith("image/")) {
-      throw new Error(`fetchImage - expected blob type to be of type image/*, instead have: ${blob.type}, for url: ${res.url}`);
-    }
-    return bufferToImage(blob);
-  }
-
-  // build/dom/fetchJson.js
-  async function fetchJson(uri) {
-    return (await fetchOrThrow(uri)).json();
-  }
-
-  // build/dom/fetchNetWeights.js
-  async function fetchNetWeights(uri) {
-    return new Float32Array(await (await fetchOrThrow(uri)).arrayBuffer());
-  }
-
-  // build/common/getModelUris.js
-  function getModelUris(uri, defaultModelName) {
-    const defaultManifestFilename = `${defaultModelName}-weights_manifest.json`;
-    if (!uri) {
-      return {
-        modelBaseUri: "",
-        manifestUri: defaultManifestFilename
-      };
-    }
-    if (uri === "/") {
-      return {
-        modelBaseUri: "/",
-        manifestUri: `/${defaultManifestFilename}`
-      };
-    }
-    const protocol = uri.startsWith("http://") ? "http://" : uri.startsWith("https://") ? "https://" : "";
-    uri = uri.replace(protocol, "");
-    const parts = uri.split("/").filter((s) => s);
-    const manifestFile = uri.endsWith(".json") ? parts[parts.length - 1] : defaultManifestFilename;
-    let modelBaseUri = protocol + (uri.endsWith(".json") ? parts.slice(0, parts.length - 1) : parts).join("/");
-    modelBaseUri = uri.startsWith("/") ? `/${modelBaseUri}` : modelBaseUri;
-    return {
-      modelBaseUri,
-      manifestUri: modelBaseUri === "/" ? `/${manifestFile}` : `${modelBaseUri}/${manifestFile}`
-    };
-  }
-
-  // build/dom/loadWeightMap.js
-  async function loadWeightMap(uri, defaultModelName) {
-    const {manifestUri, modelBaseUri} = getModelUris(uri, defaultModelName);
-    const manifest = await fetchJson(manifestUri);
-    return io_exports.loadWeights(manifest, modelBaseUri);
-  }
-
-  // build/dom/matchDimensions.js
-  function matchDimensions(input, reference, useMediaDimensions = false) {
-    const {width, height} = useMediaDimensions ? getMediaDimensions(reference) : reference;
-    input.width = width;
-    input.height = height;
-    return {width, height};
-  }
-
-  // build/NeuralNetwork.js
-  const dom = __toModule(require_dom());
-  const env28 = __toModule(require_env());
-  class NeuralNetwork {
-    constructor(_name) {
-      this._name = _name;
-      this._params = void 0;
-      this._paramMappings = [];
-    }
-    get params() {
-      return this._params;
-    }
-    get paramMappings() {
-      return this._paramMappings;
-    }
-    get isLoaded() {
-      return !!this.params;
-    }
-    getParamFromPath(paramPath) {
-      const {obj, objProp} = this.traversePropertyPath(paramPath);
-      return obj[objProp];
-    }
-    reassignParamFromPath(paramPath, tensor17) {
-      const {obj, objProp} = this.traversePropertyPath(paramPath);
-      obj[objProp].dispose();
-      obj[objProp] = tensor17;
-    }
-    getParamList() {
-      return this._paramMappings.map(({paramPath}) => ({
-        path: paramPath,
-        tensor: this.getParamFromPath(paramPath)
-      }));
-    }
-    getTrainableParams() {
-      return this.getParamList().filter((param) => param.tensor instanceof Variable);
-    }
-    getFrozenParams() {
-      return this.getParamList().filter((param) => !(param.tensor instanceof Variable));
-    }
-    variable() {
-      this.getFrozenParams().forEach(({path, tensor: tensor17}) => {
-        this.reassignParamFromPath(path, tensor17.variable());
-      });
-    }
-    freeze() {
-      this.getTrainableParams().forEach(({path, tensor: variable3}) => {
-        const tensor17 = tensor5(variable3.dataSync());
-        variable3.dispose();
-        this.reassignParamFromPath(path, tensor17);
-      });
-    }
-    dispose(throwOnRedispose = true) {
-      this.getParamList().forEach((param) => {
-        if (throwOnRedispose && param.tensor.isDisposed) {
-          throw new Error(`param tensor has already been disposed for path ${param.path}`);
-        }
-        param.tensor.dispose();
-      });
-      this._params = void 0;
-    }
-    serializeParams() {
-      return new Float32Array(this.getParamList().map(({tensor: tensor17}) => Array.from(tensor17.dataSync())).reduce((flat, arr) => flat.concat(arr)));
-    }
-    async load(weightsOrUrl) {
-      if (weightsOrUrl instanceof Float32Array) {
-        this.extractWeights(weightsOrUrl);
-        return;
-      }
-      await this.loadFromUri(weightsOrUrl);
-    }
-    async loadFromUri(uri) {
-      if (uri && typeof uri !== "string") {
-        throw new Error(`${this._name}.loadFromUri - expected model uri`);
-      }
-      const weightMap = await dom.loadWeightMap(uri, this.getDefaultModelName());
-      this.loadFromWeightMap(weightMap);
-    }
-    async loadFromDisk(filePath) {
-      if (filePath && typeof filePath !== "string") {
-        throw new Error(`${this._name}.loadFromDisk - expected model file path`);
-      }
-      const {readFile} = env28.env.getEnv();
-      const {manifestUri, modelBaseUri} = getModelUris(filePath, this.getDefaultModelName());
-      const fetchWeightsFromDisk = (filePaths) => Promise.all(filePaths.map((filePath2) => readFile(filePath2).then((buf) => buf.buffer)));
-      const loadWeights2 = io_exports.weightsLoaderFactory(fetchWeightsFromDisk);
-      const manifest = JSON.parse((await readFile(manifestUri)).toString());
-      const weightMap = await loadWeights2(manifest, modelBaseUri);
-      this.loadFromWeightMap(weightMap);
-    }
-    loadFromWeightMap(weightMap) {
-      const {paramMappings, params} = this.extractParamsFromWeigthMap(weightMap);
-      this._paramMappings = paramMappings;
-      this._params = params;
-    }
-    extractWeights(weights) {
-      const {paramMappings, params} = this.extractParams(weights);
-      this._paramMappings = paramMappings;
-      this._params = params;
-    }
-    traversePropertyPath(paramPath) {
-      if (!this.params) {
-        throw new Error(`traversePropertyPath - model has no loaded params`);
-      }
-      const result = paramPath.split("/").reduce((res, objProp2) => {
-        if (!res.nextObj.hasOwnProperty(objProp2)) {
-          throw new Error(`traversePropertyPath - object does not have property ${objProp2}, for path ${paramPath}`);
-        }
-        return {obj: res.nextObj, objProp: objProp2, nextObj: res.nextObj[objProp2]};
-      }, {nextObj: this.params});
-      const {obj, objProp} = result;
-      if (!obj || !objProp || !(obj[objProp] instanceof Tensor)) {
-        throw new Error(`traversePropertyPath - parameter is not a tensor, for path ${paramPath}`);
-      }
-      return {obj, objProp};
-    }
-  }
-
-  // build/common/depthwiseSeparableConv.js
-  function depthwiseSeparableConv(x, params, stride) {
-    return tidy(() => {
-      let out = separableConv2d(x, params.depthwise_filter, params.pointwise_filter, stride, "same");
-      out = add2(out, params.bias);
-      return out;
-    });
-  }
-
-  // build/faceFeatureExtractor/denseBlock.js
-  function denseBlock3(x, denseBlockParams, isFirstLayer = false) {
-    return tidy(() => {
-      const out1 = relu(isFirstLayer ? add2(conv2d(x, denseBlockParams.conv0.filters, [2, 2], "same"), denseBlockParams.conv0.bias) : depthwiseSeparableConv(x, denseBlockParams.conv0, [2, 2]));
-      const out2 = depthwiseSeparableConv(out1, denseBlockParams.conv1, [1, 1]);
-      const in3 = relu(add2(out1, out2));
-      const out3 = depthwiseSeparableConv(in3, denseBlockParams.conv2, [1, 1]);
-      return relu(add2(out1, add2(out2, out3)));
-    });
-  }
-  function denseBlock4(x, denseBlockParams, isFirstLayer = false, isScaleDown = true) {
-    return tidy(() => {
-      const out1 = relu(isFirstLayer ? add2(conv2d(x, denseBlockParams.conv0.filters, isScaleDown ? [2, 2] : [1, 1], "same"), denseBlockParams.conv0.bias) : depthwiseSeparableConv(x, denseBlockParams.conv0, isScaleDown ? [2, 2] : [1, 1]));
-      const out2 = depthwiseSeparableConv(out1, denseBlockParams.conv1, [1, 1]);
-      const in3 = relu(add2(out1, out2));
-      const out3 = depthwiseSeparableConv(in3, denseBlockParams.conv2, [1, 1]);
-      const in4 = relu(add2(out1, add2(out2, out3)));
-      const out4 = depthwiseSeparableConv(in4, denseBlockParams.conv3, [1, 1]);
-      return relu(add2(out1, add2(out2, add2(out3, out4))));
-    });
-  }
-
-  // build/common/convLayer.js
-  function convLayer(x, params, padding = "same", withRelu = false) {
-    return tidy(() => {
-      const out = add2(conv2d(x, params.filters, [1, 1], padding), params.bias);
-      return withRelu ? relu(out) : out;
-    });
-  }
-
-  // build/common/disposeUnusedWeightTensors.js
-  function disposeUnusedWeightTensors(weightMap, paramMappings) {
-    Object.keys(weightMap).forEach((path) => {
-      if (!paramMappings.some((pm) => pm.originalPath === path)) {
-        weightMap[path].dispose();
-      }
-    });
-  }
-
-  // build/common/extractConvParamsFactory.js
-  function extractConvParamsFactory(extractWeights, paramMappings) {
-    return function(channelsIn, channelsOut, filterSize, mappedPrefix) {
-      const filters = tensor4d(extractWeights(channelsIn * channelsOut * filterSize * filterSize), [filterSize, filterSize, channelsIn, channelsOut]);
-      const bias = tensor1d(extractWeights(channelsOut));
-      paramMappings.push({paramPath: `${mappedPrefix}/filters`}, {paramPath: `${mappedPrefix}/bias`});
-      return {filters, bias};
-    };
-  }
-
-  // build/common/extractFCParamsFactory.js
-  function extractFCParamsFactory(extractWeights, paramMappings) {
-    return function(channelsIn, channelsOut, mappedPrefix) {
-      const fc_weights = tensor2d(extractWeights(channelsIn * channelsOut), [channelsIn, channelsOut]);
-      const fc_bias = tensor1d(extractWeights(channelsOut));
-      paramMappings.push({paramPath: `${mappedPrefix}/weights`}, {paramPath: `${mappedPrefix}/bias`});
-      return {
-        weights: fc_weights,
-        bias: fc_bias
-      };
-    };
-  }
-
-  // build/common/types.js
-  class SeparableConvParams {
-    constructor(depthwise_filter, pointwise_filter, bias) {
-      this.depthwise_filter = depthwise_filter;
-      this.pointwise_filter = pointwise_filter;
-      this.bias = bias;
-    }
-  }
-
-  // build/common/extractSeparableConvParamsFactory.js
-  function extractSeparableConvParamsFactory(extractWeights, paramMappings) {
-    return function(channelsIn, channelsOut, mappedPrefix) {
-      const depthwise_filter = tensor4d(extractWeights(3 * 3 * channelsIn), [3, 3, channelsIn, 1]);
-      const pointwise_filter = tensor4d(extractWeights(channelsIn * channelsOut), [1, 1, channelsIn, channelsOut]);
-      const bias = tensor1d(extractWeights(channelsOut));
-      paramMappings.push({paramPath: `${mappedPrefix}/depthwise_filter`}, {paramPath: `${mappedPrefix}/pointwise_filter`}, {paramPath: `${mappedPrefix}/bias`});
-      return new SeparableConvParams(depthwise_filter, pointwise_filter, bias);
-    };
-  }
-  function loadSeparableConvParamsFactory(extractWeightEntry) {
-    return function(prefix) {
-      const depthwise_filter = extractWeightEntry(`${prefix}/depthwise_filter`, 4);
-      const pointwise_filter = extractWeightEntry(`${prefix}/pointwise_filter`, 4);
-      const bias = extractWeightEntry(`${prefix}/bias`, 1);
-      return new SeparableConvParams(depthwise_filter, pointwise_filter, bias);
-    };
-  }
-
-  // build/common/extractWeightEntryFactory.js
-  function extractWeightEntryFactory(weightMap, paramMappings) {
-    return function(originalPath, paramRank, mappedPath) {
-      const tensor17 = weightMap[originalPath];
-      if (!isTensor(tensor17, paramRank)) {
-        throw new Error(`expected weightMap[${originalPath}] to be a Tensor${paramRank}D, instead have ${tensor17}`);
-      }
-      paramMappings.push({originalPath, paramPath: mappedPath || originalPath});
-      return tensor17;
-    };
-  }
-
-  // build/common/extractWeightsFactory.js
-  function extractWeightsFactory(weights) {
-    let remainingWeights = weights;
-    function extractWeights(numWeights) {
-      const ret = remainingWeights.slice(0, numWeights);
-      remainingWeights = remainingWeights.slice(numWeights);
-      return ret;
-    }
-    function getRemainingWeights() {
-      return remainingWeights;
-    }
-    return {
-      extractWeights,
-      getRemainingWeights
-    };
-  }
-
-  // build/common/index.js
-
-  // build/faceFeatureExtractor/extractorsFactory.js
-  function extractorsFactory(extractWeights, paramMappings) {
-    const extractConvParams = extractConvParamsFactory(extractWeights, paramMappings);
-    const extractSeparableConvParams = extractSeparableConvParamsFactory(extractWeights, paramMappings);
-    function extractDenseBlock3Params(channelsIn, channelsOut, mappedPrefix, isFirstLayer = false) {
-      const conv0 = isFirstLayer ? extractConvParams(channelsIn, channelsOut, 3, `${mappedPrefix}/conv0`) : extractSeparableConvParams(channelsIn, channelsOut, `${mappedPrefix}/conv0`);
-      const conv1 = extractSeparableConvParams(channelsOut, channelsOut, `${mappedPrefix}/conv1`);
-      const conv22 = extractSeparableConvParams(channelsOut, channelsOut, `${mappedPrefix}/conv2`);
-      return {conv0, conv1, conv2: conv22};
-    }
-    function extractDenseBlock4Params(channelsIn, channelsOut, mappedPrefix, isFirstLayer = false) {
-      const {conv0, conv1, conv2: conv22} = extractDenseBlock3Params(channelsIn, channelsOut, mappedPrefix, isFirstLayer);
-      const conv3 = extractSeparableConvParams(channelsOut, channelsOut, `${mappedPrefix}/conv3`);
-      return {conv0, conv1, conv2: conv22, conv3};
-    }
-    return {
-      extractDenseBlock3Params,
-      extractDenseBlock4Params
-    };
-  }
-
-  // build/faceFeatureExtractor/extractParams.js
-  function extractParams(weights) {
-    const paramMappings = [];
-    const {extractWeights, getRemainingWeights} = extractWeightsFactory(weights);
-    const {extractDenseBlock4Params} = extractorsFactory(extractWeights, paramMappings);
-    const dense0 = extractDenseBlock4Params(3, 32, "dense0", true);
-    const dense1 = extractDenseBlock4Params(32, 64, "dense1");
-    const dense2 = extractDenseBlock4Params(64, 128, "dense2");
-    const dense3 = extractDenseBlock4Params(128, 256, "dense3");
-    if (getRemainingWeights().length !== 0) {
-      throw new Error(`weights remaing after extract: ${getRemainingWeights().length}`);
-    }
-    return {
-      paramMappings,
-      params: {dense0, dense1, dense2, dense3}
-    };
-  }
-
-  // build/common/loadConvParamsFactory.js
-  function loadConvParamsFactory(extractWeightEntry) {
-    return function(prefix) {
-      const filters = extractWeightEntry(`${prefix}/filters`, 4);
-      const bias = extractWeightEntry(`${prefix}/bias`, 1);
-      return {filters, bias};
-    };
-  }
-
-  // build/faceFeatureExtractor/loadParamsFactory.js
-  function loadParamsFactory(weightMap, paramMappings) {
-    const extractWeightEntry = extractWeightEntryFactory(weightMap, paramMappings);
-    const extractConvParams = loadConvParamsFactory(extractWeightEntry);
-    const extractSeparableConvParams = loadSeparableConvParamsFactory(extractWeightEntry);
-    function extractDenseBlock3Params(prefix, isFirstLayer = false) {
-      const conv0 = isFirstLayer ? extractConvParams(`${prefix}/conv0`) : extractSeparableConvParams(`${prefix}/conv0`);
-      const conv1 = extractSeparableConvParams(`${prefix}/conv1`);
-      const conv22 = extractSeparableConvParams(`${prefix}/conv2`);
-      return {conv0, conv1, conv2: conv22};
-    }
-    function extractDenseBlock4Params(prefix, isFirstLayer = false) {
-      const conv0 = isFirstLayer ? extractConvParams(`${prefix}/conv0`) : extractSeparableConvParams(`${prefix}/conv0`);
-      const conv1 = extractSeparableConvParams(`${prefix}/conv1`);
-      const conv22 = extractSeparableConvParams(`${prefix}/conv2`);
-      const conv3 = extractSeparableConvParams(`${prefix}/conv3`);
-      return {conv0, conv1, conv2: conv22, conv3};
-    }
-    return {
-      extractDenseBlock3Params,
-      extractDenseBlock4Params
-    };
-  }
-
-  // build/faceFeatureExtractor/extractParamsFromWeigthMap.js
-  function extractParamsFromWeigthMap(weightMap) {
-    const paramMappings = [];
-    const {extractDenseBlock4Params} = loadParamsFactory(weightMap, paramMappings);
-    const params = {
-      dense0: extractDenseBlock4Params("dense0", true),
-      dense1: extractDenseBlock4Params("dense1"),
-      dense2: extractDenseBlock4Params("dense2"),
-      dense3: extractDenseBlock4Params("dense3")
-    };
-    disposeUnusedWeightTensors(weightMap, paramMappings);
-    return {params, paramMappings};
-  }
-
-  // build/faceFeatureExtractor/FaceFeatureExtractor.js
-  const dom2 = __toModule(require_dom());
-  class FaceFeatureExtractor extends NeuralNetwork {
-    constructor() {
-      super("FaceFeatureExtractor");
-    }
-    forwardInput(input) {
-      const {params} = this;
-      if (!params) {
-        throw new Error("FaceFeatureExtractor - load model before inference");
-      }
-      return tidy(() => {
-        const batchTensor = input.toBatchTensor(112, true);
-        const meanRgb = [122.782, 117.001, 104.298];
-        const normalized = normalize(batchTensor, meanRgb).div(scalar(255));
-        let out = denseBlock4(normalized, params.dense0, true);
-        out = denseBlock4(out, params.dense1);
-        out = denseBlock4(out, params.dense2);
-        out = denseBlock4(out, params.dense3);
-        out = avgPool(out, [7, 7], [2, 2], "valid");
-        return out;
-      });
-    }
-    async forward(input) {
-      return this.forwardInput(await dom2.toNetInput(input));
-    }
-    getDefaultModelName() {
-      return "face_feature_extractor_model";
-    }
-    extractParamsFromWeigthMap(weightMap) {
-      return extractParamsFromWeigthMap(weightMap);
-    }
-    extractParams(weights) {
-      return extractParams(weights);
-    }
-  }
-
-  // build/common/fullyConnectedLayer.js
-  function fullyConnectedLayer(x, params) {
-    return tidy(() => add2(matMul(x, params.weights), params.bias));
-  }
-
-  // build/faceProcessor/extractParams.js
-  function extractParams3(weights, channelsIn, channelsOut) {
-    const paramMappings = [];
-    const {extractWeights, getRemainingWeights} = extractWeightsFactory(weights);
-    const extractFCParams = extractFCParamsFactory(extractWeights, paramMappings);
-    const fc = extractFCParams(channelsIn, channelsOut, "fc");
-    if (getRemainingWeights().length !== 0) {
-      throw new Error(`weights remaing after extract: ${getRemainingWeights().length}`);
-    }
-    return {
-      paramMappings,
-      params: {fc}
-    };
-  }
-
-  // build/faceProcessor/extractParamsFromWeigthMap.js
-  function extractParamsFromWeigthMap3(weightMap) {
-    const paramMappings = [];
-    const extractWeightEntry = extractWeightEntryFactory(weightMap, paramMappings);
-    function extractFcParams(prefix) {
-      const weights = extractWeightEntry(`${prefix}/weights`, 2);
-      const bias = extractWeightEntry(`${prefix}/bias`, 1);
-      return {weights, bias};
-    }
-    const params = {
-      fc: extractFcParams("fc")
-    };
-    disposeUnusedWeightTensors(weightMap, paramMappings);
-    return {params, paramMappings};
-  }
-
-  // build/faceProcessor/util.js
-  function seperateWeightMaps(weightMap) {
-    const featureExtractorMap = {};
-    const classifierMap = {};
-    Object.keys(weightMap).forEach((key) => {
-      const map = key.startsWith("fc") ? classifierMap : featureExtractorMap;
-      map[key] = weightMap[key];
-    });
-    return {featureExtractorMap, classifierMap};
-  }
-
-  // build/faceProcessor/FaceProcessor.js
-  const dom3 = __toModule(require_dom());
-  class FaceProcessor extends NeuralNetwork {
-    constructor(_name, faceFeatureExtractor) {
-      super(_name);
-      this._faceFeatureExtractor = faceFeatureExtractor;
-    }
-    get faceFeatureExtractor() {
-      return this._faceFeatureExtractor;
-    }
-    runNet(input) {
-      const {params} = this;
-      if (!params) {
-        throw new Error(`${this._name} - load model before inference`);
-      }
-      return tidy(() => {
-        const bottleneckFeatures = input instanceof dom3.NetInput ? this.faceFeatureExtractor.forwardInput(input) : input;
-        return fullyConnectedLayer(bottleneckFeatures.as2D(bottleneckFeatures.shape[0], -1), params.fc);
-      });
-    }
-    dispose(throwOnRedispose = true) {
-      this.faceFeatureExtractor.dispose(throwOnRedispose);
-      super.dispose(throwOnRedispose);
-    }
-    loadClassifierParams(weights) {
-      const {params, paramMappings} = this.extractClassifierParams(weights);
-      this._params = params;
-      this._paramMappings = paramMappings;
-    }
-    extractClassifierParams(weights) {
-      return extractParams3(weights, this.getClassifierChannelsIn(), this.getClassifierChannelsOut());
-    }
-    extractParamsFromWeigthMap(weightMap) {
-      const {featureExtractorMap, classifierMap} = seperateWeightMaps(weightMap);
-      this.faceFeatureExtractor.loadFromWeightMap(featureExtractorMap);
-      return extractParamsFromWeigthMap3(classifierMap);
-    }
-    extractParams(weights) {
-      const cIn = this.getClassifierChannelsIn();
-      const cOut = this.getClassifierChannelsOut();
-      const classifierWeightSize = cOut * cIn + cOut;
-      const featureExtractorWeights = weights.slice(0, weights.length - classifierWeightSize);
-      const classifierWeights = weights.slice(weights.length - classifierWeightSize);
-      this.faceFeatureExtractor.extractWeights(featureExtractorWeights);
-      return this.extractClassifierParams(classifierWeights);
-    }
-  }
-
-  // build/faceExpressionNet/FaceExpressions.js
-  const FACE_EXPRESSION_LABELS = ["neutral", "happy", "sad", "angry", "fearful", "disgusted", "surprised"];
-  class FaceExpressions {
-    constructor(probabilities) {
-      if (probabilities.length !== 7) {
-        throw new Error(`FaceExpressions.constructor - expected probabilities.length to be 7, have: ${probabilities.length}`);
-      }
-      FACE_EXPRESSION_LABELS.forEach((expression, idx) => {
-        this[expression] = probabilities[idx];
-      });
-    }
-    asSortedArray() {
-      return FACE_EXPRESSION_LABELS.map((expression) => ({expression, probability: this[expression]})).sort((e0, e1) => e1.probability - e0.probability);
-    }
-  }
-
-  // build/faceExpressionNet/FaceExpressionNet.js
-  const dom4 = __toModule(require_dom());
-  class FaceExpressionNet extends FaceProcessor {
-    constructor(faceFeatureExtractor = new FaceFeatureExtractor()) {
-      super("FaceExpressionNet", faceFeatureExtractor);
-    }
-    forwardInput(input) {
-      return tidy(() => softmax(this.runNet(input)));
-    }
-    async forward(input) {
-      return this.forwardInput(await dom4.toNetInput(input));
-    }
-    async predictExpressions(input) {
-      const netInput = await dom4.toNetInput(input);
-      const out = await this.forwardInput(netInput);
-      const probabilitesByBatch = await Promise.all(unstack(out).map(async (t) => {
-        const data = await t.data();
-        t.dispose();
-        return data;
-      }));
-      out.dispose();
-      const predictionsByBatch = probabilitesByBatch.map((probabilites) => new FaceExpressions(probabilites));
-      return netInput.isBatchInput ? predictionsByBatch : predictionsByBatch[0];
-    }
-    getDefaultModelName() {
-      return "face_expression_model";
-    }
-    getClassifierChannelsIn() {
-      return 256;
-    }
-    getClassifierChannelsOut() {
-      return 7;
-    }
-  }
-
-  // build/faceExpressionNet/index.js
-
-  // build/factories/WithFaceExpressions.js
-  function isWithFaceExpressions(obj) {
-    return obj["expressions"] instanceof FaceExpressions;
-  }
-  function extendWithFaceExpressions(sourceObj, expressions) {
-    const extension = {expressions};
-    return Object.assign({}, sourceObj, extension);
-  }
-
-  // build/draw/drawFaceExpressions.js
-  function drawFaceExpressions(canvasArg, faceExpressions, minConfidence = 0.1, textFieldAnchor) {
-    const faceExpressionsArray = Array.isArray(faceExpressions) ? faceExpressions : [faceExpressions];
-    faceExpressionsArray.forEach((e) => {
-      const expr = e instanceof FaceExpressions ? e : isWithFaceExpressions(e) ? e.expressions : void 0;
-      if (!expr) {
-        throw new Error("drawFaceExpressions - expected faceExpressions to be FaceExpressions | WithFaceExpressions<{}> or array thereof");
-      }
-      const sorted = expr.asSortedArray();
-      const resultsToDisplay = sorted.filter((expr2) => expr2.probability > minConfidence);
-      const anchor = isWithFaceDetection(e) ? e.detection.box.bottomLeft : textFieldAnchor || new Point(0, 0);
-      const drawTextField = new DrawTextField(resultsToDisplay.map((expr2) => `${expr2.expression} (${round3(expr2.probability)})`), anchor);
-      drawTextField.draw(canvasArg);
-    });
-  }
-
-  // build/factories/WithFaceLandmarks.js
-  function isWithFaceLandmarks(obj) {
-    return isWithFaceDetection(obj) && obj["landmarks"] instanceof FaceLandmarks && obj["unshiftedLandmarks"] instanceof FaceLandmarks && obj["alignedRect"] instanceof FaceDetection;
-  }
-  function extendWithFaceLandmarks(sourceObj, unshiftedLandmarks) {
-    const {box: shift} = sourceObj.detection;
-    const landmarks = unshiftedLandmarks.shiftBy(shift.x, shift.y);
-    const rect = landmarks.align();
-    const {imageDims} = sourceObj.detection;
-    const alignedRect = new FaceDetection(sourceObj.detection.score, rect.rescale(imageDims.reverse()), imageDims);
-    const extension = {
-      landmarks,
-      unshiftedLandmarks,
-      alignedRect
-    };
-    return Object.assign({}, sourceObj, extension);
-  }
-
-  // build/draw/DrawFaceLandmarks.js
-  class DrawFaceLandmarksOptions {
-    constructor(options = {}) {
-      const {drawLines = true, drawPoints = true, lineWidth, lineColor, pointSize, pointColor} = options;
-      this.drawLines = drawLines;
-      this.drawPoints = drawPoints;
-      this.lineWidth = lineWidth || 1;
-      this.pointSize = pointSize || 2;
-      this.lineColor = lineColor || "rgba(0, 255, 255, 1)";
-      this.pointColor = pointColor || "rgba(255, 0, 255, 1)";
-    }
-  }
-  class DrawFaceLandmarks {
-    constructor(faceLandmarks, options = {}) {
-      this.faceLandmarks = faceLandmarks;
-      this.options = new DrawFaceLandmarksOptions(options);
-    }
-    draw(canvasArg) {
-      const ctx = getContext2dOrThrow(canvasArg);
-      const {drawLines, drawPoints, lineWidth, lineColor, pointSize, pointColor} = this.options;
-      if (drawLines && this.faceLandmarks instanceof FaceLandmarks68) {
-        ctx.strokeStyle = lineColor;
-        ctx.lineWidth = lineWidth;
-        drawContour(ctx, this.faceLandmarks.getJawOutline());
-        drawContour(ctx, this.faceLandmarks.getLeftEyeBrow());
-        drawContour(ctx, this.faceLandmarks.getRightEyeBrow());
-        drawContour(ctx, this.faceLandmarks.getNose());
-        drawContour(ctx, this.faceLandmarks.getLeftEye(), true);
-        drawContour(ctx, this.faceLandmarks.getRightEye(), true);
-        drawContour(ctx, this.faceLandmarks.getMouth(), true);
-      }
-      if (drawPoints) {
-        ctx.strokeStyle = pointColor;
-        ctx.fillStyle = pointColor;
-        const drawPoint = (pt) => {
-          ctx.beginPath();
-          ctx.arc(pt.x, pt.y, pointSize, 0, 2 * Math.PI);
-          ctx.fill();
-        };
-        this.faceLandmarks.positions.forEach(drawPoint);
-      }
-    }
-  }
-  function drawFaceLandmarks(canvasArg, faceLandmarks) {
-    const faceLandmarksArray = Array.isArray(faceLandmarks) ? faceLandmarks : [faceLandmarks];
-    faceLandmarksArray.forEach((f) => {
-      const landmarks = f instanceof FaceLandmarks ? f : isWithFaceLandmarks(f) ? f.landmarks : void 0;
-      if (!landmarks) {
-        throw new Error("drawFaceLandmarks - expected faceExpressions to be FaceLandmarks | WithFaceLandmarks<WithFaceDetection<{}>> or array thereof");
-      }
-      new DrawFaceLandmarks(landmarks).draw(canvasArg);
-    });
-  }
-
-  // build/draw/index.js
-  const draw_exports = {};
-  __export(draw_exports, {
-    AnchorPosition: () => AnchorPosition,
-    DrawBox: () => DrawBox,
-    DrawBoxOptions: () => DrawBoxOptions,
-    DrawFaceLandmarks: () => DrawFaceLandmarks,
-    DrawFaceLandmarksOptions: () => DrawFaceLandmarksOptions,
-    DrawTextField: () => DrawTextField,
-    DrawTextFieldOptions: () => DrawTextFieldOptions,
-    drawContour: () => drawContour,
-    drawDetections: () => drawDetections,
-    drawFaceExpressions: () => drawFaceExpressions,
-    drawFaceLandmarks: () => drawFaceLandmarks
-  });
-
-  // build/xception/extractParams.js
-  function extractorsFactory3(extractWeights, paramMappings) {
-    const extractConvParams = extractConvParamsFactory(extractWeights, paramMappings);
-    const extractSeparableConvParams = extractSeparableConvParamsFactory(extractWeights, paramMappings);
-    function extractReductionBlockParams(channelsIn, channelsOut, mappedPrefix) {
-      const separable_conv0 = extractSeparableConvParams(channelsIn, channelsOut, `${mappedPrefix}/separable_conv0`);
-      const separable_conv1 = extractSeparableConvParams(channelsOut, channelsOut, `${mappedPrefix}/separable_conv1`);
-      const expansion_conv = extractConvParams(channelsIn, channelsOut, 1, `${mappedPrefix}/expansion_conv`);
-      return {separable_conv0, separable_conv1, expansion_conv};
-    }
-    function extractMainBlockParams(channels, mappedPrefix) {
-      const separable_conv0 = extractSeparableConvParams(channels, channels, `${mappedPrefix}/separable_conv0`);
-      const separable_conv1 = extractSeparableConvParams(channels, channels, `${mappedPrefix}/separable_conv1`);
-      const separable_conv2 = extractSeparableConvParams(channels, channels, `${mappedPrefix}/separable_conv2`);
-      return {separable_conv0, separable_conv1, separable_conv2};
-    }
-    return {
-      extractConvParams,
-      extractSeparableConvParams,
-      extractReductionBlockParams,
-      extractMainBlockParams
-    };
-  }
-  function extractParams5(weights, numMainBlocks) {
-    const paramMappings = [];
-    const {extractWeights, getRemainingWeights} = extractWeightsFactory(weights);
-    const {extractConvParams, extractSeparableConvParams, extractReductionBlockParams, extractMainBlockParams} = extractorsFactory3(extractWeights, paramMappings);
-    const entry_flow_conv_in = extractConvParams(3, 32, 3, "entry_flow/conv_in");
-    const entry_flow_reduction_block_0 = extractReductionBlockParams(32, 64, "entry_flow/reduction_block_0");
-    const entry_flow_reduction_block_1 = extractReductionBlockParams(64, 128, "entry_flow/reduction_block_1");
-    const entry_flow = {
-      conv_in: entry_flow_conv_in,
-      reduction_block_0: entry_flow_reduction_block_0,
-      reduction_block_1: entry_flow_reduction_block_1
-    };
-    const middle_flow = {};
-    range4(numMainBlocks, 0, 1).forEach((idx) => {
-      middle_flow[`main_block_${idx}`] = extractMainBlockParams(128, `middle_flow/main_block_${idx}`);
-    });
-    const exit_flow_reduction_block = extractReductionBlockParams(128, 256, "exit_flow/reduction_block");
-    const exit_flow_separable_conv = extractSeparableConvParams(256, 512, "exit_flow/separable_conv");
-    const exit_flow = {
-      reduction_block: exit_flow_reduction_block,
-      separable_conv: exit_flow_separable_conv
-    };
-    if (getRemainingWeights().length !== 0) {
-      throw new Error(`weights remaing after extract: ${getRemainingWeights().length}`);
-    }
-    return {
-      paramMappings,
-      params: {entry_flow, middle_flow, exit_flow}
-    };
-  }
-
-  // build/xception/extractParamsFromWeigthMap.js
-  function loadParamsFactory3(weightMap, paramMappings) {
-    const extractWeightEntry = extractWeightEntryFactory(weightMap, paramMappings);
-    const extractConvParams = loadConvParamsFactory(extractWeightEntry);
-    const extractSeparableConvParams = loadSeparableConvParamsFactory(extractWeightEntry);
-    function extractReductionBlockParams(mappedPrefix) {
-      const separable_conv0 = extractSeparableConvParams(`${mappedPrefix}/separable_conv0`);
-      const separable_conv1 = extractSeparableConvParams(`${mappedPrefix}/separable_conv1`);
-      const expansion_conv = extractConvParams(`${mappedPrefix}/expansion_conv`);
-      return {separable_conv0, separable_conv1, expansion_conv};
-    }
-    function extractMainBlockParams(mappedPrefix) {
-      const separable_conv0 = extractSeparableConvParams(`${mappedPrefix}/separable_conv0`);
-      const separable_conv1 = extractSeparableConvParams(`${mappedPrefix}/separable_conv1`);
-      const separable_conv2 = extractSeparableConvParams(`${mappedPrefix}/separable_conv2`);
-      return {separable_conv0, separable_conv1, separable_conv2};
-    }
-    return {
-      extractConvParams,
-      extractSeparableConvParams,
-      extractReductionBlockParams,
-      extractMainBlockParams
-    };
-  }
-  function extractParamsFromWeigthMap5(weightMap, numMainBlocks) {
-    const paramMappings = [];
-    const {extractConvParams, extractSeparableConvParams, extractReductionBlockParams, extractMainBlockParams} = loadParamsFactory3(weightMap, paramMappings);
-    const entry_flow_conv_in = extractConvParams("entry_flow/conv_in");
-    const entry_flow_reduction_block_0 = extractReductionBlockParams("entry_flow/reduction_block_0");
-    const entry_flow_reduction_block_1 = extractReductionBlockParams("entry_flow/reduction_block_1");
-    const entry_flow = {
-      conv_in: entry_flow_conv_in,
-      reduction_block_0: entry_flow_reduction_block_0,
-      reduction_block_1: entry_flow_reduction_block_1
-    };
-    const middle_flow = {};
-    range4(numMainBlocks, 0, 1).forEach((idx) => {
-      middle_flow[`main_block_${idx}`] = extractMainBlockParams(`middle_flow/main_block_${idx}`);
-    });
-    const exit_flow_reduction_block = extractReductionBlockParams("exit_flow/reduction_block");
-    const exit_flow_separable_conv = extractSeparableConvParams("exit_flow/separable_conv");
-    const exit_flow = {
-      reduction_block: exit_flow_reduction_block,
-      separable_conv: exit_flow_separable_conv
-    };
-    disposeUnusedWeightTensors(weightMap, paramMappings);
-    return {params: {entry_flow, middle_flow, exit_flow}, paramMappings};
-  }
-
-  // build/xception/TinyXception.js
-  const dom5 = __toModule(require_dom());
-  function conv(x, params, stride) {
-    return add2(conv2d(x, params.filters, stride, "same"), params.bias);
-  }
-  function reductionBlock(x, params, isActivateInput = true) {
-    let out = isActivateInput ? relu(x) : x;
-    out = depthwiseSeparableConv(out, params.separable_conv0, [1, 1]);
-    out = depthwiseSeparableConv(relu(out), params.separable_conv1, [1, 1]);
-    out = maxPool(out, [3, 3], [2, 2], "same");
-    out = add2(out, conv(x, params.expansion_conv, [2, 2]));
-    return out;
-  }
-  function mainBlock(x, params) {
-    let out = depthwiseSeparableConv(relu(x), params.separable_conv0, [1, 1]);
-    out = depthwiseSeparableConv(relu(out), params.separable_conv1, [1, 1]);
-    out = depthwiseSeparableConv(relu(out), params.separable_conv2, [1, 1]);
-    out = add2(out, x);
-    return out;
-  }
-  class TinyXception extends NeuralNetwork {
-    constructor(numMainBlocks) {
-      super("TinyXception");
-      this._numMainBlocks = numMainBlocks;
-    }
-    forwardInput(input) {
-      const {params} = this;
-      if (!params) {
-        throw new Error("TinyXception - load model before inference");
-      }
-      return tidy(() => {
-        const batchTensor = input.toBatchTensor(112, true);
-        const meanRgb = [122.782, 117.001, 104.298];
-        const normalized = normalize(batchTensor, meanRgb).div(scalar(256));
-        let out = relu(conv(normalized, params.entry_flow.conv_in, [2, 2]));
-        out = reductionBlock(out, params.entry_flow.reduction_block_0, false);
-        out = reductionBlock(out, params.entry_flow.reduction_block_1);
-        range4(this._numMainBlocks, 0, 1).forEach((idx) => {
-          out = mainBlock(out, params.middle_flow[`main_block_${idx}`]);
-        });
-        out = reductionBlock(out, params.exit_flow.reduction_block);
-        out = relu(depthwiseSeparableConv(out, params.exit_flow.separable_conv, [1, 1]));
-        return out;
-      });
-    }
-    async forward(input) {
-      return this.forwardInput(await dom5.toNetInput(input));
-    }
-    getDefaultModelName() {
-      return "tiny_xception_model";
-    }
-    extractParamsFromWeigthMap(weightMap) {
-      return extractParamsFromWeigthMap5(weightMap, this._numMainBlocks);
-    }
-    extractParams(weights) {
-      return extractParams5(weights, this._numMainBlocks);
-    }
-  }
-
-  // build/ageGenderNet/extractParams.js
-  function extractParams7(weights) {
-    const paramMappings = [];
-    const {extractWeights, getRemainingWeights} = extractWeightsFactory(weights);
-    const extractFCParams = extractFCParamsFactory(extractWeights, paramMappings);
-    const age = extractFCParams(512, 1, "fc/age");
-    const gender = extractFCParams(512, 2, "fc/gender");
-    if (getRemainingWeights().length !== 0) {
-      throw new Error(`weights remaing after extract: ${getRemainingWeights().length}`);
-    }
-    return {
-      paramMappings,
-      params: {fc: {age, gender}}
-    };
-  }
-
-  // build/ageGenderNet/extractParamsFromWeigthMap.js
-  function extractParamsFromWeigthMap7(weightMap) {
-    const paramMappings = [];
-    const extractWeightEntry = extractWeightEntryFactory(weightMap, paramMappings);
-    function extractFcParams(prefix) {
-      const weights = extractWeightEntry(`${prefix}/weights`, 2);
-      const bias = extractWeightEntry(`${prefix}/bias`, 1);
-      return {weights, bias};
-    }
-    const params = {
-      fc: {
-        age: extractFcParams("fc/age"),
-        gender: extractFcParams("fc/gender")
-      }
-    };
-    disposeUnusedWeightTensors(weightMap, paramMappings);
-    return {params, paramMappings};
-  }
-
-  // build/ageGenderNet/types.js
-  var Gender;
-  (function(Gender2) {
-    Gender2["FEMALE"] = "female";
-    Gender2["MALE"] = "male";
-  })(Gender || (Gender = {}));
-
-  // build/ageGenderNet/AgeGenderNet.js
-  const dom6 = __toModule(require_dom());
-  class AgeGenderNet extends NeuralNetwork {
-    constructor(faceFeatureExtractor = new TinyXception(2)) {
-      super("AgeGenderNet");
-      this._faceFeatureExtractor = faceFeatureExtractor;
-    }
-    get faceFeatureExtractor() {
-      return this._faceFeatureExtractor;
-    }
-    runNet(input) {
-      const {params} = this;
-      if (!params) {
-        throw new Error(`${this._name} - load model before inference`);
-      }
-      return tidy(() => {
-        const bottleneckFeatures = input instanceof dom6.NetInput ? this.faceFeatureExtractor.forwardInput(input) : input;
-        const pooled = avgPool(bottleneckFeatures, [7, 7], [2, 2], "valid").as2D(bottleneckFeatures.shape[0], -1);
-        const age = fullyConnectedLayer(pooled, params.fc.age).as1D();
-        const gender = fullyConnectedLayer(pooled, params.fc.gender);
-        return {age, gender};
-      });
-    }
-    forwardInput(input) {
-      return tidy(() => {
-        const {age, gender} = this.runNet(input);
-        return {age, gender: softmax(gender)};
-      });
-    }
-    async forward(input) {
-      return this.forwardInput(await dom6.toNetInput(input));
-    }
-    async predictAgeAndGender(input) {
-      const netInput = await dom6.toNetInput(input);
-      const out = await this.forwardInput(netInput);
-      const ages = unstack(out.age);
-      const genders = unstack(out.gender);
-      const ageAndGenderTensors = ages.map((ageTensor, i) => ({
-        ageTensor,
-        genderTensor: genders[i]
-      }));
-      const predictionsByBatch = await Promise.all(ageAndGenderTensors.map(async ({ageTensor, genderTensor}) => {
-        const age = (await ageTensor.data())[0];
-        const probMale = (await genderTensor.data())[0];
-        const isMale = probMale > 0.5;
-        const gender = isMale ? Gender.MALE : Gender.FEMALE;
-        const genderProbability = isMale ? probMale : 1 - probMale;
-        ageTensor.dispose();
-        genderTensor.dispose();
-        return {age, gender, genderProbability};
-      }));
-      out.age.dispose();
-      out.gender.dispose();
-      return netInput.isBatchInput ? predictionsByBatch : predictionsByBatch[0];
-    }
-    getDefaultModelName() {
-      return "age_gender_model";
-    }
-    dispose(throwOnRedispose = true) {
-      this.faceFeatureExtractor.dispose(throwOnRedispose);
-      super.dispose(throwOnRedispose);
-    }
-    loadClassifierParams(weights) {
-      const {params, paramMappings} = this.extractClassifierParams(weights);
-      this._params = params;
-      this._paramMappings = paramMappings;
-    }
-    extractClassifierParams(weights) {
-      return extractParams7(weights);
-    }
-    extractParamsFromWeigthMap(weightMap) {
-      const {featureExtractorMap, classifierMap} = seperateWeightMaps(weightMap);
-      this.faceFeatureExtractor.loadFromWeightMap(featureExtractorMap);
-      return extractParamsFromWeigthMap7(classifierMap);
-    }
-    extractParams(weights) {
-      const classifierWeightSize = 512 * 1 + 1 + (512 * 2 + 2);
-      const featureExtractorWeights = weights.slice(0, weights.length - classifierWeightSize);
-      const classifierWeights = weights.slice(weights.length - classifierWeightSize);
-      this.faceFeatureExtractor.extractWeights(featureExtractorWeights);
-      return this.extractClassifierParams(classifierWeights);
-    }
-  }
-
-  // build/ageGenderNet/index.js
-
-  // build/faceLandmarkNet/FaceLandmark68NetBase.js
-  const dom7 = __toModule(require_dom());
-  class FaceLandmark68NetBase extends FaceProcessor {
-    postProcess(output, inputSize, originalDimensions) {
-      const inputDimensions = originalDimensions.map(({width, height}) => {
-        const scale2 = inputSize / Math.max(height, width);
-        return {
-          width: width * scale2,
-          height: height * scale2
-        };
-      });
-      const batchSize = inputDimensions.length;
-      return tidy(() => {
-        const createInterleavedTensor = (fillX, fillY) => stack([
-          fill([68], fillX),
-          fill([68], fillY)
-        ], 1).as2D(1, 136).as1D();
-        const getPadding = (batchIdx, cond) => {
-          const {width, height} = inputDimensions[batchIdx];
-          return cond(width, height) ? Math.abs(width - height) / 2 : 0;
-        };
-        const getPaddingX = (batchIdx) => getPadding(batchIdx, (w, h) => w < h);
-        const getPaddingY = (batchIdx) => getPadding(batchIdx, (w, h) => h < w);
-        const landmarkTensors = output.mul(fill([batchSize, 136], inputSize)).sub(stack(Array.from(Array(batchSize), (_, batchIdx) => createInterleavedTensor(getPaddingX(batchIdx), getPaddingY(batchIdx))))).div(stack(Array.from(Array(batchSize), (_, batchIdx) => createInterleavedTensor(inputDimensions[batchIdx].width, inputDimensions[batchIdx].height))));
-        return landmarkTensors;
-      });
-    }
-    forwardInput(input) {
-      return tidy(() => {
-        const out = this.runNet(input);
-        return this.postProcess(out, input.inputSize, input.inputDimensions.map(([height, width]) => ({height, width})));
-      });
-    }
-    async forward(input) {
-      return this.forwardInput(await dom7.toNetInput(input));
-    }
-    async detectLandmarks(input) {
-      const netInput = await dom7.toNetInput(input);
-      const landmarkTensors = tidy(() => unstack(this.forwardInput(netInput)));
-      const landmarksForBatch = await Promise.all(landmarkTensors.map(async (landmarkTensor, batchIdx) => {
-        const landmarksArray = Array.from(await landmarkTensor.data());
-        const xCoords = landmarksArray.filter((_, i) => isEven(i));
-        const yCoords = landmarksArray.filter((_, i) => !isEven(i));
-        return new FaceLandmarks68(Array(68).fill(0).map((_, i) => new Point(xCoords[i], yCoords[i])), {
-          height: netInput.getInputHeight(batchIdx),
-          width: netInput.getInputWidth(batchIdx)
-        });
-      }));
-      landmarkTensors.forEach((t) => t.dispose());
-      return netInput.isBatchInput ? landmarksForBatch : landmarksForBatch[0];
-    }
-    getClassifierChannelsOut() {
-      return 136;
-    }
-  }
-
-  // build/faceLandmarkNet/FaceLandmark68Net.js
-  class FaceLandmark68Net extends FaceLandmark68NetBase {
-    constructor(faceFeatureExtractor = new FaceFeatureExtractor()) {
-      super("FaceLandmark68Net", faceFeatureExtractor);
-    }
-    getDefaultModelName() {
-      return "face_landmark_68_model";
-    }
-    getClassifierChannelsIn() {
-      return 256;
-    }
-  }
-
-  // build/faceFeatureExtractor/extractParamsFromWeigthMapTiny.js
-  function extractParamsFromWeigthMapTiny(weightMap) {
-    const paramMappings = [];
-    const {extractDenseBlock3Params} = loadParamsFactory(weightMap, paramMappings);
-    const params = {
-      dense0: extractDenseBlock3Params("dense0", true),
-      dense1: extractDenseBlock3Params("dense1"),
-      dense2: extractDenseBlock3Params("dense2")
-    };
-    disposeUnusedWeightTensors(weightMap, paramMappings);
-    return {params, paramMappings};
-  }
-
-  // build/faceFeatureExtractor/extractParamsTiny.js
-  function extractParamsTiny(weights) {
-    const paramMappings = [];
-    const {extractWeights, getRemainingWeights} = extractWeightsFactory(weights);
-    const {extractDenseBlock3Params} = extractorsFactory(extractWeights, paramMappings);
-    const dense0 = extractDenseBlock3Params(3, 32, "dense0", true);
-    const dense1 = extractDenseBlock3Params(32, 64, "dense1");
-    const dense2 = extractDenseBlock3Params(64, 128, "dense2");
-    if (getRemainingWeights().length !== 0) {
-      throw new Error(`weights remaing after extract: ${getRemainingWeights().length}`);
-    }
-    return {
-      paramMappings,
-      params: {dense0, dense1, dense2}
-    };
-  }
-
-  // build/faceFeatureExtractor/TinyFaceFeatureExtractor.js
-  const dom8 = __toModule(require_dom());
-  class TinyFaceFeatureExtractor extends NeuralNetwork {
-    constructor() {
-      super("TinyFaceFeatureExtractor");
-    }
-    forwardInput(input) {
-      const {params} = this;
-      if (!params) {
-        throw new Error("TinyFaceFeatureExtractor - load model before inference");
-      }
-      return tidy(() => {
-        const batchTensor = input.toBatchTensor(112, true);
-        const meanRgb = [122.782, 117.001, 104.298];
-        const normalized = normalize(batchTensor, meanRgb).div(scalar(255));
-        let out = denseBlock3(normalized, params.dense0, true);
-        out = denseBlock3(out, params.dense1);
-        out = denseBlock3(out, params.dense2);
-        out = avgPool(out, [14, 14], [2, 2], "valid");
-        return out;
-      });
-    }
-    async forward(input) {
-      return this.forwardInput(await dom8.toNetInput(input));
-    }
-    getDefaultModelName() {
-      return "face_feature_extractor_tiny_model";
-    }
-    extractParamsFromWeigthMap(weightMap) {
-      return extractParamsFromWeigthMapTiny(weightMap);
-    }
-    extractParams(weights) {
-      return extractParamsTiny(weights);
-    }
-  }
-
-  // build/faceLandmarkNet/FaceLandmark68TinyNet.js
-  class FaceLandmark68TinyNet extends FaceLandmark68NetBase {
-    constructor(faceFeatureExtractor = new TinyFaceFeatureExtractor()) {
-      super("FaceLandmark68TinyNet", faceFeatureExtractor);
-    }
-    getDefaultModelName() {
-      return "face_landmark_68_tiny_model";
-    }
-    getClassifierChannelsIn() {
-      return 128;
-    }
-  }
-
-  // build/faceLandmarkNet/index.js
-  class FaceLandmarkNet extends FaceLandmark68Net {
-  }
-
-  // build/faceRecognitionNet/scaleLayer.js
-  function scale(x, params) {
-    return add2(mul(x, params.weights), params.biases);
-  }
-
-  // build/faceRecognitionNet/convLayer.js
-  function convLayer2(x, params, strides, withRelu, padding = "same") {
-    const {filters, bias} = params.conv;
-    let out = conv2d(x, filters, strides, padding);
-    out = add2(out, bias);
-    out = scale(out, params.scale);
-    return withRelu ? relu(out) : out;
-  }
-  function conv2(x, params) {
-    return convLayer2(x, params, [1, 1], true);
-  }
-  function convNoRelu(x, params) {
-    return convLayer2(x, params, [1, 1], false);
-  }
-  function convDown(x, params) {
-    return convLayer2(x, params, [2, 2], true, "valid");
-  }
-
-  // build/faceRecognitionNet/extractParams.js
-  function extractorsFactory5(extractWeights, paramMappings) {
-    function extractFilterValues(numFilterValues, numFilters, filterSize) {
-      const weights = extractWeights(numFilterValues);
-      const depth = weights.length / (numFilters * filterSize * filterSize);
-      if (isFloat(depth)) {
-        throw new Error(`depth has to be an integer: ${depth}, weights.length: ${weights.length}, numFilters: ${numFilters}, filterSize: ${filterSize}`);
-      }
-      return tidy(() => transpose(tensor4d(weights, [numFilters, depth, filterSize, filterSize]), [2, 3, 1, 0]));
-    }
-    function extractConvParams(numFilterValues, numFilters, filterSize, mappedPrefix) {
-      const filters = extractFilterValues(numFilterValues, numFilters, filterSize);
-      const bias = tensor1d(extractWeights(numFilters));
-      paramMappings.push({paramPath: `${mappedPrefix}/filters`}, {paramPath: `${mappedPrefix}/bias`});
-      return {filters, bias};
-    }
-    function extractScaleLayerParams(numWeights, mappedPrefix) {
-      const weights = tensor1d(extractWeights(numWeights));
-      const biases = tensor1d(extractWeights(numWeights));
-      paramMappings.push({paramPath: `${mappedPrefix}/weights`}, {paramPath: `${mappedPrefix}/biases`});
-      return {
-        weights,
-        biases
-      };
-    }
-    function extractConvLayerParams(numFilterValues, numFilters, filterSize, mappedPrefix) {
-      const conv3 = extractConvParams(numFilterValues, numFilters, filterSize, `${mappedPrefix}/conv`);
-      const scale2 = extractScaleLayerParams(numFilters, `${mappedPrefix}/scale`);
-      return {conv: conv3, scale: scale2};
-    }
-    function extractResidualLayerParams(numFilterValues, numFilters, filterSize, mappedPrefix, isDown = false) {
-      const conv1 = extractConvLayerParams((isDown ? 0.5 : 1) * numFilterValues, numFilters, filterSize, `${mappedPrefix}/conv1`);
-      const conv22 = extractConvLayerParams(numFilterValues, numFilters, filterSize, `${mappedPrefix}/conv2`);
-      return {conv1, conv2: conv22};
-    }
-    return {
-      extractConvLayerParams,
-      extractResidualLayerParams
-    };
-  }
-  function extractParams9(weights) {
-    const {extractWeights, getRemainingWeights} = extractWeightsFactory(weights);
-    const paramMappings = [];
-    const {extractConvLayerParams, extractResidualLayerParams} = extractorsFactory5(extractWeights, paramMappings);
-    const conv32_down = extractConvLayerParams(4704, 32, 7, "conv32_down");
-    const conv32_1 = extractResidualLayerParams(9216, 32, 3, "conv32_1");
-    const conv32_2 = extractResidualLayerParams(9216, 32, 3, "conv32_2");
-    const conv32_3 = extractResidualLayerParams(9216, 32, 3, "conv32_3");
-    const conv64_down = extractResidualLayerParams(36864, 64, 3, "conv64_down", true);
-    const conv64_1 = extractResidualLayerParams(36864, 64, 3, "conv64_1");
-    const conv64_2 = extractResidualLayerParams(36864, 64, 3, "conv64_2");
-    const conv64_3 = extractResidualLayerParams(36864, 64, 3, "conv64_3");
-    const conv128_down = extractResidualLayerParams(147456, 128, 3, "conv128_down", true);
-    const conv128_1 = extractResidualLayerParams(147456, 128, 3, "conv128_1");
-    const conv128_2 = extractResidualLayerParams(147456, 128, 3, "conv128_2");
-    const conv256_down = extractResidualLayerParams(589824, 256, 3, "conv256_down", true);
-    const conv256_1 = extractResidualLayerParams(589824, 256, 3, "conv256_1");
-    const conv256_2 = extractResidualLayerParams(589824, 256, 3, "conv256_2");
-    const conv256_down_out = extractResidualLayerParams(589824, 256, 3, "conv256_down_out");
-    const fc = tidy(() => transpose(tensor2d(extractWeights(256 * 128), [128, 256]), [1, 0]));
-    paramMappings.push({paramPath: `fc`});
-    if (getRemainingWeights().length !== 0) {
-      throw new Error(`weights remaing after extract: ${getRemainingWeights().length}`);
-    }
-    const params = {
-      conv32_down,
-      conv32_1,
-      conv32_2,
-      conv32_3,
-      conv64_down,
-      conv64_1,
-      conv64_2,
-      conv64_3,
-      conv128_down,
-      conv128_1,
-      conv128_2,
-      conv256_down,
-      conv256_1,
-      conv256_2,
-      conv256_down_out,
-      fc
-    };
-    return {params, paramMappings};
-  }
-
-  // build/faceRecognitionNet/extractParamsFromWeigthMap.js
-  function extractorsFactory6(weightMap, paramMappings) {
-    const extractWeightEntry = extractWeightEntryFactory(weightMap, paramMappings);
-    function extractScaleLayerParams(prefix) {
-      const weights = extractWeightEntry(`${prefix}/scale/weights`, 1);
-      const biases = extractWeightEntry(`${prefix}/scale/biases`, 1);
-      return {weights, biases};
-    }
-    function extractConvLayerParams(prefix) {
-      const filters = extractWeightEntry(`${prefix}/conv/filters`, 4);
-      const bias = extractWeightEntry(`${prefix}/conv/bias`, 1);
-      const scale2 = extractScaleLayerParams(prefix);
-      return {conv: {filters, bias}, scale: scale2};
-    }
-    function extractResidualLayerParams(prefix) {
-      return {
-        conv1: extractConvLayerParams(`${prefix}/conv1`),
-        conv2: extractConvLayerParams(`${prefix}/conv2`)
-      };
-    }
-    return {
-      extractConvLayerParams,
-      extractResidualLayerParams
-    };
-  }
-  function extractParamsFromWeigthMap9(weightMap) {
-    const paramMappings = [];
-    const {extractConvLayerParams, extractResidualLayerParams} = extractorsFactory6(weightMap, paramMappings);
-    const conv32_down = extractConvLayerParams("conv32_down");
-    const conv32_1 = extractResidualLayerParams("conv32_1");
-    const conv32_2 = extractResidualLayerParams("conv32_2");
-    const conv32_3 = extractResidualLayerParams("conv32_3");
-    const conv64_down = extractResidualLayerParams("conv64_down");
-    const conv64_1 = extractResidualLayerParams("conv64_1");
-    const conv64_2 = extractResidualLayerParams("conv64_2");
-    const conv64_3 = extractResidualLayerParams("conv64_3");
-    const conv128_down = extractResidualLayerParams("conv128_down");
-    const conv128_1 = extractResidualLayerParams("conv128_1");
-    const conv128_2 = extractResidualLayerParams("conv128_2");
-    const conv256_down = extractResidualLayerParams("conv256_down");
-    const conv256_1 = extractResidualLayerParams("conv256_1");
-    const conv256_2 = extractResidualLayerParams("conv256_2");
-    const conv256_down_out = extractResidualLayerParams("conv256_down_out");
-    const fc = weightMap["fc"];
-    paramMappings.push({originalPath: "fc", paramPath: "fc"});
-    if (!isTensor2D(fc)) {
-      throw new Error(`expected weightMap[fc] to be a Tensor2D, instead have ${fc}`);
-    }
-    const params = {
-      conv32_down,
-      conv32_1,
-      conv32_2,
-      conv32_3,
-      conv64_down,
-      conv64_1,
-      conv64_2,
-      conv64_3,
-      conv128_down,
-      conv128_1,
-      conv128_2,
-      conv256_down,
-      conv256_1,
-      conv256_2,
-      conv256_down_out,
-      fc
-    };
-    disposeUnusedWeightTensors(weightMap, paramMappings);
-    return {params, paramMappings};
-  }
-
-  // build/faceRecognitionNet/residualLayer.js
-  function residual(x, params) {
-    let out = conv2(x, params.conv1);
-    out = convNoRelu(out, params.conv2);
-    out = add2(out, x);
-    out = relu(out);
-    return out;
-  }
-  function residualDown(x, params) {
-    let out = convDown(x, params.conv1);
-    out = convNoRelu(out, params.conv2);
-    let pooled = avgPool(x, 2, 2, "valid");
-    const zeros9 = zeros(pooled.shape);
-    const isPad = pooled.shape[3] !== out.shape[3];
-    const isAdjustShape = pooled.shape[1] !== out.shape[1] || pooled.shape[2] !== out.shape[2];
-    if (isAdjustShape) {
-      const padShapeX = [...out.shape];
-      padShapeX[1] = 1;
-      const zerosW = zeros(padShapeX);
-      out = concat([out, zerosW], 1);
-      const padShapeY = [...out.shape];
-      padShapeY[2] = 1;
-      const zerosH = zeros(padShapeY);
-      out = concat([out, zerosH], 2);
-    }
-    pooled = isPad ? concat([pooled, zeros9], 3) : pooled;
-    out = add2(pooled, out);
-    out = relu(out);
-    return out;
-  }
-
-  // build/faceRecognitionNet/FaceRecognitionNet.js
-  const dom9 = __toModule(require_dom());
-  class FaceRecognitionNet extends NeuralNetwork {
-    constructor() {
-      super("FaceRecognitionNet");
-    }
-    forwardInput(input) {
-      const {params} = this;
-      if (!params) {
-        throw new Error("FaceRecognitionNet - load model before inference");
-      }
-      return tidy(() => {
-        const batchTensor = input.toBatchTensor(150, true).toFloat();
-        const meanRgb = [122.782, 117.001, 104.298];
-        const normalized = normalize(batchTensor, meanRgb).div(scalar(256));
-        let out = convDown(normalized, params.conv32_down);
-        out = maxPool(out, 3, 2, "valid");
-        out = residual(out, params.conv32_1);
-        out = residual(out, params.conv32_2);
-        out = residual(out, params.conv32_3);
-        out = residualDown(out, params.conv64_down);
-        out = residual(out, params.conv64_1);
-        out = residual(out, params.conv64_2);
-        out = residual(out, params.conv64_3);
-        out = residualDown(out, params.conv128_down);
-        out = residual(out, params.conv128_1);
-        out = residual(out, params.conv128_2);
-        out = residualDown(out, params.conv256_down);
-        out = residual(out, params.conv256_1);
-        out = residual(out, params.conv256_2);
-        out = residualDown(out, params.conv256_down_out);
-        const globalAvg = out.mean([1, 2]);
-        const fullyConnected = matMul(globalAvg, params.fc);
-        return fullyConnected;
-      });
-    }
-    async forward(input) {
-      return this.forwardInput(await dom9.toNetInput(input));
-    }
-    async computeFaceDescriptor(input) {
-      const netInput = await dom9.toNetInput(input);
-      const faceDescriptorTensors = tidy(() => unstack(this.forwardInput(netInput)));
-      const faceDescriptorsForBatch = await Promise.all(faceDescriptorTensors.map((t) => t.data()));
-      faceDescriptorTensors.forEach((t) => t.dispose());
-      return netInput.isBatchInput ? faceDescriptorsForBatch : faceDescriptorsForBatch[0];
-    }
-    getDefaultModelName() {
-      return "face_recognition_model";
-    }
-    extractParamsFromWeigthMap(weightMap) {
-      return extractParamsFromWeigthMap9(weightMap);
-    }
-    extractParams(weights) {
-      return extractParams9(weights);
-    }
-  }
-
-  // build/faceRecognitionNet/index.js
-  function createFaceRecognitionNet(weights) {
-    const net = new FaceRecognitionNet();
-    net.extractWeights(weights);
-    return net;
-  }
-
-  // build/factories/WithFaceDescriptor.js
-  function extendWithFaceDescriptor(sourceObj, descriptor) {
-    const extension = {descriptor};
-    return Object.assign({}, sourceObj, extension);
-  }
-
-  // build/factories/WithAge.js
-  function isWithAge(obj) {
-    return typeof obj["age"] === "number";
-  }
-  function extendWithAge(sourceObj, age) {
-    const extension = {age};
-    return Object.assign({}, sourceObj, extension);
-  }
-
-  // build/factories/WithGender.js
-  function isWithGender(obj) {
-    return (obj["gender"] === Gender.MALE || obj["gender"] === Gender.FEMALE) && isValidProbablitiy(obj["genderProbability"]);
-  }
-  function extendWithGender(sourceObj, gender, genderProbability) {
-    const extension = {gender, genderProbability};
-    return Object.assign({}, sourceObj, extension);
-  }
-
-  // build/factories/index.js
-
-  // build/globalApi/ComposableTask.js
-  class ComposableTask {
-    async then(onfulfilled) {
-      return onfulfilled(await this.run());
-    }
-    async run() {
-      throw new Error("ComposableTask - run is not implemented");
-    }
-  }
-
-  // build/globalApi/extractFacesAndComputeResults.js
-  const dom10 = __toModule(require_dom());
-  async function extractAllFacesAndComputeResults(parentResults, input, computeResults, extractedFaces, getRectForAlignment = ({alignedRect}) => alignedRect) {
-    const faceBoxes = parentResults.map((parentResult) => isWithFaceLandmarks(parentResult) ? getRectForAlignment(parentResult) : parentResult.detection);
-    const faces = extractedFaces || (input instanceof Tensor ? await dom10.extractFaceTensors(input, faceBoxes) : await dom10.extractFaces(input, faceBoxes));
-    const results = await computeResults(faces);
-    faces.forEach((f) => f instanceof Tensor && f.dispose());
-    return results;
-  }
-  async function extractSingleFaceAndComputeResult(parentResult, input, computeResult, extractedFaces, getRectForAlignment) {
-    return extractAllFacesAndComputeResults([parentResult], input, async (faces) => computeResult(faces[0]), extractedFaces, getRectForAlignment);
-  }
-
-  // build/tinyYolov2/config.js
-  const isNumber2 = (arg) => typeof arg === "number";
-  function validateConfig(config2) {
-    if (!config2) {
-      throw new Error(`invalid config: ${config2}`);
-    }
-    if (typeof config2.withSeparableConvs !== "boolean") {
-      throw new Error(`config.withSeparableConvs has to be a boolean, have: ${config2.withSeparableConvs}`);
-    }
-    if (!isNumber2(config2.iouThreshold) || config2.iouThreshold < 0 || config2.iouThreshold > 1) {
-      throw new Error(`config.iouThreshold has to be a number between [0, 1], have: ${config2.iouThreshold}`);
-    }
-    if (!Array.isArray(config2.classes) || !config2.classes.length || !config2.classes.every((c) => typeof c === "string")) {
-      throw new Error(`config.classes has to be an array class names: string[], have: ${JSON.stringify(config2.classes)}`);
-    }
-    if (!Array.isArray(config2.anchors) || !config2.anchors.length || !config2.anchors.map((a) => a || {}).every((a) => isNumber2(a.x) && isNumber2(a.y))) {
-      throw new Error(`config.anchors has to be an array of { x: number, y: number }, have: ${JSON.stringify(config2.anchors)}`);
-    }
-    if (config2.meanRgb && (!Array.isArray(config2.meanRgb) || config2.meanRgb.length !== 3 || !config2.meanRgb.every(isNumber2))) {
-      throw new Error(`config.meanRgb has to be an array of shape [number, number, number], have: ${JSON.stringify(config2.meanRgb)}`);
-    }
-  }
-
-  // build/tinyYolov2/leaky.js
-  function leaky(x) {
-    return tidy(() => {
-      const min5 = mul(x, scalar(0.10000000149011612));
-      return add2(relu(sub(x, min5)), min5);
-    });
-  }
-
-  // build/tinyYolov2/convWithBatchNorm.js
-  function convWithBatchNorm(x, params) {
-    return tidy(() => {
-      let out = pad(x, [[0, 0], [1, 1], [1, 1], [0, 0]]);
-      out = conv2d(out, params.conv.filters, [1, 1], "valid");
-      out = sub(out, params.bn.sub);
-      out = mul(out, params.bn.truediv);
-      out = add2(out, params.conv.bias);
-      return leaky(out);
-    });
-  }
-
-  // build/tinyYolov2/depthwiseSeparableConv.js
-  function depthwiseSeparableConv3(x, params) {
-    return tidy(() => {
-      let out = pad(x, [[0, 0], [1, 1], [1, 1], [0, 0]]);
-      out = separableConv2d(out, params.depthwise_filter, params.pointwise_filter, [1, 1], "valid");
-      out = add2(out, params.bias);
-      return leaky(out);
-    });
-  }
-
-  // build/tinyYolov2/extractParams.js
-  function extractorsFactory7(extractWeights, paramMappings) {
-    const extractConvParams = extractConvParamsFactory(extractWeights, paramMappings);
-    function extractBatchNormParams(size, mappedPrefix) {
-      const sub32 = tensor1d(extractWeights(size));
-      const truediv = tensor1d(extractWeights(size));
-      paramMappings.push({paramPath: `${mappedPrefix}/sub`}, {paramPath: `${mappedPrefix}/truediv`});
-      return {sub: sub32, truediv};
-    }
-    function extractConvWithBatchNormParams(channelsIn, channelsOut, mappedPrefix) {
-      const conv3 = extractConvParams(channelsIn, channelsOut, 3, `${mappedPrefix}/conv`);
-      const bn = extractBatchNormParams(channelsOut, `${mappedPrefix}/bn`);
-      return {conv: conv3, bn};
-    }
-    const extractSeparableConvParams = extractSeparableConvParamsFactory(extractWeights, paramMappings);
-    return {
-      extractConvParams,
-      extractConvWithBatchNormParams,
-      extractSeparableConvParams
-    };
-  }
-  function extractParams11(weights, config2, boxEncodingSize, filterSizes) {
-    const {extractWeights, getRemainingWeights} = extractWeightsFactory(weights);
-    const paramMappings = [];
-    const {extractConvParams, extractConvWithBatchNormParams, extractSeparableConvParams} = extractorsFactory7(extractWeights, paramMappings);
-    let params;
-    if (config2.withSeparableConvs) {
-      const [s0, s1, s2, s3, s4, s5, s6, s7, s8] = filterSizes;
-      const conv0 = config2.isFirstLayerConv2d ? extractConvParams(s0, s1, 3, "conv0") : extractSeparableConvParams(s0, s1, "conv0");
-      const conv1 = extractSeparableConvParams(s1, s2, "conv1");
-      const conv22 = extractSeparableConvParams(s2, s3, "conv2");
-      const conv3 = extractSeparableConvParams(s3, s4, "conv3");
-      const conv4 = extractSeparableConvParams(s4, s5, "conv4");
-      const conv5 = extractSeparableConvParams(s5, s6, "conv5");
-      const conv6 = s7 ? extractSeparableConvParams(s6, s7, "conv6") : void 0;
-      const conv7 = s8 ? extractSeparableConvParams(s7, s8, "conv7") : void 0;
-      const conv8 = extractConvParams(s8 || s7 || s6, 5 * boxEncodingSize, 1, "conv8");
-      params = {conv0, conv1, conv2: conv22, conv3, conv4, conv5, conv6, conv7, conv8};
-    } else {
-      const [s0, s1, s2, s3, s4, s5, s6, s7, s8] = filterSizes;
-      const conv0 = extractConvWithBatchNormParams(s0, s1, "conv0");
-      const conv1 = extractConvWithBatchNormParams(s1, s2, "conv1");
-      const conv22 = extractConvWithBatchNormParams(s2, s3, "conv2");
-      const conv3 = extractConvWithBatchNormParams(s3, s4, "conv3");
-      const conv4 = extractConvWithBatchNormParams(s4, s5, "conv4");
-      const conv5 = extractConvWithBatchNormParams(s5, s6, "conv5");
-      const conv6 = extractConvWithBatchNormParams(s6, s7, "conv6");
-      const conv7 = extractConvWithBatchNormParams(s7, s8, "conv7");
-      const conv8 = extractConvParams(s8, 5 * boxEncodingSize, 1, "conv8");
-      params = {conv0, conv1, conv2: conv22, conv3, conv4, conv5, conv6, conv7, conv8};
-    }
-    if (getRemainingWeights().length !== 0) {
-      throw new Error(`weights remaing after extract: ${getRemainingWeights().length}`);
-    }
-    return {params, paramMappings};
-  }
-
-  // build/tinyYolov2/extractParamsFromWeigthMap.js
-  function extractorsFactory8(weightMap, paramMappings) {
-    const extractWeightEntry = extractWeightEntryFactory(weightMap, paramMappings);
-    function extractBatchNormParams(prefix) {
-      const sub32 = extractWeightEntry(`${prefix}/sub`, 1);
-      const truediv = extractWeightEntry(`${prefix}/truediv`, 1);
-      return {sub: sub32, truediv};
-    }
-    function extractConvParams(prefix) {
-      const filters = extractWeightEntry(`${prefix}/filters`, 4);
-      const bias = extractWeightEntry(`${prefix}/bias`, 1);
-      return {filters, bias};
-    }
-    function extractConvWithBatchNormParams(prefix) {
-      const conv3 = extractConvParams(`${prefix}/conv`);
-      const bn = extractBatchNormParams(`${prefix}/bn`);
-      return {conv: conv3, bn};
-    }
-    const extractSeparableConvParams = loadSeparableConvParamsFactory(extractWeightEntry);
-    return {
-      extractConvParams,
-      extractConvWithBatchNormParams,
-      extractSeparableConvParams
-    };
-  }
-  function extractParamsFromWeigthMap11(weightMap, config2) {
-    const paramMappings = [];
-    const {extractConvParams, extractConvWithBatchNormParams, extractSeparableConvParams} = extractorsFactory8(weightMap, paramMappings);
-    let params;
-    if (config2.withSeparableConvs) {
-      const numFilters = config2.filterSizes && config2.filterSizes.length || 9;
-      params = {
-        conv0: config2.isFirstLayerConv2d ? extractConvParams("conv0") : extractSeparableConvParams("conv0"),
-        conv1: extractSeparableConvParams("conv1"),
-        conv2: extractSeparableConvParams("conv2"),
-        conv3: extractSeparableConvParams("conv3"),
-        conv4: extractSeparableConvParams("conv4"),
-        conv5: extractSeparableConvParams("conv5"),
-        conv6: numFilters > 7 ? extractSeparableConvParams("conv6") : void 0,
-        conv7: numFilters > 8 ? extractSeparableConvParams("conv7") : void 0,
-        conv8: extractConvParams("conv8")
-      };
-    } else {
-      params = {
-        conv0: extractConvWithBatchNormParams("conv0"),
-        conv1: extractConvWithBatchNormParams("conv1"),
-        conv2: extractConvWithBatchNormParams("conv2"),
-        conv3: extractConvWithBatchNormParams("conv3"),
-        conv4: extractConvWithBatchNormParams("conv4"),
-        conv5: extractConvWithBatchNormParams("conv5"),
-        conv6: extractConvWithBatchNormParams("conv6"),
-        conv7: extractConvWithBatchNormParams("conv7"),
-        conv8: extractConvParams("conv8")
-      };
-    }
-    disposeUnusedWeightTensors(weightMap, paramMappings);
-    return {params, paramMappings};
-  }
-
-  // build/tinyYolov2/TinyYolov2Options.js
-  var TinyYolov2SizeType;
-  (function(TinyYolov2SizeType2) {
-    TinyYolov2SizeType2[TinyYolov2SizeType2["XS"] = 224] = "XS";
-    TinyYolov2SizeType2[TinyYolov2SizeType2["SM"] = 320] = "SM";
-    TinyYolov2SizeType2[TinyYolov2SizeType2["MD"] = 416] = "MD";
-    TinyYolov2SizeType2[TinyYolov2SizeType2["LG"] = 608] = "LG";
-  })(TinyYolov2SizeType || (TinyYolov2SizeType = {}));
-  class TinyYolov2Options {
-    constructor({inputSize, scoreThreshold} = {}) {
-      this._name = "TinyYolov2Options";
-      this._inputSize = inputSize || 416;
-      this._scoreThreshold = scoreThreshold || 0.5;
-      if (typeof this._inputSize !== "number" || this._inputSize % 32 !== 0) {
-        throw new Error(`${this._name} - expected inputSize to be a number divisible by 32`);
-      }
-      if (typeof this._scoreThreshold !== "number" || this._scoreThreshold <= 0 || this._scoreThreshold >= 1) {
-        throw new Error(`${this._name} - expected scoreThreshold to be a number between 0 and 1`);
-      }
-    }
-    get inputSize() {
-      return this._inputSize;
-    }
-    get scoreThreshold() {
-      return this._scoreThreshold;
-    }
-  }
-
-  // build/tinyYolov2/TinyYolov2Base.js
-  const dom11 = __toModule(require_dom());
-  class TinyYolov2Base extends NeuralNetwork {
-    constructor(config2) {
-      super("TinyYolov2");
-      validateConfig(config2);
-      this._config = config2;
-    }
-    get config() {
-      return this._config;
-    }
-    get withClassScores() {
-      return this.config.withClassScores || this.config.classes.length > 1;
-    }
-    get boxEncodingSize() {
-      return 5 + (this.withClassScores ? this.config.classes.length : 0);
-    }
-    runTinyYolov2(x, params) {
-      let out = convWithBatchNorm(x, params.conv0);
-      out = maxPool(out, [2, 2], [2, 2], "same");
-      out = convWithBatchNorm(out, params.conv1);
-      out = maxPool(out, [2, 2], [2, 2], "same");
-      out = convWithBatchNorm(out, params.conv2);
-      out = maxPool(out, [2, 2], [2, 2], "same");
-      out = convWithBatchNorm(out, params.conv3);
-      out = maxPool(out, [2, 2], [2, 2], "same");
-      out = convWithBatchNorm(out, params.conv4);
-      out = maxPool(out, [2, 2], [2, 2], "same");
-      out = convWithBatchNorm(out, params.conv5);
-      out = maxPool(out, [2, 2], [1, 1], "same");
-      out = convWithBatchNorm(out, params.conv6);
-      out = convWithBatchNorm(out, params.conv7);
-      return convLayer(out, params.conv8, "valid", false);
-    }
-    runMobilenet(x, params) {
-      let out = this.config.isFirstLayerConv2d ? leaky(convLayer(x, params.conv0, "valid", false)) : depthwiseSeparableConv3(x, params.conv0);
-      out = maxPool(out, [2, 2], [2, 2], "same");
-      out = depthwiseSeparableConv3(out, params.conv1);
-      out = maxPool(out, [2, 2], [2, 2], "same");
-      out = depthwiseSeparableConv3(out, params.conv2);
-      out = maxPool(out, [2, 2], [2, 2], "same");
-      out = depthwiseSeparableConv3(out, params.conv3);
-      out = maxPool(out, [2, 2], [2, 2], "same");
-      out = depthwiseSeparableConv3(out, params.conv4);
-      out = maxPool(out, [2, 2], [2, 2], "same");
-      out = depthwiseSeparableConv3(out, params.conv5);
-      out = maxPool(out, [2, 2], [1, 1], "same");
-      out = params.conv6 ? depthwiseSeparableConv3(out, params.conv6) : out;
-      out = params.conv7 ? depthwiseSeparableConv3(out, params.conv7) : out;
-      return convLayer(out, params.conv8, "valid", false);
-    }
-    forwardInput(input, inputSize) {
-      const {params} = this;
-      if (!params) {
-        throw new Error("TinyYolov2 - load model before inference");
-      }
-      return tidy(() => {
-        let batchTensor = input.toBatchTensor(inputSize, false).toFloat();
-        batchTensor = this.config.meanRgb ? normalize(batchTensor, this.config.meanRgb) : batchTensor;
-        batchTensor = batchTensor.div(scalar(256));
-        return this.config.withSeparableConvs ? this.runMobilenet(batchTensor, params) : this.runTinyYolov2(batchTensor, params);
-      });
-    }
-    async forward(input, inputSize) {
-      return await this.forwardInput(await dom11.toNetInput(input), inputSize);
-    }
-    async detect(input, forwardParams = {}) {
-      const {inputSize, scoreThreshold} = new TinyYolov2Options(forwardParams);
-      const netInput = await dom11.toNetInput(input);
-      const out = await this.forwardInput(netInput, inputSize);
-      const out0 = tidy(() => unstack(out)[0].expandDims());
-      const inputDimensions = {
-        width: netInput.getInputWidth(0),
-        height: netInput.getInputHeight(0)
-      };
-      const results = await this.extractBoxes(out0, netInput.getReshapedInputDimensions(0), scoreThreshold);
-      out.dispose();
-      out0.dispose();
-      const boxes = results.map((res) => res.box);
-      const scores = results.map((res) => res.score);
-      const classScores = results.map((res) => res.classScore);
-      const classNames = results.map((res) => this.config.classes[res.label]);
-      const indices = nonMaxSuppression2(boxes.map((box) => box.rescale(inputSize)), scores, this.config.iouThreshold, true);
-      const detections = indices.map((idx) => new ObjectDetection(scores[idx], classScores[idx], classNames[idx], boxes[idx], inputDimensions));
-      return detections;
-    }
-    getDefaultModelName() {
-      return "";
-    }
-    extractParamsFromWeigthMap(weightMap) {
-      return extractParamsFromWeigthMap11(weightMap, this.config);
-    }
-    extractParams(weights) {
-      const filterSizes = this.config.filterSizes || TinyYolov2Base.DEFAULT_FILTER_SIZES;
-      const numFilters = filterSizes ? filterSizes.length : void 0;
-      if (numFilters !== 7 && numFilters !== 8 && numFilters !== 9) {
-        throw new Error(`TinyYolov2 - expected 7 | 8 | 9 convolutional filters, but found ${numFilters} filterSizes in config`);
-      }
-      return extractParams11(weights, this.config, this.boxEncodingSize, filterSizes);
-    }
-    async extractBoxes(outputTensor, inputBlobDimensions, scoreThreshold) {
-      const {width, height} = inputBlobDimensions;
-      const inputSize = Math.max(width, height);
-      const correctionFactorX = inputSize / width;
-      const correctionFactorY = inputSize / height;
-      const numCells = outputTensor.shape[1];
-      const numBoxes = this.config.anchors.length;
-      const [boxesTensor, scoresTensor, classScoresTensor] = tidy(() => {
-        const reshaped = outputTensor.reshape([numCells, numCells, numBoxes, this.boxEncodingSize]);
-        const boxes = reshaped.slice([0, 0, 0, 0], [numCells, numCells, numBoxes, 4]);
-        const scores = reshaped.slice([0, 0, 0, 4], [numCells, numCells, numBoxes, 1]);
-        const classScores = this.withClassScores ? softmax(reshaped.slice([0, 0, 0, 5], [numCells, numCells, numBoxes, this.config.classes.length]), 3) : scalar(0);
-        return [boxes, scores, classScores];
-      });
-      const results = [];
-      const scoresData = await scoresTensor.array();
-      const boxesData = await boxesTensor.array();
-      for (let row = 0; row < numCells; row++) {
-        for (let col = 0; col < numCells; col++) {
-          for (let anchor = 0; anchor < numBoxes; anchor++) {
-            const score = sigmoid6(scoresData[row][col][anchor][0]);
-            if (!scoreThreshold || score > scoreThreshold) {
-              const ctX = (col + sigmoid6(boxesData[row][col][anchor][0])) / numCells * correctionFactorX;
-              const ctY = (row + sigmoid6(boxesData[row][col][anchor][1])) / numCells * correctionFactorY;
-              const width2 = Math.exp(boxesData[row][col][anchor][2]) * this.config.anchors[anchor].x / numCells * correctionFactorX;
-              const height2 = Math.exp(boxesData[row][col][anchor][3]) * this.config.anchors[anchor].y / numCells * correctionFactorY;
-              const x = ctX - width2 / 2;
-              const y = ctY - height2 / 2;
-              const pos = {row, col, anchor};
-              const {classScore, label} = this.withClassScores ? await this.extractPredictedClass(classScoresTensor, pos) : {classScore: 1, label: 0};
-              results.push({
-                box: new BoundingBox(x, y, x + width2, y + height2),
-                score,
-                classScore: score * classScore,
-                label,
-                ...pos
-              });
-            }
-          }
-        }
-      }
-      boxesTensor.dispose();
-      scoresTensor.dispose();
-      classScoresTensor.dispose();
-      return results;
-    }
-    async extractPredictedClass(classesTensor, pos) {
-      const {row, col, anchor} = pos;
-      const classesData = await classesTensor.array();
-      return Array(this.config.classes.length).fill(0).map((_, i) => classesData[row][col][anchor][i]).map((classScore, label) => ({
-        classScore,
-        label
-      })).reduce((max7, curr) => max7.classScore > curr.classScore ? max7 : curr);
-    }
-  }
-  TinyYolov2Base.DEFAULT_FILTER_SIZES = [
-    3,
-    16,
-    32,
-    64,
-    128,
-    256,
-    512,
-    1024,
-    1024
-  ];
-
-  // build/tinyFaceDetector/const.js
-  const IOU_THRESHOLD = 0.4;
-  const BOX_ANCHORS = [
-    new Point(1.603231, 2.094468),
-    new Point(6.041143, 7.080126),
-    new Point(2.882459, 3.518061),
-    new Point(4.266906, 5.178857),
-    new Point(9.041765, 10.66308)
-  ];
-  const MEAN_RGB = [117.001, 114.697, 97.404];
-
-  // build/tinyFaceDetector/TinyFaceDetector.js
-  class TinyFaceDetector extends TinyYolov2Base {
-    constructor() {
-      const config2 = {
-        withSeparableConvs: true,
-        iouThreshold: IOU_THRESHOLD,
-        classes: ["face"],
-        anchors: BOX_ANCHORS,
-        meanRgb: MEAN_RGB,
-        isFirstLayerConv2d: true,
-        filterSizes: [3, 16, 32, 64, 128, 256, 512]
-      };
-      super(config2);
-    }
-    get anchors() {
-      return this.config.anchors;
-    }
-    async locateFaces(input, forwardParams) {
-      const objectDetections = await this.detect(input, forwardParams);
-      return objectDetections.map((det) => new FaceDetection(det.score, det.relativeBox, {width: det.imageWidth, height: det.imageHeight}));
-    }
-    getDefaultModelName() {
-      return "tiny_face_detector_model";
-    }
-    extractParamsFromWeigthMap(weightMap) {
-      return super.extractParamsFromWeigthMap(weightMap);
-    }
-  }
-
-  // build/tinyYolov2/const.js
-  const IOU_THRESHOLD2 = 0.4;
-  const BOX_ANCHORS2 = [
-    new Point(0.738768, 0.874946),
-    new Point(2.42204, 2.65704),
-    new Point(4.30971, 7.04493),
-    new Point(10.246, 4.59428),
-    new Point(12.6868, 11.8741)
-  ];
-  const BOX_ANCHORS_SEPARABLE = [
-    new Point(1.603231, 2.094468),
-    new Point(6.041143, 7.080126),
-    new Point(2.882459, 3.518061),
-    new Point(4.266906, 5.178857),
-    new Point(9.041765, 10.66308)
-  ];
-  const MEAN_RGB_SEPARABLE = [117.001, 114.697, 97.404];
-  const DEFAULT_MODEL_NAME = "tiny_yolov2_model";
-  const DEFAULT_MODEL_NAME_SEPARABLE_CONV = "tiny_yolov2_separable_conv_model";
-
-  // build/tinyYolov2/TinyYolov2.js
-  class TinyYolov2 extends TinyYolov2Base {
-    constructor(withSeparableConvs = true) {
-      const config2 = Object.assign({}, {
-        withSeparableConvs,
-        iouThreshold: IOU_THRESHOLD2,
-        classes: ["face"]
-      }, withSeparableConvs ? {
-        anchors: BOX_ANCHORS_SEPARABLE,
-        meanRgb: MEAN_RGB_SEPARABLE
-      } : {
-        anchors: BOX_ANCHORS2,
-        withClassScores: true
-      });
-      super(config2);
-    }
-    get withSeparableConvs() {
-      return this.config.withSeparableConvs;
-    }
-    get anchors() {
-      return this.config.anchors;
-    }
-    async locateFaces(input, forwardParams) {
-      const objectDetections = await this.detect(input, forwardParams);
-      return objectDetections.map((det) => new FaceDetection(det.score, det.relativeBox, {width: det.imageWidth, height: det.imageHeight}));
-    }
-    getDefaultModelName() {
-      return this.withSeparableConvs ? DEFAULT_MODEL_NAME_SEPARABLE_CONV : DEFAULT_MODEL_NAME;
-    }
-    extractParamsFromWeigthMap(weightMap) {
-      return super.extractParamsFromWeigthMap(weightMap);
-    }
-  }
-
-  // build/globalApi/nets.js
-  const tinyYolov2 = __toModule(require_tinyYolov2());
-  const nets = {
-    tinyFaceDetector: new TinyFaceDetector(),
-    tinyYolov2: new tinyYolov2.TinyYolov2(),
-    faceLandmark68Net: new FaceLandmark68Net(),
-    faceLandmark68TinyNet: new FaceLandmark68TinyNet(),
-    faceRecognitionNet: new FaceRecognitionNet(),
-    faceExpressionNet: new FaceExpressionNet(),
-    ageGenderNet: new AgeGenderNet()
-  };
-  const tinyFaceDetector = (input, options) => nets.tinyFaceDetector.locateFaces(input, options);
-  const detectFaceLandmarks = (input) => nets.faceLandmark68Net.detectLandmarks(input);
-  const detectFaceLandmarksTiny = (input) => nets.faceLandmark68TinyNet.detectLandmarks(input);
-  const computeFaceDescriptor = (input) => nets.faceRecognitionNet.computeFaceDescriptor(input);
-  const recognizeFaceExpressions = (input) => nets.faceExpressionNet.predictExpressions(input);
-  const predictAgeAndGender = (input) => nets.ageGenderNet.predictAgeAndGender(input);
-  const loadTinyFaceDetectorModel = (url) => nets.tinyFaceDetector.load(url);
-  const loadTinyYolov2Model = (url) => nets.tinyYolov2.load(url);
-  const loadFaceLandmarkModel = (url) => nets.faceLandmark68Net.load(url);
-  const loadFaceLandmarkTinyModel = (url) => nets.faceLandmark68TinyNet.load(url);
-  const loadFaceRecognitionModel = (url) => nets.faceRecognitionNet.load(url);
-  const loadFaceExpressionModel = (url) => nets.faceExpressionNet.load(url);
-  const loadAgeGenderModel = (url) => nets.ageGenderNet.load(url);
-  const loadFaceDetectionModel = loadTinyFaceDetectorModel;
-  const locateFaces = TinyFaceDetector;
-  const detectLandmarks = detectFaceLandmarks;
-
-  // build/globalApi/PredictFaceExpressionsTask.js
-  class PredictFaceExpressionsTaskBase extends ComposableTask {
-    constructor(parentTask, input, extractedFaces) {
-      super();
-      this.parentTask = parentTask;
-      this.input = input;
-      this.extractedFaces = extractedFaces;
-    }
-  }
-  class PredictAllFaceExpressionsTask extends PredictFaceExpressionsTaskBase {
-    async run() {
-      const parentResults = await this.parentTask;
-      const faceExpressionsByFace = await extractAllFacesAndComputeResults(parentResults, this.input, async (faces) => await Promise.all(faces.map((face) => nets.faceExpressionNet.predictExpressions(face))), this.extractedFaces);
-      return parentResults.map((parentResult, i) => extendWithFaceExpressions(parentResult, faceExpressionsByFace[i]));
-    }
-    withAgeAndGender() {
-      return new PredictAllAgeAndGenderTask(this, this.input);
-    }
-  }
-  class PredictSingleFaceExpressionsTask extends PredictFaceExpressionsTaskBase {
-    async run() {
-      const parentResult = await this.parentTask;
-      if (!parentResult) {
-        return;
-      }
-      const faceExpressions = await extractSingleFaceAndComputeResult(parentResult, this.input, (face) => nets.faceExpressionNet.predictExpressions(face), this.extractedFaces);
-      return extendWithFaceExpressions(parentResult, faceExpressions);
-    }
-    withAgeAndGender() {
-      return new PredictSingleAgeAndGenderTask(this, this.input);
-    }
-  }
-  class PredictAllFaceExpressionsWithFaceAlignmentTask extends PredictAllFaceExpressionsTask {
-    withAgeAndGender() {
-      return new PredictAllAgeAndGenderWithFaceAlignmentTask(this, this.input);
-    }
-    withFaceDescriptors() {
-      return new ComputeAllFaceDescriptorsTask(this, this.input);
-    }
-  }
-  class PredictSingleFaceExpressionsWithFaceAlignmentTask extends PredictSingleFaceExpressionsTask {
-    withAgeAndGender() {
-      return new PredictSingleAgeAndGenderWithFaceAlignmentTask(this, this.input);
-    }
-    withFaceDescriptor() {
-      return new ComputeSingleFaceDescriptorTask(this, this.input);
-    }
-  }
-
-  // build/globalApi/PredictAgeAndGenderTask.js
-  class PredictAgeAndGenderTaskBase extends ComposableTask {
-    constructor(parentTask, input, extractedFaces) {
-      super();
-      this.parentTask = parentTask;
-      this.input = input;
-      this.extractedFaces = extractedFaces;
-    }
-  }
-  class PredictAllAgeAndGenderTask extends PredictAgeAndGenderTaskBase {
-    async run() {
-      const parentResults = await this.parentTask;
-      const ageAndGenderByFace = await extractAllFacesAndComputeResults(parentResults, this.input, async (faces) => await Promise.all(faces.map((face) => nets.ageGenderNet.predictAgeAndGender(face))), this.extractedFaces);
-      return parentResults.map((parentResult, i) => {
-        const {age, gender, genderProbability} = ageAndGenderByFace[i];
-        return extendWithAge(extendWithGender(parentResult, gender, genderProbability), age);
-      });
-    }
-    withFaceExpressions() {
-      return new PredictAllFaceExpressionsTask(this, this.input);
-    }
-  }
-  class PredictSingleAgeAndGenderTask extends PredictAgeAndGenderTaskBase {
-    async run() {
-      const parentResult = await this.parentTask;
-      if (!parentResult) {
-        return;
-      }
-      const {age, gender, genderProbability} = await extractSingleFaceAndComputeResult(parentResult, this.input, (face) => nets.ageGenderNet.predictAgeAndGender(face), this.extractedFaces);
-      return extendWithAge(extendWithGender(parentResult, gender, genderProbability), age);
-    }
-    withFaceExpressions() {
-      return new PredictSingleFaceExpressionsTask(this, this.input);
-    }
-  }
-  class PredictAllAgeAndGenderWithFaceAlignmentTask extends PredictAllAgeAndGenderTask {
-    withFaceExpressions() {
-      return new PredictAllFaceExpressionsWithFaceAlignmentTask(this, this.input);
-    }
-    withFaceDescriptors() {
-      return new ComputeAllFaceDescriptorsTask(this, this.input);
-    }
-  }
-  class PredictSingleAgeAndGenderWithFaceAlignmentTask extends PredictSingleAgeAndGenderTask {
-    withFaceExpressions() {
-      return new PredictSingleFaceExpressionsWithFaceAlignmentTask(this, this.input);
-    }
-    withFaceDescriptor() {
-      return new ComputeSingleFaceDescriptorTask(this, this.input);
-    }
-  }
-
-  // build/globalApi/ComputeFaceDescriptorsTasks.js
-  class ComputeFaceDescriptorsTaskBase extends ComposableTask {
-    constructor(parentTask, input) {
-      super();
-      this.parentTask = parentTask;
-      this.input = input;
-    }
-  }
-  class ComputeAllFaceDescriptorsTask extends ComputeFaceDescriptorsTaskBase {
-    async run() {
-      const parentResults = await this.parentTask;
-      const descriptors = await extractAllFacesAndComputeResults(parentResults, this.input, (faces) => Promise.all(faces.map((face) => nets.faceRecognitionNet.computeFaceDescriptor(face))), null, (parentResult) => parentResult.landmarks.align(null, {useDlibAlignment: true}));
-      return descriptors.map((descriptor, i) => extendWithFaceDescriptor(parentResults[i], descriptor));
-    }
-    withFaceExpressions() {
-      return new PredictAllFaceExpressionsWithFaceAlignmentTask(this, this.input);
-    }
-    withAgeAndGender() {
-      return new PredictAllAgeAndGenderWithFaceAlignmentTask(this, this.input);
-    }
-  }
-  class ComputeSingleFaceDescriptorTask extends ComputeFaceDescriptorsTaskBase {
-    async run() {
-      const parentResult = await this.parentTask;
-      if (!parentResult) {
-        return;
-      }
-      const descriptor = await extractSingleFaceAndComputeResult(parentResult, this.input, (face) => nets.faceRecognitionNet.computeFaceDescriptor(face), null, (parentResult2) => parentResult2.landmarks.align(null, {useDlibAlignment: true}));
-      return extendWithFaceDescriptor(parentResult, descriptor);
-    }
-    withFaceExpressions() {
-      return new PredictSingleFaceExpressionsWithFaceAlignmentTask(this, this.input);
-    }
-    withAgeAndGender() {
-      return new PredictSingleAgeAndGenderWithFaceAlignmentTask(this, this.input);
-    }
-  }
-
-  // build/tinyFaceDetector/TinyFaceDetectorOptions.js
-  const tinyYolov22 = __toModule(require_tinyYolov2());
-  class TinyFaceDetectorOptions extends tinyYolov22.TinyYolov2Options {
-    constructor() {
-      super(...arguments);
-      this._name = "TinyFaceDetectorOptions";
-    }
-  }
-
-  // build/globalApi/DetectFaceLandmarksTasks.js
-  const dom12 = __toModule(require_dom());
-  class DetectFaceLandmarksTaskBase extends ComposableTask {
-    constructor(parentTask, input, useTinyLandmarkNet) {
-      super();
-      this.parentTask = parentTask;
-      this.input = input;
-      this.useTinyLandmarkNet = useTinyLandmarkNet;
-    }
-    get landmarkNet() {
-      return this.useTinyLandmarkNet ? nets.faceLandmark68TinyNet : nets.faceLandmark68Net;
-    }
-  }
-  class DetectAllFaceLandmarksTask extends DetectFaceLandmarksTaskBase {
-    async run() {
-      const parentResults = await this.parentTask;
-      const detections = parentResults.map((res) => res.detection);
-      const faces = this.input instanceof Tensor ? await dom12.extractFaceTensors(this.input, detections) : await dom12.extractFaces(this.input, detections);
-      const faceLandmarksByFace = await Promise.all(faces.map((face) => this.landmarkNet.detectLandmarks(face)));
-      faces.forEach((f) => f instanceof Tensor && f.dispose());
-      return parentResults.map((parentResult, i) => extendWithFaceLandmarks(parentResult, faceLandmarksByFace[i]));
-    }
-    withFaceExpressions() {
-      return new PredictAllFaceExpressionsWithFaceAlignmentTask(this, this.input);
-    }
-    withAgeAndGender() {
-      return new PredictAllAgeAndGenderWithFaceAlignmentTask(this, this.input);
-    }
-    withFaceDescriptors() {
-      return new ComputeAllFaceDescriptorsTask(this, this.input);
-    }
-  }
-  class DetectSingleFaceLandmarksTask extends DetectFaceLandmarksTaskBase {
-    async run() {
-      const parentResult = await this.parentTask;
-      if (!parentResult) {
-        return;
-      }
-      const {detection} = parentResult;
-      const faces = this.input instanceof Tensor ? await dom12.extractFaceTensors(this.input, [detection]) : await dom12.extractFaces(this.input, [detection]);
-      const landmarks = await this.landmarkNet.detectLandmarks(faces[0]);
-      faces.forEach((f) => f instanceof Tensor && f.dispose());
-      return extendWithFaceLandmarks(parentResult, landmarks);
-    }
-    withFaceExpressions() {
-      return new PredictSingleFaceExpressionsWithFaceAlignmentTask(this, this.input);
-    }
-    withAgeAndGender() {
-      return new PredictSingleAgeAndGenderWithFaceAlignmentTask(this, this.input);
-    }
-    withFaceDescriptor() {
-      return new ComputeSingleFaceDescriptorTask(this, this.input);
-    }
-  }
-
-  // build/globalApi/DetectFacesTasks.js
-  class DetectFacesTaskBase extends ComposableTask {
-    constructor(input, options = new TinyFaceDetectorOptions()) {
-      super();
-      this.input = input;
-      this.options = options;
-    }
-  }
-  class DetectAllFacesTask extends DetectFacesTaskBase {
-    async run() {
-      const {input, options} = this;
-      const faceDetectionFunction = options instanceof TinyFaceDetectorOptions ? (input2) => nets.tinyFaceDetector.locateFaces(input2, options) : null;
-      if (!faceDetectionFunction) {
-        throw new Error("detectFaces - expected options to be instance of TinyFaceDetectorOptions | SsdMobilenetv1Options | MtcnnOptions | TinyYolov2Options");
-      }
-      return faceDetectionFunction(input);
-    }
-    runAndExtendWithFaceDetections() {
-      return new Promise(async (res) => {
-        const detections = await this.run();
-        return res(detections.map((detection) => extendWithFaceDetection({}, detection)));
-      });
-    }
-    withFaceLandmarks(useTinyLandmarkNet = false) {
-      return new DetectAllFaceLandmarksTask(this.runAndExtendWithFaceDetections(), this.input, useTinyLandmarkNet);
-    }
-    withFaceExpressions() {
-      return new PredictAllFaceExpressionsTask(this.runAndExtendWithFaceDetections(), this.input);
-    }
-    withAgeAndGender() {
-      return new PredictAllAgeAndGenderTask(this.runAndExtendWithFaceDetections(), this.input);
-    }
-  }
-  class DetectSingleFaceTask extends DetectFacesTaskBase {
-    async run() {
-      const faceDetections = await new DetectAllFacesTask(this.input, this.options);
-      let faceDetectionWithHighestScore = faceDetections[0];
-      faceDetections.forEach((faceDetection) => {
-        if (faceDetection.score > faceDetectionWithHighestScore.score) {
-          faceDetectionWithHighestScore = faceDetection;
-        }
-      });
-      return faceDetectionWithHighestScore;
-    }
-    runAndExtendWithFaceDetection() {
-      return new Promise(async (res) => {
-        const detection = await this.run();
-        return res(detection ? extendWithFaceDetection({}, detection) : void 0);
-      });
-    }
-    withFaceLandmarks(useTinyLandmarkNet = false) {
-      return new DetectSingleFaceLandmarksTask(this.runAndExtendWithFaceDetection(), this.input, useTinyLandmarkNet);
-    }
-    withFaceExpressions() {
-      return new PredictSingleFaceExpressionsTask(this.runAndExtendWithFaceDetection(), this.input);
-    }
-    withAgeAndGender() {
-      return new PredictSingleAgeAndGenderTask(this.runAndExtendWithFaceDetection(), this.input);
-    }
-  }
-
-  // build/globalApi/detectFaces.js
-  function detectSingleFace(input, options = new TinyFaceDetectorOptions()) {
-    return new DetectSingleFaceTask(input, options);
-  }
-  function detectAllFaces(input, options = new TinyFaceDetectorOptions()) {
-    return new DetectAllFacesTask(input, options);
-  }
-
-  // build/euclideanDistance.js
-  function euclideanDistance(arr1, arr2) {
-    if (arr1.length !== arr2.length)
-      throw new Error("euclideanDistance: arr1.length !== arr2.length");
-    const desc1 = Array.from(arr1);
-    const desc2 = Array.from(arr2);
-    return Math.sqrt(desc1.map((val, i) => val - desc2[i]).reduce((res, diff) => res + Math.pow(diff, 2), 0));
-  }
-
-  // build/globalApi/FaceMatcher.js
-  class FaceMatcher {
-    constructor(inputs, distanceThreshold = 0.6) {
-      this._distanceThreshold = distanceThreshold;
-      const inputArray = Array.isArray(inputs) ? inputs : [inputs];
-      if (!inputArray.length) {
-        throw new Error(`FaceRecognizer.constructor - expected atleast one input`);
-      }
-      let count = 1;
-      const createUniqueLabel = () => `person ${count++}`;
-      this._labeledDescriptors = inputArray.map((desc) => {
-        if (desc instanceof LabeledFaceDescriptors) {
-          return desc;
-        }
-        if (desc instanceof Float32Array) {
-          return new LabeledFaceDescriptors(createUniqueLabel(), [desc]);
-        }
-        if (desc.descriptor && desc.descriptor instanceof Float32Array) {
-          return new LabeledFaceDescriptors(createUniqueLabel(), [desc.descriptor]);
-        }
-        throw new Error(`FaceRecognizer.constructor - expected inputs to be of type LabeledFaceDescriptors | WithFaceDescriptor<any> | Float32Array | Array<LabeledFaceDescriptors | WithFaceDescriptor<any> | Float32Array>`);
-      });
-    }
-    get labeledDescriptors() {
-      return this._labeledDescriptors;
-    }
-    get distanceThreshold() {
-      return this._distanceThreshold;
-    }
-    computeMeanDistance(queryDescriptor, descriptors) {
-      return descriptors.map((d) => euclideanDistance(d, queryDescriptor)).reduce((d1, d2) => d1 + d2, 0) / (descriptors.length || 1);
-    }
-    matchDescriptor(queryDescriptor) {
-      return this.labeledDescriptors.map(({descriptors, label}) => new FaceMatch(label, this.computeMeanDistance(queryDescriptor, descriptors))).reduce((best, curr) => best.distance < curr.distance ? best : curr);
-    }
-    findBestMatch(queryDescriptor) {
-      const bestMatch = this.matchDescriptor(queryDescriptor);
-      return bestMatch.distance < this.distanceThreshold ? bestMatch : new FaceMatch("unknown", bestMatch.distance);
-    }
-    toJSON() {
-      return {
-        distanceThreshold: this.distanceThreshold,
-        labeledDescriptors: this.labeledDescriptors.map((ld) => ld.toJSON())
-      };
-    }
-    static fromJSON(json) {
-      const labeledDescriptors = json.labeledDescriptors.map((ld) => LabeledFaceDescriptors.fromJSON(ld));
-      return new FaceMatcher(labeledDescriptors, json.distanceThreshold);
-    }
-  }
-
-  // build/tinyFaceDetector/index.js
-  function createTinyFaceDetector(weights) {
-    const net = new TinyFaceDetector();
-    net.extractWeights(weights);
-    return net;
-  }
-
-  // build/resizeResults.js
-  function resizeResults(results, dimensions) {
-    const {width, height} = new Dimensions(dimensions.width, dimensions.height);
-    if (width <= 0 || height <= 0) {
-      throw new Error(`resizeResults - invalid dimensions: ${JSON.stringify({width, height})}`);
-    }
-    if (Array.isArray(results)) {
-      return results.map((obj) => resizeResults(obj, {width, height}));
-    }
-    if (isWithFaceLandmarks(results)) {
-      const resizedDetection = results.detection.forSize(width, height);
-      const resizedLandmarks = results.unshiftedLandmarks.forSize(resizedDetection.box.width, resizedDetection.box.height);
-      return extendWithFaceLandmarks(extendWithFaceDetection(results, resizedDetection), resizedLandmarks);
-    }
-    if (isWithFaceDetection(results)) {
-      return extendWithFaceDetection(results, results.detection.forSize(width, height));
-    }
-    if (results instanceof FaceLandmarks || results instanceof FaceDetection) {
-      return results.forSize(width, height);
-    }
-    return results;
   }
   return require_build();
 })();

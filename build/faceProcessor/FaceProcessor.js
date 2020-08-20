@@ -1,11 +1,14 @@
-import * as tf from '@tensorflow/tfjs-core';
-import { fullyConnectedLayer } from '../common/fullyConnectedLayer';
-import { NetInput } from '../dom';
-import { NeuralNetwork } from '../NeuralNetwork';
-import { extractParams } from './extractParams';
-import { extractParamsFromWeigthMap } from './extractParamsFromWeigthMap';
-import { seperateWeightMaps } from './util';
-export class FaceProcessor extends NeuralNetwork {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.FaceProcessor = void 0;
+const tf = require("@tensorflow/tfjs-core");
+const fullyConnectedLayer_1 = require("../common/fullyConnectedLayer");
+const dom_1 = require("../dom");
+const NeuralNetwork_1 = require("../NeuralNetwork");
+const extractParams_1 = require("./extractParams");
+const extractParamsFromWeigthMap_1 = require("./extractParamsFromWeigthMap");
+const util_1 = require("./util");
+class FaceProcessor extends NeuralNetwork_1.NeuralNetwork {
     constructor(_name, faceFeatureExtractor) {
         super(_name);
         this._faceFeatureExtractor = faceFeatureExtractor;
@@ -19,10 +22,10 @@ export class FaceProcessor extends NeuralNetwork {
             throw new Error(`${this._name} - load model before inference`);
         }
         return tf.tidy(() => {
-            const bottleneckFeatures = input instanceof NetInput
+            const bottleneckFeatures = input instanceof dom_1.NetInput
                 ? this.faceFeatureExtractor.forwardInput(input)
                 : input;
-            return fullyConnectedLayer(bottleneckFeatures.as2D(bottleneckFeatures.shape[0], -1), params.fc);
+            return fullyConnectedLayer_1.fullyConnectedLayer(bottleneckFeatures.as2D(bottleneckFeatures.shape[0], -1), params.fc);
         });
     }
     dispose(throwOnRedispose = true) {
@@ -35,12 +38,12 @@ export class FaceProcessor extends NeuralNetwork {
         this._paramMappings = paramMappings;
     }
     extractClassifierParams(weights) {
-        return extractParams(weights, this.getClassifierChannelsIn(), this.getClassifierChannelsOut());
+        return extractParams_1.extractParams(weights, this.getClassifierChannelsIn(), this.getClassifierChannelsOut());
     }
     extractParamsFromWeigthMap(weightMap) {
-        const { featureExtractorMap, classifierMap } = seperateWeightMaps(weightMap);
+        const { featureExtractorMap, classifierMap } = util_1.seperateWeightMaps(weightMap);
         this.faceFeatureExtractor.loadFromWeightMap(featureExtractorMap);
-        return extractParamsFromWeigthMap(classifierMap);
+        return extractParamsFromWeigthMap_1.extractParamsFromWeigthMap(classifierMap);
     }
     extractParams(weights) {
         const cIn = this.getClassifierChannelsIn();
@@ -52,4 +55,5 @@ export class FaceProcessor extends NeuralNetwork {
         return this.extractClassifierParams(classifierWeights);
     }
 }
+exports.FaceProcessor = FaceProcessor;
 //# sourceMappingURL=FaceProcessor.js.map

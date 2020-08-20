@@ -1,4 +1,7 @@
-export function getModelUris(uri, defaultModelName) {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.getModelUris = void 0;
+function getModelUris(uri, defaultModelName) {
     const defaultManifestFilename = `${defaultModelName}-weights_manifest.json`;
     if (!uri) {
         return {
@@ -25,4 +28,5 @@ export function getModelUris(uri, defaultModelName) {
         manifestUri: modelBaseUri === '/' ? `/${manifestFile}` : `${modelBaseUri}/${manifestFile}`
     };
 }
+exports.getModelUris = getModelUris;
 //# sourceMappingURL=getModelUris.js.map

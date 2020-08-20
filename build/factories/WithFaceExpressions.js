@@ -1,9 +1,14 @@
-import { FaceExpressions } from '../faceExpressionNet/FaceExpressions';
-export function isWithFaceExpressions(obj) {
-    return obj['expressions'] instanceof FaceExpressions;
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.extendWithFaceExpressions = exports.isWithFaceExpressions = void 0;
+const FaceExpressions_1 = require("../faceExpressionNet/FaceExpressions");
+function isWithFaceExpressions(obj) {
+    return obj['expressions'] instanceof FaceExpressions_1.FaceExpressions;
 }
-export function extendWithFaceExpressions(sourceObj, expressions) {
+exports.isWithFaceExpressions = isWithFaceExpressions;
+function extendWithFaceExpressions(sourceObj, expressions) {
     const extension = { expressions };
     return Object.assign({}, sourceObj, extension);
 }
+exports.extendWithFaceExpressions = extendWithFaceExpressions;
 //# sourceMappingURL=WithFaceExpressions.js.map

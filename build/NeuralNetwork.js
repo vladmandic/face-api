@@ -1,8 +1,11 @@
-import * as tf from '@tensorflow/tfjs-core';
-import { getModelUris } from './common/getModelUris';
-import { loadWeightMap } from './dom';
-import { env } from './env';
-export class NeuralNetwork {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.NeuralNetwork = void 0;
+const tf = require("@tensorflow/tfjs-core");
+const getModelUris_1 = require("./common/getModelUris");
+const dom_1 = require("./dom");
+const env_1 = require("./env");
+class NeuralNetwork {
     constructor(_name) {
         this._name = _name;
         this._params = undefined;
@@ -69,15 +72,15 @@ export class NeuralNetwork {
         if (uri && typeof uri !== 'string') {
             throw new Error(`${this._name}.loadFromUri - expected model uri`);
         }
-        const weightMap = await loadWeightMap(uri, this.getDefaultModelName());
+        const weightMap = await dom_1.loadWeightMap(uri, this.getDefaultModelName());
         this.loadFromWeightMap(weightMap);
     }
     async loadFromDisk(filePath) {
         if (filePath && typeof filePath !== 'string') {
             throw new Error(`${this._name}.loadFromDisk - expected model file path`);
         }
-        const { readFile } = env.getEnv();
-        const { manifestUri, modelBaseUri } = getModelUris(filePath, this.getDefaultModelName());
+        const { readFile } = env_1.env.getEnv();
+        const { manifestUri, modelBaseUri } = getModelUris_1.getModelUris(filePath, this.getDefaultModelName());
         const fetchWeightsFromDisk = (filePaths) => Promise.all(filePaths.map(filePath => readFile(filePath).then(buf => buf.buffer)));
         const loadWeights = tf.io.weightsLoaderFactory(fetchWeightsFromDisk);
         const manifest = JSON.parse((await readFile(manifestUri)).toString());
@@ -111,4 +114,5 @@ export class NeuralNetwork {
         return { obj, objProp };
     }
 }
+exports.NeuralNetwork = NeuralNetwork;
 //# sourceMappingURL=NeuralNetwork.js.map

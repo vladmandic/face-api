@@ -1,5 +1,8 @@
-import { createFileSystem } from './createFileSystem';
-export function createNodejsEnv() {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.createNodejsEnv = void 0;
+const createFileSystem_1 = require("./createFileSystem");
+function createNodejsEnv() {
     const Canvas = global['Canvas'] || global['HTMLCanvasElement'];
     const Image = global['Image'] || global['HTMLImageElement'];
     const createCanvasElement = function () {
@@ -17,7 +20,7 @@ export function createNodejsEnv() {
     const fetch = global['fetch'] || function () {
         throw new Error('fetch - missing fetch implementation for nodejs environment');
     };
-    const fileSystem = createFileSystem();
+    const fileSystem = createFileSystem_1.createFileSystem();
     return {
         Canvas: Canvas || class {
         },
@@ -35,4 +38,5 @@ export function createNodejsEnv() {
         ...fileSystem
     };
 }
+exports.createNodejsEnv = createNodejsEnv;
 //# sourceMappingURL=createNodejsEnv.js.map

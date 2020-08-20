@@ -1,10 +1,13 @@
-import { disposeUnusedWeightTensors, extractWeightEntryFactory, loadSeparableConvParamsFactory, } from '../common';
-import { loadConvParamsFactory } from '../common/loadConvParamsFactory';
-import { range } from '../utils';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.extractParamsFromWeigthMap = void 0;
+const common_1 = require("../common");
+const loadConvParamsFactory_1 = require("../common/loadConvParamsFactory");
+const utils_1 = require("../utils");
 function loadParamsFactory(weightMap, paramMappings) {
-    const extractWeightEntry = extractWeightEntryFactory(weightMap, paramMappings);
-    const extractConvParams = loadConvParamsFactory(extractWeightEntry);
-    const extractSeparableConvParams = loadSeparableConvParamsFactory(extractWeightEntry);
+    const extractWeightEntry = common_1.extractWeightEntryFactory(weightMap, paramMappings);
+    const extractConvParams = loadConvParamsFactory_1.loadConvParamsFactory(extractWeightEntry);
+    const extractSeparableConvParams = common_1.loadSeparableConvParamsFactory(extractWeightEntry);
     function extractReductionBlockParams(mappedPrefix) {
         const separable_conv0 = extractSeparableConvParams(`${mappedPrefix}/separable_conv0`);
         const separable_conv1 = extractSeparableConvParams(`${mappedPrefix}/separable_conv1`);
@@ -24,7 +27,7 @@ function loadParamsFactory(weightMap, paramMappings) {
         extractMainBlockParams
     };
 }
-export function extractParamsFromWeigthMap(weightMap, numMainBlocks) {
+function extractParamsFromWeigthMap(weightMap, numMainBlocks) {
     const paramMappings = [];
     const { extractConvParams, extractSeparableConvParams, extractReductionBlockParams, extractMainBlockParams } = loadParamsFactory(weightMap, paramMappings);
     const entry_flow_conv_in = extractConvParams('entry_flow/conv_in');
@@ -36,7 +39,7 @@ export function extractParamsFromWeigthMap(weightMap, numMainBlocks) {
         reduction_block_1: entry_flow_reduction_block_1
     };
     const middle_flow = {};
-    range(numMainBlocks, 0, 1).forEach((idx) => {
+    utils_1.range(numMainBlocks, 0, 1).forEach((idx) => {
         middle_flow[`main_block_${idx}`] = extractMainBlockParams(`middle_flow/main_block_${idx}`);
     });
     const exit_flow_reduction_block = extractReductionBlockParams('exit_flow/reduction_block');
@@ -45,7 +48,8 @@ export function extractParamsFromWeigthMap(weightMap, numMainBlocks) {
         reduction_block: exit_flow_reduction_block,
         separable_conv: exit_flow_separable_conv
     };
-    disposeUnusedWeightTensors(weightMap, paramMappings);
+    common_1.disposeUnusedWeightTensors(weightMap, paramMappings);
     return { params: { entry_flow, middle_flow, exit_flow }, paramMappings };
 }
+exports.extractParamsFromWeigthMap = extractParamsFromWeigthMap;
 //# sourceMappingURL=extractParamsFromWeigthMap.js.map

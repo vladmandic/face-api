@@ -1,4 +1,7 @@
-export function isBrowser() {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.isBrowser = void 0;
+function isBrowser() {
     return typeof window === 'object'
         && typeof document !== 'undefined'
         && typeof HTMLImageElement !== 'undefined'
@@ -7,4 +10,5 @@ export function isBrowser() {
         && typeof ImageData !== 'undefined'
         && typeof CanvasRenderingContext2D !== 'undefined';
 }
+exports.isBrowser = isBrowser;
 //# sourceMappingURL=isBrowser.js.map

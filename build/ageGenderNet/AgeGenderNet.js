@@ -1,14 +1,17 @@
-import * as tf from '@tensorflow/tfjs-core';
-import { fullyConnectedLayer } from '../common/fullyConnectedLayer';
-import { seperateWeightMaps } from '../faceProcessor/util';
-import { TinyXception } from '../xception/TinyXception';
-import { extractParams } from './extractParams';
-import { extractParamsFromWeigthMap } from './extractParamsFromWeigthMap';
-import { Gender } from './types';
-import { NeuralNetwork } from '../NeuralNetwork';
-import { NetInput, toNetInput } from '../dom';
-export class AgeGenderNet extends NeuralNetwork {
-    constructor(faceFeatureExtractor = new TinyXception(2)) {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.AgeGenderNet = void 0;
+const tf = require("@tensorflow/tfjs-core");
+const fullyConnectedLayer_1 = require("../common/fullyConnectedLayer");
+const util_1 = require("../faceProcessor/util");
+const TinyXception_1 = require("../xception/TinyXception");
+const extractParams_1 = require("./extractParams");
+const extractParamsFromWeigthMap_1 = require("./extractParamsFromWeigthMap");
+const types_1 = require("./types");
+const NeuralNetwork_1 = require("../NeuralNetwork");
+const dom_1 = require("../dom");
+class AgeGenderNet extends NeuralNetwork_1.NeuralNetwork {
+    constructor(faceFeatureExtractor = new TinyXception_1.TinyXception(2)) {
         super('AgeGenderNet');
         this._faceFeatureExtractor = faceFeatureExtractor;
     }
@@ -21,12 +24,12 @@ export class AgeGenderNet extends NeuralNetwork {
             throw new Error(`${this._name} - load model before inference`);
         }
         return tf.tidy(() => {
-            const bottleneckFeatures = input instanceof NetInput
+            const bottleneckFeatures = input instanceof dom_1.NetInput
                 ? this.faceFeatureExtractor.forwardInput(input)
                 : input;
             const pooled = tf.avgPool(bottleneckFeatures, [7, 7], [2, 2], 'valid').as2D(bottleneckFeatures.shape[0], -1);
-            const age = fullyConnectedLayer(pooled, params.fc.age).as1D();
-            const gender = fullyConnectedLayer(pooled, params.fc.gender);
+            const age = fullyConnectedLayer_1.fullyConnectedLayer(pooled, params.fc.age).as1D();
+            const gender = fullyConnectedLayer_1.fullyConnectedLayer(pooled, params.fc.gender);
             return { age, gender };
         });
     }
@@ -37,10 +40,10 @@ export class AgeGenderNet extends NeuralNetwork {
         });
     }
     async forward(input) {
-        return this.forwardInput(await toNetInput(input));
+        return this.forwardInput(await dom_1.toNetInput(input));
     }
     async predictAgeAndGender(input) {
-        const netInput = await toNetInput(input);
+        const netInput = await dom_1.toNetInput(input);
         const out = await this.forwardInput(netInput);
         const ages = tf.unstack(out.age);
         const genders = tf.unstack(out.gender);
@@ -52,7 +55,7 @@ export class AgeGenderNet extends NeuralNetwork {
             const age = (await ageTensor.data())[0];
             const probMale = (await genderTensor.data())[0];
             const isMale = probMale > 0.5;
-            const gender = isMale ? Gender.MALE : Gender.FEMALE;
+            const gender = isMale ? types_1.Gender.MALE : types_1.Gender.FEMALE;
             const genderProbability = isMale ? probMale : (1 - probMale);
             ageTensor.dispose();
             genderTensor.dispose();
@@ -77,12 +80,12 @@ export class AgeGenderNet extends NeuralNetwork {
         this._paramMappings = paramMappings;
     }
     extractClassifierParams(weights) {
-        return extractParams(weights);
+        return extractParams_1.extractParams(weights);
     }
     extractParamsFromWeigthMap(weightMap) {
-        const { featureExtractorMap, classifierMap } = seperateWeightMaps(weightMap);
+        const { featureExtractorMap, classifierMap } = util_1.seperateWeightMaps(weightMap);
         this.faceFeatureExtractor.loadFromWeightMap(featureExtractorMap);
-        return extractParamsFromWeigthMap(classifierMap);
+        return extractParamsFromWeigthMap_1.extractParamsFromWeigthMap(classifierMap);
     }
     extractParams(weights) {
         const classifierWeightSize = (512 * 1 + 1) + (512 * 2 + 2);
@@ -92,4 +95,5 @@ export class AgeGenderNet extends NeuralNetwork {
         return this.extractClassifierParams(classifierWeights);
     }
 }
+exports.AgeGenderNet = AgeGenderNet;
 //# sourceMappingURL=AgeGenderNet.js.map

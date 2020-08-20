@@ -1,9 +1,14 @@
-import { DetectAllFacesTask, DetectSingleFaceTask } from './DetectFacesTasks';
-import { TinyFaceDetectorOptions } from '../tinyFaceDetector/TinyFaceDetectorOptions';
-export function detectSingleFace(input, options = new TinyFaceDetectorOptions()) {
-    return new DetectSingleFaceTask(input, options);
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.detectAllFaces = exports.detectSingleFace = void 0;
+const DetectFacesTasks_1 = require("./DetectFacesTasks");
+const TinyFaceDetectorOptions_1 = require("../tinyFaceDetector/TinyFaceDetectorOptions");
+function detectSingleFace(input, options = new TinyFaceDetectorOptions_1.TinyFaceDetectorOptions()) {
+    return new DetectFacesTasks_1.DetectSingleFaceTask(input, options);
 }
-export function detectAllFaces(input, options = new TinyFaceDetectorOptions()) {
-    return new DetectAllFacesTask(input, options);
+exports.detectSingleFace = detectSingleFace;
+function detectAllFaces(input, options = new TinyFaceDetectorOptions_1.TinyFaceDetectorOptions()) {
+    return new DetectFacesTasks_1.DetectAllFacesTask(input, options);
 }
+exports.detectAllFaces = detectAllFaces;
 //# sourceMappingURL=detectFaces.js.map

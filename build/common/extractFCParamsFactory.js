@@ -1,5 +1,8 @@
-import * as tf from '@tensorflow/tfjs-core';
-export function extractFCParamsFactory(extractWeights, paramMappings) {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.extractFCParamsFactory = void 0;
+const tf = require("@tensorflow/tfjs-core");
+function extractFCParamsFactory(extractWeights, paramMappings) {
     return function (channelsIn, channelsOut, mappedPrefix) {
         const fc_weights = tf.tensor2d(extractWeights(channelsIn * channelsOut), [channelsIn, channelsOut]);
         const fc_bias = tf.tensor1d(extractWeights(channelsOut));
@@ -10,4 +13,5 @@ export function extractFCParamsFactory(extractWeights, paramMappings) {
         };
     };
 }
+exports.extractFCParamsFactory = extractFCParamsFactory;
 //# sourceMappingURL=extractFCParamsFactory.js.map

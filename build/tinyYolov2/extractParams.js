@@ -1,9 +1,12 @@
-import * as tf from '@tensorflow/tfjs-core';
-import { extractConvParamsFactory } from '../common';
-import { extractSeparableConvParamsFactory } from '../common/extractSeparableConvParamsFactory';
-import { extractWeightsFactory } from '../common/extractWeightsFactory';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.extractParams = void 0;
+const tf = require("@tensorflow/tfjs-core");
+const common_1 = require("../common");
+const extractSeparableConvParamsFactory_1 = require("../common/extractSeparableConvParamsFactory");
+const extractWeightsFactory_1 = require("../common/extractWeightsFactory");
 function extractorsFactory(extractWeights, paramMappings) {
-    const extractConvParams = extractConvParamsFactory(extractWeights, paramMappings);
+    const extractConvParams = common_1.extractConvParamsFactory(extractWeights, paramMappings);
     function extractBatchNormParams(size, mappedPrefix) {
         const sub = tf.tensor1d(extractWeights(size));
         const truediv = tf.tensor1d(extractWeights(size));
@@ -15,15 +18,15 @@ function extractorsFactory(extractWeights, paramMappings) {
         const bn = extractBatchNormParams(channelsOut, `${mappedPrefix}/bn`);
         return { conv, bn };
     }
-    const extractSeparableConvParams = extractSeparableConvParamsFactory(extractWeights, paramMappings);
+    const extractSeparableConvParams = extractSeparableConvParamsFactory_1.extractSeparableConvParamsFactory(extractWeights, paramMappings);
     return {
         extractConvParams,
         extractConvWithBatchNormParams,
         extractSeparableConvParams
     };
 }
-export function extractParams(weights, config, boxEncodingSize, filterSizes) {
-    const { extractWeights, getRemainingWeights } = extractWeightsFactory(weights);
+function extractParams(weights, config, boxEncodingSize, filterSizes) {
+    const { extractWeights, getRemainingWeights } = extractWeightsFactory_1.extractWeightsFactory(weights);
     const paramMappings = [];
     const { extractConvParams, extractConvWithBatchNormParams, extractSeparableConvParams } = extractorsFactory(extractWeights, paramMappings);
     let params;
@@ -60,4 +63,5 @@ export function extractParams(weights, config, boxEncodingSize, filterSizes) {
     }
     return { params, paramMappings };
 }
+exports.extractParams = extractParams;
 //# sourceMappingURL=extractParams.js.map

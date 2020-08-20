@@ -1,4 +1,7 @@
-import * as tf from '@tensorflow/tfjs-core';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.padToSquare = void 0;
+const tf = require("@tensorflow/tfjs-core");
 /**
  * Pads the smaller dimension of an image tensor with zeros, such that width === height.
  *
@@ -7,7 +10,7 @@ import * as tf from '@tensorflow/tfjs-core';
  * both sides of the minor dimension oof the image.
  * @returns The padded tensor with width === height.
  */
-export function padToSquare(imgTensor, isCenterImage = false) {
+function padToSquare(imgTensor, isCenterImage = false) {
     return tf.tidy(() => {
         const [height, width] = imgTensor.shape.slice(1);
         if (height === width) {
@@ -36,4 +39,5 @@ export function padToSquare(imgTensor, isCenterImage = false) {
         return tf.concat(tensorsToStack, paddingAxis);
     });
 }
+exports.padToSquare = padToSquare;
 //# sourceMappingURL=padToSquare.js.map

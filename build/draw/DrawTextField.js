@@ -1,13 +1,16 @@
-import { getContext2dOrThrow } from '../dom/getContext2dOrThrow';
-import { resolveInput } from '../dom/resolveInput';
-export var AnchorPosition;
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.DrawTextField = exports.DrawTextFieldOptions = exports.AnchorPosition = void 0;
+const getContext2dOrThrow_1 = require("../dom/getContext2dOrThrow");
+const resolveInput_1 = require("../dom/resolveInput");
+var AnchorPosition;
 (function (AnchorPosition) {
     AnchorPosition["TOP_LEFT"] = "TOP_LEFT";
     AnchorPosition["TOP_RIGHT"] = "TOP_RIGHT";
     AnchorPosition["BOTTOM_LEFT"] = "BOTTOM_LEFT";
     AnchorPosition["BOTTOM_RIGHT"] = "BOTTOM_RIGHT";
-})(AnchorPosition || (AnchorPosition = {}));
-export class DrawTextFieldOptions {
+})(AnchorPosition = exports.AnchorPosition || (exports.AnchorPosition = {}));
+class DrawTextFieldOptions {
     constructor(options = {}) {
         const { anchorPosition, backgroundColor, fontColor, fontSize, fontStyle, padding } = options;
         this.anchorPosition = anchorPosition || AnchorPosition.TOP_LEFT;
@@ -18,7 +21,8 @@ export class DrawTextFieldOptions {
         this.padding = padding || 4;
     }
 }
-export class DrawTextField {
+exports.DrawTextFieldOptions = DrawTextFieldOptions;
+class DrawTextField {
     constructor(text, anchor, options = {}) {
         this.text = typeof text === 'string'
             ? [text]
@@ -52,8 +56,8 @@ export class DrawTextField {
         return { x, y };
     }
     draw(canvasArg) {
-        const canvas = resolveInput(canvasArg);
-        const ctx = getContext2dOrThrow(canvas);
+        const canvas = resolveInput_1.resolveInput(canvasArg);
+        const ctx = getContext2dOrThrow_1.getContext2dOrThrow(canvas);
         const { backgroundColor, fontColor, fontSize, fontStyle, padding } = this.options;
         ctx.font = `${fontSize}px ${fontStyle}`;
         const maxTextWidth = this.measureWidth(ctx);
@@ -69,4 +73,5 @@ export class DrawTextField {
         });
     }
 }
+exports.DrawTextField = DrawTextField;
 //# sourceMappingURL=DrawTextField.js.map

@@ -1,19 +1,22 @@
-import { FaceDetection } from '../classes';
-import { BOX_ANCHORS, BOX_ANCHORS_SEPARABLE, DEFAULT_MODEL_NAME, DEFAULT_MODEL_NAME_SEPARABLE_CONV, IOU_THRESHOLD, MEAN_RGB_SEPARABLE, } from './const';
-import { TinyYolov2Base } from './TinyYolov2Base';
-export class TinyYolov2 extends TinyYolov2Base {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.TinyYolov2 = void 0;
+const classes_1 = require("../classes");
+const const_1 = require("./const");
+const TinyYolov2Base_1 = require("./TinyYolov2Base");
+class TinyYolov2 extends TinyYolov2Base_1.TinyYolov2Base {
     constructor(withSeparableConvs = true) {
         const config = Object.assign({}, {
             withSeparableConvs,
-            iouThreshold: IOU_THRESHOLD,
+            iouThreshold: const_1.IOU_THRESHOLD,
             classes: ['face']
         }, withSeparableConvs
             ? {
-                anchors: BOX_ANCHORS_SEPARABLE,
-                meanRgb: MEAN_RGB_SEPARABLE
+                anchors: const_1.BOX_ANCHORS_SEPARABLE,
+                meanRgb: const_1.MEAN_RGB_SEPARABLE
             }
             : {
-                anchors: BOX_ANCHORS,
+                anchors: const_1.BOX_ANCHORS,
                 withClassScores: true
             });
         super(config);
@@ -26,13 +29,14 @@ export class TinyYolov2 extends TinyYolov2Base {
     }
     async locateFaces(input, forwardParams) {
         const objectDetections = await this.detect(input, forwardParams);
-        return objectDetections.map(det => new FaceDetection(det.score, det.relativeBox, { width: det.imageWidth, height: det.imageHeight }));
+        return objectDetections.map(det => new classes_1.FaceDetection(det.score, det.relativeBox, { width: det.imageWidth, height: det.imageHeight }));
     }
     getDefaultModelName() {
-        return this.withSeparableConvs ? DEFAULT_MODEL_NAME_SEPARABLE_CONV : DEFAULT_MODEL_NAME;
+        return this.withSeparableConvs ? const_1.DEFAULT_MODEL_NAME_SEPARABLE_CONV : const_1.DEFAULT_MODEL_NAME;
     }
     extractParamsFromWeigthMap(weightMap) {
         return super.extractParamsFromWeigthMap(weightMap);
     }
 }
+exports.TinyYolov2 = TinyYolov2;
 //# sourceMappingURL=TinyYolov2.js.map

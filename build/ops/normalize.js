@@ -1,5 +1,8 @@
-import * as tf from '@tensorflow/tfjs-core';
-export function normalize(x, meanRgb) {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.normalize = void 0;
+const tf = require("@tensorflow/tfjs-core");
+function normalize(x, meanRgb) {
     return tf.tidy(() => {
         const [r, g, b] = meanRgb;
         const avg_r = tf.fill([...x.shape.slice(0, 3), 1], r);
@@ -9,4 +12,5 @@ export function normalize(x, meanRgb) {
         return tf.sub(x, avg_rgb);
     });
 }
+exports.normalize = normalize;
 //# sourceMappingURL=normalize.js.map

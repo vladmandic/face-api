@@ -1,4 +1,7 @@
-export class Point {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Point = void 0;
+class Point {
     constructor(x, y) {
         this._x = x;
         this._y = y;
@@ -27,4 +30,5 @@ export class Point {
         return new Point(Math.floor(this.x), Math.floor(this.y));
     }
 }
+exports.Point = Point;
 //# sourceMappingURL=Point.js.map

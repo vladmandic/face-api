@@ -1,7 +1,10 @@
-import { disposeUnusedWeightTensors, extractWeightEntryFactory } from '../common';
-import { isTensor2D } from '../utils';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.extractParamsFromWeigthMap = void 0;
+const common_1 = require("../common");
+const utils_1 = require("../utils");
 function extractorsFactory(weightMap, paramMappings) {
-    const extractWeightEntry = extractWeightEntryFactory(weightMap, paramMappings);
+    const extractWeightEntry = common_1.extractWeightEntryFactory(weightMap, paramMappings);
     function extractScaleLayerParams(prefix) {
         const weights = extractWeightEntry(`${prefix}/scale/weights`, 1);
         const biases = extractWeightEntry(`${prefix}/scale/biases`, 1);
@@ -24,7 +27,7 @@ function extractorsFactory(weightMap, paramMappings) {
         extractResidualLayerParams
     };
 }
-export function extractParamsFromWeigthMap(weightMap) {
+function extractParamsFromWeigthMap(weightMap) {
     const paramMappings = [];
     const { extractConvLayerParams, extractResidualLayerParams } = extractorsFactory(weightMap, paramMappings);
     const conv32_down = extractConvLayerParams('conv32_down');
@@ -44,7 +47,7 @@ export function extractParamsFromWeigthMap(weightMap) {
     const conv256_down_out = extractResidualLayerParams('conv256_down_out');
     const fc = weightMap['fc'];
     paramMappings.push({ originalPath: 'fc', paramPath: 'fc' });
-    if (!isTensor2D(fc)) {
+    if (!utils_1.isTensor2D(fc)) {
         throw new Error(`expected weightMap[fc] to be a Tensor2D, instead have ${fc}`);
     }
     const params = {
@@ -65,7 +68,8 @@ export function extractParamsFromWeigthMap(weightMap) {
         conv256_down_out,
         fc
     };
-    disposeUnusedWeightTensors(weightMap, paramMappings);
+    common_1.disposeUnusedWeightTensors(weightMap, paramMappings);
     return { params, paramMappings };
 }
+exports.extractParamsFromWeigthMap = extractParamsFromWeigthMap;
 //# sourceMappingURL=extractParamsFromWeigthMap.js.map

@@ -1,8 +1,11 @@
-import { extractConvParamsFactory, extractSeparableConvParamsFactory, extractWeightsFactory } from '../common';
-import { range } from '../utils';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.extractParams = void 0;
+const common_1 = require("../common");
+const utils_1 = require("../utils");
 function extractorsFactory(extractWeights, paramMappings) {
-    const extractConvParams = extractConvParamsFactory(extractWeights, paramMappings);
-    const extractSeparableConvParams = extractSeparableConvParamsFactory(extractWeights, paramMappings);
+    const extractConvParams = common_1.extractConvParamsFactory(extractWeights, paramMappings);
+    const extractSeparableConvParams = common_1.extractSeparableConvParamsFactory(extractWeights, paramMappings);
     function extractReductionBlockParams(channelsIn, channelsOut, mappedPrefix) {
         const separable_conv0 = extractSeparableConvParams(channelsIn, channelsOut, `${mappedPrefix}/separable_conv0`);
         const separable_conv1 = extractSeparableConvParams(channelsOut, channelsOut, `${mappedPrefix}/separable_conv1`);
@@ -22,9 +25,9 @@ function extractorsFactory(extractWeights, paramMappings) {
         extractMainBlockParams
     };
 }
-export function extractParams(weights, numMainBlocks) {
+function extractParams(weights, numMainBlocks) {
     const paramMappings = [];
-    const { extractWeights, getRemainingWeights } = extractWeightsFactory(weights);
+    const { extractWeights, getRemainingWeights } = common_1.extractWeightsFactory(weights);
     const { extractConvParams, extractSeparableConvParams, extractReductionBlockParams, extractMainBlockParams } = extractorsFactory(extractWeights, paramMappings);
     const entry_flow_conv_in = extractConvParams(3, 32, 3, 'entry_flow/conv_in');
     const entry_flow_reduction_block_0 = extractReductionBlockParams(32, 64, 'entry_flow/reduction_block_0');
@@ -35,7 +38,7 @@ export function extractParams(weights, numMainBlocks) {
         reduction_block_1: entry_flow_reduction_block_1
     };
     const middle_flow = {};
-    range(numMainBlocks, 0, 1).forEach((idx) => {
+    utils_1.range(numMainBlocks, 0, 1).forEach((idx) => {
         middle_flow[`main_block_${idx}`] = extractMainBlockParams(128, `middle_flow/main_block_${idx}`);
     });
     const exit_flow_reduction_block = extractReductionBlockParams(128, 256, 'exit_flow/reduction_block');
@@ -52,4 +55,5 @@ export function extractParams(weights, numMainBlocks) {
         params: { entry_flow, middle_flow, exit_flow }
     };
 }
+exports.extractParams = extractParams;
 //# sourceMappingURL=extractParams.js.map

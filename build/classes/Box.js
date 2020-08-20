@@ -1,10 +1,13 @@
-import { isDimensions, isValidNumber } from '../utils';
-import { Point } from './Point';
-export class Box {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Box = void 0;
+const utils_1 = require("../utils");
+const Point_1 = require("./Point");
+class Box {
     constructor(_box, allowNegativeDimensions = true) {
         const box = (_box || {});
-        const isBbox = [box.left, box.top, box.right, box.bottom].every(isValidNumber);
-        const isRect = [box.x, box.y, box.width, box.height].every(isValidNumber);
+        const isBbox = [box.left, box.top, box.right, box.bottom].every(utils_1.isValidNumber);
+        const isRect = [box.x, box.y, box.width, box.height].every(utils_1.isValidNumber);
         if (!isRect && !isBbox) {
             throw new Error(`Box.constructor - expected box to be IBoundingBox | IRect, instead have ${JSON.stringify(box)}`);
         }
@@ -18,7 +21,7 @@ export class Box {
         this._height = height;
     }
     static isRect(rect) {
-        return !!rect && [rect.x, rect.y, rect.width, rect.height].every(isValidNumber);
+        return !!rect && [rect.x, rect.y, rect.width, rect.height].every(utils_1.isValidNumber);
     }
     static assertIsValidBox(box, callee, allowNegativeDimensions = false) {
         if (!Box.isRect(box)) {
@@ -37,10 +40,10 @@ export class Box {
     get right() { return this.x + this.width; }
     get bottom() { return this.y + this.height; }
     get area() { return this.width * this.height; }
-    get topLeft() { return new Point(this.left, this.top); }
-    get topRight() { return new Point(this.right, this.top); }
-    get bottomLeft() { return new Point(this.left, this.bottom); }
-    get bottomRight() { return new Point(this.right, this.bottom); }
+    get topLeft() { return new Point_1.Point(this.left, this.top); }
+    get topRight() { return new Point_1.Point(this.right, this.top); }
+    get bottomLeft() { return new Point_1.Point(this.left, this.bottom); }
+    get bottomRight() { return new Point_1.Point(this.right, this.bottom); }
     round() {
         const [x, y, width, height] = [this.x, this.y, this.width, this.height]
             .map(val => Math.round(val));
@@ -65,8 +68,8 @@ export class Box {
         return new Box({ x, y, width, height });
     }
     rescale(s) {
-        const scaleX = isDimensions(s) ? s.width : s;
-        const scaleY = isDimensions(s) ? s.height : s;
+        const scaleX = utils_1.isDimensions(s) ? s.width : s;
+        const scaleY = utils_1.isDimensions(s) ? s.height : s;
         return new Box({
             x: this.x * scaleX,
             y: this.y * scaleY,
@@ -137,4 +140,5 @@ export class Box {
         }).toSquare().round();
     }
 }
+exports.Box = Box;
 //# sourceMappingURL=Box.js.map

@@ -1,49 +1,66 @@
-import * as tf from '@tensorflow/tfjs-core';
-import { Point } from '../classes';
-import { Dimensions } from '../classes/Dimensions';
-export function isTensor(tensor, dim) {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.isValidProbablitiy = exports.isValidNumber = exports.range = exports.getCenterPoint = exports.computeReshapedDimensions = exports.isDimensions = exports.round = exports.isEven = exports.isFloat = exports.isTensor4D = exports.isTensor3D = exports.isTensor2D = exports.isTensor1D = exports.isTensor = void 0;
+const tf = require("@tensorflow/tfjs-core");
+const classes_1 = require("../classes");
+const Dimensions_1 = require("../classes/Dimensions");
+function isTensor(tensor, dim) {
     return tensor instanceof tf.Tensor && tensor.shape.length === dim;
 }
-export function isTensor1D(tensor) {
+exports.isTensor = isTensor;
+function isTensor1D(tensor) {
     return isTensor(tensor, 1);
 }
-export function isTensor2D(tensor) {
+exports.isTensor1D = isTensor1D;
+function isTensor2D(tensor) {
     return isTensor(tensor, 2);
 }
-export function isTensor3D(tensor) {
+exports.isTensor2D = isTensor2D;
+function isTensor3D(tensor) {
     return isTensor(tensor, 3);
 }
-export function isTensor4D(tensor) {
+exports.isTensor3D = isTensor3D;
+function isTensor4D(tensor) {
     return isTensor(tensor, 4);
 }
-export function isFloat(num) {
+exports.isTensor4D = isTensor4D;
+function isFloat(num) {
     return num % 1 !== 0;
 }
-export function isEven(num) {
+exports.isFloat = isFloat;
+function isEven(num) {
     return num % 2 === 0;
 }
-export function round(num, prec = 2) {
+exports.isEven = isEven;
+function round(num, prec = 2) {
     const f = Math.pow(10, prec);
     return Math.floor(num * f) / f;
 }
-export function isDimensions(obj) {
+exports.round = round;
+function isDimensions(obj) {
     return obj && obj.width && obj.height;
 }
-export function computeReshapedDimensions({ width, height }, inputSize) {
+exports.isDimensions = isDimensions;
+function computeReshapedDimensions({ width, height }, inputSize) {
     const scale = inputSize / Math.max(height, width);
-    return new Dimensions(Math.round(width * scale), Math.round(height * scale));
+    return new Dimensions_1.Dimensions(Math.round(width * scale), Math.round(height * scale));
 }
-export function getCenterPoint(pts) {
-    return pts.reduce((sum, pt) => sum.add(pt), new Point(0, 0))
-        .div(new Point(pts.length, pts.length));
+exports.computeReshapedDimensions = computeReshapedDimensions;
+function getCenterPoint(pts) {
+    return pts.reduce((sum, pt) => sum.add(pt), new classes_1.Point(0, 0))
+        .div(new classes_1.Point(pts.length, pts.length));
 }
-export function range(num, start, step) {
+exports.getCenterPoint = getCenterPoint;
+function range(num, start, step) {
     return Array(num).fill(0).map((_, i) => start + (i * step));
 }
-export function isValidNumber(num) {
+exports.range = range;
+function isValidNumber(num) {
     return !!num && num !== Infinity && num !== -Infinity && !isNaN(num) || num === 0;
 }
-export function isValidProbablitiy(num) {
+exports.isValidNumber = isValidNumber;
+function isValidProbablitiy(num) {
     return isValidNumber(num) && 0 <= num && num <= 1.0;
 }
+exports.isValidProbablitiy = isValidProbablitiy;
 //# sourceMappingURL=index.js.map

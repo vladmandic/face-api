@@ -1,14 +1,11 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.extractParams = void 0;
-const tf = require("@tensorflow/tfjs-core");
-const common_1 = require("../common");
-const utils_1 = require("../utils");
+import * as tf from '@tensorflow/tfjs-core';
+import { extractWeightsFactory } from '../common';
+import { isFloat } from '../utils';
 function extractorsFactory(extractWeights, paramMappings) {
     function extractFilterValues(numFilterValues, numFilters, filterSize) {
         const weights = extractWeights(numFilterValues);
         const depth = weights.length / (numFilters * filterSize * filterSize);
-        if (utils_1.isFloat(depth)) {
+        if (isFloat(depth)) {
             throw new Error(`depth has to be an integer: ${depth}, weights.length: ${weights.length}, numFilters: ${numFilters}, filterSize: ${filterSize}`);
         }
         return tf.tidy(() => tf.transpose(tf.tensor4d(weights, [numFilters, depth, filterSize, filterSize]), [2, 3, 1, 0]));
@@ -43,8 +40,8 @@ function extractorsFactory(extractWeights, paramMappings) {
         extractResidualLayerParams
     };
 }
-function extractParams(weights) {
-    const { extractWeights, getRemainingWeights } = common_1.extractWeightsFactory(weights);
+export function extractParams(weights) {
+    const { extractWeights, getRemainingWeights } = extractWeightsFactory(weights);
     const paramMappings = [];
     const { extractConvLayerParams, extractResidualLayerParams } = extractorsFactory(extractWeights, paramMappings);
     const conv32_down = extractConvLayerParams(4704, 32, 7, 'conv32_down');
@@ -87,5 +84,4 @@ function extractParams(weights) {
     };
     return { params, paramMappings };
 }
-exports.extractParams = extractParams;
 //# sourceMappingURL=extractParams.js.map

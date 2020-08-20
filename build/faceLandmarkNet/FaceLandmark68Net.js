@@ -1,10 +1,7 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.FaceLandmark68Net = void 0;
-const FaceFeatureExtractor_1 = require("../faceFeatureExtractor/FaceFeatureExtractor");
-const FaceLandmark68NetBase_1 = require("./FaceLandmark68NetBase");
-class FaceLandmark68Net extends FaceLandmark68NetBase_1.FaceLandmark68NetBase {
-    constructor(faceFeatureExtractor = new FaceFeatureExtractor_1.FaceFeatureExtractor()) {
+import { FaceFeatureExtractor } from '../faceFeatureExtractor/FaceFeatureExtractor';
+import { FaceLandmark68NetBase } from './FaceLandmark68NetBase';
+export class FaceLandmark68Net extends FaceLandmark68NetBase {
+    constructor(faceFeatureExtractor = new FaceFeatureExtractor()) {
         super('FaceLandmark68Net', faceFeatureExtractor);
     }
     getDefaultModelName() {
@@ -14,5 +11,4 @@ class FaceLandmark68Net extends FaceLandmark68NetBase_1.FaceLandmark68NetBase {
         return 256;
     }
 }
-exports.FaceLandmark68Net = FaceLandmark68Net;
 //# sourceMappingURL=FaceLandmark68Net.js.map

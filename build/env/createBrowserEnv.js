@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.createBrowserEnv = void 0;
-function createBrowserEnv() {
+export function createBrowserEnv() {
     const fetch = window['fetch'] || function () {
         throw new Error('fetch - missing fetch implementation for browser environment');
     };
@@ -20,5 +17,4 @@ function createBrowserEnv() {
         readFile
     };
 }
-exports.createBrowserEnv = createBrowserEnv;
 //# sourceMappingURL=createBrowserEnv.js.map

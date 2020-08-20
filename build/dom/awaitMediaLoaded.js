@@ -1,11 +1,8 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.awaitMediaLoaded = void 0;
-const env_1 = require("../env");
-const isMediaLoaded_1 = require("./isMediaLoaded");
-function awaitMediaLoaded(media) {
+import { env } from '../env';
+import { isMediaLoaded } from './isMediaLoaded';
+export function awaitMediaLoaded(media) {
     return new Promise((resolve, reject) => {
-        if (media instanceof env_1.env.getEnv().Canvas || isMediaLoaded_1.isMediaLoaded(media)) {
+        if (media instanceof env.getEnv().Canvas || isMediaLoaded(media)) {
             return resolve();
         }
         function onLoad(e) {
@@ -26,5 +23,4 @@ function awaitMediaLoaded(media) {
         media.addEventListener('error', onError);
     });
 }
-exports.awaitMediaLoaded = awaitMediaLoaded;
 //# sourceMappingURL=awaitMediaLoaded.js.map

@@ -1,19 +1,15 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.residualDown = exports.residual = void 0;
-const tf = require("@tensorflow/tfjs-core");
-const convLayer_1 = require("./convLayer");
-function residual(x, params) {
-    let out = convLayer_1.conv(x, params.conv1);
-    out = convLayer_1.convNoRelu(out, params.conv2);
+import * as tf from '@tensorflow/tfjs-core';
+import { conv, convDown, convNoRelu } from './convLayer';
+export function residual(x, params) {
+    let out = conv(x, params.conv1);
+    out = convNoRelu(out, params.conv2);
     out = tf.add(out, x);
     out = tf.relu(out);
     return out;
 }
-exports.residual = residual;
-function residualDown(x, params) {
-    let out = convLayer_1.convDown(x, params.conv1);
-    out = convLayer_1.convNoRelu(out, params.conv2);
+export function residualDown(x, params) {
+    let out = convDown(x, params.conv1);
+    out = convNoRelu(out, params.conv2);
     let pooled = tf.avgPool(x, 2, 2, 'valid');
     const zeros = tf.zeros(pooled.shape);
     const isPad = pooled.shape[3] !== out.shape[3];
@@ -33,5 +29,4 @@ function residualDown(x, params) {
     out = tf.relu(out);
     return out;
 }
-exports.residualDown = residualDown;
 //# sourceMappingURL=residualLayer.js.map

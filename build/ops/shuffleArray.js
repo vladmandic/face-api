@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.shuffleArray = void 0;
-function shuffleArray(inputArray) {
+export function shuffleArray(inputArray) {
     const array = inputArray.slice();
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -11,5 +8,4 @@ function shuffleArray(inputArray) {
     }
     return array;
 }
-exports.shuffleArray = shuffleArray;
 //# sourceMappingURL=shuffleArray.js.map

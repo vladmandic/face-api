@@ -1,9 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.FaceLandmarks68 = void 0;
-const utils_1 = require("../utils");
-const FaceLandmarks_1 = require("./FaceLandmarks");
-class FaceLandmarks68 extends FaceLandmarks_1.FaceLandmarks {
+import { getCenterPoint } from '../utils';
+import { FaceLandmarks } from './FaceLandmarks';
+export class FaceLandmarks68 extends FaceLandmarks {
     getJawOutline() {
         return this.positions.slice(0, 17);
     }
@@ -30,8 +27,7 @@ class FaceLandmarks68 extends FaceLandmarks_1.FaceLandmarks {
             this.getLeftEye(),
             this.getRightEye(),
             this.getMouth()
-        ].map(utils_1.getCenterPoint);
+        ].map(getCenterPoint);
     }
 }
-exports.FaceLandmarks68 = FaceLandmarks68;
 //# sourceMappingURL=FaceLandmarks68.js.map

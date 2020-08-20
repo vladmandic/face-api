@@ -1,30 +1,26 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.DrawBox = exports.DrawBoxOptions = void 0;
-const classes_1 = require("../classes");
-const getContext2dOrThrow_1 = require("../dom/getContext2dOrThrow");
-const DrawTextField_1 = require("./DrawTextField");
-class DrawBoxOptions {
+import { Box } from '../classes';
+import { getContext2dOrThrow } from '../dom/getContext2dOrThrow';
+import { AnchorPosition, DrawTextField, DrawTextFieldOptions } from './DrawTextField';
+export class DrawBoxOptions {
     constructor(options = {}) {
         const { boxColor, lineWidth, label, drawLabelOptions } = options;
         this.boxColor = boxColor || 'rgba(0, 0, 255, 1)';
         this.lineWidth = lineWidth || 2;
         this.label = label;
         const defaultDrawLabelOptions = {
-            anchorPosition: DrawTextField_1.AnchorPosition.BOTTOM_LEFT,
+            anchorPosition: AnchorPosition.BOTTOM_LEFT,
             backgroundColor: this.boxColor
         };
-        this.drawLabelOptions = new DrawTextField_1.DrawTextFieldOptions(Object.assign({}, defaultDrawLabelOptions, drawLabelOptions));
+        this.drawLabelOptions = new DrawTextFieldOptions(Object.assign({}, defaultDrawLabelOptions, drawLabelOptions));
     }
 }
-exports.DrawBoxOptions = DrawBoxOptions;
-class DrawBox {
+export class DrawBox {
     constructor(box, options = {}) {
-        this.box = new classes_1.Box(box);
+        this.box = new Box(box);
         this.options = new DrawBoxOptions(options);
     }
     draw(canvasArg) {
-        const ctx = getContext2dOrThrow_1.getContext2dOrThrow(canvasArg);
+        const ctx = getContext2dOrThrow(canvasArg);
         const { boxColor, lineWidth } = this.options;
         const { x, y, width, height } = this.box;
         ctx.strokeStyle = boxColor;
@@ -32,9 +28,8 @@ class DrawBox {
         ctx.strokeRect(x, y, width, height);
         const { label } = this.options;
         if (label) {
-            new DrawTextField_1.DrawTextField([label], { x: x - (lineWidth / 2), y }, this.options.drawLabelOptions).draw(canvasArg);
+            new DrawTextField([label], { x: x - (lineWidth / 2), y }, this.options.drawLabelOptions).draw(canvasArg);
         }
     }
 }
-exports.DrawBox = DrawBox;
 //# sourceMappingURL=DrawBox.js.map

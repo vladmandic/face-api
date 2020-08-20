@@ -1,12 +1,9 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.loadParamsFactory = void 0;
-const common_1 = require("../common");
-const loadConvParamsFactory_1 = require("../common/loadConvParamsFactory");
-function loadParamsFactory(weightMap, paramMappings) {
-    const extractWeightEntry = common_1.extractWeightEntryFactory(weightMap, paramMappings);
-    const extractConvParams = loadConvParamsFactory_1.loadConvParamsFactory(extractWeightEntry);
-    const extractSeparableConvParams = common_1.loadSeparableConvParamsFactory(extractWeightEntry);
+import { extractWeightEntryFactory, loadSeparableConvParamsFactory } from '../common';
+import { loadConvParamsFactory } from '../common/loadConvParamsFactory';
+export function loadParamsFactory(weightMap, paramMappings) {
+    const extractWeightEntry = extractWeightEntryFactory(weightMap, paramMappings);
+    const extractConvParams = loadConvParamsFactory(extractWeightEntry);
+    const extractSeparableConvParams = loadSeparableConvParamsFactory(extractWeightEntry);
     function extractDenseBlock3Params(prefix, isFirstLayer = false) {
         const conv0 = isFirstLayer
             ? extractConvParams(`${prefix}/conv0`)
@@ -29,5 +26,4 @@ function loadParamsFactory(weightMap, paramMappings) {
         extractDenseBlock4Params
     };
 }
-exports.loadParamsFactory = loadParamsFactory;
 //# sourceMappingURL=loadParamsFactory.js.map

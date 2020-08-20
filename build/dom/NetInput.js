@@ -1,13 +1,10 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.NetInput = void 0;
-const tf = require("@tensorflow/tfjs-core");
-const env_1 = require("../env");
-const padToSquare_1 = require("../ops/padToSquare");
-const utils_1 = require("../utils");
-const createCanvas_1 = require("./createCanvas");
-const imageToSquare_1 = require("./imageToSquare");
-class NetInput {
+import * as tf from '@tensorflow/tfjs-core';
+import { env } from '../env';
+import { padToSquare } from '../ops/padToSquare';
+import { computeReshapedDimensions, isTensor3D, isTensor4D, range } from '../utils';
+import { createCanvasFromMedia } from './createCanvas';
+import { imageToSquare } from './imageToSquare';
+export class NetInput {
     constructor(inputs, treatAsBatchInput = false) {
         this._imageTensors = [];
         this._canvases = [];
@@ -19,12 +16,12 @@ class NetInput {
         this._treatAsBatchInput = treatAsBatchInput;
         this._batchSize = inputs.length;
         inputs.forEach((input, idx) => {
-            if (utils_1.isTensor3D(input)) {
+            if (isTensor3D(input)) {
                 this._imageTensors[idx] = input;
                 this._inputDimensions[idx] = input.shape;
                 return;
             }
-            if (utils_1.isTensor4D(input)) {
+            if (isTensor4D(input)) {
                 const batchSize = input.shape[0];
                 if (batchSize !== 1) {
                     throw new Error(`NetInput - tf.Tensor4D with batchSize ${batchSize} passed, but not supported in input array`);
@@ -33,7 +30,7 @@ class NetInput {
                 this._inputDimensions[idx] = input.shape.slice(1);
                 return;
             }
-            const canvas = input instanceof env_1.env.getEnv().Canvas ? input : createCanvas_1.createCanvasFromMedia(input);
+            const canvas = input instanceof env.getEnv().Canvas ? input : createCanvasFromMedia(input);
             this._canvases[idx] = canvas;
             this._inputDimensions[idx] = [canvas.height, canvas.width, 3];
         });
@@ -57,7 +54,7 @@ class NetInput {
         return this._inputSize;
     }
     get reshapedInputDimensions() {
-        return utils_1.range(this.batchSize, 0, 1).map((_, batchIdx) => this.getReshapedInputDimensions(batchIdx));
+        return range(this.batchSize, 0, 1).map((_, batchIdx) => this.getReshapedInputDimensions(batchIdx));
     }
     getInput(batchIdx) {
         return this.canvases[batchIdx] || this.imageTensors[batchIdx];
@@ -77,7 +74,7 @@ class NetInput {
         }
         const width = this.getInputWidth(batchIdx);
         const height = this.getInputHeight(batchIdx);
-        return utils_1.computeReshapedDimensions({ width, height }, this.inputSize);
+        return computeReshapedDimensions({ width, height }, this.inputSize);
     }
     /**
      * Create a batch tensor from all input canvases and tensors
@@ -91,20 +88,20 @@ class NetInput {
     toBatchTensor(inputSize, isCenterInputs = true) {
         this._inputSize = inputSize;
         return tf.tidy(() => {
-            const inputTensors = utils_1.range(this.batchSize, 0, 1).map(batchIdx => {
+            const inputTensors = range(this.batchSize, 0, 1).map(batchIdx => {
                 const input = this.getInput(batchIdx);
                 if (input instanceof tf.Tensor) {
                     // @ts-ignore: error TS2344: Type 'Rank.R4' does not satisfy the constraint 'Tensor<Rank>'.
-                    let imgTensor = utils_1.isTensor4D(input) ? input : input.expandDims();
+                    let imgTensor = isTensor4D(input) ? input : input.expandDims();
                     // @ts-ignore: error TS2344: Type 'Rank.R4' does not satisfy the constraint 'Tensor<Rank>'.
-                    imgTensor = padToSquare_1.padToSquare(imgTensor, isCenterInputs);
+                    imgTensor = padToSquare(imgTensor, isCenterInputs);
                     if (imgTensor.shape[1] !== inputSize || imgTensor.shape[2] !== inputSize) {
                         imgTensor = tf.image.resizeBilinear(imgTensor, [inputSize, inputSize]);
                     }
                     return imgTensor.as3D(inputSize, inputSize, 3);
                 }
-                if (input instanceof env_1.env.getEnv().Canvas) {
-                    return tf.browser.fromPixels(imageToSquare_1.imageToSquare(input, inputSize, isCenterInputs));
+                if (input instanceof env.getEnv().Canvas) {
+                    return tf.browser.fromPixels(imageToSquare(input, inputSize, isCenterInputs));
                 }
                 throw new Error(`toBatchTensor - at batchIdx ${batchIdx}, expected input to be instanceof tf.Tensor or instanceof HTMLCanvasElement, instead have ${input}`);
             });
@@ -113,5 +110,4 @@ class NetInput {
         });
     }
 }
-exports.NetInput = NetInput;
 //# sourceMappingURL=NetInput.js.map

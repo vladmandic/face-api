@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.isNodejs = void 0;
-function isNodejs() {
+export function isNodejs() {
     return typeof global === 'object'
         && typeof require === 'function'
         && typeof module !== 'undefined'
@@ -9,5 +6,4 @@ function isNodejs() {
         // && !!module.exports
         && typeof process !== 'undefined' && !!process.version;
 }
-exports.isNodejs = isNodejs;
 //# sourceMappingURL=isNodejs.js.map

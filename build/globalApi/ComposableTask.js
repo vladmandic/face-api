@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.ComposableTask = void 0;
-class ComposableTask {
+export class ComposableTask {
     async then(onfulfilled) {
         return onfulfilled(await this.run());
     }
@@ -9,5 +6,4 @@ class ComposableTask {
         throw new Error('ComposableTask - run is not implemented');
     }
 }
-exports.ComposableTask = ComposableTask;
 //# sourceMappingURL=ComposableTask.js.map

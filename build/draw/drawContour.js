@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.drawContour = void 0;
-function drawContour(ctx, points, isClosed = false) {
+export function drawContour(ctx, points, isClosed = false) {
     ctx.beginPath();
     points.slice(1).forEach(({ x, y }, prevIdx) => {
         const from = points[prevIdx];
@@ -19,5 +16,4 @@ function drawContour(ctx, points, isClosed = false) {
     }
     ctx.stroke();
 }
-exports.drawContour = drawContour;
 //# sourceMappingURL=drawContour.js.map

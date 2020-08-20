@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.LabeledFaceDescriptors = void 0;
-class LabeledFaceDescriptors {
+export class LabeledFaceDescriptors {
     constructor(label, descriptors) {
         if (!(typeof label === 'string')) {
             throw new Error('LabeledFaceDescriptors - constructor expected label to be a string');
@@ -27,5 +24,4 @@ class LabeledFaceDescriptors {
         return new LabeledFaceDescriptors(json.label, descriptors);
     }
 }
-exports.LabeledFaceDescriptors = LabeledFaceDescriptors;
 //# sourceMappingURL=LabeledFaceDescriptors.js.map

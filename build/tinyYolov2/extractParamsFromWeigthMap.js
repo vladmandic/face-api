@@ -1,11 +1,8 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.extractParamsFromWeigthMap = void 0;
-const disposeUnusedWeightTensors_1 = require("../common/disposeUnusedWeightTensors");
-const extractSeparableConvParamsFactory_1 = require("../common/extractSeparableConvParamsFactory");
-const extractWeightEntryFactory_1 = require("../common/extractWeightEntryFactory");
+import { disposeUnusedWeightTensors } from '../common/disposeUnusedWeightTensors';
+import { loadSeparableConvParamsFactory } from '../common/extractSeparableConvParamsFactory';
+import { extractWeightEntryFactory } from '../common/extractWeightEntryFactory';
 function extractorsFactory(weightMap, paramMappings) {
-    const extractWeightEntry = extractWeightEntryFactory_1.extractWeightEntryFactory(weightMap, paramMappings);
+    const extractWeightEntry = extractWeightEntryFactory(weightMap, paramMappings);
     function extractBatchNormParams(prefix) {
         const sub = extractWeightEntry(`${prefix}/sub`, 1);
         const truediv = extractWeightEntry(`${prefix}/truediv`, 1);
@@ -21,14 +18,14 @@ function extractorsFactory(weightMap, paramMappings) {
         const bn = extractBatchNormParams(`${prefix}/bn`);
         return { conv, bn };
     }
-    const extractSeparableConvParams = extractSeparableConvParamsFactory_1.loadSeparableConvParamsFactory(extractWeightEntry);
+    const extractSeparableConvParams = loadSeparableConvParamsFactory(extractWeightEntry);
     return {
         extractConvParams,
         extractConvWithBatchNormParams,
         extractSeparableConvParams
     };
 }
-function extractParamsFromWeigthMap(weightMap, config) {
+export function extractParamsFromWeigthMap(weightMap, config) {
     const paramMappings = [];
     const { extractConvParams, extractConvWithBatchNormParams, extractSeparableConvParams } = extractorsFactory(weightMap, paramMappings);
     let params;
@@ -59,8 +56,7 @@ function extractParamsFromWeigthMap(weightMap, config) {
             conv8: extractConvParams('conv8')
         };
     }
-    disposeUnusedWeightTensors_1.disposeUnusedWeightTensors(weightMap, paramMappings);
+    disposeUnusedWeightTensors(weightMap, paramMappings);
     return { params, paramMappings };
 }
-exports.extractParamsFromWeigthMap = extractParamsFromWeigthMap;
 //# sourceMappingURL=extractParamsFromWeigthMap.js.map

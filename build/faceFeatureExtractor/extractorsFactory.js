@@ -1,10 +1,7 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.extractorsFactory = void 0;
-const common_1 = require("../common");
-function extractorsFactory(extractWeights, paramMappings) {
-    const extractConvParams = common_1.extractConvParamsFactory(extractWeights, paramMappings);
-    const extractSeparableConvParams = common_1.extractSeparableConvParamsFactory(extractWeights, paramMappings);
+import { extractConvParamsFactory, extractSeparableConvParamsFactory, } from '../common';
+export function extractorsFactory(extractWeights, paramMappings) {
+    const extractConvParams = extractConvParamsFactory(extractWeights, paramMappings);
+    const extractSeparableConvParams = extractSeparableConvParamsFactory(extractWeights, paramMappings);
     function extractDenseBlock3Params(channelsIn, channelsOut, mappedPrefix, isFirstLayer = false) {
         const conv0 = isFirstLayer
             ? extractConvParams(channelsIn, channelsOut, 3, `${mappedPrefix}/conv0`)
@@ -23,5 +20,4 @@ function extractorsFactory(extractWeights, paramMappings) {
         extractDenseBlock4Params
     };
 }
-exports.extractorsFactory = extractorsFactory;
 //# sourceMappingURL=extractorsFactory.js.map

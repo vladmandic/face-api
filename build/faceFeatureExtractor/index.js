@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const tslib_1 = require("tslib");
-tslib_1.__exportStar(require("./FaceFeatureExtractor"), exports);
-tslib_1.__exportStar(require("./TinyFaceFeatureExtractor"), exports);
+export * from './FaceFeatureExtractor';
+export * from './TinyFaceFeatureExtractor';
 //# sourceMappingURL=index.js.map

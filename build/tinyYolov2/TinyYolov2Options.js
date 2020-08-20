@@ -1,14 +1,11 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.TinyYolov2Options = exports.TinyYolov2SizeType = void 0;
-var TinyYolov2SizeType;
+export var TinyYolov2SizeType;
 (function (TinyYolov2SizeType) {
     TinyYolov2SizeType[TinyYolov2SizeType["XS"] = 224] = "XS";
     TinyYolov2SizeType[TinyYolov2SizeType["SM"] = 320] = "SM";
     TinyYolov2SizeType[TinyYolov2SizeType["MD"] = 416] = "MD";
     TinyYolov2SizeType[TinyYolov2SizeType["LG"] = 608] = "LG";
-})(TinyYolov2SizeType = exports.TinyYolov2SizeType || (exports.TinyYolov2SizeType = {}));
-class TinyYolov2Options {
+})(TinyYolov2SizeType || (TinyYolov2SizeType = {}));
+export class TinyYolov2Options {
     constructor({ inputSize, scoreThreshold } = {}) {
         this._name = 'TinyYolov2Options';
         this._inputSize = inputSize || 416;
@@ -23,5 +20,4 @@ class TinyYolov2Options {
     get inputSize() { return this._inputSize; }
     get scoreThreshold() { return this._scoreThreshold; }
 }
-exports.TinyYolov2Options = TinyYolov2Options;
 //# sourceMappingURL=TinyYolov2Options.js.map

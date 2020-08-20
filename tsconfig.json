@@ -18,7 +18,7 @@
     "importHelpers": true,
     "skipLibCheck": true,
     "outDir": "build",
-    "module": "commonjs",
+    "module": "es2020",
     "moduleResolution": "node",
     "target": "es2018",
     "lib": ["es2018", "dom"],

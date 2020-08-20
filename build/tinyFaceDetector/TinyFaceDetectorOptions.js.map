@@ -1,1 +1,1 @@
-{"version":3,"file":"TinyFaceDetectorOptions.js","sourceRoot":"","sources":["../../src/tinyFaceDetector/TinyFaceDetectorOptions.ts"],"names":[],"mappings":";;;AAAA,8CAAsE;AAItE,MAAa,uBAAwB,SAAQ,8BAAiB;IAA9D;;QACY,UAAK,GAAW,yBAAyB,CAAA;IACrD,CAAC;CAAA;AAFD,0DAEC"}
+{"version":3,"file":"TinyFaceDetectorOptions.js","sourceRoot":"","sources":["../../src/tinyFaceDetector/TinyFaceDetectorOptions.ts"],"names":[],"mappings":"AAAA,OAAO,EAAsB,iBAAiB,EAAE,MAAM,eAAe,CAAC;AAItE,MAAM,OAAO,uBAAwB,SAAQ,iBAAiB;IAA9D;;QACY,UAAK,GAAW,yBAAyB,CAAA;IACrD,CAAC;CAAA"}

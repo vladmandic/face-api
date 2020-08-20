@@ -1,23 +1,20 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.FaceExpressionNet = void 0;
-const tf = require("@tensorflow/tfjs-core");
-const dom_1 = require("../dom");
-const FaceFeatureExtractor_1 = require("../faceFeatureExtractor/FaceFeatureExtractor");
-const FaceProcessor_1 = require("../faceProcessor/FaceProcessor");
-const FaceExpressions_1 = require("./FaceExpressions");
-class FaceExpressionNet extends FaceProcessor_1.FaceProcessor {
-    constructor(faceFeatureExtractor = new FaceFeatureExtractor_1.FaceFeatureExtractor()) {
+import * as tf from '@tensorflow/tfjs-core';
+import { toNetInput } from '../dom';
+import { FaceFeatureExtractor } from '../faceFeatureExtractor/FaceFeatureExtractor';
+import { FaceProcessor } from '../faceProcessor/FaceProcessor';
+import { FaceExpressions } from './FaceExpressions';
+export class FaceExpressionNet extends FaceProcessor {
+    constructor(faceFeatureExtractor = new FaceFeatureExtractor()) {
         super('FaceExpressionNet', faceFeatureExtractor);
     }
     forwardInput(input) {
         return tf.tidy(() => tf.softmax(this.runNet(input)));
     }
     async forward(input) {
-        return this.forwardInput(await dom_1.toNetInput(input));
+        return this.forwardInput(await toNetInput(input));
     }
     async predictExpressions(input) {
-        const netInput = await dom_1.toNetInput(input);
+        const netInput = await toNetInput(input);
         const out = await this.forwardInput(netInput);
         const probabilitesByBatch = await Promise.all(tf.unstack(out).map(async (t) => {
             const data = await t.data();
@@ -26,7 +23,7 @@ class FaceExpressionNet extends FaceProcessor_1.FaceProcessor {
         }));
         out.dispose();
         const predictionsByBatch = probabilitesByBatch
-            .map(probabilites => new FaceExpressions_1.FaceExpressions(probabilites));
+            .map(probabilites => new FaceExpressions(probabilites));
         return netInput.isBatchInput
             ? predictionsByBatch
             : predictionsByBatch[0];
@@ -41,5 +38,4 @@ class FaceExpressionNet extends FaceProcessor_1.FaceProcessor {
         return 7;
     }
 }
-exports.FaceExpressionNet = FaceExpressionNet;
 //# sourceMappingURL=FaceExpressionNet.js.map

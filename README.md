@@ -1,7 +1,5 @@
 # FaceAPI
 
-## Branch Point
-
 Forked from face-api.js version **0.22.2** released on March 22nd, 2020  
 <https://github.com/justadudewhohacks/face-api.js>  
 <https://www.npmjs.com/package/face-api.js>  

@@ -15,3 +15,4 @@ export declare function getCenterPoint(pts: Point[]): Point;
 export declare function range(num: number, start: number, step: number): number[];
 export declare function isValidNumber(num: any): boolean;
 export declare function isValidProbablitiy(num: any): boolean;
+//# sourceMappingURL=index.d.ts.map

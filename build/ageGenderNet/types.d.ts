@@ -19,3 +19,4 @@ export declare type NetParams = {
         gender: FCParams;
     };
 };
+//# sourceMappingURL=types.d.ts.map

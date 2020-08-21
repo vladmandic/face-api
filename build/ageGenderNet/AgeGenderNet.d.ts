@@ -27,3 +27,4 @@ export declare class AgeGenderNet extends NeuralNetwork<NetParams> {
         paramMappings: import("../common").ParamMapping[];
     };
 }
+//# sourceMappingURL=AgeGenderNet.d.ts.map

@@ -4,3 +4,4 @@ export declare function extractorsFactory(extractWeights: ExtractWeightsFunction
     extractDenseBlock3Params: (channelsIn: number, channelsOut: number, mappedPrefix: string, isFirstLayer?: boolean) => DenseBlock3Params;
     extractDenseBlock4Params: (channelsIn: number, channelsOut: number, mappedPrefix: string, isFirstLayer?: boolean) => DenseBlock4Params;
 };
+//# sourceMappingURL=extractorsFactory.d.ts.map

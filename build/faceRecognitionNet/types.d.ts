@@ -30,3 +30,4 @@ export declare type NetParams = {
     conv256_down_out: ResidualLayerParams;
     fc: tf.Tensor2D;
 };
+//# sourceMappingURL=types.d.ts.map

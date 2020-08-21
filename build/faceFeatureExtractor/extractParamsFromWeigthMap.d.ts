@@ -5,3 +5,4 @@ export declare function extractParamsFromWeigthMap(weightMap: tf.NamedTensorMap)
     params: FaceFeatureExtractorParams;
     paramMappings: ParamMapping[];
 };
+//# sourceMappingURL=extractParamsFromWeigthMap.d.ts.map

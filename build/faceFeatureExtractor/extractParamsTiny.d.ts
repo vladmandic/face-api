@@ -4,3 +4,4 @@ export declare function extractParamsTiny(weights: Float32Array): {
     params: TinyFaceFeatureExtractorParams;
     paramMappings: ParamMapping[];
 };
+//# sourceMappingURL=extractParamsTiny.d.ts.map

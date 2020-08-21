@@ -4,3 +4,4 @@ export * from './drawFaceExpressions';
 export * from './DrawBox';
 export * from './DrawFaceLandmarks';
 export * from './DrawTextField';
+//# sourceMappingURL=index.d.ts.map

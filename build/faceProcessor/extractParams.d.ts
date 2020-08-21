@@ -4,3 +4,4 @@ export declare function extractParams(weights: Float32Array, channelsIn: number,
     params: NetParams;
     paramMappings: ParamMapping[];
 };
+//# sourceMappingURL=extractParams.d.ts.map

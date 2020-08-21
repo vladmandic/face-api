@@ -5,3 +5,4 @@ export declare function extractParamsFromWeigthMapTiny(weightMap: tf.NamedTensor
     params: TinyFaceFeatureExtractorParams;
     paramMappings: ParamMapping[];
 };
+//# sourceMappingURL=extractParamsFromWeigthMapTiny.d.ts.map

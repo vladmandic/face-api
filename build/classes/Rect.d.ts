@@ -8,3 +8,4 @@ export interface IRect {
 export declare class Rect extends Box<Rect> implements IRect {
     constructor(x: number, y: number, width: number, height: number, allowNegativeDimensions?: boolean);
 }
+//# sourceMappingURL=Rect.d.ts.map

@@ -17,3 +17,4 @@ export declare class TinyXception extends NeuralNetwork<TinyXceptionParams> {
         paramMappings: import("../common").ParamMapping[];
     };
 }
+//# sourceMappingURL=TinyXception.d.ts.map

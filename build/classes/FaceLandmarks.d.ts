@@ -40,3 +40,4 @@ export declare class FaceLandmarks implements IFaceLandmarks {
     private alignMinBbox;
     protected getRefPointsForAlignment(): Point[];
 }
+//# sourceMappingURL=FaceLandmarks.d.ts.map

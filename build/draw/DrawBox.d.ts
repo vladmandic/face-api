@@ -19,3 +19,4 @@ export declare class DrawBox {
     constructor(box: IBoundingBox | IRect, options?: IDrawBoxOptions);
     draw(canvasArg: string | HTMLCanvasElement | CanvasRenderingContext2D): void;
 }
+//# sourceMappingURL=DrawBox.d.ts.map

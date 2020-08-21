@@ -32,3 +32,4 @@ export declare class DrawTextField {
     getUpperLeft(ctx: CanvasRenderingContext2D, canvasDims?: IDimensions): IPoint;
     draw(canvasArg: string | HTMLCanvasElement | CanvasRenderingContext2D): void;
 }
+//# sourceMappingURL=DrawTextField.d.ts.map

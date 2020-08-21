@@ -9,3 +9,4 @@ export declare class PredictedBox extends LabeledBox {
     get score(): number;
     get classScore(): number;
 }
+//# sourceMappingURL=PredictedBox.d.ts.map

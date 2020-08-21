@@ -8,3 +8,4 @@ import * as tf from '@tensorflow/tfjs-core';
  * @returns The padded tensor with width === height.
  */
 export declare function padToSquare(imgTensor: tf.Tensor4D, isCenterImage?: boolean): tf.Tensor4D;
+//# sourceMappingURL=padToSquare.d.ts.map

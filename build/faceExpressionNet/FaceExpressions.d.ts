@@ -13,3 +13,4 @@ export declare class FaceExpressions {
         probability: number;
     }[];
 }
+//# sourceMappingURL=FaceExpressions.d.ts.map

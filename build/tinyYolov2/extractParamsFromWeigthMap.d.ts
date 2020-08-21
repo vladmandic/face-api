@@ -6,3 +6,4 @@ export declare function extractParamsFromWeigthMap(weightMap: tf.NamedTensorMap,
     params: TinyYolov2NetParams;
     paramMappings: ParamMapping[];
 };
+//# sourceMappingURL=extractParamsFromWeigthMap.d.ts.map

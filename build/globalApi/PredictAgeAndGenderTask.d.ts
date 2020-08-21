@@ -29,3 +29,4 @@ export declare class PredictSingleAgeAndGenderWithFaceAlignmentTask<TSource exte
     withFaceExpressions(): PredictSingleFaceExpressionsWithFaceAlignmentTask<WithAge<WithGender<TSource>>>;
     withFaceDescriptor(): ComputeSingleFaceDescriptorTask<WithAge<WithGender<TSource>>>;
 }
+//# sourceMappingURL=PredictAgeAndGenderTask.d.ts.map

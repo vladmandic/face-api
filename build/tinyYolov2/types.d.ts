@@ -32,3 +32,4 @@ export declare type DefaultTinyYolov2NetParams = {
     conv8: ConvParams;
 };
 export declare type TinyYolov2NetParams = DefaultTinyYolov2NetParams | MobilenetParams;
+//# sourceMappingURL=types.d.ts.map

@@ -13,3 +13,4 @@ export declare class FaceExpressionNet extends FaceProcessor<FaceFeatureExtracto
     protected getClassifierChannelsIn(): number;
     protected getClassifierChannelsOut(): number;
 }
+//# sourceMappingURL=FaceExpressionNet.d.ts.map

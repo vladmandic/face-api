@@ -18,3 +18,4 @@ export declare class SeparableConvParams {
     bias: tf.Tensor1D;
     constructor(depthwise_filter: tf.Tensor4D, pointwise_filter: tf.Tensor4D, bias: tf.Tensor1D);
 }
+//# sourceMappingURL=types.d.ts.map

@@ -17,3 +17,4 @@ export declare class FaceRecognitionNet extends NeuralNetwork<NetParams> {
         paramMappings: import("../common").ParamMapping[];
     };
 }
+//# sourceMappingURL=FaceRecognitionNet.d.ts.map

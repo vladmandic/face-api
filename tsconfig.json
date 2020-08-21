@@ -1,41 +1,39 @@
 {
   "compilerOptions": {
-    //"allowUnreachableCode": true,
-    //"noUnusedLocals": false,
-    //"noUnusedParameters": false,
-    "removeComments": false,
-    "preserveConstEnums": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "sourceMap": true,
+    "allowSyntheticDefaultImports": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "alwaysStrict": true,
     "declaration": true,
+    "declarationMap": true,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "incremental": false,
+    "listFiles": false,
+    "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
-    "noFallthroughCasesInSwitch": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "strictNullChecks": true,
-    "importHelpers": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "preserveConstEnums": true,
+    "pretty": true,
+    "removeComments": false,
     "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": false,
+    "strictNullChecks": true,
+    "suppressImplicitAnyIndexErrors": true,
     "outDir": "build",
     "module": "es2020",
     "moduleResolution": "node",
     "target": "es2018",
     "lib": ["es2018", "dom"],
-    "typeRoots": [
-      "typings",
-      "node_modules/@types"
-    ]
+    "typeRoots": ["typings", "node_modules/@types"]
   },
-  "formatCodeOptions": {
-    "indentSize": 2,
-    "tabSize": 2
-  },
-  "exclude": [
-    "node_modules",
-    "dist"
-  ],
-  "include": [
-    "src"
-  ]
+  "formatCodeOptions": { "indentSize": 2, "tabSize": 2 },
+  "exclude": ["node_modules", "dist"],
+  "include": ["src"]
 }

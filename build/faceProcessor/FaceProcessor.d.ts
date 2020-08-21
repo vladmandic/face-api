@@ -26,3 +26,4 @@ export declare abstract class FaceProcessor<TExtractorParams extends FaceFeature
         paramMappings: import("../common").ParamMapping[];
     };
 }
+//# sourceMappingURL=FaceProcessor.d.ts.map

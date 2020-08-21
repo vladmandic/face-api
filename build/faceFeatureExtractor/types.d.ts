@@ -38,3 +38,4 @@ export interface IFaceFeatureExtractor<TNetParams extends TinyFaceFeatureExtract
     forwardInput(input: NetInput): tf.Tensor4D;
     forward(input: TNetInput): Promise<tf.Tensor4D>;
 }
+//# sourceMappingURL=types.d.ts.map

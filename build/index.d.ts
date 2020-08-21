@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs-core';
+import * as tf from '@tensorflow/tfjs';
 import * as draw from './draw';
 import * as utils from './utils';
 export { draw, utils, tf };
@@ -17,3 +17,4 @@ export * from './tinyYolov2/index';
 export * from './euclideanDistance';
 export * from './NeuralNetwork';
 export * from './resizeResults';
+//# sourceMappingURL=index.d.ts.map

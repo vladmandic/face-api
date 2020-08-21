@@ -12,3 +12,4 @@ export declare type Environment = FileSystem & {
     createImageElement: () => HTMLImageElement;
     fetch: (url: string, init?: RequestInit) => Promise<Response>;
 };
+//# sourceMappingURL=types.d.ts.map

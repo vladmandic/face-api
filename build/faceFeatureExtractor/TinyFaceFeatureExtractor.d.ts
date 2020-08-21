@@ -16,3 +16,4 @@ export declare class TinyFaceFeatureExtractor extends NeuralNetwork<TinyFaceFeat
         paramMappings: import("../common").ParamMapping[];
     };
 }
+//# sourceMappingURL=TinyFaceFeatureExtractor.d.ts.map

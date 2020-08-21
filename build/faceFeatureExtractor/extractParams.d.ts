@@ -4,3 +4,4 @@ export declare function extractParams(weights: Float32Array): {
     params: FaceFeatureExtractorParams;
     paramMappings: ParamMapping[];
 };
+//# sourceMappingURL=extractParams.d.ts.map

@@ -16,3 +16,4 @@ export declare class TinyYolov2 extends TinyYolov2Base {
         paramMappings: ParamMapping[];
     };
 }
+//# sourceMappingURL=TinyYolov2.d.ts.map

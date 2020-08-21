@@ -4,3 +4,4 @@ export declare function loadParamsFactory(weightMap: any, paramMappings: ParamMa
     extractDenseBlock3Params: (prefix: string, isFirstLayer?: boolean) => DenseBlock3Params;
     extractDenseBlock4Params: (prefix: string, isFirstLayer?: boolean) => DenseBlock4Params;
 };
+//# sourceMappingURL=loadParamsFactory.d.ts.map

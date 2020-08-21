@@ -16,3 +16,4 @@ export declare class FaceFeatureExtractor extends NeuralNetwork<FaceFeatureExtra
         paramMappings: import("../common").ParamMapping[];
     };
 }
+//# sourceMappingURL=FaceFeatureExtractor.d.ts.map

@@ -32,3 +32,4 @@ export declare class NetInput {
      */
     toBatchTensor(inputSize: number, isCenterInputs?: boolean): tf.Tensor4D;
 }
+//# sourceMappingURL=NetInput.d.ts.map

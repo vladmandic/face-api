@@ -15,3 +15,4 @@ export declare class TinyFaceDetector extends TinyYolov2Base {
         paramMappings: ParamMapping[];
     };
 }
+//# sourceMappingURL=TinyFaceDetector.d.ts.map

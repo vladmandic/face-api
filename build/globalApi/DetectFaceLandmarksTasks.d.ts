@@ -27,3 +27,4 @@ export declare class DetectSingleFaceLandmarksTask<TSource extends WithFaceDetec
     withAgeAndGender(): PredictSingleAgeAndGenderWithFaceAlignmentTask<WithFaceLandmarks<TSource, FaceLandmarks68>>;
     withFaceDescriptor(): ComputeSingleFaceDescriptorTask<WithFaceLandmarks<TSource, FaceLandmarks68>>;
 }
+//# sourceMappingURL=DetectFaceLandmarksTasks.d.ts.map

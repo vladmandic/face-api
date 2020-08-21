@@ -12,3 +12,4 @@ import { FaceDetection } from '../classes/FaceDetection';
  * @returns Tensors of the corresponding image region for each detected face.
  */
 export declare function extractFaceTensors(imageTensor: tf.Tensor3D | tf.Tensor4D, detections: Array<FaceDetection | Rect>): Promise<tf.Tensor3D[]>;
+//# sourceMappingURL=extractFaceTensors.d.ts.map

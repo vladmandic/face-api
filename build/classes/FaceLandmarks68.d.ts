@@ -10,3 +10,4 @@ export declare class FaceLandmarks68 extends FaceLandmarks {
     getMouth(): Point[];
     protected getRefPointsForAlignment(): Point[];
 }
+//# sourceMappingURL=FaceLandmarks68.d.ts.map

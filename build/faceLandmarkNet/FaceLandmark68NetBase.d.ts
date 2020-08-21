@@ -11,3 +11,4 @@ export declare abstract class FaceLandmark68NetBase<TExtractorParams extends Fac
     detectLandmarks(input: TNetInput): Promise<FaceLandmarks68 | FaceLandmarks68[]>;
     protected getClassifierChannelsOut(): number;
 }
+//# sourceMappingURL=FaceLandmark68NetBase.d.ts.map

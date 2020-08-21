@@ -13,3 +13,4 @@ export declare class FaceMatcher {
     toJSON(): any;
     static fromJSON(json: any): FaceMatcher;
 }
+//# sourceMappingURL=FaceMatcher.d.ts.map

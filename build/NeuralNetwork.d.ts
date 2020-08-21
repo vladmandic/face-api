@@ -42,3 +42,4 @@ export declare abstract class NeuralNetwork<TNetParams> {
         paramMappings: ParamMapping[];
     };
 }
+//# sourceMappingURL=NeuralNetwork.d.ts.map

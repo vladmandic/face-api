@@ -8,3 +8,4 @@ import { TNetInput } from './types';
  * @returns A NetInput instance, which can be passed into one of the neural networks.
  */
 export declare function toNetInput(inputs: TNetInput): Promise<NetInput>;
+//# sourceMappingURL=toNetInput.d.ts.map

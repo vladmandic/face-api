@@ -16,3 +16,4 @@ export declare class Point implements IPoint {
     magnitude(): number;
     floor(): Point;
 }
+//# sourceMappingURL=Point.d.ts.map

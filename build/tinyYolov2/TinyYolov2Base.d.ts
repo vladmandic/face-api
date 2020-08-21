@@ -40,3 +40,4 @@ export declare class TinyYolov2Base extends NeuralNetwork<TinyYolov2NetParams> {
     }[]>;
     private extractPredictedClass;
 }
+//# sourceMappingURL=TinyYolov2Base.d.ts.map

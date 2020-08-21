@@ -16,3 +16,4 @@ export declare class TinyYolov2Options {
     get inputSize(): number;
     get scoreThreshold(): number;
 }
+//# sourceMappingURL=TinyYolov2Options.d.ts.map

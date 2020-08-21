@@ -4,3 +4,4 @@ export * from './WithFaceExpressions';
 export * from './WithFaceLandmarks';
 export * from './WithAge';
 export * from './WithGender';
+//# sourceMappingURL=index.d.ts.map

@@ -9,3 +9,4 @@ import { TNetInput } from './types';
  * @returns The Canvases of the corresponding image region for each detected face.
  */
 export declare function extractFaces(input: TNetInput, detections: Array<FaceDetection | Rect>): Promise<HTMLCanvasElement[]>;
+//# sourceMappingURL=extractFaces.d.ts.map

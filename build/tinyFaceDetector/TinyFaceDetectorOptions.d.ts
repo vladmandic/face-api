@@ -4,3 +4,4 @@ export interface ITinyFaceDetectorOptions extends ITinyYolov2Options {
 export declare class TinyFaceDetectorOptions extends TinyYolov2Options {
     protected _name: string;
 }
+//# sourceMappingURL=TinyFaceDetectorOptions.d.ts.map

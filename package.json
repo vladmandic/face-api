@@ -1,6 +1,6 @@
 {
   "name": "@vladmandic/face-api",
-  "version": "0.3.6",
+  "version": "0.3.7",
   "description": "JavaScript API for face detection and face recognition in the browser with tensorflow.js",
   "main": "./build/index.js",
   "typings": "./build/index.d.ts",
@@ -39,9 +39,9 @@
   "devDependencies": {
     "@types/node": "^14.6.0",
     "canvas": "2.6.1",
-    "ts-node": "^8.10.2",
+    "esbuild": "^0.6.27",
+    "ts-node": "^9.0.0",
     "tslib": "^2.0.1",
-    "typescript": "^4.1.0-dev.20200821",
-    "esbuild": "^0.6.27"
+    "typescript": "^4.1.0-dev.20200822"
   }
 }

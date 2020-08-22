@@ -1,8 +1,9 @@
 # FaceAPI
 
-Forked from face-api.js version **0.22.2** released on March 22nd, 2020  
-<https://github.com/justadudewhohacks/face-api.js>  
-<https://www.npmjs.com/package/face-api.js>  
+Forked from **face-api.js** version **0.22.2** released on March 22nd, 2020  
+
+- <https://github.com/justadudewhohacks/face-api.js>  
+- <https://www.npmjs.com/package/face-api.js>  
 
 ## Note
 
@@ -13,12 +14,12 @@ If original repository is updated, this one will become obsolete.
 
 - Removed tests, docs, examples  
 - Updated all package dependencies  
-- Removed unnecesary package dependencies (karma, jasmine, etc.)  
-- Updated Typescript build process to target ES2020 instead of dual ES5/ES6  
 - Modified to make compatible with TensorFlow/JS 2.0+  
-- Trivial code changes for updated Typescript type checking
+- Trivial code changes for updated TypeScript type checking
+- Removed unnecesary package dependencies (karma, jasmine, etc.)  
+- Updated Typescript build process to target ES2018 instead of dual ES5/ES6  
 - Changed browser bundle process to use ESBuild instead of Rollup
-- Updated tfjs dependencies since backends were removed from tfjs-core
+- Updated dependencies to @tensorflow/tfjs since backends were removed from @tensorflow/tfjs-core
 
 - Removed following models as they are either obsolete or non-functional with tfjs 2.0+
   - ssdMobilenetv1: Relies on batchNorm() function which is made obsolete in tfjs 2.0
@@ -27,18 +28,18 @@ If original repository is updated, this one will become obsolete.
 
 Which means the only valid model is **tinyFaceDetector**  
 
-However, due to reduced code and changed build process, resulting bundle is about **2.5x smaller** than the original!  
+Due to reduced code and changed build process, resulting bundle is about **2.5x smaller** than the original!  
 
 ## Build
 
-Both ./build and ./dist folders are included by default, so no need for build during install.
+Both `./build` and `./dist` folders are included by default, so no need for build during install.
 However, if you want to rebuild use:
 
 ```shell
 npm run build
 ```
 
-Which will compile everything in ./src into ./build and create standard and minified bundles and sourcemap in ./dist
+Which will compile everything in `./src` into `./build` and create both standard and minified bundles as well as a sourcemap in `./dist`
 
 ## Documentation
 

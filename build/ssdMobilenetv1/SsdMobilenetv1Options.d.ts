@@ -1,0 +1,13 @@
+export interface ISsdMobilenetv1Options {
+    minConfidence?: number;
+    maxResults?: number;
+}
+export declare class SsdMobilenetv1Options {
+    protected _name: string;
+    private _minConfidence;
+    private _maxResults;
+    constructor({ minConfidence, maxResults }?: ISsdMobilenetv1Options);
+    get minConfidence(): number;
+    get maxResults(): number;
+}
+//# sourceMappingURL=SsdMobilenetv1Options.d.ts.map

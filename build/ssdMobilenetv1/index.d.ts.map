@@ -1,0 +1,1 @@
+{"version":3,"file":"index.d.ts","sourceRoot":"","sources":["../../src/ssdMobilenetv1/index.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,cAAc,EAAE,MAAM,kBAAkB,CAAC;AAElD,cAAc,kBAAkB,CAAC;AACjC,cAAc,yBAAyB,CAAC;AAExC,wBAAgB,oBAAoB,CAAC,OAAO,EAAE,YAAY,kBAIzD;AAED,wBAAgB,sBAAsB,CAAC,OAAO,EAAE,YAAY,kBAE3D;AAGD,qBAAa,gBAAiB,SAAQ,cAAc;CAAG"}

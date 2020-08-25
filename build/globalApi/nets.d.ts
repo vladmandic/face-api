@@ -8,10 +8,13 @@ import { FaceExpressions } from '../faceExpressionNet/FaceExpressions';
 import { FaceLandmark68Net } from '../faceLandmarkNet/FaceLandmark68Net';
 import { FaceLandmark68TinyNet } from '../faceLandmarkNet/FaceLandmark68TinyNet';
 import { FaceRecognitionNet } from '../faceRecognitionNet/FaceRecognitionNet';
+import { SsdMobilenetv1 } from '../ssdMobilenetv1/SsdMobilenetv1';
+import { SsdMobilenetv1Options } from '../ssdMobilenetv1/SsdMobilenetv1Options';
 import { TinyFaceDetector } from '../tinyFaceDetector/TinyFaceDetector';
 import { TinyFaceDetectorOptions } from '../tinyFaceDetector/TinyFaceDetectorOptions';
-import { TinyYolov2 } from '../tinyYolov2';
+import { ITinyYolov2Options, TinyYolov2 } from '../tinyYolov2';
 export declare const nets: {
+    ssdMobilenetv1: SsdMobilenetv1;
     tinyFaceDetector: TinyFaceDetector;
     tinyYolov2: TinyYolov2;
     faceLandmark68Net: FaceLandmark68Net;
@@ -21,6 +24,14 @@ export declare const nets: {
     ageGenderNet: AgeGenderNet;
 };
 /**
+ * Attempts to detect all faces in an image using SSD Mobilenetv1 Network.
+ *
+ * @param input The input image.
+ * @param options (optional, default: see SsdMobilenetv1Options constructor for default parameters).
+ * @returns Bounding box of each face with score.
+ */
+export declare const ssdMobilenetv1: (input: TNetInput, options: SsdMobilenetv1Options) => Promise<FaceDetection[]>;
+/**
  * Attempts to detect all faces in an image using the Tiny Face Detector.
  *
  * @param input The input image.
@@ -28,6 +39,14 @@ export declare const nets: {
  * @returns Bounding box of each face with score.
  */
 export declare const tinyFaceDetector: (input: TNetInput, options: TinyFaceDetectorOptions) => Promise<FaceDetection[]>;
+/**
+ * Attempts to detect all faces in an image using the Tiny Yolov2 Network.
+ *
+ * @param input The input image.
+ * @param options (optional, default: see TinyYolov2Options constructor for default parameters).
+ * @returns Bounding box of each face with score.
+ */
+export declare const tinyYolov2: (input: TNetInput, options: ITinyYolov2Options) => Promise<FaceDetection[]>;
 /**
  * Detects the 68 point face landmark positions of the face shown in an image.
  *
@@ -73,6 +92,7 @@ export declare const recognizeFaceExpressions: (input: TNetInput) => Promise<Fac
  * @returns Predictions with age, gender and gender probability or array thereof in case of batch input.
  */
 export declare const predictAgeAndGender: (input: TNetInput) => Promise<AgeAndGenderPrediction | AgeAndGenderPrediction[]>;
+export declare const loadSsdMobilenetv1Model: (url: string) => Promise<void>;
 export declare const loadTinyFaceDetectorModel: (url: string) => Promise<void>;
 export declare const loadTinyYolov2Model: (url: string) => Promise<void>;
 export declare const loadFaceLandmarkModel: (url: string) => Promise<void>;
@@ -81,6 +101,6 @@ export declare const loadFaceRecognitionModel: (url: string) => Promise<void>;
 export declare const loadFaceExpressionModel: (url: string) => Promise<void>;
 export declare const loadAgeGenderModel: (url: string) => Promise<void>;
 export declare const loadFaceDetectionModel: (url: string) => Promise<void>;
-export declare const locateFaces: typeof TinyFaceDetector;
+export declare const locateFaces: (input: TNetInput, options: SsdMobilenetv1Options) => Promise<FaceDetection[]>;
 export declare const detectLandmarks: (input: TNetInput) => Promise<FaceLandmarks68 | FaceLandmarks68[]>;
 //# sourceMappingURL=nets.d.ts.map

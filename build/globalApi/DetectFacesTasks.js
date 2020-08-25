@@ -1,12 +1,14 @@
 import { extendWithFaceDetection } from '../factories/WithFaceDetection';
+import { SsdMobilenetv1Options } from '../ssdMobilenetv1/SsdMobilenetv1Options';
 import { TinyFaceDetectorOptions } from '../tinyFaceDetector/TinyFaceDetectorOptions';
+import { TinyYolov2Options } from '../tinyYolov2';
 import { ComposableTask } from './ComposableTask';
 import { DetectAllFaceLandmarksTask, DetectSingleFaceLandmarksTask } from './DetectFaceLandmarksTasks';
 import { nets } from './nets';
 import { PredictAllAgeAndGenderTask, PredictSingleAgeAndGenderTask } from './PredictAgeAndGenderTask';
 import { PredictAllFaceExpressionsTask, PredictSingleFaceExpressionsTask } from './PredictFaceExpressionsTask';
 export class DetectFacesTaskBase extends ComposableTask {
-    constructor(input, options = new TinyFaceDetectorOptions()) {
+    constructor(input, options = new SsdMobilenetv1Options()) {
         super();
         this.input = input;
         this.options = options;
@@ -17,7 +19,11 @@ export class DetectAllFacesTask extends DetectFacesTaskBase {
         const { input, options } = this;
         const faceDetectionFunction = options instanceof TinyFaceDetectorOptions
             ? (input) => nets.tinyFaceDetector.locateFaces(input, options)
-            : null;
+            : (options instanceof SsdMobilenetv1Options
+                ? (input) => nets.ssdMobilenetv1.locateFaces(input, options)
+                : (options instanceof TinyYolov2Options
+                    ? (input) => nets.tinyYolov2.locateFaces(input, options)
+                    : null));
         if (!faceDetectionFunction) {
             throw new Error('detectFaces - expected options to be instance of TinyFaceDetectorOptions | SsdMobilenetv1Options | MtcnnOptions | TinyYolov2Options');
         }

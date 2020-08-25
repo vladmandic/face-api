@@ -8,8 +8,6 @@ export async function loadWeightMap(
   defaultModelName: string,
 ): Promise<tf.NamedTensorMap> {
   const { manifestUri, modelBaseUri } = getModelUris(uri, defaultModelName)
-
   const manifest = await fetchJson<tf.io.WeightsManifestConfig>(manifestUri)
-
   return tf.io.loadWeights(manifest, modelBaseUri)
 }

@@ -1,3 +1,4 @@
+export * from './allFaces'
 export * from './ComposableTask'
 export * from './ComputeFaceDescriptorsTasks'
 export * from './detectFaces'

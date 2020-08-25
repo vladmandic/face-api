@@ -1,7 +1,9 @@
 import { FaceDetection } from '../classes/FaceDetection';
 import { TNetInput } from '../dom';
 import { extendWithFaceDetection, WithFaceDetection } from '../factories/WithFaceDetection';
+import { SsdMobilenetv1Options } from '../ssdMobilenetv1/SsdMobilenetv1Options';
 import { TinyFaceDetectorOptions } from '../tinyFaceDetector/TinyFaceDetectorOptions';
+import { TinyYolov2Options } from '../tinyYolov2';
 import { ComposableTask } from './ComposableTask';
 import { DetectAllFaceLandmarksTask, DetectSingleFaceLandmarksTask } from './DetectFaceLandmarksTasks';
 import { nets } from './nets';
@@ -12,7 +14,7 @@ import { FaceDetectionOptions } from './types';
 export class DetectFacesTaskBase<TReturn> extends ComposableTask<TReturn> {
   constructor(
     protected input: TNetInput,
-    protected options: FaceDetectionOptions = new TinyFaceDetectorOptions()
+    protected options: FaceDetectionOptions = new SsdMobilenetv1Options()
   ) {
     super()
   }
@@ -24,10 +26,17 @@ export class DetectAllFacesTask extends DetectFacesTaskBase<FaceDetection[]> {
 
     const { input, options } = this
 
-
     const faceDetectionFunction = options instanceof TinyFaceDetectorOptions
       ? (input: TNetInput) => nets.tinyFaceDetector.locateFaces(input, options)
-      : null
+      : (
+        options instanceof SsdMobilenetv1Options
+          ? (input: TNetInput) => nets.ssdMobilenetv1.locateFaces(input, options)
+          : (
+            options instanceof TinyYolov2Options
+              ? (input: TNetInput) => nets.tinyYolov2.locateFaces(input, options)
+              : null
+          )
+      )
 
     if (!faceDetectionFunction) {
       throw new Error('detectFaces - expected options to be instance of TinyFaceDetectorOptions | SsdMobilenetv1Options | MtcnnOptions | TinyYolov2Options')

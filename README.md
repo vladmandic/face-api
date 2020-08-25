@@ -50,24 +50,3 @@ Which will compile everything in `./src` into `./build` and create both standard
 ## Documentation
 
 For documentation refer to original project  
-
-## Todo
-
-face-api.js mobilenetv1 model actuall comes from <https://github.com/yeephycho/tensorflow-face-detection> which has been updated for tfjs@2.0 compatibility.
-unfortunately, model provided at <https://drive.google.com/open?id=0B5ttP5kO_loUdWZWZVVrN2VmWFk> is in frozen format, so needed to convert it to tfjs graph model:
-
-> summarize_graph \
-  --in_graph="./frozen_inference_graph_face.pb" \
-  --print_structure=false
-Found 4 possible outputs: (name=detection_boxes, op=Identity) (name=detection_scores, op=Identity) (name=detection_classes, op=Identity) (name=num_detections, op=Identity)
-> tensorflowjs_converter \
-  --input_format tf_frozen_model \
-  --output_format tfjs_graph_model \
-  --skip_op_check \
-  --strip_debug_ops=True \
-  --weight_shard_size_bytes 4194304 \
-  --output_node_names detection_boxes,detection_scores,num_detections \
-  ./frozen_inference_graph_face.pb \
-  ./converted/
-> cat converted/model.json | sed 's/group1-/ssd_mobilenetv1_model-/g' > converted/ssd_mobilenetv1_model-weights_manifest.json
-> rm converted/model.json

@@ -20,13 +20,10 @@ If original repository is updated, this one will become obsolete.
 - Updated Typescript build process to target ES2018 instead of dual ES5/ES6  
 - Changed browser bundle process to use ESBuild instead of Rollup
 - Updated dependencies to @tensorflow/tfjs since backends were removed from @tensorflow/tfjs-core
-
+- Updated mobileNetv1 model due to batchNorm() dependency
 - Removed following models as they are either obsolete or non-functional with tfjs 2.0+
   - mtcnn: Mostly obsolete
   - tinyYolov2: Non-functional since weights are missing
-
-- Updated newer version for mobileNetv1 model from <https://github.com/yeephycho/tensorflow-face-detection>  
-  Note that updated model was in TF Frozen format and needed to be converted to TFJS Graph format
 
 Which means valid models are **tinyFaceDetector** and **mobileNetv1**  
 

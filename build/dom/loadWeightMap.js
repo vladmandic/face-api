@@ -3,8 +3,8 @@ import { getModelUris } from '../common/getModelUris';
 import { fetchJson } from './fetchJson';
 export async function loadWeightMap(uri, defaultModelName) {
     const { manifestUri, modelBaseUri } = getModelUris(uri, defaultModelName);
-    const manifest = await fetchJson(manifestUri);
-    console.log(typeof manifest, manifest);
+    let manifest = await fetchJson(manifestUri);
+    // if (manifest['weightsManifest']) manifest = manifest['weightsManifest'];
     return tf.io.loadWeights(manifest, modelBaseUri);
 }
 //# sourceMappingURL=loadWeightMap.js.map

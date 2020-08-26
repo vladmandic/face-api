@@ -21539,8 +21539,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
   // build/dom/loadWeightMap.js
   async function loadWeightMap(uri, defaultModelName) {
     const {manifestUri, modelBaseUri} = getModelUris(uri, defaultModelName);
-    const manifest = await fetchJson(manifestUri);
-    console.log(typeof manifest, manifest);
+    let manifest = await fetchJson(manifestUri);
     return io_exports.loadWeights(manifest, modelBaseUri);
   }
 

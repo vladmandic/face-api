@@ -118,6 +118,15 @@
       }
 
       async function main() {
+        // initialize tfjs
+        log('FaceAPI Test');
+        await faceapi.tf.setBackend('webgl');
+        await faceapi.tf.enableProdMode();
+        await faceapi.tf.ENV.set('DEBUG', false);
+        log(`TensorFlow/JS Version: ${faceapi.tf.version_core} Backend ${faceapi.tf.getBackend()}`);
+
+        // load face-api models
+        log('Loading FaceAPI models');
         await faceapi.nets.tinyFaceDetector.load(modelPath);
         await faceapi.nets.ssdMobilenetv1.load(modelPath);
         await faceapi.nets.ageGenderNet.load(modelPath);
@@ -127,15 +136,11 @@
         const optionsTinyFace = new faceapi.TinyFaceDetectorOptions({ inputSize: imgSize, scoreThreshold: minScore });
         const optionsSSDMobileNet = new faceapi.SsdMobilenetv1Options({ minConfidence: minScore, maxResults });
 
-        // initialize tfjs
-        await faceapi.tf.setBackend('webgl');
-        await faceapi.tf.enableProdMode();
-        faceapi.tf.ENV.set('DEBUG', false);
-        log('FaceAPI Test');
-        log(`TensorFlow/JS Version: ${faceapi.tf.version_core} Backend ${faceapi.tf.getBackend()}`);
+        // check tf state
         log(`TF Flags: ${str(faceapi.tf.ENV.flags)}`);
         const engine = await faceapi.tf.engine();
         log(`TF Engine State: ${str(engine.state)}`);
+
         // loop through all images and try to process them
         log(`Start processing: ${samples.length} images ...<br>`);
         for (const img of samples) {

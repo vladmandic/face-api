@@ -71,5 +71,6 @@ For documentation refer to original project at <https://github.com/justadudewhoh
 ## Example
 
 Single new example that uses both models as well as all of the extensions is included in `/example/index.html`  
+Example can be accessed directly using Git pages using URL: <https://vladmandic.github.io/face-api/example/>
 
 ![alt text](example/screenshot.png)

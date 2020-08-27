@@ -18,11 +18,11 @@
       /* tfjs should be loaded explicitly and is not embedded inside facepi.js to keep size small and allow reusability */
 
       // configuration options
-      const modelPath = '../weights'; // relative path to model that will be loaded using http
+      const modelPath = '../weights/'; // relative path to model that will be loaded using http
       const imgSize = 512; // maximum image size in pixels
       const minScore = 0.1; // minimum score
       const maxResults = 5; // maximum number of results to return
-      const samples = ['../example/sample (1).jpg', '../example/sample (2).jpg', '../example/sample (3).jpg', '../example/sample (4).jpg', '../example/sample (5).jpg', '../example/sample (6).jpg']; // sample images to be loaded using http
+      const samples = ['sample (1).jpg', 'sample (2).jpg', 'sample (3).jpg', 'sample (4).jpg', 'sample (5).jpg', 'sample (6).jpg']; // sample images to be loaded using http
 
       // helper function to pretty-print json object to string
       function str(json) {
@@ -91,9 +91,6 @@
         el.width = imgSize;
         el.onload = () => faces(img, title, el.id, data);
         document.body.appendChild(el);
-        // document.getElementById('log').innerHTML += `<img id="${id}" src="${img}" height=${imgSize}></img>`;
-        // document.getElementById(el.id).addEventListener('load', () => faces(img, title, image.id, data));
-        // setTimeout(() => faces(img, title, id, data), 1000);
       }
 
       // loads image and draws it on resized canvas so we alwys have correct image size regardless of source

@@ -51,7 +51,7 @@ or as NPM module:
 
 ## Weights
 
-Pretrained models are includes in `./weights`.
+Pretrained models and their weights are includes in `./model`.
 
 ## Build
 

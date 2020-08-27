@@ -6,7 +6,7 @@
     <meta content="text/html">
     <meta charset="UTF-8">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/2.3.0/tf.es2017.js" integrity="sha512-86mDh7XD/1SzFWCS4UwRHiIN8jak+8wHL4ird70XnjlLTrWsFbYCAez10OeivKcbvhAG1HC3qm2RlJrM3lnIqA==" crossorigin="anonymous"></script>
-    <script src="../dist/face-api.js"></script>
+    <script src="https://vladmandic.github.io/face-api/dist/face-api.js"></script>
     <style>
       body { font-family: monospace; background: black; color: white; font-size: 16px; line-height: 22px; margin: 0; }
     </style>
@@ -18,7 +18,7 @@
       /* tfjs should be loaded explicitly and is not embedded inside facepi.js to keep size small and allow reusability */
 
       // configuration options
-      const modelPath = '../weights/'; // relative path to model that will be loaded using http
+      const modelPath = 'https://vladmandic.github.io/face-api/weights/'; // path to model folder that will be loaded using http
       const imgSize = 512; // maximum image size in pixels
       const minScore = 0.1; // minimum score
       const maxResults = 5; // maximum number of results to return

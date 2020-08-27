@@ -1,7 +1,7 @@
 {
   "name": "@vladmandic/face-api",
-  "version": "0.3.9",
-  "description": "JavaScript API for face detection and face recognition in the browser with tensorflow.js",
+  "version": "0.4.1",
+  "description": "JavaScript module for Face Detection and Face Recognition Using Tensorflow/JS",
   "main": "./build/index.js",
   "typings": "./build/index.d.ts",
   "engines": {
@@ -14,11 +14,13 @@
     "build": "npm run compile && npm run bundle && npm run minify"
   },
   "keywords": [
-    "face",
-    "detection",
-    "recognition",
     "tensorflow",
-    "tf"
+    "tf",
+    "tfjs",
+    "face",
+    "face-api",
+    "face-detection",
+    "age-gender"
   ],
   "repository": {
     "type": "git",

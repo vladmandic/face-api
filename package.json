@@ -1,6 +1,6 @@
 {
   "name": "@vladmandic/face-api",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "JavaScript module for Face Detection and Face Recognition Using Tensorflow/JS",
   "main": "./dist/face-api.node.js",
   "typings": "./build/index.d.ts",

@@ -1,7 +1,8 @@
+declare const test = "test";
 import * as tf from '@tensorflow/tfjs-core';
 import * as draw from './draw';
 import * as utils from './utils';
-export { draw, utils, tf };
+export { draw, utils, tf, test };
 export * from './ageGenderNet/index';
 export * from './classes/index';
 export * from './dom/index';

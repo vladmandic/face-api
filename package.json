@@ -2,7 +2,7 @@
   "name": "@vladmandic/face-api",
   "version": "0.4.2",
   "description": "JavaScript module for Face Detection and Face Recognition Using Tensorflow/JS",
-  "main": "./build/index.js",
+  "main": "./dist/face-api.node.js",
   "typings": "./build/index.d.ts",
   "engines": {
     "node": ">=12.0.0"
@@ -10,9 +10,10 @@
   "type": "module",
   "scripts": {
     "compile": "tsc",
+    "module": "esbuild --bundle --outfile=./dist/face-api.node.js --target=es2018 --platform=node --format=esm --global-name=faceapi --sourcemap --log-level=error --tsconfig=./tsconfig.json build/index.js",
     "bundle": "esbuild --bundle --outfile=./dist/face-api.js --target=es2018 --platform=browser --format=iife --global-name=faceapi --sourcemap --log-level=error --tsconfig=./tsconfig.json build/index.js",
     "minify": "esbuild --bundle --outfile=./dist/face-api.min.js --target=es2018 --platform=browser --sourcemap --format=iife --global-name=faceapi --log-level=error --minify --tsconfig=./tsconfig.json build/index.js",
-    "build": "npm run compile && npm run bundle && npm run minify"
+    "build": "npm run compile && npm run bundle && npm run module && npm run minify"
   },
   "keywords": [
     "tensorflow",

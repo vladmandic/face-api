@@ -798,6 +798,7 @@ var faceapi = (() => {
       shuffleArray: () => shuffleArray,
       sigmoid: () => sigmoid6,
       ssdMobilenetv1: () => ssdMobilenetv1,
+      test: () => test,
       tf: () => dist_exports,
       tinyFaceDetector: () => tinyFaceDetector,
       tinyYolov2: () => tinyYolov23,
@@ -805,6 +806,7 @@ var faceapi = (() => {
       utils: () => utils_exports,
       validateConfig: () => validateConfig
     });
+    const test = "test";
   });
 
   // node_modules/@tensorflow/tfjs-core/dist/environment.js

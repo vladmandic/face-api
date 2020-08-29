@@ -7,6 +7,7 @@
   "engines": {
     "node": ">=12.0.0"
   },
+  "type": "module",
   "scripts": {
     "compile": "tsc",
     "bundle": "esbuild --bundle --outfile=./dist/face-api.js --target=es2018 --platform=browser --format=iife --global-name=faceapi --sourcemap --log-level=error --tsconfig=./tsconfig.json build/index.js",

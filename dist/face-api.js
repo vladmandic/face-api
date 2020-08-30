@@ -1,6 +1,7 @@
 var faceapi = (() => {
   var __defineProperty = Object.defineProperty;
   var __hasOwnProperty = Object.prototype.hasOwnProperty;
+  var __assign = Object.assign;
   var __commonJS = (callback, module) => () => {
     if (!module) {
       module = {exports: {}};
@@ -20984,7 +20985,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
       throw new Error("fetch - missing fetch implementation for nodejs environment");
     };
     const fileSystem = createFileSystem();
-    return {
+    return __assign({
       Canvas: Canvas || class {
       },
       CanvasRenderingContext2D: global["CanvasRenderingContext2D"] || class {
@@ -20997,9 +20998,8 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
       },
       createCanvasElement,
       createImageElement,
-      fetch: fetch3,
-      ...fileSystem
-    };
+      fetch: fetch3
+    }, fileSystem);
   }
 
   // build/env/isBrowser.js
@@ -23833,13 +23833,12 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
               const y = ctY - height2 / 2;
               const pos = {row, col, anchor};
               const {classScore, label} = this.withClassScores ? await this.extractPredictedClass(classScoresTensor, pos) : {classScore: 1, label: 0};
-              results.push({
+              results.push(__assign({
                 box: new BoundingBox(x, y, x + width2, y + height2),
                 score,
                 classScore: score * classScore,
-                label,
-                ...pos
-              });
+                label
+              }, pos));
             }
           }
         }

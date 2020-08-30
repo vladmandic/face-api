@@ -32,7 +32,7 @@ Due to reduced code and changed build process, resulting bundle is about **>5x s
 
 **Imporant!**: This version of **face-api** does not embedd full version of **tfjs** to enable dynamic loading of different versions of tfjs as well as to enable reusability of tfjs for different purposes. *Load tfjs explicitly before loading face-api.*  
 
-For example as ESM script:
+For example as a script:
 
 ```html
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/2.3.0/tf.es2017.js"></script>
@@ -40,7 +40,7 @@ For example as ESM script:
   <script src="/dist/face-api.min.js"></script> <!-- minified version / 320KB -->
 ```
 
-or as NPM module:
+or as a module using `require`:
 
 ```js
   # npm install @tensorflow/tfjs @vladmandic/face-api
@@ -49,14 +49,28 @@ or as NPM module:
   const faceapi = require('@vladmandic/face-api');
 ```
 
+or as a module using `import`:  
+(NodeJS requires `"type": "module"` inside `package.json` to support `import` statements)
+
+```js
+import tf from '@tensorflow/tfjs';
+import faceapi from '@vladmandic/face-api';
+```
+
 ## Weights
 
 Pretrained models and their weights are includes in `./model`.
 
 ## Build
 
-Both **`./build`** (used by `import` or `require`) and **`./dist`** (used by `<script src...>`) folders are included by default, so no need for build during install.
-However, if you want to rebuild use:
+Included in `./dist` are:
+
+- face-api.cjs: CJS format, used by NodeJS import/require (default for node)
+- face-api.ejs: ESM format, used by Browser
+- face-api.js:  IIFE format, used by Browser (default for browser)
+- face-api.min.js:  Minified IIFE format, used by Browser
+
+If you want to rebuild use:
 
 ```shell
 npm run build

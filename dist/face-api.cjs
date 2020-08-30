@@ -1,11 +1,12 @@
 var __defineProperty = Object.defineProperty;
 var __hasOwnProperty = Object.prototype.hasOwnProperty;
-var __commonJS = (callback, module) => () => {
-  if (!module) {
-    module = {exports: {}};
-    callback(module.exports, module);
+var __assign = Object.assign;
+var __commonJS = (callback, module2) => () => {
+  if (!module2) {
+    module2 = {exports: {}};
+    callback(module2.exports, module2);
   }
-  return module.exports;
+  return module2.exports;
 };
 var __markAsModule = (target) => {
   return __defineProperty(target, "__esModule", {value: true});
@@ -15,24 +16,24 @@ var __export = (target, all3) => {
   for (var name in all3)
     __defineProperty(target, name, {get: all3[name], enumerable: true});
 };
-var __exportStar = (target, module) => {
+var __exportStar = (target, module2) => {
   __markAsModule(target);
-  if (typeof module === "object" || typeof module === "function") {
-    for (let key in module)
+  if (typeof module2 === "object" || typeof module2 === "function") {
+    for (let key in module2)
       if (!__hasOwnProperty.call(target, key) && key !== "default")
-        __defineProperty(target, key, {get: () => module[key], enumerable: true});
+        __defineProperty(target, key, {get: () => module2[key], enumerable: true});
   }
   return target;
 };
-var __toModule = (module) => {
-  if (module && module.__esModule)
-    return module;
-  return __exportStar(__defineProperty({}, "default", {value: module, enumerable: true}), module);
+var __toModule = (module2) => {
+  if (module2 && module2.__esModule)
+    return module2;
+  return __exportStar(__defineProperty({}, "default", {value: module2, enumerable: true}), module2);
 };
 
 // node_modules/seedrandom/lib/alea.js
-var require_alea = __commonJS((exports, module) => {
-  (function(global2, module2, define2) {
+var require_alea = __commonJS((exports2, module2) => {
+  (function(global2, module3, define2) {
     function Alea(seed) {
       var me = this, mash = Mash();
       me.next = function() {
@@ -102,8 +103,8 @@ var require_alea = __commonJS((exports, module) => {
       };
       return mash;
     }
-    if (module2 && module2.exports) {
-      module2.exports = impl;
+    if (module3 && module3.exports) {
+      module3.exports = impl;
     } else if (define2 && define2.amd) {
       define2(function() {
         return impl;
@@ -111,12 +112,12 @@ var require_alea = __commonJS((exports, module) => {
     } else {
       this.alea = impl;
     }
-  })(exports, typeof module == "object" && module, typeof define == "function" && define);
+  })(exports2, typeof module2 == "object" && module2, typeof define == "function" && define);
 });
 
 // node_modules/seedrandom/lib/xor128.js
-var require_xor128 = __commonJS((exports, module) => {
-  (function(global2, module2, define2) {
+var require_xor128 = __commonJS((exports2, module2) => {
+  (function(global2, module3, define2) {
     function XorGen(seed) {
       var me = this, strseed = "";
       me.x = 0;
@@ -168,8 +169,8 @@ var require_xor128 = __commonJS((exports, module) => {
       }
       return prng;
     }
-    if (module2 && module2.exports) {
-      module2.exports = impl;
+    if (module3 && module3.exports) {
+      module3.exports = impl;
     } else if (define2 && define2.amd) {
       define2(function() {
         return impl;
@@ -177,12 +178,12 @@ var require_xor128 = __commonJS((exports, module) => {
     } else {
       this.xor128 = impl;
     }
-  })(exports, typeof module == "object" && module, typeof define == "function" && define);
+  })(exports2, typeof module2 == "object" && module2, typeof define == "function" && define);
 });
 
 // node_modules/seedrandom/lib/xorwow.js
-var require_xorwow = __commonJS((exports, module) => {
-  (function(global2, module2, define2) {
+var require_xorwow = __commonJS((exports2, module2) => {
+  (function(global2, module3, define2) {
     function XorGen(seed) {
       var me = this, strseed = "";
       me.next = function() {
@@ -241,8 +242,8 @@ var require_xorwow = __commonJS((exports, module) => {
       }
       return prng;
     }
-    if (module2 && module2.exports) {
-      module2.exports = impl;
+    if (module3 && module3.exports) {
+      module3.exports = impl;
     } else if (define2 && define2.amd) {
       define2(function() {
         return impl;
@@ -250,12 +251,12 @@ var require_xorwow = __commonJS((exports, module) => {
     } else {
       this.xorwow = impl;
     }
-  })(exports, typeof module == "object" && module, typeof define == "function" && define);
+  })(exports2, typeof module2 == "object" && module2, typeof define == "function" && define);
 });
 
 // node_modules/seedrandom/lib/xorshift7.js
-var require_xorshift7 = __commonJS((exports, module) => {
-  (function(global2, module2, define2) {
+var require_xorshift7 = __commonJS((exports2, module2) => {
+  (function(global2, module3, define2) {
     function XorGen(seed) {
       var me = this;
       me.next = function() {
@@ -330,8 +331,8 @@ var require_xorshift7 = __commonJS((exports, module) => {
       }
       return prng;
     }
-    if (module2 && module2.exports) {
-      module2.exports = impl;
+    if (module3 && module3.exports) {
+      module3.exports = impl;
     } else if (define2 && define2.amd) {
       define2(function() {
         return impl;
@@ -339,12 +340,12 @@ var require_xorshift7 = __commonJS((exports, module) => {
     } else {
       this.xorshift7 = impl;
     }
-  })(exports, typeof module == "object" && module, typeof define == "function" && define);
+  })(exports2, typeof module2 == "object" && module2, typeof define == "function" && define);
 });
 
 // node_modules/seedrandom/lib/xor4096.js
-var require_xor4096 = __commonJS((exports, module) => {
-  (function(global2, module2, define2) {
+var require_xor4096 = __commonJS((exports2, module2) => {
+  (function(global2, module3, define2) {
     function XorGen(seed) {
       var me = this;
       me.next = function() {
@@ -434,8 +435,8 @@ var require_xor4096 = __commonJS((exports, module) => {
       }
       return prng;
     }
-    if (module2 && module2.exports) {
-      module2.exports = impl;
+    if (module3 && module3.exports) {
+      module3.exports = impl;
     } else if (define2 && define2.amd) {
       define2(function() {
         return impl;
@@ -443,12 +444,12 @@ var require_xor4096 = __commonJS((exports, module) => {
     } else {
       this.xor4096 = impl;
     }
-  })(exports, typeof module == "object" && module, typeof define == "function" && define);
+  })(exports2, typeof module2 == "object" && module2, typeof define == "function" && define);
 });
 
 // node_modules/seedrandom/lib/tychei.js
-var require_tychei = __commonJS((exports, module) => {
-  (function(global2, module2, define2) {
+var require_tychei = __commonJS((exports2, module2) => {
+  (function(global2, module3, define2) {
     function XorGen(seed) {
       var me = this, strseed = "";
       me.next = function() {
@@ -506,8 +507,8 @@ var require_tychei = __commonJS((exports, module) => {
       }
       return prng;
     }
-    if (module2 && module2.exports) {
-      module2.exports = impl;
+    if (module3 && module3.exports) {
+      module3.exports = impl;
     } else if (define2 && define2.amd) {
       define2(function() {
         return impl;
@@ -515,11 +516,11 @@ var require_tychei = __commonJS((exports, module) => {
     } else {
       this.tychei = impl;
     }
-  })(exports, typeof module == "object" && module, typeof define == "function" && define);
+  })(exports2, typeof module2 == "object" && module2, typeof define == "function" && define);
 });
 
 // node_modules/seedrandom/seedrandom.js
-var require_seedrandom = __commonJS((exports, module) => {
+var require_seedrandom = __commonJS((exports2, module2) => {
   (function(pool3, math) {
     var global2 = this, width = 256, chunks = 6, digits = 52, rngname = "random", startdenom = math.pow(width, chunks), significance = math.pow(2, digits), overflow = significance * 2, mask = width - 1, nodecrypto;
     function seedrandom2(seed, options, callback) {
@@ -634,8 +635,8 @@ var require_seedrandom = __commonJS((exports, module) => {
       return String.fromCharCode.apply(0, a);
     }
     mixkey(math.random(), pool3);
-    if (typeof module == "object" && module.exports) {
-      module.exports = seedrandom2;
+    if (typeof module2 == "object" && module2.exports) {
+      module2.exports = seedrandom2;
       try {
         nodecrypto = require("crypto");
       } catch (ex) {
@@ -649,7 +650,7 @@ var require_seedrandom = __commonJS((exports, module) => {
 });
 
 // node_modules/seedrandom/index.js
-var require_seedrandom2 = __commonJS((exports, module) => {
+var require_seedrandom2 = __commonJS((exports2, module2) => {
   var alea2 = require_alea();
   var xor128 = require_xor128();
   var xorwow = require_xorwow();
@@ -663,16 +664,16 @@ var require_seedrandom2 = __commonJS((exports, module) => {
   sr.xorshift7 = xorshift7;
   sr.xor4096 = xor4096;
   sr.tychei = tychei;
-  module.exports = sr;
+  module2.exports = sr;
 });
 
 // build/env/isNodejs.js
-var require_isNodejs = __commonJS((exports, module) => {
-  __export(exports, {
+var require_isNodejs = __commonJS((exports2, module2) => {
+  __export(exports2, {
     isNodejs: () => isNodejs3
   });
   function isNodejs3() {
-    return typeof global === "object" && true && typeof module !== "undefined" && typeof process !== "undefined" && !!process.version;
+    return typeof global === "object" && true && typeof module2 !== "undefined" && typeof process !== "undefined" && !!process.version;
   }
 });
 
@@ -20851,7 +20852,7 @@ function createNodejsEnv() {
     throw new Error("fetch - missing fetch implementation for nodejs environment");
   };
   const fileSystem = createFileSystem();
-  return {
+  return __assign({
     Canvas: Canvas || class {
     },
     CanvasRenderingContext2D: global["CanvasRenderingContext2D"] || class {
@@ -20864,9 +20865,8 @@ function createNodejsEnv() {
     },
     createCanvasElement,
     createImageElement,
-    fetch: fetch3,
-    ...fileSystem
-  };
+    fetch: fetch3
+  }, fileSystem);
 }
 
 // build/env/isBrowser.js
@@ -23700,13 +23700,12 @@ class TinyYolov2Base extends NeuralNetwork {
             const y = ctY - height2 / 2;
             const pos = {row, col, anchor};
             const {classScore, label} = this.withClassScores ? await this.extractPredictedClass(classScoresTensor, pos) : {classScore: 1, label: 0};
-            results.push({
+            results.push(__assign({
               box: new BoundingBox(x, y, x + width2, y + height2),
               score,
               classScore: score * classScore,
-              label,
-              ...pos
-            });
+              label
+            }, pos));
           }
         }
       }
@@ -24249,128 +24248,128 @@ function resizeResults(results, dimensions) {
 }
 
 // build/index.js
+__export(exports, {
+  AgeGenderNet: () => AgeGenderNet,
+  BoundingBox: () => BoundingBox,
+  Box: () => Box,
+  ComposableTask: () => ComposableTask,
+  ComputeAllFaceDescriptorsTask: () => ComputeAllFaceDescriptorsTask,
+  ComputeFaceDescriptorsTaskBase: () => ComputeFaceDescriptorsTaskBase,
+  ComputeSingleFaceDescriptorTask: () => ComputeSingleFaceDescriptorTask,
+  DetectAllFaceLandmarksTask: () => DetectAllFaceLandmarksTask,
+  DetectAllFacesTask: () => DetectAllFacesTask,
+  DetectFaceLandmarksTaskBase: () => DetectFaceLandmarksTaskBase,
+  DetectFacesTaskBase: () => DetectFacesTaskBase,
+  DetectSingleFaceLandmarksTask: () => DetectSingleFaceLandmarksTask,
+  DetectSingleFaceTask: () => DetectSingleFaceTask,
+  Dimensions: () => Dimensions,
+  FACE_EXPRESSION_LABELS: () => FACE_EXPRESSION_LABELS,
+  FaceDetection: () => FaceDetection,
+  FaceDetectionNet: () => FaceDetectionNet,
+  FaceExpressionNet: () => FaceExpressionNet,
+  FaceExpressions: () => FaceExpressions,
+  FaceLandmark68Net: () => FaceLandmark68Net,
+  FaceLandmark68TinyNet: () => FaceLandmark68TinyNet,
+  FaceLandmarkNet: () => FaceLandmarkNet,
+  FaceLandmarks: () => FaceLandmarks,
+  FaceLandmarks5: () => FaceLandmarks5,
+  FaceLandmarks68: () => FaceLandmarks68,
+  FaceMatch: () => FaceMatch,
+  FaceMatcher: () => FaceMatcher,
+  FaceRecognitionNet: () => FaceRecognitionNet,
+  Gender: () => Gender,
+  LabeledBox: () => LabeledBox,
+  LabeledFaceDescriptors: () => LabeledFaceDescriptors,
+  NetInput: () => NetInput,
+  NeuralNetwork: () => NeuralNetwork,
+  ObjectDetection: () => ObjectDetection,
+  Point: () => Point,
+  PredictedBox: () => PredictedBox,
+  Rect: () => Rect,
+  SsdMobilenetv1: () => SsdMobilenetv1,
+  SsdMobilenetv1Options: () => SsdMobilenetv1Options,
+  TinyFaceDetector: () => TinyFaceDetector,
+  TinyFaceDetectorOptions: () => TinyFaceDetectorOptions,
+  TinyYolov2: () => TinyYolov2,
+  TinyYolov2Options: () => TinyYolov2Options,
+  TinyYolov2SizeType: () => TinyYolov2SizeType,
+  allFaces: () => allFaces,
+  allFacesSsdMobilenetv1: () => allFacesSsdMobilenetv1,
+  allFacesTinyYolov2: () => allFacesTinyYolov2,
+  awaitMediaLoaded: () => awaitMediaLoaded,
+  bufferToImage: () => bufferToImage,
+  computeFaceDescriptor: () => computeFaceDescriptor,
+  createCanvas: () => createCanvas,
+  createCanvasFromMedia: () => createCanvasFromMedia,
+  createFaceDetectionNet: () => createFaceDetectionNet,
+  createFaceRecognitionNet: () => createFaceRecognitionNet,
+  createSsdMobilenetv1: () => createSsdMobilenetv1,
+  createTinyFaceDetector: () => createTinyFaceDetector,
+  createTinyYolov2: () => createTinyYolov2,
+  detectAllFaces: () => detectAllFaces,
+  detectFaceLandmarks: () => detectFaceLandmarks,
+  detectFaceLandmarksTiny: () => detectFaceLandmarksTiny,
+  detectLandmarks: () => detectLandmarks,
+  detectSingleFace: () => detectSingleFace,
+  draw: () => draw_exports,
+  env: () => env2,
+  euclideanDistance: () => euclideanDistance,
+  extendWithAge: () => extendWithAge,
+  extendWithFaceDescriptor: () => extendWithFaceDescriptor,
+  extendWithFaceDetection: () => extendWithFaceDetection,
+  extendWithFaceExpressions: () => extendWithFaceExpressions,
+  extendWithFaceLandmarks: () => extendWithFaceLandmarks,
+  extendWithGender: () => extendWithGender,
+  extractFaceTensors: () => extractFaceTensors,
+  extractFaces: () => extractFaces,
+  fetchImage: () => fetchImage,
+  fetchJson: () => fetchJson,
+  fetchNetWeights: () => fetchNetWeights,
+  fetchOrThrow: () => fetchOrThrow,
+  getContext2dOrThrow: () => getContext2dOrThrow,
+  getMediaDimensions: () => getMediaDimensions,
+  imageTensorToCanvas: () => imageTensorToCanvas,
+  imageToSquare: () => imageToSquare,
+  inverseSigmoid: () => inverseSigmoid,
+  iou: () => iou,
+  isMediaElement: () => isMediaElement,
+  isMediaLoaded: () => isMediaLoaded,
+  isWithAge: () => isWithAge,
+  isWithFaceDetection: () => isWithFaceDetection,
+  isWithFaceExpressions: () => isWithFaceExpressions,
+  isWithFaceLandmarks: () => isWithFaceLandmarks,
+  isWithGender: () => isWithGender,
+  loadAgeGenderModel: () => loadAgeGenderModel,
+  loadFaceDetectionModel: () => loadFaceDetectionModel,
+  loadFaceExpressionModel: () => loadFaceExpressionModel,
+  loadFaceLandmarkModel: () => loadFaceLandmarkModel,
+  loadFaceLandmarkTinyModel: () => loadFaceLandmarkTinyModel,
+  loadFaceRecognitionModel: () => loadFaceRecognitionModel,
+  loadSsdMobilenetv1Model: () => loadSsdMobilenetv1Model,
+  loadTinyFaceDetectorModel: () => loadTinyFaceDetectorModel,
+  loadTinyYolov2Model: () => loadTinyYolov2Model,
+  loadWeightMap: () => loadWeightMap,
+  locateFaces: () => locateFaces,
+  matchDimensions: () => matchDimensions,
+  minBbox: () => minBbox,
+  nets: () => nets,
+  nonMaxSuppression: () => nonMaxSuppression2,
+  normalize: () => normalize,
+  padToSquare: () => padToSquare,
+  predictAgeAndGender: () => predictAgeAndGender,
+  recognizeFaceExpressions: () => recognizeFaceExpressions,
+  resizeResults: () => resizeResults,
+  resolveInput: () => resolveInput,
+  shuffleArray: () => shuffleArray,
+  sigmoid: () => sigmoid6,
+  ssdMobilenetv1: () => ssdMobilenetv1,
+  test: () => test,
+  tf: () => dist_exports,
+  tinyFaceDetector: () => tinyFaceDetector,
+  tinyYolov2: () => tinyYolov23,
+  toNetInput: () => toNetInput,
+  utils: () => utils_exports,
+  validateConfig: () => validateConfig
+});
 const test = "test";
-export {
-  AgeGenderNet,
-  BoundingBox,
-  Box,
-  ComposableTask,
-  ComputeAllFaceDescriptorsTask,
-  ComputeFaceDescriptorsTaskBase,
-  ComputeSingleFaceDescriptorTask,
-  DetectAllFaceLandmarksTask,
-  DetectAllFacesTask,
-  DetectFaceLandmarksTaskBase,
-  DetectFacesTaskBase,
-  DetectSingleFaceLandmarksTask,
-  DetectSingleFaceTask,
-  Dimensions,
-  FACE_EXPRESSION_LABELS,
-  FaceDetection,
-  FaceDetectionNet,
-  FaceExpressionNet,
-  FaceExpressions,
-  FaceLandmark68Net,
-  FaceLandmark68TinyNet,
-  FaceLandmarkNet,
-  FaceLandmarks,
-  FaceLandmarks5,
-  FaceLandmarks68,
-  FaceMatch,
-  FaceMatcher,
-  FaceRecognitionNet,
-  Gender,
-  LabeledBox,
-  LabeledFaceDescriptors,
-  NetInput,
-  NeuralNetwork,
-  ObjectDetection,
-  Point,
-  PredictedBox,
-  Rect,
-  SsdMobilenetv1,
-  SsdMobilenetv1Options,
-  TinyFaceDetector,
-  TinyFaceDetectorOptions,
-  TinyYolov2,
-  TinyYolov2Options,
-  TinyYolov2SizeType,
-  allFaces,
-  allFacesSsdMobilenetv1,
-  allFacesTinyYolov2,
-  awaitMediaLoaded,
-  bufferToImage,
-  computeFaceDescriptor,
-  createCanvas,
-  createCanvasFromMedia,
-  createFaceDetectionNet,
-  createFaceRecognitionNet,
-  createSsdMobilenetv1,
-  createTinyFaceDetector,
-  createTinyYolov2,
-  detectAllFaces,
-  detectFaceLandmarks,
-  detectFaceLandmarksTiny,
-  detectLandmarks,
-  detectSingleFace,
-  draw_exports as draw,
-  env2 as env,
-  euclideanDistance,
-  extendWithAge,
-  extendWithFaceDescriptor,
-  extendWithFaceDetection,
-  extendWithFaceExpressions,
-  extendWithFaceLandmarks,
-  extendWithGender,
-  extractFaceTensors,
-  extractFaces,
-  fetchImage,
-  fetchJson,
-  fetchNetWeights,
-  fetchOrThrow,
-  getContext2dOrThrow,
-  getMediaDimensions,
-  imageTensorToCanvas,
-  imageToSquare,
-  inverseSigmoid,
-  iou,
-  isMediaElement,
-  isMediaLoaded,
-  isWithAge,
-  isWithFaceDetection,
-  isWithFaceExpressions,
-  isWithFaceLandmarks,
-  isWithGender,
-  loadAgeGenderModel,
-  loadFaceDetectionModel,
-  loadFaceExpressionModel,
-  loadFaceLandmarkModel,
-  loadFaceLandmarkTinyModel,
-  loadFaceRecognitionModel,
-  loadSsdMobilenetv1Model,
-  loadTinyFaceDetectorModel,
-  loadTinyYolov2Model,
-  loadWeightMap,
-  locateFaces,
-  matchDimensions,
-  minBbox,
-  nets,
-  nonMaxSuppression2 as nonMaxSuppression,
-  normalize,
-  padToSquare,
-  predictAgeAndGender,
-  recognizeFaceExpressions,
-  resizeResults,
-  resolveInput,
-  shuffleArray,
-  sigmoid6 as sigmoid,
-  ssdMobilenetv1,
-  test,
-  dist_exports as tf,
-  tinyFaceDetector,
-  tinyYolov23 as tinyYolov2,
-  toNetInput,
-  utils_exports as utils,
-  validateConfig
-};
-//# sourceMappingURL=face-api.node.js.map
+//# sourceMappingURL=face-api.cjs.map

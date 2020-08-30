@@ -1,1 +1,0 @@
-{"version":3,"file":"outputLayer.d.ts","sourceRoot":"","sources":["../../src/ssdMobilenetv1/outputLayer.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,MAAM,uBAAuB,CAAC;AAE5C,OAAO,EAAE,iBAAiB,EAAE,MAAM,SAAS,CAAC;AA+C5C,wBAAgB,WAAW,CACzB,cAAc,EAAE,EAAE,CAAC,QAAQ,EAC3B,gBAAgB,EAAE,EAAE,CAAC,QAAQ,EAC7B,MAAM,EAAE,iBAAiB;;;EAgC1B"}

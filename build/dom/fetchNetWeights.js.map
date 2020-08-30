@@ -1,1 +1,0 @@
-{"version":3,"file":"fetchNetWeights.js","sourceRoot":"","sources":["../../src/dom/fetchNetWeights.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,YAAY,EAAE,MAAM,gBAAgB,CAAC;AAE9C,MAAM,CAAC,KAAK,UAAU,eAAe,CAAC,GAAW;IAC/C,OAAO,IAAI,YAAY,CAAC,MAAM,CAAC,MAAM,YAAY,CAAC,GAAG,CAAC,CAAC,CAAC,WAAW,EAAE,CAAC,CAAA;AACxE,CAAC"}

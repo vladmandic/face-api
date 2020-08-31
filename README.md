@@ -65,9 +65,9 @@ Pretrained models and their weights are includes in `./model`.
 
 Included in `./dist` are:
 
-- face-api.cjs: CJS format, used by NodeJS import/require (default for node)
+- face-api.cjs: CJS format, used by NodeJS import/require (default for node and browser require/import)
 - face-api.ejs: ESM format, used by Browser
-- face-api.js:  IIFE format, used by Browser (default for browser)
+- face-api.js:  IIFE format, used by Browser (default for browser script)
 - face-api.min.js:  Minified IIFE format, used by Browser
 
 If you want to rebuild use:

@@ -1,0 +1,1 @@
+{"version":3,"file":"extractParams.d.ts","sourceRoot":"","sources":["../../src/xception/extractParams.ts"],"names":[],"mappings":"AACA,OAAO,EAA0B,YAAY,EAAE,MAAM,iBAAiB,CAAC;AAEvE,OAAO,EAAyC,kBAAkB,EAAE,MAAM,SAAS,CAAC;AAkCpF,wBAAgB,aAAa,CAAC,OAAO,EAAE,YAAY,EAAE,aAAa,EAAE,MAAM,GAAG;IAAE,MAAM,EAAE,kBAAkB,CAAC;IAAC,aAAa,EAAE,YAAY,EAAE,CAAA;CAAE,CA+CzI"}

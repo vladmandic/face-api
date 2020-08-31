@@ -1,0 +1,1 @@
+{"version":3,"file":"extractParams.d.ts","sourceRoot":"","sources":["../../src/faceRecognitionNet/extractParams.ts"],"names":[],"mappings":"AAEA,OAAO,EAA6D,YAAY,EAAE,MAAM,WAAW,CAAC;AAEpG,OAAO,EAAmB,SAAS,EAAyC,MAAM,SAAS,CAAC;AAwF5F,wBAAgB,aAAa,CAAC,OAAO,EAAE,YAAY,GAAG;IAAE,MAAM,EAAE,SAAS,CAAC;IAAC,aAAa,EAAE,YAAY,EAAE,CAAA;CAAE,CA8DzG"}

@@ -40,21 +40,34 @@ For example as a script:
   <script src="/dist/face-api.min.js"></script> <!-- minified version / 320KB -->
 ```
 
-or as a module using `require`:
+Or install a module:
+
+```bash
+  npm install @tensorflow/tfjs @vladmandic/face-api
+```
+
+Use module using `require` (recommended for VanillaJS):
 
 ```js
-  # npm install @tensorflow/tfjs @vladmandic/face-api
   
   const tf = require('@tensorflow/tfjs');
   const faceapi = require('@vladmandic/face-api');
 ```
 
-or as a module using `import`:  
+Use module in a JavaScript project using `import`:  
 (NodeJS requires `"type": "module"` inside `package.json` to support `import` statements)
 
 ```js
 import tf from '@tensorflow/tfjs';
 import faceapi from '@vladmandic/face-api';
+```
+
+Use module in a TypeScript project:  
+(TSC will compile this to `require` statements)
+
+```js
+import * as tf from '@tensorflow/tfjs';
+import * as faceapi from '@vladmandic/face-api';
 ```
 
 ## Weights
@@ -66,7 +79,7 @@ Pretrained models and their weights are includes in `./model`.
 Included in `./dist` are:
 
 - face-api.cjs: CJS format, used by NodeJS import/require (default for node and browser require/import)
-- face-api.ejs: ESM format, used by Browser
+- face-api.ejs: ESM format, used by Browser (provided as an alternative)
 - face-api.js:  IIFE format, used by Browser (default for browser script)
 - face-api.min.js:  Minified IIFE format, used by Browser
 

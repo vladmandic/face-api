@@ -19,7 +19,7 @@ Forked from **face-api.js** version **0.22.2** released on March 22nd, 2020
 - Removed unnecesary package dependencies (karma, jasmine, etc.)  
 - Updated Typescript build process to target ES2018 instead of dual ES5/ES6  
 - Changed browser bundle process to use ESBuild instead of Rollup
-- Updated TFJS dependencies since backends were removed from @tensorflow/tfjs-core
+- Updated TensorFlow/JS dependencies since backends were removed from @tensorflow/tfjs-core
 - Updated mobileNetv1 model due to batchNorm() dependency
 - Removed following models as they are either obsolete or non-functional with tfjs 2.0+
   - mtcnn: Mostly obsolete
@@ -30,13 +30,15 @@ Due to reduced code and changed build process, resulting bundle is about **>5x s
 
 ## Installation
 
-**Imporant!**: This version of **face-api** does not embedd full version of **tfjs** to enable dynamic loading of different versions of tfjs as well as to enable reusability of tfjs for different purposes. *Load tfjs explicitly before loading face-api.*  
+**Imporant!**: This version of **face-api** does not embedd full version of **TensorFlow/JS (tfjs)** to enable dynamic loading of different versions of tfjs as well as to enable reusability of tfjs for different purposes.  
+*Load tfjs explicitly before loading face-api.*  
 
 For example as a script:
 
 ```html
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/2.3.0/tf.es2017.js"></script>
   <script src="/dist/face-api.js"></script> <!-- full version / 960KB -->
+  or
   <script src="/dist/face-api.min.js"></script> <!-- minified version / 320KB -->
 ```
 
@@ -49,7 +51,6 @@ Or install a module:
 Use module using `require` (recommended for VanillaJS):
 
 ```js
-  
   const tf = require('@tensorflow/tfjs');
   const faceapi = require('@vladmandic/face-api');
 ```
@@ -83,7 +84,7 @@ Included in `./dist` are:
 - face-api.js:  IIFE format, used by Browser (default for browser script)
 - face-api.min.js:  Minified IIFE format, used by Browser
 
-If you want to rebuild use:
+If you want to do a full rebuild use:
 
 ```shell
 npm run build

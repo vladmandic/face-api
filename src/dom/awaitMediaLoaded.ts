@@ -5,7 +5,7 @@ export function awaitMediaLoaded(media: HTMLImageElement | HTMLVideoElement | HT
 
   return new Promise((resolve, reject) => {
     if (media instanceof env.getEnv().Canvas || isMediaLoaded(media)) {
-      return resolve()
+      return resolve(null)
     }
 
     function onLoad(e: Event) {

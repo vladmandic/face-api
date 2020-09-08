@@ -21206,7 +21206,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
   function awaitMediaLoaded(media) {
     return new Promise((resolve, reject) => {
       if (media instanceof env2.getEnv().Canvas || isMediaLoaded(media)) {
-        return resolve();
+        return resolve(null);
       }
       function onLoad(e) {
         if (!e.currentTarget)
@@ -24387,7 +24387,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
   }
 
   // build/package.json
-  var version2 = "0.4.5";
+  var version2 = "0.4.6";
   return require_src();
 })();
 //# sourceMappingURL=face-api.js.map

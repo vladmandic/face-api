@@ -21073,7 +21073,7 @@ function isMediaLoaded(media) {
 function awaitMediaLoaded(media) {
   return new Promise((resolve, reject) => {
     if (media instanceof env2.getEnv().Canvas || isMediaLoaded(media)) {
-      return resolve();
+      return resolve(null);
     }
     function onLoad(e) {
       if (!e.currentTarget)
@@ -24254,7 +24254,7 @@ function resizeResults(results, dimensions) {
 }
 
 // build/package.json
-var version2 = "0.4.5";
+var version2 = "0.4.6";
 
 // build/src/index.js
 __export(exports, {

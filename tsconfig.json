@@ -1,27 +1,30 @@
 {
   "compilerOptions": {
+    "lib": ["es2018", "dom"],
+    "module": "es2020",
+    "moduleResolution": "node",
+    "outDir": "build",
+    "target": "es2018",
+    "typeRoots": ["typings", "node_modules/@types"],
+
     "allowSyntheticDefaultImports": false,
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
     "alwaysStrict": true,
     "declaration": true,
     "declarationMap": true,
-    "emitDecoratorMetadata": false,
+    "emitDecoratorMetadata": true,
     "esModuleInterop": false,
     "experimentalDecorators": true,
     "importHelpers": true,
     "incremental": false,
-    "lib": ["es2018", "dom"],
     "listFiles": false,
-    "module": "es2020",
-    "moduleResolution": "node",
-    "noFallthroughCasesInSwitch": true,
+    "noFallthroughCasesInSwitch": false,
     "noImplicitAny": true,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
+    "noImplicitReturns": false,
+    "noImplicitThis": false,
     "noUnusedLocals": false,
     "noUnusedParameters": false,
-    "outDir": "build",
     "preserveConstEnums": true,
     "pretty": true,
     "removeComments": false,
@@ -30,10 +33,9 @@
     "sourceMap": true,
     "strict": false,
     "strictNullChecks": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "target": "es2018",
-    "typeRoots": ["typings", "node_modules/@types"]
+    "suppressImplicitAnyIndexErrors": true
   },
   "formatCodeOptions": { "indentSize": 2, "tabSize": 2 },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["node_modules"]
 }

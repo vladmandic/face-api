@@ -10,7 +10,14 @@ export abstract class NeuralNetwork<TNetParams> {
   protected _params: TNetParams | undefined = undefined
   protected _paramMappings: ParamMapping[] = []
 
-  constructor(protected _name: string) {}
+  constructor(protected _name: string) {
+    try {
+      const testTensor = tf.tensor([0]);
+      testTensor.toFloat();
+    } catch (err) {
+      throw new Error(`module not loaded: load '@tensorflow/tfjs' or '@tensorflow/tfjs-core' with appropriate backend explicitly: ${err}`)
+     }
+  }
 
   public get params(): TNetParams | undefined { return this._params }
   public get paramMappings(): ParamMapping[] { return this._paramMappings }

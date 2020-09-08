@@ -1,1 +1,0 @@
-{"version":3,"file":"index.d.ts","sourceRoot":"","sources":["../../src/tinyYolov2/index.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,UAAU,EAAE,MAAM,cAAc,CAAC;AAE1C,cAAc,qBAAqB,CAAC;AAEpC,cAAc,UAAU,CAAA;AACxB,cAAc,SAAS,CAAA;AAEvB,OAAO,EAAE,UAAU,EAAE,CAAA;AAErB,wBAAgB,gBAAgB,CAAC,OAAO,EAAE,YAAY,EAAE,kBAAkB,GAAE,OAAc,cAIzF"}

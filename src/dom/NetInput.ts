@@ -147,7 +147,8 @@ export class NetInput {
         throw new Error(`toBatchTensor - at batchIdx ${batchIdx}, expected input to be instanceof tf.Tensor or instanceof HTMLCanvasElement, instead have ${input}`)
       })
 
-      const batchTensor = tf.stack(inputTensors.map(t => t.toFloat())).as4D(this.batchSize, inputSize, inputSize, 3)
+      // const batchTensor = tf.stack(inputTensors.map(t => t.toFloat())).as4D(this.batchSize, inputSize, inputSize, 3)
+      const batchTensor = tf.stack(inputTensors.map(t => tf.cast(t, 'float32'))).as4D(this.batchSize, inputSize, inputSize, 3)
 
       return batchTensor
     })

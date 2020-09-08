@@ -1,0 +1,1 @@
+{"version":3,"file":"WithFaceDescriptor.d.ts","sourceRoot":"","sources":["../../../src/factories/WithFaceDescriptor.ts"],"names":[],"mappings":"AAAA,oBAAY,kBAAkB,CAAC,OAAO,IAAI,OAAO,GAAG;IAClD,UAAU,EAAE,YAAY,CAAA;CACzB,CAAA;AAED,wBAAgB,wBAAwB,CACtC,OAAO,EAEP,SAAS,EAAE,OAAO,EAClB,UAAU,EAAE,YAAY,GACvB,kBAAkB,CAAC,OAAO,CAAC,CAI7B"}

@@ -1,1 +1,0 @@
-{"version":3,"file":"extractParams.d.ts","sourceRoot":"","sources":["../../src/faceFeatureExtractor/extractParams.ts"],"names":[],"mappings":"AAAA,OAAO,EAAyB,YAAY,EAAE,MAAM,WAAW,CAAC;AAEhE,OAAO,EAAE,0BAA0B,EAAE,MAAM,SAAS,CAAC;AAGrD,wBAAgB,aAAa,CAAC,OAAO,EAAE,YAAY,GAAG;IAAE,MAAM,EAAE,0BAA0B,CAAC;IAAC,aAAa,EAAE,YAAY,EAAE,CAAA;CAAE,CA0B1H"}

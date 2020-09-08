@@ -1,0 +1,55 @@
+{
+    "name": "@vladmandic/face-api",
+    "version": "0.4.5",
+    "description": "JavaScript module for Face Detection and Face Recognition Using Tensorflow/JS",
+    "main": "dist/face-api.cjs",
+    "module": "dist/face-api.ejs",
+    "browser": "dist/face-api.js",
+    "jsdelivr": "dist/face-api.js",
+    "unpkg": "dist/face-api.js",
+    "typings": "./build/src/index.d.ts",
+    "engines": {
+        "node": ">=12.0.0"
+    },
+    "type": "module",
+    "scripts": {
+        "compile": "tsc",
+        "cjs": "esbuild --bundle --outfile=./dist/face-api.cjs --target=es2017 --platform=node --format=cjs --sourcemap --log-level=error --tsconfig=./tsconfig.json build/src/index.js",
+        "esm": "esbuild --bundle --outfile=./dist/face-api.ejs --target=es2017 --platform=browser --format=esm --sourcemap --log-level=error --tsconfig=./tsconfig.json build/src/index.js",
+        "iife": "esbuild --bundle --outfile=./dist/face-api.js --target=es2017 --platform=browser --format=iife --global-name=faceapi --sourcemap --log-level=error --tsconfig=./tsconfig.json build/src/index.js",
+        "minify": "esbuild --bundle --outfile=./dist/face-api.min.js --target=es2017 --platform=browser --format=iife --sourcemap --global-name=faceapi --log-level=error --minify --tsconfig=./tsconfig.json build/src/index.js",
+        "build": "npm run compile && npm run cjs && npm run esm && npm run iife && npm run minify"
+    },
+    "keywords": [
+        "tensorflow",
+        "tf",
+        "tfjs",
+        "face",
+        "face-api",
+        "face-detection",
+        "age-gender"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/vladmandic/face-api.git"
+    },
+    "publishConfig": {
+        "registry": "https://registry.npmjs.org/"
+    },
+    "author": "Vladimir Mandic <mandic00@live.com>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/vladmandic/face-api/issues"
+    },
+    "homepage": "https://github.com/vladmandic/face-api#readme",
+    "dependencies": {
+        "@tensorflow/tfjs": "^2.3.0"
+    },
+    "devDependencies": {
+        "@types/node": "^14.6.0",
+        "esbuild": "^0.6.27",
+        "ts-node": "^9.0.0",
+        "tslib": "^2.0.1",
+        "typescript": "^4.1.0-dev.20200822"
+    }
+}

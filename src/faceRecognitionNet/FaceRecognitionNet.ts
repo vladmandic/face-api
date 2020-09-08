@@ -25,7 +25,8 @@ export class FaceRecognitionNet extends NeuralNetwork<NetParams> {
     }
 
     return tf.tidy(() => {
-      const batchTensor = input.toBatchTensor(150, true).toFloat()
+      // const batchTensor = input.toBatchTensor(150, true).toFloat()
+      const batchTensor = tf.cast(input.toBatchTensor(150, true), 'float32');
 
       const meanRgb = [122.782, 117.001, 104.298]
       const normalized = normalize(batchTensor, meanRgb).div(tf.scalar(256)) as tf.Tensor4D

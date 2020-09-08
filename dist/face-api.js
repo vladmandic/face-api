@@ -672,7 +672,7 @@ var faceapi = (() => {
     module.exports = sr;
   });
 
-  // build/env/isNodejs.js
+  // build/src/env/isNodejs.js
   var require_isNodejs = __commonJS((exports, module) => {
     __export(exports, {
       isNodejs: () => isNodejs3
@@ -682,8 +682,8 @@ var faceapi = (() => {
     }
   });
 
-  // build/index.js
-  var require_build = __commonJS((exports) => {
+  // build/src/index.js
+  var require_src = __commonJS((exports) => {
     __export(exports, {
       AgeGenderNet: () => AgeGenderNet,
       BoundingBox: () => BoundingBox,
@@ -799,15 +799,15 @@ var faceapi = (() => {
       shuffleArray: () => shuffleArray,
       sigmoid: () => sigmoid6,
       ssdMobilenetv1: () => ssdMobilenetv1,
-      test: () => test,
       tf: () => dist_exports,
       tinyFaceDetector: () => tinyFaceDetector,
       tinyYolov2: () => tinyYolov23,
       toNetInput: () => toNetInput,
       utils: () => utils_exports,
-      validateConfig: () => validateConfig
+      validateConfig: () => validateConfig,
+      version: () => version3
     });
-    const test = "test";
+    const version3 = {faceapi: version2, tfjs_core: version, env: ENV.getFlags()};
   });
 
   // node_modules/@tensorflow/tfjs-core/dist/environment.js
@@ -20252,7 +20252,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
    * =============================================================================
    */
 
-  // build/draw/drawContour.js
+  // build/src/draw/drawContour.js
   function drawContour(ctx, points, isClosed = false) {
     ctx.beginPath();
     points.slice(1).forEach(({x, y}, prevIdx) => {
@@ -20272,7 +20272,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     ctx.stroke();
   }
 
-  // build/classes/Dimensions.js
+  // build/src/classes/Dimensions.js
   class Dimensions {
     constructor(width, height) {
       if (!isValidNumber(width) || !isValidNumber(height)) {
@@ -20292,7 +20292,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     }
   }
 
-  // build/utils/index.js
+  // build/src/utils/index.js
   const utils_exports = {};
   __export(utils_exports, {
     computeReshapedDimensions: () => computeReshapedDimensions,
@@ -20355,7 +20355,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     return isValidNumber(num) && 0 <= num && num <= 1;
   }
 
-  // build/classes/Point.js
+  // build/src/classes/Point.js
   class Point {
     constructor(x, y) {
       this._x = x;
@@ -20390,7 +20390,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     }
   }
 
-  // build/classes/Box.js
+  // build/src/classes/Box.js
   class Box {
     constructor(_box, allowNegativeDimensions = true) {
       const box = _box || {};
@@ -20551,14 +20551,14 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     }
   }
 
-  // build/classes/BoundingBox.js
+  // build/src/classes/BoundingBox.js
   class BoundingBox extends Box {
     constructor(left, top, right, bottom, allowNegativeDimensions = false) {
       super({left, top, right, bottom}, allowNegativeDimensions);
     }
   }
 
-  // build/classes/ObjectDetection.js
+  // build/src/classes/ObjectDetection.js
   class ObjectDetection {
     constructor(score, classScore, className, relativeBox, imageDims) {
       this._imageDims = new Dimensions(imageDims.width, imageDims.height);
@@ -20596,7 +20596,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     }
   }
 
-  // build/classes/FaceDetection.js
+  // build/src/classes/FaceDetection.js
   class FaceDetection extends ObjectDetection {
     constructor(score, relativeBox, imageDims) {
       super(score, score, "", relativeBox, imageDims);
@@ -20607,7 +20607,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     }
   }
 
-  // build/ops/iou.js
+  // build/src/ops/iou.js
   function iou(box1, box2, isIOU = true) {
     const width = Math.max(0, Math.min(box1.right, box2.right) - Math.max(box1.left, box2.left));
     const height = Math.max(0, Math.min(box1.bottom, box2.bottom) - Math.max(box1.top, box2.top));
@@ -20615,7 +20615,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     return isIOU ? interSection / (box1.area + box2.area - interSection) : interSection / Math.min(box1.area, box2.area);
   }
 
-  // build/ops/minBbox.js
+  // build/src/ops/minBbox.js
   function minBbox(pts) {
     const xs = pts.map((pt) => pt.x);
     const ys = pts.map((pt) => pt.y);
@@ -20626,7 +20626,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     return new BoundingBox(minX, minY, maxX, maxY);
   }
 
-  // build/ops/nonMaxSuppression.js
+  // build/src/ops/nonMaxSuppression.js
   function nonMaxSuppression2(boxes, scores, iouThreshold, isIOU = true) {
     let indicesSortedByScore = scores.map((score, boxIndex) => ({score, boxIndex})).sort((c1, c2) => c1.score - c2.score).map((c) => c.boxIndex);
     const pick = [];
@@ -20646,7 +20646,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     return pick;
   }
 
-  // build/ops/normalize.js
+  // build/src/ops/normalize.js
   function normalize(x, meanRgb) {
     return tidy(() => {
       const [r, g, b] = meanRgb;
@@ -20658,7 +20658,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     });
   }
 
-  // build/ops/padToSquare.js
+  // build/src/ops/padToSquare.js
   function padToSquare(imgTensor, isCenterImage = false) {
     return tidy(() => {
       const [height, width] = imgTensor.shape.slice(1);
@@ -20680,12 +20680,12 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
         paddingTensorPrepend,
         imgTensor,
         paddingTensorAppend
-      ].filter((t) => !!t).map((t) => t.toFloat());
+      ].filter((t) => !!t).map((t) => cast(t, "float32"));
       return concat(tensorsToStack, paddingAxis);
     });
   }
 
-  // build/ops/shuffleArray.js
+  // build/src/ops/shuffleArray.js
   function shuffleArray(inputArray) {
     const array = inputArray.slice();
     for (let i = array.length - 1; i > 0; i--) {
@@ -20697,7 +20697,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     return array;
   }
 
-  // build/ops/index.js
+  // build/src/ops/index.js
   function sigmoid6(x) {
     return 1 / (1 + Math.exp(-x));
   }
@@ -20705,14 +20705,14 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     return Math.log(x / (1 - x));
   }
 
-  // build/classes/Rect.js
+  // build/src/classes/Rect.js
   class Rect extends Box {
     constructor(x, y, width, height, allowNegativeDimensions = false) {
       super({x, y, width, height}, allowNegativeDimensions);
     }
   }
 
-  // build/classes/FaceLandmarks.js
+  // build/src/classes/FaceLandmarks.js
   const relX = 0.5;
   const relY = 0.43;
   const relScale = 0.45;
@@ -20778,7 +20778,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     }
   }
 
-  // build/classes/FaceLandmarks5.js
+  // build/src/classes/FaceLandmarks5.js
   class FaceLandmarks5 extends FaceLandmarks {
     getRefPointsForAlignment() {
       const pts = this.positions;
@@ -20790,7 +20790,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     }
   }
 
-  // build/classes/FaceLandmarks68.js
+  // build/src/classes/FaceLandmarks68.js
   class FaceLandmarks68 extends FaceLandmarks {
     getJawOutline() {
       return this.positions.slice(0, 17);
@@ -20822,7 +20822,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     }
   }
 
-  // build/classes/FaceMatch.js
+  // build/src/classes/FaceMatch.js
   class FaceMatch {
     constructor(label, distance) {
       this._label = label;
@@ -20839,7 +20839,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     }
   }
 
-  // build/classes/LabeledBox.js
+  // build/src/classes/LabeledBox.js
   class LabeledBox extends Box {
     constructor(box, label) {
       super(box);
@@ -20856,7 +20856,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     }
   }
 
-  // build/classes/LabeledFaceDescriptors.js
+  // build/src/classes/LabeledFaceDescriptors.js
   class LabeledFaceDescriptors {
     constructor(label, descriptors) {
       if (!(typeof label === "string")) {
@@ -20888,7 +20888,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     }
   }
 
-  // build/classes/PredictedBox.js
+  // build/src/classes/PredictedBox.js
   class PredictedBox extends LabeledBox {
     constructor(box, label, score, classScore) {
       super(box, label);
@@ -20909,9 +20909,9 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     }
   }
 
-  // build/classes/index.js
+  // build/src/classes/index.js
 
-  // build/factories/WithFaceDetection.js
+  // build/src/factories/WithFaceDetection.js
   function isWithFaceDetection(obj) {
     return obj["detection"] instanceof FaceDetection;
   }
@@ -20920,7 +20920,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     return Object.assign({}, sourceObj, extension);
   }
 
-  // build/env/createBrowserEnv.js
+  // build/src/env/createBrowserEnv.js
   function createBrowserEnv() {
     const fetch3 = window["fetch"] || function() {
       throw new Error("fetch - missing fetch implementation for browser environment");
@@ -20941,7 +20941,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     };
   }
 
-  // build/env/createFileSystem.js
+  // build/src/env/createFileSystem.js
   function createFileSystem(fs) {
     let requireFsError = "";
     if (!fs) {
@@ -20965,7 +20965,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     };
   }
 
-  // build/env/createNodejsEnv.js
+  // build/src/env/createNodejsEnv.js
   function createNodejsEnv() {
     const Canvas = global["Canvas"] || global["HTMLCanvasElement"];
     const Image = global["Image"] || global["HTMLImageElement"];
@@ -21002,14 +21002,14 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     }, fileSystem);
   }
 
-  // build/env/isBrowser.js
+  // build/src/env/isBrowser.js
   function isBrowser2() {
     return typeof window === "object" && typeof document !== "undefined" && typeof HTMLImageElement !== "undefined" && typeof HTMLCanvasElement !== "undefined" && typeof HTMLVideoElement !== "undefined" && typeof ImageData !== "undefined" && typeof CanvasRenderingContext2D !== "undefined";
   }
 
-  // build/env/types.js
+  // build/src/env/types.js
 
-  // build/env/index.js
+  // build/src/env/index.js
   const isNodejs = __toModule(require_isNodejs());
   let environment11;
   function getEnv() {
@@ -21059,7 +21059,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
   };
   initialize();
 
-  // build/dom/resolveInput.js
+  // build/src/dom/resolveInput.js
   function resolveInput(arg) {
     if (!env2.isNodejs() && typeof arg === "string") {
       return document.getElementById(arg);
@@ -21067,7 +21067,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     return arg;
   }
 
-  // build/dom/getContext2dOrThrow.js
+  // build/src/dom/getContext2dOrThrow.js
   function getContext2dOrThrow(canvasArg) {
     const {Canvas, CanvasRenderingContext2D: CanvasRenderingContext2D2} = env2.getEnv();
     if (canvasArg instanceof CanvasRenderingContext2D2) {
@@ -21084,7 +21084,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     return ctx;
   }
 
-  // build/draw/DrawTextField.js
+  // build/src/draw/DrawTextField.js
   var AnchorPosition;
   (function(AnchorPosition2) {
     AnchorPosition2["TOP_LEFT"] = "TOP_LEFT";
@@ -21152,7 +21152,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     }
   }
 
-  // build/draw/DrawBox.js
+  // build/src/draw/DrawBox.js
   class DrawBoxOptions {
     constructor(options = {}) {
       const {boxColor, lineWidth, label, drawLabelOptions} = options;
@@ -21185,7 +21185,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     }
   }
 
-  // build/draw/drawDetections.js
+  // build/src/draw/drawDetections.js
   function drawDetections(canvasArg, detections) {
     const detectionsArray = Array.isArray(detections) ? detections : [detections];
     detectionsArray.forEach((det) => {
@@ -21196,13 +21196,13 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     });
   }
 
-  // build/dom/isMediaLoaded.js
+  // build/src/dom/isMediaLoaded.js
   function isMediaLoaded(media) {
     const {Image, Video} = env2.getEnv();
     return media instanceof Image && media.complete || media instanceof Video && media.readyState >= 3;
   }
 
-  // build/dom/awaitMediaLoaded.js
+  // build/src/dom/awaitMediaLoaded.js
   function awaitMediaLoaded(media) {
     return new Promise((resolve, reject) => {
       if (media instanceof env2.getEnv().Canvas || isMediaLoaded(media)) {
@@ -21227,7 +21227,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     });
   }
 
-  // build/dom/bufferToImage.js
+  // build/src/dom/bufferToImage.js
   function bufferToImage(buf) {
     return new Promise((resolve, reject) => {
       if (!(buf instanceof Blob)) {
@@ -21248,7 +21248,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     });
   }
 
-  // build/dom/getMediaDimensions.js
+  // build/src/dom/getMediaDimensions.js
   function getMediaDimensions(input) {
     const {Image, Video} = env2.getEnv();
     if (input instanceof Image) {
@@ -21260,7 +21260,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     return new Dimensions(input.width, input.height);
   }
 
-  // build/dom/createCanvas.js
+  // build/src/dom/createCanvas.js
   function createCanvas({width, height}) {
     const {createCanvasElement} = env2.getEnv();
     const canvas = createCanvasElement();
@@ -21283,7 +21283,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     return canvas;
   }
 
-  // build/dom/imageTensorToCanvas.js
+  // build/src/dom/imageTensorToCanvas.js
   async function imageTensorToCanvas(imgTensor, canvas) {
     const targetCanvas = canvas || env2.getEnv().createCanvasElement();
     const [height, width, numChannels] = imgTensor.shape.slice(isTensor4D(imgTensor) ? 1 : 0);
@@ -21293,13 +21293,13 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     return targetCanvas;
   }
 
-  // build/dom/isMediaElement.js
+  // build/src/dom/isMediaElement.js
   function isMediaElement(input) {
     const {Image, Canvas, Video} = env2.getEnv();
     return input instanceof Image || input instanceof Canvas || input instanceof Video;
   }
 
-  // build/dom/imageToSquare.js
+  // build/src/dom/imageToSquare.js
   function imageToSquare(input, inputSize, centerImage = false) {
     const {Image, Canvas} = env2.getEnv();
     if (!(input instanceof Image || input instanceof Canvas)) {
@@ -21318,7 +21318,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     return targetCanvas;
   }
 
-  // build/dom/NetInput.js
+  // build/src/dom/NetInput.js
   class NetInput {
     constructor(inputs, treatAsBatchInput = false) {
       this._imageTensors = [];
@@ -21409,13 +21409,13 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
           }
           throw new Error(`toBatchTensor - at batchIdx ${batchIdx}, expected input to be instanceof tf.Tensor or instanceof HTMLCanvasElement, instead have ${input}`);
         });
-        const batchTensor = stack(inputTensors.map((t) => t.toFloat())).as4D(this.batchSize, inputSize, inputSize, 3);
+        const batchTensor = stack(inputTensors.map((t) => cast(t, "float32"))).as4D(this.batchSize, inputSize, inputSize, 3);
         return batchTensor;
       });
     }
   }
 
-  // build/dom/toNetInput.js
+  // build/src/dom/toNetInput.js
   async function toNetInput(inputs) {
     if (inputs instanceof NetInput) {
       return inputs;
@@ -21444,7 +21444,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     return new NetInput(inputArray, Array.isArray(inputs));
   }
 
-  // build/dom/extractFaces.js
+  // build/src/dom/extractFaces.js
   async function extractFaces(input, detections) {
     const {Canvas} = env2.getEnv();
     let canvas = input;
@@ -21465,7 +21465,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     });
   }
 
-  // build/dom/extractFaceTensors.js
+  // build/src/dom/extractFaceTensors.js
   async function extractFaceTensors(imageTensor, detections) {
     if (!isTensor3D(imageTensor) && !isTensor4D(imageTensor)) {
       throw new Error("extractFaceTensors - expected image tensor to be 3D or 4D");
@@ -21481,7 +21481,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     });
   }
 
-  // build/dom/fetchOrThrow.js
+  // build/src/dom/fetchOrThrow.js
   async function fetchOrThrow(url, init) {
     const fetch3 = env2.getEnv().fetch;
     const res = await fetch3(url, init);
@@ -21491,7 +21491,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     return res;
   }
 
-  // build/dom/fetchImage.js
+  // build/src/dom/fetchImage.js
   async function fetchImage(uri) {
     const res = await fetchOrThrow(uri);
     const blob = await res.blob();
@@ -21501,17 +21501,17 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     return bufferToImage(blob);
   }
 
-  // build/dom/fetchJson.js
+  // build/src/dom/fetchJson.js
   async function fetchJson(uri) {
     return (await fetchOrThrow(uri)).json();
   }
 
-  // build/dom/fetchNetWeights.js
+  // build/src/dom/fetchNetWeights.js
   async function fetchNetWeights(uri) {
     return new Float32Array(await (await fetchOrThrow(uri)).arrayBuffer());
   }
 
-  // build/common/getModelUris.js
+  // build/src/common/getModelUris.js
   function getModelUris(uri, defaultModelName) {
     const defaultManifestFilename = `${defaultModelName}-weights_manifest.json`;
     if (!uri) {
@@ -21538,14 +21538,14 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     };
   }
 
-  // build/dom/loadWeightMap.js
+  // build/src/dom/loadWeightMap.js
   async function loadWeightMap(uri, defaultModelName) {
     const {manifestUri, modelBaseUri} = getModelUris(uri, defaultModelName);
     let manifest = await fetchJson(manifestUri);
     return io_exports.loadWeights(manifest, modelBaseUri);
   }
 
-  // build/dom/matchDimensions.js
+  // build/src/dom/matchDimensions.js
   function matchDimensions(input, reference, useMediaDimensions = false) {
     const {width, height} = useMediaDimensions ? getMediaDimensions(reference) : reference;
     input.width = width;
@@ -21553,16 +21553,22 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     return {width, height};
   }
 
-  // build/dom/types.js
+  // build/src/dom/types.js
 
-  // build/dom/index.js
+  // build/src/dom/index.js
 
-  // build/NeuralNetwork.js
+  // build/src/NeuralNetwork.js
   class NeuralNetwork {
     constructor(_name) {
       this._name = _name;
       this._params = void 0;
       this._paramMappings = [];
+      try {
+        const testTensor = tensor5([0]);
+        testTensor.toFloat();
+      } catch (err) {
+        throw new Error(`module not loaded: load '@tensorflow/tfjs' or '@tensorflow/tfjs-core' with appropriate backend explicitly: ${err}`);
+      }
     }
     get params() {
       return this._params;
@@ -21672,7 +21678,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     }
   }
 
-  // build/common/depthwiseSeparableConv.js
+  // build/src/common/depthwiseSeparableConv.js
   function depthwiseSeparableConv(x, params, stride) {
     return tidy(() => {
       let out = separableConv2d(x, params.depthwise_filter, params.pointwise_filter, stride, "same");
@@ -21681,7 +21687,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     });
   }
 
-  // build/faceFeatureExtractor/denseBlock.js
+  // build/src/faceFeatureExtractor/denseBlock.js
   function denseBlock3(x, denseBlockParams, isFirstLayer = false) {
     return tidy(() => {
       const out1 = relu(isFirstLayer ? add2(conv2d(x, denseBlockParams.conv0.filters, [2, 2], "same"), denseBlockParams.conv0.bias) : depthwiseSeparableConv(x, denseBlockParams.conv0, [2, 2]));
@@ -21703,7 +21709,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     });
   }
 
-  // build/common/convLayer.js
+  // build/src/common/convLayer.js
   function convLayer(x, params, padding = "same", withRelu = false) {
     return tidy(() => {
       const out = add2(conv2d(x, params.filters, [1, 1], padding), params.bias);
@@ -21711,7 +21717,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     });
   }
 
-  // build/common/disposeUnusedWeightTensors.js
+  // build/src/common/disposeUnusedWeightTensors.js
   function disposeUnusedWeightTensors(weightMap, paramMappings) {
     Object.keys(weightMap).forEach((path) => {
       if (!paramMappings.some((pm) => pm.originalPath === path)) {
@@ -21720,7 +21726,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     });
   }
 
-  // build/common/extractConvParamsFactory.js
+  // build/src/common/extractConvParamsFactory.js
   function extractConvParamsFactory(extractWeights, paramMappings) {
     return function(channelsIn, channelsOut, filterSize, mappedPrefix) {
       const filters = tensor4d(extractWeights(channelsIn * channelsOut * filterSize * filterSize), [filterSize, filterSize, channelsIn, channelsOut]);
@@ -21730,7 +21736,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     };
   }
 
-  // build/common/extractFCParamsFactory.js
+  // build/src/common/extractFCParamsFactory.js
   function extractFCParamsFactory(extractWeights, paramMappings) {
     return function(channelsIn, channelsOut, mappedPrefix) {
       const fc_weights = tensor2d(extractWeights(channelsIn * channelsOut), [channelsIn, channelsOut]);
@@ -21743,7 +21749,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     };
   }
 
-  // build/common/types.js
+  // build/src/common/types.js
   class SeparableConvParams {
     constructor(depthwise_filter, pointwise_filter, bias) {
       this.depthwise_filter = depthwise_filter;
@@ -21752,7 +21758,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     }
   }
 
-  // build/common/extractSeparableConvParamsFactory.js
+  // build/src/common/extractSeparableConvParamsFactory.js
   function extractSeparableConvParamsFactory(extractWeights, paramMappings) {
     return function(channelsIn, channelsOut, mappedPrefix) {
       const depthwise_filter = tensor4d(extractWeights(3 * 3 * channelsIn), [3, 3, channelsIn, 1]);
@@ -21771,7 +21777,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     };
   }
 
-  // build/common/extractWeightEntryFactory.js
+  // build/src/common/extractWeightEntryFactory.js
   function extractWeightEntryFactory(weightMap, paramMappings) {
     return function(originalPath, paramRank, mappedPath) {
       const tensor17 = weightMap[originalPath];
@@ -21783,7 +21789,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     };
   }
 
-  // build/common/extractWeightsFactory.js
+  // build/src/common/extractWeightsFactory.js
   function extractWeightsFactory(weights) {
     let remainingWeights = weights;
     function extractWeights(numWeights) {
@@ -21800,9 +21806,9 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     };
   }
 
-  // build/common/index.js
+  // build/src/common/index.js
 
-  // build/faceFeatureExtractor/extractorsFactory.js
+  // build/src/faceFeatureExtractor/extractorsFactory.js
   function extractorsFactory(extractWeights, paramMappings) {
     const extractConvParams = extractConvParamsFactory(extractWeights, paramMappings);
     const extractSeparableConvParams = extractSeparableConvParamsFactory(extractWeights, paramMappings);
@@ -21823,7 +21829,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     };
   }
 
-  // build/faceFeatureExtractor/extractParams.js
+  // build/src/faceFeatureExtractor/extractParams.js
   function extractParams(weights) {
     const paramMappings = [];
     const {extractWeights, getRemainingWeights} = extractWeightsFactory(weights);
@@ -21841,7 +21847,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     };
   }
 
-  // build/common/loadConvParamsFactory.js
+  // build/src/common/loadConvParamsFactory.js
   function loadConvParamsFactory(extractWeightEntry) {
     return function(prefix) {
       const filters = extractWeightEntry(`${prefix}/filters`, 4);
@@ -21850,7 +21856,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     };
   }
 
-  // build/faceFeatureExtractor/loadParamsFactory.js
+  // build/src/faceFeatureExtractor/loadParamsFactory.js
   function loadParamsFactory(weightMap, paramMappings) {
     const extractWeightEntry = extractWeightEntryFactory(weightMap, paramMappings);
     const extractConvParams = loadConvParamsFactory(extractWeightEntry);
@@ -21874,7 +21880,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     };
   }
 
-  // build/faceFeatureExtractor/extractParamsFromWeigthMap.js
+  // build/src/faceFeatureExtractor/extractParamsFromWeigthMap.js
   function extractParamsFromWeigthMap(weightMap) {
     const paramMappings = [];
     const {extractDenseBlock4Params} = loadParamsFactory(weightMap, paramMappings);
@@ -21888,7 +21894,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     return {params, paramMappings};
   }
 
-  // build/faceFeatureExtractor/FaceFeatureExtractor.js
+  // build/src/faceFeatureExtractor/FaceFeatureExtractor.js
   class FaceFeatureExtractor extends NeuralNetwork {
     constructor() {
       super("FaceFeatureExtractor");
@@ -21924,12 +21930,12 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     }
   }
 
-  // build/common/fullyConnectedLayer.js
+  // build/src/common/fullyConnectedLayer.js
   function fullyConnectedLayer(x, params) {
     return tidy(() => add2(matMul(x, params.weights), params.bias));
   }
 
-  // build/faceProcessor/extractParams.js
+  // build/src/faceProcessor/extractParams.js
   function extractParams3(weights, channelsIn, channelsOut) {
     const paramMappings = [];
     const {extractWeights, getRemainingWeights} = extractWeightsFactory(weights);
@@ -21944,7 +21950,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     };
   }
 
-  // build/faceProcessor/extractParamsFromWeigthMap.js
+  // build/src/faceProcessor/extractParamsFromWeigthMap.js
   function extractParamsFromWeigthMap3(weightMap) {
     const paramMappings = [];
     const extractWeightEntry = extractWeightEntryFactory(weightMap, paramMappings);
@@ -21960,7 +21966,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     return {params, paramMappings};
   }
 
-  // build/faceProcessor/util.js
+  // build/src/faceProcessor/util.js
   function seperateWeightMaps(weightMap) {
     const featureExtractorMap = {};
     const classifierMap = {};
@@ -21971,7 +21977,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     return {featureExtractorMap, classifierMap};
   }
 
-  // build/faceProcessor/FaceProcessor.js
+  // build/src/faceProcessor/FaceProcessor.js
   class FaceProcessor extends NeuralNetwork {
     constructor(_name, faceFeatureExtractor) {
       super(_name);
@@ -22018,7 +22024,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     }
   }
 
-  // build/faceExpressionNet/FaceExpressions.js
+  // build/src/faceExpressionNet/FaceExpressions.js
   const FACE_EXPRESSION_LABELS = ["neutral", "happy", "sad", "angry", "fearful", "disgusted", "surprised"];
   class FaceExpressions {
     constructor(probabilities) {
@@ -22034,7 +22040,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     }
   }
 
-  // build/faceExpressionNet/FaceExpressionNet.js
+  // build/src/faceExpressionNet/FaceExpressionNet.js
   class FaceExpressionNet extends FaceProcessor {
     constructor(faceFeatureExtractor = new FaceFeatureExtractor()) {
       super("FaceExpressionNet", faceFeatureExtractor);
@@ -22068,9 +22074,9 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     }
   }
 
-  // build/faceExpressionNet/index.js
+  // build/src/faceExpressionNet/index.js
 
-  // build/factories/WithFaceExpressions.js
+  // build/src/factories/WithFaceExpressions.js
   function isWithFaceExpressions(obj) {
     return obj["expressions"] instanceof FaceExpressions;
   }
@@ -22079,7 +22085,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     return Object.assign({}, sourceObj, extension);
   }
 
-  // build/draw/drawFaceExpressions.js
+  // build/src/draw/drawFaceExpressions.js
   function drawFaceExpressions(canvasArg, faceExpressions, minConfidence = 0.1, textFieldAnchor) {
     const faceExpressionsArray = Array.isArray(faceExpressions) ? faceExpressions : [faceExpressions];
     faceExpressionsArray.forEach((e) => {
@@ -22095,7 +22101,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     });
   }
 
-  // build/factories/WithFaceLandmarks.js
+  // build/src/factories/WithFaceLandmarks.js
   function isWithFaceLandmarks(obj) {
     return isWithFaceDetection(obj) && obj["landmarks"] instanceof FaceLandmarks && obj["unshiftedLandmarks"] instanceof FaceLandmarks && obj["alignedRect"] instanceof FaceDetection;
   }
@@ -22113,7 +22119,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     return Object.assign({}, sourceObj, extension);
   }
 
-  // build/draw/DrawFaceLandmarks.js
+  // build/src/draw/DrawFaceLandmarks.js
   class DrawFaceLandmarksOptions {
     constructor(options = {}) {
       const {drawLines = true, drawPoints = true, lineWidth, lineColor, pointSize, pointColor} = options;
@@ -22167,7 +22173,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     });
   }
 
-  // build/draw/index.js
+  // build/src/draw/index.js
   const draw_exports = {};
   __export(draw_exports, {
     AnchorPosition: () => AnchorPosition,
@@ -22183,7 +22189,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     drawFaceLandmarks: () => drawFaceLandmarks
   });
 
-  // build/xception/extractParams.js
+  // build/src/xception/extractParams.js
   function extractorsFactory3(extractWeights, paramMappings) {
     const extractConvParams = extractConvParamsFactory(extractWeights, paramMappings);
     const extractSeparableConvParams = extractSeparableConvParamsFactory(extractWeights, paramMappings);
@@ -22237,7 +22243,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     };
   }
 
-  // build/xception/extractParamsFromWeigthMap.js
+  // build/src/xception/extractParamsFromWeigthMap.js
   function loadParamsFactory3(weightMap, paramMappings) {
     const extractWeightEntry = extractWeightEntryFactory(weightMap, paramMappings);
     const extractConvParams = loadConvParamsFactory(extractWeightEntry);
@@ -22286,7 +22292,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     return {params: {entry_flow, middle_flow, exit_flow}, paramMappings};
   }
 
-  // build/xception/TinyXception.js
+  // build/src/xception/TinyXception.js
   function conv(x, params, stride) {
     return add2(conv2d(x, params.filters, stride, "same"), params.bias);
   }
@@ -22344,7 +22350,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     }
   }
 
-  // build/ageGenderNet/extractParams.js
+  // build/src/ageGenderNet/extractParams.js
   function extractParams7(weights) {
     const paramMappings = [];
     const {extractWeights, getRemainingWeights} = extractWeightsFactory(weights);
@@ -22360,7 +22366,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     };
   }
 
-  // build/ageGenderNet/extractParamsFromWeigthMap.js
+  // build/src/ageGenderNet/extractParamsFromWeigthMap.js
   function extractParamsFromWeigthMap7(weightMap) {
     const paramMappings = [];
     const extractWeightEntry = extractWeightEntryFactory(weightMap, paramMappings);
@@ -22379,14 +22385,14 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     return {params, paramMappings};
   }
 
-  // build/ageGenderNet/types.js
+  // build/src/ageGenderNet/types.js
   var Gender;
   (function(Gender2) {
     Gender2["FEMALE"] = "female";
     Gender2["MALE"] = "male";
   })(Gender || (Gender = {}));
 
-  // build/ageGenderNet/AgeGenderNet.js
+  // build/src/ageGenderNet/AgeGenderNet.js
   class AgeGenderNet extends NeuralNetwork {
     constructor(faceFeatureExtractor = new TinyXception(2)) {
       super("AgeGenderNet");
@@ -22469,9 +22475,9 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     }
   }
 
-  // build/ageGenderNet/index.js
+  // build/src/ageGenderNet/index.js
 
-  // build/faceLandmarkNet/FaceLandmark68NetBase.js
+  // build/src/faceLandmarkNet/FaceLandmark68NetBase.js
   class FaceLandmark68NetBase extends FaceProcessor {
     postProcess(output, inputSize, originalDimensions) {
       const inputDimensions = originalDimensions.map(({width, height}) => {
@@ -22526,7 +22532,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     }
   }
 
-  // build/faceLandmarkNet/FaceLandmark68Net.js
+  // build/src/faceLandmarkNet/FaceLandmark68Net.js
   class FaceLandmark68Net extends FaceLandmark68NetBase {
     constructor(faceFeatureExtractor = new FaceFeatureExtractor()) {
       super("FaceLandmark68Net", faceFeatureExtractor);
@@ -22539,7 +22545,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     }
   }
 
-  // build/faceFeatureExtractor/extractParamsFromWeigthMapTiny.js
+  // build/src/faceFeatureExtractor/extractParamsFromWeigthMapTiny.js
   function extractParamsFromWeigthMapTiny(weightMap) {
     const paramMappings = [];
     const {extractDenseBlock3Params} = loadParamsFactory(weightMap, paramMappings);
@@ -22552,7 +22558,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     return {params, paramMappings};
   }
 
-  // build/faceFeatureExtractor/extractParamsTiny.js
+  // build/src/faceFeatureExtractor/extractParamsTiny.js
   function extractParamsTiny(weights) {
     const paramMappings = [];
     const {extractWeights, getRemainingWeights} = extractWeightsFactory(weights);
@@ -22569,7 +22575,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     };
   }
 
-  // build/faceFeatureExtractor/TinyFaceFeatureExtractor.js
+  // build/src/faceFeatureExtractor/TinyFaceFeatureExtractor.js
   class TinyFaceFeatureExtractor extends NeuralNetwork {
     constructor() {
       super("TinyFaceFeatureExtractor");
@@ -22604,7 +22610,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     }
   }
 
-  // build/faceLandmarkNet/FaceLandmark68TinyNet.js
+  // build/src/faceLandmarkNet/FaceLandmark68TinyNet.js
   class FaceLandmark68TinyNet extends FaceLandmark68NetBase {
     constructor(faceFeatureExtractor = new TinyFaceFeatureExtractor()) {
       super("FaceLandmark68TinyNet", faceFeatureExtractor);
@@ -22617,16 +22623,16 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     }
   }
 
-  // build/faceLandmarkNet/index.js
+  // build/src/faceLandmarkNet/index.js
   class FaceLandmarkNet extends FaceLandmark68Net {
   }
 
-  // build/faceRecognitionNet/scaleLayer.js
+  // build/src/faceRecognitionNet/scaleLayer.js
   function scale(x, params) {
     return add2(mul(x, params.weights), params.biases);
   }
 
-  // build/faceRecognitionNet/convLayer.js
+  // build/src/faceRecognitionNet/convLayer.js
   function convLayer2(x, params, strides, withRelu, padding = "same") {
     const {filters, bias} = params.conv;
     let out = conv2d(x, filters, strides, padding);
@@ -22644,7 +22650,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     return convLayer2(x, params, [2, 2], true, "valid");
   }
 
-  // build/faceRecognitionNet/extractParams.js
+  // build/src/faceRecognitionNet/extractParams.js
   function extractorsFactory5(extractWeights, paramMappings) {
     function extractFilterValues(numFilterValues, numFilters, filterSize) {
       const weights = extractWeights(numFilterValues);
@@ -22729,7 +22735,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     return {params, paramMappings};
   }
 
-  // build/faceRecognitionNet/extractParamsFromWeigthMap.js
+  // build/src/faceRecognitionNet/extractParamsFromWeigthMap.js
   function extractorsFactory6(weightMap, paramMappings) {
     const extractWeightEntry = extractWeightEntryFactory(weightMap, paramMappings);
     function extractScaleLayerParams(prefix) {
@@ -22799,7 +22805,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     return {params, paramMappings};
   }
 
-  // build/faceRecognitionNet/residualLayer.js
+  // build/src/faceRecognitionNet/residualLayer.js
   function residual(x, params) {
     let out = conv2(x, params.conv1);
     out = convNoRelu(out, params.conv2);
@@ -22830,7 +22836,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     return out;
   }
 
-  // build/faceRecognitionNet/FaceRecognitionNet.js
+  // build/src/faceRecognitionNet/FaceRecognitionNet.js
   class FaceRecognitionNet extends NeuralNetwork {
     constructor() {
       super("FaceRecognitionNet");
@@ -22841,7 +22847,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
         throw new Error("FaceRecognitionNet - load model before inference");
       }
       return tidy(() => {
-        const batchTensor = input.toBatchTensor(150, true).toFloat();
+        const batchTensor = cast(input.toBatchTensor(150, true), "float32");
         const meanRgb = [122.782, 117.001, 104.298];
         const normalized = normalize(batchTensor, meanRgb).div(scalar(256));
         let out = convDown(normalized, params.conv32_down);
@@ -22886,20 +22892,20 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     }
   }
 
-  // build/faceRecognitionNet/index.js
+  // build/src/faceRecognitionNet/index.js
   function createFaceRecognitionNet(weights) {
     const net = new FaceRecognitionNet();
     net.extractWeights(weights);
     return net;
   }
 
-  // build/factories/WithFaceDescriptor.js
+  // build/src/factories/WithFaceDescriptor.js
   function extendWithFaceDescriptor(sourceObj, descriptor) {
     const extension = {descriptor};
     return Object.assign({}, sourceObj, extension);
   }
 
-  // build/factories/WithAge.js
+  // build/src/factories/WithAge.js
   function isWithAge(obj) {
     return typeof obj["age"] === "number";
   }
@@ -22908,7 +22914,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     return Object.assign({}, sourceObj, extension);
   }
 
-  // build/factories/WithGender.js
+  // build/src/factories/WithGender.js
   function isWithGender(obj) {
     return (obj["gender"] === Gender.MALE || obj["gender"] === Gender.FEMALE) && isValidProbablitiy(obj["genderProbability"]);
   }
@@ -22917,9 +22923,9 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     return Object.assign({}, sourceObj, extension);
   }
 
-  // build/factories/index.js
+  // build/src/factories/index.js
 
-  // build/ssdMobilenetv1/extractParams.js
+  // build/src/ssdMobilenetv1/extractParams.js
   function extractorsFactory7(extractWeights, paramMappings) {
     function extractDepthwiseConvParams(numChannels, mappedPrefix) {
       const filters = tensor4d(extractWeights(3 * 3 * numChannels), [3, 3, numChannels, 1]);
@@ -23077,7 +23083,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     };
   }
 
-  // build/ssdMobilenetv1/extractParamsFromWeigthMap.js
+  // build/src/ssdMobilenetv1/extractParamsFromWeigthMap.js
   function extractorsFactory8(weightMap, paramMappings) {
     const extractWeightEntry = extractWeightEntryFactory(weightMap, paramMappings);
     function extractPointwiseConvParams(prefix, idx, mappedPrefix) {
@@ -23176,7 +23182,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     return {params, paramMappings};
   }
 
-  // build/ssdMobilenetv1/pointwiseConvLayer.js
+  // build/src/ssdMobilenetv1/pointwiseConvLayer.js
   function pointwiseConvLayer(x, params, strides) {
     return tidy(() => {
       let out = conv2d(x, params.filters, strides, "same");
@@ -23185,7 +23191,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     });
   }
 
-  // build/ssdMobilenetv1/mobileNetV1.js
+  // build/src/ssdMobilenetv1/mobileNetV1.js
   const epsilon = 0.0010000000474974513;
   function depthwiseConvLayer(x, params, strides) {
     return tidy(() => {
@@ -23235,7 +23241,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     });
   }
 
-  // build/ssdMobilenetv1/nonMaxSuppression.js
+  // build/src/ssdMobilenetv1/nonMaxSuppression.js
   function nonMaxSuppression3(boxes, scores, maxOutputSize, iouThreshold, scoreThreshold) {
     const numBoxes = boxes.shape[0];
     const outputSize = Math.min(maxOutputSize, numBoxes);
@@ -23286,7 +23292,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     return intersectionArea / (areaI + areaJ - intersectionArea);
   }
 
-  // build/ssdMobilenetv1/outputLayer.js
+  // build/src/ssdMobilenetv1/outputLayer.js
   function getCenterCoordinatesAndSizesLayer(x) {
     const vec = unstack(transpose(x, [1, 0]));
     const sizes = [
@@ -23333,7 +23339,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     });
   }
 
-  // build/ssdMobilenetv1/boxPredictionLayer.js
+  // build/src/ssdMobilenetv1/boxPredictionLayer.js
   function boxPredictionLayer(x, params) {
     return tidy(() => {
       const batchSize = x.shape[0];
@@ -23346,7 +23352,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     });
   }
 
-  // build/ssdMobilenetv1/predictionLayer.js
+  // build/src/ssdMobilenetv1/predictionLayer.js
   function predictionLayer(x, conv11, params) {
     return tidy(() => {
       const conv0 = pointwiseConvLayer(x, params.conv_0, [1, 1]);
@@ -23386,7 +23392,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     });
   }
 
-  // build/ssdMobilenetv1/SsdMobilenetv1Options.js
+  // build/src/ssdMobilenetv1/SsdMobilenetv1Options.js
   class SsdMobilenetv1Options {
     constructor({minConfidence, maxResults} = {}) {
       this._name = "SsdMobilenetv1Options";
@@ -23407,7 +23413,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     }
   }
 
-  // build/ssdMobilenetv1/SsdMobilenetv1.js
+  // build/src/ssdMobilenetv1/SsdMobilenetv1.js
   class SsdMobilenetv1 extends NeuralNetwork {
     constructor() {
       super("SsdMobilenetv1");
@@ -23418,7 +23424,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
         throw new Error("SsdMobilenetv1 - load model before inference");
       }
       return tidy(() => {
-        const batchTensor = input.toBatchTensor(512, false).toFloat();
+        const batchTensor = cast(input.toBatchTensor(512, false), "float32");
         const x = sub(mul(batchTensor, scalar(0.007843137718737125)), scalar(1));
         const features = mobileNetV1(x, params.mobilenetv1);
         const {boxPredictions, classPredictions} = predictionLayer(features.out, features.conv11, params.prediction_layer);
@@ -23475,7 +23481,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     }
   }
 
-  // build/ssdMobilenetv1/index.js
+  // build/src/ssdMobilenetv1/index.js
   function createSsdMobilenetv1(weights) {
     const net = new SsdMobilenetv1();
     net.extractWeights(weights);
@@ -23487,7 +23493,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
   class FaceDetectionNet extends SsdMobilenetv1 {
   }
 
-  // build/tinyYolov2/const.js
+  // build/src/tinyYolov2/const.js
   const IOU_THRESHOLD = 0.4;
   const BOX_ANCHORS = [
     new Point(0.738768, 0.874946),
@@ -23507,7 +23513,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
   const DEFAULT_MODEL_NAME = "tiny_yolov2_model";
   const DEFAULT_MODEL_NAME_SEPARABLE_CONV = "tiny_yolov2_separable_conv_model";
 
-  // build/tinyYolov2/config.js
+  // build/src/tinyYolov2/config.js
   const isNumber2 = (arg) => typeof arg === "number";
   function validateConfig(config2) {
     if (!config2) {
@@ -23530,7 +23536,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     }
   }
 
-  // build/tinyYolov2/leaky.js
+  // build/src/tinyYolov2/leaky.js
   function leaky(x) {
     return tidy(() => {
       const min5 = mul(x, scalar(0.10000000149011612));
@@ -23538,7 +23544,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     });
   }
 
-  // build/tinyYolov2/convWithBatchNorm.js
+  // build/src/tinyYolov2/convWithBatchNorm.js
   function convWithBatchNorm(x, params) {
     return tidy(() => {
       let out = pad(x, [[0, 0], [1, 1], [1, 1], [0, 0]]);
@@ -23550,7 +23556,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     });
   }
 
-  // build/tinyYolov2/depthwiseSeparableConv.js
+  // build/src/tinyYolov2/depthwiseSeparableConv.js
   function depthwiseSeparableConv3(x, params) {
     return tidy(() => {
       let out = pad(x, [[0, 0], [1, 1], [1, 1], [0, 0]]);
@@ -23560,7 +23566,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     });
   }
 
-  // build/tinyYolov2/extractParams.js
+  // build/src/tinyYolov2/extractParams.js
   function extractorsFactory9(extractWeights, paramMappings) {
     const extractConvParams = extractConvParamsFactory(extractWeights, paramMappings);
     function extractBatchNormParams(size, mappedPrefix) {
@@ -23617,7 +23623,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     return {params, paramMappings};
   }
 
-  // build/tinyYolov2/extractParamsFromWeigthMap.js
+  // build/src/tinyYolov2/extractParamsFromWeigthMap.js
   function extractorsFactory10(weightMap, paramMappings) {
     const extractWeightEntry = extractWeightEntryFactory(weightMap, paramMappings);
     function extractBatchNormParams(prefix) {
@@ -23676,7 +23682,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     return {params, paramMappings};
   }
 
-  // build/tinyYolov2/TinyYolov2Options.js
+  // build/src/tinyYolov2/TinyYolov2Options.js
   var TinyYolov2SizeType;
   (function(TinyYolov2SizeType2) {
     TinyYolov2SizeType2[TinyYolov2SizeType2["XS"] = 224] = "XS";
@@ -23704,7 +23710,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     }
   }
 
-  // build/tinyYolov2/TinyYolov2Base.js
+  // build/src/tinyYolov2/TinyYolov2Base.js
   class TinyYolov2Base extends NeuralNetwork {
     constructor(config2) {
       super("TinyYolov2");
@@ -23760,7 +23766,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
         throw new Error("TinyYolov2 - load model before inference");
       }
       return tidy(() => {
-        let batchTensor = input.toBatchTensor(inputSize, false).toFloat();
+        let batchTensor = cast(input.toBatchTensor(inputSize, false), "float32");
         batchTensor = this.config.meanRgb ? normalize(batchTensor, this.config.meanRgb) : batchTensor;
         batchTensor = batchTensor.div(scalar(256));
         return this.config.withSeparableConvs ? this.runMobilenet(batchTensor, params) : this.runTinyYolov2(batchTensor, params);
@@ -23869,7 +23875,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     1024
   ];
 
-  // build/tinyYolov2/TinyYolov2.js
+  // build/src/tinyYolov2/TinyYolov2.js
   class TinyYolov2 extends TinyYolov2Base {
     constructor(withSeparableConvs = true) {
       const config2 = Object.assign({}, {
@@ -23903,16 +23909,16 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     }
   }
 
-  // build/tinyYolov2/types.js
+  // build/src/tinyYolov2/types.js
 
-  // build/tinyYolov2/index.js
+  // build/src/tinyYolov2/index.js
   function createTinyYolov2(weights, withSeparableConvs = true) {
     const net = new TinyYolov2(withSeparableConvs);
     net.extractWeights(weights);
     return net;
   }
 
-  // build/tinyFaceDetector/TinyFaceDetectorOptions.js
+  // build/src/tinyFaceDetector/TinyFaceDetectorOptions.js
   class TinyFaceDetectorOptions extends TinyYolov2Options {
     constructor() {
       super(...arguments);
@@ -23920,7 +23926,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     }
   }
 
-  // build/globalApi/ComposableTask.js
+  // build/src/globalApi/ComposableTask.js
   class ComposableTask {
     async then(onfulfilled) {
       return onfulfilled(await this.run());
@@ -23930,7 +23936,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     }
   }
 
-  // build/globalApi/extractFacesAndComputeResults.js
+  // build/src/globalApi/extractFacesAndComputeResults.js
   async function extractAllFacesAndComputeResults(parentResults, input, computeResults, extractedFaces, getRectForAlignment = ({alignedRect}) => alignedRect) {
     const faceBoxes = parentResults.map((parentResult) => isWithFaceLandmarks(parentResult) ? getRectForAlignment(parentResult) : parentResult.detection);
     const faces = extractedFaces || (input instanceof Tensor ? await extractFaceTensors(input, faceBoxes) : await extractFaces(input, faceBoxes));
@@ -23942,7 +23948,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     return extractAllFacesAndComputeResults([parentResult], input, async (faces) => computeResult(faces[0]), extractedFaces, getRectForAlignment);
   }
 
-  // build/tinyFaceDetector/const.js
+  // build/src/tinyFaceDetector/const.js
   const IOU_THRESHOLD2 = 0.4;
   const BOX_ANCHORS2 = [
     new Point(1.603231, 2.094468),
@@ -23953,7 +23959,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
   ];
   const MEAN_RGB = [117.001, 114.697, 97.404];
 
-  // build/tinyFaceDetector/TinyFaceDetector.js
+  // build/src/tinyFaceDetector/TinyFaceDetector.js
   class TinyFaceDetector extends TinyYolov2Base {
     constructor() {
       const config2 = {
@@ -23982,7 +23988,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     }
   }
 
-  // build/globalApi/nets.js
+  // build/src/globalApi/nets.js
   const nets = {
     ssdMobilenetv1: new SsdMobilenetv1(),
     tinyFaceDetector: new TinyFaceDetector(),
@@ -24013,7 +24019,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
   const locateFaces = ssdMobilenetv1;
   const detectLandmarks = detectFaceLandmarks;
 
-  // build/globalApi/PredictFaceExpressionsTask.js
+  // build/src/globalApi/PredictFaceExpressionsTask.js
   class PredictFaceExpressionsTaskBase extends ComposableTask {
     constructor(parentTask, input, extractedFaces) {
       super();
@@ -24062,7 +24068,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     }
   }
 
-  // build/globalApi/PredictAgeAndGenderTask.js
+  // build/src/globalApi/PredictAgeAndGenderTask.js
   class PredictAgeAndGenderTaskBase extends ComposableTask {
     constructor(parentTask, input, extractedFaces) {
       super();
@@ -24114,7 +24120,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     }
   }
 
-  // build/globalApi/ComputeFaceDescriptorsTasks.js
+  // build/src/globalApi/ComputeFaceDescriptorsTasks.js
   class ComputeFaceDescriptorsTaskBase extends ComposableTask {
     constructor(parentTask, input) {
       super();
@@ -24152,7 +24158,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     }
   }
 
-  // build/globalApi/DetectFaceLandmarksTasks.js
+  // build/src/globalApi/DetectFaceLandmarksTasks.js
   class DetectFaceLandmarksTaskBase extends ComposableTask {
     constructor(parentTask, input, useTinyLandmarkNet) {
       super();
@@ -24206,7 +24212,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     }
   }
 
-  // build/globalApi/DetectFacesTasks.js
+  // build/src/globalApi/DetectFacesTasks.js
   class DetectFacesTaskBase extends ComposableTask {
     constructor(input, options = new SsdMobilenetv1Options()) {
       super();
@@ -24267,7 +24273,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     }
   }
 
-  // build/globalApi/detectFaces.js
+  // build/src/globalApi/detectFaces.js
   function detectSingleFace(input, options = new SsdMobilenetv1Options()) {
     return new DetectSingleFaceTask(input, options);
   }
@@ -24275,7 +24281,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     return new DetectAllFacesTask(input, options);
   }
 
-  // build/globalApi/allFaces.js
+  // build/src/globalApi/allFaces.js
   async function allFacesSsdMobilenetv1(input, minConfidence) {
     console.warn("allFacesSsdMobilenetv1 is deprecated and will be removed soon, use the high level api instead");
     return await detectAllFaces(input, new SsdMobilenetv1Options(minConfidence ? {minConfidence} : {})).withFaceLandmarks().withFaceDescriptors();
@@ -24286,7 +24292,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
   }
   const allFaces = allFacesSsdMobilenetv1;
 
-  // build/euclideanDistance.js
+  // build/src/euclideanDistance.js
   function euclideanDistance(arr1, arr2) {
     if (arr1.length !== arr2.length)
       throw new Error("euclideanDistance: arr1.length !== arr2.length");
@@ -24295,7 +24301,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     return Math.sqrt(desc1.map((val, i) => val - desc2[i]).reduce((res, diff) => res + Math.pow(diff, 2), 0));
   }
 
-  // build/globalApi/FaceMatcher.js
+  // build/src/globalApi/FaceMatcher.js
   class FaceMatcher {
     constructor(inputs, distanceThreshold = 0.6) {
       this._distanceThreshold = distanceThreshold;
@@ -24346,18 +24352,18 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     }
   }
 
-  // build/globalApi/types.js
+  // build/src/globalApi/types.js
 
-  // build/globalApi/index.js
+  // build/src/globalApi/index.js
 
-  // build/tinyFaceDetector/index.js
+  // build/src/tinyFaceDetector/index.js
   function createTinyFaceDetector(weights) {
     const net = new TinyFaceDetector();
     net.extractWeights(weights);
     return net;
   }
 
-  // build/resizeResults.js
+  // build/src/resizeResults.js
   function resizeResults(results, dimensions) {
     const {width, height} = new Dimensions(dimensions.width, dimensions.height);
     if (width <= 0 || height <= 0) {
@@ -24379,6 +24385,9 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     }
     return results;
   }
-  return require_build();
+
+  // build/package.json
+  var version2 = "0.4.5";
+  return require_src();
 })();
 //# sourceMappingURL=face-api.js.map

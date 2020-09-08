@@ -99,7 +99,8 @@ export class TinyYolov2Base extends NeuralNetwork<TinyYolov2NetParams> {
 
     return tf.tidy(() => {
 
-      let batchTensor = input.toBatchTensor(inputSize, false).toFloat()
+      // let batchTensor = input.toBatchTensor(inputSize, false).toFloat()
+      let batchTensor = tf.cast(input.toBatchTensor(inputSize, false), 'float32');
       batchTensor = this.config.meanRgb
         ? normalize(batchTensor, this.config.meanRgb)
         : batchTensor

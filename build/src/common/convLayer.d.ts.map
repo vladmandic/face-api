@@ -1,0 +1,1 @@
+{"version":3,"file":"convLayer.d.ts","sourceRoot":"","sources":["../../../src/common/convLayer.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,MAAM,uBAAuB,CAAC;AAE5C,OAAO,EAAE,UAAU,EAAE,MAAM,SAAS,CAAC;AAErC,wBAAgB,SAAS,CACvB,CAAC,EAAE,EAAE,CAAC,QAAQ,EACd,MAAM,EAAE,UAAU,EAClB,OAAO,GAAE,OAAO,GAAG,MAAe,EAClC,QAAQ,GAAE,OAAe,GACxB,EAAE,CAAC,QAAQ,CASb"}

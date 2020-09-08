@@ -1,0 +1,1 @@
+{"version":3,"file":"isNodejs.js","sourceRoot":"","sources":["../../../src/env/isNodejs.ts"],"names":[],"mappings":"AAAA,MAAM,UAAU,QAAQ;IACtB,OAAO,OAAO,MAAM,KAAK,QAAQ;WAC5B,OAAO,OAAO,KAAK,UAAU;WAC7B,OAAO,MAAM,KAAK,WAAW;QAChC,qDAAqD;QACrD,sBAAsB;WACnB,OAAO,OAAO,KAAK,WAAW,IAAI,CAAC,CAAC,OAAO,CAAC,OAAO,CAAA;AAC1D,CAAC"}

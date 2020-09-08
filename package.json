@@ -7,17 +7,17 @@
   "browser": "dist/face-api.js",
   "jsdelivr": "dist/face-api.js",
   "unpkg": "dist/face-api.js",
-  "typings": "./build/index.d.ts",
+  "typings": "./build/src/index.d.ts",
   "engines": {
     "node": ">=12.0.0"
   },
   "type": "module",
   "scripts": {
     "compile": "tsc",
-    "cjs": "esbuild --bundle --outfile=./dist/face-api.cjs --target=es2017 --platform=node --format=cjs --sourcemap --log-level=error --tsconfig=./tsconfig.json build/index.js",
-    "esm": "esbuild --bundle --outfile=./dist/face-api.ejs --target=es2017 --platform=browser --format=esm --sourcemap --log-level=error --tsconfig=./tsconfig.json build/index.js",
-    "iife": "esbuild --bundle --outfile=./dist/face-api.js --target=es2017 --platform=browser --format=iife --global-name=faceapi --sourcemap --log-level=error --tsconfig=./tsconfig.json build/index.js",
-    "minify": "esbuild --bundle --outfile=./dist/face-api.min.js --target=es2017 --platform=browser --format=iife --sourcemap --global-name=faceapi --log-level=error --minify --tsconfig=./tsconfig.json build/index.js",
+    "cjs": "esbuild --bundle --outfile=./dist/face-api.cjs --target=es2017 --platform=node --format=cjs --sourcemap --log-level=error --tsconfig=./tsconfig.json build/src/index.js",
+    "esm": "esbuild --bundle --outfile=./dist/face-api.ejs --target=es2017 --platform=browser --format=esm --sourcemap --log-level=error --tsconfig=./tsconfig.json build/src/index.js",
+    "iife": "esbuild --bundle --outfile=./dist/face-api.js --target=es2017 --platform=browser --format=iife --global-name=faceapi --sourcemap --log-level=error --tsconfig=./tsconfig.json build/src/index.js",
+    "minify": "esbuild --bundle --outfile=./dist/face-api.min.js --target=es2017 --platform=browser --format=iife --sourcemap --global-name=faceapi --log-level=error --minify --tsconfig=./tsconfig.json build/src/index.js",
     "build": "npm run compile && npm run cjs && npm run esm && npm run iife && npm run minify"
   },
   "keywords": [

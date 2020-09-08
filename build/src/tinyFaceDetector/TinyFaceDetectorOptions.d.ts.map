@@ -1,0 +1,1 @@
+{"version":3,"file":"TinyFaceDetectorOptions.d.ts","sourceRoot":"","sources":["../../../src/tinyFaceDetector/TinyFaceDetectorOptions.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,kBAAkB,EAAE,iBAAiB,EAAE,MAAM,eAAe,CAAC;AAEtE,MAAM,WAAW,wBAAyB,SAAQ,kBAAkB;CAAG;AAEvE,qBAAa,uBAAwB,SAAQ,iBAAiB;IAC5D,SAAS,CAAC,KAAK,EAAE,MAAM,CAA4B;CACpD"}

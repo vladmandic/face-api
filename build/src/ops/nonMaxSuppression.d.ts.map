@@ -1,0 +1,1 @@
+{"version":3,"file":"nonMaxSuppression.d.ts","sourceRoot":"","sources":["../../../src/ops/nonMaxSuppression.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,GAAG,EAAE,MAAM,gBAAgB,CAAC;AAGrC,wBAAgB,iBAAiB,CAC/B,KAAK,EAAE,GAAG,EAAE,EACZ,MAAM,EAAE,MAAM,EAAE,EAChB,YAAY,EAAE,MAAM,EACpB,KAAK,GAAE,OAAc,GACpB,MAAM,EAAE,CAgCV"}

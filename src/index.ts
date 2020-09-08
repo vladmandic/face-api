@@ -1,8 +1,8 @@
-const test = 'test';
 import * as tf from '@tensorflow/tfjs-core';
 import * as draw from './draw';
 import * as utils from './utils';
-export { draw, utils, tf, test };
+export { draw, utils, tf };
+
 export * from './ageGenderNet/index';
 export * from './classes/index';
 export * from './dom/index'
@@ -19,3 +19,6 @@ export * from './tinyYolov2/index';
 export * from './euclideanDistance';
 export * from './NeuralNetwork';
 export * from './resizeResults';
+
+import * as pkg from '../package.json';
+export const version = { faceapi: pkg.version, tfjs_core: tf.version_core, env: tf.ENV.getFlags() };

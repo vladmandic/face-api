@@ -20,7 +20,9 @@ export * from './NeuralNetwork';
 export * from './resizeResults';
 export declare const version: {
     faceapi: string;
-    tfjs_core: string;
-    env: import("@tensorflow/tfjs-core/dist/environment").Flags;
+    node: string | boolean;
+    browser: string | boolean;
+    tfjs: string;
+    backend: string;
 };
 //# sourceMappingURL=index.d.ts.map

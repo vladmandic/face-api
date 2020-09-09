@@ -1,3 +1,6 @@
+// const os = require('os');
+// const process = require('process');
+
 import * as tf from '@tensorflow/tfjs-core';
 import * as draw from './draw';
 import * as utils from './utils';
@@ -21,4 +24,6 @@ export * from './NeuralNetwork';
 export * from './resizeResults';
 
 import * as pkg from '../package.json';
-export const version = { faceapi: pkg.version, tfjs_core: tf.version_core, env: tf.ENV.getFlags() };
+const node = typeof process !== 'undefined' ? process.version : false
+const browser = typeof navigator !== 'undefined' ? navigator.userAgent : false
+export const version = { faceapi: pkg.version, node, browser, tfjs: tf.version_core, backend: tf.getBackend() };

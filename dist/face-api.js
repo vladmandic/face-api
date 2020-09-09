@@ -807,7 +807,9 @@ var faceapi = (() => {
       validateConfig: () => validateConfig,
       version: () => version3
     });
-    const version3 = {faceapi: version2, tfjs_core: version, env: ENV.getFlags()};
+    const node = typeof process !== "undefined" ? process.version : false;
+    const browser = typeof navigator !== "undefined" ? navigator.userAgent : false;
+    const version3 = {faceapi: version2, node, browser, tfjs: version, backend: getBackend()};
   });
 
   // node_modules/@tensorflow/tfjs-core/dist/environment.js
@@ -24387,7 +24389,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
   }
 
   // build/package.json
-  var version2 = "0.4.6";
+  var version2 = "0.5.1";
   return require_src();
 })();
 //# sourceMappingURL=face-api.js.map

@@ -627,7 +627,7 @@ var require_seedrandom = __commonJS((exports2, module2) => {
         }
         return tostring(out);
       } catch (e) {
-        var browser = global2.navigator, plugins = browser && browser.plugins;
+        var browser2 = global2.navigator, plugins = browser2 && browser2.plugins;
         return [+new Date(), global2, plugins, global2.screen, tostring(pool3)];
       }
     }
@@ -1744,16 +1744,16 @@ function getFilteredNodesXToY(tape2, xs, y) {
     tensorsFromX[xs[i].id] = true;
   }
   for (let i = 0; i < tape2.length; i++) {
-    const node = tape2[i];
-    const nodeInputs = node.inputs;
+    const node2 = tape2[i];
+    const nodeInputs = node2.inputs;
     for (const inputName in nodeInputs) {
       const input = nodeInputs[inputName];
       let anyInputFromX = false;
       for (let j = 0; j < xs.length; j++) {
         if (tensorsFromX[input.id]) {
-          node.outputs.forEach((output) => tensorsFromX[output.id] = true);
+          node2.outputs.forEach((output) => tensorsFromX[output.id] = true);
           anyInputFromX = true;
-          nodesFromX[node.id] = true;
+          nodesFromX[node2.id] = true;
           break;
         }
       }
@@ -1766,13 +1766,13 @@ function getFilteredNodesXToY(tape2, xs, y) {
   tensorsLeadToY[y.id] = true;
   const nodesToY = {};
   for (let i = tape2.length - 1; i >= 0; i--) {
-    const node = tape2[i];
-    const nodeInputs = node.inputs;
-    for (let j = 0; j < node.outputs.length; j++) {
-      if (tensorsLeadToY[node.outputs[j].id]) {
+    const node2 = tape2[i];
+    const nodeInputs = node2.inputs;
+    for (let j = 0; j < node2.outputs.length; j++) {
+      if (tensorsLeadToY[node2.outputs[j].id]) {
         for (const inputName in nodeInputs) {
           tensorsLeadToY[nodeInputs[inputName].id] = true;
-          nodesToY[node.id] = true;
+          nodesToY[node2.id] = true;
         }
         break;
       }
@@ -1780,18 +1780,18 @@ function getFilteredNodesXToY(tape2, xs, y) {
   }
   const filteredTape = [];
   for (let i = 0; i < tape2.length; i++) {
-    const node = tape2[i];
-    if (nodesFromX[node.id] && nodesToY[node.id]) {
+    const node2 = tape2[i];
+    if (nodesFromX[node2.id] && nodesToY[node2.id]) {
       const prunedInputs = {};
-      for (const inputName in node.inputs) {
-        const nodeInput = node.inputs[inputName];
+      for (const inputName in node2.inputs) {
+        const nodeInput = node2.inputs[inputName];
         if (tensorsFromX[nodeInput.id]) {
           prunedInputs[inputName] = nodeInput;
         }
       }
-      const prunedNode = Object.assign({}, node);
+      const prunedNode = Object.assign({}, node2);
       prunedNode.inputs = prunedInputs;
-      prunedNode.outputs = node.outputs;
+      prunedNode.outputs = node2.outputs;
       filteredTape.push(prunedNode);
     }
   }
@@ -1799,9 +1799,9 @@ function getFilteredNodesXToY(tape2, xs, y) {
 }
 function backpropagateGradients(tensorAccumulatedGradientMap, filteredTape, tidy2, add29) {
   for (let i = filteredTape.length - 1; i >= 0; i--) {
-    const node = filteredTape[i];
+    const node2 = filteredTape[i];
     const dys = [];
-    node.outputs.forEach((o) => {
+    node2.outputs.forEach((o) => {
       const gradTensor = tensorAccumulatedGradientMap[o.id];
       if (gradTensor != null) {
         dys.push(gradTensor);
@@ -1809,21 +1809,21 @@ function backpropagateGradients(tensorAccumulatedGradientMap, filteredTape, tidy
         dys.push(null);
       }
     });
-    if (node.gradient == null) {
-      throw new Error(`Cannot compute gradient: gradient function not found for ${node.kernelName}.`);
+    if (node2.gradient == null) {
+      throw new Error(`Cannot compute gradient: gradient function not found for ${node2.kernelName}.`);
     }
-    const inputGradients = node.gradient(dys);
-    for (const inputName in node.inputs) {
+    const inputGradients = node2.gradient(dys);
+    for (const inputName in node2.inputs) {
       if (!(inputName in inputGradients)) {
         throw new Error(`Cannot backprop through input ${inputName}. Available gradients found: ${Object.keys(inputGradients)}.`);
       }
       const dx = tidy2(() => inputGradients[inputName]());
       if (dx.dtype !== "float32") {
-        throw new Error(`Error in gradient for op ${node.kernelName}. The gradient of input ${inputName} must have 'float32' dtype, but has '${dx.dtype}'`);
+        throw new Error(`Error in gradient for op ${node2.kernelName}. The gradient of input ${inputName} must have 'float32' dtype, but has '${dx.dtype}'`);
       }
-      const x = node.inputs[inputName];
+      const x = node2.inputs[inputName];
       if (!arraysEqual(dx.shape, x.shape)) {
-        throw new Error(`Error in gradient for op ${node.kernelName}. The gradient of input '${inputName}' has shape '${dx.shape}', which does not match the shape of the input '${x.shape}'`);
+        throw new Error(`Error in gradient for op ${node2.kernelName}. The gradient of input '${inputName}' has shape '${dx.shape}', which does not match the shape of the input '${x.shape}'`);
       }
       if (tensorAccumulatedGradientMap[x.id] == null) {
         tensorAccumulatedGradientMap[x.id] = dx;
@@ -2977,8 +2977,8 @@ class Engine {
       backpropagateGradients(accumulatedGradientMap, filteredTape, (f2) => this.tidy(f2), add);
       const grads2 = xs.map((x) => accumulatedGradientMap[x.id]);
       if (this.state.gradientDepth === 0) {
-        this.state.activeTape.forEach((node) => {
-          for (const tensor17 of node.saved) {
+        this.state.activeTape.forEach((node2) => {
+          for (const tensor17 of node2.saved) {
             tensor17.dispose();
           }
         });
@@ -24254,7 +24254,7 @@ function resizeResults(results, dimensions) {
 }
 
 // build/package.json
-var version2 = "0.4.6";
+var version2 = "0.5.1";
 
 // build/src/index.js
 __export(exports, {
@@ -24380,5 +24380,7 @@ __export(exports, {
   validateConfig: () => validateConfig,
   version: () => version3
 });
-const version3 = {faceapi: version2, tfjs_core: version, env: ENV.getFlags()};
+const node = typeof process !== "undefined" ? process.version : false;
+const browser = typeof navigator !== "undefined" ? navigator.userAgent : false;
+const version3 = {faceapi: version2, node, browser, tfjs: version, backend: getBackend()};
 //# sourceMappingURL=face-api.cjs.map

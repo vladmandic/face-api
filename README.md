@@ -30,8 +30,10 @@ Due to reduced code and changed build process, resulting bundle is about **>5x s
 
 ## Installation
 
-**Imporant!**: This version of **face-api** does not embedd full version of **TensorFlow/JS (tfjs)** to enable dynamic loading of different versions of tfjs as well as to enable reusability of tfjs for different purposes.  
+**Imporant!**: This version of **face-api** does not embedd full version of **TensorFlow/JS (tfjs)** to keep package as small as possible (322KB minified), enable dynamic loading of different tfjs backends as well as to enable reusability of tfjs for different purposes.  
+
 *Load tfjs explicitly before loading face-api.*  
+*Note: package `@tensorflow/tfjs` is bundle, if you want to keep your project small, import `@tensorflow/tfjs-core` plus a specific backend such as `@tensorflow/tfjs-backend-cpu`, `@tensorflow/tfjs-backend-webgl` or `@tensorflow/tfjs-node`*
 
 For example as a script:
 
@@ -100,5 +102,7 @@ For documentation refer to original project at <https://github.com/justadudewhoh
 
 Single new example that uses both models as well as all of the extensions is included in `/example/index.html`  
 Example can be accessed directly using Git pages using URL: <https://vladmandic.github.io/face-api/example/>
+
+*Note: Photos shown below are taken by me*
 
 ![alt text](example/screenshot.png)

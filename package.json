@@ -2,7 +2,7 @@
   "name": "@vladmandic/face-api",
   "version": "0.5.1",
   "description": "JavaScript module for Face Detection and Face Recognition Using Tensorflow/JS",
-  "main": "dist/face-api.esm.js",
+  "main": "dist/face-api.node.js",
   "browser": "dist/face-api.esm.js",
   "typings": "./build/src/index.d.ts",
   "engines": {
@@ -13,10 +13,11 @@
     "compile": "tsc",
     "clean": "rimraf build dist",
     "cjs": "esbuild --bundle --outfile=./dist/face-api.cjs.js --target=es2017 --platform=browser --format=cjs --sourcemap --log-level=error --tsconfig=./tsconfig.json build/src/index.js",
+    "node": "esbuild --bundle --outfile=./dist/face-api.node.js --target=es2017 --platform=node --format=esm --sourcemap --log-level=error --tsconfig=./tsconfig.json build/src/index.js",
     "esm": "esbuild --bundle --outfile=./dist/face-api.esm.js --target=es2017 --platform=browser --format=esm --sourcemap --log-level=error --tsconfig=./tsconfig.json build/src/index.js",
     "iife": "esbuild --bundle --outfile=./dist/face-api.iife.js --target=es2017 --platform=browser --format=iife --global-name=faceapi --sourcemap --log-level=error --tsconfig=./tsconfig.json build/src/index.js",
     "minify": "esbuild --bundle --outfile=./dist/face-api.min.js --target=es2017 --platform=browser --format=iife --sourcemap --global-name=faceapi --log-level=error --minify --tsconfig=./tsconfig.json build/src/index.js",
-    "build": "npm run clean && npm run compile && npm run cjs && npm run esm && npm run iife && npm run minify"
+    "build": "npm run clean && npm run compile && npm run cjs && npm run esm && npm run iife && npm run node && npm run minify"
   },
   "keywords": [
     "tensorflow",

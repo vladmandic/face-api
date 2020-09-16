@@ -1,12 +1,12 @@
 var __defineProperty = Object.defineProperty;
 var __hasOwnProperty = Object.prototype.hasOwnProperty;
 var __assign = Object.assign;
-var __commonJS = (callback, module) => () => {
-  if (!module) {
-    module = {exports: {}};
-    callback(module.exports, module);
+var __commonJS = (callback, module2) => () => {
+  if (!module2) {
+    module2 = {exports: {}};
+    callback(module2.exports, module2);
   }
-  return module.exports;
+  return module2.exports;
 };
 var __markAsModule = (target) => {
   return __defineProperty(target, "__esModule", {value: true});
@@ -16,24 +16,24 @@ var __export = (target, all3) => {
   for (var name in all3)
     __defineProperty(target, name, {get: all3[name], enumerable: true});
 };
-var __exportStar = (target, module) => {
+var __exportStar = (target, module2) => {
   __markAsModule(target);
-  if (typeof module === "object" || typeof module === "function") {
-    for (let key in module)
+  if (typeof module2 === "object" || typeof module2 === "function") {
+    for (let key in module2)
       if (!__hasOwnProperty.call(target, key) && key !== "default")
-        __defineProperty(target, key, {get: () => module[key], enumerable: true});
+        __defineProperty(target, key, {get: () => module2[key], enumerable: true});
   }
   return target;
 };
-var __toModule = (module) => {
-  if (module && module.__esModule)
-    return module;
-  return __exportStar(__defineProperty({}, "default", {value: module, enumerable: true}), module);
+var __toModule = (module2) => {
+  if (module2 && module2.__esModule)
+    return module2;
+  return __exportStar(__defineProperty({}, "default", {value: module2, enumerable: true}), module2);
 };
 
 // node_modules/seedrandom/lib/alea.js
-var require_alea = __commonJS((exports, module) => {
-  (function(global2, module2, define2) {
+var require_alea = __commonJS((exports2, module2) => {
+  (function(global2, module3, define2) {
     function Alea(seed) {
       var me = this, mash = Mash();
       me.next = function() {
@@ -103,8 +103,8 @@ var require_alea = __commonJS((exports, module) => {
       };
       return mash;
     }
-    if (module2 && module2.exports) {
-      module2.exports = impl;
+    if (module3 && module3.exports) {
+      module3.exports = impl;
     } else if (define2 && define2.amd) {
       define2(function() {
         return impl;
@@ -112,12 +112,12 @@ var require_alea = __commonJS((exports, module) => {
     } else {
       this.alea = impl;
     }
-  })(exports, typeof module == "object" && module, typeof define == "function" && define);
+  })(exports2, typeof module2 == "object" && module2, typeof define == "function" && define);
 });
 
 // node_modules/seedrandom/lib/xor128.js
-var require_xor128 = __commonJS((exports, module) => {
-  (function(global2, module2, define2) {
+var require_xor128 = __commonJS((exports2, module2) => {
+  (function(global2, module3, define2) {
     function XorGen(seed) {
       var me = this, strseed = "";
       me.x = 0;
@@ -169,8 +169,8 @@ var require_xor128 = __commonJS((exports, module) => {
       }
       return prng;
     }
-    if (module2 && module2.exports) {
-      module2.exports = impl;
+    if (module3 && module3.exports) {
+      module3.exports = impl;
     } else if (define2 && define2.amd) {
       define2(function() {
         return impl;
@@ -178,12 +178,12 @@ var require_xor128 = __commonJS((exports, module) => {
     } else {
       this.xor128 = impl;
     }
-  })(exports, typeof module == "object" && module, typeof define == "function" && define);
+  })(exports2, typeof module2 == "object" && module2, typeof define == "function" && define);
 });
 
 // node_modules/seedrandom/lib/xorwow.js
-var require_xorwow = __commonJS((exports, module) => {
-  (function(global2, module2, define2) {
+var require_xorwow = __commonJS((exports2, module2) => {
+  (function(global2, module3, define2) {
     function XorGen(seed) {
       var me = this, strseed = "";
       me.next = function() {
@@ -242,8 +242,8 @@ var require_xorwow = __commonJS((exports, module) => {
       }
       return prng;
     }
-    if (module2 && module2.exports) {
-      module2.exports = impl;
+    if (module3 && module3.exports) {
+      module3.exports = impl;
     } else if (define2 && define2.amd) {
       define2(function() {
         return impl;
@@ -251,12 +251,12 @@ var require_xorwow = __commonJS((exports, module) => {
     } else {
       this.xorwow = impl;
     }
-  })(exports, typeof module == "object" && module, typeof define == "function" && define);
+  })(exports2, typeof module2 == "object" && module2, typeof define == "function" && define);
 });
 
 // node_modules/seedrandom/lib/xorshift7.js
-var require_xorshift7 = __commonJS((exports, module) => {
-  (function(global2, module2, define2) {
+var require_xorshift7 = __commonJS((exports2, module2) => {
+  (function(global2, module3, define2) {
     function XorGen(seed) {
       var me = this;
       me.next = function() {
@@ -331,8 +331,8 @@ var require_xorshift7 = __commonJS((exports, module) => {
       }
       return prng;
     }
-    if (module2 && module2.exports) {
-      module2.exports = impl;
+    if (module3 && module3.exports) {
+      module3.exports = impl;
     } else if (define2 && define2.amd) {
       define2(function() {
         return impl;
@@ -340,12 +340,12 @@ var require_xorshift7 = __commonJS((exports, module) => {
     } else {
       this.xorshift7 = impl;
     }
-  })(exports, typeof module == "object" && module, typeof define == "function" && define);
+  })(exports2, typeof module2 == "object" && module2, typeof define == "function" && define);
 });
 
 // node_modules/seedrandom/lib/xor4096.js
-var require_xor4096 = __commonJS((exports, module) => {
-  (function(global2, module2, define2) {
+var require_xor4096 = __commonJS((exports2, module2) => {
+  (function(global2, module3, define2) {
     function XorGen(seed) {
       var me = this;
       me.next = function() {
@@ -435,8 +435,8 @@ var require_xor4096 = __commonJS((exports, module) => {
       }
       return prng;
     }
-    if (module2 && module2.exports) {
-      module2.exports = impl;
+    if (module3 && module3.exports) {
+      module3.exports = impl;
     } else if (define2 && define2.amd) {
       define2(function() {
         return impl;
@@ -444,12 +444,12 @@ var require_xor4096 = __commonJS((exports, module) => {
     } else {
       this.xor4096 = impl;
     }
-  })(exports, typeof module == "object" && module, typeof define == "function" && define);
+  })(exports2, typeof module2 == "object" && module2, typeof define == "function" && define);
 });
 
 // node_modules/seedrandom/lib/tychei.js
-var require_tychei = __commonJS((exports, module) => {
-  (function(global2, module2, define2) {
+var require_tychei = __commonJS((exports2, module2) => {
+  (function(global2, module3, define2) {
     function XorGen(seed) {
       var me = this, strseed = "";
       me.next = function() {
@@ -507,8 +507,8 @@ var require_tychei = __commonJS((exports, module) => {
       }
       return prng;
     }
-    if (module2 && module2.exports) {
-      module2.exports = impl;
+    if (module3 && module3.exports) {
+      module3.exports = impl;
     } else if (define2 && define2.amd) {
       define2(function() {
         return impl;
@@ -516,7 +516,7 @@ var require_tychei = __commonJS((exports, module) => {
     } else {
       this.tychei = impl;
     }
-  })(exports, typeof module == "object" && module, typeof define == "function" && define);
+  })(exports2, typeof module2 == "object" && module2, typeof define == "function" && define);
 });
 
 // disabled:crypto
@@ -524,7 +524,7 @@ var require_disabled_crypto = __commonJS(() => {
 });
 
 // node_modules/seedrandom/seedrandom.js
-var require_seedrandom = __commonJS((exports, module) => {
+var require_seedrandom = __commonJS((exports2, module2) => {
   (function(pool3, math) {
     var global2 = this, width = 256, chunks = 6, digits = 52, rngname = "random", startdenom = math.pow(width, chunks), significance = math.pow(2, digits), overflow = significance * 2, mask = width - 1, nodecrypto;
     function seedrandom2(seed, options, callback) {
@@ -639,8 +639,8 @@ var require_seedrandom = __commonJS((exports, module) => {
       return String.fromCharCode.apply(0, a);
     }
     mixkey(math.random(), pool3);
-    if (typeof module == "object" && module.exports) {
-      module.exports = seedrandom2;
+    if (typeof module2 == "object" && module2.exports) {
+      module2.exports = seedrandom2;
       try {
         nodecrypto = require_disabled_crypto();
       } catch (ex) {
@@ -654,7 +654,7 @@ var require_seedrandom = __commonJS((exports, module) => {
 });
 
 // node_modules/seedrandom/index.js
-var require_seedrandom2 = __commonJS((exports, module) => {
+var require_seedrandom2 = __commonJS((exports2, module2) => {
   var alea2 = require_alea();
   var xor128 = require_xor128();
   var xorwow = require_xorwow();
@@ -668,16 +668,16 @@ var require_seedrandom2 = __commonJS((exports, module) => {
   sr.xorshift7 = xorshift7;
   sr.xor4096 = xor4096;
   sr.tychei = tychei;
-  module.exports = sr;
+  module2.exports = sr;
 });
 
 // build/src/env/isNodejs.js
-var require_isNodejs = __commonJS((exports, module) => {
-  __export(exports, {
+var require_isNodejs = __commonJS((exports2, module2) => {
+  __export(exports2, {
     isNodejs: () => isNodejs3
   });
   function isNodejs3() {
-    return typeof global === "object" && true && typeof module !== "undefined" && typeof process !== "undefined" && !!process.version;
+    return typeof global === "object" && true && typeof module2 !== "undefined" && typeof process !== "undefined" && !!process.version;
   }
 });
 
@@ -767,8 +767,8 @@ class Environment {
     }
     return this.flagRegistry[flagName].evaluationFn();
   }
-  setFlags(flags2) {
-    this.flags = Object.assign({}, flags2);
+  setFlags(flags3) {
+    this.flags = Object.assign({}, flags3);
   }
   reset() {
     this.flags = {};
@@ -1178,8 +1178,8 @@ function shuffle(array) {
     array[index] = temp;
   }
 }
-function clamp(min5, x, max7) {
-  return Math.max(min5, Math.min(x, max7));
+function clamp(min4, x, max6) {
+  return Math.max(min4, Math.min(x, max6));
 }
 function nearestLargerEven(val) {
   return val % 2 === 0 ? val : val + 1;
@@ -1668,11 +1668,12 @@ class Profiler {
       outputs = f();
     };
     const timer = this.backendTimer.time(holdResultWrapperFn);
-    outputs.map((r) => {
-      r.data().then((tensorVals) => {
-        checkComputationForErrors(tensorVals, r.dtype, kernelName);
+    for (let i = 0; i < outputs.length; i++) {
+      const output = outputs[i];
+      output.data().then((tensorVals) => {
+        checkComputationForErrors(tensorVals, output.dtype, kernelName);
       });
-    });
+    }
     const kernelProfile = {
       kernelName,
       outputs,
@@ -2185,7 +2186,7 @@ class Tensor {
 }
 Object.defineProperty(Tensor, Symbol.hasInstance, {
   value: (instance) => {
-    return !!instance && instance.dataId != null && instance.shape != null && instance.dtype != null;
+    return !!instance && instance.data != null && instance.dataSync != null && instance.throwIfDisposed != null;
   }
 });
 class Variable extends Tensor {
@@ -3253,6 +3254,7 @@ function convertToTensorArray(arg, argName, functionName, parseAsDtype = "numeri
  * limitations under the License.
  * =============================================================================
  */
+const OP_SCOPE_SUFFIX = "__op";
 function op(f) {
   const keys = Object.keys(f);
   if (keys.length !== 1) {
@@ -3263,6 +3265,7 @@ function op(f) {
   if (opName.endsWith("_")) {
     opName = opName.substring(0, opName.length - 1);
   }
+  opName = opName + OP_SCOPE_SUFFIX;
   const f2 = (...args) => {
     ENGINE.startScope(opName);
     try {
@@ -3280,6 +3283,2462 @@ function op(f) {
   Object.defineProperty(f2, "name", {value: opName, configurable: true});
   return f2;
 }
+
+// node_modules/@tensorflow/tfjs-core/dist/ops/complex.js
+/**
+ * @license
+ * Copyright 2020 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+function complex_(real6, imag6) {
+  const $real = convertToTensor(real6, "real", "complex");
+  const $imag = convertToTensor(imag6, "imag", "complex");
+  assertShapesMatch($real.shape, $imag.shape, `real and imag shapes, ${$real.shape} and ${$imag.shape}, must match in call to tf.complex().`);
+  const forward = (backend2) => {
+    return backend2.complex($real, $imag);
+  };
+  const inputs = {real: $real, imag: $imag};
+  return ENGINE.runKernelFunc(forward, inputs, null, Complex);
+}
+const complex = op({complex_});
+
+// node_modules/@tensorflow/tfjs-core/dist/ops/tensor_ops_util.js
+/**
+ * @license
+ * Copyright 2018 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+function makeTensor(values, shape, inferredShape, dtype) {
+  if (dtype == null) {
+    dtype = inferDtype(values);
+  }
+  if (dtype === "complex64") {
+    throw new Error(`Cannot construct a complex64 tensor directly. Please use tf.complex(real, imag).`);
+  }
+  if (!isTypedArray(values) && !Array.isArray(values) && typeof values !== "number" && typeof values !== "boolean" && typeof values !== "string") {
+    throw new Error("values passed to tensor(values) must be a number/boolean/string or an array of numbers/booleans/strings, or a TypedArray");
+  }
+  if (shape != null) {
+    assertNonNegativeIntegerDimensions(shape);
+    const providedSize = sizeFromShape(shape);
+    const inferredSize = sizeFromShape(inferredShape);
+    assert(providedSize === inferredSize, () => `Based on the provided shape, [${shape}], the tensor should have ${providedSize} values but has ${inferredSize}`);
+    for (let i = 0; i < inferredShape.length; ++i) {
+      const inferred = inferredShape[i];
+      const flatDimsDontMatch = i === inferredShape.length - 1 ? inferred !== sizeFromShape(shape.slice(i)) : true;
+      assert(inferredShape[i] === shape[i] || !flatDimsDontMatch, () => `Error creating a new Tensor. Inferred shape (${inferredShape}) does not match the provided shape (${shape}). `);
+    }
+  }
+  if (!isTypedArray(values) && !Array.isArray(values)) {
+    values = [values];
+  }
+  shape = shape || inferredShape;
+  values = dtype !== "string" ? toTypedArray(values, dtype) : flatten(values, [], true);
+  return ENGINE.makeTensor(values, shape, dtype);
+}
+
+// node_modules/@tensorflow/tfjs-core/dist/ops/tensor.js
+/**
+ * @license
+ * Copyright 2018 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+function tensor4(values, shape, dtype) {
+  const inferredShape = inferShape(values, dtype);
+  return makeTensor(values, shape, inferredShape, dtype);
+}
+
+// node_modules/@tensorflow/tfjs-core/dist/io/types.js
+/**
+ * @license
+ * Copyright 2018 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+const DTYPE_VALUE_SIZE_MAP = {
+  float32: 4,
+  float16: 2,
+  int32: 4,
+  uint16: 2,
+  uint8: 1,
+  bool: 1,
+  complex64: 8
+};
+
+// node_modules/@tensorflow/tfjs-core/dist/io/io_utils.js
+/**
+ * @license
+ * Copyright 2018 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+const NUM_BYTES_STRING_LENGTH = 4;
+async function encodeWeights(tensors, group) {
+  const specs = [];
+  const dataPromises = [];
+  const names = Array.isArray(tensors) ? tensors.map((tensor17) => tensor17.name) : Object.keys(tensors);
+  for (let i = 0; i < names.length; ++i) {
+    const name = names[i];
+    const t = Array.isArray(tensors) ? tensors[i].tensor : tensors[name];
+    if (t.dtype !== "float32" && t.dtype !== "int32" && t.dtype !== "bool" && t.dtype !== "string" && t.dtype !== "complex64") {
+      throw new Error(`Unsupported dtype in weight '${name}': ${t.dtype}`);
+    }
+    const spec = {name, shape: t.shape, dtype: t.dtype};
+    if (t.dtype === "string") {
+      const utf8bytes = new Promise(async (resolve) => {
+        const vals = await t.bytes();
+        const totalNumBytes = vals.reduce((p, c) => p + c.length, 0) + NUM_BYTES_STRING_LENGTH * vals.length;
+        const bytes = new Uint8Array(totalNumBytes);
+        let offset = 0;
+        for (let i2 = 0; i2 < vals.length; i2++) {
+          const val = vals[i2];
+          const bytesOfLength = new Uint8Array(new Uint32Array([val.length]).buffer);
+          bytes.set(bytesOfLength, offset);
+          offset += NUM_BYTES_STRING_LENGTH;
+          bytes.set(val, offset);
+          offset += val.length;
+        }
+        resolve(bytes);
+      });
+      dataPromises.push(utf8bytes);
+    } else {
+      dataPromises.push(t.data());
+    }
+    if (group != null) {
+      spec.group = group;
+    }
+    specs.push(spec);
+  }
+  const tensorValues = await Promise.all(dataPromises);
+  return {data: concatenateTypedArrays(tensorValues), specs};
+}
+function decodeWeights(buffer11, specs) {
+  const out = {};
+  let float16Decode;
+  let offset = 0;
+  for (const spec of specs) {
+    const name = spec.name;
+    const dtype = spec.dtype;
+    const shape = spec.shape;
+    const size = sizeFromShape(shape);
+    let values;
+    if ("quantization" in spec) {
+      const quantization = spec.quantization;
+      if (quantization.dtype === "uint8" || quantization.dtype === "uint16") {
+        if (!("min" in quantization && "scale" in quantization)) {
+          throw new Error(`Weight ${spec.name} with quantization ${quantization.dtype} doesn't have corresponding metadata min and scale.`);
+        }
+      } else if (quantization.dtype === "float16") {
+        if (dtype !== "float32") {
+          throw new Error(`Weight ${spec.name} is quantized with ${quantization.dtype} which only supports weights of type float32 not ${dtype}.`);
+        }
+      } else {
+        throw new Error(`Weight ${spec.name} has unknown quantization dtype ${quantization.dtype}. Supported quantization dtypes are: 'uint8', 'uint16', and 'float16'.`);
+      }
+      const quantizationSizeFactor = DTYPE_VALUE_SIZE_MAP[quantization.dtype];
+      const byteBuffer = buffer11.slice(offset, offset + size * quantizationSizeFactor);
+      const quantizedArray = quantization.dtype === "uint8" ? new Uint8Array(byteBuffer) : new Uint16Array(byteBuffer);
+      if (dtype === "float32") {
+        if (quantization.dtype === "uint8" || quantization.dtype === "uint16") {
+          values = new Float32Array(quantizedArray.length);
+          for (let i = 0; i < quantizedArray.length; i++) {
+            const v = quantizedArray[i];
+            values[i] = v * quantization.scale + quantization.min;
+          }
+        } else if (quantization.dtype === "float16") {
+          if (float16Decode === void 0) {
+            float16Decode = getFloat16Decoder();
+          }
+          values = float16Decode(quantizedArray);
+        } else {
+          throw new Error(`Unsupported quantization type ${quantization.dtype} for weight type float32.`);
+        }
+      } else if (dtype === "int32") {
+        if (quantization.dtype !== "uint8" && quantization.dtype !== "uint16") {
+          throw new Error(`Unsupported quantization type ${quantization.dtype} for weight type int32.`);
+        }
+        values = new Int32Array(quantizedArray.length);
+        for (let i = 0; i < quantizedArray.length; i++) {
+          const v = quantizedArray[i];
+          values[i] = Math.round(v * quantization.scale + quantization.min);
+        }
+      } else {
+        throw new Error(`Unsupported dtype in weight '${name}': ${dtype}`);
+      }
+      offset += size * quantizationSizeFactor;
+    } else if (dtype === "string") {
+      const size2 = sizeFromShape(spec.shape);
+      values = [];
+      for (let i = 0; i < size2; i++) {
+        const byteLength = new Uint32Array(buffer11.slice(offset, offset + NUM_BYTES_STRING_LENGTH))[0];
+        offset += NUM_BYTES_STRING_LENGTH;
+        const bytes = new Uint8Array(buffer11.slice(offset, offset + byteLength));
+        values.push(bytes);
+        offset += byteLength;
+      }
+    } else {
+      const dtypeFactor = DTYPE_VALUE_SIZE_MAP[dtype];
+      const byteBuffer = buffer11.slice(offset, offset + size * dtypeFactor);
+      if (dtype === "float32") {
+        values = new Float32Array(byteBuffer);
+      } else if (dtype === "int32") {
+        values = new Int32Array(byteBuffer);
+      } else if (dtype === "bool") {
+        values = new Uint8Array(byteBuffer);
+      } else if (dtype === "complex64") {
+        values = new Float32Array(byteBuffer);
+        const real6 = new Float32Array(values.length / 2);
+        const image2 = new Float32Array(values.length / 2);
+        for (let i = 0; i < real6.length; i++) {
+          real6[i] = values[i * 2];
+          image2[i] = values[i * 2 + 1];
+        }
+        const realTensor = tensor4(real6, shape, "float32");
+        const imageTensor = tensor4(image2, shape, "float32");
+        out[name] = complex(realTensor, imageTensor);
+      } else {
+        throw new Error(`Unsupported dtype in weight '${name}': ${dtype}`);
+      }
+      offset += size * dtypeFactor;
+    }
+    if (dtype !== "complex64") {
+      out[name] = tensor4(values, shape, dtype);
+    }
+  }
+  return out;
+}
+function concatenateTypedArrays(xs) {
+  if (xs === null) {
+    throw new Error(`Invalid input value: ${JSON.stringify(xs)}`);
+  }
+  let totalByteLength = 0;
+  const normalizedXs = [];
+  xs.forEach((x) => {
+    totalByteLength += x.byteLength;
+    normalizedXs.push(x.byteLength === x.buffer.byteLength ? x : new x.constructor(x));
+    if (!(x instanceof Float32Array || x instanceof Int32Array || x instanceof Uint8Array)) {
+      throw new Error(`Unsupported TypedArray subtype: ${x.constructor.name}`);
+    }
+  });
+  const y = new Uint8Array(totalByteLength);
+  let offset = 0;
+  normalizedXs.forEach((x) => {
+    y.set(new Uint8Array(x.buffer), offset);
+    offset += x.byteLength;
+  });
+  return y.buffer;
+}
+const useNodeBuffer = typeof Buffer !== "undefined" && (typeof Blob === "undefined" || typeof atob === "undefined" || typeof btoa === "undefined");
+function stringByteLength(str) {
+  if (useNodeBuffer) {
+    return Buffer.byteLength(str);
+  }
+  return new Blob([str]).size;
+}
+function concatenateArrayBuffers(buffers) {
+  if (buffers.length === 1) {
+    return buffers[0];
+  }
+  let totalByteLength = 0;
+  buffers.forEach((buffer11) => {
+    totalByteLength += buffer11.byteLength;
+  });
+  const temp = new Uint8Array(totalByteLength);
+  let offset = 0;
+  buffers.forEach((buffer11) => {
+    temp.set(new Uint8Array(buffer11), offset);
+    offset += buffer11.byteLength;
+  });
+  return temp.buffer;
+}
+function basename(path) {
+  const SEPARATOR = "/";
+  path = path.trim();
+  while (path.endsWith(SEPARATOR)) {
+    path = path.slice(0, path.length - 1);
+  }
+  const items = path.split(SEPARATOR);
+  return items[items.length - 1];
+}
+function getModelArtifactsInfoForJSON(modelArtifacts) {
+  if (modelArtifacts.modelTopology instanceof ArrayBuffer) {
+    throw new Error("Expected JSON model topology, received ArrayBuffer.");
+  }
+  return {
+    dateSaved: new Date(),
+    modelTopologyType: "JSON",
+    modelTopologyBytes: modelArtifacts.modelTopology == null ? 0 : stringByteLength(JSON.stringify(modelArtifacts.modelTopology)),
+    weightSpecsBytes: modelArtifacts.weightSpecs == null ? 0 : stringByteLength(JSON.stringify(modelArtifacts.weightSpecs)),
+    weightDataBytes: modelArtifacts.weightData == null ? 0 : modelArtifacts.weightData.byteLength
+  };
+}
+function computeFloat16MantisaTable() {
+  const convertMantissa = (i) => {
+    let m = i << 13;
+    let e = 0;
+    while ((m & 8388608) === 0) {
+      e -= 8388608;
+      m <<= 1;
+    }
+    m &= ~8388608;
+    e += 947912704;
+    return m | e;
+  };
+  const mantisaTable = new Uint32Array(2048);
+  mantisaTable[0] = 0;
+  for (let i = 1; i < 1024; i++) {
+    mantisaTable[i] = convertMantissa(i);
+  }
+  for (let i = 1024; i < 2048; i++) {
+    mantisaTable[i] = 939524096 + (i - 1024 << 13);
+  }
+  return mantisaTable;
+}
+function computeFloat16ExponentTable() {
+  const exponentTable = new Uint32Array(64);
+  exponentTable[0] = 0;
+  exponentTable[31] = 1199570944;
+  exponentTable[32] = 2147483648;
+  exponentTable[63] = 3347054592;
+  for (let i = 1; i < 31; i++) {
+    exponentTable[i] = i << 23;
+  }
+  for (let i = 33; i < 63; i++) {
+    exponentTable[i] = 2147483648 + (i - 32 << 23);
+  }
+  return exponentTable;
+}
+function computeFloat16OffsetTable() {
+  const offsetTable = new Uint32Array(64);
+  for (let i = 0; i < 64; i++) {
+    offsetTable[i] = 1024;
+  }
+  offsetTable[0] = offsetTable[32] = 0;
+  return offsetTable;
+}
+function getFloat16Decoder() {
+  const mantisaTable = computeFloat16MantisaTable();
+  const exponentTable = computeFloat16ExponentTable();
+  const offsetTable = computeFloat16OffsetTable();
+  return (quantizedArray) => {
+    const buffer11 = new ArrayBuffer(4 * quantizedArray.length);
+    const bufferUint32View = new Uint32Array(buffer11);
+    for (let index = 0; index < quantizedArray.length; index++) {
+      const float16Bits = quantizedArray[index];
+      const float32Bits = mantisaTable[offsetTable[float16Bits >> 10] + (float16Bits & 1023)] + exponentTable[float16Bits >> 10];
+      bufferUint32View[index] = float32Bits;
+    }
+    return new Float32Array(buffer11);
+  };
+}
+
+// node_modules/@tensorflow/tfjs-core/dist/io/router_registry.js
+/**
+ * @license
+ * Copyright 2018 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+class IORouterRegistry {
+  constructor() {
+    this.saveRouters = [];
+    this.loadRouters = [];
+  }
+  static getInstance() {
+    if (IORouterRegistry.instance == null) {
+      IORouterRegistry.instance = new IORouterRegistry();
+    }
+    return IORouterRegistry.instance;
+  }
+  static registerSaveRouter(saveRouter) {
+    IORouterRegistry.getInstance().saveRouters.push(saveRouter);
+  }
+  static registerLoadRouter(loadRouter) {
+    IORouterRegistry.getInstance().loadRouters.push(loadRouter);
+  }
+  static getSaveHandlers(url) {
+    return IORouterRegistry.getHandlers(url, "save");
+  }
+  static getLoadHandlers(url, loadOptions) {
+    return IORouterRegistry.getHandlers(url, "load", loadOptions);
+  }
+  static getHandlers(url, handlerType, loadOptions) {
+    const validHandlers = [];
+    const routers = handlerType === "load" ? IORouterRegistry.getInstance().loadRouters : IORouterRegistry.getInstance().saveRouters;
+    routers.forEach((router) => {
+      const handler = router(url, loadOptions);
+      if (handler !== null) {
+        validHandlers.push(handler);
+      }
+    });
+    return validHandlers;
+  }
+}
+const registerSaveRouter = (loudRouter) => IORouterRegistry.registerSaveRouter(loudRouter);
+const registerLoadRouter = (loudRouter) => IORouterRegistry.registerLoadRouter(loudRouter);
+const getSaveHandlers = (url) => IORouterRegistry.getSaveHandlers(url);
+const getLoadHandlers = (url, loadOptions) => IORouterRegistry.getLoadHandlers(url, loadOptions);
+
+// node_modules/@tensorflow/tfjs-core/dist/io/model_management.js
+/**
+ * @license
+ * Copyright 2018 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+const URL_SCHEME_SUFFIX = "://";
+class ModelStoreManagerRegistry {
+  constructor() {
+    this.managers = {};
+  }
+  static getInstance() {
+    if (ModelStoreManagerRegistry.instance == null) {
+      ModelStoreManagerRegistry.instance = new ModelStoreManagerRegistry();
+    }
+    return ModelStoreManagerRegistry.instance;
+  }
+  static registerManager(scheme, manager) {
+    assert(scheme != null, () => "scheme must not be undefined or null.");
+    if (scheme.endsWith(URL_SCHEME_SUFFIX)) {
+      scheme = scheme.slice(0, scheme.indexOf(URL_SCHEME_SUFFIX));
+    }
+    assert(scheme.length > 0, () => "scheme must not be an empty string.");
+    const registry = ModelStoreManagerRegistry.getInstance();
+    assert(registry.managers[scheme] == null, () => `A model store manager is already registered for scheme '${scheme}'.`);
+    registry.managers[scheme] = manager;
+  }
+  static getManager(scheme) {
+    const manager = this.getInstance().managers[scheme];
+    if (manager == null) {
+      throw new Error(`Cannot find model manager for scheme '${scheme}'`);
+    }
+    return manager;
+  }
+  static getSchemes() {
+    return Object.keys(this.getInstance().managers);
+  }
+}
+function parseURL(url) {
+  if (url.indexOf(URL_SCHEME_SUFFIX) === -1) {
+    throw new Error(`The url string provided does not contain a scheme. Supported schemes are: ${ModelStoreManagerRegistry.getSchemes().join(",")}`);
+  }
+  return {
+    scheme: url.split(URL_SCHEME_SUFFIX)[0],
+    path: url.split(URL_SCHEME_SUFFIX)[1]
+  };
+}
+async function cloneModelInternal(sourceURL, destURL, deleteSource = false) {
+  assert(sourceURL !== destURL, () => `Old path and new path are the same: '${sourceURL}'`);
+  const loadHandlers = IORouterRegistry.getLoadHandlers(sourceURL);
+  assert(loadHandlers.length > 0, () => `Copying failed because no load handler is found for source URL ${sourceURL}.`);
+  assert(loadHandlers.length < 2, () => `Copying failed because more than one (${loadHandlers.length}) load handlers for source URL ${sourceURL}.`);
+  const loadHandler = loadHandlers[0];
+  const saveHandlers = IORouterRegistry.getSaveHandlers(destURL);
+  assert(saveHandlers.length > 0, () => `Copying failed because no save handler is found for destination URL ${destURL}.`);
+  assert(saveHandlers.length < 2, () => `Copying failed because more than one (${loadHandlers.length}) save handlers for destination URL ${destURL}.`);
+  const saveHandler = saveHandlers[0];
+  const sourceScheme = parseURL(sourceURL).scheme;
+  const sourcePath = parseURL(sourceURL).path;
+  const sameMedium = sourceScheme === parseURL(sourceURL).scheme;
+  const modelArtifacts = await loadHandler.load();
+  if (deleteSource && sameMedium) {
+    await ModelStoreManagerRegistry.getManager(sourceScheme).removeModel(sourcePath);
+  }
+  const saveResult = await saveHandler.save(modelArtifacts);
+  if (deleteSource && !sameMedium) {
+    await ModelStoreManagerRegistry.getManager(sourceScheme).removeModel(sourcePath);
+  }
+  return saveResult.modelArtifactsInfo;
+}
+async function listModels() {
+  const schemes = ModelStoreManagerRegistry.getSchemes();
+  const out = {};
+  for (const scheme of schemes) {
+    const schemeOut = await ModelStoreManagerRegistry.getManager(scheme).listModels();
+    for (const path in schemeOut) {
+      const url = scheme + URL_SCHEME_SUFFIX + path;
+      out[url] = schemeOut[path];
+    }
+  }
+  return out;
+}
+async function removeModel(url) {
+  const schemeAndPath = parseURL(url);
+  const manager = ModelStoreManagerRegistry.getManager(schemeAndPath.scheme);
+  return manager.removeModel(schemeAndPath.path);
+}
+async function copyModel(sourceURL, destURL) {
+  const deleteSource = false;
+  return cloneModelInternal(sourceURL, destURL, deleteSource);
+}
+async function moveModel(sourceURL, destURL) {
+  const deleteSource = true;
+  return cloneModelInternal(sourceURL, destURL, deleteSource);
+}
+
+// node_modules/@tensorflow/tfjs-core/dist/ops/buffer.js
+/**
+ * @license
+ * Copyright 2020 Google Inc. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+function buffer(shape, dtype = "float32", values) {
+  dtype = dtype || "float32";
+  assertNonNegativeIntegerDimensions(shape);
+  return new TensorBuffer(shape, dtype, values);
+}
+
+// node_modules/@tensorflow/tfjs-core/dist/ops/cast.js
+/**
+ * @license
+ * Copyright 2020 Google Inc. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+function cast_(x, dtype) {
+  const $x = convertToTensor(x, "x", "cast");
+  if (!isValidDtype(dtype)) {
+    throw new Error(`Failed to cast to unknown dtype ${dtype}`);
+  }
+  if (dtype === "string" && $x.dtype !== "string" || dtype !== "string" && $x.dtype === "string") {
+    throw new Error("Only strings can be casted to strings");
+  }
+  const inputs = {x: $x};
+  const attrs = {dtype};
+  return ENGINE.runKernelFunc((backend2) => backend2.cast($x, dtype), inputs, null, Cast, attrs);
+}
+const cast = op({cast_});
+
+// node_modules/@tensorflow/tfjs-core/dist/ops/clone.js
+/**
+ * @license
+ * Copyright 2020 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+function clone_(x) {
+  const $x = convertToTensor(x, "x", "clone", null);
+  const forward = () => ENGINE.makeTensorFromDataId($x.dataId, $x.shape, $x.dtype);
+  const inputs = {x: $x};
+  return ENGINE.runKernelFunc(forward, inputs, null, Identity);
+}
+const clone = op({clone_});
+
+// node_modules/@tensorflow/tfjs-core/dist/ops/print.js
+/**
+ * @license
+ * Copyright 2020 Google Inc. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+function print(x, verbose = false) {
+  console.log(x.toString(verbose));
+}
+
+// node_modules/@tensorflow/tfjs-core/dist/base_side_effects.js
+/**
+ * @license
+ * Copyright 2020 Google Inc. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+getOrMakeEngine();
+const opHandler2 = {
+  buffer,
+  cast,
+  clone,
+  print
+};
+setOpHandler(opHandler2);
+
+// node_modules/@tensorflow/tfjs-core/dist/io/browser_files.js
+/**
+ * @license
+ * Copyright 2018 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+const DEFAULT_FILE_NAME_PREFIX = "model";
+const DEFAULT_JSON_EXTENSION_NAME = ".json";
+const DEFAULT_WEIGHT_DATA_EXTENSION_NAME = ".weights.bin";
+function defer(f) {
+  return new Promise((resolve) => setTimeout(resolve)).then(f);
+}
+class BrowserDownloads {
+  constructor(fileNamePrefix) {
+    if (!env().getBool("IS_BROWSER")) {
+      throw new Error("browserDownloads() cannot proceed because the current environment is not a browser.");
+    }
+    if (fileNamePrefix.startsWith(BrowserDownloads.URL_SCHEME)) {
+      fileNamePrefix = fileNamePrefix.slice(BrowserDownloads.URL_SCHEME.length);
+    }
+    if (fileNamePrefix == null || fileNamePrefix.length === 0) {
+      fileNamePrefix = DEFAULT_FILE_NAME_PREFIX;
+    }
+    this.modelTopologyFileName = fileNamePrefix + DEFAULT_JSON_EXTENSION_NAME;
+    this.weightDataFileName = fileNamePrefix + DEFAULT_WEIGHT_DATA_EXTENSION_NAME;
+  }
+  async save(modelArtifacts) {
+    if (typeof document === "undefined") {
+      throw new Error("Browser downloads are not supported in this environment since `document` is not present");
+    }
+    const weightsURL = window.URL.createObjectURL(new Blob([modelArtifacts.weightData], {type: "application/octet-stream"}));
+    if (modelArtifacts.modelTopology instanceof ArrayBuffer) {
+      throw new Error("BrowserDownloads.save() does not support saving model topology in binary formats yet.");
+    } else {
+      const weightsManifest = [{
+        paths: ["./" + this.weightDataFileName],
+        weights: modelArtifacts.weightSpecs
+      }];
+      const modelTopologyAndWeightManifest = {
+        modelTopology: modelArtifacts.modelTopology,
+        format: modelArtifacts.format,
+        generatedBy: modelArtifacts.generatedBy,
+        convertedBy: modelArtifacts.convertedBy,
+        weightsManifest
+      };
+      const modelTopologyAndWeightManifestURL = window.URL.createObjectURL(new Blob([JSON.stringify(modelTopologyAndWeightManifest)], {type: "application/json"}));
+      const jsonAnchor = this.jsonAnchor == null ? document.createElement("a") : this.jsonAnchor;
+      jsonAnchor.download = this.modelTopologyFileName;
+      jsonAnchor.href = modelTopologyAndWeightManifestURL;
+      await defer(() => jsonAnchor.dispatchEvent(new MouseEvent("click")));
+      if (modelArtifacts.weightData != null) {
+        const weightDataAnchor = this.weightDataAnchor == null ? document.createElement("a") : this.weightDataAnchor;
+        weightDataAnchor.download = this.weightDataFileName;
+        weightDataAnchor.href = weightsURL;
+        await defer(() => weightDataAnchor.dispatchEvent(new MouseEvent("click")));
+      }
+      return {modelArtifactsInfo: getModelArtifactsInfoForJSON(modelArtifacts)};
+    }
+  }
+}
+BrowserDownloads.URL_SCHEME = "downloads://";
+class BrowserFiles {
+  constructor(files) {
+    if (files == null || files.length < 1) {
+      throw new Error(`When calling browserFiles, at least 1 file is required, but received ${files}`);
+    }
+    this.files = files;
+  }
+  async load() {
+    const jsonFile = this.files[0];
+    const weightFiles = this.files.slice(1);
+    return new Promise((resolve, reject) => {
+      const jsonReader = new FileReader();
+      jsonReader.onload = (event) => {
+        const modelJSON = JSON.parse(event.target.result);
+        const modelTopology = modelJSON.modelTopology;
+        if (modelTopology == null) {
+          reject(new Error(`modelTopology field is missing from file ${jsonFile.name}`));
+          return;
+        }
+        if (weightFiles.length === 0) {
+          resolve({modelTopology});
+        }
+        const weightsManifest = modelJSON.weightsManifest;
+        if (weightsManifest == null) {
+          reject(new Error(`weightManifest field is missing from file ${jsonFile.name}`));
+          return;
+        }
+        let pathToFile;
+        try {
+          pathToFile = this.checkManifestAndWeightFiles(weightsManifest, weightFiles);
+        } catch (err) {
+          reject(err);
+          return;
+        }
+        const weightSpecs = [];
+        const paths = [];
+        const perFileBuffers = [];
+        weightsManifest.forEach((weightsGroup) => {
+          weightsGroup.paths.forEach((path) => {
+            paths.push(path);
+            perFileBuffers.push(null);
+          });
+          weightSpecs.push(...weightsGroup.weights);
+        });
+        weightsManifest.forEach((weightsGroup) => {
+          weightsGroup.paths.forEach((path) => {
+            const weightFileReader = new FileReader();
+            weightFileReader.onload = (event2) => {
+              const weightData = event2.target.result;
+              const index = paths.indexOf(path);
+              perFileBuffers[index] = weightData;
+              if (perFileBuffers.indexOf(null) === -1) {
+                resolve({
+                  modelTopology,
+                  weightSpecs,
+                  weightData: concatenateArrayBuffers(perFileBuffers),
+                  format: modelJSON.format,
+                  generatedBy: modelJSON.generatedBy,
+                  convertedBy: modelJSON.convertedBy,
+                  userDefinedMetadata: modelJSON.userDefinedMetadata
+                });
+              }
+            };
+            weightFileReader.onerror = (error) => reject(`Failed to weights data from file of path '${path}'.`);
+            weightFileReader.readAsArrayBuffer(pathToFile[path]);
+          });
+        });
+      };
+      jsonReader.onerror = (error) => reject(`Failed to read model topology and weights manifest JSON from file '${jsonFile.name}'. BrowserFiles supports loading Keras-style tf.Model artifacts only.`);
+      jsonReader.readAsText(jsonFile);
+    });
+  }
+  checkManifestAndWeightFiles(manifest, files) {
+    const basenames = [];
+    const fileNames = files.map((file) => basename(file.name));
+    const pathToFile = {};
+    for (const group of manifest) {
+      group.paths.forEach((path) => {
+        const pathBasename = basename(path);
+        if (basenames.indexOf(pathBasename) !== -1) {
+          throw new Error(`Duplicate file basename found in weights manifest: '${pathBasename}'`);
+        }
+        basenames.push(pathBasename);
+        if (fileNames.indexOf(pathBasename) === -1) {
+          throw new Error(`Weight file with basename '${pathBasename}' is not provided.`);
+        } else {
+          pathToFile[path] = files[fileNames.indexOf(pathBasename)];
+        }
+      });
+    }
+    if (basenames.length !== files.length) {
+      throw new Error(`Mismatch in the number of files in weights manifest (${basenames.length}) and the number of weight files provided (${files.length}).`);
+    }
+    return pathToFile;
+  }
+}
+const browserDownloadsRouter = (url) => {
+  if (!env().getBool("IS_BROWSER")) {
+    return null;
+  } else {
+    if (!Array.isArray(url) && url.startsWith(BrowserDownloads.URL_SCHEME)) {
+      return browserDownloads(url.slice(BrowserDownloads.URL_SCHEME.length));
+    } else {
+      return null;
+    }
+  }
+};
+IORouterRegistry.registerSaveRouter(browserDownloadsRouter);
+function browserDownloads(fileNamePrefix = "model") {
+  return new BrowserDownloads(fileNamePrefix);
+}
+function browserFiles(files) {
+  return new BrowserFiles(files);
+}
+
+// node_modules/@tensorflow/tfjs-core/dist/io/progress.js
+/**
+ * @license
+ * Copyright 2019 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+function monitorPromisesProgress(promises, onProgress, startFraction, endFraction) {
+  checkPromises(promises);
+  startFraction = startFraction == null ? 0 : startFraction;
+  endFraction = endFraction == null ? 1 : endFraction;
+  checkFraction(startFraction, endFraction);
+  let resolvedPromise = 0;
+  const registerMonitor = (promise) => {
+    promise.then((value) => {
+      const fraction = startFraction + ++resolvedPromise / promises.length * (endFraction - startFraction);
+      onProgress(fraction);
+      return value;
+    });
+    return promise;
+  };
+  function checkPromises(promises2) {
+    assert(promises2 != null && Array.isArray(promises2) && promises2.length > 0, () => "promises must be a none empty array");
+  }
+  function checkFraction(startFraction2, endFraction2) {
+    assert(startFraction2 >= 0 && startFraction2 <= 1, () => `Progress fraction must be in range [0, 1], but got startFraction ${startFraction2}`);
+    assert(endFraction2 >= 0 && endFraction2 <= 1, () => `Progress fraction must be in range [0, 1], but got endFraction ${endFraction2}`);
+    assert(endFraction2 >= startFraction2, () => `startFraction must be no more than endFraction, but got startFraction ${startFraction2} and endFraction ${endFraction2}`);
+  }
+  return Promise.all(promises.map(registerMonitor));
+}
+
+// node_modules/@tensorflow/tfjs-core/dist/io/weights_loader.js
+/**
+ * @license
+ * Copyright 2018 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+async function loadWeightsAsArrayBuffer(fetchURLs, loadOptions) {
+  if (loadOptions == null) {
+    loadOptions = {};
+  }
+  const fetchFunc = loadOptions.fetchFunc == null ? env().platform.fetch : loadOptions.fetchFunc;
+  const requests = fetchURLs.map((fetchURL) => fetchFunc(fetchURL, loadOptions.requestInit, {isBinary: true}));
+  const fetchStartFraction = 0;
+  const fetchEndFraction = 0.5;
+  const responses = loadOptions.onProgress == null ? await Promise.all(requests) : await monitorPromisesProgress(requests, loadOptions.onProgress, fetchStartFraction, fetchEndFraction);
+  const bufferPromises = responses.map((response) => response.arrayBuffer());
+  const bufferStartFraction = 0.5;
+  const bufferEndFraction = 1;
+  const buffers = loadOptions.onProgress == null ? await Promise.all(bufferPromises) : await monitorPromisesProgress(bufferPromises, loadOptions.onProgress, bufferStartFraction, bufferEndFraction);
+  return buffers;
+}
+async function loadWeights(manifest, filePathPrefix = "", weightNames, requestInit) {
+  const fetchWeights = (fetchUrls) => loadWeightsAsArrayBuffer(fetchUrls, {requestInit});
+  const loadWeights2 = weightsLoaderFactory(fetchWeights);
+  return loadWeights2(manifest, filePathPrefix, weightNames);
+}
+function weightsLoaderFactory(fetchWeightsFunction) {
+  return async (manifest, filePathPrefix = "", weightNames) => {
+    const groupIndicesToFetchMap = manifest.map(() => false);
+    const groupWeightsToFetch = {};
+    const weightsFound = weightNames != null ? weightNames.map(() => false) : [];
+    const allManifestWeightNames = [];
+    manifest.forEach((manifestGroupConfig, groupIndex) => {
+      let groupOffset = 0;
+      manifestGroupConfig.weights.forEach((weightsEntry) => {
+        const rawDtype = "quantization" in weightsEntry ? weightsEntry.quantization.dtype : weightsEntry.dtype;
+        const weightsBytes = DTYPE_VALUE_SIZE_MAP[rawDtype] * sizeFromShape(weightsEntry.shape);
+        const enqueueWeightsForFetchingFn = () => {
+          groupIndicesToFetchMap[groupIndex] = true;
+          if (groupWeightsToFetch[groupIndex] == null) {
+            groupWeightsToFetch[groupIndex] = [];
+          }
+          groupWeightsToFetch[groupIndex].push({
+            manifestEntry: weightsEntry,
+            groupOffset,
+            sizeBytes: weightsBytes
+          });
+        };
+        if (weightNames != null) {
+          weightNames.forEach((weightName, weightIndex) => {
+            if (weightName === weightsEntry.name) {
+              enqueueWeightsForFetchingFn();
+              weightsFound[weightIndex] = true;
+            }
+          });
+        } else {
+          enqueueWeightsForFetchingFn();
+        }
+        allManifestWeightNames.push(weightsEntry.name);
+        groupOffset += weightsBytes;
+      });
+    });
+    if (!weightsFound.every((found) => found)) {
+      const weightsNotFound = weightNames.filter((_, i) => !weightsFound[i]);
+      throw new Error(`Could not find weights in manifest with names: ${weightsNotFound.join(", ")}. 
+Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
+    }
+    const groupIndicesToFetch = groupIndicesToFetchMap.reduce((accumulator, shouldFetch, i) => {
+      if (shouldFetch) {
+        accumulator.push(i);
+      }
+      return accumulator;
+    }, []);
+    const fetchUrls = [];
+    groupIndicesToFetch.forEach((i) => {
+      manifest[i].paths.forEach((filepath) => {
+        const fetchUrl = filePathPrefix + (!filePathPrefix.endsWith("/") ? "/" : "") + filepath;
+        fetchUrls.push(fetchUrl);
+      });
+    });
+    const buffers = await fetchWeightsFunction(fetchUrls);
+    const weightsTensorMap = {};
+    let bufferIndexOffset = 0;
+    groupIndicesToFetch.forEach((i) => {
+      const numBuffers = manifest[i].paths.length;
+      let groupBytes = 0;
+      for (let i2 = 0; i2 < numBuffers; i2++) {
+        groupBytes += buffers[bufferIndexOffset + i2].byteLength;
+      }
+      const groupBuffer = new ArrayBuffer(groupBytes);
+      const groupByteBuffer = new Uint8Array(groupBuffer);
+      let groupBufferOffset = 0;
+      for (let i2 = 0; i2 < numBuffers; i2++) {
+        const buffer11 = new Uint8Array(buffers[bufferIndexOffset + i2]);
+        groupByteBuffer.set(buffer11, groupBufferOffset);
+        groupBufferOffset += buffer11.byteLength;
+      }
+      const weightsEntries = groupWeightsToFetch[i];
+      weightsEntries.forEach((weightsEntry) => {
+        const byteBuffer = groupBuffer.slice(weightsEntry.groupOffset, weightsEntry.groupOffset + weightsEntry.sizeBytes);
+        const nameToTensorMap = decodeWeights(byteBuffer, [weightsEntry.manifestEntry]);
+        for (const name in nameToTensorMap) {
+          weightsTensorMap[name] = nameToTensorMap[name];
+        }
+      });
+      bufferIndexOffset += numBuffers;
+    });
+    return weightsTensorMap;
+  };
+}
+
+// node_modules/@tensorflow/tfjs-core/dist/io/http.js
+/**
+ * @license
+ * Copyright 2018 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+const OCTET_STREAM_MIME_TYPE = "application/octet-stream";
+const JSON_TYPE = "application/json";
+class HTTPRequest {
+  constructor(path, loadOptions) {
+    this.DEFAULT_METHOD = "POST";
+    if (loadOptions == null) {
+      loadOptions = {};
+    }
+    this.weightPathPrefix = loadOptions.weightPathPrefix;
+    this.onProgress = loadOptions.onProgress;
+    this.weightUrlConverter = loadOptions.weightUrlConverter;
+    if (loadOptions.fetchFunc != null) {
+      assert(typeof loadOptions.fetchFunc === "function", () => "Must pass a function that matches the signature of `fetch` (see https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)");
+      this.fetch = loadOptions.fetchFunc;
+    } else {
+      this.fetch = env().platform.fetch;
+    }
+    assert(path != null && path.length > 0, () => "URL path for http must not be null, undefined or empty.");
+    if (Array.isArray(path)) {
+      assert(path.length === 2, () => `URL paths for http must have a length of 2, (actual length is ${path.length}).`);
+    }
+    this.path = path;
+    if (loadOptions.requestInit != null && loadOptions.requestInit.body != null) {
+      throw new Error("requestInit is expected to have no pre-existing body, but has one.");
+    }
+    this.requestInit = loadOptions.requestInit || {};
+  }
+  async save(modelArtifacts) {
+    if (modelArtifacts.modelTopology instanceof ArrayBuffer) {
+      throw new Error("BrowserHTTPRequest.save() does not support saving model topology in binary formats yet.");
+    }
+    const init = Object.assign({method: this.DEFAULT_METHOD}, this.requestInit);
+    init.body = new FormData();
+    const weightsManifest = [{
+      paths: ["./model.weights.bin"],
+      weights: modelArtifacts.weightSpecs
+    }];
+    const modelTopologyAndWeightManifest = {
+      modelTopology: modelArtifacts.modelTopology,
+      format: modelArtifacts.format,
+      generatedBy: modelArtifacts.generatedBy,
+      convertedBy: modelArtifacts.convertedBy,
+      userDefinedMetadata: modelArtifacts.userDefinedMetadata,
+      weightsManifest
+    };
+    init.body.append("model.json", new Blob([JSON.stringify(modelTopologyAndWeightManifest)], {type: JSON_TYPE}), "model.json");
+    if (modelArtifacts.weightData != null) {
+      init.body.append("model.weights.bin", new Blob([modelArtifacts.weightData], {type: OCTET_STREAM_MIME_TYPE}), "model.weights.bin");
+    }
+    const response = await this.fetch(this.path, init);
+    if (response.ok) {
+      return {
+        modelArtifactsInfo: getModelArtifactsInfoForJSON(modelArtifacts),
+        responses: [response]
+      };
+    } else {
+      throw new Error(`BrowserHTTPRequest.save() failed due to HTTP response status ${response.status}.`);
+    }
+  }
+  async load() {
+    const modelConfigRequest = await this.fetch(this.path, this.requestInit);
+    if (!modelConfigRequest.ok) {
+      throw new Error(`Request to ${this.path} failed with status code ${modelConfigRequest.status}. Please verify this URL points to the model JSON of the model to load.`);
+    }
+    let modelConfig;
+    try {
+      modelConfig = await modelConfigRequest.json();
+    } catch (e) {
+      let message = `Failed to parse model JSON of response from ${this.path}.`;
+      if (this.path.endsWith(".pb")) {
+        message += " Your path contains a .pb file extension. Support for .pb models have been removed in TensorFlow.js 1.0 in favor of .json models. You can re-convert your Python TensorFlow model using the TensorFlow.js 1.0 conversion scripts or you can convert your.pb models with the 'pb2json'NPM script in the tensorflow/tfjs-converter repository.";
+      } else {
+        message += " Please make sure the server is serving valid JSON for this request.";
+      }
+      throw new Error(message);
+    }
+    const modelTopology = modelConfig.modelTopology;
+    const weightsManifest = modelConfig.weightsManifest;
+    const generatedBy = modelConfig.generatedBy;
+    const convertedBy = modelConfig.convertedBy;
+    const format = modelConfig.format;
+    const userDefinedMetadata = modelConfig.userDefinedMetadata;
+    if (modelTopology == null && weightsManifest == null) {
+      throw new Error(`The JSON from HTTP path ${this.path} contains neither model topology or manifest for weights.`);
+    }
+    let weightSpecs;
+    let weightData;
+    if (weightsManifest != null) {
+      const results = await this.loadWeights(weightsManifest);
+      [weightSpecs, weightData] = results;
+    }
+    return {
+      modelTopology,
+      weightSpecs,
+      weightData,
+      userDefinedMetadata,
+      generatedBy,
+      convertedBy,
+      format
+    };
+  }
+  async loadWeights(weightsManifest) {
+    const weightPath = Array.isArray(this.path) ? this.path[1] : this.path;
+    const [prefix, suffix] = parseUrl(weightPath);
+    const pathPrefix = this.weightPathPrefix || prefix;
+    const weightSpecs = [];
+    for (const entry of weightsManifest) {
+      weightSpecs.push(...entry.weights);
+    }
+    const fetchURLs = [];
+    const urlPromises = [];
+    for (const weightsGroup of weightsManifest) {
+      for (const path of weightsGroup.paths) {
+        if (this.weightUrlConverter != null) {
+          urlPromises.push(this.weightUrlConverter(path));
+        } else {
+          fetchURLs.push(pathPrefix + path + suffix);
+        }
+      }
+    }
+    if (this.weightUrlConverter) {
+      fetchURLs.push(...await Promise.all(urlPromises));
+    }
+    const buffers = await loadWeightsAsArrayBuffer(fetchURLs, {
+      requestInit: this.requestInit,
+      fetchFunc: this.fetch,
+      onProgress: this.onProgress
+    });
+    return [weightSpecs, concatenateArrayBuffers(buffers)];
+  }
+}
+HTTPRequest.URL_SCHEME_REGEX = /^https?:\/\//;
+function parseUrl(url) {
+  const lastSlash = url.lastIndexOf("/");
+  const lastSearchParam = url.lastIndexOf("?");
+  const prefix = url.substring(0, lastSlash);
+  const suffix = lastSearchParam > lastSlash ? url.substring(lastSearchParam) : "";
+  return [prefix + "/", suffix];
+}
+function isHTTPScheme(url) {
+  return url.match(HTTPRequest.URL_SCHEME_REGEX) != null;
+}
+const httpRouter = (url, loadOptions) => {
+  if (typeof fetch === "undefined" && (loadOptions == null || loadOptions.fetchFunc == null)) {
+    return null;
+  } else {
+    let isHTTP = true;
+    if (Array.isArray(url)) {
+      isHTTP = url.every((urlItem) => isHTTPScheme(urlItem));
+    } else {
+      isHTTP = isHTTPScheme(url);
+    }
+    if (isHTTP) {
+      return http(url, loadOptions);
+    }
+  }
+  return null;
+};
+IORouterRegistry.registerSaveRouter(httpRouter);
+IORouterRegistry.registerLoadRouter(httpRouter);
+function http(path, loadOptions) {
+  return new HTTPRequest(path, loadOptions);
+}
+function browserHTTPRequest(path, loadOptions) {
+  return http(path, loadOptions);
+}
+
+// node_modules/@tensorflow/tfjs-core/dist/io/passthrough.js
+/**
+ * @license
+ * Copyright 2018 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+class PassthroughLoader {
+  constructor(modelArtifacts) {
+    this.modelArtifacts = modelArtifacts;
+  }
+  async load() {
+    return this.modelArtifacts;
+  }
+}
+class PassthroughSaver {
+  constructor(saveHandler) {
+    this.saveHandler = saveHandler;
+  }
+  async save(modelArtifacts) {
+    return this.saveHandler(modelArtifacts);
+  }
+}
+function fromMemory(modelArtifacts, weightSpecs, weightData, trainingConfig) {
+  if (arguments.length === 1) {
+    const isModelArtifacts = modelArtifacts.modelTopology != null || modelArtifacts.weightSpecs != null;
+    if (isModelArtifacts) {
+      return new PassthroughLoader(modelArtifacts);
+    } else {
+      console.warn("Please call tf.io.fromMemory() with only one argument. The argument should be of type ModelArtifacts. The multi-argument signature of tf.io.fromMemory() has been deprecated and will be removed in a future release.");
+      return new PassthroughLoader({modelTopology: modelArtifacts});
+    }
+  } else {
+    console.warn("Please call tf.io.fromMemory() with only one argument. The argument should be of type ModelArtifacts. The multi-argument signature of tf.io.fromMemory() has been deprecated and will be removed in a future release.");
+    return new PassthroughLoader({
+      modelTopology: modelArtifacts,
+      weightSpecs,
+      weightData,
+      trainingConfig
+    });
+  }
+}
+function withSaveHandler(saveHandler) {
+  return new PassthroughSaver(saveHandler);
+}
+
+// node_modules/@tensorflow/tfjs-core/dist/io/io.js
+const io_exports = {};
+__export(io_exports, {
+  browserFiles: () => browserFiles,
+  browserHTTPRequest: () => browserHTTPRequest,
+  concatenateArrayBuffers: () => concatenateArrayBuffers,
+  copyModel: () => copyModel,
+  decodeWeights: () => decodeWeights,
+  encodeWeights: () => encodeWeights,
+  fromMemory: () => fromMemory,
+  getLoadHandlers: () => getLoadHandlers,
+  getModelArtifactsInfoForJSON: () => getModelArtifactsInfoForJSON,
+  getSaveHandlers: () => getSaveHandlers,
+  http: () => http,
+  isHTTPScheme: () => isHTTPScheme,
+  listModels: () => listModels,
+  loadWeights: () => loadWeights,
+  moveModel: () => moveModel,
+  registerLoadRouter: () => registerLoadRouter,
+  registerSaveRouter: () => registerSaveRouter,
+  removeModel: () => removeModel,
+  weightsLoaderFactory: () => weightsLoaderFactory,
+  withSaveHandler: () => withSaveHandler
+});
+/**
+ * @license
+ * Copyright 2018 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+
+// node_modules/@tensorflow/tfjs-core/dist/ops/reshape.js
+/**
+ * @license
+ * Copyright 2020 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+function reshape_(x, shape) {
+  const $x = convertToTensor(x, "x", "reshape", null);
+  shape = inferFromImplicitShape(shape, $x.size);
+  assert($x.size === sizeFromShape(shape), () => "new shape and old shape must have the same number of elements.");
+  const inputs = {x: $x};
+  const attrs = {shape};
+  const forward = (backend2, save) => {
+    save([$x]);
+    return backend2.reshape($x, shape);
+  };
+  return ENGINE.runKernelFunc(forward, inputs, null, Reshape, attrs);
+}
+const reshape = op({reshape_});
+
+// node_modules/@tensorflow/tfjs-core/dist/ops/mat_mul.js
+/**
+ * @license
+ * Copyright 2020 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+function matMul_(a, b, transposeA = false, transposeB = false) {
+  let $a = convertToTensor(a, "a", "matMul");
+  let $b = convertToTensor(b, "b", "matMul");
+  [$a, $b] = makeTypesMatch($a, $b);
+  assert($a.rank >= 2 && $b.rank >= 2 && $a.rank === $b.rank, () => `Error in matMul: inputs must have the same rank of at least 2, got ranks ${$a.rank} and ${$b.rank}.`);
+  const innerShapeA = transposeA ? $a.shape[$a.rank - 2] : $a.shape[$a.rank - 1];
+  const innerShapeB = transposeB ? $b.shape[$b.rank - 1] : $b.shape[$b.rank - 2];
+  const outerShapeA = transposeA ? $a.shape[$a.rank - 1] : $a.shape[$a.rank - 2];
+  const outerShapeB = transposeB ? $b.shape[$b.rank - 2] : $b.shape[$b.rank - 1];
+  const outerDimsA = $a.shape.slice(0, -2);
+  const outerDimsB = $b.shape.slice(0, -2);
+  const batchDimA = sizeFromShape(outerDimsA);
+  const batchDimB = sizeFromShape(outerDimsB);
+  assert(arraysEqual(outerDimsA, outerDimsB), () => `Error in matMul: outer dimensions (${outerDimsA}) and (${outerDimsB}) of Tensors with shapes ${$a.shape} and ${$b.shape} must match.`);
+  assert(innerShapeA === innerShapeB, () => `Error in matMul: inner shapes (${innerShapeA}) and (${innerShapeB}) of Tensors with shapes ${$a.shape} and ${$b.shape} and transposeA=${transposeA} and transposeB=${transposeB} must match.`);
+  const outShape = $a.shape.slice(0, -2).concat([outerShapeA, outerShapeB]);
+  const a3D = transposeA ? reshape($a, [batchDimA, innerShapeA, outerShapeA]) : reshape($a, [batchDimA, outerShapeA, innerShapeA]);
+  const b3D = transposeB ? reshape($b, [batchDimB, outerShapeB, innerShapeB]) : reshape($b, [batchDimB, innerShapeB, outerShapeB]);
+  const forward = (backend2, save) => {
+    save([a3D, b3D]);
+    return backend2.batchMatMul(a3D, b3D, transposeA, transposeB);
+  };
+  const inputs = {a: a3D, b: b3D};
+  const attrs = {transposeA, transposeB};
+  const res = ENGINE.runKernelFunc(forward, inputs, null, BatchMatMul, attrs);
+  return reshape(res, outShape);
+}
+const matMul = op({matMul_});
+
+// node_modules/@tensorflow/tfjs-core/dist/ops/one_hot.js
+/**
+ * @license
+ * Copyright 2020 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+function oneHot_(indices, depth, onValue = 1, offValue = 0) {
+  if (depth < 2) {
+    throw new Error(`Error in oneHot: depth must be >=2, but it is ${depth}`);
+  }
+  const $indices = convertToTensor(indices, "indices", "oneHot", "int32");
+  const outShape = [...$indices.shape, depth];
+  const forward = (backend2, save) => {
+    save([$indices]);
+    return reshape(backend2.oneHot(reshape($indices, [$indices.size]), depth, onValue, offValue), outShape);
+  };
+  const inputs = {indices: $indices};
+  const attrs = {depth, onValue, offValue};
+  return ENGINE.runKernelFunc(forward, inputs, null, OneHot, attrs);
+}
+const oneHot = op({oneHot_});
+
+// node_modules/@tensorflow/tfjs-core/dist/ops/transpose.js
+/**
+ * @license
+ * Copyright 2018 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+function transpose_(x, perm) {
+  const $x = convertToTensor(x, "x", "transpose");
+  if (perm == null) {
+    perm = $x.shape.map((s, i) => i).reverse();
+  }
+  assert($x.rank === perm.length, () => `Error in transpose: rank of input ${$x.rank} must match length of perm ${perm}.`);
+  perm.forEach((axis) => {
+    assert(axis >= 0 && axis < $x.rank, () => `All entries in 'perm' must be between 0 and ${$x.rank - 1} but got ${perm}`);
+  });
+  if ($x.rank <= 1) {
+    return $x.clone();
+  }
+  const inputs = {x: $x};
+  const attrs = {perm};
+  return ENGINE.runKernelFunc((backend2) => backend2.transpose($x, perm), inputs, null, Transpose, attrs);
+}
+const transpose = op({transpose_});
+
+// node_modules/@tensorflow/tfjs-core/dist/ops/confusion_matrix.js
+/**
+ * @license
+ * Copyright 2018 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+function confusionMatrix_(labels, predictions, numClasses) {
+  const $labels = convertToTensor(labels, "labels", "confusionMatrix");
+  const $predictions = convertToTensor(predictions, "predictions", "confusionMatrix");
+  assert(numClasses == null || numClasses > 0 && Number.isInteger(numClasses), () => `If provided, numClasses must be a positive integer, but got ${numClasses}`);
+  assert($labels.rank === 1, () => `Expected the rank of labels to be 1, but got ${$labels.rank}`);
+  assert($predictions.rank === 1, () => `Expected the rank of predictions to be 1, but got ${$predictions.rank}`);
+  assert($labels.shape[0] === $predictions.shape[0], () => `Mismatch in the number of examples: ${$labels.shape[0]} vs. ${$predictions.shape[0]}. Labels and predictions should have the same number of elements.`);
+  assert(numClasses > 0 && Number.isInteger(numClasses), () => `numClasses is required to be a positive integer, but got ${numClasses}`);
+  const oneHotLabels = oneHot(cast($labels, "int32"), numClasses);
+  const oneHotPredictions = oneHot(cast($predictions, "int32"), numClasses);
+  const oneHotLabelsT = transpose(oneHotLabels);
+  return cast(matMul(oneHotLabelsT, oneHotPredictions), "int32");
+}
+const confusionMatrix = op({confusionMatrix_});
+
+// node_modules/@tensorflow/tfjs-core/dist/math.js
+const math_exports = {};
+__export(math_exports, {
+  confusionMatrix: () => confusionMatrix
+});
+/**
+ * @license
+ * Copyright 2018 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+
+// node_modules/@tensorflow/tfjs-core/dist/ops/tensor3d.js
+/**
+ * @license
+ * Copyright 2018 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+function tensor3d(values, shape, dtype) {
+  assertNonNull(values);
+  if (shape != null && shape.length !== 3) {
+    throw new Error("tensor3d() requires shape to have three numbers");
+  }
+  const inferredShape = inferShape(values, dtype);
+  if (inferredShape.length !== 3 && inferredShape.length !== 1) {
+    throw new Error("tensor3d() requires values to be number[][][] or flat/TypedArray");
+  }
+  if (inferredShape.length === 1 && shape == null) {
+    throw new Error("tensor3d() requires shape to be provided when `values` are a flat array");
+  }
+  return makeTensor(values, shape, inferredShape, dtype);
+}
+
+// node_modules/@tensorflow/tfjs-core/dist/ops/browser.js
+const browser_exports = {};
+__export(browser_exports, {
+  fromPixels: () => fromPixels,
+  toPixels: () => toPixels
+});
+/**
+ * @license
+ * Copyright 2019 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+let fromPixels2DContext;
+function fromPixels_(pixels, numChannels = 3) {
+  if (numChannels > 4) {
+    throw new Error("Cannot construct Tensor with more than 4 channels from pixels.");
+  }
+  if (pixels == null) {
+    throw new Error("pixels passed to tf.browser.fromPixels() can not be null");
+  }
+  let isPixelData = false;
+  let isImageData = false;
+  let isVideo = false;
+  let isImage = false;
+  let isCanvasLike = false;
+  if (pixels.data instanceof Uint8Array) {
+    isPixelData = true;
+  } else if (typeof ImageData !== "undefined" && pixels instanceof ImageData) {
+    isImageData = true;
+  } else if (typeof HTMLVideoElement !== "undefined" && pixels instanceof HTMLVideoElement) {
+    isVideo = true;
+  } else if (typeof HTMLImageElement !== "undefined" && pixels instanceof HTMLImageElement) {
+    isImage = true;
+  } else if (pixels.getContext != null) {
+    isCanvasLike = true;
+  } else {
+    throw new Error(`pixels passed to tf.browser.fromPixels() must be either an HTMLVideoElement, HTMLImageElement, HTMLCanvasElement, ImageData in browser, or OffscreenCanvas, ImageData in webworker or {data: Uint32Array, width: number, height: number}, but was ${pixels.constructor.name}`);
+  }
+  if (isVideo) {
+    const HAVE_CURRENT_DATA_READY_STATE = 2;
+    if (isVideo && pixels.readyState < HAVE_CURRENT_DATA_READY_STATE) {
+      throw new Error("The video element has not loaded data yet. Please wait for `loadeddata` event on the <video> element.");
+    }
+  }
+  const kernel = getKernel(FromPixels, ENGINE.backendName);
+  if (kernel != null) {
+    const inputs = {pixels};
+    const attrs = {numChannels};
+    return ENGINE.runKernel(FromPixels, inputs, attrs);
+  }
+  const [width, height] = isVideo ? [
+    pixels.videoWidth,
+    pixels.videoHeight
+  ] : [pixels.width, pixels.height];
+  let vals;
+  if (isCanvasLike) {
+    vals = pixels.getContext("2d").getImageData(0, 0, width, height).data;
+  } else if (isImageData || isPixelData) {
+    vals = pixels.data;
+  } else if (isImage || isVideo) {
+    if (fromPixels2DContext == null) {
+      fromPixels2DContext = document.createElement("canvas").getContext("2d");
+    }
+    fromPixels2DContext.canvas.width = width;
+    fromPixels2DContext.canvas.height = height;
+    fromPixels2DContext.drawImage(pixels, 0, 0, width, height);
+    vals = fromPixels2DContext.getImageData(0, 0, width, height).data;
+  }
+  let values;
+  if (numChannels === 4) {
+    values = new Int32Array(vals);
+  } else {
+    const numPixels = width * height;
+    values = new Int32Array(numPixels * numChannels);
+    for (let i = 0; i < numPixels; i++) {
+      for (let channel = 0; channel < numChannels; ++channel) {
+        values[i * numChannels + channel] = vals[i * 4 + channel];
+      }
+    }
+  }
+  const outShape = [height, width, numChannels];
+  return tensor3d(values, outShape, "int32");
+}
+async function toPixels(img, canvas) {
+  let $img = convertToTensor(img, "img", "toPixels");
+  if (!(img instanceof Tensor)) {
+    const originalImgTensor = $img;
+    $img = cast(originalImgTensor, "int32");
+    originalImgTensor.dispose();
+  }
+  if ($img.rank !== 2 && $img.rank !== 3) {
+    throw new Error(`toPixels only supports rank 2 or 3 tensors, got rank ${$img.rank}.`);
+  }
+  const [height, width] = $img.shape.slice(0, 2);
+  const depth = $img.rank === 2 ? 1 : $img.shape[2];
+  if (depth > 4 || depth === 2) {
+    throw new Error(`toPixels only supports depth of size 1, 3 or 4 but got ${depth}`);
+  }
+  if ($img.dtype !== "float32" && $img.dtype !== "int32") {
+    throw new Error(`Unsupported type for toPixels: ${$img.dtype}. Please use float32 or int32 tensors.`);
+  }
+  const data = await $img.data();
+  const multiplier = $img.dtype === "float32" ? 255 : 1;
+  const bytes = new Uint8ClampedArray(width * height * 4);
+  for (let i = 0; i < height * width; ++i) {
+    const rgba = [0, 0, 0, 255];
+    for (let d = 0; d < depth; d++) {
+      const value = data[i * depth + d];
+      if ($img.dtype === "float32") {
+        if (value < 0 || value > 1) {
+          throw new Error(`Tensor values for a float32 Tensor must be in the range [0 - 1] but encountered ${value}.`);
+        }
+      } else if ($img.dtype === "int32") {
+        if (value < 0 || value > 255) {
+          throw new Error(`Tensor values for a int32 Tensor must be in the range [0 - 255] but encountered ${value}.`);
+        }
+      }
+      if (depth === 1) {
+        rgba[0] = value * multiplier;
+        rgba[1] = value * multiplier;
+        rgba[2] = value * multiplier;
+      } else {
+        rgba[d] = value * multiplier;
+      }
+    }
+    const j = i * 4;
+    bytes[j + 0] = Math.round(rgba[0]);
+    bytes[j + 1] = Math.round(rgba[1]);
+    bytes[j + 2] = Math.round(rgba[2]);
+    bytes[j + 3] = Math.round(rgba[3]);
+  }
+  if (canvas != null) {
+    canvas.width = width;
+    canvas.height = height;
+    const ctx = canvas.getContext("2d");
+    const imageData = new ImageData(bytes, width, height);
+    ctx.putImageData(imageData, 0, 0);
+  }
+  if ($img !== img) {
+    $img.dispose();
+  }
+  return bytes;
+}
+const fromPixels = op({fromPixels_});
+
+// node_modules/@tensorflow/tfjs-core/dist/ops/gather_nd_util.js
+const gather_nd_util_exports = {};
+__export(gather_nd_util_exports, {
+  prepareAndValidate: () => prepareAndValidate
+});
+function prepareAndValidate(tensor17, indices) {
+  if (tensor17.rank < 1) {
+    throw new Error(`tf.gatherND() expects the input to be rank 1 or higher, but the rank was ${tensor17.rank}.`);
+  }
+  if (indices.rank < 1) {
+    throw new Error(`tf.gatherND() expects the indices to be rank 1 or higher, but the rank was ${indices.rank}.`);
+  }
+  if (indices.dtype !== "int32") {
+    throw new Error(`tf.gatherND() expects the indices to be int32 type, but the dtype was ${indices.dtype}.`);
+  }
+  if (indices.shape[indices.rank - 1] > tensor17.rank) {
+    throw new Error(`index innermost dimension length must be <= tensor rank; saw: ${indices.shape[indices.rank - 1]} vs. ${tensor17.rank}`);
+  }
+  if (tensor17.size === 0) {
+    throw new Error(`Requested more than 0 entries, but input is empty. Input shape: ${tensor17.shape}.`);
+  }
+  const indicesShape = indices.shape;
+  const sliceRank = indicesShape[indicesShape.length - 1];
+  let nResult = 1;
+  for (let i = 0; i < indicesShape.length - 1; ++i) {
+    nResult *= indicesShape[i];
+  }
+  const inputShape = tensor17.shape;
+  const resultShape = indicesShape.slice();
+  resultShape.pop();
+  let sliceSize = 1;
+  for (let i = sliceRank; i < tensor17.rank; ++i) {
+    sliceSize *= inputShape[i];
+    resultShape.push(inputShape[i]);
+  }
+  const strides = [
+    ...computeStrides(tensor17.shape).map((stride) => stride / sliceSize),
+    1
+  ].slice(0, sliceRank);
+  return [resultShape, nResult, sliceSize, strides];
+}
+
+// node_modules/@tensorflow/tfjs-core/dist/ops/scatter_nd_util.js
+const scatter_nd_util_exports = {};
+__export(scatter_nd_util_exports, {
+  calculateShapes: () => calculateShapes,
+  validateInput: () => validateInput,
+  validateUpdateShape: () => validateUpdateShape
+});
+function validateUpdateShape(shape, indices, updates) {
+  const sliceDim = indices.rank > 1 ? indices.shape[indices.rank - 1] : 1;
+  const batchDim = indices.rank > 1 ? indices.rank - 1 : 1;
+  const shapeError = `Must have updates.shape = indices.shape[:batchDim] + shape[sliceDim:], got updates.shape: ${updates.shape}, indices.shape: ${indices.shape}, shape: ${shape}, sliceDim: ${sliceDim}, and batchDim: ${batchDim}.`;
+  if (updates.rank < batchDim) {
+    throw new Error(shapeError + ` update.rank < ${batchDim}. `);
+  }
+  if (shape.length < sliceDim + (updates.rank - batchDim)) {
+    throw new Error(shapeError + ` Output shape length < ${sliceDim + (updates.rank - batchDim)}`);
+  }
+  if (updates.rank !== batchDim + shape.length - sliceDim) {
+    throw new Error(shapeError + ` update.rank != ${batchDim + shape.length - sliceDim}`);
+  }
+  for (let d = 0; d < batchDim; ++d) {
+    if (updates.shape[d] !== indices.shape[d]) {
+      throw new Error(shapeError + ` updates.shape[${d}] (${updates.shape[d]}) != indices.shape[${d}] (${indices.shape[d]}).`);
+    }
+  }
+  for (let d = 0; d < updates.rank - batchDim; ++d) {
+    if (updates.shape[d + batchDim] !== shape[d + sliceDim]) {
+      throw new Error(shapeError + ` updates.shape[${d + batchDim}] (${updates.shape[d + batchDim]}) != shape[${d + batchDim}] (${shape[d + batchDim]})`);
+    }
+  }
+}
+function validateInput(updates, indices, shape) {
+  if (indices.rank < 1) {
+    throw new Error(`tf.scatterND() expects the indices to be rank 1 or higher, but the rank was ${indices.rank}.`);
+  }
+  if (updates.rank < 1) {
+    throw new Error(`tf.scatterND() expects the updates to be rank 1 or higher, but the rank was ${updates.rank}.`);
+  }
+  if (indices.dtype !== "int32") {
+    throw new Error(`The dtype of 'indices' should be int32, but got dtype: ${indices.dtype}`);
+  }
+  if (shape.length < 1) {
+    throw new Error(`Output rank must be greater or equal to 1, but got shape: ${shape}`);
+  }
+  if (shape.length === 0) {
+    if (indices.size === 0) {
+      throw new Error(`Indices specified for empty output. indices shape: ${indices.shape}`);
+    }
+    if (updates.size === 0) {
+      throw new Error(`Updates specified for empty output. updates shape: ${updates.shape}`);
+    }
+  }
+  validateUpdateShape(shape, indices, updates);
+}
+function calculateShapes(updates, indices, shape) {
+  const indicesRank = indices.shape.length;
+  const sliceRank = indicesRank > 1 ? indices.shape[indicesRank - 1] : 1;
+  const totalNd = shape.length;
+  let sliceSize = 1;
+  for (let i = sliceRank; i < totalNd; ++i) {
+    sliceSize *= shape[i];
+  }
+  const safeSliceDim = sliceRank < 1 ? 1 : sliceRank;
+  const numUpdates = sizeFromShape(indices.shape) / safeSliceDim;
+  const strides = [...computeStrides(shape.slice(0, sliceRank)), 1];
+  const outputSize = sizeFromShape(shape);
+  return {sliceRank, numUpdates, sliceSize, strides, outputSize};
+}
+
+// node_modules/@tensorflow/tfjs-core/dist/ops/slice_util.js
+const slice_util_exports = {};
+__export(slice_util_exports, {
+  assertParamsValid: () => assertParamsValid,
+  computeFlatOffset: () => computeFlatOffset,
+  computeOutShape: () => computeOutShape,
+  getNormalizedAxes: () => getNormalizedAxes,
+  isSliceContinous: () => isSliceContinous,
+  maskToAxes: () => maskToAxes,
+  parseSliceParams: () => parseSliceParams,
+  startForAxis: () => startForAxis,
+  startIndicesWithElidedDims: () => startIndicesWithElidedDims,
+  stopForAxis: () => stopForAxis,
+  stopIndicesWithElidedDims: () => stopIndicesWithElidedDims,
+  stridesForAxis: () => stridesForAxis,
+  stridesWithElidedDims: () => stridesWithElidedDims
+});
+/**
+ * @license
+ * Copyright 2017 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+function assertParamsValid(input, begin, size) {
+  assert(input.rank === begin.length, () => `Error in slice${input.rank}D: Length of begin ${begin} must match the rank of the array (${input.rank}).`);
+  assert(input.rank === size.length, () => `Error in slice${input.rank}D: Length of size ${size} must match the rank of the array (${input.rank}).`);
+  for (let i = 0; i < input.rank; ++i) {
+    assert(begin[i] + size[i] <= input.shape[i], () => `Error in slice${input.rank}D: begin[${i}] + size[${i}] (${begin[i] + size[i]}) would overflow input.shape[${i}] (${input.shape[i]})`);
+  }
+}
+function maskToAxes(mask) {
+  const axes = [];
+  let axis = 0;
+  while (mask > 0) {
+    if (mask & 1) {
+      axes.push(axis);
+    }
+    mask /= 2;
+    axis++;
+  }
+  return axes;
+}
+function computeOutShape(begin, end, strides) {
+  const size = [];
+  for (let axis = 0; axis < begin.length; axis++) {
+    size[axis] = Math.ceil((end[axis] - begin[axis]) / strides[axis]);
+  }
+  return size;
+}
+function stridesWithElidedDims(strides, ellipsisInsertionIndex, numElidedAxes, inputShape) {
+  const newStrides = [...strides];
+  for (let i = newStrides.length; i < inputShape.length; i++) {
+    newStrides.push(1);
+  }
+  for (let i = 0; i < numElidedAxes; i++) {
+    if (i === 0) {
+      newStrides[ellipsisInsertionIndex] = 1;
+    } else {
+      newStrides.splice(ellipsisInsertionIndex, 0, 1);
+      newStrides.pop();
+    }
+  }
+  return newStrides;
+}
+function unnormalizeAxis(ellipsisInsertionIndex, numElidedAxes, normalizedAxis) {
+  if (normalizedAxis <= ellipsisInsertionIndex) {
+    return normalizedAxis;
+  }
+  return normalizedAxis - (numElidedAxes - 1);
+}
+function getElidedAxes(numElidedAxes, ellipsisInsertionIndex) {
+  const elidedAxes = [];
+  for (let i = 0; i < numElidedAxes; i++) {
+    elidedAxes.push(ellipsisInsertionIndex + i);
+  }
+  return elidedAxes;
+}
+function getNormalizedAxes(inputShape, ellipsisAxes, numInterpolatedAxes, begin, end, strides, beginMask, endMask, ellipsisMask) {
+  const inputRank = inputShape.length;
+  let normalizedBegin = new Array(inputRank), normalizedEnd = new Array(inputRank), normalizedStrides = new Array(inputRank);
+  if (ellipsisAxes.length && numInterpolatedAxes > 0) {
+    const fullIndex = ellipsisAxes[0];
+    const numElidedAxes = numInterpolatedAxes + 1;
+    normalizedBegin = startIndicesWithElidedDims(beginMask, fullIndex, numElidedAxes, begin, inputShape);
+    normalizedEnd = stopIndicesWithElidedDims(endMask, fullIndex, numElidedAxes, end, inputShape);
+    normalizedStrides = stridesWithElidedDims(strides, fullIndex, numElidedAxes, inputShape);
+  } else {
+    for (let axis = 0; axis < inputRank; axis++) {
+      normalizedBegin[axis] = startForAxis(beginMask, begin, strides, inputShape, axis, ellipsisMask);
+      normalizedEnd[axis] = stopForAxis(endMask, end, strides, inputShape, axis, ellipsisMask);
+      normalizedStrides[axis] = stridesForAxis(strides, axis, ellipsisMask);
+    }
+  }
+  return {
+    begin: normalizedBegin,
+    end: normalizedEnd,
+    strides: normalizedStrides
+  };
+}
+function startIndicesWithElidedDims(beginMask, ellipsisInsertionIndex, numElidedAxes, originalBegin, inputShape) {
+  const newIndices = [...inputShape];
+  const elidedAxes = getElidedAxes(numElidedAxes, ellipsisInsertionIndex);
+  for (let axis = 0; axis < newIndices.length; axis++) {
+    if (elidedAxes.indexOf(axis) > -1) {
+      newIndices[axis] = 0;
+    } else {
+      const originalAxis = unnormalizeAxis(ellipsisInsertionIndex, numElidedAxes, axis);
+      let originalValue = originalBegin[originalAxis];
+      if (beginMask & 1 << originalAxis) {
+        originalValue = 0;
+      }
+      newIndices[axis] = originalValue;
+    }
+  }
+  return newIndices;
+}
+function stopIndicesWithElidedDims(endMask, ellipsisInsertionIndex, numElidedAxes, originalEnd, inputShape) {
+  const newIndices = [...inputShape];
+  const elidedAxes = getElidedAxes(numElidedAxes, ellipsisInsertionIndex);
+  for (let axis = 0; axis < newIndices.length; axis++) {
+    if (elidedAxes.indexOf(axis) > -1) {
+      newIndices[axis] = Number.MAX_SAFE_INTEGER;
+    } else {
+      const originalAxis = unnormalizeAxis(ellipsisInsertionIndex, numElidedAxes, axis);
+      let originalValue = originalEnd[originalAxis];
+      if (endMask & 1 << originalAxis) {
+        originalValue = Number.MAX_SAFE_INTEGER;
+      }
+      newIndices[axis] = originalValue;
+    }
+  }
+  for (let i = 0; i < newIndices.length; i++) {
+    const axisSize = inputShape[i];
+    if (newIndices[i] < 0) {
+      newIndices[i] += axisSize;
+    }
+    newIndices[i] = clamp(0, newIndices[i], inputShape[i]);
+  }
+  return newIndices;
+}
+function stridesForAxis(strides, axis, ellipsisMask) {
+  let stride = strides[axis];
+  if (ellipsisMask & 1 << axis || stride == null) {
+    stride = 1;
+  }
+  return stride;
+}
+function startForAxis(beginMask, startIndices, strides, inputShape, axis, ellipsisMask) {
+  let start = startIndices[axis];
+  const stride = strides[axis] || 1;
+  if (beginMask & 1 << axis || ellipsisMask & 1 << axis || start == null) {
+    if (stride > 0) {
+      start = Number.MIN_SAFE_INTEGER;
+    } else {
+      start = Number.MAX_SAFE_INTEGER;
+    }
+  }
+  const axisSize = inputShape[axis];
+  if (start < 0) {
+    start += axisSize;
+  }
+  start = clamp(0, start, axisSize - 1);
+  return start;
+}
+function stopForAxis(endMask, stopIndices, strides, inputShape, axis, ellipsisMask) {
+  let stop = stopIndices[axis];
+  const stride = strides[axis] || 1;
+  if (endMask & 1 << axis || ellipsisMask & 1 << axis || stop == null) {
+    if (stride > 0) {
+      stop = Number.MAX_SAFE_INTEGER;
+    } else {
+      stop = Number.MIN_SAFE_INTEGER;
+    }
+  }
+  const axisSize = inputShape[axis];
+  if (stop < 0) {
+    stop += axisSize;
+  }
+  if (stride > 0) {
+    stop = clamp(0, stop, axisSize);
+  } else {
+    stop = clamp(-1, stop, axisSize - 1);
+  }
+  return stop;
+}
+function isSliceContinous(shape, begin, size) {
+  let firstNonOneAxis = size.length;
+  for (let i = 0; i < size.length; i++) {
+    if (size[i] > 1) {
+      firstNonOneAxis = i;
+      break;
+    }
+  }
+  for (let i = firstNonOneAxis + 1; i < size.length; i++) {
+    if (begin[i] > 0 || size[i] !== shape[i]) {
+      return false;
+    }
+  }
+  return true;
+}
+function computeFlatOffset(begin, strides) {
+  let flatOffset = begin.length > 0 ? begin[begin.length - 1] : 1;
+  for (let i = 0; i < begin.length - 1; i++) {
+    flatOffset += begin[i] * strides[i];
+  }
+  return flatOffset;
+}
+function parseSliceParams(x, begin, size) {
+  let begin_;
+  if (typeof begin === "number") {
+    begin_ = [begin, ...new Array(x.rank - 1).fill(0)];
+  } else if (begin.length < x.rank) {
+    begin_ = begin.concat(new Array(x.rank - begin.length).fill(0));
+  } else {
+    begin_ = begin.slice();
+  }
+  begin_.forEach((d) => {
+    assert(d !== -1, () => "slice() does not support negative begin indexing.");
+  });
+  let size_;
+  if (size == null) {
+    size_ = new Array(x.rank).fill(-1);
+  } else if (typeof size === "number") {
+    size_ = [size, ...new Array(x.rank - 1).fill(-1)];
+  } else if (size.length < x.rank) {
+    size_ = size.concat(new Array(x.rank - size.length).fill(-1));
+  } else {
+    size_ = size;
+  }
+  size_ = size_.map((d, i) => {
+    if (d >= 0) {
+      return d;
+    } else {
+      assert(d === -1, () => `Negative size values should be exactly -1 but got ${d} for the slice() size at index ${i}.`);
+      return x.shape[i] - begin_[i];
+    }
+  });
+  return [begin_, size_];
+}
+
+// node_modules/@tensorflow/tfjs-core/dist/serialization.js
+const serialization_exports = {};
+__export(serialization_exports, {
+  Serializable: () => Serializable,
+  SerializationMap: () => SerializationMap,
+  registerClass: () => registerClass
+});
+/**
+ * @license
+ * Copyright 2018 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+class Serializable {
+  getClassName() {
+    return this.constructor.className;
+  }
+  static fromConfig(cls, config2) {
+    return new cls(config2);
+  }
+}
+class SerializationMap {
+  constructor() {
+    this.classNameMap = {};
+  }
+  static getMap() {
+    if (SerializationMap.instance == null) {
+      SerializationMap.instance = new SerializationMap();
+    }
+    return SerializationMap.instance;
+  }
+  static register(cls) {
+    SerializationMap.getMap().classNameMap[cls.className] = [cls, cls.fromConfig];
+  }
+}
+function registerClass(cls) {
+  assert(cls.className != null, () => `Class being registered does not have the static className property defined.`);
+  assert(typeof cls.className === "string", () => `className is required to be a string, but got type ` + typeof cls.className);
+  assert(cls.className.length > 0, () => `Class being registered has an empty-string as its className, which is disallowed.`);
+  SerializationMap.register(cls);
+}
+
+// node_modules/@tensorflow/tfjs-core/dist/test_util.js
+const test_util_exports = {};
+__export(test_util_exports, {
+  TEST_EPSILON_FLOAT16: () => TEST_EPSILON_FLOAT16,
+  expectArrayBuffersEqual: () => expectArrayBuffersEqual,
+  expectArraysClose: () => expectArraysClose,
+  expectArraysEqual: () => expectArraysEqual,
+  expectNumbersClose: () => expectNumbersClose,
+  expectPromiseToFail: () => expectPromiseToFail,
+  expectValuesInRange: () => expectValuesInRange,
+  testEpsilon: () => testEpsilon
+});
+/**
+ * @license
+ * Copyright 2017 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+const TEST_EPSILON_FLOAT32 = 1e-3;
+const TEST_EPSILON_FLOAT16 = 0.1;
+function expectArraysClose(actual, expected, epsilon2) {
+  if (epsilon2 == null) {
+    epsilon2 = testEpsilon();
+  }
+  return expectArraysPredicate(actual, expected, (a, b) => areClose(a, b, epsilon2));
+}
+function testEpsilon() {
+  return ENGINE.backend.floatPrecision() === 32 ? TEST_EPSILON_FLOAT32 : TEST_EPSILON_FLOAT16;
+}
+function expectArraysPredicate(actual, expected, predicate) {
+  let checkClassType = true;
+  if (isTypedArray(actual) || isTypedArray(expected)) {
+    checkClassType = false;
+  }
+  if (isTypedArray(actual) && isTypedArray(expected)) {
+    checkClassType = true;
+  }
+  if (checkClassType) {
+    const aType = actual.constructor.name;
+    const bType = expected.constructor.name;
+    if (aType !== bType) {
+      throw new Error(`Arrays are of different type. Actual: ${aType}. Expected: ${bType}`);
+    }
+  }
+  if (Array.isArray(actual) && Array.isArray(expected)) {
+    const actualShape = inferShape(actual);
+    const expectedShape = inferShape(expected);
+    if (!arraysEqual(actualShape, expectedShape)) {
+      throw new Error(`Arrays have different shapes. Actual: [${actualShape}]. Expected: [${expectedShape}]`);
+    }
+  }
+  const actualFlat = isTypedArray(actual) ? actual : flatten(actual);
+  const expectedFlat = isTypedArray(expected) ? expected : flatten(expected);
+  if (actualFlat.length !== expectedFlat.length) {
+    throw new Error(`Arrays have different lengths actual: ${actualFlat.length} vs expected: ${expectedFlat.length}.
+Actual:   ${actualFlat}.
+Expected: ${expectedFlat}.`);
+  }
+  for (let i = 0; i < expectedFlat.length; ++i) {
+    const a = actualFlat[i];
+    const e = expectedFlat[i];
+    if (!predicate(a, e)) {
+      throw new Error(`Arrays differ: actual[${i}] = ${a}, expected[${i}] = ${e}.
+Actual:   ${actualFlat}.
+Expected: ${expectedFlat}.`);
+    }
+  }
+}
+function expectPromiseToFail(fn, done) {
+  fn().then(() => done.fail(), () => done());
+}
+function expectArraysEqual(actual, expected) {
+  const exp11 = typeof expected === "string" || typeof expected === "number" || typeof expected === "boolean" ? [expected] : expected;
+  if (isString(actual) || isString(actual[0]) || isString(expected) || isString(expected[0])) {
+    return expectArraysPredicate(actual, exp11, (a, b) => a == b);
+  }
+  return expectArraysPredicate(actual, expected, (a, b) => areClose(a, b, 0));
+}
+function expectNumbersClose(a, e, epsilon2) {
+  if (epsilon2 == null) {
+    epsilon2 = testEpsilon();
+  }
+  if (!areClose(a, e, epsilon2)) {
+    throw new Error(`Numbers differ: actual === ${a}, expected === ${e}`);
+  }
+}
+function areClose(a, e, epsilon2) {
+  if (!isFinite(a) && !isFinite(e)) {
+    return true;
+  }
+  if (isNaN(a) || isNaN(e) || Math.abs(a - e) > epsilon2) {
+    return false;
+  }
+  return true;
+}
+function expectValuesInRange(actual, low, high) {
+  for (let i = 0; i < actual.length; i++) {
+    if (actual[i] < low || actual[i] > high) {
+      throw new Error(`Value out of range:${actual[i]} low: ${low}, high: ${high}`);
+    }
+  }
+}
+function expectArrayBuffersEqual(actual, expected) {
+  expect(new Float32Array(actual)).toEqual(new Float32Array(expected));
+}
+
+// node_modules/@tensorflow/tfjs-core/dist/version.js
+/** @license See the LICENSE file. */
+const version = "2.4.0";
+
+// node_modules/@tensorflow/tfjs-core/dist/globals.js
+/**
+ * @license
+ * Copyright 2018 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+function enableProdMode() {
+  env().set("PROD", true);
+}
+function enableDebugMode() {
+  env().set("DEBUG", true);
+}
+function disableDeprecationWarnings() {
+  env().set("DEPRECATION_WARNINGS_ENABLED", false);
+  console.warn(`TensorFlow.js deprecation warnings have been disabled.`);
+}
+function deprecationWarn(msg) {
+  if (env().getBool("DEPRECATION_WARNINGS_ENABLED")) {
+    console.warn(msg + " You can disable deprecation warnings with tf.disableDeprecationWarnings().");
+  }
+}
+setDeprecationWarningFn(deprecationWarn);
+function disposeVariables() {
+  ENGINE.disposeVariables();
+}
+function engine15() {
+  return ENGINE;
+}
+function memory() {
+  return ENGINE.memory();
+}
+function profile(f) {
+  return ENGINE.profile(f);
+}
+function tidy(nameOrFn, fn) {
+  return ENGINE.tidy(nameOrFn, fn);
+}
+function dispose(container) {
+  const tensors = getTensorsInContainer(container);
+  tensors.forEach((tensor17) => tensor17.dispose());
+}
+function keep(result) {
+  return ENGINE.keep(result);
+}
+function time(f) {
+  return ENGINE.time(f);
+}
+function setBackend(backendName) {
+  return ENGINE.setBackend(backendName);
+}
+function ready() {
+  return ENGINE.ready();
+}
+function getBackend() {
+  return ENGINE.backendName;
+}
+function removeBackend(name) {
+  ENGINE.removeBackend(name);
+}
+function findBackend(name) {
+  return ENGINE.findBackend(name);
+}
+function findBackendFactory(name) {
+  return ENGINE.findBackendFactory(name);
+}
+function registerBackend(name, factory, priority = 1) {
+  return ENGINE.registerBackend(name, factory, priority);
+}
+function backend() {
+  return ENGINE.backend;
+}
+function setPlatform(platformName, platform) {
+  env().setPlatform(platformName, platform);
+}
+
+// node_modules/@tensorflow/tfjs-core/dist/ops/add.js
+/**
+ * @license
+ * Copyright 2020 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+function add_(a, b) {
+  let $a = convertToTensor(a, "a", "add");
+  let $b = convertToTensor(b, "b", "add");
+  [$a, $b] = makeTypesMatch($a, $b);
+  const forward = (backend2, save) => {
+    const res = backend2.add($a, $b);
+    save([$a, $b]);
+    return res;
+  };
+  const inputs = {a: $a, b: $b};
+  return ENGINE.runKernelFunc(forward, inputs, null, Add);
+}
+const add2 = op({add_});
+
+// node_modules/@tensorflow/tfjs-core/dist/ops/floorDiv.js
+/**
+ * @license
+ * Copyright 2020 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+function floorDiv_(a, b) {
+  let $a = convertToTensor(a, "a", "floorDiv");
+  let $b = convertToTensor(b, "b", "floorDiv");
+  [$a, $b] = makeTypesMatch($a, $b);
+  const forward = (backend2, save) => {
+    const res = backend2.floorDiv($a, $b);
+    save([$a, $b]);
+    return res;
+  };
+  const inputs = {a: $a, b: $b};
+  return ENGINE.runKernelFunc(forward, inputs, null, FloorDiv);
+}
+const floorDiv = op({floorDiv_});
+
+// node_modules/@tensorflow/tfjs-core/dist/ops/div.js
+/**
+ * @license
+ * Copyright 2020 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+function div_(a, b) {
+  let $a = convertToTensor(a, "a", "div");
+  let $b = convertToTensor(b, "b", "div");
+  [$a, $b] = makeTypesMatch($a, $b);
+  if ($a.dtype === "int32" && $b.dtype === "int32") {
+    return floorDiv($a, $b);
+  }
+  const forward = (backend2, save) => {
+    const res = backend2.realDivide($a, $b);
+    save([$a, $b]);
+    return res;
+  };
+  const inputs = {a: $a, b: $b};
+  const attrs = {};
+  return ENGINE.runKernelFunc(forward, inputs, null, Div, attrs);
+}
+const div = op({div_});
+
+// node_modules/@tensorflow/tfjs-core/dist/ops/mul.js
+/**
+ * @license
+ * Copyright 2020 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+function mul_(a, b) {
+  let $a = convertToTensor(a, "a", "mul");
+  let $b = convertToTensor(b, "b", "mul");
+  [$a, $b] = makeTypesMatch($a, $b);
+  const forward = (backend2, save) => {
+    const res = backend2.multiply($a, $b);
+    save([$a, $b]);
+    return res;
+  };
+  const inputs = {a: $a, b: $b};
+  return ENGINE.runKernelFunc(forward, inputs, null, Multiply);
+}
+const mul = op({mul_});
 
 // node_modules/@tensorflow/tfjs-core/dist/ops/abs.js
 /**
@@ -3366,37 +5825,6 @@ function acosh_(x) {
   }, inputs, null, Acosh);
 }
 const acosh = op({acosh_});
-
-// node_modules/@tensorflow/tfjs-core/dist/ops/add.js
-/**
- * @license
- * Copyright 2020 Google LLC. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =============================================================================
- */
-function add_(a, b) {
-  let $a = convertToTensor(a, "a", "add");
-  let $b = convertToTensor(b, "b", "add");
-  [$a, $b] = makeTypesMatch($a, $b);
-  const forward = (backend2, save) => {
-    const res = backend2.add($a, $b);
-    save([$a, $b]);
-    return res;
-  };
-  const inputs = {a: $a, b: $b};
-  return ENGINE.runKernelFunc(forward, inputs, null, Add);
-}
-const add2 = op({add_});
 
 // node_modules/@tensorflow/tfjs-core/dist/ops/add_n.js
 /**
@@ -3520,72 +5948,6 @@ function getInnerMostAxes(numAxes, rank) {
   }
   return res;
 }
-
-// node_modules/@tensorflow/tfjs-core/dist/ops/reshape.js
-/**
- * @license
- * Copyright 2020 Google LLC. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =============================================================================
- */
-function reshape_(x, shape) {
-  const $x = convertToTensor(x, "x", "reshape", null);
-  shape = inferFromImplicitShape(shape, $x.size);
-  assert($x.size === sizeFromShape(shape), () => "new shape and old shape must have the same number of elements.");
-  const inputs = {x: $x};
-  const attrs = {shape};
-  const forward = (backend2, save) => {
-    save([$x]);
-    return backend2.reshape($x, shape);
-  };
-  return ENGINE.runKernelFunc(forward, inputs, null, Reshape, attrs);
-}
-const reshape = op({reshape_});
-
-// node_modules/@tensorflow/tfjs-core/dist/ops/transpose.js
-/**
- * @license
- * Copyright 2018 Google LLC. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =============================================================================
- */
-function transpose_(x, perm) {
-  const $x = convertToTensor(x, "x", "transpose");
-  if (perm == null) {
-    perm = $x.shape.map((s, i) => i).reverse();
-  }
-  assert($x.rank === perm.length, () => `Error in transpose: rank of input ${$x.rank} must match length of perm ${perm}.`);
-  perm.forEach((axis) => {
-    assert(axis >= 0 && axis < $x.rank, () => `All entries in 'perm' must be between 0 and ${$x.rank - 1} but got ${perm}`);
-  });
-  if ($x.rank <= 1) {
-    return $x.clone();
-  }
-  const inputs = {x: $x};
-  const attrs = {perm};
-  return ENGINE.runKernelFunc((backend2) => backend2.transpose($x, perm), inputs, null, Transpose, attrs);
-}
-const transpose = op({transpose_});
 
 // node_modules/@tensorflow/tfjs-core/dist/ops/all.js
 /**
@@ -3882,37 +6244,6 @@ function atanh_(x) {
   }, inputs, null, Atanh);
 }
 const atanh = op({atanh_});
-
-// node_modules/@tensorflow/tfjs-core/dist/ops/cast.js
-/**
- * @license
- * Copyright 2020 Google Inc. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =============================================================================
- */
-function cast_(x, dtype) {
-  const $x = convertToTensor(x, "x", "cast");
-  if (!isValidDtype(dtype)) {
-    throw new Error(`Failed to cast to unknown dtype ${dtype}`);
-  }
-  if (dtype === "string" && $x.dtype !== "string" || dtype !== "string" && $x.dtype === "string") {
-    throw new Error("Only strings can be casted to strings");
-  }
-  const inputs = {x: $x};
-  const attrs = {dtype};
-  return ENGINE.runKernelFunc((backend2) => backend2.cast($x, dtype), inputs, null, Cast, attrs);
-}
-const cast = op({cast_});
 
 // node_modules/@tensorflow/tfjs-core/dist/ops/conv_util.js
 /**
@@ -4282,92 +6613,6 @@ function avgPool_(x, filterSize, strides, pad8, dimRoundingMode) {
 }
 const avgPool = op({avgPool_});
 
-// node_modules/@tensorflow/tfjs-core/dist/globals.js
-/**
- * @license
- * Copyright 2018 Google LLC. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =============================================================================
- */
-function enableProdMode() {
-  env().set("PROD", true);
-}
-function enableDebugMode() {
-  env().set("DEBUG", true);
-}
-function disableDeprecationWarnings() {
-  env().set("DEPRECATION_WARNINGS_ENABLED", false);
-  console.warn(`TensorFlow.js deprecation warnings have been disabled.`);
-}
-function deprecationWarn(msg) {
-  if (env().getBool("DEPRECATION_WARNINGS_ENABLED")) {
-    console.warn(msg + " You can disable deprecation warnings with tf.disableDeprecationWarnings().");
-  }
-}
-setDeprecationWarningFn(deprecationWarn);
-function disposeVariables() {
-  ENGINE.disposeVariables();
-}
-function engine22() {
-  return ENGINE;
-}
-function memory() {
-  return ENGINE.memory();
-}
-function profile(f) {
-  return ENGINE.profile(f);
-}
-function tidy(nameOrFn, fn) {
-  return ENGINE.tidy(nameOrFn, fn);
-}
-function dispose(container) {
-  const tensors = getTensorsInContainer(container);
-  tensors.forEach((tensor17) => tensor17.dispose());
-}
-function keep(result) {
-  return ENGINE.keep(result);
-}
-function time(f) {
-  return ENGINE.time(f);
-}
-function setBackend(backendName) {
-  return ENGINE.setBackend(backendName);
-}
-function ready() {
-  return ENGINE.ready();
-}
-function getBackend() {
-  return ENGINE.backendName;
-}
-function removeBackend(name) {
-  ENGINE.removeBackend(name);
-}
-function findBackend(name) {
-  return ENGINE.findBackend(name);
-}
-function findBackendFactory(name) {
-  return ENGINE.findBackendFactory(name);
-}
-function registerBackend(name, factory, priority = 1) {
-  return ENGINE.registerBackend(name, factory, priority);
-}
-function backend() {
-  return ENGINE.backend;
-}
-function setPlatform(platformName, platform) {
-  env().setPlatform(platformName, platform);
-}
-
 // node_modules/@tensorflow/tfjs-core/dist/ops/avg_pool_3d.js
 /**
  * @license
@@ -4453,80 +6698,12 @@ function assertParamsConsistent(shapes, axis) {
     }
   });
 }
-function computeOutShape(shapes, axis) {
+function computeOutShape2(shapes, axis) {
   const outputShape = shapes[0].slice();
   for (let i = 1; i < shapes.length; i++) {
     outputShape[axis] += shapes[i][axis];
   }
   return outputShape;
-}
-
-// node_modules/@tensorflow/tfjs-core/dist/ops/tensor_ops_util.js
-/**
- * @license
- * Copyright 2018 Google LLC. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =============================================================================
- */
-function makeTensor(values, shape, inferredShape, dtype) {
-  if (dtype == null) {
-    dtype = inferDtype(values);
-  }
-  if (dtype === "complex64") {
-    throw new Error(`Cannot construct a complex64 tensor directly. Please use tf.complex(real, imag).`);
-  }
-  if (!isTypedArray(values) && !Array.isArray(values) && typeof values !== "number" && typeof values !== "boolean" && typeof values !== "string") {
-    throw new Error("values passed to tensor(values) must be a number/boolean/string or an array of numbers/booleans/strings, or a TypedArray");
-  }
-  if (shape != null) {
-    assertNonNegativeIntegerDimensions(shape);
-    const providedSize = sizeFromShape(shape);
-    const inferredSize = sizeFromShape(inferredShape);
-    assert(providedSize === inferredSize, () => `Based on the provided shape, [${shape}], the tensor should have ${providedSize} values but has ${inferredSize}`);
-    for (let i = 0; i < inferredShape.length; ++i) {
-      const inferred = inferredShape[i];
-      const flatDimsDontMatch = i === inferredShape.length - 1 ? inferred !== sizeFromShape(shape.slice(i)) : true;
-      assert(inferredShape[i] === shape[i] || !flatDimsDontMatch, () => `Error creating a new Tensor. Inferred shape (${inferredShape}) does not match the provided shape (${shape}). `);
-    }
-  }
-  if (!isTypedArray(values) && !Array.isArray(values)) {
-    values = [values];
-  }
-  shape = shape || inferredShape;
-  values = dtype !== "string" ? toTypedArray(values, dtype) : flatten(values, [], true);
-  return ENGINE.makeTensor(values, shape, dtype);
-}
-
-// node_modules/@tensorflow/tfjs-core/dist/ops/tensor.js
-/**
- * @license
- * Copyright 2018 Google LLC. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =============================================================================
- */
-function tensor5(values, shape, dtype) {
-  const inferredShape = inferShape(values, dtype);
-  return makeTensor(values, shape, inferredShape, dtype);
 }
 
 // node_modules/@tensorflow/tfjs-core/dist/ops/concat.js
@@ -4558,9 +6735,9 @@ function concat_(tensors, axis = 0) {
     });
   }
   const $axis = parseAxisParam(axis, $tensors[0].shape)[0];
-  const outShape = computeOutShape($tensors.map((t) => t.shape), $axis);
+  const outShape = computeOutShape2($tensors.map((t) => t.shape), $axis);
   if (sizeFromShape(outShape) === 0) {
-    return tensor5([], outShape);
+    return tensor4([], outShape);
   }
   $tensors = $tensors.filter((t) => t.size > 0);
   if ($tensors.length === 1) {
@@ -4578,83 +6755,6 @@ function concat_(tensors, axis = 0) {
   return ENGINE.runKernelFunc(forward, inputs, null, Concat, attr);
 }
 const concat = op({concat_});
-
-// node_modules/@tensorflow/tfjs-core/dist/ops/mat_mul.js
-/**
- * @license
- * Copyright 2020 Google LLC. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =============================================================================
- */
-function matMul_(a, b, transposeA = false, transposeB = false) {
-  let $a = convertToTensor(a, "a", "matMul");
-  let $b = convertToTensor(b, "b", "matMul");
-  [$a, $b] = makeTypesMatch($a, $b);
-  assert($a.rank >= 2 && $b.rank >= 2 && $a.rank === $b.rank, () => `Error in matMul: inputs must have the same rank of at least 2, got ranks ${$a.rank} and ${$b.rank}.`);
-  const innerShapeA = transposeA ? $a.shape[$a.rank - 2] : $a.shape[$a.rank - 1];
-  const innerShapeB = transposeB ? $b.shape[$b.rank - 1] : $b.shape[$b.rank - 2];
-  const outerShapeA = transposeA ? $a.shape[$a.rank - 1] : $a.shape[$a.rank - 2];
-  const outerShapeB = transposeB ? $b.shape[$b.rank - 2] : $b.shape[$b.rank - 1];
-  const outerDimsA = $a.shape.slice(0, -2);
-  const outerDimsB = $b.shape.slice(0, -2);
-  const batchDimA = sizeFromShape(outerDimsA);
-  const batchDimB = sizeFromShape(outerDimsB);
-  assert(arraysEqual(outerDimsA, outerDimsB), () => `Error in matMul: outer dimensions (${outerDimsA}) and (${outerDimsB}) of Tensors with shapes ${$a.shape} and ${$b.shape} must match.`);
-  assert(innerShapeA === innerShapeB, () => `Error in matMul: inner shapes (${innerShapeA}) and (${innerShapeB}) of Tensors with shapes ${$a.shape} and ${$b.shape} and transposeA=${transposeA} and transposeB=${transposeB} must match.`);
-  const outShape = $a.shape.slice(0, -2).concat([outerShapeA, outerShapeB]);
-  const a3D = transposeA ? reshape($a, [batchDimA, innerShapeA, outerShapeA]) : reshape($a, [batchDimA, outerShapeA, innerShapeA]);
-  const b3D = transposeB ? reshape($b, [batchDimB, outerShapeB, innerShapeB]) : reshape($b, [batchDimB, innerShapeB, outerShapeB]);
-  const forward = (backend2, save) => {
-    save([a3D, b3D]);
-    return backend2.batchMatMul(a3D, b3D, transposeA, transposeB);
-  };
-  const inputs = {a: a3D, b: b3D};
-  const attrs = {transposeA, transposeB};
-  const res = ENGINE.runKernelFunc(forward, inputs, null, BatchMatMul, attrs);
-  return reshape(res, outShape);
-}
-const matMul = op({matMul_});
-
-// node_modules/@tensorflow/tfjs-core/dist/ops/mul.js
-/**
- * @license
- * Copyright 2020 Google LLC. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =============================================================================
- */
-function mul_(a, b) {
-  let $a = convertToTensor(a, "a", "mul");
-  let $b = convertToTensor(b, "b", "mul");
-  [$a, $b] = makeTypesMatch($a, $b);
-  const forward = (backend2, save) => {
-    const res = backend2.multiply($a, $b);
-    save([$a, $b]);
-    return res;
-  };
-  const inputs = {a: $a, b: $b};
-  return ENGINE.runKernelFunc(forward, inputs, null, Multiply);
-}
-const mul = op({mul_});
 
 // node_modules/@tensorflow/tfjs-core/dist/ops/sigmoid.js
 /**
@@ -4683,233 +6783,6 @@ function sigmoid_(x) {
   }, inputs, null, Sigmoid);
 }
 const sigmoid = op({sigmoid_});
-
-// node_modules/@tensorflow/tfjs-core/dist/ops/slice_util.js
-const slice_util_exports = {};
-__export(slice_util_exports, {
-  assertParamsValid: () => assertParamsValid,
-  computeFlatOffset: () => computeFlatOffset,
-  computeOutShape: () => computeOutShape2,
-  isSliceContinous: () => isSliceContinous,
-  maskToAxes: () => maskToAxes,
-  parseSliceParams: () => parseSliceParams,
-  startForAxis: () => startForAxis,
-  startIndicesWithElidedDims: () => startIndicesWithElidedDims,
-  stopForAxis: () => stopForAxis,
-  stopIndicesWithElidedDims: () => stopIndicesWithElidedDims,
-  stridesForAxis: () => stridesForAxis,
-  stridesWithElidedDims: () => stridesWithElidedDims
-});
-/**
- * @license
- * Copyright 2017 Google LLC. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =============================================================================
- */
-function assertParamsValid(input, begin, size) {
-  assert(input.rank === begin.length, () => `Error in slice${input.rank}D: Length of begin ${begin} must match the rank of the array (${input.rank}).`);
-  assert(input.rank === size.length, () => `Error in slice${input.rank}D: Length of size ${size} must match the rank of the array (${input.rank}).`);
-  for (let i = 0; i < input.rank; ++i) {
-    assert(begin[i] + size[i] <= input.shape[i], () => `Error in slice${input.rank}D: begin[${i}] + size[${i}] (${begin[i] + size[i]}) would overflow input.shape[${i}] (${input.shape[i]})`);
-  }
-}
-function maskToAxes(mask) {
-  const axes = [];
-  let axis = 0;
-  while (mask > 0) {
-    if (mask & 1) {
-      axes.push(axis);
-    }
-    mask /= 2;
-    axis++;
-  }
-  return axes;
-}
-function computeOutShape2(begin, end, strides) {
-  const size = [];
-  for (let axis = 0; axis < begin.length; axis++) {
-    size[axis] = Math.ceil((end[axis] - begin[axis]) / strides[axis]);
-  }
-  return size;
-}
-function stridesWithElidedDims(strides, ellipsisInsertionIndex, numElidedAxes, inputShape) {
-  const newStrides = [...strides];
-  for (let i = newStrides.length; i < inputShape.length; i++) {
-    newStrides.push(1);
-  }
-  for (let i = 0; i < numElidedAxes; i++) {
-    if (i === 0) {
-      newStrides[ellipsisInsertionIndex] = 1;
-    } else {
-      newStrides.splice(ellipsisInsertionIndex, 0, 1);
-      newStrides.pop();
-    }
-  }
-  return newStrides;
-}
-function unnormalizeAxis(ellipsisInsertionIndex, numElidedAxes, normalizedAxis) {
-  if (normalizedAxis <= ellipsisInsertionIndex) {
-    return normalizedAxis;
-  }
-  return normalizedAxis - (numElidedAxes - 1);
-}
-function getElidedAxes(numElidedAxes, ellipsisInsertionIndex) {
-  const elidedAxes = [];
-  for (let i = 0; i < numElidedAxes; i++) {
-    elidedAxes.push(ellipsisInsertionIndex + i);
-  }
-  return elidedAxes;
-}
-function startIndicesWithElidedDims(beginMask, ellipsisInsertionIndex, numElidedAxes, originalBegin, inputShape) {
-  const newIndices = [...inputShape];
-  const elidedAxes = getElidedAxes(numElidedAxes, ellipsisInsertionIndex);
-  for (let axis = 0; axis < newIndices.length; axis++) {
-    if (elidedAxes.indexOf(axis) > -1) {
-      newIndices[axis] = 0;
-    } else {
-      const originalAxis = unnormalizeAxis(ellipsisInsertionIndex, numElidedAxes, axis);
-      let originalValue = originalBegin[originalAxis];
-      if (beginMask & 1 << originalAxis) {
-        originalValue = 0;
-      }
-      newIndices[axis] = originalValue;
-    }
-  }
-  return newIndices;
-}
-function stopIndicesWithElidedDims(endMask, ellipsisInsertionIndex, numElidedAxes, originalEnd, inputShape) {
-  const newIndices = [...inputShape];
-  const elidedAxes = getElidedAxes(numElidedAxes, ellipsisInsertionIndex);
-  for (let axis = 0; axis < newIndices.length; axis++) {
-    if (elidedAxes.indexOf(axis) > -1) {
-      newIndices[axis] = Number.MAX_SAFE_INTEGER;
-    } else {
-      const originalAxis = unnormalizeAxis(ellipsisInsertionIndex, numElidedAxes, axis);
-      let originalValue = originalEnd[originalAxis];
-      if (endMask & 1 << originalAxis) {
-        originalValue = Number.MAX_SAFE_INTEGER;
-      }
-      newIndices[axis] = originalValue;
-    }
-  }
-  for (let i = 0; i < newIndices.length; i++) {
-    const axisSize = inputShape[i];
-    if (newIndices[i] < 0) {
-      newIndices[i] += axisSize;
-    }
-    newIndices[i] = clamp(0, newIndices[i], inputShape[i]);
-  }
-  return newIndices;
-}
-function stridesForAxis(strides, axis, ellipsisMask) {
-  let stride = strides[axis];
-  if (ellipsisMask & 1 << axis || stride == null) {
-    stride = 1;
-  }
-  return stride;
-}
-function startForAxis(beginMask, startIndices, strides, inputShape, axis, ellipsisMask) {
-  let start = startIndices[axis];
-  const stride = strides[axis] || 1;
-  if (beginMask & 1 << axis || ellipsisMask & 1 << axis || start == null) {
-    if (stride > 0) {
-      start = Number.MIN_SAFE_INTEGER;
-    } else {
-      start = Number.MAX_SAFE_INTEGER;
-    }
-  }
-  const axisSize = inputShape[axis];
-  if (start < 0) {
-    start += axisSize;
-  }
-  start = clamp(0, start, axisSize - 1);
-  return start;
-}
-function stopForAxis(endMask, stopIndices, strides, inputShape, axis, ellipsisMask) {
-  let stop = stopIndices[axis];
-  const stride = strides[axis] || 1;
-  if (endMask & 1 << axis || ellipsisMask & 1 << axis || stop == null) {
-    if (stride > 0) {
-      stop = Number.MAX_SAFE_INTEGER;
-    } else {
-      stop = Number.MIN_SAFE_INTEGER;
-    }
-  }
-  const axisSize = inputShape[axis];
-  if (stop < 0) {
-    stop += axisSize;
-  }
-  if (stride > 0) {
-    stop = clamp(0, stop, axisSize);
-  } else {
-    stop = clamp(-1, stop, axisSize - 1);
-  }
-  return stop;
-}
-function isSliceContinous(shape, begin, size) {
-  let firstNonOneAxis = size.length;
-  for (let i = 0; i < size.length; i++) {
-    if (size[i] > 1) {
-      firstNonOneAxis = i;
-      break;
-    }
-  }
-  for (let i = firstNonOneAxis + 1; i < size.length; i++) {
-    if (begin[i] > 0 || size[i] !== shape[i]) {
-      return false;
-    }
-  }
-  return true;
-}
-function computeFlatOffset(begin, strides) {
-  let flatOffset = begin.length > 0 ? begin[begin.length - 1] : 1;
-  for (let i = 0; i < begin.length - 1; i++) {
-    flatOffset += begin[i] * strides[i];
-  }
-  return flatOffset;
-}
-function parseSliceParams(x, begin, size) {
-  let begin_;
-  if (typeof begin === "number") {
-    begin_ = [begin, ...new Array(x.rank - 1).fill(0)];
-  } else if (begin.length < x.rank) {
-    begin_ = begin.concat(new Array(x.rank - begin.length).fill(0));
-  } else {
-    begin_ = begin.slice();
-  }
-  begin_.forEach((d) => {
-    assert(d !== -1, () => "slice() does not support negative begin indexing.");
-  });
-  let size_;
-  if (size == null) {
-    size_ = new Array(x.rank).fill(-1);
-  } else if (typeof size === "number") {
-    size_ = [size, ...new Array(x.rank - 1).fill(-1)];
-  } else if (size.length < x.rank) {
-    size_ = size.concat(new Array(x.rank - size.length).fill(-1));
-  } else {
-    size_ = size;
-  }
-  size_ = size_.map((d, i) => {
-    if (d >= 0) {
-      return d;
-    } else {
-      assert(d === -1, () => `Negative size values should be exactly -1 but got ${d} for the slice() size at index ${i}.`);
-      return x.shape[i] - begin_[i];
-    }
-  });
-  return [begin_, size_];
-}
 
 // node_modules/@tensorflow/tfjs-core/dist/ops/slice.js
 /**
@@ -5206,31 +7079,6 @@ function batchNorm4d_(x, mean5, variance, offset, scale2, varianceEpsilon) {
 }
 const batchNorm4d = op({batchNorm4d_});
 
-// node_modules/@tensorflow/tfjs-core/dist/ops/clone.js
-/**
- * @license
- * Copyright 2020 Google LLC. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =============================================================================
- */
-function clone_(x) {
-  const $x = convertToTensor(x, "x", "clone", null);
-  const forward = () => ENGINE.makeTensorFromDataId($x.dataId, $x.shape, $x.dtype);
-  const inputs = {x: $x};
-  return ENGINE.runKernelFunc(forward, inputs, null, Identity);
-}
-const clone = op({clone_});
-
 // node_modules/@tensorflow/tfjs-core/dist/ops/broadcast_to.js
 /**
  * @license
@@ -5283,29 +7131,6 @@ function broadcastTo_(x, shape) {
   return ENGINE.runKernelFunc(forward, inputs, null, BroadcastTo, attrs);
 }
 const broadcastTo = op({broadcastTo_});
-
-// node_modules/@tensorflow/tfjs-core/dist/ops/buffer.js
-/**
- * @license
- * Copyright 2020 Google Inc. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =============================================================================
- */
-function buffer(shape, dtype = "float32", values) {
-  dtype = dtype || "float32";
-  assertNonNegativeIntegerDimensions(shape);
-  return new TensorBuffer(shape, dtype, values);
-}
 
 // node_modules/@tensorflow/tfjs-core/dist/ops/ceil.js
 /**
@@ -5360,35 +7185,6 @@ function clipByValue_(x, clipValueMin, clipValueMax) {
   }, inputs, null, ClipByValue, attrs);
 }
 const clipByValue = op({clipByValue_});
-
-// node_modules/@tensorflow/tfjs-core/dist/ops/complex.js
-/**
- * @license
- * Copyright 2020 Google LLC. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =============================================================================
- */
-function complex_(real6, imag6) {
-  const $real = convertToTensor(real6, "real", "complex");
-  const $imag = convertToTensor(imag6, "imag", "complex");
-  assertShapesMatch($real.shape, $imag.shape, `real and imag shapes, ${$real.shape} and ${$imag.shape}, must match in call to tf.complex().`);
-  const forward = (backend2) => {
-    return backend2.complex($real, $imag);
-  };
-  const inputs = {real: $real, imag: $imag};
-  return ENGINE.runKernelFunc(forward, inputs, null, Complex);
-}
-const complex = op({complex_});
 
 // node_modules/@tensorflow/tfjs-core/dist/ops/concat_1d.js
 function concat1d_(tensors) {
@@ -5916,72 +7712,6 @@ function dilation2d_(x, filter, strides, pad8, dilations = [1, 1], dataFormat = 
 }
 const dilation2d = op({dilation2d_});
 
-// node_modules/@tensorflow/tfjs-core/dist/ops/floorDiv.js
-/**
- * @license
- * Copyright 2020 Google LLC. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =============================================================================
- */
-function floorDiv_(a, b) {
-  let $a = convertToTensor(a, "a", "floorDiv");
-  let $b = convertToTensor(b, "b", "floorDiv");
-  [$a, $b] = makeTypesMatch($a, $b);
-  const forward = (backend2, save) => {
-    const res = backend2.floorDiv($a, $b);
-    save([$a, $b]);
-    return res;
-  };
-  const inputs = {a: $a, b: $b};
-  return ENGINE.runKernelFunc(forward, inputs, null, FloorDiv);
-}
-const floorDiv = op({floorDiv_});
-
-// node_modules/@tensorflow/tfjs-core/dist/ops/div.js
-/**
- * @license
- * Copyright 2020 Google LLC. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =============================================================================
- */
-function div_(a, b) {
-  let $a = convertToTensor(a, "a", "div");
-  let $b = convertToTensor(b, "b", "div");
-  [$a, $b] = makeTypesMatch($a, $b);
-  if ($a.dtype === "int32" && $b.dtype === "int32") {
-    return floorDiv($a, $b);
-  }
-  const forward = (backend2, save) => {
-    const res = backend2.realDivide($a, $b);
-    save([$a, $b]);
-    return res;
-  };
-  const inputs = {a: $a, b: $b};
-  const attrs = {};
-  return ENGINE.runKernelFunc(forward, inputs, null, Div, attrs);
-}
-const div = op({div_});
-
 // node_modules/@tensorflow/tfjs-core/dist/ops/broadcast_util.js
 /**
  * @license
@@ -6450,36 +8180,6 @@ function eye_(numRows, numColumns, batchShape, dtype = "float32") {
 }
 const eye = op({eye_});
 
-// node_modules/@tensorflow/tfjs-core/dist/ops/fft.js
-/**
- * @license
- * Copyright 2020 Google LLC. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =============================================================================
- */
-function fft_(input) {
-  assert(input.dtype === "complex64", () => `The dtype for tf.spectral.fft() must be complex64 but got ${input.dtype}.`);
-  const inputs = {input};
-  return ENGINE.runKernelFunc((backend2) => {
-    const innerDimensionSize = input.shape[input.shape.length - 1];
-    const batch = input.size / innerDimensionSize;
-    const input2D = input.as2D(batch, innerDimensionSize);
-    const result = backend2.fft(input2D);
-    return result.reshape(input.shape);
-  }, inputs, null, FFT);
-}
-const fft = op({fft_});
-
 // node_modules/@tensorflow/tfjs-core/dist/ops/fill.js
 /**
  * @license
@@ -6716,36 +8416,6 @@ function greaterEqual_(a, b) {
 }
 const greaterEqual = op({greaterEqual_});
 
-// node_modules/@tensorflow/tfjs-core/dist/ops/ifft.js
-/**
- * @license
- * Copyright 2020 Google LLC. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =============================================================================
- */
-function ifft_(input) {
-  assert(input.dtype === "complex64", () => `The dtype for tf.spectral.ifft() must be complex64 but got ${input.dtype}.`);
-  const inputs = {input};
-  return ENGINE.runKernelFunc((backend2) => {
-    const innerDimensionSize = input.shape[input.shape.length - 1];
-    const batch = input.size / innerDimensionSize;
-    const input2D = reshape(input, [batch, innerDimensionSize]);
-    const result = backend2.ifft(input2D);
-    return reshape(result, input.shape);
-  }, inputs, null, IFFT);
-}
-const ifft = op({ifft_});
-
 // node_modules/@tensorflow/tfjs-core/dist/ops/imag.js
 /**
  * @license
@@ -6772,141 +8442,6 @@ function imag_(input) {
   return ENGINE.runKernelFunc(forward, inputs, null, Imag);
 }
 const imag = op({imag_});
-
-// node_modules/@tensorflow/tfjs-core/dist/ops/real.js
-/**
- * @license
- * Copyright 2020 Google LLC. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =============================================================================
- */
-function real_(input) {
-  const $input = convertToTensor(input, "input", "real");
-  const forward = (backend2) => {
-    return backend2.real($input);
-  };
-  const inputs = {input: $input};
-  return ENGINE.runKernelFunc(forward, inputs, null, Real);
-}
-const real = op({real_});
-
-// node_modules/@tensorflow/tfjs-core/dist/ops/reverse.js
-/**
- * @license
- * Copyright 2018 Google LLC. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =============================================================================
- */
-function reverse_(x, axis) {
-  const $x = convertToTensor(x, "x", "reverse");
-  const forward = (backend2) => {
-    const axes = parseAxisParam(axis, $x.shape);
-    if ($x.rank === 0) {
-      return clone($x);
-    }
-    const res = backend2.reverse($x, axes);
-    return reshape(res, $x.shape);
-  };
-  const inputs = {x: $x};
-  const attrs = {dims: axis};
-  return ENGINE.runKernelFunc(forward, inputs, null, Reverse, attrs);
-}
-const reverse = op({reverse_});
-
-// node_modules/@tensorflow/tfjs-core/dist/ops/scalar.js
-/**
- * @license
- * Copyright 2018 Google LLC. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =============================================================================
- */
-function scalar(value, dtype) {
-  if ((isTypedArray(value) && dtype !== "string" || Array.isArray(value)) && dtype !== "complex64") {
-    throw new Error("Error creating a new Scalar: value must be a primitive (number|boolean|string)");
-  }
-  if (dtype === "string" && isTypedArray(value) && !(value instanceof Uint8Array)) {
-    throw new Error("When making a scalar from encoded string, the value must be `Uint8Array`.");
-  }
-  const shape = [];
-  const inferredShape = [];
-  return makeTensor(value, shape, inferredShape, dtype);
-}
-
-// node_modules/@tensorflow/tfjs-core/dist/ops/irfft.js
-/**
- * @license
- * Copyright 2018 Google LLC. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =============================================================================
- */
-function irfft_(input) {
-  const innerDimensionSize = input.shape[input.shape.length - 1];
-  const batch = input.size / innerDimensionSize;
-  let ret;
-  if (innerDimensionSize <= 2) {
-    const complexInput = reshape(input, [batch, innerDimensionSize]);
-    ret = ifft(complexInput);
-  } else {
-    const outputShape = [batch, 2 * (innerDimensionSize - 1)];
-    const realInput = reshape(real(input), [batch, innerDimensionSize]);
-    const imagInput = reshape(imag(input), [batch, innerDimensionSize]);
-    const realConjugate = reverse(slice(realInput, [0, 1], [batch, innerDimensionSize - 2]), 1);
-    const imagConjugate = mul(reverse(slice(imagInput, [0, 1], [batch, innerDimensionSize - 2]), 1), scalar(-1));
-    const r = concat([realInput, realConjugate], 1);
-    const i = concat([imagInput, imagConjugate], 1);
-    const complexInput = reshape(complex(r, i), [outputShape[0], outputShape[1]]);
-    ret = ifft(complexInput);
-  }
-  ret = real(ret);
-  if (input.rank === 3 && input.shape[0] !== 0) {
-    const temp = ret;
-    const batch2 = input.shape[0];
-    ret = reshape(ret, [batch2, ret.shape[0] / batch2, ret.shape[1]]);
-    temp.dispose();
-  }
-  return ret;
-}
-const irfft = op({irfft_});
 
 // node_modules/@tensorflow/tfjs-core/dist/ops/is_finite.js
 /**
@@ -7015,6 +8550,35 @@ function maximum_(a, b) {
   return ENGINE.runKernelFunc(forward, inputs, null, Maximum);
 }
 const maximum = op({maximum_});
+
+// node_modules/@tensorflow/tfjs-core/dist/ops/scalar.js
+/**
+ * @license
+ * Copyright 2018 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+function scalar(value, dtype) {
+  if ((isTypedArray(value) && dtype !== "string" || Array.isArray(value)) && dtype !== "complex64") {
+    throw new Error("Error creating a new Scalar: value must be a primitive (number|boolean|string)");
+  }
+  if (dtype === "string" && isTypedArray(value) && !(value instanceof Uint8Array)) {
+    throw new Error("When making a scalar from encoded string, the value must be `Uint8Array`.");
+  }
+  const shape = [];
+  const inferredShape = [];
+  return makeTensor(value, shape, inferredShape, dtype);
+}
 
 // node_modules/@tensorflow/tfjs-core/dist/ops/leaky_relu.js
 /**
@@ -8188,7 +9752,7 @@ function notEqual_(a, b) {
 }
 const notEqual = op({notEqual_});
 
-// node_modules/@tensorflow/tfjs-core/dist/ops/one_hot.js
+// node_modules/@tensorflow/tfjs-core/dist/ops/real.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -8205,21 +9769,15 @@ const notEqual = op({notEqual_});
  * limitations under the License.
  * =============================================================================
  */
-function oneHot_(indices, depth, onValue = 1, offValue = 0) {
-  if (depth < 2) {
-    throw new Error(`Error in oneHot: depth must be >=2, but it is ${depth}`);
-  }
-  const $indices = convertToTensor(indices, "indices", "oneHot", "int32");
-  const outShape = [...$indices.shape, depth];
-  const forward = (backend2, save) => {
-    save([$indices]);
-    return reshape(backend2.oneHot(reshape($indices, [$indices.size]), depth, onValue, offValue), outShape);
+function real_(input) {
+  const $input = convertToTensor(input, "input", "real");
+  const forward = (backend2) => {
+    return backend2.real($input);
   };
-  const inputs = {indices: $indices};
-  const attrs = {depth, onValue, offValue};
-  return ENGINE.runKernelFunc(forward, inputs, null, OneHot, attrs);
+  const inputs = {input: $input};
+  return ENGINE.runKernelFunc(forward, inputs, null, Real);
 }
-const oneHot = op({oneHot_});
+const real = op({real_});
 
 // node_modules/@tensorflow/tfjs-core/dist/ops/ones_like.js
 /**
@@ -8497,27 +10055,6 @@ function prelu_(x, alpha) {
 }
 const prelu = op({prelu_});
 
-// node_modules/@tensorflow/tfjs-core/dist/ops/print.js
-/**
- * @license
- * Copyright 2020 Google Inc. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =============================================================================
- */
-function print(x, verbose = false) {
-  console.log(x.toString(verbose));
-}
-
 // node_modules/@tensorflow/tfjs-core/dist/ops/prod.js
 /**
  * @license
@@ -8597,122 +10134,6 @@ function rand_(shape, randFunction, dtype) {
   return ENGINE.makeTensor(values, shape, dtype);
 }
 const rand = op({rand_});
-
-// node_modules/@tensorflow/tfjs-core/dist/test_util.js
-const test_util_exports = {};
-__export(test_util_exports, {
-  TEST_EPSILON_FLOAT16: () => TEST_EPSILON_FLOAT16,
-  expectArrayBuffersEqual: () => expectArrayBuffersEqual,
-  expectArraysClose: () => expectArraysClose,
-  expectArraysEqual: () => expectArraysEqual,
-  expectNumbersClose: () => expectNumbersClose,
-  expectPromiseToFail: () => expectPromiseToFail,
-  expectValuesInRange: () => expectValuesInRange,
-  testEpsilon: () => testEpsilon
-});
-/**
- * @license
- * Copyright 2017 Google LLC. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =============================================================================
- */
-const TEST_EPSILON_FLOAT32 = 1e-3;
-const TEST_EPSILON_FLOAT16 = 0.1;
-function expectArraysClose(actual, expected, epsilon2) {
-  if (epsilon2 == null) {
-    epsilon2 = testEpsilon();
-  }
-  return expectArraysPredicate(actual, expected, (a, b) => areClose(a, b, epsilon2));
-}
-function testEpsilon() {
-  return ENGINE.backend.floatPrecision() === 32 ? TEST_EPSILON_FLOAT32 : TEST_EPSILON_FLOAT16;
-}
-function expectArraysPredicate(actual, expected, predicate) {
-  let checkClassType = true;
-  if (isTypedArray(actual) || isTypedArray(expected)) {
-    checkClassType = false;
-  }
-  if (isTypedArray(actual) && isTypedArray(expected)) {
-    checkClassType = true;
-  }
-  if (checkClassType) {
-    const aType = actual.constructor.name;
-    const bType = expected.constructor.name;
-    if (aType !== bType) {
-      throw new Error(`Arrays are of different type. Actual: ${aType}. Expected: ${bType}`);
-    }
-  }
-  if (Array.isArray(actual) && Array.isArray(expected)) {
-    const actualShape = inferShape(actual);
-    const expectedShape = inferShape(expected);
-    if (!arraysEqual(actualShape, expectedShape)) {
-      throw new Error(`Arrays have different shapes. Actual: [${actualShape}]. Expected: [${expectedShape}]`);
-    }
-  }
-  const actualFlat = isTypedArray(actual) ? actual : flatten(actual);
-  const expectedFlat = isTypedArray(expected) ? expected : flatten(expected);
-  if (actualFlat.length !== expectedFlat.length) {
-    throw new Error(`Arrays have different lengths actual: ${actualFlat.length} vs expected: ${expectedFlat.length}.
-Actual:   ${actualFlat}.
-Expected: ${expectedFlat}.`);
-  }
-  for (let i = 0; i < expectedFlat.length; ++i) {
-    const a = actualFlat[i];
-    const e = expectedFlat[i];
-    if (!predicate(a, e)) {
-      throw new Error(`Arrays differ: actual[${i}] = ${a}, expected[${i}] = ${e}.
-Actual:   ${actualFlat}.
-Expected: ${expectedFlat}.`);
-    }
-  }
-}
-function expectPromiseToFail(fn, done) {
-  fn().then(() => done.fail(), () => done());
-}
-function expectArraysEqual(actual, expected) {
-  const exp11 = typeof expected === "string" || typeof expected === "number" || typeof expected === "boolean" ? [expected] : expected;
-  if (isString(actual) || isString(actual[0]) || isString(expected) || isString(expected[0])) {
-    return expectArraysPredicate(actual, exp11, (a, b) => a == b);
-  }
-  return expectArraysPredicate(actual, expected, (a, b) => areClose(a, b, 0));
-}
-function expectNumbersClose(a, e, epsilon2) {
-  if (epsilon2 == null) {
-    epsilon2 = testEpsilon();
-  }
-  if (!areClose(a, e, epsilon2)) {
-    throw new Error(`Numbers differ: actual === ${a}, expected === ${e}`);
-  }
-}
-function areClose(a, e, epsilon2) {
-  if (!isFinite(a) && !isFinite(e)) {
-    return true;
-  }
-  if (isNaN(a) || isNaN(e) || Math.abs(a - e) > epsilon2) {
-    return false;
-  }
-  return true;
-}
-function expectValuesInRange(actual, low, high) {
-  for (let i = 0; i < actual.length; i++) {
-    if (actual[i] < low || actual[i] > high) {
-      throw new Error(`Value out of range:${actual[i]} low: ${low}, high: ${high}`);
-    }
-  }
-}
-function expectArrayBuffersEqual(actual, expected) {
-  expect(new Float32Array(actual)).toEqual(new Float32Array(expected));
-}
 
 // node_modules/@tensorflow/tfjs-core/dist/ops/rand_util.js
 const seedrandom = __toModule(require_seedrandom2());
@@ -8828,10 +10249,10 @@ class RandGamma {
   }
 }
 class UniformRandom {
-  constructor(min5 = 0, max7 = 1, dtype, seed) {
+  constructor(min4 = 0, max6 = 1, dtype, seed) {
     this.canReturnFloat = () => this.dtype == null || this.dtype === "float32";
-    this.min = min5;
-    this.range = max7 - min5;
+    this.min = min4;
+    this.range = max6 - min4;
     this.dtype = dtype;
     if (seed == null) {
       seed = Math.random();
@@ -8840,7 +10261,7 @@ class UniformRandom {
       seed = seed.toString();
     }
     if (!this.canReturnFloat() && this.range <= 1) {
-      throw new Error(`The difference between ${min5} - ${max7} <= 1 and dtype is not float`);
+      throw new Error(`The difference between ${min4} - ${max6} <= 1 and dtype is not float`);
     }
     this.random = seedrandom.alea(seed);
   }
@@ -9108,6 +10529,39 @@ function relu6_(x) {
 }
 const relu6 = op({relu6_});
 
+// node_modules/@tensorflow/tfjs-core/dist/ops/reverse.js
+/**
+ * @license
+ * Copyright 2018 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+function reverse_(x, axis) {
+  const $x = convertToTensor(x, "x", "reverse");
+  const forward = (backend2) => {
+    const axes = parseAxisParam(axis, $x.shape);
+    if ($x.rank === 0) {
+      return clone($x);
+    }
+    const res = backend2.reverse($x, axes);
+    return reshape(res, $x.shape);
+  };
+  const inputs = {x: $x};
+  const attrs = {dims: axis};
+  return ENGINE.runKernelFunc(forward, inputs, null, Reverse, attrs);
+}
+const reverse = op({reverse_});
+
 // node_modules/@tensorflow/tfjs-core/dist/ops/reverse_1d.js
 /**
  * @license
@@ -9203,111 +10657,6 @@ function reverse4d_(x, axis) {
   return reverse($x, axis);
 }
 const reverse4d = op({reverse4d_});
-
-// node_modules/@tensorflow/tfjs-core/dist/ops/split_util.js
-function prepareSplitSize(x, numOrSizeSplits, axis = 0) {
-  let splitSizes = [];
-  if (typeof numOrSizeSplits === "number") {
-    assert(x.shape[axis] % numOrSizeSplits === 0, () => "Number of splits must evenly divide the axis.");
-    splitSizes = new Array(numOrSizeSplits).fill(x.shape[axis] / numOrSizeSplits);
-  } else {
-    const numOfNegs = numOrSizeSplits.reduce((count, value) => {
-      if (value === -1) {
-        count += 1;
-      }
-      return count;
-    }, 0);
-    assert(numOfNegs <= 1, () => "There should be only one negative value in split array.");
-    const negIndex = numOrSizeSplits.indexOf(-1);
-    if (negIndex !== -1) {
-      const total = numOrSizeSplits.reduce((a, b) => b > 0 ? a + b : a);
-      numOrSizeSplits[negIndex] = x.shape[axis] - total;
-    }
-    assert(x.shape[axis] === numOrSizeSplits.reduce((a, b) => a + b), () => "The sum of sizes must match the size of the axis dimension.");
-    splitSizes = numOrSizeSplits;
-  }
-  return splitSizes;
-}
-
-// node_modules/@tensorflow/tfjs-core/dist/ops/split.js
-/**
- * @license
- * Copyright 2020 Google LLC. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =============================================================================
- */
-function split_(x, numOrSizeSplits, axis = 0) {
-  const $x = convertToTensor(x, "x", "split");
-  const forward = (backend2, _) => {
-    const $axis = parseAxisParam(axis, $x.shape)[0];
-    const splitSizes = prepareSplitSize($x, numOrSizeSplits, $axis);
-    return backend2.split($x, splitSizes, $axis);
-  };
-  const inputs = {x: $x};
-  const attr = {numOrSizeSplits, axis};
-  return ENGINE.runKernelFunc(forward, inputs, null, SplitV, attr);
-}
-const split = op({split_});
-
-// node_modules/@tensorflow/tfjs-core/dist/ops/rfft.js
-/**
- * @license
- * Copyright 2018 Google LLC. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =============================================================================
- */
-function rfft_(input, fftLength) {
-  assert(input.dtype === "float32", () => `The dtype for rfft() must be real value but got ${input.dtype}`);
-  let innerDimensionSize = input.shape[input.shape.length - 1];
-  const batch = input.size / innerDimensionSize;
-  let adjustedInput;
-  if (fftLength != null && fftLength < innerDimensionSize) {
-    const begin = input.shape.map((v) => 0);
-    const size = input.shape.map((v) => v);
-    size[input.shape.length - 1] = fftLength;
-    adjustedInput = slice(input, begin, size);
-    innerDimensionSize = fftLength;
-  } else if (fftLength != null && fftLength > innerDimensionSize) {
-    const zerosShape = input.shape.map((v) => v);
-    zerosShape[input.shape.length - 1] = fftLength - innerDimensionSize;
-    adjustedInput = concat([input, zeros(zerosShape)], input.shape.length - 1);
-    innerDimensionSize = fftLength;
-  } else {
-    adjustedInput = input;
-  }
-  const zerosInput = zerosLike(adjustedInput);
-  const complexInput = reshape(complex(adjustedInput, zerosInput), [batch, innerDimensionSize]);
-  const ret = fft(complexInput);
-  const half = Math.floor(innerDimensionSize / 2) + 1;
-  const realValues = real(ret);
-  const imagValues = imag(ret);
-  const realComplexConjugate = split(realValues, [half, innerDimensionSize - half], realValues.shape.length - 1);
-  const imagComplexConjugate = split(imagValues, [half, innerDimensionSize - half], imagValues.shape.length - 1);
-  const outputShape = adjustedInput.shape.slice();
-  outputShape[adjustedInput.shape.length - 1] = half;
-  return reshape(complex(realComplexConjugate[0], imagComplexConjugate[0]), outputShape);
-}
-const rfft = op({rfft_});
 
 // node_modules/@tensorflow/tfjs-core/dist/ops/round.js
 /**
@@ -9454,16 +10803,16 @@ async function setdiff1dAsync_(x, y) {
       outputSize++;
     }
   }
-  const buffer10 = new TensorBuffer([outputSize], $x.dtype);
+  const buffer11 = new TensorBuffer([outputSize], $x.dtype);
   const indices = new TensorBuffer([outputSize], "int32");
   for (let i = 0, p = 0; i < xVals.length; i++) {
     if (!ySet.has(xVals[i])) {
-      buffer10.values[p] = xVals[i];
+      buffer11.values[p] = xVals[i];
       indices.values[p] = i;
       p++;
     }
   }
-  return [buffer10.toTensor(), indices.toTensor()];
+  return [buffer11.toTensor(), indices.toTensor()];
 }
 const setdiff1dAsync = setdiff1dAsync_;
 
@@ -9678,6 +11027,217 @@ function softmax_(logits, dim = -1) {
 }
 const softmax = op({softmax_});
 
+// node_modules/@tensorflow/tfjs-core/dist/ops/spectral/fft.js
+/**
+ * @license
+ * Copyright 2020 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+function fft_(input) {
+  assert(input.dtype === "complex64", () => `The dtype for tf.spectral.fft() must be complex64 but got ${input.dtype}.`);
+  const inputs = {input};
+  return ENGINE.runKernelFunc((backend2) => {
+    const innerDimensionSize = input.shape[input.shape.length - 1];
+    const batch = input.size / innerDimensionSize;
+    const input2D = input.as2D(batch, innerDimensionSize);
+    const result = backend2.fft(input2D);
+    return result.reshape(input.shape);
+  }, inputs, null, FFT);
+}
+const fft = op({fft_});
+
+// node_modules/@tensorflow/tfjs-core/dist/ops/spectral/ifft.js
+/**
+ * @license
+ * Copyright 2020 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+function ifft_(input) {
+  assert(input.dtype === "complex64", () => `The dtype for tf.spectral.ifft() must be complex64 but got ${input.dtype}.`);
+  const inputs = {input};
+  return ENGINE.runKernelFunc((backend2) => {
+    const innerDimensionSize = input.shape[input.shape.length - 1];
+    const batch = input.size / innerDimensionSize;
+    const input2D = reshape(input, [batch, innerDimensionSize]);
+    const result = backend2.ifft(input2D);
+    return reshape(result, input.shape);
+  }, inputs, null, IFFT);
+}
+const ifft = op({ifft_});
+
+// node_modules/@tensorflow/tfjs-core/dist/ops/spectral/irfft.js
+/**
+ * @license
+ * Copyright 2018 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+function irfft_(input) {
+  const innerDimensionSize = input.shape[input.shape.length - 1];
+  const batch = input.size / innerDimensionSize;
+  let ret;
+  if (innerDimensionSize <= 2) {
+    const complexInput = reshape(input, [batch, innerDimensionSize]);
+    ret = ifft(complexInput);
+  } else {
+    const outputShape = [batch, 2 * (innerDimensionSize - 1)];
+    const realInput = reshape(real(input), [batch, innerDimensionSize]);
+    const imagInput = reshape(imag(input), [batch, innerDimensionSize]);
+    const realConjugate = reverse(slice(realInput, [0, 1], [batch, innerDimensionSize - 2]), 1);
+    const imagConjugate = mul(reverse(slice(imagInput, [0, 1], [batch, innerDimensionSize - 2]), 1), scalar(-1));
+    const r = concat([realInput, realConjugate], 1);
+    const i = concat([imagInput, imagConjugate], 1);
+    const complexInput = reshape(complex(r, i), [outputShape[0], outputShape[1]]);
+    ret = ifft(complexInput);
+  }
+  ret = real(ret);
+  if (input.rank === 3 && input.shape[0] !== 0) {
+    const temp = ret;
+    const batch2 = input.shape[0];
+    ret = reshape(ret, [batch2, ret.shape[0] / batch2, ret.shape[1]]);
+    temp.dispose();
+  }
+  return ret;
+}
+const irfft = op({irfft_});
+
+// node_modules/@tensorflow/tfjs-core/dist/ops/split_util.js
+function prepareSplitSize(x, numOrSizeSplits, axis = 0) {
+  let splitSizes = [];
+  if (typeof numOrSizeSplits === "number") {
+    assert(x.shape[axis] % numOrSizeSplits === 0, () => "Number of splits must evenly divide the axis.");
+    splitSizes = new Array(numOrSizeSplits).fill(x.shape[axis] / numOrSizeSplits);
+  } else {
+    const numOfNegs = numOrSizeSplits.reduce((count, value) => {
+      if (value === -1) {
+        count += 1;
+      }
+      return count;
+    }, 0);
+    assert(numOfNegs <= 1, () => "There should be only one negative value in split array.");
+    const negIndex = numOrSizeSplits.indexOf(-1);
+    if (negIndex !== -1) {
+      const total = numOrSizeSplits.reduce((a, b) => b > 0 ? a + b : a);
+      numOrSizeSplits[negIndex] = x.shape[axis] - total;
+    }
+    assert(x.shape[axis] === numOrSizeSplits.reduce((a, b) => a + b), () => "The sum of sizes must match the size of the axis dimension.");
+    splitSizes = numOrSizeSplits;
+  }
+  return splitSizes;
+}
+
+// node_modules/@tensorflow/tfjs-core/dist/ops/split.js
+/**
+ * @license
+ * Copyright 2020 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+function split_(x, numOrSizeSplits, axis = 0) {
+  const $x = convertToTensor(x, "x", "split");
+  const forward = (backend2, _) => {
+    const $axis = parseAxisParam(axis, $x.shape)[0];
+    const splitSizes = prepareSplitSize($x, numOrSizeSplits, $axis);
+    return backend2.split($x, splitSizes, $axis);
+  };
+  const inputs = {x: $x};
+  const attr = {numOrSizeSplits, axis};
+  return ENGINE.runKernelFunc(forward, inputs, null, SplitV, attr);
+}
+const split = op({split_});
+
+// node_modules/@tensorflow/tfjs-core/dist/ops/spectral/rfft.js
+/**
+ * @license
+ * Copyright 2018 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+function rfft_(input, fftLength) {
+  assert(input.dtype === "float32", () => `The dtype for rfft() must be real value but got ${input.dtype}`);
+  let innerDimensionSize = input.shape[input.shape.length - 1];
+  const batch = input.size / innerDimensionSize;
+  let adjustedInput;
+  if (fftLength != null && fftLength < innerDimensionSize) {
+    const begin = input.shape.map((v) => 0);
+    const size = input.shape.map((v) => v);
+    size[input.shape.length - 1] = fftLength;
+    adjustedInput = slice(input, begin, size);
+    innerDimensionSize = fftLength;
+  } else if (fftLength != null && fftLength > innerDimensionSize) {
+    const zerosShape = input.shape.map((v) => v);
+    zerosShape[input.shape.length - 1] = fftLength - innerDimensionSize;
+    adjustedInput = concat([input, zeros(zerosShape)], input.shape.length - 1);
+    innerDimensionSize = fftLength;
+  } else {
+    adjustedInput = input;
+  }
+  const zerosInput = zerosLike(adjustedInput);
+  const complexInput = reshape(complex(adjustedInput, zerosInput), [batch, innerDimensionSize]);
+  const ret = fft(complexInput);
+  const half = Math.floor(innerDimensionSize / 2) + 1;
+  const realValues = real(ret);
+  const imagValues = imag(ret);
+  const realComplexConjugate = split(realValues, [half, innerDimensionSize - half], realValues.shape.length - 1);
+  const imagComplexConjugate = split(imagValues, [half, innerDimensionSize - half], imagValues.shape.length - 1);
+  const outputShape = adjustedInput.shape.slice();
+  outputShape[adjustedInput.shape.length - 1] = half;
+  return reshape(complex(realComplexConjugate[0], imagComplexConjugate[0]), outputShape);
+}
+const rfft = op({rfft_});
+
 // node_modules/@tensorflow/tfjs-core/dist/ops/sqrt.js
 /**
  * @license
@@ -9841,11 +11401,11 @@ const step = op({step_});
  * =============================================================================
  */
 function stridedSlice_(x, begin, end, strides, beginMask = 0, endMask = 0, ellipsisMask = 0, newAxisMask = 0, shrinkAxisMask = 0) {
-  if (strides == null) {
-    strides = new Array(begin.length);
-  }
   let $x = convertToTensor(x, "x", "stridedSlice");
   const forward = (backend2) => {
+    if (strides == null) {
+      strides = new Array(begin.length);
+    }
     const ellipsisAxes = maskToAxes(ellipsisMask);
     if (ellipsisAxes.length > 1) {
       throw new Error("Multiple ellipses in slice is not allowed.");
@@ -9865,25 +11425,16 @@ function stridedSlice_(x, begin, end, strides, beginMask = 0, endMask = 0, ellip
       newShape.splice(axis, 0, 1);
     });
     $x = reshape($x, newShape);
-    if (ellipsisAxes.length && numInterpolatedAxes > 0) {
-      const fullIndex = ellipsisAxes[0];
-      const numElidedAxes = numInterpolatedAxes + 1;
-      begin = startIndicesWithElidedDims(beginMask, fullIndex, numElidedAxes, begin, $x.shape);
-      end = stopIndicesWithElidedDims(endMask, fullIndex, numElidedAxes, end, $x.shape);
-      strides = stridesWithElidedDims(strides, fullIndex, numElidedAxes, $x.shape);
-    } else {
-      for (let axis = 0; axis < $x.rank; axis++) {
-        begin[axis] = startForAxis(beginMask, begin, strides, $x.shape, axis, ellipsisMask);
-        end[axis] = stopForAxis(endMask, end, strides, $x.shape, axis, ellipsisMask);
-        strides[axis] = stridesForAxis(strides, axis, ellipsisMask);
-      }
-    }
+    const {begin: normalizedBegin, end: normalizedEnd, strides: normalizedStrides} = getNormalizedAxes($x.shape, ellipsisAxes, numInterpolatedAxes, begin, end, strides, beginMask, endMask, ellipsisMask);
+    begin = normalizedBegin;
+    end = normalizedEnd;
+    strides = normalizedStrides;
     const shrinkAxes = maskToAxes(shrinkAxisMask);
     shrinkAxes.forEach((axis) => {
       end[axis] = begin[axis] + 1;
       strides[axis] = 1;
     });
-    const size = computeOutShape2(begin, end, strides);
+    const size = computeOutShape(begin, end, strides);
     const outShape = size.filter((_, axis) => shrinkAxes.indexOf(axis) === -1);
     const nonStrided = strides.every((v) => v === 1);
     if (nonStrided) {
@@ -9963,38 +11514,6 @@ function tensor2d(values, shape, dtype) {
   }
   if (inferredShape.length === 1 && shape == null) {
     throw new Error("tensor2d() requires shape to be provided when `values` are a flat/TypedArray");
-  }
-  return makeTensor(values, shape, inferredShape, dtype);
-}
-
-// node_modules/@tensorflow/tfjs-core/dist/ops/tensor3d.js
-/**
- * @license
- * Copyright 2018 Google LLC. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =============================================================================
- */
-function tensor3d(values, shape, dtype) {
-  assertNonNull(values);
-  if (shape != null && shape.length !== 3) {
-    throw new Error("tensor3d() requires shape to have three numbers");
-  }
-  const inferredShape = inferShape(values, dtype);
-  if (inferredShape.length !== 3 && inferredShape.length !== 1) {
-    throw new Error("tensor3d() requires values to be number[][][] or flat/TypedArray");
-  }
-  if (inferredShape.length === 1 && shape == null) {
-    throw new Error("tensor3d() requires shape to be provided when `values` are a flat array");
   }
   return makeTensor(values, shape, inferredShape, dtype);
 }
@@ -10610,75 +12129,6 @@ function movingAverage_(v, x, decay, step7, zeroDebias = true) {
 }
 const movingAverage = op({movingAverage_});
 
-// node_modules/@tensorflow/tfjs-core/dist/ops/scatter_nd_util.js
-const scatter_nd_util_exports = {};
-__export(scatter_nd_util_exports, {
-  calculateShapes: () => calculateShapes,
-  validateInput: () => validateInput,
-  validateUpdateShape: () => validateUpdateShape
-});
-function validateUpdateShape(shape, indices, updates) {
-  const sliceDim = indices.rank > 1 ? indices.shape[indices.rank - 1] : 1;
-  const batchDim = indices.rank > 1 ? indices.rank - 1 : 1;
-  const shapeError = `Must have updates.shape = indices.shape[:batchDim] + shape[sliceDim:], got updates.shape: ${updates.shape}, indices.shape: ${indices.shape}, shape: ${shape}, sliceDim: ${sliceDim}, and batchDim: ${batchDim}.`;
-  if (updates.rank < batchDim) {
-    throw new Error(shapeError + ` update.rank < ${batchDim}. `);
-  }
-  if (shape.length < sliceDim + (updates.rank - batchDim)) {
-    throw new Error(shapeError + ` Output shape length < ${sliceDim + (updates.rank - batchDim)}`);
-  }
-  if (updates.rank !== batchDim + shape.length - sliceDim) {
-    throw new Error(shapeError + ` update.rank != ${batchDim + shape.length - sliceDim}`);
-  }
-  for (let d = 0; d < batchDim; ++d) {
-    if (updates.shape[d] !== indices.shape[d]) {
-      throw new Error(shapeError + ` updates.shape[${d}] (${updates.shape[d]}) != indices.shape[${d}] (${indices.shape[d]}).`);
-    }
-  }
-  for (let d = 0; d < updates.rank - batchDim; ++d) {
-    if (updates.shape[d + batchDim] !== shape[d + sliceDim]) {
-      throw new Error(shapeError + ` updates.shape[${d + batchDim}] (${updates.shape[d + batchDim]}) != shape[${d + batchDim}] (${shape[d + batchDim]})`);
-    }
-  }
-}
-function validateInput(updates, indices, shape) {
-  if (indices.rank < 1) {
-    throw new Error(`tf.scatterND() expects the indices to be rank 1 or higher, but the rank was ${indices.rank}.`);
-  }
-  if (updates.rank < 1) {
-    throw new Error(`tf.scatterND() expects the updates to be rank 1 or higher, but the rank was ${updates.rank}.`);
-  }
-  if (indices.dtype !== "int32") {
-    throw new Error(`The dtype of 'indices' should be int32, but got dtype: ${indices.dtype}`);
-  }
-  if (shape.length < 1) {
-    throw new Error(`Output rank must be greater or equal to 1, but got shape: ${shape}`);
-  }
-  if (shape.length === 0) {
-    if (indices.size === 0) {
-      throw new Error(`Indices specified for empty output. indices shape: ${indices.shape}`);
-    }
-    if (updates.size === 0) {
-      throw new Error(`Updates specified for empty output. updates shape: ${updates.shape}`);
-    }
-  }
-  validateUpdateShape(shape, indices, updates);
-}
-function calculateShapes(updates, indices, shape) {
-  const indicesRank = indices.shape.length;
-  const sliceRank = indicesRank > 1 ? indices.shape[indicesRank - 1] : 1;
-  const totalNd = shape.length;
-  let sliceSize = 1;
-  for (let i = sliceRank; i < totalNd; ++i) {
-    sliceSize *= shape[i];
-  }
-  const safeSliceDim = sliceRank < 1 ? 1 : sliceRank;
-  const numUpdates = sizeFromShape(indices.shape) / safeSliceDim;
-  const strides = [...computeStrides(shape.slice(0, sliceRank)), 1];
-  const outputSize = sizeFromShape(shape);
-  return {sliceRank, numUpdates, sliceSize, strides, outputSize};
-}
-
 // node_modules/@tensorflow/tfjs-core/dist/ops/scatter_nd.js
 /**
  * @license
@@ -10941,7 +12391,7 @@ async function inTopKAsync_(predictions, targets, k = 1) {
   if (targets !== $targets) {
     $targets.dispose();
   }
-  return tensor5(precision, $targets.shape, "bool");
+  return tensor4(precision, $targets.shape, "bool");
 }
 const inTopKAsync = inTopKAsync_;
 
@@ -11046,7 +12496,7 @@ const shouldFuse = (gradientDepth, activation) => {
   return !gradientMode || activation === "linear";
 };
 
-// node_modules/@tensorflow/tfjs-core/dist/ops/fused_conv2d.js
+// node_modules/@tensorflow/tfjs-core/dist/ops/fused/conv2d.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -11220,7 +12670,7 @@ function depthwiseConv2dNativeBackpropInput_(xShape, dy, filter, convInfo) {
 }
 const depthwiseConv2dNativeBackpropInput = op({depthwiseConv2dNativeBackpropInput_});
 
-// node_modules/@tensorflow/tfjs-core/dist/ops/fused_depthwise_conv2d.js
+// node_modules/@tensorflow/tfjs-core/dist/ops/fused/depthwise_conv2d.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -11328,7 +12778,7 @@ function fusedDepthwiseConv2d_({x, filter, strides, pad: pad8, dataFormat = "NHW
 }
 const depthwiseConv2d2 = op({fusedDepthwiseConv2d_});
 
-// node_modules/@tensorflow/tfjs-core/dist/ops/fused_mat_mul.js
+// node_modules/@tensorflow/tfjs-core/dist/ops/fused/mat_mul.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -11466,7 +12916,7 @@ __export(fused_ops_exports, {
  * =============================================================================
  */
 
-// node_modules/@tensorflow/tfjs-core/dist/ops/hamming_window.js
+// node_modules/@tensorflow/tfjs-core/dist/ops/signal/hamming_window.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -11488,7 +12938,7 @@ function hammingWindow_(windowLength) {
 }
 const hammingWindow = op({hammingWindow_});
 
-// node_modules/@tensorflow/tfjs-core/dist/ops/hann_window.js
+// node_modules/@tensorflow/tfjs-core/dist/ops/signal/hann_window.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -11510,7 +12960,7 @@ function hannWindow_(windowLength) {
 }
 const hannWindow = op({hannWindow_});
 
-// node_modules/@tensorflow/tfjs-core/dist/ops/frame.js
+// node_modules/@tensorflow/tfjs-core/dist/ops/signal/frame.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -11552,7 +13002,7 @@ function frame_(signal2, frameLength, frameStep, padEnd = false, padValue = 0) {
 }
 const frame = op({frame_});
 
-// node_modules/@tensorflow/tfjs-core/dist/ops/stft.js
+// node_modules/@tensorflow/tfjs-core/dist/ops/signal/stft.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -11583,7 +13033,7 @@ function stft_(signal2, frameLength, frameStep, fftLength, windowFn = hannWindow
 }
 const stft = op({stft_});
 
-// node_modules/@tensorflow/tfjs-core/dist/ops/crop_and_resize.js
+// node_modules/@tensorflow/tfjs-core/dist/ops/image/crop_and_resize.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -11621,7 +13071,7 @@ function cropAndResize_(image2, boxes, boxInd, cropSize, method, extrapolationVa
 }
 const cropAndResize = op({cropAndResize_});
 
-// node_modules/@tensorflow/tfjs-core/dist/ops/flip_left_right.js
+// node_modules/@tensorflow/tfjs-core/dist/ops/image/flip_left_right.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -11647,7 +13097,7 @@ function flipLeftRight_(image2) {
 }
 const flipLeftRight = op({flipLeftRight_});
 
-// node_modules/@tensorflow/tfjs-core/dist/ops/rotate_with_offset.js
+// node_modules/@tensorflow/tfjs-core/dist/ops/image/rotate_with_offset.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -11712,7 +13162,7 @@ function nonMaxSuppSanityCheck(boxes, scores, maxOutputSize, iouThreshold, score
   return {maxOutputSize, iouThreshold, scoreThreshold, softNmsSigma};
 }
 
-// node_modules/@tensorflow/tfjs-core/dist/ops/non_max_suppression.js
+// node_modules/@tensorflow/tfjs-core/dist/ops/image/non_max_suppression.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -11898,7 +13348,7 @@ function ascendingComparator(c1, c2) {
   return c1.score - c2.score || c1.score === c2.score && c2.boxIndex - c1.boxIndex;
 }
 
-// node_modules/@tensorflow/tfjs-core/dist/ops/non_max_suppression_async.js
+// node_modules/@tensorflow/tfjs-core/dist/ops/image/non_max_suppression_async.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -11936,7 +13386,7 @@ async function nonMaxSuppressionAsync_(boxes, scores, maxOutputSize, iouThreshol
 }
 const nonMaxSuppressionAsync = nonMaxSuppressionAsync_;
 
-// node_modules/@tensorflow/tfjs-core/dist/ops/non_max_suppression_with_score.js
+// node_modules/@tensorflow/tfjs-core/dist/ops/image/non_max_suppression_with_score.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -11968,7 +13418,7 @@ function nonMaxSuppressionWithScore_(boxes, scores, maxOutputSize, iouThreshold 
 }
 const nonMaxSuppressionWithScore = op({nonMaxSuppressionWithScore_});
 
-// node_modules/@tensorflow/tfjs-core/dist/ops/non_max_suppression_with_score_async.js
+// node_modules/@tensorflow/tfjs-core/dist/ops/image/non_max_suppression_with_score_async.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -12007,7 +13457,7 @@ async function nonMaxSuppressionWithScoreAsync_(boxes, scores, maxOutputSize, io
 }
 const nonMaxSuppressionWithScoreAsync = nonMaxSuppressionWithScoreAsync_;
 
-// node_modules/@tensorflow/tfjs-core/dist/ops/non_max_suppression_padded.js
+// node_modules/@tensorflow/tfjs-core/dist/ops/image/non_max_suppression_padded.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -12043,7 +13493,7 @@ function nonMaxSuppressionPadded_(boxes, scores, maxOutputSize, iouThreshold = 0
 }
 const nonMaxSuppressionPadded = op({nonMaxSuppressionPadded_});
 
-// node_modules/@tensorflow/tfjs-core/dist/ops/non_max_suppression_padded_async.js
+// node_modules/@tensorflow/tfjs-core/dist/ops/image/non_max_suppression_padded_async.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -12079,7 +13529,7 @@ async function nonMaxSuppressionPaddedAsync_(boxes, scores, maxOutputSize, iouTh
 }
 const nonMaxSuppressionPaddedAsync = nonMaxSuppressionPaddedAsync_;
 
-// node_modules/@tensorflow/tfjs-core/dist/ops/resize_bilinear.js
+// node_modules/@tensorflow/tfjs-core/dist/ops/image/resize_bilinear.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -12121,7 +13571,7 @@ function resizeBilinear_(images, size, alignCorners = false) {
 }
 const resizeBilinear = op({resizeBilinear_});
 
-// node_modules/@tensorflow/tfjs-core/dist/ops/resize_nearest_neighbor.js
+// node_modules/@tensorflow/tfjs-core/dist/ops/image/resize_nearest_neighbor.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -12164,7 +13614,7 @@ function resizeNearestNeighbor_(images, size, alignCorners = false) {
 }
 const resizeNearestNeighbor = op({resizeNearestNeighbor_});
 
-// node_modules/@tensorflow/tfjs-core/dist/ops/band_part.js
+// node_modules/@tensorflow/tfjs-core/dist/ops/linalg/band_part.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -12209,7 +13659,7 @@ function bandPart_(a, numLower, numUpper) {
 }
 const bandPart = op({bandPart_});
 
-// node_modules/@tensorflow/tfjs-core/dist/ops/gram_schmidt.js
+// node_modules/@tensorflow/tfjs-core/dist/ops/linalg/gram_schmidt.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -12262,7 +13712,7 @@ function gramSchmidt_(xs) {
 }
 const gramSchmidt = op({gramSchmidt_});
 
-// node_modules/@tensorflow/tfjs-core/dist/ops/qr.js
+// node_modules/@tensorflow/tfjs-core/dist/ops/linalg/qr.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -12387,7 +13837,7 @@ var Reduction;
   Reduction2[Reduction2["SUM_BY_NONZERO_WEIGHTS"] = 3] = "SUM_BY_NONZERO_WEIGHTS";
 })(Reduction || (Reduction = {}));
 
-// node_modules/@tensorflow/tfjs-core/dist/ops/compute_weighted_loss.js
+// node_modules/@tensorflow/tfjs-core/dist/ops/losses/compute_weighted_loss.js
 function computeWeightedLoss_(losses2, weights, reduction = Reduction.SUM_BY_NONZERO_WEIGHTS) {
   const $losses = convertToTensor(losses2, "losses", "computeWeightedLoss");
   let $weights = null;
@@ -12423,7 +13873,7 @@ function computeWeightedLoss_(losses2, weights, reduction = Reduction.SUM_BY_NON
 }
 const computeWeightedLoss = op({computeWeightedLoss_});
 
-// node_modules/@tensorflow/tfjs-core/dist/ops/absolute_difference.js
+// node_modules/@tensorflow/tfjs-core/dist/ops/losses/absolute_difference.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -12453,7 +13903,7 @@ function absoluteDifference_(labels, predictions, weights, reduction = Reduction
 }
 const absoluteDifference = op({absoluteDifference_});
 
-// node_modules/@tensorflow/tfjs-core/dist/ops/cosine_distance.js
+// node_modules/@tensorflow/tfjs-core/dist/ops/losses/cosine_distance.js
 function cosineDistance_(labels, predictions, axis, weights, reduction = Reduction.SUM_BY_NONZERO_WEIGHTS) {
   const $labels = convertToTensor(labels, "labels", "cosineDistance");
   const $predictions = convertToTensor(predictions, "predictions", "cosineDistance");
@@ -12468,7 +13918,7 @@ function cosineDistance_(labels, predictions, axis, weights, reduction = Reducti
 }
 const cosineDistance = op({cosineDistance_});
 
-// node_modules/@tensorflow/tfjs-core/dist/ops/hinge_loss.js
+// node_modules/@tensorflow/tfjs-core/dist/ops/losses/hinge_loss.js
 function hingeLoss_(labels, predictions, weights, reduction = Reduction.SUM_BY_NONZERO_WEIGHTS) {
   let $labels = convertToTensor(labels, "labels", "hingeLoss");
   const $predictions = convertToTensor(predictions, "predictions", "hingeLoss");
@@ -12484,7 +13934,7 @@ function hingeLoss_(labels, predictions, weights, reduction = Reduction.SUM_BY_N
 }
 const hingeLoss = op({hingeLoss_});
 
-// node_modules/@tensorflow/tfjs-core/dist/ops/huber_loss.js
+// node_modules/@tensorflow/tfjs-core/dist/ops/losses/huber_loss.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -12518,7 +13968,7 @@ function huberLoss_(labels, predictions, weights, delta = 1, reduction = Reducti
 }
 const huberLoss = op({huberLoss_});
 
-// node_modules/@tensorflow/tfjs-core/dist/ops/log_loss.js
+// node_modules/@tensorflow/tfjs-core/dist/ops/losses/log_loss.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -12552,7 +14002,7 @@ function logLoss_(labels, predictions, weights, epsilon2 = 1e-7, reduction = Red
 }
 const logLoss = op({logLoss_});
 
-// node_modules/@tensorflow/tfjs-core/dist/ops/mean_squared_error.js
+// node_modules/@tensorflow/tfjs-core/dist/ops/losses/mean_squared_error.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -12582,7 +14032,7 @@ function meanSquaredError_(labels, predictions, weights, reduction = Reduction.S
 }
 const meanSquaredError = op({meanSquaredError_});
 
-// node_modules/@tensorflow/tfjs-core/dist/ops/sigmoid_cross_entropy.js
+// node_modules/@tensorflow/tfjs-core/dist/ops/losses/sigmoid_cross_entropy.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -12627,7 +14077,7 @@ function sigmoidCrossEntropy_(multiClassLabels, logits, weights, labelSmoothing 
 }
 const sigmoidCrossEntropy = op({sigmoidCrossEntropy_});
 
-// node_modules/@tensorflow/tfjs-core/dist/ops/softmax_cross_entropy.js
+// node_modules/@tensorflow/tfjs-core/dist/ops/losses/softmax_cross_entropy.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -12690,218 +14140,6 @@ function softmaxCrossEntropy_(onehotLabels, logits, weights, labelSmoothing = 0,
 const softmaxCrossEntropy = op({softmaxCrossEntropy_});
 
 // node_modules/@tensorflow/tfjs-core/dist/ops/ops.js
-const ops_exports = {};
-__export(ops_exports, {
-  abs: () => abs,
-  acos: () => acos,
-  acosh: () => acosh,
-  add: () => add2,
-  addN: () => addN,
-  addStrict: () => addStrict,
-  all: () => all,
-  any: () => any,
-  argMax: () => argMax,
-  argMin: () => argMin,
-  asin: () => asin,
-  asinh: () => asinh,
-  atan: () => atan,
-  atan2: () => atan2,
-  atanh: () => atanh,
-  avgPool: () => avgPool,
-  avgPool3d: () => avgPool3d,
-  basicLSTMCell: () => basicLSTMCell,
-  batchNorm: () => batchNorm,
-  batchNorm2d: () => batchNorm2d,
-  batchNorm3d: () => batchNorm3d,
-  batchNorm4d: () => batchNorm4d,
-  batchToSpaceND: () => batchToSpaceND,
-  booleanMaskAsync: () => booleanMaskAsync,
-  broadcastTo: () => broadcastTo,
-  buffer: () => buffer,
-  cast: () => cast,
-  ceil: () => ceil,
-  clipByValue: () => clipByValue,
-  clone: () => clone,
-  complex: () => complex,
-  concat: () => concat,
-  concat1d: () => concat1d,
-  concat2d: () => concat2d,
-  concat3d: () => concat3d,
-  concat4d: () => concat4d,
-  conv1d: () => conv1d,
-  conv2d: () => conv2d,
-  conv2dTranspose: () => conv2dTranspose,
-  conv3d: () => conv3d,
-  conv3dTranspose: () => conv3dTranspose,
-  cos: () => cos,
-  cosh: () => cosh,
-  cosineWindow: () => cosineWindow,
-  cumsum: () => cumsum,
-  depthToSpace: () => depthToSpace,
-  depthwiseConv2d: () => depthwiseConv2d,
-  diag: () => diag,
-  dilation2d: () => dilation2d,
-  div: () => div,
-  divNoNan: () => divNoNan,
-  divStrict: () => divStrict,
-  dot: () => dot,
-  dropout: () => dropout,
-  elu: () => elu,
-  enclosingPowerOfTwo: () => enclosingPowerOfTwo,
-  equal: () => equal,
-  equalStrict: () => equalStrict,
-  erf: () => erf,
-  exp: () => exp,
-  expandDims: () => expandDims,
-  expm1: () => expm1,
-  eye: () => eye,
-  fft: () => fft,
-  fill: () => fill,
-  floor: () => floor,
-  floorDiv: () => floorDiv,
-  fused: () => fused_ops_exports,
-  gather: () => gather,
-  gatherND: () => gatherND,
-  greater: () => greater,
-  greaterEqual: () => greaterEqual,
-  greaterEqualStrict: () => greaterEqualStrict,
-  greaterStrict: () => greaterStrict,
-  ifft: () => ifft,
-  imag: () => imag,
-  image: () => image,
-  inTopKAsync: () => inTopKAsync,
-  irfft: () => irfft,
-  isFinite: () => isFinite2,
-  isInf: () => isInf,
-  isNaN: () => isNaN2,
-  leakyRelu: () => leakyRelu,
-  less: () => less,
-  lessEqual: () => lessEqual,
-  lessEqualStrict: () => lessEqualStrict,
-  lessStrict: () => lessStrict,
-  linalg: () => linalg,
-  linspace: () => linspace,
-  localResponseNormalization: () => localResponseNormalization,
-  log: () => log,
-  log1p: () => log1p,
-  logSigmoid: () => logSigmoid,
-  logSoftmax: () => logSoftmax,
-  logSumExp: () => logSumExp,
-  logicalAnd: () => logicalAnd,
-  logicalNot: () => logicalNot,
-  logicalOr: () => logicalOr,
-  logicalXor: () => logicalXor,
-  losses: () => losses,
-  matMul: () => matMul,
-  max: () => max,
-  maxPool: () => maxPool,
-  maxPool3d: () => maxPool3d,
-  maxPoolWithArgmax: () => maxPoolWithArgmax,
-  maximum: () => maximum,
-  maximumStrict: () => maximumStrict,
-  mean: () => mean,
-  min: () => min,
-  minimum: () => minimum,
-  minimumStrict: () => minimumStrict,
-  mod: () => mod,
-  modStrict: () => modStrict,
-  moments: () => moments,
-  movingAverage: () => movingAverage,
-  mul: () => mul,
-  mulStrict: () => mulStrict,
-  multiRNNCell: () => multiRNNCell,
-  multinomial: () => multinomial,
-  neg: () => neg,
-  norm: () => norm,
-  notEqual: () => notEqual,
-  notEqualStrict: () => notEqualStrict,
-  oneHot: () => oneHot,
-  ones: () => ones2,
-  onesLike: () => onesLike,
-  op: () => op,
-  outerProduct: () => outerProduct,
-  pad: () => pad,
-  pad1d: () => pad1d,
-  pad2d: () => pad2d,
-  pad3d: () => pad3d,
-  pad4d: () => pad4d,
-  pool: () => pool,
-  pow: () => pow,
-  powStrict: () => powStrict,
-  prelu: () => prelu,
-  print: () => print,
-  prod: () => prod,
-  rand: () => rand,
-  randomGamma: () => randomGamma,
-  randomNormal: () => randomNormal,
-  randomUniform: () => randomUniform,
-  range: () => range,
-  real: () => real,
-  reciprocal: () => reciprocal,
-  relu: () => relu,
-  relu6: () => relu6,
-  reshape: () => reshape,
-  reverse: () => reverse,
-  reverse1d: () => reverse1d,
-  reverse2d: () => reverse2d,
-  reverse3d: () => reverse3d,
-  reverse4d: () => reverse4d,
-  rfft: () => rfft,
-  round: () => round,
-  rsqrt: () => rsqrt,
-  scalar: () => scalar,
-  scatterND: () => scatterND,
-  selu: () => selu,
-  separableConv2d: () => separableConv2d,
-  setdiff1dAsync: () => setdiff1dAsync,
-  sigmoid: () => sigmoid,
-  sign: () => sign,
-  signal: () => signal,
-  sin: () => sin,
-  sinh: () => sinh,
-  slice: () => slice,
-  slice1d: () => slice1d,
-  slice2d: () => slice2d,
-  slice3d: () => slice3d,
-  slice4d: () => slice4d,
-  softmax: () => softmax,
-  softplus: () => softplus,
-  spaceToBatchND: () => spaceToBatchND,
-  sparseToDense: () => sparseToDense,
-  spectral: () => spectral,
-  split: () => split,
-  sqrt: () => sqrt,
-  square: () => square,
-  squaredDifference: () => squaredDifference,
-  squaredDifferenceStrict: () => squaredDifferenceStrict,
-  squeeze: () => squeeze,
-  stack: () => stack,
-  step: () => step,
-  stridedSlice: () => stridedSlice,
-  sub: () => sub,
-  subStrict: () => subStrict,
-  sum: () => sum2,
-  tan: () => tan,
-  tanh: () => tanh2,
-  tensor: () => tensor5,
-  tensor1d: () => tensor1d,
-  tensor2d: () => tensor2d,
-  tensor3d: () => tensor3d,
-  tensor4d: () => tensor4d,
-  tensor5d: () => tensor5d,
-  tensor6d: () => tensor6d,
-  tile: () => tile,
-  topk: () => topk,
-  transpose: () => transpose,
-  truncatedNormal: () => truncatedNormal,
-  unsortedSegmentSum: () => unsortedSegmentSum,
-  unstack: () => unstack,
-  variable: () => variable,
-  where: () => where,
-  whereAsync: () => whereAsync,
-  zeros: () => zeros,
-  zerosLike: () => zerosLike
-});
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -12959,1437 +14197,6 @@ const losses = {
   sigmoidCrossEntropy,
   softmaxCrossEntropy
 };
-
-// node_modules/@tensorflow/tfjs-core/dist/base_side_effects.js
-/**
- * @license
- * Copyright 2020 Google Inc. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =============================================================================
- */
-setOpHandler(ops_exports);
-
-// node_modules/@tensorflow/tfjs-core/dist/io/types.js
-/**
- * @license
- * Copyright 2018 Google LLC. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =============================================================================
- */
-const DTYPE_VALUE_SIZE_MAP = {
-  float32: 4,
-  float16: 2,
-  int32: 4,
-  uint16: 2,
-  uint8: 1,
-  bool: 1,
-  complex64: 8
-};
-
-// node_modules/@tensorflow/tfjs-core/dist/io/io_utils.js
-/**
- * @license
- * Copyright 2018 Google LLC. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =============================================================================
- */
-const NUM_BYTES_STRING_LENGTH = 4;
-async function encodeWeights(tensors, group) {
-  const specs = [];
-  const dataPromises = [];
-  const names = Array.isArray(tensors) ? tensors.map((tensor17) => tensor17.name) : Object.keys(tensors);
-  for (let i = 0; i < names.length; ++i) {
-    const name = names[i];
-    const t = Array.isArray(tensors) ? tensors[i].tensor : tensors[name];
-    if (t.dtype !== "float32" && t.dtype !== "int32" && t.dtype !== "bool" && t.dtype !== "string" && t.dtype !== "complex64") {
-      throw new Error(`Unsupported dtype in weight '${name}': ${t.dtype}`);
-    }
-    const spec = {name, shape: t.shape, dtype: t.dtype};
-    if (t.dtype === "string") {
-      const utf8bytes = new Promise(async (resolve) => {
-        const vals = await t.bytes();
-        const totalNumBytes = vals.reduce((p, c) => p + c.length, 0) + NUM_BYTES_STRING_LENGTH * vals.length;
-        const bytes = new Uint8Array(totalNumBytes);
-        let offset = 0;
-        for (let i2 = 0; i2 < vals.length; i2++) {
-          const val = vals[i2];
-          const bytesOfLength = new Uint8Array(new Uint32Array([val.length]).buffer);
-          bytes.set(bytesOfLength, offset);
-          offset += NUM_BYTES_STRING_LENGTH;
-          bytes.set(val, offset);
-          offset += val.length;
-        }
-        resolve(bytes);
-      });
-      dataPromises.push(utf8bytes);
-    } else {
-      dataPromises.push(t.data());
-    }
-    if (group != null) {
-      spec.group = group;
-    }
-    specs.push(spec);
-  }
-  const tensorValues = await Promise.all(dataPromises);
-  return {data: concatenateTypedArrays(tensorValues), specs};
-}
-function decodeWeights(buffer10, specs) {
-  const out = {};
-  let float16Decode;
-  let offset = 0;
-  for (const spec of specs) {
-    const name = spec.name;
-    const dtype = spec.dtype;
-    const shape = spec.shape;
-    const size = sizeFromShape(shape);
-    let values;
-    if ("quantization" in spec) {
-      const quantization = spec.quantization;
-      if (quantization.dtype === "uint8" || quantization.dtype === "uint16") {
-        if (!("min" in quantization && "scale" in quantization)) {
-          throw new Error(`Weight ${spec.name} with quantization ${quantization.dtype} doesn't have corresponding metadata min and scale.`);
-        }
-      } else if (quantization.dtype === "float16") {
-        if (dtype !== "float32") {
-          throw new Error(`Weight ${spec.name} is quantized with ${quantization.dtype} which only supports weights of type float32 not ${dtype}.`);
-        }
-      } else {
-        throw new Error(`Weight ${spec.name} has unknown quantization dtype ${quantization.dtype}. Supported quantization dtypes are: 'uint8', 'uint16', and 'float16'.`);
-      }
-      const quantizationSizeFactor = DTYPE_VALUE_SIZE_MAP[quantization.dtype];
-      const byteBuffer = buffer10.slice(offset, offset + size * quantizationSizeFactor);
-      const quantizedArray = quantization.dtype === "uint8" ? new Uint8Array(byteBuffer) : new Uint16Array(byteBuffer);
-      if (dtype === "float32") {
-        if (quantization.dtype === "uint8" || quantization.dtype === "uint16") {
-          values = new Float32Array(quantizedArray.length);
-          for (let i = 0; i < quantizedArray.length; i++) {
-            const v = quantizedArray[i];
-            values[i] = v * quantization.scale + quantization.min;
-          }
-        } else if (quantization.dtype === "float16") {
-          if (float16Decode === void 0) {
-            float16Decode = getFloat16Decoder();
-          }
-          values = float16Decode(quantizedArray);
-        } else {
-          throw new Error(`Unsupported quantization type ${quantization.dtype} for weight type float32.`);
-        }
-      } else if (dtype === "int32") {
-        if (quantization.dtype !== "uint8" && quantization.dtype !== "uint16") {
-          throw new Error(`Unsupported quantization type ${quantization.dtype} for weight type int32.`);
-        }
-        values = new Int32Array(quantizedArray.length);
-        for (let i = 0; i < quantizedArray.length; i++) {
-          const v = quantizedArray[i];
-          values[i] = Math.round(v * quantization.scale + quantization.min);
-        }
-      } else {
-        throw new Error(`Unsupported dtype in weight '${name}': ${dtype}`);
-      }
-      offset += size * quantizationSizeFactor;
-    } else if (dtype === "string") {
-      const size2 = sizeFromShape(spec.shape);
-      values = [];
-      for (let i = 0; i < size2; i++) {
-        const byteLength = new Uint32Array(buffer10.slice(offset, offset + NUM_BYTES_STRING_LENGTH))[0];
-        offset += NUM_BYTES_STRING_LENGTH;
-        const bytes = new Uint8Array(buffer10.slice(offset, offset + byteLength));
-        values.push(bytes);
-        offset += byteLength;
-      }
-    } else {
-      const dtypeFactor = DTYPE_VALUE_SIZE_MAP[dtype];
-      const byteBuffer = buffer10.slice(offset, offset + size * dtypeFactor);
-      if (dtype === "float32") {
-        values = new Float32Array(byteBuffer);
-      } else if (dtype === "int32") {
-        values = new Int32Array(byteBuffer);
-      } else if (dtype === "bool") {
-        values = new Uint8Array(byteBuffer);
-      } else if (dtype === "complex64") {
-        values = new Float32Array(byteBuffer);
-        const real6 = new Float32Array(values.length / 2);
-        const image2 = new Float32Array(values.length / 2);
-        for (let i = 0; i < real6.length; i++) {
-          real6[i] = values[i * 2];
-          image2[i] = values[i * 2 + 1];
-        }
-        const realTensor = tensor5(real6, shape, "float32");
-        const imageTensor = tensor5(image2, shape, "float32");
-        out[name] = complex(realTensor, imageTensor);
-      } else {
-        throw new Error(`Unsupported dtype in weight '${name}': ${dtype}`);
-      }
-      offset += size * dtypeFactor;
-    }
-    if (dtype !== "complex64") {
-      out[name] = tensor5(values, shape, dtype);
-    }
-  }
-  return out;
-}
-function concatenateTypedArrays(xs) {
-  if (xs === null) {
-    throw new Error(`Invalid input value: ${JSON.stringify(xs)}`);
-  }
-  let totalByteLength = 0;
-  const normalizedXs = [];
-  xs.forEach((x) => {
-    totalByteLength += x.byteLength;
-    normalizedXs.push(x.byteLength === x.buffer.byteLength ? x : new x.constructor(x));
-    if (!(x instanceof Float32Array || x instanceof Int32Array || x instanceof Uint8Array)) {
-      throw new Error(`Unsupported TypedArray subtype: ${x.constructor.name}`);
-    }
-  });
-  const y = new Uint8Array(totalByteLength);
-  let offset = 0;
-  normalizedXs.forEach((x) => {
-    y.set(new Uint8Array(x.buffer), offset);
-    offset += x.byteLength;
-  });
-  return y.buffer;
-}
-const useNodeBuffer = typeof Buffer !== "undefined" && (typeof Blob === "undefined" || typeof atob === "undefined" || typeof btoa === "undefined");
-function stringByteLength(str) {
-  if (useNodeBuffer) {
-    return Buffer.byteLength(str);
-  }
-  return new Blob([str]).size;
-}
-function concatenateArrayBuffers(buffers) {
-  if (buffers.length === 1) {
-    return buffers[0];
-  }
-  let totalByteLength = 0;
-  buffers.forEach((buffer10) => {
-    totalByteLength += buffer10.byteLength;
-  });
-  const temp = new Uint8Array(totalByteLength);
-  let offset = 0;
-  buffers.forEach((buffer10) => {
-    temp.set(new Uint8Array(buffer10), offset);
-    offset += buffer10.byteLength;
-  });
-  return temp.buffer;
-}
-function basename(path) {
-  const SEPARATOR = "/";
-  path = path.trim();
-  while (path.endsWith(SEPARATOR)) {
-    path = path.slice(0, path.length - 1);
-  }
-  const items = path.split(SEPARATOR);
-  return items[items.length - 1];
-}
-function getModelArtifactsInfoForJSON(modelArtifacts) {
-  if (modelArtifacts.modelTopology instanceof ArrayBuffer) {
-    throw new Error("Expected JSON model topology, received ArrayBuffer.");
-  }
-  return {
-    dateSaved: new Date(),
-    modelTopologyType: "JSON",
-    modelTopologyBytes: modelArtifacts.modelTopology == null ? 0 : stringByteLength(JSON.stringify(modelArtifacts.modelTopology)),
-    weightSpecsBytes: modelArtifacts.weightSpecs == null ? 0 : stringByteLength(JSON.stringify(modelArtifacts.weightSpecs)),
-    weightDataBytes: modelArtifacts.weightData == null ? 0 : modelArtifacts.weightData.byteLength
-  };
-}
-function computeFloat16MantisaTable() {
-  const convertMantissa = (i) => {
-    let m = i << 13;
-    let e = 0;
-    while ((m & 8388608) === 0) {
-      e -= 8388608;
-      m <<= 1;
-    }
-    m &= ~8388608;
-    e += 947912704;
-    return m | e;
-  };
-  const mantisaTable = new Uint32Array(2048);
-  mantisaTable[0] = 0;
-  for (let i = 1; i < 1024; i++) {
-    mantisaTable[i] = convertMantissa(i);
-  }
-  for (let i = 1024; i < 2048; i++) {
-    mantisaTable[i] = 939524096 + (i - 1024 << 13);
-  }
-  return mantisaTable;
-}
-function computeFloat16ExponentTable() {
-  const exponentTable = new Uint32Array(64);
-  exponentTable[0] = 0;
-  exponentTable[31] = 1199570944;
-  exponentTable[32] = 2147483648;
-  exponentTable[63] = 3347054592;
-  for (let i = 1; i < 31; i++) {
-    exponentTable[i] = i << 23;
-  }
-  for (let i = 33; i < 63; i++) {
-    exponentTable[i] = 2147483648 + (i - 32 << 23);
-  }
-  return exponentTable;
-}
-function computeFloat16OffsetTable() {
-  const offsetTable = new Uint32Array(64);
-  for (let i = 0; i < 64; i++) {
-    offsetTable[i] = 1024;
-  }
-  offsetTable[0] = offsetTable[32] = 0;
-  return offsetTable;
-}
-function getFloat16Decoder() {
-  const mantisaTable = computeFloat16MantisaTable();
-  const exponentTable = computeFloat16ExponentTable();
-  const offsetTable = computeFloat16OffsetTable();
-  return (quantizedArray) => {
-    const buffer10 = new ArrayBuffer(4 * quantizedArray.length);
-    const bufferUint32View = new Uint32Array(buffer10);
-    for (let index = 0; index < quantizedArray.length; index++) {
-      const float16Bits = quantizedArray[index];
-      const float32Bits = mantisaTable[offsetTable[float16Bits >> 10] + (float16Bits & 1023)] + exponentTable[float16Bits >> 10];
-      bufferUint32View[index] = float32Bits;
-    }
-    return new Float32Array(buffer10);
-  };
-}
-
-// node_modules/@tensorflow/tfjs-core/dist/io/router_registry.js
-/**
- * @license
- * Copyright 2018 Google LLC. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =============================================================================
- */
-class IORouterRegistry {
-  constructor() {
-    this.saveRouters = [];
-    this.loadRouters = [];
-  }
-  static getInstance() {
-    if (IORouterRegistry.instance == null) {
-      IORouterRegistry.instance = new IORouterRegistry();
-    }
-    return IORouterRegistry.instance;
-  }
-  static registerSaveRouter(saveRouter) {
-    IORouterRegistry.getInstance().saveRouters.push(saveRouter);
-  }
-  static registerLoadRouter(loadRouter) {
-    IORouterRegistry.getInstance().loadRouters.push(loadRouter);
-  }
-  static getSaveHandlers(url) {
-    return IORouterRegistry.getHandlers(url, "save");
-  }
-  static getLoadHandlers(url, loadOptions) {
-    return IORouterRegistry.getHandlers(url, "load", loadOptions);
-  }
-  static getHandlers(url, handlerType, loadOptions) {
-    const validHandlers = [];
-    const routers = handlerType === "load" ? IORouterRegistry.getInstance().loadRouters : IORouterRegistry.getInstance().saveRouters;
-    routers.forEach((router) => {
-      const handler = router(url, loadOptions);
-      if (handler !== null) {
-        validHandlers.push(handler);
-      }
-    });
-    return validHandlers;
-  }
-}
-const registerSaveRouter = (loudRouter) => IORouterRegistry.registerSaveRouter(loudRouter);
-const registerLoadRouter = (loudRouter) => IORouterRegistry.registerLoadRouter(loudRouter);
-const getSaveHandlers = (url) => IORouterRegistry.getSaveHandlers(url);
-const getLoadHandlers = (url, loadOptions) => IORouterRegistry.getLoadHandlers(url, loadOptions);
-
-// node_modules/@tensorflow/tfjs-core/dist/io/model_management.js
-/**
- * @license
- * Copyright 2018 Google LLC. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =============================================================================
- */
-const URL_SCHEME_SUFFIX = "://";
-class ModelStoreManagerRegistry {
-  constructor() {
-    this.managers = {};
-  }
-  static getInstance() {
-    if (ModelStoreManagerRegistry.instance == null) {
-      ModelStoreManagerRegistry.instance = new ModelStoreManagerRegistry();
-    }
-    return ModelStoreManagerRegistry.instance;
-  }
-  static registerManager(scheme, manager) {
-    assert(scheme != null, () => "scheme must not be undefined or null.");
-    if (scheme.endsWith(URL_SCHEME_SUFFIX)) {
-      scheme = scheme.slice(0, scheme.indexOf(URL_SCHEME_SUFFIX));
-    }
-    assert(scheme.length > 0, () => "scheme must not be an empty string.");
-    const registry = ModelStoreManagerRegistry.getInstance();
-    assert(registry.managers[scheme] == null, () => `A model store manager is already registered for scheme '${scheme}'.`);
-    registry.managers[scheme] = manager;
-  }
-  static getManager(scheme) {
-    const manager = this.getInstance().managers[scheme];
-    if (manager == null) {
-      throw new Error(`Cannot find model manager for scheme '${scheme}'`);
-    }
-    return manager;
-  }
-  static getSchemes() {
-    return Object.keys(this.getInstance().managers);
-  }
-}
-function parseURL(url) {
-  if (url.indexOf(URL_SCHEME_SUFFIX) === -1) {
-    throw new Error(`The url string provided does not contain a scheme. Supported schemes are: ${ModelStoreManagerRegistry.getSchemes().join(",")}`);
-  }
-  return {
-    scheme: url.split(URL_SCHEME_SUFFIX)[0],
-    path: url.split(URL_SCHEME_SUFFIX)[1]
-  };
-}
-async function cloneModelInternal(sourceURL, destURL, deleteSource = false) {
-  assert(sourceURL !== destURL, () => `Old path and new path are the same: '${sourceURL}'`);
-  const loadHandlers = IORouterRegistry.getLoadHandlers(sourceURL);
-  assert(loadHandlers.length > 0, () => `Copying failed because no load handler is found for source URL ${sourceURL}.`);
-  assert(loadHandlers.length < 2, () => `Copying failed because more than one (${loadHandlers.length}) load handlers for source URL ${sourceURL}.`);
-  const loadHandler = loadHandlers[0];
-  const saveHandlers = IORouterRegistry.getSaveHandlers(destURL);
-  assert(saveHandlers.length > 0, () => `Copying failed because no save handler is found for destination URL ${destURL}.`);
-  assert(saveHandlers.length < 2, () => `Copying failed because more than one (${loadHandlers.length}) save handlers for destination URL ${destURL}.`);
-  const saveHandler = saveHandlers[0];
-  const sourceScheme = parseURL(sourceURL).scheme;
-  const sourcePath = parseURL(sourceURL).path;
-  const sameMedium = sourceScheme === parseURL(sourceURL).scheme;
-  const modelArtifacts = await loadHandler.load();
-  if (deleteSource && sameMedium) {
-    await ModelStoreManagerRegistry.getManager(sourceScheme).removeModel(sourcePath);
-  }
-  const saveResult = await saveHandler.save(modelArtifacts);
-  if (deleteSource && !sameMedium) {
-    await ModelStoreManagerRegistry.getManager(sourceScheme).removeModel(sourcePath);
-  }
-  return saveResult.modelArtifactsInfo;
-}
-async function listModels() {
-  const schemes = ModelStoreManagerRegistry.getSchemes();
-  const out = {};
-  for (const scheme of schemes) {
-    const schemeOut = await ModelStoreManagerRegistry.getManager(scheme).listModels();
-    for (const path in schemeOut) {
-      const url = scheme + URL_SCHEME_SUFFIX + path;
-      out[url] = schemeOut[path];
-    }
-  }
-  return out;
-}
-async function removeModel(url) {
-  const schemeAndPath = parseURL(url);
-  const manager = ModelStoreManagerRegistry.getManager(schemeAndPath.scheme);
-  return manager.removeModel(schemeAndPath.path);
-}
-async function copyModel(sourceURL, destURL) {
-  const deleteSource = false;
-  return cloneModelInternal(sourceURL, destURL, deleteSource);
-}
-async function moveModel(sourceURL, destURL) {
-  const deleteSource = true;
-  return cloneModelInternal(sourceURL, destURL, deleteSource);
-}
-
-// node_modules/@tensorflow/tfjs-core/dist/io/browser_files.js
-/**
- * @license
- * Copyright 2018 Google LLC. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =============================================================================
- */
-const DEFAULT_FILE_NAME_PREFIX = "model";
-const DEFAULT_JSON_EXTENSION_NAME = ".json";
-const DEFAULT_WEIGHT_DATA_EXTENSION_NAME = ".weights.bin";
-function defer(f) {
-  return new Promise((resolve) => setTimeout(resolve)).then(f);
-}
-class BrowserDownloads {
-  constructor(fileNamePrefix) {
-    if (!env().getBool("IS_BROWSER")) {
-      throw new Error("browserDownloads() cannot proceed because the current environment is not a browser.");
-    }
-    if (fileNamePrefix.startsWith(BrowserDownloads.URL_SCHEME)) {
-      fileNamePrefix = fileNamePrefix.slice(BrowserDownloads.URL_SCHEME.length);
-    }
-    if (fileNamePrefix == null || fileNamePrefix.length === 0) {
-      fileNamePrefix = DEFAULT_FILE_NAME_PREFIX;
-    }
-    this.modelTopologyFileName = fileNamePrefix + DEFAULT_JSON_EXTENSION_NAME;
-    this.weightDataFileName = fileNamePrefix + DEFAULT_WEIGHT_DATA_EXTENSION_NAME;
-  }
-  async save(modelArtifacts) {
-    if (typeof document === "undefined") {
-      throw new Error("Browser downloads are not supported in this environment since `document` is not present");
-    }
-    const weightsURL = window.URL.createObjectURL(new Blob([modelArtifacts.weightData], {type: "application/octet-stream"}));
-    if (modelArtifacts.modelTopology instanceof ArrayBuffer) {
-      throw new Error("BrowserDownloads.save() does not support saving model topology in binary formats yet.");
-    } else {
-      const weightsManifest = [{
-        paths: ["./" + this.weightDataFileName],
-        weights: modelArtifacts.weightSpecs
-      }];
-      const modelTopologyAndWeightManifest = {
-        modelTopology: modelArtifacts.modelTopology,
-        format: modelArtifacts.format,
-        generatedBy: modelArtifacts.generatedBy,
-        convertedBy: modelArtifacts.convertedBy,
-        weightsManifest
-      };
-      const modelTopologyAndWeightManifestURL = window.URL.createObjectURL(new Blob([JSON.stringify(modelTopologyAndWeightManifest)], {type: "application/json"}));
-      const jsonAnchor = this.jsonAnchor == null ? document.createElement("a") : this.jsonAnchor;
-      jsonAnchor.download = this.modelTopologyFileName;
-      jsonAnchor.href = modelTopologyAndWeightManifestURL;
-      await defer(() => jsonAnchor.dispatchEvent(new MouseEvent("click")));
-      if (modelArtifacts.weightData != null) {
-        const weightDataAnchor = this.weightDataAnchor == null ? document.createElement("a") : this.weightDataAnchor;
-        weightDataAnchor.download = this.weightDataFileName;
-        weightDataAnchor.href = weightsURL;
-        await defer(() => weightDataAnchor.dispatchEvent(new MouseEvent("click")));
-      }
-      return {modelArtifactsInfo: getModelArtifactsInfoForJSON(modelArtifacts)};
-    }
-  }
-}
-BrowserDownloads.URL_SCHEME = "downloads://";
-class BrowserFiles {
-  constructor(files) {
-    if (files == null || files.length < 1) {
-      throw new Error(`When calling browserFiles, at least 1 file is required, but received ${files}`);
-    }
-    this.files = files;
-  }
-  async load() {
-    const jsonFile = this.files[0];
-    const weightFiles = this.files.slice(1);
-    return new Promise((resolve, reject) => {
-      const jsonReader = new FileReader();
-      jsonReader.onload = (event) => {
-        const modelJSON = JSON.parse(event.target.result);
-        const modelTopology = modelJSON.modelTopology;
-        if (modelTopology == null) {
-          reject(new Error(`modelTopology field is missing from file ${jsonFile.name}`));
-          return;
-        }
-        if (weightFiles.length === 0) {
-          resolve({modelTopology});
-        }
-        const weightsManifest = modelJSON.weightsManifest;
-        if (weightsManifest == null) {
-          reject(new Error(`weightManifest field is missing from file ${jsonFile.name}`));
-          return;
-        }
-        let pathToFile;
-        try {
-          pathToFile = this.checkManifestAndWeightFiles(weightsManifest, weightFiles);
-        } catch (err) {
-          reject(err);
-          return;
-        }
-        const weightSpecs = [];
-        const paths = [];
-        const perFileBuffers = [];
-        weightsManifest.forEach((weightsGroup) => {
-          weightsGroup.paths.forEach((path) => {
-            paths.push(path);
-            perFileBuffers.push(null);
-          });
-          weightSpecs.push(...weightsGroup.weights);
-        });
-        weightsManifest.forEach((weightsGroup) => {
-          weightsGroup.paths.forEach((path) => {
-            const weightFileReader = new FileReader();
-            weightFileReader.onload = (event2) => {
-              const weightData = event2.target.result;
-              const index = paths.indexOf(path);
-              perFileBuffers[index] = weightData;
-              if (perFileBuffers.indexOf(null) === -1) {
-                resolve({
-                  modelTopology,
-                  weightSpecs,
-                  weightData: concatenateArrayBuffers(perFileBuffers),
-                  format: modelJSON.format,
-                  generatedBy: modelJSON.generatedBy,
-                  convertedBy: modelJSON.convertedBy,
-                  userDefinedMetadata: modelJSON.userDefinedMetadata
-                });
-              }
-            };
-            weightFileReader.onerror = (error) => reject(`Failed to weights data from file of path '${path}'.`);
-            weightFileReader.readAsArrayBuffer(pathToFile[path]);
-          });
-        });
-      };
-      jsonReader.onerror = (error) => reject(`Failed to read model topology and weights manifest JSON from file '${jsonFile.name}'. BrowserFiles supports loading Keras-style tf.Model artifacts only.`);
-      jsonReader.readAsText(jsonFile);
-    });
-  }
-  checkManifestAndWeightFiles(manifest, files) {
-    const basenames = [];
-    const fileNames = files.map((file) => basename(file.name));
-    const pathToFile = {};
-    for (const group of manifest) {
-      group.paths.forEach((path) => {
-        const pathBasename = basename(path);
-        if (basenames.indexOf(pathBasename) !== -1) {
-          throw new Error(`Duplicate file basename found in weights manifest: '${pathBasename}'`);
-        }
-        basenames.push(pathBasename);
-        if (fileNames.indexOf(pathBasename) === -1) {
-          throw new Error(`Weight file with basename '${pathBasename}' is not provided.`);
-        } else {
-          pathToFile[path] = files[fileNames.indexOf(pathBasename)];
-        }
-      });
-    }
-    if (basenames.length !== files.length) {
-      throw new Error(`Mismatch in the number of files in weights manifest (${basenames.length}) and the number of weight files provided (${files.length}).`);
-    }
-    return pathToFile;
-  }
-}
-const browserDownloadsRouter = (url) => {
-  if (!env().getBool("IS_BROWSER")) {
-    return null;
-  } else {
-    if (!Array.isArray(url) && url.startsWith(BrowserDownloads.URL_SCHEME)) {
-      return browserDownloads(url.slice(BrowserDownloads.URL_SCHEME.length));
-    } else {
-      return null;
-    }
-  }
-};
-IORouterRegistry.registerSaveRouter(browserDownloadsRouter);
-function browserDownloads(fileNamePrefix = "model") {
-  return new BrowserDownloads(fileNamePrefix);
-}
-function browserFiles(files) {
-  return new BrowserFiles(files);
-}
-
-// node_modules/@tensorflow/tfjs-core/dist/io/progress.js
-/**
- * @license
- * Copyright 2019 Google LLC. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =============================================================================
- */
-function monitorPromisesProgress(promises, onProgress, startFraction, endFraction) {
-  checkPromises(promises);
-  startFraction = startFraction == null ? 0 : startFraction;
-  endFraction = endFraction == null ? 1 : endFraction;
-  checkFraction(startFraction, endFraction);
-  let resolvedPromise = 0;
-  const registerMonitor = (promise) => {
-    promise.then((value) => {
-      const fraction = startFraction + ++resolvedPromise / promises.length * (endFraction - startFraction);
-      onProgress(fraction);
-      return value;
-    });
-    return promise;
-  };
-  function checkPromises(promises2) {
-    assert(promises2 != null && Array.isArray(promises2) && promises2.length > 0, () => "promises must be a none empty array");
-  }
-  function checkFraction(startFraction2, endFraction2) {
-    assert(startFraction2 >= 0 && startFraction2 <= 1, () => `Progress fraction must be in range [0, 1], but got startFraction ${startFraction2}`);
-    assert(endFraction2 >= 0 && endFraction2 <= 1, () => `Progress fraction must be in range [0, 1], but got endFraction ${endFraction2}`);
-    assert(endFraction2 >= startFraction2, () => `startFraction must be no more than endFraction, but got startFraction ${startFraction2} and endFraction ${endFraction2}`);
-  }
-  return Promise.all(promises.map(registerMonitor));
-}
-
-// node_modules/@tensorflow/tfjs-core/dist/io/weights_loader.js
-/**
- * @license
- * Copyright 2018 Google LLC. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =============================================================================
- */
-async function loadWeightsAsArrayBuffer(fetchURLs, loadOptions) {
-  if (loadOptions == null) {
-    loadOptions = {};
-  }
-  const fetchFunc = loadOptions.fetchFunc == null ? env().platform.fetch : loadOptions.fetchFunc;
-  const requests = fetchURLs.map((fetchURL) => fetchFunc(fetchURL, loadOptions.requestInit, {isBinary: true}));
-  const fetchStartFraction = 0;
-  const fetchEndFraction = 0.5;
-  const responses = loadOptions.onProgress == null ? await Promise.all(requests) : await monitorPromisesProgress(requests, loadOptions.onProgress, fetchStartFraction, fetchEndFraction);
-  const bufferPromises = responses.map((response) => response.arrayBuffer());
-  const bufferStartFraction = 0.5;
-  const bufferEndFraction = 1;
-  const buffers = loadOptions.onProgress == null ? await Promise.all(bufferPromises) : await monitorPromisesProgress(bufferPromises, loadOptions.onProgress, bufferStartFraction, bufferEndFraction);
-  return buffers;
-}
-async function loadWeights(manifest, filePathPrefix = "", weightNames, requestInit) {
-  const fetchWeights = (fetchUrls) => loadWeightsAsArrayBuffer(fetchUrls, {requestInit});
-  const loadWeights2 = weightsLoaderFactory(fetchWeights);
-  return loadWeights2(manifest, filePathPrefix, weightNames);
-}
-function weightsLoaderFactory(fetchWeightsFunction) {
-  return async (manifest, filePathPrefix = "", weightNames) => {
-    const groupIndicesToFetchMap = manifest.map(() => false);
-    const groupWeightsToFetch = {};
-    const weightsFound = weightNames != null ? weightNames.map(() => false) : [];
-    const allManifestWeightNames = [];
-    manifest.forEach((manifestGroupConfig, groupIndex) => {
-      let groupOffset = 0;
-      manifestGroupConfig.weights.forEach((weightsEntry) => {
-        const rawDtype = "quantization" in weightsEntry ? weightsEntry.quantization.dtype : weightsEntry.dtype;
-        const weightsBytes = DTYPE_VALUE_SIZE_MAP[rawDtype] * sizeFromShape(weightsEntry.shape);
-        const enqueueWeightsForFetchingFn = () => {
-          groupIndicesToFetchMap[groupIndex] = true;
-          if (groupWeightsToFetch[groupIndex] == null) {
-            groupWeightsToFetch[groupIndex] = [];
-          }
-          groupWeightsToFetch[groupIndex].push({
-            manifestEntry: weightsEntry,
-            groupOffset,
-            sizeBytes: weightsBytes
-          });
-        };
-        if (weightNames != null) {
-          weightNames.forEach((weightName, weightIndex) => {
-            if (weightName === weightsEntry.name) {
-              enqueueWeightsForFetchingFn();
-              weightsFound[weightIndex] = true;
-            }
-          });
-        } else {
-          enqueueWeightsForFetchingFn();
-        }
-        allManifestWeightNames.push(weightsEntry.name);
-        groupOffset += weightsBytes;
-      });
-    });
-    if (!weightsFound.every((found) => found)) {
-      const weightsNotFound = weightNames.filter((_, i) => !weightsFound[i]);
-      throw new Error(`Could not find weights in manifest with names: ${weightsNotFound.join(", ")}. 
-Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
-    }
-    const groupIndicesToFetch = groupIndicesToFetchMap.reduce((accumulator, shouldFetch, i) => {
-      if (shouldFetch) {
-        accumulator.push(i);
-      }
-      return accumulator;
-    }, []);
-    const fetchUrls = [];
-    groupIndicesToFetch.forEach((i) => {
-      manifest[i].paths.forEach((filepath) => {
-        const fetchUrl = filePathPrefix + (!filePathPrefix.endsWith("/") ? "/" : "") + filepath;
-        fetchUrls.push(fetchUrl);
-      });
-    });
-    const buffers = await fetchWeightsFunction(fetchUrls);
-    const weightsTensorMap = {};
-    let bufferIndexOffset = 0;
-    groupIndicesToFetch.forEach((i) => {
-      const numBuffers = manifest[i].paths.length;
-      let groupBytes = 0;
-      for (let i2 = 0; i2 < numBuffers; i2++) {
-        groupBytes += buffers[bufferIndexOffset + i2].byteLength;
-      }
-      const groupBuffer = new ArrayBuffer(groupBytes);
-      const groupByteBuffer = new Uint8Array(groupBuffer);
-      let groupBufferOffset = 0;
-      for (let i2 = 0; i2 < numBuffers; i2++) {
-        const buffer10 = new Uint8Array(buffers[bufferIndexOffset + i2]);
-        groupByteBuffer.set(buffer10, groupBufferOffset);
-        groupBufferOffset += buffer10.byteLength;
-      }
-      const weightsEntries = groupWeightsToFetch[i];
-      weightsEntries.forEach((weightsEntry) => {
-        const byteBuffer = groupBuffer.slice(weightsEntry.groupOffset, weightsEntry.groupOffset + weightsEntry.sizeBytes);
-        const nameToTensorMap = decodeWeights(byteBuffer, [weightsEntry.manifestEntry]);
-        for (const name in nameToTensorMap) {
-          weightsTensorMap[name] = nameToTensorMap[name];
-        }
-      });
-      bufferIndexOffset += numBuffers;
-    });
-    return weightsTensorMap;
-  };
-}
-
-// node_modules/@tensorflow/tfjs-core/dist/io/http.js
-/**
- * @license
- * Copyright 2018 Google LLC. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =============================================================================
- */
-const OCTET_STREAM_MIME_TYPE = "application/octet-stream";
-const JSON_TYPE = "application/json";
-class HTTPRequest {
-  constructor(path, loadOptions) {
-    this.DEFAULT_METHOD = "POST";
-    if (loadOptions == null) {
-      loadOptions = {};
-    }
-    this.weightPathPrefix = loadOptions.weightPathPrefix;
-    this.onProgress = loadOptions.onProgress;
-    if (loadOptions.fetchFunc != null) {
-      assert(typeof loadOptions.fetchFunc === "function", () => "Must pass a function that matches the signature of `fetch` (see https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)");
-      this.fetch = loadOptions.fetchFunc;
-    } else {
-      this.fetch = env().platform.fetch;
-    }
-    assert(path != null && path.length > 0, () => "URL path for http must not be null, undefined or empty.");
-    if (Array.isArray(path)) {
-      assert(path.length === 2, () => `URL paths for http must have a length of 2, (actual length is ${path.length}).`);
-    }
-    this.path = path;
-    if (loadOptions.requestInit != null && loadOptions.requestInit.body != null) {
-      throw new Error("requestInit is expected to have no pre-existing body, but has one.");
-    }
-    this.requestInit = loadOptions.requestInit || {};
-  }
-  async save(modelArtifacts) {
-    if (modelArtifacts.modelTopology instanceof ArrayBuffer) {
-      throw new Error("BrowserHTTPRequest.save() does not support saving model topology in binary formats yet.");
-    }
-    const init = Object.assign({method: this.DEFAULT_METHOD}, this.requestInit);
-    init.body = new FormData();
-    const weightsManifest = [{
-      paths: ["./model.weights.bin"],
-      weights: modelArtifacts.weightSpecs
-    }];
-    const modelTopologyAndWeightManifest = {
-      modelTopology: modelArtifacts.modelTopology,
-      format: modelArtifacts.format,
-      generatedBy: modelArtifacts.generatedBy,
-      convertedBy: modelArtifacts.convertedBy,
-      userDefinedMetadata: modelArtifacts.userDefinedMetadata,
-      weightsManifest
-    };
-    init.body.append("model.json", new Blob([JSON.stringify(modelTopologyAndWeightManifest)], {type: JSON_TYPE}), "model.json");
-    if (modelArtifacts.weightData != null) {
-      init.body.append("model.weights.bin", new Blob([modelArtifacts.weightData], {type: OCTET_STREAM_MIME_TYPE}), "model.weights.bin");
-    }
-    const response = await this.fetch(this.path, init);
-    if (response.ok) {
-      return {
-        modelArtifactsInfo: getModelArtifactsInfoForJSON(modelArtifacts),
-        responses: [response]
-      };
-    } else {
-      throw new Error(`BrowserHTTPRequest.save() failed due to HTTP response status ${response.status}.`);
-    }
-  }
-  async load() {
-    const modelConfigRequest = await this.fetch(this.path, this.requestInit);
-    if (!modelConfigRequest.ok) {
-      throw new Error(`Request to ${this.path} failed with status code ${modelConfigRequest.status}. Please verify this URL points to the model JSON of the model to load.`);
-    }
-    let modelConfig;
-    try {
-      modelConfig = await modelConfigRequest.json();
-    } catch (e) {
-      let message = `Failed to parse model JSON of response from ${this.path}.`;
-      if (this.path.endsWith(".pb")) {
-        message += " Your path contains a .pb file extension. Support for .pb models have been removed in TensorFlow.js 1.0 in favor of .json models. You can re-convert your Python TensorFlow model using the TensorFlow.js 1.0 conversion scripts or you can convert your.pb models with the 'pb2json'NPM script in the tensorflow/tfjs-converter repository.";
-      } else {
-        message += " Please make sure the server is serving valid JSON for this request.";
-      }
-      throw new Error(message);
-    }
-    const modelTopology = modelConfig.modelTopology;
-    const weightsManifest = modelConfig.weightsManifest;
-    const generatedBy = modelConfig.generatedBy;
-    const convertedBy = modelConfig.convertedBy;
-    const format = modelConfig.format;
-    const userDefinedMetadata = modelConfig.userDefinedMetadata;
-    if (modelTopology == null && weightsManifest == null) {
-      throw new Error(`The JSON from HTTP path ${this.path} contains neither model topology or manifest for weights.`);
-    }
-    let weightSpecs;
-    let weightData;
-    if (weightsManifest != null) {
-      const results = await this.loadWeights(weightsManifest);
-      [weightSpecs, weightData] = results;
-    }
-    return {
-      modelTopology,
-      weightSpecs,
-      weightData,
-      userDefinedMetadata,
-      generatedBy,
-      convertedBy,
-      format
-    };
-  }
-  async loadWeights(weightsManifest) {
-    const weightPath = Array.isArray(this.path) ? this.path[1] : this.path;
-    const [prefix, suffix] = parseUrl(weightPath);
-    const pathPrefix = this.weightPathPrefix || prefix;
-    const weightSpecs = [];
-    for (const entry of weightsManifest) {
-      weightSpecs.push(...entry.weights);
-    }
-    const fetchURLs = [];
-    weightsManifest.forEach((weightsGroup) => {
-      weightsGroup.paths.forEach((path) => {
-        fetchURLs.push(pathPrefix + path + suffix);
-      });
-    });
-    const buffers = await loadWeightsAsArrayBuffer(fetchURLs, {
-      requestInit: this.requestInit,
-      fetchFunc: this.fetch,
-      onProgress: this.onProgress
-    });
-    return [weightSpecs, concatenateArrayBuffers(buffers)];
-  }
-}
-HTTPRequest.URL_SCHEME_REGEX = /^https?:\/\//;
-function parseUrl(url) {
-  const lastSlash = url.lastIndexOf("/");
-  const lastSearchParam = url.lastIndexOf("?");
-  const prefix = url.substring(0, lastSlash);
-  const suffix = lastSearchParam > lastSlash ? url.substring(lastSearchParam) : "";
-  return [prefix + "/", suffix];
-}
-function isHTTPScheme(url) {
-  return url.match(HTTPRequest.URL_SCHEME_REGEX) != null;
-}
-const httpRouter = (url, loadOptions) => {
-  if (typeof fetch === "undefined" && (loadOptions == null || loadOptions.fetchFunc == null)) {
-    return null;
-  } else {
-    let isHTTP = true;
-    if (Array.isArray(url)) {
-      isHTTP = url.every((urlItem) => isHTTPScheme(urlItem));
-    } else {
-      isHTTP = isHTTPScheme(url);
-    }
-    if (isHTTP) {
-      return http(url, loadOptions);
-    }
-  }
-  return null;
-};
-IORouterRegistry.registerSaveRouter(httpRouter);
-IORouterRegistry.registerLoadRouter(httpRouter);
-function http(path, loadOptions) {
-  return new HTTPRequest(path, loadOptions);
-}
-function browserHTTPRequest(path, loadOptions) {
-  return http(path, loadOptions);
-}
-
-// node_modules/@tensorflow/tfjs-core/dist/io/passthrough.js
-/**
- * @license
- * Copyright 2018 Google LLC. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =============================================================================
- */
-class PassthroughLoader {
-  constructor(modelArtifacts) {
-    this.modelArtifacts = modelArtifacts;
-  }
-  async load() {
-    return this.modelArtifacts;
-  }
-}
-class PassthroughSaver {
-  constructor(saveHandler) {
-    this.saveHandler = saveHandler;
-  }
-  async save(modelArtifacts) {
-    return this.saveHandler(modelArtifacts);
-  }
-}
-function fromMemory(modelArtifacts, weightSpecs, weightData, trainingConfig) {
-  if (arguments.length === 1) {
-    const isModelArtifacts = modelArtifacts.modelTopology != null || modelArtifacts.weightSpecs != null;
-    if (isModelArtifacts) {
-      return new PassthroughLoader(modelArtifacts);
-    } else {
-      console.warn("Please call tf.io.fromMemory() with only one argument. The argument should be of type ModelArtifacts. The multi-argument signature of tf.io.fromMemory() has been deprecated and will be removed in a future release.");
-      return new PassthroughLoader({modelTopology: modelArtifacts});
-    }
-  } else {
-    console.warn("Please call tf.io.fromMemory() with only one argument. The argument should be of type ModelArtifacts. The multi-argument signature of tf.io.fromMemory() has been deprecated and will be removed in a future release.");
-    return new PassthroughLoader({
-      modelTopology: modelArtifacts,
-      weightSpecs,
-      weightData,
-      trainingConfig
-    });
-  }
-}
-function withSaveHandler(saveHandler) {
-  return new PassthroughSaver(saveHandler);
-}
-
-// node_modules/@tensorflow/tfjs-core/dist/io/io.js
-const io_exports = {};
-__export(io_exports, {
-  browserFiles: () => browserFiles,
-  browserHTTPRequest: () => browserHTTPRequest,
-  concatenateArrayBuffers: () => concatenateArrayBuffers,
-  copyModel: () => copyModel,
-  decodeWeights: () => decodeWeights,
-  encodeWeights: () => encodeWeights,
-  fromMemory: () => fromMemory,
-  getLoadHandlers: () => getLoadHandlers,
-  getModelArtifactsInfoForJSON: () => getModelArtifactsInfoForJSON,
-  getSaveHandlers: () => getSaveHandlers,
-  http: () => http,
-  isHTTPScheme: () => isHTTPScheme,
-  listModels: () => listModels,
-  loadWeights: () => loadWeights,
-  moveModel: () => moveModel,
-  registerLoadRouter: () => registerLoadRouter,
-  registerSaveRouter: () => registerSaveRouter,
-  removeModel: () => removeModel,
-  weightsLoaderFactory: () => weightsLoaderFactory,
-  withSaveHandler: () => withSaveHandler
-});
-/**
- * @license
- * Copyright 2018 Google LLC. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =============================================================================
- */
-
-// node_modules/@tensorflow/tfjs-core/dist/ops/confusion_matrix.js
-/**
- * @license
- * Copyright 2018 Google LLC. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =============================================================================
- */
-function confusionMatrix_(labels, predictions, numClasses) {
-  const $labels = convertToTensor(labels, "labels", "confusionMatrix");
-  const $predictions = convertToTensor(predictions, "predictions", "confusionMatrix");
-  assert(numClasses == null || numClasses > 0 && Number.isInteger(numClasses), () => `If provided, numClasses must be a positive integer, but got ${numClasses}`);
-  assert($labels.rank === 1, () => `Expected the rank of labels to be 1, but got ${$labels.rank}`);
-  assert($predictions.rank === 1, () => `Expected the rank of predictions to be 1, but got ${$predictions.rank}`);
-  assert($labels.shape[0] === $predictions.shape[0], () => `Mismatch in the number of examples: ${$labels.shape[0]} vs. ${$predictions.shape[0]}. Labels and predictions should have the same number of elements.`);
-  assert(numClasses > 0 && Number.isInteger(numClasses), () => `numClasses is required to be a positive integer, but got ${numClasses}`);
-  const oneHotLabels = oneHot(cast($labels, "int32"), numClasses);
-  const oneHotPredictions = oneHot(cast($predictions, "int32"), numClasses);
-  const oneHotLabelsT = transpose(oneHotLabels);
-  return cast(matMul(oneHotLabelsT, oneHotPredictions), "int32");
-}
-const confusionMatrix = op({confusionMatrix_});
-
-// node_modules/@tensorflow/tfjs-core/dist/math.js
-const math_exports = {};
-__export(math_exports, {
-  confusionMatrix: () => confusionMatrix
-});
-/**
- * @license
- * Copyright 2018 Google LLC. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =============================================================================
- */
-
-// node_modules/@tensorflow/tfjs-core/dist/ops/browser.js
-const browser_exports = {};
-__export(browser_exports, {
-  fromPixels: () => fromPixels,
-  toPixels: () => toPixels
-});
-/**
- * @license
- * Copyright 2019 Google LLC. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =============================================================================
- */
-let fromPixels2DContext;
-function fromPixels_(pixels, numChannels = 3) {
-  if (numChannels > 4) {
-    throw new Error("Cannot construct Tensor with more than 4 channels from pixels.");
-  }
-  if (pixels == null) {
-    throw new Error("pixels passed to tf.browser.fromPixels() can not be null");
-  }
-  let isPixelData = false;
-  let isImageData = false;
-  let isVideo = false;
-  let isImage = false;
-  let isCanvasLike = false;
-  if (pixels.data instanceof Uint8Array) {
-    isPixelData = true;
-  } else if (typeof ImageData !== "undefined" && pixels instanceof ImageData) {
-    isImageData = true;
-  } else if (typeof HTMLVideoElement !== "undefined" && pixels instanceof HTMLVideoElement) {
-    isVideo = true;
-  } else if (typeof HTMLImageElement !== "undefined" && pixels instanceof HTMLImageElement) {
-    isImage = true;
-  } else if (pixels.getContext != null) {
-    isCanvasLike = true;
-  } else {
-    throw new Error(`pixels passed to tf.browser.fromPixels() must be either an HTMLVideoElement, HTMLImageElement, HTMLCanvasElement, ImageData in browser, or OffscreenCanvas, ImageData in webworker or {data: Uint32Array, width: number, height: number}, but was ${pixels.constructor.name}`);
-  }
-  if (isVideo) {
-    const HAVE_CURRENT_DATA_READY_STATE = 2;
-    if (isVideo && pixels.readyState < HAVE_CURRENT_DATA_READY_STATE) {
-      throw new Error("The video element has not loaded data yet. Please wait for `loadeddata` event on the <video> element.");
-    }
-  }
-  const kernel = getKernel(FromPixels, ENGINE.backendName);
-  if (kernel != null) {
-    const inputs = {pixels};
-    const attrs = {numChannels};
-    return ENGINE.runKernel(FromPixels, inputs, attrs);
-  }
-  const [width, height] = isVideo ? [
-    pixels.videoWidth,
-    pixels.videoHeight
-  ] : [pixels.width, pixels.height];
-  let vals;
-  if (isCanvasLike) {
-    vals = pixels.getContext("2d").getImageData(0, 0, width, height).data;
-  } else if (isImageData || isPixelData) {
-    vals = pixels.data;
-  } else if (isImage || isVideo) {
-    if (fromPixels2DContext == null) {
-      fromPixels2DContext = document.createElement("canvas").getContext("2d");
-    }
-    fromPixels2DContext.canvas.width = width;
-    fromPixels2DContext.canvas.height = height;
-    fromPixels2DContext.drawImage(pixels, 0, 0, width, height);
-    vals = fromPixels2DContext.getImageData(0, 0, width, height).data;
-  }
-  let values;
-  if (numChannels === 4) {
-    values = new Int32Array(vals);
-  } else {
-    const numPixels = width * height;
-    values = new Int32Array(numPixels * numChannels);
-    for (let i = 0; i < numPixels; i++) {
-      for (let channel = 0; channel < numChannels; ++channel) {
-        values[i * numChannels + channel] = vals[i * 4 + channel];
-      }
-    }
-  }
-  const outShape = [height, width, numChannels];
-  return tensor3d(values, outShape, "int32");
-}
-async function toPixels(img, canvas) {
-  let $img = convertToTensor(img, "img", "toPixels");
-  if (!(img instanceof Tensor)) {
-    const originalImgTensor = $img;
-    $img = cast(originalImgTensor, "int32");
-    originalImgTensor.dispose();
-  }
-  if ($img.rank !== 2 && $img.rank !== 3) {
-    throw new Error(`toPixels only supports rank 2 or 3 tensors, got rank ${$img.rank}.`);
-  }
-  const [height, width] = $img.shape.slice(0, 2);
-  const depth = $img.rank === 2 ? 1 : $img.shape[2];
-  if (depth > 4 || depth === 2) {
-    throw new Error(`toPixels only supports depth of size 1, 3 or 4 but got ${depth}`);
-  }
-  const data = await $img.data();
-  const minTensor = min($img);
-  const maxTensor = max($img);
-  const vals = await Promise.all([minTensor.data(), maxTensor.data()]);
-  const minVals = vals[0];
-  const maxVals = vals[1];
-  const minVal = minVals[0];
-  const maxVal = maxVals[0];
-  minTensor.dispose();
-  maxTensor.dispose();
-  if ($img.dtype === "float32") {
-    if (minVal < 0 || maxVal > 1) {
-      throw new Error(`Tensor values for a float32 Tensor must be in the range [0 - 1] but got range [${minVal} - ${maxVal}].`);
-    }
-  } else if ($img.dtype === "int32") {
-    if (minVal < 0 || maxVal > 255) {
-      throw new Error(`Tensor values for a int32 Tensor must be in the range [0 - 255] but got range [${minVal} - ${maxVal}].`);
-    }
-  } else {
-    throw new Error(`Unsupported type for toPixels: ${$img.dtype}. Please use float32 or int32 tensors.`);
-  }
-  const multiplier = $img.dtype === "float32" ? 255 : 1;
-  const bytes = new Uint8ClampedArray(width * height * 4);
-  for (let i = 0; i < height * width; ++i) {
-    let r, g, b, a;
-    if (depth === 1) {
-      r = data[i] * multiplier;
-      g = data[i] * multiplier;
-      b = data[i] * multiplier;
-      a = 255;
-    } else if (depth === 3) {
-      r = data[i * 3] * multiplier;
-      g = data[i * 3 + 1] * multiplier;
-      b = data[i * 3 + 2] * multiplier;
-      a = 255;
-    } else if (depth === 4) {
-      r = data[i * 4] * multiplier;
-      g = data[i * 4 + 1] * multiplier;
-      b = data[i * 4 + 2] * multiplier;
-      a = data[i * 4 + 3] * multiplier;
-    }
-    const j = i * 4;
-    bytes[j + 0] = Math.round(r);
-    bytes[j + 1] = Math.round(g);
-    bytes[j + 2] = Math.round(b);
-    bytes[j + 3] = Math.round(a);
-  }
-  if (canvas != null) {
-    canvas.width = width;
-    canvas.height = height;
-    const ctx = canvas.getContext("2d");
-    const imageData = new ImageData(bytes, width, height);
-    ctx.putImageData(imageData, 0, 0);
-  }
-  if ($img !== img) {
-    $img.dispose();
-  }
-  return bytes;
-}
-const fromPixels = op({fromPixels_});
-
-// node_modules/@tensorflow/tfjs-core/dist/ops/gather_nd_util.js
-const gather_nd_util_exports = {};
-__export(gather_nd_util_exports, {
-  prepareAndValidate: () => prepareAndValidate
-});
-function prepareAndValidate(tensor17, indices) {
-  if (tensor17.rank < 1) {
-    throw new Error(`tf.gatherND() expects the input to be rank 1 or higher, but the rank was ${tensor17.rank}.`);
-  }
-  if (indices.rank < 1) {
-    throw new Error(`tf.gatherND() expects the indices to be rank 1 or higher, but the rank was ${indices.rank}.`);
-  }
-  if (indices.dtype !== "int32") {
-    throw new Error(`tf.gatherND() expects the indices to be int32 type, but the dtype was ${indices.dtype}.`);
-  }
-  if (indices.shape[indices.rank - 1] > tensor17.rank) {
-    throw new Error(`index innermost dimension length must be <= tensor rank; saw: ${indices.shape[indices.rank - 1]} vs. ${tensor17.rank}`);
-  }
-  if (tensor17.size === 0) {
-    throw new Error(`Requested more than 0 entries, but input is empty. Input shape: ${tensor17.shape}.`);
-  }
-  const indicesShape = indices.shape;
-  const sliceRank = indicesShape[indicesShape.length - 1];
-  let nResult = 1;
-  for (let i = 0; i < indicesShape.length - 1; ++i) {
-    nResult *= indicesShape[i];
-  }
-  const inputShape = tensor17.shape;
-  const resultShape = indicesShape.slice();
-  resultShape.pop();
-  let sliceSize = 1;
-  for (let i = sliceRank; i < tensor17.rank; ++i) {
-    sliceSize *= inputShape[i];
-    resultShape.push(inputShape[i]);
-  }
-  const strides = [
-    ...computeStrides(tensor17.shape).map((stride) => stride / sliceSize),
-    1
-  ].slice(0, sliceRank);
-  return [resultShape, nResult, sliceSize, strides];
-}
-
-// node_modules/@tensorflow/tfjs-core/dist/serialization.js
-const serialization_exports = {};
-__export(serialization_exports, {
-  Serializable: () => Serializable,
-  SerializationMap: () => SerializationMap,
-  registerClass: () => registerClass
-});
-/**
- * @license
- * Copyright 2018 Google LLC. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =============================================================================
- */
-class Serializable {
-  getClassName() {
-    return this.constructor.className;
-  }
-  static fromConfig(cls, config2) {
-    return new cls(config2);
-  }
-}
-class SerializationMap {
-  constructor() {
-    this.classNameMap = {};
-  }
-  static getMap() {
-    if (SerializationMap.instance == null) {
-      SerializationMap.instance = new SerializationMap();
-    }
-    return SerializationMap.instance;
-  }
-  static register(cls) {
-    SerializationMap.getMap().classNameMap[cls.className] = [cls, cls.fromConfig];
-  }
-}
-function registerClass(cls) {
-  assert(cls.className != null, () => `Class being registered does not have the static className property defined.`);
-  assert(typeof cls.className === "string", () => `className is required to be a string, but got type ` + typeof cls.className);
-  assert(cls.className.length > 0, () => `Class being registered has an empty-string as its className, which is disallowed.`);
-  SerializationMap.register(cls);
-}
-
-// node_modules/@tensorflow/tfjs-core/dist/version.js
-/** @license See the LICENSE file. */
-const version = "2.3.0";
 
 // node_modules/@tensorflow/tfjs-core/dist/optimizers/optimizer.js
 /**
@@ -15575,7 +15382,7 @@ __export(backend_util_exports, {
   computeDilation2DInfo: () => computeDilation2DInfo,
   computeOptimalWindowSize: () => computeOptimalWindowSize,
   computeOutAndReduceShapes: () => computeOutAndReduceShapes,
-  computeOutShape: () => computeOutShape,
+  computeOutShape: () => computeOutShape2,
   computePool2DInfo: () => computePool2DInfo,
   computePool3DInfo: () => computePool3DInfo,
   convertConv2DDataFormat: () => convertConv2DDataFormat,
@@ -15605,6 +15412,7 @@ __export(backend_util_exports, {
   reshapeTensor: () => reshapeTensor,
   segment_util: () => segment_util_exports,
   shouldFuse: () => shouldFuse,
+  slice_util: () => slice_util_exports,
   splitRealAndImagArrays: () => splitRealAndImagArrays,
   tupleValuesAreOne: () => tupleValuesAreOne,
   upcastType: () => upcastType,
@@ -15778,8 +15586,8 @@ function topkImpl(x, xShape, xDtype, k, sorted) {
   const outputShape = xShape.slice();
   outputShape[outputShape.length - 1] = k;
   return [
-    tensor5(allTopKVals, outputShape, xDtype),
-    tensor5(allTopKIndices, outputShape, "int32")
+    tensor4(allTopKVals, outputShape, xDtype),
+    tensor4(allTopKIndices, outputShape, "int32")
   ];
 }
 
@@ -16078,7 +15886,7 @@ class KernelBackend {
   int(x) {
     return notYetImplemented("int");
   }
-  clip(x, min5, max7) {
+  clip(x, min4, max6) {
     return notYetImplemented("clip");
   }
   abs(x) {
@@ -19785,6 +19593,7 @@ __export(dist_exports, {
   NonMaxSuppressionV4: () => NonMaxSuppressionV4,
   NonMaxSuppressionV5: () => NonMaxSuppressionV5,
   NotEqual: () => NotEqual,
+  OP_SCOPE_SUFFIX: () => OP_SCOPE_SUFFIX,
   OneHot: () => OneHot,
   OnesLike: () => OnesLike,
   Optimizer: () => Optimizer,
@@ -19910,7 +19719,7 @@ __export(dist_exports, {
   enableDebugMode: () => enableDebugMode,
   enableProdMode: () => enableProdMode,
   enclosingPowerOfTwo: () => enclosingPowerOfTwo,
-  engine: () => engine22,
+  engine: () => engine15,
   env: () => env,
   equal: () => equal,
   equalStrict: () => equalStrict,
@@ -20074,7 +19883,7 @@ __export(dist_exports, {
   sumOutType: () => sumOutType,
   tan: () => tan,
   tanh: () => tanh2,
-  tensor: () => tensor5,
+  tensor: () => tensor4,
   tensor1d: () => tensor1d,
   tensor2d: () => tensor2d,
   tensor3d: () => tensor3d,
@@ -20490,10 +20299,10 @@ function iou(box1, box2, isIOU = true) {
 function minBbox(pts) {
   const xs = pts.map((pt) => pt.x);
   const ys = pts.map((pt) => pt.y);
-  const minX = xs.reduce((min5, x) => x < min5 ? x : min5, Infinity);
-  const minY = ys.reduce((min5, y) => y < min5 ? y : min5, Infinity);
-  const maxX = xs.reduce((max7, x) => max7 < x ? x : max7, 0);
-  const maxY = ys.reduce((max7, y) => max7 < y ? y : max7, 0);
+  const minX = xs.reduce((min4, x) => x < min4 ? x : min4, Infinity);
+  const minY = ys.reduce((min4, y) => y < min4 ? y : min4, Infinity);
+  const maxX = xs.reduce((max6, x) => max6 < x ? x : max6, 0);
+  const maxY = ys.reduce((max6, y) => max6 < y ? y : max6, 0);
   return new BoundingBox(minX, minY, maxX, maxY);
 }
 
@@ -20824,8 +20633,8 @@ function createFileSystem(fs) {
   }
   const readFile = fs ? function(filePath) {
     return new Promise((res, rej) => {
-      fs.readFile(filePath, function(err, buffer10) {
-        return err ? rej(err) : res(buffer10);
+      fs.readFile(filePath, function(err, buffer11) {
+        return err ? rej(err) : res(buffer11);
       });
     });
   } : function() {
@@ -21434,12 +21243,6 @@ class NeuralNetwork {
     this._name = _name;
     this._params = void 0;
     this._paramMappings = [];
-    try {
-      const testTensor = tensor5([0]);
-      testTensor.toFloat();
-    } catch (err) {
-      throw new Error(`module not loaded: load '@tensorflow/tfjs' or '@tensorflow/tfjs-core' with appropriate backend explicitly: ${err}`);
-    }
   }
   get params() {
     return this._params;
@@ -21478,7 +21281,7 @@ class NeuralNetwork {
   }
   freeze() {
     this.getTrainableParams().forEach(({path, tensor: variable3}) => {
-      const tensor17 = tensor5(variable3.dataSync());
+      const tensor17 = tensor4(variable3.dataSync());
       variable3.dispose();
       this.reassignParamFromPath(path, tensor17);
     });
@@ -23076,7 +22879,7 @@ function getStridesForLayerIdx(layerIdx) {
 }
 function mobileNetV1(x, params) {
   return tidy(() => {
-    let conv11 = null;
+    let conv11;
     let out = pointwiseConvLayer(x, params.conv_0, [2, 2]);
     const convPairParams = [
       params.conv_1,
@@ -23410,8 +23213,8 @@ function validateConfig(config2) {
 // build/src/tinyYolov2/leaky.js
 function leaky(x) {
   return tidy(() => {
-    const min5 = mul(x, scalar(0.10000000149011612));
-    return add2(relu(sub(x, min5)), min5);
+    const min4 = mul(x, scalar(0.10000000149011612));
+    return add2(relu(sub(x, min4)), min4);
   });
 }
 
@@ -23731,7 +23534,7 @@ class TinyYolov2Base extends NeuralNetwork {
     return Array(this.config.classes.length).fill(0).map((_, i) => classesData[row][col][anchor][i]).map((classScore, label) => ({
       classScore,
       label
-    })).reduce((max7, curr) => max7.classScore > curr.classScore ? max7 : curr);
+    })).reduce((max6, curr) => max6.classScore > curr.classScore ? max6 : curr);
   }
 }
 TinyYolov2Base.DEFAULT_FILTER_SIZES = [
@@ -24261,130 +24064,130 @@ function resizeResults(results, dimensions) {
 var version2 = "0.5.1";
 
 // build/src/index.js
+__export(exports, {
+  AgeGenderNet: () => AgeGenderNet,
+  BoundingBox: () => BoundingBox,
+  Box: () => Box,
+  ComposableTask: () => ComposableTask,
+  ComputeAllFaceDescriptorsTask: () => ComputeAllFaceDescriptorsTask,
+  ComputeFaceDescriptorsTaskBase: () => ComputeFaceDescriptorsTaskBase,
+  ComputeSingleFaceDescriptorTask: () => ComputeSingleFaceDescriptorTask,
+  DetectAllFaceLandmarksTask: () => DetectAllFaceLandmarksTask,
+  DetectAllFacesTask: () => DetectAllFacesTask,
+  DetectFaceLandmarksTaskBase: () => DetectFaceLandmarksTaskBase,
+  DetectFacesTaskBase: () => DetectFacesTaskBase,
+  DetectSingleFaceLandmarksTask: () => DetectSingleFaceLandmarksTask,
+  DetectSingleFaceTask: () => DetectSingleFaceTask,
+  Dimensions: () => Dimensions,
+  FACE_EXPRESSION_LABELS: () => FACE_EXPRESSION_LABELS,
+  FaceDetection: () => FaceDetection,
+  FaceDetectionNet: () => FaceDetectionNet,
+  FaceExpressionNet: () => FaceExpressionNet,
+  FaceExpressions: () => FaceExpressions,
+  FaceLandmark68Net: () => FaceLandmark68Net,
+  FaceLandmark68TinyNet: () => FaceLandmark68TinyNet,
+  FaceLandmarkNet: () => FaceLandmarkNet,
+  FaceLandmarks: () => FaceLandmarks,
+  FaceLandmarks5: () => FaceLandmarks5,
+  FaceLandmarks68: () => FaceLandmarks68,
+  FaceMatch: () => FaceMatch,
+  FaceMatcher: () => FaceMatcher,
+  FaceRecognitionNet: () => FaceRecognitionNet,
+  Gender: () => Gender,
+  LabeledBox: () => LabeledBox,
+  LabeledFaceDescriptors: () => LabeledFaceDescriptors,
+  NetInput: () => NetInput,
+  NeuralNetwork: () => NeuralNetwork,
+  ObjectDetection: () => ObjectDetection,
+  Point: () => Point,
+  PredictedBox: () => PredictedBox,
+  Rect: () => Rect,
+  SsdMobilenetv1: () => SsdMobilenetv1,
+  SsdMobilenetv1Options: () => SsdMobilenetv1Options,
+  TinyFaceDetector: () => TinyFaceDetector,
+  TinyFaceDetectorOptions: () => TinyFaceDetectorOptions,
+  TinyYolov2: () => TinyYolov2,
+  TinyYolov2Options: () => TinyYolov2Options,
+  TinyYolov2SizeType: () => TinyYolov2SizeType,
+  allFaces: () => allFaces,
+  allFacesSsdMobilenetv1: () => allFacesSsdMobilenetv1,
+  allFacesTinyYolov2: () => allFacesTinyYolov2,
+  awaitMediaLoaded: () => awaitMediaLoaded,
+  bufferToImage: () => bufferToImage,
+  computeFaceDescriptor: () => computeFaceDescriptor,
+  createCanvas: () => createCanvas,
+  createCanvasFromMedia: () => createCanvasFromMedia,
+  createFaceDetectionNet: () => createFaceDetectionNet,
+  createFaceRecognitionNet: () => createFaceRecognitionNet,
+  createSsdMobilenetv1: () => createSsdMobilenetv1,
+  createTinyFaceDetector: () => createTinyFaceDetector,
+  createTinyYolov2: () => createTinyYolov2,
+  detectAllFaces: () => detectAllFaces,
+  detectFaceLandmarks: () => detectFaceLandmarks,
+  detectFaceLandmarksTiny: () => detectFaceLandmarksTiny,
+  detectLandmarks: () => detectLandmarks,
+  detectSingleFace: () => detectSingleFace,
+  draw: () => draw_exports,
+  env: () => env2,
+  euclideanDistance: () => euclideanDistance,
+  extendWithAge: () => extendWithAge,
+  extendWithFaceDescriptor: () => extendWithFaceDescriptor,
+  extendWithFaceDetection: () => extendWithFaceDetection,
+  extendWithFaceExpressions: () => extendWithFaceExpressions,
+  extendWithFaceLandmarks: () => extendWithFaceLandmarks,
+  extendWithGender: () => extendWithGender,
+  extractFaceTensors: () => extractFaceTensors,
+  extractFaces: () => extractFaces,
+  fetchImage: () => fetchImage,
+  fetchJson: () => fetchJson,
+  fetchNetWeights: () => fetchNetWeights,
+  fetchOrThrow: () => fetchOrThrow,
+  getContext2dOrThrow: () => getContext2dOrThrow,
+  getMediaDimensions: () => getMediaDimensions,
+  imageTensorToCanvas: () => imageTensorToCanvas,
+  imageToSquare: () => imageToSquare,
+  inverseSigmoid: () => inverseSigmoid,
+  iou: () => iou,
+  isMediaElement: () => isMediaElement,
+  isMediaLoaded: () => isMediaLoaded,
+  isWithAge: () => isWithAge,
+  isWithFaceDetection: () => isWithFaceDetection,
+  isWithFaceExpressions: () => isWithFaceExpressions,
+  isWithFaceLandmarks: () => isWithFaceLandmarks,
+  isWithGender: () => isWithGender,
+  loadAgeGenderModel: () => loadAgeGenderModel,
+  loadFaceDetectionModel: () => loadFaceDetectionModel,
+  loadFaceExpressionModel: () => loadFaceExpressionModel,
+  loadFaceLandmarkModel: () => loadFaceLandmarkModel,
+  loadFaceLandmarkTinyModel: () => loadFaceLandmarkTinyModel,
+  loadFaceRecognitionModel: () => loadFaceRecognitionModel,
+  loadSsdMobilenetv1Model: () => loadSsdMobilenetv1Model,
+  loadTinyFaceDetectorModel: () => loadTinyFaceDetectorModel,
+  loadTinyYolov2Model: () => loadTinyYolov2Model,
+  loadWeightMap: () => loadWeightMap,
+  locateFaces: () => locateFaces,
+  matchDimensions: () => matchDimensions,
+  minBbox: () => minBbox,
+  nets: () => nets,
+  nonMaxSuppression: () => nonMaxSuppression2,
+  normalize: () => normalize,
+  padToSquare: () => padToSquare,
+  predictAgeAndGender: () => predictAgeAndGender,
+  recognizeFaceExpressions: () => recognizeFaceExpressions,
+  resizeResults: () => resizeResults,
+  resolveInput: () => resolveInput,
+  shuffleArray: () => shuffleArray,
+  sigmoid: () => sigmoid6,
+  ssdMobilenetv1: () => ssdMobilenetv1,
+  tf: () => dist_exports,
+  tinyFaceDetector: () => tinyFaceDetector,
+  tinyYolov2: () => tinyYolov23,
+  toNetInput: () => toNetInput,
+  utils: () => utils_exports,
+  validateConfig: () => validateConfig,
+  version: () => version3
+});
 const node = typeof process !== "undefined" ? process.version : false;
 const browser = typeof navigator !== "undefined" ? navigator.userAgent : false;
 const version3 = {faceapi: version2, node, browser, tfjs: version, backend: getBackend()};
-export {
-  AgeGenderNet,
-  BoundingBox,
-  Box,
-  ComposableTask,
-  ComputeAllFaceDescriptorsTask,
-  ComputeFaceDescriptorsTaskBase,
-  ComputeSingleFaceDescriptorTask,
-  DetectAllFaceLandmarksTask,
-  DetectAllFacesTask,
-  DetectFaceLandmarksTaskBase,
-  DetectFacesTaskBase,
-  DetectSingleFaceLandmarksTask,
-  DetectSingleFaceTask,
-  Dimensions,
-  FACE_EXPRESSION_LABELS,
-  FaceDetection,
-  FaceDetectionNet,
-  FaceExpressionNet,
-  FaceExpressions,
-  FaceLandmark68Net,
-  FaceLandmark68TinyNet,
-  FaceLandmarkNet,
-  FaceLandmarks,
-  FaceLandmarks5,
-  FaceLandmarks68,
-  FaceMatch,
-  FaceMatcher,
-  FaceRecognitionNet,
-  Gender,
-  LabeledBox,
-  LabeledFaceDescriptors,
-  NetInput,
-  NeuralNetwork,
-  ObjectDetection,
-  Point,
-  PredictedBox,
-  Rect,
-  SsdMobilenetv1,
-  SsdMobilenetv1Options,
-  TinyFaceDetector,
-  TinyFaceDetectorOptions,
-  TinyYolov2,
-  TinyYolov2Options,
-  TinyYolov2SizeType,
-  allFaces,
-  allFacesSsdMobilenetv1,
-  allFacesTinyYolov2,
-  awaitMediaLoaded,
-  bufferToImage,
-  computeFaceDescriptor,
-  createCanvas,
-  createCanvasFromMedia,
-  createFaceDetectionNet,
-  createFaceRecognitionNet,
-  createSsdMobilenetv1,
-  createTinyFaceDetector,
-  createTinyYolov2,
-  detectAllFaces,
-  detectFaceLandmarks,
-  detectFaceLandmarksTiny,
-  detectLandmarks,
-  detectSingleFace,
-  draw_exports as draw,
-  env2 as env,
-  euclideanDistance,
-  extendWithAge,
-  extendWithFaceDescriptor,
-  extendWithFaceDetection,
-  extendWithFaceExpressions,
-  extendWithFaceLandmarks,
-  extendWithGender,
-  extractFaceTensors,
-  extractFaces,
-  fetchImage,
-  fetchJson,
-  fetchNetWeights,
-  fetchOrThrow,
-  getContext2dOrThrow,
-  getMediaDimensions,
-  imageTensorToCanvas,
-  imageToSquare,
-  inverseSigmoid,
-  iou,
-  isMediaElement,
-  isMediaLoaded,
-  isWithAge,
-  isWithFaceDetection,
-  isWithFaceExpressions,
-  isWithFaceLandmarks,
-  isWithGender,
-  loadAgeGenderModel,
-  loadFaceDetectionModel,
-  loadFaceExpressionModel,
-  loadFaceLandmarkModel,
-  loadFaceLandmarkTinyModel,
-  loadFaceRecognitionModel,
-  loadSsdMobilenetv1Model,
-  loadTinyFaceDetectorModel,
-  loadTinyYolov2Model,
-  loadWeightMap,
-  locateFaces,
-  matchDimensions,
-  minBbox,
-  nets,
-  nonMaxSuppression2 as nonMaxSuppression,
-  normalize,
-  padToSquare,
-  predictAgeAndGender,
-  recognizeFaceExpressions,
-  resizeResults,
-  resolveInput,
-  shuffleArray,
-  sigmoid6 as sigmoid,
-  ssdMobilenetv1,
-  dist_exports as tf,
-  tinyFaceDetector,
-  tinyYolov23 as tinyYolov2,
-  toNetInput,
-  utils_exports as utils,
-  validateConfig,
-  version3 as version
-};
-//# sourceMappingURL=face-api.ejs.map
+//# sourceMappingURL=face-api.cjs.js.map

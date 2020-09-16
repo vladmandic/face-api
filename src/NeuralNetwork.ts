@@ -11,12 +11,14 @@ export abstract class NeuralNetwork<TNetParams> {
   protected _paramMappings: ParamMapping[] = []
 
   constructor(protected _name: string) {
+    /*
     try {
       const testTensor = tf.tensor([0]);
       testTensor.toFloat();
     } catch (err) {
-      throw new Error(`module not loaded: load '@tensorflow/tfjs' or '@tensorflow/tfjs-core' with appropriate backend explicitly: ${err}`)
-     }
+      throw new Error(`tfjs module not loaded: load '@tensorflow/tfjs' or '@tensorflow/tfjs-core' with appropriate backend explicitly`);
+    }
+    */
   }
 
   public get params(): TNetParams | undefined { return this._params }

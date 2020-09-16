@@ -20,7 +20,7 @@
     "incremental": false,
     "listFiles": false,
     "noFallthroughCasesInSwitch": false,
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "noImplicitReturns": false,
     "noImplicitThis": false,
     "noUnusedLocals": false,

@@ -13,13 +13,13 @@ export function resizeResults<T>(results: T, dimensions: IDimensions): T {
   }
 
   if (Array.isArray(results)) {
-    return results.map(obj => resizeResults(obj, { width, height })) as any as T
+    // return results.map(obj => resizeResults(obj, { width, height })) as any as T
+    return (results as Array<any>).map(obj => resizeResults(obj, { width, height } as IDimensions)) as any as T
   }
 
   if (isWithFaceLandmarks(results)) {
     const resizedDetection = results.detection.forSize(width, height)
     const resizedLandmarks = results.unshiftedLandmarks.forSize(resizedDetection.box.width, resizedDetection.box.height)
-
     return extendWithFaceLandmarks(extendWithFaceDetection(results, resizedDetection), resizedLandmarks)
   }
 

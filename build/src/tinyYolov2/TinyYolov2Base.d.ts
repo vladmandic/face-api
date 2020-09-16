@@ -1,5 +1,4 @@
 import * as tf from '@tensorflow/tfjs-core';
-import { BoundingBox } from '../classes/BoundingBox';
 import { Dimensions } from '../classes/Dimensions';
 import { ObjectDetection } from '../classes/ObjectDetection';
 import { NetInput } from '../dom/NetInput';
@@ -29,15 +28,7 @@ export declare class TinyYolov2Base extends NeuralNetwork<TinyYolov2NetParams> {
         params: TinyYolov2NetParams;
         paramMappings: import("../common").ParamMapping[];
     };
-    protected extractBoxes(outputTensor: tf.Tensor4D, inputBlobDimensions: Dimensions, scoreThreshold?: number): Promise<{
-        row: number;
-        col: number;
-        anchor: number;
-        box: BoundingBox;
-        score: number;
-        classScore: number;
-        label: number;
-    }[]>;
+    protected extractBoxes(outputTensor: tf.Tensor4D, inputBlobDimensions: Dimensions, scoreThreshold?: number): Promise<any>;
     private extractPredictedClass;
 }
 //# sourceMappingURL=TinyYolov2Base.d.ts.map

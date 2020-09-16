@@ -13,7 +13,7 @@ function getStridesForLayerIdx(layerIdx) {
 }
 export function mobileNetV1(x, params) {
     return tf.tidy(() => {
-        let conv11 = null;
+        let conv11;
         let out = pointwiseConvLayer(x, params.conv_0, [2, 2]);
         const convPairParams = [
             params.conv_1,

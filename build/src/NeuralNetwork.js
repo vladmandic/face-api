@@ -7,13 +7,14 @@ export class NeuralNetwork {
         this._name = _name;
         this._params = undefined;
         this._paramMappings = [];
+        /*
         try {
-            const testTensor = tf.tensor([0]);
-            testTensor.toFloat();
+          const testTensor = tf.tensor([0]);
+          testTensor.toFloat();
+        } catch (err) {
+          throw new Error(`tfjs module not loaded: load '@tensorflow/tfjs' or '@tensorflow/tfjs-core' with appropriate backend explicitly`);
         }
-        catch (err) {
-            throw new Error(`module not loaded: load '@tensorflow/tfjs' or '@tensorflow/tfjs-core' with appropriate backend explicitly: ${err}`);
-        }
+        */
     }
     get params() { return this._params; }
     get paramMappings() { return this._paramMappings; }

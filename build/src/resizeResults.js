@@ -9,6 +9,7 @@ export function resizeResults(results, dimensions) {
         throw new Error(`resizeResults - invalid dimensions: ${JSON.stringify({ width, height })}`);
     }
     if (Array.isArray(results)) {
+        // return results.map(obj => resizeResults(obj, { width, height })) as any as T
         return results.map(obj => resizeResults(obj, { width, height }));
     }
     if (isWithFaceLandmarks(results)) {

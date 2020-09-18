@@ -1,6 +1,6 @@
 {
     "name": "@vladmandic/face-api",
-    "version": "0.5.1",
+    "version": "0.5.2",
     "description": "JavaScript module for Face Detection and Face Recognition Using Tensorflow/JS",
     "main": "dist/face-api.node.js",
     "browser": "dist/face-api.esm.js",
@@ -11,7 +11,7 @@
     "type": "module",
     "scripts": {
         "compile": "tsc",
-        "clean": "rimraf build dist",
+        "clean": "rimraf build/ dist/",
         "cjs": "esbuild --bundle --outfile=./dist/face-api.cjs.js --target=es2017 --platform=browser --format=cjs --sourcemap --log-level=error --tsconfig=./tsconfig.json build/src/index.js",
         "node": "esbuild --bundle --outfile=./dist/face-api.node.js --target=es2017 --platform=node --format=esm --sourcemap --log-level=error --tsconfig=./tsconfig.json build/src/index.js",
         "esm": "esbuild --bundle --outfile=./dist/face-api.esm.js --target=es2017 --platform=browser --format=esm --sourcemap --log-level=error --tsconfig=./tsconfig.json build/src/index.js",

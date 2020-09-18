@@ -24192,7 +24192,7 @@ Expected: ${expectedFlat}.`);
   }
 
   // build/package.json
-  var version2 = "0.5.1";
+  var version2 = "0.5.2";
   return require_src();
 })();
 //# sourceMappingURL=face-api.iife.js.map

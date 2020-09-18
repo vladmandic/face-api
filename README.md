@@ -2,8 +2,8 @@
 
 ## Note
 
-This is updated **face-api.js** with latest available tensorflow/js as original face-api.js is not compatible with **tfjs 2.0+**.  
-If original repository is updated, this one will become obsolete.
+This is updated **face-api.js** with latest available TensorFlow/JS as the original face-api.js is not compatible with **tfjs 2.0+**.  
+Currently based on **TFJS-Core 2.4.0**.  
 
 Forked from **face-api.js** version **0.22.2** released on March 22nd, 2020  
 
@@ -14,13 +14,15 @@ Forked from **face-api.js** version **0.22.2** released on March 22nd, 2020
 
 - Removed tests, docs, examples  
 - Updated all package dependencies  
-- Modified to make compatible with TensorFlow/JS 2.0+  
-- Trivial code changes for updated TypeScript type checking
+- Compatible with TensorFlow/JS 2.0+  
+- Updated type casting for TypeScript type checking
 - Removed unnecesary package dependencies (karma, jasmine, etc.)  
-- Updated Typescript build process to target ES2018 instead of dual ES5/ES6  
-- Changed browser bundle process to use ESBuild instead of Rollup
-- Updated TensorFlow/JS dependencies since backends were removed from @tensorflow/tfjs-core
+- Typescript build process now targets ES2017 and instead of dual ES5/ES6  
+- Browser bundle process uses ESBuild instead of Rollup
+- New TensorFlow/JS dependencies since backends were removed from @tensorflow/tfjs-core
 - Updated mobileNetv1 model due to batchNorm() dependency
+- Fully tree shakable when imported as an ESM module
+- Added `version` class that returns JSON objecgt with version of FaceAPI as well as linked TFJS
 - Removed following models as they are either obsolete or non-functional with tfjs 2.0+
   - mtcnn: Mostly obsolete
   - tinyYolov2: Non-functional since weights are missing

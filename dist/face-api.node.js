@@ -24057,7 +24057,7 @@ function resizeResults(results, dimensions) {
 }
 
 // build/package.json
-var version2 = "0.5.1";
+var version2 = "0.5.2";
 
 // build/src/index.js
 const node = typeof process !== "undefined" ? process.version : false;

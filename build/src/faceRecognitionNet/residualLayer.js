@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs-core';
+import * as tf from '@tensorflow/tfjs';
 import { conv, convDown, convNoRelu } from './convLayer';
 export function residual(x, params) {
     let out = conv(x, params.conv1);

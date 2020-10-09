@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs-core';
+import * as tf from '@tensorflow/tfjs';
 
 import { IDimensions, Point } from '../classes';
 import { FaceLandmarks68 } from '../classes/FaceLandmarks68';

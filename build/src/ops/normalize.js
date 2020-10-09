@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs-core';
+import * as tf from '@tensorflow/tfjs';
 export function normalize(x, meanRgb) {
     return tf.tidy(() => {
         const [r, g, b] = meanRgb;

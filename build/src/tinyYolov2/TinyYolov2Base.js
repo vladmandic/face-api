@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs-core';
+import * as tf from '@tensorflow/tfjs';
 import { BoundingBox } from '../classes/BoundingBox';
 import { ObjectDetection } from '../classes/ObjectDetection';
 import { convLayer } from '../common';

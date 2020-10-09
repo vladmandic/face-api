@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs-core';
+import * as tf from '@tensorflow/tfjs';
 import { convLayer } from '../common';
 export function boxPredictionLayer(x, params) {
     return tf.tidy(() => {

@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs-core';
+import * as tf from '@tensorflow/tfjs';
 export declare type ExtractWeightsFunction = (numWeights: number) => Float32Array;
 export declare type ParamMapping = {
     originalPath?: string;

@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs-core';
+import * as tf from '@tensorflow/tfjs';
 import { env } from '../env';
 import { isTensor4D } from '../utils';
 export async function imageTensorToCanvas(imgTensor, canvas) {

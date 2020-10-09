@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs-core';
+import * as tf from '@tensorflow/tfjs';
 import { Point } from '../classes';
 import { Dimensions } from '../classes/Dimensions';
 export function isTensor(tensor, dim) {

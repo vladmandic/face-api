@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs-core';
+import * as tf from '@tensorflow/tfjs';
 import { ParamMapping } from '../common/types';
 import { TinyYolov2Config } from './config';
 import { TinyYolov2NetParams } from './types';

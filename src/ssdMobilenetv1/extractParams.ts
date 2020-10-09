@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs-core';
+import * as tf from '@tensorflow/tfjs';
 
 import { ExtractWeightsFunction, ParamMapping, ConvParams, extractWeightsFactory } from '../common';
 import { MobileNetV1, NetParams, PointwiseConvParams, PredictionLayerParams } from './types';

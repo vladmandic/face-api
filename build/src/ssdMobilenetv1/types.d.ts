@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs-core';
+import * as tf from '@tensorflow/tfjs';
 import { ConvParams } from '../common';
 export declare type PointwiseConvParams = {
     filters: tf.Tensor4D;

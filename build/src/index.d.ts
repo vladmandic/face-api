@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs-core';
+import * as tf from '@tensorflow/tfjs';
 import * as draw from './draw';
 import * as utils from './utils';
 export { draw, utils, tf };
@@ -22,7 +22,5 @@ export declare const version: {
     faceapi: string;
     node: string | boolean;
     browser: string | boolean;
-    tfjs: string;
-    backend: string;
 };
 //# sourceMappingURL=index.d.ts.map

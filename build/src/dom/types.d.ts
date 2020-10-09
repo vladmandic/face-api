@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs-core';
+import * as tf from '@tensorflow/tfjs';
 import { NetInput } from './NetInput';
 export declare type TMediaElement = HTMLImageElement | HTMLVideoElement | HTMLCanvasElement;
 export declare type TResolvedNetInput = TMediaElement | tf.Tensor3D | tf.Tensor4D;

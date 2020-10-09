@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs-core';
+import * as tf from '@tensorflow/tfjs';
 import { extractFaces, extractFaceTensors } from '../dom';
 import { isWithFaceLandmarks } from '../factories/WithFaceLandmarks';
 export async function extractAllFacesAndComputeResults(parentResults, input, computeResults, extractedFaces, getRectForAlignment = ({ alignedRect }) => alignedRect) {

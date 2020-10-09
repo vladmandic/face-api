@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs-core';
+import * as tf from '@tensorflow/tfjs';
 import { ParamMapping } from './common';
 export declare abstract class NeuralNetwork<TNetParams> {
     protected _name: string;

@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs-core';
+import * as tf from '@tensorflow/tfjs';
 export function leaky(x) {
     return tf.tidy(() => {
         const min = tf.mul(x, tf.scalar(0.10000000149011612));

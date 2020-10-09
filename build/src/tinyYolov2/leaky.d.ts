@@ -1,3 +1,3 @@
-import * as tf from '@tensorflow/tfjs-core';
+import * as tf from '@tensorflow/tfjs';
 export declare function leaky(x: tf.Tensor4D): tf.Tensor4D;
 //# sourceMappingURL=leaky.d.ts.map

@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs-core';
+import * as tf from '@tensorflow/tfjs';
 import { leaky } from './leaky';
 export function depthwiseSeparableConv(x, params) {
     return tf.tidy(() => {

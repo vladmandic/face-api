@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs-core';
+import * as tf from '@tensorflow/tfjs';
 
 import { ParamMapping } from './common';
 import { getModelUris } from './common/getModelUris';

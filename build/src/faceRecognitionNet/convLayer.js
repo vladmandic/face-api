@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs-core';
+import * as tf from '@tensorflow/tfjs';
 import { scale } from './scaleLayer';
 function convLayer(x, params, strides, withRelu, padding = 'same') {
     const { filters, bias } = params.conv;

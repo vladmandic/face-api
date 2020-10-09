@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs-core';
+import * as tf from '@tensorflow/tfjs';
 
 export function leaky(x: tf.Tensor4D): tf.Tensor4D {
   return tf.tidy(() => {

@@ -21,7 +21,10 @@ export * from './euclideanDistance';
 export * from './NeuralNetwork';
 export * from './resizeResults';
 import * as pkg from '../package.json';
-const node = typeof process !== 'undefined' ? process.version : false;
-const browser = typeof navigator !== 'undefined' ? navigator.userAgent : false;
+const node = (typeof process !== 'undefined');
+const browser = (typeof navigator !== 'undefined') && (typeof navigator.userAgent !== 'undefined');
 export const version = { faceapi: pkg.version, node, browser };
+import { PlatformBrowser } from './Platform';
+if (!tf.env().platform && tf.env().get('IS_BROWSER'))
+    tf.env().setPlatform('browser', new PlatformBrowser);
 //# sourceMappingURL=index.js.map

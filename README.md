@@ -3,7 +3,6 @@
 ## Note
 
 This is updated **face-api.js** with latest available TensorFlow/JS as the original face-api.js is not compatible with **tfjs 2.0+**.  
-Currently based on **TFJS-Core 2.4.0**.  
 
 Forked from **face-api.js** version **0.22.2** released on March 22nd, 2020  
 
@@ -17,12 +16,13 @@ Forked from **face-api.js** version **0.22.2** released on March 22nd, 2020
 - Compatible with TensorFlow/JS 2.0+  
 - Updated type casting for TypeScript type checking
 - Removed unnecesary package dependencies (karma, jasmine, etc.)  
-- Typescript build process now targets ES2017 and instead of dual ES5/ES6  
+- Typescript build process now targets ES2018 and instead of dual ES5/ES6  
 - Browser bundle process uses ESBuild instead of Rollup
 - New TensorFlow/JS dependencies since backends were removed from @tensorflow/tfjs-core
 - Updated mobileNetv1 model due to batchNorm() dependency
 - Fully tree shakable when imported as an ESM module
-- Added `version` class that returns JSON objecgt with version of FaceAPI as well as linked TFJS
+- Added `version` class that returns JSON object with version of FaceAPI as well as linked TFJS
+- Added calls for `setPlatform` to automatically prepare TFJS in browser
 - Removed following models as they are either obsolete or non-functional with tfjs 2.0+
   - mtcnn: Mostly obsolete
   - tinyYolov2: Non-functional since weights are missing
@@ -32,48 +32,63 @@ Due to reduced code and changed build process, resulting bundle is about **>5x s
 
 ## Installation
 
-**Imporant!**: This version of **face-api** does not embedd full version of **TensorFlow/JS (tfjs)** to keep package as small as possible (322KB minified), enable dynamic loading of different tfjs backends as well as to enable reusability of tfjs for different purposes.  
+There are several ways to use Face-API: 
 
-*Load tfjs explicitly before loading face-api.*  
-*Note: package `@tensorflow/tfjs` is bundle, if you want to keep your project small, import `@tensorflow/tfjs-core` plus a specific backend such as `@tensorflow/tfjs-backend-cpu`, `@tensorflow/tfjs-backend-webgl` or `@tensorflow/tfjs-node`*
+### IIFE script
+  *Size: 936KB minified*
 
-For example as a script:
+  This is simplest way for usage within Browser as it includes full version of TensorFlow/JS prepackaged with no external dependencies.  
+  Simply include this in your `HTML` file and it's ready to use.
 
-```html
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/2.3.0/tf.es2017.js"></script>
-  <script src="/dist/face-api.js"></script> <!-- full version / 960KB -->
-  or
-  <script src="/dist/face-api.min.js"></script> <!-- minified version / 320KB -->
-```
+  ```html
+  <script src="dist/face-api.js"><script>
+  ``` 
 
-Or install a module:
+  IIFE script auto-registers global namespace `faceapi` within Window object.  
+  And if you want to access `TensorFlow/JS` classes directly, they are exported as `faceapi.tf`
 
-```bash
-  npm install @tensorflow/tfjs @vladmandic/face-api
-```
+  Pre-packaged version of `TFJS` is **2.6.0**
 
-Use module using `require` (recommended for VanillaJS):
+### ESM module
+  *Size: 164KB non-minified*
 
-```js
-  const tf = require('@tensorflow/tfjs');
-  const faceapi = require('@vladmandic/face-api');
-```
+  If you're using bundler *(such as rollup, webpack, esbuild)* to package your client application, you can import ESM version of FaceAPI which supports full tree shaking  
+  Note that this version does NOT pre-package `TFJS`, so you'll need to include it before you import `FaceAPI`  
+  You can use any version of `TFJS` 2.0+  
 
-Use module in a JavaScript project using `import`:  
-(NodeJS requires `"type": "module"` inside `package.json` to support `import` statements)
+  ```js
+    import * as tf from 'https://cdnjs.cloudflare.com/ajax/libs/tensorflow/2.6.0/tf.min.js'; // load directly from CDN
+    import * as faceapi from 'dist/face-api.esm.js';
+  ```
+  *Experimental*:  
+  You could use same syntax within your main `JS` file if it's imported with `<script type="module">`  
 
-```js
-import tf from '@tensorflow/tfjs';
-import faceapi from '@vladmandic/face-api';
-```
+  ```html
+    <script src="tf.min.js">
+    <script src="./index.js" type="module">
+  ```
+  and then in `index.js`
 
-Use module in a TypeScript project:  
-(TSC will compile this to `require` statements)
+  ```js
+    import * as tf from 'https://cdnjs.cloudflare.com/ajax/libs/tensorflow/2.6.0/tf.min.js'; // load directly from CDN
+    import * as faceapi from 'dist/face-api.esm.js';
+  ```
 
-```js
-import * as tf from '@tensorflow/tfjs';
-import * as faceapi from '@vladmandic/face-api';
-```
+### NPM module
+  *Size: 45,104KB unpacked (including sources and pre-trained model weights)*
+
+  Simmilar to ESM module, but with full sources as it points to `build/src/index.js` instead  
+  Recommended for NodeJS projects
+
+  Install with:
+  ```shell
+    npm install @tensorflow/tfjs @vladmandic/face-api 
+  ```
+  And then use with:
+  ```js
+    import * as tf from '@tensorflow/tfjs';
+    import * as faceapi from '@vladmandic/face-api';
+  ```
 
 ## Weights
 
@@ -81,20 +96,25 @@ Pretrained models and their weights are includes in `./model`.
 
 ## Build
 
-Included in `./dist` are:
-
-- face-api.cjs: CJS format, used by NodeJS import/require (default for node and browser require/import)
-- face-api.ejs: ESM format, used by Browser (provided as an alternative)
-- face-api.js:  IIFE format, used by Browser (default for browser script)
-- face-api.min.js:  Minified IIFE format, used by Browser
-
-If you want to do a full rebuild use:
-
+If you want to do a full rebuild, either download npm module
 ```shell
+npm install @vladmandic/face-api
+cd node_modules/@vladmandic/face-api
+```
+
+or clone a git project
+```shell
+git clone https://github.com/vladmandic/face-api
+cd face-api
+```
+
+Then install all dependencies and run rebuild:
+```shell
+npm install
 npm run build
 ```
 
-Which will compile everything in `./src` into `./build` and create both standard and minified bundles as well as a sourcemap in `./dist`
+Which will compile everything in `./src` into `./build` and create both ESM (standard) and IIFE (minified) bundles as well as sourcemaps in `./dist`
 
 ## Documentation
 

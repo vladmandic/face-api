@@ -20,7 +20,7 @@ export * from './NeuralNetwork';
 export * from './resizeResults';
 export declare const version: {
     faceapi: string;
-    node: string | boolean;
-    browser: string | boolean;
+    node: boolean;
+    browser: boolean;
 };
 //# sourceMappingURL=index.d.ts.map

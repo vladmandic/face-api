@@ -725,7 +725,7 @@ function extendWithFaceDetection(sourceObj, detection) {
 
 // build/src/env/createBrowserEnv.js
 function createBrowserEnv() {
-  const fetch = window["fetch"] || function() {
+  const fetch2 = window["fetch"] || function() {
     throw new Error("fetch - missing fetch implementation for browser environment");
   };
   const readFile = function() {
@@ -739,7 +739,7 @@ function createBrowserEnv() {
     Video: HTMLVideoElement,
     createCanvasElement: () => document.createElement("canvas"),
     createImageElement: () => document.createElement("img"),
-    fetch,
+    fetch: fetch2,
     readFile
   };
 }
@@ -784,7 +784,7 @@ function createNodejsEnv() {
     }
     throw new Error("createImageElement - missing Image implementation for nodejs environment");
   };
-  const fetch = global["fetch"] || function() {
+  const fetch2 = global["fetch"] || function() {
     throw new Error("fetch - missing fetch implementation for nodejs environment");
   };
   const fileSystem = createFileSystem();
@@ -801,7 +801,7 @@ function createNodejsEnv() {
     },
     createCanvasElement,
     createImageElement,
-    fetch,
+    fetch: fetch2,
     ...fileSystem
   };
 }
@@ -822,8 +822,8 @@ function getEnv() {
   }
   return environment;
 }
-function setEnv(env16) {
-  environment = env16;
+function setEnv(env17) {
+  environment = env17;
 }
 function initialize() {
   if (isBrowser()) {
@@ -833,22 +833,22 @@ function initialize() {
     return setEnv(createNodejsEnv());
   }
 }
-function monkeyPatch(env16) {
+function monkeyPatch(env17) {
   if (!environment) {
     initialize();
   }
   if (!environment) {
     throw new Error("monkeyPatch - environment is not defined, check isNodejs() and isBrowser()");
   }
-  const {Canvas = environment.Canvas, Image = environment.Image} = env16;
+  const {Canvas = environment.Canvas, Image = environment.Image} = env17;
   environment.Canvas = Canvas;
   environment.Image = Image;
-  environment.createCanvasElement = env16.createCanvasElement || (() => new Canvas());
-  environment.createImageElement = env16.createImageElement || (() => new Image());
-  environment.ImageData = env16.ImageData || environment.ImageData;
-  environment.Video = env16.Video || environment.Video;
-  environment.fetch = env16.fetch || environment.fetch;
-  environment.readFile = env16.readFile || environment.readFile;
+  environment.createCanvasElement = env17.createCanvasElement || (() => new Canvas());
+  environment.createImageElement = env17.createImageElement || (() => new Image());
+  environment.ImageData = env17.ImageData || environment.ImageData;
+  environment.Video = env17.Video || environment.Video;
+  environment.fetch = env17.fetch || environment.fetch;
+  environment.readFile = env17.readFile || environment.readFile;
 }
 const env = {
   getEnv,
@@ -1303,8 +1303,8 @@ async function extractFaceTensors(imageTensor, detections) {
 
 // build/src/dom/fetchOrThrow.js
 async function fetchOrThrow(url, init) {
-  const fetch = env.getEnv().fetch;
-  const res = await fetch(url, init);
+  const fetch2 = env.getEnv().fetch;
+  const res = await fetch2(url, init);
   if (!(res.status < 400)) {
     throw new Error(`failed to fetch: (${res.status}) ${res.statusText}, from url: ${res.url}`);
   }
@@ -4403,11 +4403,37 @@ function resizeResults(results, dimensions) {
 // build/package.json
 var version = "0.5.3";
 
+// build/src/Platform.js
+class PlatformBrowser {
+  fetch(path, init) {
+    return fetch(path, init);
+  }
+  now() {
+    return performance.now();
+  }
+  encode(text, encoding) {
+    if (encoding !== "utf-8" && encoding !== "utf8") {
+      throw new Error(`Browser's encoder only supports utf-8, but got ${encoding}`);
+    }
+    if (this.textEncoder == null) {
+      this.textEncoder = new TextEncoder();
+    }
+    return this.textEncoder.encode(text);
+  }
+  decode(bytes, encoding) {
+    return new TextDecoder(encoding).decode(bytes);
+  }
+}
+
 // build/src/index.js
-import * as tf42 from "@tensorflow/tfjs";
-const node = typeof process !== "undefined" ? process.version : false;
-const browser3 = typeof navigator !== "undefined" ? navigator.userAgent : false;
+import {
+  env as env16
+}, * as tf42 from "@tensorflow/tfjs";
+const node = typeof process !== "undefined";
+const browser3 = typeof navigator !== "undefined" && typeof navigator.userAgent !== "undefined";
 const version2 = {faceapi: version, node, browser: browser3};
+if (!env16().platform && env16().get("IS_BROWSER"))
+  env16().setPlatform("browser", new PlatformBrowser());
 export {
   AgeGenderNet,
   BoundingBox,

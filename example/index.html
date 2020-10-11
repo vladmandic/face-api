@@ -5,8 +5,8 @@
     <meta http-equiv="content-type">
     <meta content="text/html">
     <meta charset="UTF-8">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/2.3.0/tf.es2017.js"></script>
-    <script src="https://vladmandic.github.io/face-api/dist/face-api.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/2.6.0/tf.min.js"></script> -->
+    <script src="../dist/face-api.js"></script>
     <style>
       body { font-family: monospace; background: black; color: white; font-size: 16px; line-height: 22px; margin: 0; }
     </style>
@@ -27,7 +27,7 @@
       // helper function to pretty-print json object to string
       function str(json) {
         let text = '<font color="lightblue">';
-        text += JSON.stringify(json).replace(/{|}|"|\[|\]/g, '').replace(/,/g, ', ');
+        text += json ? JSON.stringify(json).replace(/{|}|"|\[|\]/g, '').replace(/,/g, ', ') : '';
         text += '</font>';
         return text;
       }
@@ -120,11 +120,15 @@
       async function main() {
         // initialize tfjs
         log('FaceAPI Test');
+        window.tf = faceapi.tf;
         await faceapi.tf.setBackend('webgl');
         await faceapi.tf.enableProdMode();
         await faceapi.tf.ENV.set('DEBUG', false);
+        await faceapi.tf.ready();
+
         // check version
-        log(`Version: ${str(faceapi.version)}`);
+        log(`Version: TensorFlow/JS ${str(faceapi.tf?.version_core || '(not loaded)')} FaceAPI ${str(faceapi?.version || '(not loaded)')} Backend: ${str(faceapi.tf?.getBackend() || '(not loaded)')}`);
+        log(`Flags: ${JSON.stringify(faceapi.tf.ENV.flags)}`);
 
         // load face-api models
         log('Loading FaceAPI models');

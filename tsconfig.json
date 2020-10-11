@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "lib": ["es2018", "dom"],
-    "module": "es2020",
+    "module": "esnext",
     "moduleResolution": "node",
     "outDir": "build",
     "target": "es2018",

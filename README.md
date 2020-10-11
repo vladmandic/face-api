@@ -38,11 +38,17 @@ There are several ways to use Face-API:
   *Size: 936KB minified*
 
   This is simplest way for usage within Browser as it includes full version of TensorFlow/JS prepackaged with no external dependencies.  
-  Simply include this in your `HTML` file and it's ready to use.
+  Simply download `dist/face-api.js`, include it in your `HTML` file & it's ready to use.
 
   ```html
   <script src="dist/face-api.js"><script>
   ``` 
+
+  For a quick test, you can access the script directly from `gitpages`
+
+  ```html
+  <script src="https://vladmandic.github.io/face-api/dist/face-api.js"></script>
+  ```
 
   IIFE script auto-registers global namespace `faceapi` within Window object.  
   And if you want to access `TensorFlow/JS` classes directly, they are exported as `faceapi.tf`

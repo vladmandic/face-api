@@ -34,67 +34,68 @@ Due to reduced code and changed build process, resulting bundle is about **>5x s
 
 There are several ways to use Face-API: 
 
-### IIFE script
-  *Size: 936KB minified*
+**Important**: This version of Face-Api does NOT pre-package `TFJS` to allow for faster downloads (it's much smaller) as well as to allow user to choose version of TFJS to use (it's compatible with any `TFJS 2.0+`).
 
-  This is simplest way for usage within Browser as it includes full version of TensorFlow/JS prepackaged with no external dependencies.  
-  Simply download `dist/face-api.js`, include it in your `HTML` file & it's ready to use.
+### 1. IIFE script
+*Size: 936KB minified*
 
-  ```html
-  <script src="dist/face-api.js"><script>
-  ``` 
+This is simplest way for usage within Browser
+Simply download `dist/face-api.js`, include it in your `HTML` file & it's ready to use.
 
-  For a quick test, you can access the script directly from `gitpages`
+```html
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/2.6.0/tf.min.js"></script>
+<script src="dist/face-api.js"><script>
+``` 
 
-  ```html
-  <script src="https://vladmandic.github.io/face-api/dist/face-api.js"></script>
-  ```
+For a quick test, you can access the script directly from `gitpages`
 
-  IIFE script auto-registers global namespace `faceapi` within Window object.  
-  And if you want to access `TensorFlow/JS` classes directly, they are exported as `faceapi.tf`
+```html
+<script src="https://vladmandic.github.io/face-api/dist/face-api.js"></script>
+```
 
-  Pre-packaged version of `TFJS` is **2.6.0**
+IIFE script auto-registers global namespace `faceapi` within Window object.  
+And if you want to access `TensorFlow/JS` classes directly, they are exported as `faceapi.tf`
 
-### ESM module
-  *Size: 164KB non-minified*
+### 2. ESM module
+*Size: 164KB non-minified*
 
-  If you're using bundler *(such as rollup, webpack, esbuild)* to package your client application, you can import ESM version of FaceAPI which supports full tree shaking  
-  Note that this version does NOT pre-package `TFJS`, so you'll need to include it before you import `FaceAPI`  
-  You can use any version of `TFJS` 2.0+  
+If you're using bundler *(such as rollup, webpack, esbuild)* to package your client application, you can import ESM version of FaceAPI which supports full tree shaking  
+Note that this version does NOT pre-package `TFJS`, so you'll need to include it before you import `FaceAPI`  
+You can use any version of `TFJS` 2.0+  
 
-  ```js
-    import * as tf from 'https://cdnjs.cloudflare.com/ajax/libs/tensorflow/2.6.0/tf.min.js'; // load directly from CDN
-    import * as faceapi from 'dist/face-api.esm.js';
-  ```
-  *Experimental*:  
-  You could use same syntax within your main `JS` file if it's imported with `<script type="module">`  
+```js
+  import * as tf from 'https://cdnjs.cloudflare.com/ajax/libs/tensorflow/2.6.0/tf.min.js'; // load directly from CDN
+  import * as faceapi from 'dist/face-api.esm.js';
+```
+*Experimental*:  
+You could use same syntax within your main `JS` file if it's imported with `<script type="module">`  
 
-  ```html
-    <script src="tf.min.js">
-    <script src="./index.js" type="module">
-  ```
-  and then in `index.js`
+```html
+  <script src="tf.min.js">
+  <script src="./index.js" type="module">
+```
+and then in `index.js`
 
-  ```js
-    import * as tf from 'https://cdnjs.cloudflare.com/ajax/libs/tensorflow/2.6.0/tf.min.js'; // load directly from CDN
-    import * as faceapi from 'dist/face-api.esm.js';
-  ```
+```js
+  import * as tf from 'https://cdnjs.cloudflare.com/ajax/libs/tensorflow/2.6.0/tf.min.js'; // load directly from CDN
+  import * as faceapi from 'dist/face-api.esm.js';
+```
 
-### NPM module
-  *Size: 45,104KB unpacked (including sources and pre-trained model weights)*
+### 3. NPM module
+*Size: 45,104KB unpacked (including sources and pre-trained model weights)*
 
-  Simmilar to ESM module, but with full sources as it points to `build/src/index.js` instead  
-  Recommended for NodeJS projects
+Simmilar to ESM module, but with full sources as it points to `build/src/index.js` instead  
+Recommended for NodeJS projects
 
-  Install with:
-  ```shell
-    npm install @tensorflow/tfjs @vladmandic/face-api 
-  ```
-  And then use with:
-  ```js
-    import * as tf from '@tensorflow/tfjs';
-    import * as faceapi from '@vladmandic/face-api';
-  ```
+Install with:
+```shell
+  npm install @tensorflow/tfjs @vladmandic/face-api 
+```
+And then use with:
+```js
+  import * as tf from '@tensorflow/tfjs';
+  import * as faceapi from '@vladmandic/face-api';
+```
 
 ## Weights
 

@@ -10,7 +10,7 @@
   },
   "type": "module",
   "scripts": {
-    "build-esm": "esbuild --bundle --format=esm --target=esnext --platform=browser --sourcemap --outfile=./dist/face-api.esm.js --external:@tensorflow/tfjs --log-level=error --tsconfig=./tsconfig.json build/src/index.js",
+    "build-esm": "esbuild --bundle --format=esm --target=esnext --platform=browser --sourcemap --outfile=./dist/face-api.esm.js --minify --log-level=error --tsconfig=./tsconfig.json build/src/index.js",
     "build-iife": "esbuild --bundle --format=iife --target=esnext --platform=browser --sourcemap --outfile=./dist/face-api.js --global-name=faceapi --minify --log-level=error --tsconfig=./tsconfig.json build/src/index.js",
     "build": "rimraf build/ dist/ && tsc && npm run build-esm && npm run build-iife"
   },

@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs';
+import * as tf from '@tensorflow/tfjs/dist/tf.es2017.js';
 
 import { Rect } from '../classes';
 import { FaceDetection } from '../classes/FaceDetection';
@@ -77,7 +77,7 @@ export class SsdMobilenetv1 extends NeuralNetwork<NetParams> {
     const iouThreshold = 0.5
     const indices = nonMaxSuppression(
       boxes,
-      scoresData,
+      scoresData as number[],
       maxResults,
       iouThreshold,
       minConfidence
@@ -100,7 +100,7 @@ export class SsdMobilenetv1 extends NeuralNetwork<NetParams> {
           Math.min(1.0, boxesData[idx][3])
         ].map(val => val * padX)
         return new FaceDetection(
-          scoresData[idx],
+          scoresData[idx] as number,
           new Rect(
             left,
             top,

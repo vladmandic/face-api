@@ -1,1 +1,0 @@
-{"version":3,"file":"extractParams.d.ts","sourceRoot":"","sources":["../../../src/ssdMobilenetv1/extractParams.ts"],"names":[],"mappings":"AAEA,OAAO,EAA0B,YAAY,EAAqC,MAAM,WAAW,CAAC;AACpG,OAAO,EAAe,SAAS,EAA8C,MAAM,SAAS,CAAC;AA8L7F,wBAAgB,aAAa,CAAC,OAAO,EAAE,YAAY,GAAG;IAAE,MAAM,EAAE,SAAS,CAAC;IAAC,aAAa,EAAE,YAAY,EAAE,CAAA;CAAE,CAsCzG"}

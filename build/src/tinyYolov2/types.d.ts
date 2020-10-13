@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs';
+import * as tf from '@tensorflow/tfjs/dist/tf.es2017.js';
 import { ConvParams } from '../common';
 import { SeparableConvParams } from '../common/types';
 export declare type BatchNorm = {
@@ -32,4 +32,3 @@ export declare type DefaultTinyYolov2NetParams = {
     conv8: ConvParams;
 };
 export declare type TinyYolov2NetParams = DefaultTinyYolov2NetParams | MobilenetParams;
-//# sourceMappingURL=types.d.ts.map

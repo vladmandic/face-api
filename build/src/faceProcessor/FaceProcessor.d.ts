@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs';
+import * as tf from '@tensorflow/tfjs/dist/tf.es2017.js';
 import { NetInput } from '../dom';
 import { FaceFeatureExtractorParams, IFaceFeatureExtractor, TinyFaceFeatureExtractorParams } from '../faceFeatureExtractor/types';
 import { NeuralNetwork } from '../NeuralNetwork';
@@ -26,4 +26,3 @@ export declare abstract class FaceProcessor<TExtractorParams extends FaceFeature
         paramMappings: import("../common").ParamMapping[];
     };
 }
-//# sourceMappingURL=FaceProcessor.d.ts.map

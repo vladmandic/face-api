@@ -10,4 +10,3 @@ export declare class Dimensions implements IDimensions {
     get height(): number;
     reverse(): Dimensions;
 }
-//# sourceMappingURL=Dimensions.d.ts.map

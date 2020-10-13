@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs';
+import * as tf from '@tensorflow/tfjs/dist/tf.es2017.js';
 import { Rect } from '../classes';
 import { FaceDetection } from '../classes/FaceDetection';
 /**
@@ -12,4 +12,3 @@ import { FaceDetection } from '../classes/FaceDetection';
  * @returns Tensors of the corresponding image region for each detected face.
  */
 export declare function extractFaceTensors(imageTensor: tf.Tensor3D | tf.Tensor4D, detections: Array<FaceDetection | Rect>): Promise<tf.Tensor3D[]>;
-//# sourceMappingURL=extractFaceTensors.d.ts.map

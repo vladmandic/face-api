@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs';
+import * as tf from '@tensorflow/tfjs/dist/tf.es2017.js';
 export function extractConvParamsFactory(extractWeights, paramMappings) {
     return function (channelsIn, channelsOut, filterSize, mappedPrefix) {
         const filters = tf.tensor4d(extractWeights(channelsIn * channelsOut * filterSize * filterSize), [filterSize, filterSize, channelsIn, channelsOut]);

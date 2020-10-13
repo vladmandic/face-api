@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs';
+import * as tf from '@tensorflow/tfjs/dist/tf.es2017.js';
 import { Point } from '../classes';
 import { FaceLandmarks68 } from '../classes/FaceLandmarks68';
 import { toNetInput } from '../dom';
@@ -54,9 +54,7 @@ export class FaceLandmark68NetBase extends FaceProcessor {
             });
         }));
         landmarkTensors.forEach(t => t.dispose());
-        return netInput.isBatchInput
-            ? landmarksForBatch
-            : landmarksForBatch[0];
+        return netInput.isBatchInput ? landmarksForBatch : landmarksForBatch[0];
     }
     getClassifierChannelsOut() {
         return 136;

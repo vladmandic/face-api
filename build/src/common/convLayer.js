@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs';
+import * as tf from '@tensorflow/tfjs/dist/tf.es2017.js';
 export function convLayer(x, params, padding = 'same', withRelu = false) {
     return tf.tidy(() => {
         const out = tf.add(tf.conv2d(x, params.filters, [1, 1], padding), params.bias);

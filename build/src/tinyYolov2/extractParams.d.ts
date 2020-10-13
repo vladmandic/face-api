@@ -5,4 +5,3 @@ export declare function extractParams(weights: Float32Array, config: TinyYolov2C
     params: TinyYolov2NetParams;
     paramMappings: ParamMapping[];
 };
-//# sourceMappingURL=extractParams.d.ts.map

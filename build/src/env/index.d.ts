@@ -20,4 +20,3 @@ export declare const env: {
     isNodejs: typeof isNodejs;
 };
 export * from './types';
-//# sourceMappingURL=index.d.ts.map

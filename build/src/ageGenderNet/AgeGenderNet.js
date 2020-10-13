@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs';
+import * as tf from '@tensorflow/tfjs/dist/tf.es2017.js';
 import { fullyConnectedLayer } from '../common/fullyConnectedLayer';
 import { seperateWeightMaps } from '../faceProcessor/util';
 import { TinyXception } from '../xception/TinyXception';
@@ -60,9 +60,7 @@ export class AgeGenderNet extends NeuralNetwork {
         }));
         out.age.dispose();
         out.gender.dispose();
-        return netInput.isBatchInput
-            ? predictionsByBatch
-            : predictionsByBatch[0];
+        return netInput.isBatchInput ? predictionsByBatch : predictionsByBatch[0];
     }
     getDefaultModelName() {
         return 'age_gender_model';

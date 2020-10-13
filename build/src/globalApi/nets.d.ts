@@ -103,4 +103,3 @@ export declare const loadAgeGenderModel: (url: string) => Promise<void>;
 export declare const loadFaceDetectionModel: (url: string) => Promise<void>;
 export declare const locateFaces: (input: TNetInput, options: SsdMobilenetv1Options) => Promise<FaceDetection[]>;
 export declare const detectLandmarks: (input: TNetInput) => Promise<FaceLandmarks68 | FaceLandmarks68[]>;
-//# sourceMappingURL=nets.d.ts.map

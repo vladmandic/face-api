@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs';
+import * as tf from '@tensorflow/tfjs/dist/tf.es2017.js';
 import { ConvParams } from '../common';
 export declare type PointwiseConvParams = {
     filters: tf.Tensor4D;
@@ -61,4 +61,3 @@ export declare type NetParams = {
     prediction_layer: PredictionLayerParams;
     output_layer: OutputLayerParams;
 };
-//# sourceMappingURL=types.d.ts.map

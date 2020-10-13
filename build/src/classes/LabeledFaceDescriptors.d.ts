@@ -7,4 +7,3 @@ export declare class LabeledFaceDescriptors {
     toJSON(): any;
     static fromJSON(json: any): LabeledFaceDescriptors;
 }
-//# sourceMappingURL=LabeledFaceDescriptors.d.ts.map

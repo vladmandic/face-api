@@ -10,4 +10,3 @@ export declare type TinyYolov2Config = {
     isFirstLayerConv2d?: boolean;
 };
 export declare function validateConfig(config: any): void;
-//# sourceMappingURL=config.d.ts.map

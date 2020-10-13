@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs';
+import * as tf from '@tensorflow/tfjs/dist/tf.es2017.js';
 import { depthwiseSeparableConv } from '../common/depthwiseSeparableConv';
 export function denseBlock3(x, denseBlockParams, isFirstLayer = false) {
     return tf.tidy(() => {

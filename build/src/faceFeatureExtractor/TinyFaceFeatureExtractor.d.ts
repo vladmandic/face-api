@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs';
+import * as tf from '@tensorflow/tfjs/dist/tf.es2017.js';
 import { NetInput, TNetInput } from '../dom';
 import { NeuralNetwork } from '../NeuralNetwork';
 import { IFaceFeatureExtractor, TinyFaceFeatureExtractorParams } from './types';
@@ -16,4 +16,3 @@ export declare class TinyFaceFeatureExtractor extends NeuralNetwork<TinyFaceFeat
         paramMappings: import("../common").ParamMapping[];
     };
 }
-//# sourceMappingURL=TinyFaceFeatureExtractor.d.ts.map

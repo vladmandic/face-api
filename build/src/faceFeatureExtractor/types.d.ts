@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs';
+import * as tf from '@tensorflow/tfjs/dist/tf.es2017.js';
 import { NetInput, TNetInput } from '..';
 import { ConvParams, SeparableConvParams } from '../common';
 import { NeuralNetwork } from '../NeuralNetwork';
@@ -38,4 +38,3 @@ export interface IFaceFeatureExtractor<TNetParams extends TinyFaceFeatureExtract
     forwardInput(input: NetInput): tf.Tensor4D;
     forward(input: TNetInput): Promise<tf.Tensor4D>;
 }
-//# sourceMappingURL=types.d.ts.map

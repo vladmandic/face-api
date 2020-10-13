@@ -8,4 +8,3 @@ export * from './extractWeightEntryFactory';
 export * from './extractWeightsFactory';
 export * from './getModelUris';
 export * from './types';
-//# sourceMappingURL=index.d.ts.map

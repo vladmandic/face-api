@@ -5,4 +5,3 @@ export declare function createSsdMobilenetv1(weights: Float32Array): SsdMobilene
 export declare function createFaceDetectionNet(weights: Float32Array): SsdMobilenetv1;
 export declare class FaceDetectionNet extends SsdMobilenetv1 {
 }
-//# sourceMappingURL=index.d.ts.map

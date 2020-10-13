@@ -4,4 +4,3 @@ export declare function extractParams(weights: Float32Array, numMainBlocks: numb
     params: TinyXceptionParams;
     paramMappings: ParamMapping[];
 };
-//# sourceMappingURL=extractParams.d.ts.map

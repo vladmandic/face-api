@@ -1,4 +1,3 @@
-import * as tf from '@tensorflow/tfjs';
 import { TNetInput } from '../dom';
 import { WithAge } from '../factories/WithAge';
 import { WithFaceDetection } from '../factories/WithFaceDetection';
@@ -10,8 +9,8 @@ import { PredictAllFaceExpressionsTask, PredictAllFaceExpressionsWithFaceAlignme
 export declare class PredictAgeAndGenderTaskBase<TReturn, TParentReturn> extends ComposableTask<TReturn> {
     protected parentTask: ComposableTask<TParentReturn> | Promise<TParentReturn>;
     protected input: TNetInput;
-    protected extractedFaces?: (tf.Tensor3D | HTMLCanvasElement)[] | undefined;
-    constructor(parentTask: ComposableTask<TParentReturn> | Promise<TParentReturn>, input: TNetInput, extractedFaces?: (tf.Tensor3D | HTMLCanvasElement)[] | undefined);
+    protected extractedFaces?: any[] | undefined;
+    constructor(parentTask: ComposableTask<TParentReturn> | Promise<TParentReturn>, input: TNetInput, extractedFaces?: any[] | undefined);
 }
 export declare class PredictAllAgeAndGenderTask<TSource extends WithFaceDetection<{}>> extends PredictAgeAndGenderTaskBase<WithAge<WithGender<TSource>>[], TSource[]> {
     run(): Promise<WithAge<WithGender<TSource>>[]>;
@@ -29,4 +28,3 @@ export declare class PredictSingleAgeAndGenderWithFaceAlignmentTask<TSource exte
     withFaceExpressions(): PredictSingleFaceExpressionsWithFaceAlignmentTask<WithAge<WithGender<TSource>>>;
     withFaceDescriptor(): ComputeSingleFaceDescriptorTask<WithAge<WithGender<TSource>>>;
 }
-//# sourceMappingURL=PredictAgeAndGenderTask.d.ts.map

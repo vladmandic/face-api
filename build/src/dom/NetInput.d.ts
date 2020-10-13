@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs';
+import * as tf from '@tensorflow/tfjs-core';
 import { Dimensions } from '../classes/Dimensions';
 import { TResolvedNetInput } from './types';
 export declare class NetInput {
@@ -32,4 +32,3 @@ export declare class NetInput {
      */
     toBatchTensor(inputSize: number, isCenterInputs?: boolean): tf.Tensor4D;
 }
-//# sourceMappingURL=NetInput.d.ts.map

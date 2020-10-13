@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs';
+import * as tf from '@tensorflow/tfjs/dist/tf.es2017.js';
 import { Point } from '../classes';
 import { Dimensions, IDimensions } from '../classes/Dimensions';
 export declare function isTensor(tensor: any, dim: number): boolean;
@@ -15,4 +15,3 @@ export declare function getCenterPoint(pts: Point[]): Point;
 export declare function range(num: number, start: number, step: number): number[];
 export declare function isValidNumber(num: any): boolean;
 export declare function isValidProbablitiy(num: any): boolean;
-//# sourceMappingURL=index.d.ts.map

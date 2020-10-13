@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs';
+import * as tf from '@tensorflow/tfjs/dist/tf.es2017.js';
 import { IDimensions } from '../classes';
 import { FaceLandmarks68 } from '../classes/FaceLandmarks68';
 import { NetInput, TNetInput } from '../dom';
@@ -11,4 +11,3 @@ export declare abstract class FaceLandmark68NetBase<TExtractorParams extends Fac
     detectLandmarks(input: TNetInput): Promise<FaceLandmarks68 | FaceLandmarks68[]>;
     protected getClassifierChannelsOut(): number;
 }
-//# sourceMappingURL=FaceLandmark68NetBase.d.ts.map

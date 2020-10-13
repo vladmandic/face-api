@@ -1,7 +1,3 @@
-import * as tf from '@tensorflow/tfjs';
+import * as tf from '@tensorflow/tfjs/dist/tf.es2017.js';
 import { BoxPredictionParams } from './types';
-export declare function boxPredictionLayer(x: tf.Tensor4D, params: BoxPredictionParams): {
-    boxPredictionEncoding: tf.Tensor<tf.Rank>;
-    classPrediction: tf.Tensor<tf.Rank>;
-};
-//# sourceMappingURL=boxPredictionLayer.d.ts.map
+export declare function boxPredictionLayer(x: tf.Tensor4D, params: BoxPredictionParams): any;

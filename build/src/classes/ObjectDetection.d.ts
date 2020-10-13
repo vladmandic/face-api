@@ -18,4 +18,3 @@ export declare class ObjectDetection {
     get relativeBox(): Box;
     forSize(width: number, height: number): ObjectDetection;
 }
-//# sourceMappingURL=ObjectDetection.d.ts.map

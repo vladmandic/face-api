@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs';
+import * as tf from '@tensorflow/tfjs/dist/tf.es2017.js';
 import { NetInput, TNetInput } from '../dom';
 import { FaceFeatureExtractor } from '../faceFeatureExtractor/FaceFeatureExtractor';
 import { FaceFeatureExtractorParams } from '../faceFeatureExtractor/types';
@@ -13,4 +13,3 @@ export declare class FaceExpressionNet extends FaceProcessor<FaceFeatureExtracto
     protected getClassifierChannelsIn(): number;
     protected getClassifierChannelsOut(): number;
 }
-//# sourceMappingURL=FaceExpressionNet.d.ts.map

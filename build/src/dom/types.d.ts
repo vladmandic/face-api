@@ -1,7 +1,6 @@
-import * as tf from '@tensorflow/tfjs';
+import * as tf from '@tensorflow/tfjs/dist/tf.es2017.js';
 import { NetInput } from './NetInput';
 export declare type TMediaElement = HTMLImageElement | HTMLVideoElement | HTMLCanvasElement;
 export declare type TResolvedNetInput = TMediaElement | tf.Tensor3D | tf.Tensor4D;
 export declare type TNetInputArg = string | TResolvedNetInput;
 export declare type TNetInput = TNetInputArg | Array<TNetInputArg> | NetInput | tf.Tensor4D;
-//# sourceMappingURL=types.d.ts.map

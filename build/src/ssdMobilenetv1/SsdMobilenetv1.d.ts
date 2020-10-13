@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs';
+import * as tf from '@tensorflow/tfjs/dist/tf.es2017.js';
 import { FaceDetection } from '../classes/FaceDetection';
 import { NetInput, TNetInput } from '../dom';
 import { NeuralNetwork } from '../NeuralNetwork';
@@ -6,14 +6,8 @@ import { ISsdMobilenetv1Options } from './SsdMobilenetv1Options';
 import { NetParams } from './types';
 export declare class SsdMobilenetv1 extends NeuralNetwork<NetParams> {
     constructor();
-    forwardInput(input: NetInput): {
-        boxes: tf.Tensor2D[];
-        scores: tf.Tensor1D[];
-    };
-    forward(input: TNetInput): Promise<{
-        boxes: tf.Tensor2D[];
-        scores: tf.Tensor1D[];
-    }>;
+    forwardInput(input: NetInput): any;
+    forward(input: TNetInput): Promise<any>;
     locateFaces(input: TNetInput, options?: ISsdMobilenetv1Options): Promise<FaceDetection[]>;
     protected getDefaultModelName(): string;
     protected extractParamsFromWeigthMap(weightMap: tf.NamedTensorMap): {
@@ -25,4 +19,3 @@ export declare class SsdMobilenetv1 extends NeuralNetwork<NetParams> {
         paramMappings: import("../common").ParamMapping[];
     };
 }
-//# sourceMappingURL=SsdMobilenetv1.d.ts.map

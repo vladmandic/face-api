@@ -5,4 +5,3 @@ export declare const BOX_ANCHORS_SEPARABLE: Point[];
 export declare const MEAN_RGB_SEPARABLE: [number, number, number];
 export declare const DEFAULT_MODEL_NAME = "tiny_yolov2_model";
 export declare const DEFAULT_MODEL_NAME_SEPARABLE_CONV = "tiny_yolov2_separable_conv_model";
-//# sourceMappingURL=const.d.ts.map

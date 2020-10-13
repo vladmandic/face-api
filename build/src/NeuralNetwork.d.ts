@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs';
+import * as tf from '@tensorflow/tfjs/dist/tf.es2017.js';
 import { ParamMapping } from './common';
 export declare abstract class NeuralNetwork<TNetParams> {
     protected _name: string;
@@ -12,15 +12,15 @@ export declare abstract class NeuralNetwork<TNetParams> {
     reassignParamFromPath(paramPath: string, tensor: tf.Tensor): void;
     getParamList(): {
         path: string;
-        tensor: tf.Tensor<tf.Rank>;
+        tensor: any;
     }[];
     getTrainableParams(): {
         path: string;
-        tensor: tf.Tensor<tf.Rank>;
+        tensor: any;
     }[];
     getFrozenParams(): {
         path: string;
-        tensor: tf.Tensor<tf.Rank>;
+        tensor: any;
     }[];
     variable(): void;
     freeze(): void;
@@ -42,4 +42,3 @@ export declare abstract class NeuralNetwork<TNetParams> {
         paramMappings: ParamMapping[];
     };
 }
-//# sourceMappingURL=NeuralNetwork.d.ts.map

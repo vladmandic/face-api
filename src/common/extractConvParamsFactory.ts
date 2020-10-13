@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs';
+import * as tf from '@tensorflow/tfjs/dist/tf.es2017.js';
 
 import { ConvParams, ExtractWeightsFunction, ParamMapping } from './types';
 

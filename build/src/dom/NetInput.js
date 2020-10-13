@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs';
+import * as tf from '@tensorflow/tfjs-core';
 import { env } from '../env';
 import { padToSquare } from '../ops/padToSquare';
 import { computeReshapedDimensions, isTensor3D, isTensor4D, range } from '../utils';
@@ -107,6 +107,7 @@ export class NetInput {
             });
             // const batchTensor = tf.stack(inputTensors.map(t => t.toFloat())).as4D(this.batchSize, inputSize, inputSize, 3)
             const batchTensor = tf.stack(inputTensors.map(t => tf.cast(t, 'float32'))).as4D(this.batchSize, inputSize, inputSize, 3);
+            // const batchTensor = tf.stack(inputTensors.map(t => tf.Tensor.as4D(tf.cast(t, 'float32'))), this.batchSize, inputSize, inputSize, 3);
             return batchTensor;
         });
     }

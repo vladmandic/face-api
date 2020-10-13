@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs';
+import * as tf from '@tensorflow/tfjs/dist/tf.es2017.js';
 export declare type ExtractWeightsFunction = (numWeights: number) => Float32Array;
 export declare type ParamMapping = {
     originalPath?: string;
@@ -18,4 +18,3 @@ export declare class SeparableConvParams {
     bias: tf.Tensor1D;
     constructor(depthwise_filter: tf.Tensor4D, pointwise_filter: tf.Tensor4D, bias: tf.Tensor1D);
 }
-//# sourceMappingURL=types.d.ts.map

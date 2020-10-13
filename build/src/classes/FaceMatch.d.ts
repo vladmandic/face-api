@@ -10,4 +10,3 @@ export declare class FaceMatch implements IFaceMatch {
     get distance(): number;
     toString(withDistance?: boolean): string;
 }
-//# sourceMappingURL=FaceMatch.d.ts.map

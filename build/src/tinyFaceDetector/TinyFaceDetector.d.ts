@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs';
+import * as tf from '@tensorflow/tfjs/dist/tf.es2017.js';
 import { FaceDetection, Point } from '../classes';
 import { ParamMapping } from '../common';
 import { TNetInput } from '../dom';
@@ -15,4 +15,3 @@ export declare class TinyFaceDetector extends TinyYolov2Base {
         paramMappings: ParamMapping[];
     };
 }
-//# sourceMappingURL=TinyFaceDetector.d.ts.map

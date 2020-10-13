@@ -6,4 +6,3 @@ export declare class FaceLandmark68TinyNet extends FaceLandmark68NetBase<TinyFac
     protected getDefaultModelName(): string;
     protected getClassifierChannelsIn(): number;
 }
-//# sourceMappingURL=FaceLandmark68TinyNet.d.ts.map

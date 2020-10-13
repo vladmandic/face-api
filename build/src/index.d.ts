@@ -1,7 +1,7 @@
-import * as tf from '@tensorflow/tfjs';
+import * as tf from '@tensorflow/tfjs/dist/tf.es2017.js';
 import * as draw from './draw';
 import * as utils from './utils';
-export { draw, utils, tf };
+export { tf, draw, utils };
 export * from './ageGenderNet/index';
 export * from './classes/index';
 export * from './dom/index';
@@ -23,4 +23,3 @@ export declare const version: {
     node: boolean;
     browser: boolean;
 };
-//# sourceMappingURL=index.d.ts.map

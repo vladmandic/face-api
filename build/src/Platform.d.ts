@@ -5,4 +5,3 @@ export declare class PlatformBrowser {
     encode(text: string, encoding: string): Uint8Array;
     decode(bytes: Uint8Array, encoding: string): string;
 }
-//# sourceMappingURL=Platform.d.ts.map

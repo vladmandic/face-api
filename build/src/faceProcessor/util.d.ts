@@ -1,6 +1,5 @@
-import * as tf from '@tensorflow/tfjs';
+import * as tf from '@tensorflow/tfjs/dist/tf.es2017.js';
 export declare function seperateWeightMaps(weightMap: tf.NamedTensorMap): {
-    featureExtractorMap: tf.NamedTensorMap;
-    classifierMap: tf.NamedTensorMap;
+    featureExtractorMap: any;
+    classifierMap: any;
 };
-//# sourceMappingURL=util.d.ts.map

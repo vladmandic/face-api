@@ -10,4 +10,3 @@ export declare class SsdMobilenetv1Options {
     get minConfidence(): number;
     get maxResults(): number;
 }
-//# sourceMappingURL=SsdMobilenetv1Options.d.ts.map

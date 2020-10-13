@@ -1,4 +1,3 @@
-import * as tf from '@tensorflow/tfjs';
+import * as tf from '@tensorflow/tfjs/dist/tf.es2017.js';
 import { ConvWithBatchNorm } from './types';
 export declare function convWithBatchNorm(x: tf.Tensor4D, params: ConvWithBatchNorm): tf.Tensor4D;
-//# sourceMappingURL=convWithBatchNorm.d.ts.map

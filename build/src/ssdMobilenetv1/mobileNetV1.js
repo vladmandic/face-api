@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs';
+import * as tf from '@tensorflow/tfjs/dist/tf.es2017.js';
 import { pointwiseConvLayer } from './pointwiseConvLayer';
 const epsilon = 0.0010000000474974513;
 function depthwiseConvLayer(x, params, strides) {

@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs';
+import * as tf from '@tensorflow/tfjs/dist/tf.es2017.js';
 import { TinyXception } from '../xception/TinyXception';
 import { AgeAndGenderPrediction, NetOutput, NetParams } from './types';
 import { NeuralNetwork } from '../NeuralNetwork';
@@ -27,4 +27,3 @@ export declare class AgeGenderNet extends NeuralNetwork<NetParams> {
         paramMappings: import("../common").ParamMapping[];
     };
 }
-//# sourceMappingURL=AgeGenderNet.d.ts.map

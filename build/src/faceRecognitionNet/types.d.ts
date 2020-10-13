@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs';
+import * as tf from '@tensorflow/tfjs/dist/tf.es2017.js';
 import { ConvParams } from '../common';
 export declare type ScaleLayerParams = {
     weights: tf.Tensor1D;
@@ -30,4 +30,3 @@ export declare type NetParams = {
     conv256_down_out: ResidualLayerParams;
     fc: tf.Tensor2D;
 };
-//# sourceMappingURL=types.d.ts.map

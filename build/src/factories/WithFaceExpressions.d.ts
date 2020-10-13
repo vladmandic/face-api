@@ -4,4 +4,3 @@ export declare type WithFaceExpressions<TSource> = TSource & {
 };
 export declare function isWithFaceExpressions(obj: any): obj is WithFaceExpressions<{}>;
 export declare function extendWithFaceExpressions<TSource>(sourceObj: TSource, expressions: FaceExpressions): WithFaceExpressions<TSource>;
-//# sourceMappingURL=WithFaceExpressions.d.ts.map

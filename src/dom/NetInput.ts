@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs';
+import * as tf from '@tensorflow/tfjs-core';
 
 import { Dimensions } from '../classes/Dimensions';
 import { env } from '../env';
@@ -37,17 +37,17 @@ export class NetInput {
       }
 
       if (isTensor4D(input)) {
-        const batchSize = input.shape[0]
+        const batchSize = (input as any).shape[0]
         if (batchSize !== 1) {
           throw new Error(`NetInput - tf.Tensor4D with batchSize ${batchSize} passed, but not supported in input array`)
         }
 
         this._imageTensors[idx] = input
-        this._inputDimensions[idx] = input.shape.slice(1)
+        this._inputDimensions[idx] = (input as any).shape.slice(1)
         return
       }
 
-      const canvas = input instanceof env.getEnv().Canvas ? input : createCanvasFromMedia(input)
+      const canvas = (input as any) instanceof env.getEnv().Canvas ? input : createCanvasFromMedia(input)
       this._canvases[idx] = canvas
       this._inputDimensions[idx] = [canvas.height, canvas.width, 3]
     })
@@ -149,7 +149,8 @@ export class NetInput {
 
       // const batchTensor = tf.stack(inputTensors.map(t => t.toFloat())).as4D(this.batchSize, inputSize, inputSize, 3)
       const batchTensor = tf.stack(inputTensors.map(t => tf.cast(t, 'float32'))).as4D(this.batchSize, inputSize, inputSize, 3)
-
+      // const batchTensor = tf.stack(inputTensors.map(t => tf.Tensor.as4D(tf.cast(t, 'float32'))), this.batchSize, inputSize, inputSize, 3);
+      
       return batchTensor
     })
   }

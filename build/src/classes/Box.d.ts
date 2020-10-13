@@ -44,4 +44,3 @@ export declare class Box<BoxType = any> implements IBoundingBox, IRect {
     };
     calibrate(region: Box): Box<any>;
 }
-//# sourceMappingURL=Box.d.ts.map

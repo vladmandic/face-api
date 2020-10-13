@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs';
+import * as tf from '@tensorflow/tfjs/dist/tf.es2017.js';
 import { Dimensions } from '../classes/Dimensions';
 import { ObjectDetection } from '../classes/ObjectDetection';
 import { NetInput } from '../dom/NetInput';
@@ -31,4 +31,3 @@ export declare class TinyYolov2Base extends NeuralNetwork<TinyYolov2NetParams> {
     protected extractBoxes(outputTensor: tf.Tensor4D, inputBlobDimensions: Dimensions, scoreThreshold?: number): Promise<any>;
     private extractPredictedClass;
 }
-//# sourceMappingURL=TinyYolov2Base.d.ts.map

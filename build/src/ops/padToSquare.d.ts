@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs';
+import * as tf from '@tensorflow/tfjs/dist/tf.es2017.js';
 /**
  * Pads the smaller dimension of an image tensor with zeros, such that width === height.
  *
@@ -8,4 +8,3 @@ import * as tf from '@tensorflow/tfjs';
  * @returns The padded tensor with width === height.
  */
 export declare function padToSquare(imgTensor: tf.Tensor4D, isCenterImage?: boolean): tf.Tensor4D;
-//# sourceMappingURL=padToSquare.d.ts.map

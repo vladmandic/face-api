@@ -12,4 +12,3 @@ export * from './ObjectDetection';
 export * from './Point';
 export * from './PredictedBox';
 export * from './Rect';
-//# sourceMappingURL=index.d.ts.map

@@ -3,4 +3,3 @@ export declare function matchDimensions(input: IDimensions, reference: IDimensio
     width: number;
     height: number;
 };
-//# sourceMappingURL=matchDimensions.d.ts.map

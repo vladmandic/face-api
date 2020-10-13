@@ -9,93 +9,107 @@ Forked from **face-api.js** version **0.22.2** released on March 22nd, 2020
 - <https://github.com/justadudewhohacks/face-api.js>  
 - <https://www.npmjs.com/package/face-api.js>  
 
+Currently based on **`TensorFlow/JS` 2.6.0**  
+If you want to access `TFJS` classes and methods directly, they are exported as `faceapi.tf`
+
 ## Differences
 
-- Removed tests, docs, examples  
-- Updated all package dependencies  
-- Compatible with TensorFlow/JS 2.0+  
-- Updated type casting for TypeScript type checking
-- Removed unnecesary package dependencies (karma, jasmine, etc.)  
+- Updated all type castings for TypeScript type checking to TypeScript 4.1
 - Typescript build process now targets ES2018 and instead of dual ES5/ES6  
+- Compatible with TensorFlow/JS 2.0+  
+- Removed old tests, docs, examples  
+- Removed unnecesary package dependencies (karma, jasmine, etc.)  
+- Updated all package dependencies  
 - Browser bundle process uses ESBuild instead of Rollup
 - New TensorFlow/JS dependencies since backends were removed from @tensorflow/tfjs-core
 - Updated mobileNetv1 model due to batchNorm() dependency
 - Fully tree shakable when imported as an ESM module
 - Added `version` class that returns JSON object with version of FaceAPI as well as linked TFJS
-- Added calls for `setPlatform` to automatically prepare TFJS in browser
 - Removed following models as they are either obsolete or non-functional with tfjs 2.0+
-  - mtcnn: Mostly obsolete
+  - mtcnn: Obsolete
   - tinyYolov2: Non-functional since weights are missing
 
 Which means valid models are **tinyFaceDetector** and **mobileNetv1**  
-Due to reduced code and changed build process, resulting bundle is about **>5x smaller** than the original!  
 
 ## Installation
 
 There are several ways to use Face-API: 
 
-**Important**: This version of Face-Api does NOT pre-package `TFJS` to allow for faster downloads (it's much smaller) as well as to allow user to choose version of TFJS to use (it's compatible with any `TFJS 2.0+`).
-
 ### 1. IIFE script
-*Size: 936KB minified*
 
-This is simplest way for usage within Browser
-Simply download `dist/face-api.js`, include it in your `HTML` file & it's ready to use.
+*Recommened for quick tests and backward compatibility with older Browsers that do not support ESM such as IE*
+
+This is simplest way for usage within Browser  
+Simply download `dist/face-api.js`, include it in your `HTML` file & it's ready to use
 
 ```html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/2.6.0/tf.min.js"></script>
 <script src="dist/face-api.js"><script>
 ``` 
 
-For a quick test, you can access the script directly from `gitpages`
-
-```html
-<script src="https://vladmandic.github.io/face-api/dist/face-api.js"></script>
-```
-
-IIFE script auto-registers global namespace `faceapi` within Window object.  
-And if you want to access `TensorFlow/JS` classes directly, they are exported as `faceapi.tf`
+IIFE script auto-registers global namespace `faceapi` within Window object which can be accessed directly from a `<script>` tag or from your JS file.  
 
 ### 2. ESM module
-*Size: 164KB non-minified*
 
-If you're using bundler *(such as rollup, webpack, esbuild)* to package your client application, you can import ESM version of FaceAPI which supports full tree shaking  
-Note that this version does NOT pre-package `TFJS`, so you'll need to include it before you import `FaceAPI`  
-You can use any version of `TFJS` 2.0+  
+*Recommended for usage within Browser*
 
-```js
-  import * as tf from 'https://cdnjs.cloudflare.com/ajax/libs/tensorflow/2.6.0/tf.min.js'; // load directly from CDN
-  import * as faceapi from 'dist/face-api.esm.js';
-```
-*Experimental*:  
-You could use same syntax within your main `JS` file if it's imported with `<script type="module">`  
+#### 2.1 Directly
+
+To use ESM import directly in a Browser, you must import your script (e.g. `index.js`) with a `type="module"`  
 
 ```html
-  <script src="tf.min.js">
   <script src="./index.js" type="module">
 ```
-and then in `index.js`
+and then in your `index.js`
 
 ```js
-  import * as tf from 'https://cdnjs.cloudflare.com/ajax/libs/tensorflow/2.6.0/tf.min.js'; // load directly from CDN
+  import * as faceapi from 'dist/face-api.esm.js';
+```
+
+#### 2.2 With Bundler
+
+Same as above, but expectation is that you'll package your script using a bundler such as `webpack`, `rollup` or `esbuild` in which case, you do not need to import a script as module - that depends on your bundler configuration  
+
+```js
   import * as faceapi from 'dist/face-api.esm.js';
 ```
 
 ### 3. NPM module
-*Size: 45,104KB unpacked (including sources and pre-trained model weights)*
 
-Simmilar to ESM module, but with full sources as it points to `build/src/index.js` instead  
-Recommended for NodeJS projects
+#### 3.1 Import ESM
+
+*Recommended for NodeJS projects*
 
 Install with:
 ```shell
-  npm install @tensorflow/tfjs @vladmandic/face-api 
+  npm install @vladmandic/face-api 
 ```
 And then use with:
 ```js
-  import * as tf from '@tensorflow/tfjs';
   import * as faceapi from '@vladmandic/face-api';
 ```
+Alternatively, if you have issues, force ESM import using 
+```js
+  import * as faceapi from '@vladmandic/face-api/dist/face-api.esm.js';
+```
+
+#### 3.2. Import Sources
+
+*Recommended for complex NodeJS projects that use TFJS for other purposes and not just FaceaPI*
+
+This way you're importing FaceAPI sources directly and not a bundle, so you have to import `@tensorflow/tfjs` explicitly  
+
+3.2.1 For JavaScript projects
+```js
+  import * as tf from '@tensorflow/tfjs';
+  import * as faceapi from '@vladmandic/face-api/build/index.js';
+```
+
+3.2.2 For TypeScript projects
+```js
+  import * as tf from '@tensorflow/tfjs';
+  import * as faceapi from '@vladmandic/face-api/src/index.ts';
+```
+
 
 ## Weights
 

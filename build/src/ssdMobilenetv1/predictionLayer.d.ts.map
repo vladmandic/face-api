@@ -1,1 +1,0 @@
-{"version":3,"file":"predictionLayer.d.ts","sourceRoot":"","sources":["../../../src/ssdMobilenetv1/predictionLayer.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,MAAM,kBAAkB,CAAC;AAIvC,OAAO,EAAE,qBAAqB,EAAE,MAAM,SAAS,CAAC;AAEhD,wBAAgB,eAAe,CAC7B,CAAC,EAAE,EAAE,CAAC,QAAQ,EACd,MAAM,EAAE,EAAE,CAAC,QAAQ,EACnB,MAAM,EAAE,qBAAqB;;;EA2C9B"}

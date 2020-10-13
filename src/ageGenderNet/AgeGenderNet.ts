@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs';
+import * as tf from '@tensorflow/tfjs/dist/tf.es2017.js';
 
 import { fullyConnectedLayer } from '../common/fullyConnectedLayer';
 import { seperateWeightMaps } from '../faceProcessor/util';
@@ -80,9 +80,7 @@ export class AgeGenderNet extends NeuralNetwork<NetParams> {
     out.age.dispose()
     out.gender.dispose()
 
-    return netInput.isBatchInput
-      ? predictionsByBatch
-      : predictionsByBatch[0]
+    return netInput.isBatchInput ? predictionsByBatch as AgeAndGenderPrediction[] : predictionsByBatch[0] as AgeAndGenderPrediction
   }
 
   protected getDefaultModelName(): string {

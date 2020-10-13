@@ -6,4 +6,3 @@ export declare class FaceLandmark68Net extends FaceLandmark68NetBase<FaceFeature
     protected getDefaultModelName(): string;
     protected getClassifierChannelsIn(): number;
 }
-//# sourceMappingURL=FaceLandmark68Net.d.ts.map

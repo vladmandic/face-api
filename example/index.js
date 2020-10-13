@@ -127,6 +127,12 @@ async function main() {
   const engine = await faceapi.tf.engine();
   log(`TF Engine State: ${str(engine.state)}`);
 
+  // const testT = faceapi.tf.tensor([0]);
+  // const testF = testT.toFloat();
+  // console.log(testT.print(), testF.print());
+  // testT.dispose();
+  // testF.dispose();
+
   // loop through all images and try to process them
   log(`Start processing: ${samples.length} images ...<br>`);
   for (const img of samples) {

@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs-core'
+import * as tf from '@tensorflow/tfjs'
 
 export function nonMaxSuppression(
   boxes: tf.Tensor2D,

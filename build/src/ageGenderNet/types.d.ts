@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs';
+import * as tf from '@tensorflow/tfjs/dist/tf.es2017.js';
 import { FCParams } from '../common';
 export declare type AgeAndGenderPrediction = {
     age: number;
@@ -19,4 +19,3 @@ export declare type NetParams = {
         gender: FCParams;
     };
 };
-//# sourceMappingURL=types.d.ts.map

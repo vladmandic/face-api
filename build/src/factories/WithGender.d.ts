@@ -5,4 +5,3 @@ export declare type WithGender<TSource> = TSource & {
 };
 export declare function isWithGender(obj: any): obj is WithGender<{}>;
 export declare function extendWithGender<TSource>(sourceObj: TSource, gender: Gender, genderProbability: number): WithGender<TSource>;
-//# sourceMappingURL=WithGender.d.ts.map

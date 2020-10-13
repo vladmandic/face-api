@@ -21,4 +21,3 @@ export declare type TinyXceptionParams = {
         separable_conv: SeparableConvParams;
     };
 };
-//# sourceMappingURL=types.d.ts.map

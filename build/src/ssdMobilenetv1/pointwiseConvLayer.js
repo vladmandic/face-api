@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs';
+import * as tf from '@tensorflow/tfjs/dist/tf.es2017.js';
 export function pointwiseConvLayer(x, params, strides) {
     return tf.tidy(() => {
         let out = tf.conv2d(x, params.filters, strides, 'same');

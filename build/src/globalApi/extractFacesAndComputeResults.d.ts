@@ -1,8 +1,7 @@
-import * as tf from '@tensorflow/tfjs';
+import * as tf from '@tensorflow/tfjs/dist/tf.es2017.js';
 import { FaceDetection } from '../classes/FaceDetection';
 import { TNetInput } from '../dom';
 import { WithFaceDetection } from '../factories/WithFaceDetection';
 import { WithFaceLandmarks } from '../factories/WithFaceLandmarks';
 export declare function extractAllFacesAndComputeResults<TSource extends WithFaceDetection<{}>, TResult>(parentResults: TSource[], input: TNetInput, computeResults: (faces: Array<HTMLCanvasElement | tf.Tensor3D>) => Promise<TResult>, extractedFaces?: Array<HTMLCanvasElement | tf.Tensor3D> | null, getRectForAlignment?: (parentResult: WithFaceLandmarks<TSource, any>) => FaceDetection): Promise<TResult>;
 export declare function extractSingleFaceAndComputeResult<TSource extends WithFaceDetection<{}>, TResult>(parentResult: TSource, input: TNetInput, computeResult: (face: HTMLCanvasElement | tf.Tensor3D) => Promise<TResult>, extractedFaces?: Array<HTMLCanvasElement | tf.Tensor3D> | null, getRectForAlignment?: (parentResult: WithFaceLandmarks<TSource, any>) => FaceDetection): Promise<TResult>;
-//# sourceMappingURL=extractFacesAndComputeResults.d.ts.map

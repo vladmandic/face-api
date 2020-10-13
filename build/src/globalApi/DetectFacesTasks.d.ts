@@ -36,4 +36,3 @@ export declare class DetectSingleFaceTask extends DetectFacesTaskBase<FaceDetect
         detection: FaceDetection;
     }>;
 }
-//# sourceMappingURL=DetectFacesTasks.d.ts.map

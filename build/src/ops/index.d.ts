@@ -6,4 +6,3 @@ export * from './padToSquare';
 export * from './shuffleArray';
 export declare function sigmoid(x: number): number;
 export declare function inverseSigmoid(x: number): number;
-//# sourceMappingURL=index.d.ts.map

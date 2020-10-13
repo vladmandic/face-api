@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs';
+import * as tf from '@tensorflow/tfjs/dist/tf.es2017.js';
 
 import { IDimensions, Point } from '../classes';
 import { FaceLandmarks68 } from '../classes/FaceLandmarks68';
@@ -85,7 +85,7 @@ export abstract class FaceLandmark68NetBase<
         const yCoords = landmarksArray.filter((_, i) => !isEven(i))
 
         return new FaceLandmarks68(
-          Array(68).fill(0).map((_, i) => new Point(xCoords[i], yCoords[i])),
+          Array(68).fill(0).map((_, i) => new Point(xCoords[i] as number, yCoords[i] as number)),
           {
             height: netInput.getInputHeight(batchIdx),
             width : netInput.getInputWidth(batchIdx),
@@ -96,9 +96,7 @@ export abstract class FaceLandmark68NetBase<
 
     landmarkTensors.forEach(t => t.dispose())
 
-    return netInput.isBatchInput
-      ? landmarksForBatch
-      : landmarksForBatch[0]
+    return netInput.isBatchInput ? landmarksForBatch as FaceLandmarks68[] : landmarksForBatch[0] as FaceLandmarks68;
   }
 
   protected getClassifierChannelsOut(): number {

@@ -26,4 +26,3 @@ export declare class DrawFaceLandmarks {
 }
 export declare type DrawFaceLandmarksInput = FaceLandmarks | WithFaceLandmarks<WithFaceDetection<{}>>;
 export declare function drawFaceLandmarks(canvasArg: string | HTMLCanvasElement, faceLandmarks: DrawFaceLandmarksInput | Array<DrawFaceLandmarksInput>): void;
-//# sourceMappingURL=DrawFaceLandmarks.d.ts.map

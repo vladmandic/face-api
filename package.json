@@ -1,6 +1,6 @@
 {
   "name": "@vladmandic/face-api",
-  "version": "0.6.3",
+  "version": "0.7.1",
   "description": "JavaScript module for Face Detection and Face Recognition Using Tensorflow/JS",
   "main": "build/index.js",
   "module": "dist/face-api.esm.js",

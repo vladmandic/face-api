@@ -13,7 +13,8 @@
   "scripts": {
     "build-esm": "esbuild --bundle --format=esm --target=es2018 --platform=browser --minify --sourcemap --outfile=./dist/face-api.esm.js --log-level=error --tsconfig=./tsconfig.json --external:util --external:string_decoder --external:fs src/index.ts",
     "build-iife": "esbuild --bundle --format=iife --target=es2018 --platform=browser --minify --sourcemap --outfile=./dist/face-api.js --log-level=error --tsconfig=./tsconfig.json --external:util --external:string_decoder --external:fs --global-name=faceapi src/index.ts",
-    "build": "rimraf build/* dist/* && tsc && npm run build-esm && npm run build-iife && ls -l dist/"
+    "build-nobundle": "esbuild --bundle --format=esm --target=es2018 --platform=browser --minify --sourcemap --outfile=./dist/face-api.nobundle.js --log-level=error --tsconfig=./tsconfig.json --external:@tensorflow --external:util --external:string_decoder --external:fs --global-name=faceapi src/index.ts",
+    "build": "rimraf build/* dist/* && tsc && npm run build-esm && npm run build-iife && npm run build-nobundle && ls -l dist/"
   },
   "keywords": [
     "tensorflow",

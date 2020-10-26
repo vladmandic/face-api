@@ -447,9 +447,9 @@ import {
 function normalize(x, meanRgb) {
   return tidy(() => {
     const [r, g, b] = meanRgb;
-    const avg_r = fill([...x.shape.slice(0, 3), 1], r);
-    const avg_g = fill([...x.shape.slice(0, 3), 1], g);
-    const avg_b = fill([...x.shape.slice(0, 3), 1], b);
+    const avg_r = fill([...x.shape.slice(0, 3), 1], r, "float32");
+    const avg_g = fill([...x.shape.slice(0, 3), 1], g, "float32");
+    const avg_b = fill([...x.shape.slice(0, 3), 1], b, "float32");
     const avg_rgb = concat([avg_r, avg_g, avg_b], 3);
     return sub(x, avg_rgb);
   });
@@ -474,7 +474,7 @@ function padToSquare(imgTensor, isCenterImage = false) {
     const createPaddingTensor = (paddingAmount2) => {
       const paddingTensorShape = imgTensor.shape.slice();
       paddingTensorShape[paddingAxis] = paddingAmount2;
-      return fill2(paddingTensorShape, 0);
+      return fill2(paddingTensorShape, 0, "float32");
     };
     const paddingTensorAppend = createPaddingTensor(paddingAmount);
     const remainingPaddingAmount = dimDiff - paddingTensorAppend.shape[paddingAxis];
@@ -1762,6 +1762,7 @@ function extractParamsFromWeigthMap(weightMap) {
 // src/faceFeatureExtractor/FaceFeatureExtractor.ts
 import {
   avgPool,
+  cast as cast3,
   scalar,
   tidy as tidy9
 } from "@tensorflow/tfjs/dist/tf.es2017.js";
@@ -1775,7 +1776,7 @@ class FaceFeatureExtractor extends NeuralNetwork {
       throw new Error("FaceFeatureExtractor - load model before inference");
     }
     return tidy9(() => {
-      const batchTensor = input.toBatchTensor(112, true);
+      const batchTensor = cast3(input.toBatchTensor(112, true), "float32");
       const meanRgb = [122.782, 117.001, 104.298];
       const normalized = normalize(batchTensor, meanRgb).div(scalar(255));
       let out = denseBlock4(normalized, params.dense0, true);
@@ -2194,6 +2195,7 @@ function extractParamsFromWeigthMap5(weightMap, numMainBlocks) {
 // src/xception/TinyXception.ts
 import {
   add as add5,
+  cast as cast4,
   conv2d as conv2d3,
   maxPool,
   relu as relu3,
@@ -2229,7 +2231,7 @@ class TinyXception extends NeuralNetwork {
       throw new Error("TinyXception - load model before inference");
     }
     return tidy13(() => {
-      const batchTensor = input.toBatchTensor(112, true);
+      const batchTensor = cast4(input.toBatchTensor(112, true), "float32");
       const meanRgb = [122.782, 117.001, 104.298];
       const normalized = normalize(batchTensor, meanRgb).div(scalar2(256));
       let out = relu3(conv(normalized, params.entry_flow.conv_in, [2, 2]));
@@ -2411,17 +2413,14 @@ class FaceLandmark68NetBase extends FaceProcessor {
     });
     const batchSize = inputDimensions.length;
     return tidy15(() => {
-      const createInterleavedTensor = (fillX, fillY) => stack2([
-        fill3([68], fillX),
-        fill3([68], fillY)
-      ], 1).as2D(1, 136).as1D();
+      const createInterleavedTensor = (fillX, fillY) => stack2([fill3([68], fillX, "float32"), fill3([68], fillY, "float32")], 1).as2D(1, 136).as1D();
       const getPadding = (batchIdx, cond) => {
         const {width, height} = inputDimensions[batchIdx];
         return cond(width, height) ? Math.abs(width - height) / 2 : 0;
       };
       const getPaddingX = (batchIdx) => getPadding(batchIdx, (w, h) => w < h);
       const getPaddingY = (batchIdx) => getPadding(batchIdx, (w, h) => h < w);
-      const landmarkTensors = output.mul(fill3([batchSize, 136], inputSize)).sub(stack2(Array.from(Array(batchSize), (_, batchIdx) => createInterleavedTensor(getPaddingX(batchIdx), getPaddingY(batchIdx))))).div(stack2(Array.from(Array(batchSize), (_, batchIdx) => createInterleavedTensor(inputDimensions[batchIdx].width, inputDimensions[batchIdx].height))));
+      const landmarkTensors = output.mul(fill3([batchSize, 136], inputSize, "float32")).sub(stack2(Array.from(Array(batchSize), (_, batchIdx) => createInterleavedTensor(getPaddingX(batchIdx), getPaddingY(batchIdx))))).div(stack2(Array.from(Array(batchSize), (_, batchIdx) => createInterleavedTensor(inputDimensions[batchIdx].width, inputDimensions[batchIdx].height))));
       return landmarkTensors;
     });
   }
@@ -2507,6 +2506,7 @@ function extractParamsTiny(weights) {
 // src/faceFeatureExtractor/TinyFaceFeatureExtractor.ts
 import {
   avgPool as avgPool3,
+  cast as cast5,
   scalar as scalar3,
   tidy as tidy16
 } from "@tensorflow/tfjs/dist/tf.es2017.js";
@@ -2520,7 +2520,7 @@ class TinyFaceFeatureExtractor extends NeuralNetwork {
       throw new Error("TinyFaceFeatureExtractor - load model before inference");
     }
     return tidy16(() => {
-      const batchTensor = input.toBatchTensor(112, true);
+      const batchTensor = cast5(input.toBatchTensor(112, true), "float32");
       const meanRgb = [122.782, 117.001, 104.298];
       const normalized = normalize(batchTensor, meanRgb).div(scalar3(255));
       let out = denseBlock3(normalized, params.dense0, true);
@@ -2804,7 +2804,7 @@ function residualDown(x, params) {
 
 // src/faceRecognitionNet/FaceRecognitionNet.ts
 import {
-  cast as cast3,
+  cast as cast6,
   matMul as matMul2,
   maxPool as maxPool2,
   scalar as scalar4,
@@ -2821,7 +2821,7 @@ class FaceRecognitionNet extends NeuralNetwork {
       throw new Error("FaceRecognitionNet - load model before inference");
     }
     return tidy18(() => {
-      const batchTensor = cast3(input.toBatchTensor(150, true), "float32");
+      const batchTensor = cast6(input.toBatchTensor(150, true), "float32");
       const meanRgb = [122.782, 117.001, 104.298];
       const normalized = normalize(batchTensor, meanRgb).div(scalar4(256));
       let out = convDown(normalized, params.conv32_down);
@@ -3445,7 +3445,7 @@ class SsdMobilenetv1Options {
 
 // src/ssdMobilenetv1/SsdMobilenetv1.ts
 import {
-  cast as cast4,
+  cast as cast7,
   mul as mul3,
   scalar as scalar6,
   sub as sub3,
@@ -3461,7 +3461,7 @@ class SsdMobilenetv1 extends NeuralNetwork {
       throw new Error("SsdMobilenetv1 - load model before inference");
     }
     return tidy24(() => {
-      const batchTensor = cast4(input.toBatchTensor(512, false), "float32");
+      const batchTensor = cast7(input.toBatchTensor(512, false), "float32");
       const x = sub3(mul3(batchTensor, scalar6(0.007843137718737125)), scalar6(1));
       const features = mobileNetV1(x, params.mobilenetv1);
       const {
@@ -3791,7 +3791,7 @@ class TinyYolov2Options {
 
 // src/tinyYolov2/TinyYolov2Base.ts
 import {
-  cast as cast5,
+  cast as cast8,
   maxPool as maxPool3,
   scalar as scalar8,
   softmax as softmax3,
@@ -3853,7 +3853,7 @@ class TinyYolov2Base extends NeuralNetwork {
       throw new Error("TinyYolov2 - load model before inference");
     }
     return tidy28(() => {
-      let batchTensor = cast5(input.toBatchTensor(inputSize, false), "float32");
+      let batchTensor = cast8(input.toBatchTensor(inputSize, false), "float32");
       batchTensor = this.config.meanRgb ? normalize(batchTensor, this.config.meanRgb) : batchTensor;
       batchTensor = batchTensor.div(scalar8(256));
       return this.config.withSeparableConvs ? this.runMobilenet(batchTensor, params) : this.runTinyYolov2(batchTensor, params);
@@ -4481,7 +4481,7 @@ function resizeResults(results, dimensions) {
 }
 
 // package.json
-var version = "0.7.4";
+var version = "0.8.1";
 
 // src/index.ts
 import * as tf42 from "@tensorflow/tfjs/dist/tf.es2017.js";

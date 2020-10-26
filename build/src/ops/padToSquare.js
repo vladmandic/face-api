@@ -19,7 +19,7 @@ export function padToSquare(imgTensor, isCenterImage = false) {
         const createPaddingTensor = (paddingAmount) => {
             const paddingTensorShape = imgTensor.shape.slice();
             paddingTensorShape[paddingAxis] = paddingAmount;
-            return tf.fill(paddingTensorShape, 0);
+            return tf.fill(paddingTensorShape, 0, 'float32');
         };
         const paddingTensorAppend = createPaddingTensor(paddingAmount);
         const remainingPaddingAmount = dimDiff - paddingTensorAppend.shape[paddingAxis];

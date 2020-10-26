@@ -440,9 +440,9 @@ const tf2 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 function normalize(x, meanRgb) {
   return tf2.tidy(() => {
     const [r, g, b] = meanRgb;
-    const avg_r = tf2.fill([...x.shape.slice(0, 3), 1], r);
-    const avg_g = tf2.fill([...x.shape.slice(0, 3), 1], g);
-    const avg_b = tf2.fill([...x.shape.slice(0, 3), 1], b);
+    const avg_r = tf2.fill([...x.shape.slice(0, 3), 1], r, "float32");
+    const avg_g = tf2.fill([...x.shape.slice(0, 3), 1], g, "float32");
+    const avg_b = tf2.fill([...x.shape.slice(0, 3), 1], b, "float32");
     const avg_rgb = tf2.concat([avg_r, avg_g, avg_b], 3);
     return tf2.sub(x, avg_rgb);
   });
@@ -462,7 +462,7 @@ function padToSquare(imgTensor, isCenterImage = false) {
     const createPaddingTensor = (paddingAmount2) => {
       const paddingTensorShape = imgTensor.shape.slice();
       paddingTensorShape[paddingAxis] = paddingAmount2;
-      return tf3.fill(paddingTensorShape, 0);
+      return tf3.fill(paddingTensorShape, 0, "float32");
     };
     const paddingTensorAppend = createPaddingTensor(paddingAmount);
     const remainingPaddingAmount = dimDiff - paddingTensorAppend.shape[paddingAxis];
@@ -1716,7 +1716,7 @@ class FaceFeatureExtractor extends NeuralNetwork {
       throw new Error("FaceFeatureExtractor - load model before inference");
     }
     return tf15.tidy(() => {
-      const batchTensor = input.toBatchTensor(112, true);
+      const batchTensor = tf15.cast(input.toBatchTensor(112, true), "float32");
       const meanRgb = [122.782, 117.001, 104.298];
       const normalized = normalize(batchTensor, meanRgb).div(tf15.scalar(255));
       let out = denseBlock4(normalized, params.dense0, true);
@@ -2153,7 +2153,7 @@ class TinyXception extends NeuralNetwork {
       throw new Error("TinyXception - load model before inference");
     }
     return tf19.tidy(() => {
-      const batchTensor = input.toBatchTensor(112, true);
+      const batchTensor = tf19.cast(input.toBatchTensor(112, true), "float32");
       const meanRgb = [122.782, 117.001, 104.298];
       const normalized = normalize(batchTensor, meanRgb).div(tf19.scalar(256));
       let out = tf19.relu(conv(normalized, params.entry_flow.conv_in, [2, 2]));
@@ -2325,17 +2325,14 @@ class FaceLandmark68NetBase extends FaceProcessor {
     });
     const batchSize = inputDimensions.length;
     return tf21.tidy(() => {
-      const createInterleavedTensor = (fillX, fillY) => tf21.stack([
-        tf21.fill([68], fillX),
-        tf21.fill([68], fillY)
-      ], 1).as2D(1, 136).as1D();
+      const createInterleavedTensor = (fillX, fillY) => tf21.stack([tf21.fill([68], fillX, "float32"), tf21.fill([68], fillY, "float32")], 1).as2D(1, 136).as1D();
       const getPadding = (batchIdx, cond) => {
         const {width, height} = inputDimensions[batchIdx];
         return cond(width, height) ? Math.abs(width - height) / 2 : 0;
       };
       const getPaddingX = (batchIdx) => getPadding(batchIdx, (w, h) => w < h);
       const getPaddingY = (batchIdx) => getPadding(batchIdx, (w, h) => h < w);
-      const landmarkTensors = output.mul(tf21.fill([batchSize, 136], inputSize)).sub(tf21.stack(Array.from(Array(batchSize), (_, batchIdx) => createInterleavedTensor(getPaddingX(batchIdx), getPaddingY(batchIdx))))).div(tf21.stack(Array.from(Array(batchSize), (_, batchIdx) => createInterleavedTensor(inputDimensions[batchIdx].width, inputDimensions[batchIdx].height))));
+      const landmarkTensors = output.mul(tf21.fill([batchSize, 136], inputSize, "float32")).sub(tf21.stack(Array.from(Array(batchSize), (_, batchIdx) => createInterleavedTensor(getPaddingX(batchIdx), getPaddingY(batchIdx))))).div(tf21.stack(Array.from(Array(batchSize), (_, batchIdx) => createInterleavedTensor(inputDimensions[batchIdx].width, inputDimensions[batchIdx].height))));
       return landmarkTensors;
     });
   }
@@ -2430,7 +2427,7 @@ class TinyFaceFeatureExtractor extends NeuralNetwork {
       throw new Error("TinyFaceFeatureExtractor - load model before inference");
     }
     return tf22.tidy(() => {
-      const batchTensor = input.toBatchTensor(112, true);
+      const batchTensor = tf22.cast(input.toBatchTensor(112, true), "float32");
       const meanRgb = [122.782, 117.001, 104.298];
       const normalized = normalize(batchTensor, meanRgb).div(tf22.scalar(255));
       let out = denseBlock3(normalized, params.dense0, true);
@@ -4292,7 +4289,7 @@ function resizeResults(results, dimensions) {
 }
 
 // package.json
-var version = "0.7.4";
+var version = "0.8.1";
 
 // src/index.ts
 __export(exports, {

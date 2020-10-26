@@ -21,6 +21,7 @@ Unfortunately, changes ended up being too large for a simple pull request on ori
 ### Differences
 
 - Compatible with `TensorFlow/JS 2.0+`  
+- Compatible with `WebGL`, `CPU` and `WASM` TFJS backends
 - Updated all type castings for TypeScript type checking to `TypeScript 4.1`  
 - Switched bundling from `UMD` to `ESM` + `CommonJS`  
   This does require separate process for usage in NodeJS vs Browser, but resulting code is much lighter  

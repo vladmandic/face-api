@@ -4481,7 +4481,7 @@ function resizeResults(results, dimensions) {
 }
 
 // package.json
-var version = "0.8.1";
+var version = "0.8.2";
 
 // src/index.ts
 import * as tf42 from "@tensorflow/tfjs/dist/tf.es2017.js";

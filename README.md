@@ -46,8 +46,8 @@ Face-API ships with several pre-build versions of the library:
 - `dist/face-api.js`: IIFE format for client-side Browser exeuction
 - `dist/face-api.esm.js`: ESM format for client-side Browser execution with TFJS pre-bundled
 - `dist/face-api.nobundle.js`: ESM format for client-side Browser execution without TFJS and not minified
-- `dist/face-api.cjs`: CommonJS format for server-side NodeJS execution with TFJS pre-bundled
-- `dist/face-api.nobundle.cjs`: CommonJS format for server-side NodeJS execution without TFJS and not minified
+- `dist/face-api.node.js`: CommonJS format for server-side NodeJS execution with TFJS pre-bundled
+- `dist/face-api.nobundle.js`: CommonJS format for server-side NodeJS execution without TFJS and not minified
 
 Defaults are:
 ```json

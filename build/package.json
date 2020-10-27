@@ -1,8 +1,8 @@
 {
     "name": "@vladmandic/face-api",
-    "version": "0.8.2",
+    "version": "0.8.3",
     "description": "JavaScript module for Face Detection and Face Recognition Using Tensorflow/JS",
-    "main": "dist/face-api.cjs",
+    "main": "dist/face-api.node.js",
     "module": "dist/face-api.esm.js",
     "browser": "dist/face-api.esm.js",
     "typings": "build/src/index.d.ts",
@@ -14,8 +14,8 @@
         "build-esm": "esbuild --bundle --format=esm --target=es2018 --platform=browser --minify --sourcemap --outfile=./dist/face-api.esm.js --log-level=error --tsconfig=./tsconfig.json --external:util --external:string_decoder --external:fs src/index.ts",
         "build-esm-nobundle": "esbuild --bundle --format=esm --target=es2018 --platform=browser --sourcemap --outfile=./dist/face-api.nobundle.js --log-level=error --tsconfig=./tsconfig.json --external:@tensorflow --external:util --external:string_decoder --external:fs --global-name=faceapi src/index.ts",
         "build-iife": "esbuild --bundle --format=iife --target=es2018 --platform=browser --minify --sourcemap --outfile=./dist/face-api.js --log-level=error --tsconfig=./tsconfig.json --external:util --external:string_decoder --external:fs --global-name=faceapi src/index.ts",
-        "build-node": "esbuild --bundle --format=cjs --target=es2018 --platform=node --minify --sourcemap --outfile=./dist/face-api.cjs --log-level=error --tsconfig=./tsconfig.json src/index.ts",
-        "build-node-nobundle": "esbuild --bundle --format=cjs --target=es2018 --platform=node --sourcemap --outfile=./dist/face-api.nobundle.cjs --external:@tensorflow --log-level=error --tsconfig=./tsconfig.json src/index.ts",
+        "build-node": "esbuild --bundle --format=cjs --target=es2018 --platform=node --minify --sourcemap --outfile=./dist/face-api.node.js --log-level=error --tsconfig=./tsconfig.json src/index.ts",
+        "build-node-nobundle": "esbuild --bundle --format=cjs --target=es2018 --platform=node --sourcemap --outfile=./dist/face-api.nobundle.js --external:@tensorflow --log-level=error --tsconfig=./tsconfig.json src/index.ts",
         "build": "rimraf build/* dist/* && tsc && npm run build-iife && npm run build-esm && npm run build-esm-nobundle && npm run build-node && npm run build-node-nobundle && ls -l dist/"
     },
     "keywords": [

@@ -1,11 +1,11 @@
 var __defineProperty = Object.defineProperty;
 var __hasOwnProperty = Object.prototype.hasOwnProperty;
-var __commonJS = (callback, module) => () => {
-  if (!module) {
-    module = {exports: {}};
-    callback(module.exports, module);
+var __commonJS = (callback, module2) => () => {
+  if (!module2) {
+    module2 = {exports: {}};
+    callback(module2.exports, module2);
   }
-  return module.exports;
+  return module2.exports;
 };
 var __markAsModule = (target) => {
   return __defineProperty(target, "__esModule", {value: true});
@@ -15,28 +15,28 @@ var __export = (target, all) => {
   for (var name in all)
     __defineProperty(target, name, {get: all[name], enumerable: true});
 };
-var __exportStar = (target, module) => {
+var __exportStar = (target, module2) => {
   __markAsModule(target);
-  if (typeof module === "object" || typeof module === "function") {
-    for (let key in module)
+  if (typeof module2 === "object" || typeof module2 === "function") {
+    for (let key in module2)
       if (!__hasOwnProperty.call(target, key) && key !== "default")
-        __defineProperty(target, key, {get: () => module[key], enumerable: true});
+        __defineProperty(target, key, {get: () => module2[key], enumerable: true});
   }
   return target;
 };
-var __toModule = (module) => {
-  if (module && module.__esModule)
-    return module;
-  return __exportStar(__defineProperty({}, "default", {value: module, enumerable: true}), module);
+var __toModule = (module2) => {
+  if (module2 && module2.__esModule)
+    return module2;
+  return __exportStar(__defineProperty({}, "default", {value: module2, enumerable: true}), module2);
 };
 
 // src/env/isNodejs.ts
-var require_isNodejs = __commonJS((exports, module) => {
-  __export(exports, {
+var require_isNodejs = __commonJS((exports2, module2) => {
+  __export(exports2, {
     isNodejs: () => isNodejs3
   });
   function isNodejs3() {
-    return typeof global === "object" && true && typeof module !== "undefined" && typeof process !== "undefined" && !!process.version;
+    return typeof global === "object" && true && typeof module2 !== "undefined" && typeof process !== "undefined" && !!process.version;
   }
 });
 
@@ -98,11 +98,9 @@ __export(utils_exports, {
   range: () => range,
   round: () => round
 });
-import {
-  Tensor
-} from "@tensorflow/tfjs/dist/tf.es2017.js";
+const tf = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 function isTensor(tensor2, dim) {
-  return tensor2 instanceof Tensor && tensor2.shape.length === dim;
+  return tensor2 instanceof tf.Tensor && tensor2.shape.length === dim;
 }
 function isTensor1D(tensor2) {
   return isTensor(tensor2, 1);
@@ -438,32 +436,22 @@ function nonMaxSuppression(boxes, scores, iouThreshold, isIOU = true) {
 }
 
 // src/ops/normalize.ts
-import {
-  concat,
-  fill,
-  sub,
-  tidy
-} from "@tensorflow/tfjs/dist/tf.es2017.js";
+const tf2 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 function normalize(x, meanRgb) {
-  return tidy(() => {
+  return tf2.tidy(() => {
     const [r, g, b] = meanRgb;
-    const avg_r = fill([...x.shape.slice(0, 3), 1], r, "float32");
-    const avg_g = fill([...x.shape.slice(0, 3), 1], g, "float32");
-    const avg_b = fill([...x.shape.slice(0, 3), 1], b, "float32");
-    const avg_rgb = concat([avg_r, avg_g, avg_b], 3);
-    return sub(x, avg_rgb);
+    const avg_r = tf2.fill([...x.shape.slice(0, 3), 1], r, "float32");
+    const avg_g = tf2.fill([...x.shape.slice(0, 3), 1], g, "float32");
+    const avg_b = tf2.fill([...x.shape.slice(0, 3), 1], b, "float32");
+    const avg_rgb = tf2.concat([avg_r, avg_g, avg_b], 3);
+    return tf2.sub(x, avg_rgb);
   });
 }
 
 // src/ops/padToSquare.ts
-import {
-  cast,
-  concat as concat2,
-  fill as fill2,
-  tidy as tidy2
-} from "@tensorflow/tfjs/dist/tf.es2017.js";
+const tf3 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 function padToSquare(imgTensor, isCenterImage = false) {
-  return tidy2(() => {
+  return tf3.tidy(() => {
     const [height, width] = imgTensor.shape.slice(1);
     if (height === width) {
       return imgTensor;
@@ -474,7 +462,7 @@ function padToSquare(imgTensor, isCenterImage = false) {
     const createPaddingTensor = (paddingAmount2) => {
       const paddingTensorShape = imgTensor.shape.slice();
       paddingTensorShape[paddingAxis] = paddingAmount2;
-      return fill2(paddingTensorShape, 0, "float32");
+      return tf3.fill(paddingTensorShape, 0, "float32");
     };
     const paddingTensorAppend = createPaddingTensor(paddingAmount);
     const remainingPaddingAmount = dimDiff - paddingTensorAppend.shape[paddingAxis];
@@ -483,8 +471,8 @@ function padToSquare(imgTensor, isCenterImage = false) {
       paddingTensorPrepend,
       imgTensor,
       paddingTensorAppend
-    ].filter((t) => !!t).map((t) => cast(t, "float32"));
-    return concat2(tensorsToStack, paddingAxis);
+    ].filter((t) => !!t).map((t) => tf3.cast(t, "float32"));
+    return tf3.concat(tensorsToStack, paddingAxis);
   });
 }
 
@@ -1088,15 +1076,12 @@ function createCanvasFromMedia(media, dims) {
 }
 
 // src/dom/imageTensorToCanvas.ts
-import {
-  browser,
-  tidy as tidy3
-} from "@tensorflow/tfjs/dist/tf.es2017.js";
+const tf4 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 async function imageTensorToCanvas(imgTensor, canvas) {
   const targetCanvas = canvas || env.getEnv().createCanvasElement();
   const [height, width, numChannels] = imgTensor.shape.slice(isTensor4D(imgTensor) ? 1 : 0);
-  const imgTensor3D = tidy3(() => imgTensor.as3D(height, width, numChannels).toInt());
-  await browser.toPixels(imgTensor3D, targetCanvas);
+  const imgTensor3D = tf4.tidy(() => imgTensor.as3D(height, width, numChannels).toInt());
+  await tf4.browser.toPixels(imgTensor3D, targetCanvas);
   imgTensor3D.dispose();
   return targetCanvas;
 }
@@ -1127,14 +1112,7 @@ function imageToSquare(input, inputSize, centerImage = false) {
 }
 
 // src/dom/NetInput.ts
-import {
-  Tensor as Tensor2,
-  browser as browser2,
-  cast as cast2,
-  image,
-  stack,
-  tidy as tidy4
-} from "@tensorflow/tfjs-core";
+const tf5 = __toModule(require("@tensorflow/tfjs-core"));
 class NetInput {
   constructor(inputs, treatAsBatchInput = false) {
     this._imageTensors = [];
@@ -1209,23 +1187,23 @@ class NetInput {
   }
   toBatchTensor(inputSize, isCenterInputs = true) {
     this._inputSize = inputSize;
-    return tidy4(() => {
+    return tf5.tidy(() => {
       const inputTensors = range(this.batchSize, 0, 1).map((batchIdx) => {
         const input = this.getInput(batchIdx);
-        if (input instanceof Tensor2) {
+        if (input instanceof tf5.Tensor) {
           let imgTensor = isTensor4D(input) ? input : input.expandDims();
           imgTensor = padToSquare(imgTensor, isCenterInputs);
           if (imgTensor.shape[1] !== inputSize || imgTensor.shape[2] !== inputSize) {
-            imgTensor = image.resizeBilinear(imgTensor, [inputSize, inputSize]);
+            imgTensor = tf5.image.resizeBilinear(imgTensor, [inputSize, inputSize]);
           }
           return imgTensor.as3D(inputSize, inputSize, 3);
         }
         if (input instanceof env.getEnv().Canvas) {
-          return browser2.fromPixels(imageToSquare(input, inputSize, isCenterInputs));
+          return tf5.browser.fromPixels(imageToSquare(input, inputSize, isCenterInputs));
         }
         throw new Error(`toBatchTensor - at batchIdx ${batchIdx}, expected input to be instanceof tf.Tensor or instanceof HTMLCanvasElement, instead have ${input}`);
       });
-      const batchTensor = stack(inputTensors.map((t) => cast2(t, "float32"))).as4D(this.batchSize, inputSize, inputSize, 3);
+      const batchTensor = tf5.stack(inputTensors.map((t) => tf5.cast(t, "float32"))).as4D(this.batchSize, inputSize, inputSize, 3);
       return batchTensor;
     });
   }
@@ -1282,10 +1260,7 @@ async function extractFaces(input, detections) {
 }
 
 // src/dom/extractFaceTensors.ts
-import {
-  slice3d,
-  tidy as tidy5
-} from "@tensorflow/tfjs/dist/tf.es2017.js";
+const tf6 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 async function extractFaceTensors(imageTensor, detections) {
   if (!isTensor3D(imageTensor) && !isTensor4D(imageTensor)) {
     throw new Error("extractFaceTensors - expected image tensor to be 3D or 4D");
@@ -1293,10 +1268,10 @@ async function extractFaceTensors(imageTensor, detections) {
   if (isTensor4D(imageTensor) && imageTensor.shape[0] > 1) {
     throw new Error("extractFaceTensors - batchSize > 1 not supported");
   }
-  return tidy5(() => {
+  return tf6.tidy(() => {
     const [imgHeight, imgWidth, numChannels] = imageTensor.shape.slice(isTensor4D(imageTensor) ? 1 : 0);
     const boxes = detections.map((det) => det instanceof FaceDetection ? det.forSize(imgWidth, imgHeight).box : det).map((box) => box.clipAtImageBorders(imgWidth, imgHeight));
-    const faceTensors = boxes.map(({x, y, width, height}) => slice3d(imageTensor.as3D(imgHeight, imgWidth, numChannels), [y, x, 0], [height, width, numChannels]));
+    const faceTensors = boxes.map(({x, y, width, height}) => tf6.slice3d(imageTensor.as3D(imgHeight, imgWidth, numChannels), [y, x, 0], [height, width, numChannels]));
     return faceTensors;
   });
 }
@@ -1359,13 +1334,11 @@ function getModelUris(uri, defaultModelName) {
 }
 
 // src/dom/loadWeightMap.ts
-import {
-  io
-} from "@tensorflow/tfjs/dist/tf.es2017.js";
+const tf7 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 async function loadWeightMap(uri, defaultModelName) {
   const {manifestUri, modelBaseUri} = getModelUris(uri, defaultModelName);
   let manifest = await fetchJson(manifestUri);
-  return io.loadWeights(manifest, modelBaseUri);
+  return tf7.io.loadWeights(manifest, modelBaseUri);
 }
 
 // src/dom/matchDimensions.ts
@@ -1381,12 +1354,7 @@ function matchDimensions(input, reference, useMediaDimensions = false) {
 // src/dom/index.ts
 
 // src/NeuralNetwork.ts
-import {
-  Tensor as Tensor3,
-  Variable,
-  io as io2,
-  tensor
-} from "@tensorflow/tfjs/dist/tf.es2017.js";
+const tf8 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 class NeuralNetwork {
   constructor(_name) {
     this._name = _name;
@@ -1418,10 +1386,10 @@ class NeuralNetwork {
     }));
   }
   getTrainableParams() {
-    return this.getParamList().filter((param) => param.tensor instanceof Variable);
+    return this.getParamList().filter((param) => param.tensor instanceof tf8.Variable);
   }
   getFrozenParams() {
-    return this.getParamList().filter((param) => !(param.tensor instanceof Variable));
+    return this.getParamList().filter((param) => !(param.tensor instanceof tf8.Variable));
   }
   variable() {
     this.getFrozenParams().forEach(({path, tensor: tensor2}) => {
@@ -1430,7 +1398,7 @@ class NeuralNetwork {
   }
   freeze() {
     this.getTrainableParams().forEach(({path, tensor: variable}) => {
-      const tensor2 = tensor(variable.dataSync());
+      const tensor2 = tf8.tensor(variable.dataSync());
       variable.dispose();
       this.reassignParamFromPath(path, tensor2);
     });
@@ -1468,7 +1436,7 @@ class NeuralNetwork {
     const {readFile} = env.getEnv();
     const {manifestUri, modelBaseUri} = getModelUris(filePath, this.getDefaultModelName());
     const fetchWeightsFromDisk = (filePaths) => Promise.all(filePaths.map((filePath2) => readFile(filePath2).then((buf) => buf.buffer)));
-    const loadWeights = io2.weightsLoaderFactory(fetchWeightsFromDisk);
+    const loadWeights = tf8.io.weightsLoaderFactory(fetchWeightsFromDisk);
     const manifest = JSON.parse((await readFile(manifestUri)).toString());
     const weightMap = await loadWeights(manifest, modelBaseUri);
     this.loadFromWeightMap(weightMap);
@@ -1500,7 +1468,7 @@ class NeuralNetwork {
       return {obj: res.nextObj, objProp: objProp2, nextObj: res.nextObj[objProp2]};
     }, {nextObj: this.params});
     const {obj, objProp} = result;
-    if (!obj || !objProp || !(obj[objProp] instanceof Tensor3)) {
+    if (!obj || !objProp || !(obj[objProp] instanceof tf8.Tensor)) {
       throw new Error(`traversePropertyPath - parameter is not a tensor, for path ${paramPath}`);
     }
     return {obj, objProp};
@@ -1508,58 +1476,44 @@ class NeuralNetwork {
 }
 
 // src/common/depthwiseSeparableConv.ts
-import {
-  add,
-  separableConv2d,
-  tidy as tidy6
-} from "@tensorflow/tfjs/dist/tf.es2017.js";
+const tf9 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 function depthwiseSeparableConv(x, params, stride) {
-  return tidy6(() => {
-    let out = separableConv2d(x, params.depthwise_filter, params.pointwise_filter, stride, "same");
-    out = add(out, params.bias);
+  return tf9.tidy(() => {
+    let out = tf9.separableConv2d(x, params.depthwise_filter, params.pointwise_filter, stride, "same");
+    out = tf9.add(out, params.bias);
     return out;
   });
 }
 
 // src/faceFeatureExtractor/denseBlock.ts
-import {
-  add as add2,
-  conv2d,
-  relu,
-  tidy as tidy7
-} from "@tensorflow/tfjs/dist/tf.es2017.js";
+const tf10 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 function denseBlock3(x, denseBlockParams, isFirstLayer = false) {
-  return tidy7(() => {
-    const out1 = relu(isFirstLayer ? add2(conv2d(x, denseBlockParams.conv0.filters, [2, 2], "same"), denseBlockParams.conv0.bias) : depthwiseSeparableConv(x, denseBlockParams.conv0, [2, 2]));
+  return tf10.tidy(() => {
+    const out1 = tf10.relu(isFirstLayer ? tf10.add(tf10.conv2d(x, denseBlockParams.conv0.filters, [2, 2], "same"), denseBlockParams.conv0.bias) : depthwiseSeparableConv(x, denseBlockParams.conv0, [2, 2]));
     const out2 = depthwiseSeparableConv(out1, denseBlockParams.conv1, [1, 1]);
-    const in3 = relu(add2(out1, out2));
+    const in3 = tf10.relu(tf10.add(out1, out2));
     const out3 = depthwiseSeparableConv(in3, denseBlockParams.conv2, [1, 1]);
-    return relu(add2(out1, add2(out2, out3)));
+    return tf10.relu(tf10.add(out1, tf10.add(out2, out3)));
   });
 }
 function denseBlock4(x, denseBlockParams, isFirstLayer = false, isScaleDown = true) {
-  return tidy7(() => {
-    const out1 = relu(isFirstLayer ? add2(conv2d(x, denseBlockParams.conv0.filters, isScaleDown ? [2, 2] : [1, 1], "same"), denseBlockParams.conv0.bias) : depthwiseSeparableConv(x, denseBlockParams.conv0, isScaleDown ? [2, 2] : [1, 1]));
+  return tf10.tidy(() => {
+    const out1 = tf10.relu(isFirstLayer ? tf10.add(tf10.conv2d(x, denseBlockParams.conv0.filters, isScaleDown ? [2, 2] : [1, 1], "same"), denseBlockParams.conv0.bias) : depthwiseSeparableConv(x, denseBlockParams.conv0, isScaleDown ? [2, 2] : [1, 1]));
     const out2 = depthwiseSeparableConv(out1, denseBlockParams.conv1, [1, 1]);
-    const in3 = relu(add2(out1, out2));
+    const in3 = tf10.relu(tf10.add(out1, out2));
     const out3 = depthwiseSeparableConv(in3, denseBlockParams.conv2, [1, 1]);
-    const in4 = relu(add2(out1, add2(out2, out3)));
+    const in4 = tf10.relu(tf10.add(out1, tf10.add(out2, out3)));
     const out4 = depthwiseSeparableConv(in4, denseBlockParams.conv3, [1, 1]);
-    return relu(add2(out1, add2(out2, add2(out3, out4))));
+    return tf10.relu(tf10.add(out1, tf10.add(out2, tf10.add(out3, out4))));
   });
 }
 
 // src/common/convLayer.ts
-import {
-  add as add3,
-  conv2d as conv2d2,
-  relu as relu2,
-  tidy as tidy8
-} from "@tensorflow/tfjs/dist/tf.es2017.js";
+const tf11 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 function convLayer(x, params, padding = "same", withRelu = false) {
-  return tidy8(() => {
-    const out = add3(conv2d2(x, params.filters, [1, 1], padding), params.bias);
-    return withRelu ? relu2(out) : out;
+  return tf11.tidy(() => {
+    const out = tf11.add(tf11.conv2d(x, params.filters, [1, 1], padding), params.bias);
+    return withRelu ? tf11.relu(out) : out;
   });
 }
 
@@ -1573,28 +1527,22 @@ function disposeUnusedWeightTensors(weightMap, paramMappings) {
 }
 
 // src/common/extractConvParamsFactory.ts
-import {
-  tensor1d,
-  tensor4d
-} from "@tensorflow/tfjs/dist/tf.es2017.js";
+const tf12 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 function extractConvParamsFactory(extractWeights, paramMappings) {
   return function(channelsIn, channelsOut, filterSize, mappedPrefix) {
-    const filters = tensor4d(extractWeights(channelsIn * channelsOut * filterSize * filterSize), [filterSize, filterSize, channelsIn, channelsOut]);
-    const bias = tensor1d(extractWeights(channelsOut));
+    const filters = tf12.tensor4d(extractWeights(channelsIn * channelsOut * filterSize * filterSize), [filterSize, filterSize, channelsIn, channelsOut]);
+    const bias = tf12.tensor1d(extractWeights(channelsOut));
     paramMappings.push({paramPath: `${mappedPrefix}/filters`}, {paramPath: `${mappedPrefix}/bias`});
     return {filters, bias};
   };
 }
 
 // src/common/extractFCParamsFactory.ts
-import {
-  tensor1d as tensor1d2,
-  tensor2d
-} from "@tensorflow/tfjs/dist/tf.es2017.js";
+const tf13 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 function extractFCParamsFactory(extractWeights, paramMappings) {
   return function(channelsIn, channelsOut, mappedPrefix) {
-    const fc_weights = tensor2d(extractWeights(channelsIn * channelsOut), [channelsIn, channelsOut]);
-    const fc_bias = tensor1d2(extractWeights(channelsOut));
+    const fc_weights = tf13.tensor2d(extractWeights(channelsIn * channelsOut), [channelsIn, channelsOut]);
+    const fc_bias = tf13.tensor1d(extractWeights(channelsOut));
     paramMappings.push({paramPath: `${mappedPrefix}/weights`}, {paramPath: `${mappedPrefix}/bias`});
     return {
       weights: fc_weights,
@@ -1613,15 +1561,12 @@ class SeparableConvParams {
 }
 
 // src/common/extractSeparableConvParamsFactory.ts
-import {
-  tensor1d as tensor1d3,
-  tensor4d as tensor4d2
-} from "@tensorflow/tfjs/dist/tf.es2017.js";
+const tf14 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 function extractSeparableConvParamsFactory(extractWeights, paramMappings) {
   return function(channelsIn, channelsOut, mappedPrefix) {
-    const depthwise_filter = tensor4d2(extractWeights(3 * 3 * channelsIn), [3, 3, channelsIn, 1]);
-    const pointwise_filter = tensor4d2(extractWeights(channelsIn * channelsOut), [1, 1, channelsIn, channelsOut]);
-    const bias = tensor1d3(extractWeights(channelsOut));
+    const depthwise_filter = tf14.tensor4d(extractWeights(3 * 3 * channelsIn), [3, 3, channelsIn, 1]);
+    const pointwise_filter = tf14.tensor4d(extractWeights(channelsIn * channelsOut), [1, 1, channelsIn, channelsOut]);
+    const bias = tf14.tensor1d(extractWeights(channelsOut));
     paramMappings.push({paramPath: `${mappedPrefix}/depthwise_filter`}, {paramPath: `${mappedPrefix}/pointwise_filter`}, {paramPath: `${mappedPrefix}/bias`});
     return new SeparableConvParams(depthwise_filter, pointwise_filter, bias);
   };
@@ -1760,12 +1705,7 @@ function extractParamsFromWeigthMap(weightMap) {
 }
 
 // src/faceFeatureExtractor/FaceFeatureExtractor.ts
-import {
-  avgPool,
-  cast as cast3,
-  scalar,
-  tidy as tidy9
-} from "@tensorflow/tfjs/dist/tf.es2017.js";
+const tf15 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 class FaceFeatureExtractor extends NeuralNetwork {
   constructor() {
     super("FaceFeatureExtractor");
@@ -1775,15 +1715,15 @@ class FaceFeatureExtractor extends NeuralNetwork {
     if (!params) {
       throw new Error("FaceFeatureExtractor - load model before inference");
     }
-    return tidy9(() => {
-      const batchTensor = cast3(input.toBatchTensor(112, true), "float32");
+    return tf15.tidy(() => {
+      const batchTensor = tf15.cast(input.toBatchTensor(112, true), "float32");
       const meanRgb = [122.782, 117.001, 104.298];
-      const normalized = normalize(batchTensor, meanRgb).div(scalar(255));
+      const normalized = normalize(batchTensor, meanRgb).div(tf15.scalar(255));
       let out = denseBlock4(normalized, params.dense0, true);
       out = denseBlock4(out, params.dense1);
       out = denseBlock4(out, params.dense2);
       out = denseBlock4(out, params.dense3);
-      out = avgPool(out, [7, 7], [2, 2], "valid");
+      out = tf15.avgPool(out, [7, 7], [2, 2], "valid");
       return out;
     });
   }
@@ -1802,13 +1742,9 @@ class FaceFeatureExtractor extends NeuralNetwork {
 }
 
 // src/common/fullyConnectedLayer.ts
-import {
-  add as add4,
-  matMul,
-  tidy as tidy10
-} from "@tensorflow/tfjs/dist/tf.es2017.js";
+const tf16 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 function fullyConnectedLayer(x, params) {
-  return tidy10(() => add4(matMul(x, params.weights), params.bias));
+  return tf16.tidy(() => tf16.add(tf16.matMul(x, params.weights), params.bias));
 }
 
 // src/faceProcessor/extractParams.ts
@@ -1857,9 +1793,7 @@ function seperateWeightMaps(weightMap) {
 }
 
 // src/faceProcessor/FaceProcessor.ts
-import {
-  tidy as tidy11
-} from "@tensorflow/tfjs/dist/tf.es2017.js";
+const tf17 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 class FaceProcessor extends NeuralNetwork {
   constructor(_name, faceFeatureExtractor) {
     super(_name);
@@ -1873,7 +1807,7 @@ class FaceProcessor extends NeuralNetwork {
     if (!params) {
       throw new Error(`${this._name} - load model before inference`);
     }
-    return tidy11(() => {
+    return tf17.tidy(() => {
       const bottleneckFeatures = input instanceof NetInput ? this.faceFeatureExtractor.forwardInput(input) : input;
       return fullyConnectedLayer(bottleneckFeatures.as2D(bottleneckFeatures.shape[0], -1), params.fc);
     });
@@ -1923,17 +1857,13 @@ class FaceExpressions {
 }
 
 // src/faceExpressionNet/FaceExpressionNet.ts
-import {
-  softmax,
-  tidy as tidy12,
-  unstack
-} from "@tensorflow/tfjs/dist/tf.es2017.js";
+const tf18 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 class FaceExpressionNet extends FaceProcessor {
   constructor(faceFeatureExtractor = new FaceFeatureExtractor()) {
     super("FaceExpressionNet", faceFeatureExtractor);
   }
   forwardInput(input) {
-    return tidy12(() => softmax(this.runNet(input)));
+    return tf18.tidy(() => tf18.softmax(this.runNet(input)));
   }
   async forward(input) {
     return this.forwardInput(await toNetInput(input));
@@ -1941,7 +1871,7 @@ class FaceExpressionNet extends FaceProcessor {
   async predictExpressions(input) {
     const netInput = await toNetInput(input);
     const out = await this.forwardInput(netInput);
-    const probabilitesByBatch = await Promise.all(unstack(out).map(async (t) => {
+    const probabilitesByBatch = await Promise.all(tf18.unstack(out).map(async (t) => {
       const data = await t.data();
       t.dispose();
       return data;
@@ -2193,31 +2123,23 @@ function extractParamsFromWeigthMap5(weightMap, numMainBlocks) {
 }
 
 // src/xception/TinyXception.ts
-import {
-  add as add5,
-  cast as cast4,
-  conv2d as conv2d3,
-  maxPool,
-  relu as relu3,
-  scalar as scalar2,
-  tidy as tidy13
-} from "@tensorflow/tfjs/dist/tf.es2017.js";
+const tf19 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 function conv(x, params, stride) {
-  return add5(conv2d3(x, params.filters, stride, "same"), params.bias);
+  return tf19.add(tf19.conv2d(x, params.filters, stride, "same"), params.bias);
 }
 function reductionBlock(x, params, isActivateInput = true) {
-  let out = isActivateInput ? relu3(x) : x;
+  let out = isActivateInput ? tf19.relu(x) : x;
   out = depthwiseSeparableConv(out, params.separable_conv0, [1, 1]);
-  out = depthwiseSeparableConv(relu3(out), params.separable_conv1, [1, 1]);
-  out = maxPool(out, [3, 3], [2, 2], "same");
-  out = add5(out, conv(x, params.expansion_conv, [2, 2]));
+  out = depthwiseSeparableConv(tf19.relu(out), params.separable_conv1, [1, 1]);
+  out = tf19.maxPool(out, [3, 3], [2, 2], "same");
+  out = tf19.add(out, conv(x, params.expansion_conv, [2, 2]));
   return out;
 }
 function mainBlock(x, params) {
-  let out = depthwiseSeparableConv(relu3(x), params.separable_conv0, [1, 1]);
-  out = depthwiseSeparableConv(relu3(out), params.separable_conv1, [1, 1]);
-  out = depthwiseSeparableConv(relu3(out), params.separable_conv2, [1, 1]);
-  out = add5(out, x);
+  let out = depthwiseSeparableConv(tf19.relu(x), params.separable_conv0, [1, 1]);
+  out = depthwiseSeparableConv(tf19.relu(out), params.separable_conv1, [1, 1]);
+  out = depthwiseSeparableConv(tf19.relu(out), params.separable_conv2, [1, 1]);
+  out = tf19.add(out, x);
   return out;
 }
 class TinyXception extends NeuralNetwork {
@@ -2230,18 +2152,18 @@ class TinyXception extends NeuralNetwork {
     if (!params) {
       throw new Error("TinyXception - load model before inference");
     }
-    return tidy13(() => {
-      const batchTensor = cast4(input.toBatchTensor(112, true), "float32");
+    return tf19.tidy(() => {
+      const batchTensor = tf19.cast(input.toBatchTensor(112, true), "float32");
       const meanRgb = [122.782, 117.001, 104.298];
-      const normalized = normalize(batchTensor, meanRgb).div(scalar2(256));
-      let out = relu3(conv(normalized, params.entry_flow.conv_in, [2, 2]));
+      const normalized = normalize(batchTensor, meanRgb).div(tf19.scalar(256));
+      let out = tf19.relu(conv(normalized, params.entry_flow.conv_in, [2, 2]));
       out = reductionBlock(out, params.entry_flow.reduction_block_0, false);
       out = reductionBlock(out, params.entry_flow.reduction_block_1);
       range(this._numMainBlocks, 0, 1).forEach((idx) => {
         out = mainBlock(out, params.middle_flow[`main_block_${idx}`]);
       });
       out = reductionBlock(out, params.exit_flow.reduction_block);
-      out = relu3(depthwiseSeparableConv(out, params.exit_flow.separable_conv, [1, 1]));
+      out = tf19.relu(depthwiseSeparableConv(out, params.exit_flow.separable_conv, [1, 1]));
       return out;
     });
   }
@@ -2305,12 +2227,7 @@ var Gender;
 })(Gender || (Gender = {}));
 
 // src/ageGenderNet/AgeGenderNet.ts
-import {
-  avgPool as avgPool2,
-  softmax as softmax2,
-  tidy as tidy14,
-  unstack as unstack2
-} from "@tensorflow/tfjs/dist/tf.es2017.js";
+const tf20 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 class AgeGenderNet extends NeuralNetwork {
   constructor(faceFeatureExtractor = new TinyXception(2)) {
     super("AgeGenderNet");
@@ -2324,18 +2241,18 @@ class AgeGenderNet extends NeuralNetwork {
     if (!params) {
       throw new Error(`${this._name} - load model before inference`);
     }
-    return tidy14(() => {
+    return tf20.tidy(() => {
       const bottleneckFeatures = input instanceof NetInput ? this.faceFeatureExtractor.forwardInput(input) : input;
-      const pooled = avgPool2(bottleneckFeatures, [7, 7], [2, 2], "valid").as2D(bottleneckFeatures.shape[0], -1);
+      const pooled = tf20.avgPool(bottleneckFeatures, [7, 7], [2, 2], "valid").as2D(bottleneckFeatures.shape[0], -1);
       const age = fullyConnectedLayer(pooled, params.fc.age).as1D();
       const gender = fullyConnectedLayer(pooled, params.fc.gender);
       return {age, gender};
     });
   }
   forwardInput(input) {
-    return tidy14(() => {
+    return tf20.tidy(() => {
       const {age, gender} = this.runNet(input);
-      return {age, gender: softmax2(gender)};
+      return {age, gender: tf20.softmax(gender)};
     });
   }
   async forward(input) {
@@ -2344,8 +2261,8 @@ class AgeGenderNet extends NeuralNetwork {
   async predictAgeAndGender(input) {
     const netInput = await toNetInput(input);
     const out = await this.forwardInput(netInput);
-    const ages = unstack2(out.age);
-    const genders = unstack2(out.gender);
+    const ages = tf20.unstack(out.age);
+    const genders = tf20.unstack(out.gender);
     const ageAndGenderTensors = ages.map((ageTensor, i) => ({
       ageTensor,
       genderTensor: genders[i]
@@ -2396,12 +2313,7 @@ class AgeGenderNet extends NeuralNetwork {
 // src/ageGenderNet/index.ts
 
 // src/faceLandmarkNet/FaceLandmark68NetBase.ts
-import {
-  fill as fill3,
-  stack as stack2,
-  tidy as tidy15,
-  unstack as unstack3
-} from "@tensorflow/tfjs/dist/tf.es2017.js";
+const tf21 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 class FaceLandmark68NetBase extends FaceProcessor {
   postProcess(output, inputSize, originalDimensions) {
     const inputDimensions = originalDimensions.map(({width, height}) => {
@@ -2412,20 +2324,20 @@ class FaceLandmark68NetBase extends FaceProcessor {
       };
     });
     const batchSize = inputDimensions.length;
-    return tidy15(() => {
-      const createInterleavedTensor = (fillX, fillY) => stack2([fill3([68], fillX, "float32"), fill3([68], fillY, "float32")], 1).as2D(1, 136).as1D();
+    return tf21.tidy(() => {
+      const createInterleavedTensor = (fillX, fillY) => tf21.stack([tf21.fill([68], fillX, "float32"), tf21.fill([68], fillY, "float32")], 1).as2D(1, 136).as1D();
       const getPadding = (batchIdx, cond) => {
         const {width, height} = inputDimensions[batchIdx];
         return cond(width, height) ? Math.abs(width - height) / 2 : 0;
       };
       const getPaddingX = (batchIdx) => getPadding(batchIdx, (w, h) => w < h);
       const getPaddingY = (batchIdx) => getPadding(batchIdx, (w, h) => h < w);
-      const landmarkTensors = output.mul(fill3([batchSize, 136], inputSize, "float32")).sub(stack2(Array.from(Array(batchSize), (_, batchIdx) => createInterleavedTensor(getPaddingX(batchIdx), getPaddingY(batchIdx))))).div(stack2(Array.from(Array(batchSize), (_, batchIdx) => createInterleavedTensor(inputDimensions[batchIdx].width, inputDimensions[batchIdx].height))));
+      const landmarkTensors = output.mul(tf21.fill([batchSize, 136], inputSize, "float32")).sub(tf21.stack(Array.from(Array(batchSize), (_, batchIdx) => createInterleavedTensor(getPaddingX(batchIdx), getPaddingY(batchIdx))))).div(tf21.stack(Array.from(Array(batchSize), (_, batchIdx) => createInterleavedTensor(inputDimensions[batchIdx].width, inputDimensions[batchIdx].height))));
       return landmarkTensors;
     });
   }
   forwardInput(input) {
-    return tidy15(() => {
+    return tf21.tidy(() => {
       const out = this.runNet(input);
       return this.postProcess(out, input.inputSize, input.inputDimensions.map(([height, width]) => ({height, width})));
     });
@@ -2435,7 +2347,7 @@ class FaceLandmark68NetBase extends FaceProcessor {
   }
   async detectLandmarks(input) {
     const netInput = await toNetInput(input);
-    const landmarkTensors = tidy15(() => unstack3(this.forwardInput(netInput)));
+    const landmarkTensors = tf21.tidy(() => tf21.unstack(this.forwardInput(netInput)));
     const landmarksForBatch = await Promise.all(landmarkTensors.map(async (landmarkTensor, batchIdx) => {
       const landmarksArray = Array.from(await landmarkTensor.data());
       const xCoords = landmarksArray.filter((_, i) => isEven(i));
@@ -2504,12 +2416,7 @@ function extractParamsTiny(weights) {
 }
 
 // src/faceFeatureExtractor/TinyFaceFeatureExtractor.ts
-import {
-  avgPool as avgPool3,
-  cast as cast5,
-  scalar as scalar3,
-  tidy as tidy16
-} from "@tensorflow/tfjs/dist/tf.es2017.js";
+const tf22 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 class TinyFaceFeatureExtractor extends NeuralNetwork {
   constructor() {
     super("TinyFaceFeatureExtractor");
@@ -2519,14 +2426,14 @@ class TinyFaceFeatureExtractor extends NeuralNetwork {
     if (!params) {
       throw new Error("TinyFaceFeatureExtractor - load model before inference");
     }
-    return tidy16(() => {
-      const batchTensor = cast5(input.toBatchTensor(112, true), "float32");
+    return tf22.tidy(() => {
+      const batchTensor = tf22.cast(input.toBatchTensor(112, true), "float32");
       const meanRgb = [122.782, 117.001, 104.298];
-      const normalized = normalize(batchTensor, meanRgb).div(scalar3(255));
+      const normalized = normalize(batchTensor, meanRgb).div(tf22.scalar(255));
       let out = denseBlock3(normalized, params.dense0, true);
       out = denseBlock3(out, params.dense1);
       out = denseBlock3(out, params.dense2);
-      out = avgPool3(out, [14, 14], [2, 2], "valid");
+      out = tf22.avgPool(out, [14, 14], [2, 2], "valid");
       return out;
     });
   }
@@ -2562,26 +2469,19 @@ class FaceLandmarkNet extends FaceLandmark68Net {
 }
 
 // src/faceRecognitionNet/scaleLayer.ts
-import {
-  add as add6,
-  mul
-} from "@tensorflow/tfjs/dist/tf.es2017.js";
+const tf23 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 function scale(x, params) {
-  return add6(mul(x, params.weights), params.biases);
+  return tf23.add(tf23.mul(x, params.weights), params.biases);
 }
 
 // src/faceRecognitionNet/convLayer.ts
-import {
-  add as add7,
-  conv2d as conv2d4,
-  relu as relu4
-} from "@tensorflow/tfjs/dist/tf.es2017.js";
+const tf24 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 function convLayer2(x, params, strides, withRelu, padding = "same") {
   const {filters, bias} = params.conv;
-  let out = conv2d4(x, filters, strides, padding);
-  out = add7(out, bias);
+  let out = tf24.conv2d(x, filters, strides, padding);
+  out = tf24.add(out, bias);
   out = scale(out, params.scale);
-  return withRelu ? relu4(out) : out;
+  return withRelu ? tf24.relu(out) : out;
 }
 function conv2(x, params) {
   return convLayer2(x, params, [1, 1], true);
@@ -2594,13 +2494,7 @@ function convDown(x, params) {
 }
 
 // src/faceRecognitionNet/extractParams.ts
-import {
-  tensor1d as tensor1d4,
-  tensor2d as tensor2d2,
-  tensor4d as tensor4d3,
-  tidy as tidy17,
-  transpose
-} from "@tensorflow/tfjs/dist/tf.es2017.js";
+const tf25 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 function extractorsFactory5(extractWeights, paramMappings) {
   function extractFilterValues(numFilterValues, numFilters, filterSize) {
     const weights = extractWeights(numFilterValues);
@@ -2608,17 +2502,17 @@ function extractorsFactory5(extractWeights, paramMappings) {
     if (isFloat(depth)) {
       throw new Error(`depth has to be an integer: ${depth}, weights.length: ${weights.length}, numFilters: ${numFilters}, filterSize: ${filterSize}`);
     }
-    return tidy17(() => transpose(tensor4d3(weights, [numFilters, depth, filterSize, filterSize]), [2, 3, 1, 0]));
+    return tf25.tidy(() => tf25.transpose(tf25.tensor4d(weights, [numFilters, depth, filterSize, filterSize]), [2, 3, 1, 0]));
   }
   function extractConvParams(numFilterValues, numFilters, filterSize, mappedPrefix) {
     const filters = extractFilterValues(numFilterValues, numFilters, filterSize);
-    const bias = tensor1d4(extractWeights(numFilters));
+    const bias = tf25.tensor1d(extractWeights(numFilters));
     paramMappings.push({paramPath: `${mappedPrefix}/filters`}, {paramPath: `${mappedPrefix}/bias`});
     return {filters, bias};
   }
   function extractScaleLayerParams(numWeights, mappedPrefix) {
-    const weights = tensor1d4(extractWeights(numWeights));
-    const biases = tensor1d4(extractWeights(numWeights));
+    const weights = tf25.tensor1d(extractWeights(numWeights));
+    const biases = tf25.tensor1d(extractWeights(numWeights));
     paramMappings.push({paramPath: `${mappedPrefix}/weights`}, {paramPath: `${mappedPrefix}/biases`});
     return {
       weights,
@@ -2665,7 +2559,7 @@ function extractParams9(weights) {
   const conv256_1 = extractResidualLayerParams(589824, 256, 3, "conv256_1");
   const conv256_2 = extractResidualLayerParams(589824, 256, 3, "conv256_2");
   const conv256_down_out = extractResidualLayerParams(589824, 256, 3, "conv256_down_out");
-  const fc = tidy17(() => transpose(tensor2d2(extractWeights(256 * 128), [128, 256]), [1, 0]));
+  const fc = tf25.tidy(() => tf25.transpose(tf25.tensor2d(extractWeights(256 * 128), [128, 256]), [1, 0]));
   paramMappings.push({paramPath: `fc`});
   if (getRemainingWeights().length !== 0) {
     throw new Error(`weights remaing after extract: ${getRemainingWeights().length}`);
@@ -2765,52 +2659,39 @@ function extractParamsFromWeigthMap9(weightMap) {
 }
 
 // src/faceRecognitionNet/residualLayer.ts
-import {
-  add as add8,
-  avgPool as avgPool4,
-  concat as concat3,
-  relu as relu5,
-  zeros
-} from "@tensorflow/tfjs/dist/tf.es2017.js";
+const tf26 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 function residual(x, params) {
   let out = conv2(x, params.conv1);
   out = convNoRelu(out, params.conv2);
-  out = add8(out, x);
-  out = relu5(out);
+  out = tf26.add(out, x);
+  out = tf26.relu(out);
   return out;
 }
 function residualDown(x, params) {
   let out = convDown(x, params.conv1);
   out = convNoRelu(out, params.conv2);
-  let pooled = avgPool4(x, 2, 2, "valid");
-  const zeros2 = zeros(pooled.shape);
+  let pooled = tf26.avgPool(x, 2, 2, "valid");
+  const zeros2 = tf26.zeros(pooled.shape);
   const isPad = pooled.shape[3] !== out.shape[3];
   const isAdjustShape = pooled.shape[1] !== out.shape[1] || pooled.shape[2] !== out.shape[2];
   if (isAdjustShape) {
     const padShapeX = [...out.shape];
     padShapeX[1] = 1;
-    const zerosW = zeros(padShapeX);
-    out = concat3([out, zerosW], 1);
+    const zerosW = tf26.zeros(padShapeX);
+    out = tf26.concat([out, zerosW], 1);
     const padShapeY = [...out.shape];
     padShapeY[2] = 1;
-    const zerosH = zeros(padShapeY);
-    out = concat3([out, zerosH], 2);
+    const zerosH = tf26.zeros(padShapeY);
+    out = tf26.concat([out, zerosH], 2);
   }
-  pooled = isPad ? concat3([pooled, zeros2], 3) : pooled;
-  out = add8(pooled, out);
-  out = relu5(out);
+  pooled = isPad ? tf26.concat([pooled, zeros2], 3) : pooled;
+  out = tf26.add(pooled, out);
+  out = tf26.relu(out);
   return out;
 }
 
 // src/faceRecognitionNet/FaceRecognitionNet.ts
-import {
-  cast as cast6,
-  matMul as matMul2,
-  maxPool as maxPool2,
-  scalar as scalar4,
-  tidy as tidy18,
-  unstack as unstack4
-} from "@tensorflow/tfjs/dist/tf.es2017.js";
+const tf27 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 class FaceRecognitionNet extends NeuralNetwork {
   constructor() {
     super("FaceRecognitionNet");
@@ -2820,12 +2701,12 @@ class FaceRecognitionNet extends NeuralNetwork {
     if (!params) {
       throw new Error("FaceRecognitionNet - load model before inference");
     }
-    return tidy18(() => {
-      const batchTensor = cast6(input.toBatchTensor(150, true), "float32");
+    return tf27.tidy(() => {
+      const batchTensor = tf27.cast(input.toBatchTensor(150, true), "float32");
       const meanRgb = [122.782, 117.001, 104.298];
-      const normalized = normalize(batchTensor, meanRgb).div(scalar4(256));
+      const normalized = normalize(batchTensor, meanRgb).div(tf27.scalar(256));
       let out = convDown(normalized, params.conv32_down);
-      out = maxPool2(out, 3, 2, "valid");
+      out = tf27.maxPool(out, 3, 2, "valid");
       out = residual(out, params.conv32_1);
       out = residual(out, params.conv32_2);
       out = residual(out, params.conv32_3);
@@ -2841,7 +2722,7 @@ class FaceRecognitionNet extends NeuralNetwork {
       out = residual(out, params.conv256_2);
       out = residualDown(out, params.conv256_down_out);
       const globalAvg = out.mean([1, 2]);
-      const fullyConnected = matMul2(globalAvg, params.fc);
+      const fullyConnected = tf27.matMul(globalAvg, params.fc);
       return fullyConnected;
     });
   }
@@ -2850,7 +2731,7 @@ class FaceRecognitionNet extends NeuralNetwork {
   }
   async computeFaceDescriptor(input) {
     const netInput = await toNetInput(input);
-    const faceDescriptorTensors = tidy18(() => unstack4(this.forwardInput(netInput)));
+    const faceDescriptorTensors = tf27.tidy(() => tf27.unstack(this.forwardInput(netInput)));
     const faceDescriptorsForBatch = await Promise.all(faceDescriptorTensors.map((t) => t.data()));
     faceDescriptorTensors.forEach((t) => t.dispose());
     return netInput.isBatchInput ? faceDescriptorsForBatch : faceDescriptorsForBatch[0];
@@ -2900,18 +2781,14 @@ function extendWithGender(sourceObj, gender, genderProbability) {
 // src/factories/index.ts
 
 // src/ssdMobilenetv1/extractParams.ts
-import {
-  tensor1d as tensor1d5,
-  tensor3d,
-  tensor4d as tensor4d4
-} from "@tensorflow/tfjs/dist/tf.es2017.js";
+const tf28 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 function extractorsFactory7(extractWeights, paramMappings) {
   function extractDepthwiseConvParams(numChannels, mappedPrefix) {
-    const filters = tensor4d4(extractWeights(3 * 3 * numChannels), [3, 3, numChannels, 1]);
-    const batch_norm_scale = tensor1d5(extractWeights(numChannels));
-    const batch_norm_offset = tensor1d5(extractWeights(numChannels));
-    const batch_norm_mean = tensor1d5(extractWeights(numChannels));
-    const batch_norm_variance = tensor1d5(extractWeights(numChannels));
+    const filters = tf28.tensor4d(extractWeights(3 * 3 * numChannels), [3, 3, numChannels, 1]);
+    const batch_norm_scale = tf28.tensor1d(extractWeights(numChannels));
+    const batch_norm_offset = tf28.tensor1d(extractWeights(numChannels));
+    const batch_norm_mean = tf28.tensor1d(extractWeights(numChannels));
+    const batch_norm_variance = tf28.tensor1d(extractWeights(numChannels));
     paramMappings.push({paramPath: `${mappedPrefix}/filters`}, {paramPath: `${mappedPrefix}/batch_norm_scale`}, {paramPath: `${mappedPrefix}/batch_norm_offset`}, {paramPath: `${mappedPrefix}/batch_norm_mean`}, {paramPath: `${mappedPrefix}/batch_norm_variance`});
     return {
       filters,
@@ -2922,8 +2799,8 @@ function extractorsFactory7(extractWeights, paramMappings) {
     };
   }
   function extractConvParams(channelsIn, channelsOut, filterSize, mappedPrefix, isPointwiseConv) {
-    const filters = tensor4d4(extractWeights(channelsIn * channelsOut * filterSize * filterSize), [filterSize, filterSize, channelsIn, channelsOut]);
-    const bias = tensor1d5(extractWeights(channelsOut));
+    const filters = tf28.tensor4d(extractWeights(channelsIn * channelsOut * filterSize * filterSize), [filterSize, filterSize, channelsIn, channelsOut]);
+    const bias = tf28.tensor1d(extractWeights(channelsOut));
     paramMappings.push({paramPath: `${mappedPrefix}/filters`}, {paramPath: `${mappedPrefix}/${isPointwiseConv ? "batch_norm_offset" : "bias"}`});
     return {filters, bias};
   }
@@ -3053,7 +2930,7 @@ function extractParams11(weights) {
   } = extractorsFactory7(extractWeights, paramMappings);
   const mobilenetv1 = extractMobilenetV1Params();
   const prediction_layer = extractPredictionLayerParams();
-  const extra_dim = tensor3d(extractWeights(5118 * 4), [1, 5118, 4]);
+  const extra_dim = tf28.tensor3d(extractWeights(5118 * 4), [1, 5118, 4]);
   const output_layer = {
     extra_dim
   };
@@ -3174,40 +3051,30 @@ function extractParamsFromWeigthMap11(weightMap) {
 }
 
 // src/ssdMobilenetv1/pointwiseConvLayer.ts
-import {
-  add as add9,
-  clipByValue,
-  conv2d as conv2d5,
-  tidy as tidy19
-} from "@tensorflow/tfjs/dist/tf.es2017.js";
+const tf29 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 function pointwiseConvLayer(x, params, strides) {
-  return tidy19(() => {
-    let out = conv2d5(x, params.filters, strides, "same");
-    out = add9(out, params.batch_norm_offset);
-    return clipByValue(out, 0, 6);
+  return tf29.tidy(() => {
+    let out = tf29.conv2d(x, params.filters, strides, "same");
+    out = tf29.add(out, params.batch_norm_offset);
+    return tf29.clipByValue(out, 0, 6);
   });
 }
 
 // src/ssdMobilenetv1/mobileNetV1.ts
-import {
-  batchNorm,
-  clipByValue as clipByValue2,
-  depthwiseConv2d,
-  tidy as tidy20
-} from "@tensorflow/tfjs/dist/tf.es2017.js";
+const tf30 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 const epsilon = 0.0010000000474974513;
 function depthwiseConvLayer(x, params, strides) {
-  return tidy20(() => {
-    let out = depthwiseConv2d(x, params.filters, strides, "same");
-    out = batchNorm(out, params.batch_norm_mean, params.batch_norm_variance, params.batch_norm_offset, params.batch_norm_scale, epsilon);
-    return clipByValue2(out, 0, 6);
+  return tf30.tidy(() => {
+    let out = tf30.depthwiseConv2d(x, params.filters, strides, "same");
+    out = tf30.batchNorm(out, params.batch_norm_mean, params.batch_norm_variance, params.batch_norm_offset, params.batch_norm_scale, epsilon);
+    return tf30.clipByValue(out, 0, 6);
   });
 }
 function getStridesForLayerIdx(layerIdx) {
   return [2, 4, 6, 12].some((idx) => idx === layerIdx) ? [2, 2] : [1, 1];
 }
 function mobileNetV1(x, params) {
-  return tidy20(() => {
+  return tf30.tidy(() => {
     let conv11;
     let out = pointwiseConvLayer(x, params.conv_0, [2, 2]);
     const convPairParams = [
@@ -3296,31 +3163,16 @@ function IOU(boxes, i, j) {
 }
 
 // src/ssdMobilenetv1/outputLayer.ts
-import {
-  add as add10,
-  div,
-  exp,
-  mul as mul2,
-  reshape,
-  scalar as scalar5,
-  sigmoid as sigmoid2,
-  slice,
-  stack as stack3,
-  sub as sub2,
-  tidy as tidy21,
-  tile,
-  transpose as transpose2,
-  unstack as unstack5
-} from "@tensorflow/tfjs/dist/tf.es2017.js";
+const tf31 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 function getCenterCoordinatesAndSizesLayer(x) {
-  const vec = unstack5(transpose2(x, [1, 0]));
+  const vec = tf31.unstack(tf31.transpose(x, [1, 0]));
   const sizes = [
-    sub2(vec[2], vec[0]),
-    sub2(vec[3], vec[1])
+    tf31.sub(vec[2], vec[0]),
+    tf31.sub(vec[3], vec[1])
   ];
   const centers = [
-    add10(vec[0], div(sizes[0], scalar5(2))),
-    add10(vec[1], div(sizes[1], scalar5(2)))
+    tf31.add(vec[0], tf31.div(sizes[0], tf31.scalar(2))),
+    tf31.add(vec[1], tf31.div(sizes[1], tf31.scalar(2)))
   ];
   return {
     sizes,
@@ -3332,28 +3184,28 @@ function decodeBoxesLayer(x0, x1) {
     sizes,
     centers
   } = getCenterCoordinatesAndSizesLayer(x0);
-  const vec = unstack5(transpose2(x1, [1, 0]));
-  const div0_out = div(mul2(exp(div(vec[2], scalar5(5))), sizes[0]), scalar5(2));
-  const add0_out = add10(mul2(div(vec[0], scalar5(10)), sizes[0]), centers[0]);
-  const div1_out = div(mul2(exp(div(vec[3], scalar5(5))), sizes[1]), scalar5(2));
-  const add1_out = add10(mul2(div(vec[1], scalar5(10)), sizes[1]), centers[1]);
-  return transpose2(stack3([
-    sub2(add0_out, div0_out),
-    sub2(add1_out, div1_out),
-    add10(add0_out, div0_out),
-    add10(add1_out, div1_out)
+  const vec = tf31.unstack(tf31.transpose(x1, [1, 0]));
+  const div0_out = tf31.div(tf31.mul(tf31.exp(tf31.div(vec[2], tf31.scalar(5))), sizes[0]), tf31.scalar(2));
+  const add0_out = tf31.add(tf31.mul(tf31.div(vec[0], tf31.scalar(10)), sizes[0]), centers[0]);
+  const div1_out = tf31.div(tf31.mul(tf31.exp(tf31.div(vec[3], tf31.scalar(5))), sizes[1]), tf31.scalar(2));
+  const add1_out = tf31.add(tf31.mul(tf31.div(vec[1], tf31.scalar(10)), sizes[1]), centers[1]);
+  return tf31.transpose(tf31.stack([
+    tf31.sub(add0_out, div0_out),
+    tf31.sub(add1_out, div1_out),
+    tf31.add(add0_out, div0_out),
+    tf31.add(add1_out, div1_out)
   ]), [1, 0]);
 }
 function outputLayer(boxPredictions, classPredictions, params) {
-  return tidy21(() => {
+  return tf31.tidy(() => {
     const batchSize = boxPredictions.shape[0];
-    let boxes = decodeBoxesLayer(reshape(tile(params.extra_dim, [batchSize, 1, 1]), [-1, 4]), reshape(boxPredictions, [-1, 4]));
-    boxes = reshape(boxes, [batchSize, boxes.shape[0] / batchSize, 4]);
-    const scoresAndClasses = sigmoid2(slice(classPredictions, [0, 0, 1], [-1, -1, -1]));
-    let scores = slice(scoresAndClasses, [0, 0, 0], [-1, -1, 1]);
-    scores = reshape(scores, [batchSize, scores.shape[1]]);
-    const boxesByBatch = unstack5(boxes);
-    const scoresByBatch = unstack5(scores);
+    let boxes = decodeBoxesLayer(tf31.reshape(tf31.tile(params.extra_dim, [batchSize, 1, 1]), [-1, 4]), tf31.reshape(boxPredictions, [-1, 4]));
+    boxes = tf31.reshape(boxes, [batchSize, boxes.shape[0] / batchSize, 4]);
+    const scoresAndClasses = tf31.sigmoid(tf31.slice(classPredictions, [0, 0, 1], [-1, -1, -1]));
+    let scores = tf31.slice(scoresAndClasses, [0, 0, 0], [-1, -1, 1]);
+    scores = tf31.reshape(scores, [batchSize, scores.shape[1]]);
+    const boxesByBatch = tf31.unstack(boxes);
+    const scoresByBatch = tf31.unstack(scores);
     return {
       boxes: boxesByBatch,
       scores: scoresByBatch
@@ -3362,15 +3214,12 @@ function outputLayer(boxPredictions, classPredictions, params) {
 }
 
 // src/ssdMobilenetv1/boxPredictionLayer.ts
-import {
-  reshape as reshape2,
-  tidy as tidy22
-} from "@tensorflow/tfjs/dist/tf.es2017.js";
+const tf32 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 function boxPredictionLayer(x, params) {
-  return tidy22(() => {
+  return tf32.tidy(() => {
     const batchSize = x.shape[0];
-    const boxPredictionEncoding = reshape2(convLayer(x, params.box_encoding_predictor), [batchSize, -1, 1, 4]);
-    const classPrediction = reshape2(convLayer(x, params.class_predictor), [batchSize, -1, 3]);
+    const boxPredictionEncoding = tf32.reshape(convLayer(x, params.box_encoding_predictor), [batchSize, -1, 1, 4]);
+    const classPrediction = tf32.reshape(convLayer(x, params.class_predictor), [batchSize, -1, 3]);
     return {
       boxPredictionEncoding,
       classPrediction
@@ -3379,12 +3228,9 @@ function boxPredictionLayer(x, params) {
 }
 
 // src/ssdMobilenetv1/predictionLayer.ts
-import {
-  concat as concat4,
-  tidy as tidy23
-} from "@tensorflow/tfjs/dist/tf.es2017.js";
+const tf33 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 function predictionLayer(x, conv11, params) {
-  return tidy23(() => {
+  return tf33.tidy(() => {
     const conv0 = pointwiseConvLayer(x, params.conv_0, [1, 1]);
     const conv1 = pointwiseConvLayer(conv0, params.conv_1, [2, 2]);
     const conv22 = pointwiseConvLayer(conv1, params.conv_2, [1, 1]);
@@ -3399,7 +3245,7 @@ function predictionLayer(x, conv11, params) {
     const boxPrediction3 = boxPredictionLayer(conv3, params.box_predictor_3);
     const boxPrediction4 = boxPredictionLayer(conv5, params.box_predictor_4);
     const boxPrediction5 = boxPredictionLayer(conv7, params.box_predictor_5);
-    const boxPredictions = concat4([
+    const boxPredictions = tf33.concat([
       boxPrediction0.boxPredictionEncoding,
       boxPrediction1.boxPredictionEncoding,
       boxPrediction2.boxPredictionEncoding,
@@ -3407,7 +3253,7 @@ function predictionLayer(x, conv11, params) {
       boxPrediction4.boxPredictionEncoding,
       boxPrediction5.boxPredictionEncoding
     ], 1);
-    const classPredictions = concat4([
+    const classPredictions = tf33.concat([
       boxPrediction0.classPrediction,
       boxPrediction1.classPrediction,
       boxPrediction2.classPrediction,
@@ -3444,13 +3290,7 @@ class SsdMobilenetv1Options {
 }
 
 // src/ssdMobilenetv1/SsdMobilenetv1.ts
-import {
-  cast as cast7,
-  mul as mul3,
-  scalar as scalar6,
-  sub as sub3,
-  tidy as tidy24
-} from "@tensorflow/tfjs/dist/tf.es2017.js";
+const tf34 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 class SsdMobilenetv1 extends NeuralNetwork {
   constructor() {
     super("SsdMobilenetv1");
@@ -3460,9 +3300,9 @@ class SsdMobilenetv1 extends NeuralNetwork {
     if (!params) {
       throw new Error("SsdMobilenetv1 - load model before inference");
     }
-    return tidy24(() => {
-      const batchTensor = cast7(input.toBatchTensor(512, false), "float32");
-      const x = sub3(mul3(batchTensor, scalar6(0.007843137718737125)), scalar6(1));
+    return tf34.tidy(() => {
+      const batchTensor = tf34.cast(input.toBatchTensor(512, false), "float32");
+      const x = tf34.sub(tf34.mul(batchTensor, tf34.scalar(0.007843137718737125)), tf34.scalar(1));
       const features = mobileNetV1(x, params.mobilenetv1);
       const {
         boxPredictions,
@@ -3580,66 +3420,45 @@ function validateConfig(config2) {
 }
 
 // src/tinyYolov2/leaky.ts
-import {
-  add as add11,
-  mul as mul4,
-  relu as relu6,
-  scalar as scalar7,
-  sub as sub4,
-  tidy as tidy25
-} from "@tensorflow/tfjs/dist/tf.es2017.js";
+const tf35 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 function leaky(x) {
-  return tidy25(() => {
-    const min = mul4(x, scalar7(0.10000000149011612));
-    return add11(relu6(sub4(x, min)), min);
+  return tf35.tidy(() => {
+    const min = tf35.mul(x, tf35.scalar(0.10000000149011612));
+    return tf35.add(tf35.relu(tf35.sub(x, min)), min);
   });
 }
 
 // src/tinyYolov2/convWithBatchNorm.ts
-import {
-  add as add12,
-  conv2d as conv2d6,
-  mul as mul5,
-  pad,
-  sub as sub5,
-  tidy as tidy26
-} from "@tensorflow/tfjs/dist/tf.es2017.js";
+const tf36 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 function convWithBatchNorm(x, params) {
-  return tidy26(() => {
-    let out = pad(x, [[0, 0], [1, 1], [1, 1], [0, 0]]);
-    out = conv2d6(out, params.conv.filters, [1, 1], "valid");
-    out = sub5(out, params.bn.sub);
-    out = mul5(out, params.bn.truediv);
-    out = add12(out, params.conv.bias);
+  return tf36.tidy(() => {
+    let out = tf36.pad(x, [[0, 0], [1, 1], [1, 1], [0, 0]]);
+    out = tf36.conv2d(out, params.conv.filters, [1, 1], "valid");
+    out = tf36.sub(out, params.bn.sub);
+    out = tf36.mul(out, params.bn.truediv);
+    out = tf36.add(out, params.conv.bias);
     return leaky(out);
   });
 }
 
 // src/tinyYolov2/depthwiseSeparableConv.ts
-import {
-  add as add13,
-  pad as pad2,
-  separableConv2d as separableConv2d2,
-  tidy as tidy27
-} from "@tensorflow/tfjs/dist/tf.es2017.js";
+const tf37 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 function depthwiseSeparableConv3(x, params) {
-  return tidy27(() => {
-    let out = pad2(x, [[0, 0], [1, 1], [1, 1], [0, 0]]);
-    out = separableConv2d2(out, params.depthwise_filter, params.pointwise_filter, [1, 1], "valid");
-    out = add13(out, params.bias);
+  return tf37.tidy(() => {
+    let out = tf37.pad(x, [[0, 0], [1, 1], [1, 1], [0, 0]]);
+    out = tf37.separableConv2d(out, params.depthwise_filter, params.pointwise_filter, [1, 1], "valid");
+    out = tf37.add(out, params.bias);
     return leaky(out);
   });
 }
 
 // src/tinyYolov2/extractParams.ts
-import {
-  tensor1d as tensor1d6
-} from "@tensorflow/tfjs/dist/tf.es2017.js";
+const tf38 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 function extractorsFactory9(extractWeights, paramMappings) {
   const extractConvParams = extractConvParamsFactory(extractWeights, paramMappings);
   function extractBatchNormParams(size, mappedPrefix) {
-    const sub6 = tensor1d6(extractWeights(size));
-    const truediv = tensor1d6(extractWeights(size));
+    const sub6 = tf38.tensor1d(extractWeights(size));
+    const truediv = tf38.tensor1d(extractWeights(size));
     paramMappings.push({paramPath: `${mappedPrefix}/sub`}, {paramPath: `${mappedPrefix}/truediv`});
     return {sub: sub6, truediv};
   }
@@ -3790,14 +3609,7 @@ class TinyYolov2Options {
 }
 
 // src/tinyYolov2/TinyYolov2Base.ts
-import {
-  cast as cast8,
-  maxPool as maxPool3,
-  scalar as scalar8,
-  softmax as softmax3,
-  tidy as tidy28,
-  unstack as unstack6
-} from "@tensorflow/tfjs/dist/tf.es2017.js";
+const tf39 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 class TinyYolov2Base extends NeuralNetwork {
   constructor(config2) {
     super("TinyYolov2");
@@ -3815,34 +3627,34 @@ class TinyYolov2Base extends NeuralNetwork {
   }
   runTinyYolov2(x, params) {
     let out = convWithBatchNorm(x, params.conv0);
-    out = maxPool3(out, [2, 2], [2, 2], "same");
+    out = tf39.maxPool(out, [2, 2], [2, 2], "same");
     out = convWithBatchNorm(out, params.conv1);
-    out = maxPool3(out, [2, 2], [2, 2], "same");
+    out = tf39.maxPool(out, [2, 2], [2, 2], "same");
     out = convWithBatchNorm(out, params.conv2);
-    out = maxPool3(out, [2, 2], [2, 2], "same");
+    out = tf39.maxPool(out, [2, 2], [2, 2], "same");
     out = convWithBatchNorm(out, params.conv3);
-    out = maxPool3(out, [2, 2], [2, 2], "same");
+    out = tf39.maxPool(out, [2, 2], [2, 2], "same");
     out = convWithBatchNorm(out, params.conv4);
-    out = maxPool3(out, [2, 2], [2, 2], "same");
+    out = tf39.maxPool(out, [2, 2], [2, 2], "same");
     out = convWithBatchNorm(out, params.conv5);
-    out = maxPool3(out, [2, 2], [1, 1], "same");
+    out = tf39.maxPool(out, [2, 2], [1, 1], "same");
     out = convWithBatchNorm(out, params.conv6);
     out = convWithBatchNorm(out, params.conv7);
     return convLayer(out, params.conv8, "valid", false);
   }
   runMobilenet(x, params) {
     let out = this.config.isFirstLayerConv2d ? leaky(convLayer(x, params.conv0, "valid", false)) : depthwiseSeparableConv3(x, params.conv0);
-    out = maxPool3(out, [2, 2], [2, 2], "same");
+    out = tf39.maxPool(out, [2, 2], [2, 2], "same");
     out = depthwiseSeparableConv3(out, params.conv1);
-    out = maxPool3(out, [2, 2], [2, 2], "same");
+    out = tf39.maxPool(out, [2, 2], [2, 2], "same");
     out = depthwiseSeparableConv3(out, params.conv2);
-    out = maxPool3(out, [2, 2], [2, 2], "same");
+    out = tf39.maxPool(out, [2, 2], [2, 2], "same");
     out = depthwiseSeparableConv3(out, params.conv3);
-    out = maxPool3(out, [2, 2], [2, 2], "same");
+    out = tf39.maxPool(out, [2, 2], [2, 2], "same");
     out = depthwiseSeparableConv3(out, params.conv4);
-    out = maxPool3(out, [2, 2], [2, 2], "same");
+    out = tf39.maxPool(out, [2, 2], [2, 2], "same");
     out = depthwiseSeparableConv3(out, params.conv5);
-    out = maxPool3(out, [2, 2], [1, 1], "same");
+    out = tf39.maxPool(out, [2, 2], [1, 1], "same");
     out = params.conv6 ? depthwiseSeparableConv3(out, params.conv6) : out;
     out = params.conv7 ? depthwiseSeparableConv3(out, params.conv7) : out;
     return convLayer(out, params.conv8, "valid", false);
@@ -3852,10 +3664,10 @@ class TinyYolov2Base extends NeuralNetwork {
     if (!params) {
       throw new Error("TinyYolov2 - load model before inference");
     }
-    return tidy28(() => {
-      let batchTensor = cast8(input.toBatchTensor(inputSize, false), "float32");
+    return tf39.tidy(() => {
+      let batchTensor = tf39.cast(input.toBatchTensor(inputSize, false), "float32");
       batchTensor = this.config.meanRgb ? normalize(batchTensor, this.config.meanRgb) : batchTensor;
-      batchTensor = batchTensor.div(scalar8(256));
+      batchTensor = batchTensor.div(tf39.scalar(256));
       return this.config.withSeparableConvs ? this.runMobilenet(batchTensor, params) : this.runTinyYolov2(batchTensor, params);
     });
   }
@@ -3866,7 +3678,7 @@ class TinyYolov2Base extends NeuralNetwork {
     const {inputSize, scoreThreshold} = new TinyYolov2Options(forwardParams);
     const netInput = await toNetInput(input);
     const out = await this.forwardInput(netInput, inputSize);
-    const out0 = tidy28(() => unstack6(out)[0].expandDims());
+    const out0 = tf39.tidy(() => tf39.unstack(out)[0].expandDims());
     const inputDimensions = {
       width: netInput.getInputWidth(0),
       height: netInput.getInputHeight(0)
@@ -3903,11 +3715,11 @@ class TinyYolov2Base extends NeuralNetwork {
     const correctionFactorY = inputSize / height;
     const numCells = outputTensor.shape[1];
     const numBoxes = this.config.anchors.length;
-    const [boxesTensor, scoresTensor, classScoresTensor] = tidy28(() => {
+    const [boxesTensor, scoresTensor, classScoresTensor] = tf39.tidy(() => {
       const reshaped = outputTensor.reshape([numCells, numCells, numBoxes, this.boxEncodingSize]);
       const boxes = reshaped.slice([0, 0, 0, 0], [numCells, numCells, numBoxes, 4]);
       const scores = reshaped.slice([0, 0, 0, 4], [numCells, numCells, numBoxes, 1]);
-      const classScores = this.withClassScores ? softmax3(reshaped.slice([0, 0, 0, 5], [numCells, numCells, numBoxes, this.config.classes.length]), 3) : scalar8(0);
+      const classScores = this.withClassScores ? tf39.softmax(reshaped.slice([0, 0, 0, 5], [numCells, numCells, numBoxes, this.config.classes.length]), 3) : tf39.scalar(0);
       return [boxes, scores, classScores];
     });
     const results = [];
@@ -4025,14 +3837,12 @@ class ComposableTask {
 }
 
 // src/globalApi/extractFacesAndComputeResults.ts
-import {
-  Tensor as Tensor4
-} from "@tensorflow/tfjs/dist/tf.es2017.js";
+const tf40 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 async function extractAllFacesAndComputeResults(parentResults, input, computeResults, extractedFaces, getRectForAlignment = ({alignedRect}) => alignedRect) {
   const faceBoxes = parentResults.map((parentResult) => isWithFaceLandmarks(parentResult) ? getRectForAlignment(parentResult) : parentResult.detection);
-  const faces = extractedFaces || (input instanceof Tensor4 ? await extractFaceTensors(input, faceBoxes) : await extractFaces(input, faceBoxes));
+  const faces = extractedFaces || (input instanceof tf40.Tensor ? await extractFaceTensors(input, faceBoxes) : await extractFaces(input, faceBoxes));
   const results = await computeResults(faces);
-  faces.forEach((f) => f instanceof Tensor4 && f.dispose());
+  faces.forEach((f) => f instanceof tf40.Tensor && f.dispose());
   return results;
 }
 async function extractSingleFaceAndComputeResult(parentResult, input, computeResult, extractedFaces, getRectForAlignment) {
@@ -4250,9 +4060,7 @@ class ComputeSingleFaceDescriptorTask extends ComputeFaceDescriptorsTaskBase {
 }
 
 // src/globalApi/DetectFaceLandmarksTasks.ts
-import {
-  Tensor as Tensor5
-} from "@tensorflow/tfjs/dist/tf.es2017.js";
+const tf41 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 class DetectFaceLandmarksTaskBase extends ComposableTask {
   constructor(parentTask, input, useTinyLandmarkNet) {
     super();
@@ -4268,9 +4076,9 @@ class DetectAllFaceLandmarksTask extends DetectFaceLandmarksTaskBase {
   async run() {
     const parentResults = await this.parentTask;
     const detections = parentResults.map((res) => res.detection);
-    const faces = this.input instanceof Tensor5 ? await extractFaceTensors(this.input, detections) : await extractFaces(this.input, detections);
+    const faces = this.input instanceof tf41.Tensor ? await extractFaceTensors(this.input, detections) : await extractFaces(this.input, detections);
     const faceLandmarksByFace = await Promise.all(faces.map((face) => this.landmarkNet.detectLandmarks(face)));
-    faces.forEach((f) => f instanceof Tensor5 && f.dispose());
+    faces.forEach((f) => f instanceof tf41.Tensor && f.dispose());
     return parentResults.map((parentResult, i) => extendWithFaceLandmarks(parentResult, faceLandmarksByFace[i]));
   }
   withFaceExpressions() {
@@ -4290,9 +4098,9 @@ class DetectSingleFaceLandmarksTask extends DetectFaceLandmarksTaskBase {
       return;
     }
     const {detection} = parentResult;
-    const faces = this.input instanceof Tensor5 ? await extractFaceTensors(this.input, [detection]) : await extractFaces(this.input, [detection]);
+    const faces = this.input instanceof tf41.Tensor ? await extractFaceTensors(this.input, [detection]) : await extractFaces(this.input, [detection]);
     const landmarks = await this.landmarkNet.detectLandmarks(faces[0]);
-    faces.forEach((f) => f instanceof Tensor5 && f.dispose());
+    faces.forEach((f) => f instanceof tf41.Tensor && f.dispose());
     return extendWithFaceLandmarks(parentResult, landmarks);
   }
   withFaceExpressions() {
@@ -4481,134 +4289,134 @@ function resizeResults(results, dimensions) {
 }
 
 // package.json
-var version = "0.8.2";
+var version = "0.8.3";
 
 // src/index.ts
-import * as tf42 from "@tensorflow/tfjs/dist/tf.es2017.js";
+__export(exports, {
+  AgeGenderNet: () => AgeGenderNet,
+  BoundingBox: () => BoundingBox,
+  Box: () => Box,
+  ComposableTask: () => ComposableTask,
+  ComputeAllFaceDescriptorsTask: () => ComputeAllFaceDescriptorsTask,
+  ComputeFaceDescriptorsTaskBase: () => ComputeFaceDescriptorsTaskBase,
+  ComputeSingleFaceDescriptorTask: () => ComputeSingleFaceDescriptorTask,
+  DetectAllFaceLandmarksTask: () => DetectAllFaceLandmarksTask,
+  DetectAllFacesTask: () => DetectAllFacesTask,
+  DetectFaceLandmarksTaskBase: () => DetectFaceLandmarksTaskBase,
+  DetectFacesTaskBase: () => DetectFacesTaskBase,
+  DetectSingleFaceLandmarksTask: () => DetectSingleFaceLandmarksTask,
+  DetectSingleFaceTask: () => DetectSingleFaceTask,
+  Dimensions: () => Dimensions,
+  FACE_EXPRESSION_LABELS: () => FACE_EXPRESSION_LABELS,
+  FaceDetection: () => FaceDetection,
+  FaceDetectionNet: () => FaceDetectionNet,
+  FaceExpressionNet: () => FaceExpressionNet,
+  FaceExpressions: () => FaceExpressions,
+  FaceLandmark68Net: () => FaceLandmark68Net,
+  FaceLandmark68TinyNet: () => FaceLandmark68TinyNet,
+  FaceLandmarkNet: () => FaceLandmarkNet,
+  FaceLandmarks: () => FaceLandmarks,
+  FaceLandmarks5: () => FaceLandmarks5,
+  FaceLandmarks68: () => FaceLandmarks68,
+  FaceMatch: () => FaceMatch,
+  FaceMatcher: () => FaceMatcher,
+  FaceRecognitionNet: () => FaceRecognitionNet,
+  Gender: () => Gender,
+  LabeledBox: () => LabeledBox,
+  LabeledFaceDescriptors: () => LabeledFaceDescriptors,
+  NetInput: () => NetInput,
+  NeuralNetwork: () => NeuralNetwork,
+  ObjectDetection: () => ObjectDetection,
+  Point: () => Point,
+  PredictedBox: () => PredictedBox,
+  Rect: () => Rect,
+  SsdMobilenetv1: () => SsdMobilenetv1,
+  SsdMobilenetv1Options: () => SsdMobilenetv1Options,
+  TinyFaceDetector: () => TinyFaceDetector,
+  TinyFaceDetectorOptions: () => TinyFaceDetectorOptions,
+  TinyYolov2: () => TinyYolov2,
+  TinyYolov2Options: () => TinyYolov2Options,
+  TinyYolov2SizeType: () => TinyYolov2SizeType,
+  allFaces: () => allFaces,
+  allFacesSsdMobilenetv1: () => allFacesSsdMobilenetv1,
+  allFacesTinyYolov2: () => allFacesTinyYolov2,
+  awaitMediaLoaded: () => awaitMediaLoaded,
+  bufferToImage: () => bufferToImage,
+  computeFaceDescriptor: () => computeFaceDescriptor,
+  createCanvas: () => createCanvas,
+  createCanvasFromMedia: () => createCanvasFromMedia,
+  createFaceDetectionNet: () => createFaceDetectionNet,
+  createFaceRecognitionNet: () => createFaceRecognitionNet,
+  createSsdMobilenetv1: () => createSsdMobilenetv1,
+  createTinyFaceDetector: () => createTinyFaceDetector,
+  createTinyYolov2: () => createTinyYolov2,
+  detectAllFaces: () => detectAllFaces,
+  detectFaceLandmarks: () => detectFaceLandmarks,
+  detectFaceLandmarksTiny: () => detectFaceLandmarksTiny,
+  detectLandmarks: () => detectLandmarks,
+  detectSingleFace: () => detectSingleFace,
+  draw: () => draw_exports,
+  env: () => env,
+  euclideanDistance: () => euclideanDistance,
+  extendWithAge: () => extendWithAge,
+  extendWithFaceDescriptor: () => extendWithFaceDescriptor,
+  extendWithFaceDetection: () => extendWithFaceDetection,
+  extendWithFaceExpressions: () => extendWithFaceExpressions,
+  extendWithFaceLandmarks: () => extendWithFaceLandmarks,
+  extendWithGender: () => extendWithGender,
+  extractFaceTensors: () => extractFaceTensors,
+  extractFaces: () => extractFaces,
+  fetchImage: () => fetchImage,
+  fetchJson: () => fetchJson,
+  fetchNetWeights: () => fetchNetWeights,
+  fetchOrThrow: () => fetchOrThrow,
+  getContext2dOrThrow: () => getContext2dOrThrow,
+  getMediaDimensions: () => getMediaDimensions,
+  imageTensorToCanvas: () => imageTensorToCanvas,
+  imageToSquare: () => imageToSquare,
+  inverseSigmoid: () => inverseSigmoid,
+  iou: () => iou,
+  isMediaElement: () => isMediaElement,
+  isMediaLoaded: () => isMediaLoaded,
+  isWithAge: () => isWithAge,
+  isWithFaceDetection: () => isWithFaceDetection,
+  isWithFaceExpressions: () => isWithFaceExpressions,
+  isWithFaceLandmarks: () => isWithFaceLandmarks,
+  isWithGender: () => isWithGender,
+  loadAgeGenderModel: () => loadAgeGenderModel,
+  loadFaceDetectionModel: () => loadFaceDetectionModel,
+  loadFaceExpressionModel: () => loadFaceExpressionModel,
+  loadFaceLandmarkModel: () => loadFaceLandmarkModel,
+  loadFaceLandmarkTinyModel: () => loadFaceLandmarkTinyModel,
+  loadFaceRecognitionModel: () => loadFaceRecognitionModel,
+  loadSsdMobilenetv1Model: () => loadSsdMobilenetv1Model,
+  loadTinyFaceDetectorModel: () => loadTinyFaceDetectorModel,
+  loadTinyYolov2Model: () => loadTinyYolov2Model,
+  loadWeightMap: () => loadWeightMap,
+  locateFaces: () => locateFaces,
+  matchDimensions: () => matchDimensions,
+  minBbox: () => minBbox,
+  nets: () => nets,
+  nonMaxSuppression: () => nonMaxSuppression,
+  normalize: () => normalize,
+  padToSquare: () => padToSquare,
+  predictAgeAndGender: () => predictAgeAndGender,
+  recognizeFaceExpressions: () => recognizeFaceExpressions,
+  resizeResults: () => resizeResults,
+  resolveInput: () => resolveInput,
+  shuffleArray: () => shuffleArray,
+  sigmoid: () => sigmoid,
+  ssdMobilenetv1: () => ssdMobilenetv1,
+  tf: () => tf42,
+  tinyFaceDetector: () => tinyFaceDetector,
+  tinyYolov2: () => tinyYolov23,
+  toNetInput: () => toNetInput,
+  utils: () => utils_exports,
+  validateConfig: () => validateConfig,
+  version: () => version2
+});
+const tf42 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 const node = typeof process !== "undefined";
 const browser3 = typeof navigator !== "undefined" && typeof navigator.userAgent !== "undefined";
 const version2 = {faceapi: version, node, browser: browser3};
-export {
-  AgeGenderNet,
-  BoundingBox,
-  Box,
-  ComposableTask,
-  ComputeAllFaceDescriptorsTask,
-  ComputeFaceDescriptorsTaskBase,
-  ComputeSingleFaceDescriptorTask,
-  DetectAllFaceLandmarksTask,
-  DetectAllFacesTask,
-  DetectFaceLandmarksTaskBase,
-  DetectFacesTaskBase,
-  DetectSingleFaceLandmarksTask,
-  DetectSingleFaceTask,
-  Dimensions,
-  FACE_EXPRESSION_LABELS,
-  FaceDetection,
-  FaceDetectionNet,
-  FaceExpressionNet,
-  FaceExpressions,
-  FaceLandmark68Net,
-  FaceLandmark68TinyNet,
-  FaceLandmarkNet,
-  FaceLandmarks,
-  FaceLandmarks5,
-  FaceLandmarks68,
-  FaceMatch,
-  FaceMatcher,
-  FaceRecognitionNet,
-  Gender,
-  LabeledBox,
-  LabeledFaceDescriptors,
-  NetInput,
-  NeuralNetwork,
-  ObjectDetection,
-  Point,
-  PredictedBox,
-  Rect,
-  SsdMobilenetv1,
-  SsdMobilenetv1Options,
-  TinyFaceDetector,
-  TinyFaceDetectorOptions,
-  TinyYolov2,
-  TinyYolov2Options,
-  TinyYolov2SizeType,
-  allFaces,
-  allFacesSsdMobilenetv1,
-  allFacesTinyYolov2,
-  awaitMediaLoaded,
-  bufferToImage,
-  computeFaceDescriptor,
-  createCanvas,
-  createCanvasFromMedia,
-  createFaceDetectionNet,
-  createFaceRecognitionNet,
-  createSsdMobilenetv1,
-  createTinyFaceDetector,
-  createTinyYolov2,
-  detectAllFaces,
-  detectFaceLandmarks,
-  detectFaceLandmarksTiny,
-  detectLandmarks,
-  detectSingleFace,
-  draw_exports as draw,
-  env,
-  euclideanDistance,
-  extendWithAge,
-  extendWithFaceDescriptor,
-  extendWithFaceDetection,
-  extendWithFaceExpressions,
-  extendWithFaceLandmarks,
-  extendWithGender,
-  extractFaceTensors,
-  extractFaces,
-  fetchImage,
-  fetchJson,
-  fetchNetWeights,
-  fetchOrThrow,
-  getContext2dOrThrow,
-  getMediaDimensions,
-  imageTensorToCanvas,
-  imageToSquare,
-  inverseSigmoid,
-  iou,
-  isMediaElement,
-  isMediaLoaded,
-  isWithAge,
-  isWithFaceDetection,
-  isWithFaceExpressions,
-  isWithFaceLandmarks,
-  isWithGender,
-  loadAgeGenderModel,
-  loadFaceDetectionModel,
-  loadFaceExpressionModel,
-  loadFaceLandmarkModel,
-  loadFaceLandmarkTinyModel,
-  loadFaceRecognitionModel,
-  loadSsdMobilenetv1Model,
-  loadTinyFaceDetectorModel,
-  loadTinyYolov2Model,
-  loadWeightMap,
-  locateFaces,
-  matchDimensions,
-  minBbox,
-  nets,
-  nonMaxSuppression,
-  normalize,
-  padToSquare,
-  predictAgeAndGender,
-  recognizeFaceExpressions,
-  resizeResults,
-  resolveInput,
-  shuffleArray,
-  sigmoid,
-  ssdMobilenetv1,
-  tf42 as tf,
-  tinyFaceDetector,
-  tinyYolov23 as tinyYolov2,
-  toNetInput,
-  utils_exports as utils,
-  validateConfig,
-  version2 as version
-};
 //# sourceMappingURL=face-api.nobundle.js.map

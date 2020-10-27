@@ -4289,7 +4289,7 @@ function resizeResults(results, dimensions) {
 }
 
 // package.json
-var version = "0.8.3";
+var version = "0.8.4";
 
 // src/index.ts
 __export(exports, {
@@ -4419,4 +4419,4 @@ const tf42 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 const node = typeof process !== "undefined";
 const browser3 = typeof navigator !== "undefined" && typeof navigator.userAgent !== "undefined";
 const version2 = {faceapi: version, node, browser: browser3};
-//# sourceMappingURL=face-api.nobundle.js.map
+//# sourceMappingURL=face-api.node.nobundle.js.map

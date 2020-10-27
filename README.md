@@ -45,9 +45,9 @@ Which means valid models are **tinyFaceDetector** and **mobileNetv1**
 Face-API ships with several pre-build versions of the library:
 - `dist/face-api.js`: IIFE format for client-side Browser exeuction
 - `dist/face-api.esm.js`: ESM format for client-side Browser execution with TFJS pre-bundled
-- `dist/face-api.nobundle.js`: ESM format for client-side Browser execution without TFJS and not minified
+- `dist/face-api.esm.nobundle.js`: ESM format for client-side Browser execution without TFJS and not minified
 - `dist/face-api.node.js`: CommonJS format for server-side NodeJS execution with TFJS pre-bundled
-- `dist/face-api.nobundle.js`: CommonJS format for server-side NodeJS execution without TFJS and not minified
+- `dist/face-api.node.nobundle.js`: CommonJS format for server-side NodeJS execution without TFJS and not minified
 
 Defaults are:
 ```json
@@ -136,7 +136,7 @@ And then use with:
 ```
 or if you want to force CommonJS module instead of relying on `recommended` field:
 ```js
-  const faceapi = require('@vladmandic/face-api/dist/face-api.cjs');
+  const faceapi = require('@vladmandic/face-api/dist/face-api.node.js');
 ```
 or if you want to use a non-bundled version:
 Install with:
@@ -147,7 +147,7 @@ Install with:
 And then use with:
 ```js
   const tf = require('@tensorflow/tfjs');
-  const faceapi = require('@vladmandic/face-api/dist/face-api.nobundle.cjs');
+  const faceapi = require('@vladmandic/face-api/dist/face-api.node.nobundle.js');
 ```
 
 ### 4. Import Sources

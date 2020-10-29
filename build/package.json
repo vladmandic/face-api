@@ -1,6 +1,6 @@
 {
     "name": "@vladmandic/face-api",
-    "version": "0.8.4",
+    "version": "0.8.5",
     "description": "JavaScript module for Face Detection and Face Recognition Using Tensorflow/JS",
     "main": "dist/face-api.node.js",
     "module": "dist/face-api.esm.js",
@@ -41,16 +41,15 @@
     },
     "homepage": "https://github.com/vladmandic/face-api#readme",
     "Dependencies": {},
-    "peerDependencies": {
-        "@tensorflow/tfjs": "^2.6.0"
-    },
     "devDependencies": {
         "@types/node": "^14.11.8",
         "esbuild": "^0.6.34",
         "rimraf": "^3.0.2",
         "ts-node": "^9.0.0",
         "tslib": "^2.0.3",
-        "typescript": "^4.1.0-dev.20201013",
-        "@tensorflow/tfjs": "^2.6.0"
+        "typescript": "^4.1.0-dev.20201013"
+    },
+    "dependencies": {
+        "@tensorflow/tfjs": "^2.7.0"
     }
 }

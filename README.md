@@ -9,7 +9,7 @@ Forked from **face-api.js** version **0.22.2** released on March 22nd, 2020
 - <https://github.com/justadudewhohacks/face-api.js>  
 - <https://www.npmjs.com/package/face-api.js>  
 
-Currently based on **`TensorFlow/JS` 2.6.0**  
+Currently based on **`TensorFlow/JS` 2.7.0**  
 If you want to access `TFJS` classes and methods directly, they are exported as `faceapi.tf`
 
 ### Why?
@@ -43,7 +43,7 @@ Which means valid models are **tinyFaceDetector** and **mobileNetv1**
 ## Installation
 
 Face-API ships with several pre-build versions of the library:
-- `dist/face-api.js`: IIFE format for client-side Browser exeuction
+- `dist/face-api.js`: IIFE format for client-side Browser execution
 - `dist/face-api.esm.js`: ESM format for client-side Browser execution with TFJS pre-bundled
 - `dist/face-api.esm.nobundle.js`: ESM format for client-side Browser execution without TFJS and not minified
 - `dist/face-api.node.js`: CommonJS format for server-side NodeJS execution with TFJS pre-bundled
@@ -97,7 +97,7 @@ and then in your `index.js`
 ```
 or to use non-bundled version:
 ```js
-  import * as tf from `https://cdnjs.cloudflare.com/ajax/libs/tensorflow/2.6.0/tf.es2017.min.js`; // load tfjs directly from CDN link
+  import * as tf from `https://cdnjs.cloudflare.com/ajax/libs/tensorflow/2.7.0/tf.es2017.min.js`; // load tfjs directly from CDN link
   import * as faceapi from 'dist/face-api.nobundle.js';
 ```
 

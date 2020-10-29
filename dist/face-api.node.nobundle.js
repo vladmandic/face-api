@@ -4289,7 +4289,7 @@ function resizeResults(results, dimensions) {
 }
 
 // package.json
-var version = "0.8.4";
+var version = "0.8.5";
 
 // src/index.ts
 __export(exports, {

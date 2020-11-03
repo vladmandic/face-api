@@ -2,7 +2,6 @@ process.stderr.write = null; // silly hack to stock tfjs logging too much to std
 
 const fs = require('fs');
 const path = require('path');
-const fetch = require('node-fetch');
 const tf = require('@tensorflow/tfjs-node');
 const faceapi = require('../dist/face-api.node.js');
 // if you heve module installed, this would be 
@@ -44,7 +43,6 @@ async function main() {
   await faceapi.tf.enableProdMode();
   await faceapi.tf.ENV.set('DEBUG', false);
   await faceapi.tf.ready();
-  faceapi.env.monkeyPatch({ fetch: fetch });
 
   // check version
   log(`Version: TensorFlow/JS ${str(faceapi.tf?.version_core || '(not loaded)')} FaceAPI ${str(faceapi?.version || '(not loaded)')} Backend: ${str(faceapi.tf?.getBackend() || '(not loaded)')}`);

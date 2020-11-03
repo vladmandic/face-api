@@ -217,8 +217,15 @@ For original weighs refer to <https://github.com/justadudewhohacks/face-api.js-m
 
 ## Example
 
-Single new example that uses both models as well as all of the extensions is included in `/example/index.html`  
-Example can be accessed directly using Git pages using URL: <https://vladmandic.github.io/face-api/example/>
+### Browser
+
+Example that uses both models as well as all of the extensions is included in `/example/index.html`  
+Example can be accessed directly using Git pages using URL: <https://vladmandic.github.io/face-api/example/>  
+
+### NodeJS
+
+Example is included in `/example/node.js`  
+Note that it does not require any other other 3rd party libraries  
 
 *Note: Photos shown below are taken by me*
 

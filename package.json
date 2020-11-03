@@ -10,6 +10,7 @@
     "node": ">=12.0.0"
   },
   "scripts": {
+    "start": "node --trace-warnings example/node.js",
     "build-esm": "esbuild --bundle --format=esm --target=es2018 --platform=browser --minify --sourcemap --outfile=./dist/face-api.esm.js --log-level=error --tsconfig=./tsconfig.json --external:util --external:string_decoder --external:fs src/index.ts",
     "build-esm-nobundle": "esbuild --bundle --format=esm --target=es2018 --platform=browser --sourcemap --outfile=./dist/face-api.esm.nobundle.js --log-level=error --tsconfig=./tsconfig.json --external:@tensorflow --external:util --external:string_decoder --external:fs --global-name=faceapi src/index.ts",
     "build-iife": "esbuild --bundle --format=iife --target=es2018 --platform=browser --minify --sourcemap --outfile=./dist/face-api.js --log-level=error --tsconfig=./tsconfig.json --external:util --external:string_decoder --external:fs --global-name=faceapi src/index.ts",

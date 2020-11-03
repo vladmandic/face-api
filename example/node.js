@@ -31,10 +31,10 @@ async function image(img) {
   const buffer = fs.readFileSync(img);
   const decoded = tf.node.decodeImage(buffer);
   const casted = decoded.toFloat();
-  const image = casted.expandDims(0);
+  const result = casted.expandDims(0);
   decoded.dispose();
   casted.dispose();
-  return image;
+  return result;
 }
 
 async function main() {
@@ -53,13 +53,11 @@ async function main() {
   // load face-api models
   log('Loading FaceAPI models');
   const modelPath = path.join(__dirname, modelPathRoot);
-  await faceapi.nets.tinyFaceDetector.loadFromDisk(modelPath);
   await faceapi.nets.ssdMobilenetv1.loadFromDisk(modelPath);
   await faceapi.nets.ageGenderNet.loadFromDisk(modelPath);
   await faceapi.nets.faceLandmark68Net.loadFromDisk(modelPath);
   await faceapi.nets.faceRecognitionNet.loadFromDisk(modelPath);
   await faceapi.nets.faceExpressionNet.loadFromDisk(modelPath);
-  const optionsTinyFace = new faceapi.TinyFaceDetectorOptions({ inputSize: imgSize, scoreThreshold: minScore });
   const optionsSSDMobileNet = new faceapi.SsdMobilenetv1Options({ minConfidence: minScore, maxResults });
 
   // check tf engine state
@@ -78,7 +76,7 @@ async function main() {
       .withFaceExpressions()
       .withFaceDescriptors()
       .withAgeAndGender();
-    log('Image:', img, 'faces:', result.length);
+    log('Image:', img, 'Detected faces:', result.length);
     // you can access entire result object
     // console.log(result);
     tensor.dispose();

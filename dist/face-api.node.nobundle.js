@@ -1,5 +1,10 @@
-var __defineProperty = Object.defineProperty;
-var __hasOwnProperty = Object.prototype.hasOwnProperty;
+var __create = Object.create;
+var __defProp = Object.defineProperty;
+var __getProtoOf = Object.getPrototypeOf;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __markAsModule = (target) => __defProp(target, "__esModule", {value: true});
 var __commonJS = (callback, module2) => () => {
   if (!module2) {
     module2 = {exports: {}};
@@ -7,27 +12,24 @@ var __commonJS = (callback, module2) => () => {
   }
   return module2.exports;
 };
-var __markAsModule = (target) => {
-  return __defineProperty(target, "__esModule", {value: true});
-};
 var __export = (target, all) => {
   __markAsModule(target);
   for (var name in all)
-    __defineProperty(target, name, {get: all[name], enumerable: true});
+    __defProp(target, name, {get: all[name], enumerable: true});
 };
-var __exportStar = (target, module2) => {
+var __exportStar = (target, module2, desc) => {
   __markAsModule(target);
-  if (typeof module2 === "object" || typeof module2 === "function") {
-    for (let key in module2)
-      if (!__hasOwnProperty.call(target, key) && key !== "default")
-        __defineProperty(target, key, {get: () => module2[key], enumerable: true});
+  if (module2 && typeof module2 === "object" || typeof module2 === "function") {
+    for (let key of __getOwnPropNames(module2))
+      if (!__hasOwnProp.call(target, key) && key !== "default")
+        __defProp(target, key, {get: () => module2[key], enumerable: !(desc = __getOwnPropDesc(module2, key)) || desc.enumerable});
   }
   return target;
 };
 var __toModule = (module2) => {
   if (module2 && module2.__esModule)
     return module2;
-  return __exportStar(__defineProperty({}, "default", {value: module2, enumerable: true}), module2);
+  return __exportStar(__defProp(module2 != null ? __create(__getProtoOf(module2)) : {}, "default", {value: module2, enumerable: true}), module2);
 };
 
 // src/env/isNodejs.ts
@@ -38,6 +40,148 @@ var require_isNodejs = __commonJS((exports2, module2) => {
   function isNodejs3() {
     return typeof global === "object" && true && typeof module2 !== "undefined" && typeof process !== "undefined" && !!process.version;
   }
+});
+
+// src/index.ts
+__export(exports, {
+  AgeGenderNet: () => AgeGenderNet,
+  BoundingBox: () => BoundingBox,
+  Box: () => Box,
+  ComposableTask: () => ComposableTask,
+  ComputeAllFaceDescriptorsTask: () => ComputeAllFaceDescriptorsTask,
+  ComputeFaceDescriptorsTaskBase: () => ComputeFaceDescriptorsTaskBase,
+  ComputeSingleFaceDescriptorTask: () => ComputeSingleFaceDescriptorTask,
+  DetectAllFaceLandmarksTask: () => DetectAllFaceLandmarksTask,
+  DetectAllFacesTask: () => DetectAllFacesTask,
+  DetectFaceLandmarksTaskBase: () => DetectFaceLandmarksTaskBase,
+  DetectFacesTaskBase: () => DetectFacesTaskBase,
+  DetectSingleFaceLandmarksTask: () => DetectSingleFaceLandmarksTask,
+  DetectSingleFaceTask: () => DetectSingleFaceTask,
+  Dimensions: () => Dimensions,
+  FACE_EXPRESSION_LABELS: () => FACE_EXPRESSION_LABELS,
+  FaceDetection: () => FaceDetection,
+  FaceDetectionNet: () => FaceDetectionNet,
+  FaceExpressionNet: () => FaceExpressionNet,
+  FaceExpressions: () => FaceExpressions,
+  FaceLandmark68Net: () => FaceLandmark68Net,
+  FaceLandmark68TinyNet: () => FaceLandmark68TinyNet,
+  FaceLandmarkNet: () => FaceLandmarkNet,
+  FaceLandmarks: () => FaceLandmarks,
+  FaceLandmarks5: () => FaceLandmarks5,
+  FaceLandmarks68: () => FaceLandmarks68,
+  FaceMatch: () => FaceMatch,
+  FaceMatcher: () => FaceMatcher,
+  FaceRecognitionNet: () => FaceRecognitionNet,
+  Gender: () => Gender,
+  LabeledBox: () => LabeledBox,
+  LabeledFaceDescriptors: () => LabeledFaceDescriptors,
+  NetInput: () => NetInput,
+  NeuralNetwork: () => NeuralNetwork,
+  ObjectDetection: () => ObjectDetection,
+  Point: () => Point,
+  PredictedBox: () => PredictedBox,
+  Rect: () => Rect,
+  SsdMobilenetv1: () => SsdMobilenetv1,
+  SsdMobilenetv1Options: () => SsdMobilenetv1Options,
+  TinyFaceDetector: () => TinyFaceDetector,
+  TinyFaceDetectorOptions: () => TinyFaceDetectorOptions,
+  TinyYolov2: () => TinyYolov2,
+  TinyYolov2Options: () => TinyYolov2Options,
+  TinyYolov2SizeType: () => TinyYolov2SizeType,
+  allFaces: () => allFaces,
+  allFacesSsdMobilenetv1: () => allFacesSsdMobilenetv1,
+  allFacesTinyYolov2: () => allFacesTinyYolov2,
+  awaitMediaLoaded: () => awaitMediaLoaded,
+  bufferToImage: () => bufferToImage,
+  computeFaceDescriptor: () => computeFaceDescriptor,
+  createCanvas: () => createCanvas,
+  createCanvasFromMedia: () => createCanvasFromMedia,
+  createFaceDetectionNet: () => createFaceDetectionNet,
+  createFaceRecognitionNet: () => createFaceRecognitionNet,
+  createSsdMobilenetv1: () => createSsdMobilenetv1,
+  createTinyFaceDetector: () => createTinyFaceDetector,
+  createTinyYolov2: () => createTinyYolov2,
+  detectAllFaces: () => detectAllFaces,
+  detectFaceLandmarks: () => detectFaceLandmarks,
+  detectFaceLandmarksTiny: () => detectFaceLandmarksTiny,
+  detectLandmarks: () => detectLandmarks,
+  detectSingleFace: () => detectSingleFace,
+  draw: () => draw_exports,
+  env: () => env,
+  euclideanDistance: () => euclideanDistance,
+  extendWithAge: () => extendWithAge,
+  extendWithFaceDescriptor: () => extendWithFaceDescriptor,
+  extendWithFaceDetection: () => extendWithFaceDetection,
+  extendWithFaceExpressions: () => extendWithFaceExpressions,
+  extendWithFaceLandmarks: () => extendWithFaceLandmarks,
+  extendWithGender: () => extendWithGender,
+  extractFaceTensors: () => extractFaceTensors,
+  extractFaces: () => extractFaces,
+  fetchImage: () => fetchImage,
+  fetchJson: () => fetchJson,
+  fetchNetWeights: () => fetchNetWeights,
+  fetchOrThrow: () => fetchOrThrow,
+  getContext2dOrThrow: () => getContext2dOrThrow,
+  getMediaDimensions: () => getMediaDimensions,
+  imageTensorToCanvas: () => imageTensorToCanvas,
+  imageToSquare: () => imageToSquare,
+  inverseSigmoid: () => inverseSigmoid,
+  iou: () => iou,
+  isMediaElement: () => isMediaElement,
+  isMediaLoaded: () => isMediaLoaded,
+  isWithAge: () => isWithAge,
+  isWithFaceDetection: () => isWithFaceDetection,
+  isWithFaceExpressions: () => isWithFaceExpressions,
+  isWithFaceLandmarks: () => isWithFaceLandmarks,
+  isWithGender: () => isWithGender,
+  loadAgeGenderModel: () => loadAgeGenderModel,
+  loadFaceDetectionModel: () => loadFaceDetectionModel,
+  loadFaceExpressionModel: () => loadFaceExpressionModel,
+  loadFaceLandmarkModel: () => loadFaceLandmarkModel,
+  loadFaceLandmarkTinyModel: () => loadFaceLandmarkTinyModel,
+  loadFaceRecognitionModel: () => loadFaceRecognitionModel,
+  loadSsdMobilenetv1Model: () => loadSsdMobilenetv1Model,
+  loadTinyFaceDetectorModel: () => loadTinyFaceDetectorModel,
+  loadTinyYolov2Model: () => loadTinyYolov2Model,
+  loadWeightMap: () => loadWeightMap,
+  locateFaces: () => locateFaces,
+  matchDimensions: () => matchDimensions,
+  minBbox: () => minBbox,
+  nets: () => nets,
+  nonMaxSuppression: () => nonMaxSuppression,
+  normalize: () => normalize,
+  padToSquare: () => padToSquare,
+  predictAgeAndGender: () => predictAgeAndGender,
+  recognizeFaceExpressions: () => recognizeFaceExpressions,
+  resizeResults: () => resizeResults,
+  resolveInput: () => resolveInput,
+  shuffleArray: () => shuffleArray,
+  sigmoid: () => sigmoid,
+  ssdMobilenetv1: () => ssdMobilenetv1,
+  tf: () => tf42,
+  tinyFaceDetector: () => tinyFaceDetector,
+  tinyYolov2: () => tinyYolov23,
+  toNetInput: () => toNetInput,
+  utils: () => utils_exports,
+  validateConfig: () => validateConfig,
+  version: () => version2
+});
+var tf42 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
+
+// src/draw/index.ts
+var draw_exports = {};
+__export(draw_exports, {
+  AnchorPosition: () => AnchorPosition,
+  DrawBox: () => DrawBox,
+  DrawBoxOptions: () => DrawBoxOptions,
+  DrawFaceLandmarks: () => DrawFaceLandmarks,
+  DrawFaceLandmarksOptions: () => DrawFaceLandmarksOptions,
+  DrawTextField: () => DrawTextField,
+  DrawTextFieldOptions: () => DrawTextFieldOptions,
+  drawContour: () => drawContour,
+  drawDetections: () => drawDetections,
+  drawFaceExpressions: () => drawFaceExpressions,
+  drawFaceLandmarks: () => drawFaceLandmarks
 });
 
 // src/draw/drawContour.ts
@@ -60,28 +204,8 @@ function drawContour(ctx, points, isClosed = false) {
   ctx.stroke();
 }
 
-// src/classes/Dimensions.ts
-class Dimensions {
-  constructor(width, height) {
-    if (!isValidNumber(width) || !isValidNumber(height)) {
-      throw new Error(`Dimensions.constructor - expected width and height to be valid numbers, instead have ${JSON.stringify({width, height})}`);
-    }
-    this._width = width;
-    this._height = height;
-  }
-  get width() {
-    return this._width;
-  }
-  get height() {
-    return this._height;
-  }
-  reverse() {
-    return new Dimensions(1 / this.width, 1 / this.height);
-  }
-}
-
 // src/utils/index.ts
-const utils_exports = {};
+var utils_exports = {};
 __export(utils_exports, {
   computeReshapedDimensions: () => computeReshapedDimensions,
   getCenterPoint: () => getCenterPoint,
@@ -98,7 +222,29 @@ __export(utils_exports, {
   range: () => range,
   round: () => round
 });
-const tf = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
+var tf = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
+
+// src/classes/Dimensions.ts
+var Dimensions = class {
+  constructor(width, height) {
+    if (!isValidNumber(width) || !isValidNumber(height)) {
+      throw new Error(`Dimensions.constructor - expected width and height to be valid numbers, instead have ${JSON.stringify({width, height})}`);
+    }
+    this._width = width;
+    this._height = height;
+  }
+  get width() {
+    return this._width;
+  }
+  get height() {
+    return this._height;
+  }
+  reverse() {
+    return new Dimensions(1 / this.width, 1 / this.height);
+  }
+};
+
+// src/utils/index.ts
 function isTensor(tensor2, dim) {
   return tensor2 instanceof tf.Tensor && tensor2.shape.length === dim;
 }
@@ -145,7 +291,7 @@ function isValidProbablitiy(num) {
 }
 
 // src/classes/Point.ts
-class Point {
+var Point = class {
   constructor(x, y) {
     this._x = x;
     this._y = y;
@@ -177,10 +323,10 @@ class Point {
   floor() {
     return new Point(Math.floor(this.x), Math.floor(this.y));
   }
-}
+};
 
 // src/classes/Box.ts
-class Box {
+var Box = class {
   static isRect(rect) {
     return !!rect && [rect.x, rect.y, rect.width, rect.height].every(isValidNumber);
   }
@@ -338,17 +484,17 @@ class Box {
       bottom: this.bottom + region.bottom * this.height
     }).toSquare().round();
   }
-}
+};
 
 // src/classes/BoundingBox.ts
-class BoundingBox extends Box {
+var BoundingBox = class extends Box {
   constructor(left, top, right, bottom, allowNegativeDimensions = false) {
     super({left, top, right, bottom}, allowNegativeDimensions);
   }
-}
+};
 
 // src/classes/ObjectDetection.ts
-class ObjectDetection {
+var ObjectDetection = class {
   constructor(score, classScore, className, relativeBox, imageDims) {
     this._imageDims = new Dimensions(imageDims.width, imageDims.height);
     this._score = score;
@@ -383,10 +529,10 @@ class ObjectDetection {
   forSize(width, height) {
     return new ObjectDetection(this.score, this.classScore, this.className, this.relativeBox, {width, height});
   }
-}
+};
 
 // src/classes/FaceDetection.ts
-class FaceDetection extends ObjectDetection {
+var FaceDetection = class extends ObjectDetection {
   constructor(score, relativeBox, imageDims) {
     super(score, score, "", relativeBox, imageDims);
   }
@@ -394,7 +540,7 @@ class FaceDetection extends ObjectDetection {
     const {score, relativeBox, imageDims} = super.forSize(width, height);
     return new FaceDetection(score, relativeBox, imageDims);
   }
-}
+};
 
 // src/ops/iou.ts
 function iou(box1, box2, isIOU = true) {
@@ -436,7 +582,7 @@ function nonMaxSuppression(boxes, scores, iouThreshold, isIOU = true) {
 }
 
 // src/ops/normalize.ts
-const tf2 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
+var tf2 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 function normalize(x, meanRgb) {
   return tf2.tidy(() => {
     const [r, g, b] = meanRgb;
@@ -449,7 +595,7 @@ function normalize(x, meanRgb) {
 }
 
 // src/ops/padToSquare.ts
-const tf3 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
+var tf3 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 function padToSquare(imgTensor, isCenterImage = false) {
   return tf3.tidy(() => {
     const [height, width] = imgTensor.shape.slice(1);
@@ -497,17 +643,17 @@ function inverseSigmoid(x) {
 }
 
 // src/classes/Rect.ts
-class Rect extends Box {
+var Rect = class extends Box {
   constructor(x, y, width, height, allowNegativeDimensions = false) {
     super({x, y, width, height}, allowNegativeDimensions);
   }
-}
+};
 
 // src/classes/FaceLandmarks.ts
-const relX = 0.5;
-const relY = 0.43;
-const relScale = 0.45;
-class FaceLandmarks {
+var relX = 0.5;
+var relY = 0.43;
+var relScale = 0.45;
+var FaceLandmarks = class {
   constructor(relativeFaceLandmarkPositions, imgDims, shift = new Point(0, 0)) {
     const {width, height} = imgDims;
     this._imgDims = new Dimensions(width, height);
@@ -567,10 +713,10 @@ class FaceLandmarks {
   getRefPointsForAlignment() {
     throw new Error("getRefPointsForAlignment not implemented by base class");
   }
-}
+};
 
 // src/classes/FaceLandmarks5.ts
-class FaceLandmarks5 extends FaceLandmarks {
+var FaceLandmarks5 = class extends FaceLandmarks {
   getRefPointsForAlignment() {
     const pts = this.positions;
     return [
@@ -579,10 +725,10 @@ class FaceLandmarks5 extends FaceLandmarks {
       getCenterPoint([pts[3], pts[4]])
     ];
   }
-}
+};
 
 // src/classes/FaceLandmarks68.ts
-class FaceLandmarks68 extends FaceLandmarks {
+var FaceLandmarks68 = class extends FaceLandmarks {
   getJawOutline() {
     return this.positions.slice(0, 17);
   }
@@ -611,10 +757,10 @@ class FaceLandmarks68 extends FaceLandmarks {
       this.getMouth()
     ].map(getCenterPoint);
   }
-}
+};
 
 // src/classes/FaceMatch.ts
-class FaceMatch {
+var FaceMatch = class {
   constructor(label, distance) {
     this._label = label;
     this._distance = distance;
@@ -628,10 +774,10 @@ class FaceMatch {
   toString(withDistance = true) {
     return `${this.label}${withDistance ? ` (${round(this.distance)})` : ""}`;
   }
-}
+};
 
 // src/classes/LabeledBox.ts
-class LabeledBox extends Box {
+var LabeledBox = class extends Box {
   static assertIsValidLabeledBox(box, callee) {
     Box.assertIsValidBox(box, callee);
     if (!isValidNumber(box.label)) {
@@ -645,10 +791,10 @@ class LabeledBox extends Box {
   get label() {
     return this._label;
   }
-}
+};
 
 // src/classes/LabeledFaceDescriptors.ts
-class LabeledFaceDescriptors {
+var LabeledFaceDescriptors = class {
   constructor(label, descriptors) {
     if (!(typeof label === "string")) {
       throw new Error("LabeledFaceDescriptors - constructor expected label to be a string");
@@ -677,10 +823,10 @@ class LabeledFaceDescriptors {
     });
     return new LabeledFaceDescriptors(json.label, descriptors);
   }
-}
+};
 
 // src/classes/PredictedBox.ts
-class PredictedBox extends LabeledBox {
+var PredictedBox = class extends LabeledBox {
   static assertIsValidPredictedBox(box, callee) {
     LabeledBox.assertIsValidLabeledBox(box, callee);
     if (!isValidProbablitiy(box.score) || !isValidProbablitiy(box.classScore)) {
@@ -698,9 +844,7 @@ class PredictedBox extends LabeledBox {
   get classScore() {
     return this._classScore;
   }
-}
-
-// src/classes/index.ts
+};
 
 // src/factories/WithFaceDetection.ts
 function isWithFaceDetection(obj) {
@@ -799,11 +943,9 @@ function isBrowser() {
   return typeof window === "object" && typeof document !== "undefined" && typeof HTMLImageElement !== "undefined" && typeof HTMLCanvasElement !== "undefined" && typeof HTMLVideoElement !== "undefined" && typeof ImageData !== "undefined" && typeof CanvasRenderingContext2D !== "undefined";
 }
 
-// src/env/types.ts
-
 // src/env/index.ts
-const isNodejs = __toModule(require_isNodejs());
-let environment;
+var isNodejs = __toModule(require_isNodejs());
+var environment;
 function getEnv() {
   if (!environment) {
     throw new Error("getEnv - environment is not defined, check isNodejs() and isBrowser()");
@@ -838,7 +980,7 @@ function monkeyPatch(env16) {
   environment.fetch = env16.fetch || environment.fetch;
   environment.readFile = env16.readFile || environment.readFile;
 }
-const env = {
+var env = {
   getEnv,
   setEnv,
   initialize,
@@ -884,7 +1026,7 @@ var AnchorPosition;
   AnchorPosition2["BOTTOM_LEFT"] = "BOTTOM_LEFT";
   AnchorPosition2["BOTTOM_RIGHT"] = "BOTTOM_RIGHT";
 })(AnchorPosition || (AnchorPosition = {}));
-class DrawTextFieldOptions {
+var DrawTextFieldOptions = class {
   constructor(options = {}) {
     const {anchorPosition, backgroundColor, fontColor, fontSize, fontStyle, padding} = options;
     this.anchorPosition = anchorPosition || AnchorPosition.TOP_LEFT;
@@ -894,8 +1036,8 @@ class DrawTextFieldOptions {
     this.fontStyle = fontStyle || "Georgia";
     this.padding = padding || 4;
   }
-}
-class DrawTextField {
+};
+var DrawTextField = class {
   constructor(text, anchor, options = {}) {
     this.text = typeof text === "string" ? [text] : text instanceof DrawTextField ? text.text : text;
     this.anchor = anchor;
@@ -942,10 +1084,10 @@ class DrawTextField {
       ctx.fillText(textLine, x, y);
     });
   }
-}
+};
 
 // src/draw/DrawBox.ts
-class DrawBoxOptions {
+var DrawBoxOptions = class {
   constructor(options = {}) {
     const {boxColor, lineWidth, label, drawLabelOptions} = options;
     this.boxColor = boxColor || "rgba(0, 0, 255, 1)";
@@ -957,8 +1099,8 @@ class DrawBoxOptions {
     };
     this.drawLabelOptions = new DrawTextFieldOptions(Object.assign({}, defaultDrawLabelOptions, drawLabelOptions));
   }
-}
-class DrawBox {
+};
+var DrawBox = class {
   constructor(box, options = {}) {
     this.box = new Box(box);
     this.options = new DrawBoxOptions(options);
@@ -975,7 +1117,7 @@ class DrawBox {
       new DrawTextField([label], {x: x - lineWidth / 2, y}, this.options.drawLabelOptions).draw(canvasArg);
     }
   }
-}
+};
 
 // src/draw/drawDetections.ts
 function drawDetections(canvasArg, detections) {
@@ -987,6 +1129,9 @@ function drawDetections(canvasArg, detections) {
     new DrawBox(box, {label}).draw(canvasArg);
   });
 }
+
+// src/faceExpressionNet/FaceExpressionNet.ts
+var tf18 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 
 // src/dom/isMediaLoaded.ts
 function isMediaLoaded(media) {
@@ -1076,7 +1221,7 @@ function createCanvasFromMedia(media, dims) {
 }
 
 // src/dom/imageTensorToCanvas.ts
-const tf4 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
+var tf4 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 async function imageTensorToCanvas(imgTensor, canvas) {
   const targetCanvas = canvas || env.getEnv().createCanvasElement();
   const [height, width, numChannels] = imgTensor.shape.slice(isTensor4D(imgTensor) ? 1 : 0);
@@ -1091,6 +1236,9 @@ function isMediaElement(input) {
   const {Image, Canvas, Video} = env.getEnv();
   return input instanceof Image || input instanceof Canvas || input instanceof Video;
 }
+
+// src/dom/NetInput.ts
+var tf5 = __toModule(require("@tensorflow/tfjs-core"));
 
 // src/dom/imageToSquare.ts
 function imageToSquare(input, inputSize, centerImage = false) {
@@ -1112,8 +1260,7 @@ function imageToSquare(input, inputSize, centerImage = false) {
 }
 
 // src/dom/NetInput.ts
-const tf5 = __toModule(require("@tensorflow/tfjs-core"));
-class NetInput {
+var NetInput = class {
   constructor(inputs, treatAsBatchInput = false) {
     this._imageTensors = [];
     this._canvases = [];
@@ -1207,7 +1354,7 @@ class NetInput {
       return batchTensor;
     });
   }
-}
+};
 
 // src/dom/toNetInput.ts
 async function toNetInput(inputs) {
@@ -1260,7 +1407,7 @@ async function extractFaces(input, detections) {
 }
 
 // src/dom/extractFaceTensors.ts
-const tf6 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
+var tf6 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 async function extractFaceTensors(imageTensor, detections) {
   if (!isTensor3D(imageTensor) && !isTensor4D(imageTensor)) {
     throw new Error("extractFaceTensors - expected image tensor to be 3D or 4D");
@@ -1306,6 +1453,9 @@ async function fetchNetWeights(uri) {
   return new Float32Array(await (await fetchOrThrow(uri)).arrayBuffer());
 }
 
+// src/dom/loadWeightMap.ts
+var tf7 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
+
 // src/common/getModelUris.ts
 function getModelUris(uri, defaultModelName) {
   const defaultManifestFilename = `${defaultModelName}-weights_manifest.json`;
@@ -1334,7 +1484,6 @@ function getModelUris(uri, defaultModelName) {
 }
 
 // src/dom/loadWeightMap.ts
-const tf7 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 async function loadWeightMap(uri, defaultModelName) {
   const {manifestUri, modelBaseUri} = getModelUris(uri, defaultModelName);
   let manifest = await fetchJson(manifestUri);
@@ -1349,13 +1498,12 @@ function matchDimensions(input, reference, useMediaDimensions = false) {
   return {width, height};
 }
 
-// src/dom/types.ts
-
-// src/dom/index.ts
+// src/faceFeatureExtractor/FaceFeatureExtractor.ts
+var tf15 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 
 // src/NeuralNetwork.ts
-const tf8 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
-class NeuralNetwork {
+var tf8 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
+var NeuralNetwork = class {
   constructor(_name) {
     this._name = _name;
     this._params = void 0;
@@ -1473,10 +1621,13 @@ class NeuralNetwork {
     }
     return {obj, objProp};
   }
-}
+};
+
+// src/faceFeatureExtractor/denseBlock.ts
+var tf10 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 
 // src/common/depthwiseSeparableConv.ts
-const tf9 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
+var tf9 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 function depthwiseSeparableConv(x, params, stride) {
   return tf9.tidy(() => {
     let out = tf9.separableConv2d(x, params.depthwise_filter, params.pointwise_filter, stride, "same");
@@ -1486,7 +1637,6 @@ function depthwiseSeparableConv(x, params, stride) {
 }
 
 // src/faceFeatureExtractor/denseBlock.ts
-const tf10 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 function denseBlock3(x, denseBlockParams, isFirstLayer = false) {
   return tf10.tidy(() => {
     const out1 = tf10.relu(isFirstLayer ? tf10.add(tf10.conv2d(x, denseBlockParams.conv0.filters, [2, 2], "same"), denseBlockParams.conv0.bias) : depthwiseSeparableConv(x, denseBlockParams.conv0, [2, 2]));
@@ -1509,7 +1659,7 @@ function denseBlock4(x, denseBlockParams, isFirstLayer = false, isScaleDown = tr
 }
 
 // src/common/convLayer.ts
-const tf11 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
+var tf11 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 function convLayer(x, params, padding = "same", withRelu = false) {
   return tf11.tidy(() => {
     const out = tf11.add(tf11.conv2d(x, params.filters, [1, 1], padding), params.bias);
@@ -1527,7 +1677,7 @@ function disposeUnusedWeightTensors(weightMap, paramMappings) {
 }
 
 // src/common/extractConvParamsFactory.ts
-const tf12 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
+var tf12 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 function extractConvParamsFactory(extractWeights, paramMappings) {
   return function(channelsIn, channelsOut, filterSize, mappedPrefix) {
     const filters = tf12.tensor4d(extractWeights(channelsIn * channelsOut * filterSize * filterSize), [filterSize, filterSize, channelsIn, channelsOut]);
@@ -1538,7 +1688,7 @@ function extractConvParamsFactory(extractWeights, paramMappings) {
 }
 
 // src/common/extractFCParamsFactory.ts
-const tf13 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
+var tf13 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 function extractFCParamsFactory(extractWeights, paramMappings) {
   return function(channelsIn, channelsOut, mappedPrefix) {
     const fc_weights = tf13.tensor2d(extractWeights(channelsIn * channelsOut), [channelsIn, channelsOut]);
@@ -1551,17 +1701,19 @@ function extractFCParamsFactory(extractWeights, paramMappings) {
   };
 }
 
+// src/common/extractSeparableConvParamsFactory.ts
+var tf14 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
+
 // src/common/types.ts
-class SeparableConvParams {
+var SeparableConvParams = class {
   constructor(depthwise_filter, pointwise_filter, bias) {
     this.depthwise_filter = depthwise_filter;
     this.pointwise_filter = pointwise_filter;
     this.bias = bias;
   }
-}
+};
 
 // src/common/extractSeparableConvParamsFactory.ts
-const tf14 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 function extractSeparableConvParamsFactory(extractWeights, paramMappings) {
   return function(channelsIn, channelsOut, mappedPrefix) {
     const depthwise_filter = tf14.tensor4d(extractWeights(3 * 3 * channelsIn), [3, 3, channelsIn, 1]);
@@ -1608,8 +1760,6 @@ function extractWeightsFactory(weights) {
     getRemainingWeights
   };
 }
-
-// src/common/index.ts
 
 // src/faceFeatureExtractor/extractorsFactory.ts
 function extractorsFactory(extractWeights, paramMappings) {
@@ -1705,8 +1855,7 @@ function extractParamsFromWeigthMap(weightMap) {
 }
 
 // src/faceFeatureExtractor/FaceFeatureExtractor.ts
-const tf15 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
-class FaceFeatureExtractor extends NeuralNetwork {
+var FaceFeatureExtractor = class extends NeuralNetwork {
   constructor() {
     super("FaceFeatureExtractor");
   }
@@ -1739,10 +1888,13 @@ class FaceFeatureExtractor extends NeuralNetwork {
   extractParams(weights) {
     return extractParams(weights);
   }
-}
+};
+
+// src/faceProcessor/FaceProcessor.ts
+var tf17 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 
 // src/common/fullyConnectedLayer.ts
-const tf16 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
+var tf16 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 function fullyConnectedLayer(x, params) {
   return tf16.tidy(() => tf16.add(tf16.matMul(x, params.weights), params.bias));
 }
@@ -1793,8 +1945,7 @@ function seperateWeightMaps(weightMap) {
 }
 
 // src/faceProcessor/FaceProcessor.ts
-const tf17 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
-class FaceProcessor extends NeuralNetwork {
+var FaceProcessor = class extends NeuralNetwork {
   constructor(_name, faceFeatureExtractor) {
     super(_name);
     this._faceFeatureExtractor = faceFeatureExtractor;
@@ -1838,11 +1989,11 @@ class FaceProcessor extends NeuralNetwork {
     this.faceFeatureExtractor.extractWeights(featureExtractorWeights);
     return this.extractClassifierParams(classifierWeights);
   }
-}
+};
 
 // src/faceExpressionNet/FaceExpressions.ts
-const FACE_EXPRESSION_LABELS = ["neutral", "happy", "sad", "angry", "fearful", "disgusted", "surprised"];
-class FaceExpressions {
+var FACE_EXPRESSION_LABELS = ["neutral", "happy", "sad", "angry", "fearful", "disgusted", "surprised"];
+var FaceExpressions = class {
   constructor(probabilities) {
     if (probabilities.length !== 7) {
       throw new Error(`FaceExpressions.constructor - expected probabilities.length to be 7, have: ${probabilities.length}`);
@@ -1854,11 +2005,10 @@ class FaceExpressions {
   asSortedArray() {
     return FACE_EXPRESSION_LABELS.map((expression) => ({expression, probability: this[expression]})).sort((e0, e1) => e1.probability - e0.probability);
   }
-}
+};
 
 // src/faceExpressionNet/FaceExpressionNet.ts
-const tf18 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
-class FaceExpressionNet extends FaceProcessor {
+var FaceExpressionNet = class extends FaceProcessor {
   constructor(faceFeatureExtractor = new FaceFeatureExtractor()) {
     super("FaceExpressionNet", faceFeatureExtractor);
   }
@@ -1889,9 +2039,7 @@ class FaceExpressionNet extends FaceProcessor {
   getClassifierChannelsOut() {
     return 7;
   }
-}
-
-// src/faceExpressionNet/index.ts
+};
 
 // src/factories/WithFaceExpressions.ts
 function isWithFaceExpressions(obj) {
@@ -1937,7 +2085,7 @@ function extendWithFaceLandmarks(sourceObj, unshiftedLandmarks) {
 }
 
 // src/draw/DrawFaceLandmarks.ts
-class DrawFaceLandmarksOptions {
+var DrawFaceLandmarksOptions = class {
   constructor(options = {}) {
     const {drawLines = true, drawPoints = true, lineWidth, lineColor, pointSize, pointColor} = options;
     this.drawLines = drawLines;
@@ -1947,8 +2095,8 @@ class DrawFaceLandmarksOptions {
     this.lineColor = lineColor || "rgba(0, 255, 255, 1)";
     this.pointColor = pointColor || "rgba(255, 0, 255, 1)";
   }
-}
-class DrawFaceLandmarks {
+};
+var DrawFaceLandmarks = class {
   constructor(faceLandmarks, options = {}) {
     this.faceLandmarks = faceLandmarks;
     this.options = new DrawFaceLandmarksOptions(options);
@@ -1978,7 +2126,7 @@ class DrawFaceLandmarks {
       this.faceLandmarks.positions.forEach(drawPoint);
     }
   }
-}
+};
 function drawFaceLandmarks(canvasArg, faceLandmarks) {
   const faceLandmarksArray = Array.isArray(faceLandmarks) ? faceLandmarks : [faceLandmarks];
   faceLandmarksArray.forEach((f) => {
@@ -1990,21 +2138,11 @@ function drawFaceLandmarks(canvasArg, faceLandmarks) {
   });
 }
 
-// src/draw/index.ts
-const draw_exports = {};
-__export(draw_exports, {
-  AnchorPosition: () => AnchorPosition,
-  DrawBox: () => DrawBox,
-  DrawBoxOptions: () => DrawBoxOptions,
-  DrawFaceLandmarks: () => DrawFaceLandmarks,
-  DrawFaceLandmarksOptions: () => DrawFaceLandmarksOptions,
-  DrawTextField: () => DrawTextField,
-  DrawTextFieldOptions: () => DrawTextFieldOptions,
-  drawContour: () => drawContour,
-  drawDetections: () => drawDetections,
-  drawFaceExpressions: () => drawFaceExpressions,
-  drawFaceLandmarks: () => drawFaceLandmarks
-});
+// src/ageGenderNet/AgeGenderNet.ts
+var tf20 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
+
+// src/xception/TinyXception.ts
+var tf19 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 
 // src/xception/extractParams.ts
 function extractorsFactory3(extractWeights, paramMappings) {
@@ -2123,7 +2261,6 @@ function extractParamsFromWeigthMap5(weightMap, numMainBlocks) {
 }
 
 // src/xception/TinyXception.ts
-const tf19 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 function conv(x, params, stride) {
   return tf19.add(tf19.conv2d(x, params.filters, stride, "same"), params.bias);
 }
@@ -2142,7 +2279,7 @@ function mainBlock(x, params) {
   out = tf19.add(out, x);
   return out;
 }
-class TinyXception extends NeuralNetwork {
+var TinyXception = class extends NeuralNetwork {
   constructor(numMainBlocks) {
     super("TinyXception");
     this._numMainBlocks = numMainBlocks;
@@ -2179,7 +2316,7 @@ class TinyXception extends NeuralNetwork {
   extractParams(weights) {
     return extractParams5(weights, this._numMainBlocks);
   }
-}
+};
 
 // src/ageGenderNet/extractParams.ts
 function extractParams7(weights) {
@@ -2227,8 +2364,7 @@ var Gender;
 })(Gender || (Gender = {}));
 
 // src/ageGenderNet/AgeGenderNet.ts
-const tf20 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
-class AgeGenderNet extends NeuralNetwork {
+var AgeGenderNet = class extends NeuralNetwork {
   constructor(faceFeatureExtractor = new TinyXception(2)) {
     super("AgeGenderNet");
     this._faceFeatureExtractor = faceFeatureExtractor;
@@ -2308,13 +2444,11 @@ class AgeGenderNet extends NeuralNetwork {
     this.faceFeatureExtractor.extractWeights(featureExtractorWeights);
     return this.extractClassifierParams(classifierWeights);
   }
-}
-
-// src/ageGenderNet/index.ts
+};
 
 // src/faceLandmarkNet/FaceLandmark68NetBase.ts
-const tf21 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
-class FaceLandmark68NetBase extends FaceProcessor {
+var tf21 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
+var FaceLandmark68NetBase = class extends FaceProcessor {
   postProcess(output, inputSize, originalDimensions) {
     const inputDimensions = originalDimensions.map(({width, height}) => {
       const scale2 = inputSize / Math.max(height, width);
@@ -2363,10 +2497,10 @@ class FaceLandmark68NetBase extends FaceProcessor {
   getClassifierChannelsOut() {
     return 136;
   }
-}
+};
 
 // src/faceLandmarkNet/FaceLandmark68Net.ts
-class FaceLandmark68Net extends FaceLandmark68NetBase {
+var FaceLandmark68Net = class extends FaceLandmark68NetBase {
   constructor(faceFeatureExtractor = new FaceFeatureExtractor()) {
     super("FaceLandmark68Net", faceFeatureExtractor);
   }
@@ -2376,7 +2510,10 @@ class FaceLandmark68Net extends FaceLandmark68NetBase {
   getClassifierChannelsIn() {
     return 256;
   }
-}
+};
+
+// src/faceFeatureExtractor/TinyFaceFeatureExtractor.ts
+var tf22 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 
 // src/faceFeatureExtractor/extractParamsFromWeigthMapTiny.ts
 function extractParamsFromWeigthMapTiny(weightMap) {
@@ -2416,8 +2553,7 @@ function extractParamsTiny(weights) {
 }
 
 // src/faceFeatureExtractor/TinyFaceFeatureExtractor.ts
-const tf22 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
-class TinyFaceFeatureExtractor extends NeuralNetwork {
+var TinyFaceFeatureExtractor = class extends NeuralNetwork {
   constructor() {
     super("TinyFaceFeatureExtractor");
   }
@@ -2449,10 +2585,10 @@ class TinyFaceFeatureExtractor extends NeuralNetwork {
   extractParams(weights) {
     return extractParamsTiny(weights);
   }
-}
+};
 
 // src/faceLandmarkNet/FaceLandmark68TinyNet.ts
-class FaceLandmark68TinyNet extends FaceLandmark68NetBase {
+var FaceLandmark68TinyNet = class extends FaceLandmark68NetBase {
   constructor(faceFeatureExtractor = new TinyFaceFeatureExtractor()) {
     super("FaceLandmark68TinyNet", faceFeatureExtractor);
   }
@@ -2462,20 +2598,25 @@ class FaceLandmark68TinyNet extends FaceLandmark68NetBase {
   getClassifierChannelsIn() {
     return 128;
   }
-}
+};
 
 // src/faceLandmarkNet/index.ts
-class FaceLandmarkNet extends FaceLandmark68Net {
-}
+var FaceLandmarkNet = class extends FaceLandmark68Net {
+};
+
+// src/faceRecognitionNet/FaceRecognitionNet.ts
+var tf27 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
+
+// src/faceRecognitionNet/convLayer.ts
+var tf24 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 
 // src/faceRecognitionNet/scaleLayer.ts
-const tf23 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
+var tf23 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 function scale(x, params) {
   return tf23.add(tf23.mul(x, params.weights), params.biases);
 }
 
 // src/faceRecognitionNet/convLayer.ts
-const tf24 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 function convLayer2(x, params, strides, withRelu, padding = "same") {
   const {filters, bias} = params.conv;
   let out = tf24.conv2d(x, filters, strides, padding);
@@ -2494,7 +2635,7 @@ function convDown(x, params) {
 }
 
 // src/faceRecognitionNet/extractParams.ts
-const tf25 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
+var tf25 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 function extractorsFactory5(extractWeights, paramMappings) {
   function extractFilterValues(numFilterValues, numFilters, filterSize) {
     const weights = extractWeights(numFilterValues);
@@ -2659,7 +2800,7 @@ function extractParamsFromWeigthMap9(weightMap) {
 }
 
 // src/faceRecognitionNet/residualLayer.ts
-const tf26 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
+var tf26 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 function residual(x, params) {
   let out = conv2(x, params.conv1);
   out = convNoRelu(out, params.conv2);
@@ -2691,8 +2832,7 @@ function residualDown(x, params) {
 }
 
 // src/faceRecognitionNet/FaceRecognitionNet.ts
-const tf27 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
-class FaceRecognitionNet extends NeuralNetwork {
+var FaceRecognitionNet = class extends NeuralNetwork {
   constructor() {
     super("FaceRecognitionNet");
   }
@@ -2745,7 +2885,7 @@ class FaceRecognitionNet extends NeuralNetwork {
   extractParams(weights) {
     return extractParams9(weights);
   }
-}
+};
 
 // src/faceRecognitionNet/index.ts
 function createFaceRecognitionNet(weights) {
@@ -2778,10 +2918,11 @@ function extendWithGender(sourceObj, gender, genderProbability) {
   return Object.assign({}, sourceObj, extension);
 }
 
-// src/factories/index.ts
+// src/ssdMobilenetv1/SsdMobilenetv1.ts
+var tf34 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 
 // src/ssdMobilenetv1/extractParams.ts
-const tf28 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
+var tf28 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 function extractorsFactory7(extractWeights, paramMappings) {
   function extractDepthwiseConvParams(numChannels, mappedPrefix) {
     const filters = tf28.tensor4d(extractWeights(3 * 3 * numChannels), [3, 3, numChannels, 1]);
@@ -3050,8 +3191,11 @@ function extractParamsFromWeigthMap11(weightMap) {
   return {params, paramMappings};
 }
 
+// src/ssdMobilenetv1/mobileNetV1.ts
+var tf30 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
+
 // src/ssdMobilenetv1/pointwiseConvLayer.ts
-const tf29 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
+var tf29 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 function pointwiseConvLayer(x, params, strides) {
   return tf29.tidy(() => {
     let out = tf29.conv2d(x, params.filters, strides, "same");
@@ -3061,8 +3205,7 @@ function pointwiseConvLayer(x, params, strides) {
 }
 
 // src/ssdMobilenetv1/mobileNetV1.ts
-const tf30 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
-const epsilon = 0.0010000000474974513;
+var epsilon = 0.0010000000474974513;
 function depthwiseConvLayer(x, params, strides) {
   return tf30.tidy(() => {
     let out = tf30.depthwiseConv2d(x, params.filters, strides, "same");
@@ -3163,7 +3306,7 @@ function IOU(boxes, i, j) {
 }
 
 // src/ssdMobilenetv1/outputLayer.ts
-const tf31 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
+var tf31 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 function getCenterCoordinatesAndSizesLayer(x) {
   const vec = tf31.unstack(tf31.transpose(x, [1, 0]));
   const sizes = [
@@ -3213,8 +3356,11 @@ function outputLayer(boxPredictions, classPredictions, params) {
   });
 }
 
+// src/ssdMobilenetv1/predictionLayer.ts
+var tf33 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
+
 // src/ssdMobilenetv1/boxPredictionLayer.ts
-const tf32 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
+var tf32 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 function boxPredictionLayer(x, params) {
   return tf32.tidy(() => {
     const batchSize = x.shape[0];
@@ -3228,7 +3374,6 @@ function boxPredictionLayer(x, params) {
 }
 
 // src/ssdMobilenetv1/predictionLayer.ts
-const tf33 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 function predictionLayer(x, conv11, params) {
   return tf33.tidy(() => {
     const conv0 = pointwiseConvLayer(x, params.conv_0, [1, 1]);
@@ -3269,7 +3414,7 @@ function predictionLayer(x, conv11, params) {
 }
 
 // src/ssdMobilenetv1/SsdMobilenetv1Options.ts
-class SsdMobilenetv1Options {
+var SsdMobilenetv1Options = class {
   constructor({minConfidence, maxResults} = {}) {
     this._name = "SsdMobilenetv1Options";
     this._minConfidence = minConfidence || 0.5;
@@ -3287,11 +3432,10 @@ class SsdMobilenetv1Options {
   get maxResults() {
     return this._maxResults;
   }
-}
+};
 
 // src/ssdMobilenetv1/SsdMobilenetv1.ts
-const tf34 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
-class SsdMobilenetv1 extends NeuralNetwork {
+var SsdMobilenetv1 = class extends NeuralNetwork {
   constructor() {
     super("SsdMobilenetv1");
   }
@@ -3362,7 +3506,7 @@ class SsdMobilenetv1 extends NeuralNetwork {
   extractParams(weights) {
     return extractParams11(weights);
   }
-}
+};
 
 // src/ssdMobilenetv1/index.ts
 function createSsdMobilenetv1(weights) {
@@ -3373,31 +3517,34 @@ function createSsdMobilenetv1(weights) {
 function createFaceDetectionNet(weights) {
   return createSsdMobilenetv1(weights);
 }
-class FaceDetectionNet extends SsdMobilenetv1 {
-}
+var FaceDetectionNet = class extends SsdMobilenetv1 {
+};
 
 // src/tinyYolov2/const.ts
-const IOU_THRESHOLD = 0.4;
-const BOX_ANCHORS = [
+var IOU_THRESHOLD = 0.4;
+var BOX_ANCHORS = [
   new Point(0.738768, 0.874946),
   new Point(2.42204, 2.65704),
   new Point(4.30971, 7.04493),
   new Point(10.246, 4.59428),
   new Point(12.6868, 11.8741)
 ];
-const BOX_ANCHORS_SEPARABLE = [
+var BOX_ANCHORS_SEPARABLE = [
   new Point(1.603231, 2.094468),
   new Point(6.041143, 7.080126),
   new Point(2.882459, 3.518061),
   new Point(4.266906, 5.178857),
   new Point(9.041765, 10.66308)
 ];
-const MEAN_RGB_SEPARABLE = [117.001, 114.697, 97.404];
-const DEFAULT_MODEL_NAME = "tiny_yolov2_model";
-const DEFAULT_MODEL_NAME_SEPARABLE_CONV = "tiny_yolov2_separable_conv_model";
+var MEAN_RGB_SEPARABLE = [117.001, 114.697, 97.404];
+var DEFAULT_MODEL_NAME = "tiny_yolov2_model";
+var DEFAULT_MODEL_NAME_SEPARABLE_CONV = "tiny_yolov2_separable_conv_model";
+
+// src/tinyYolov2/TinyYolov2Base.ts
+var tf39 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 
 // src/tinyYolov2/config.ts
-const isNumber = (arg) => typeof arg === "number";
+var isNumber = (arg) => typeof arg === "number";
 function validateConfig(config2) {
   if (!config2) {
     throw new Error(`invalid config: ${config2}`);
@@ -3419,8 +3566,11 @@ function validateConfig(config2) {
   }
 }
 
+// src/tinyYolov2/convWithBatchNorm.ts
+var tf36 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
+
 // src/tinyYolov2/leaky.ts
-const tf35 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
+var tf35 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 function leaky(x) {
   return tf35.tidy(() => {
     const min = tf35.mul(x, tf35.scalar(0.10000000149011612));
@@ -3429,7 +3579,6 @@ function leaky(x) {
 }
 
 // src/tinyYolov2/convWithBatchNorm.ts
-const tf36 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 function convWithBatchNorm(x, params) {
   return tf36.tidy(() => {
     let out = tf36.pad(x, [[0, 0], [1, 1], [1, 1], [0, 0]]);
@@ -3442,7 +3591,7 @@ function convWithBatchNorm(x, params) {
 }
 
 // src/tinyYolov2/depthwiseSeparableConv.ts
-const tf37 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
+var tf37 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 function depthwiseSeparableConv3(x, params) {
   return tf37.tidy(() => {
     let out = tf37.pad(x, [[0, 0], [1, 1], [1, 1], [0, 0]]);
@@ -3453,7 +3602,7 @@ function depthwiseSeparableConv3(x, params) {
 }
 
 // src/tinyYolov2/extractParams.ts
-const tf38 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
+var tf38 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 function extractorsFactory9(extractWeights, paramMappings) {
   const extractConvParams = extractConvParamsFactory(extractWeights, paramMappings);
   function extractBatchNormParams(size, mappedPrefix) {
@@ -3588,7 +3737,7 @@ var TinyYolov2SizeType;
   TinyYolov2SizeType2[TinyYolov2SizeType2["MD"] = 416] = "MD";
   TinyYolov2SizeType2[TinyYolov2SizeType2["LG"] = 608] = "LG";
 })(TinyYolov2SizeType || (TinyYolov2SizeType = {}));
-class TinyYolov2Options {
+var TinyYolov2Options = class {
   constructor({inputSize, scoreThreshold} = {}) {
     this._name = "TinyYolov2Options";
     this._inputSize = inputSize || 416;
@@ -3606,11 +3755,10 @@ class TinyYolov2Options {
   get scoreThreshold() {
     return this._scoreThreshold;
   }
-}
+};
 
 // src/tinyYolov2/TinyYolov2Base.ts
-const tf39 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
-class TinyYolov2Base extends NeuralNetwork {
+var TinyYolov2Base2 = class extends NeuralNetwork {
   constructor(config2) {
     super("TinyYolov2");
     validateConfig(config2);
@@ -3701,7 +3849,7 @@ class TinyYolov2Base extends NeuralNetwork {
     return extractParamsFromWeigthMap13(weightMap, this.config);
   }
   extractParams(weights) {
-    const filterSizes = this.config.filterSizes || TinyYolov2Base.DEFAULT_FILTER_SIZES;
+    const filterSizes = this.config.filterSizes || TinyYolov2Base2.DEFAULT_FILTER_SIZES;
     const numFilters = filterSizes ? filterSizes.length : void 0;
     if (numFilters !== 7 && numFilters !== 8 && numFilters !== 9) {
       throw new Error(`TinyYolov2 - expected 7 | 8 | 9 convolutional filters, but found ${numFilters} filterSizes in config`);
@@ -3762,7 +3910,8 @@ class TinyYolov2Base extends NeuralNetwork {
       label
     })).reduce((max, curr) => max.classScore > curr.classScore ? max : curr);
   }
-}
+};
+var TinyYolov2Base = TinyYolov2Base2;
 TinyYolov2Base.DEFAULT_FILTER_SIZES = [
   3,
   16,
@@ -3776,7 +3925,7 @@ TinyYolov2Base.DEFAULT_FILTER_SIZES = [
 ];
 
 // src/tinyYolov2/TinyYolov2.ts
-class TinyYolov2 extends TinyYolov2Base {
+var TinyYolov2 = class extends TinyYolov2Base {
   constructor(withSeparableConvs = true) {
     const config2 = Object.assign({}, {
       withSeparableConvs,
@@ -3807,9 +3956,7 @@ class TinyYolov2 extends TinyYolov2Base {
   extractParamsFromWeigthMap(weightMap) {
     return super.extractParamsFromWeigthMap(weightMap);
   }
-}
-
-// src/tinyYolov2/types.ts
+};
 
 // src/tinyYolov2/index.ts
 function createTinyYolov2(weights, withSeparableConvs = true) {
@@ -3819,25 +3966,28 @@ function createTinyYolov2(weights, withSeparableConvs = true) {
 }
 
 // src/tinyFaceDetector/TinyFaceDetectorOptions.ts
-class TinyFaceDetectorOptions extends TinyYolov2Options {
+var TinyFaceDetectorOptions = class extends TinyYolov2Options {
   constructor() {
     super(...arguments);
     this._name = "TinyFaceDetectorOptions";
   }
-}
+};
 
 // src/globalApi/ComposableTask.ts
-class ComposableTask {
+var ComposableTask = class {
   async then(onfulfilled) {
     return onfulfilled(await this.run());
   }
   async run() {
     throw new Error("ComposableTask - run is not implemented");
   }
-}
+};
+
+// src/globalApi/DetectFaceLandmarksTasks.ts
+var tf41 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 
 // src/globalApi/extractFacesAndComputeResults.ts
-const tf40 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
+var tf40 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
 async function extractAllFacesAndComputeResults(parentResults, input, computeResults, extractedFaces, getRectForAlignment = ({alignedRect}) => alignedRect) {
   const faceBoxes = parentResults.map((parentResult) => isWithFaceLandmarks(parentResult) ? getRectForAlignment(parentResult) : parentResult.detection);
   const faces = extractedFaces || (input instanceof tf40.Tensor ? await extractFaceTensors(input, faceBoxes) : await extractFaces(input, faceBoxes));
@@ -3850,18 +4000,18 @@ async function extractSingleFaceAndComputeResult(parentResult, input, computeRes
 }
 
 // src/tinyFaceDetector/const.ts
-const IOU_THRESHOLD2 = 0.4;
-const BOX_ANCHORS2 = [
+var IOU_THRESHOLD2 = 0.4;
+var BOX_ANCHORS2 = [
   new Point(1.603231, 2.094468),
   new Point(6.041143, 7.080126),
   new Point(2.882459, 3.518061),
   new Point(4.266906, 5.178857),
   new Point(9.041765, 10.66308)
 ];
-const MEAN_RGB = [117.001, 114.697, 97.404];
+var MEAN_RGB = [117.001, 114.697, 97.404];
 
 // src/tinyFaceDetector/TinyFaceDetector.ts
-class TinyFaceDetector extends TinyYolov2Base {
+var TinyFaceDetector = class extends TinyYolov2Base {
   constructor() {
     const config2 = {
       withSeparableConvs: true,
@@ -3887,10 +4037,10 @@ class TinyFaceDetector extends TinyYolov2Base {
   extractParamsFromWeigthMap(weightMap) {
     return super.extractParamsFromWeigthMap(weightMap);
   }
-}
+};
 
 // src/globalApi/nets.ts
-const nets = {
+var nets = {
   ssdMobilenetv1: new SsdMobilenetv1(),
   tinyFaceDetector: new TinyFaceDetector(),
   tinyYolov2: new TinyYolov2(),
@@ -3900,36 +4050,36 @@ const nets = {
   faceExpressionNet: new FaceExpressionNet(),
   ageGenderNet: new AgeGenderNet()
 };
-const ssdMobilenetv1 = (input, options) => nets.ssdMobilenetv1.locateFaces(input, options);
-const tinyFaceDetector = (input, options) => nets.tinyFaceDetector.locateFaces(input, options);
-const tinyYolov23 = (input, options) => nets.tinyYolov2.locateFaces(input, options);
-const detectFaceLandmarks = (input) => nets.faceLandmark68Net.detectLandmarks(input);
-const detectFaceLandmarksTiny = (input) => nets.faceLandmark68TinyNet.detectLandmarks(input);
-const computeFaceDescriptor = (input) => nets.faceRecognitionNet.computeFaceDescriptor(input);
-const recognizeFaceExpressions = (input) => nets.faceExpressionNet.predictExpressions(input);
-const predictAgeAndGender = (input) => nets.ageGenderNet.predictAgeAndGender(input);
-const loadSsdMobilenetv1Model = (url) => nets.ssdMobilenetv1.load(url);
-const loadTinyFaceDetectorModel = (url) => nets.tinyFaceDetector.load(url);
-const loadTinyYolov2Model = (url) => nets.tinyYolov2.load(url);
-const loadFaceLandmarkModel = (url) => nets.faceLandmark68Net.load(url);
-const loadFaceLandmarkTinyModel = (url) => nets.faceLandmark68TinyNet.load(url);
-const loadFaceRecognitionModel = (url) => nets.faceRecognitionNet.load(url);
-const loadFaceExpressionModel = (url) => nets.faceExpressionNet.load(url);
-const loadAgeGenderModel = (url) => nets.ageGenderNet.load(url);
-const loadFaceDetectionModel = loadSsdMobilenetv1Model;
-const locateFaces = ssdMobilenetv1;
-const detectLandmarks = detectFaceLandmarks;
+var ssdMobilenetv1 = (input, options) => nets.ssdMobilenetv1.locateFaces(input, options);
+var tinyFaceDetector = (input, options) => nets.tinyFaceDetector.locateFaces(input, options);
+var tinyYolov23 = (input, options) => nets.tinyYolov2.locateFaces(input, options);
+var detectFaceLandmarks = (input) => nets.faceLandmark68Net.detectLandmarks(input);
+var detectFaceLandmarksTiny = (input) => nets.faceLandmark68TinyNet.detectLandmarks(input);
+var computeFaceDescriptor = (input) => nets.faceRecognitionNet.computeFaceDescriptor(input);
+var recognizeFaceExpressions = (input) => nets.faceExpressionNet.predictExpressions(input);
+var predictAgeAndGender = (input) => nets.ageGenderNet.predictAgeAndGender(input);
+var loadSsdMobilenetv1Model = (url) => nets.ssdMobilenetv1.load(url);
+var loadTinyFaceDetectorModel = (url) => nets.tinyFaceDetector.load(url);
+var loadTinyYolov2Model = (url) => nets.tinyYolov2.load(url);
+var loadFaceLandmarkModel = (url) => nets.faceLandmark68Net.load(url);
+var loadFaceLandmarkTinyModel = (url) => nets.faceLandmark68TinyNet.load(url);
+var loadFaceRecognitionModel = (url) => nets.faceRecognitionNet.load(url);
+var loadFaceExpressionModel = (url) => nets.faceExpressionNet.load(url);
+var loadAgeGenderModel = (url) => nets.ageGenderNet.load(url);
+var loadFaceDetectionModel = loadSsdMobilenetv1Model;
+var locateFaces = ssdMobilenetv1;
+var detectLandmarks = detectFaceLandmarks;
 
 // src/globalApi/PredictFaceExpressionsTask.ts
-class PredictFaceExpressionsTaskBase extends ComposableTask {
+var PredictFaceExpressionsTaskBase = class extends ComposableTask {
   constructor(parentTask, input, extractedFaces) {
     super();
     this.parentTask = parentTask;
     this.input = input;
     this.extractedFaces = extractedFaces;
   }
-}
-class PredictAllFaceExpressionsTask extends PredictFaceExpressionsTaskBase {
+};
+var PredictAllFaceExpressionsTask = class extends PredictFaceExpressionsTaskBase {
   async run() {
     const parentResults = await this.parentTask;
     const faceExpressionsByFace = await extractAllFacesAndComputeResults(parentResults, this.input, async (faces) => await Promise.all(faces.map((face) => nets.faceExpressionNet.predictExpressions(face))), this.extractedFaces);
@@ -3938,8 +4088,8 @@ class PredictAllFaceExpressionsTask extends PredictFaceExpressionsTaskBase {
   withAgeAndGender() {
     return new PredictAllAgeAndGenderTask(this, this.input);
   }
-}
-class PredictSingleFaceExpressionsTask extends PredictFaceExpressionsTaskBase {
+};
+var PredictSingleFaceExpressionsTask = class extends PredictFaceExpressionsTaskBase {
   async run() {
     const parentResult = await this.parentTask;
     if (!parentResult) {
@@ -3951,34 +4101,34 @@ class PredictSingleFaceExpressionsTask extends PredictFaceExpressionsTaskBase {
   withAgeAndGender() {
     return new PredictSingleAgeAndGenderTask(this, this.input);
   }
-}
-class PredictAllFaceExpressionsWithFaceAlignmentTask extends PredictAllFaceExpressionsTask {
+};
+var PredictAllFaceExpressionsWithFaceAlignmentTask = class extends PredictAllFaceExpressionsTask {
   withAgeAndGender() {
     return new PredictAllAgeAndGenderWithFaceAlignmentTask(this, this.input);
   }
   withFaceDescriptors() {
     return new ComputeAllFaceDescriptorsTask(this, this.input);
   }
-}
-class PredictSingleFaceExpressionsWithFaceAlignmentTask extends PredictSingleFaceExpressionsTask {
+};
+var PredictSingleFaceExpressionsWithFaceAlignmentTask = class extends PredictSingleFaceExpressionsTask {
   withAgeAndGender() {
     return new PredictSingleAgeAndGenderWithFaceAlignmentTask(this, this.input);
   }
   withFaceDescriptor() {
     return new ComputeSingleFaceDescriptorTask(this, this.input);
   }
-}
+};
 
 // src/globalApi/PredictAgeAndGenderTask.ts
-class PredictAgeAndGenderTaskBase extends ComposableTask {
+var PredictAgeAndGenderTaskBase = class extends ComposableTask {
   constructor(parentTask, input, extractedFaces) {
     super();
     this.parentTask = parentTask;
     this.input = input;
     this.extractedFaces = extractedFaces;
   }
-}
-class PredictAllAgeAndGenderTask extends PredictAgeAndGenderTaskBase {
+};
+var PredictAllAgeAndGenderTask = class extends PredictAgeAndGenderTaskBase {
   async run() {
     const parentResults = await this.parentTask;
     const ageAndGenderByFace = await extractAllFacesAndComputeResults(parentResults, this.input, async (faces) => await Promise.all(faces.map((face) => nets.ageGenderNet.predictAgeAndGender(face))), this.extractedFaces);
@@ -3990,8 +4140,8 @@ class PredictAllAgeAndGenderTask extends PredictAgeAndGenderTaskBase {
   withFaceExpressions() {
     return new PredictAllFaceExpressionsTask(this, this.input);
   }
-}
-class PredictSingleAgeAndGenderTask extends PredictAgeAndGenderTaskBase {
+};
+var PredictSingleAgeAndGenderTask = class extends PredictAgeAndGenderTaskBase {
   async run() {
     const parentResult = await this.parentTask;
     if (!parentResult) {
@@ -4003,33 +4153,33 @@ class PredictSingleAgeAndGenderTask extends PredictAgeAndGenderTaskBase {
   withFaceExpressions() {
     return new PredictSingleFaceExpressionsTask(this, this.input);
   }
-}
-class PredictAllAgeAndGenderWithFaceAlignmentTask extends PredictAllAgeAndGenderTask {
+};
+var PredictAllAgeAndGenderWithFaceAlignmentTask = class extends PredictAllAgeAndGenderTask {
   withFaceExpressions() {
     return new PredictAllFaceExpressionsWithFaceAlignmentTask(this, this.input);
   }
   withFaceDescriptors() {
     return new ComputeAllFaceDescriptorsTask(this, this.input);
   }
-}
-class PredictSingleAgeAndGenderWithFaceAlignmentTask extends PredictSingleAgeAndGenderTask {
+};
+var PredictSingleAgeAndGenderWithFaceAlignmentTask = class extends PredictSingleAgeAndGenderTask {
   withFaceExpressions() {
     return new PredictSingleFaceExpressionsWithFaceAlignmentTask(this, this.input);
   }
   withFaceDescriptor() {
     return new ComputeSingleFaceDescriptorTask(this, this.input);
   }
-}
+};
 
 // src/globalApi/ComputeFaceDescriptorsTasks.ts
-class ComputeFaceDescriptorsTaskBase extends ComposableTask {
+var ComputeFaceDescriptorsTaskBase = class extends ComposableTask {
   constructor(parentTask, input) {
     super();
     this.parentTask = parentTask;
     this.input = input;
   }
-}
-class ComputeAllFaceDescriptorsTask extends ComputeFaceDescriptorsTaskBase {
+};
+var ComputeAllFaceDescriptorsTask = class extends ComputeFaceDescriptorsTaskBase {
   async run() {
     const parentResults = await this.parentTask;
     const descriptors = await extractAllFacesAndComputeResults(parentResults, this.input, (faces) => Promise.all(faces.map((face) => nets.faceRecognitionNet.computeFaceDescriptor(face))), null, (parentResult) => parentResult.landmarks.align(null, {useDlibAlignment: true}));
@@ -4041,8 +4191,8 @@ class ComputeAllFaceDescriptorsTask extends ComputeFaceDescriptorsTaskBase {
   withAgeAndGender() {
     return new PredictAllAgeAndGenderWithFaceAlignmentTask(this, this.input);
   }
-}
-class ComputeSingleFaceDescriptorTask extends ComputeFaceDescriptorsTaskBase {
+};
+var ComputeSingleFaceDescriptorTask = class extends ComputeFaceDescriptorsTaskBase {
   async run() {
     const parentResult = await this.parentTask;
     if (!parentResult) {
@@ -4057,11 +4207,10 @@ class ComputeSingleFaceDescriptorTask extends ComputeFaceDescriptorsTaskBase {
   withAgeAndGender() {
     return new PredictSingleAgeAndGenderWithFaceAlignmentTask(this, this.input);
   }
-}
+};
 
 // src/globalApi/DetectFaceLandmarksTasks.ts
-const tf41 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
-class DetectFaceLandmarksTaskBase extends ComposableTask {
+var DetectFaceLandmarksTaskBase = class extends ComposableTask {
   constructor(parentTask, input, useTinyLandmarkNet) {
     super();
     this.parentTask = parentTask;
@@ -4071,8 +4220,8 @@ class DetectFaceLandmarksTaskBase extends ComposableTask {
   get landmarkNet() {
     return this.useTinyLandmarkNet ? nets.faceLandmark68TinyNet : nets.faceLandmark68Net;
   }
-}
-class DetectAllFaceLandmarksTask extends DetectFaceLandmarksTaskBase {
+};
+var DetectAllFaceLandmarksTask = class extends DetectFaceLandmarksTaskBase {
   async run() {
     const parentResults = await this.parentTask;
     const detections = parentResults.map((res) => res.detection);
@@ -4090,8 +4239,8 @@ class DetectAllFaceLandmarksTask extends DetectFaceLandmarksTaskBase {
   withFaceDescriptors() {
     return new ComputeAllFaceDescriptorsTask(this, this.input);
   }
-}
-class DetectSingleFaceLandmarksTask extends DetectFaceLandmarksTaskBase {
+};
+var DetectSingleFaceLandmarksTask = class extends DetectFaceLandmarksTaskBase {
   async run() {
     const parentResult = await this.parentTask;
     if (!parentResult) {
@@ -4112,17 +4261,17 @@ class DetectSingleFaceLandmarksTask extends DetectFaceLandmarksTaskBase {
   withFaceDescriptor() {
     return new ComputeSingleFaceDescriptorTask(this, this.input);
   }
-}
+};
 
 // src/globalApi/DetectFacesTasks.ts
-class DetectFacesTaskBase extends ComposableTask {
+var DetectFacesTaskBase = class extends ComposableTask {
   constructor(input, options = new SsdMobilenetv1Options()) {
     super();
     this.input = input;
     this.options = options;
   }
-}
-class DetectAllFacesTask extends DetectFacesTaskBase {
+};
+var DetectAllFacesTask = class extends DetectFacesTaskBase {
   async run() {
     const {input, options} = this;
     const faceDetectionFunction = options instanceof TinyFaceDetectorOptions ? (input2) => nets.tinyFaceDetector.locateFaces(input2, options) : options instanceof SsdMobilenetv1Options ? (input2) => nets.ssdMobilenetv1.locateFaces(input2, options) : options instanceof TinyYolov2Options ? (input2) => nets.tinyYolov2.locateFaces(input2, options) : null;
@@ -4146,8 +4295,8 @@ class DetectAllFacesTask extends DetectFacesTaskBase {
   withAgeAndGender() {
     return new PredictAllAgeAndGenderTask(this.runAndExtendWithFaceDetections(), this.input);
   }
-}
-class DetectSingleFaceTask extends DetectFacesTaskBase {
+};
+var DetectSingleFaceTask = class extends DetectFacesTaskBase {
   async run() {
     const faceDetections = await new DetectAllFacesTask(this.input, this.options);
     let faceDetectionWithHighestScore = faceDetections[0];
@@ -4173,7 +4322,7 @@ class DetectSingleFaceTask extends DetectFacesTaskBase {
   withAgeAndGender() {
     return new PredictSingleAgeAndGenderTask(this.runAndExtendWithFaceDetection(), this.input);
   }
-}
+};
 
 // src/globalApi/detectFaces.ts
 function detectSingleFace(input, options = new SsdMobilenetv1Options()) {
@@ -4192,7 +4341,7 @@ async function allFacesTinyYolov2(input, forwardParams = {}) {
   console.warn("allFacesTinyYolov2 is deprecated and will be removed soon, use the high level api instead");
   return await detectAllFaces(input, new TinyYolov2Options(forwardParams)).withFaceLandmarks().withFaceDescriptors();
 }
-const allFaces = allFacesSsdMobilenetv1;
+var allFaces = allFacesSsdMobilenetv1;
 
 // src/euclideanDistance.ts
 function euclideanDistance(arr1, arr2) {
@@ -4204,7 +4353,7 @@ function euclideanDistance(arr1, arr2) {
 }
 
 // src/globalApi/FaceMatcher.ts
-class FaceMatcher {
+var FaceMatcher = class {
   constructor(inputs, distanceThreshold = 0.6) {
     this._distanceThreshold = distanceThreshold;
     const inputArray = Array.isArray(inputs) ? inputs : [inputs];
@@ -4252,11 +4401,7 @@ class FaceMatcher {
     const labeledDescriptors = json.labeledDescriptors.map((ld) => LabeledFaceDescriptors.fromJSON(ld));
     return new FaceMatcher(labeledDescriptors, json.distanceThreshold);
   }
-}
-
-// src/globalApi/types.ts
-
-// src/globalApi/index.ts
+};
 
 // src/tinyFaceDetector/index.ts
 function createTinyFaceDetector(weights) {
@@ -4289,134 +4434,10 @@ function resizeResults(results, dimensions) {
 }
 
 // package.json
-var version = "0.8.6";
+var version = "0.8.8";
 
 // src/index.ts
-__export(exports, {
-  AgeGenderNet: () => AgeGenderNet,
-  BoundingBox: () => BoundingBox,
-  Box: () => Box,
-  ComposableTask: () => ComposableTask,
-  ComputeAllFaceDescriptorsTask: () => ComputeAllFaceDescriptorsTask,
-  ComputeFaceDescriptorsTaskBase: () => ComputeFaceDescriptorsTaskBase,
-  ComputeSingleFaceDescriptorTask: () => ComputeSingleFaceDescriptorTask,
-  DetectAllFaceLandmarksTask: () => DetectAllFaceLandmarksTask,
-  DetectAllFacesTask: () => DetectAllFacesTask,
-  DetectFaceLandmarksTaskBase: () => DetectFaceLandmarksTaskBase,
-  DetectFacesTaskBase: () => DetectFacesTaskBase,
-  DetectSingleFaceLandmarksTask: () => DetectSingleFaceLandmarksTask,
-  DetectSingleFaceTask: () => DetectSingleFaceTask,
-  Dimensions: () => Dimensions,
-  FACE_EXPRESSION_LABELS: () => FACE_EXPRESSION_LABELS,
-  FaceDetection: () => FaceDetection,
-  FaceDetectionNet: () => FaceDetectionNet,
-  FaceExpressionNet: () => FaceExpressionNet,
-  FaceExpressions: () => FaceExpressions,
-  FaceLandmark68Net: () => FaceLandmark68Net,
-  FaceLandmark68TinyNet: () => FaceLandmark68TinyNet,
-  FaceLandmarkNet: () => FaceLandmarkNet,
-  FaceLandmarks: () => FaceLandmarks,
-  FaceLandmarks5: () => FaceLandmarks5,
-  FaceLandmarks68: () => FaceLandmarks68,
-  FaceMatch: () => FaceMatch,
-  FaceMatcher: () => FaceMatcher,
-  FaceRecognitionNet: () => FaceRecognitionNet,
-  Gender: () => Gender,
-  LabeledBox: () => LabeledBox,
-  LabeledFaceDescriptors: () => LabeledFaceDescriptors,
-  NetInput: () => NetInput,
-  NeuralNetwork: () => NeuralNetwork,
-  ObjectDetection: () => ObjectDetection,
-  Point: () => Point,
-  PredictedBox: () => PredictedBox,
-  Rect: () => Rect,
-  SsdMobilenetv1: () => SsdMobilenetv1,
-  SsdMobilenetv1Options: () => SsdMobilenetv1Options,
-  TinyFaceDetector: () => TinyFaceDetector,
-  TinyFaceDetectorOptions: () => TinyFaceDetectorOptions,
-  TinyYolov2: () => TinyYolov2,
-  TinyYolov2Options: () => TinyYolov2Options,
-  TinyYolov2SizeType: () => TinyYolov2SizeType,
-  allFaces: () => allFaces,
-  allFacesSsdMobilenetv1: () => allFacesSsdMobilenetv1,
-  allFacesTinyYolov2: () => allFacesTinyYolov2,
-  awaitMediaLoaded: () => awaitMediaLoaded,
-  bufferToImage: () => bufferToImage,
-  computeFaceDescriptor: () => computeFaceDescriptor,
-  createCanvas: () => createCanvas,
-  createCanvasFromMedia: () => createCanvasFromMedia,
-  createFaceDetectionNet: () => createFaceDetectionNet,
-  createFaceRecognitionNet: () => createFaceRecognitionNet,
-  createSsdMobilenetv1: () => createSsdMobilenetv1,
-  createTinyFaceDetector: () => createTinyFaceDetector,
-  createTinyYolov2: () => createTinyYolov2,
-  detectAllFaces: () => detectAllFaces,
-  detectFaceLandmarks: () => detectFaceLandmarks,
-  detectFaceLandmarksTiny: () => detectFaceLandmarksTiny,
-  detectLandmarks: () => detectLandmarks,
-  detectSingleFace: () => detectSingleFace,
-  draw: () => draw_exports,
-  env: () => env,
-  euclideanDistance: () => euclideanDistance,
-  extendWithAge: () => extendWithAge,
-  extendWithFaceDescriptor: () => extendWithFaceDescriptor,
-  extendWithFaceDetection: () => extendWithFaceDetection,
-  extendWithFaceExpressions: () => extendWithFaceExpressions,
-  extendWithFaceLandmarks: () => extendWithFaceLandmarks,
-  extendWithGender: () => extendWithGender,
-  extractFaceTensors: () => extractFaceTensors,
-  extractFaces: () => extractFaces,
-  fetchImage: () => fetchImage,
-  fetchJson: () => fetchJson,
-  fetchNetWeights: () => fetchNetWeights,
-  fetchOrThrow: () => fetchOrThrow,
-  getContext2dOrThrow: () => getContext2dOrThrow,
-  getMediaDimensions: () => getMediaDimensions,
-  imageTensorToCanvas: () => imageTensorToCanvas,
-  imageToSquare: () => imageToSquare,
-  inverseSigmoid: () => inverseSigmoid,
-  iou: () => iou,
-  isMediaElement: () => isMediaElement,
-  isMediaLoaded: () => isMediaLoaded,
-  isWithAge: () => isWithAge,
-  isWithFaceDetection: () => isWithFaceDetection,
-  isWithFaceExpressions: () => isWithFaceExpressions,
-  isWithFaceLandmarks: () => isWithFaceLandmarks,
-  isWithGender: () => isWithGender,
-  loadAgeGenderModel: () => loadAgeGenderModel,
-  loadFaceDetectionModel: () => loadFaceDetectionModel,
-  loadFaceExpressionModel: () => loadFaceExpressionModel,
-  loadFaceLandmarkModel: () => loadFaceLandmarkModel,
-  loadFaceLandmarkTinyModel: () => loadFaceLandmarkTinyModel,
-  loadFaceRecognitionModel: () => loadFaceRecognitionModel,
-  loadSsdMobilenetv1Model: () => loadSsdMobilenetv1Model,
-  loadTinyFaceDetectorModel: () => loadTinyFaceDetectorModel,
-  loadTinyYolov2Model: () => loadTinyYolov2Model,
-  loadWeightMap: () => loadWeightMap,
-  locateFaces: () => locateFaces,
-  matchDimensions: () => matchDimensions,
-  minBbox: () => minBbox,
-  nets: () => nets,
-  nonMaxSuppression: () => nonMaxSuppression,
-  normalize: () => normalize,
-  padToSquare: () => padToSquare,
-  predictAgeAndGender: () => predictAgeAndGender,
-  recognizeFaceExpressions: () => recognizeFaceExpressions,
-  resizeResults: () => resizeResults,
-  resolveInput: () => resolveInput,
-  shuffleArray: () => shuffleArray,
-  sigmoid: () => sigmoid,
-  ssdMobilenetv1: () => ssdMobilenetv1,
-  tf: () => tf42,
-  tinyFaceDetector: () => tinyFaceDetector,
-  tinyYolov2: () => tinyYolov23,
-  toNetInput: () => toNetInput,
-  utils: () => utils_exports,
-  validateConfig: () => validateConfig,
-  version: () => version2
-});
-const tf42 = __toModule(require("@tensorflow/tfjs/dist/tf.es2017.js"));
-const node = typeof process !== "undefined";
-const browser3 = typeof navigator !== "undefined" && typeof navigator.userAgent !== "undefined";
-const version2 = {faceapi: version, node, browser: browser3};
+var node = typeof process !== "undefined";
+var browser3 = typeof navigator !== "undefined" && typeof navigator.userAgent !== "undefined";
+var version2 = {faceapi: version, node, browser: browser3};
 //# sourceMappingURL=face-api.node.nobundle.js.map

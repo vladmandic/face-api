@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const tf = require('@tensorflow/tfjs-node');
 const faceapi = require('../dist/face-api.node.js');
-// if you heve module installed, this would be 
+// if you have module installed, this would be 
 // const faceapi = require('@vladmandic/face-api');
 
 // configuration options
@@ -39,10 +39,10 @@ async function image(img) {
 async function main() {
   // initialize tfjs
   log('FaceAPI Test');
-  await faceapi.tf.setBackend('tensorflow');
+  await faceapi.tf.setBackend('tensorflow'); //Sets the backend (cpu, webgl, wasm, tensorflow, etc) responsible for creating tensors and executing operations on those tensors.
   await faceapi.tf.enableProdMode();
   await faceapi.tf.ENV.set('DEBUG', false);
-  await faceapi.tf.ready();
+  await faceapi.tf.ready(); //Returns a promise that resolves when the currently selected backend (or the highest priority one) has initialized.
 
   // check version
   log(`Version: TensorFlow/JS ${str(faceapi.tf?.version_core || '(not loaded)')} FaceAPI ${str(faceapi?.version || '(not loaded)')} Backend: ${str(faceapi.tf?.getBackend() || '(not loaded)')}`);

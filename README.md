@@ -10,7 +10,6 @@ Forked from **face-api.js** version **0.22.2** released on March 22nd, 2020
 - <https://www.npmjs.com/package/face-api.js>  
 
 Currently based on **`TensorFlow/JS` 2.7.0**  
-If you want to access `TFJS` classes and methods directly, they are exported as `faceapi.tf`
 
 ### Why?
 
@@ -21,9 +20,10 @@ Unfortunately, changes ended up being too large for a simple pull request on ori
 ### Differences
 
 - Compatible with `TensorFlow/JS 2.0+`  
-- Compatible with `WebGL`, `CPU` and `WASM` TFJS backends
+- Compatible with `WebGL`, `CPU` and `WASM` TFJS Browser backends
+- Compatible with both `tfjs-node` and `tfjs-node-gpu` TFJS NodeJS backends
 - Updated all type castings for TypeScript type checking to `TypeScript 4.1`  
-- Switched bundling from `UMD` to `ESM` + `CommonJS`  
+- Switched bundling from `UMD` to `ESM` + `CommonJS` with fallback to `IIFE`  
   This does require separate process for usage in NodeJS vs Browser, but resulting code is much lighter  
   Fully tree shakable when imported as an `ESM` module  
   Browser bundle process uses `ESBuild` instead of `Rollup`  
@@ -43,11 +43,11 @@ Which means valid models are **tinyFaceDetector** and **mobileNetv1**
 ## Installation
 
 Face-API ships with several pre-build versions of the library:
-- `dist/face-api.js`: IIFE format for client-side Browser execution
-- `dist/face-api.esm.js`: ESM format for client-side Browser execution with TFJS pre-bundled
-- `dist/face-api.esm.nobundle.js`: ESM format for client-side Browser execution without TFJS and not minified
-- `dist/face-api.node.js`: CommonJS format for server-side NodeJS execution with TFJS pre-bundled
-- `dist/face-api.node.nobundle.js`: CommonJS format for server-side NodeJS execution without TFJS and not minified
+- `dist/face-api.js`: IIFE format for client-side Browser execution *with* TFJS pre-bundled
+- `dist/face-api.esm.js`: ESM format for client-side Browser execution *with* TFJS pre-bundled
+- `dist/face-api.esm-nobundle.js`: ESM format for client-side Browser execution *without* TFJS pre-bundled
+- `dist/face-api.node.js`: CommonJS format for server-side NodeJS execution *without* TFJS pre-bundled
+- `dist/face-api.node-gpu.js`: CommonJS format for server-side NodeJS execution *without* TFJS pre-bundled and optimized for CUDA GPU acceleration
 
 Defaults are:
 ```json
@@ -58,11 +58,15 @@ Defaults are:
 }
 ```
 
-Reason for additional `nobundle` version is if you want to include a specific version of TFJS and not rely on pre-packaged one  
+Bundled `TFJS` can be used directly via export: `faceapi.tf`
+
+Reason for additional `nobundle` version is if you want to include a specific version of TFJS and not rely on  pre-packaged one  
+
 `FaceAPI` is compatible with TFJS 2.0+  
 
-Bundled versions are ~1.1MB minified and non-bundled versions are ~169KB non-minified  
-All versions include `sourcemap`
+All versions include `sourcemap` and `asset manifest`
+
+<br>
 
 There are several ways to use Face-API: 
 
@@ -78,6 +82,8 @@ Simply download `dist/face-api.js`, include it in your `HTML` file & it's ready 
 ``` 
 
 IIFE script bundles TFJS and auto-registers global namespace `faceapi` within Window object which can be accessed directly from a `<script>` tag or from your JS file.  
+
+<br>
 
 ### 2. ESM module
 
@@ -97,14 +103,18 @@ and then in your `index.js`
 ```
 or to use non-bundled version:
 ```js
-  import * as tf from `https://cdnjs.cloudflare.com/ajax/libs/tensorflow/2.7.0/tf.es2017.min.js`; // load tfjs directly from CDN link
-  import * as faceapi from 'dist/face-api.nobundle.js';
+  import * as tf from `https://cdnjs.cloudflare.com/ajax/libs/tensorflow/2.7.0/tf.es2017.min.js`; // load tfjs directly from CDN link or your local system
+  import * as faceapi from 'dist/face-api.esm-nobundle.js';
 ```
 
 #### 2.2. With Bundler
 
-Same as above, but expectation is that you've installed `@vladmandic/faceapi` package  
-and that you'll package your script using a bundler such as `webpack`, `rollup` or `esbuild`  
+Same as above, but expectation is that you've installed `@vladmandic/faceapi` package:
+```shell
+  npm install @vladmandic/face-api 
+```
+
+and that you'll package your application using a bundler such as `webpack`, `rollup` or `esbuild`  
 in which case, you do not need to import a script as module - that depends on your bundler configuration  
 
 ```js
@@ -117,8 +127,10 @@ or if your bundler doesn't recognize `recommended` type, force usage with:
 or to use non-bundled version
 ```js
   import * as tf from `@tensorflow/tfjs`;
-  import * as faceapi from '@vladmandic/face-api/dist/face-api.nobundle.js';
+  import * as faceapi from '@vladmandic/face-api/dist/face-api.esm-nobundle.js';
 ```
+
+<br>
 
 ### 3. NPM module
 
@@ -126,62 +138,35 @@ or to use non-bundled version
 
 *Recommended for NodeJS projects*
 
+*Node: Face-API for NodeJS does not bundle TFJS due to binary dependencies that are installed during TFJS installation*
+
 Install with:
 ```shell
+  npm install @tensorflow/tfjs-node
   npm install @vladmandic/face-api 
 ```
 And then use with:
 ```js
+  const tf = require('@tensorflow/tfjs-node')
   const faceapi = require('@vladmandic/face-api');
 ```
-or if you want to force CommonJS module instead of relying on `recommended` field:
+
+If you want to force CommonJS module instead of relying on `recommended` field:
 ```js
   const faceapi = require('@vladmandic/face-api/dist/face-api.node.js');
 ```
-or if you want to use a non-bundled version:
-Install with:
+
+If you want to GPU Accelerated execution in NodeJS, you must have CUDA libraries already installed and working  
+Then install appropriate version of `Face-API`:
+
 ```shell
-  npm install @tensorflow/tfjs
+  npm install @tensorflow/tfjs-node
   npm install @vladmandic/face-api 
 ```
 And then use with:
 ```js
-  const tf = require('@tensorflow/tfjs');
-  const faceapi = require('@vladmandic/face-api/dist/face-api.node.nobundle.js');
-```
-
-### 4. Import Sources
-
-*Recommended for complex NodeJS projects that use TFJS for other purposes and not just FaceaPI*
-
-This way you're importing FaceAPI sources directly and not a bundle, so you have to import `@tensorflow/tfjs` explicitly  
-
-#### 4.1. For Browser with Bundler
-
-##### 4.1.1. For JavaScript projects
-```js
-  import * as tf from '@tensorflow/tfjs';
-  import * as faceapi from '@vladmandic/face-api/build/index.js';
-```
-
-##### 4.1.2. For TypeScript projects
-```js
-  import * as tf from '@tensorflow/tfjs';
-  import * as faceapi from '@vladmandic/face-api/src/index.ts';
-```
-
-#### 4.2. For NodeJS
-
-##### 4.2.1. For JavaScript projects
-```js
-  const tf = require('@tensorflow/tfjs');
-  const faceapi = require('@vladmandic/face-api/build/index.js');
-```
-
-##### 4.1.2. For TypeScript projects
-```js
-  const tf = require('@tensorflow/tfjs');
-  const faceapi = require('@vladmandic/face-api/src/index.ts');
+  const tf = require('@tensorflow/tfjs-node-gpu')
+  const faceapi = require('@vladmandic/face-api/dist/face-api.node-gpu.js'); // this loads face-api version with correct bindings for tfjs-node-gpu
 ```
 
 ## Weights
@@ -208,20 +193,49 @@ npm install
 npm run build
 ```
 
-Which will compile everything in `./src` into `./build` and create both ESM (standard) and IIFE (minified) bundles as well as sourcemaps in `./dist`
+Build process uses script `build.js` that creates optimized build for each target:
 
-## Documentation
+```text
+npm run build
 
-For documentation refer to original project at <https://github.com/justadudewhohacks/face-api.js>  
-For original weighs refer to <https://github.com/justadudewhohacks/face-api.js-models>
-For understanding of ts api code, in js examples below refer to <https://js.tensorflow.org/api/2.7.0/>
+> @vladmandic/face-api@0.8.9 build /home/vlado/dev/face-api
+> rimraf dist/* && node ./build.js
+```
+```json
+2020-12-02 16:31:23 INFO:  @vladmandic/face-api version 0.8.9
+2020-12-02 16:31:23 INFO:  User: vlado Platform: linux Arch: x64 Node: v15.0.1
+2020-12-02 16:31:23 INFO:  Build: file startup all target: es2018
+2020-12-02 16:31:23 STATE:  Build for: node type: tfjs: { imports: 1, importBytes: 39, outputBytes: 1042, outputFiles: 'dist/tfjs.esm.js' }
+2020-12-02 16:31:23 STATE:  Build for: node type: node: { imports: 160, importBytes: 228038, outputBytes: 134190, outputFiles: 'dist/face-api.node.js' }
+2020-12-02 16:31:23 STATE:  Build for: nodeGPU type: tfjs: { imports: 1, importBytes: 43, outputBytes: 1046, outputFiles: 'dist/tfjs.esm.js' }
+2020-12-02 16:31:23 STATE:  Build for: nodeGPU type: node: { imports: 160, importBytes: 228042, outputBytes: 134198, outputFiles: 'dist/face-api.node-gpu.js' }
+2020-12-02 16:31:23 STATE:  Build for: browserNoBundle type: tfjs: { imports: 1, importBytes: 1784, outputBytes: 244, outputFiles: 'dist/tfjs.esm.js' }
+2020-12-02 16:31:23 STATE:  Build for: browserNoBundle type: esm: { imports: 160, importBytes: 227240, outputBytes: 131024, outputFiles: 'dist/face-api.esm-nobundle.js' }
+2020-12-02 16:31:24 STATE:  Build for: browserBundle type: tfjs: { modules: 1045, moduleBytes: 3718721, imports: 7, importBytes: 1784, outputBytes: 1501677, outputFiles: 'dist/tfjs.esm.js' }
+2020-12-02 16:31:24 STATE:  Build for: browserBundle type: iife: { imports: 162, importBytes: 1728673, modules: 576, moduleBytes: 1359851, outputBytes: 1903311, outputFiles: 'dist/face-api.js' }
+2020-12-02 16:31:25 STATE:  Build for: browserBundle type: esm: { imports: 162, importBytes: 1728673, modules: 576, moduleBytes: 1359851, outputBytes: 1900836, outputFiles: 'dist/face-api.esm.js' }
+```
+
+<br>
+
+## Credits & Documentation
+
+- Original project and usage documentation: [Face-API](https://github.com/justadudewhohacks/face-api.js)  
+- Original model weighs: [Face-API](https://github.com/justadudewhohacks/face-api.js-models)
+- ML API Documentation: [Tensorflow/JS](https://js.tensorflow.org/api/latest/)
+
+<br>
 
 ## Example
+
+<br>
 
 ### Browser
 
 Example that uses both models as well as all of the extensions is included in `/example/index.html`  
 Example can be accessed directly using Git pages using URL: <https://vladmandic.github.io/face-api/example/>  
+
+<br>
 
 ### NodeJS
 

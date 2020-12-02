@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs/dist/tf.es2017.js';
+import * as tf from '../../dist/tfjs.esm.js';
 
 /**
  * Pads the smaller dimension of an image tensor with zeros, such that width === height.

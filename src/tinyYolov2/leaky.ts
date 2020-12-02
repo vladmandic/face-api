@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs/dist/tf.es2017.js';
+import * as tf from '../../dist/tfjs.esm.js';
 
 export function leaky(x: tf.Tensor4D): tf.Tensor4D {
   return tf.tidy(() => {

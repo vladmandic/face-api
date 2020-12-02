@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs/dist/tf.es2017.js';
+import * as tf from '../../dist/tfjs.esm.js';
 
 import { FaceLandmarks68 } from '../classes/FaceLandmarks68';
 import { extractFaces, extractFaceTensors, TNetInput } from '../dom';

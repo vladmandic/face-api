@@ -1,8 +1,4 @@
-// import * as tf from '@tensorflow/tfjs/dist/tf.es2017.js';
-import * as tf from '@tensorflow/tfjs/dist/tf.es2017.js';
-// const tf = require('@tensorflow/tfjs-core/dist/tf-core.es2017.js');
-// require('@tensorflow/tfjs-backend-cpu/dist/tf-backend-cpu.es2017.js');
-// require('@tensorflow/tfjs-backend-webgl/dist/tf-backend-webgl.es2017.js');
+import * as tf from '../dist/tfjs.esm.js';
 import * as draw from './draw';
 import * as utils from './utils';
 export { tf, draw, utils };

@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs/dist/tf.es2017.js';
+import * as tf from '../../dist/tfjs.esm.js';
 
 import { ExtractWeightsFunction, ParamMapping, ConvParams, extractWeightsFactory } from '../common';
 import { MobileNetV1, NetParams, PointwiseConvParams, PredictionLayerParams } from './types';

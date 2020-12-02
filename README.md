@@ -13,9 +13,10 @@ Currently based on **`TensorFlow/JS` 2.7.0**
 
 ### Why?
 
-Because I needed FaceAPI that does not cause version conflict with newer TFJS 2.0 that I use accross my projects  
-And since original FaceAPI was open-source, I've released this version as well  
-Unfortunately, changes ended up being too large for a simple pull request on original FaceaPI and it ended up being a full-fledged version on its own  
+Because I needed Face-API that does not cause version conflict with newer TFJS 2.0 that I use accross my projects  
+And since original Face-API was open-source, I've released this version as well  
+
+Unfortunately, changes ended up being too large for a simple pull request on original Face-API and it ended up being a full-fledged version on its own  
 
 ### Differences
 
@@ -24,7 +25,7 @@ Unfortunately, changes ended up being too large for a simple pull request on ori
 - Compatible with both `tfjs-node` and `tfjs-node-gpu` TFJS NodeJS backends
 - Updated all type castings for TypeScript type checking to `TypeScript 4.1`  
 - Switched bundling from `UMD` to `ESM` + `CommonJS` with fallback to `IIFE`  
-  This does require separate process for usage in NodeJS vs Browser, but resulting code is much lighter  
+  Resulting code is optimized per-platform instead of being universal  
   Fully tree shakable when imported as an `ESM` module  
   Browser bundle process uses `ESBuild` instead of `Rollup`  
 - Typescript build process now targets `ES2018` and instead of dual ES5/ES6  
@@ -43,6 +44,7 @@ Which means valid models are **tinyFaceDetector** and **mobileNetv1**
 ## Installation
 
 Face-API ships with several pre-build versions of the library:
+
 - `dist/face-api.js`: IIFE format for client-side Browser execution *with* TFJS pre-bundled
 - `dist/face-api.esm.js`: ESM format for client-side Browser execution *with* TFJS pre-bundled
 - `dist/face-api.esm-nobundle.js`: ESM format for client-side Browser execution *without* TFJS pre-bundled
@@ -52,7 +54,7 @@ Face-API ships with several pre-build versions of the library:
 Defaults are:
 ```json
 {
-  "main": "dist/face-api.cjs",
+  "main": "dist/face-api.node-js",
   "module": "dist/face-api.esm.js",
   "browser": "dist/face-api.esm.js",
 }

@@ -214,6 +214,7 @@ Which will compile everything in `./src` into `./build` and create both ESM (sta
 
 For documentation refer to original project at <https://github.com/justadudewhohacks/face-api.js>  
 For original weighs refer to <https://github.com/justadudewhohacks/face-api.js-models>
+For understanding of ts api code, in js examples below refer to <https://js.tensorflow.org/api/2.7.0/>
 
 ## Example
 

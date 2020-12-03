@@ -8,11 +8,11 @@ const faceapi = require('../dist/face-api.node.js');
 // const faceapi = require('@vladmandic/face-api');
 
 // configuration options
-const modelPathRoot = '../model/'; // path to model folder that will be loaded using http
+const modelPathRoot = '../model/'; // path to model folder that will be loaded
 const imgSize = 512; // maximum image size in pixels
 const minScore = 0.1; // minimum score
 const maxResults = 5; // maximum number of results to return
-const samples = ['sample (1).jpg', 'sample (2).jpg', 'sample (3).jpg', 'sample (4).jpg', 'sample (5).jpg', 'sample (6).jpg']; // sample images to be loaded using http
+const samples = ['sample (1).jpg', 'sample (2).jpg', 'sample (3).jpg', 'sample (4).jpg', 'sample (5).jpg', 'sample (6).jpg']; // sample images to be loaded
 
 // helper function to pretty-print json object to string
 function str(json) {

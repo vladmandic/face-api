@@ -4,10 +4,7 @@
 
 This is updated **face-api.js** with latest available TensorFlow/JS as the original face-api.js is not compatible with **tfjs 2.0+**.  
 
-Forked from **face-api.js** version **0.22.2** released on March 22nd, 2020  
-
-- <https://github.com/justadudewhohacks/face-api.js>  
-- <https://www.npmjs.com/package/face-api.js>  
+Forked from [face-api.js](https://github.com/justadudewhohacks/face-api.js) version **0.22.2** released on March 22nd, 2020  
 
 Currently based on **`TensorFlow/JS` 2.7.0**  
 
@@ -17,6 +14,8 @@ Because I needed Face-API that does not cause version conflict with newer TFJS 2
 And since original Face-API was open-source, I've released this version as well  
 
 Unfortunately, changes ended up being too large for a simple pull request on original Face-API and it ended up being a full-fledged version on its own  
+
+<br>
 
 ### Differences
 
@@ -40,6 +39,73 @@ Unfortunately, changes ended up being too large for a simple pull request on ori
   *If there is a demand, I can re-implement them back.*  
 
 Which means valid models are **tinyFaceDetector** and **mobileNetv1**  
+
+<br>
+<hr>
+<br>
+
+## Examples
+
+<br>
+
+### Browser
+
+Browser example that uses both models as well as all of the extensions is included in `/example/index.html`  
+Example can be accessed directly using Git pages using URL: <https://vladmandic.github.io/face-api/example/>  
+
+<br>
+
+*Note: Photos shown below are taken by me*
+
+![alt text](example/screenshot.png)
+
+<br>
+
+### NodeJS
+
+Two NodeJS examples are:
+
+- `/example/node-singleprocess.js`: Regular usage of `FaceAPI` from `NodeJS`  
+- `/example/node-multiprocess.js`: Multiprocessing showcase that uses pool of worker processes (`node-multiprocess-worker.js`
+  Main starts fixed pool of worker processes with each worker having it's instance of `FaceAPI`  
+  Workers communicate with main when they are ready and main dispaches job to each ready worker until job queue is empty  
+
+```json
+2020-12-08 08:30:01 INFO:  @vladmandic/face-api version 0.9.1
+2020-12-08 08:30:01 INFO:  User: vlado Platform: linux Arch: x64 Node: v15.0.1
+2020-12-08 08:30:01 INFO:  FaceAPI multi-process test
+2020-12-08 08:30:01 STATE:  Main: started worker: 265238
+2020-12-08 08:30:01 STATE:  Main: started worker: 265244
+2020-12-08 08:30:02 STATE:  Worker: PID: 265238 TensorFlow/JS 2.7.0 FaceAPI 0.9.1 Backend: tensorflow
+2020-12-08 08:30:02 STATE:  Worker: PID: 265244 TensorFlow/JS 2.7.0 FaceAPI 0.9.1 Backend: tensorflow
+2020-12-08 08:30:02 STATE:  Main: dispatching to worker: 265238
+2020-12-08 08:30:02 STATE:  Main: dispatching to worker: 265244
+2020-12-08 08:30:02 DATA:  Worker received message: 265238 { image: 'example/sample (1).jpg' }
+2020-12-08 08:30:02 DATA:  Worker received message: 265244 { image: 'example/sample (2).jpg' }
+2020-12-08 08:30:04 DATA:  Main: worker finished: 265238 detected faces: 3
+2020-12-08 08:30:04 STATE:  Main: dispatching to worker: 265238
+2020-12-08 08:30:04 DATA:  Main: worker finished: 265244 detected faces: 3
+2020-12-08 08:30:04 STATE:  Main: dispatching to worker: 265244
+2020-12-08 08:30:04 DATA:  Worker received message: 265238 { image: 'example/sample (3).jpg' }
+2020-12-08 08:30:04 DATA:  Worker received message: 265244 { image: 'example/sample (4).jpg' }
+2020-12-08 08:30:06 DATA:  Main: worker finished: 265238 detected faces: 3
+2020-12-08 08:30:06 STATE:  Main: dispatching to worker: 265238
+2020-12-08 08:30:06 DATA:  Worker received message: 265238 { image: 'example/sample (5).jpg' }
+2020-12-08 08:30:06 DATA:  Main: worker finished: 265244 detected faces: 4
+2020-12-08 08:30:06 STATE:  Main: dispatching to worker: 265244
+2020-12-08 08:30:06 DATA:  Worker received message: 265244 { image: 'example/sample (6).jpg' }
+2020-12-08 08:30:07 DATA:  Main: worker finished: 265238 detected faces: 5
+2020-12-08 08:30:07 STATE:  Main: worker exit: 265238 0
+2020-12-08 08:30:08 DATA:  Main: worker finished: 265244 detected faces: 4
+2020-12-08 08:30:08 INFO:  Processed 12 images in 6826 ms
+2020-12-08 08:30:08 STATE:  Main: worker exit: 265244 0
+```
+
+Note that `@tensorflow/tfjs-node` or `@tensorflow/tfjs-node-gpu` must be installed before using NodeJS example
+
+<br>
+<hr>
+<br>
 
 ## Installation
 
@@ -68,6 +134,8 @@ Reason for additional `nobundle` version is if you want to include a specific ve
 
 All versions include `sourcemap` and `asset manifest`
 
+<br>
+<hr>
 <br>
 
 There are several ways to use Face-API: 
@@ -171,9 +239,15 @@ And then use with:
   const faceapi = require('@vladmandic/face-api/dist/face-api.node-gpu.js'); // this loads face-api version with correct bindings for tfjs-node-gpu
 ```
 
+<br>
+<hr>
+<br>
+
 ## Weights
 
 Pretrained models and their weights are includes in `./model`.
+
+<br>
 
 ## Build
 
@@ -219,31 +293,11 @@ npm run build
 ```
 
 <br>
+<hr>
+<br>
 
 ## Credits & Documentation
 
 - Original project and usage documentation: [Face-API](https://github.com/justadudewhohacks/face-api.js)  
 - Original model weighs: [Face-API](https://github.com/justadudewhohacks/face-api.js-models)
 - ML API Documentation: [Tensorflow/JS](https://js.tensorflow.org/api/latest/)
-
-<br>
-
-## Example
-
-<br>
-
-### Browser
-
-Example that uses both models as well as all of the extensions is included in `/example/index.html`  
-Example can be accessed directly using Git pages using URL: <https://vladmandic.github.io/face-api/example/>  
-
-<br>
-
-### NodeJS
-
-Example is included in `/example/node.js`  
-Note that it does not require any other other 3rd party libraries  
-
-*Note: Photos shown below are taken by me*
-
-![alt text](example/screenshot.png)

@@ -2060,7 +2060,7 @@
       ]
     },
     "package.json": {
-      "bytes": 1409,
+      "bytes": 1352,
       "imports": []
     },
     "src/index.ts": {

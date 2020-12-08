@@ -34,19 +34,19 @@
     "url": "https://github.com/vladmandic/face-api/issues"
   },
   "homepage": "https://github.com/vladmandic/face-api#readme",
-  "Dependencies": {},
+  "dependencies": {
+    "@vladmandic/pilogger": "^0.2.9"
+  },
   "devDependencies": {
     "@tensorflow/tfjs": "^2.7.0",
-    "@tensorflow/tfjs-backend-wasm": "^2.7.0",
     "@tensorflow/tfjs-node": "^2.7.0",
     "@tensorflow/tfjs-node-gpu": "^2.7.0",
+    "@tensorflow/tfjs-backend-wasm": "^2.7.0",
     "@types/node": "^14.14.10",
-    "@vladmandic/pilogger": "^0.2.9",
     "esbuild": "^0.8.17",
     "rimraf": "^3.0.2",
     "ts-node": "^9.0.0",
     "tslib": "^2.0.3",
     "typescript": "^4.1.2"
-  },
-  "dependencies": {}
+  }
 }

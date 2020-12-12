@@ -17742,7 +17742,7 @@
     "dist/tfjs.esm.js.map": {
       "imports": [],
       "inputs": {},
-      "bytes": 1016661
+      "bytes": 1016656
     },
     "dist/tfjs.esm.js": {
       "imports": [],
@@ -20324,7 +20324,7 @@
           "bytesInOutput": 5350
         },
         "node_modules/@tensorflow/tfjs-data/dist/iterators/microphone_iterator.js": {
-          "bytesInOutput": 4243
+          "bytesInOutput": 4236
         },
         "node_modules/@tensorflow/tfjs-data/dist/iterators/webcam_iterator.js": {
           "bytesInOutput": 3722
@@ -21368,7 +21368,7 @@
           "bytesInOutput": 0
         }
       },
-      "bytes": 1501677
+      "bytes": 1501670
     }
   }
 }

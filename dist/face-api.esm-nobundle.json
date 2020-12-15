@@ -490,8 +490,11 @@
       ]
     },
     "src/dom/NetInput.ts": {
-      "bytes": 5452,
+      "bytes": 5453,
       "imports": [
+        {
+          "path": "dist/tfjs.esm.js"
+        },
         {
           "path": "src/env/index.ts"
         },
@@ -700,7 +703,7 @@
       ]
     },
     "src/NeuralNetwork.ts": {
-      "bytes": 5351,
+      "bytes": 5095,
       "imports": [
         {
           "path": "dist/tfjs.esm.js"
@@ -2133,7 +2136,7 @@
     "dist/face-api.esm-nobundle.js.map": {
       "imports": [],
       "inputs": {},
-      "bytes": 393016
+      "bytes": 392501
     },
     "dist/face-api.esm-nobundle.js": {
       "imports": [],
@@ -2406,7 +2409,7 @@
           "bytesInOutput": 147
         },
         "src/dom/NetInput.ts": {
-          "bytesInOutput": 2962
+          "bytesInOutput": 2908
         },
         "src/dom/imageToSquare.ts": {
           "bytesInOutput": 704
@@ -2730,7 +2733,7 @@
           "bytesInOutput": 19
         }
       },
-      "bytes": 131024
+      "bytes": 130970
     }
   }
 }

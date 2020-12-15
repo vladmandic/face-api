@@ -1,4 +1,4 @@
-import * as tf from '@tensorflow/tfjs-core';
+import * as tf from '../../dist/tfjs.esm.js';
 
 import { Dimensions } from '../classes/Dimensions';
 import { env } from '../env';

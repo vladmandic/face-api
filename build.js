@@ -78,7 +78,7 @@ const targets = {
       entryPoints: ['src/index.ts'],
       outfile: 'dist/face-api.esm-nobundle.js',
       metafile: 'dist/face-api.esm-nobundle.json',
-      external: ['fs', 'buffer', 'util', '@tensorflow'],
+      external: ['fs', 'buffer', 'util', '@tensorflow', 'tfjs.esm.js'],
     },
   },
   browserBundle: {

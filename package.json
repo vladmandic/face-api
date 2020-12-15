@@ -38,12 +38,12 @@
     "@vladmandic/pilogger": "^0.2.10"
   },
   "devDependencies": {
-    "@tensorflow/tfjs": "^2.7.0",
-    "@tensorflow/tfjs-node": "^2.7.0",
-    "@tensorflow/tfjs-node-gpu": "^2.7.0",
-    "@tensorflow/tfjs-backend-wasm": "^2.7.0",
-    "@types/node": "^14.14.12",
-    "esbuild": "^0.8.22",
+    "@tensorflow/tfjs": "^2.8.0",
+    "@tensorflow/tfjs-node": "^2.8.0",
+    "@tensorflow/tfjs-node-gpu": "^2.8.0",
+    "@tensorflow/tfjs-backend-wasm": "^2.8.0",
+    "@types/node": "^14.14.13",
+    "esbuild": "^0.8.23",
     "rimraf": "^3.0.2",
     "ts-node": "^9.1.1",
     "tslib": "^2.0.3",

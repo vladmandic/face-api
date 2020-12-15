@@ -6,7 +6,7 @@ This is updated **face-api.js** with latest available TensorFlow/JS as the origi
 
 Forked from [face-api.js](https://github.com/justadudewhohacks/face-api.js) version **0.22.2** released on March 22nd, 2020  
 
-Currently based on **`TensorFlow/JS` 2.7.0**  
+Currently based on **`TensorFlow/JS` 2.8.0**  
 
 ### Why?
 
@@ -170,11 +170,6 @@ and then in your `index.js`
 
 ```js
   import * as faceapi from 'dist/face-api.esm.js';
-```
-or to use non-bundled version:
-```js
-  import * as tf from `https://cdnjs.cloudflare.com/ajax/libs/tensorflow/2.7.0/tf.es2017.min.js`; // load tfjs directly from CDN link or your local system
-  import * as faceapi from 'dist/face-api.esm-nobundle.js';
 ```
 
 #### 2.2. With Bundler

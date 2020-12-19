@@ -3,7 +3,7 @@ import {
   extractSeparableConvParamsFactory,
   ExtractWeightsFunction,
   ParamMapping,
-} from '../common';
+} from '../common/index';
 import { DenseBlock3Params, DenseBlock4Params } from './types';
 
 export function extractorsFactory(extractWeights: ExtractWeightsFunction, paramMappings: ParamMapping[]) {

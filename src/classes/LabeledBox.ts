@@ -1,4 +1,4 @@
-import { isValidNumber } from '../utils';
+import { isValidNumber } from '../utils/index';
 import { IBoundingBox } from './BoundingBox';
 import { Box } from './Box';
 import { IRect } from './Rect';

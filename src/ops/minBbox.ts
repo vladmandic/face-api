@@ -1,4 +1,4 @@
-import { BoundingBox, IPoint } from '../classes';
+import { BoundingBox, IPoint } from '../classes/index';
 
 export function minBbox(pts: IPoint[]): BoundingBox {
   const xs = pts.map(pt => pt.x)

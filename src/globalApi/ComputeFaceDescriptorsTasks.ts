@@ -1,4 +1,4 @@
-import { TNetInput } from '../dom';
+import { TNetInput } from '../dom/index';
 import { extendWithFaceDescriptor, WithFaceDescriptor } from '../factories/WithFaceDescriptor';
 import { WithFaceDetection } from '../factories/WithFaceDetection';
 import { WithFaceLandmarks } from '../factories/WithFaceLandmarks';
@@ -61,7 +61,7 @@ export class ComputeSingleFaceDescriptorTask<
 
     const parentResult = await this.parentTask
     if (!parentResult) {
-      return
+      return undefined;
     }
     const descriptor = await extractSingleFaceAndComputeResult<TSource, Float32Array>(
       parentResult,

@@ -1,6 +1,6 @@
 import { FaceDetection } from '../classes/FaceDetection';
 import { Rect } from '../classes/Rect';
-import { env } from '../env';
+import { env } from '../env/index';
 import { createCanvas } from './createCanvas';
 import { getContext2dOrThrow } from './getContext2dOrThrow';
 import { imageTensorToCanvas } from './imageTensorToCanvas';

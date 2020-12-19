@@ -1,5 +1,5 @@
 import { Gender } from '../ageGenderNet/types';
-import { isValidProbablitiy } from '../utils';
+import { isValidProbablitiy } from '../utils/index';
 
 export type WithGender<TSource> = TSource & {
   gender: Gender

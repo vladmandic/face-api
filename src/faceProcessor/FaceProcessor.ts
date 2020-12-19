@@ -1,7 +1,7 @@
 import * as tf from '../../dist/tfjs.esm.js';
 
 import { fullyConnectedLayer } from '../common/fullyConnectedLayer';
-import { NetInput } from '../dom';
+import { NetInput } from '../dom/index';
 import {
   FaceFeatureExtractorParams,
   IFaceFeatureExtractor,

@@ -1,6 +1,6 @@
 import * as tf from '../../dist/tfjs.esm.js';
 
-import { ConvParams } from '../common';
+import { ConvParams } from '../common/index';
 import { disposeUnusedWeightTensors } from '../common/disposeUnusedWeightTensors';
 import { loadSeparableConvParamsFactory } from '../common/extractSeparableConvParamsFactory';
 import { extractWeightEntryFactory } from '../common/extractWeightEntryFactory';

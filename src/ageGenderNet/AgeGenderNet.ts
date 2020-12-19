@@ -7,7 +7,7 @@ import { extractParams } from './extractParams';
 import { extractParamsFromWeigthMap } from './extractParamsFromWeigthMap';
 import { AgeAndGenderPrediction, Gender, NetOutput, NetParams } from './types';
 import { NeuralNetwork } from '../NeuralNetwork';
-import { NetInput, TNetInput, toNetInput } from '../dom';
+import { NetInput, TNetInput, toNetInput } from '../dom/index';
 
 export class AgeGenderNet extends NeuralNetwork<NetParams> {
 

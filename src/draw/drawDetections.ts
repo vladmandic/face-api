@@ -1,7 +1,7 @@
-import { Box, IBoundingBox, IRect } from '../classes';
+import { Box, IBoundingBox, IRect } from '../classes/index';
 import { FaceDetection } from '../classes/FaceDetection';
 import { isWithFaceDetection, WithFaceDetection } from '../factories/WithFaceDetection';
-import { round } from '../utils';
+import { round } from '../utils/index';
 import { DrawBox } from './DrawBox';
 
 export type TDrawDetectionsInput = IRect | IBoundingBox | FaceDetection | WithFaceDetection<{}>

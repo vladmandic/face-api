@@ -1,6 +1,6 @@
 import * as tf from '../../dist/tfjs.esm.js';
 
-import { ConvParams } from '../common';
+import { ConvParams } from '../common/index';
 
 export type PointwiseConvParams = {
   filters: tf.Tensor4D

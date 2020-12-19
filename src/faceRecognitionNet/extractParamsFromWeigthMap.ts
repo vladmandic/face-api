@@ -1,7 +1,7 @@
 import * as tf from '../../dist/tfjs.esm.js';
 
-import { disposeUnusedWeightTensors, extractWeightEntryFactory, ParamMapping } from '../common';
-import { isTensor2D } from '../utils';
+import { disposeUnusedWeightTensors, extractWeightEntryFactory, ParamMapping } from '../common/index';
+import { isTensor2D } from '../utils/index';
 import { ConvLayerParams, NetParams, ResidualLayerParams, ScaleLayerParams } from './types';
 
 function extractorsFactory(weightMap: any, paramMappings: ParamMapping[]) {

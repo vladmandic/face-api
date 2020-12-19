@@ -1,6 +1,6 @@
 import * as tf from '../../dist/tfjs.esm.js';
 
-import { TNetInput } from '../dom';
+import { TNetInput } from '../dom/index';
 import { FaceExpressions } from '../faceExpressionNet/FaceExpressions';
 import { WithFaceDetection } from '../factories/WithFaceDetection';
 import { extendWithFaceExpressions, WithFaceExpressions } from '../factories/WithFaceExpressions';
@@ -61,7 +61,7 @@ export class PredictSingleFaceExpressionsTask<
 
     const parentResult = await this.parentTask
     if (!parentResult) {
-      return
+      return undefined;
     }
 
     const faceExpressions = await extractSingleFaceAndComputeResult<TSource, FaceExpressions>(

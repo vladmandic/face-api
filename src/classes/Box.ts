@@ -1,4 +1,4 @@
-import { isDimensions, isValidNumber } from '../utils';
+import { isDimensions, isValidNumber } from '../utils/index';
 import { IBoundingBox } from './BoundingBox';
 import { IDimensions } from './Dimensions';
 import { Point } from './Point';

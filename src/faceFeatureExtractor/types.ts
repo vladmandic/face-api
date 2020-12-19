@@ -1,7 +1,7 @@
 import * as tf from '../../dist/tfjs.esm.js';
 
-import { NetInput, TNetInput } from '..';
-import { ConvParams, SeparableConvParams } from '../common';
+import { NetInput, TNetInput } from '../index';
+import { ConvParams, SeparableConvParams } from '../common/index';
 import { NeuralNetwork } from '../NeuralNetwork';
 
 export type ConvWithBatchNormParams = BatchNormParams & {

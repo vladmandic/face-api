@@ -1,6 +1,6 @@
 import * as tf from '../../dist/tfjs.esm.js';
 
-import { convLayer } from '../common';
+import { convLayer } from '../common/index';
 import { BoxPredictionParams } from './types';
 
 

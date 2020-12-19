@@ -1,5 +1,5 @@
 import { Dimensions, IDimensions } from '../classes/Dimensions';
-import { env } from '../env';
+import { env } from '../env/index';
 
 export function getMediaDimensions(input: HTMLImageElement | HTMLCanvasElement | HTMLVideoElement | IDimensions): Dimensions {
 

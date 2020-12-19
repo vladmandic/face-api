@@ -1,7 +1,7 @@
 import * as tf from '../../dist/tfjs.esm.js';
 
-import { ConvParams, extractWeightsFactory, ExtractWeightsFunction, ParamMapping } from '../common';
-import { isFloat } from '../utils';
+import { ConvParams, extractWeightsFactory, ExtractWeightsFunction, ParamMapping } from '../common/index';
+import { isFloat } from '../utils/index';
 import { ConvLayerParams, NetParams, ResidualLayerParams, ScaleLayerParams } from './types';
 
 function extractorsFactory(extractWeights: ExtractWeightsFunction, paramMappings: ParamMapping[]) {

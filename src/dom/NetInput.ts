@@ -1,9 +1,9 @@
 import * as tf from '../../dist/tfjs.esm.js';
 
 import { Dimensions } from '../classes/Dimensions';
-import { env } from '../env';
+import { env } from '../env/index';
 import { padToSquare } from '../ops/padToSquare';
-import { computeReshapedDimensions, isTensor3D, isTensor4D, range } from '../utils';
+import { computeReshapedDimensions, isTensor3D, isTensor4D, range } from '../utils/index';
 import { createCanvasFromMedia } from './createCanvas';
 import { imageToSquare } from './imageToSquare';
 import { TResolvedNetInput } from './types';

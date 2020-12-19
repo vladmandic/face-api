@@ -1,6 +1,6 @@
 import * as tf from '../../dist/tfjs.esm.js';
 
-import { extractConvParamsFactory } from '../common';
+import { extractConvParamsFactory } from '../common/index';
 import { extractSeparableConvParamsFactory } from '../common/extractSeparableConvParamsFactory';
 import { extractWeightsFactory } from '../common/extractWeightsFactory';
 import { ExtractWeightsFunction, ParamMapping } from '../common/types';

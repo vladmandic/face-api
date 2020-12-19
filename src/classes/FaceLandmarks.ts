@@ -1,5 +1,5 @@
-import { minBbox } from '../ops';
-import { getCenterPoint } from '../utils';
+import { minBbox } from '../ops/index';
+import { getCenterPoint } from '../utils/index';
 import { IBoundingBox } from './BoundingBox';
 import { Box } from './Box';
 import { Dimensions, IDimensions } from './Dimensions';

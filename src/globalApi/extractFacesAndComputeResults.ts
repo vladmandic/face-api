@@ -1,7 +1,7 @@
 import * as tf from '../../dist/tfjs.esm.js';
 
 import { FaceDetection } from '../classes/FaceDetection';
-import { extractFaces, extractFaceTensors, TNetInput } from '../dom';
+import { extractFaces, extractFaceTensors, TNetInput } from '../dom/index';
 import { WithFaceDetection } from '../factories/WithFaceDetection';
 import { isWithFaceLandmarks, WithFaceLandmarks } from '../factories/WithFaceLandmarks';
 

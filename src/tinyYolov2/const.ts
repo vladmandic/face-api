@@ -1,4 +1,4 @@
-import { Point } from '../classes';
+import { Point } from '../classes/index';
 
 export const IOU_THRESHOLD = 0.4
 

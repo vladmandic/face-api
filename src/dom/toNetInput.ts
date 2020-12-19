@@ -1,4 +1,4 @@
-import { isTensor3D, isTensor4D } from '../utils';
+import { isTensor3D, isTensor4D } from '../utils/index';
 import { awaitMediaLoaded } from './awaitMediaLoaded';
 import { isMediaElement } from './isMediaElement';
 import { NetInput } from './NetInput';

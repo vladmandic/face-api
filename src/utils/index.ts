@@ -1,6 +1,6 @@
 import * as tf from '../../dist/tfjs.esm.js';
 
-import { Point } from '../classes';
+import { Point } from '../classes/index';
 import { Dimensions, IDimensions } from '../classes/Dimensions';
 
 export function isTensor(tensor: any, dim: number) {

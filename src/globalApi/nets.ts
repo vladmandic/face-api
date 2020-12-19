@@ -3,7 +3,7 @@ import { AgeAndGenderPrediction } from '../ageGenderNet/types';
 import { FaceDetection } from '../classes/FaceDetection';
 import { FaceLandmarks5 } from '../classes/FaceLandmarks5';
 import { FaceLandmarks68 } from '../classes/FaceLandmarks68';
-import { TNetInput } from '../dom';
+import { TNetInput } from '../dom/index';
 import { FaceExpressionNet } from '../faceExpressionNet/FaceExpressionNet';
 import { FaceExpressions } from '../faceExpressionNet/FaceExpressions';
 import { FaceLandmark68Net } from '../faceLandmarkNet/FaceLandmark68Net';
@@ -15,7 +15,7 @@ import { SsdMobilenetv1 } from '../ssdMobilenetv1/SsdMobilenetv1';
 import { SsdMobilenetv1Options } from '../ssdMobilenetv1/SsdMobilenetv1Options';
 import { TinyFaceDetector } from '../tinyFaceDetector/TinyFaceDetector';
 import { TinyFaceDetectorOptions } from '../tinyFaceDetector/TinyFaceDetectorOptions';
-import { ITinyYolov2Options, TinyYolov2 } from '../tinyYolov2';
+import { ITinyYolov2Options, TinyYolov2 } from '../tinyYolov2/index';
 
 export const nets = {
   ssdMobilenetv1: new SsdMobilenetv1(),

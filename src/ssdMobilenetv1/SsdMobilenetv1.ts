@@ -1,8 +1,8 @@
 import * as tf from '../../dist/tfjs.esm.js';
 
-import { Rect } from '../classes';
+import { Rect } from '../classes/index';
 import { FaceDetection } from '../classes/FaceDetection';
-import { NetInput, TNetInput, toNetInput } from '../dom';
+import { NetInput, TNetInput, toNetInput } from '../dom/index';
 import { NeuralNetwork } from '../NeuralNetwork';
 import { extractParams } from './extractParams';
 import { extractParamsFromWeigthMap } from './extractParamsFromWeigthMap';

@@ -1,4 +1,4 @@
-import { TNetInput } from '../dom';
+import { TNetInput } from '../dom/index';
 import { SsdMobilenetv1Options } from '../ssdMobilenetv1/SsdMobilenetv1Options';
 import { DetectAllFacesTask, DetectSingleFaceTask } from './DetectFacesTasks';
 import { FaceDetectionOptions } from './types';

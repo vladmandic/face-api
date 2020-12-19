@@ -1,6 +1,6 @@
 import * as tf from '../../dist/tfjs.esm.js';
 
-import { disposeUnusedWeightTensors, ParamMapping } from '../common';
+import { disposeUnusedWeightTensors, ParamMapping } from '../common/index';
 import { loadParamsFactory } from './loadParamsFactory';
 import { FaceFeatureExtractorParams } from './types';
 

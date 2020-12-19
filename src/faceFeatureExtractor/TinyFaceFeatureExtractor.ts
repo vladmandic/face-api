@@ -1,8 +1,8 @@
 import * as tf from '../../dist/tfjs.esm.js';
 
-import { NetInput, TNetInput, toNetInput } from '../dom';
+import { NetInput, TNetInput, toNetInput } from '../dom/index';
 import { NeuralNetwork } from '../NeuralNetwork';
-import { normalize } from '../ops';
+import { normalize } from '../ops/index';
 import { denseBlock3 } from './denseBlock';
 import { extractParamsFromWeigthMapTiny } from './extractParamsFromWeigthMapTiny';
 import { extractParamsTiny } from './extractParamsTiny';

@@ -1,4 +1,4 @@
-import { IDimensions, IPoint } from '../classes';
+import { IDimensions, IPoint } from '../classes/index';
 import { getContext2dOrThrow } from '../dom/getContext2dOrThrow';
 import { resolveInput } from '../dom/resolveInput';
 

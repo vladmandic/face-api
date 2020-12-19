@@ -1,4 +1,4 @@
-import { env } from '../env';
+import { env } from '../env/index';
 
 export function isMediaLoaded(media: HTMLImageElement | HTMLVideoElement) : boolean {
 

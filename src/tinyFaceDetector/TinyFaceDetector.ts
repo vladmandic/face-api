@@ -1,9 +1,9 @@
 import * as tf from '../../dist/tfjs.esm.js';
 
-import { FaceDetection, Point } from '../classes';
-import { ParamMapping } from '../common';
-import { TNetInput } from '../dom';
-import { ITinyYolov2Options } from '../tinyYolov2';
+import { FaceDetection, Point } from '../classes/index';
+import { ParamMapping } from '../common/index';
+import { TNetInput } from '../dom/index';
+import { ITinyYolov2Options } from '../tinyYolov2/index';
 import { TinyYolov2Base } from '../tinyYolov2/TinyYolov2Base';
 import { TinyYolov2NetParams } from '../tinyYolov2/types';
 import { BOX_ANCHORS, IOU_THRESHOLD, MEAN_RGB } from './const';

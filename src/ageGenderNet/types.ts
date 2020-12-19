@@ -1,6 +1,6 @@
 import * as tf from '../../dist/tfjs.esm.js';
 
-import { FCParams } from '../common';
+import { FCParams } from '../common/index';
 
 export type AgeAndGenderPrediction = {
   age: number

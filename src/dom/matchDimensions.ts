@@ -1,4 +1,4 @@
-import { IDimensions } from '../classes';
+import { IDimensions } from '../classes/index';
 import { getMediaDimensions } from './getMediaDimensions';
 
 export function matchDimensions(input: IDimensions, reference: IDimensions, useMediaDimensions: boolean = false) {

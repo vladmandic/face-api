@@ -1,8 +1,8 @@
-import { IPoint, Point } from '../classes';
-import { FaceExpressions } from '../faceExpressionNet';
+import { IPoint, Point } from '../classes/index';
+import { FaceExpressions } from '../faceExpressionNet/index';
 import { isWithFaceDetection } from '../factories/WithFaceDetection';
 import { isWithFaceExpressions, WithFaceExpressions } from '../factories/WithFaceExpressions';
-import { round } from '../utils';
+import { round } from '../utils/index';
 import { DrawTextField } from './DrawTextField';
 
 export type DrawFaceExpressionsInput = FaceExpressions | WithFaceExpressions<{}>

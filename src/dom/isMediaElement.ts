@@ -1,4 +1,4 @@
-import { env } from '../env';
+import { env } from '../env/index';
 
 export function isMediaElement(input: any) {
 

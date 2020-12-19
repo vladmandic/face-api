@@ -1,7 +1,7 @@
 import * as tf from '../../dist/tfjs.esm.js';
 
 import { FaceLandmarks68 } from '../classes/FaceLandmarks68';
-import { extractFaces, extractFaceTensors, TNetInput } from '../dom';
+import { extractFaces, extractFaceTensors, TNetInput } from '../dom/index';
 import { FaceLandmark68Net } from '../faceLandmarkNet/FaceLandmark68Net';
 import { FaceLandmark68TinyNet } from '../faceLandmarkNet/FaceLandmark68TinyNet';
 import { WithFaceDetection } from '../factories/WithFaceDetection';
@@ -79,7 +79,7 @@ export class DetectSingleFaceLandmarksTask<
 
     const parentResult = await this.parentTask
     if (!parentResult) {
-      return
+      return undefined;
     }
 
     const { detection } = parentResult

@@ -1,6 +1,6 @@
 import * as tf from '../../dist/tfjs.esm.js';
 
-import { ExtractWeightsFunction, ParamMapping, ConvParams, extractWeightsFactory } from '../common';
+import { ExtractWeightsFunction, ParamMapping, ConvParams, extractWeightsFactory } from '../common/index';
 import { MobileNetV1, NetParams, PointwiseConvParams, PredictionLayerParams } from './types';
 
 function extractorsFactory(extractWeights: ExtractWeightsFunction, paramMappings: ParamMapping[]) {

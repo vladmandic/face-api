@@ -1,4 +1,4 @@
-import { env } from '../env';
+import { env } from '../env/index';
 import { createCanvas, createCanvasFromMedia } from './createCanvas';
 import { getContext2dOrThrow } from './getContext2dOrThrow';
 import { getMediaDimensions } from './getMediaDimensions';

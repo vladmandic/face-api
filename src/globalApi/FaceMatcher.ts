@@ -1,7 +1,7 @@
 import { FaceMatch } from '../classes/FaceMatch';
 import { LabeledFaceDescriptors } from '../classes/LabeledFaceDescriptors';
 import { euclideanDistance } from '../euclideanDistance';
-import { WithFaceDescriptor } from '../factories';
+import { WithFaceDescriptor } from '../factories/index';
 
 export class FaceMatcher {
 

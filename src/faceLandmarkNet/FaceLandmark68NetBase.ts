@@ -1,11 +1,11 @@
 import * as tf from '../../dist/tfjs.esm.js';
 
-import { IDimensions, Point } from '../classes';
+import { IDimensions, Point } from '../classes/index';
 import { FaceLandmarks68 } from '../classes/FaceLandmarks68';
-import { NetInput, TNetInput, toNetInput } from '../dom';
+import { NetInput, TNetInput, toNetInput } from '../dom/index';
 import { FaceFeatureExtractorParams, TinyFaceFeatureExtractorParams } from '../faceFeatureExtractor/types';
 import { FaceProcessor } from '../faceProcessor/FaceProcessor';
-import { isEven } from '../utils';
+import { isEven } from '../utils/index';
 
 export abstract class FaceLandmark68NetBase<
   TExtractorParams extends FaceFeatureExtractorParams | TinyFaceFeatureExtractorParams

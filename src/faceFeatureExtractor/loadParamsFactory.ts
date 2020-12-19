@@ -1,4 +1,4 @@
-import { extractWeightEntryFactory, loadSeparableConvParamsFactory, ParamMapping } from '../common';
+import { extractWeightEntryFactory, loadSeparableConvParamsFactory, ParamMapping } from '../common/index';
 import { loadConvParamsFactory } from '../common/loadConvParamsFactory';
 import { DenseBlock3Params, DenseBlock4Params } from './types';
 

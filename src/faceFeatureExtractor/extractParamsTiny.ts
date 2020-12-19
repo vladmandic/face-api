@@ -1,4 +1,4 @@
-import { extractWeightsFactory, ParamMapping } from '../common';
+import { extractWeightsFactory, ParamMapping } from '../common/index';
 import { extractorsFactory } from './extractorsFactory';
 import { TinyFaceFeatureExtractorParams } from './types';
 

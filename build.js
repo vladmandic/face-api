@@ -2,6 +2,7 @@
 
 const fs = require('fs');
 const esbuild = require('esbuild');
+const ts = require('typescript');
 const log = require('@vladmandic/pilogger');
 
 // keeps esbuild service instance cached
@@ -13,6 +14,25 @@ const banner = `
   author: <https://github.com/vladmandic>'
   */
 `;
+
+// tsc configuration
+
+const tsconfig = {
+  noEmitOnError: false,
+  target: ts.ScriptTarget.ES2018,
+  module: ts.ModuleKind.ES2020,
+  outFile: "dist/face-api.d.ts",
+  declaration: true,
+  emitDeclarationOnly: true,
+  emitDecoratorMetadata: true,
+  experimentalDecorators: true,
+  skipLibCheck: true,
+  strictNullChecks: true,
+  baseUrl: './',
+  paths: {
+    tslib: ["node_modules/tslib/tslib.d.ts"]
+  },
+};
 
 // common configuration
 const common = {
@@ -137,6 +157,25 @@ async function getStats(metafile) {
   return stats;
 }
 
+function compile(fileNames, options) {
+  log.info('Compile:', fileNames);
+  const program = ts.createProgram(fileNames, options);
+  const emit = program.emit();
+  const diag = ts
+    .getPreEmitDiagnostics(program)
+    .concat(emit.diagnostics);
+  for (const info of diag) {
+    const msg = info.messageText.messageText || info.messageText;
+    if (msg.includes('package.json')) continue;
+    if (info.file) {
+      const pos = info.file.getLineAndCharacterOfPosition(info.start);
+      log.error(`TSC: ${info.file.fileName} [${pos.line + 1},${pos.character + 1}]:`, msg);
+    } else {
+      log.error('TSCC:', msg);
+    }
+  }
+}
+
 // rebuild on file change
 async function build(f, msg) {
   log.info('Build: file', msg, f, 'target:', common.target);
@@ -153,12 +192,16 @@ async function build(f, msg) {
         log.state(`Build for: ${targetGroupName} type: ${targetName}:`, stats);
       }
     }
-    if (require.main === module) process.exit(0);
   } catch (err) {
     // catch errors and print where it occured
     log.error('Build error', JSON.stringify(err.errors || err, null, 2));
     if (require.main === module) process.exit(1);
   }
+
+  // generate typings
+  compile(targets.browserBundle.esm.entryPoints, tsconfig);
+
+  if (require.main === module) process.exit(0);
 }
 
 if (require.main === module) {

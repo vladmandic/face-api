@@ -1,5 +1,5 @@
 import { IDimensions } from '../classes/Dimensions';
-import { env } from '../env';
+import { env } from '../env/index';
 import { getContext2dOrThrow } from './getContext2dOrThrow';
 import { getMediaDimensions } from './getMediaDimensions';
 import { isMediaLoaded } from './isMediaLoaded';

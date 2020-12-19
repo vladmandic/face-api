@@ -1,4 +1,4 @@
-import { getCenterPoint } from '../utils';
+import { getCenterPoint } from '../utils/index';
 import { FaceLandmarks } from './FaceLandmarks';
 import { Point } from './Point';
 

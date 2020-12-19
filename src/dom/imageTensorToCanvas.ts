@@ -1,7 +1,7 @@
 import * as tf from '../../dist/tfjs.esm.js';
 
-import { env } from '../env';
-import { isTensor4D } from '../utils';
+import { env } from '../env/index';
+import { isTensor4D } from '../utils/index';
 
 export async function imageTensorToCanvas(
   imgTensor: tf.Tensor,

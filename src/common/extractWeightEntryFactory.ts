@@ -1,4 +1,4 @@
-import { isTensor } from '../utils';
+import { isTensor } from '../utils/index';
 import { ParamMapping } from './types';
 
 export function extractWeightEntryFactory(weightMap: any, paramMappings: ParamMapping[]) {

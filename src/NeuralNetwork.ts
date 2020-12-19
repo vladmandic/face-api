@@ -1,9 +1,9 @@
 import * as tf from '../dist/tfjs.esm.js';
 
-import { ParamMapping } from './common';
+import { ParamMapping } from './common/index';
 import { getModelUris } from './common/getModelUris';
-import { loadWeightMap } from './dom';
-import { env } from './env';
+import { loadWeightMap } from './dom/index';
+import { env } from './env/index';
 
 export abstract class NeuralNetwork<TNetParams> {
 

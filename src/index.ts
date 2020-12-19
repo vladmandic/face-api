@@ -1,6 +1,6 @@
 import * as tf from '../dist/tfjs.esm.js';
-import * as draw from './draw';
-import * as utils from './utils';
+import * as draw from './draw/index';
+import * as utils from './utils/index';
 export { tf, draw, utils };
 
 export * from './ageGenderNet/index';
@@ -23,12 +23,4 @@ export * from './resizeResults';
 import * as pkg from '../package.json';
 const node = (typeof process !== 'undefined');
 const browser = (typeof navigator !== 'undefined') && (typeof navigator.userAgent !== 'undefined');
-export const version = { faceapi: pkg.version, node, browser };
-
-// import { PlatformBrowser } from './Platform';
-// if (!tf.env().platform && tf.env().get('IS_BROWSER')) tf.env().setPlatform('browser', new PlatformBrowser);
-// tf.setBackend('cpu');
-
-// import {MathBackendCPU} from '@tensorflow/tfjs-backend-cpu/dist/backend_cpu.js';
-// export {MathBackendCPU};
-// tf.registerBackend('cpu', () => new MathBackendCPU(), 1 /* priority */);
+export const version = { faceapi: pkg.version as string, node, browser };

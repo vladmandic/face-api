@@ -1,7 +1,7 @@
 import * as tf from '../../dist/tfjs.esm.js';
 
 import { AgeAndGenderPrediction } from '../ageGenderNet/types';
-import { TNetInput } from '../dom';
+import { TNetInput } from '../dom/index';
 import { extendWithAge, WithAge } from '../factories/WithAge';
 import { WithFaceDetection } from '../factories/WithFaceDetection';
 import { WithFaceLandmarks } from '../factories/WithFaceLandmarks';
@@ -63,7 +63,7 @@ export class PredictSingleAgeAndGenderTask<
 
     const parentResult = await this.parentTask
     if (!parentResult) {
-      return
+      return undefined;
     }
 
     const { age, gender, genderProbability } = await extractSingleFaceAndComputeResult<TSource, AgeAndGenderPrediction>(

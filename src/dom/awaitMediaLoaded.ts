@@ -1,4 +1,4 @@
-import { env } from '../env';
+import { env } from '../env/index';
 import { isMediaLoaded } from './isMediaLoaded';
 
 export function awaitMediaLoaded(media: HTMLImageElement | HTMLVideoElement | HTMLCanvasElement) {

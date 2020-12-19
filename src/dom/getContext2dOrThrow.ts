@@ -1,4 +1,4 @@
-import { env } from '../env';
+import { env } from '../env/index';
 import { resolveInput } from './resolveInput';
 
 export function getContext2dOrThrow(canvasArg: string | HTMLCanvasElement | CanvasRenderingContext2D): CanvasRenderingContext2D {

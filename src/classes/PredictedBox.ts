@@ -1,4 +1,4 @@
-import { isValidProbablitiy } from '../utils';
+import { isValidProbablitiy } from '../utils/index';
 import { IBoundingBox } from './BoundingBox';
 import { LabeledBox } from './LabeledBox';
 import { IRect } from './Rect';

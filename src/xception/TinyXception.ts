@@ -1,10 +1,10 @@
 import * as tf from '../../dist/tfjs.esm.js';
 
-import { ConvParams, depthwiseSeparableConv } from '../common';
-import { NetInput, TNetInput, toNetInput } from '../dom';
+import { ConvParams, depthwiseSeparableConv } from '../common/index';
+import { NetInput, TNetInput, toNetInput } from '../dom/index';
 import { NeuralNetwork } from '../NeuralNetwork';
-import { normalize } from '../ops';
-import { range } from '../utils';
+import { normalize } from '../ops/index';
+import { range } from '../utils/index';
 import { extractParams } from './extractParams';
 import { extractParamsFromWeigthMap } from './extractParamsFromWeigthMap';
 import { MainBlockParams, ReductionBlockParams, TinyXceptionParams } from './types';

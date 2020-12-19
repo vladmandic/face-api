@@ -1,4 +1,4 @@
-import { IPoint } from '../classes';
+import { IPoint } from '../classes/index';
 import { FaceLandmarks } from '../classes/FaceLandmarks';
 import { FaceLandmarks68 } from '../classes/FaceLandmarks68';
 import { getContext2dOrThrow } from '../dom/getContext2dOrThrow';

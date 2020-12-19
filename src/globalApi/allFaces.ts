@@ -1,7 +1,7 @@
-import { TNetInput } from '../dom';
-import { WithFaceDescriptor, WithFaceDetection, WithFaceLandmarks } from '../factories';
-import { SsdMobilenetv1Options } from '../ssdMobilenetv1';
-import { ITinyYolov2Options, TinyYolov2Options } from '../tinyYolov2';
+import { TNetInput } from '../dom/index';
+import { WithFaceDescriptor, WithFaceDetection, WithFaceLandmarks } from '../factories/index';
+import { SsdMobilenetv1Options } from '../ssdMobilenetv1/index';
+import { ITinyYolov2Options, TinyYolov2Options } from '../tinyYolov2/index';
 import { detectAllFaces } from './detectFaces';
 
 // export allFaces API for backward compatibility

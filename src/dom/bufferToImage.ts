@@ -1,4 +1,4 @@
-import { env } from '../env';
+import { env } from '../env/index';
 
 export function bufferToImage(buf: Blob): Promise<HTMLImageElement> {
   return new Promise((resolve, reject) => {

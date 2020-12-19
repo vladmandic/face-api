@@ -1,8 +1,8 @@
 import * as tf from '../../dist/tfjs.esm.js';
 
-import { Rect } from '../classes';
+import { Rect } from '../classes/index';
 import { FaceDetection } from '../classes/FaceDetection';
-import { isTensor3D, isTensor4D } from '../utils';
+import { isTensor3D, isTensor4D } from '../utils/index';
 
 /**
  * Extracts the tensors of the image regions containing the detected faces.

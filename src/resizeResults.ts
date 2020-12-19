@@ -1,4 +1,4 @@
-import { Dimensions, IDimensions } from './classes';
+import { Dimensions, IDimensions } from './classes/index';
 import { FaceDetection } from './classes/FaceDetection';
 import { FaceLandmarks } from './classes/FaceLandmarks';
 import { extendWithFaceDetection, isWithFaceDetection } from './factories/WithFaceDetection';

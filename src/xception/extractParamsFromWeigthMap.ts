@@ -5,9 +5,9 @@ import {
   extractWeightEntryFactory,
   loadSeparableConvParamsFactory,
   ParamMapping,
-} from '../common';
+} from '../common/index';
 import { loadConvParamsFactory } from '../common/loadConvParamsFactory';
-import { range } from '../utils';
+import { range } from '../utils/index';
 import { MainBlockParams, ReductionBlockParams, TinyXceptionParams } from './types';
 
 function loadParamsFactory(weightMap: any, paramMappings: ParamMapping[]) {

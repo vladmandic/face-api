@@ -1,9 +1,9 @@
 import { FaceDetection } from '../classes/FaceDetection';
-import { TNetInput } from '../dom';
+import { TNetInput } from '../dom/index';
 import { extendWithFaceDetection, WithFaceDetection } from '../factories/WithFaceDetection';
 import { SsdMobilenetv1Options } from '../ssdMobilenetv1/SsdMobilenetv1Options';
 import { TinyFaceDetectorOptions } from '../tinyFaceDetector/TinyFaceDetectorOptions';
-import { TinyYolov2Options } from '../tinyYolov2';
+import { TinyYolov2Options } from '../tinyYolov2/index';
 import { ComposableTask } from './ComposableTask';
 import { DetectAllFaceLandmarksTask, DetectSingleFaceLandmarksTask } from './DetectFaceLandmarksTasks';
 import { nets } from './nets';

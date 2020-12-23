@@ -4,12 +4,10 @@ export type WithFaceDescriptor<TSource> = TSource & {
 
 export function extendWithFaceDescriptor<
   TSource
-> (
+>(
   sourceObj: TSource,
-  descriptor: Float32Array
+  descriptor: Float32Array,
 ): WithFaceDescriptor<TSource> {
-
-  const extension = { descriptor }
-  return Object.assign({}, sourceObj, extension)
+  const extension = { descriptor };
+  return { ...sourceObj, ...extension };
 }
-

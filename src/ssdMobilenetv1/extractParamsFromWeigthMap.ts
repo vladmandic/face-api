@@ -1,33 +1,34 @@
 import * as tf from '../../dist/tfjs.esm.js';
 
-import { ConvParams, disposeUnusedWeightTensors, extractWeightEntryFactory, ParamMapping } from '../common/index';
+import {
+  ConvParams, disposeUnusedWeightTensors, extractWeightEntryFactory, ParamMapping,
+} from '../common/index';
 import { isTensor3D } from '../utils/index';
-import { BoxPredictionParams, MobileNetV1, NetParams, PointwiseConvParams, PredictionLayerParams } from './types';
+import {
+  BoxPredictionParams, MobileNetV1, NetParams, PointwiseConvParams, PredictionLayerParams,
+} from './types';
 
 function extractorsFactory(weightMap: any, paramMappings: ParamMapping[]) {
-
-  const extractWeightEntry = extractWeightEntryFactory(weightMap, paramMappings)
+  const extractWeightEntry = extractWeightEntryFactory(weightMap, paramMappings);
 
   function extractPointwiseConvParams(prefix: string, idx: number, mappedPrefix: string): PointwiseConvParams {
+    const filters = extractWeightEntry(`${prefix}/Conv2d_${idx}_pointwise/weights`, 4, `${mappedPrefix}/filters`);
+    const batch_norm_offset = extractWeightEntry(`${prefix}/Conv2d_${idx}_pointwise/convolution_bn_offset`, 1, `${mappedPrefix}/batch_norm_offset`);
 
-    const filters = extractWeightEntry<tf.Tensor4D>(`${prefix}/Conv2d_${idx}_pointwise/weights`, 4, `${mappedPrefix}/filters`)
-    const batch_norm_offset = extractWeightEntry<tf.Tensor1D>(`${prefix}/Conv2d_${idx}_pointwise/convolution_bn_offset`, 1, `${mappedPrefix}/batch_norm_offset`)
-
-    return { filters, batch_norm_offset }
+    return { filters, batch_norm_offset };
   }
 
   function extractConvPairParams(idx: number): MobileNetV1.ConvPairParams {
+    const mappedPrefix = `mobilenetv1/conv_${idx}`;
+    const prefixDepthwiseConv = `MobilenetV1/Conv2d_${idx}_depthwise`;
+    const mappedPrefixDepthwiseConv = `${mappedPrefix}/depthwise_conv`;
+    const mappedPrefixPointwiseConv = `${mappedPrefix}/pointwise_conv`;
 
-    const mappedPrefix = `mobilenetv1/conv_${idx}`
-    const prefixDepthwiseConv = `MobilenetV1/Conv2d_${idx}_depthwise`
-    const mappedPrefixDepthwiseConv = `${mappedPrefix}/depthwise_conv`
-    const mappedPrefixPointwiseConv = `${mappedPrefix}/pointwise_conv`
-
-    const filters = extractWeightEntry<tf.Tensor4D>(`${prefixDepthwiseConv}/depthwise_weights`, 4, `${mappedPrefixDepthwiseConv}/filters`)
-    const batch_norm_scale = extractWeightEntry<tf.Tensor1D>(`${prefixDepthwiseConv}/BatchNorm/gamma`, 1, `${mappedPrefixDepthwiseConv}/batch_norm_scale`)
-    const batch_norm_offset = extractWeightEntry<tf.Tensor1D>(`${prefixDepthwiseConv}/BatchNorm/beta`, 1, `${mappedPrefixDepthwiseConv}/batch_norm_offset`)
-    const batch_norm_mean = extractWeightEntry<tf.Tensor1D>(`${prefixDepthwiseConv}/BatchNorm/moving_mean`, 1, `${mappedPrefixDepthwiseConv}/batch_norm_mean`)
-    const batch_norm_variance = extractWeightEntry<tf.Tensor1D>(`${prefixDepthwiseConv}/BatchNorm/moving_variance`, 1, `${mappedPrefixDepthwiseConv}/batch_norm_variance`)
+    const filters = extractWeightEntry(`${prefixDepthwiseConv}/depthwise_weights`, 4, `${mappedPrefixDepthwiseConv}/filters`);
+    const batch_norm_scale = extractWeightEntry(`${prefixDepthwiseConv}/BatchNorm/gamma`, 1, `${mappedPrefixDepthwiseConv}/batch_norm_scale`);
+    const batch_norm_offset = extractWeightEntry(`${prefixDepthwiseConv}/BatchNorm/beta`, 1, `${mappedPrefixDepthwiseConv}/batch_norm_offset`);
+    const batch_norm_mean = extractWeightEntry(`${prefixDepthwiseConv}/BatchNorm/moving_mean`, 1, `${mappedPrefixDepthwiseConv}/batch_norm_mean`);
+    const batch_norm_variance = extractWeightEntry(`${prefixDepthwiseConv}/BatchNorm/moving_variance`, 1, `${mappedPrefixDepthwiseConv}/batch_norm_variance`);
 
     return {
       depthwise_conv: {
@@ -35,10 +36,10 @@ function extractorsFactory(weightMap: any, paramMappings: ParamMapping[]) {
         batch_norm_scale,
         batch_norm_offset,
         batch_norm_mean,
-        batch_norm_variance
+        batch_norm_variance,
       },
-      pointwise_conv: extractPointwiseConvParams('MobilenetV1', idx, mappedPrefixPointwiseConv)
-    }
+      pointwise_conv: extractPointwiseConvParams('MobilenetV1', idx, mappedPrefixPointwiseConv),
+    };
   }
 
   function extractMobilenetV1Params(): MobileNetV1.Params {
@@ -56,29 +57,28 @@ function extractorsFactory(weightMap: any, paramMappings: ParamMapping[]) {
       conv_10: extractConvPairParams(10),
       conv_11: extractConvPairParams(11),
       conv_12: extractConvPairParams(12),
-      conv_13: extractConvPairParams(13)
-    }
+      conv_13: extractConvPairParams(13),
+    };
   }
 
   function extractConvParams(prefix: string, mappedPrefix: string): ConvParams {
-    const filters = extractWeightEntry<tf.Tensor4D>(`${prefix}/weights`, 4, `${mappedPrefix}/filters`)
-    const bias = extractWeightEntry<tf.Tensor1D>(`${prefix}/biases`, 1, `${mappedPrefix}/bias`)
+    const filters = extractWeightEntry(`${prefix}/weights`, 4, `${mappedPrefix}/filters`);
+    const bias = extractWeightEntry(`${prefix}/biases`, 1, `${mappedPrefix}/bias`);
 
-    return { filters, bias }
+    return { filters, bias };
   }
 
   function extractBoxPredictorParams(idx: number): BoxPredictionParams {
-
     const box_encoding_predictor = extractConvParams(
       `Prediction/BoxPredictor_${idx}/BoxEncodingPredictor`,
-      `prediction_layer/box_predictor_${idx}/box_encoding_predictor`
-    )
+      `prediction_layer/box_predictor_${idx}/box_encoding_predictor`,
+    );
     const class_predictor = extractConvParams(
       `Prediction/BoxPredictor_${idx}/ClassPredictor`,
-      `prediction_layer/box_predictor_${idx}/class_predictor`
-    )
+      `prediction_layer/box_predictor_${idx}/class_predictor`,
+    );
 
-    return { box_encoding_predictor, class_predictor }
+    return { box_encoding_predictor, class_predictor };
   }
 
   function extractPredictionLayerParams(): PredictionLayerParams {
@@ -96,43 +96,42 @@ function extractorsFactory(weightMap: any, paramMappings: ParamMapping[]) {
       box_predictor_2: extractBoxPredictorParams(2),
       box_predictor_3: extractBoxPredictorParams(3),
       box_predictor_4: extractBoxPredictorParams(4),
-      box_predictor_5: extractBoxPredictorParams(5)
-    }
+      box_predictor_5: extractBoxPredictorParams(5),
+    };
   }
 
   return {
     extractMobilenetV1Params,
-    extractPredictionLayerParams
-  }
+    extractPredictionLayerParams,
+  };
 }
 
 export function extractParamsFromWeigthMap(
-  weightMap: tf.NamedTensorMap
+  weightMap: tf.NamedTensorMap,
 ): { params: NetParams, paramMappings: ParamMapping[] } {
-
-  const paramMappings: ParamMapping[] = []
+  const paramMappings: ParamMapping[] = [];
 
   const {
     extractMobilenetV1Params,
-    extractPredictionLayerParams
-  } = extractorsFactory(weightMap, paramMappings)
+    extractPredictionLayerParams,
+  } = extractorsFactory(weightMap, paramMappings);
 
-  const extra_dim = weightMap['Output/extra_dim']
-  paramMappings.push({ originalPath: 'Output/extra_dim', paramPath: 'output_layer/extra_dim' })
+  const extra_dim = weightMap['Output/extra_dim'];
+  paramMappings.push({ originalPath: 'Output/extra_dim', paramPath: 'output_layer/extra_dim' });
 
   if (!isTensor3D(extra_dim)) {
-    throw new Error(`expected weightMap['Output/extra_dim'] to be a Tensor3D, instead have ${extra_dim}`)
+    throw new Error(`expected weightMap['Output/extra_dim'] to be a Tensor3D, instead have ${extra_dim}`);
   }
 
   const params = {
     mobilenetv1: extractMobilenetV1Params(),
     prediction_layer: extractPredictionLayerParams(),
     output_layer: {
-      extra_dim
-    }
-  }
+      extra_dim,
+    },
+  };
 
-  disposeUnusedWeightTensors(weightMap, paramMappings)
+  disposeUnusedWeightTensors(weightMap, paramMappings);
 
-  return { params, paramMappings }
+  return { params, paramMappings };
 }

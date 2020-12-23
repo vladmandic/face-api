@@ -1,30 +1,26 @@
 import { FileSystem } from './types';
 
 export function createFileSystem(fs?: any): FileSystem {
-
-  let requireFsError = ''
+  let requireFsError = '';
 
   if (!fs) {
     try {
-      fs = require('fs')
+      // eslint-disable-next-line global-require
+      fs = require('fs');
     } catch (err) {
-      requireFsError = err.toString()
+      requireFsError = err.toString();
     }
   }
 
   const readFile = fs
-    ? function(filePath: string) {
-      return new Promise<Buffer>((res, rej) => {
-        fs.readFile(filePath, function(err: any, buffer: Buffer) {
-          return err ? rej(err) : res(buffer)
-        })
-      })
-    }
-    : function() {
-      throw new Error(`readFile - failed to require fs in nodejs environment with error: ${requireFsError}`)
-    }
+    ? (filePath: string) => new Promise<Buffer>((resolve, reject) => {
+      fs.readFile(filePath, (err: any, buffer: Buffer) => (err ? reject(err) : resolve(buffer)));
+    })
+    : () => {
+      throw new Error(`readFile - failed to require fs in nodejs environment with error: ${requireFsError}`);
+    };
 
   return {
-    readFile
-  }
+    readFile,
+  };
 }

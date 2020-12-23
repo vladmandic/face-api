@@ -3,16 +3,15 @@ export type WithAge<TSource> = TSource & {
 }
 
 export function isWithAge(obj: any): obj is WithAge<{}> {
-  return typeof obj['age'] === 'number'
+  return typeof obj.age === 'number';
 }
 
 export function extendWithAge<
   TSource
-> (
+>(
   sourceObj: TSource,
-  age: number
+  age: number,
 ): WithAge<TSource> {
-
-  const extension = { age }
-  return Object.assign({}, sourceObj, extension)
+  const extension = { age };
+  return { ...sourceObj, ...extension };
 }

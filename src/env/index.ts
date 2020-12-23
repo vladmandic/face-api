@@ -5,49 +5,46 @@ import { isBrowser } from './isBrowser';
 import { isNodejs } from './isNodejs';
 import { Environment } from './types';
 
-let environment: Environment | null
+let environment: Environment | null;
 
 function getEnv(): Environment {
   if (!environment) {
-    throw new Error('getEnv - environment is not defined, check isNodejs() and isBrowser()')
+    throw new Error('getEnv - environment is not defined, check isNodejs() and isBrowser()');
   }
-  return environment
+  return environment;
 }
 
 function setEnv(env: Environment) {
-  environment = env
+  environment = env;
 }
 
 function initialize() {
   // check for isBrowser() first to prevent electron renderer process
   // to be initialized with wrong environment due to isNodejs() returning true
-  if (isBrowser()) {
-    return setEnv(createBrowserEnv())
-  }
-  if (isNodejs()) {
-    return setEnv(createNodejsEnv())
-  }
+  if (isBrowser()) return setEnv(createBrowserEnv());
+  if (isNodejs()) return setEnv(createNodejsEnv());
+  return null;
 }
 
 function monkeyPatch(env: Partial<Environment>) {
   if (!environment) {
-    initialize()
+    initialize();
   }
 
   if (!environment) {
-    throw new Error('monkeyPatch - environment is not defined, check isNodejs() and isBrowser()')
+    throw new Error('monkeyPatch - environment is not defined, check isNodejs() and isBrowser()');
   }
 
-  const { Canvas = environment.Canvas, Image = environment.Image } = env
-  environment.Canvas = Canvas
-  environment.Image = Image
-  environment.createCanvasElement = env.createCanvasElement || (() => new Canvas())
-  environment.createImageElement = env.createImageElement || (() => new Image())
+  const { Canvas = environment.Canvas, Image = environment.Image } = env;
+  environment.Canvas = Canvas;
+  environment.Image = Image;
+  environment.createCanvasElement = env.createCanvasElement || (() => new Canvas());
+  environment.createImageElement = env.createImageElement || (() => new Image());
 
-  environment.ImageData = env.ImageData || environment.ImageData
-  environment.Video = env.Video || environment.Video
-  environment.fetch = env.fetch || environment.fetch
-  environment.readFile = env.readFile || environment.readFile
+  environment.ImageData = env.ImageData || environment.ImageData;
+  environment.Video = env.Video || environment.Video;
+  environment.fetch = env.fetch || environment.fetch;
+  environment.readFile = env.readFile || environment.readFile;
 }
 
 export const env = {
@@ -59,9 +56,9 @@ export const env = {
   createNodejsEnv,
   monkeyPatch,
   isBrowser,
-  isNodejs
-}
+  isNodejs,
+};
 
-initialize()
+initialize();
 
-export * from './types'
+export * from './types';

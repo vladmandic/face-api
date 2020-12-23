@@ -4,15 +4,15 @@ import { NetInput, TNetInput } from '../index';
 import { ConvParams, SeparableConvParams } from '../common/index';
 import { NeuralNetwork } from '../NeuralNetwork';
 
-export type ConvWithBatchNormParams = BatchNormParams & {
-  filter: tf.Tensor4D
-}
-
 export type BatchNormParams = {
   mean: tf.Tensor1D
   variance: tf.Tensor1D
   scale: tf.Tensor1D
   offset: tf.Tensor1D
+}
+
+export type ConvWithBatchNormParams = BatchNormParams & {
+  filter: tf.Tensor4D
 }
 
 export type SeparableConvWithBatchNormParams = {
@@ -44,6 +44,8 @@ export type FaceFeatureExtractorParams = {
 }
 
 export interface IFaceFeatureExtractor<TNetParams extends TinyFaceFeatureExtractorParams | FaceFeatureExtractorParams> extends NeuralNetwork<TNetParams> {
+  // eslint-disable-next-line no-unused-vars
   forwardInput(input: NetInput): tf.Tensor4D
+  // eslint-disable-next-line no-unused-vars
   forward(input: TNetInput): Promise<tf.Tensor4D>
 }

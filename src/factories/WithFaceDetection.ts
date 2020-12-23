@@ -5,16 +5,15 @@ export type WithFaceDetection<TSource> = TSource & {
 }
 
 export function isWithFaceDetection(obj: any): obj is WithFaceDetection<{}> {
-  return obj['detection'] instanceof FaceDetection
+  return obj.detection instanceof FaceDetection;
 }
 
 export function extendWithFaceDetection<
   TSource
-> (
+>(
   sourceObj: TSource,
-  detection: FaceDetection
+  detection: FaceDetection,
 ): WithFaceDetection<TSource> {
-
-  const extension = { detection }
-  return Object.assign({}, sourceObj, extension)
+  const extension = { detection };
+  return { ...sourceObj, ...extension };
 }

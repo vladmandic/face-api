@@ -9,47 +9,45 @@ import { extractParamsFromWeigthMap } from './extractParamsFromWeigthMap';
 import { FaceFeatureExtractorParams, IFaceFeatureExtractor } from './types';
 
 export class FaceFeatureExtractor extends NeuralNetwork<FaceFeatureExtractorParams> implements IFaceFeatureExtractor<FaceFeatureExtractorParams> {
-
   constructor() {
-    super('FaceFeatureExtractor')
+    super('FaceFeatureExtractor');
   }
 
   public forwardInput(input: NetInput): tf.Tensor4D {
-
-    const { params } = this
+    const { params } = this;
 
     if (!params) {
-      throw new Error('FaceFeatureExtractor - load model before inference')
+      throw new Error('FaceFeatureExtractor - load model before inference');
     }
 
     return tf.tidy(() => {
       const batchTensor = tf.cast(input.toBatchTensor(112, true), 'float32');
-      const meanRgb = [122.782, 117.001, 104.298]
-      const normalized = normalize(batchTensor, meanRgb).div(tf.scalar(255)) as tf.Tensor4D
+      const meanRgb = [122.782, 117.001, 104.298];
+      const normalized = normalize(batchTensor, meanRgb).div(tf.scalar(255)) as tf.Tensor4D;
 
-      let out = denseBlock4(normalized, params.dense0, true)
-      out = denseBlock4(out, params.dense1)
-      out = denseBlock4(out, params.dense2)
-      out = denseBlock4(out, params.dense3)
-      out = tf.avgPool(out, [7, 7], [2, 2], 'valid')
+      let out = denseBlock4(normalized, params.dense0, true);
+      out = denseBlock4(out, params.dense1);
+      out = denseBlock4(out, params.dense2);
+      out = denseBlock4(out, params.dense3);
+      out = tf.avgPool(out, [7, 7], [2, 2], 'valid');
 
-      return out
-    })
+      return out;
+    });
   }
 
   public async forward(input: TNetInput): Promise<tf.Tensor4D> {
-    return this.forwardInput(await toNetInput(input))
+    return this.forwardInput(await toNetInput(input));
   }
 
   protected getDefaultModelName(): string {
-    return 'face_feature_extractor_model'
+    return 'face_feature_extractor_model';
   }
 
   protected extractParamsFromWeigthMap(weightMap: tf.NamedTensorMap) {
-    return extractParamsFromWeigthMap(weightMap)
+    return extractParamsFromWeigthMap(weightMap);
   }
 
   protected extractParams(weights: Float32Array) {
-    return extractParams(weights)
+    return extractParams(weights);
   }
 }

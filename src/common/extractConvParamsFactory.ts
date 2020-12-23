@@ -4,28 +4,25 @@ import { ConvParams, ExtractWeightsFunction, ParamMapping } from './types';
 
 export function extractConvParamsFactory(
   extractWeights: ExtractWeightsFunction,
-  paramMappings: ParamMapping[]
+  paramMappings: ParamMapping[],
 ) {
-
-  return function(
+  return (
     channelsIn: number,
     channelsOut: number,
     filterSize: number,
-    mappedPrefix: string
-  ): ConvParams {
-
+    mappedPrefix: string,
+  ): ConvParams => {
     const filters = tf.tensor4d(
       extractWeights(channelsIn * channelsOut * filterSize * filterSize),
-      [filterSize, filterSize, channelsIn, channelsOut]
-    )
-    const bias = tf.tensor1d(extractWeights(channelsOut))
+      [filterSize, filterSize, channelsIn, channelsOut],
+    );
+    const bias = tf.tensor1d(extractWeights(channelsOut));
 
     paramMappings.push(
       { paramPath: `${mappedPrefix}/filters` },
-      { paramPath: `${mappedPrefix}/bias` }
-    )
+      { paramPath: `${mappedPrefix}/bias` },
+    );
 
-    return { filters, bias }
-  }
-
+    return { filters, bias };
+  };
 }

@@ -20799,7 +20799,7 @@
       ]
     },
     "src/tfjs/tf-browser.js": {
-      "bytes": 1784,
+      "bytes": 1888,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs/dist/index.js"
@@ -20814,7 +20814,7 @@
     "dist/tfjs.esm.js.map": {
       "imports": [],
       "inputs": {},
-      "bytes": 1070617
+      "bytes": 1063970
     },
     "dist/tfjs.esm.js": {
       "imports": [],
@@ -23195,7 +23195,7 @@
           "bytesInOutput": 29890
         },
         "node_modules/@tensorflow/tfjs-layers/dist/layers/convolutional_recurrent.js": {
-          "bytesInOutput": 9235
+          "bytesInOutput": 9196
         },
         "node_modules/@tensorflow/tfjs-layers/dist/layers/core.js": {
           "bytesInOutput": 9961
@@ -24070,11 +24070,8 @@
         "node_modules/@tensorflow/tfjs-backend-webgl/dist/version.js": {
           "bytesInOutput": 22
         },
-        "node_modules/@tensorflow/tfjs-backend-webgl/dist/webgl.js": {
-          "bytesInOutput": 67
-        },
         "node_modules/@tensorflow/tfjs-backend-webgl/dist/base.js": {
-          "bytesInOutput": 113
+          "bytesInOutput": 85
         },
         "node_modules/@tensorflow/tfjs-backend-webgl/dist/index.js": {
           "bytesInOutput": 0
@@ -25067,7 +25064,7 @@
           "bytesInOutput": 0
         }
       },
-      "bytes": 1572551
+      "bytes": 1572418
     }
   }
 }

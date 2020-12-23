@@ -8,8 +8,7 @@
       "typings",
       "node_modules/@types"
     ],
-    "outFile": "dist/face-api.d.ts",
-
+    "outDir": "types",
     "declaration": true,
     "emitDeclarationOnly": true,
     "emitDecoratorMetadata": true,

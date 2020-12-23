@@ -6,14 +6,15 @@ export type ScaleLayerParams = {
   weights: tf.Tensor1D
   biases: tf.Tensor1D
 }
-export type ResidualLayerParams = {
-  conv1: ConvLayerParams
-  conv2: ConvLayerParams
-}
 
 export type ConvLayerParams = {
   conv: ConvParams
   scale: ScaleLayerParams
+}
+
+export type ResidualLayerParams = {
+  conv1: ConvLayerParams
+  conv2: ConvLayerParams
 }
 
 export type NetParams = {

@@ -8,40 +8,42 @@ import { isWithFaceLandmarks, WithFaceLandmarks } from '../factories/WithFaceLan
 export async function extractAllFacesAndComputeResults<TSource extends WithFaceDetection<{}>, TResult>(
   parentResults: TSource[],
   input: TNetInput,
+  // eslint-disable-next-line no-unused-vars
   computeResults: (faces: Array<HTMLCanvasElement | tf.Tensor3D>) => Promise<TResult>,
   extractedFaces?: Array<HTMLCanvasElement | tf.Tensor3D> | null,
-  getRectForAlignment: (parentResult: WithFaceLandmarks<TSource, any>) => FaceDetection = ({ alignedRect }) => alignedRect
+  // eslint-disable-next-line no-unused-vars
+  getRectForAlignment: (parentResult: WithFaceLandmarks<TSource, any>) => FaceDetection = ({ alignedRect }) => alignedRect,
 ) {
-  const faceBoxes = parentResults.map(parentResult =>
-    isWithFaceLandmarks(parentResult)
-      ? getRectForAlignment(parentResult)
-      : parentResult.detection
-  )
+  const faceBoxes = parentResults.map((parentResult) => (isWithFaceLandmarks(parentResult)
+    ? getRectForAlignment(parentResult)
+    : parentResult.detection));
   const faces: Array<HTMLCanvasElement | tf.Tensor3D> = extractedFaces || (
     input instanceof tf.Tensor
       ? await extractFaceTensors(input, faceBoxes)
       : await extractFaces(input, faceBoxes)
-  )
+  );
 
-  const results = await computeResults(faces)
+  const results = await computeResults(faces);
 
-  faces.forEach(f => f instanceof tf.Tensor && f.dispose())
+  faces.forEach((f) => f instanceof tf.Tensor && f.dispose());
 
-  return results
+  return results;
 }
 
 export async function extractSingleFaceAndComputeResult<TSource extends WithFaceDetection<{}>, TResult>(
   parentResult: TSource,
   input: TNetInput,
+  // eslint-disable-next-line no-unused-vars
   computeResult: (face: HTMLCanvasElement | tf.Tensor3D) => Promise<TResult>,
   extractedFaces?: Array<HTMLCanvasElement | tf.Tensor3D> | null,
-  getRectForAlignment?: (parentResult: WithFaceLandmarks<TSource, any>) => FaceDetection
+  // eslint-disable-next-line no-unused-vars
+  getRectForAlignment?: (parentResultLocal: WithFaceLandmarks<TSource, any>) => FaceDetection,
 ) {
   return extractAllFacesAndComputeResults<TSource, TResult>(
     [parentResult],
     input,
-    async faces => computeResult(faces[0]),
+    async (faces) => computeResult(faces[0]),
     extractedFaces,
-    getRectForAlignment
-  )
+    getRectForAlignment,
+  );
 }

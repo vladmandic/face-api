@@ -7,18 +7,17 @@ export type WithGender<TSource> = TSource & {
 }
 
 export function isWithGender(obj: any): obj is WithGender<{}> {
-  return (obj['gender'] === Gender.MALE || obj['gender'] === Gender.FEMALE)
-    && isValidProbablitiy(obj['genderProbability'])
+  return (obj.gender === Gender.MALE || obj.gender === Gender.FEMALE)
+    && isValidProbablitiy(obj.genderProbability);
 }
 
 export function extendWithGender<
   TSource
-> (
+>(
   sourceObj: TSource,
   gender: Gender,
-  genderProbability: number
+  genderProbability: number,
 ): WithGender<TSource> {
-
-  const extension = { gender, genderProbability }
-  return Object.assign({}, sourceObj, extension)
+  const extension = { gender, genderProbability };
+  return { ...sourceObj, ...extension };
 }

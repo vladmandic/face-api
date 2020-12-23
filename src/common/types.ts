@@ -1,5 +1,6 @@
 import * as tf from '../../dist/tfjs.esm.js';
 
+// eslint-disable-next-line no-unused-vars
 export type ExtractWeightsFunction = (numWeights: number) => Float32Array
 
 export type ParamMapping = {
@@ -18,9 +19,14 @@ export type FCParams = {
 }
 
 export class SeparableConvParams {
+  // eslint-disable-next-line no-useless-constructor
   constructor(
+    // eslint-disable-next-line no-unused-vars
     public depthwise_filter: tf.Tensor4D,
+    // eslint-disable-next-line no-unused-vars
     public pointwise_filter: tf.Tensor4D,
-    public bias: tf.Tensor1D
+    // eslint-disable-next-line no-unused-vars
+    public bias: tf.Tensor1D,
+  // eslint-disable-next-line no-empty-function
   ) {}
 }

@@ -3,26 +3,26 @@ import { Point } from '../classes/index';
 export function drawContour(
   ctx: CanvasRenderingContext2D,
   points: Point[],
-  isClosed: boolean = false
+  isClosed: boolean = false,
 ) {
-  ctx.beginPath()
+  ctx.beginPath();
 
   points.slice(1).forEach(({ x, y }, prevIdx) => {
-    const from = points[prevIdx]
-    ctx.moveTo(from.x, from.y)
-    ctx.lineTo(x, y)
-  })
+    const from = points[prevIdx];
+    ctx.moveTo(from.x, from.y);
+    ctx.lineTo(x, y);
+  });
 
   if (isClosed) {
-    const from = points[points.length - 1]
-    const to = points[0]
+    const from = points[points.length - 1];
+    const to = points[0];
     if (!from || !to) {
-      return
+      return;
     }
 
-    ctx.moveTo(from.x, from.y)
-    ctx.lineTo(to.x, to.y)
+    ctx.moveTo(from.x, from.y);
+    ctx.lineTo(to.x, to.y);
   }
 
-  ctx.stroke()
+  ctx.stroke();
 }

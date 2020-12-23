@@ -10,41 +10,39 @@ import * as tf from '../../dist/tfjs.esm.js';
  */
 export function padToSquare(
   imgTensor: tf.Tensor4D,
-  isCenterImage: boolean = false
+  isCenterImage: boolean = false,
 ): tf.Tensor4D {
   return tf.tidy(() => {
-
-    const [height, width] = imgTensor.shape.slice(1)
+    const [height, width] = imgTensor.shape.slice(1);
     if (height === width) {
-      return imgTensor
+      return imgTensor;
     }
 
-    const dimDiff = Math.abs(height - width)
-    const paddingAmount = Math.round(dimDiff * (isCenterImage ? 0.5 : 1))
-    const paddingAxis = height > width ? 2 : 1
+    const dimDiff = Math.abs(height - width);
+    const paddingAmount = Math.round(dimDiff * (isCenterImage ? 0.5 : 1));
+    const paddingAxis = height > width ? 2 : 1;
 
-    const createPaddingTensor = (paddingAmount: number): tf.Tensor => {
-      const paddingTensorShape = imgTensor.shape.slice()
-      paddingTensorShape[paddingAxis] = paddingAmount
-      return tf.fill(paddingTensorShape, 0, 'float32')
-    }
+    const createPaddingTensor = (paddingAmountLocal: number): tf.Tensor => {
+      const paddingTensorShape = imgTensor.shape.slice();
+      paddingTensorShape[paddingAxis] = paddingAmountLocal;
+      return tf.fill(paddingTensorShape, 0, 'float32');
+    };
 
-    const paddingTensorAppend = createPaddingTensor(paddingAmount)
-    const remainingPaddingAmount = dimDiff - (paddingTensorAppend.shape[paddingAxis] as number)
+    const paddingTensorAppend = createPaddingTensor(paddingAmount);
+    const remainingPaddingAmount = dimDiff - (paddingTensorAppend.shape[paddingAxis] as number);
 
     const paddingTensorPrepend = isCenterImage && remainingPaddingAmount
       ? createPaddingTensor(remainingPaddingAmount)
-      : null
+      : null;
 
     const tensorsToStack = [
       paddingTensorPrepend,
       imgTensor,
-      paddingTensorAppend
+      paddingTensorAppend,
     ]
-      .filter(t => !!t)
+      .filter((t) => !!t)
       // .map((t: tf.Tensor) => t.toFloat()) as tf.Tensor4D[]
-      .map((t: tf.Tensor) => tf.cast(t, 'float32')) as tf.Tensor4D[]
-    return tf.concat(tensorsToStack, paddingAxis)
-
-  })
+      .map((t: tf.Tensor) => tf.cast(t, 'float32')) as tf.Tensor4D[];
+    return tf.concat(tensorsToStack, paddingAxis);
+  });
 }

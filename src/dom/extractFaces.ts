@@ -16,38 +16,39 @@ import { TNetInput } from './types';
  */
 export async function extractFaces(
   input: TNetInput,
-  detections: Array<FaceDetection | Rect>
+  detections: Array<FaceDetection | Rect>,
 ): Promise<HTMLCanvasElement[]> {
+  const { Canvas } = env.getEnv();
 
-  const { Canvas } = env.getEnv()
-
-  let canvas = input as HTMLCanvasElement
+  let canvas = input as HTMLCanvasElement;
 
   if (!(input instanceof Canvas)) {
-    const netInput = await toNetInput(input)
+    const netInput = await toNetInput(input);
 
     if (netInput.batchSize > 1) {
-      throw new Error('extractFaces - batchSize > 1 not supported')
+      throw new Error('extractFaces - batchSize > 1 not supported');
     }
 
-    const tensorOrCanvas = netInput.getInput(0)
+    const tensorOrCanvas = netInput.getInput(0);
     canvas = tensorOrCanvas instanceof Canvas
       ? tensorOrCanvas
-      : await imageTensorToCanvas(tensorOrCanvas)
+      : await imageTensorToCanvas(tensorOrCanvas);
   }
 
-  const ctx = getContext2dOrThrow(canvas)
+  const ctx = getContext2dOrThrow(canvas);
   const boxes = detections.map(
-    det => det instanceof FaceDetection
+    (det) => (det instanceof FaceDetection
       ? det.forSize(canvas.width, canvas.height).box.floor()
-      : det
+      : det),
   )
-    .map(box => box.clipAtImageBorders(canvas.width, canvas.height))
+    .map((box) => box.clipAtImageBorders(canvas.width, canvas.height));
 
-  return boxes.map(({ x, y, width, height }) => {
-    const faceImg = createCanvas({ width, height })
+  return boxes.map(({
+    x, y, width, height,
+  }) => {
+    const faceImg = createCanvas({ width, height });
     getContext2dOrThrow(faceImg)
-      .putImageData(ctx.getImageData(x, y, width, height), 0, 0)
-    return faceImg
-  })
+      .putImageData(ctx.getImageData(x, y, width, height), 0, 0);
+    return faceImg;
+  });
 }

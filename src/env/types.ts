@@ -1,4 +1,5 @@
 export type FileSystem = {
+  // eslint-disable-next-line no-unused-vars
   readFile: (filePath: string) => Promise<Buffer>
 }
 
@@ -10,5 +11,6 @@ export type Environment = FileSystem & {
   Video: typeof HTMLVideoElement
   createCanvasElement: () => HTMLCanvasElement
   createImageElement: () => HTMLImageElement
+  // eslint-disable-next-line no-undef, no-unused-vars
   fetch: (url: string, init?: RequestInit) => Promise<Response>
 }

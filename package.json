@@ -11,7 +11,7 @@
   },
   "scripts": {
     "start": "node --trace-warnings example/node-singleprocess.js",
-    "build": "rimraf dist/* && node ./build.js",
+    "build": "rimraf dist/* types/* && node ./build.js",
     "lint": "eslint src/**/*"
   },
   "keywords": [

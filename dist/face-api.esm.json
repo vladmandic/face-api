@@ -1077,7 +1077,7 @@
       ]
     },
     "package.json": {
-      "bytes": 1719,
+      "bytes": 1727,
       "imports": []
     },
     "src/xception/extractParams.ts": {

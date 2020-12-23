@@ -1,5 +1,10 @@
 #!/usr/bin/env -S node --trace-warnings
 
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable node/no-unpublished-require */
+/* eslint-disable node/shebang */
+
 const fs = require('fs');
 const esbuild = require('esbuild');
 const ts = require('typescript');
@@ -22,7 +27,7 @@ const tsconfig = {
   target: ts.ScriptTarget.ES2018,
   module: ts.ModuleKind.ES2020,
   // outFile: "dist/face-api.d.ts",
-  outDir: "types/",
+  outDir: 'types/',
   declaration: true,
   emitDeclarationOnly: true,
   emitDecoratorMetadata: true,
@@ -31,7 +36,7 @@ const tsconfig = {
   strictNullChecks: true,
   baseUrl: './',
   paths: {
-    tslib: ["node_modules/tslib/tslib.d.ts"]
+    tslib: ['node_modules/tslib/tslib.d.ts'],
   },
 };
 

@@ -1,4 +1,4 @@
-import * as tf from '../../dist/tfjs.esm.js';
+import * as tf from '../../dist/tfjs.esm';
 
 import { NetInput, TNetInput } from '../index';
 import { ConvParams, SeparableConvParams } from '../common/index';

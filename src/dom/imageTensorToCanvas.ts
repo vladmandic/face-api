@@ -1,4 +1,4 @@
-import * as tf from '../../dist/tfjs.esm.js';
+import * as tf from '../../dist/tfjs.esm';
 
 import { env } from '../env/index';
 import { isTensor4D } from '../utils/index';

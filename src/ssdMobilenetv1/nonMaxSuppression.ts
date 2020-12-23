@@ -1,4 +1,4 @@
-import * as tf from '../../dist/tfjs.esm.js';
+import * as tf from '../../dist/tfjs.esm';
 
 function IOU(boxes: tf.Tensor2D, i: number, j: number) {
   const boxesData = boxes.arraySync();

@@ -1,4 +1,4 @@
-import * as tf from '../../dist/tfjs.esm.js';
+import * as tf from '../../dist/tfjs.esm';
 import { ConvParams } from '../common/index';
 import { SeparableConvParams } from '../common/types';
 export declare type BatchNorm = {

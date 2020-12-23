@@ -1,4 +1,4 @@
-import * as tf from '../../dist/tfjs.esm.js';
+import * as tf from '../../dist/tfjs.esm';
 import { IDimensions } from '../classes/index';
 import { FaceLandmarks68 } from '../classes/FaceLandmarks68';
 import { NetInput, TNetInput } from '../dom/index';

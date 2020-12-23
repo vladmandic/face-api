@@ -1,4 +1,4 @@
-import * as tf from '../../dist/tfjs.esm.js';
+import * as tf from '../../dist/tfjs.esm';
 
 import { extractConvParamsFactory } from '../common/index';
 import { extractSeparableConvParamsFactory } from '../common/extractSeparableConvParamsFactory';

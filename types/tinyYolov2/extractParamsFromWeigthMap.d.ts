@@ -1,4 +1,4 @@
-import * as tf from '../../dist/tfjs.esm.js';
+import * as tf from '../../dist/tfjs.esm';
 import { ParamMapping } from '../common/types';
 import { TinyYolov2Config } from './config';
 import { TinyYolov2NetParams } from './types';

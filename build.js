@@ -49,7 +49,7 @@ const common = {
   sourcemap: true,
   logLevel: 'error',
   target: 'es2018',
-  tsconfig: './tsconfig.json',
+  // tsconfig: './tsconfig.json',
 };
 
 const targets = {
@@ -58,7 +58,7 @@ const targets = {
       platform: 'node',
       format: 'cjs',
       metafile: 'dist/tfjs.esm.json',
-      entryPoints: ['src/tfjs/tf-node.js'],
+      entryPoints: ['src/tfjs/tf-node.ts'],
       outfile: 'dist/tfjs.esm.js',
       external: ['@tensorflow'],
     },
@@ -75,7 +75,7 @@ const targets = {
     tfjs: {
       platform: 'node',
       format: 'cjs',
-      entryPoints: ['src/tfjs/tf-node-gpu.js'],
+      entryPoints: ['src/tfjs/tf-node-gpu.ts'],
       outfile: 'dist/tfjs.esm.js',
       metafile: 'dist/tfjs.esm.json',
       external: ['@tensorflow'],
@@ -93,7 +93,7 @@ const targets = {
     tfjs: {
       platform: 'browser',
       format: 'esm',
-      entryPoints: ['src/tfjs/tf-browser.js'],
+      entryPoints: ['src/tfjs/tf-browser.ts'],
       outfile: 'dist/tfjs.esm.js',
       metafile: 'dist/tfjs.esm.json',
       external: ['fs', 'buffer', 'util', '@tensorflow'],
@@ -111,7 +111,7 @@ const targets = {
     tfjs: {
       platform: 'browser',
       format: 'esm',
-      entryPoints: ['src/tfjs/tf-browser.js'],
+      entryPoints: ['src/tfjs/tf-browser.ts'],
       outfile: 'dist/tfjs.esm.js',
       metafile: 'dist/tfjs.esm.json',
       external: ['fs', 'buffer', 'util'],

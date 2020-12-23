@@ -1,4 +1,4 @@
-import * as tf from '../../dist/tfjs.esm.js';
+import * as tf from '../../dist/tfjs.esm';
 
 import { Rect } from '../classes/index';
 import { FaceDetection } from '../classes/FaceDetection';

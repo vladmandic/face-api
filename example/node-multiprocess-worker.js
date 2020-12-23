@@ -3,6 +3,7 @@ const path = require('path');
 const log = require('@vladmandic/pilogger');
 
 // workers actual import tfjs and faceapi modules
+// eslint-disable-next-line import/no-extraneous-dependencies, node/no-unpublished-require
 const tf = require('@tensorflow/tfjs-node');
 const faceapi = require('../dist/face-api.node.js'); // this is equivalent to '@vladmandic/faceapi'
 

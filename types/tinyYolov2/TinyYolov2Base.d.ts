@@ -1,4 +1,4 @@
-import * as tf from '../../dist/tfjs.esm.js';
+import * as tf from '../../dist/tfjs.esm';
 import { Dimensions } from '../classes/Dimensions';
 import { ObjectDetection } from '../classes/ObjectDetection';
 import { NetInput } from '../dom/NetInput';
@@ -22,11 +22,11 @@ export declare class TinyYolov2Base extends NeuralNetwork<TinyYolov2NetParams> {
     protected getDefaultModelName(): string;
     protected extractParamsFromWeigthMap(weightMap: tf.NamedTensorMap): {
         params: TinyYolov2NetParams;
-        paramMappings: import("../common/types.js").ParamMapping[];
+        paramMappings: import("../common/types").ParamMapping[];
     };
     protected extractParams(weights: Float32Array): {
         params: TinyYolov2NetParams;
-        paramMappings: import("../common/types.js").ParamMapping[];
+        paramMappings: import("../common/types").ParamMapping[];
     };
     protected extractBoxes(outputTensor: tf.Tensor4D, inputBlobDimensions: Dimensions, scoreThreshold?: number): Promise<any>;
     private extractPredictedClass;

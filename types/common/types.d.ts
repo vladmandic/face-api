@@ -1,4 +1,4 @@
-import * as tf from '../../dist/tfjs.esm.js';
+import * as tf from '../../dist/tfjs.esm';
 export declare type ExtractWeightsFunction = (numWeights: number) => Float32Array;
 export declare type ParamMapping = {
     originalPath?: string;

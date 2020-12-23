@@ -1,4 +1,4 @@
-import * as tf from '../dist/tfjs.esm.js';
+import * as tf from '../dist/tfjs.esm';
 import { ParamMapping } from './common/index';
 export declare abstract class NeuralNetwork<TNetParams> {
     protected _name: string;

@@ -1,4 +1,4 @@
-import * as tf from '../../dist/tfjs.esm.js';
+import * as tf from '../../dist/tfjs.esm';
 
 export function seperateWeightMaps(weightMap: tf.NamedTensorMap) {
   const featureExtractorMap: tf.NamedTensorMap = {};

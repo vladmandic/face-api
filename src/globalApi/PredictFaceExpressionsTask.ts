@@ -1,5 +1,5 @@
 /* eslint-disable max-classes-per-file */
-import * as tf from '../../dist/tfjs.esm.js';
+import * as tf from '../../dist/tfjs.esm';
 
 import { TNetInput } from '../dom/index';
 import { FaceExpressions } from '../faceExpressionNet/FaceExpressions';

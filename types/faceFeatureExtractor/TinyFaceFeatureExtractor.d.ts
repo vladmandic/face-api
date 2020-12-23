@@ -1,4 +1,4 @@
-import * as tf from '../../dist/tfjs.esm.js';
+import * as tf from '../../dist/tfjs.esm';
 import { NetInput, TNetInput } from '../dom/index';
 import { NeuralNetwork } from '../NeuralNetwork';
 import { IFaceFeatureExtractor, TinyFaceFeatureExtractorParams } from './types';
@@ -9,10 +9,10 @@ export declare class TinyFaceFeatureExtractor extends NeuralNetwork<TinyFaceFeat
     protected getDefaultModelName(): string;
     protected extractParamsFromWeigthMap(weightMap: tf.NamedTensorMap): {
         params: TinyFaceFeatureExtractorParams;
-        paramMappings: import("../common/types.js").ParamMapping[];
+        paramMappings: import("../common/types").ParamMapping[];
     };
     protected extractParams(weights: Float32Array): {
         params: TinyFaceFeatureExtractorParams;
-        paramMappings: import("../common/types.js").ParamMapping[];
+        paramMappings: import("../common/types").ParamMapping[];
     };
 }

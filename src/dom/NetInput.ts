@@ -1,4 +1,4 @@
-import * as tf from '../../dist/tfjs.esm.js';
+import * as tf from '../../dist/tfjs.esm';
 
 import { Dimensions } from '../classes/Dimensions';
 import { env } from '../env/index';

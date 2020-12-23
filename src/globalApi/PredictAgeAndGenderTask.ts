@@ -1,5 +1,5 @@
 /* eslint-disable max-classes-per-file */
-import * as tf from '../../dist/tfjs.esm.js';
+import * as tf from '../../dist/tfjs.esm';
 
 import { AgeAndGenderPrediction } from '../ageGenderNet/types';
 import { TNetInput } from '../dom/index';

@@ -1,4 +1,4 @@
-import * as tf from '../../dist/tfjs.esm.js';
+import * as tf from '../../dist/tfjs.esm';
 
 import { BoundingBox } from '../classes/BoundingBox';
 import { Dimensions } from '../classes/Dimensions';

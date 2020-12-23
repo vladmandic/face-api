@@ -1,4 +1,4 @@
-import * as tf from '../../dist/tfjs.esm.js';
+import * as tf from '../../dist/tfjs.esm';
 import { Point } from '../classes/index';
 import { Dimensions, IDimensions } from '../classes/Dimensions';
 export declare function isTensor(tensor: any, dim: number): boolean;

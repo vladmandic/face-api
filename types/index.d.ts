@@ -1,4 +1,4 @@
-import * as tf from '../dist/tfjs.esm.js';
+import * as tf from '../dist/tfjs.esm';
 import * as draw from './draw/index';
 import * as utils from './utils/index';
 export { tf, draw, utils };

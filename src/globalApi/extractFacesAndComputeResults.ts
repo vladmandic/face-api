@@ -1,4 +1,4 @@
-import * as tf from '../../dist/tfjs.esm.js';
+import * as tf from '../../dist/tfjs.esm';
 
 import { FaceDetection } from '../classes/FaceDetection';
 import { extractFaces, extractFaceTensors, TNetInput } from '../dom/index';

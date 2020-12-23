@@ -1,4 +1,4 @@
-import * as tf from '../../dist/tfjs.esm.js';
+import * as tf from '../../dist/tfjs.esm';
 import { NetInput } from '../dom/index';
 import { FaceFeatureExtractorParams, IFaceFeatureExtractor, TinyFaceFeatureExtractorParams } from '../faceFeatureExtractor/types';
 import { NeuralNetwork } from '../NeuralNetwork';
@@ -15,14 +15,14 @@ export declare abstract class FaceProcessor<TExtractorParams extends FaceFeature
     loadClassifierParams(weights: Float32Array): void;
     extractClassifierParams(weights: Float32Array): {
         params: NetParams;
-        paramMappings: import("../common/types.js").ParamMapping[];
+        paramMappings: import("../common/types").ParamMapping[];
     };
     protected extractParamsFromWeigthMap(weightMap: tf.NamedTensorMap): {
         params: NetParams;
-        paramMappings: import("../common/types.js").ParamMapping[];
+        paramMappings: import("../common/types").ParamMapping[];
     };
     protected extractParams(weights: Float32Array): {
         params: NetParams;
-        paramMappings: import("../common/types.js").ParamMapping[];
+        paramMappings: import("../common/types").ParamMapping[];
     };
 }

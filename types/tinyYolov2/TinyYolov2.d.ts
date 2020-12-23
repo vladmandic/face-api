@@ -1,4 +1,4 @@
-import * as tf from '../../dist/tfjs.esm.js';
+import * as tf from '../../dist/tfjs.esm';
 import { FaceDetection, Point } from '../classes/index';
 import { ParamMapping } from '../common/types';
 import { TNetInput } from '../dom/types';

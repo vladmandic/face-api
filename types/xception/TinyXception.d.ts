@@ -1,4 +1,4 @@
-import * as tf from '../../dist/tfjs.esm.js';
+import * as tf from '../../dist/tfjs.esm';
 import { NetInput, TNetInput } from '../dom/index';
 import { NeuralNetwork } from '../NeuralNetwork';
 import { TinyXceptionParams } from './types';
@@ -10,10 +10,10 @@ export declare class TinyXception extends NeuralNetwork<TinyXceptionParams> {
     protected getDefaultModelName(): string;
     protected extractParamsFromWeigthMap(weightMap: tf.NamedTensorMap): {
         params: TinyXceptionParams;
-        paramMappings: import("../common/types.js").ParamMapping[];
+        paramMappings: import("../common/types").ParamMapping[];
     };
     protected extractParams(weights: Float32Array): {
         params: TinyXceptionParams;
-        paramMappings: import("../common/types.js").ParamMapping[];
+        paramMappings: import("../common/types").ParamMapping[];
     };
 }

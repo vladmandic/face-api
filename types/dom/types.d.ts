@@ -1,4 +1,4 @@
-import * as tf from '../../dist/tfjs.esm.js';
+import * as tf from '../../dist/tfjs.esm';
 import { NetInput } from './NetInput';
 export declare type TMediaElement = HTMLImageElement | HTMLVideoElement | HTMLCanvasElement;
 export declare type TResolvedNetInput = TMediaElement | tf.Tensor3D | tf.Tensor4D;

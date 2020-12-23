@@ -1,4 +1,4 @@
-import * as tf from '../../dist/tfjs.esm.js';
+import * as tf from '../../dist/tfjs.esm';
 
 import { NetInput, TNetInput, toNetInput } from '../dom/index';
 import { NeuralNetwork } from '../NeuralNetwork';

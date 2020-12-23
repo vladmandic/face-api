@@ -1,4 +1,4 @@
-import * as tf from '../../dist/tfjs.esm.js';
+import * as tf from '../../dist/tfjs.esm';
 
 import { boxPredictionLayer } from './boxPredictionLayer';
 import { pointwiseConvLayer } from './pointwiseConvLayer';

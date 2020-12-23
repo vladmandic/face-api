@@ -1,4 +1,4 @@
-import * as tf from '../../dist/tfjs.esm.js';
+import * as tf from '../../dist/tfjs.esm';
 import { FaceDetection } from '../classes/FaceDetection';
 import { NetInput, TNetInput } from '../dom/index';
 import { NeuralNetwork } from '../NeuralNetwork';
@@ -12,10 +12,10 @@ export declare class SsdMobilenetv1 extends NeuralNetwork<NetParams> {
     protected getDefaultModelName(): string;
     protected extractParamsFromWeigthMap(weightMap: tf.NamedTensorMap): {
         params: NetParams;
-        paramMappings: import("../common/types.js").ParamMapping[];
+        paramMappings: import("../common/types").ParamMapping[];
     };
     protected extractParams(weights: Float32Array): {
         params: NetParams;
-        paramMappings: import("../common/types.js").ParamMapping[];
+        paramMappings: import("../common/types").ParamMapping[];
     };
 }

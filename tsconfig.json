@@ -5,7 +5,7 @@
     "moduleResolution": "node",
     "lib": ["es2018", "dom"],
     "typeRoots": [
-      "typings",
+      "types",
       "node_modules/@types"
     ],
     "outDir": "types",
@@ -14,12 +14,13 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
+    "noImplicitAny": false,
     "preserveConstEnums": true,
     "removeComments": false,
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "sourceMap": false,
-    "strictNullChecks": true,
+    "strictNullChecks": true
   },
   "formatCodeOptions": { "indentSize": 2, "tabSize": 2 },
   "include": ["src"],

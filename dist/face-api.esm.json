@@ -1077,7 +1077,7 @@
       ]
     },
     "package.json": {
-      "bytes": 1727,
+      "bytes": 1728,
       "imports": []
     },
     "src/xception/extractParams.ts": {
@@ -2528,7 +2528,7 @@
           "bytesInOutput": 1763
         },
         "package.json": {
-          "bytesInOutput": 21
+          "bytesInOutput": 22
         },
         "src/xception/extractParams.ts": {
           "bytesInOutput": 2444
@@ -2732,7 +2732,7 @@
           "bytesInOutput": 824
         }
       },
-      "bytes": 1705321
+      "bytes": 1705322
     }
   }
 }

@@ -1077,7 +1077,7 @@
       ]
     },
     "package.json": {
-      "bytes": 1727,
+      "bytes": 1728,
       "imports": []
     },
     "src/xception/extractParams.ts": {
@@ -2410,7 +2410,7 @@
           "bytesInOutput": 1763
         },
         "package.json": {
-          "bytesInOutput": 19
+          "bytesInOutput": 20
         },
         "src/ageGenderNet/AgeGenderNet.ts": {
           "bytesInOutput": 2554
@@ -2611,7 +2611,7 @@
           "bytesInOutput": 824
         }
       },
-      "bytes": 133321
+      "bytes": 133322
     }
   }
 }

@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 const fs = require('fs');
 const path = require('path');
 const log = require('@vladmandic/pilogger'); // this is my simple logger with few extra features

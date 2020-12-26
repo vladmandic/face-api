@@ -1,3 +1,4 @@
+// @ts-nocheck
 import * as faceapi from '../dist/face-api.esm.js';
 
 // configuration options

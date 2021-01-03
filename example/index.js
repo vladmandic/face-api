@@ -1,4 +1,3 @@
-// @ts-nocheck
 import * as faceapi from '../dist/face-api.esm.js';
 
 // configuration options
@@ -20,6 +19,7 @@ function str(json) {
 function log(...txt) {
   // eslint-disable-next-line no-console
   console.log(...txt);
+  // @ts-ignore
   document.getElementById('log').innerHTML += `<br>${txt}`;
 }
 
@@ -27,13 +27,17 @@ function log(...txt) {
 function faces(name, title, id, data) {
   // create canvas to draw on
   const img = document.getElementById(id);
+  if (!img) return;
   const canvas = document.createElement('canvas');
   canvas.style.position = 'absolute';
   canvas.style.left = `${img.offsetLeft}px`;
   canvas.style.top = `${img.offsetTop}px`;
+  // @ts-ignore
   canvas.width = img.width;
+  // @ts-ignore
   canvas.height = img.height;
   const ctx = canvas.getContext('2d');
+  if (!ctx) return;
   // draw title
   ctx.font = '1rem sans-serif';
   ctx.fillStyle = 'black';
@@ -70,7 +74,7 @@ function print(title, img, data) {
   // eslint-disable-next-line no-console
   console.log('Results:', title, img, data);
   const el = new Image();
-  el.id = Math.floor(Math.random() * 100000);
+  el.id = Math.floor(Math.random() * 100000).toString();
   el.src = img;
   el.width = imgSize;
   el.onload = () => faces(img, title, el.id, data);
@@ -92,7 +96,7 @@ async function image(url) {
       canvas.height = img.height;
       canvas.width = img.width;
       const ctx = canvas.getContext('2d');
-      ctx.drawImage(img, 0, 0, img.width, img.height);
+      if (ctx) ctx.drawImage(img, 0, 0, img.width, img.height);
       // return generated canvas to be used by tfjs during detection
       resolve(canvas);
     });
@@ -151,6 +155,7 @@ async function main() {
     try {
       // actual model execution
       const dataTinyYolo = await faceapi
+        // @ts-ignore
         .detectAllFaces(canvas, optionsTinyFace)
         .withFaceLandmarks()
         .withFaceExpressions()

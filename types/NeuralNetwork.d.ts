@@ -1,10 +1,9 @@
 import * as tf from '../dist/tfjs.esm';
 import { ParamMapping } from './common/index';
 export declare abstract class NeuralNetwork<TNetParams> {
-    protected _name: string;
     protected _params: TNetParams | undefined;
     protected _paramMappings: ParamMapping[];
-    constructor(_name: string);
+    _name: any;
     get params(): TNetParams | undefined;
     get paramMappings(): ParamMapping[];
     get isLoaded(): boolean;

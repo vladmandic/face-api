@@ -1,7 +1,7 @@
 {
   "inputs": {
     "dist/tfjs.esm.js": {
-      "bytes": 1572418,
+      "bytes": 1565414,
       "imports": []
     },
     "src/draw/drawContour.ts": {
@@ -703,7 +703,7 @@
       ]
     },
     "src/NeuralNetwork.ts": {
-      "bytes": 5110,
+      "bytes": 5289,
       "imports": [
         {
           "path": "dist/tfjs.esm.js"
@@ -1979,7 +1979,7 @@
       ]
     },
     "src/euclideanDistance.ts": {
-      "bytes": 402,
+      "bytes": 398,
       "imports": []
     },
     "src/globalApi/FaceMatcher.ts": {
@@ -2047,7 +2047,7 @@
       ]
     },
     "src/resizeResults.ts": {
-      "bytes": 1508,
+      "bytes": 1519,
       "imports": [
         {
           "path": "src/classes/index.ts"
@@ -2136,7 +2136,7 @@
     "dist/face-api.esm.js.map": {
       "imports": [],
       "inputs": {},
-      "bytes": 1350282
+      "bytes": 1348028
     },
     "dist/face-api.esm.js": {
       "imports": [],
@@ -2267,7 +2267,7 @@
           "bytesInOutput": 224
         },
         "dist/tfjs.esm.js": {
-          "bytesInOutput": 1571395
+          "bytesInOutput": 1564181
         },
         "src/draw/index.ts": {
           "bytesInOutput": 451
@@ -2276,7 +2276,7 @@
           "bytesInOutput": 313
         },
         "src/utils/index.ts": {
-          "bytesInOutput": 1520
+          "bytesInOutput": 1531
         },
         "src/classes/Dimensions.ts": {
           "bytesInOutput": 398
@@ -2315,7 +2315,7 @@
           "bytesInOutput": 278
         },
         "src/ops/padToSquare.ts": {
-          "bytesInOutput": 833
+          "bytesInOutput": 791
         },
         "src/ops/shuffleArray.ts": {
           "bytesInOutput": 195
@@ -2339,19 +2339,19 @@
           "bytesInOutput": 308
         },
         "src/classes/LabeledFaceDescriptors.ts": {
-          "bytesInOutput": 731
+          "bytesInOutput": 728
         },
         "src/classes/PredictedBox.ts": {
           "bytesInOutput": 508
         },
         "src/factories/WithFaceDetection.ts": {
-          "bytesInOutput": 194
+          "bytesInOutput": 170
         },
         "src/env/createBrowserEnv.ts": {
           "bytesInOutput": 487
         },
         "src/env/createFileSystem.ts": {
-          "bytesInOutput": 376
+          "bytesInOutput": 363
         },
         "src/env/createNodejsEnv.ts": {
           "bytesInOutput": 722
@@ -2360,7 +2360,7 @@
           "bytesInOutput": 275
         },
         "src/env/index.ts": {
-          "bytesInOutput": 1159
+          "bytesInOutput": 1170
         },
         "src/dom/resolveInput.ts": {
           "bytesInOutput": 105
@@ -2375,13 +2375,13 @@
           "bytesInOutput": 821
         },
         "src/draw/drawDetections.ts": {
-          "bytesInOutput": 425
+          "bytesInOutput": 391
         },
         "src/dom/isMediaLoaded.ts": {
           "bytesInOutput": 152
         },
         "src/dom/awaitMediaLoaded.ts": {
-          "bytesInOutput": 557
+          "bytesInOutput": 543
         },
         "src/dom/index.ts": {
           "bytesInOutput": 0
@@ -2405,16 +2405,16 @@
           "bytesInOutput": 713
         },
         "src/dom/NetInput.ts": {
-          "bytesInOutput": 2876
+          "bytesInOutput": 2852
         },
         "src/dom/toNetInput.ts": {
           "bytesInOutput": 1113
         },
         "src/dom/extractFaces.ts": {
-          "bytesInOutput": 770
+          "bytesInOutput": 758
         },
         "src/dom/extractFaceTensors.ts": {
-          "bytesInOutput": 722
+          "bytesInOutput": 686
         },
         "src/dom/fetchOrThrow.ts": {
           "bytesInOutput": 223
@@ -2438,7 +2438,7 @@
           "bytesInOutput": 204
         },
         "src/NeuralNetwork.ts": {
-          "bytesInOutput": 3262
+          "bytesInOutput": 3247
         },
         "src/common/depthwiseSeparableConv.ts": {
           "bytesInOutput": 194
@@ -2468,7 +2468,7 @@
           "bytesInOutput": 891
         },
         "src/common/extractWeightEntryFactory.ts": {
-          "bytesInOutput": 362
+          "bytesInOutput": 366
         },
         "src/common/extractWeightsFactory.ts": {
           "bytesInOutput": 311
@@ -2489,13 +2489,13 @@
           "bytesInOutput": 400
         },
         "src/faceFeatureExtractor/FaceFeatureExtractor.ts": {
-          "bytesInOutput": 857
+          "bytesInOutput": 841
         },
         "src/common/fullyConnectedLayer.ts": {
           "bytesInOutput": 99
         },
         "src/faceProcessor/extractParams.ts": {
-          "bytesInOutput": 414
+          "bytesInOutput": 382
         },
         "src/faceProcessor/extractParamsFromWeigthMap.ts": {
           "bytesInOutput": 411
@@ -2516,19 +2516,19 @@
           "bytesInOutput": 0
         },
         "src/factories/WithFaceExpressions.ts": {
-          "bytesInOutput": 206
+          "bytesInOutput": 182
         },
         "src/draw/drawFaceExpressions.ts": {
-          "bytesInOutput": 804
+          "bytesInOutput": 718
         },
         "src/factories/WithFaceLandmarks.ts": {
-          "bytesInOutput": 592
+          "bytesInOutput": 572
         },
         "src/draw/DrawFaceLandmarks.ts": {
-          "bytesInOutput": 1763
+          "bytesInOutput": 1723
         },
         "package.json": {
-          "bytesInOutput": 22
+          "bytesInOutput": 23
         },
         "src/xception/extractParams.ts": {
           "bytesInOutput": 2444
@@ -2537,7 +2537,7 @@
           "bytesInOutput": 2162
         },
         "src/xception/TinyXception.ts": {
-          "bytesInOutput": 1814
+          "bytesInOutput": 1798
         },
         "src/ageGenderNet/extractParams.ts": {
           "bytesInOutput": 434
@@ -2555,10 +2555,10 @@
           "bytesInOutput": 0
         },
         "src/index.ts": {
-          "bytesInOutput": 157
+          "bytesInOutput": 159
         },
         "src/faceLandmarkNet/FaceLandmark68NetBase.ts": {
-          "bytesInOutput": 1989
+          "bytesInOutput": 1957
         },
         "src/faceLandmarkNet/FaceLandmark68Net.ts": {
           "bytesInOutput": 253
@@ -2573,7 +2573,7 @@
           "bytesInOutput": 517
         },
         "src/faceFeatureExtractor/TinyFaceFeatureExtractor.ts": {
-          "bytesInOutput": 848
+          "bytesInOutput": 832
         },
         "src/faceLandmarkNet/FaceLandmark68TinyNet.ts": {
           "bytesInOutput": 269
@@ -2585,46 +2585,46 @@
           "bytesInOutput": 410
         },
         "src/faceRecognitionNet/extractParams.ts": {
-          "bytesInOutput": 3331
+          "bytesInOutput": 3320
         },
         "src/faceRecognitionNet/extractParamsFromWeigthMap.ts": {
           "bytesInOutput": 2099
         },
         "src/faceRecognitionNet/residualLayer.ts": {
-          "bytesInOutput": 713
+          "bytesInOutput": 685
         },
         "src/faceRecognitionNet/FaceRecognitionNet.ts": {
-          "bytesInOutput": 1683
+          "bytesInOutput": 1637
         },
         "src/faceRecognitionNet/index.ts": {
           "bytesInOutput": 113
         },
         "src/factories/WithFaceDescriptor.ts": {
-          "bytesInOutput": 117
+          "bytesInOutput": 93
         },
         "src/factories/index.ts": {
           "bytesInOutput": 0
         },
         "src/factories/WithAge.ts": {
-          "bytesInOutput": 148
+          "bytesInOutput": 124
         },
         "src/factories/WithGender.ts": {
-          "bytesInOutput": 268
+          "bytesInOutput": 244
         },
         "src/ssdMobilenetv1/extractParams.ts": {
-          "bytesInOutput": 5994
+          "bytesInOutput": 5887
         },
         "src/ssdMobilenetv1/extractParamsFromWeigthMap.ts": {
-          "bytesInOutput": 4320
+          "bytesInOutput": 4319
         },
         "src/ssdMobilenetv1/pointwiseConvLayer.ts": {
           "bytesInOutput": 180
         },
         "src/ssdMobilenetv1/mobileNetV1.ts": {
-          "bytesInOutput": 1078
+          "bytesInOutput": 1048
         },
         "src/ssdMobilenetv1/nonMaxSuppression.ts": {
-          "bytesInOutput": 1513
+          "bytesInOutput": 1502
         },
         "src/ssdMobilenetv1/outputLayer.ts": {
           "bytesInOutput": 1311
@@ -2639,7 +2639,7 @@
           "bytesInOutput": 554
         },
         "src/ssdMobilenetv1/SsdMobilenetv1.ts": {
-          "bytesInOutput": 1865
+          "bytesInOutput": 1837
         },
         "src/ssdMobilenetv1/index.ts": {
           "bytesInOutput": 234
@@ -2648,7 +2648,7 @@
           "bytesInOutput": 486
         },
         "src/tinyYolov2/config.ts": {
-          "bytesInOutput": 1191
+          "bytesInOutput": 1169
         },
         "src/tinyYolov2/leaky.ts": {
           "bytesInOutput": 116
@@ -2660,19 +2660,19 @@
           "bytesInOutput": 234
         },
         "src/tinyYolov2/extractParams.ts": {
-          "bytesInOutput": 2505
+          "bytesInOutput": 2501
         },
         "src/tinyYolov2/extractParamsFromWeigthMap.ts": {
-          "bytesInOutput": 2042
+          "bytesInOutput": 2034
         },
         "src/tinyYolov2/TinyYolov2Options.ts": {
           "bytesInOutput": 588
         },
         "src/tinyYolov2/TinyYolov2Base.ts": {
-          "bytesInOutput": 5806
+          "bytesInOutput": 5763
         },
         "src/tinyYolov2/TinyYolov2.ts": {
-          "bytesInOutput": 821
+          "bytesInOutput": 782
         },
         "src/tinyYolov2/index.ts": {
           "bytesInOutput": 139
@@ -2690,22 +2690,22 @@
           "bytesInOutput": 215
         },
         "src/tinyFaceDetector/TinyFaceDetector.ts": {
-          "bytesInOutput": 665
+          "bytesInOutput": 626
         },
         "src/globalApi/nets.ts": {
-          "bytesInOutput": 1532
+          "bytesInOutput": 1531
         },
         "src/globalApi/PredictFaceExpressionsTask.ts": {
-          "bytesInOutput": 1697
+          "bytesInOutput": 1693
         },
         "src/globalApi/PredictAgeAndGenderTask.ts": {
-          "bytesInOutput": 1791
+          "bytesInOutput": 1787
         },
         "src/globalApi/ComputeFaceDescriptorsTasks.ts": {
-          "bytesInOutput": 1419
+          "bytesInOutput": 1392
         },
         "src/globalApi/DetectFaceLandmarksTasks.ts": {
-          "bytesInOutput": 1863
+          "bytesInOutput": 1859
         },
         "src/globalApi/DetectFacesTasks.ts": {
           "bytesInOutput": 2231
@@ -2720,7 +2720,7 @@
           "bytesInOutput": 0
         },
         "src/euclideanDistance.ts": {
-          "bytesInOutput": 277
+          "bytesInOutput": 268
         },
         "src/globalApi/FaceMatcher.ts": {
           "bytesInOutput": 1852
@@ -2732,7 +2732,7 @@
           "bytesInOutput": 824
         }
       },
-      "bytes": 1705322
+      "bytes": 1697086
     }
   }
 }

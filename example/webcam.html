@@ -5,9 +5,11 @@
     <meta http-equiv="content-type">
     <meta content="text/html">
     <meta charset="UTF-8">
-    <script src="./index.js" type="module"></script>
+    <script src="./webcam.js" type="module"></script>
   </head>
   <body style="font-family: monospace; background: black; color: white; font-size: 16px; line-height: 22px; margin: 0;">
+    <video id="video" playsinline class="video"></video>
+    <canvas id="canvas" class="canvas" style="position: fixed; top: 0; left: 0; z-index: 10"></canvas>
     <div id="log"></div>
   </body>
 </html>

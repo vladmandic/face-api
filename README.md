@@ -6,7 +6,7 @@ This is updated **face-api.js** with latest available TensorFlow/JS as the origi
 
 Forked from [face-api.js](https://github.com/justadudewhohacks/face-api.js) version **0.22.2** released on March 22nd, 2020  
 
-Currently based on **`TensorFlow/JS` 2.8.2**  
+Currently based on **`TensorFlow/JS` 2.8.3**  
 
 ### Why?
 
@@ -35,6 +35,7 @@ Unfortunately, changes ended up being too large for a simple pull request on ori
 - Updated TensorFlow/JS dependencies since backends were removed from `@tensorflow/tfjs-core`  
 - Updated mobileNetv1 model due to `batchNorm()` dependency  
 - Added `version` class that returns JSON object with version of FaceAPI as well as linked TFJS  
+- Added test/dev built-in HTTP & HTTPS Web server
 - Removed `mtcnn` and `tinyYolov2` models as they were non-functional in latest public version of `Face-API`  
   *If there is a demand, I can re-implement them back.*  
 
@@ -50,8 +51,12 @@ Which means valid models are **tinyFaceDetector** and **mobileNetv1**
 
 ### Browser
 
-Browser example that uses both models as well as all of the extensions is included in `/example/index.html`  
-Example can be accessed directly using Git pages using URL: <https://vladmandic.github.io/face-api/example/>  
+Browser example that uses static images and showcases both models as well as all of the extensions is included in `/example/index.html`  
+Example can be accessed directly using Git pages using URL: <https://vladmandic.github.io/face-api/example/index.html>  
+
+Browser example that uses live webcam is included in `/example/webcam.html`  
+Example can be accessed directly using Git pages using URL: <https://vladmandic.github.io/face-api/example/webcam.html>  
+
 
 <br>
 
@@ -243,6 +248,37 @@ And then use with:
 Pretrained models and their weights are includes in `./model`.
 
 <br>
+<hr>
+<br>
+
+## Test & Dev Web Server
+
+Built-in test&dev web server can be started using
+```shell
+npm run dev
+```
+
+By default it starts HTTP server on port 8000 and HTTPS server on port 8001 and can be accessed as:  
+- <https://localhost:8001/example/index.html>
+- <https://localhost:8001/example/webcam.html>
+
+```json
+2021-01-10 08:39:00 INFO:  @vladmandic/face-api version 0.10.2
+2021-01-10 08:39:00 INFO:  User: vlado Platform: linux Arch: x64 Node: v15.4.0
+2021-01-10 08:39:00 INFO:  Build: file startup all target: es2018
+2021-01-10 08:39:00 STATE:  HTTP server listening: 8000
+2021-01-10 08:39:00 STATE:  HTTP2 server listening: 8001
+2021-01-10 08:39:00 STATE:  Monitoring: [ 'package.json', 'config.js', 'example', 'src', [length]: 4 ]
+2021-01-10 08:39:00 STATE:  Monitoring: [ 'package.json', 'config.js', 'example', 'src', [length]: 4 ]
+2021-01-10 08:39:01 STATE:  Build for: browserBundle type: tfjs: { modules: 1253, moduleBytes: 3997175, imports: 7, importBytes: 276, outputBytes: 1565414, outputFiles: 'dist/tfjs.esm.js' }
+2021-01-10 08:39:01 STATE:  Build for: browserBundle type: iife: { imports: 160, importBytes: 1797487, outputBytes: 1699552, outputFiles: 'dist/face-api.js' }
+2021-01-10 08:39:01 STATE:  Build for: browserBundle type: esm: { imports: 160, importBytes: 1797487, outputBytes: 1697086, outputFiles: 'dist/face-api.esm.js' }
+2021-01-10 08:39:01 INFO:  Compile: [ 'src/index.ts', [length]: 1 ]
+```
+
+<br>
+<hr>
+<br>
 
 ## Build
 
@@ -272,19 +308,21 @@ npm run build
 > @vladmandic/face-api@0.8.9 build /home/vlado/dev/face-api
 > rimraf dist/* && node ./build.js
 ```
+
 ```json
-2020-12-02 16:31:23 INFO:  @vladmandic/face-api version 0.8.9
-2020-12-02 16:31:23 INFO:  User: vlado Platform: linux Arch: x64 Node: v15.0.1
-2020-12-02 16:31:23 INFO:  Build: file startup all target: es2018
-2020-12-02 16:31:23 STATE:  Build for: node type: tfjs: { imports: 1, importBytes: 39, outputBytes: 1042, outputFiles: 'dist/tfjs.esm.js' }
-2020-12-02 16:31:23 STATE:  Build for: node type: node: { imports: 160, importBytes: 228038, outputBytes: 134190, outputFiles: 'dist/face-api.node.js' }
-2020-12-02 16:31:23 STATE:  Build for: nodeGPU type: tfjs: { imports: 1, importBytes: 43, outputBytes: 1046, outputFiles: 'dist/tfjs.esm.js' }
-2020-12-02 16:31:23 STATE:  Build for: nodeGPU type: node: { imports: 160, importBytes: 228042, outputBytes: 134198, outputFiles: 'dist/face-api.node-gpu.js' }
-2020-12-02 16:31:23 STATE:  Build for: browserNoBundle type: tfjs: { imports: 1, importBytes: 1784, outputBytes: 244, outputFiles: 'dist/tfjs.esm.js' }
-2020-12-02 16:31:23 STATE:  Build for: browserNoBundle type: esm: { imports: 160, importBytes: 227240, outputBytes: 131024, outputFiles: 'dist/face-api.esm-nobundle.js' }
-2020-12-02 16:31:24 STATE:  Build for: browserBundle type: tfjs: { modules: 1045, moduleBytes: 3718721, imports: 7, importBytes: 1784, outputBytes: 1501677, outputFiles: 'dist/tfjs.esm.js' }
-2020-12-02 16:31:24 STATE:  Build for: browserBundle type: iife: { imports: 162, importBytes: 1728673, modules: 576, moduleBytes: 1359851, outputBytes: 1903311, outputFiles: 'dist/face-api.js' }
-2020-12-02 16:31:25 STATE:  Build for: browserBundle type: esm: { imports: 162, importBytes: 1728673, modules: 576, moduleBytes: 1359851, outputBytes: 1900836, outputFiles: 'dist/face-api.esm.js' }
+2021-01-10 08:42:01 INFO:  @vladmandic/face-api version 0.10.2
+2021-01-10 08:42:01 INFO:  User: vlado Platform: linux Arch: x64 Node: v15.4.0
+2021-01-10 08:42:01 INFO:  Build: file startup all target: es2018
+2021-01-10 08:42:01 STATE:  Build for: node type: tfjs: { imports: 1, importBytes: 143, outputBytes: 1042, outputFiles: 'dist/tfjs.esm.js' }
+2021-01-10 08:42:01 STATE:  Build for: node type: node: { imports: 160, importBytes: 233115, outputBytes: 132266, outputFiles: 'dist/face-api.node.js' }
+2021-01-10 08:42:01 STATE:  Build for: nodeGPU type: tfjs: { imports: 1, importBytes: 147, outputBytes: 1046, outputFiles: 'dist/tfjs.esm.js' }
+2021-01-10 08:42:01 STATE:  Build for: nodeGPU type: node: { imports: 160, importBytes: 233119, outputBytes: 132274, outputFiles: 'dist/face-api.node-gpu.js' }
+2021-01-10 08:42:01 STATE:  Build for: browserNoBundle type: tfjs: { imports: 1, importBytes: 276, outputBytes: 244, outputFiles: 'dist/tfjs.esm.js' }
+2021-01-10 08:42:01 STATE:  Build for: browserNoBundle type: esm: { imports: 160, importBytes: 232317, outputBytes: 129069, outputFiles: 'dist/face-api.esm-nobundle.js' }
+2021-01-10 08:42:01 STATE:  Build for: browserBundle type: tfjs: { modules: 1253, moduleBytes: 3997175, imports: 7, importBytes: 276, outputBytes: 1565414, outputFiles: 'dist/tfjs.esm.js' }
+2021-01-10 08:42:02 STATE:  Build for: browserBundle type: iife: { imports: 160, importBytes: 1797487, outputBytes: 1699552, outputFiles: 'dist/face-api.js' }
+2021-01-10 08:42:02 STATE:  Build for: browserBundle type: esm: { imports: 160, importBytes: 1797487, outputBytes: 1697086, outputFiles: 'dist/face-api.esm.js' }
+2021-01-10 08:42:02 INFO:  Compile: [ 'src/index.ts', [length]: 1 ]```
 ```
 
 <br>

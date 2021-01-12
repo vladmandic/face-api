@@ -17,7 +17,7 @@ export declare abstract class FaceProcessor<TExtractorParams extends FaceFeature
         params: NetParams;
         paramMappings: import("../common/types").ParamMapping[];
     };
-    protected extractParamsFromWeigthMap(weightMap: tf.NamedTensorMap): {
+    protected extractParamsFromWeightMap(weightMap: tf.NamedTensorMap): {
         params: NetParams;
         paramMappings: import("../common/types").ParamMapping[];
     };

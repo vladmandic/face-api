@@ -38,7 +38,7 @@ function extractorsFactory(weightMap: any, paramMappings: ParamMapping[]) {
   };
 }
 
-export function extractParamsFromWeigthMap(
+export function extractParamsFromWeightMap(
   weightMap: tf.NamedTensorMap,
   config: TinyYolov2Config,
 ): { params: TinyYolov2NetParams, paramMappings: ParamMapping[] } {

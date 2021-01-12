@@ -7,7 +7,7 @@ export declare class TinyFaceFeatureExtractor extends NeuralNetwork<TinyFaceFeat
     forwardInput(input: NetInput): tf.Tensor4D;
     forward(input: TNetInput): Promise<tf.Tensor4D>;
     protected getDefaultModelName(): string;
-    protected extractParamsFromWeigthMap(weightMap: tf.NamedTensorMap): {
+    protected extractParamsFromWeightMap(weightMap: tf.NamedTensorMap): {
         params: TinyFaceFeatureExtractorParams;
         paramMappings: import("../common/types").ParamMapping[];
     };

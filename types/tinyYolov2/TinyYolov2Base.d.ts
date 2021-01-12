@@ -20,7 +20,7 @@ export declare class TinyYolov2Base extends NeuralNetwork<TinyYolov2NetParams> {
     forward(input: TNetInput, inputSize: number): Promise<tf.Tensor4D>;
     detect(input: TNetInput, forwardParams?: ITinyYolov2Options): Promise<ObjectDetection[]>;
     protected getDefaultModelName(): string;
-    protected extractParamsFromWeigthMap(weightMap: tf.NamedTensorMap): {
+    protected extractParamsFromWeightMap(weightMap: tf.NamedTensorMap): {
         params: TinyYolov2NetParams;
         paramMappings: import("../common/types").ParamMapping[];
     };

@@ -5,7 +5,7 @@ import {
 } from '../common/index';
 import { NetParams } from './types';
 
-export function extractParamsFromWeigthMap(
+export function extractParamsFromWeightMap(
   weightMap: tf.NamedTensorMap,
 ): { params: NetParams, paramMappings: ParamMapping[] } {
   const paramMappings: ParamMapping[] = [];
@@ -19,7 +19,10 @@ export function extractParamsFromWeigthMap(
   }
 
   const params = {
-    fc: extractFcParams('fc'),
+    fc: {
+      age: extractFcParams('fc/age'),
+      gender: extractFcParams('fc/gender'),
+    },
   };
 
   disposeUnusedWeightTensors(weightMap, paramMappings);

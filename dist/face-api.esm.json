@@ -862,7 +862,7 @@
         }
       ]
     },
-    "src/faceFeatureExtractor/extractParamsFromWeigthMap.ts": {
+    "src/faceFeatureExtractor/extractParamsFromWeightMap.ts": {
       "bytes": 838,
       "imports": [
         {
@@ -895,7 +895,7 @@
           "path": "src/faceFeatureExtractor/extractParams.ts"
         },
         {
-          "path": "src/faceFeatureExtractor/extractParamsFromWeigthMap.ts"
+          "path": "src/faceFeatureExtractor/extractParamsFromWeightMap.ts"
         }
       ]
     },
@@ -915,7 +915,7 @@
         }
       ]
     },
-    "src/faceProcessor/extractParamsFromWeigthMap.ts": {
+    "src/faceProcessor/extractParamsFromWeightMap.ts": {
       "bytes": 823,
       "imports": [
         {
@@ -946,7 +946,7 @@
           "path": "src/faceProcessor/extractParams.ts"
         },
         {
-          "path": "src/faceProcessor/extractParamsFromWeigthMap.ts"
+          "path": "src/faceProcessor/extractParamsFromWeightMap.ts"
         },
         {
           "path": "src/faceProcessor/util.ts"
@@ -1091,7 +1091,7 @@
         }
       ]
     },
-    "src/xception/extractParamsFromWeigthMap.ts": {
+    "src/xception/extractParamsFromWeightMap.ts": {
       "bytes": 3130,
       "imports": [
         {
@@ -1130,7 +1130,7 @@
           "path": "src/xception/extractParams.ts"
         },
         {
-          "path": "src/xception/extractParamsFromWeigthMap.ts"
+          "path": "src/xception/extractParamsFromWeightMap.ts"
         }
       ]
     },
@@ -1142,7 +1142,7 @@
         }
       ]
     },
-    "src/ageGenderNet/extractParamsFromWeigthMap.ts": {
+    "src/ageGenderNet/extractParamsFromWeightMap.ts": {
       "bytes": 891,
       "imports": [
         {
@@ -1173,7 +1173,7 @@
           "path": "src/ageGenderNet/extractParams.ts"
         },
         {
-          "path": "src/ageGenderNet/extractParamsFromWeigthMap.ts"
+          "path": "src/ageGenderNet/extractParamsFromWeightMap.ts"
         },
         {
           "path": "src/ageGenderNet/types.ts"
@@ -1231,7 +1231,7 @@
         }
       ]
     },
-    "src/faceFeatureExtractor/extractParamsFromWeigthMapTiny.ts": {
+    "src/faceFeatureExtractor/extractParamsFromWeightMapTiny.ts": {
       "bytes": 802,
       "imports": [
         {
@@ -1272,7 +1272,7 @@
           "path": "src/faceFeatureExtractor/denseBlock.ts"
         },
         {
-          "path": "src/faceFeatureExtractor/extractParamsFromWeigthMapTiny.ts"
+          "path": "src/faceFeatureExtractor/extractParamsFromWeightMapTiny.ts"
         },
         {
           "path": "src/faceFeatureExtractor/extractParamsTiny.ts"
@@ -1337,7 +1337,7 @@
         }
       ]
     },
-    "src/faceRecognitionNet/extractParamsFromWeigthMap.ts": {
+    "src/faceRecognitionNet/extractParamsFromWeightMap.ts": {
       "bytes": 3101,
       "imports": [
         {
@@ -1381,7 +1381,7 @@
           "path": "src/faceRecognitionNet/extractParams.ts"
         },
         {
-          "path": "src/faceRecognitionNet/extractParamsFromWeigthMap.ts"
+          "path": "src/faceRecognitionNet/extractParamsFromWeightMap.ts"
         },
         {
           "path": "src/faceRecognitionNet/residualLayer.ts"
@@ -1452,7 +1452,7 @@
         }
       ]
     },
-    "src/ssdMobilenetv1/extractParamsFromWeigthMap.ts": {
+    "src/ssdMobilenetv1/extractParamsFromWeightMap.ts": {
       "bytes": 5782,
       "imports": [
         {
@@ -1545,7 +1545,7 @@
           "path": "src/ssdMobilenetv1/extractParams.ts"
         },
         {
-          "path": "src/ssdMobilenetv1/extractParamsFromWeigthMap.ts"
+          "path": "src/ssdMobilenetv1/extractParamsFromWeightMap.ts"
         },
         {
           "path": "src/ssdMobilenetv1/mobileNetV1.ts"
@@ -1637,7 +1637,7 @@
         }
       ]
     },
-    "src/tinyYolov2/extractParamsFromWeigthMap.ts": {
+    "src/tinyYolov2/extractParamsFromWeightMap.ts": {
       "bytes": 3284,
       "imports": [
         {
@@ -1698,7 +1698,7 @@
           "path": "src/tinyYolov2/extractParams.ts"
         },
         {
-          "path": "src/tinyYolov2/extractParamsFromWeigthMap.ts"
+          "path": "src/tinyYolov2/extractParamsFromWeightMap.ts"
         },
         {
           "path": "src/tinyYolov2/leaky.ts"
@@ -2485,7 +2485,7 @@
         "src/faceFeatureExtractor/loadParamsFactory.ts": {
           "bytesInOutput": 389
         },
-        "src/faceFeatureExtractor/extractParamsFromWeigthMap.ts": {
+        "src/faceFeatureExtractor/extractParamsFromWeightMap.ts": {
           "bytesInOutput": 186
         },
         "src/faceFeatureExtractor/FaceFeatureExtractor.ts": {
@@ -2497,7 +2497,7 @@
         "src/faceProcessor/extractParams.ts": {
           "bytesInOutput": 215
         },
-        "src/faceProcessor/extractParamsFromWeigthMap.ts": {
+        "src/faceProcessor/extractParamsFromWeightMap.ts": {
           "bytesInOutput": 179
         },
         "src/faceProcessor/util.ts": {
@@ -2533,7 +2533,7 @@
         "src/xception/extractParams.ts": {
           "bytesInOutput": 1237
         },
-        "src/xception/extractParamsFromWeigthMap.ts": {
+        "src/xception/extractParamsFromWeightMap.ts": {
           "bytesInOutput": 1051
         },
         "src/xception/TinyXception.ts": {
@@ -2542,7 +2542,7 @@
         "src/ageGenderNet/extractParams.ts": {
           "bytesInOutput": 259
         },
-        "src/ageGenderNet/extractParamsFromWeigthMap.ts": {
+        "src/ageGenderNet/extractParamsFromWeightMap.ts": {
           "bytesInOutput": 211
         },
         "src/ageGenderNet/types.ts": {
@@ -2566,7 +2566,7 @@
         "src/faceLandmarkNet/index.ts": {
           "bytesInOutput": 26
         },
-        "src/faceFeatureExtractor/extractParamsFromWeigthMapTiny.ts": {
+        "src/faceFeatureExtractor/extractParamsFromWeightMapTiny.ts": {
           "bytesInOutput": 167
         },
         "src/faceFeatureExtractor/extractParamsTiny.ts": {
@@ -2587,7 +2587,7 @@
         "src/faceRecognitionNet/extractParams.ts": {
           "bytesInOutput": 1725
         },
-        "src/faceRecognitionNet/extractParamsFromWeigthMap.ts": {
+        "src/faceRecognitionNet/extractParamsFromWeightMap.ts": {
           "bytesInOutput": 1117
         },
         "src/faceRecognitionNet/residualLayer.ts": {
@@ -2614,7 +2614,7 @@
         "src/ssdMobilenetv1/extractParams.ts": {
           "bytesInOutput": 3495
         },
-        "src/ssdMobilenetv1/extractParamsFromWeigthMap.ts": {
+        "src/ssdMobilenetv1/extractParamsFromWeightMap.ts": {
           "bytesInOutput": 2467
         },
         "src/ssdMobilenetv1/pointwiseConvLayer.ts": {
@@ -2662,7 +2662,7 @@
         "src/tinyYolov2/extractParams.ts": {
           "bytesInOutput": 1237
         },
-        "src/tinyYolov2/extractParamsFromWeigthMap.ts": {
+        "src/tinyYolov2/extractParamsFromWeightMap.ts": {
           "bytesInOutput": 976
         },
         "src/tinyYolov2/TinyYolov2Options.ts": {

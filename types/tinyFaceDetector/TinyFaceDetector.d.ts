@@ -10,7 +10,7 @@ export declare class TinyFaceDetector extends TinyYolov2Base {
     get anchors(): Point[];
     locateFaces(input: TNetInput, forwardParams: ITinyYolov2Options): Promise<FaceDetection[]>;
     protected getDefaultModelName(): string;
-    protected extractParamsFromWeigthMap(weightMap: tf.NamedTensorMap): {
+    protected extractParamsFromWeightMap(weightMap: tf.NamedTensorMap): {
         params: TinyYolov2NetParams;
         paramMappings: ParamMapping[];
     };

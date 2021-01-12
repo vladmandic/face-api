@@ -40,7 +40,7 @@ function loadParamsFactory(weightMap: any, paramMappings: ParamMapping[]) {
   };
 }
 
-export function extractParamsFromWeigthMap(
+export function extractParamsFromWeightMap(
   weightMap: tf.NamedTensorMap,
   numMainBlocks: number,
 ): { params: TinyXceptionParams, paramMappings: ParamMapping[] } {

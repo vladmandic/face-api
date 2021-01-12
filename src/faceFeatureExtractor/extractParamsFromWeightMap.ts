@@ -2,21 +2,22 @@ import * as tf from '../../dist/tfjs.esm';
 
 import { disposeUnusedWeightTensors, ParamMapping } from '../common/index';
 import { loadParamsFactory } from './loadParamsFactory';
-import { TinyFaceFeatureExtractorParams } from './types';
+import { FaceFeatureExtractorParams } from './types';
 
-export function extractParamsFromWeigthMapTiny(
+export function extractParamsFromWeightMap(
   weightMap: tf.NamedTensorMap,
-): { params: TinyFaceFeatureExtractorParams, paramMappings: ParamMapping[] } {
+): { params: FaceFeatureExtractorParams, paramMappings: ParamMapping[] } {
   const paramMappings: ParamMapping[] = [];
 
   const {
-    extractDenseBlock3Params,
+    extractDenseBlock4Params,
   } = loadParamsFactory(weightMap, paramMappings);
 
   const params = {
-    dense0: extractDenseBlock3Params('dense0', true),
-    dense1: extractDenseBlock3Params('dense1'),
-    dense2: extractDenseBlock3Params('dense2'),
+    dense0: extractDenseBlock4Params('dense0', true),
+    dense1: extractDenseBlock4Params('dense1'),
+    dense2: extractDenseBlock4Params('dense2'),
+    dense3: extractDenseBlock4Params('dense3'),
   };
 
   disposeUnusedWeightTensors(weightMap, paramMappings);

@@ -38,7 +38,7 @@
   },
   "homepage": "https://github.com/vladmandic/face-api#readme",
   "dependencies": {
-    "@vladmandic/pilogger": "^0.2.11"
+    "@vladmandic/pilogger": "^0.2.12"
   },
   "devDependencies": {
     "@tensorflow/tfjs": "^2.8.5",
@@ -49,7 +49,7 @@
     "@typescript-eslint/eslint-plugin": "^4.14.0",
     "@typescript-eslint/parser": "^4.14.0",
     "chokidar": "^3.5.1",
-    "esbuild": "^0.8.33",
+    "esbuild": "^0.8.34",
     "eslint": "^7.18.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",

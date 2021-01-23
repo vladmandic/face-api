@@ -61,6 +61,10 @@ export class FaceRecognitionNet extends NeuralNetwork<NetParams> {
   }
 
   public async computeFaceDescriptor(input: TNetInput): Promise<Float32Array|Float32Array[]> {
+    // When faces have a detected dimension of 0, tensorflow will crash the whole process.
+    // Sidestep this by returning an empty descriptor instead.
+    if (input.shape.some(dimension => dimension <= 0) return new Float32Array(128);
+    
     const netInput = await toNetInput(input);
 
     const faceDescriptorTensors = tf.tidy(

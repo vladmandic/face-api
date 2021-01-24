@@ -26,9 +26,7 @@ export class SsdMobilenetv1 extends NeuralNetwork<NetParams> {
     }
 
     return tf.tidy(() => {
-      // const batchTensor = input.toBatchTensor(512, false).toFloat()
       const batchTensor = tf.cast(input.toBatchTensor(512, false), 'float32');
-
       const x = tf.sub(tf.mul(batchTensor, tf.scalar(0.007843137718737125)), tf.scalar(1)) as tf.Tensor4D;
       const features = mobileNetV1(x, params.mobilenetv1);
 
@@ -58,7 +56,6 @@ export class SsdMobilenetv1 extends NeuralNetwork<NetParams> {
       scores: _scores,
     } = this.forwardInput(netInput);
 
-    // TODO batches
     const boxes = _boxes[0];
     const scores = _scores[0];
     for (let i = 1; i < _boxes.length; i++) {
@@ -66,9 +63,7 @@ export class SsdMobilenetv1 extends NeuralNetwork<NetParams> {
       _scores[i].dispose();
     }
 
-    // TODO find a better way to filter by minConfidence
     const scoresData = Array.from(await scores.data());
-
     const iouThreshold = 0.5;
     const indices = nonMaxSuppression(
       boxes,
@@ -111,7 +106,6 @@ export class SsdMobilenetv1 extends NeuralNetwork<NetParams> {
 
     boxes.dispose();
     scores.dispose();
-
     return results;
   }
 

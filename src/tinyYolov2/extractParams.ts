@@ -18,14 +18,12 @@ function extractorsFactory(extractWeights: ExtractWeightsFunction, paramMappings
       { paramPath: `${mappedPrefix}/sub` },
       { paramPath: `${mappedPrefix}/truediv` },
     );
-
     return { sub, truediv };
   }
 
   function extractConvWithBatchNormParams(channelsIn: number, channelsOut: number, mappedPrefix: string): ConvWithBatchNorm {
     const conv = extractConvParams(channelsIn, channelsOut, 3, `${mappedPrefix}/conv`);
     const bn = extractBatchNormParams(channelsOut, `${mappedPrefix}/bn`);
-
     return { conv, bn };
   }
   const extractSeparableConvParams = extractSeparableConvParamsFactory(extractWeights, paramMappings);
@@ -49,18 +47,15 @@ export function extractParams(
   } = extractWeightsFactory(weights);
 
   const paramMappings: ParamMapping[] = [];
-
   const {
     extractConvParams,
     extractConvWithBatchNormParams,
     extractSeparableConvParams,
   } = extractorsFactory(extractWeights, paramMappings);
-
   let params: TinyYolov2NetParams;
 
   if (config.withSeparableConvs) {
     const [s0, s1, s2, s3, s4, s5, s6, s7, s8] = filterSizes;
-
     const conv0 = config.isFirstLayerConv2d
       ? extractConvParams(s0, s1, 3, 'conv0')
       : extractSeparableConvParams(s0, s1, 'conv0');
@@ -90,10 +85,8 @@ export function extractParams(
       conv0, conv1, conv2, conv3, conv4, conv5, conv6, conv7, conv8,
     };
   }
-
   if (getRemainingWeights().length !== 0) {
     throw new Error(`weights remaing after extract: ${getRemainingWeights().length}`);
   }
-
   return { params, paramMappings };
 }

@@ -83,7 +83,6 @@ function extractorsFactory(extractWeights: ExtractWeightsFunction, paramMappings
 
   function extractMobilenetV1Params(): MobileNetV1.Params {
     const conv_0 = extractPointwiseConvParams(3, 32, 3, 'mobilenetv1/conv_0');
-
     const conv_1 = extractConvPairParams(32, 64, 'mobilenetv1/conv_1');
     const conv_2 = extractConvPairParams(64, 128, 'mobilenetv1/conv_2');
     const conv_3 = extractConvPairParams(128, 128, 'mobilenetv1/conv_3');
@@ -97,7 +96,6 @@ function extractorsFactory(extractWeights: ExtractWeightsFunction, paramMappings
     const conv_11 = extractConvPairParams(512, 512, 'mobilenetv1/conv_11');
     const conv_12 = extractConvPairParams(512, 1024, 'mobilenetv1/conv_12');
     const conv_13 = extractConvPairParams(1024, 1024, 'mobilenetv1/conv_13');
-
     return {
       conv_0,
       conv_1,
@@ -125,7 +123,6 @@ function extractorsFactory(extractWeights: ExtractWeightsFunction, paramMappings
     const conv_5 = extractPointwiseConvParams(128, 256, 3, 'prediction_layer/conv_5');
     const conv_6 = extractPointwiseConvParams(256, 64, 1, 'prediction_layer/conv_6');
     const conv_7 = extractPointwiseConvParams(64, 128, 3, 'prediction_layer/conv_7');
-
     const box_encoding_0_predictor = extractConvParams(512, 12, 1, 'prediction_layer/box_predictor_0/box_encoding_predictor');
     const class_predictor_0 = extractConvParams(512, 9, 1, 'prediction_layer/box_predictor_0/class_predictor');
     const box_encoding_1_predictor = extractConvParams(1024, 24, 1, 'prediction_layer/box_predictor_1/box_encoding_predictor');
@@ -163,7 +160,6 @@ function extractorsFactory(extractWeights: ExtractWeightsFunction, paramMappings
       box_encoding_predictor: box_encoding_5_predictor,
       class_predictor: class_predictor_5,
     };
-
     return {
       conv_0,
       conv_1,
@@ -190,17 +186,14 @@ function extractorsFactory(extractWeights: ExtractWeightsFunction, paramMappings
 
 export function extractParams(weights: Float32Array): { params: NetParams, paramMappings: ParamMapping[] } {
   const paramMappings: ParamMapping[] = [];
-
   const {
     extractWeights,
     getRemainingWeights,
   } = extractWeightsFactory(weights);
-
   const {
     extractMobilenetV1Params,
     extractPredictionLayerParams,
   } = extractorsFactory(extractWeights, paramMappings);
-
   const mobilenetv1 = extractMobilenetV1Params();
   const prediction_layer = extractPredictionLayerParams();
   const extra_dim = tf.tensor3d(
@@ -210,9 +203,7 @@ export function extractParams(weights: Float32Array): { params: NetParams, param
   const output_layer = {
     extra_dim,
   };
-
   paramMappings.push({ paramPath: 'output_layer/extra_dim' });
-
   if (getRemainingWeights().length !== 0) {
     throw new Error(`weights remaing after extract: ${getRemainingWeights().length}`);
   }

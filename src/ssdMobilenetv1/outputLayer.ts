@@ -9,12 +9,10 @@ function getCenterCoordinatesAndSizesLayer(x: tf.Tensor2D) {
     tf.sub(vec[2], vec[0]),
     tf.sub(vec[3], vec[1]),
   ];
-
   const centers = [
     tf.add(vec[0], tf.div(sizes[0], tf.scalar(2))),
     tf.add(vec[1], tf.div(sizes[1], tf.scalar(2))),
   ];
-
   return {
     sizes,
     centers,
@@ -28,10 +26,8 @@ function decodeBoxesLayer(x0: tf.Tensor2D, x1: tf.Tensor2D) {
   } = getCenterCoordinatesAndSizesLayer(x0);
 
   const vec = tf.unstack(tf.transpose(x1, [1, 0]));
-
   const div0_out = tf.div(tf.mul(tf.exp(tf.div(vec[2], tf.scalar(5))), sizes[0]), tf.scalar(2));
   const add0_out = tf.add(tf.mul(tf.div(vec[0], tf.scalar(10)), sizes[0]), centers[0]);
-
   const div1_out = tf.div(tf.mul(tf.exp(tf.div(vec[3], tf.scalar(5))), sizes[1]), tf.scalar(2));
   const add1_out = tf.add(tf.mul(tf.div(vec[1], tf.scalar(10)), sizes[1]), centers[1]);
 

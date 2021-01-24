@@ -55,7 +55,6 @@ export function range(num: number, start: number, step: number): number[] {
 }
 
 export function isValidNumber(num: any) {
-  // eslint-disable-next-line no-mixed-operators
   return !!num && (num !== Infinity) && (num !== -Infinity) && !Number.isNaN(num) || num === 0;
 }
 

@@ -18,7 +18,7 @@
       ]
     },
     "src/utils/index.ts": {
-      "bytes": 1842,
+      "bytes": 1793,
       "imports": [
         {
           "path": "dist/tfjs.esm.js",
@@ -843,7 +843,7 @@
       ]
     },
     "src/NeuralNetwork.ts": {
-      "bytes": 5289,
+      "bytes": 5291,
       "imports": [
         {
           "path": "dist/tfjs.esm.js",
@@ -1326,7 +1326,7 @@
       ]
     },
     "src/xception/TinyXception.ts": {
-      "bytes": 3148,
+      "bytes": 3143,
       "imports": [
         {
           "path": "dist/tfjs.esm.js",
@@ -1553,7 +1553,7 @@
       ]
     },
     "src/faceLandmarkNet/index.ts": {
-      "bytes": 195,
+      "bytes": 194,
       "imports": [
         {
           "path": "src/faceLandmarkNet/FaceLandmark68Net.ts",
@@ -1609,7 +1609,7 @@
       ]
     },
     "src/faceRecognitionNet/extractParamsFromWeightMap.ts": {
-      "bytes": 3101,
+      "bytes": 3098,
       "imports": [
         {
           "path": "src/common/index.ts",
@@ -1635,7 +1635,7 @@
       ]
     },
     "src/faceRecognitionNet/FaceRecognitionNet.ts": {
-      "bytes": 2981,
+      "bytes": 2959,
       "imports": [
         {
           "path": "dist/tfjs.esm.js",
@@ -1735,7 +1735,7 @@
       ]
     },
     "src/ssdMobilenetv1/extractParams.ts": {
-      "bytes": 8339,
+      "bytes": 8330,
       "imports": [
         {
           "path": "dist/tfjs.esm.js",
@@ -1748,7 +1748,7 @@
       ]
     },
     "src/ssdMobilenetv1/extractParamsFromWeightMap.ts": {
-      "bytes": 5782,
+      "bytes": 5775,
       "imports": [
         {
           "path": "src/common/index.ts",
@@ -1783,11 +1783,11 @@
       ]
     },
     "src/ssdMobilenetv1/nonMaxSuppression.ts": {
-      "bytes": 2187,
+      "bytes": 2170,
       "imports": []
     },
     "src/ssdMobilenetv1/outputLayer.ts": {
-      "bytes": 2187,
+      "bytes": 2183,
       "imports": [
         {
           "path": "dist/tfjs.esm.js",
@@ -1796,7 +1796,7 @@
       ]
     },
     "src/ssdMobilenetv1/boxPredictionLayer.ts": {
-      "bytes": 617,
+      "bytes": 598,
       "imports": [
         {
           "path": "dist/tfjs.esm.js",
@@ -1830,7 +1830,7 @@
       "imports": []
     },
     "src/ssdMobilenetv1/SsdMobilenetv1.ts": {
-      "bytes": 3826,
+      "bytes": 3675,
       "imports": [
         {
           "path": "dist/tfjs.esm.js",
@@ -1913,7 +1913,7 @@
       "imports": []
     },
     "src/tinyYolov2/leaky.ts": {
-      "bytes": 271,
+      "bytes": 238,
       "imports": [
         {
           "path": "dist/tfjs.esm.js",
@@ -1922,7 +1922,7 @@
       ]
     },
     "src/tinyYolov2/convWithBatchNorm.ts": {
-      "bytes": 532,
+      "bytes": 530,
       "imports": [
         {
           "path": "dist/tfjs.esm.js",
@@ -1935,7 +1935,7 @@
       ]
     },
     "src/tinyYolov2/depthwiseSeparableConv.ts": {
-      "bytes": 502,
+      "bytes": 500,
       "imports": [
         {
           "path": "dist/tfjs.esm.js",
@@ -1948,7 +1948,7 @@
       ]
     },
     "src/tinyYolov2/extractParams.ts": {
-      "bytes": 3918,
+      "bytes": 3911,
       "imports": [
         {
           "path": "dist/tfjs.esm.js",
@@ -1969,7 +1969,7 @@
       ]
     },
     "src/tinyYolov2/extractParamsFromWeightMap.ts": {
-      "bytes": 3284,
+      "bytes": 3282,
       "imports": [
         {
           "path": "src/common/disposeUnusedWeightTensors.ts",
@@ -1990,7 +1990,7 @@
       "imports": []
     },
     "src/tinyYolov2/TinyYolov2Base.ts": {
-      "bytes": 9700,
+      "bytes": 9606,
       "imports": [
         {
           "path": "dist/tfjs.esm.js",
@@ -2080,7 +2080,7 @@
       "imports": []
     },
     "src/tinyYolov2/index.ts": {
-      "bytes": 349,
+      "bytes": 347,
       "imports": [
         {
           "path": "src/tinyYolov2/TinyYolov2.ts",
@@ -2501,7 +2501,7 @@
       ]
     },
     "src/index.ts": {
-      "bytes": 1024,
+      "bytes": 987,
       "imports": [
         {
           "path": "dist/tfjs.esm.js",
@@ -2590,7 +2590,7 @@
     "dist/face-api.esm.js.map": {
       "imports": [],
       "inputs": {},
-      "bytes": 1456658
+      "bytes": 1456195
     },
     "dist/face-api.esm.js": {
       "imports": [],
@@ -2892,7 +2892,7 @@
           "bytesInOutput": 102
         },
         "src/NeuralNetwork.ts": {
-          "bytesInOutput": 2592
+          "bytesInOutput": 2606
         },
         "src/common/depthwiseSeparableConv.ts": {
           "bytesInOutput": 117
@@ -3048,7 +3048,7 @@
           "bytesInOutput": 397
         },
         "src/faceRecognitionNet/FaceRecognitionNet.ts": {
-          "bytesInOutput": 1012
+          "bytesInOutput": 1106
         },
         "src/faceRecognitionNet/index.ts": {
           "bytesInOutput": 58
@@ -3186,7 +3186,7 @@
           "bytesInOutput": 446
         }
       },
-      "bytes": 1143701
+      "bytes": 1143809
     }
   }
 }

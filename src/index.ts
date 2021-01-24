@@ -23,6 +23,5 @@ export * from './NeuralNetwork';
 export * from './resizeResults';
 
 const node = (typeof process !== 'undefined');
-// eslint-disable-next-line no-undef
 const browser = (typeof navigator !== 'undefined') && (typeof navigator.userAgent !== 'undefined');
 export const version = { faceapi: pkg.version as string, node, browser };

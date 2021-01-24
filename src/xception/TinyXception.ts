@@ -40,24 +40,19 @@ export class TinyXception extends NeuralNetwork<TinyXceptionParams> {
 
   public forwardInput(input: NetInput): tf.Tensor4D {
     const { params } = this;
-
     if (!params) {
       throw new Error('TinyXception - load model before inference');
     }
-
     return tf.tidy(() => {
       const batchTensor = tf.cast(input.toBatchTensor(112, true), 'float32');
       const meanRgb = [122.782, 117.001, 104.298];
       const normalized = normalize(batchTensor, meanRgb).div(tf.scalar(256)) as tf.Tensor4D;
-
       let out = tf.relu(conv(normalized, params.entry_flow.conv_in, [2, 2]));
       out = reductionBlock(out, params.entry_flow.reduction_block_0, false);
       out = reductionBlock(out, params.entry_flow.reduction_block_1);
-
       range(this._numMainBlocks, 0, 1).forEach((idx) => {
         out = mainBlock(out, params.middle_flow[`main_block_${idx}`]);
       });
-
       out = reductionBlock(out, params.exit_flow.reduction_block);
       out = tf.relu(depthwiseSeparableConv(out, params.exit_flow.separable_conv, [1, 1]));
       return out;

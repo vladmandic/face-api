@@ -6,6 +6,10 @@ import { loadWeightMap } from './dom/index';
 import { env } from './env/index';
 
 export abstract class NeuralNetwork<TNetParams> {
+  constructor(name: string) {
+    this._name = name;
+  }
+
   protected _params: TNetParams | undefined = undefined
 
   protected _paramMappings: ParamMapping[] = []
@@ -81,7 +85,6 @@ export abstract class NeuralNetwork<TNetParams> {
       this.extractWeights(weightsOrUrl);
       return;
     }
-
     await this.loadFromUri(weightsOrUrl);
   }
 
@@ -89,7 +92,6 @@ export abstract class NeuralNetwork<TNetParams> {
     if (uri && typeof uri !== 'string') {
       throw new Error(`${this._name}.loadFromUri - expected model uri`);
     }
-
     const weightMap = await loadWeightMap(uri, this.getDefaultModelName());
     this.loadFromWeightMap(weightMap);
   }
@@ -98,37 +100,23 @@ export abstract class NeuralNetwork<TNetParams> {
     if (filePath && typeof filePath !== 'string') {
       throw new Error(`${this._name}.loadFromDisk - expected model file path`);
     }
-
     const { readFile } = env.getEnv();
-
     const { manifestUri, modelBaseUri } = getModelUris(filePath, this.getDefaultModelName());
-
-    const fetchWeightsFromDisk = (filePaths: string[]) => Promise.all(
-      filePaths.map((fp) => readFile(fp).then((buf) => buf.buffer)),
-    );
+    const fetchWeightsFromDisk = (filePaths: string[]) => Promise.all(filePaths.map((fp) => readFile(fp).then((buf) => buf.buffer)));
     const loadWeights = tf.io.weightsLoaderFactory(fetchWeightsFromDisk);
     const manifest = JSON.parse((await readFile(manifestUri)).toString());
     const weightMap = await loadWeights(manifest, modelBaseUri);
-
     this.loadFromWeightMap(weightMap);
   }
 
   public loadFromWeightMap(weightMap: tf.NamedTensorMap) {
-    const {
-      paramMappings,
-      params,
-    } = this.extractParamsFromWeightMap(weightMap);
-
+    const { paramMappings, params } = this.extractParamsFromWeightMap(weightMap);
     this._paramMappings = paramMappings;
     this._params = params;
   }
 
   public extractWeights(weights: Float32Array) {
-    const {
-      paramMappings,
-      params,
-    } = this.extractParams(weights);
-
+    const { paramMappings, params } = this.extractParams(weights);
     this._paramMappings = paramMappings;
     this._params = params;
   }
@@ -143,7 +131,6 @@ export abstract class NeuralNetwork<TNetParams> {
       if (!res.nextObj.hasOwnProperty(objProp)) {
         throw new Error(`traversePropertyPath - object does not have property ${objProp}, for path ${paramPath}`);
       }
-
       return { obj: res.nextObj, objProp, nextObj: res.nextObj[objProp] };
     }, { nextObj: this.params });
 

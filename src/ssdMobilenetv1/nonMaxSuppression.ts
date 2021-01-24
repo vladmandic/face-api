@@ -43,15 +43,11 @@ export function nonMaxSuppression(
     .sort((c1, c2) => c2.score - c1.score);
 
   const suppressFunc = (x: number) => (x <= iouThreshold ? 1 : 0);
-
   const selected: number[] = [];
 
   candidates.forEach((c) => {
-    if (selected.length >= outputSize) {
-      return;
-    }
+    if (selected.length >= outputSize) return;
     const originalScore = c.score;
-
     for (let j = selected.length - 1; j >= 0; --j) {
       const iou = IOU(boxes, c.boxIndex, selected[j]);
       if (iou === 0.0) continue;
@@ -62,6 +58,5 @@ export function nonMaxSuppression(
       selected.push(c.boxIndex);
     }
   });
-
   return selected;
 }

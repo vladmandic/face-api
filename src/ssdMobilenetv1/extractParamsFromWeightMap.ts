@@ -14,7 +14,6 @@ function extractorsFactory(weightMap: any, paramMappings: ParamMapping[]) {
   function extractPointwiseConvParams(prefix: string, idx: number, mappedPrefix: string): PointwiseConvParams {
     const filters = extractWeightEntry(`${prefix}/Conv2d_${idx}_pointwise/weights`, 4, `${mappedPrefix}/filters`);
     const batch_norm_offset = extractWeightEntry(`${prefix}/Conv2d_${idx}_pointwise/convolution_bn_offset`, 1, `${mappedPrefix}/batch_norm_offset`);
-
     return { filters, batch_norm_offset };
   }
 
@@ -64,7 +63,6 @@ function extractorsFactory(weightMap: any, paramMappings: ParamMapping[]) {
   function extractConvParams(prefix: string, mappedPrefix: string): ConvParams {
     const filters = extractWeightEntry(`${prefix}/weights`, 4, `${mappedPrefix}/filters`);
     const bias = extractWeightEntry(`${prefix}/biases`, 1, `${mappedPrefix}/bias`);
-
     return { filters, bias };
   }
 
@@ -77,7 +75,6 @@ function extractorsFactory(weightMap: any, paramMappings: ParamMapping[]) {
       `Prediction/BoxPredictor_${idx}/ClassPredictor`,
       `prediction_layer/box_predictor_${idx}/class_predictor`,
     );
-
     return { box_encoding_predictor, class_predictor };
   }
 
@@ -110,15 +107,12 @@ export function extractParamsFromWeightMap(
   weightMap: tf.NamedTensorMap,
 ): { params: NetParams, paramMappings: ParamMapping[] } {
   const paramMappings: ParamMapping[] = [];
-
   const {
     extractMobilenetV1Params,
     extractPredictionLayerParams,
   } = extractorsFactory(weightMap, paramMappings);
-
   const extra_dim = weightMap['Output/extra_dim'];
   paramMappings.push({ originalPath: 'Output/extra_dim', paramPath: 'output_layer/extra_dim' });
-
   if (!isTensor3D(extra_dim)) {
     throw new Error(`expected weightMap['Output/extra_dim'] to be a Tensor3D, instead have ${extra_dim}`);
   }
@@ -132,6 +126,5 @@ export function extractParamsFromWeightMap(
   };
 
   disposeUnusedWeightTensors(weightMap, paramMappings);
-
   return { params, paramMappings };
 }

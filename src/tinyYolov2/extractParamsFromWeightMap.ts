@@ -30,7 +30,6 @@ function extractorsFactory(weightMap: any, paramMappings: ParamMapping[]) {
   }
 
   const extractSeparableConvParams = loadSeparableConvParamsFactory(extractWeightEntry);
-
   return {
     extractConvParams,
     extractConvWithBatchNormParams,
@@ -81,6 +80,5 @@ export function extractParamsFromWeightMap(
   }
 
   disposeUnusedWeightTensors(weightMap, paramMappings);
-
   return { params, paramMappings };
 }

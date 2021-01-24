@@ -22,9 +22,7 @@ import { ITinyYolov2Options, TinyYolov2Options } from './TinyYolov2Options';
 import { DefaultTinyYolov2NetParams, MobilenetParams, TinyYolov2NetParams } from './types';
 
 export class TinyYolov2Base extends NeuralNetwork<TinyYolov2NetParams> {
-  public static DEFAULT_FILTER_SIZES = [
-    3, 16, 32, 64, 128, 256, 512, 1024, 1024,
-  ]
+  public static DEFAULT_FILTER_SIZES = [3, 16, 32, 64, 128, 256, 512, 1024, 1024];
 
   private _config: TinyYolov2Config
 
@@ -61,7 +59,6 @@ export class TinyYolov2Base extends NeuralNetwork<TinyYolov2NetParams> {
     out = tf.maxPool(out, [2, 2], [1, 1], 'same');
     out = convWithBatchNorm(out, params.conv6);
     out = convWithBatchNorm(out, params.conv7);
-
     return convLayer(out, params.conv8, 'valid', false);
   }
 
@@ -82,7 +79,6 @@ export class TinyYolov2Base extends NeuralNetwork<TinyYolov2NetParams> {
     out = tf.maxPool(out, [2, 2], [1, 1], 'same');
     out = params.conv6 ? depthwiseSeparableConv(out, params.conv6) : out;
     out = params.conv7 ? depthwiseSeparableConv(out, params.conv7) : out;
-
     return convLayer(out, params.conv8, 'valid', false);
   }
 
@@ -94,13 +90,11 @@ export class TinyYolov2Base extends NeuralNetwork<TinyYolov2NetParams> {
     }
 
     return tf.tidy(() => {
-      // let batchTensor = input.toBatchTensor(inputSize, false).toFloat()
       let batchTensor = tf.cast(input.toBatchTensor(inputSize, false), 'float32');
       batchTensor = this.config.meanRgb
         ? normalize(batchTensor, this.config.meanRgb)
         : batchTensor;
       batchTensor = batchTensor.div(tf.scalar(256)) as tf.Tensor4D;
-
       return this.config.withSeparableConvs
         ? this.runMobilenet(batchTensor, params as MobilenetParams)
         : this.runTinyYolov2(batchTensor, params as DefaultTinyYolov2NetParams);
@@ -113,11 +107,9 @@ export class TinyYolov2Base extends NeuralNetwork<TinyYolov2NetParams> {
 
   public async detect(input: TNetInput, forwardParams: ITinyYolov2Options = {}): Promise<ObjectDetection[]> {
     const { inputSize, scoreThreshold } = new TinyYolov2Options(forwardParams);
-
     const netInput = await toNetInput(input);
     const out = await this.forwardInput(netInput, inputSize);
     const out0 = tf.tidy(() => tf.unstack(out)[0].expandDims()) as tf.Tensor4D;
-
     const inputDimensions = {
       width: netInput.getInputWidth(0),
       height: netInput.getInputHeight(0),
@@ -146,7 +138,6 @@ export class TinyYolov2Base extends NeuralNetwork<TinyYolov2NetParams> {
       boxes[idx],
       inputDimensions,
     ));
-
     return detections;
   }
 
@@ -193,7 +184,6 @@ export class TinyYolov2Base extends NeuralNetwork<TinyYolov2NetParams> {
     });
 
     const results = [] as any;
-
     const scoresData = await scoresTensor.array();
     const boxesData = await boxesTensor.array();
     for (let row = 0; row < numCells; row++) {
@@ -205,15 +195,12 @@ export class TinyYolov2Base extends NeuralNetwork<TinyYolov2NetParams> {
             const ctY = ((row + sigmoid(boxesData[row][col][anchor][1])) / numCells) * correctionFactorY;
             const widthLocal = ((Math.exp(boxesData[row][col][anchor][2]) * this.config.anchors[anchor].x) / numCells) * correctionFactorX;
             const heightLocal = ((Math.exp(boxesData[row][col][anchor][3]) * this.config.anchors[anchor].y) / numCells) * correctionFactorY;
-
             const x = (ctX - (widthLocal / 2));
             const y = (ctY - (heightLocal / 2));
-
             const pos = { row, col, anchor };
             const { classScore, label } = this.withClassScores
               ? await this.extractPredictedClass(classScoresTensor as tf.Tensor4D, pos)
               : { classScore: 1, label: 0 };
-
             results.push({
               box: new BoundingBox(x, y, x + widthLocal, y + heightLocal),
               score,
@@ -229,7 +216,6 @@ export class TinyYolov2Base extends NeuralNetwork<TinyYolov2NetParams> {
     boxesTensor.dispose();
     scoresTensor.dispose();
     classScoresTensor.dispose();
-
     return results;
   }
 

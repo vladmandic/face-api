@@ -1,8 +1,7 @@
 export class PlatformBrowser {
   private textEncoder: TextEncoder;
 
-  // eslint-disable-next-line no-undef
-  fetch(path: string, init?: RequestInit): Promise<Response> {
+  fetch(path: string, init?: any): Promise<Response> {
     return fetch(path, init);
   }
 

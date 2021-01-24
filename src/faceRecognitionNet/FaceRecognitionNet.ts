@@ -22,7 +22,6 @@ export class FaceRecognitionNet extends NeuralNetwork<NetParams> {
     }
 
     return tf.tidy(() => {
-      // const batchTensor = input.toBatchTensor(150, true).toFloat()
       const batchTensor = tf.cast(input.toBatchTensor(150, true), 'float32');
 
       const meanRgb = [122.782, 117.001, 104.298];
@@ -61,25 +60,14 @@ export class FaceRecognitionNet extends NeuralNetwork<NetParams> {
   }
 
   public async computeFaceDescriptor(input: TNetInput): Promise<Float32Array|Float32Array[]> {
-    // When faces have a detected dimension of 0, tensorflow will crash the whole process.
-    // Sidestep this by returning an empty descriptor instead.
-    if (input.shape.some(dimension => dimension <= 0) return new Float32Array(128);
-    
+    if (input?.shape?.some((dim) => dim <= 0)) return new Float32Array(128);
     const netInput = await toNetInput(input);
-
     const faceDescriptorTensors = tf.tidy(
       () => tf.unstack(this.forwardInput(netInput)),
     );
-
-    const faceDescriptorsForBatch = await Promise.all(faceDescriptorTensors.map(
-      (t) => t.data(),
-    )) as Float32Array[];
-
+    const faceDescriptorsForBatch = await Promise.all(faceDescriptorTensors.map((t) => t.data())) as Float32Array[];
     faceDescriptorTensors.forEach((t) => t.dispose());
-
-    return netInput.isBatchInput
-      ? faceDescriptorsForBatch
-      : faceDescriptorsForBatch[0];
+    return netInput.isBatchInput ? faceDescriptorsForBatch : faceDescriptorsForBatch[0];
   }
 
   protected getDefaultModelName(): string {

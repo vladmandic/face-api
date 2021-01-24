@@ -46,6 +46,7 @@
     "node/no-missing-import": "off",
     "node/no-unsupported-features/es-syntax": "off",
     "prefer-destructuring": "off",
-    "radix": "off"
+    "radix": "off",
+    "object-curly-newline": "off"
   }
 }

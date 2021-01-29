@@ -1,7 +1,7 @@
 {
   "inputs": {
     "dist/tfjs.esm.js": {
-      "bytes": 1064933,
+      "bytes": 1053912,
       "imports": []
     },
     "src/draw/drawContour.ts": {
@@ -2590,7 +2590,7 @@
     "dist/face-api.js.map": {
       "imports": [],
       "inputs": {},
-      "bytes": 1456202
+      "bytes": 1445502
     },
     "dist/face-api.js": {
       "imports": [],
@@ -2603,7 +2603,7 @@
           "bytesInOutput": 3011
         },
         "dist/tfjs.esm.js": {
-          "bytesInOutput": 1056466
+          "bytesInOutput": 1045401
         },
         "src/draw/index.ts": {
           "bytesInOutput": 280
@@ -2612,7 +2612,7 @@
           "bytesInOutput": 213
         },
         "src/utils/index.ts": {
-          "bytesInOutput": 996
+          "bytesInOutput": 997
         },
         "src/classes/Dimensions.ts": {
           "bytesInOutput": 337
@@ -2741,7 +2741,7 @@
           "bytesInOutput": 383
         },
         "src/dom/NetInput.ts": {
-          "bytesInOutput": 2172
+          "bytesInOutput": 2173
         },
         "src/dom/toNetInput.ts": {
           "bytesInOutput": 776
@@ -2774,7 +2774,7 @@
           "bytesInOutput": 101
         },
         "src/NeuralNetwork.ts": {
-          "bytesInOutput": 2606
+          "bytesInOutput": 2607
         },
         "src/common/depthwiseSeparableConv.ts": {
           "bytesInOutput": 117
@@ -3017,7 +3017,7 @@
           "bytesInOutput": 127
         },
         "src/globalApi/extractFacesAndComputeResults.ts": {
-          "bytesInOutput": 270
+          "bytesInOutput": 272
         },
         "src/tinyFaceDetector/const.ts": {
           "bytesInOutput": 173
@@ -3038,7 +3038,7 @@
           "bytesInOutput": 754
         },
         "src/globalApi/DetectFaceLandmarksTasks.ts": {
-          "bytesInOutput": 1089
+          "bytesInOutput": 1093
         },
         "src/globalApi/DetectFacesTasks.ts": {
           "bytesInOutput": 1348
@@ -3065,7 +3065,7 @@
           "bytesInOutput": 446
         }
       },
-      "bytes": 1143972
+      "bytes": 1132916
     }
   }
 }

@@ -1,11 +1,11 @@
 {
   "inputs": {
     "node_modules/@tensorflow/tfjs-core/dist/backends/backend.js": {
-      "bytes": 14572,
+      "bytes": 3401,
       "imports": []
     },
     "node_modules/@tensorflow/tfjs-core/dist/util_base.js": {
-      "bytes": 18780,
+      "bytes": 20096,
       "imports": []
     },
     "node_modules/@tensorflow/tfjs-core/dist/environment.js": {
@@ -87,8 +87,12 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/tensor.js": {
-      "bytes": 12894,
+      "bytes": 13373,
       "imports": [
+        {
+          "path": "node_modules/@tensorflow/tfjs-core/dist/global_util.js",
+          "kind": "import-statement"
+        },
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/tensor_format.js",
           "kind": "import-statement"
@@ -125,7 +129,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/engine.js": {
-      "bytes": 41902,
+      "bytes": 42541,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/backends/backend.js",
@@ -1331,14 +1335,10 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/ops/avg_pool_3d.js": {
-      "bytes": 4863,
+      "bytes": 3888,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/engine.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/globals.js",
           "kind": "import-statement"
         },
         {
@@ -1355,10 +1355,6 @@
         },
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/cast.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/conv_util.js",
           "kind": "import-statement"
         },
         {
@@ -3233,14 +3229,10 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/ops/max_pool_3d.js": {
-      "bytes": 4792,
+      "bytes": 3821,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/engine.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/globals.js",
           "kind": "import-statement"
         },
         {
@@ -3253,10 +3245,6 @@
         },
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/util.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/conv_util.js",
           "kind": "import-statement"
         },
         {
@@ -5108,108 +5096,6 @@
         }
       ]
     },
-    "node_modules/@tensorflow/tfjs-core/dist/ops/compare.js": {
-      "bytes": 4103,
-      "imports": [
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/globals.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/tensor_util_env.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/util.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/equal.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/greater.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/greater_equal.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/less.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/less_equal.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/not_equal.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/operation.js",
-          "kind": "import-statement"
-        }
-      ]
-    },
-    "node_modules/@tensorflow/tfjs-core/dist/ops/binary_ops.js": {
-      "bytes": 7121,
-      "imports": [
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/globals.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/tensor_util_env.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/util.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/add.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/div.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/maximum.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/minimum.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/mod.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/mul.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/operation.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/pow.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/squared_difference.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/sub.js",
-          "kind": "import-statement"
-        }
-      ]
-    },
     "node_modules/@tensorflow/tfjs-core/dist/ops/norm.js": {
       "bytes": 4758,
       "imports": [
@@ -6805,7 +6691,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js": {
-      "bytes": 10669,
+      "bytes": 10612,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/abs.js",
@@ -7532,14 +7418,6 @@
           "kind": "import-statement"
         },
         {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/compare.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/binary_ops.js",
-          "kind": "import-statement"
-        },
-        {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/transpose.js",
           "kind": "import-statement"
         },
@@ -8193,24 +8071,8 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/backends/backend_util.js": {
-      "bytes": 3377,
+      "bytes": 1981,
       "imports": [
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/engine.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/cast.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/scalar.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/zeros.js",
-          "kind": "import-statement"
-        },
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/util.js",
           "kind": "import-statement"
@@ -8443,6 +8305,19 @@
         },
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/kernel_names.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "node_modules/@tensorflow/tfjs-core/dist/index.js": {
+      "bytes": 875,
+      "imports": [
+        {
+          "path": "node_modules/@tensorflow/tfjs-core/dist/base_side_effects.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "node_modules/@tensorflow/tfjs-core/dist/base.js",
           "kind": "import-statement"
         }
       ]
@@ -8752,7 +8627,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/ops/avg_pool_3d_grad.js": {
-      "bytes": 4105,
+      "bytes": 3355,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/engine.js",
@@ -8771,10 +8646,6 @@
           "kind": "import-statement"
         },
         {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/conv_util.js",
-          "kind": "import-statement"
-        },
-        {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/operation.js",
           "kind": "import-statement"
         },
@@ -8785,7 +8656,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/gradients/AvgPool3D_grad.js": {
-      "bytes": 1285,
+      "bytes": 1192,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/kernel_names.js",
@@ -9608,7 +9479,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/ops/max_pool_3d_grad.js": {
-      "bytes": 4629,
+      "bytes": 3879,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/engine.js",
@@ -9627,10 +9498,6 @@
           "kind": "import-statement"
         },
         {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/conv_util.js",
-          "kind": "import-statement"
-        },
-        {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/operation.js",
           "kind": "import-statement"
         },
@@ -9641,7 +9508,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/gradients/MaxPool3D_grad.js": {
-      "bytes": 1318,
+      "bytes": 1225,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/kernel_names.js",
@@ -11116,7 +10983,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/abs.js": {
-      "bytes": 951,
+      "bytes": 981,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
@@ -11129,7 +10996,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/acos.js": {
-      "bytes": 955,
+      "bytes": 985,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
@@ -11142,20 +11009,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/acosh.js": {
-      "bytes": 959,
-      "imports": [
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/tensor.js",
-          "kind": "import-statement"
-        }
-      ]
-    },
-    "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/add_strict.js": {
-      "bytes": 1047,
+      "bytes": 989,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
@@ -11168,7 +11022,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/add.js": {
-      "bytes": 904,
+      "bytes": 934,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/add.js",
@@ -11181,7 +11035,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/all.js": {
-      "bytes": 930,
+      "bytes": 960,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/all.js",
@@ -11194,7 +11048,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/any.js": {
-      "bytes": 930,
+      "bytes": 960,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/any.js",
@@ -11207,7 +11061,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/arg_max.js": {
-      "bytes": 927,
+      "bytes": 957,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/arg_max.js",
@@ -11220,7 +11074,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/arg_min.js": {
-      "bytes": 927,
+      "bytes": 957,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/arg_min.js",
@@ -11233,7 +11087,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/as_scalar.js": {
-      "bytes": 1146,
+      "bytes": 1179,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/reshape.js",
@@ -11250,7 +11104,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/as_type.js": {
-      "bytes": 1132,
+      "bytes": 1162,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
@@ -11263,7 +11117,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/as1d.js": {
-      "bytes": 1030,
+      "bytes": 1063,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/reshape.js",
@@ -11276,7 +11130,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/as2d.js": {
-      "bytes": 1155,
+      "bytes": 1185,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/reshape.js",
@@ -11289,7 +11143,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/as3d.js": {
-      "bytes": 1209,
+      "bytes": 1239,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/reshape.js",
@@ -11302,7 +11156,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/as4d.js": {
-      "bytes": 1274,
+      "bytes": 1304,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/reshape.js",
@@ -11315,7 +11169,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/as5d.js": {
-      "bytes": 1341,
+      "bytes": 1371,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/reshape.js",
@@ -11328,7 +11182,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/asin.js": {
-      "bytes": 955,
+      "bytes": 985,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
@@ -11341,7 +11195,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/asinh.js": {
-      "bytes": 959,
+      "bytes": 989,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
@@ -11354,7 +11208,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/atan.js": {
-      "bytes": 955,
+      "bytes": 985,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
@@ -11367,7 +11221,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/atan2.js": {
-      "bytes": 914,
+      "bytes": 944,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/atan2.js",
@@ -11380,7 +11234,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/atanh.js": {
-      "bytes": 959,
+      "bytes": 989,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
@@ -11393,7 +11247,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/avg_pool.js": {
-      "bytes": 1006,
+      "bytes": 1052,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/avg_pool.js",
@@ -11406,7 +11260,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/batch_to_space_nd.js": {
-      "bytes": 997,
+      "bytes": 1027,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/batch_to_space_nd.js",
@@ -11419,7 +11273,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/batchnorm.js": {
-      "bytes": 1024,
+      "bytes": 1054,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/batchnorm.js",
@@ -11432,7 +11286,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/broadcast_to.js": {
-      "bytes": 954,
+      "bytes": 984,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/broadcast_to.js",
@@ -11445,7 +11299,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/cast.js": {
-      "bytes": 967,
+      "bytes": 997,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
@@ -11458,7 +11312,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/ceil.js": {
-      "bytes": 955,
+      "bytes": 985,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
@@ -11471,7 +11325,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/clip_by_value.js": {
-      "bytes": 1003,
+      "bytes": 1033,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
@@ -11484,7 +11338,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/concat.js": {
-      "bytes": 990,
+      "bytes": 1028,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/concat.js",
@@ -11497,7 +11351,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/conv1d.js": {
-      "bytes": 1033,
+      "bytes": 1063,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/conv1d.js",
@@ -11510,7 +11364,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/conv2d_transpose.js": {
-      "bytes": 1064,
+      "bytes": 1110,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/conv2d_transpose.js",
@@ -11523,7 +11377,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/conv2d.js": {
-      "bytes": 1037,
+      "bytes": 1067,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/conv2d.js",
@@ -11536,7 +11390,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/cos.js": {
-      "bytes": 951,
+      "bytes": 981,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
@@ -11549,7 +11403,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/cosh.js": {
-      "bytes": 955,
+      "bytes": 985,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
@@ -11562,7 +11416,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/cumsum.js": {
-      "bytes": 965,
+      "bytes": 995,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/cumsum.js",
@@ -11575,7 +11429,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/depth_to_space.js": {
-      "bytes": 993,
+      "bytes": 1023,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/depth_to_space.js",
@@ -11587,25 +11441,8 @@
         }
       ]
     },
-    "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/depthwise_conv2D_deprecated.js": {
-      "bytes": 1281,
-      "imports": [
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/globals.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/depthwise_conv2d.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/tensor.js",
-          "kind": "import-statement"
-        }
-      ]
-    },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/depthwise_conv2d.js": {
-      "bytes": 1084,
+      "bytes": 1130,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/depthwise_conv2d.js",
@@ -11618,7 +11455,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/dilation2d.js": {
-      "bytes": 1023,
+      "bytes": 1069,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/dilation2d.js",
@@ -11631,7 +11468,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/div_no_nan.js": {
-      "bytes": 933,
+      "bytes": 963,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/div_no_nan.js",
@@ -11643,21 +11480,8 @@
         }
       ]
     },
-    "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/div_strict.js": {
-      "bytes": 980,
-      "imports": [
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/tensor.js",
-          "kind": "import-statement"
-        }
-      ]
-    },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/div.js": {
-      "bytes": 904,
+      "bytes": 934,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/div.js",
@@ -11670,7 +11494,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/dot.js": {
-      "bytes": 904,
+      "bytes": 934,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/dot.js",
@@ -11683,7 +11507,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/elu.js": {
-      "bytes": 900,
+      "bytes": 930,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/elu.js",
@@ -11695,21 +11519,8 @@
         }
       ]
     },
-    "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/equal_strict.js": {
-      "bytes": 1055,
-      "imports": [
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/tensor.js",
-          "kind": "import-statement"
-        }
-      ]
-    },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/equal.js": {
-      "bytes": 914,
+      "bytes": 944,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/equal.js",
@@ -11722,7 +11533,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/erf.js": {
-      "bytes": 951,
+      "bytes": 981,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
@@ -11735,7 +11546,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/exp.js": {
-      "bytes": 951,
+      "bytes": 981,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
@@ -11748,7 +11559,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/expand_dims.js": {
-      "bytes": 947,
+      "bytes": 977,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/expand_dims.js",
@@ -11761,7 +11572,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/expm1.js": {
-      "bytes": 959,
+      "bytes": 989,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
@@ -11774,7 +11585,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/fft.js": {
-      "bytes": 951,
+      "bytes": 981,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
@@ -11787,7 +11598,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/flatten.js": {
-      "bytes": 1025,
+      "bytes": 1058,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/reshape.js",
@@ -11800,7 +11611,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/floor.js": {
-      "bytes": 959,
+      "bytes": 989,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
@@ -11813,7 +11624,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/floorDiv.js": {
-      "bytes": 929,
+      "bytes": 959,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/floorDiv.js",
@@ -11826,7 +11637,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/gather.js": {
-      "bytes": 943,
+      "bytes": 973,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/gather.js",
@@ -11838,21 +11649,8 @@
         }
       ]
     },
-    "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/greater_equal_strict.js": {
-      "bytes": 1084,
-      "imports": [
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/tensor.js",
-          "kind": "import-statement"
-        }
-      ]
-    },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/greater_equal.js": {
-      "bytes": 951,
+      "bytes": 981,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/greater_equal.js",
@@ -11864,21 +11662,8 @@
         }
       ]
     },
-    "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/greater_strict.js": {
-      "bytes": 1063,
-      "imports": [
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/tensor.js",
-          "kind": "import-statement"
-        }
-      ]
-    },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/greater.js": {
-      "bytes": 924,
+      "bytes": 954,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/greater.js",
@@ -11891,7 +11676,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/ifft.js": {
-      "bytes": 955,
+      "bytes": 985,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
@@ -11904,7 +11689,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/irfft.js": {
-      "bytes": 959,
+      "bytes": 989,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
@@ -11917,7 +11702,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/is_finite.js": {
-      "bytes": 972,
+      "bytes": 1002,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
@@ -11930,123 +11715,6 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/is_inf.js": {
-      "bytes": 960,
-      "imports": [
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/tensor.js",
-          "kind": "import-statement"
-        }
-      ]
-    },
-    "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/is_nan.js": {
-      "bytes": 960,
-      "imports": [
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/tensor.js",
-          "kind": "import-statement"
-        }
-      ]
-    },
-    "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/leaky_relu.js": {
-      "bytes": 944,
-      "imports": [
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/leaky_relu.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/tensor.js",
-          "kind": "import-statement"
-        }
-      ]
-    },
-    "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/less_equal_strict.js": {
-      "bytes": 1072,
-      "imports": [
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/tensor.js",
-          "kind": "import-statement"
-        }
-      ]
-    },
-    "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/less_equal.js": {
-      "bytes": 936,
-      "imports": [
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/less_equal.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/tensor.js",
-          "kind": "import-statement"
-        }
-      ]
-    },
-    "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/less_strict.js": {
-      "bytes": 984,
-      "imports": [
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/tensor.js",
-          "kind": "import-statement"
-        }
-      ]
-    },
-    "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/less.js": {
-      "bytes": 909,
-      "imports": [
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/less.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/tensor.js",
-          "kind": "import-statement"
-        }
-      ]
-    },
-    "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/local_response_normalization.js": {
-      "bytes": 1081,
-      "imports": [
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/local_response_normalization.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/tensor.js",
-          "kind": "import-statement"
-        }
-      ]
-    },
-    "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/log_sigmoid.js": {
-      "bytes": 980,
-      "imports": [
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/tensor.js",
-          "kind": "import-statement"
-        }
-      ]
-    },
-    "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/log_softmax.js": {
       "bytes": 990,
       "imports": [
         {
@@ -12059,8 +11727,99 @@
         }
       ]
     },
+    "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/is_nan.js": {
+      "bytes": 990,
+      "imports": [
+        {
+          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "node_modules/@tensorflow/tfjs-core/dist/tensor.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/leaky_relu.js": {
+      "bytes": 974,
+      "imports": [
+        {
+          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/leaky_relu.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "node_modules/@tensorflow/tfjs-core/dist/tensor.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/less_equal.js": {
+      "bytes": 966,
+      "imports": [
+        {
+          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/less_equal.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "node_modules/@tensorflow/tfjs-core/dist/tensor.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/less.js": {
+      "bytes": 939,
+      "imports": [
+        {
+          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/less.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "node_modules/@tensorflow/tfjs-core/dist/tensor.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/local_response_normalization.js": {
+      "bytes": 1127,
+      "imports": [
+        {
+          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/local_response_normalization.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "node_modules/@tensorflow/tfjs-core/dist/tensor.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/log_sigmoid.js": {
+      "bytes": 1010,
+      "imports": [
+        {
+          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "node_modules/@tensorflow/tfjs-core/dist/tensor.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/log_softmax.js": {
+      "bytes": 1020,
+      "imports": [
+        {
+          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "node_modules/@tensorflow/tfjs-core/dist/tensor.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/log_sum_exp.js": {
-      "bytes": 964,
+      "bytes": 994,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/log_sum_exp.js",
@@ -12073,7 +11832,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/log.js": {
-      "bytes": 951,
+      "bytes": 981,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
@@ -12086,7 +11845,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/log1p.js": {
-      "bytes": 959,
+      "bytes": 989,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
@@ -12099,7 +11858,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/logical_and.js": {
-      "bytes": 941,
+      "bytes": 971,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/logical_and.js",
@@ -12112,7 +11871,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/logical_not.js": {
-      "bytes": 937,
+      "bytes": 967,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/logical_not.js",
@@ -12125,7 +11884,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/logical_or.js": {
-      "bytes": 936,
+      "bytes": 966,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/logical_or.js",
@@ -12138,7 +11897,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/logical_xor.js": {
-      "bytes": 941,
+      "bytes": 971,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/logical_xor.js",
@@ -12151,7 +11910,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/mat_mul.js": {
-      "bytes": 969,
+      "bytes": 999,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/mat_mul.js",
@@ -12164,7 +11923,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/max_pool.js": {
-      "bytes": 1006,
+      "bytes": 1052,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/max_pool.js",
@@ -12177,7 +11936,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/max.js": {
-      "bytes": 930,
+      "bytes": 960,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/max.js",
@@ -12189,21 +11948,8 @@
         }
       ]
     },
-    "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/maximum_strict.js": {
-      "bytes": 1063,
-      "imports": [
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/tensor.js",
-          "kind": "import-statement"
-        }
-      ]
-    },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/maximum.js": {
-      "bytes": 924,
+      "bytes": 954,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/maximum.js",
@@ -12216,7 +11962,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/mean.js": {
-      "bytes": 935,
+      "bytes": 965,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/mean.js",
@@ -12229,7 +11975,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/min.js": {
-      "bytes": 930,
+      "bytes": 960,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/min.js",
@@ -12241,21 +11987,8 @@
         }
       ]
     },
-    "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/minimum_strict.js": {
-      "bytes": 1063,
-      "imports": [
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/tensor.js",
-          "kind": "import-statement"
-        }
-      ]
-    },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/minimum.js": {
-      "bytes": 924,
+      "bytes": 954,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/minimum.js",
@@ -12268,7 +12001,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/mirror_pad.js": {
-      "bytes": 962,
+      "bytes": 992,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/mirror_pad.js",
@@ -12280,21 +12013,8 @@
         }
       ]
     },
-    "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/mod_strict.js": {
-      "bytes": 1047,
-      "imports": [
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/tensor.js",
-          "kind": "import-statement"
-        }
-      ]
-    },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/mod.js": {
-      "bytes": 904,
+      "bytes": 934,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/mod.js",
@@ -12306,21 +12026,8 @@
         }
       ]
     },
-    "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/mul_strict.js": {
-      "bytes": 1047,
-      "imports": [
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/tensor.js",
-          "kind": "import-statement"
-        }
-      ]
-    },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/mul.js": {
-      "bytes": 904,
+      "bytes": 934,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/mul.js",
@@ -12333,7 +12040,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/neg.js": {
-      "bytes": 951,
+      "bytes": 981,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
@@ -12346,20 +12053,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/norm.js": {
-      "bytes": 995,
-      "imports": [
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/tensor.js",
-          "kind": "import-statement"
-        }
-      ]
-    },
-    "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/not_equal_strict.js": {
-      "bytes": 1068,
+      "bytes": 1025,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
@@ -12372,7 +12066,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/not_equal.js": {
-      "bytes": 931,
+      "bytes": 961,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/not_equal.js",
@@ -12385,7 +12079,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/one_hot.js": {
-      "bytes": 975,
+      "bytes": 1005,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/one_hot.js",
@@ -12398,7 +12092,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/ones_like.js": {
-      "bytes": 972,
+      "bytes": 1002,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
@@ -12411,7 +12105,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/pad.js": {
-      "bytes": 948,
+      "bytes": 978,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/pad.js",
@@ -12424,7 +12118,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/pool.js": {
-      "bytes": 1019,
+      "bytes": 1049,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/pool.js",
@@ -12436,21 +12130,8 @@
         }
       ]
     },
-    "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/pow_strict.js": {
-      "bytes": 1051,
-      "imports": [
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/tensor.js",
-          "kind": "import-statement"
-        }
-      ]
-    },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/pow.js": {
-      "bytes": 908,
+      "bytes": 938,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/pow.js",
@@ -12463,7 +12144,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/prelu.js": {
-      "bytes": 922,
+      "bytes": 952,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/prelu.js",
@@ -12476,7 +12157,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/prod.js": {
-      "bytes": 935,
+      "bytes": 965,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/prod.js",
@@ -12489,7 +12170,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/reciprocal.js": {
-      "bytes": 979,
+      "bytes": 1009,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
@@ -12502,7 +12183,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/relu.js": {
-      "bytes": 905,
+      "bytes": 935,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/relu.js",
@@ -12515,7 +12196,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/relu6.js": {
-      "bytes": 910,
+      "bytes": 940,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/relu6.js",
@@ -12528,7 +12209,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/reshape_as.js": {
-      "bytes": 1105,
+      "bytes": 1135,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/reshape.js",
@@ -12541,7 +12222,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/reshape.js": {
-      "bytes": 932,
+      "bytes": 962,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/reshape.js",
@@ -12554,7 +12235,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/resize_bilinear.js": {
-      "bytes": 1049,
+      "bytes": 1095,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/image/resize_bilinear.js",
@@ -12567,7 +12248,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/resize_nearest_neighbor.js": {
-      "bytes": 1086,
+      "bytes": 1132,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/image/resize_nearest_neighbor.js",
@@ -12580,7 +12261,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/reverse.js": {
-      "bytes": 930,
+      "bytes": 960,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/reverse.js",
@@ -12593,7 +12274,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/rfft.js": {
-      "bytes": 955,
+      "bytes": 985,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
@@ -12606,7 +12287,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/round.js": {
-      "bytes": 959,
+      "bytes": 989,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
@@ -12619,7 +12300,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/rsqrt.js": {
-      "bytes": 959,
+      "bytes": 989,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
@@ -12632,7 +12313,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/selu.js": {
-      "bytes": 905,
+      "bytes": 935,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/selu.js",
@@ -12645,7 +12326,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/separable_conv2d.js": {
-      "bytes": 1100,
+      "bytes": 1146,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/separable_conv2d.js",
@@ -12658,7 +12339,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/sigmoid.js": {
-      "bytes": 967,
+      "bytes": 997,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
@@ -12671,7 +12352,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/sign.js": {
-      "bytes": 955,
+      "bytes": 985,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
@@ -12684,7 +12365,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/sin.js": {
-      "bytes": 951,
+      "bytes": 981,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
@@ -12697,7 +12378,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/sinh.js": {
-      "bytes": 955,
+      "bytes": 985,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
@@ -12710,7 +12391,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/slice.js": {
-      "bytes": 983,
+      "bytes": 1013,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
@@ -12723,7 +12404,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/softmax.js": {
-      "bytes": 975,
+      "bytes": 1005,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
@@ -12736,7 +12417,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/softplus.js": {
-      "bytes": 971,
+      "bytes": 1001,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
@@ -12749,7 +12430,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/space_to_batch_nd.js": {
-      "bytes": 1003,
+      "bytes": 1033,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/space_to_batch_nd.js",
@@ -12762,7 +12443,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/split.js": {
-      "bytes": 954,
+      "bytes": 984,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/split.js",
@@ -12775,7 +12456,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/sqrt.js": {
-      "bytes": 955,
+      "bytes": 985,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
@@ -12788,7 +12469,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/square.js": {
-      "bytes": 963,
+      "bytes": 993,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
@@ -12801,7 +12482,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/squared_difference.js": {
-      "bytes": 976,
+      "bytes": 1006,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/squared_difference.js",
@@ -12813,21 +12494,8 @@
         }
       ]
     },
-    "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/squared_difference_strict.js": {
-      "bytes": 1104,
-      "imports": [
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/tensor.js",
-          "kind": "import-statement"
-        }
-      ]
-    },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/squeeze.js": {
-      "bytes": 930,
+      "bytes": 960,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/squeeze.js",
@@ -12840,7 +12508,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/stack.js": {
-      "bytes": 1016,
+      "bytes": 1054,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/stack.js",
@@ -12853,7 +12521,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/step.js": {
-      "bytes": 967,
+      "bytes": 997,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
@@ -12866,20 +12534,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/strided_slice.js": {
-      "bytes": 1154,
-      "imports": [
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/tensor.js",
-          "kind": "import-statement"
-        }
-      ]
-    },
-    "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/sub_strict.js": {
-      "bytes": 1047,
+      "bytes": 1184,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
@@ -12892,7 +12547,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/sub.js": {
-      "bytes": 904,
+      "bytes": 934,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/sub.js",
@@ -12905,7 +12560,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/sum.js": {
-      "bytes": 930,
+      "bytes": 960,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/sum.js",
@@ -12918,7 +12573,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/tan.js": {
-      "bytes": 951,
+      "bytes": 981,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
@@ -12931,7 +12586,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/tanh.js": {
-      "bytes": 955,
+      "bytes": 985,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
@@ -12944,7 +12599,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/tile.js": {
-      "bytes": 915,
+      "bytes": 945,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/tile.js",
@@ -12957,7 +12612,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/to_bool.js": {
-      "bytes": 1062,
+      "bytes": 1095,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
@@ -12970,7 +12625,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/to_float.js": {
-      "bytes": 1070,
+      "bytes": 1103,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
@@ -12983,7 +12638,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/to_int.js": {
-      "bytes": 1062,
+      "bytes": 1095,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
@@ -12996,7 +12651,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/topk.js": {
-      "bytes": 925,
+      "bytes": 955,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/topk.js",
@@ -13009,7 +12664,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/transpose.js": {
-      "bytes": 940,
+      "bytes": 970,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/transpose.js",
@@ -13022,7 +12677,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/unique.js": {
-      "bytes": 925,
+      "bytes": 955,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/unique.js",
@@ -13035,7 +12690,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/unsorted_segment_sum.js": {
-      "bytes": 1027,
+      "bytes": 1073,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/unsorted_segment_sum.js",
@@ -13048,7 +12703,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/unstack.js": {
-      "bytes": 930,
+      "bytes": 960,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/unstack.js",
@@ -13061,7 +12716,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/where.js": {
-      "bytes": 936,
+      "bytes": 966,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/where.js",
@@ -13074,7 +12729,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/zeros_like.js": {
-      "bytes": 976,
+      "bytes": 1006,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js",
@@ -13087,7 +12742,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/register_all_chained_ops.js": {
-      "bytes": 3894,
+      "bytes": 3456,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/abs.js",
@@ -13099,10 +12754,6 @@
         },
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/acosh.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/add_strict.js",
           "kind": "import-statement"
         },
         {
@@ -13234,10 +12885,6 @@
           "kind": "import-statement"
         },
         {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/depthwise_conv2D_deprecated.js",
-          "kind": "import-statement"
-        },
-        {
           "path": "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/depthwise_conv2d.js",
           "kind": "import-statement"
         },
@@ -13250,10 +12897,6 @@
           "kind": "import-statement"
         },
         {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/div_strict.js",
-          "kind": "import-statement"
-        },
-        {
           "path": "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/div.js",
           "kind": "import-statement"
         },
@@ -13263,10 +12906,6 @@
         },
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/elu.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/equal_strict.js",
           "kind": "import-statement"
         },
         {
@@ -13310,15 +12949,7 @@
           "kind": "import-statement"
         },
         {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/greater_equal_strict.js",
-          "kind": "import-statement"
-        },
-        {
           "path": "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/greater_equal.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/greater_strict.js",
           "kind": "import-statement"
         },
         {
@@ -13350,15 +12981,7 @@
           "kind": "import-statement"
         },
         {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/less_equal_strict.js",
-          "kind": "import-statement"
-        },
-        {
           "path": "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/less_equal.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/less_strict.js",
           "kind": "import-statement"
         },
         {
@@ -13418,10 +13041,6 @@
           "kind": "import-statement"
         },
         {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/maximum_strict.js",
-          "kind": "import-statement"
-        },
-        {
           "path": "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/maximum.js",
           "kind": "import-statement"
         },
@@ -13434,10 +13053,6 @@
           "kind": "import-statement"
         },
         {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/minimum_strict.js",
-          "kind": "import-statement"
-        },
-        {
           "path": "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/minimum.js",
           "kind": "import-statement"
         },
@@ -13446,15 +13061,7 @@
           "kind": "import-statement"
         },
         {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/mod_strict.js",
-          "kind": "import-statement"
-        },
-        {
           "path": "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/mod.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/mul_strict.js",
           "kind": "import-statement"
         },
         {
@@ -13467,10 +13074,6 @@
         },
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/norm.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/not_equal_strict.js",
           "kind": "import-statement"
         },
         {
@@ -13491,10 +13094,6 @@
         },
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/pool.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/pow_strict.js",
           "kind": "import-statement"
         },
         {
@@ -13610,10 +13209,6 @@
           "kind": "import-statement"
         },
         {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/squared_difference_strict.js",
-          "kind": "import-statement"
-        },
-        {
           "path": "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/squeeze.js",
           "kind": "import-statement"
         },
@@ -13627,10 +13222,6 @@
         },
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/strided_slice.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/sub_strict.js",
           "kind": "import-statement"
         },
         {
@@ -13691,27 +13282,6 @@
         },
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/zeros_like.js",
-          "kind": "import-statement"
-        }
-      ]
-    },
-    "node_modules/@tensorflow/tfjs-core/dist/index.js": {
-      "bytes": 1052,
-      "imports": [
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/base_side_effects.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/base.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/register_all_gradients.js",
-          "kind": "import-statement"
-        },
-        {
-          "path": "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/register_all_chained_ops.js",
           "kind": "import-statement"
         }
       ]
@@ -15223,8 +14793,20 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-layers/dist/index.js": {
-      "bytes": 1281,
+      "bytes": 1553,
       "imports": [
+        {
+          "path": "node_modules/@tensorflow/tfjs-core/dist/index.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/register_all_chained_ops.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "node_modules/@tensorflow/tfjs-core/dist/register_all_gradients.js",
+          "kind": "import-statement"
+        },
         {
           "path": "node_modules/@tensorflow/tfjs-layers/dist/exports_constraints.js",
           "kind": "import-statement"
@@ -16054,7 +15636,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-data/dist/iterators/webcam_iterator.js": {
-      "bytes": 7865,
+      "bytes": 7903,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/index.js",
@@ -17330,7 +16912,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/AvgPool3D.js": {
-      "bytes": 1711,
+      "bytes": 1607,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/index.js",
@@ -17347,7 +16929,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/AvgPool3DGrad.js": {
-      "bytes": 4726,
+      "bytes": 4723,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/index.js",
@@ -18200,7 +17782,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/MaxPool3D.js": {
-      "bytes": 1711,
+      "bytes": 1607,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/index.js",
@@ -18217,7 +17799,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/MaxPool3DGrad.js": {
-      "bytes": 5370,
+      "bytes": 5367,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/index.js",
@@ -24053,8 +23635,20 @@
       "imports": []
     },
     "node_modules/@tensorflow/tfjs/dist/index.js": {
-      "bytes": 1785,
+      "bytes": 2058,
       "imports": [
+        {
+          "path": "node_modules/@tensorflow/tfjs-core/dist/index.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "node_modules/@tensorflow/tfjs-core/dist/register_all_gradients.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/register_all_chained_ops.js",
+          "kind": "import-statement"
+        },
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/index.js",
           "kind": "import-statement"
@@ -25752,7 +25346,7 @@
     "dist/tfjs.esm.js.map": {
       "imports": [],
       "inputs": {},
-      "bytes": 1137856
+      "bytes": 1127278
     },
     "dist/tfjs.esm.js": {
       "imports": [],
@@ -25950,7 +25544,6 @@
         "acosh",
         "add",
         "addN",
-        "addStrict",
         "all",
         "any",
         "argMax",
@@ -26012,7 +25605,6 @@
         "disposeVariables",
         "div",
         "divNoNan",
-        "divStrict",
         "dot",
         "dropout",
         "elu",
@@ -26022,7 +25614,6 @@
         "engine",
         "env",
         "equal",
-        "equalStrict",
         "erf",
         "exp",
         "expandDims",
@@ -26046,8 +25637,6 @@
         "grads",
         "greater",
         "greaterEqual",
-        "greaterEqualStrict",
-        "greaterStrict",
         "ifft",
         "imag",
         "image",
@@ -26065,8 +25654,6 @@
         "leakyRelu",
         "less",
         "lessEqual",
-        "lessEqualStrict",
-        "lessStrict",
         "linalg",
         "linspace",
         "loadGraphModel",
@@ -26089,29 +25676,24 @@
         "maxPool3d",
         "maxPoolWithArgmax",
         "maximum",
-        "maximumStrict",
         "mean",
         "memory",
         "metrics",
         "min",
         "minimum",
-        "minimumStrict",
         "mirrorPad",
         "mod",
-        "modStrict",
         "model",
         "models",
         "moments",
         "movingAverage",
         "mul",
-        "mulStrict",
         "multiRNNCell",
         "multinomial",
         "neg",
         "nextFrame",
         "norm",
         "notEqual",
-        "notEqualStrict",
         "oneHot",
         "ones",
         "onesLike",
@@ -26124,7 +25706,6 @@
         "pad4d",
         "pool",
         "pow",
-        "powStrict",
         "prelu",
         "print",
         "prod",
@@ -26187,13 +25768,11 @@
         "sqrt",
         "square",
         "squaredDifference",
-        "squaredDifferenceStrict",
         "squeeze",
         "stack",
         "step",
         "stridedSlice",
         "sub",
-        "subStrict",
         "sum",
         "sumOutType",
         "tan",
@@ -26285,10 +25864,10 @@
           "bytesInOutput": 18078
         },
         "node_modules/@tensorflow/tfjs-core/dist/backends/backend.js": {
-          "bytesInOutput": 5999
+          "bytesInOutput": 956
         },
         "node_modules/@tensorflow/tfjs-core/dist/util_base.js": {
-          "bytesInOutput": 6014
+          "bytesInOutput": 6291
         },
         "node_modules/@tensorflow/tfjs-core/dist/environment.js": {
           "bytesInOutput": 2118
@@ -26303,7 +25882,7 @@
           "bytesInOutput": 946
         },
         "node_modules/@tensorflow/tfjs-core/dist/util.js": {
-          "bytesInOutput": 1946
+          "bytesInOutput": 1966
         },
         "node_modules/@tensorflow/tfjs-core/dist/profiler.js": {
           "bytesInOutput": 1214
@@ -26315,16 +25894,16 @@
           "bytesInOutput": 1811
         },
         "node_modules/@tensorflow/tfjs-core/dist/tensor.js": {
-          "bytesInOutput": 3899
+          "bytesInOutput": 3947
         },
         "node_modules/@tensorflow/tfjs-core/dist/tensor_util.js": {
-          "bytesInOutput": 656
+          "bytesInOutput": 657
         },
         "node_modules/@tensorflow/tfjs-core/dist/types.js": {
           "bytesInOutput": 802
         },
         "node_modules/@tensorflow/tfjs-core/dist/engine.js": {
-          "bytesInOutput": 15071
+          "bytesInOutput": 15293
         },
         "node_modules/@tensorflow/tfjs-core/dist/device_util.js": {
           "bytesInOutput": 2280
@@ -26333,7 +25912,7 @@
           "bytesInOutput": 819
         },
         "node_modules/@tensorflow/tfjs-core/dist/tensor_util_env.js": {
-          "bytesInOutput": 1699
+          "bytesInOutput": 1700
         },
         "node_modules/@tensorflow/tfjs-core/dist/ops/operation.js": {
           "bytesInOutput": 515
@@ -26420,7 +25999,7 @@
           "bytesInOutput": 740
         },
         "node_modules/@tensorflow/tfjs-core/dist/ops/browser.js": {
-          "bytesInOutput": 2907
+          "bytesInOutput": 2908
         },
         "node_modules/@tensorflow/tfjs-core/dist/ops/tensor3d.js": {
           "bytesInOutput": 380
@@ -26435,7 +26014,7 @@
           "bytesInOutput": 3874
         },
         "node_modules/@tensorflow/tfjs-core/dist/serialization.js": {
-          "bytesInOutput": 736
+          "bytesInOutput": 734
         },
         "node_modules/@tensorflow/tfjs-core/dist/test_util.js": {
           "bytesInOutput": 1852
@@ -26507,7 +26086,7 @@
           "bytesInOutput": 621
         },
         "node_modules/@tensorflow/tfjs-core/dist/ops/avg_pool_3d.js": {
-          "bytesInOutput": 869
+          "bytesInOutput": 657
         },
         "node_modules/@tensorflow/tfjs-core/dist/ops/concat.js": {
           "bytesInOutput": 398
@@ -26699,7 +26278,7 @@
           "bytesInOutput": 89
         },
         "node_modules/@tensorflow/tfjs-core/dist/gradients.js": {
-          "bytesInOutput": 2998
+          "bytesInOutput": 3002
         },
         "node_modules/@tensorflow/tfjs-core/dist/ops/neg.js": {
           "bytesInOutput": 85
@@ -26744,7 +26323,7 @@
           "bytesInOutput": 595
         },
         "node_modules/@tensorflow/tfjs-core/dist/ops/max_pool_3d.js": {
-          "bytesInOutput": 851
+          "bytesInOutput": 639
         },
         "node_modules/@tensorflow/tfjs-core/dist/ops/max_pool_with_argmax.js": {
           "bytesInOutput": 209
@@ -26992,12 +26571,6 @@
         "node_modules/@tensorflow/tfjs-core/dist/ops/ops.js": {
           "bytesInOutput": 576
         },
-        "node_modules/@tensorflow/tfjs-core/dist/ops/compare.js": {
-          "bytesInOutput": 1474
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/ops/binary_ops.js": {
-          "bytesInOutput": 2067
-        },
         "node_modules/@tensorflow/tfjs-core/dist/ops/norm.js": {
           "bytesInOutput": 889
         },
@@ -27020,7 +26593,7 @@
           "bytesInOutput": 228
         },
         "node_modules/@tensorflow/tfjs-core/dist/ops/dropout.js": {
-          "bytesInOutput": 394
+          "bytesInOutput": 395
         },
         "node_modules/@tensorflow/tfjs-core/dist/ops/signal_ops_util.js": {
           "bytesInOutput": 225
@@ -27179,7 +26752,7 @@
           "bytesInOutput": 181
         },
         "node_modules/@tensorflow/tfjs-core/dist/backends/backend_util.js": {
-          "bytesInOutput": 2267
+          "bytesInOutput": 1675
         },
         "node_modules/@tensorflow/tfjs-core/dist/ops/concat_util.js": {
           "bytesInOutput": 544
@@ -27254,10 +26827,10 @@
           "bytesInOutput": 119
         },
         "node_modules/@tensorflow/tfjs-core/dist/ops/avg_pool_3d_grad.js": {
-          "bytesInOutput": 853
+          "bytesInOutput": 713
         },
         "node_modules/@tensorflow/tfjs-core/dist/gradients/AvgPool3D_grad.js": {
-          "bytesInOutput": 186
+          "bytesInOutput": 152
         },
         "node_modules/@tensorflow/tfjs-core/dist/ops/avg_pool_grad.js": {
           "bytesInOutput": 621
@@ -27386,10 +26959,10 @@
           "bytesInOutput": 149
         },
         "node_modules/@tensorflow/tfjs-core/dist/ops/max_pool_3d_grad.js": {
-          "bytesInOutput": 1045
+          "bytesInOutput": 905
         },
         "node_modules/@tensorflow/tfjs-core/dist/gradients/MaxPool3D_grad.js": {
-          "bytesInOutput": 209
+          "bytesInOutput": 175
         },
         "node_modules/@tensorflow/tfjs-core/dist/ops/max_pool_grad.js": {
           "bytesInOutput": 632
@@ -27542,457 +27115,409 @@
           "bytesInOutput": 343
         },
         "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/abs.js": {
-          "bytesInOutput": 67
+          "bytesInOutput": 69
         },
         "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/acos.js": {
-          "bytesInOutput": 68
+          "bytesInOutput": 70
         },
         "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/acosh.js": {
-          "bytesInOutput": 69
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/add_strict.js": {
-          "bytesInOutput": 76
+          "bytesInOutput": 71
         },
         "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/add.js": {
-          "bytesInOutput": 69
+          "bytesInOutput": 71
         },
         "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/all.js": {
-          "bytesInOutput": 74
+          "bytesInOutput": 76
         },
         "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/any.js": {
-          "bytesInOutput": 74
+          "bytesInOutput": 76
         },
         "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/arg_max.js": {
-          "bytesInOutput": 73
+          "bytesInOutput": 75
         },
         "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/arg_min.js": {
-          "bytesInOutput": 73
+          "bytesInOutput": 75
         },
         "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/as_scalar.js": {
-          "bytesInOutput": 133
+          "bytesInOutput": 135
         },
         "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/as_type.js": {
-          "bytesInOutput": 73
+          "bytesInOutput": 75
         },
         "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/as1d.js": {
-          "bytesInOutput": 79
+          "bytesInOutput": 81
         },
         "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/as2d.js": {
-          "bytesInOutput": 76
+          "bytesInOutput": 78
         },
         "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/as3d.js": {
-          "bytesInOutput": 80
+          "bytesInOutput": 82
         },
         "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/as4d.js": {
-          "bytesInOutput": 84
+          "bytesInOutput": 86
         },
         "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/as5d.js": {
-          "bytesInOutput": 88
+          "bytesInOutput": 90
         },
         "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/asin.js": {
-          "bytesInOutput": 68
+          "bytesInOutput": 70
         },
         "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/asinh.js": {
-          "bytesInOutput": 69
+          "bytesInOutput": 71
         },
         "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/atan.js": {
-          "bytesInOutput": 68
+          "bytesInOutput": 70
         },
         "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/atan2.js": {
-          "bytesInOutput": 72
+          "bytesInOutput": 74
         },
         "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/atanh.js": {
-          "bytesInOutput": 69
+          "bytesInOutput": 71
         },
         "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/avg_pool.js": {
-          "bytesInOutput": 86
+          "bytesInOutput": 88
         },
         "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/batch_to_space_nd.js": {
-          "bytesInOutput": 85
+          "bytesInOutput": 87
         },
         "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/batchnorm.js": {
-          "bytesInOutput": 92
+          "bytesInOutput": 94
         },
         "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/broadcast_to.js": {
-          "bytesInOutput": 78
+          "bytesInOutput": 80
         },
         "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/cast.js": {
-          "bytesInOutput": 71
+          "bytesInOutput": 73
         },
         "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/ceil.js": {
-          "bytesInOutput": 68
+          "bytesInOutput": 70
         },
         "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/clip_by_value.js": {
-          "bytesInOutput": 82
+          "bytesInOutput": 84
         },
         "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/concat.js": {
-          "bytesInOutput": 106
+          "bytesInOutput": 109
         },
         "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/conv1d.js": {
-          "bytesInOutput": 93
+          "bytesInOutput": 95
         },
         "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/conv2d_transpose.js": {
-          "bytesInOutput": 98
+          "bytesInOutput": 100
         },
         "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/conv2d.js": {
-          "bytesInOutput": 93
+          "bytesInOutput": 95
         },
         "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/cos.js": {
-          "bytesInOutput": 67
+          "bytesInOutput": 69
         },
         "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/cosh.js": {
-          "bytesInOutput": 68
+          "bytesInOutput": 70
         },
         "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/cumsum.js": {
-          "bytesInOutput": 81
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/depth_to_space.js": {
           "bytesInOutput": 83
         },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/depthwise_conv2D_deprecated.js": {
-          "bytesInOutput": 167
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/depthwise_conv2d.js": {
-          "bytesInOutput": 102
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/dilation2d.js": {
-          "bytesInOutput": 93
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/div_no_nan.js": {
-          "bytesInOutput": 75
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/div_strict.js": {
-          "bytesInOutput": 76
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/div.js": {
-          "bytesInOutput": 70
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/dot.js": {
-          "bytesInOutput": 70
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/elu.js": {
-          "bytesInOutput": 67
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/equal_strict.js": {
-          "bytesInOutput": 78
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/equal.js": {
-          "bytesInOutput": 72
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/erf.js": {
-          "bytesInOutput": 67
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/exp.js": {
-          "bytesInOutput": 67
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/expand_dims.js": {
-          "bytesInOutput": 77
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/expm1.js": {
-          "bytesInOutput": 69
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/fft.js": {
-          "bytesInOutput": 67
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/flatten.js": {
-          "bytesInOutput": 82
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/floor.js": {
-          "bytesInOutput": 69
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/floorDiv.js": {
-          "bytesInOutput": 75
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/gather.js": {
-          "bytesInOutput": 77
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/greater_equal_strict.js": {
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/depth_to_space.js": {
           "bytesInOutput": 85
         },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/greater_equal.js": {
-          "bytesInOutput": 79
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/depthwise_conv2d.js": {
+          "bytesInOutput": 104
         },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/greater_strict.js": {
-          "bytesInOutput": 80
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/dilation2d.js": {
+          "bytesInOutput": 95
         },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/greater.js": {
-          "bytesInOutput": 74
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/div_no_nan.js": {
+          "bytesInOutput": 77
         },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/ifft.js": {
-          "bytesInOutput": 68
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/irfft.js": {
-          "bytesInOutput": 69
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/is_finite.js": {
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/div.js": {
           "bytesInOutput": 72
         },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/is_inf.js": {
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/dot.js": {
+          "bytesInOutput": 72
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/elu.js": {
           "bytesInOutput": 69
         },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/is_nan.js": {
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/equal.js": {
+          "bytesInOutput": 74
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/erf.js": {
           "bytesInOutput": 69
         },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/leaky_relu.js": {
-          "bytesInOutput": 76
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/less_equal_strict.js": {
-          "bytesInOutput": 82
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/less_equal.js": {
-          "bytesInOutput": 76
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/less_strict.js": {
-          "bytesInOutput": 77
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/less.js": {
-          "bytesInOutput": 71
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/local_response_normalization.js": {
-          "bytesInOutput": 105
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/log_sigmoid.js": {
-          "bytesInOutput": 74
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/log_softmax.js": {
-          "bytesInOutput": 77
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/log_sum_exp.js": {
-          "bytesInOutput": 80
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/log.js": {
-          "bytesInOutput": 67
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/log1p.js": {
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/exp.js": {
           "bytesInOutput": 69
         },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/logical_and.js": {
-          "bytesInOutput": 77
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/logical_not.js": {
-          "bytesInOutput": 74
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/logical_or.js": {
-          "bytesInOutput": 76
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/logical_xor.js": {
-          "bytesInOutput": 77
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/mat_mul.js": {
-          "bytesInOutput": 81
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/max_pool.js": {
-          "bytesInOutput": 86
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/max.js": {
-          "bytesInOutput": 74
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/maximum_strict.js": {
-          "bytesInOutput": 80
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/maximum.js": {
-          "bytesInOutput": 74
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/mean.js": {
-          "bytesInOutput": 75
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/min.js": {
-          "bytesInOutput": 74
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/minimum_strict.js": {
-          "bytesInOutput": 80
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/minimum.js": {
-          "bytesInOutput": 74
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/mirror_pad.js": {
-          "bytesInOutput": 80
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/mod_strict.js": {
-          "bytesInOutput": 76
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/mod.js": {
-          "bytesInOutput": 70
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/mul_strict.js": {
-          "bytesInOutput": 76
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/mul.js": {
-          "bytesInOutput": 69
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/neg.js": {
-          "bytesInOutput": 67
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/norm.js": {
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/expand_dims.js": {
           "bytesInOutput": 79
         },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/not_equal_strict.js": {
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/expm1.js": {
+          "bytesInOutput": 71
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/fft.js": {
+          "bytesInOutput": 69
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/flatten.js": {
+          "bytesInOutput": 84
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/floor.js": {
+          "bytesInOutput": 71
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/floorDiv.js": {
+          "bytesInOutput": 77
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/gather.js": {
+          "bytesInOutput": 79
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/greater_equal.js": {
+          "bytesInOutput": 81
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/greater.js": {
+          "bytesInOutput": 76
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/ifft.js": {
+          "bytesInOutput": 70
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/irfft.js": {
+          "bytesInOutput": 71
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/is_finite.js": {
+          "bytesInOutput": 74
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/is_inf.js": {
+          "bytesInOutput": 71
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/is_nan.js": {
+          "bytesInOutput": 71
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/leaky_relu.js": {
+          "bytesInOutput": 78
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/less_equal.js": {
+          "bytesInOutput": 78
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/less.js": {
+          "bytesInOutput": 73
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/local_response_normalization.js": {
+          "bytesInOutput": 107
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/log_sigmoid.js": {
+          "bytesInOutput": 76
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/log_softmax.js": {
+          "bytesInOutput": 79
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/log_sum_exp.js": {
+          "bytesInOutput": 82
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/log.js": {
+          "bytesInOutput": 69
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/log1p.js": {
+          "bytesInOutput": 71
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/logical_and.js": {
+          "bytesInOutput": 79
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/logical_not.js": {
+          "bytesInOutput": 76
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/logical_or.js": {
+          "bytesInOutput": 78
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/logical_xor.js": {
+          "bytesInOutput": 79
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/mat_mul.js": {
+          "bytesInOutput": 83
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/max_pool.js": {
+          "bytesInOutput": 88
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/max.js": {
+          "bytesInOutput": 76
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/maximum.js": {
+          "bytesInOutput": 76
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/mean.js": {
+          "bytesInOutput": 77
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/min.js": {
+          "bytesInOutput": 76
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/minimum.js": {
+          "bytesInOutput": 76
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/mirror_pad.js": {
+          "bytesInOutput": 82
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/mod.js": {
+          "bytesInOutput": 72
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/mul.js": {
+          "bytesInOutput": 71
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/neg.js": {
+          "bytesInOutput": 69
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/norm.js": {
           "bytesInOutput": 81
         },
         "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/not_equal.js": {
-          "bytesInOutput": 75
+          "bytesInOutput": 77
         },
         "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/one_hot.js": {
-          "bytesInOutput": 85
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/ones_like.js": {
-          "bytesInOutput": 72
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/pad.js": {
-          "bytesInOutput": 74
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/pool.js": {
           "bytesInOutput": 87
         },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/pow_strict.js": {
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/ones_like.js": {
+          "bytesInOutput": 74
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/pad.js": {
           "bytesInOutput": 76
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/pool.js": {
+          "bytesInOutput": 89
         },
         "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/pow.js": {
-          "bytesInOutput": 70
+          "bytesInOutput": 72
         },
         "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/prelu.js": {
-          "bytesInOutput": 72
+          "bytesInOutput": 74
         },
         "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/prod.js": {
-          "bytesInOutput": 75
+          "bytesInOutput": 77
         },
         "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/reciprocal.js": {
-          "bytesInOutput": 74
+          "bytesInOutput": 76
         },
         "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/relu.js": {
-          "bytesInOutput": 68
+          "bytesInOutput": 70
         },
         "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/relu6.js": {
-          "bytesInOutput": 69
+          "bytesInOutput": 71
         },
         "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/reshape_as.js": {
-          "bytesInOutput": 81
+          "bytesInOutput": 83
         },
         "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/reshape.js": {
-          "bytesInOutput": 73
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/resize_bilinear.js": {
-          "bytesInOutput": 89
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/resize_nearest_neighbor.js": {
-          "bytesInOutput": 96
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/reverse.js": {
-          "bytesInOutput": 74
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/rfft.js": {
-          "bytesInOutput": 68
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/round.js": {
-          "bytesInOutput": 69
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/rsqrt.js": {
-          "bytesInOutput": 69
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/selu.js": {
-          "bytesInOutput": 68
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/separable_conv2d.js": {
-          "bytesInOutput": 102
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/sigmoid.js": {
-          "bytesInOutput": 71
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/sign.js": {
-          "bytesInOutput": 68
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/sin.js": {
-          "bytesInOutput": 67
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/sinh.js": {
-          "bytesInOutput": 68
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/slice.js": {
-          "bytesInOutput": 76
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/softmax.js": {
-          "bytesInOutput": 74
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/softplus.js": {
-          "bytesInOutput": 72
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/space_to_batch_nd.js": {
-          "bytesInOutput": 85
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/split.js": {
-          "bytesInOutput": 76
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/sqrt.js": {
-          "bytesInOutput": 68
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/square.js": {
-          "bytesInOutput": 70
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/squared_difference.js": {
-          "bytesInOutput": 84
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/squared_difference_strict.js": {
-          "bytesInOutput": 90
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/squeeze.js": {
-          "bytesInOutput": 74
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/stack.js": {
-          "bytesInOutput": 113
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/step.js": {
-          "bytesInOutput": 71
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/strided_slice.js": {
-          "bytesInOutput": 107
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/sub_strict.js": {
-          "bytesInOutput": 76
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/sub.js": {
-          "bytesInOutput": 70
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/sum.js": {
-          "bytesInOutput": 74
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/tan.js": {
-          "bytesInOutput": 67
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/tanh.js": {
-          "bytesInOutput": 68
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/tile.js": {
-          "bytesInOutput": 71
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/to_bool.js": {
-          "bytesInOutput": 77
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/to_float.js": {
-          "bytesInOutput": 81
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/to_int.js": {
-          "bytesInOutput": 77
-        },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/topk.js": {
           "bytesInOutput": 75
         },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/transpose.js": {
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/resize_bilinear.js": {
+          "bytesInOutput": 91
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/resize_nearest_neighbor.js": {
+          "bytesInOutput": 98
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/reverse.js": {
           "bytesInOutput": 76
         },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/unique.js": {
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/rfft.js": {
+          "bytesInOutput": 70
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/round.js": {
+          "bytesInOutput": 71
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/rsqrt.js": {
+          "bytesInOutput": 71
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/selu.js": {
+          "bytesInOutput": 70
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/separable_conv2d.js": {
+          "bytesInOutput": 104
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/sigmoid.js": {
           "bytesInOutput": 73
         },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/unsorted_segment_sum.js": {
-          "bytesInOutput": 89
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/sign.js": {
+          "bytesInOutput": 70
         },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/unstack.js": {
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/sin.js": {
+          "bytesInOutput": 69
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/sinh.js": {
+          "bytesInOutput": 70
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/slice.js": {
+          "bytesInOutput": 78
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/softmax.js": {
+          "bytesInOutput": 76
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/softplus.js": {
           "bytesInOutput": 74
         },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/where.js": {
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/space_to_batch_nd.js": {
+          "bytesInOutput": 87
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/split.js": {
+          "bytesInOutput": 78
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/sqrt.js": {
+          "bytesInOutput": 70
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/square.js": {
+          "bytesInOutput": 72
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/squared_difference.js": {
+          "bytesInOutput": 86
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/squeeze.js": {
           "bytesInOutput": 76
         },
-        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/zeros_like.js": {
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/stack.js": {
+          "bytesInOutput": 116
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/step.js": {
           "bytesInOutput": 73
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/strided_slice.js": {
+          "bytesInOutput": 109
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/sub.js": {
+          "bytesInOutput": 72
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/sum.js": {
+          "bytesInOutput": 76
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/tan.js": {
+          "bytesInOutput": 69
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/tanh.js": {
+          "bytesInOutput": 70
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/tile.js": {
+          "bytesInOutput": 73
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/to_bool.js": {
+          "bytesInOutput": 79
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/to_float.js": {
+          "bytesInOutput": 83
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/to_int.js": {
+          "bytesInOutput": 79
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/topk.js": {
+          "bytesInOutput": 77
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/transpose.js": {
+          "bytesInOutput": 78
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/unique.js": {
+          "bytesInOutput": 75
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/unsorted_segment_sum.js": {
+          "bytesInOutput": 91
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/unstack.js": {
+          "bytesInOutput": 76
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/where.js": {
+          "bytesInOutput": 78
+        },
+        "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/zeros_like.js": {
+          "bytesInOutput": 75
         },
         "node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/register_all_chained_ops.js": {
           "bytesInOutput": 0
@@ -28013,7 +27538,7 @@
           "bytesInOutput": 3474
         },
         "node_modules/@tensorflow/tfjs-layers/dist/constraints.js": {
-          "bytesInOutput": 1847
+          "bytesInOutput": 1841
         },
         "node_modules/@tensorflow/tfjs-layers/dist/exports_initializers.js": {
           "bytesInOutput": 766
@@ -28034,7 +27559,7 @@
           "bytesInOutput": 77
         },
         "node_modules/@tensorflow/tfjs-layers/dist/initializers.js": {
-          "bytesInOutput": 6284
+          "bytesInOutput": 6267
         },
         "node_modules/@tensorflow/tfjs-layers/dist/exports_layers.js": {
           "bytesInOutput": 3496
@@ -28052,10 +27577,10 @@
           "bytesInOutput": 1018
         },
         "node_modules/@tensorflow/tfjs-layers/dist/engine/topology.js": {
-          "bytesInOutput": 11561
+          "bytesInOutput": 11560
         },
         "node_modules/@tensorflow/tfjs-layers/dist/engine/input_layer.js": {
-          "bytesInOutput": 1961
+          "bytesInOutput": 1960
         },
         "node_modules/@tensorflow/tfjs-layers/dist/logs.js": {
           "bytesInOutput": 332
@@ -28064,7 +27589,7 @@
           "bytesInOutput": 4775
         },
         "node_modules/@tensorflow/tfjs-layers/dist/layers/serialization.js": {
-          "bytesInOutput": 92
+          "bytesInOutput": 91
         },
         "node_modules/@tensorflow/tfjs-layers/dist/losses.js": {
           "bytesInOutput": 2411
@@ -28097,67 +27622,67 @@
           "bytesInOutput": 1678
         },
         "node_modules/@tensorflow/tfjs-layers/dist/engine/training_dataset.js": {
-          "bytesInOutput": 5965
+          "bytesInOutput": 5966
         },
         "node_modules/@tensorflow/tfjs-layers/dist/engine/training_tensors.js": {
-          "bytesInOutput": 3799
+          "bytesInOutput": 3802
         },
         "node_modules/@tensorflow/tfjs-layers/dist/engine/training.js": {
           "bytesInOutput": 16837
         },
         "node_modules/@tensorflow/tfjs-layers/dist/models.js": {
-          "bytesInOutput": 7761
+          "bytesInOutput": 7760
         },
         "node_modules/@tensorflow/tfjs-layers/dist/exports.js": {
           "bytesInOutput": 193
         },
         "node_modules/@tensorflow/tfjs-layers/dist/activations.js": {
-          "bytesInOutput": 1615
+          "bytesInOutput": 1600
         },
         "node_modules/@tensorflow/tfjs-layers/dist/regularizers.js": {
-          "bytesInOutput": 1069
+          "bytesInOutput": 1066
         },
         "node_modules/@tensorflow/tfjs-layers/dist/layers/advanced_activations.js": {
-          "bytesInOutput": 3228
+          "bytesInOutput": 3222
         },
         "node_modules/@tensorflow/tfjs-layers/dist/utils/conv_utils.js": {
           "bytesInOutput": 660
         },
         "node_modules/@tensorflow/tfjs-layers/dist/layers/convolutional.js": {
-          "bytesInOutput": 15986
+          "bytesInOutput": 15979
         },
         "node_modules/@tensorflow/tfjs-layers/dist/layers/convolutional_depthwise.js": {
-          "bytesInOutput": 2351
+          "bytesInOutput": 2350
         },
         "node_modules/@tensorflow/tfjs-layers/dist/layers/recurrent.js": {
-          "bytesInOutput": 21981
+          "bytesInOutput": 21973
         },
         "node_modules/@tensorflow/tfjs-layers/dist/layers/convolutional_recurrent.js": {
-          "bytesInOutput": 6611
+          "bytesInOutput": 6609
         },
         "node_modules/@tensorflow/tfjs-layers/dist/layers/core.js": {
-          "bytesInOutput": 7030
+          "bytesInOutput": 7021
         },
         "node_modules/@tensorflow/tfjs-layers/dist/layers/embeddings.js": {
-          "bytesInOutput": 2138
+          "bytesInOutput": 2137
         },
         "node_modules/@tensorflow/tfjs-layers/dist/layers/merge.js": {
-          "bytesInOutput": 8262
+          "bytesInOutput": 8255
         },
         "node_modules/@tensorflow/tfjs-layers/dist/layers/noise.js": {
-          "bytesInOutput": 1539
+          "bytesInOutput": 1536
         },
         "node_modules/@tensorflow/tfjs-layers/dist/layers/normalization.js": {
-          "bytesInOutput": 5938
+          "bytesInOutput": 5936
         },
         "node_modules/@tensorflow/tfjs-layers/dist/layers/padding.js": {
-          "bytesInOutput": 2181
+          "bytesInOutput": 2180
         },
         "node_modules/@tensorflow/tfjs-layers/dist/layers/pooling.js": {
-          "bytesInOutput": 6858
+          "bytesInOutput": 6848
         },
         "node_modules/@tensorflow/tfjs-layers/dist/layers/wrappers.js": {
-          "bytesInOutput": 6224
+          "bytesInOutput": 6222
         },
         "node_modules/@tensorflow/tfjs-layers/dist/exports_metrics.js": {
           "bytesInOutput": 822
@@ -28319,7 +27844,7 @@
           "bytesInOutput": 506
         },
         "node_modules/@tensorflow/tfjs-converter/dist/executor/graph_model.js": {
-          "bytesInOutput": 3710
+          "bytesInOutput": 3711
         },
         "node_modules/@tensorflow/tfjs-converter/dist/index.js": {
           "bytesInOutput": 0
@@ -28331,16 +27856,16 @@
           "bytesInOutput": 234
         },
         "node_modules/@tensorflow/tfjs-data/dist/dataset.js": {
-          "bytesInOutput": 3469
+          "bytesInOutput": 3470
         },
         "node_modules/@tensorflow/tfjs-data/dist/iterators/lazy_iterator.js": {
           "bytesInOutput": 8089
         },
         "node_modules/@tensorflow/tfjs-data/dist/util/deep_map.js": {
-          "bytesInOutput": 1587
+          "bytesInOutput": 1589
         },
         "node_modules/@tensorflow/tfjs-data/dist/util/deep_clone.js": {
-          "bytesInOutput": 148
+          "bytesInOutput": 149
         },
         "node_modules/@tensorflow/tfjs-data/dist/util/ring_buffer.js": {
           "bytesInOutput": 1497
@@ -28358,7 +27883,7 @@
           "bytesInOutput": 3488
         },
         "node_modules/@tensorflow/tfjs-data/dist/iterators/webcam_iterator.js": {
-          "bytesInOutput": 2999
+          "bytesInOutput": 2989
         },
         "node_modules/@tensorflow/tfjs-data/dist/datasource.js": {
           "bytesInOutput": 15
@@ -28598,10 +28123,10 @@
           "bytesInOutput": 649
         },
         "node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/AvgPool3D.js": {
-          "bytesInOutput": 422
+          "bytesInOutput": 381
         },
         "node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/AvgPool3DGrad.js": {
-          "bytesInOutput": 1158
+          "bytesInOutput": 1144
         },
         "node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/AvgPoolGrad.js": {
           "bytesInOutput": 915
@@ -28772,10 +28297,10 @@
           "bytesInOutput": 649
         },
         "node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/MaxPool3D.js": {
-          "bytesInOutput": 422
+          "bytesInOutput": 381
         },
         "node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/MaxPool3DGrad.js": {
-          "bytesInOutput": 1206
+          "bytesInOutput": 1192
         },
         "node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/MaxPoolGrad.js": {
           "bytesInOutput": 1064
@@ -29873,43 +29398,43 @@
           "bytesInOutput": 185
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/NonMaxSuppressionV3.js": {
-          "bytesInOutput": 514
+          "bytesInOutput": 512
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/NonMaxSuppressionV4.js": {
-          "bytesInOutput": 570
+          "bytesInOutput": 566
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/NonMaxSuppressionV5.js": {
-          "bytesInOutput": 569
+          "bytesInOutput": 565
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/NotEqual.js": {
-          "bytesInOutput": 32
+          "bytesInOutput": 30
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/OneHot.js": {
-          "bytesInOutput": 387
+          "bytesInOutput": 383
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/OnesLike.js": {
-          "bytesInOutput": 176
+          "bytesInOutput": 174
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Pack.js": {
-          "bytesInOutput": 516
+          "bytesInOutput": 514
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/PadV2.js": {
-          "bytesInOutput": 617
+          "bytesInOutput": 613
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Pow.js": {
-          "bytesInOutput": 25
+          "bytesInOutput": 23
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Prelu.js": {
-          "bytesInOutput": 352
+          "bytesInOutput": 348
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Prod.js": {
-          "bytesInOutput": 783
+          "bytesInOutput": 779
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Range.js": {
-          "bytesInOutput": 208
+          "bytesInOutput": 206
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/RealDiv.js": {
-          "bytesInOutput": 25
+          "bytesInOutput": 23
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Relu.js": {
           "bytesInOutput": 14
@@ -29918,13 +29443,13 @@
           "bytesInOutput": 14
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/ResizeBilinear.js": {
-          "bytesInOutput": 682
+          "bytesInOutput": 678
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Reverse.js": {
-          "bytesInOutput": 614
+          "bytesInOutput": 610
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/RotateWithOffset.js": {
-          "bytesInOutput": 601
+          "bytesInOutput": 597
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Round.js": {
           "bytesInOutput": 14
@@ -29933,10 +29458,10 @@
           "bytesInOutput": 14
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/ScatterNd.js": {
-          "bytesInOutput": 616
+          "bytesInOutput": 612
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Select.js": {
-          "bytesInOutput": 509
+          "bytesInOutput": 505
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Sigmoid.js": {
           "bytesInOutput": 333
@@ -30011,7 +29536,7 @@
           "bytesInOutput": 0
         }
       },
-      "bytes": 1064933
+      "bytes": 1053912
     }
   }
 }

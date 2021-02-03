@@ -2589,6 +2589,7 @@
   "outputs": {
     "dist/face-api.js.map": {
       "imports": [],
+      "exports": [],
       "inputs": {},
       "bytes": 1445502
     },

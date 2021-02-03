@@ -2589,6 +2589,7 @@
   "outputs": {
     "dist/face-api.node-gpu.js.map": {
       "imports": [],
+      "exports": [],
       "inputs": {},
       "bytes": 309649
     },

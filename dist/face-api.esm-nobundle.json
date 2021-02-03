@@ -2589,6 +2589,7 @@
   "outputs": {
     "dist/face-api.esm-nobundle.js.map": {
       "imports": [],
+      "exports": [],
       "inputs": {},
       "bytes": 309774
     },

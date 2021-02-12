@@ -21,7 +21,6 @@ const banner = `
 `;
 
 // tsc configuration
-
 const tsconfig = {
   noEmitOnError: false,
   target: ts.ScriptTarget.ES2018,

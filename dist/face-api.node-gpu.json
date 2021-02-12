@@ -1,7 +1,7 @@
 {
   "inputs": {
     "dist/tfjs.esm.js": {
-      "bytes": 679,
+      "bytes": 688,
       "imports": []
     },
     "src/draw/drawContour.ts": {
@@ -2591,20 +2591,20 @@
       "imports": [],
       "exports": [],
       "inputs": {},
-      "bytes": 309649
+      "bytes": 309659
     },
     "dist/face-api.node-gpu.js": {
       "imports": [],
       "exports": [],
       "inputs": {
         "dist/tfjs.esm.js": {
-          "bytesInOutput": 546
+          "bytesInOutput": 551
         },
         "src/env/isNodejs.ts": {
-          "bytesInOutput": 169
+          "bytesInOutput": 176
         },
         "src/index.ts": {
-          "bytesInOutput": 3003
+          "bytesInOutput": 3015
         },
         "src/draw/index.ts": {
           "bytesInOutput": 277
@@ -3066,7 +3066,7 @@
           "bytesInOutput": 443
         }
       },
-      "bytes": 82691
+      "bytes": 82707
     }
   }
 }

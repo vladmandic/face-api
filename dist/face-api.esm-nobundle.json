@@ -2719,10 +2719,10 @@
       ],
       "inputs": {
         "dist/tfjs.esm.js": {
-          "bytesInOutput": 135
+          "bytesInOutput": 142
         },
         "src/env/isNodejs.ts": {
-          "bytesInOutput": 169
+          "bytesInOutput": 176
         },
         "src/index.ts": {
           "bytesInOutput": 158
@@ -3187,7 +3187,7 @@
           "bytesInOutput": 443
         }
       },
-      "bytes": 82158
+      "bytes": 82164
     }
   }
 }

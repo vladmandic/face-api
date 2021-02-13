@@ -1,6 +1,5 @@
 #!/usr/bin/env -S node --trace-warnings
 
-/* eslint-disable no-restricted-syntax */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable node/no-unpublished-require */
 /* eslint-disable node/shebang */
@@ -164,7 +163,7 @@ async function getStats(metafile) {
 }
 
 function compile(fileNames, options) {
-  log.info('Compile:', fileNames);
+  log.info('Compile typings:', fileNames);
   const program = ts.createProgram(fileNames, options);
   const emit = program.emit();
   const diag = ts

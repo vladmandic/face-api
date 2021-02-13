@@ -396,7 +396,7 @@
         }
       ]
     },
-    "(disabled):/home/vlado/dev/face-api/node_modules/node-fetch/browser.js": {
+    "(disabled):node_modules/node-fetch/browser.js": {
       "bytes": 0,
       "imports": []
     },
@@ -408,7 +408,7 @@
           "kind": "import-statement"
         },
         {
-          "path": "(disabled):/home/vlado/dev/face-api/node_modules/node-fetch/browser.js",
+          "path": "(disabled):node_modules/node-fetch/browser.js",
           "kind": "require-call"
         }
       ]
@@ -15661,7 +15661,7 @@
         }
       ]
     },
-    "(disabled):/home/vlado/dev/face-api/node_modules/string_decoder/lib/string_decoder.js": {
+    "(disabled):node_modules/string_decoder/lib/string_decoder.js": {
       "bytes": 0,
       "imports": []
     },
@@ -15681,7 +15681,7 @@
           "kind": "import-statement"
         },
         {
-          "path": "(disabled):/home/vlado/dev/face-api/node_modules/string_decoder/lib/string_decoder.js",
+          "path": "(disabled):node_modules/string_decoder/lib/string_decoder.js",
           "kind": "require-call"
         }
       ]
@@ -25347,7 +25347,7 @@
       "imports": [],
       "exports": [],
       "inputs": {},
-      "bytes": 1127308
+      "bytes": 1127242
     },
     "dist/tfjs.esm.js": {
       "imports": [],
@@ -25816,7 +25816,7 @@
         "zerosLike"
       ],
       "inputs": {
-        "(disabled):/home/vlado/dev/face-api/node_modules/node-fetch/browser.js": {
+        "(disabled):node_modules/node-fetch/browser.js": {
           "bytesInOutput": 18
         },
         "node_modules/seedrandom/lib/alea.js": {
@@ -25846,7 +25846,7 @@
         "node_modules/seedrandom/index.js": {
           "bytesInOutput": 177
         },
-        "(disabled):/home/vlado/dev/face-api/node_modules/string_decoder/lib/string_decoder.js": {
+        "(disabled):node_modules/string_decoder/lib/string_decoder.js": {
           "bytesInOutput": 18
         },
         "(disabled):path": {

@@ -2,6 +2,7 @@ import * as faceapi from '../dist/face-api.esm.js';
 
 // configuration options
 const modelPath = 'https://vladmandic.github.io/face-api/model/'; // path to model folder that will be loaded using http
+// const modelPath = '../model/'; // path to model folder that will be loaded using http
 const imgSize = 512; // maximum image size in pixels
 const minScore = 0.1; // minimum score
 const maxResults = 5; // maximum number of results to return

@@ -1292,7 +1292,7 @@
       ]
     },
     "package.json": {
-      "bytes": 1839,
+      "bytes": 1841,
       "imports": []
     },
     "src/xception/extractParams.ts": {
@@ -2591,7 +2591,7 @@
       "imports": [],
       "exports": [],
       "inputs": {},
-      "bytes": 1445525
+      "bytes": 1445459
     },
     "dist/face-api.esm.js": {
       "imports": [],

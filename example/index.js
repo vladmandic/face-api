@@ -5,7 +5,7 @@ const modelPath = 'https://vladmandic.github.io/face-api/model/'; // path to mod
 // const modelPath = '../model/'; // path to model folder that will be loaded using http
 const imgSize = 512; // maximum image size in pixels
 const minScore = 0.1; // minimum score
-const maxResults = 5; // maximum number of results to return
+const maxResults = 10; // maximum number of results to return
 const samples = ['sample (1).jpg', 'sample (2).jpg', 'sample (3).jpg', 'sample (4).jpg', 'sample (5).jpg', 'sample (6).jpg']; // sample images to be loaded using http
 
 // helper function to pretty-print json object to string
@@ -122,8 +122,8 @@ async function main() {
   await faceapi.tf.ready();
 
   // check version
-  log(`Version: TensorFlow/JS ${str(faceapi.tf?.version_core || '(not loaded)')} FaceAPI ${str(faceapi?.version || '(not loaded)')} Backend: ${str(faceapi.tf?.getBackend() || '(not loaded)')}`);
-  log(`Flags: ${JSON.stringify(faceapi.tf.ENV.flags)}`);
+  log(`Version: FaceAPI ${str(faceapi?.version.faceapi || '(not loaded)')} TensorFlow/JS ${str(faceapi?.tf?.version_core || '(not loaded)')} Backend: ${str(faceapi?.tf?.getBackend() || '(not loaded)')}`);
+  log(`Flags: ${JSON.stringify(faceapi?.tf?.ENV.flags || { tf: 'not loaded' })}`);
 
   // load face-api models
   log('Loading FaceAPI models');

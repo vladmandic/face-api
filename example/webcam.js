@@ -116,6 +116,17 @@ async function setupCamera() {
   const settings = track.getSettings();
   log(`Camera active: ${track.label} ${str(constraints)}`);
   log(`Camera settings: ${str(settings)}`);
+  canvas.addEventListener('click', () => {
+    // @ts-ignore
+    if (video && video.readyState >= 2) {
+      // @ts-ignore
+      if (video.paused) video.play();
+      // @ts-ignore
+      else video.pause();
+    }
+    // @ts-ignore
+    log(`Camera state: ${video.paused ? 'paused' : 'playing'}`);
+  });
   return new Promise((resolve) => {
     video.onloadeddata = async () => {
       // @ts-ignore
@@ -162,8 +173,8 @@ async function main() {
   await faceapi.tf.ready();
 
   // check version
-  log(`Version: TensorFlow/JS ${str(faceapi.tf?.version_core || '(not loaded)')} FaceAPI ${str(faceapi?.version || '(not loaded)')} Backend: ${str(faceapi.tf?.getBackend() || '(not loaded)')}`);
-  log(`Flags: ${str(faceapi.tf.ENV.flags)}`);
+  log(`Version: FaceAPI ${str(faceapi?.version.faceapi || '(not loaded)')} TensorFlow/JS ${str(faceapi?.tf?.version_core || '(not loaded)')} Backend: ${str(faceapi?.tf?.getBackend() || '(not loaded)')}`);
+  log(`Flags: ${JSON.stringify(faceapi?.tf?.ENV.flags || { tf: 'not loaded' })}`);
 
   setupFaceAPI();
   setupCamera();

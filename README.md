@@ -6,7 +6,7 @@ This is updated **face-api.js** with latest available TensorFlow/JS as the origi
 
 Forked from [face-api.js](https://github.com/justadudewhohacks/face-api.js) version **0.22.2** released on March 22nd, 2020  
 
-Currently based on **`TensorFlow/JS` 3.0.0**  
+Currently based on **`TensorFlow/JS` 3.1.0**  
 
 ### Why?
 
@@ -19,7 +19,7 @@ Unfortunately, changes ended up being too large for a simple pull request on ori
 
 ### Differences
 
-- Compatible with `TensorFlow/JS 2.0+`  
+- Compatible with `TensorFlow/JS 2.0+ & 3.0+`  
 - Compatible with `WebGL`, `CPU` and `WASM` TFJS Browser backends
 - Compatible with both `tfjs-node` and `tfjs-node-gpu` TFJS NodeJS backends
 - Updated all type castings for TypeScript type checking to `TypeScript 4.1`  

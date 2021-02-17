@@ -1,7 +1,7 @@
 {
   "inputs": {
     "dist/tfjs.esm.js": {
-      "bytes": 1053904,
+      "bytes": 1055784,
       "imports": []
     },
     "src/draw/drawContour.ts": {
@@ -2591,7 +2591,7 @@
       "imports": [],
       "exports": [],
       "inputs": {},
-      "bytes": 1445459
+      "bytes": 1447733
     },
     "dist/face-api.esm.js": {
       "imports": [],
@@ -2722,7 +2722,7 @@
           "bytesInOutput": 181
         },
         "dist/tfjs.esm.js": {
-          "bytesInOutput": 1045331
+          "bytesInOutput": 1047212
         },
         "src/draw/index.ts": {
           "bytesInOutput": 280
@@ -3187,7 +3187,7 @@
           "bytesInOutput": 446
         }
       },
-      "bytes": 1132745
+      "bytes": 1134626
     }
   }
 }

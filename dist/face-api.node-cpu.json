@@ -1,0 +1,3072 @@
+{
+  "inputs": {
+    "dist/tfjs.esm.js": {
+      "bytes": 679,
+      "imports": []
+    },
+    "src/draw/drawContour.ts": {
+      "bytes": 539,
+      "imports": []
+    },
+    "src/classes/Dimensions.ts": {
+      "bytes": 745,
+      "imports": [
+        {
+          "path": "src/utils/index.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/utils/index.ts": {
+      "bytes": 1793,
+      "imports": [
+        {
+          "path": "dist/tfjs.esm.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/classes/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/classes/Dimensions.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/classes/Point.ts": {
+      "bytes": 925,
+      "imports": []
+    },
+    "src/classes/Box.ts": {
+      "bytes": 5690,
+      "imports": [
+        {
+          "path": "src/utils/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/classes/Point.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/classes/BoundingBox.ts": {
+      "bytes": 402,
+      "imports": [
+        {
+          "path": "src/classes/Box.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/classes/ObjectDetection.ts": {
+      "bytes": 1424,
+      "imports": [
+        {
+          "path": "src/classes/Box.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/classes/Dimensions.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/classes/FaceDetection.ts": {
+      "bytes": 656,
+      "imports": [
+        {
+          "path": "src/classes/ObjectDetection.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/ops/iou.ts": {
+      "bytes": 473,
+      "imports": []
+    },
+    "src/ops/minBbox.ts": {
+      "bytes": 498,
+      "imports": [
+        {
+          "path": "src/classes/index.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/ops/nonMaxSuppression.ts": {
+      "bytes": 924,
+      "imports": [
+        {
+          "path": "src/ops/iou.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/ops/normalize.ts": {
+      "bytes": 483,
+      "imports": [
+        {
+          "path": "dist/tfjs.esm.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/ops/padToSquare.ts": {
+      "bytes": 1684,
+      "imports": [
+        {
+          "path": "dist/tfjs.esm.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/ops/shuffleArray.ts": {
+      "bytes": 273,
+      "imports": []
+    },
+    "src/ops/index.ts": {
+      "bytes": 331,
+      "imports": [
+        {
+          "path": "src/ops/iou.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/ops/minBbox.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/ops/nonMaxSuppression.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/ops/normalize.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/ops/padToSquare.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/ops/shuffleArray.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/classes/Rect.ts": {
+      "bytes": 359,
+      "imports": [
+        {
+          "path": "src/classes/Box.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/classes/FaceLandmarks.ts": {
+      "bytes": 4199,
+      "imports": [
+        {
+          "path": "src/ops/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/utils/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/classes/Box.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/classes/Dimensions.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/classes/FaceDetection.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/classes/Point.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/classes/Rect.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/classes/FaceLandmarks5.ts": {
+      "bytes": 360,
+      "imports": [
+        {
+          "path": "src/utils/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/classes/FaceLandmarks.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/classes/FaceLandmarks68.ts": {
+      "bytes": 915,
+      "imports": [
+        {
+          "path": "src/utils/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/classes/FaceLandmarks.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/classes/FaceMatch.ts": {
+      "bytes": 578,
+      "imports": [
+        {
+          "path": "src/utils/index.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/classes/LabeledBox.ts": {
+      "bytes": 645,
+      "imports": [
+        {
+          "path": "src/utils/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/classes/Box.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/classes/LabeledFaceDescriptors.ts": {
+      "bytes": 1072,
+      "imports": []
+    },
+    "src/classes/PredictedBox.ts": {
+      "bytes": 952,
+      "imports": [
+        {
+          "path": "src/utils/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/classes/LabeledBox.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/classes/index.ts": {
+      "bytes": 436,
+      "imports": [
+        {
+          "path": "src/classes/BoundingBox.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/classes/Box.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/classes/Dimensions.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/classes/FaceDetection.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/classes/FaceLandmarks.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/classes/FaceLandmarks5.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/classes/FaceLandmarks68.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/classes/FaceMatch.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/classes/LabeledBox.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/classes/LabeledFaceDescriptors.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/classes/ObjectDetection.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/classes/Point.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/classes/PredictedBox.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/classes/Rect.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/factories/WithFaceDetection.ts": {
+      "bytes": 486,
+      "imports": [
+        {
+          "path": "src/classes/FaceDetection.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/env/createBrowserEnv.ts": {
+      "bytes": 636,
+      "imports": []
+    },
+    "src/env/createFileSystem.ts": {
+      "bytes": 654,
+      "imports": []
+    },
+    "src/env/createNodejsEnv.ts": {
+      "bytes": 1202,
+      "imports": [
+        {
+          "path": "src/env/createFileSystem.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/env/isBrowser.ts": {
+      "bytes": 354,
+      "imports": []
+    },
+    "src/env/isNodejs.ts": {
+      "bytes": 295,
+      "imports": []
+    },
+    "src/env/types.ts": {
+      "bytes": 570,
+      "imports": []
+    },
+    "src/env/index.ts": {
+      "bytes": 1817,
+      "imports": [
+        {
+          "path": "src/env/createBrowserEnv.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/env/createFileSystem.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/env/createNodejsEnv.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/env/isBrowser.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/env/isNodejs.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/env/types.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/dom/resolveInput.ts": {
+      "bytes": 200,
+      "imports": [
+        {
+          "path": "src/env/index.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/dom/getContext2dOrThrow.ts": {
+      "bytes": 673,
+      "imports": [
+        {
+          "path": "src/env/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/resolveInput.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/draw/DrawTextField.ts": {
+      "bytes": 4094,
+      "imports": [
+        {
+          "path": "src/dom/getContext2dOrThrow.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/resolveInput.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/draw/DrawBox.ts": {
+      "bytes": 1831,
+      "imports": [
+        {
+          "path": "src/classes/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/getContext2dOrThrow.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/draw/DrawTextField.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/draw/drawDetections.ts": {
+      "bytes": 1128,
+      "imports": [
+        {
+          "path": "src/classes/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/classes/FaceDetection.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/factories/WithFaceDetection.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/utils/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/draw/DrawBox.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/dom/isMediaLoaded.ts": {
+      "bytes": 277,
+      "imports": [
+        {
+          "path": "src/env/index.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/dom/awaitMediaLoaded.ts": {
+      "bytes": 963,
+      "imports": [
+        {
+          "path": "src/env/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/isMediaLoaded.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/dom/bufferToImage.ts": {
+      "bytes": 687,
+      "imports": [
+        {
+          "path": "src/env/index.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/dom/getMediaDimensions.ts": {
+      "bytes": 529,
+      "imports": [
+        {
+          "path": "src/classes/Dimensions.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/env/index.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/dom/createCanvas.ts": {
+      "bytes": 1139,
+      "imports": [
+        {
+          "path": "src/env/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/getContext2dOrThrow.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/getMediaDimensions.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/isMediaLoaded.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/dom/imageTensorToCanvas.ts": {
+      "bytes": 615,
+      "imports": [
+        {
+          "path": "dist/tfjs.esm.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/env/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/utils/index.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/dom/isMediaElement.ts": {
+      "bytes": 228,
+      "imports": [
+        {
+          "path": "src/env/index.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/dom/imageToSquare.ts": {
+      "bytes": 1296,
+      "imports": [
+        {
+          "path": "src/env/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/createCanvas.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/getContext2dOrThrow.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/getMediaDimensions.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/dom/NetInput.ts": {
+      "bytes": 5508,
+      "imports": [
+        {
+          "path": "dist/tfjs.esm.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/env/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/ops/padToSquare.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/utils/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/createCanvas.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/imageToSquare.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/dom/toNetInput.ts": {
+      "bytes": 2115,
+      "imports": [
+        {
+          "path": "src/utils/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/awaitMediaLoaded.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/isMediaElement.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/NetInput.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/resolveInput.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/dom/extractFaces.ts": {
+      "bytes": 1804,
+      "imports": [
+        {
+          "path": "src/classes/FaceDetection.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/env/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/createCanvas.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/getContext2dOrThrow.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/imageTensorToCanvas.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/toNetInput.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/dom/extractFaceTensors.ts": {
+      "bytes": 1730,
+      "imports": [
+        {
+          "path": "dist/tfjs.esm.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/classes/FaceDetection.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/utils/index.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/dom/fetchOrThrow.ts": {
+      "bytes": 390,
+      "imports": [
+        {
+          "path": "src/env/index.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/dom/fetchImage.ts": {
+      "bytes": 451,
+      "imports": [
+        {
+          "path": "src/dom/bufferToImage.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/fetchOrThrow.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/dom/fetchJson.ts": {
+      "bytes": 155,
+      "imports": [
+        {
+          "path": "src/dom/fetchOrThrow.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/dom/fetchNetWeights.ts": {
+      "bytes": 200,
+      "imports": [
+        {
+          "path": "src/dom/fetchOrThrow.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/common/getModelUris.ts": {
+      "bytes": 1052,
+      "imports": []
+    },
+    "src/dom/loadWeightMap.ts": {
+      "bytes": 552,
+      "imports": [
+        {
+          "path": "dist/tfjs.esm.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/common/getModelUris.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/fetchJson.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/dom/matchDimensions.ts": {
+      "bytes": 401,
+      "imports": [
+        {
+          "path": "src/dom/getMediaDimensions.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/dom/types.ts": {
+      "bytes": 383,
+      "imports": []
+    },
+    "src/dom/index.ts": {
+      "bytes": 696,
+      "imports": [
+        {
+          "path": "src/dom/awaitMediaLoaded.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/bufferToImage.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/createCanvas.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/extractFaces.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/extractFaceTensors.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/fetchImage.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/fetchJson.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/fetchNetWeights.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/fetchOrThrow.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/getContext2dOrThrow.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/getMediaDimensions.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/imageTensorToCanvas.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/imageToSquare.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/isMediaElement.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/isMediaLoaded.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/loadWeightMap.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/matchDimensions.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/NetInput.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/resolveInput.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/toNetInput.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/types.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/NeuralNetwork.ts": {
+      "bytes": 5291,
+      "imports": [
+        {
+          "path": "dist/tfjs.esm.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/common/getModelUris.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/env/index.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/common/depthwiseSeparableConv.ts": {
+      "bytes": 414,
+      "imports": [
+        {
+          "path": "dist/tfjs.esm.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/faceFeatureExtractor/denseBlock.ts": {
+      "bytes": 2038,
+      "imports": [
+        {
+          "path": "dist/tfjs.esm.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/common/depthwiseSeparableConv.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/common/convLayer.ts": {
+      "bytes": 428,
+      "imports": [
+        {
+          "path": "dist/tfjs.esm.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/common/disposeUnusedWeightTensors.ts": {
+      "bytes": 290,
+      "imports": []
+    },
+    "src/common/extractConvParamsFactory.ts": {
+      "bytes": 766,
+      "imports": [
+        {
+          "path": "dist/tfjs.esm.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/common/extractFCParamsFactory.ts": {
+      "bytes": 711,
+      "imports": [
+        {
+          "path": "dist/tfjs.esm.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/common/types.ts": {
+      "bytes": 797,
+      "imports": []
+    },
+    "src/common/extractSeparableConvParamsFactory.ts": {
+      "bytes": 1533,
+      "imports": [
+        {
+          "path": "dist/tfjs.esm.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/common/types.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/common/extractWeightEntryFactory.ts": {
+      "bytes": 579,
+      "imports": [
+        {
+          "path": "src/utils/index.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/common/extractWeightsFactory.ts": {
+      "bytes": 441,
+      "imports": []
+    },
+    "src/common/index.ts": {
+      "bytes": 399,
+      "imports": [
+        {
+          "path": "src/common/convLayer.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/common/depthwiseSeparableConv.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/common/disposeUnusedWeightTensors.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/common/extractConvParamsFactory.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/common/extractFCParamsFactory.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/common/extractSeparableConvParamsFactory.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/common/extractWeightEntryFactory.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/common/extractWeightsFactory.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/common/getModelUris.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/common/types.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/faceFeatureExtractor/extractorsFactory.ts": {
+      "bytes": 1587,
+      "imports": [
+        {
+          "path": "src/common/index.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/faceFeatureExtractor/extractParams.ts": {
+      "bytes": 1030,
+      "imports": [
+        {
+          "path": "src/common/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/faceFeatureExtractor/extractorsFactory.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/common/loadConvParamsFactory.ts": {
+      "bytes": 466,
+      "imports": []
+    },
+    "src/faceFeatureExtractor/loadParamsFactory.ts": {
+      "bytes": 1547,
+      "imports": [
+        {
+          "path": "src/common/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/common/loadConvParamsFactory.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/faceFeatureExtractor/extractParamsFromWeightMap.ts": {
+      "bytes": 838,
+      "imports": [
+        {
+          "path": "src/common/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/faceFeatureExtractor/loadParamsFactory.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/faceFeatureExtractor/FaceFeatureExtractor.ts": {
+      "bytes": 1806,
+      "imports": [
+        {
+          "path": "dist/tfjs.esm.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/NeuralNetwork.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/ops/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/faceFeatureExtractor/denseBlock.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/faceFeatureExtractor/extractParams.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/faceFeatureExtractor/extractParamsFromWeightMap.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/common/fullyConnectedLayer.ts": {
+      "bytes": 263,
+      "imports": [
+        {
+          "path": "dist/tfjs.esm.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/faceProcessor/extractParams.ts": {
+      "bytes": 759,
+      "imports": [
+        {
+          "path": "src/common/index.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/faceProcessor/extractParamsFromWeightMap.ts": {
+      "bytes": 823,
+      "imports": [
+        {
+          "path": "src/common/index.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/faceProcessor/util.ts": {
+      "bytes": 421,
+      "imports": []
+    },
+    "src/faceProcessor/FaceProcessor.ts": {
+      "bytes": 3034,
+      "imports": [
+        {
+          "path": "dist/tfjs.esm.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/common/fullyConnectedLayer.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/NeuralNetwork.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/faceProcessor/extractParams.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/faceProcessor/extractParamsFromWeightMap.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/faceProcessor/util.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/faceExpressionNet/FaceExpressions.ts": {
+      "bytes": 869,
+      "imports": []
+    },
+    "src/faceExpressionNet/FaceExpressionNet.ts": {
+      "bytes": 1664,
+      "imports": [
+        {
+          "path": "dist/tfjs.esm.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/faceFeatureExtractor/FaceFeatureExtractor.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/faceProcessor/FaceProcessor.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/faceExpressionNet/FaceExpressions.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/faceExpressionNet/index.ts": {
+      "bytes": 72,
+      "imports": [
+        {
+          "path": "src/faceExpressionNet/FaceExpressionNet.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/faceExpressionNet/FaceExpressions.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/factories/WithFaceExpressions.ts": {
+      "bytes": 524,
+      "imports": [
+        {
+          "path": "src/faceExpressionNet/FaceExpressions.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/draw/drawFaceExpressions.ts": {
+      "bytes": 1612,
+      "imports": [
+        {
+          "path": "src/classes/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/faceExpressionNet/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/factories/WithFaceDetection.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/factories/WithFaceExpressions.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/utils/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/draw/DrawTextField.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/factories/WithFaceLandmarks.ts": {
+      "bytes": 1643,
+      "imports": [
+        {
+          "path": "src/classes/FaceDetection.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/classes/FaceLandmarks.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/factories/WithFaceDetection.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/draw/DrawFaceLandmarks.ts": {
+      "bytes": 3528,
+      "imports": [
+        {
+          "path": "src/classes/FaceLandmarks.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/classes/FaceLandmarks68.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/getContext2dOrThrow.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/factories/WithFaceLandmarks.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/draw/drawContour.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/draw/index.ts": {
+      "bytes": 201,
+      "imports": [
+        {
+          "path": "src/draw/drawContour.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/draw/drawDetections.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/draw/drawFaceExpressions.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/draw/DrawBox.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/draw/DrawFaceLandmarks.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/draw/DrawTextField.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "package.json": {
+      "bytes": 1870,
+      "imports": []
+    },
+    "src/xception/extractParams.ts": {
+      "bytes": 3440,
+      "imports": [
+        {
+          "path": "src/common/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/utils/index.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/xception/extractParamsFromWeightMap.ts": {
+      "bytes": 3130,
+      "imports": [
+        {
+          "path": "src/common/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/common/loadConvParamsFactory.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/utils/index.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/xception/TinyXception.ts": {
+      "bytes": 3143,
+      "imports": [
+        {
+          "path": "dist/tfjs.esm.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/common/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/NeuralNetwork.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/ops/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/utils/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/xception/extractParams.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/xception/extractParamsFromWeightMap.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/ageGenderNet/extractParams.ts": {
+      "bytes": 778,
+      "imports": [
+        {
+          "path": "src/common/index.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/ageGenderNet/extractParamsFromWeightMap.ts": {
+      "bytes": 891,
+      "imports": [
+        {
+          "path": "src/common/index.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/ageGenderNet/types.ts": {
+      "bytes": 525,
+      "imports": []
+    },
+    "src/ageGenderNet/AgeGenderNet.ts": {
+      "bytes": 4269,
+      "imports": [
+        {
+          "path": "dist/tfjs.esm.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/common/fullyConnectedLayer.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/faceProcessor/util.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/xception/TinyXception.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/ageGenderNet/extractParams.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/ageGenderNet/extractParamsFromWeightMap.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/ageGenderNet/types.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/NeuralNetwork.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/index.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/ageGenderNet/index.ts": {
+      "bytes": 57,
+      "imports": [
+        {
+          "path": "src/ageGenderNet/AgeGenderNet.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/ageGenderNet/types.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/faceLandmarkNet/FaceLandmark68NetBase.ts": {
+      "bytes": 3717,
+      "imports": [
+        {
+          "path": "dist/tfjs.esm.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/classes/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/classes/FaceLandmarks68.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/faceProcessor/FaceProcessor.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/utils/index.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/faceLandmarkNet/FaceLandmark68Net.ts": {
+      "bytes": 622,
+      "imports": [
+        {
+          "path": "src/faceFeatureExtractor/FaceFeatureExtractor.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/faceLandmarkNet/FaceLandmark68NetBase.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/faceFeatureExtractor/extractParamsFromWeightMapTiny.ts": {
+      "bytes": 802,
+      "imports": [
+        {
+          "path": "src/common/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/faceFeatureExtractor/loadParamsFactory.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/faceFeatureExtractor/extractParamsTiny.ts": {
+      "bytes": 960,
+      "imports": [
+        {
+          "path": "src/common/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/faceFeatureExtractor/extractorsFactory.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/faceFeatureExtractor/TinyFaceFeatureExtractor.ts": {
+      "bytes": 1816,
+      "imports": [
+        {
+          "path": "dist/tfjs.esm.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/NeuralNetwork.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/ops/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/faceFeatureExtractor/denseBlock.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/faceFeatureExtractor/extractParamsFromWeightMapTiny.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/faceFeatureExtractor/extractParamsTiny.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/faceLandmarkNet/FaceLandmark68TinyNet.ts": {
+      "bytes": 659,
+      "imports": [
+        {
+          "path": "src/faceFeatureExtractor/TinyFaceFeatureExtractor.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/faceLandmarkNet/FaceLandmark68NetBase.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/faceLandmarkNet/index.ts": {
+      "bytes": 194,
+      "imports": [
+        {
+          "path": "src/faceLandmarkNet/FaceLandmark68Net.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/faceLandmarkNet/FaceLandmark68Net.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/faceLandmarkNet/FaceLandmark68TinyNet.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/faceRecognitionNet/scaleLayer.ts": {
+      "bytes": 229,
+      "imports": [
+        {
+          "path": "dist/tfjs.esm.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/faceRecognitionNet/convLayer.ts": {
+      "bytes": 850,
+      "imports": [
+        {
+          "path": "dist/tfjs.esm.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/faceRecognitionNet/scaleLayer.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/faceRecognitionNet/extractParams.ts": {
+      "bytes": 4907,
+      "imports": [
+        {
+          "path": "dist/tfjs.esm.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/common/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/utils/index.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/faceRecognitionNet/extractParamsFromWeightMap.ts": {
+      "bytes": 3098,
+      "imports": [
+        {
+          "path": "src/common/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/utils/index.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/faceRecognitionNet/residualLayer.ts": {
+      "bytes": 1342,
+      "imports": [
+        {
+          "path": "dist/tfjs.esm.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/faceRecognitionNet/convLayer.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/faceRecognitionNet/FaceRecognitionNet.ts": {
+      "bytes": 2959,
+      "imports": [
+        {
+          "path": "dist/tfjs.esm.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/NeuralNetwork.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/ops/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/faceRecognitionNet/convLayer.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/faceRecognitionNet/extractParams.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/faceRecognitionNet/extractParamsFromWeightMap.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/faceRecognitionNet/residualLayer.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/faceRecognitionNet/index.ts": {
+      "bytes": 252,
+      "imports": [
+        {
+          "path": "src/faceRecognitionNet/FaceRecognitionNet.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/faceRecognitionNet/FaceRecognitionNet.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/factories/WithFaceDescriptor.ts": {
+      "bytes": 301,
+      "imports": []
+    },
+    "src/factories/WithAge.ts": {
+      "bytes": 334,
+      "imports": []
+    },
+    "src/factories/WithGender.ts": {
+      "bytes": 618,
+      "imports": [
+        {
+          "path": "src/ageGenderNet/types.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/utils/index.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/factories/index.ts": {
+      "bytes": 208,
+      "imports": [
+        {
+          "path": "src/factories/WithFaceDescriptor.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/factories/WithFaceDetection.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/factories/WithFaceExpressions.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/factories/WithFaceLandmarks.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/factories/WithAge.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/factories/WithGender.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/ssdMobilenetv1/extractParams.ts": {
+      "bytes": 8330,
+      "imports": [
+        {
+          "path": "dist/tfjs.esm.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/common/index.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/ssdMobilenetv1/extractParamsFromWeightMap.ts": {
+      "bytes": 5775,
+      "imports": [
+        {
+          "path": "src/common/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/utils/index.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/ssdMobilenetv1/pointwiseConvLayer.ts": {
+      "bytes": 391,
+      "imports": [
+        {
+          "path": "dist/tfjs.esm.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/ssdMobilenetv1/mobileNetV1.ts": {
+      "bytes": 1811,
+      "imports": [
+        {
+          "path": "dist/tfjs.esm.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/ssdMobilenetv1/pointwiseConvLayer.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/ssdMobilenetv1/nonMaxSuppression.ts": {
+      "bytes": 2170,
+      "imports": []
+    },
+    "src/ssdMobilenetv1/outputLayer.ts": {
+      "bytes": 2183,
+      "imports": [
+        {
+          "path": "dist/tfjs.esm.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/ssdMobilenetv1/boxPredictionLayer.ts": {
+      "bytes": 598,
+      "imports": [
+        {
+          "path": "dist/tfjs.esm.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/common/index.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/ssdMobilenetv1/predictionLayer.ts": {
+      "bytes": 2055,
+      "imports": [
+        {
+          "path": "dist/tfjs.esm.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/ssdMobilenetv1/boxPredictionLayer.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/ssdMobilenetv1/pointwiseConvLayer.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/ssdMobilenetv1/SsdMobilenetv1Options.ts": {
+      "bytes": 881,
+      "imports": []
+    },
+    "src/ssdMobilenetv1/SsdMobilenetv1.ts": {
+      "bytes": 3675,
+      "imports": [
+        {
+          "path": "dist/tfjs.esm.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/classes/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/classes/FaceDetection.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/NeuralNetwork.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/ssdMobilenetv1/extractParams.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/ssdMobilenetv1/extractParamsFromWeightMap.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/ssdMobilenetv1/mobileNetV1.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/ssdMobilenetv1/nonMaxSuppression.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/ssdMobilenetv1/outputLayer.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/ssdMobilenetv1/predictionLayer.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/ssdMobilenetv1/SsdMobilenetv1Options.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/ssdMobilenetv1/index.ts": {
+      "bytes": 471,
+      "imports": [
+        {
+          "path": "src/ssdMobilenetv1/SsdMobilenetv1.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/ssdMobilenetv1/SsdMobilenetv1.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/ssdMobilenetv1/SsdMobilenetv1Options.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/tinyYolov2/const.ts": {
+      "bytes": 704,
+      "imports": [
+        {
+          "path": "src/classes/index.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/tinyYolov2/config.ts": {
+      "bytes": 1701,
+      "imports": []
+    },
+    "src/tinyYolov2/leaky.ts": {
+      "bytes": 238,
+      "imports": [
+        {
+          "path": "dist/tfjs.esm.js",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/tinyYolov2/convWithBatchNorm.ts": {
+      "bytes": 530,
+      "imports": [
+        {
+          "path": "dist/tfjs.esm.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/tinyYolov2/leaky.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/tinyYolov2/depthwiseSeparableConv.ts": {
+      "bytes": 500,
+      "imports": [
+        {
+          "path": "dist/tfjs.esm.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/tinyYolov2/leaky.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/tinyYolov2/extractParams.ts": {
+      "bytes": 3911,
+      "imports": [
+        {
+          "path": "dist/tfjs.esm.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/common/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/common/extractSeparableConvParamsFactory.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/common/extractWeightsFactory.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/tinyYolov2/extractParamsFromWeightMap.ts": {
+      "bytes": 3282,
+      "imports": [
+        {
+          "path": "src/common/disposeUnusedWeightTensors.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/common/extractSeparableConvParamsFactory.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/common/extractWeightEntryFactory.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/tinyYolov2/TinyYolov2Options.ts": {
+      "bytes": 913,
+      "imports": []
+    },
+    "src/tinyYolov2/TinyYolov2Base.ts": {
+      "bytes": 9606,
+      "imports": [
+        {
+          "path": "dist/tfjs.esm.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/classes/BoundingBox.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/classes/ObjectDetection.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/common/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/NeuralNetwork.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/ops/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/ops/nonMaxSuppression.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/ops/normalize.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/tinyYolov2/config.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/tinyYolov2/convWithBatchNorm.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/tinyYolov2/depthwiseSeparableConv.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/tinyYolov2/extractParams.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/tinyYolov2/extractParamsFromWeightMap.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/tinyYolov2/leaky.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/tinyYolov2/TinyYolov2Options.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/tinyYolov2/TinyYolov2.ts": {
+      "bytes": 1801,
+      "imports": [
+        {
+          "path": "src/classes/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/tinyYolov2/const.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/tinyYolov2/TinyYolov2Base.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/tinyYolov2/types.ts": {
+      "bytes": 952,
+      "imports": []
+    },
+    "src/tinyYolov2/index.ts": {
+      "bytes": 347,
+      "imports": [
+        {
+          "path": "src/tinyYolov2/TinyYolov2.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/tinyYolov2/TinyYolov2Options.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/tinyYolov2/config.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/tinyYolov2/types.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/tinyFaceDetector/TinyFaceDetectorOptions.ts": {
+      "bytes": 272,
+      "imports": [
+        {
+          "path": "src/tinyYolov2/index.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/globalApi/ComposableTask.ts": {
+      "bytes": 322,
+      "imports": []
+    },
+    "src/globalApi/extractFacesAndComputeResults.ts": {
+      "bytes": 2037,
+      "imports": [
+        {
+          "path": "dist/tfjs.esm.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/factories/WithFaceLandmarks.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/tinyFaceDetector/const.ts": {
+      "bytes": 354,
+      "imports": [
+        {
+          "path": "src/classes/index.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/tinyFaceDetector/TinyFaceDetector.ts": {
+      "bytes": 1470,
+      "imports": [
+        {
+          "path": "src/classes/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/tinyYolov2/TinyYolov2Base.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/tinyFaceDetector/const.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/globalApi/nets.ts": {
+      "bytes": 6336,
+      "imports": [
+        {
+          "path": "src/ageGenderNet/AgeGenderNet.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/faceExpressionNet/FaceExpressionNet.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/faceLandmarkNet/FaceLandmark68Net.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/faceLandmarkNet/FaceLandmark68TinyNet.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/faceRecognitionNet/FaceRecognitionNet.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/ssdMobilenetv1/SsdMobilenetv1.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/tinyFaceDetector/TinyFaceDetector.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/tinyYolov2/index.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/globalApi/PredictFaceExpressionsTask.ts": {
+      "bytes": 3827,
+      "imports": [
+        {
+          "path": "src/factories/WithFaceExpressions.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/globalApi/ComposableTask.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/globalApi/ComputeFaceDescriptorsTasks.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/globalApi/extractFacesAndComputeResults.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/globalApi/nets.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/globalApi/PredictAgeAndGenderTask.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/globalApi/PredictAgeAndGenderTask.ts": {
+      "bytes": 4008,
+      "imports": [
+        {
+          "path": "src/factories/WithAge.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/factories/WithGender.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/globalApi/ComposableTask.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/globalApi/ComputeFaceDescriptorsTasks.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/globalApi/extractFacesAndComputeResults.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/globalApi/nets.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/globalApi/PredictFaceExpressionsTask.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/globalApi/ComputeFaceDescriptorsTasks.ts": {
+      "bytes": 3215,
+      "imports": [
+        {
+          "path": "src/factories/WithFaceDescriptor.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/globalApi/ComposableTask.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/globalApi/extractFacesAndComputeResults.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/globalApi/nets.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/globalApi/PredictAgeAndGenderTask.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/globalApi/PredictFaceExpressionsTask.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/globalApi/DetectFaceLandmarksTasks.ts": {
+      "bytes": 4002,
+      "imports": [
+        {
+          "path": "dist/tfjs.esm.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/factories/WithFaceLandmarks.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/globalApi/ComposableTask.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/globalApi/ComputeFaceDescriptorsTasks.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/globalApi/nets.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/globalApi/PredictAgeAndGenderTask.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/globalApi/PredictFaceExpressionsTask.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/globalApi/DetectFacesTasks.ts": {
+      "bytes": 4604,
+      "imports": [
+        {
+          "path": "src/factories/WithFaceDetection.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/ssdMobilenetv1/SsdMobilenetv1Options.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/tinyFaceDetector/TinyFaceDetectorOptions.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/tinyYolov2/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/globalApi/ComposableTask.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/globalApi/DetectFaceLandmarksTasks.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/globalApi/nets.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/globalApi/PredictAgeAndGenderTask.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/globalApi/PredictFaceExpressionsTask.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/globalApi/detectFaces.ts": {
+      "bytes": 638,
+      "imports": [
+        {
+          "path": "src/ssdMobilenetv1/SsdMobilenetv1Options.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/globalApi/DetectFacesTasks.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/globalApi/allFaces.ts": {
+      "bytes": 1056,
+      "imports": [
+        {
+          "path": "src/ssdMobilenetv1/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/tinyYolov2/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/globalApi/detectFaces.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/euclideanDistance.ts": {
+      "bytes": 398,
+      "imports": []
+    },
+    "src/globalApi/FaceMatcher.ts": {
+      "bytes": 2992,
+      "imports": [
+        {
+          "path": "src/classes/FaceMatch.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/classes/LabeledFaceDescriptors.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/euclideanDistance.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/globalApi/types.ts": {
+      "bytes": 556,
+      "imports": []
+    },
+    "src/globalApi/index.ts": {
+      "bytes": 300,
+      "imports": [
+        {
+          "path": "src/globalApi/allFaces.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/globalApi/ComposableTask.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/globalApi/ComputeFaceDescriptorsTasks.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/globalApi/detectFaces.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/globalApi/DetectFacesTasks.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/globalApi/DetectFaceLandmarksTasks.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/globalApi/FaceMatcher.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/globalApi/nets.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/globalApi/types.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/tinyFaceDetector/index.ts": {
+      "bytes": 285,
+      "imports": [
+        {
+          "path": "src/tinyFaceDetector/TinyFaceDetector.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/tinyFaceDetector/TinyFaceDetector.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/tinyFaceDetector/TinyFaceDetectorOptions.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/resizeResults.ts": {
+      "bytes": 1519,
+      "imports": [
+        {
+          "path": "src/classes/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/classes/FaceDetection.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/classes/FaceLandmarks.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/factories/WithFaceDetection.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/factories/WithFaceLandmarks.ts",
+          "kind": "import-statement"
+        }
+      ]
+    },
+    "src/index.ts": {
+      "bytes": 987,
+      "imports": [
+        {
+          "path": "dist/tfjs.esm.js",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/draw/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/utils/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "package.json",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/ageGenderNet/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/classes/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/dom/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/env/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/faceExpressionNet/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/faceLandmarkNet/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/faceRecognitionNet/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/factories/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/globalApi/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/ops/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/ssdMobilenetv1/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/tinyFaceDetector/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/tinyYolov2/index.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/euclideanDistance.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/NeuralNetwork.ts",
+          "kind": "import-statement"
+        },
+        {
+          "path": "src/resizeResults.ts",
+          "kind": "import-statement"
+        }
+      ]
+    }
+  },
+  "outputs": {
+    "dist/face-api.node-cpu.js.map": {
+      "imports": [],
+      "exports": [],
+      "inputs": {},
+      "bytes": 309891
+    },
+    "dist/face-api.node-cpu.js": {
+      "imports": [],
+      "exports": [],
+      "inputs": {
+        "dist/tfjs.esm.js": {
+          "bytesInOutput": 542
+        },
+        "src/env/isNodejs.ts": {
+          "bytesInOutput": 176
+        },
+        "src/index.ts": {
+          "bytesInOutput": 3015
+        },
+        "src/draw/index.ts": {
+          "bytesInOutput": 277
+        },
+        "src/draw/drawContour.ts": {
+          "bytesInOutput": 213
+        },
+        "src/utils/index.ts": {
+          "bytesInOutput": 1011
+        },
+        "src/classes/Dimensions.ts": {
+          "bytesInOutput": 335
+        },
+        "src/classes/Point.ts": {
+          "bytesInOutput": 433
+        },
+        "src/classes/Box.ts": {
+          "bytesInOutput": 2646
+        },
+        "src/classes/BoundingBox.ts": {
+          "bytesInOutput": 92
+        },
+        "src/classes/index.ts": {
+          "bytesInOutput": 0
+        },
+        "src/classes/ObjectDetection.ts": {
+          "bytesInOutput": 624
+        },
+        "src/classes/FaceDetection.ts": {
+          "bytesInOutput": 153
+        },
+        "src/ops/iou.ts": {
+          "bytesInOutput": 215
+        },
+        "src/ops/index.ts": {
+          "bytesInOutput": 81
+        },
+        "src/ops/minBbox.ts": {
+          "bytesInOutput": 204
+        },
+        "src/ops/nonMaxSuppression.ts": {
+          "bytesInOutput": 282
+        },
+        "src/ops/normalize.ts": {
+          "bytesInOutput": 255
+        },
+        "src/ops/padToSquare.ts": {
+          "bytesInOutput": 332
+        },
+        "src/ops/shuffleArray.ts": {
+          "bytesInOutput": 132
+        },
+        "src/classes/Rect.ts": {
+          "bytesInOutput": 87
+        },
+        "src/classes/FaceLandmarks.ts": {
+          "bytesInOutput": 1393
+        },
+        "src/classes/FaceLandmarks5.ts": {
+          "bytesInOutput": 107
+        },
+        "src/classes/FaceLandmarks68.ts": {
+          "bytesInOutput": 464
+        },
+        "src/classes/FaceMatch.ts": {
+          "bytesInOutput": 201
+        },
+        "src/classes/LabeledBox.ts": {
+          "bytesInOutput": 250
+        },
+        "src/classes/LabeledFaceDescriptors.ts": {
+          "bytesInOutput": 595
+        },
+        "src/classes/PredictedBox.ts": {
+          "bytesInOutput": 385
+        },
+        "src/factories/WithFaceDetection.ts": {
+          "bytesInOutput": 94
+        },
+        "src/env/createBrowserEnv.ts": {
+          "bytesInOutput": 445
+        },
+        "src/env/createFileSystem.ts": {
+          "bytesInOutput": 247
+        },
+        "src/env/createNodejsEnv.ts": {
+          "bytesInOutput": 600
+        },
+        "src/env/isBrowser.ts": {
+          "bytesInOutput": 267
+        },
+        "src/env/index.ts": {
+          "bytesInOutput": 790
+        },
+        "src/dom/resolveInput.ts": {
+          "bytesInOutput": 84
+        },
+        "src/dom/getContext2dOrThrow.ts": {
+          "bytesInOutput": 312
+        },
+        "src/draw/DrawTextField.ts": {
+          "bytesInOutput": 1484
+        },
+        "src/draw/DrawBox.ts": {
+          "bytesInOutput": 581
+        },
+        "src/draw/drawDetections.ts": {
+          "bytesInOutput": 220
+        },
+        "src/faceExpressionNet/FaceExpressionNet.ts": {
+          "bytesInOutput": 567
+        },
+        "src/dom/isMediaLoaded.ts": {
+          "bytesInOutput": 114
+        },
+        "src/dom/awaitMediaLoaded.ts": {
+          "bytesInOutput": 423
+        },
+        "src/dom/index.ts": {
+          "bytesInOutput": 0
+        },
+        "src/dom/bufferToImage.ts": {
+          "bytesInOutput": 386
+        },
+        "src/dom/getMediaDimensions.ts": {
+          "bytesInOutput": 180
+        },
+        "src/dom/createCanvas.ts": {
+          "bytesInOutput": 389
+        },
+        "src/dom/imageTensorToCanvas.ts": {
+          "bytesInOutput": 200
+        },
+        "src/dom/isMediaElement.ts": {
+          "bytesInOutput": 110
+        },
+        "src/dom/NetInput.ts": {
+          "bytesInOutput": 2214
+        },
+        "src/dom/imageToSquare.ts": {
+          "bytesInOutput": 442
+        },
+        "src/dom/toNetInput.ts": {
+          "bytesInOutput": 773
+        },
+        "src/dom/extractFaces.ts": {
+          "bytesInOutput": 485
+        },
+        "src/dom/extractFaceTensors.ts": {
+          "bytesInOutput": 442
+        },
+        "src/dom/fetchOrThrow.ts": {
+          "bytesInOutput": 176
+        },
+        "src/dom/fetchImage.ts": {
+          "bytesInOutput": 218
+        },
+        "src/dom/fetchJson.ts": {
+          "bytesInOutput": 48
+        },
+        "src/dom/fetchNetWeights.ts": {
+          "bytesInOutput": 79
+        },
+        "src/dom/loadWeightMap.ts": {
+          "bytesInOutput": 123
+        },
+        "src/common/getModelUris.ts": {
+          "bytesInOutput": 473
+        },
+        "src/dom/matchDimensions.ts": {
+          "bytesInOutput": 101
+        },
+        "src/faceFeatureExtractor/FaceFeatureExtractor.ts": {
+          "bytesInOutput": 621
+        },
+        "src/NeuralNetwork.ts": {
+          "bytesInOutput": 2654
+        },
+        "src/faceFeatureExtractor/denseBlock.ts": {
+          "bytesInOutput": 568
+        },
+        "src/common/depthwiseSeparableConv.ts": {
+          "bytesInOutput": 157
+        },
+        "src/common/convLayer.ts": {
+          "bytesInOutput": 141
+        },
+        "src/common/index.ts": {
+          "bytesInOutput": 0
+        },
+        "src/common/disposeUnusedWeightTensors.ts": {
+          "bytesInOutput": 91
+        },
+        "src/common/extractConvParamsFactory.ts": {
+          "bytesInOutput": 195
+        },
+        "src/common/extractFCParamsFactory.ts": {
+          "bytesInOutput": 185
+        },
+        "src/common/extractSeparableConvParamsFactory.ts": {
+          "bytesInOutput": 396
+        },
+        "src/common/types.ts": {
+          "bytesInOutput": 94
+        },
+        "src/common/extractWeightEntryFactory.ts": {
+          "bytesInOutput": 188
+        },
+        "src/common/extractWeightsFactory.ts": {
+          "bytesInOutput": 146
+        },
+        "src/faceFeatureExtractor/extractorsFactory.ts": {
+          "bytesInOutput": 377
+        },
+        "src/faceFeatureExtractor/extractParams.ts": {
+          "bytesInOutput": 343
+        },
+        "src/common/loadConvParamsFactory.ts": {
+          "bytesInOutput": 97
+        },
+        "src/faceFeatureExtractor/loadParamsFactory.ts": {
+          "bytesInOutput": 388
+        },
+        "src/faceFeatureExtractor/extractParamsFromWeightMap.ts": {
+          "bytesInOutput": 185
+        },
+        "src/faceProcessor/FaceProcessor.ts": {
+          "bytesInOutput": 1037
+        },
+        "src/common/fullyConnectedLayer.ts": {
+          "bytesInOutput": 89
+        },
+        "src/faceProcessor/extractParams.ts": {
+          "bytesInOutput": 214
+        },
+        "src/faceProcessor/extractParamsFromWeightMap.ts": {
+          "bytesInOutput": 177
+        },
+        "src/faceProcessor/util.ts": {
+          "bytesInOutput": 144
+        },
+        "src/faceExpressionNet/FaceExpressions.ts": {
+          "bytesInOutput": 369
+        },
+        "src/faceExpressionNet/index.ts": {
+          "bytesInOutput": 0
+        },
+        "src/factories/WithFaceExpressions.ts": {
+          "bytesInOutput": 99
+        },
+        "src/draw/drawFaceExpressions.ts": {
+          "bytesInOutput": 420
+        },
+        "src/factories/WithFaceLandmarks.ts": {
+          "bytesInOutput": 333
+        },
+        "src/draw/DrawFaceLandmarks.ts": {
+          "bytesInOutput": 1225
+        },
+        "package.json": {
+          "bytesInOutput": 16
+        },
+        "src/ageGenderNet/AgeGenderNet.ts": {
+          "bytesInOutput": 1688
+        },
+        "src/xception/TinyXception.ts": {
+          "bytesInOutput": 1265
+        },
+        "src/xception/extractParams.ts": {
+          "bytesInOutput": 1234
+        },
+        "src/xception/extractParamsFromWeightMap.ts": {
+          "bytesInOutput": 1047
+        },
+        "src/ageGenderNet/extractParams.ts": {
+          "bytesInOutput": 258
+        },
+        "src/ageGenderNet/extractParamsFromWeightMap.ts": {
+          "bytesInOutput": 209
+        },
+        "src/ageGenderNet/types.ts": {
+          "bytesInOutput": 67
+        },
+        "src/ageGenderNet/index.ts": {
+          "bytesInOutput": 0
+        },
+        "src/faceLandmarkNet/FaceLandmark68NetBase.ts": {
+          "bytesInOutput": 1177
+        },
+        "src/faceLandmarkNet/FaceLandmark68Net.ts": {
+          "bytesInOutput": 167
+        },
+        "src/faceLandmarkNet/index.ts": {
+          "bytesInOutput": 26
+        },
+        "src/faceFeatureExtractor/TinyFaceFeatureExtractor.ts": {
+          "bytesInOutput": 619
+        },
+        "src/faceFeatureExtractor/extractParamsFromWeightMapTiny.ts": {
+          "bytesInOutput": 166
+        },
+        "src/faceFeatureExtractor/extractParamsTiny.ts": {
+          "bytesInOutput": 312
+        },
+        "src/faceLandmarkNet/FaceLandmark68TinyNet.ts": {
+          "bytesInOutput": 176
+        },
+        "src/faceRecognitionNet/FaceRecognitionNet.ts": {
+          "bytesInOutput": 1156
+        },
+        "src/faceRecognitionNet/convLayer.ts": {
+          "bytesInOutput": 277
+        },
+        "src/faceRecognitionNet/scaleLayer.ts": {
+          "bytesInOutput": 75
+        },
+        "src/faceRecognitionNet/extractParams.ts": {
+          "bytesInOutput": 1803
+        },
+        "src/faceRecognitionNet/extractParamsFromWeightMap.ts": {
+          "bytesInOutput": 1113
+        },
+        "src/faceRecognitionNet/residualLayer.ts": {
+          "bytesInOutput": 466
+        },
+        "src/faceRecognitionNet/index.ts": {
+          "bytesInOutput": 57
+        },
+        "src/factories/WithFaceDescriptor.ts": {
+          "bytesInOutput": 48
+        },
+        "src/factories/index.ts": {
+          "bytesInOutput": 0
+        },
+        "src/factories/WithAge.ts": {
+          "bytesInOutput": 86
+        },
+        "src/factories/WithGender.ts": {
+          "bytesInOutput": 155
+        },
+        "src/ssdMobilenetv1/SsdMobilenetv1.ts": {
+          "bytesInOutput": 1224
+        },
+        "src/ssdMobilenetv1/extractParams.ts": {
+          "bytesInOutput": 3588
+        },
+        "src/ssdMobilenetv1/extractParamsFromWeightMap.ts": {
+          "bytesInOutput": 2463
+        },
+        "src/ssdMobilenetv1/mobileNetV1.ts": {
+          "bytesInOutput": 715
+        },
+        "src/ssdMobilenetv1/pointwiseConvLayer.ts": {
+          "bytesInOutput": 153
+        },
+        "src/ssdMobilenetv1/nonMaxSuppression.ts": {
+          "bytesInOutput": 792
+        },
+        "src/ssdMobilenetv1/outputLayer.ts": {
+          "bytesInOutput": 927
+        },
+        "src/ssdMobilenetv1/predictionLayer.ts": {
+          "bytesInOutput": 721
+        },
+        "src/ssdMobilenetv1/boxPredictionLayer.ts": {
+          "bytesInOutput": 223
+        },
+        "src/ssdMobilenetv1/SsdMobilenetv1Options.ts": {
+          "bytesInOutput": 518
+        },
+        "src/ssdMobilenetv1/index.ts": {
+          "bytesInOutput": 111
+        },
+        "src/tinyYolov2/const.ts": {
+          "bytesInOutput": 348
+        },
+        "src/tinyYolov2/TinyYolov2Base.ts": {
+          "bytesInOutput": 3656
+        },
+        "src/tinyYolov2/config.ts": {
+          "bytesInOutput": 1012
+        },
+        "src/tinyYolov2/convWithBatchNorm.ts": {
+          "bytesInOutput": 215
+        },
+        "src/tinyYolov2/leaky.ts": {
+          "bytesInOutput": 128
+        },
+        "src/tinyYolov2/depthwiseSeparableConv.ts": {
+          "bytesInOutput": 203
+        },
+        "src/tinyYolov2/extractParams.ts": {
+          "bytesInOutput": 1290
+        },
+        "src/tinyYolov2/extractParamsFromWeightMap.ts": {
+          "bytesInOutput": 972
+        },
+        "src/tinyYolov2/TinyYolov2Options.ts": {
+          "bytesInOutput": 556
+        },
+        "src/tinyYolov2/TinyYolov2.ts": {
+          "bytesInOutput": 545
+        },
+        "src/tinyYolov2/index.ts": {
+          "bytesInOutput": 65
+        },
+        "src/tinyFaceDetector/TinyFaceDetectorOptions.ts": {
+          "bytesInOutput": 97
+        },
+        "src/globalApi/ComposableTask.ts": {
+          "bytesInOutput": 127
+        },
+        "src/globalApi/DetectFaceLandmarksTasks.ts": {
+          "bytesInOutput": 1133
+        },
+        "src/globalApi/extractFacesAndComputeResults.ts": {
+          "bytesInOutput": 300
+        },
+        "src/tinyFaceDetector/const.ts": {
+          "bytesInOutput": 168
+        },
+        "src/tinyFaceDetector/TinyFaceDetector.ts": {
+          "bytesInOutput": 495
+        },
+        "src/globalApi/nets.ts": {
+          "bytesInOutput": 844
+        },
+        "src/globalApi/PredictFaceExpressionsTask.ts": {
+          "bytesInOutput": 852
+        },
+        "src/globalApi/PredictAgeAndGenderTask.ts": {
+          "bytesInOutput": 957
+        },
+        "src/globalApi/ComputeFaceDescriptorsTasks.ts": {
+          "bytesInOutput": 752
+        },
+        "src/globalApi/DetectFacesTasks.ts": {
+          "bytesInOutput": 1343
+        },
+        "src/globalApi/detectFaces.ts": {
+          "bytesInOutput": 84
+        },
+        "src/globalApi/allFaces.ts": {
+          "bytesInOutput": 209
+        },
+        "src/globalApi/index.ts": {
+          "bytesInOutput": 0
+        },
+        "src/euclideanDistance.ts": {
+          "bytesInOutput": 205
+        },
+        "src/globalApi/FaceMatcher.ts": {
+          "bytesInOutput": 1333
+        },
+        "src/tinyFaceDetector/index.ts": {
+          "bytesInOutput": 57
+        },
+        "src/resizeResults.ts": {
+          "bytesInOutput": 443
+        }
+      },
+      "bytes": 82761
+    }
+  }
+}

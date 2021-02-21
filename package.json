@@ -49,7 +49,7 @@
     "@typescript-eslint/eslint-plugin": "^4.15.2-alpha.5",
     "@typescript-eslint/parser": "^4.15.2-alpha.5",
     "chokidar": "^3.5.1",
-    "esbuild": "^0.8.49",
+    "esbuild": "^0.8.50",
     "eslint": "^7.20.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",

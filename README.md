@@ -116,11 +116,18 @@ Note that `@tensorflow/tfjs-node` or `@tensorflow/tfjs-node-gpu` must be install
 
 Face-API ships with several pre-build versions of the library:
 
-- `dist/face-api.js`: IIFE format for client-side Browser execution *with* TFJS pre-bundled
-- `dist/face-api.esm.js`: ESM format for client-side Browser execution *with* TFJS pre-bundled
-- `dist/face-api.esm-nobundle.js`: ESM format for client-side Browser execution *without* TFJS pre-bundled
-- `dist/face-api.node.js`: CommonJS format for server-side NodeJS execution *without* TFJS pre-bundled
-- `dist/face-api.node-gpu.js`: CommonJS format for server-side NodeJS execution *without* TFJS pre-bundled and optimized for CUDA GPU acceleration
+- `dist/face-api.js`: IIFE format for client-side Browser execution  
+   *with* TFJS pre-bundled
+- `dist/face-api.esm.js`: ESM format for client-side Browser execution  
+   *with* TFJS pre-bundled
+- `dist/face-api.esm-nobundle.js`: ESM format for client-side Browser execution  
+   *without* TFJS pre-bundled
+- `dist/face-api.node.js`: CommonJS format for server-side NodeJS execution  
+   *without* TFJS pre-bundled
+- `dist/face-api.node-gpu.js`: CommonJS format for server-side NodeJS execution  
+   *without* TFJS pre-bundled and optimized for CUDA GPU acceleration
+- `dist/face-api.node-cpu.js`: CommonJS format for server-side NodeJS execution  
+   *without* TFJS pre-bundled and using JS engine for platforms where tensorflow binary library version is not available
 
 Defaults are:
 ```json
@@ -237,6 +244,18 @@ And then use with:
 ```js
   const tf = require('@tensorflow/tfjs-node-gpu')
   const faceapi = require('@vladmandic/face-api/dist/face-api.node-gpu.js'); // this loads face-api version with correct bindings for tfjs-node-gpu
+```
+
+If you want to use `Face-API` in a NodeJS on platforms where NodeJS binary libraries are not supported, you can use JavaScript CPU backend.  
+
+```shell
+  npm install @tensorflow/tfjs
+  npm install @vladmandic/face-api 
+```
+And then use with:
+```js
+  const tf = require('@tensorflow/tfjs')
+  const faceapi = require('@vladmandic/face-api/dist/face-api.node-pcu.js');
 ```
 
 <br>

@@ -10,6 +10,7 @@ export function imageToSquare(input: HTMLImageElement | HTMLCanvasElement, input
     throw new Error('imageToSquare - expected arg0 to be HTMLImageElement | HTMLCanvasElement');
   }
 
+  if (inputSize <= 0) return createCanvas({ width: 1, height: 1 });
   const dims = getMediaDimensions(input);
   const scale = inputSize / Math.max(dims.height, dims.width);
   const width = scale * dims.width;

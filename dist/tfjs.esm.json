@@ -25364,7 +25364,7 @@
       "imports": [],
       "exports": [],
       "inputs": {},
-      "bytes": 1129507
+      "bytes": 1129446
     },
     "dist/tfjs.esm.js": {
       "imports": [],
@@ -27550,7 +27550,7 @@
           "bytesInOutput": 96
         },
         "node_modules/@tensorflow/tfjs-layers/dist/errors.js": {
-          "bytesInOutput": 542
+          "bytesInOutput": 452
         },
         "node_modules/@tensorflow/tfjs-layers/dist/utils/generic_utils.js": {
           "bytesInOutput": 3474
@@ -29479,7 +29479,7 @@
           "bytesInOutput": 14
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/ScatterNd.js": {
-          "bytesInOutput": 616
+          "bytesInOutput": 614
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Select.js": {
           "bytesInOutput": 509
@@ -29557,7 +29557,7 @@
           "bytesInOutput": 0
         }
       },
-      "bytes": 1055784
+      "bytes": 1055692
     }
   }
 }

@@ -559,7 +559,7 @@
       ]
     },
     "src/dom/imageToSquare.ts": {
-      "bytes": 1175,
+      "bytes": 1296,
       "imports": [
         {
           "path": "src/env/index.ts",
@@ -634,7 +634,7 @@
       ]
     },
     "src/dom/extractFaces.ts": {
-      "bytes": 1808,
+      "bytes": 1804,
       "imports": [
         {
           "path": "src/classes/FaceDetection.ts",
@@ -1292,7 +1292,7 @@
       ]
     },
     "package.json": {
-      "bytes": 1841,
+      "bytes": 1870,
       "imports": []
     },
     "src/xception/extractParams.ts": {
@@ -2591,7 +2591,7 @@
       "imports": [],
       "exports": [],
       "inputs": {},
-      "bytes": 309815
+      "bytes": 310015
     },
     "dist/face-api.esm-nobundle.js": {
       "imports": [],
@@ -2806,7 +2806,7 @@
           "bytesInOutput": 94
         },
         "src/env/createBrowserEnv.ts": {
-          "bytesInOutput": 453
+          "bytesInOutput": 445
         },
         "src/env/createFileSystem.ts": {
           "bytesInOutput": 247
@@ -2866,13 +2866,13 @@
           "bytesInOutput": 2214
         },
         "src/dom/imageToSquare.ts": {
-          "bytesInOutput": 381
+          "bytesInOutput": 442
         },
         "src/dom/toNetInput.ts": {
           "bytesInOutput": 773
         },
         "src/dom/extractFaces.ts": {
-          "bytesInOutput": 489
+          "bytesInOutput": 485
         },
         "src/dom/extractFaceTensors.ts": {
           "bytesInOutput": 442
@@ -3187,7 +3187,7 @@
           "bytesInOutput": 443
         }
       },
-      "bytes": 82178
+      "bytes": 82227
     }
   }
 }

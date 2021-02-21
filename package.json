@@ -38,18 +38,18 @@
   },
   "homepage": "https://github.com/vladmandic/face-api#readme",
   "dependencies": {
+    "@tensorflow/tfjs-node": "^3.1.0",
+    "@tensorflow/tfjs-node-gpu": "^3.1.0",
     "@vladmandic/pilogger": "^0.2.14"
   },
   "devDependencies": {
     "@tensorflow/tfjs": "^3.1.0",
     "@tensorflow/tfjs-backend-wasm": "^3.1.0",
-    "@tensorflow/tfjs-node": "^3.1.0",
-    "@tensorflow/tfjs-node-gpu": "^3.1.0",
-    "@types/node": "^14.14.28",
-    "@typescript-eslint/eslint-plugin": "^4.15.1",
-    "@typescript-eslint/parser": "^4.15.1",
+    "@types/node": "^14.14.31",
+    "@typescript-eslint/eslint-plugin": "^4.15.2-alpha.5",
+    "@typescript-eslint/parser": "^4.15.2-alpha.5",
     "chokidar": "^3.5.1",
-    "esbuild": "^0.8.46",
+    "esbuild": "^0.8.49",
     "eslint": "^7.20.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
@@ -58,6 +58,6 @@
     "eslint-plugin-promise": "^4.3.1",
     "rimraf": "^3.0.2",
     "tslib": "^2.1.0",
-    "typescript": "^4.1.5"
+    "typescript": "^4.3.0-dev.20210220"
   }
 }

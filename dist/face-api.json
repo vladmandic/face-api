@@ -634,7 +634,7 @@
       ]
     },
     "src/dom/extractFaces.ts": {
-      "bytes": 1782,
+      "bytes": 1808,
       "imports": [
         {
           "path": "src/classes/FaceDetection.ts",
@@ -2591,7 +2591,7 @@
       "imports": [],
       "exports": [],
       "inputs": {},
-      "bytes": 1447740
+      "bytes": 1447781
     },
     "dist/face-api.js": {
       "imports": [],
@@ -2748,7 +2748,7 @@
           "bytesInOutput": 776
         },
         "src/dom/extractFaces.ts": {
-          "bytesInOutput": 480
+          "bytesInOutput": 494
         },
         "src/dom/extractFaceTensors.ts": {
           "bytesInOutput": 418
@@ -3066,7 +3066,7 @@
           "bytesInOutput": 446
         }
       },
-      "bytes": 1134789
+      "bytes": 1134803
     }
   }
 }

@@ -47,8 +47,9 @@ export async function extractFaces(
     x, y, width, height,
   }) => {
     const faceImg = createCanvas({ width, height });
-    getContext2dOrThrow(faceImg)
-      .putImageData(ctx.getImageData(x, y, width, height), 0, 0);
+    try {
+      getContext2dOrThrow(faceImg).putImageData(ctx.getImageData(x, y, width, height), 0, 0);
+    } catch { /**/ }
     return faceImg;
   });
 }

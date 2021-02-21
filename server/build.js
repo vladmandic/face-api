@@ -88,6 +88,24 @@ const targets = {
       external: ['@tensorflow'],
     },
   },
+  nodeCPU: {
+    tfjs: {
+      platform: 'node',
+      format: 'cjs',
+      metafile: 'dist/tfjs.esm.json',
+      entryPoints: ['src/tfjs/tf-node-cpu.ts'],
+      outfile: 'dist/tfjs.esm.js',
+      external: ['@tensorflow'],
+    },
+    node: {
+      platform: 'node',
+      format: 'cjs',
+      metafile: 'dist/face-api.node-cpu.json',
+      entryPoints: ['src/index.ts'],
+      outfile: 'dist/face-api.node-cpu.js',
+      external: ['@tensorflow'],
+    },
+  },
   browserNoBundle: {
     tfjs: {
       platform: 'browser',

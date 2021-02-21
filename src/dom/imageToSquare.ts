@@ -21,7 +21,7 @@ export function imageToSquare(input: HTMLImageElement | HTMLCanvasElement, input
   const offset = Math.abs(width - height) / 2;
   const dx = centerImage && width < height ? offset : 0;
   const dy = centerImage && height < width ? offset : 0;
-  getContext2dOrThrow(targetCanvas).drawImage(inputCanvas, dx, dy, width, height);
+  if (inputCanvas.width > 0 && inputCanvas.height > 0) getContext2dOrThrow(targetCanvas).drawImage(inputCanvas, dx, dy, width, height);
 
   return targetCanvas;
 }

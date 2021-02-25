@@ -2,7 +2,7 @@ import * as faceapi from '../dist/face-api.esm.js';
 
 // configuration options
 const modelPath = 'https://vladmandic.github.io/face-api/model/'; // path to model folder that will be loaded using http
-const minScore = 0.1; // minimum score
+const minScore = 0.2; // minimum score
 const maxResults = 5; // maximum number of results to return
 let optionsSSDMobileNet;
 
@@ -59,6 +59,7 @@ function drawFaces(canvas, data, fps) {
 }
 
 async function detectVideo(video, canvas) {
+  if (!video || video.paused) return false;
   const t0 = performance.now();
   faceapi
     .detectAllFaces(video, optionsSSDMobileNet)
@@ -76,6 +77,7 @@ async function detectVideo(video, canvas) {
       log(`Detect Error: ${str(err)}`);
       return false;
     });
+  return false;
 }
 
 // just initialize everything and call main function
@@ -120,9 +122,14 @@ async function setupCamera() {
     // @ts-ignore
     if (video && video.readyState >= 2) {
       // @ts-ignore
-      if (video.paused) video.play();
-      // @ts-ignore
-      else video.pause();
+      if (video.paused) {
+        // @ts-ignore
+        video.play();
+        detectVideo(video, canvas);
+      } else {
+        // @ts-ignore
+        video.pause();
+      }
     }
     // @ts-ignore
     log(`Camera state: ${video.paused ? 'paused' : 'playing'}`);

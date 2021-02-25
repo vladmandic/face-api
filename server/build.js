@@ -113,7 +113,7 @@ const targets = {
       entryPoints: ['src/tfjs/tf-browser.ts'],
       outfile: 'dist/tfjs.esm.js',
       metafile: 'dist/tfjs.esm.json',
-      external: ['fs', 'buffer', 'util', '@tensorflow'],
+      external: ['fs', 'buffer', 'util', 'os', '@tensorflow'],
     },
     esm: {
       platform: 'browser',
@@ -121,7 +121,7 @@ const targets = {
       entryPoints: ['src/index.ts'],
       outfile: 'dist/face-api.esm-nobundle.js',
       metafile: 'dist/face-api.esm-nobundle.json',
-      external: ['fs', 'buffer', 'util', '@tensorflow', 'tfjs.esm.js'],
+      external: ['fs', 'buffer', 'util', 'os', '@tensorflow', 'tfjs.esm.js'],
     },
   },
   browserBundle: {
@@ -131,7 +131,7 @@ const targets = {
       entryPoints: ['src/tfjs/tf-browser.ts'],
       outfile: 'dist/tfjs.esm.js',
       metafile: 'dist/tfjs.esm.json',
-      external: ['fs', 'buffer', 'util'],
+      external: ['fs', 'buffer', 'util', 'os'],
     },
     iife: {
       platform: 'browser',
@@ -140,7 +140,7 @@ const targets = {
       entryPoints: ['src/index.ts'],
       outfile: 'dist/face-api.js',
       metafile: 'dist/face-api.json',
-      external: ['fs', 'buffer', 'util'],
+      external: ['fs', 'buffer', 'util', 'os'],
     },
     esm: {
       platform: 'browser',
@@ -148,7 +148,7 @@ const targets = {
       entryPoints: ['src/index.ts'],
       outfile: 'dist/face-api.esm.js',
       metafile: 'dist/face-api.esm.json',
-      external: ['fs', 'buffer', 'util'],
+      external: ['fs', 'buffer', 'util', 'os'],
     },
   },
 };

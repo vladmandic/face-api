@@ -6,7 +6,7 @@ This is updated **face-api.js** with latest available TensorFlow/JS as the origi
 
 Forked from [face-api.js](https://github.com/justadudewhohacks/face-api.js) version **0.22.2** released on March 22nd, 2020  
 
-Currently based on **`TensorFlow/JS` 3.1.0**  
+Currently based on **`TensorFlow/JS` 3.2.0**  
 
 ### Why?
 

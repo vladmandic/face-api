@@ -5,7 +5,7 @@
       "imports": []
     },
     "node_modules/@tensorflow/tfjs-core/dist/util_base.js": {
-      "bytes": 20096,
+      "bytes": 20100,
       "imports": []
     },
     "node_modules/@tensorflow/tfjs-core/dist/environment.js": {
@@ -56,7 +56,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/profiler.js": {
-      "bytes": 4460,
+      "bytes": 4499,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/environment.js",
@@ -773,7 +773,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-core/dist/ops/browser.js": {
-      "bytes": 8954,
+      "bytes": 9105,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/engine.js",
@@ -19323,7 +19323,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-backend-webgl/dist/flags_webgl.js": {
-      "bytes": 6399,
+      "bytes": 7125,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/index.js",
@@ -19593,7 +19593,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-backend-webgl/dist/backend_webgl.js": {
-      "bytes": 37906,
+      "bytes": 38346,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-backend-webgl/dist/flags_webgl.js",
@@ -23917,7 +23917,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Concat.js": {
-      "bytes": 4118,
+      "bytes": 4180,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/index.js",
@@ -24434,7 +24434,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Pack.js": {
-      "bytes": 1697,
+      "bytes": 1947,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-core/dist/index.js",
@@ -25237,7 +25237,7 @@
       "imports": []
     },
     "node_modules/@tensorflow/tfjs-backend-wasm/wasm-out/tfjs-backend-wasm-threaded-simd.js": {
-      "bytes": 74296,
+      "bytes": 64769,
       "imports": [
         {
           "path": "(disabled):path",
@@ -25262,11 +25262,11 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-backend-wasm/wasm-out/tfjs-backend-wasm-threaded-simd.worker.js": {
-      "bytes": 3441,
+      "bytes": 3172,
       "imports": []
     },
     "node_modules/@tensorflow/tfjs-backend-wasm/wasm-out/tfjs-backend-wasm.js": {
-      "bytes": 28635,
+      "bytes": 26723,
       "imports": [
         {
           "path": "(disabled):path",
@@ -25279,7 +25279,7 @@
       ]
     },
     "node_modules/@tensorflow/tfjs-backend-wasm/dist/backend_wasm.js": {
-      "bytes": 14751,
+      "bytes": 14972,
       "imports": [
         {
           "path": "node_modules/@tensorflow/tfjs-backend-wasm/dist/flags_wasm.js",
@@ -25364,7 +25364,7 @@
       "imports": [],
       "exports": [],
       "inputs": {},
-      "bytes": 1129446
+      "bytes": 1142745
     },
     "dist/tfjs.esm.js": {
       "imports": [],
@@ -25832,6 +25832,7 @@
         "zeros",
         "zerosLike"
       ],
+      "entryPoint": "src/tfjs/tf-browser.ts",
       "inputs": {
         "(disabled):node_modules/node-fetch/browser.js": {
           "bytesInOutput": 18
@@ -25876,16 +25877,16 @@
           "bytesInOutput": 18
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/wasm-out/tfjs-backend-wasm-threaded-simd.js": {
-          "bytesInOutput": 45664
+          "bytesInOutput": 39230
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/wasm-out/tfjs-backend-wasm.js": {
-          "bytesInOutput": 18153
+          "bytesInOutput": 16473
         },
         "node_modules/@tensorflow/tfjs-core/dist/backends/backend.js": {
           "bytesInOutput": 1032
         },
         "node_modules/@tensorflow/tfjs-core/dist/util_base.js": {
-          "bytesInOutput": 6291
+          "bytesInOutput": 6295
         },
         "node_modules/@tensorflow/tfjs-core/dist/environment.js": {
           "bytesInOutput": 2118
@@ -25903,7 +25904,7 @@
           "bytesInOutput": 1966
         },
         "node_modules/@tensorflow/tfjs-core/dist/profiler.js": {
-          "bytesInOutput": 1324
+          "bytesInOutput": 1335
         },
         "node_modules/@tensorflow/tfjs-core/dist/tape.js": {
           "bytesInOutput": 1538
@@ -28471,7 +28472,7 @@
           "bytesInOutput": 512
         },
         "node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/UnsortedSegmentSum.js": {
-          "bytesInOutput": 754
+          "bytesInOutput": 756
         },
         "node_modules/@tensorflow/tfjs-backend-cpu/dist/register_all_kernels.js": {
           "bytesInOutput": 490
@@ -28486,7 +28487,7 @@
           "bytesInOutput": 8548
         },
         "node_modules/@tensorflow/tfjs-backend-webgl/dist/flags_webgl.js": {
-          "bytesInOutput": 2228
+          "bytesInOutput": 2409
         },
         "node_modules/@tensorflow/tfjs-backend-webgl/dist/glsl_version.js": {
           "bytesInOutput": 1626
@@ -28549,7 +28550,7 @@
           "bytesInOutput": 388
         },
         "node_modules/@tensorflow/tfjs-backend-webgl/dist/backend_webgl.js": {
-          "bytesInOutput": 14364
+          "bytesInOutput": 14521
         },
         "node_modules/@tensorflow/tfjs-backend-webgl/dist/version.js": {
           "bytesInOutput": 15
@@ -28921,7 +28922,7 @@
           "bytesInOutput": 818
         },
         "node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/FusedConv2D.js": {
-          "bytesInOutput": 1155
+          "bytesInOutput": 1157
         },
         "node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/FusedDepthwiseConv2D.js": {
           "bytesInOutput": 895
@@ -29170,7 +29171,7 @@
           "bytesInOutput": 918
         },
         "node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/ScatterNd.js": {
-          "bytesInOutput": 725
+          "bytesInOutput": 727
         },
         "node_modules/@tensorflow/tfjs-backend-webgl/dist/select_gpu.js": {
           "bytesInOutput": 594
@@ -29248,7 +29249,7 @@
           "bytesInOutput": 3184
         },
         "node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/UnsortedSegmentSum.js": {
-          "bytesInOutput": 1095
+          "bytesInOutput": 1097
         },
         "node_modules/@tensorflow/tfjs-backend-webgl/dist/register_all_kernels.js": {
           "bytesInOutput": 487
@@ -29311,7 +29312,7 @@
           "bytesInOutput": 360
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Concat.js": {
-          "bytesInOutput": 1127
+          "bytesInOutput": 1165
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Conv2D.js": {
           "bytesInOutput": 1093
@@ -29437,7 +29438,7 @@
           "bytesInOutput": 174
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Pack.js": {
-          "bytesInOutput": 514
+          "bytesInOutput": 588
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/PadV2.js": {
           "bytesInOutput": 613
@@ -29479,25 +29480,25 @@
           "bytesInOutput": 14
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/ScatterNd.js": {
-          "bytesInOutput": 614
+          "bytesInOutput": 612
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Select.js": {
-          "bytesInOutput": 509
+          "bytesInOutput": 505
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Sigmoid.js": {
-          "bytesInOutput": 333
+          "bytesInOutput": 329
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Sin.js": {
           "bytesInOutput": 14
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Slice.js": {
-          "bytesInOutput": 1268
+          "bytesInOutput": 1262
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Softmax.js": {
-          "bytesInOutput": 409
+          "bytesInOutput": 405
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/SplitV.js": {
-          "bytesInOutput": 373
+          "bytesInOutput": 371
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Sqrt.js": {
           "bytesInOutput": 14
@@ -29506,46 +29507,46 @@
           "bytesInOutput": 14
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/SquaredDifference.js": {
-          "bytesInOutput": 25
+          "bytesInOutput": 23
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Step.js": {
-          "bytesInOutput": 331
+          "bytesInOutput": 327
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/StridedSlice.js": {
-          "bytesInOutput": 1878
+          "bytesInOutput": 1874
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Sub.js": {
-          "bytesInOutput": 25
+          "bytesInOutput": 23
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Sum.js": {
-          "bytesInOutput": 759
+          "bytesInOutput": 755
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Tanh.js": {
           "bytesInOutput": 14
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Tile.js": {
-          "bytesInOutput": 559
+          "bytesInOutput": 555
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/TopK.js": {
-          "bytesInOutput": 544
+          "bytesInOutput": 540
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Unpack.js": {
-          "bytesInOutput": 480
+          "bytesInOutput": 478
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/ZerosLike.js": {
-          "bytesInOutput": 176
+          "bytesInOutput": 174
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/dist/register_all_kernels.js": {
-          "bytesInOutput": 294
+          "bytesInOutput": 292
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/dist/flags_wasm.js": {
           "bytesInOutput": 484
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/dist/backend_wasm.js": {
-          "bytesInOutput": 4771
+          "bytesInOutput": 4755
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/wasm-out/tfjs-backend-wasm-threaded-simd.worker.js": {
-          "bytesInOutput": 3414
+          "bytesInOutput": 3145
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/dist/version.js": {
           "bytesInOutput": 16
@@ -29557,7 +29558,7 @@
           "bytesInOutput": 0
         }
       },
-      "bytes": 1055692
+      "bytes": 1047714
     }
   }
 }

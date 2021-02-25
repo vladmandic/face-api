@@ -1,7 +1,7 @@
 {
   "inputs": {
     "dist/tfjs.esm.js": {
-      "bytes": 1055692,
+      "bytes": 1047714,
       "imports": []
     },
     "src/draw/drawContour.ts": {
@@ -1292,7 +1292,7 @@
       ]
     },
     "package.json": {
-      "bytes": 1870,
+      "bytes": 1854,
       "imports": []
     },
     "src/xception/extractParams.ts": {
@@ -2591,7 +2591,7 @@
       "imports": [],
       "exports": [],
       "inputs": {},
-      "bytes": 1447909
+      "bytes": 1464548
     },
     "dist/face-api.esm.js": {
       "imports": [],
@@ -2717,12 +2717,13 @@
         "validateConfig",
         "version"
       ],
+      "entryPoint": "src/index.ts",
       "inputs": {
         "src/env/isNodejs.ts": {
           "bytesInOutput": 181
         },
         "dist/tfjs.esm.js": {
-          "bytesInOutput": 1047120
+          "bytesInOutput": 1039131
         },
         "src/draw/index.ts": {
           "bytesInOutput": 280
@@ -3187,7 +3188,7 @@
           "bytesInOutput": 446
         }
       },
-      "bytes": 1134597
+      "bytes": 1126608
     }
   }
 }

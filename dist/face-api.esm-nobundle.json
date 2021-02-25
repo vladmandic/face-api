@@ -1292,7 +1292,7 @@
       ]
     },
     "package.json": {
-      "bytes": 1870,
+      "bytes": 1854,
       "imports": []
     },
     "src/xception/extractParams.ts": {
@@ -2591,7 +2591,7 @@
       "imports": [],
       "exports": [],
       "inputs": {},
-      "bytes": 310015
+      "bytes": 313823
     },
     "dist/face-api.esm-nobundle.js": {
       "imports": [],
@@ -2717,6 +2717,7 @@
         "validateConfig",
         "version"
       ],
+      "entryPoint": "src/index.ts",
       "inputs": {
         "dist/tfjs.esm.js": {
           "bytesInOutput": 142

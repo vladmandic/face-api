@@ -1,6 +1,6 @@
 {
   "name": "@vladmandic/face-api",
-  "version": "0.30.1",
+  "version": "0.30.2",
   "description": "FaceAPI: AI-powered Face Detection, Face Embedding & Recognition Using Tensorflow/JS",
   "main": "dist/face-api.node.js",
   "module": "dist/face-api.esm.js",
@@ -37,17 +37,17 @@
     "url": "https://github.com/vladmandic/face-api/issues"
   },
   "homepage": "https://github.com/vladmandic/face-api#readme",
-  "dependencies": {
-    "@tensorflow/tfjs-node": "^3.2.0",
-    "@tensorflow/tfjs-node-gpu": "^3.2.0",
-    "@vladmandic/pilogger": "^0.2.14"
-  },
+  "dependencies": {},
+  "peerDependencies": {},
   "devDependencies": {
     "@tensorflow/tfjs": "^3.2.0",
     "@tensorflow/tfjs-backend-wasm": "^3.2.0",
+    "@tensorflow/tfjs-node": "^3.2.0",
+    "@tensorflow/tfjs-node-gpu": "^3.2.0",
     "@types/node": "^14.14.31",
     "@typescript-eslint/eslint-plugin": "^4.15.2",
     "@typescript-eslint/parser": "^4.15.2",
+    "@vladmandic/pilogger": "^0.2.14",
     "chokidar": "^3.5.1",
     "esbuild": "^0.8.52",
     "eslint": "^7.20.0",
@@ -58,6 +58,6 @@
     "eslint-plugin-promise": "^4.3.1",
     "rimraf": "^3.0.2",
     "tslib": "^2.1.0",
-    "typescript": "^4.3.0-dev.20210225"
+    "typescript": "^4.3.0-dev.20210226"
   }
 }

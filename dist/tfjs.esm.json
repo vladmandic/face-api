@@ -29543,7 +29543,7 @@
           "bytesInOutput": 484
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/dist/backend_wasm.js": {
-          "bytesInOutput": 4755
+          "bytesInOutput": 4763
         },
         "node_modules/@tensorflow/tfjs-backend-wasm/wasm-out/tfjs-backend-wasm-threaded-simd.worker.js": {
           "bytesInOutput": 3145
@@ -29558,7 +29558,7 @@
           "bytesInOutput": 0
         }
       },
-      "bytes": 1047714
+      "bytes": 1047769
     }
   }
 }

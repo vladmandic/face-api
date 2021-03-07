@@ -1,5 +1,13 @@
 # FaceAPI
 
+**Face detection and recognition libary for Browser and NodeJS implemented on top of TensorFlow/JS**
+
+<br>
+
+**Live Demo**: <https://vladmandic.github.io/face-api/example/webcam.html>
+
+<br>
+
 ## Note
 
 This is updated **face-api.js** with latest available TensorFlow/JS as the original face-api.js is not compatible with **tfjs 2.0+**.  
@@ -14,8 +22,6 @@ Because I needed Face-API that does not cause version conflict with newer TFJS 2
 And since original Face-API was open-source, I've released this version as well  
 
 Unfortunately, changes ended up being too large for a simple pull request on original Face-API and it ended up being a full-fledged version on its own  
-
-<br>
 
 ### Differences
 

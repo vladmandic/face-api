@@ -54,7 +54,7 @@ function drawFaces(canvas, data, fps) {
     for (let i = 0; i < person.landmarks.positions.length; i++) {
       ctx.beginPath();
       ctx.arc(person.landmarks.positions[i].x, person.landmarks.positions[i].y, pointSize, 0, 2 * Math.PI);
-      ctx.fillText(`${i}`, person.landmarks.positions[i].x + 4, person.landmarks.positions[i].y + 4);
+      // ctx.fillText(`${i}`, person.landmarks.positions[i].x + 4, person.landmarks.positions[i].y + 4);
       ctx.fill();
     }
   }

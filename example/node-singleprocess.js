@@ -3,6 +3,7 @@
 const fs = require('fs');
 const process = require('process');
 const path = require('path');
+// eslint-disable-next-line import/no-extraneous-dependencies, node/no-unpublished-require
 const log = require('@vladmandic/pilogger');
 // eslint-disable-next-line import/no-extraneous-dependencies, node/no-unpublished-require
 const tf = require('@tensorflow/tfjs-node');

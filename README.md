@@ -4,7 +4,7 @@
 
 This is updated **face-api.js** with latest available TensorFlow/JS as the original face-api.js is not compatible with **tfjs 2.0+**.  
 
-Forked from [face-api.js](https://github.com/justadudewhohacks/face-api.js) version **0.22.2** released on March 22nd, 2020  
+Forked from [face-api.js](https://github.com/justadudewhohacks/face-api.js) version **0.22.2** which was released on March 22nd, 2020  
 
 Currently based on **`TensorFlow/JS` 3.2.0**  
 
@@ -62,7 +62,7 @@ Example can be accessed directly using Git pages using URL: <https://vladmandic.
 
 *Note: Photos shown below are taken by me*
 
-![alt text](example/screenshot.png)
+![screenshot](example/screenshot.png)
 
 <br>
 
@@ -130,6 +130,7 @@ Face-API ships with several pre-build versions of the library:
    *without* TFJS pre-bundled and using JS engine for platforms where tensorflow binary library version is not available
 
 Defaults are:
+
 ```json
 {
   "main": "dist/face-api.node-js",
@@ -150,7 +151,7 @@ All versions include `sourcemap` and `asset manifest`
 <hr>
 <br>
 
-There are several ways to use Face-API: 
+There are several ways to use Face-API:
 
 ### 1. IIFE script
 
@@ -161,7 +162,7 @@ Simply download `dist/face-api.js`, include it in your `HTML` file & it's ready 
 
 ```html
 <script src="dist/face-api.js"><script>
-``` 
+```
 
 IIFE script bundles TFJS and auto-registers global namespace `faceapi` within Window object which can be accessed directly from a `<script>` tag or from your JS file.  
 
@@ -178,6 +179,7 @@ To use ESM import directly in a Browser, you must import your script (e.g. `inde
 ```html
   <script src="./index.js" type="module">
 ```
+
 and then in your `index.js`
 
 ```js
@@ -187,6 +189,7 @@ and then in your `index.js`
 #### 2.2. With Bundler
 
 Same as above, but expectation is that you've installed `@vladmandic/faceapi` package:
+
 ```shell
   npm install @vladmandic/face-api 
 ```
@@ -197,11 +200,15 @@ in which case, you do not need to import a script as module - that depends on yo
 ```js
   import * as faceapi from '@vladmandic/face-api';
 ```
+
 or if your bundler doesn't recognize `recommended` type, force usage with:
+
 ```js
   import * as faceapi from '@vladmandic/face-api/dist/face-api.esm.js';
 ```
+
 or to use non-bundled version
+
 ```js
   import * as tf from `@tensorflow/tfjs`;
   import * as faceapi from '@vladmandic/face-api/dist/face-api.esm-nobundle.js';
@@ -218,17 +225,21 @@ or to use non-bundled version
 *Node: Face-API for NodeJS does not bundle TFJS due to binary dependencies that are installed during TFJS installation*
 
 Install with:
+
 ```shell
   npm install @tensorflow/tfjs-node
   npm install @vladmandic/face-api 
 ```
+
 And then use with:
+
 ```js
   const tf = require('@tensorflow/tfjs-node')
   const faceapi = require('@vladmandic/face-api');
 ```
 
 If you want to force CommonJS module instead of relying on `recommended` field:
+
 ```js
   const faceapi = require('@vladmandic/face-api/dist/face-api.node.js');
 ```
@@ -240,7 +251,9 @@ Then install appropriate version of `Face-API`:
   npm install @tensorflow/tfjs-node
   npm install @vladmandic/face-api 
 ```
+
 And then use with:
+
 ```js
   const tf = require('@tensorflow/tfjs-node-gpu')
   const faceapi = require('@vladmandic/face-api/dist/face-api.node-gpu.js'); // this loads face-api version with correct bindings for tfjs-node-gpu
@@ -252,10 +265,30 @@ If you want to use `Face-API` in a NodeJS on platforms where NodeJS binary libra
   npm install @tensorflow/tfjs
   npm install @vladmandic/face-api 
 ```
+
 And then use with:
+
 ```js
   const tf = require('@tensorflow/tfjs')
-  const faceapi = require('@vladmandic/face-api/dist/face-api.node-pcu.js');
+  const faceapi = require('@vladmandic/face-api/dist/face-api.node-cpu.js');
+```
+
+If you want to use graphical functions inside NodeJS, you must provide appropriate graphical library as NodeJS does not include implementation for DOM elements such as HTMLImageElement or HTMLCanvasElement:
+
+Install `Canvas` for NodeJS:
+
+```shell
+npm install canvas
+```
+
+Patch NodeJS environment to use newly installed `Canvas` library:
+
+```js
+const canvas = require('canvas');
+const faceapi = require('@vladmandic/face-api');
+
+const { Canvas, Image, ImageData } = canvas
+faceapi.env.monkeyPatch({ Canvas, Image, ImageData })
 ```
 
 <br>
@@ -273,11 +306,13 @@ Pretrained models and their weights are includes in `./model`.
 ## Test & Dev Web Server
 
 Built-in test&dev web server can be started using
+
 ```shell
 npm run dev
 ```
 
 By default it starts HTTP server on port 8000 and HTTPS server on port 8001 and can be accessed as:  
+
 - <https://localhost:8001/example/index.html>
 - <https://localhost:8001/example/webcam.html>
 
@@ -302,18 +337,21 @@ By default it starts HTTP server on port 8000 and HTTPS server on port 8001 and 
 ## Build
 
 If you want to do a full rebuild, either download npm module
+
 ```shell
 npm install @vladmandic/face-api
 cd node_modules/@vladmandic/face-api
 ```
 
 or clone a git project
+
 ```shell
 git clone https://github.com/vladmandic/face-api
 cd face-api
 ```
 
 Then install all dependencies and run rebuild:
+
 ```shell
 npm install
 npm run build
@@ -348,8 +386,19 @@ npm run build
 <hr>
 <br>
 
-## Credits & Documentation
+## Face Mesh
 
-- Original project and usage documentation: [Face-API](https://github.com/justadudewhohacks/face-api.js)  
+`FaceAPI` returns 68-point face mesh as detailed in the image below:
+
+![facemesh](example/facemesh.png)
+
+## Documentation
+
+- [**Tutorial**](TUTORIAL.md)
+- [**API Documentation**](https://justadudewhohacks.github.io/face-api.js/docs/globals.html)
+
+## Credits
+
+- Original project: [Face-API](https://github.com/justadudewhohacks/face-api.js)  
 - Original model weighs: [Face-API](https://github.com/justadudewhohacks/face-api.js-models)
 - ML API Documentation: [Tensorflow/JS](https://js.tensorflow.org/api/latest/)

@@ -2,6 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
+// eslint-disable-next-line import/no-extraneous-dependencies, node/no-unpublished-require
 const log = require('@vladmandic/pilogger'); // this is my simple logger with few extra features
 const child_process = require('child_process');
 // note that main process import faceapi or tfjs at all

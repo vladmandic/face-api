@@ -2,6 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
+// eslint-disable-next-line import/no-extraneous-dependencies, node/no-unpublished-require
 const log = require('@vladmandic/pilogger');
 
 // workers actual import tfjs and faceapi modules

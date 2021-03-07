@@ -183,8 +183,8 @@ async function main() {
   log(`Version: FaceAPI ${str(faceapi?.version.faceapi || '(not loaded)')} TensorFlow/JS ${str(faceapi?.tf?.version_core || '(not loaded)')} Backend: ${str(faceapi?.tf?.getBackend() || '(not loaded)')}`);
   log(`Flags: ${JSON.stringify(faceapi?.tf?.ENV.flags || { tf: 'not loaded' })}`);
 
-  setupFaceAPI();
-  setupCamera();
+  await setupFaceAPI();
+  await setupCamera();
 }
 
 // start processing as soon as page is loaded

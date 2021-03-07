@@ -27,28 +27,13 @@ export class DetectAllFacesTask extends DetectFacesTaskBase<FaceDetection[]> {
   public async run(): Promise<FaceDetection[]> {
     const { input, options } = this;
 
-    // eslint-disable-next-line no-nested-ternary
-    const faceDetectionFunction = options instanceof TinyFaceDetectorOptions
-      // eslint-disable-next-line no-shadow
-      ? (input: TNetInput) => nets.tinyFaceDetector.locateFaces(input, options)
-      : (
-        // eslint-disable-next-line no-nested-ternary
-        options instanceof SsdMobilenetv1Options
-          // eslint-disable-next-line no-shadow
-          ? (input: TNetInput) => nets.ssdMobilenetv1.locateFaces(input, options)
-          : (
-            options instanceof TinyYolov2Options
-              // eslint-disable-next-line no-shadow
-              ? (input: TNetInput) => nets.tinyYolov2.locateFaces(input, options)
-              : null
-          )
-      );
+    let result;
+    if (options instanceof TinyFaceDetectorOptions) result = nets.tinyFaceDetector.locateFaces(input, options);
+    else if (options instanceof SsdMobilenetv1Options) result = nets.ssdMobilenetv1.locateFaces(input, options);
+    else if (options instanceof TinyYolov2Options) result = nets.tinyYolov2.locateFaces(input, options);
+    else throw new Error('detectFaces - expected options to be instance of TinyFaceDetectorOptions | SsdMobilenetv1Options | TinyYolov2Options');
 
-    if (!faceDetectionFunction) {
-      throw new Error('detectFaces - expected options to be instance of TinyFaceDetectorOptions | SsdMobilenetv1Options | MtcnnOptions | TinyYolov2Options');
-    }
-
-    return faceDetectionFunction(input);
+    return result;
   }
 
   private runAndExtendWithFaceDetections(): Promise<WithFaceDetection<{}>[]> {
@@ -87,9 +72,7 @@ export class DetectSingleFaceTask extends DetectFacesTaskBase<FaceDetection | un
     const faceDetections = await new DetectAllFacesTask(this.input, this.options);
     let faceDetectionWithHighestScore = faceDetections[0];
     faceDetections.forEach((faceDetection) => {
-      if (faceDetection.score > faceDetectionWithHighestScore.score) {
-        faceDetectionWithHighestScore = faceDetection;
-      }
+      if (faceDetection.score > faceDetectionWithHighestScore.score) faceDetectionWithHighestScore = faceDetection;
     });
     return faceDetectionWithHighestScore;
   }

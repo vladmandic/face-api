@@ -1221,7 +1221,7 @@
       ]
     },
     "src/factories/WithFaceLandmarks.ts": {
-      "bytes": 1643,
+      "bytes": 3192,
       "imports": [
         {
           "path": "src/classes/FaceDetection.ts",
@@ -1292,7 +1292,7 @@
       ]
     },
     "package.json": {
-      "bytes": 1878,
+      "bytes": 1914,
       "imports": []
     },
     "src/xception/extractParams.ts": {
@@ -1830,7 +1830,7 @@
       "imports": []
     },
     "src/ssdMobilenetv1/SsdMobilenetv1.ts": {
-      "bytes": 3675,
+      "bytes": 3652,
       "imports": [
         {
           "path": "dist/tfjs.esm.js",
@@ -2322,7 +2322,7 @@
       ]
     },
     "src/globalApi/DetectFacesTasks.ts": {
-      "bytes": 4604,
+      "bytes": 4124,
       "imports": [
         {
           "path": "src/factories/WithFaceDetection.ts",
@@ -2363,7 +2363,7 @@
       ]
     },
     "src/globalApi/detectFaces.ts": {
-      "bytes": 638,
+      "bytes": 624,
       "imports": [
         {
           "path": "src/ssdMobilenetv1/SsdMobilenetv1Options.ts",
@@ -2591,7 +2591,7 @@
       "imports": [],
       "exports": [],
       "inputs": {},
-      "bytes": 313700
+      "bytes": 315340
     },
     "dist/face-api.node-cpu.js": {
       "imports": [],
@@ -2860,7 +2860,7 @@
           "bytesInOutput": 420
         },
         "src/factories/WithFaceLandmarks.ts": {
-          "bytesInOutput": 333
+          "bytesInOutput": 784
         },
         "src/draw/DrawFaceLandmarks.ts": {
           "bytesInOutput": 1225
@@ -3043,7 +3043,7 @@
           "bytesInOutput": 752
         },
         "src/globalApi/DetectFacesTasks.ts": {
-          "bytesInOutput": 1343
+          "bytesInOutput": 1335
         },
         "src/globalApi/detectFaces.ts": {
           "bytesInOutput": 84
@@ -3067,7 +3067,7 @@
           "bytesInOutput": 443
         }
       },
-      "bytes": 82859
+      "bytes": 83302
     }
   }
 }

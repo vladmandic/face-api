@@ -14,6 +14,7 @@ const http2 = require('http2');
 const path = require('path');
 // eslint-disable-next-line node/no-unpublished-require, import/no-extraneous-dependencies
 const chokidar = require('chokidar');
+// eslint-disable-next-line node/no-unpublished-require, import/no-extraneous-dependencies
 const log = require('@vladmandic/pilogger');
 const build = require('./build.js');
 

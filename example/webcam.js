@@ -28,7 +28,7 @@ function drawFaces(canvas, data, fps) {
   if (!ctx) return;
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   // draw title
-  ctx.font = '1.4rem sans-serif';
+  ctx.font = '1.2rem sans-serif';
   ctx.fillStyle = 'white';
   ctx.fillText(`FPS: ${fps}`, 10, 25);
   for (const person of data) {
@@ -43,16 +43,18 @@ function drawFaces(canvas, data, fps) {
     ctx.globalAlpha = 1;
     // const expression = person.expressions.sort((a, b) => Object.values(a)[0] - Object.values(b)[0]);
     const expression = Object.entries(person.expressions).sort((a, b) => b[1] - a[1]);
-    ctx.fillText(`gender ${Math.round(100 * person.genderProbability)}% ${person.gender}`, person.detection.box.x, person.detection.box.y - 45);
-    ctx.fillText(`expression ${Math.round(100 * expression[0][1])}% ${expression[0][0]}`, person.detection.box.x, person.detection.box.y - 25);
-    ctx.fillText(`age ${Math.round(person.age)} years`, person.detection.box.x, person.detection.box.y - 5);
+    ctx.fillText(`gender ${Math.round(100 * person.genderProbability)}% ${person.gender}`, person.detection.box.x, person.detection.box.y - 60);
+    ctx.fillText(`expression ${Math.round(100 * expression[0][1])}% ${expression[0][0]}`, person.detection.box.x, person.detection.box.y - 42);
+    ctx.fillText(`age ${Math.round(person.age)} years`, person.detection.box.x, person.detection.box.y - 24);
+    ctx.fillText(`roll:${Math.trunc(1000 * person.angle.roll) / 1000} pitch:${Math.trunc(1000 * person.angle.pitch) / 1000} yaw:${Math.trunc(1000 * person.angle.yaw) / 1000}`, person.detection.box.x, person.detection.box.y - 6);
     // draw face points for each face
     ctx.fillStyle = 'lightblue';
     ctx.globalAlpha = 0.5;
     const pointSize = 2;
-    for (const pt of person.landmarks.positions) {
+    for (let i = 0; i < person.landmarks.positions.length; i++) {
       ctx.beginPath();
-      ctx.arc(pt.x, pt.y, pointSize, 0, 2 * Math.PI);
+      ctx.arc(person.landmarks.positions[i].x, person.landmarks.positions[i].y, pointSize, 0, 2 * Math.PI);
+      ctx.fillText(`${i}`, person.landmarks.positions[i].x + 4, person.landmarks.positions[i].y + 4);
       ctx.fill();
     }
   }

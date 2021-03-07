@@ -38,6 +38,7 @@ Unfortunately, changes ended up being too large for a simple pull request on ori
 - Added test/dev built-in HTTP & HTTPS Web server
 - Removed `mtcnn` and `tinyYolov2` models as they were non-functional in latest public version of `Face-API`  
   *If there is a demand, I can re-implement them back.*  
+- Added `face angle` calculations that returns `roll`, `yaw` and `pitch`  
 
 Which means valid models are **tinyFaceDetector** and **mobileNetv1**  
 
@@ -388,7 +389,7 @@ npm run build
 
 ## Face Mesh
 
-`FaceAPI` returns 68-point face mesh as detailed in the image below:
+`FaceAPI` landmark model returns 68-point face mesh as detailed in the image below:
 
 ![facemesh](example/facemesh.png)
 

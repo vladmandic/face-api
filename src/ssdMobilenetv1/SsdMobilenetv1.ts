@@ -30,10 +30,7 @@ export class SsdMobilenetv1 extends NeuralNetwork<NetParams> {
       const x = tf.sub(tf.mul(batchTensor, tf.scalar(0.007843137718737125)), tf.scalar(1)) as tf.Tensor4D;
       const features = mobileNetV1(x, params.mobilenetv1);
 
-      const {
-        boxPredictions,
-        classPredictions,
-      } = predictionLayer(features.out, features.conv11, params.prediction_layer);
+      const { boxPredictions, classPredictions } = predictionLayer(features.out, features.conv11, params.prediction_layer);
 
       return outputLayer(boxPredictions, classPredictions, params.output_layer);
     });

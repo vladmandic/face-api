@@ -205,7 +205,6 @@ function compile(fileNames, options) {
 async function build(f, msg) {
   log.info('Build: file', msg, f, 'target:', common.target);
   if (!es) es = await esbuild.startService();
-  // common build options
   try {
     // rebuild all target groups and types
     for (const [targetGroupName, targetGroup] of Object.entries(targets)) {

@@ -1221,7 +1221,7 @@
       ]
     },
     "src/factories/WithFaceLandmarks.ts": {
-      "bytes": 3288,
+      "bytes": 3592,
       "imports": [
         {
           "path": "src/classes/FaceDetection.ts",
@@ -2591,7 +2591,7 @@
       "imports": [],
       "exports": [],
       "inputs": {},
-      "bytes": 315437
+      "bytes": 315807
     },
     "dist/face-api.node-cpu.js": {
       "imports": [],
@@ -2860,7 +2860,7 @@
           "bytesInOutput": 420
         },
         "src/factories/WithFaceLandmarks.ts": {
-          "bytesInOutput": 784
+          "bytesInOutput": 829
         },
         "src/draw/DrawFaceLandmarks.ts": {
           "bytesInOutput": 1225
@@ -3067,7 +3067,7 @@
           "bytesInOutput": 443
         }
       },
-      "bytes": 83302
+      "bytes": 83347
     }
   }
 }

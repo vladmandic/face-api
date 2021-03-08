@@ -1221,7 +1221,7 @@
       ]
     },
     "src/factories/WithFaceLandmarks.ts": {
-      "bytes": 3288,
+      "bytes": 3592,
       "imports": [
         {
           "path": "src/classes/FaceDetection.ts",
@@ -2591,7 +2591,7 @@
       "imports": [],
       "exports": [],
       "inputs": {},
-      "bytes": 1466296
+      "bytes": 1466666
     },
     "dist/face-api.esm.js": {
       "imports": [],
@@ -2978,7 +2978,7 @@
           "bytesInOutput": 422
         },
         "src/factories/WithFaceLandmarks.ts": {
-          "bytesInOutput": 790
+          "bytesInOutput": 835
         },
         "src/draw/DrawFaceLandmarks.ts": {
           "bytesInOutput": 1228
@@ -3188,7 +3188,7 @@
           "bytesInOutput": 446
         }
       },
-      "bytes": 1127159
+      "bytes": 1127204
     }
   }
 }

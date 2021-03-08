@@ -525,6 +525,9 @@ export type WithFaceLandmarks<TSource> = TSource & {
   unshiftedLandmarks: FaceLandmarks
   landmarks: FaceLandmarks
   alignedRect: FaceDetection
+  angle: { roll: number, yaw: number, pitch: number }
+  // for angle all values are in radians in range of -pi/2 to pi/2 which is -90 to +90 degrees
+  // value of 0 means center
 }
 ```
 

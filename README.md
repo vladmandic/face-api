@@ -1,10 +1,10 @@
-# FaceAPI
-
 ![Version](https://img.shields.io/github/package-json/v/vladmandic/face-api?style=flat-square)
 ![Last Commit](https://img.shields.io/github/last-commit/vladmandic/face-api?style=flat-square)
 ![License](https://img.shields.io/github/license/vladmandic/face-api?style=flat-square)
 ![GitHub Status Checks](https://img.shields.io/github/checks-status/vladmandic/face-api/master?style=flat-square])
 ![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/github/vladmandic/face-api?style=flat-square)
+
+# FaceAPI
 
 **Face detection and recognition libary for Browser and NodeJS implemented on top of TensorFlow/JS**
 

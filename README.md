@@ -1,5 +1,11 @@
 # FaceAPI
 
+![Version](https://img.shields.io/github/package-json/v/vladmandic/face-api?style=flat-square)
+![Last Commit](https://img.shields.io/github/last-commit/vladmandic/face-api?style=flat-square)
+![License](https://img.shields.io/github/license/vladmandic/face-api?style=flat-square)
+![GitHub Status Checks](https://img.shields.io/github/checks-status/vladmandic/face-api/master?style=flat-square])
+![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/github/vladmandic/face-api?style=flat-square)
+
 **Face detection and recognition libary for Browser and NodeJS implemented on top of TensorFlow/JS**
 
 <br>
@@ -409,3 +415,10 @@ npm run build
 - Original project: [Face-API](https://github.com/justadudewhohacks/face-api.js)  
 - Original model weighs: [Face-API](https://github.com/justadudewhohacks/face-api.js-models)
 - ML API Documentation: [Tensorflow/JS](https://js.tensorflow.org/api/latest/)
+
+<br>
+
+![Downloads](https://img.shields.io/npm/dm/@vladmandic/face-api?style=flat-square)
+![Stars](https://img.shields.io/github/stars/vladmandic/face-api?style=flat-square)
+![Code Size](https://img.shields.io/github/languages/code-size/vladmandic/face-api?style=flat-square)
+![Commit Activity](https://img.shields.io/github/commit-activity/m/vladmandic/face-api?style=flat-square)

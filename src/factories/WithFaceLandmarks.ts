@@ -6,9 +6,10 @@ import { isWithFaceDetection, WithFaceDetection } from './WithFaceDetection';
 export type WithFaceLandmarks<
   TSource extends WithFaceDetection<{}>,
   TFaceLandmarks extends FaceLandmarks = FaceLandmarks68 > = TSource & {
-    landmarks: TFaceLandmarks
-    unshiftedLandmarks: TFaceLandmarks
-    alignedRect: FaceDetection
+    landmarks: TFaceLandmarks,
+    unshiftedLandmarks: TFaceLandmarks,
+    alignedRect: FaceDetection,
+    angle: { roll: number | undefined, pitch: number | undefined, yaw: number | undefined },
   }
 
 export function isWithFaceLandmarks(obj: any): obj is WithFaceLandmarks<WithFaceDetection<{}>, FaceLandmarks> {

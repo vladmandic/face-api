@@ -1221,7 +1221,7 @@
       ]
     },
     "src/factories/WithFaceLandmarks.ts": {
-      "bytes": 3192,
+      "bytes": 3288,
       "imports": [
         {
           "path": "src/classes/FaceDetection.ts",
@@ -2591,7 +2591,7 @@
       "imports": [],
       "exports": [],
       "inputs": {},
-      "bytes": 315341
+      "bytes": 315438
     },
     "dist/face-api.node.js": {
       "imports": [],

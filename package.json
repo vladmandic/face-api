@@ -1,6 +1,6 @@
 {
   "name": "@vladmandic/face-api",
-  "version": "0.30.6",
+  "version": "1.0.0",
   "description": "FaceAPI: AI-powered Face Detection, Face Embedding & Recognition Using Tensorflow/JS",
   "main": "dist/face-api.node.js",
   "module": "dist/face-api.esm.js",
@@ -12,8 +12,9 @@
   "scripts": {
     "start": "node --trace-warnings example/node-singleprocess.js",
     "dev": "npm install && node server/serve.js",
-    "build": "rimraf dist/* types/* && node server/build.js",
-    "lint": "eslint src/**/* example/*.js server/*.js"
+    "build": "rimraf dist/* types/* && node server/build.js && node server/changelog.js",
+    "lint": "eslint src/**/* example/*.js server/*.js",
+    "test": "eslint src/**/* example/*.js server/*.js"
   },
   "keywords": [
     "tensorflow",
@@ -38,8 +39,7 @@
   "bugs": {
     "url": "https://github.com/vladmandic/face-api/issues"
   },
-  "homepage": "https://github.com/vladmandic/face-api#readme",
-  "dependencies": {},
+  "homepage": "https://vladmandic.github.io/face-api/example/webcam.html",
   "peerDependencies": {},
   "devDependencies": {
     "@tensorflow/tfjs": "^3.2.0",
@@ -51,6 +51,7 @@
     "@typescript-eslint/parser": "^4.16.1",
     "@vladmandic/pilogger": "^0.2.14",
     "chokidar": "^3.5.1",
+    "dayjs": "^1.10.4",
     "esbuild": "^0.8.56",
     "eslint": "^7.21.0",
     "eslint-config-airbnb-base": "^14.2.1",
@@ -59,6 +60,7 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.3.1",
     "rimraf": "^3.0.2",
+    "simple-git": "^2.36.1",
     "tslib": "^2.1.0",
     "typescript": "^4.2.3"
   }

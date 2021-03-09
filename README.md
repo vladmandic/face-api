@@ -158,7 +158,7 @@ Reason for additional `nobundle` version is if you want to include a specific ve
 
 `FaceAPI` is compatible with TFJS 2.0+  
 
-All versions include `sourcemap` and `asset manifest`
+All versions include `sourcemap`
 
 <br>
 <hr>

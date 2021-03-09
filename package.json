@@ -2,12 +2,23 @@
   "name": "@vladmandic/face-api",
   "version": "1.0.1",
   "description": "FaceAPI: AI-powered Face Detection, Face Embedding & Recognition Using Tensorflow/JS",
+  "sideEffects": false,
   "main": "dist/face-api.node.js",
   "module": "dist/face-api.esm.js",
   "browser": "dist/face-api.esm.js",
   "types": "types/index.d.ts",
+  "author": "Vladimir Mandic <mandic00@live.com>",
+  "bugs": {
+    "url": "https://github.com/vladmandic/face-api/issues"
+  },
+  "homepage": "https://vladmandic.github.io/face-api/example/webcam.html",
+  "license": "MIT",
   "engines": {
     "node": ">=12.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vladmandic/face-api.git"
   },
   "scripts": {
     "start": "node --trace-warnings example/node-singleprocess.js",
@@ -27,19 +38,6 @@
     "emotion-detection",
     "face-recognition"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/vladmandic/face-api.git"
-  },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
-  },
-  "author": "Vladimir Mandic <mandic00@live.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/vladmandic/face-api/issues"
-  },
-  "homepage": "https://vladmandic.github.io/face-api/example/webcam.html",
   "peerDependencies": {},
   "devDependencies": {
     "@tensorflow/tfjs": "^3.2.0",

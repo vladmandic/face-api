@@ -1,6 +1,6 @@
 {
   "name": "@vladmandic/face-api",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "FaceAPI: AI-powered Face Detection, Face Embedding & Recognition Using Tensorflow/JS",
   "main": "dist/face-api.node.js",
   "module": "dist/face-api.esm.js",

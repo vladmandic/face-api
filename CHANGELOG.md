@@ -11,6 +11,11 @@ Repository: **<git+https://github.com/vladmandic/face-api.git>**
 
 ### **HEAD -> master** 2021/03/08 mandic00@live.com
 
+- add badges
+- optimize for npm
+
+### **0.30.6** 2021/03/08 mandic00@live.com
+
 - added typings for face angle
 - disable landmark printing
 

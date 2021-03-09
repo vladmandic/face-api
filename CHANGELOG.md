@@ -1,6 +1,6 @@
 # @vladmandic/face-api  
 
-Version: **1.0.0**  
+Version: **1.0.1**  
 Description: **FaceAPI: AI-powered Face Detection, Face Embedding & Recognition Using Tensorflow/JS**  
 
 Author: **Vladimir Mandic <mandic00@live.com>**  
@@ -9,7 +9,7 @@ Repository: **<git+https://github.com/vladmandic/face-api.git>**
 
 ## Changelog
 
-### **HEAD -> master** 2021/03/08 mandic00@live.com
+### **1.0.1** 2021/03/09 mandic00@live.com
 
 - add badges
 - optimize for npm

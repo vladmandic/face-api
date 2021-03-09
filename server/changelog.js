@@ -1,7 +1,10 @@
 const fs = require('fs');
 const path = require('path');
+// eslint-disable-next-line node/no-unpublished-require, import/no-extraneous-dependencies
 const dayjs = require('dayjs');
+// eslint-disable-next-line node/no-unpublished-require, import/no-extraneous-dependencies
 const simpleGit = require('simple-git/promise');
+// eslint-disable-next-line node/no-unpublished-require, import/no-extraneous-dependencies
 const logger = require('@vladmandic/pilogger');
 const app = require('../package.json');
 

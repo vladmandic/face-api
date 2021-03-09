@@ -4,20 +4,17 @@
 /* eslint-disable node/no-unpublished-require */
 /* eslint-disable node/shebang */
 
-const fs = require('fs');
 const esbuild = require('esbuild');
 const ts = require('typescript');
 const log = require('@vladmandic/pilogger');
 
-// keeps esbuild service instance cached
-let es;
-const banner = `
+const banner = { js: `
   /*
   Face-API
   homepage: <https://github.com/vladmandic/face-api>
   author: <https://github.com/vladmandic>'
   */
-`;
+` };
 
 // tsc configuration
 const tsconfig = {
@@ -46,6 +43,7 @@ const common = {
   minifySyntax: true,
   bundle: true,
   sourcemap: true,
+  metafile: true,
   logLevel: 'error',
   target: 'es2018',
   // tsconfig: './tsconfig.json',
@@ -56,7 +54,6 @@ const targets = {
     tfjs: {
       platform: 'node',
       format: 'cjs',
-      metafile: 'dist/tfjs.esm.json',
       entryPoints: ['src/tfjs/tf-node.ts'],
       outfile: 'dist/tfjs.esm.js',
       external: ['@tensorflow'],
@@ -64,7 +61,6 @@ const targets = {
     node: {
       platform: 'node',
       format: 'cjs',
-      metafile: 'dist/face-api.node.json',
       entryPoints: ['src/index.ts'],
       outfile: 'dist/face-api.node.js',
       external: ['@tensorflow'],
@@ -76,7 +72,6 @@ const targets = {
       format: 'cjs',
       entryPoints: ['src/tfjs/tf-node-gpu.ts'],
       outfile: 'dist/tfjs.esm.js',
-      metafile: 'dist/tfjs.esm.json',
       external: ['@tensorflow'],
     },
     node: {
@@ -84,7 +79,6 @@ const targets = {
       format: 'cjs',
       entryPoints: ['src/index.ts'],
       outfile: 'dist/face-api.node-gpu.js',
-      metafile: 'dist/face-api.node-gpu.json',
       external: ['@tensorflow'],
     },
   },
@@ -92,7 +86,6 @@ const targets = {
     tfjs: {
       platform: 'node',
       format: 'cjs',
-      metafile: 'dist/tfjs.esm.json',
       entryPoints: ['src/tfjs/tf-node-cpu.ts'],
       outfile: 'dist/tfjs.esm.js',
       external: ['@tensorflow'],
@@ -100,7 +93,6 @@ const targets = {
     node: {
       platform: 'node',
       format: 'cjs',
-      metafile: 'dist/face-api.node-cpu.json',
       entryPoints: ['src/index.ts'],
       outfile: 'dist/face-api.node-cpu.js',
       external: ['@tensorflow'],
@@ -112,7 +104,6 @@ const targets = {
       format: 'esm',
       entryPoints: ['src/tfjs/tf-browser.ts'],
       outfile: 'dist/tfjs.esm.js',
-      metafile: 'dist/tfjs.esm.json',
       external: ['fs', 'buffer', 'util', 'os', '@tensorflow'],
     },
     esm: {
@@ -120,7 +111,6 @@ const targets = {
       format: 'esm',
       entryPoints: ['src/index.ts'],
       outfile: 'dist/face-api.esm-nobundle.js',
-      metafile: 'dist/face-api.esm-nobundle.json',
       external: ['fs', 'buffer', 'util', 'os', '@tensorflow', 'tfjs.esm.js'],
     },
   },
@@ -130,7 +120,6 @@ const targets = {
       format: 'esm',
       entryPoints: ['src/tfjs/tf-browser.ts'],
       outfile: 'dist/tfjs.esm.js',
-      metafile: 'dist/tfjs.esm.json',
       external: ['fs', 'buffer', 'util', 'os'],
     },
     iife: {
@@ -139,7 +128,6 @@ const targets = {
       globalName: 'faceapi',
       entryPoints: ['src/index.ts'],
       outfile: 'dist/face-api.js',
-      metafile: 'dist/face-api.json',
       external: ['fs', 'buffer', 'util', 'os'],
     },
     esm: {
@@ -147,19 +135,15 @@ const targets = {
       format: 'esm',
       entryPoints: ['src/index.ts'],
       outfile: 'dist/face-api.esm.js',
-      metafile: 'dist/face-api.esm.json',
       external: ['fs', 'buffer', 'util', 'os'],
     },
   },
 };
 
-async function getStats(metafile) {
+async function getStats(json) {
   const stats = {};
-  if (!fs.existsSync(metafile)) return stats;
-  const data = fs.readFileSync(metafile);
-  const json = JSON.parse(data.toString());
-  if (json && json.inputs && json.outputs) {
-    for (const [key, val] of Object.entries(json.inputs)) {
+  if (json && json.metafile.inputs && json.metafile.outputs) {
+    for (const [key, val] of Object.entries(json.metafile.inputs)) {
       if (key.startsWith('node_modules')) {
         stats.modules = (stats.modules || 0) + 1;
         stats.moduleBytes = (stats.moduleBytes || 0) + val.bytes;
@@ -169,7 +153,7 @@ async function getStats(metafile) {
       }
     }
     const files = [];
-    for (const [key, val] of Object.entries(json.outputs)) {
+    for (const [key, val] of Object.entries(json.metafile.outputs)) {
       if (!key.endsWith('.map')) {
         files.push(key);
         stats.outputBytes = (stats.outputBytes || 0) + val.bytes;
@@ -204,15 +188,15 @@ function compile(fileNames, options) {
 // rebuild on file change
 async function build(f, msg) {
   log.info('Build: file', msg, f, 'target:', common.target);
-  if (!es) es = await esbuild.startService();
   try {
     // rebuild all target groups and types
     for (const [targetGroupName, targetGroup] of Object.entries(targets)) {
       for (const [targetName, targetOptions] of Object.entries(targetGroup)) {
         // if triggered from watch mode, rebuild only browser bundle
         if ((require.main !== module) && (targetGroupName !== 'browserBundle')) continue;
-        await es.build({ ...common, ...targetOptions });
-        const stats = await getStats(targetOptions.metafile);
+        // @ts-ignore
+        const meta = await esbuild.build({ ...common, ...targetOptions });
+        const stats = await getStats(meta);
         log.state(`Build for: ${targetGroupName} type: ${targetName}:`, stats);
       }
     }

@@ -17,7 +17,6 @@
 ## Note
 
 This is updated **face-api.js** with latest available TensorFlow/JS as the original face-api.js is not compatible with **tfjs 2.0+**.  
-
 Forked from [face-api.js](https://github.com/justadudewhohacks/face-api.js) version **0.22.2** which was released on March 22nd, 2020  
 
 Currently based on **`TensorFlow/JS` 3.3.0**  
@@ -27,36 +26,9 @@ Currently based on **`TensorFlow/JS` 3.3.0**
 Because I needed Face-API that does not cause version conflict with newer TFJS 2.0 that I use accross my projects  
 And since original Face-API was open-source, I've released this version as well  
 
-Unfortunately, changes ended up being too large for a simple pull request on original Face-API and it ended up being a full-fledged version on its own  
+Changes ended up being too large for a simple pull request on original Face-API and it ended up being a full-fledged version on its own  
 
-### Differences
-
-- Compatible with `TensorFlow/JS 2.0+ & 3.0+`  
-- Compatible with `WebGL`, `CPU` and `WASM` TFJS Browser backends
-- Compatible with both `tfjs-node` and `tfjs-node-gpu` TFJS NodeJS backends
-- Updated all type castings for TypeScript type checking to `TypeScript 4.1`  
-- Switched bundling from `UMD` to `ESM` + `CommonJS` with fallback to `IIFE`  
-  Resulting code is optimized per-platform instead of being universal  
-  Fully tree shakable when imported as an `ESM` module  
-  Browser bundle process uses `ESBuild` instead of `Rollup`  
-- Typescript build process now targets `ES2018` and instead of dual ES5/ES6  
-  Resulting code is clean ES2018 JavaScript without polyfills  
-- Removed old tests, docs, examples  
-- Removed old package dependencies (`karma`, `jasmine`, `babel`, etc.)  
-- Updated all package dependencies  
-- Updated TensorFlow/JS dependencies since backends were removed from `@tensorflow/tfjs-core`  
-- Updated mobileNetv1 model due to `batchNorm()` dependency  
-- Added `version` class that returns JSON object with version of FaceAPI as well as linked TFJS  
-- Added test/dev built-in HTTP & HTTPS Web server
-- Removed `mtcnn` and `tinyYolov2` models as they were non-functional in latest public version of `Face-API`  
-  *If there is a demand, I can re-implement them back.*  
-- Added `face angle` calculations that returns `roll`, `yaw` and `pitch`  
-
-Which means valid models are **tinyFaceDetector** and **mobileNetv1**  
-
-<br>
-<hr>
-<br>
+<br><hr><br>
 
 ## Examples
 
@@ -64,11 +36,14 @@ Which means valid models are **tinyFaceDetector** and **mobileNetv1**
 
 ### Browser
 
-Browser example that uses static images and showcases both models as well as all of the extensions is included in `/example/index.html`  
-Example can be accessed directly using Git pages using URL: <https://vladmandic.github.io/face-api/example/index.html>  
+Browser example that uses static images and showcases both models  
+as well as all of the extensions is included in `/example/index.html`  
+Example can be accessed directly using Git pages using URL:  
+<https://vladmandic.github.io/face-api/example/index.html>  
 
 Browser example that uses live webcam is included in `/example/webcam.html`  
-Example can be accessed directly using Git pages using URL: <https://vladmandic.github.io/face-api/example/webcam.html>  
+Example can be accessed directly using Git pages using URL:  
+<https://vladmandic.github.io/face-api/example/webcam.html>  
 
 
 <br>
@@ -121,9 +96,7 @@ Two NodeJS examples are:
 
 Note that `@tensorflow/tfjs-node` or `@tensorflow/tfjs-node-gpu` must be installed before using NodeJS example
 
-<br>
-<hr>
-<br>
+<br><hr><br>
 
 ## Installation
 
@@ -286,7 +259,10 @@ And then use with:
   const faceapi = require('@vladmandic/face-api/dist/face-api.node-cpu.js');
 ```
 
-If you want to use graphical functions inside NodeJS, you must provide appropriate graphical library as NodeJS does not include implementation for DOM elements such as HTMLImageElement or HTMLCanvasElement:
+If you want to use graphical functions inside NodeJS,  
+you must provide appropriate graphical library as  
+NodeJS does not include implementation for DOM elements  
+such as HTMLImageElement or HTMLCanvasElement:
 
 Install `Canvas` for NodeJS:
 
@@ -409,6 +385,31 @@ npm run build
 
 - [**Tutorial**](TUTORIAL.md)
 - [**API Documentation**](https://justadudewhohacks.github.io/face-api.js/docs/globals.html)
+
+## Differences
+
+- Compatible with `TensorFlow/JS 2.0+ & 3.0+`  
+- Compatible with `WebGL`, `CPU` and `WASM` TFJS Browser backends
+- Compatible with both `tfjs-node` and `tfjs-node-gpu` TFJS NodeJS backends
+- Updated all type castings for TypeScript type checking to `TypeScript 4.1`  
+- Switched bundling from `UMD` to `ESM` + `CommonJS` with fallback to `IIFE`  
+  Resulting code is optimized per-platform instead of being universal  
+  Fully tree shakable when imported as an `ESM` module  
+  Browser bundle process uses `ESBuild` instead of `Rollup`  
+- Typescript build process now targets `ES2018` and instead of dual ES5/ES6  
+  Resulting code is clean ES2018 JavaScript without polyfills  
+- Removed old tests, docs, examples  
+- Removed old package dependencies (`karma`, `jasmine`, `babel`, etc.)  
+- Updated all package dependencies  
+- Updated TensorFlow/JS dependencies since backends were removed from `@tensorflow/tfjs-core`  
+- Updated mobileNetv1 model due to `batchNorm()` dependency  
+- Added `version` class that returns JSON object with version of FaceAPI as well as linked TFJS  
+- Added test/dev built-in HTTP & HTTPS Web server
+- Removed `mtcnn` and `tinyYolov2` models as they were non-functional in latest public version of `Face-API`  
+  *If there is a demand, I can re-implement them back.*  
+- Added `face angle` calculations that returns `roll`, `yaw` and `pitch`  
+
+Which means valid models are **tinyFaceDetector** and **mobileNetv1**  
 
 ## Credits
 

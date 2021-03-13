@@ -16,17 +16,17 @@
 
 ## Note
 
-This is updated **face-api.js** with latest available TensorFlow/JS as the original face-api.js is not compatible with **tfjs 2.0+**.  
+This is updated **face-api.js** with latest available TensorFlow/JS as the original is not compatible with **tfjs 2.0+**.  
 Forked from [face-api.js](https://github.com/justadudewhohacks/face-api.js) version **0.22.2** which was released on March 22nd, 2020  
 
 Currently based on **`TensorFlow/JS` 3.3.0**  
 
-### Why?
-
-Because I needed Face-API that does not cause version conflict with newer TFJS 2.0 that I use accross my projects  
+*Why?* I needed Face-API that does not cause version conflict with newer versions of TensorFlow  
 And since original Face-API was open-source, I've released this version as well  
 
-Changes ended up being too large for a simple pull request on original Face-API and it ended up being a full-fledged version on its own  
+Changes ended up being too large for a simple pull request  
+and it ended up being a full-fledged version on its own  
+Plus many features were added since original inception  
 
 <br><hr><br>
 
@@ -381,10 +381,14 @@ npm run build
 
 ![facemesh](example/facemesh.png)
 
+<br>
+
 ## Documentation
 
 - [**Tutorial**](TUTORIAL.md)
 - [**API Documentation**](https://justadudewhohacks.github.io/face-api.js/docs/globals.html)
+
+<br>
 
 ## Differences
 
@@ -410,6 +414,8 @@ npm run build
 - Added `face angle` calculations that returns `roll`, `yaw` and `pitch`  
 
 Which means valid models are **tinyFaceDetector** and **mobileNetv1**  
+
+<br>
 
 ## Credits
 

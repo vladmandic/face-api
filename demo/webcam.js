@@ -1,7 +1,8 @@
 import * as faceapi from '../dist/face-api.esm.js';
 
 // configuration options
-const modelPath = 'https://vladmandic.github.io/face-api/model/'; // path to model folder that will be loaded using http
+const modelPath = '../model/'; // path to model folder that will be loaded using http
+// const modelPath = 'https://vladmandic.github.io/face-api/model/'; // path to model folder that will be loaded using http
 const minScore = 0.2; // minimum score
 const maxResults = 5; // maximum number of results to return
 let optionsSSDMobileNet;
@@ -28,7 +29,7 @@ function drawFaces(canvas, data, fps) {
   if (!ctx) return;
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   // draw title
-  ctx.font = '1.2rem sans-serif';
+  ctx.font = 'small-caps 20px "Segoe UI"';
   ctx.fillStyle = 'white';
   ctx.fillText(`FPS: ${fps}`, 10, 25);
   for (const person of data) {
@@ -36,20 +37,26 @@ function drawFaces(canvas, data, fps) {
     ctx.lineWidth = 3;
     ctx.strokeStyle = 'deepskyblue';
     ctx.fillStyle = 'deepskyblue';
-    ctx.globalAlpha = 0.4;
+    ctx.globalAlpha = 0.6;
     ctx.beginPath();
     ctx.rect(person.detection.box.x, person.detection.box.y, person.detection.box.width, person.detection.box.height);
     ctx.stroke();
     ctx.globalAlpha = 1;
     // const expression = person.expressions.sort((a, b) => Object.values(a)[0] - Object.values(b)[0]);
     const expression = Object.entries(person.expressions).sort((a, b) => b[1] - a[1]);
-    ctx.fillText(`gender ${Math.round(100 * person.genderProbability)}% ${person.gender}`, person.detection.box.x, person.detection.box.y - 60);
-    ctx.fillText(`expression ${Math.round(100 * expression[0][1])}% ${expression[0][0]}`, person.detection.box.x, person.detection.box.y - 42);
-    ctx.fillText(`age ${Math.round(person.age)} years`, person.detection.box.x, person.detection.box.y - 24);
+    ctx.fillStyle = 'black';
+    ctx.fillText(`gender: ${Math.round(100 * person.genderProbability)}% ${person.gender}`, person.detection.box.x, person.detection.box.y - 59);
+    ctx.fillText(`expression: ${Math.round(100 * expression[0][1])}% ${expression[0][0]}`, person.detection.box.x, person.detection.box.y - 41);
+    ctx.fillText(`age: ${Math.round(person.age)} years`, person.detection.box.x, person.detection.box.y - 23);
+    ctx.fillText(`roll:${person.angle.roll.toFixed(3)} pitch:${person.angle.pitch.toFixed(3)} yaw:${person.angle.yaw.toFixed(3)}`, person.detection.box.x, person.detection.box.y - 5);
+    ctx.fillStyle = 'lightblue';
+    ctx.fillText(`gender: ${Math.round(100 * person.genderProbability)}% ${person.gender}`, person.detection.box.x, person.detection.box.y - 60);
+    ctx.fillText(`expression: ${Math.round(100 * expression[0][1])}% ${expression[0][0]}`, person.detection.box.x, person.detection.box.y - 42);
+    ctx.fillText(`age: ${Math.round(person.age)} years`, person.detection.box.x, person.detection.box.y - 24);
     ctx.fillText(`roll:${person.angle.roll.toFixed(3)} pitch:${person.angle.pitch.toFixed(3)} yaw:${person.angle.yaw.toFixed(3)}`, person.detection.box.x, person.detection.box.y - 6);
     // draw face points for each face
+    ctx.globalAlpha = 0.8;
     ctx.fillStyle = 'lightblue';
-    ctx.globalAlpha = 0.5;
     const pointSize = 2;
     for (let i = 0; i < person.landmarks.positions.length; i++) {
       ctx.beginPath();
@@ -118,7 +125,10 @@ async function setupCamera() {
   }
   const track = stream.getVideoTracks()[0];
   const settings = track.getSettings();
-  log(`Camera active: ${track.label} ${str(constraints)}`);
+  if (settings.deviceId) delete settings.deviceId;
+  if (settings.groupId) delete settings.groupId;
+  if (settings.aspectRatio) settings.aspectRatio = Math.trunc(100 * settings.aspectRatio) / 100;
+  log(`Camera active: ${track.label}`); // ${str(constraints)}
   log(`Camera settings: ${str(settings)}`);
   canvas.addEventListener('click', () => {
     // @ts-ignore
@@ -152,7 +162,7 @@ async function setupCamera() {
 
 async function setupFaceAPI() {
   // load face-api models
-  log('Models loading');
+  // log('Models loading');
   await faceapi.nets.tinyFaceDetector.load(modelPath);
   await faceapi.nets.ssdMobilenetv1.load(modelPath);
   await faceapi.nets.ageGenderNet.load(modelPath);
@@ -162,8 +172,7 @@ async function setupFaceAPI() {
   optionsSSDMobileNet = new faceapi.SsdMobilenetv1Options({ minConfidence: minScore, maxResults });
 
   // check tf engine state
-  const engine = await faceapi.tf.engine();
-  log(`Models loaded: ${str(engine.state)}`);
+  log(`Models loaded: ${str(faceapi.tf.engine().state.numTensors)} tensors`);
 }
 
 async function main() {
@@ -183,7 +192,7 @@ async function main() {
 
   // check version
   log(`Version: FaceAPI ${str(faceapi?.version.faceapi || '(not loaded)')} TensorFlow/JS ${str(faceapi?.tf?.version_core || '(not loaded)')} Backend: ${str(faceapi?.tf?.getBackend() || '(not loaded)')}`);
-  log(`Flags: ${JSON.stringify(faceapi?.tf?.ENV.flags || { tf: 'not loaded' })}`);
+  // log(`Flags: ${JSON.stringify(faceapi?.tf?.ENV.flags || { tf: 'not loaded' })}`);
 
   await setupFaceAPI();
   await setupCamera();

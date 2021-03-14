@@ -17,7 +17,7 @@
 ## Documentation
 
 - [**Tutorial**](TUTORIAL.md)
-- [**API Specification**](https://justadudewhohacks.github.io/face-api.js/docs/globals.html)
+- [**API Specification**](https://vladmandic.github.io/face-api/typedoc/index.html)
 
 <br>
 

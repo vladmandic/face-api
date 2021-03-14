@@ -163,7 +163,7 @@ async function setupCamera() {
 async function setupFaceAPI() {
   // load face-api models
   // log('Models loading');
-  await faceapi.nets.tinyFaceDetector.load(modelPath);
+  // await faceapi.nets.tinyFaceDetector.load(modelPath); // using ssdMobilenetv1
   await faceapi.nets.ssdMobilenetv1.load(modelPath);
   await faceapi.nets.ageGenderNet.load(modelPath);
   await faceapi.nets.faceLandmark68Net.load(modelPath);

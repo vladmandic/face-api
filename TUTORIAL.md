@@ -1,4 +1,4 @@
-# FaceAPI Usage
+# FaceAPI Tutorial
 
 ## Features
 
@@ -38,7 +38,7 @@
 
 All global neural network instances are exported via faceapi.nets:
 
-``` javascript
+```js
 console.log(faceapi.nets)
 // ageGenderNet
 // faceExpressionNet
@@ -54,7 +54,7 @@ To load a model, you have to provide the corresponding manifest.json file as wel
 
 Assuming the models reside in **public/models**:
 
-``` javascript
+```js
 await faceapi.nets.ssdMobilenetv1.loadFromUri('/models')
 // accordingly for the other models:
 // await faceapi.nets.faceLandmark68Net.loadFromUri('/models')
@@ -64,26 +64,26 @@ await faceapi.nets.ssdMobilenetv1.loadFromUri('/models')
 
 In a nodejs environment you can furthermore load the models directly from disk:
 
-``` javascript
+```js
 await faceapi.nets.ssdMobilenetv1.loadFromDisk('./models')
 ```
 
 You can also load the model from a tf.NamedTensorMap:
 
-``` javascript
+```js
 await faceapi.nets.ssdMobilenetv1.loadFromWeightMap(weightMap)
 ```
 
 Alternatively, you can also create own instances of the neural nets:
 
-``` javascript
+```js
 const net = new faceapi.SsdMobilenetv1()
 await net.loadFromUri('/models')
 ```
 
 You can also load the weights as a Float32Array (in case you want to use the uncompressed models):
 
-``` javascript
+```js
 // using fetch
 net.load(await faceapi.fetchNetWeights('/models/face_detection_model.weights'))
 
@@ -105,7 +105,7 @@ In the following **input** can be an HTML img, video or canvas element or the id
 <canvas id="myCanvas" />
 ```
 
-``` javascript
+```js
 const input = document.getElementById('myImg')
 // const input = document.getElementById('myVideo')
 // const input = document.getElementById('myCanvas')
@@ -117,19 +117,19 @@ const input = document.getElementById('myImg')
 
 Detect all faces in an image. Returns **Array<[FaceDetection](#interface-face-detection)>**:
 
-``` javascript
+```js
 const detections = await faceapi.detectAllFaces(input)
 ```
 
 Detect the face with the highest confidence score in an image. Returns **[FaceDetection](#interface-face-detection) | undefined**:
 
-``` javascript
+```js
 const detection = await faceapi.detectSingleFace(input)
 ```
 
 By default **detectAllFaces** and **detectSingleFace** utilize the SSD Mobilenet V1 Face Detector. You can specify the face detector by passing the corresponding options object:
 
-``` javascript
+```js
 const detections1 = await faceapi.detectAllFaces(input, new faceapi.SsdMobilenetv1Options())
 const detections2 = await faceapi.detectAllFaces(input, new faceapi.TinyFaceDetectorOptions())
 ```
@@ -142,19 +142,19 @@ You can tune the options of each face detector as shown [here](#getting-started-
 
 Detect all faces in an image + computes 68 Point Face Landmarks for each detected face. Returns **Array<[WithFaceLandmarks<WithFaceDetection<{}>>](#getting-started-utility-classes)>**:
 
-``` javascript
+```js
 const detectionsWithLandmarks = await faceapi.detectAllFaces(input).withFaceLandmarks()
 ```
 
 Detect the face with the highest confidence score in an image + computes 68 Point Face Landmarks for that face. Returns **[WithFaceLandmarks<WithFaceDetection<{}>>](#getting-started-utility-classes) | undefined**:
 
-``` javascript
+```js
 const detectionWithLandmarks = await faceapi.detectSingleFace(input).withFaceLandmarks()
 ```
 
 You can also specify to use the tiny model instead of the default model:
 
-``` javascript
+```js
 const useTinyModel = true
 const detectionsWithLandmarks = await faceapi.detectAllFaces(input).withFaceLandmarks(useTinyModel)
 ```
@@ -165,13 +165,13 @@ const detectionsWithLandmarks = await faceapi.detectAllFaces(input).withFaceLand
 
 Detect all faces in an image + compute 68 Point Face Landmarks for each detected face. Returns **Array<[WithFaceDescriptor<WithFaceLandmarks<WithFaceDetection<{}>>>](#getting-started-utility-classes)>**:
 
-``` javascript
+```js
 const results = await faceapi.detectAllFaces(input).withFaceLandmarks().withFaceDescriptors()
 ```
 
 Detect the face with the highest confidence score in an image + compute 68 Point Face Landmarks and face descriptor for that face. Returns **[WithFaceDescriptor<WithFaceLandmarks<WithFaceDetection<{}>>>](#getting-started-utility-classes) | undefined**:
 
-``` javascript
+```js
 const result = await faceapi.detectSingleFace(input).withFaceLandmarks().withFaceDescriptor()
 ```
 
@@ -181,13 +181,13 @@ const result = await faceapi.detectSingleFace(input).withFaceLandmarks().withFac
 
 Detect all faces in an image + recognize face expressions of each face. Returns **Array<[WithFaceExpressions<WithFaceLandmarks<WithFaceDetection<{}>>>](#getting-started-utility-classes)>**:
 
-``` javascript
+```js
 const detectionsWithExpressions = await faceapi.detectAllFaces(input).withFaceLandmarks().withFaceExpressions()
 ```
 
 Detect the face with the highest confidence score in an image + recognize the face expressions for that face. Returns **[WithFaceExpressions<WithFaceLandmarks<WithFaceDetection<{}>>>](#getting-started-utility-classes) | undefined**:
 
-``` javascript
+```js
 const detectionWithExpressions = await faceapi.detectSingleFace(input).withFaceLandmarks().withFaceExpressions()
 ```
 
@@ -195,13 +195,13 @@ const detectionWithExpressions = await faceapi.detectSingleFace(input).withFaceL
 
 Detect all faces without face alignment + recognize face expressions of each face. Returns **Array<[WithFaceExpressions<WithFaceDetection<{}>>](#getting-started-utility-classes)>**:
 
-``` javascript
+```js
 const detectionsWithExpressions = await faceapi.detectAllFaces(input).withFaceExpressions()
 ```
 
 Detect the face with the highest confidence score without face alignment + recognize the face expression for that face. Returns **[WithFaceExpressions<WithFaceDetection<{}>>](#getting-started-utility-classes) | undefined**:
 
-``` javascript
+```js
 const detectionWithExpressions = await faceapi.detectSingleFace(input).withFaceExpressions()
 ```
 
@@ -211,13 +211,13 @@ const detectionWithExpressions = await faceapi.detectSingleFace(input).withFaceE
 
 Detect all faces in an image + estimate age and recognize gender of each face. Returns **Array<[WithAge<WithGender<WithFaceLandmarks<WithFaceDetection<{}>>>>](#getting-started-utility-classes)>**:
 
-``` javascript
+```js
 const detectionsWithAgeAndGender = await faceapi.detectAllFaces(input).withFaceLandmarks().withAgeAndGender()
 ```
 
 Detect the face with the highest confidence score in an image  + estimate age and recognize gender for that face. Returns **[WithAge<WithGender<WithFaceLandmarks<WithFaceDetection<{}>>>>](#getting-started-utility-classes) | undefined**:
 
-``` javascript
+```js
 const detectionWithAgeAndGender = await faceapi.detectSingleFace(input).withFaceLandmarks().withAgeAndGender()
 ```
 
@@ -225,13 +225,13 @@ const detectionWithAgeAndGender = await faceapi.detectSingleFace(input).withFace
 
 Detect all faces without face alignment + estimate age and recognize gender of each face. Returns **Array<[WithAge<WithGender<WithFaceDetection<{}>>>](#getting-started-utility-classes)>**:
 
-``` javascript
+```js
 const detectionsWithAgeAndGender = await faceapi.detectAllFaces(input).withAgeAndGender()
 ```
 
 Detect the face with the highest confidence score without face alignment + estimate age and recognize gender for that face. Returns **[WithAge<WithGender<WithFaceDetection<{}>>>](#getting-started-utility-classes) | undefined**:
 
-``` javascript
+```js
 const detectionWithAgeAndGender = await faceapi.detectSingleFace(input).withAgeAndGender()
 ```
 
@@ -239,7 +239,7 @@ const detectionWithAgeAndGender = await faceapi.detectSingleFace(input).withAgeA
 
 **Tasks can be composed as follows:**
 
-``` javascript
+```js
 // all faces
 await faceapi.detectAllFaces(input)
 await faceapi.detectAllFaces(input).withFaceExpressions()
@@ -265,7 +265,7 @@ To perform face recognition, one can use faceapi.FaceMatcher to compare referenc
 
 First, we initialize the FaceMatcher with the reference data, for example we can simply detect faces in a **referenceImage** and match the descriptors of the detected faces to faces of subsequent images:
 
-``` javascript
+```js
 const results = await faceapi
   .detectAllFaces(referenceImage)
   .withFaceLandmarks()
@@ -282,7 +282,7 @@ const faceMatcher = new faceapi.FaceMatcher(results)
 
 Now we can recognize a persons face shown in **queryImage1**:
 
-``` javascript
+```js
 const singleResult = await faceapi
   .detectSingleFace(queryImage1)
   .withFaceLandmarks()
@@ -296,7 +296,7 @@ if (singleResult) {
 
 Or we can recognize all faces shown in **queryImage2**:
 
-``` javascript
+```js
 const results = await faceapi
   .detectAllFaces(queryImage2)
   .withFaceLandmarks()
@@ -310,7 +310,7 @@ results.forEach(fd => {
 
 You can also create labeled reference descriptors as follows:
 
-``` javascript
+```js
 const labeledDescriptors = [
   new faceapi.LabeledFaceDescriptors(
     'obama',
@@ -331,7 +331,7 @@ const faceMatcher = new faceapi.FaceMatcher(labeledDescriptors)
 
 Preparing the overlay canvas:
 
-``` javascript
+```js
 const displaySize = { width: input.width, height: input.height }
 // resize the overlay canvas to the input dimensions
 const canvas = document.getElementById('overlay')
@@ -340,7 +340,7 @@ faceapi.matchDimensions(canvas, displaySize)
 
 face-api.js predefines some highlevel drawing functions, which you can utilize:
 
-``` javascript
+```js
 /* Display detected face bounding boxes */
 const detections = await faceapi.detectAllFaces(input)
 // resize the detected boxes in case your displayed image has a different size than the original
@@ -376,7 +376,7 @@ faceapi.draw.drawFaceExpressions(canvas, resizedResults, minProbability)
 
 You can also draw boxes with custom text ([DrawBox](https://github.com/justadudewhohacks/tfjs-image-recognition-base/blob/master/src/draw/DrawBox.ts)):
 
-``` javascript
+```js
 const box = { x: 50, y: 50, width: 100, height: 100 }
 // see DrawBoxOptions below
 const drawOptions = {
@@ -389,7 +389,7 @@ drawBox.draw(document.getElementById('myCanvas'))
 
 DrawBox drawing options:
 
-``` javascript
+```js
 export interface IDrawBoxOptions {
   boxColor?: string
   lineWidth?: number
@@ -400,7 +400,7 @@ export interface IDrawBoxOptions {
 
 Finally you can draw custom text fields ([DrawTextField](https://github.com/justadudewhohacks/tfjs-image-recognition-base/blob/master/src/draw/DrawTextField.ts)):
 
-``` javascript
+```js
 const text = [
   'This is a textline!',
   'This is another textline!'
@@ -417,7 +417,7 @@ drawBox.draw(document.getElementById('myCanvas'))
 
 DrawTextField drawing options:
 
-``` javascript
+```js
 export interface IDrawTextFieldOptions {
   anchorPosition?: AnchorPosition
   backgroundColor?: string
@@ -441,7 +441,7 @@ export enum AnchorPosition {
 
 #### SsdMobilenetv1Options
 
-``` javascript
+```js
 export interface ISsdMobilenetv1Options {
   // minimum confidence threshold
   // default: 0.5
@@ -458,7 +458,7 @@ const options = new faceapi.SsdMobilenetv1Options({ minConfidence: 0.8 })
 
 #### TinyFaceDetectorOptions
 
-``` javascript
+```js
 export interface ITinyFaceDetectorOptions {
   // size at which image is processed, the smaller the faster,
   // but less precise in detecting smaller faces, must be divisible
@@ -483,7 +483,7 @@ const options = new faceapi.TinyFaceDetectorOptions({ inputSize: 320 })
 
 #### IBox
 
-``` javascript
+```js
 export interface IBox {
   x: number
   y: number
@@ -494,7 +494,7 @@ export interface IBox {
 
 #### IFaceDetection
 
-``` javascript
+```js
 export interface IFaceDetection {
   score: number
   box: Box
@@ -503,7 +503,7 @@ export interface IFaceDetection {
 
 #### IFaceLandmarks
 
-``` javascript
+```js
 export interface IFaceLandmarks {
   positions: Point[]
   shift: Point
@@ -512,7 +512,7 @@ export interface IFaceLandmarks {
 
 #### WithFaceDetection
 
-``` javascript
+```js
 export type WithFaceDetection<TSource> = TSource & {
   detection: FaceDetection
 }
@@ -520,7 +520,7 @@ export type WithFaceDetection<TSource> = TSource & {
 
 #### WithFaceLandmarks
 
-``` javascript
+```js
 export type WithFaceLandmarks<TSource> = TSource & {
   unshiftedLandmarks: FaceLandmarks
   landmarks: FaceLandmarks
@@ -533,7 +533,7 @@ export type WithFaceLandmarks<TSource> = TSource & {
 
 #### WithFaceDescriptor
 
-``` javascript
+```js
 export type WithFaceDescriptor<TSource> = TSource & {
   descriptor: Float32Array
 }
@@ -541,7 +541,7 @@ export type WithFaceDescriptor<TSource> = TSource & {
 
 #### WithFaceExpressions
 
-``` javascript
+```js
 export type WithFaceExpressions<TSource> = TSource & {
   expressions: FaceExpressions
 }
@@ -549,7 +549,7 @@ export type WithFaceExpressions<TSource> = TSource & {
 
 #### WithAge
 
-``` javascript
+```js
 export type WithAge<TSource> = TSource & {
   age: number
 }
@@ -557,7 +557,7 @@ export type WithAge<TSource> = TSource & {
 
 #### WithGender
 
-``` javascript
+```js
 export type WithGender<TSource> = TSource & {
   gender: Gender
   genderProbability: number
@@ -577,7 +577,7 @@ export enum Gender {
 
 Instead of using the high level API, you can directly use the forward methods of each neural network:
 
-``` javascript
+```js
 const detections1 = await faceapi.ssdMobilenetv1(input, options)
 const detections2 = await faceapi.tinyFaceDetector(input, options)
 const landmarks1 = await faceapi.detectFaceLandmarks(faceImage)
@@ -587,7 +587,7 @@ const descriptor = await faceapi.computeFaceDescriptor(alignedFaceImage)
 
 #### Extracting a Canvas for an Image Region
 
-``` javascript
+```js
 const regionsToExtract = [
   new faceapi.Rect(0, 0, 100, 100)
 ]
@@ -598,7 +598,7 @@ const canvases = await faceapi.extractFaces(input, regionsToExtract)
 
 #### Euclidean Distance
 
-``` javascript
+```js
 // ment to be used for computing the euclidean distance between two face descriptors
 const dist = faceapi.euclideanDistance([0, 0], [0, 10])
 console.log(dist) // 10
@@ -606,7 +606,7 @@ console.log(dist) // 10
 
 #### Retrieve the Face Landmark Points and Contours
 
-``` javascript
+```js
 const landmarkPositions = landmarks.positions
 
 // or get the positions of individual contours,
@@ -626,7 +626,7 @@ const rightEyeBrow = landmarks.getRightEyeBrow()
 <img id="myImg" src="">
 ```
 
-``` javascript
+```js
 const image = await faceapi.fetchImage('/images/example.png')
 
 console.log(image instanceof HTMLImageElement) // true
@@ -638,7 +638,7 @@ myImg.src = image.src
 
 #### Fetching JSON
 
-``` javascript
+```js
 const json = await faceapi.fetchJson('/files/example.json')
 ```
 
@@ -649,7 +649,7 @@ const json = await faceapi.fetchJson('/files/example.json')
 <input id="myFileUpload" type="file" onchange="uploadImage()" accept=".jpg, .jpeg, .png">
 ```
 
-``` javascript
+```js
 async function uploadImage() {
   const imgFile = document.getElementById('myFileUpload').files[0]
   // create an HTMLImageElement from a Blob
@@ -665,7 +665,7 @@ async function uploadImage() {
 <video id="myVideo" src="media/example.mp4" />
 ```
 
-``` javascript
+```js
 const canvas1 = faceapi.createCanvasFromMedia(document.getElementById('myImg'))
 const canvas2 = faceapi.createCanvasFromMedia(document.getElementById('myVideo'))
 ```

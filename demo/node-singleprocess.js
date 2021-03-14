@@ -10,7 +10,7 @@ const tf = require('@tensorflow/tfjs-node');
 const faceapi = require('../dist/face-api.node.js'); // this is equivalent to '@vladmandic/faceapi'
 
 const modelPathRoot = '../model';
-const imgPathRoot = './example'; // modify to include your sample images
+const imgPathRoot = './demo'; // modify to include your sample images
 const minScore = 0.1;
 const maxResults = 5;
 let optionsSSDMobileNet;

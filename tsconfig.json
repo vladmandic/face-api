@@ -23,4 +23,19 @@
   },
   "formatCodeOptions": { "indentSize": 2, "tabSize": 2 },
   "include": ["src"],
+  "typedocOptions": {
+    "excludePrivate": true,
+    "excludeExternals": true,
+    "excludeProtected": true,
+    "excludeInternal": true,
+    "disableSources": false,
+    "gitRevision": "main",
+    "hideGenerator": "true",
+    "theme": "default",
+    "readme": "none",
+    "out": "typedoc",
+    "entryPoints": "src/index.ts",
+    "logLevel": "Error",
+    "logger": "none"
+  }
 }

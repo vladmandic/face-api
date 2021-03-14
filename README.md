@@ -10,7 +10,14 @@
 
 <br>
 
-**Live Demo**: <https://vladmandic.github.io/face-api/example/webcam.html>
+**Live Demo**: <https://vladmandic.github.io/face-api/demo/webcam.html>
+
+<br>
+
+## Documentation
+
+- [**Tutorial**](TUTORIAL.md)
+- [**API Specification**](https://justadudewhohacks.github.io/face-api.js/docs/globals.html)
 
 <br>
 
@@ -26,6 +33,7 @@ And since original Face-API was open-source, I've released this version as well
 
 Changes ended up being too large for a simple pull request  
 and it ended up being a full-fledged version on its own  
+
 Plus many features were added since original inception  
 
 <br><hr><br>
@@ -37,20 +45,25 @@ Plus many features were added since original inception
 ### Browser
 
 Browser example that uses static images and showcases both models  
-as well as all of the extensions is included in `/example/index.html`  
+as well as all of the extensions is included in `/demo/index.html`  
 Example can be accessed directly using Git pages using URL:  
-<https://vladmandic.github.io/face-api/example/index.html>  
+<https://vladmandic.github.io/face-api/demo/index.html>  
 
-Browser example that uses live webcam is included in `/example/webcam.html`  
+Browser example that uses live webcam is included in `/demo/webcam.html`  
 Example can be accessed directly using Git pages using URL:  
-<https://vladmandic.github.io/face-api/example/webcam.html>  
+<https://vladmandic.github.io/face-api/demo/webcam.html>  
 
 
 <br>
 
+**Demo using FaceAPI to process images**  
 *Note: Photos shown below are taken by me*
 
-![screenshot](example/screenshot.png)
+![screenshot](demo/screenshot-images.png)
+
+**Demo using FaceAPI to process live webcam**  
+
+![screenshot](demo/screenshot-webcam.png)
 
 <br>
 
@@ -58,43 +71,49 @@ Example can be accessed directly using Git pages using URL:
 
 Two NodeJS examples are:
 
-- `/example/node-singleprocess.js`: Regular usage of `FaceAPI` from `NodeJS`  
-- `/example/node-multiprocess.js`: Multiprocessing showcase that uses pool of worker processes (`node-multiprocess-worker.js`
-  Main starts fixed pool of worker processes with each worker having it's instance of `FaceAPI`  
-  Workers communicate with main when they are ready and main dispaches job to each ready worker until job queue is empty  
+- `/demo/node-singleprocess.js`:  
+  Regular usage of `FaceAPI` from `NodeJS`  
+- `/demo/node-multiprocess.js`:  
+  Multiprocessing showcase that uses pool of worker processes  
+  (`node-multiprocess-worker.js`)  
+  Main starts fixed pool of worker processes with each worker having  
+  it's instance of `FaceAPI`  
+  Workers communicate with main when they are ready and main dispaches  
+  job to each ready worker until job queue is empty  
 
 ```json
-2020-12-08 08:30:01 INFO:  @vladmandic/face-api version 0.9.1
-2020-12-08 08:30:01 INFO:  User: vlado Platform: linux Arch: x64 Node: v15.0.1
-2020-12-08 08:30:01 INFO:  FaceAPI multi-process test
-2020-12-08 08:30:01 STATE:  Main: started worker: 265238
-2020-12-08 08:30:01 STATE:  Main: started worker: 265244
-2020-12-08 08:30:02 STATE:  Worker: PID: 265238 TensorFlow/JS 2.7.0 FaceAPI 0.9.1 Backend: tensorflow
-2020-12-08 08:30:02 STATE:  Worker: PID: 265244 TensorFlow/JS 2.7.0 FaceAPI 0.9.1 Backend: tensorflow
-2020-12-08 08:30:02 STATE:  Main: dispatching to worker: 265238
-2020-12-08 08:30:02 STATE:  Main: dispatching to worker: 265244
-2020-12-08 08:30:02 DATA:  Worker received message: 265238 { image: 'example/sample (1).jpg' }
-2020-12-08 08:30:02 DATA:  Worker received message: 265244 { image: 'example/sample (2).jpg' }
-2020-12-08 08:30:04 DATA:  Main: worker finished: 265238 detected faces: 3
-2020-12-08 08:30:04 STATE:  Main: dispatching to worker: 265238
-2020-12-08 08:30:04 DATA:  Main: worker finished: 265244 detected faces: 3
-2020-12-08 08:30:04 STATE:  Main: dispatching to worker: 265244
-2020-12-08 08:30:04 DATA:  Worker received message: 265238 { image: 'example/sample (3).jpg' }
-2020-12-08 08:30:04 DATA:  Worker received message: 265244 { image: 'example/sample (4).jpg' }
-2020-12-08 08:30:06 DATA:  Main: worker finished: 265238 detected faces: 3
-2020-12-08 08:30:06 STATE:  Main: dispatching to worker: 265238
-2020-12-08 08:30:06 DATA:  Worker received message: 265238 { image: 'example/sample (5).jpg' }
-2020-12-08 08:30:06 DATA:  Main: worker finished: 265244 detected faces: 4
-2020-12-08 08:30:06 STATE:  Main: dispatching to worker: 265244
-2020-12-08 08:30:06 DATA:  Worker received message: 265244 { image: 'example/sample (6).jpg' }
-2020-12-08 08:30:07 DATA:  Main: worker finished: 265238 detected faces: 5
-2020-12-08 08:30:07 STATE:  Main: worker exit: 265238 0
-2020-12-08 08:30:08 DATA:  Main: worker finished: 265244 detected faces: 4
-2020-12-08 08:30:08 INFO:  Processed 12 images in 6826 ms
-2020-12-08 08:30:08 STATE:  Main: worker exit: 265244 0
+2021-03-14 08:42:03 INFO:  @vladmandic/face-api version 1.0.2
+2021-03-14 08:42:03 INFO:  User: vlado Platform: linux Arch: x64 Node: v15.7.0
+2021-03-14 08:42:03 INFO:  FaceAPI multi-process test
+2021-03-14 08:42:03 STATE:  Main: started worker: 1888019
+2021-03-14 08:42:03 STATE:  Main: started worker: 1888025
+2021-03-14 08:42:04 STATE:  Worker: PID: 1888025 TensorFlow/JS 3.3.0 FaceAPI 1.0.2 Backend: tensorflow
+2021-03-14 08:42:04 STATE:  Worker: PID: 1888019 TensorFlow/JS 3.3.0 FaceAPI 1.0.2 Backend: tensorflow
+2021-03-14 08:42:04 STATE:  Main: dispatching to worker: 1888019
+2021-03-14 08:42:04 STATE:  Main: dispatching to worker: 1888025
+2021-03-14 08:42:04 DATA:  Worker received message: 1888019 { image: 'demo/sample1.jpg' }
+2021-03-14 08:42:04 DATA:  Worker received message: 1888025 { image: 'demo/sample2.jpg' }
+2021-03-14 08:42:06 DATA:  Main: worker finished: 1888025 detected faces: 3
+2021-03-14 08:42:06 STATE:  Main: dispatching to worker: 1888025
+2021-03-14 08:42:06 DATA:  Worker received message: 1888025 { image: 'demo/sample3.jpg' }
+2021-03-14 08:42:06 DATA:  Main: worker finished: 1888019 detected faces: 3
+2021-03-14 08:42:06 STATE:  Main: dispatching to worker: 1888019
+2021-03-14 08:42:06 DATA:  Worker received message: 1888019 { image: 'demo/sample4.jpg' }
+2021-03-14 08:42:07 DATA:  Main: worker finished: 1888025 detected faces: 3
+2021-03-14 08:42:07 STATE:  Main: dispatching to worker: 1888025
+2021-03-14 08:42:07 DATA:  Worker received message: 1888025 { image: 'demo/sample5.jpg' }
+2021-03-14 08:42:08 DATA:  Main: worker finished: 1888019 detected faces: 4
+2021-03-14 08:42:08 STATE:  Main: dispatching to worker: 1888019
+2021-03-14 08:42:08 DATA:  Worker received message: 1888019 { image: 'demo/sample6.jpg' }
+2021-03-14 08:42:09 DATA:  Main: worker finished: 1888025 detected faces: 5
+2021-03-14 08:42:09 STATE:  Main: worker exit: 1888025 0
+2021-03-14 08:42:09 DATA:  Main: worker finished: 1888019 detected faces: 4
+2021-03-14 08:42:09 INFO:  Processed 15 images in 5944 ms
+2021-03-14 08:42:09 STATE:  Main: worker exit: 1888019 0
 ```
 
-Note that `@tensorflow/tfjs-node` or `@tensorflow/tfjs-node-gpu` must be installed before using NodeJS example
+Note that `@tensorflow/tfjs-node` or `@tensorflow/tfjs-node-gpu`  
+must be installed before using NodeJS example
 
 <br><hr><br>
 
@@ -127,7 +146,8 @@ Defaults are:
 
 Bundled `TFJS` can be used directly via export: `faceapi.tf`
 
-Reason for additional `nobundle` version is if you want to include a specific version of TFJS and not rely on  pre-packaged one  
+Reason for additional `nobundle` version is if you want to  
+include a specific version of TFJS and not rely on  pre-packaged one  
 
 `FaceAPI` is compatible with TFJS 2.0+  
 
@@ -302,21 +322,19 @@ npm run dev
 
 By default it starts HTTP server on port 8000 and HTTPS server on port 8001 and can be accessed as:  
 
-- <https://localhost:8001/example/index.html>
-- <https://localhost:8001/example/webcam.html>
+- <https://localhost:8001/demo/index.html>
+- <https://localhost:8001/demo/webcam.html>
 
 ```json
-2021-01-10 08:39:00 INFO:  @vladmandic/face-api version 0.10.2
-2021-01-10 08:39:00 INFO:  User: vlado Platform: linux Arch: x64 Node: v15.4.0
-2021-01-10 08:39:00 INFO:  Build: file startup all target: es2018
-2021-01-10 08:39:00 STATE:  HTTP server listening: 8000
-2021-01-10 08:39:00 STATE:  HTTP2 server listening: 8001
-2021-01-10 08:39:00 STATE:  Monitoring: [ 'package.json', 'config.js', 'example', 'src', [length]: 4 ]
-2021-01-10 08:39:00 STATE:  Monitoring: [ 'package.json', 'config.js', 'example', 'src', [length]: 4 ]
-2021-01-10 08:39:01 STATE:  Build for: browserBundle type: tfjs: { modules: 1253, moduleBytes: 3997175, imports: 7, importBytes: 276, outputBytes: 1565414, outputFiles: 'dist/tfjs.esm.js' }
-2021-01-10 08:39:01 STATE:  Build for: browserBundle type: iife: { imports: 160, importBytes: 1797487, outputBytes: 1699552, outputFiles: 'dist/face-api.js' }
-2021-01-10 08:39:01 STATE:  Build for: browserBundle type: esm: { imports: 160, importBytes: 1797487, outputBytes: 1697086, outputFiles: 'dist/face-api.esm.js' }
-2021-01-10 08:39:01 INFO:  Compile: [ 'src/index.ts', [length]: 1 ]
+2021-03-14 08:41:09 INFO:  @vladmandic/face-api version 1.0.2
+2021-03-14 08:41:09 INFO:  User: vlado Platform: linux Arch: x64 Node: v15.7.0
+2021-03-14 08:41:09 INFO:  Build: file startup all target: es2018
+2021-03-14 08:41:09 STATE:  HTTP server listening: 8000
+2021-03-14 08:41:09 STATE:  HTTP2 server listening: 8001
+2021-03-14 08:41:09 STATE:  Monitoring: [ 'package.json', 'demo', 'src', [length]: 3 ]
+2021-03-14 08:41:10 STATE:  Build for: browserBundle type: tfjs: { modules: 1258, moduleBytes: 4040087, imports: 7, importBytes: 276, outputBytes: 1072314, outputFiles: 'dist/tfjs.esm.js' }
+2021-03-14 08:41:10 STATE:  Build for: browserBundle type: iife: { imports: 160, importBytes: 1305679, outputBytes: 1151683, outputFiles: 'dist/face-api.js' }
+2021-03-14 08:41:10 STATE:  Build for: browserBundle type: esm: { imports: 160, importBytes: 1305679, outputBytes: 1151520, outputFiles: 'dist/face-api.esm.js' }
 ```
 
 <br>
@@ -349,26 +367,28 @@ npm run build
 Build process uses script `build.js` that creates optimized build for each target:
 
 ```text
-npm run build
-
-> @vladmandic/face-api@0.8.9 build /home/vlado/dev/face-api
-> rimraf dist/* && node ./build.js
+> @vladmandic/face-api@1.0.2 build
+> rimraf dist/* types/* typedoc/* && node server/build.js
 ```
 
 ```json
-2021-01-10 08:42:01 INFO:  @vladmandic/face-api version 0.10.2
-2021-01-10 08:42:01 INFO:  User: vlado Platform: linux Arch: x64 Node: v15.4.0
-2021-01-10 08:42:01 INFO:  Build: file startup all target: es2018
-2021-01-10 08:42:01 STATE:  Build for: node type: tfjs: { imports: 1, importBytes: 143, outputBytes: 1042, outputFiles: 'dist/tfjs.esm.js' }
-2021-01-10 08:42:01 STATE:  Build for: node type: node: { imports: 160, importBytes: 233115, outputBytes: 132266, outputFiles: 'dist/face-api.node.js' }
-2021-01-10 08:42:01 STATE:  Build for: nodeGPU type: tfjs: { imports: 1, importBytes: 147, outputBytes: 1046, outputFiles: 'dist/tfjs.esm.js' }
-2021-01-10 08:42:01 STATE:  Build for: nodeGPU type: node: { imports: 160, importBytes: 233119, outputBytes: 132274, outputFiles: 'dist/face-api.node-gpu.js' }
-2021-01-10 08:42:01 STATE:  Build for: browserNoBundle type: tfjs: { imports: 1, importBytes: 276, outputBytes: 244, outputFiles: 'dist/tfjs.esm.js' }
-2021-01-10 08:42:01 STATE:  Build for: browserNoBundle type: esm: { imports: 160, importBytes: 232317, outputBytes: 129069, outputFiles: 'dist/face-api.esm-nobundle.js' }
-2021-01-10 08:42:01 STATE:  Build for: browserBundle type: tfjs: { modules: 1253, moduleBytes: 3997175, imports: 7, importBytes: 276, outputBytes: 1565414, outputFiles: 'dist/tfjs.esm.js' }
-2021-01-10 08:42:02 STATE:  Build for: browserBundle type: iife: { imports: 160, importBytes: 1797487, outputBytes: 1699552, outputFiles: 'dist/face-api.js' }
-2021-01-10 08:42:02 STATE:  Build for: browserBundle type: esm: { imports: 160, importBytes: 1797487, outputBytes: 1697086, outputFiles: 'dist/face-api.esm.js' }
-2021-01-10 08:42:02 INFO:  Compile: [ 'src/index.ts', [length]: 1 ]```
+2021-03-14 08:39:21 INFO:  @vladmandic/face-api version 1.0.2
+2021-03-14 08:39:21 INFO:  User: vlado Platform: linux Arch: x64 Node: v15.7.0
+2021-03-14 08:39:21 INFO:  Build: file startup all target: es2018
+2021-03-14 08:39:21 STATE:  Build for: node type: tfjs: { imports: 1, importBytes: 143, outputBytes: 731, outputFiles: 'dist/tfjs.esm.js' }
+2021-03-14 08:39:21 STATE:  Build for: node type: node: { imports: 160, importBytes: 234096, outputBytes: 85371, outputFiles: 'dist/face-api.node.js' }
+2021-03-14 08:39:21 STATE:  Build for: nodeGPU type: tfjs: { imports: 1, importBytes: 147, outputBytes: 735, outputFiles: 'dist/tfjs.esm.js' }
+2021-03-14 08:39:21 STATE:  Build for: nodeGPU type: node: { imports: 160, importBytes: 234100, outputBytes: 85379, outputFiles: 'dist/face-api.node-gpu.js' }
+2021-03-14 08:39:21 STATE:  Build for: nodeCPU type: tfjs: { imports: 1, importBytes: 138, outputBytes: 726, outputFiles: 'dist/tfjs.esm.js' }
+2021-03-14 08:39:21 STATE:  Build for: nodeCPU type: node: { imports: 160, importBytes: 234091, outputBytes: 85370, outputFiles: 'dist/face-api.node-cpu.js' }
+2021-03-14 08:39:21 STATE:  Build for: browserNoBundle type: tfjs: { imports: 1, importBytes: 276, outputBytes: 244, outputFiles: 'dist/tfjs.esm.js' }
+2021-03-14 08:39:21 STATE:  Build for: browserNoBundle type: esm: { imports: 160, importBytes: 233609, outputBytes: 82634, outputFiles: 'dist/face-api.esm-nobundle.js' }
+2021-03-14 08:39:22 STATE:  Build for: browserBundle type: tfjs: { modules: 1258, moduleBytes: 4040087, imports: 7, importBytes: 276, outputBytes: 1072314, outputFiles: 'dist/tfjs.esm.js' }
+2021-03-14 08:39:22 STATE:  Build for: browserBundle type: iife: { imports: 160, importBytes: 1305679, outputBytes: 1151683, outputFiles: 'dist/face-api.js' }
+2021-03-14 08:39:22 STATE:  Build for: browserBundle type: esm: { imports: 160, importBytes: 1305679, outputBytes: 1151520, outputFiles: 'dist/face-api.esm.js' }
+2021-03-14 08:39:22 INFO:  Compile typings: [ 'src/index.ts', [length]: 1 ]
+2021-03-14 08:39:27 INFO:  Update Change log: [ '/home/vlado/dev/face-api/CHANGELOG.md', [length]: 1 ]
+2021-03-14 08:39:27 INFO:  Generate TypeDocs: [ 'src/index.ts', [length]: 1 ]
 ```
 
 <br>
@@ -379,14 +399,7 @@ npm run build
 
 `FaceAPI` landmark model returns 68-point face mesh as detailed in the image below:
 
-![facemesh](example/facemesh.png)
-
-<br>
-
-## Documentation
-
-- [**Tutorial**](TUTORIAL.md)
-- [**API Documentation**](https://justadudewhohacks.github.io/face-api.js/docs/globals.html)
+![facemesh](demo/facemesh.png)
 
 <br>
 

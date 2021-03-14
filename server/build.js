@@ -7,6 +7,8 @@
 const esbuild = require('esbuild');
 const ts = require('typescript');
 const log = require('@vladmandic/pilogger');
+const TypeDoc = require('typedoc');
+const changelog = require('./changelog');
 
 const banner = { js: `
   /*
@@ -15,6 +17,8 @@ const banner = { js: `
   author: <https://github.com/vladmandic>'
   */
 ` };
+
+let td = null;
 
 // tsc configuration
 const tsconfig = {
@@ -185,8 +189,20 @@ function compile(fileNames, options) {
   }
 }
 
+async function typedoc(entryPoint) {
+  log.info('Generate TypeDocs:', entryPoint);
+  if (!td) {
+    td = new TypeDoc.Application();
+    td.options.addReader(new TypeDoc.TSConfigReader());
+    td.bootstrap({ entryPoints: entryPoint });
+  }
+  const project = td.convert();
+  const result = project ? await td.generateDocs(project, 'typedoc') : null;
+  if (result) log.warn('TypeDoc:', result);
+}
+
 // rebuild on file change
-async function build(f, msg) {
+async function build(f, msg, dev = false) {
   log.info('Build: file', msg, f, 'target:', common.target);
   try {
     // rebuild all target groups and types
@@ -206,8 +222,12 @@ async function build(f, msg) {
     if (require.main === module) process.exit(1);
   }
 
-  // generate typings
-  compile(targets.browserBundle.esm.entryPoints, tsconfig);
+  if (!dev) {
+    // generate typings & typedoc only when run as explict build
+    await compile(targets.browserBundle.esm.entryPoints, tsconfig);
+    await changelog.update('../CHANGELOG.md');
+    await typedoc(targets.browserBundle.esm.entryPoints);
+  }
 
   if (require.main === module) process.exit(0);
 }

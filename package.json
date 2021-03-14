@@ -11,7 +11,7 @@
   "bugs": {
     "url": "https://github.com/vladmandic/face-api/issues"
   },
-  "homepage": "https://vladmandic.github.io/face-api/example/webcam.html",
+  "homepage": "https://vladmandic.github.io/face-api/demo/webcam.html",
   "license": "MIT",
   "engines": {
     "node": ">=12.0.0"
@@ -21,11 +21,11 @@
     "url": "git+https://github.com/vladmandic/face-api.git"
   },
   "scripts": {
-    "start": "node --trace-warnings example/node-singleprocess.js",
+    "start": "node --trace-warnings demo/node-singleprocess.js",
     "dev": "npm install && node server/serve.js",
-    "build": "rimraf dist/* types/* && node server/build.js && node server/changelog.js",
-    "lint": "eslint src/**/* example/*.js server/*.js",
-    "test": "eslint src/**/* example/*.js server/*.js"
+    "build": "rimraf dist/* types/* typedoc/* && node server/build.js",
+    "lint": "eslint src/**/* demo/*.js server/*.js",
+    "test": "eslint src/**/* demo/*.js server/*.js"
   },
   "keywords": [
     "tensorflow",
@@ -60,6 +60,7 @@
     "rimraf": "^3.0.2",
     "simple-git": "^2.36.2",
     "tslib": "^2.1.0",
+    "typedoc": "^0.20.31",
     "typescript": "^4.2.3"
   }
 }

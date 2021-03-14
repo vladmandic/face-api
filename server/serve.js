@@ -27,12 +27,12 @@ const options = {
   key: fs.readFileSync('server/https.key'),
   cert: fs.readFileSync('server/https.crt'),
   root: '..',
-  default: 'example/index.html',
+  default: 'demo/index.html',
   httpPort: 8000,
   httpsPort: 8001,
   insecureHTTPParser: false,
   minElapsed: 2,
-  monitor: ['package.json', 'example', 'src'],
+  monitor: ['package.json', 'demo', 'src'],
 };
 
 // just some predefined mime types
@@ -58,7 +58,7 @@ const mime = {
 let last = Date.now();
 async function buildAll(evt, msg) {
   const now = Date.now();
-  if ((now - last) > options.minElapsed) build.build(evt, msg);
+  if ((now - last) > options.minElapsed) build.build(evt, msg, true);
   else log.state('Build: merge event file', msg, evt);
   last = now;
 }
@@ -156,7 +156,7 @@ async function main() {
     server2.on('listening', () => log.state('HTTP2 server listening:', options.httpsPort));
     server2.listen(options.httpsPort);
   }
-  await build.build('all', 'startup');
+  await build.build('all', 'startup', true);
 }
 
 main();

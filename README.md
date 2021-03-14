@@ -405,34 +405,37 @@ Build process uses script `build.js` that creates optimized build for each targe
 
 ## Differences
 
-- Compatible with `TensorFlow/JS 2.0+ & 3.0+`  
+Compared to [face-api.js](https://github.com/justadudewhohacks/face-api.js) version **0.22.2**:
+
+- Compatible with `TensorFlow/JS 2.0+ & 3.0+`
 - Compatible with `WebGL`, `CPU` and `WASM` TFJS Browser backends
 - Compatible with both `tfjs-node` and `tfjs-node-gpu` TFJS NodeJS backends
-- Updated all type castings for TypeScript type checking to `TypeScript 4.1`  
-- Switched bundling from `UMD` to `ESM` + `CommonJS` with fallback to `IIFE`  
-  Resulting code is optimized per-platform instead of being universal  
-  Fully tree shakable when imported as an `ESM` module  
-  Browser bundle process uses `ESBuild` instead of `Rollup`  
-- Typescript build process now targets `ES2018` and instead of dual ES5/ES6  
-  Resulting code is clean ES2018 JavaScript without polyfills  
-- Removed old tests, docs, examples  
-- Removed old package dependencies (`karma`, `jasmine`, `babel`, etc.)  
-- Updated all package dependencies  
-- Updated TensorFlow/JS dependencies since backends were removed from `@tensorflow/tfjs-core`  
-- Updated mobileNetv1 model due to `batchNorm()` dependency  
-- Added `version` class that returns JSON object with version of FaceAPI as well as linked TFJS  
+- Updated all type castings for TypeScript type checking to `TypeScript 4.2`
+- Switched bundling from `UMD` to `ESM` + `CommonJS` with fallback to `IIFE`
+  Resulting code is optimized per-platform instead of being universal
+  Fully tree shakable when imported as an `ESM` module
+  Browser bundle process uses `ESBuild` instead of `Rollup`
+- Typescript build process now targets `ES2018` and instead of dual ES5/ES6
+  Resulting code is clean ES2018 JavaScript without polyfills
+- Removed old tests, docs, examples
+- Removed old package dependencies (`karma`, `jasmine`, `babel`, etc.)
+- Updated all package dependencies
+- Updated TensorFlow/JS dependencies since backends were removed from `@tensorflow/tfjs-core`
+- Updated mobileNetv1 model due to `batchNorm()` dependency
+- Added `version` class that returns JSON object with version of FaceAPI as well as linked TFJS
 - Added test/dev built-in HTTP & HTTPS Web server
-- Removed `mtcnn` and `tinyYolov2` models as they were non-functional in latest public version of `Face-API`  
-  *If there is a demand, I can re-implement them back.*  
-- Added `face angle` calculations that returns `roll`, `yaw` and `pitch`  
-
-Which means valid models are **tinyFaceDetector** and **mobileNetv1**  
+- Removed `mtcnn` and `tinyYolov2` models as they were non-functional in latest public version of `Face-API`
+  Which means valid models are **tinyFaceDetector** and **mobileNetv1**
+  *If there is a demand, I can re-implement them back.*
+- Added `face angle` calculations that returns `roll`, `yaw` and `pitch`
+- Added `typdoc` automatic API specification generation during build
+- Added `changelog` automatic generation during build
 
 <br>
 
 ## Credits
 
-- Original project: [Face-API](https://github.com/justadudewhohacks/face-api.js)  
+- Original project: [Face-API](https://github.com/justadudewhohacks/face-api.js)
 - Original model weighs: [Face-API](https://github.com/justadudewhohacks/face-api.js-models)
 - ML API Documentation: [Tensorflow/JS](https://js.tensorflow.org/api/latest/)
 

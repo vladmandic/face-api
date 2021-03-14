@@ -16,6 +16,7 @@ assignees: vladmandic
 **Environment
 
 - FaceAPI version
+- FaceAPI module used (e.g. `face-api`, `face-api.esm`, `face-api.esm-nobundle`)
 - Browser or NodeJS and version (e.g. NodeJS 14.15 or Chrome 86)
 - OS and Hardware platform (e.g. Windows 10, Ubuntu Linux on x64, Android 10)
 - Packager (if any) (e.g, webpack, rollup, parcel, esbuild, etc.)

@@ -1,8 +1,8 @@
-![Version](https://img.shields.io/github/package-json/v/vladmandic/face-api?style=flat-square)
-![Last Commit](https://img.shields.io/github/last-commit/vladmandic/face-api?style=flat-square)
-![License](https://img.shields.io/github/license/vladmandic/face-api?style=flat-square)
-![GitHub Status Checks](https://img.shields.io/github/checks-status/vladmandic/face-api/master?style=flat-square])
-![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/github/vladmandic/face-api?style=flat-square)
+![Version](https://img.shields.io/github/package-json/v/vladmandic/face-api?style=flat-square?svg=true)
+![Last Commit](https://img.shields.io/github/last-commit/vladmandic/face-api?style=flat-square?svg=true)
+![License](https://img.shields.io/github/license/vladmandic/face-api?style=flat-square?svg=true)
+![GitHub Status Checks](https://img.shields.io/github/checks-status/vladmandic/face-api/master?style=flat-square?svg=true)
+![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/github/vladmandic/face-api?style=flat-square?svg=true)
 
 # FaceAPI
 
@@ -441,6 +441,6 @@ Compared to [face-api.js](https://github.com/justadudewhohacks/face-api.js) vers
 
 <br>
 
-![Downloads](https://img.shields.io/npm/dm/@vladmandic/face-api?style=flat-square)
-![Stars](https://img.shields.io/github/stars/vladmandic/face-api?style=flat-square)
-![Code Size](https://img.shields.io/github/languages/code-size/vladmandic/face-api?style=flat-square)
+![Downloads](https://img.shields.io/npm/dm/@vladmandic/face-api?style=flat-square?svg=true)
+![Stars](https://img.shields.io/github/stars/vladmandic/face-api?style=flat-square?svg=true)
+![Code Size](https://img.shields.io/github/languages/code-size/vladmandic/face-api?style=flat-square?svg=true)

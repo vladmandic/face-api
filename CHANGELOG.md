@@ -1,6 +1,6 @@
 # @vladmandic/face-api  
 
-Version: **1.1.2**  
+Version: **1.1.3**  
 Description: **FaceAPI: AI-powered Face Detection, Face Embedding & Recognition Using Tensorflow/JS**  
 
 Author: **Vladimir Mandic <mandic00@live.com>**  
@@ -9,8 +9,9 @@ Repository: **<git+https://github.com/vladmandic/face-api.git>**
 
 ## Changelog
 
-### **HEAD -> master** 2021/03/15 mandic00@live.com
+### **1.1.3** 2021/03/16 mandic00@live.com
 
+- fix for seedrandom
 
 ### **1.1.2** 2021/03/15 mandic00@live.com
 

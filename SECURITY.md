@@ -1,6 +1,4 @@
-# FaceAPI Library: Security Policy
-
-<br>
+# Security Policy
 
 All issues are tracked publicly on GitHub  
 

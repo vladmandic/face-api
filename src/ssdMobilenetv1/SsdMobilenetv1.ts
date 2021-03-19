@@ -27,7 +27,7 @@ export class SsdMobilenetv1 extends NeuralNetwork<NetParams> {
 
     return tf.tidy(() => {
       const batchTensor = tf.cast(input.toBatchTensor(512, false), 'float32');
-      const x = tf.sub(tf.mul(batchTensor, tf.scalar(0.007843137718737125)), tf.scalar(1)) as tf.Tensor4D;
+      const x = tf.sub(tf.div(batchTensor, 127.5), 1) as tf.Tensor4D; // input is normalized -1..1
       const features = mobileNetV1(x, params.mobilenetv1);
 
       const { boxPredictions, classPredictions } = predictionLayer(features.out, features.conv11, params.prediction_layer);
@@ -40,10 +40,7 @@ export class SsdMobilenetv1 extends NeuralNetwork<NetParams> {
     return this.forwardInput(await toNetInput(input));
   }
 
-  public async locateFaces(
-    input: TNetInput,
-    options: ISsdMobilenetv1Options = {},
-  ): Promise<FaceDetection[]> {
+  public async locateFaces(input: TNetInput, options: ISsdMobilenetv1Options = {}): Promise<FaceDetection[]> {
     const { maxResults, minConfidence } = new SsdMobilenetv1Options(options);
 
     const netInput = await toNetInput(input);

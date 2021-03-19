@@ -3,9 +3,7 @@ import * as tf from '../../dist/tfjs.esm';
 import { Dimensions } from '../classes/Dimensions';
 import { env } from '../env/index';
 import { padToSquare } from '../ops/padToSquare';
-import {
-  computeReshapedDimensions, isTensor3D, isTensor4D, range,
-} from '../utils/index';
+import { computeReshapedDimensions, isTensor3D, isTensor4D, range } from '../utils/index';
 import { createCanvasFromMedia } from './createCanvas';
 import { imageToSquare } from './imageToSquare';
 import { TResolvedNetInput } from './types';
@@ -23,10 +21,7 @@ export class NetInput {
 
   private _inputSize: number
 
-  constructor(
-    inputs: Array<TResolvedNetInput>,
-    treatAsBatchInput: boolean = false,
-  ) {
+  constructor(inputs: Array<TResolvedNetInput>, treatAsBatchInput: boolean = false) {
     if (!Array.isArray(inputs)) {
       throw new Error(`NetInput.constructor - expected inputs to be an Array of TResolvedNetInput or to be instanceof tf.Tensor4D, instead have ${inputs}`);
     }
@@ -131,13 +126,11 @@ export class NetInput {
         const input = this.getInput(batchIdx);
 
         if (input instanceof tf.Tensor) {
-          // @ts-ignore: error TS2344: Type 'Rank.R4' does not satisfy the constraint 'Tensor<Rank>'.
-          let imgTensor = isTensor4D(input) ? input : input.expandDims<tf.Rank.R4>();
-          // @ts-ignore: error TS2344: Type 'Rank.R4' does not satisfy the constraint 'Tensor<Rank>'.
+          let imgTensor = isTensor4D(input) ? input : tf.expandDims(input);
           imgTensor = padToSquare(imgTensor, isCenterInputs);
 
           if (imgTensor.shape[1] !== inputSize || imgTensor.shape[2] !== inputSize) {
-            imgTensor = tf.image.resizeBilinear(imgTensor, [inputSize, inputSize]);
+            imgTensor = tf.image.resizeBilinear(imgTensor, [inputSize, inputSize], false, false);
           }
 
           return imgTensor.as3D(inputSize, inputSize, 3);
@@ -150,9 +143,7 @@ export class NetInput {
         throw new Error(`toBatchTensor - at batchIdx ${batchIdx}, expected input to be instanceof tf.Tensor or instanceof HTMLCanvasElement, instead have ${input}`);
       });
 
-      // const batchTensor = tf.stack(inputTensors.map(t => t.toFloat())).as4D(this.batchSize, inputSize, inputSize, 3)
       const batchTensor = tf.stack(inputTensors.map((t) => tf.cast(t, 'float32'))).as4D(this.batchSize, inputSize, inputSize, 3);
-      // const batchTensor = tf.stack(inputTensors.map(t => tf.Tensor.as4D(tf.cast(t, 'float32'))), this.batchSize, inputSize, inputSize, 3);
 
       return batchTensor;
     });

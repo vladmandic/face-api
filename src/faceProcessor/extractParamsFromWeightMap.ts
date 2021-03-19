@@ -1,8 +1,6 @@
 import * as tf from '../../dist/tfjs.esm';
 
-import {
-  disposeUnusedWeightTensors, extractWeightEntryFactory, FCParams, ParamMapping,
-} from '../common/index';
+import { disposeUnusedWeightTensors, extractWeightEntryFactory, FCParams, ParamMapping } from '../common/index';
 import { NetParams } from './types';
 
 export function extractParamsFromWeightMap(

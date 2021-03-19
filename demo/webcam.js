@@ -19,8 +19,8 @@ function str(json) {
 function log(...txt) {
   // eslint-disable-next-line no-console
   console.log(...txt);
-  // @ts-ignore
-  document.getElementById('log').innerHTML += `<br>${txt}`;
+  const div = document.getElementById('log');
+  if (div) div.innerHTML += `<br>${txt}`;
 }
 
 // helper function to draw detected faces

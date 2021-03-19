@@ -2,11 +2,7 @@ import * as tf from '../../dist/tfjs.esm';
 
 import { fullyConnectedLayer } from '../common/fullyConnectedLayer';
 import { NetInput } from '../dom/index';
-import {
-  FaceFeatureExtractorParams,
-  IFaceFeatureExtractor,
-  TinyFaceFeatureExtractorParams,
-} from '../faceFeatureExtractor/types';
+import { FaceFeatureExtractorParams, IFaceFeatureExtractor, TinyFaceFeatureExtractorParams } from '../faceFeatureExtractor/types';
 import { NeuralNetwork } from '../NeuralNetwork';
 import { extractParams } from './extractParams';
 import { extractParamsFromWeightMap } from './extractParamsFromWeightMap';

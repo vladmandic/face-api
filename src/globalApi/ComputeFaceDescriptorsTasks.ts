@@ -6,14 +6,8 @@ import { WithFaceLandmarks } from '../factories/WithFaceLandmarks';
 import { ComposableTask } from './ComposableTask';
 import { extractAllFacesAndComputeResults, extractSingleFaceAndComputeResult } from './extractFacesAndComputeResults';
 import { nets } from './nets';
-import {
-  PredictAllAgeAndGenderWithFaceAlignmentTask,
-  PredictSingleAgeAndGenderWithFaceAlignmentTask,
-} from './PredictAgeAndGenderTask';
-import {
-  PredictAllFaceExpressionsWithFaceAlignmentTask,
-  PredictSingleFaceExpressionsWithFaceAlignmentTask,
-} from './PredictFaceExpressionsTask';
+import { PredictAllAgeAndGenderWithFaceAlignmentTask, PredictSingleAgeAndGenderWithFaceAlignmentTask } from './PredictAgeAndGenderTask';
+import { PredictAllFaceExpressionsWithFaceAlignmentTask, PredictSingleFaceExpressionsWithFaceAlignmentTask } from './PredictFaceExpressionsTask';
 
 export class ComputeFaceDescriptorsTaskBase<TReturn, TParentReturn> extends ComposableTask<TReturn> {
   constructor(

@@ -107,9 +107,7 @@ export class Box<BoxType = any> implements IBoundingBox, IRect {
       height += diff;
     }
 
-    return new Box({
-      x, y, width, height,
-    });
+    return new Box({ x, y, width, height });
   }
 
   public rescale(s: IDimensions | number): Box<BoxType> {
@@ -136,9 +134,7 @@ export class Box<BoxType = any> implements IBoundingBox, IRect {
   }
 
   public clipAtImageBorders(imgWidth: number, imgHeight: number): Box<BoxType> {
-    const {
-      x, y, right, bottom,
-    } = this;
+    const { x, y, right, bottom } = this;
     const clippedX = Math.max(x, 0);
     const clippedY = Math.max(y, 0);
 

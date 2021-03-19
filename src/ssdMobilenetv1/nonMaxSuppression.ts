@@ -12,15 +12,12 @@ function IOU(boxes: tf.Tensor2D, i: number, j: number) {
   const xmaxJ = Math.max(boxesData[j][1], boxesData[j][3]);
   const areaI = (ymaxI - yminI) * (xmaxI - xminI);
   const areaJ = (ymaxJ - yminJ) * (xmaxJ - xminJ);
-  if (areaI <= 0 || areaJ <= 0) {
-    return 0.0;
-  }
+  if (areaI <= 0 || areaJ <= 0) return 0.0;
   const intersectionYmin = Math.max(yminI, yminJ);
   const intersectionXmin = Math.max(xminI, xminJ);
   const intersectionYmax = Math.min(ymaxI, ymaxJ);
   const intersectionXmax = Math.min(xmaxI, xmaxJ);
-  const intersectionArea = Math.max(intersectionYmax - intersectionYmin, 0.0)
-      * Math.max(intersectionXmax - intersectionXmin, 0.0);
+  const intersectionArea = Math.max(intersectionYmax - intersectionYmin, 0.0) * Math.max(intersectionXmax - intersectionXmin, 0.0);
   return intersectionArea / (areaI + areaJ - intersectionArea);
 }
 
@@ -32,10 +29,7 @@ export function nonMaxSuppression(
   scoreThreshold: number,
 ): number[] {
   const numBoxes = boxes.shape[0];
-  const outputSize = Math.min(
-    maxOutputSize,
-    numBoxes,
-  );
+  const outputSize = Math.min(maxOutputSize, numBoxes);
 
   const candidates = scores
     .map((score, boxIndex) => ({ score, boxIndex }))

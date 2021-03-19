@@ -5,11 +5,7 @@ import { MobileNetV1 } from './types';
 
 const epsilon = 0.0010000000474974513;
 
-function depthwiseConvLayer(
-  x: tf.Tensor4D,
-  params: MobileNetV1.DepthwiseConvParams,
-  strides: [number, number],
-) {
+function depthwiseConvLayer(x: tf.Tensor4D, params: MobileNetV1.DepthwiseConvParams, strides: [number, number]) {
   return tf.tidy(() => {
     let out = tf.depthwiseConv2d(x, params.filters, strides, 'same');
     out = tf.batchNorm<tf.Rank.R4>(

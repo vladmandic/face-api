@@ -1,9 +1,7 @@
 /* eslint-disable max-classes-per-file */
 import { Box, IBoundingBox, IRect } from '../classes/index';
 import { getContext2dOrThrow } from '../dom/getContext2dOrThrow';
-import {
-  AnchorPosition, DrawTextField, DrawTextFieldOptions, IDrawTextFieldOptions,
-} from './DrawTextField';
+import { AnchorPosition, DrawTextField, DrawTextFieldOptions, IDrawTextFieldOptions } from './DrawTextField';
 
 export interface IDrawBoxOptions {
   boxColor?: string

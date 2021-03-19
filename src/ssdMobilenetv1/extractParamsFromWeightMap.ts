@@ -1,12 +1,8 @@
 import * as tf from '../../dist/tfjs.esm';
 
-import {
-  ConvParams, disposeUnusedWeightTensors, extractWeightEntryFactory, ParamMapping,
-} from '../common/index';
+import { ConvParams, disposeUnusedWeightTensors, extractWeightEntryFactory, ParamMapping } from '../common/index';
 import { isTensor3D } from '../utils/index';
-import {
-  BoxPredictionParams, MobileNetV1, NetParams, PointwiseConvParams, PredictionLayerParams,
-} from './types';
+import { BoxPredictionParams, MobileNetV1, NetParams, PointwiseConvParams, PredictionLayerParams } from './types';
 
 function extractorsFactory(weightMap: any, paramMappings: ParamMapping[]) {
   const extractWeightEntry = extractWeightEntryFactory(weightMap, paramMappings);

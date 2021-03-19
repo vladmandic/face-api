@@ -5,9 +5,7 @@ import { seperateWeightMaps } from '../faceProcessor/util';
 import { TinyXception } from '../xception/TinyXception';
 import { extractParams } from './extractParams';
 import { extractParamsFromWeightMap } from './extractParamsFromWeightMap';
-import {
-  AgeAndGenderPrediction, Gender, NetOutput, NetParams,
-} from './types';
+import { AgeAndGenderPrediction, Gender, NetOutput, NetParams } from './types';
 import { NeuralNetwork } from '../NeuralNetwork';
 import { NetInput, TNetInput, toNetInput } from '../dom/index';
 

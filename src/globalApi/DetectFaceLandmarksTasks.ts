@@ -10,14 +10,8 @@ import { extendWithFaceLandmarks, WithFaceLandmarks } from '../factories/WithFac
 import { ComposableTask } from './ComposableTask';
 import { ComputeAllFaceDescriptorsTask, ComputeSingleFaceDescriptorTask } from './ComputeFaceDescriptorsTasks';
 import { nets } from './nets';
-import {
-  PredictAllAgeAndGenderWithFaceAlignmentTask,
-  PredictSingleAgeAndGenderWithFaceAlignmentTask,
-} from './PredictAgeAndGenderTask';
-import {
-  PredictAllFaceExpressionsWithFaceAlignmentTask,
-  PredictSingleFaceExpressionsWithFaceAlignmentTask,
-} from './PredictFaceExpressionsTask';
+import { PredictAllAgeAndGenderWithFaceAlignmentTask, PredictSingleAgeAndGenderWithFaceAlignmentTask } from './PredictAgeAndGenderTask';
+import { PredictAllFaceExpressionsWithFaceAlignmentTask, PredictSingleFaceExpressionsWithFaceAlignmentTask } from './PredictFaceExpressionsTask';
 
 export class DetectFaceLandmarksTaskBase<TReturn, TParentReturn> extends ComposableTask<TReturn> {
   constructor(

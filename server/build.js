@@ -209,7 +209,7 @@ async function build(f, msg, dev = false) {
     for (const [targetGroupName, targetGroup] of Object.entries(targets)) {
       for (const [targetName, targetOptions] of Object.entries(targetGroup)) {
         // if triggered from watch mode, rebuild only browser bundle
-        if ((require.main !== module) && (targetGroupName !== 'browserBundle')) continue;
+        // if ((require.main !== module) && (targetGroupName !== 'browserBundle')) continue;
         // @ts-ignore
         const meta = await esbuild.build({ ...common, ...targetOptions });
         const stats = await getStats(meta);

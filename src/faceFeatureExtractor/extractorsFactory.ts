@@ -1,9 +1,4 @@
-import {
-  extractConvParamsFactory,
-  extractSeparableConvParamsFactory,
-  ExtractWeightsFunction,
-  ParamMapping,
-} from '../common/index';
+import { extractConvParamsFactory, extractSeparableConvParamsFactory, ExtractWeightsFunction, ParamMapping } from '../common/index';
 import { DenseBlock3Params, DenseBlock4Params } from './types';
 
 export function extractorsFactory(extractWeights: ExtractWeightsFunction, paramMappings: ParamMapping[]) {

@@ -13,17 +13,11 @@ function getCenterCoordinatesAndSizesLayer(x: tf.Tensor2D) {
     tf.add(vec[0], tf.div(sizes[0], tf.scalar(2))),
     tf.add(vec[1], tf.div(sizes[1], tf.scalar(2))),
   ];
-  return {
-    sizes,
-    centers,
-  };
+  return { sizes, centers };
 }
 
 function decodeBoxesLayer(x0: tf.Tensor2D, x1: tf.Tensor2D) {
-  const {
-    sizes,
-    centers,
-  } = getCenterCoordinatesAndSizesLayer(x0);
+  const { sizes, centers } = getCenterCoordinatesAndSizesLayer(x0);
 
   const vec = tf.unstack(tf.transpose(x1, [1, 0]));
   const div0_out = tf.div(tf.mul(tf.exp(tf.div(vec[2], tf.scalar(5))), sizes[0]), tf.scalar(2));
@@ -42,11 +36,7 @@ function decodeBoxesLayer(x0: tf.Tensor2D, x1: tf.Tensor2D) {
   );
 }
 
-export function outputLayer(
-  boxPredictions: tf.Tensor4D,
-  classPredictions: tf.Tensor4D,
-  params: OutputLayerParams,
-) {
+export function outputLayer(boxPredictions: tf.Tensor4D, classPredictions: tf.Tensor4D, params: OutputLayerParams) {
   return tf.tidy(() => {
     const batchSize = boxPredictions.shape[0];
 
@@ -54,25 +44,16 @@ export function outputLayer(
       tf.reshape(tf.tile(params.extra_dim, [batchSize, 1, 1]), [-1, 4]) as tf.Tensor2D,
       tf.reshape(boxPredictions, [-1, 4]) as tf.Tensor2D,
     );
-    boxes = tf.reshape(
-      boxes,
-      [batchSize, (boxes.shape[0] / batchSize), 4],
-    );
+    boxes = tf.reshape(boxes, [batchSize, (boxes.shape[0] / batchSize), 4]);
 
     const scoresAndClasses = tf.sigmoid(tf.slice(classPredictions, [0, 0, 1], [-1, -1, -1]));
     let scores = tf.slice(scoresAndClasses, [0, 0, 0], [-1, -1, 1]) as tf.Tensor;
 
-    scores = tf.reshape(
-      scores,
-      [batchSize, scores.shape[1] as number],
-    );
+    scores = tf.reshape(scores, [batchSize, scores.shape[1] as number]);
 
     const boxesByBatch = tf.unstack(boxes) as tf.Tensor2D[];
     const scoresByBatch = tf.unstack(scores) as tf.Tensor1D[];
 
-    return {
-      boxes: boxesByBatch,
-      scores: scoresByBatch,
-    };
+    return { boxes: boxesByBatch, scores: scoresByBatch };
   });
 }

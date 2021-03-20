@@ -64,8 +64,8 @@ export class AgeGenderNet extends NeuralNetwork<NetParams> {
 
     const predictionsByBatch = await Promise.all(
       ageAndGenderTensors.map(async ({ ageTensor, genderTensor }) => {
-        const age = (await ageTensor.data())[0];
-        const probMale = (await genderTensor.data())[0];
+        const age = (ageTensor.dataSync())[0];
+        const probMale = (genderTensor.dataSync())[0];
         const isMale = probMale > 0.5;
         const gender = isMale ? Gender.MALE : Gender.FEMALE;
         const genderProbability = isMale ? probMale : (1 - probMale);

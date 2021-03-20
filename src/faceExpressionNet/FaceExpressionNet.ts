@@ -23,7 +23,7 @@ export class FaceExpressionNet extends FaceProcessor<FaceFeatureExtractorParams>
     const netInput = await toNetInput(input);
     const out = await this.forwardInput(netInput);
     const probabilitesByBatch = await Promise.all(tf.unstack(out).map(async (t) => {
-      const data = await t.data();
+      const data = t.dataSync();
       t.dispose();
       return data;
     }));

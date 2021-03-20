@@ -26,7 +26,6 @@ export class DetectFacesTaskBase<TReturn> extends ComposableTask<TReturn> {
 export class DetectAllFacesTask extends DetectFacesTaskBase<FaceDetection[]> {
   public async run(): Promise<FaceDetection[]> {
     const { input, options } = this;
-
     let result;
     if (options instanceof TinyFaceDetectorOptions) result = nets.tinyFaceDetector.locateFaces(input, options);
     else if (options instanceof SsdMobilenetv1Options) result = nets.ssdMobilenetv1.locateFaces(input, options);

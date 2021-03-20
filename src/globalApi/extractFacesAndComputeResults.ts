@@ -17,6 +17,7 @@ export async function extractAllFacesAndComputeResults<TSource extends WithFaceD
   const faceBoxes = parentResults.map((parentResult) => (isWithFaceLandmarks(parentResult)
     ? getRectForAlignment(parentResult)
     : parentResult.detection));
+
   const faces: Array<HTMLCanvasElement | tf.Tensor3D> = extractedFaces || (
     input instanceof tf.Tensor
       ? await extractFaceTensors(input, faceBoxes)

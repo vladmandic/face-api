@@ -11,6 +11,7 @@ Repository: **<git+https://github.com/vladmandic/face-api.git>**
 
 ### **HEAD -> master** 2021/03/19 mandic00@live.com
 
+- refactoring
 
 ### **1.1.4** 2021/03/18 mandic00@live.com
 

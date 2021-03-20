@@ -94,7 +94,7 @@ export class TinyYolov2Base extends NeuralNetwork<TinyYolov2NetParams> {
       batchTensor = this.config.meanRgb
         ? normalize(batchTensor, this.config.meanRgb)
         : batchTensor;
-      batchTensor = batchTensor.div(tf.scalar(256)) as tf.Tensor4D;
+      batchTensor = batchTensor.div(255) as tf.Tensor4D;
       return this.config.withSeparableConvs
         ? this.runMobilenet(batchTensor, params as MobilenetParams)
         : this.runTinyYolov2(batchTensor, params as DefaultTinyYolov2NetParams);

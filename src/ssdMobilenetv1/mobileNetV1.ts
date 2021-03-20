@@ -50,9 +50,7 @@ export function mobileNetV1(x: tf.Tensor4D, params: MobileNetV1.Params) {
       const depthwiseConvStrides = getStridesForLayerIdx(layerIdx);
       out = depthwiseConvLayer(out, param.depthwise_conv, depthwiseConvStrides);
       out = pointwiseConvLayer(out, param.pointwise_conv, [1, 1]);
-      if (layerIdx === 11) {
-        conv11 = out;
-      }
+      if (layerIdx === 11) conv11 = out;
     });
 
     if (conv11 === null) {

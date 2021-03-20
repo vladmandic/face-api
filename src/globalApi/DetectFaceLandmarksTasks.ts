@@ -65,9 +65,7 @@ export class DetectAllFaceLandmarksTask<
   }
 }
 
-export class DetectSingleFaceLandmarksTask<
-  TSource extends WithFaceDetection<{}>
-> extends DetectFaceLandmarksTaskBase<WithFaceLandmarks<TSource> | undefined, TSource | undefined> {
+export class DetectSingleFaceLandmarksTask<TSource extends WithFaceDetection<{}>> extends DetectFaceLandmarksTaskBase<WithFaceLandmarks<TSource> | undefined, TSource | undefined> {
   public async run(): Promise<WithFaceLandmarks<TSource> | undefined> {
     const parentResult = await this.parentTask;
     if (!parentResult) {

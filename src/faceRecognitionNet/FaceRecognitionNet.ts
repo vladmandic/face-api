@@ -25,7 +25,7 @@ export class FaceRecognitionNet extends NeuralNetwork<NetParams> {
       const batchTensor = tf.cast(input.toBatchTensor(150, true), 'float32');
 
       const meanRgb = [122.782, 117.001, 104.298];
-      const normalized = normalize(batchTensor, meanRgb).div(tf.scalar(256)) as tf.Tensor4D;
+      const normalized = normalize(batchTensor, meanRgb).div(255) as tf.Tensor4D;
 
       let out = convDown(normalized, params.conv32_down);
       out = tf.maxPool(out, 3, 2, 'valid');
@@ -62,9 +62,7 @@ export class FaceRecognitionNet extends NeuralNetwork<NetParams> {
   public async computeFaceDescriptor(input: TNetInput): Promise<Float32Array|Float32Array[]> {
     if (input?.shape?.some((dim) => dim <= 0)) return new Float32Array(128);
     const netInput = await toNetInput(input);
-    const faceDescriptorTensors = tf.tidy(
-      () => tf.unstack(this.forwardInput(netInput)),
-    );
+    const faceDescriptorTensors = tf.tidy(() => tf.unstack(this.forwardInput(netInput)));
     const faceDescriptorsForBatch = await Promise.all(faceDescriptorTensors.map((t) => t.data())) as Float32Array[];
     faceDescriptorTensors.forEach((t) => t.dispose());
     return netInput.isBatchInput ? faceDescriptorsForBatch : faceDescriptorsForBatch[0];

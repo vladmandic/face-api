@@ -46,7 +46,7 @@ export class TinyXception extends NeuralNetwork<TinyXceptionParams> {
     return tf.tidy(() => {
       const batchTensor = tf.cast(input.toBatchTensor(112, true), 'float32');
       const meanRgb = [122.782, 117.001, 104.298];
-      const normalized = normalize(batchTensor, meanRgb).div(tf.scalar(256)) as tf.Tensor4D;
+      const normalized = normalize(batchTensor, meanRgb).div(255) as tf.Tensor4D;
       let out = tf.relu(conv(normalized, params.entry_flow.conv_in, [2, 2]));
       out = reductionBlock(out, params.entry_flow.reduction_block_0, false);
       out = reductionBlock(out, params.entry_flow.reduction_block_1);

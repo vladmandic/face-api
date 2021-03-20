@@ -72,7 +72,7 @@ export abstract class FaceLandmark68NetBase<
 
     const landmarksForBatch = await Promise.all(landmarkTensors.map(
       async (landmarkTensor, batchIdx) => {
-        const landmarksArray = Array.from(await landmarkTensor.data());
+        const landmarksArray = Array.from(landmarkTensor.dataSync());
         const xCoords = landmarksArray.filter((_, i) => isEven(i));
         const yCoords = landmarksArray.filter((_, i) => !isEven(i));
 

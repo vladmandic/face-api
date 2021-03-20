@@ -14,10 +14,7 @@ import { isTensor3D, isTensor4D } from '../utils/index';
  * @param detections The face detection results or face bounding boxes for that image.
  * @returns Tensors of the corresponding image region for each detected face.
  */
-export async function extractFaceTensors(
-  imageTensor: tf.Tensor3D | tf.Tensor4D,
-  detections: Array<FaceDetection | Rect>,
-): Promise<tf.Tensor3D[]> {
+export async function extractFaceTensors(imageTensor: tf.Tensor3D | tf.Tensor4D, detections: Array<FaceDetection | Rect>): Promise<tf.Tensor3D[]> {
   if (!isTensor3D(imageTensor) && !isTensor4D(imageTensor)) {
     throw new Error('extractFaceTensors - expected image tensor to be 3D or 4D');
   }
@@ -29,11 +26,10 @@ export async function extractFaceTensors(
   return tf.tidy(() => {
     const [imgHeight, imgWidth, numChannels] = imageTensor.shape.slice(isTensor4D(imageTensor) ? 1 : 0);
 
-    const boxes = detections.map(
-      (det) => (det instanceof FaceDetection
+    const boxes = detections
+      .map((det) => (det instanceof FaceDetection
         ? det.forSize(imgWidth, imgHeight).box
-        : det),
-    )
+        : det))
       .map((box) => box.clipAtImageBorders(imgWidth, imgHeight));
 
     const faceTensors = boxes.map(({

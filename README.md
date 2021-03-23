@@ -69,10 +69,17 @@ Example can be accessed directly using Git pages using URL:
 
 ### NodeJS
 
-Two NodeJS examples are:
+Three NodeJS examples are:
 
 - `/demo/node-singleprocess.js`:  
   Regular usage of `FaceAPI` from `NodeJS`  
+- `/demo/node-singleprocess.js`:  
+  Regular usage of `FaceAPI` from `NodeJS`  
+  Using `TFJS` native methods to load images
+- `/demo/node-canvas.js`:  
+  Regular usage of `FaceAPI` from `NodeJS`  
+  Using external `canvas` module to load images  
+  Which also allows for image drawing and saving inside `NodeJS`
 - `/demo/node-multiprocess.js`:  
   Multiprocessing showcase that uses pool of worker processes  
   (`node-multiprocess-worker.js`)  

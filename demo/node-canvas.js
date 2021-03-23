@@ -5,10 +5,8 @@ const process = require('process');
 const path = require('path');
 // eslint-disable-next-line import/no-extraneous-dependencies, node/no-unpublished-require
 const log = require('@vladmandic/pilogger');
-// eslint-disable-next-line import/no-extraneous-dependencies, node/no-unpublished-require, no-unused-vars
-const tf = require('@tensorflow/tfjs-node');
 // eslint-disable-next-line import/no-extraneous-dependencies, node/no-unpublished-require
-const canvas = require('canvas');
+const tf = require('@tensorflow/tfjs-node');
 const faceapi = require('../dist/face-api.node.js'); // this is equivalent to '@vladmandic/faceapi'
 
 const modelPathRoot = '../model';
@@ -17,12 +15,14 @@ const minScore = 0.1;
 const maxResults = 5;
 let optionsSSDMobileNet;
 
-async function image(input) {
-  const img = canvas.loadImage(input);
-  const c = canvas.createCanvas(img.width, img.height);
-  const ctx = c.getContext('2d');
-  ctx.drawImage(img, 0, 0, img.width, img.height);
-  return c;
+async function image(img) {
+  const buffer = fs.readFileSync(img);
+  const decoded = tf.node.decodeImage(buffer);
+  const casted = decoded.toFloat();
+  const result = casted.expandDims(0);
+  decoded.dispose();
+  casted.dispose();
+  return result;
 }
 
 async function detect(tensor) {
@@ -38,8 +38,6 @@ async function detect(tensor) {
 async function main() {
   log.header();
   log.info('FaceAPI single-process test');
-
-  faceapi.env.monkeyPatch({ Canvas: canvas.Canvas, Image: canvas.Image, ImageData: canvas.ImageData });
 
   await faceapi.tf.setBackend('tensorflow');
   await faceapi.tf.enableProdMode();

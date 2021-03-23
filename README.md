@@ -6,7 +6,7 @@
 
 # FaceAPI
 
-**Face detection and recognition libary for Browser and NodeJS implemented on top of TensorFlow/JS**
+**Face detection and recognition libary for Browser and NodeJS implemented using latest TensorFlow/JS**
 
 <br>
 
@@ -18,23 +18,6 @@
 
 - [**Tutorial**](TUTORIAL.md)
 - [**API Specification**](https://vladmandic.github.io/face-api/typedoc/index.html)
-
-<br>
-
-## Note
-
-This is updated **face-api.js** with latest available TensorFlow/JS as the original is not compatible with **tfjs 2.0+**.  
-Forked from [face-api.js](https://github.com/justadudewhohacks/face-api.js) version **0.22.2** which was released on March 22nd, 2020  
-
-Currently based on **`TensorFlow/JS` 3.3.0**  
-
-*Why?* I needed Face-API that does not cause version conflict with newer versions of TensorFlow  
-And since original Face-API was open-source, I've released this version as well  
-
-Changes ended up being too large for a simple pull request  
-and it ended up being a full-fledged version on its own  
-
-Plus many features were added since original inception  
 
 <br><hr><br>
 
@@ -160,9 +143,7 @@ include a specific version of TFJS and not rely on  pre-packaged one
 
 All versions include `sourcemap`
 
-<br>
-<hr>
-<br>
+<br><hr><br>
 
 There are several ways to use Face-API:
 
@@ -307,17 +288,13 @@ const { Canvas, Image, ImageData } = canvas
 faceapi.env.monkeyPatch({ Canvas, Image, ImageData })
 ```
 
-<br>
-<hr>
-<br>
+<br><hr><br>
 
 ## Weights
 
 Pretrained models and their weights are includes in `./model`.
 
-<br>
-<hr>
-<br>
+<br><hr><br>
 
 ## Test & Dev Web Server
 
@@ -344,9 +321,7 @@ By default it starts HTTP server on port 8000 and HTTPS server on port 8001 and 
 2021-03-14 08:41:10 STATE:  Build for: browserBundle type: esm: { imports: 160, importBytes: 1305679, outputBytes: 1151520, outputFiles: 'dist/face-api.esm.js' }
 ```
 
-<br>
-<hr>
-<br>
+<br><hr><br>
 
 ## Build
 
@@ -398,15 +373,37 @@ Build process uses script `build.js` that creates optimized build for each targe
 2021-03-14 08:39:27 INFO:  Generate TypeDocs: [ 'src/index.ts', [length]: 1 ]
 ```
 
-<br>
-<hr>
-<br>
+<br><hr><br>
 
 ## Face Mesh
 
 `FaceAPI` landmark model returns 68-point face mesh as detailed in the image below:
 
 ![facemesh](demo/facemesh.png)
+
+<br><hr><br>
+
+## Note
+
+This is updated **face-api.js** with latest available TensorFlow/JS as the original is not compatible with **tfjs 2.0+**.  
+Forked from [face-api.js](https://github.com/justadudewhohacks/face-api.js) version **0.22.2** which was released on March 22nd, 2020  
+
+Currently based on **`TensorFlow/JS` 3.3.0**  
+
+*Why?* I needed Face-API that does not cause version conflict with newer versions of TensorFlow  
+And since original Face-API was open-source, I've released this version as well  
+
+Changes ended up being too large for a simple pull request  
+and it ended up being a full-fledged version on its own  
+
+Plus many features were added since original inception  
+
+Although a lot of work has gone into this version of `FaceAPI` and it will continue to be maintained,  
+at this time it is completely superseded by my newer library `Human` which covers the same use cases,  
+but extends it with newer AI models, additional detection details, compatibility with latest web standard and more
+
+- [Human NPM](https://www.npmjs.com/package/@vladmandic/human)
+- [Human Git Repository](https://github.com/vladmandic/human)
 
 <br>
 

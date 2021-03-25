@@ -6,7 +6,7 @@
 
 # FaceAPI
 
-**Face detection and recognition libary for Browser and NodeJS implemented using latest TensorFlow/JS**
+**AI-powered Face Detection, Description & Recognition for Browser and NodeJS using Tensorflow/JS**
 
 <br>
 

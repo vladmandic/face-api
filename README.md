@@ -419,13 +419,13 @@ Compared to [face-api.js](https://github.com/justadudewhohacks/face-api.js) vers
   Resulting code is optimized per-platform instead of being universal
   Fully tree shakable when imported as an `ESM` module
   Browser bundle process uses `ESBuild` instead of `Rollup`
-- Typescript build process now targets `ES2018` and instead of dual ES5/ES6
+- Typescript build process now targets `ES2018` and instead of dual `ES5`/`ES6`
   Resulting code is clean ES2018 JavaScript without polyfills
 - Removed old tests, docs, examples
 - Removed old package dependencies (`karma`, `jasmine`, `babel`, etc.)
 - Updated all package dependencies
 - Updated TensorFlow/JS dependencies since backends were removed from `@tensorflow/tfjs-core`
-- Updated mobileNetv1 model due to `batchNorm()` dependency
+- Updated `mobileNetv1` model due to `batchNorm()` dependency
 - Added `version` class that returns JSON object with version of FaceAPI as well as linked TFJS
 - Added test/dev built-in HTTP & HTTPS Web server
 - Removed `mtcnn` and `tinyYolov2` models as they were non-functional in latest public version of `Face-API`

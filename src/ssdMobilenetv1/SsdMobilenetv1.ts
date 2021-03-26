@@ -43,10 +43,7 @@ export class SsdMobilenetv1 extends NeuralNetwork<NetParams> {
     const { maxResults, minConfidence } = new SsdMobilenetv1Options(options);
     const netInput = await toNetInput(input);
 
-    const {
-      boxes: _boxes,
-      scores: _scores,
-    } = this.forwardInput(netInput);
+    const { boxes: _boxes, scores: _scores } = this.forwardInput(netInput);
 
     const boxes = _boxes[0];
     const scores = _scores[0];
@@ -57,13 +54,7 @@ export class SsdMobilenetv1 extends NeuralNetwork<NetParams> {
 
     const scoresData = Array.from(scores.dataSync());
     const iouThreshold = 0.5;
-    const indices = nonMaxSuppression(
-      boxes,
-      scoresData as number[],
-      maxResults,
-      iouThreshold,
-      minConfidence,
-    );
+    const indices = nonMaxSuppression(boxes, scoresData as number[], maxResults, iouThreshold, minConfidence);
 
     const reshapedDims = netInput.getReshapedInputDimensions(0);
     const inputSize = netInput.inputSize as number;
@@ -83,16 +74,8 @@ export class SsdMobilenetv1 extends NeuralNetwork<NetParams> {
         ].map((val) => val * padX);
         return new FaceDetection(
           scoresData[idx] as number,
-          new Rect(
-            left,
-            top,
-            right - left,
-            bottom - top,
-          ),
-          {
-            height: netInput.getInputHeight(0),
-            width: netInput.getInputWidth(0),
-          },
+          new Rect(left, top, right - left, bottom - top),
+          { height: netInput.getInputHeight(0), width: netInput.getInputWidth(0) },
         );
       });
 

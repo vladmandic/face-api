@@ -54,9 +54,7 @@ Example can be accessed directly using Git pages using URL:
 
 Three NodeJS examples are:
 
-- `/demo/node-singleprocess.js`:  
-  Regular usage of `FaceAPI` from `NodeJS`  
-- `/demo/node-singleprocess.js`:  
+- `/demo/node.js`:  
   Regular usage of `FaceAPI` from `NodeJS`  
   Using `TFJS` native methods to load images
 - `/demo/node-canvas.js`:  

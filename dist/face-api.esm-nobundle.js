@@ -5,5 +5,4542 @@
   author: <https://github.com/vladmandic>'
   */
 
-var pn=Object.create,Ye=Object.defineProperty,dn=Object.getPrototypeOf,un=Object.prototype.hasOwnProperty,ln=Object.getOwnPropertyNames,fn=Object.getOwnPropertyDescriptor;var Dr=o=>Ye(o,"__esModule",{value:!0});var uo=(o,t)=>()=>(t||(t={exports:{}},o(t.exports,t)),t.exports),Er=(o,t)=>{for(var e in t)Ye(o,e,{get:t[e],enumerable:!0})},ut=(o,t,e)=>{if(t&&typeof t=="object"||typeof t=="function")for(let r of ln(t))!un.call(o,r)&&r!=="default"&&Ye(o,r,{get:()=>t[r],enumerable:!(e=fn(t,r))||e.enumerable});return o},hn=o=>ut(Dr(Ye(o!=null?pn(dn(o)):{},"default",o&&o.__esModule&&"default"in o?{get:()=>o.default,enumerable:!0}:{value:o,enumerable:!0})),o);import*as Ca from"@tensorflow/tfjs/dist/index.js";import*as Na from"@tensorflow/tfjs-backend-wasm";var b=uo(xn=>{Dr(xn);ut(xn,Ca);ut(xn,Na)});var go=uo((_n,bo)=>{Dr(_n);Er(_n,{isNodejs:()=>wn});function wn(){return typeof global=="object"&&!0&&typeof bo!="undefined"&&typeof process!="undefined"&&!!process.version}});var ya=b();var Po={};Er(Po,{AnchorPosition:()=>mt,DrawBox:()=>Ue,DrawBoxOptions:()=>jr,DrawFaceLandmarks:()=>Zr,DrawFaceLandmarksOptions:()=>qr,DrawTextField:()=>Et,DrawTextFieldOptions:()=>Ce,drawContour:()=>lt,drawDetections:()=>En,drawFaceExpressions:()=>In,drawFaceLandmarks:()=>kn});function lt(o,t,e=!1){if(o.beginPath(),t.slice(1).forEach(({x:r,y:n},a)=>{let s=t[a];o.moveTo(s.x,s.y),o.lineTo(r,n)}),e){let r=t[t.length-1],n=t[0];if(!r||!n)return;o.moveTo(r.x,r.y),o.lineTo(n.x,n.y)}o.stroke()}var lo={};Er(lo,{computeReshapedDimensions:()=>Nr,getCenterPoint:()=>Bt,isDimensions:()=>ze,isEven:()=>Ge,isFloat:()=>Cr,isTensor:()=>At,isTensor1D:()=>bn,isTensor2D:()=>Mr,isTensor3D:()=>ft,isTensor4D:()=>z,isValidNumber:()=>tt,isValidProbablitiy:()=>Qt,range:()=>st,round:()=>Wt});var fo=b();var S=class{constructor(t,e){if(!tt(t)||!tt(e))throw new Error(`Dimensions.constructor - expected width and height to be valid numbers, instead have ${JSON.stringify({width:t,height:e})}`);this._width=t,this._height=e}get width(){return this._width}get height(){return this._height}reverse(){return new S(1/this.width,1/this.height)}};function At(o,t){return o instanceof fo.Tensor&&o.shape.length===t}function bn(o){return At(o,1)}function Mr(o){return At(o,2)}function ft(o){return At(o,3)}function z(o){return At(o,4)}function Cr(o){return o%1!=0}function Ge(o){return o%2==0}function Wt(o,t=2){let e=10**t;return Math.floor(o*e)/e}function ze(o){return o&&o.width&&o.height}function Nr({width:o,height:t},e){let r=e/Math.max(t,o);return new S(Math.round(o*r),Math.round(t*r))}function Bt(o){return o.reduce((t,e)=>t.add(e),new x(0,0)).div(new x(o.length,o.length))}function st(o,t,e){return Array(o).fill(0).map((r,n)=>t+n*e)}function tt(o){return!!o&&o!==Infinity&&o!==-Infinity&&!Number.isNaN(o)||o===0}function Qt(o){return tt(o)&&o>=0&&o<=1}var x=class{constructor(t,e){this._x=t,this._y=e}get x(){return this._x}get y(){return this._y}add(t){return new x(this.x+t.x,this.y+t.y)}sub(t){return new x(this.x-t.x,this.y-t.y)}mul(t){return new x(this.x*t.x,this.y*t.y)}div(t){return new x(this.x/t.x,this.y/t.y)}abs(){return new x(Math.abs(this.x),Math.abs(this.y))}magnitude(){return Math.sqrt(this.x**2+this.y**2)}floor(){return new x(Math.floor(this.x),Math.floor(this.y))}};var P=class{static isRect(t){return!!t&&[t.x,t.y,t.width,t.height].every(tt)}static assertIsValidBox(t,e,r=!1){if(!P.isRect(t))throw new Error(`${e} - invalid box: ${JSON.stringify(t)}, expected object with properties x, y, width, height`);if(!r&&(t.width<0||t.height<0))throw new Error(`${e} - width (${t.width}) and height (${t.height}) must be positive numbers`)}constructor(t,e=!0){let r=t||{},n=[r.left,r.top,r.right,r.bottom].every(tt),a=[r.x,r.y,r.width,r.height].every(tt);if(!a&&!n)throw new Error(`Box.constructor - expected box to be IBoundingBox | IRect, instead have ${JSON.stringify(r)}`);let[s,i,c,m]=a?[r.x,r.y,r.width,r.height]:[r.left,r.top,r.right-r.left,r.bottom-r.top];P.assertIsValidBox({x:s,y:i,width:c,height:m},"Box.constructor",e),this._x=s,this._y=i,this._width=c,this._height=m}get x(){return this._x}get y(){return this._y}get width(){return this._width}get height(){return this._height}get left(){return this.x}get top(){return this.y}get right(){return this.x+this.width}get bottom(){return this.y+this.height}get area(){return this.width*this.height}get topLeft(){return new x(this.left,this.top)}get topRight(){return new x(this.right,this.top)}get bottomLeft(){return new x(this.left,this.bottom)}get bottomRight(){return new x(this.right,this.bottom)}round(){let[t,e,r,n]=[this.x,this.y,this.width,this.height].map(a=>Math.round(a));return new P({x:t,y:e,width:r,height:n})}floor(){let[t,e,r,n]=[this.x,this.y,this.width,this.height].map(a=>Math.floor(a));return new P({x:t,y:e,width:r,height:n})}toSquare(){let{x:t,y:e,width:r,height:n}=this,a=Math.abs(r-n);return r<n&&(t-=a/2,r+=a),n<r&&(e-=a/2,n+=a),new P({x:t,y:e,width:r,height:n})}rescale(t){let e=ze(t)?t.width:t,r=ze(t)?t.height:t;return new P({x:this.x*e,y:this.y*r,width:this.width*e,height:this.height*r})}pad(t,e){let[r,n,a,s]=[this.x-t/2,this.y-e/2,this.width+t,this.height+e];return new P({x:r,y:n,width:a,height:s})}clipAtImageBorders(t,e){let{x:r,y:n,right:a,bottom:s}=this,i=Math.max(r,0),c=Math.max(n,0),m=a-i,p=s-c,d=Math.min(m,t-i),u=Math.min(p,e-c);return new P({x:i,y:c,width:d,height:u}).floor()}shift(t,e){let{width:r,height:n}=this,a=this.x+t,s=this.y+e;return new P({x:a,y:s,width:r,height:n})}padAtBorders(t,e){let r=this.width+1,n=this.height+1,a=1,s=1,i=r,c=n,m=this.left,p=this.top,d=this.right,u=this.bottom;return d>e&&(i=-d+e+r,d=e),u>t&&(c=-u+t+n,u=t),m<1&&(c=2-m,m=1),p<1&&(c=2-p,p=1),{dy:s,edy:c,dx:a,edx:i,y:p,ey:u,x:m,ex:d,w:r,h:n}}calibrate(t){return new P({left:this.left+t.left*this.width,top:this.top+t.top*this.height,right:this.right+t.right*this.width,bottom:this.bottom+t.bottom*this.height}).toSquare().round()}};var te=class extends P{constructor(t,e,r,n,a=!1){super({left:t,top:e,right:r,bottom:n},a)}};var Pt=class{constructor(t,e,r,n,a){this._imageDims=new S(a.width,a.height),this._score=t,this._classScore=e,this._className=r,this._box=new P(n).rescale(this._imageDims)}get score(){return this._score}get classScore(){return this._classScore}get className(){return this._className}get box(){return this._box}get imageDims(){return this._imageDims}get imageWidth(){return this.imageDims.width}get imageHeight(){return this.imageDims.height}get relativeBox(){return new P(this._box).rescale(this.imageDims.reverse())}forSize(t,e){return new Pt(this.score,this.classScore,this.className,this.relativeBox,{width:t,height:e})}};var E=class extends Pt{constructor(t,e,r){super(t,t,"",e,r)}forSize(t,e){let{score:r,relativeBox:n,imageDims:a}=super.forSize(t,e);return new E(r,n,a)}};function Ir(o,t,e=!0){let r=Math.max(0,Math.min(o.right,t.right)-Math.max(o.left,t.left)),n=Math.max(0,Math.min(o.bottom,t.bottom)-Math.max(o.top,t.top)),a=r*n;return e?a/(o.area+t.area-a):a/Math.min(o.area,t.area)}function Lr(o){let t=o.map(i=>i.x),e=o.map(i=>i.y),r=t.reduce((i,c)=>c<i?c:i,Infinity),n=e.reduce((i,c)=>c<i?c:i,Infinity),a=t.reduce((i,c)=>i<c?c:i,0),s=e.reduce((i,c)=>i<c?c:i,0);return new te(r,n,a,s)}function kr(o,t,e,r=!0){let n=t.map((s,i)=>({score:s,boxIndex:i})).sort((s,i)=>s.score-i.score).map(s=>s.boxIndex),a=[];for(;n.length>0;){let s=n.pop();a.push(s);let i=n,c=[];for(let m=0;m<i.length;m++){let p=i[m],d=o[s],u=o[p];c.push(Ir(d,u,r))}n=n.filter((m,p)=>c[p]<=e)}return a}var it=b();function et(o,t){return it.tidy(()=>{let[e,r,n]=t,a=it.fill([...o.shape.slice(0,3),1],e,"float32"),s=it.fill([...o.shape.slice(0,3),1],r,"float32"),i=it.fill([...o.shape.slice(0,3),1],n,"float32"),c=it.concat([a,s,i],3);return it.sub(o,c)})}var Dt=b();function Sr(o,t=!1){return Dt.tidy(()=>{let[e,r]=o.shape.slice(1);if(e===r)return o;let n=Math.abs(e-r),a=Math.round(n*(t?.5:1)),s=e>r?2:1,i=u=>{let l=o.shape.slice();return l[s]=u,Dt.fill(l,0,"float32")},c=i(a),m=n-c.shape[s],d=[t&&m?i(m):null,o,c].filter(u=>!!u).map(u=>Dt.cast(u,"float32"));return Dt.concat(d,s)})}function gn(o){let t=o.slice();for(let e=t.length-1;e>0;e--){let r=Math.floor(Math.random()*(e+1)),n=t[e];t[e]=t[r],t[r]=n}return t}function De(o){return 1/(1+Math.exp(-o))}function vn(o){return Math.log(o/(1-o))}var ee=class extends P{constructor(t,e,r,n,a=!1){super({x:t,y:e,width:r,height:n},a)}};var yn=.5,Fn=.43,Tn=.45,V=class{constructor(t,e,r=new x(0,0)){let{width:n,height:a}=e;this._imgDims=new S(n,a),this._shift=r,this._positions=t.map(s=>s.mul(new x(n,a)).add(r))}get shift(){return new x(this._shift.x,this._shift.y)}get imageWidth(){return this._imgDims.width}get imageHeight(){return this._imgDims.height}get positions(){return this._positions}get relativePositions(){return this._positions.map(t=>t.sub(this._shift).div(new x(this.imageWidth,this.imageHeight)))}forSize(t,e){return new this.constructor(this.relativePositions,{width:t,height:e})}shiftBy(t,e){return new this.constructor(this.relativePositions,this._imgDims,new x(t,e))}shiftByPoint(t){return this.shiftBy(t.x,t.y)}align(t,e={}){if(t){let a=t instanceof E?t.box.floor():new P(t);return this.shiftBy(a.x,a.y).align(null,e)}let{useDlibAlignment:r,minBoxPadding:n}={useDlibAlignment:!1,minBoxPadding:.2,...e};return r?this.alignDlib():this.alignMinBbox(n)}alignDlib(){let t=this.getRefPointsForAlignment(),[e,r,n]=t,a=d=>n.sub(d).magnitude(),s=(a(e)+a(r))/2,i=Math.floor(s/Tn),c=Bt(t),m=Math.floor(Math.max(0,c.x-yn*i)),p=Math.floor(Math.max(0,c.y-Fn*i));return new ee(m,p,Math.min(i,this.imageWidth+m),Math.min(i,this.imageHeight+p))}alignMinBbox(t){let e=Lr(this.positions);return e.pad(e.width*t,e.height*t)}getRefPointsForAlignment(){throw new Error("getRefPointsForAlignment not implemented by base class")}};var ho=class extends V{getRefPointsForAlignment(){let t=this.positions;return[t[0],t[1],Bt([t[3],t[4]])]}};var re=class extends V{getJawOutline(){return this.positions.slice(0,17)}getLeftEyeBrow(){return this.positions.slice(17,22)}getRightEyeBrow(){return this.positions.slice(22,27)}getNose(){return this.positions.slice(27,36)}getLeftEye(){return this.positions.slice(36,42)}getRightEye(){return this.positions.slice(42,48)}getMouth(){return this.positions.slice(48,68)}getRefPointsForAlignment(){return[this.getLeftEye(),this.getRightEye(),this.getMouth()].map(Bt)}};var Ee=class{constructor(t,e){this._label=t,this._distance=e}get label(){return this._label}get distance(){return this._distance}toString(t=!0){return`${this.label}${t?` (${Wt(this.distance)})`:""}`}};var Me=class extends P{static assertIsValidLabeledBox(t,e){if(P.assertIsValidBox(t,e),!tt(t.label))throw new Error(`${e} - expected property label (${t.label}) to be a number`)}constructor(t,e){super(t);this._label=e}get label(){return this._label}};var ht=class{constructor(t,e){if(typeof t!="string")throw new Error("LabeledFaceDescriptors - constructor expected label to be a string");if(!Array.isArray(e)||e.some(r=>!(r instanceof Float32Array)))throw new Error("LabeledFaceDescriptors - constructor expected descriptors to be an array of Float32Array");this._label=t,this._descriptors=e}get label(){return this._label}get descriptors(){return this._descriptors}toJSON(){return{label:this.label,descriptors:this.descriptors.map(t=>Array.from(t))}}static fromJSON(t){let e=t.descriptors.map(r=>new Float32Array(r));return new ht(t.label,e)}};var xo=class extends Me{static assertIsValidPredictedBox(t,e){if(Me.assertIsValidLabeledBox(t,e),!Qt(t.score)||!Qt(t.classScore))throw new Error(`${e} - expected properties score (${t.score}) and (${t.classScore}) to be a number between [0, 1]`)}constructor(t,e,r,n){super(t,e);this._score=r,this._classScore=n}get score(){return this._score}get classScore(){return this._classScore}};function ct(o){return o.detection instanceof E}function Rt(o,t){return{...o,...{detection:t}}}function Ar(){let o=window.fetch;if(!o)throw new Error("fetch - missing fetch implementation for browser environment");return{Canvas:HTMLCanvasElement,CanvasRenderingContext2D,Image:HTMLImageElement,ImageData,Video:HTMLVideoElement,createCanvasElement:()=>document.createElement("canvas"),createImageElement:()=>document.createElement("img"),fetch:o,readFile:()=>{throw new Error("readFile - filesystem not available for browser environment")}}}function Ve(o){let t="";if(!o)try{o=require("fs")}catch(r){t=r.toString()}return{readFile:o?r=>new Promise((n,a)=>{o.readFile(r,(s,i)=>s?a(s):n(i))}):()=>{throw new Error(`readFile - failed to require fs in nodejs environment with error: ${t}`)}}}function Wr(){let o=global.Canvas||global.HTMLCanvasElement,t=global.Image||global.HTMLImageElement,e=()=>{if(o)return new o;throw new Error("createCanvasElement - missing Canvas implementation for nodejs environment")},r=()=>{if(t)return new t;throw new Error("createImageElement - missing Image implementation for nodejs environment")},n=global.fetch,a=Ve();return{Canvas:o||class{},CanvasRenderingContext2D:global.CanvasRenderingContext2D||class{},Image:t||class{},ImageData:global.ImageData||class{},Video:global.HTMLVideoElement||class{},createCanvasElement:e,createImageElement:r,fetch:n,...a}}function Br(){return typeof window=="object"&&typeof document!="undefined"&&typeof HTMLImageElement!="undefined"&&typeof HTMLCanvasElement!="undefined"&&typeof HTMLVideoElement!="undefined"&&typeof ImageData!="undefined"&&typeof CanvasRenderingContext2D!="undefined"}var Rr=hn(go()),L;function Pn(){if(!L)throw new Error("getEnv - environment is not defined, check isNodejs() and isBrowser()");return L}function $r(o){L=o}function Or(){return Br()?$r(Ar()):(0,Rr.isNodejs)()?$r(Wr()):null}function Dn(o){if(L||Or(),!L)throw new Error("monkeyPatch - environment is not defined, check isNodejs() and isBrowser()");let{Canvas:t=L.Canvas,Image:e=L.Image}=o;L.Canvas=t,L.Image=e,L.createCanvasElement=o.createCanvasElement||(()=>new t),L.createImageElement=o.createImageElement||(()=>new e),L.ImageData=o.ImageData||L.ImageData,L.Video=o.Video||L.Video,L.fetch=o.fetch||L.fetch,L.readFile=o.readFile||L.readFile}var w={getEnv:Pn,setEnv:$r,initialize:Or,createBrowserEnv:Ar,createFileSystem:Ve,createNodejsEnv:Wr,monkeyPatch:Dn,isBrowser:Br,isNodejs:Rr.isNodejs};Or();function $t(o){return!w.isNodejs()&&typeof o=="string"?document.getElementById(o):o}function R(o){let{Canvas:t,CanvasRenderingContext2D:e}=w.getEnv();if(o instanceof e)return o;let r=$t(o);if(!(r instanceof t))throw new Error("resolveContext2d - expected canvas to be of instance of Canvas");let n=r.getContext("2d");if(!n)throw new Error("resolveContext2d - canvas 2d context is null");return n}var mt;(function(o){o.TOP_LEFT="TOP_LEFT",o.TOP_RIGHT="TOP_RIGHT",o.BOTTOM_LEFT="BOTTOM_LEFT",o.BOTTOM_RIGHT="BOTTOM_RIGHT"})(mt||(mt={}));var Ce=class{constructor(t={}){let{anchorPosition:e,backgroundColor:r,fontColor:n,fontSize:a,fontStyle:s,padding:i}=t;this.anchorPosition=e||mt.TOP_LEFT,this.backgroundColor=r||"rgba(0, 0, 0, 0.5)",this.fontColor=n||"rgba(255, 255, 255, 1)",this.fontSize=a||14,this.fontStyle=s||"Georgia",this.padding=i||4}},Et=class{constructor(t,e,r={}){this.text=typeof t=="string"?[t]:t instanceof Et?t.text:t,this.anchor=e,this.options=new Ce(r)}measureWidth(t){let{padding:e}=this.options;return this.text.map(r=>t.measureText(r).width).reduce((r,n)=>r<n?n:r,0)+2*e}measureHeight(){let{fontSize:t,padding:e}=this.options;return this.text.length*t+2*e}getUpperLeft(t,e){let{anchorPosition:r}=this.options,n=r===mt.BOTTOM_RIGHT||r===mt.TOP_RIGHT,a=r===mt.BOTTOM_LEFT||r===mt.BOTTOM_RIGHT,s=this.measureWidth(t),i=this.measureHeight(),c=n?this.anchor.x-s:this.anchor.x,m=a?this.anchor.y-i:this.anchor.y;if(e){let{width:p,height:d}=e,u=Math.max(Math.min(c,p-s),0),l=Math.max(Math.min(m,d-i),0);return{x:u,y:l}}return{x:c,y:m}}draw(t){let e=$t(t),r=R(e),{backgroundColor:n,fontColor:a,fontSize:s,fontStyle:i,padding:c}=this.options;r.font=`${s}px ${i}`;let m=this.measureWidth(r),p=this.measureHeight();r.fillStyle=n;let d=this.getUpperLeft(r,e);r.fillRect(d.x,d.y,m,p),r.fillStyle=a,this.text.forEach((u,l)=>{let g=c+d.x,_=c+d.y+(l+1)*s;r.fillText(u,g,_)})}};var jr=class{constructor(t={}){let{boxColor:e,lineWidth:r,label:n,drawLabelOptions:a}=t;this.boxColor=e||"rgba(0, 0, 255, 1)",this.lineWidth=r||2,this.label=n;let s={anchorPosition:mt.BOTTOM_LEFT,backgroundColor:this.boxColor};this.drawLabelOptions=new Ce({...s,...a})}},Ue=class{constructor(t,e={}){this.box=new P(t),this.options=new jr(e)}draw(t){let e=R(t),{boxColor:r,lineWidth:n}=this.options,{x:a,y:s,width:i,height:c}=this.box;e.strokeStyle=r,e.lineWidth=n,e.strokeRect(a,s,i,c);let{label:m}=this.options;m&&new Et([m],{x:a-n/2,y:s},this.options.drawLabelOptions).draw(t)}};function En(o,t){(Array.isArray(t)?t:[t]).forEach(r=>{let n=r instanceof E?r.score:ct(r)?r.detection.score:void 0,a=r instanceof E?r.box:ct(r)?r.detection.box:new P(r),s=n?`${Wt(n)}`:void 0;new Ue(a,{label:s}).draw(o)})}var de=b();function Ne(o){let{Image:t,Video:e}=w.getEnv();return o instanceof t&&o.complete||o instanceof e&&o.readyState>=3}function Hr(o){return new Promise((t,e)=>{if(o instanceof w.getEnv().Canvas||Ne(o))return t(null);function r(a){!a.currentTarget||(a.currentTarget.removeEventListener("load",n),a.currentTarget.removeEventListener("error",r),e(a))}function n(a){!a.currentTarget||(a.currentTarget.removeEventListener("load",n),a.currentTarget.removeEventListener("error",r),t(a))}o.addEventListener("load",n),o.addEventListener("error",r)})}function Yr(o){return new Promise((t,e)=>{o instanceof Blob||e(new Error("bufferToImage - expected buf to be of type: Blob"));let r=new FileReader;r.onload=()=>{typeof r.result!="string"&&e(new Error("bufferToImage - expected reader.result to be a string, in onload"));let n=w.getEnv().createImageElement();n.onload=()=>t(n),n.onerror=e,n.src=r.result},r.onerror=e,r.readAsDataURL(o)})}function Ot(o){let{Image:t,Video:e}=w.getEnv();return o instanceof t?new S(o.naturalWidth,o.naturalHeight):o instanceof e?new S(o.videoWidth,o.videoHeight):new S(o.width,o.height)}function jt({width:o,height:t}){let{createCanvasElement:e}=w.getEnv(),r=e();return r.width=o,r.height=t,r}function Ie(o,t){let{ImageData:e}=w.getEnv();if(!(o instanceof e)&&!Ne(o))throw new Error("createCanvasFromMedia - media has not finished loading yet");let{width:r,height:n}=t||Ot(o),a=jt({width:r,height:n});return o instanceof e?R(a).putImageData(o,0,0):R(a).drawImage(o,0,0,r,n),a}var Xe=b();async function Gr(o,t){let e=t||w.getEnv().createCanvasElement(),[r,n,a]=o.shape.slice(z(o)?1:0),s=Xe.tidy(()=>o.as3D(r,n,a).toInt());return await Xe.browser.toPixels(s,e),s.dispose(),e}function Je(o){let{Image:t,Canvas:e,Video:r}=w.getEnv();return o instanceof t||o instanceof e||o instanceof r}var O=b();function zr(o,t,e=!1){let{Image:r,Canvas:n}=w.getEnv();if(!(o instanceof r||o instanceof n))throw new Error("imageToSquare - expected arg0 to be HTMLImageElement | HTMLCanvasElement");if(t<=0)return jt({width:1,height:1});let a=Ot(o),s=t/Math.max(a.height,a.width),i=s*a.width,c=s*a.height,m=jt({width:t,height:t}),p=o instanceof n?o:Ie(o),d=Math.abs(i-c)/2,u=e&&i<c?d:0,l=e&&c<i?d:0;return p.width>0&&p.height>0&&R(m).drawImage(p,u,l,i,c),m}var xt=class{constructor(t,e=!1){this._imageTensors=[];this._canvases=[];this._treatAsBatchInput=!1;this._inputDimensions=[];if(!Array.isArray(t))throw new Error(`NetInput.constructor - expected inputs to be an Array of TResolvedNetInput or to be instanceof tf.Tensor4D, instead have ${t}`);this._treatAsBatchInput=e,this._batchSize=t.length,t.forEach((r,n)=>{if(ft(r)){this._imageTensors[n]=r,this._inputDimensions[n]=r.shape;return}if(z(r)){let s=r.shape[0];if(s!==1)throw new Error(`NetInput - tf.Tensor4D with batchSize ${s} passed, but not supported in input array`);this._imageTensors[n]=r,this._inputDimensions[n]=r.shape.slice(1);return}let a=r instanceof w.getEnv().Canvas?r:Ie(r);this._canvases[n]=a,this._inputDimensions[n]=[a.height,a.width,3]})}get imageTensors(){return this._imageTensors}get canvases(){return this._canvases}get isBatchInput(){return this.batchSize>1||this._treatAsBatchInput}get batchSize(){return this._batchSize}get inputDimensions(){return this._inputDimensions}get inputSize(){return this._inputSize}get reshapedInputDimensions(){return st(this.batchSize,0,1).map((t,e)=>this.getReshapedInputDimensions(e))}getInput(t){return this.canvases[t]||this.imageTensors[t]}getInputDimensions(t){return this._inputDimensions[t]}getInputHeight(t){return this._inputDimensions[t][0]}getInputWidth(t){return this._inputDimensions[t][1]}getReshapedInputDimensions(t){if(typeof this.inputSize!="number")throw new Error("getReshapedInputDimensions - inputSize not set, toBatchTensor has not been called yet");let e=this.getInputWidth(t),r=this.getInputHeight(t);return Nr({width:e,height:r},this.inputSize)}toBatchTensor(t,e=!0){return this._inputSize=t,O.tidy(()=>{let r=st(this.batchSize,0,1).map(a=>{let s=this.getInput(a);if(s instanceof O.Tensor){let i=z(s)?s:O.expandDims(s);return i=Sr(i,e),(i.shape[1]!==t||i.shape[2]!==t)&&(i=O.image.resizeBilinear(i,[t,t],!1,!1)),i.as3D(t,t,3)}if(s instanceof w.getEnv().Canvas)return O.browser.fromPixels(zr(s,t,e));throw new Error(`toBatchTensor - at batchIdx ${a}, expected input to be instanceof tf.Tensor or instanceof HTMLCanvasElement, instead have ${s}`)});return O.stack(r.map(a=>O.cast(a,"float32"))).as4D(this.batchSize,t,t,3)})}};async function D(o){if(o instanceof xt)return o;let t=Array.isArray(o)?o:[o];if(!t.length)throw new Error("toNetInput - empty array passed as input");let e=n=>Array.isArray(o)?` at input index ${n}:`:"",r=t.map($t);return r.forEach((n,a)=>{if(!Je(n)&&!ft(n)&&!z(n))throw typeof t[a]=="string"?new Error(`toNetInput -${e(a)} string passed, but could not resolve HTMLElement for element id ${t[a]}`):new Error(`toNetInput -${e(a)} expected media to be of type HTMLImageElement | HTMLVideoElement | HTMLCanvasElement | tf.Tensor3D, or to be an element id`);if(z(n)){let s=n.shape[0];if(s!==1)throw new Error(`toNetInput -${e(a)} tf.Tensor4D with batchSize ${s} passed, but not supported in input array`)}}),await Promise.all(r.map(n=>Je(n)&&Hr(n))),new xt(r,Array.isArray(o))}async function oe(o,t){let{Canvas:e}=w.getEnv(),r=o;if(!(o instanceof e)){let s=await D(o);if(s.batchSize>1)throw new Error("extractFaces - batchSize > 1 not supported");let i=s.getInput(0);r=i instanceof e?i:await Gr(i)}let n=R(r);return t.map(s=>s instanceof E?s.forSize(r.width,r.height).box.floor():s).map(s=>s.clipAtImageBorders(r.width,r.height)).map(({x:s,y:i,width:c,height:m})=>{let p=jt({width:c,height:m});return c>0&&m>0&&R(p).putImageData(n.getImageData(s,i,c,m),0,0),p})}var qe=b();async function ne(o,t){if(!ft(o)&&!z(o))throw new Error("extractFaceTensors - expected image tensor to be 3D or 4D");if(z(o)&&o.shape[0]>1)throw new Error("extractFaceTensors - batchSize > 1 not supported");return qe.tidy(()=>{let[e,r,n]=o.shape.slice(z(o)?1:0);return t.map(i=>i instanceof E?i.forSize(r,e).box:i).map(i=>i.clipAtImageBorders(r,e)).map(({x:i,y:c,width:m,height:p})=>qe.slice3d(o.as3D(e,r,n),[c,i,0],[p,m,n]))})}async function Ht(o,t){let{fetch:e}=w.getEnv(),r=await e(o,t);if(!(r.status<400))throw new Error(`failed to fetch: (${r.status}) ${r.statusText}, from url: ${r.url}`);return r}async function Mn(o){let t=await Ht(o),e=await t.blob();if(!e.type.startsWith("image/"))throw new Error(`fetchImage - expected blob type to be of type image/*, instead have: ${e.type}, for url: ${t.url}`);return Yr(e)}async function Vr(o){return(await Ht(o)).json()}async function Cn(o){return new Float32Array(await(await Ht(o)).arrayBuffer())}var vo=b();function Ze(o,t){let e=`${t}-weights_manifest.json`;if(!o)return{modelBaseUri:"",manifestUri:e};if(o==="/")return{modelBaseUri:"/",manifestUri:`/${e}`};let r=o.startsWith("http://")?"http://":o.startsWith("https://")?"https://":"";o=o.replace(r,"");let n=o.split("/").filter(i=>i),a=o.endsWith(".json")?n[n.length-1]:e,s=r+(o.endsWith(".json")?n.slice(0,n.length-1):n).join("/");return s=o.startsWith("/")?`/${s}`:s,{modelBaseUri:s,manifestUri:s==="/"?`/${a}`:`${s}/${a}`}}async function Ur(o,t){let{manifestUri:e,modelBaseUri:r}=Ze(o,t),n=await Vr(e);return vo.io.loadWeights(n,r)}function Nn(o,t,e=!1){let{width:r,height:n}=e?Ot(t):t;return o.width=r,o.height=n,{width:r,height:n}}var me=b();var bt=b();var k=class{constructor(t){this._params=void 0;this._paramMappings=[];this._name=t}get params(){return this._params}get paramMappings(){return this._paramMappings}get isLoaded(){return!!this.params}getParamFromPath(t){let{obj:e,objProp:r}=this.traversePropertyPath(t);return e[r]}reassignParamFromPath(t,e){let{obj:r,objProp:n}=this.traversePropertyPath(t);r[n].dispose(),r[n]=e}getParamList(){return this._paramMappings.map(({paramPath:t})=>({path:t,tensor:this.getParamFromPath(t)}))}getTrainableParams(){return this.getParamList().filter(t=>t.tensor instanceof bt.Variable)}getFrozenParams(){return this.getParamList().filter(t=>!(t.tensor instanceof bt.Variable))}variable(){this.getFrozenParams().forEach(({path:t,tensor:e})=>{this.reassignParamFromPath(t,e.variable())})}freeze(){this.getTrainableParams().forEach(({path:t,tensor:e})=>{let r=bt.tensor(e.dataSync());e.dispose(),this.reassignParamFromPath(t,r)})}dispose(t=!0){this.getParamList().forEach(e=>{if(t&&e.tensor.isDisposed)throw new Error(`param tensor has already been disposed for path ${e.path}`);e.tensor.dispose()}),this._params=void 0}serializeParams(){return new Float32Array(this.getParamList().map(({tensor:t})=>Array.from(t.dataSync())).reduce((t,e)=>t.concat(e)))}async load(t){if(t instanceof Float32Array){this.extractWeights(t);return}await this.loadFromUri(t)}async loadFromUri(t){if(t&&typeof t!="string")throw new Error(`${this._name}.loadFromUri - expected model uri`);let e=await Ur(t,this.getDefaultModelName());this.loadFromWeightMap(e)}async loadFromDisk(t){if(t&&typeof t!="string")throw new Error(`${this._name}.loadFromDisk - expected model file path`);let{readFile:e}=w.getEnv(),{manifestUri:r,modelBaseUri:n}=Ze(t,this.getDefaultModelName()),a=m=>Promise.all(m.map(p=>e(p).then(d=>d.buffer))),s=bt.io.weightsLoaderFactory(a),i=JSON.parse((await e(r)).toString()),c=await s(i,n);this.loadFromWeightMap(c)}loadFromWeightMap(t){let{paramMappings:e,params:r}=this.extractParamsFromWeightMap(t);this._paramMappings=e,this._params=r}extractWeights(t){let{paramMappings:e,params:r}=this.extractParams(t);this._paramMappings=e,this._params=r}traversePropertyPath(t){if(!this.params)throw new Error("traversePropertyPath - model has no loaded params");let e=t.split("/").reduce((a,s)=>{if(!a.nextObj.hasOwnProperty(s))throw new Error(`traversePropertyPath - object does not have property ${s}, for path ${t}`);return{obj:a.nextObj,objProp:s,nextObj:a.nextObj[s]}},{nextObj:this.params}),{obj:r,objProp:n}=e;if(!r||!n||!(r[n]instanceof bt.Tensor))throw new Error(`traversePropertyPath - parameter is not a tensor, for path ${t}`);return{obj:r,objProp:n}}};var M=b();var ae=b();function $(o,t,e){return ae.tidy(()=>{let r=ae.separableConv2d(o,t.depthwise_filter,t.pointwise_filter,e,"same");return r=ae.add(r,t.bias),r})}function Ke(o,t,e=!1){return M.tidy(()=>{let r=M.relu(e?M.add(M.conv2d(o,t.conv0.filters,[2,2],"same"),t.conv0.bias):$(o,t.conv0,[2,2])),n=$(r,t.conv1,[1,1]),a=M.relu(M.add(r,n)),s=$(a,t.conv2,[1,1]);return M.relu(M.add(r,M.add(n,s)))})}function Le(o,t,e=!1,r=!0){return M.tidy(()=>{let n=M.relu(e?M.add(M.conv2d(o,t.conv0.filters,r?[2,2]:[1,1],"same"),t.conv0.bias):$(o,t.conv0,r?[2,2]:[1,1])),a=$(n,t.conv1,[1,1]),s=M.relu(M.add(n,a)),i=$(s,t.conv2,[1,1]),c=M.relu(M.add(n,M.add(a,i))),m=$(c,t.conv3,[1,1]);return M.relu(M.add(n,M.add(a,M.add(i,m))))})}var Mt=b();function Yt(o,t,e="same",r=!1){return Mt.tidy(()=>{let n=Mt.add(Mt.conv2d(o,t.filters,[1,1],e),t.bias);return r?Mt.relu(n):n})}function A(o,t){Object.keys(o).forEach(e=>{t.some(r=>r.originalPath===e)||o[e].dispose()})}var Qe=b();function se(o,t){return(e,r,n,a)=>{let s=Qe.tensor4d(o(e*r*n*n),[n,n,e,r]),i=Qe.tensor1d(o(r));return t.push({paramPath:`${a}/filters`},{paramPath:`${a}/bias`}),{filters:s,bias:i}}}var tr=b();function er(o,t){return(e,r,n)=>{let a=tr.tensor2d(o(e*r),[e,r]),s=tr.tensor1d(o(r));return t.push({paramPath:`${n}/weights`},{paramPath:`${n}/bias`}),{weights:a,bias:s}}}var ke=b();var rr=class{constructor(t,e,r){this.depthwise_filter=t;this.pointwise_filter=e;this.bias=r}};function ie(o,t){return(e,r,n)=>{let a=ke.tensor4d(o(3*3*e),[3,3,e,1]),s=ke.tensor4d(o(e*r),[1,1,e,r]),i=ke.tensor1d(o(r));return t.push({paramPath:`${n}/depthwise_filter`},{paramPath:`${n}/pointwise_filter`},{paramPath:`${n}/bias`}),new rr(a,s,i)}}function ce(o){return t=>{let e=o(`${t}/depthwise_filter`,4),r=o(`${t}/pointwise_filter`,4),n=o(`${t}/bias`,1);return new rr(e,r,n)}}function j(o,t){return(e,r,n)=>{let a=o[e];if(!At(a,r))throw new Error(`expected weightMap[${e}] to be a Tensor${r}D, instead have ${a}`);return t.push({originalPath:e,paramPath:n||e}),a}}function W(o){let t=o;function e(n){let a=t.slice(0,n);return t=t.slice(n),a}function r(){return t}return{extractWeights:e,getRemainingWeights:r}}function or(o,t){let e=se(o,t),r=ie(o,t);function n(s,i,c,m=!1){let p=m?e(s,i,3,`${c}/conv0`):r(s,i,`${c}/conv0`),d=r(i,i,`${c}/conv1`),u=r(i,i,`${c}/conv2`);return{conv0:p,conv1:d,conv2:u}}function a(s,i,c,m=!1){let{conv0:p,conv1:d,conv2:u}=n(s,i,c,m),l=r(i,i,`${c}/conv3`);return{conv0:p,conv1:d,conv2:u,conv3:l}}return{extractDenseBlock3Params:n,extractDenseBlock4Params:a}}function yo(o){let t=[],{extractWeights:e,getRemainingWeights:r}=W(o),{extractDenseBlock4Params:n}=or(e,t),a=n(3,32,"dense0",!0),s=n(32,64,"dense1"),i=n(64,128,"dense2"),c=n(128,256,"dense3");if(r().length!==0)throw new Error(`weights remaing after extract: ${r().length}`);return{paramMappings:t,params:{dense0:a,dense1:s,dense2:i,dense3:c}}}function nr(o){return t=>{let e=o(`${t}/filters`,4),r=o(`${t}/bias`,1);return{filters:e,bias:r}}}function ar(o,t){let e=j(o,t),r=nr(e),n=ce(e);function a(i,c=!1){let m=c?r(`${i}/conv0`):n(`${i}/conv0`),p=n(`${i}/conv1`),d=n(`${i}/conv2`);return{conv0:m,conv1:p,conv2:d}}function s(i,c=!1){let m=c?r(`${i}/conv0`):n(`${i}/conv0`),p=n(`${i}/conv1`),d=n(`${i}/conv2`),u=n(`${i}/conv3`);return{conv0:m,conv1:p,conv2:d,conv3:u}}return{extractDenseBlock3Params:a,extractDenseBlock4Params:s}}function Fo(o){let t=[],{extractDenseBlock4Params:e}=ar(o,t),r={dense0:e("dense0",!0),dense1:e("dense1"),dense2:e("dense2"),dense3:e("dense3")};return A(o,t),{params:r,paramMappings:t}}var Se=class extends k{constructor(){super("FaceFeatureExtractor")}forwardInput(t){let{params:e}=this;if(!e)throw new Error("FaceFeatureExtractor - load model before inference");return me.tidy(()=>{let r=me.cast(t.toBatchTensor(112,!0),"float32"),a=et(r,[122.782,117.001,104.298]).div(255),s=Le(a,e.dense0,!0);return s=Le(s,e.dense1),s=Le(s,e.dense2),s=Le(s,e.dense3),s=me.avgPool(s,[7,7],[2,2],"valid"),s})}async forward(t){return this.forwardInput(await D(t))}getDefaultModelName(){return"face_feature_extractor_model"}extractParamsFromWeightMap(t){return Fo(t)}extractParams(t){return yo(t)}};var wo=b();var pe=b();function Ae(o,t){return pe.tidy(()=>pe.add(pe.matMul(o,t.weights),t.bias))}function To(o,t,e){let r=[],{extractWeights:n,getRemainingWeights:a}=W(o),i=er(n,r)(t,e,"fc");if(a().length!==0)throw new Error(`weights remaing after extract: ${a().length}`);return{paramMappings:r,params:{fc:i}}}function _o(o){let t=[],e=j(o,t);function r(a){let s=e(`${a}/weights`,2),i=e(`${a}/bias`,1);return{weights:s,bias:i}}let n={fc:r("fc")};return A(o,t),{params:n,paramMappings:t}}function sr(o){let t={},e={};return Object.keys(o).forEach(r=>{let n=r.startsWith("fc")?e:t;n[r]=o[r]}),{featureExtractorMap:t,classifierMap:e}}var We=class extends k{constructor(t,e){super(t);this._faceFeatureExtractor=e}get faceFeatureExtractor(){return this._faceFeatureExtractor}runNet(t){let{params:e}=this;if(!e)throw new Error(`${this._name} - load model before inference`);return wo.tidy(()=>{let r=t instanceof xt?this.faceFeatureExtractor.forwardInput(t):t;return Ae(r.as2D(r.shape[0],-1),e.fc)})}dispose(t=!0){this.faceFeatureExtractor.dispose(t),super.dispose(t)}loadClassifierParams(t){let{params:e,paramMappings:r}=this.extractClassifierParams(t);this._params=e,this._paramMappings=r}extractClassifierParams(t){return To(t,this.getClassifierChannelsIn(),this.getClassifierChannelsOut())}extractParamsFromWeightMap(t){let{featureExtractorMap:e,classifierMap:r}=sr(t);return this.faceFeatureExtractor.loadFromWeightMap(e),_o(r)}extractParams(t){let e=this.getClassifierChannelsIn(),r=this.getClassifierChannelsOut(),n=r*e+r,a=t.slice(0,t.length-n),s=t.slice(t.length-n);return this.faceFeatureExtractor.extractWeights(a),this.extractClassifierParams(s)}};var Xr=["neutral","happy","sad","angry","fearful","disgusted","surprised"],Ct=class{constructor(t){if(t.length!==7)throw new Error(`FaceExpressions.constructor - expected probabilities.length to be 7, have: ${t.length}`);Xr.forEach((e,r)=>{this[e]=t[r]})}asSortedArray(){return Xr.map(t=>({expression:t,probability:this[t]})).sort((t,e)=>e.probability-t.probability)}};var ir=class extends We{constructor(t=new Se){super("FaceExpressionNet",t)}forwardInput(t){return de.tidy(()=>de.softmax(this.runNet(t)))}async forward(t){return this.forwardInput(await D(t))}async predictExpressions(t){let e=await D(t),r=await this.forwardInput(e),n=await Promise.all(de.unstack(r).map(async s=>{let i=s.dataSync();return s.dispose(),i}));r.dispose();let a=n.map(s=>new Ct(s));return e.isBatchInput?a:a[0]}getDefaultModelName(){return"face_expression_model"}getClassifierChannelsIn(){return 256}getClassifierChannelsOut(){return 7}};function Jr(o){return o.expressions instanceof Ct}function cr(o,t){return{...o,...{expressions:t}}}function In(o,t,e=.1,r){(Array.isArray(t)?t:[t]).forEach(a=>{let s=a instanceof Ct?a:Jr(a)?a.expressions:void 0;if(!s)throw new Error("drawFaceExpressions - expected faceExpressions to be FaceExpressions | WithFaceExpressions<{}> or array thereof");let c=s.asSortedArray().filter(d=>d.probability>e),m=ct(a)?a.detection.box.bottomLeft:r||new x(0,0);new Et(c.map(d=>`${d.expression} (${Wt(d.probability)})`),m).draw(o)})}function Gt(o){return ct(o)&&o.landmarks instanceof V&&o.unshiftedLandmarks instanceof V&&o.alignedRect instanceof E}function Ln(o){let t=(i,c,m,p)=>Math.atan2(p-c,m-i)%Math.PI,e=i=>i*180/Math.PI,r={roll:void 0,pitch:void 0,yaw:void 0};if(!o||!o._positions||o._positions.length!==68)return r;let n=o._positions;r.roll=-t(n[36]._x,n[36]._y,n[45]._x,n[45]._y),r.pitch=t(0,Math.abs(n[0]._x-n[30]._x)/n[30]._x,Math.PI,Math.abs(n[16]._x-n[30]._x)/n[30]._x);let a=n.reduce((i,c)=>i<c._y?i:c._y,Infinity),s=n.reduce((i,c)=>i>c._y?i:c._y,-Infinity);return r.yaw=Math.PI*(o._imgDims._height/(s-a)/1.4-1),r}function ue(o,t){let{box:e}=o.detection,r=t.shiftBy(e.x,e.y),n=r.align(),{imageDims:a}=o.detection,s=new E(o.detection.score,n.rescale(a.reverse()),a),i=Ln(t);return{...o,...{landmarks:r,unshiftedLandmarks:t,alignedRect:s,angle:i}}}var qr=class{constructor(t={}){let{drawLines:e=!0,drawPoints:r=!0,lineWidth:n,lineColor:a,pointSize:s,pointColor:i}=t;this.drawLines=e,this.drawPoints=r,this.lineWidth=n||1,this.pointSize=s||2,this.lineColor=a||"rgba(0, 255, 255, 1)",this.pointColor=i||"rgba(255, 0, 255, 1)"}},Zr=class{constructor(t,e={}){this.faceLandmarks=t,this.options=new qr(e)}draw(t){let e=R(t),{drawLines:r,drawPoints:n,lineWidth:a,lineColor:s,pointSize:i,pointColor:c}=this.options;if(r&&this.faceLandmarks instanceof re&&(e.strokeStyle=s,e.lineWidth=a,lt(e,this.faceLandmarks.getJawOutline()),lt(e,this.faceLandmarks.getLeftEyeBrow()),lt(e,this.faceLandmarks.getRightEyeBrow()),lt(e,this.faceLandmarks.getNose()),lt(e,this.faceLandmarks.getLeftEye(),!0),lt(e,this.faceLandmarks.getRightEye(),!0),lt(e,this.faceLandmarks.getMouth(),!0)),n){e.strokeStyle=c,e.fillStyle=c;let m=p=>{e.beginPath(),e.arc(p.x,p.y,i,0,2*Math.PI),e.fill()};this.faceLandmarks.positions.forEach(m)}}};function kn(o,t){(Array.isArray(t)?t:[t]).forEach(r=>{let n=r instanceof V?r:Gt(r)?r.landmarks:void 0;if(!n)throw new Error("drawFaceLandmarks - expected faceExpressions to be FaceLandmarks | WithFaceLandmarks<WithFaceDetection<{}>> or array thereof");new Zr(n).draw(o)})}var Do="1.1.4";var pt=b();var I=b();function Sn(o,t){let e=se(o,t),r=ie(o,t);function n(s,i,c){let m=r(s,i,`${c}/separable_conv0`),p=r(i,i,`${c}/separable_conv1`),d=e(s,i,1,`${c}/expansion_conv`);return{separable_conv0:m,separable_conv1:p,expansion_conv:d}}function a(s,i){let c=r(s,s,`${i}/separable_conv0`),m=r(s,s,`${i}/separable_conv1`),p=r(s,s,`${i}/separable_conv2`);return{separable_conv0:c,separable_conv1:m,separable_conv2:p}}return{extractConvParams:e,extractSeparableConvParams:r,extractReductionBlockParams:n,extractMainBlockParams:a}}function Eo(o,t){let e=[],{extractWeights:r,getRemainingWeights:n}=W(o),{extractConvParams:a,extractSeparableConvParams:s,extractReductionBlockParams:i,extractMainBlockParams:c}=Sn(r,e),m=a(3,32,3,"entry_flow/conv_in"),p=i(32,64,"entry_flow/reduction_block_0"),d=i(64,128,"entry_flow/reduction_block_1"),u={conv_in:m,reduction_block_0:p,reduction_block_1:d},l={};st(t,0,1).forEach(v=>{l[`main_block_${v}`]=c(128,`middle_flow/main_block_${v}`)});let g=i(128,256,"exit_flow/reduction_block"),_=s(256,512,"exit_flow/separable_conv"),h={reduction_block:g,separable_conv:_};if(n().length!==0)throw new Error(`weights remaing after extract: ${n().length}`);return{paramMappings:e,params:{entry_flow:u,middle_flow:l,exit_flow:h}}}function An(o,t){let e=j(o,t),r=nr(e),n=ce(e);function a(i){let c=n(`${i}/separable_conv0`),m=n(`${i}/separable_conv1`),p=r(`${i}/expansion_conv`);return{separable_conv0:c,separable_conv1:m,expansion_conv:p}}function s(i){let c=n(`${i}/separable_conv0`),m=n(`${i}/separable_conv1`),p=n(`${i}/separable_conv2`);return{separable_conv0:c,separable_conv1:m,separable_conv2:p}}return{extractConvParams:r,extractSeparableConvParams:n,extractReductionBlockParams:a,extractMainBlockParams:s}}function Mo(o,t){let e=[],{extractConvParams:r,extractSeparableConvParams:n,extractReductionBlockParams:a,extractMainBlockParams:s}=An(o,e),i=r("entry_flow/conv_in"),c=a("entry_flow/reduction_block_0"),m=a("entry_flow/reduction_block_1"),p={conv_in:i,reduction_block_0:c,reduction_block_1:m},d={};st(t,0,1).forEach(_=>{d[`main_block_${_}`]=s(`middle_flow/main_block_${_}`)});let u=a("exit_flow/reduction_block"),l=n("exit_flow/separable_conv"),g={reduction_block:u,separable_conv:l};return A(o,e),{params:{entry_flow:p,middle_flow:d,exit_flow:g},paramMappings:e}}function Co(o,t,e){return I.add(I.conv2d(o,t.filters,e,"same"),t.bias)}function Kr(o,t,e=!0){let r=e?I.relu(o):o;return r=$(r,t.separable_conv0,[1,1]),r=$(I.relu(r),t.separable_conv1,[1,1]),r=I.maxPool(r,[3,3],[2,2],"same"),r=I.add(r,Co(o,t.expansion_conv,[2,2])),r}function Wn(o,t){let e=$(I.relu(o),t.separable_conv0,[1,1]);return e=$(I.relu(e),t.separable_conv1,[1,1]),e=$(I.relu(e),t.separable_conv2,[1,1]),e=I.add(e,o),e}var Qr=class extends k{constructor(t){super("TinyXception");this._numMainBlocks=t}forwardInput(t){let{params:e}=this;if(!e)throw new Error("TinyXception - load model before inference");return I.tidy(()=>{let r=I.cast(t.toBatchTensor(112,!0),"float32"),a=et(r,[122.782,117.001,104.298]).div(255),s=I.relu(Co(a,e.entry_flow.conv_in,[2,2]));return s=Kr(s,e.entry_flow.reduction_block_0,!1),s=Kr(s,e.entry_flow.reduction_block_1),st(this._numMainBlocks,0,1).forEach(i=>{s=Wn(s,e.middle_flow[`main_block_${i}`])}),s=Kr(s,e.exit_flow.reduction_block),s=I.relu($(s,e.exit_flow.separable_conv,[1,1])),s})}async forward(t){return this.forwardInput(await D(t))}getDefaultModelName(){return"tiny_xception_model"}extractParamsFromWeightMap(t){return Mo(t,this._numMainBlocks)}extractParams(t){return Eo(t,this._numMainBlocks)}};function No(o){let t=[],{extractWeights:e,getRemainingWeights:r}=W(o),n=er(e,t),a=n(512,1,"fc/age"),s=n(512,2,"fc/gender");if(r().length!==0)throw new Error(`weights remaing after extract: ${r().length}`);return{paramMappings:t,params:{fc:{age:a,gender:s}}}}function Io(o){let t=[],e=j(o,t);function r(a){let s=e(`${a}/weights`,2),i=e(`${a}/bias`,1);return{weights:s,bias:i}}let n={fc:{age:r("fc/age"),gender:r("fc/gender")}};return A(o,t),{params:n,paramMappings:t}}var gt;(function(o){o.FEMALE="female",o.MALE="male"})(gt||(gt={}));var mr=class extends k{constructor(t=new Qr(2)){super("AgeGenderNet");this._faceFeatureExtractor=t}get faceFeatureExtractor(){return this._faceFeatureExtractor}runNet(t){let{params:e}=this;if(!e)throw new Error(`${this._name} - load model before inference`);return pt.tidy(()=>{let r=t instanceof xt?this.faceFeatureExtractor.forwardInput(t):t,n=pt.avgPool(r,[7,7],[2,2],"valid").as2D(r.shape[0],-1),a=Ae(n,e.fc.age).as1D(),s=Ae(n,e.fc.gender);return{age:a,gender:s}})}forwardInput(t){return pt.tidy(()=>{let{age:e,gender:r}=this.runNet(t);return{age:e,gender:pt.softmax(r)}})}async forward(t){return this.forwardInput(await D(t))}async predictAgeAndGender(t){let e=await D(t),r=await this.forwardInput(e),n=pt.unstack(r.age),a=pt.unstack(r.gender),s=n.map((c,m)=>({ageTensor:c,genderTensor:a[m]})),i=await Promise.all(s.map(async({ageTensor:c,genderTensor:m})=>{let p=c.dataSync()[0],d=m.dataSync()[0],u=d>.5,l=u?gt.MALE:gt.FEMALE,g=u?d:1-d;return c.dispose(),m.dispose(),{age:p,gender:l,genderProbability:g}}));return r.age.dispose(),r.gender.dispose(),e.isBatchInput?i:i[0]}getDefaultModelName(){return"age_gender_model"}dispose(t=!0){this.faceFeatureExtractor.dispose(t),super.dispose(t)}loadClassifierParams(t){let{params:e,paramMappings:r}=this.extractClassifierParams(t);this._params=e,this._paramMappings=r}extractClassifierParams(t){return No(t)}extractParamsFromWeightMap(t){let{featureExtractorMap:e,classifierMap:r}=sr(t);return this.faceFeatureExtractor.loadFromWeightMap(e),Io(r)}extractParams(t){let e=512*1+1+(512*2+2),r=t.slice(0,t.length-e),n=t.slice(t.length-e);return this.faceFeatureExtractor.extractWeights(r),this.extractClassifierParams(n)}};var H=b();var Be=class extends We{postProcess(t,e,r){let n=r.map(({width:s,height:i})=>{let c=e/Math.max(i,s);return{width:s*c,height:i*c}}),a=n.length;return H.tidy(()=>{let s=(d,u)=>H.stack([H.fill([68],d,"float32"),H.fill([68],u,"float32")],1).as2D(1,136).as1D(),i=(d,u)=>{let{width:l,height:g}=n[d];return u(l,g)?Math.abs(l-g)/2:0},c=d=>i(d,(u,l)=>u<l),m=d=>i(d,(u,l)=>l<u);return t.mul(H.fill([a,136],e,"float32")).sub(H.stack(Array.from(Array(a),(d,u)=>s(c(u),m(u))))).div(H.stack(Array.from(Array(a),(d,u)=>s(n[u].width,n[u].height))))})}forwardInput(t){return H.tidy(()=>{let e=this.runNet(t);return this.postProcess(e,t.inputSize,t.inputDimensions.map(([r,n])=>({height:r,width:n})))})}async forward(t){return this.forwardInput(await D(t))}async detectLandmarks(t){let e=await D(t),r=H.tidy(()=>H.unstack(this.forwardInput(e))),n=await Promise.all(r.map(async(a,s)=>{let i=Array.from(a.dataSync()),c=i.filter((p,d)=>Ge(d)),m=i.filter((p,d)=>!Ge(d));return new re(Array(68).fill(0).map((p,d)=>new x(c[d],m[d])),{height:e.getInputHeight(s),width:e.getInputWidth(s)})}));return r.forEach(a=>a.dispose()),e.isBatchInput?n:n[0]}getClassifierChannelsOut(){return 136}};var le=class extends Be{constructor(t=new Se){super("FaceLandmark68Net",t)}getDefaultModelName(){return"face_landmark_68_model"}getClassifierChannelsIn(){return 256}};var fe=b();function Lo(o){let t=[],{extractDenseBlock3Params:e}=ar(o,t),r={dense0:e("dense0",!0),dense1:e("dense1"),dense2:e("dense2")};return A(o,t),{params:r,paramMappings:t}}function ko(o){let t=[],{extractWeights:e,getRemainingWeights:r}=W(o),{extractDenseBlock3Params:n}=or(e,t),a=n(3,32,"dense0",!0),s=n(32,64,"dense1"),i=n(64,128,"dense2");if(r().length!==0)throw new Error(`weights remaing after extract: ${r().length}`);return{paramMappings:t,params:{dense0:a,dense1:s,dense2:i}}}var to=class extends k{constructor(){super("TinyFaceFeatureExtractor")}forwardInput(t){let{params:e}=this;if(!e)throw new Error("TinyFaceFeatureExtractor - load model before inference");return fe.tidy(()=>{let r=fe.cast(t.toBatchTensor(112,!0),"float32"),a=et(r,[122.782,117.001,104.298]).div(255),s=Ke(a,e.dense0,!0);return s=Ke(s,e.dense1),s=Ke(s,e.dense2),s=fe.avgPool(s,[14,14],[2,2],"valid"),s})}async forward(t){return this.forwardInput(await D(t))}getDefaultModelName(){return"face_feature_extractor_tiny_model"}extractParamsFromWeightMap(t){return Lo(t)}extractParams(t){return ko(t)}};var pr=class extends Be{constructor(t=new to){super("FaceLandmark68TinyNet",t)}getDefaultModelName(){return"face_landmark_68_tiny_model"}getClassifierChannelsIn(){return 128}};var So=class extends le{};var ot=b();var he=b();var dr=b();function Ao(o,t){return dr.add(dr.mul(o,t.weights),t.biases)}function eo(o,t,e,r,n="same"){let{filters:a,bias:s}=t.conv,i=he.conv2d(o,a,e,n);return i=he.add(i,s),i=Ao(i,t.scale),r?he.relu(i):i}function Wo(o,t){return eo(o,t,[1,1],!0)}function ro(o,t){return eo(o,t,[1,1],!1)}function ur(o,t){return eo(o,t,[2,2],!0,"valid")}var Y=b();function Bn(o,t){function e(i,c,m){let p=o(i),d=p.length/(c*m*m);if(Cr(d))throw new Error(`depth has to be an integer: ${d}, weights.length: ${p.length}, numFilters: ${c}, filterSize: ${m}`);return Y.tidy(()=>Y.transpose(Y.tensor4d(p,[c,d,m,m]),[2,3,1,0]))}function r(i,c,m,p){let d=e(i,c,m),u=Y.tensor1d(o(c));return t.push({paramPath:`${p}/filters`},{paramPath:`${p}/bias`}),{filters:d,bias:u}}function n(i,c){let m=Y.tensor1d(o(i)),p=Y.tensor1d(o(i));return t.push({paramPath:`${c}/weights`},{paramPath:`${c}/biases`}),{weights:m,biases:p}}function a(i,c,m,p){let d=r(i,c,m,`${p}/conv`),u=n(c,`${p}/scale`);return{conv:d,scale:u}}function s(i,c,m,p,d=!1){let u=a((d?.5:1)*i,c,m,`${p}/conv1`),l=a(i,c,m,`${p}/conv2`);return{conv1:u,conv2:l}}return{extractConvLayerParams:a,extractResidualLayerParams:s}}function Bo(o){let{extractWeights:t,getRemainingWeights:e}=W(o),r=[],{extractConvLayerParams:n,extractResidualLayerParams:a}=Bn(t,r),s=n(4704,32,7,"conv32_down"),i=a(9216,32,3,"conv32_1"),c=a(9216,32,3,"conv32_2"),m=a(9216,32,3,"conv32_3"),p=a(36864,64,3,"conv64_down",!0),d=a(36864,64,3,"conv64_1"),u=a(36864,64,3,"conv64_2"),l=a(36864,64,3,"conv64_3"),g=a(147456,128,3,"conv128_down",!0),_=a(147456,128,3,"conv128_1"),h=a(147456,128,3,"conv128_2"),v=a(589824,256,3,"conv256_down",!0),F=a(589824,256,3,"conv256_1"),y=a(589824,256,3,"conv256_2"),N=a(589824,256,3,"conv256_down_out"),G=Y.tidy(()=>Y.transpose(Y.tensor2d(t(256*128),[128,256]),[1,0]));if(r.push({paramPath:"fc"}),e().length!==0)throw new Error(`weights remaing after extract: ${e().length}`);return{params:{conv32_down:s,conv32_1:i,conv32_2:c,conv32_3:m,conv64_down:p,conv64_1:d,conv64_2:u,conv64_3:l,conv128_down:g,conv128_1:_,conv128_2:h,conv256_down:v,conv256_1:F,conv256_2:y,conv256_down_out:N,fc:G},paramMappings:r}}function Rn(o,t){let e=j(o,t);function r(s){let i=e(`${s}/scale/weights`,1),c=e(`${s}/scale/biases`,1);return{weights:i,biases:c}}function n(s){let i=e(`${s}/conv/filters`,4),c=e(`${s}/conv/bias`,1),m=r(s);return{conv:{filters:i,bias:c},scale:m}}function a(s){return{conv1:n(`${s}/conv1`),conv2:n(`${s}/conv2`)}}return{extractConvLayerParams:n,extractResidualLayerParams:a}}function Ro(o){let t=[],{extractConvLayerParams:e,extractResidualLayerParams:r}=Rn(o,t),n=e("conv32_down"),a=r("conv32_1"),s=r("conv32_2"),i=r("conv32_3"),c=r("conv64_down"),m=r("conv64_1"),p=r("conv64_2"),d=r("conv64_3"),u=r("conv128_down"),l=r("conv128_1"),g=r("conv128_2"),_=r("conv256_down"),h=r("conv256_1"),v=r("conv256_2"),F=r("conv256_down_out"),{fc:y}=o;if(t.push({originalPath:"fc",paramPath:"fc"}),!Mr(y))throw new Error(`expected weightMap[fc] to be a Tensor2D, instead have ${y}`);let N={conv32_down:n,conv32_1:a,conv32_2:s,conv32_3:i,conv64_down:c,conv64_1:m,conv64_2:p,conv64_3:d,conv128_down:u,conv128_1:l,conv128_2:g,conv256_down:_,conv256_1:h,conv256_2:v,conv256_down_out:F,fc:y};return A(o,t),{params:N,paramMappings:t}}var B=b();function rt(o,t){let e=Wo(o,t.conv1);return e=ro(e,t.conv2),e=B.add(e,o),e=B.relu(e),e}function Re(o,t){let e=ur(o,t.conv1);e=ro(e,t.conv2);let r=B.avgPool(o,2,2,"valid"),n=B.zeros(r.shape),a=r.shape[3]!==e.shape[3];if(r.shape[1]!==e.shape[1]||r.shape[2]!==e.shape[2]){let i=[...e.shape];i[1]=1;let c=B.zeros(i);e=B.concat([e,c],1);let m=[...e.shape];m[2]=1;let p=B.zeros(m);e=B.concat([e,p],2)}return r=a?B.concat([r,n],3):r,e=B.add(r,e),e=B.relu(e),e}var xe=class extends k{constructor(){super("FaceRecognitionNet")}forwardInput(t){let{params:e}=this;if(!e)throw new Error("FaceRecognitionNet - load model before inference");return ot.tidy(()=>{let r=ot.cast(t.toBatchTensor(150,!0),"float32"),a=et(r,[122.782,117.001,104.298]).div(255),s=ur(a,e.conv32_down);s=ot.maxPool(s,3,2,"valid"),s=rt(s,e.conv32_1),s=rt(s,e.conv32_2),s=rt(s,e.conv32_3),s=Re(s,e.conv64_down),s=rt(s,e.conv64_1),s=rt(s,e.conv64_2),s=rt(s,e.conv64_3),s=Re(s,e.conv128_down),s=rt(s,e.conv128_1),s=rt(s,e.conv128_2),s=Re(s,e.conv256_down),s=rt(s,e.conv256_1),s=rt(s,e.conv256_2),s=Re(s,e.conv256_down_out);let i=s.mean([1,2]);return ot.matMul(i,e.fc)})}async forward(t){return this.forwardInput(await D(t))}async computeFaceDescriptor(t){var a;if((a=t==null?void 0:t.shape)==null?void 0:a.some(s=>s<=0))return new Float32Array(128);let e=await D(t),r=ot.tidy(()=>ot.unstack(this.forwardInput(e))),n=await Promise.all(r.map(s=>s.data()));return r.forEach(s=>s.dispose()),e.isBatchInput?n:n[0]}getDefaultModelName(){return"face_recognition_model"}extractParamsFromWeightMap(t){return Ro(t)}extractParams(t){return Bo(t)}};function $n(o){let t=new xe;return t.extractWeights(o),t}function lr(o,t){return{...o,...{descriptor:t}}}function On(o){return typeof o.age=="number"}function fr(o,t){return{...o,...{age:t}}}function jn(o){return(o.gender===gt.MALE||o.gender===gt.FEMALE)&&Qt(o.genderProbability)}function hr(o,t,e){return{...o,...{gender:t,genderProbability:e}}}var It=b();var nt=b();function Hn(o,t){function e(c,m){let p=nt.tensor4d(o(3*3*c),[3,3,c,1]),d=nt.tensor1d(o(c)),u=nt.tensor1d(o(c)),l=nt.tensor1d(o(c)),g=nt.tensor1d(o(c));return t.push({paramPath:`${m}/filters`},{paramPath:`${m}/batch_norm_scale`},{paramPath:`${m}/batch_norm_offset`},{paramPath:`${m}/batch_norm_mean`},{paramPath:`${m}/batch_norm_variance`}),{filters:p,batch_norm_scale:d,batch_norm_offset:u,batch_norm_mean:l,batch_norm_variance:g}}function r(c,m,p,d,u){let l=nt.tensor4d(o(c*m*p*p),[p,p,c,m]),g=nt.tensor1d(o(m));return t.push({paramPath:`${d}/filters`},{paramPath:`${d}/${u?"batch_norm_offset":"bias"}`}),{filters:l,bias:g}}function n(c,m,p,d){let{filters:u,bias:l}=r(c,m,p,d,!0);return{filters:u,batch_norm_offset:l}}function a(c,m,p){let d=e(c,`${p}/depthwise_conv`),u=n(c,m,1,`${p}/pointwise_conv`);return{depthwise_conv:d,pointwise_conv:u}}function s(){let c=n(3,32,3,"mobilenetv1/conv_0"),m=a(32,64,"mobilenetv1/conv_1"),p=a(64,128,"mobilenetv1/conv_2"),d=a(128,128,"mobilenetv1/conv_3"),u=a(128,256,"mobilenetv1/conv_4"),l=a(256,256,"mobilenetv1/conv_5"),g=a(256,512,"mobilenetv1/conv_6"),_=a(512,512,"mobilenetv1/conv_7"),h=a(512,512,"mobilenetv1/conv_8"),v=a(512,512,"mobilenetv1/conv_9"),F=a(512,512,"mobilenetv1/conv_10"),y=a(512,512,"mobilenetv1/conv_11"),N=a(512,1024,"mobilenetv1/conv_12"),G=a(1024,1024,"mobilenetv1/conv_13");return{conv_0:c,conv_1:m,conv_2:p,conv_3:d,conv_4:u,conv_5:l,conv_6:g,conv_7:_,conv_8:h,conv_9:v,conv_10:F,conv_11:y,conv_12:N,conv_13:G}}function i(){let c=n(1024,256,1,"prediction_layer/conv_0"),m=n(256,512,3,"prediction_layer/conv_1"),p=n(512,128,1,"prediction_layer/conv_2"),d=n(128,256,3,"prediction_layer/conv_3"),u=n(256,128,1,"prediction_layer/conv_4"),l=n(128,256,3,"prediction_layer/conv_5"),g=n(256,64,1,"prediction_layer/conv_6"),_=n(64,128,3,"prediction_layer/conv_7"),h=r(512,12,1,"prediction_layer/box_predictor_0/box_encoding_predictor"),v=r(512,9,1,"prediction_layer/box_predictor_0/class_predictor"),F=r(1024,24,1,"prediction_layer/box_predictor_1/box_encoding_predictor"),y=r(1024,18,1,"prediction_layer/box_predictor_1/class_predictor"),N=r(512,24,1,"prediction_layer/box_predictor_2/box_encoding_predictor"),G=r(512,18,1,"prediction_layer/box_predictor_2/class_predictor"),Q=r(256,24,1,"prediction_layer/box_predictor_3/box_encoding_predictor"),at=r(256,18,1,"prediction_layer/box_predictor_3/class_predictor"),U=r(256,24,1,"prediction_layer/box_predictor_4/box_encoding_predictor"),Tt=r(256,18,1,"prediction_layer/box_predictor_4/class_predictor"),_t=r(128,24,1,"prediction_layer/box_predictor_5/box_encoding_predictor"),wt=r(128,18,1,"prediction_layer/box_predictor_5/class_predictor");return{conv_0:c,conv_1:m,conv_2:p,conv_3:d,conv_4:u,conv_5:l,conv_6:g,conv_7:_,box_predictor_0:{box_encoding_predictor:h,class_predictor:v},box_predictor_1:{box_encoding_predictor:F,class_predictor:y},box_predictor_2:{box_encoding_predictor:N,class_predictor:G},box_predictor_3:{box_encoding_predictor:Q,class_predictor:at},box_predictor_4:{box_encoding_predictor:U,class_predictor:Tt},box_predictor_5:{box_encoding_predictor:_t,class_predictor:wt}}}return{extractMobilenetV1Params:s,extractPredictionLayerParams:i}}function $o(o){let t=[],{extractWeights:e,getRemainingWeights:r}=W(o),{extractMobilenetV1Params:n,extractPredictionLayerParams:a}=Hn(e,t),s=n(),i=a(),m={extra_dim:nt.tensor3d(e(5118*4),[1,5118,4])};if(t.push({paramPath:"output_layer/extra_dim"}),r().length!==0)throw new Error(`weights remaing after extract: ${r().length}`);return{params:{mobilenetv1:s,prediction_layer:i,output_layer:m},paramMappings:t}}function Yn(o,t){let e=j(o,t);function r(m,p,d){let u=e(`${m}/Conv2d_${p}_pointwise/weights`,4,`${d}/filters`),l=e(`${m}/Conv2d_${p}_pointwise/convolution_bn_offset`,1,`${d}/batch_norm_offset`);return{filters:u,batch_norm_offset:l}}function n(m){let p=`mobilenetv1/conv_${m}`,d=`MobilenetV1/Conv2d_${m}_depthwise`,u=`${p}/depthwise_conv`,l=`${p}/pointwise_conv`,g=e(`${d}/depthwise_weights`,4,`${u}/filters`),_=e(`${d}/BatchNorm/gamma`,1,`${u}/batch_norm_scale`),h=e(`${d}/BatchNorm/beta`,1,`${u}/batch_norm_offset`),v=e(`${d}/BatchNorm/moving_mean`,1,`${u}/batch_norm_mean`),F=e(`${d}/BatchNorm/moving_variance`,1,`${u}/batch_norm_variance`);return{depthwise_conv:{filters:g,batch_norm_scale:_,batch_norm_offset:h,batch_norm_mean:v,batch_norm_variance:F},pointwise_conv:r("MobilenetV1",m,l)}}function a(){return{conv_0:r("MobilenetV1",0,"mobilenetv1/conv_0"),conv_1:n(1),conv_2:n(2),conv_3:n(3),conv_4:n(4),conv_5:n(5),conv_6:n(6),conv_7:n(7),conv_8:n(8),conv_9:n(9),conv_10:n(10),conv_11:n(11),conv_12:n(12),conv_13:n(13)}}function s(m,p){let d=e(`${m}/weights`,4,`${p}/filters`),u=e(`${m}/biases`,1,`${p}/bias`);return{filters:d,bias:u}}function i(m){let p=s(`Prediction/BoxPredictor_${m}/BoxEncodingPredictor`,`prediction_layer/box_predictor_${m}/box_encoding_predictor`),d=s(`Prediction/BoxPredictor_${m}/ClassPredictor`,`prediction_layer/box_predictor_${m}/class_predictor`);return{box_encoding_predictor:p,class_predictor:d}}function c(){return{conv_0:r("Prediction",0,"prediction_layer/conv_0"),conv_1:r("Prediction",1,"prediction_layer/conv_1"),conv_2:r("Prediction",2,"prediction_layer/conv_2"),conv_3:r("Prediction",3,"prediction_layer/conv_3"),conv_4:r("Prediction",4,"prediction_layer/conv_4"),conv_5:r("Prediction",5,"prediction_layer/conv_5"),conv_6:r("Prediction",6,"prediction_layer/conv_6"),conv_7:r("Prediction",7,"prediction_layer/conv_7"),box_predictor_0:i(0),box_predictor_1:i(1),box_predictor_2:i(2),box_predictor_3:i(3),box_predictor_4:i(4),box_predictor_5:i(5)}}return{extractMobilenetV1Params:a,extractPredictionLayerParams:c}}function Oo(o){let t=[],{extractMobilenetV1Params:e,extractPredictionLayerParams:r}=Yn(o,t),n=o["Output/extra_dim"];if(t.push({originalPath:"Output/extra_dim",paramPath:"output_layer/extra_dim"}),!ft(n))throw new Error(`expected weightMap['Output/extra_dim'] to be a Tensor3D, instead have ${n}`);let a={mobilenetv1:e(),prediction_layer:r(),output_layer:{extra_dim:n}};return A(o,t),{params:a,paramMappings:t}}var vt=b();var Nt=b();function X(o,t,e){return Nt.tidy(()=>{let r=Nt.conv2d(o,t.filters,e,"same");return r=Nt.add(r,t.batch_norm_offset),Nt.clipByValue(r,0,6)})}var Gn=.0010000000474974513;function zn(o,t,e){return vt.tidy(()=>{let r=vt.depthwiseConv2d(o,t.filters,e,"same");return r=vt.batchNorm(r,t.batch_norm_mean,t.batch_norm_variance,t.batch_norm_offset,t.batch_norm_scale,Gn),vt.clipByValue(r,0,6)})}function Vn(o){return[2,4,6,12].some(t=>t===o)?[2,2]:[1,1]}function jo(o,t){return vt.tidy(()=>{let e,r=X(o,t.conv_0,[2,2]);if([t.conv_1,t.conv_2,t.conv_3,t.conv_4,t.conv_5,t.conv_6,t.conv_7,t.conv_8,t.conv_9,t.conv_10,t.conv_11,t.conv_12,t.conv_13].forEach((a,s)=>{let i=s+1,c=Vn(i);r=zn(r,a.depthwise_conv,c),r=X(r,a.pointwise_conv,[1,1]),i===11&&(e=r)}),e===null)throw new Error("mobileNetV1 - output of conv layer 11 is null");return{out:r,conv11:e}})}function Un(o,t,e){let r=o.arraySync(),n=Math.min(r[t][0],r[t][2]),a=Math.min(r[t][1],r[t][3]),s=Math.max(r[t][0],r[t][2]),i=Math.max(r[t][1],r[t][3]),c=Math.min(r[e][0],r[e][2]),m=Math.min(r[e][1],r[e][3]),p=Math.max(r[e][0],r[e][2]),d=Math.max(r[e][1],r[e][3]),u=(s-n)*(i-a),l=(p-c)*(d-m);if(u<=0||l<=0)return 0;let g=Math.max(n,c),_=Math.max(a,m),h=Math.min(s,p),v=Math.min(i,d),F=Math.max(h-g,0)*Math.max(v-_,0);return F/(u+l-F)}function Ho(o,t,e,r,n){let a=o.shape[0],s=Math.min(e,a),i=t.map((p,d)=>({score:p,boxIndex:d})).filter(p=>p.score>n).sort((p,d)=>d.score-p.score),c=p=>p<=r?1:0,m=[];return i.forEach(p=>{if(m.length>=s)return;let d=p.score;for(let u=m.length-1;u>=0;--u){let l=Un(o,p.boxIndex,m[u]);if(l!==0&&(p.score*=c(l),p.score<=n))break}d===p.score&&m.push(p.boxIndex)}),m}var f=b();function Xn(o){let t=f.unstack(f.transpose(o,[1,0])),e=[f.sub(t[2],t[0]),f.sub(t[3],t[1])],r=[f.add(t[0],f.div(e[0],2)),f.add(t[1],f.div(e[1],2))];return{sizes:e,centers:r}}function Jn(o,t){let{sizes:e,centers:r}=Xn(o),n=f.unstack(f.transpose(t,[1,0])),a=f.div(f.mul(f.exp(f.div(n[2],5)),e[0]),2),s=f.add(f.mul(f.div(n[0],10),e[0]),r[0]),i=f.div(f.mul(f.exp(f.div(n[3],5)),e[1]),2),c=f.add(f.mul(f.div(n[1],10),e[1]),r[1]);return f.transpose(f.stack([f.sub(s,a),f.sub(c,i),f.add(s,a),f.add(c,i)]),[1,0])}function Yo(o,t,e){return f.tidy(()=>{let r=o.shape[0],n=Jn(f.reshape(f.tile(e.extra_dim,[r,1,1]),[-1,4]),f.reshape(o,[-1,4]));n=f.reshape(n,[r,n.shape[0]/r,4]);let a=f.sigmoid(f.slice(t,[0,0,1],[-1,-1,-1])),s=f.slice(a,[0,0,0],[-1,-1,1]);s=f.reshape(s,[r,s.shape[1]]);let i=f.unstack(n),c=f.unstack(s);return{boxes:i,scores:c}})}var Oe=b();var $e=b();function zt(o,t){return $e.tidy(()=>{let e=o.shape[0],r=$e.reshape(Yt(o,t.box_encoding_predictor),[e,-1,1,4]),n=$e.reshape(Yt(o,t.class_predictor),[e,-1,3]);return{boxPredictionEncoding:r,classPrediction:n}})}function Go(o,t,e){return Oe.tidy(()=>{let r=X(o,e.conv_0,[1,1]),n=X(r,e.conv_1,[2,2]),a=X(n,e.conv_2,[1,1]),s=X(a,e.conv_3,[2,2]),i=X(s,e.conv_4,[1,1]),c=X(i,e.conv_5,[2,2]),m=X(c,e.conv_6,[1,1]),p=X(m,e.conv_7,[2,2]),d=zt(t,e.box_predictor_0),u=zt(o,e.box_predictor_1),l=zt(n,e.box_predictor_2),g=zt(s,e.box_predictor_3),_=zt(c,e.box_predictor_4),h=zt(p,e.box_predictor_5),v=Oe.concat([d.boxPredictionEncoding,u.boxPredictionEncoding,l.boxPredictionEncoding,g.boxPredictionEncoding,_.boxPredictionEncoding,h.boxPredictionEncoding],1),F=Oe.concat([d.classPrediction,u.classPrediction,l.classPrediction,g.classPrediction,_.classPrediction,h.classPrediction],1);return{boxPredictions:v,classPredictions:F}})}var J=class{constructor({minConfidence:t,maxResults:e}={}){this._name="SsdMobilenetv1Options";if(this._minConfidence=t||.5,this._maxResults=e||100,typeof this._minConfidence!="number"||this._minConfidence<=0||this._minConfidence>=1)throw new Error(`${this._name} - expected minConfidence to be a number between 0 and 1`);if(typeof this._maxResults!="number")throw new Error(`${this._name} - expected maxResults to be a number`)}get minConfidence(){return this._minConfidence}get maxResults(){return this._maxResults}};var Vt=class extends k{constructor(){super("SsdMobilenetv1")}forwardInput(t){let{params:e}=this;if(!e)throw new Error("SsdMobilenetv1 - load model before inference");return It.tidy(()=>{let r=It.cast(t.toBatchTensor(512,!1),"float32"),n=It.sub(It.div(r,127.5),1),a=jo(n,e.mobilenetv1),{boxPredictions:s,classPredictions:i}=Go(a.out,a.conv11,e.prediction_layer);return Yo(s,i,e.output_layer)})}async forward(t){return this.forwardInput(await D(t))}async locateFaces(t,e={}){let{maxResults:r,minConfidence:n}=new J(e),a=await D(t),{boxes:s,scores:i}=this.forwardInput(a),c=s[0],m=i[0];for(let y=1;y<s.length;y++)s[y].dispose(),i[y].dispose();let p=Array.from(m.dataSync()),u=Ho(c,p,r,.5,n),l=a.getReshapedInputDimensions(0),g=a.inputSize,_=g/l.width,h=g/l.height,v=c.arraySync(),F=u.map(y=>{let[N,G]=[Math.max(0,v[y][0]),Math.min(1,v[y][2])].map(U=>U*h),[Q,at]=[Math.max(0,v[y][1]),Math.min(1,v[y][3])].map(U=>U*_);return new E(p[y],new ee(Q,N,at-Q,G-N),{height:a.getInputHeight(0),width:a.getInputWidth(0)})});return c.dispose(),m.dispose(),F}getDefaultModelName(){return"ssd_mobilenetv1_model"}extractParamsFromWeightMap(t){return Oo(t)}extractParams(t){return $o(t)}};function zo(o){let t=new Vt;return t.extractWeights(o),t}function qn(o){return zo(o)}var Vo=class extends Vt{};var Uo=.4,Xo=[new x(.738768,.874946),new x(2.42204,2.65704),new x(4.30971,7.04493),new x(10.246,4.59428),new x(12.6868,11.8741)],Jo=[new x(1.603231,2.094468),new x(6.041143,7.080126),new x(2.882459,3.518061),new x(4.266906,5.178857),new x(9.041765,10.66308)],qo=[117.001,114.697,97.404],Zo="tiny_yolov2_model",Ko="tiny_yolov2_separable_conv_model";var C=b();var xr=o=>typeof o=="number";function oo(o){if(!o)throw new Error(`invalid config: ${o}`);if(typeof o.withSeparableConvs!="boolean")throw new Error(`config.withSeparableConvs has to be a boolean, have: ${o.withSeparableConvs}`);if(!xr(o.iouThreshold)||o.iouThreshold<0||o.iouThreshold>1)throw new Error(`config.iouThreshold has to be a number between [0, 1], have: ${o.iouThreshold}`);if(!Array.isArray(o.classes)||!o.classes.length||!o.classes.every(t=>typeof t=="string"))throw new Error(`config.classes has to be an array class names: string[], have: ${JSON.stringify(o.classes)}`);if(!Array.isArray(o.anchors)||!o.anchors.length||!o.anchors.map(t=>t||{}).every(t=>xr(t.x)&&xr(t.y)))throw new Error(`config.anchors has to be an array of { x: number, y: number }, have: ${JSON.stringify(o.anchors)}`);if(o.meanRgb&&(!Array.isArray(o.meanRgb)||o.meanRgb.length!==3||!o.meanRgb.every(xr)))throw new Error(`config.meanRgb has to be an array of shape [number, number, number], have: ${JSON.stringify(o.meanRgb)}`)}var Z=b();var q=b();function be(o){return q.tidy(()=>{let t=q.mul(o,q.scalar(.10000000149011612));return q.add(q.relu(q.sub(o,t)),t)})}function yt(o,t){return Z.tidy(()=>{let e=Z.pad(o,[[0,0],[1,1],[1,1],[0,0]]);return e=Z.conv2d(e,t.conv.filters,[1,1],"valid"),e=Z.sub(e,t.bn.sub),e=Z.mul(e,t.bn.truediv),e=Z.add(e,t.conv.bias),be(e)})}var Lt=b();function Ft(o,t){return Lt.tidy(()=>{let e=Lt.pad(o,[[0,0],[1,1],[1,1],[0,0]]);return e=Lt.separableConv2d(e,t.depthwise_filter,t.pointwise_filter,[1,1],"valid"),e=Lt.add(e,t.bias),be(e)})}var no=b();function Zn(o,t){let e=se(o,t);function r(s,i){let c=no.tensor1d(o(s)),m=no.tensor1d(o(s));return t.push({paramPath:`${i}/sub`},{paramPath:`${i}/truediv`}),{sub:c,truediv:m}}function n(s,i,c){let m=e(s,i,3,`${c}/conv`),p=r(i,`${c}/bn`);return{conv:m,bn:p}}let a=ie(o,t);return{extractConvParams:e,extractConvWithBatchNormParams:n,extractSeparableConvParams:a}}function Qo(o,t,e,r){let{extractWeights:n,getRemainingWeights:a}=W(o),s=[],{extractConvParams:i,extractConvWithBatchNormParams:c,extractSeparableConvParams:m}=Zn(n,s),p;if(t.withSeparableConvs){let[d,u,l,g,_,h,v,F,y]=r,N=t.isFirstLayerConv2d?i(d,u,3,"conv0"):m(d,u,"conv0"),G=m(u,l,"conv1"),Q=m(l,g,"conv2"),at=m(g,_,"conv3"),U=m(_,h,"conv4"),Tt=m(h,v,"conv5"),_t=F?m(v,F,"conv6"):void 0,wt=y?m(F,y,"conv7"):void 0,Kt=i(y||F||v,5*e,1,"conv8");p={conv0:N,conv1:G,conv2:Q,conv3:at,conv4:U,conv5:Tt,conv6:_t,conv7:wt,conv8:Kt}}else{let[d,u,l,g,_,h,v,F,y]=r,N=c(d,u,"conv0"),G=c(u,l,"conv1"),Q=c(l,g,"conv2"),at=c(g,_,"conv3"),U=c(_,h,"conv4"),Tt=c(h,v,"conv5"),_t=c(v,F,"conv6"),wt=c(F,y,"conv7"),Kt=i(y,5*e,1,"conv8");p={conv0:N,conv1:G,conv2:Q,conv3:at,conv4:U,conv5:Tt,conv6:_t,conv7:wt,conv8:Kt}}if(a().length!==0)throw new Error(`weights remaing after extract: ${a().length}`);return{params:p,paramMappings:s}}function Kn(o,t){let e=j(o,t);function r(i){let c=e(`${i}/sub`,1),m=e(`${i}/truediv`,1);return{sub:c,truediv:m}}function n(i){let c=e(`${i}/filters`,4),m=e(`${i}/bias`,1);return{filters:c,bias:m}}function a(i){let c=n(`${i}/conv`),m=r(`${i}/bn`);return{conv:c,bn:m}}let s=ce(e);return{extractConvParams:n,extractConvWithBatchNormParams:a,extractSeparableConvParams:s}}function tn(o,t){let e=[],{extractConvParams:r,extractConvWithBatchNormParams:n,extractSeparableConvParams:a}=Kn(o,e),s;if(t.withSeparableConvs){let i=t.filterSizes&&t.filterSizes.length||9;s={conv0:t.isFirstLayerConv2d?r("conv0"):a("conv0"),conv1:a("conv1"),conv2:a("conv2"),conv3:a("conv3"),conv4:a("conv4"),conv5:a("conv5"),conv6:i>7?a("conv6"):void 0,conv7:i>8?a("conv7"):void 0,conv8:r("conv8")}}else s={conv0:n("conv0"),conv1:n("conv1"),conv2:n("conv2"),conv3:n("conv3"),conv4:n("conv4"),conv5:n("conv5"),conv6:n("conv6"),conv7:n("conv7"),conv8:r("conv8")};return A(o,e),{params:s,paramMappings:e}}var dt=class{constructor({inputSize:t,scoreThreshold:e}={}){this._name="TinyYolov2Options";if(this._inputSize=t||416,this._scoreThreshold=e||.5,typeof this._inputSize!="number"||this._inputSize%32!=0)throw new Error(`${this._name} - expected inputSize to be a number divisible by 32`);if(typeof this._scoreThreshold!="number"||this._scoreThreshold<=0||this._scoreThreshold>=1)throw new Error(`${this._name} - expected scoreThreshold to be a number between 0 and 1`)}get inputSize(){return this._inputSize}get scoreThreshold(){return this._scoreThreshold}};var ao=class extends k{constructor(t){super("TinyYolov2");oo(t),this._config=t}get config(){return this._config}get withClassScores(){return this.config.withClassScores||this.config.classes.length>1}get boxEncodingSize(){return 5+(this.withClassScores?this.config.classes.length:0)}runTinyYolov2(t,e){let r=yt(t,e.conv0);return r=C.maxPool(r,[2,2],[2,2],"same"),r=yt(r,e.conv1),r=C.maxPool(r,[2,2],[2,2],"same"),r=yt(r,e.conv2),r=C.maxPool(r,[2,2],[2,2],"same"),r=yt(r,e.conv3),r=C.maxPool(r,[2,2],[2,2],"same"),r=yt(r,e.conv4),r=C.maxPool(r,[2,2],[2,2],"same"),r=yt(r,e.conv5),r=C.maxPool(r,[2,2],[1,1],"same"),r=yt(r,e.conv6),r=yt(r,e.conv7),Yt(r,e.conv8,"valid",!1)}runMobilenet(t,e){let r=this.config.isFirstLayerConv2d?be(Yt(t,e.conv0,"valid",!1)):Ft(t,e.conv0);return r=C.maxPool(r,[2,2],[2,2],"same"),r=Ft(r,e.conv1),r=C.maxPool(r,[2,2],[2,2],"same"),r=Ft(r,e.conv2),r=C.maxPool(r,[2,2],[2,2],"same"),r=Ft(r,e.conv3),r=C.maxPool(r,[2,2],[2,2],"same"),r=Ft(r,e.conv4),r=C.maxPool(r,[2,2],[2,2],"same"),r=Ft(r,e.conv5),r=C.maxPool(r,[2,2],[1,1],"same"),r=e.conv6?Ft(r,e.conv6):r,r=e.conv7?Ft(r,e.conv7):r,Yt(r,e.conv8,"valid",!1)}forwardInput(t,e){let{params:r}=this;if(!r)throw new Error("TinyYolov2 - load model before inference");return C.tidy(()=>{let n=C.cast(t.toBatchTensor(e,!1),"float32");return n=this.config.meanRgb?et(n,this.config.meanRgb):n,n=n.div(255),this.config.withSeparableConvs?this.runMobilenet(n,r):this.runTinyYolov2(n,r)})}async forward(t,e){return this.forwardInput(await D(t),e)}async detect(t,e={}){let{inputSize:r,scoreThreshold:n}=new dt(e),a=await D(t),s=await this.forwardInput(a,r),i=C.tidy(()=>C.unstack(s)[0].expandDims()),c={width:a.getInputWidth(0),height:a.getInputHeight(0)},m=await this.extractBoxes(i,a.getReshapedInputDimensions(0),n);s.dispose(),i.dispose();let p=m.map(h=>h.box),d=m.map(h=>h.score),u=m.map(h=>h.classScore),l=m.map(h=>this.config.classes[h.label]);return kr(p.map(h=>h.rescale(r)),d,this.config.iouThreshold,!0).map(h=>new Pt(d[h],u[h],l[h],p[h],c))}getDefaultModelName(){return""}extractParamsFromWeightMap(t){return tn(t,this.config)}extractParams(t){let e=this.config.filterSizes||ao.DEFAULT_FILTER_SIZES,r=e?e.length:void 0;if(r!==7&&r!==8&&r!==9)throw new Error(`TinyYolov2 - expected 7 | 8 | 9 convolutional filters, but found ${r} filterSizes in config`);return Qo(t,this.config,this.boxEncodingSize,e)}async extractBoxes(t,e,r){let{width:n,height:a}=e,s=Math.max(n,a),i=s/n,c=s/a,m=t.shape[1],p=this.config.anchors.length,[d,u,l]=C.tidy(()=>{let v=t.reshape([m,m,p,this.boxEncodingSize]),F=v.slice([0,0,0,0],[m,m,p,4]),y=v.slice([0,0,0,4],[m,m,p,1]),N=this.withClassScores?C.softmax(v.slice([0,0,0,5],[m,m,p,this.config.classes.length]),3):C.scalar(0);return[F,y,N]}),g=[],_=await u.array(),h=await d.array();for(let v=0;v<m;v++)for(let F=0;F<m;F++)for(let y=0;y<p;y++){let N=De(_[v][F][y][0]);if(!r||N>r){let G=(F+De(h[v][F][y][0]))/m*i,Q=(v+De(h[v][F][y][1]))/m*c,at=Math.exp(h[v][F][y][2])*this.config.anchors[y].x/m*i,U=Math.exp(h[v][F][y][3])*this.config.anchors[y].y/m*c,Tt=G-at/2,_t=Q-U/2,wt={row:v,col:F,anchor:y},{classScore:Kt,label:po}=this.withClassScores?await this.extractPredictedClass(l,wt):{classScore:1,label:0};g.push({box:new te(Tt,_t,Tt+at,_t+U),score:N,classScore:N*Kt,label:po,...wt})}}return d.dispose(),u.dispose(),l.dispose(),g}async extractPredictedClass(t,e){let{row:r,col:n,anchor:a}=e,s=await t.array();return Array(this.config.classes.length).fill(0).map((i,c)=>s[r][n][a][c]).map((i,c)=>({classScore:i,label:c})).reduce((i,c)=>i.classScore>c.classScore?i:c)}},ge=ao;ge.DEFAULT_FILTER_SIZES=[3,16,32,64,128,256,512,1024,1024];var ve=class extends ge{constructor(t=!0){let e={withSeparableConvs:t,iouThreshold:Uo,classes:["face"],...t?{anchors:Jo,meanRgb:qo}:{anchors:Xo,withClassScores:!0}};super(e)}get withSeparableConvs(){return this.config.withSeparableConvs}get anchors(){return this.config.anchors}async locateFaces(t,e){return(await this.detect(t,e)).map(n=>new E(n.score,n.relativeBox,{width:n.imageWidth,height:n.imageHeight}))}getDefaultModelName(){return this.withSeparableConvs?Ko:Zo}extractParamsFromWeightMap(t){return super.extractParamsFromWeightMap(t)}};function Qn(o,t=!0){let e=new ve(t);return e.extractWeights(o),e}var br=class extends dt{constructor(){super(...arguments);this._name="TinyFaceDetectorOptions"}};var K=class{async then(t){return t(await this.run())}async run(){throw new Error("ComposableTask - run is not implemented")}};var je=b();var so=b();async function Ut(o,t,e,r,n=({alignedRect:a})=>a){let a=o.map(c=>Gt(c)?n(c):c.detection),s=r||(t instanceof so.Tensor?await ne(t,a):await oe(t,a)),i=await e(s);return s.forEach(c=>c instanceof so.Tensor&&c.dispose()),i}async function ye(o,t,e,r,n){return Ut([o],t,async a=>e(a[0]),r,n)}var en=.4,rn=[new x(1.603231,2.094468),new x(6.041143,7.080126),new x(2.882459,3.518061),new x(4.266906,5.178857),new x(9.041765,10.66308)],on=[117.001,114.697,97.404];var Fe=class extends ge{constructor(){let t={withSeparableConvs:!0,iouThreshold:en,classes:["face"],anchors:rn,meanRgb:on,isFirstLayerConv2d:!0,filterSizes:[3,16,32,64,128,256,512]};super(t)}get anchors(){return this.config.anchors}async locateFaces(t,e){return(await this.detect(t,e)).map(n=>new E(n.score,n.relativeBox,{width:n.imageWidth,height:n.imageHeight}))}getDefaultModelName(){return"tiny_face_detector_model"}extractParamsFromWeightMap(t){return super.extractParamsFromWeightMap(t)}};var T={ssdMobilenetv1:new Vt,tinyFaceDetector:new Fe,tinyYolov2:new ve,faceLandmark68Net:new le,faceLandmark68TinyNet:new pr,faceRecognitionNet:new xe,faceExpressionNet:new ir,ageGenderNet:new mr},nn=(o,t)=>T.ssdMobilenetv1.locateFaces(o,t),ta=(o,t)=>T.tinyFaceDetector.locateFaces(o,t),ea=(o,t)=>T.tinyYolov2.locateFaces(o,t),an=o=>T.faceLandmark68Net.detectLandmarks(o),ra=o=>T.faceLandmark68TinyNet.detectLandmarks(o),oa=o=>T.faceRecognitionNet.computeFaceDescriptor(o),na=o=>T.faceExpressionNet.predictExpressions(o),aa=o=>T.ageGenderNet.predictAgeAndGender(o),sn=o=>T.ssdMobilenetv1.load(o),sa=o=>T.tinyFaceDetector.load(o),ia=o=>T.tinyYolov2.load(o),ca=o=>T.faceLandmark68Net.load(o),ma=o=>T.faceLandmark68TinyNet.load(o),pa=o=>T.faceRecognitionNet.load(o),da=o=>T.faceExpressionNet.load(o),ua=o=>T.ageGenderNet.load(o),la=sn,fa=nn,ha=an;var io=class extends K{constructor(t,e,r){super();this.parentTask=t;this.input=e;this.extractedFaces=r}},we=class extends io{async run(){let t=await this.parentTask,e=await Ut(t,this.input,async r=>Promise.all(r.map(n=>T.faceExpressionNet.predictExpressions(n))),this.extractedFaces);return t.map((r,n)=>cr(r,e[n]))}withAgeAndGender(){return new Te(this,this.input)}},Pe=class extends io{async run(){let t=await this.parentTask;if(!t)return;let e=await ye(t,this.input,r=>T.faceExpressionNet.predictExpressions(r),this.extractedFaces);return cr(t,e)}withAgeAndGender(){return new _e(this,this.input)}},qt=class extends we{withAgeAndGender(){return new Xt(this,this.input)}withFaceDescriptors(){return new kt(this,this.input)}},Zt=class extends Pe{withAgeAndGender(){return new Jt(this,this.input)}withFaceDescriptor(){return new St(this,this.input)}};var co=class extends K{constructor(t,e,r){super();this.parentTask=t;this.input=e;this.extractedFaces=r}},Te=class extends co{async run(){let t=await this.parentTask,e=await Ut(t,this.input,async r=>Promise.all(r.map(n=>T.ageGenderNet.predictAgeAndGender(n))),this.extractedFaces);return t.map((r,n)=>{let{age:a,gender:s,genderProbability:i}=e[n];return fr(hr(r,s,i),a)})}withFaceExpressions(){return new we(this,this.input)}},_e=class extends co{async run(){let t=await this.parentTask;if(!t)return;let{age:e,gender:r,genderProbability:n}=await ye(t,this.input,a=>T.ageGenderNet.predictAgeAndGender(a),this.extractedFaces);return fr(hr(t,r,n),e)}withFaceExpressions(){return new Pe(this,this.input)}},Xt=class extends Te{withFaceExpressions(){return new qt(this,this.input)}withFaceDescriptors(){return new kt(this,this.input)}},Jt=class extends _e{withFaceExpressions(){return new Zt(this,this.input)}withFaceDescriptor(){return new St(this,this.input)}};var gr=class extends K{constructor(t,e){super();this.parentTask=t;this.input=e}},kt=class extends gr{async run(){let t=await this.parentTask;return(await Ut(t,this.input,r=>Promise.all(r.map(n=>T.faceRecognitionNet.computeFaceDescriptor(n))),null,r=>r.landmarks.align(null,{useDlibAlignment:!0}))).map((r,n)=>lr(t[n],r))}withFaceExpressions(){return new qt(this,this.input)}withAgeAndGender(){return new Xt(this,this.input)}},St=class extends gr{async run(){let t=await this.parentTask;if(!t)return;let e=await ye(t,this.input,r=>T.faceRecognitionNet.computeFaceDescriptor(r),null,r=>r.landmarks.align(null,{useDlibAlignment:!0}));return lr(t,e)}withFaceExpressions(){return new Zt(this,this.input)}withAgeAndGender(){return new Jt(this,this.input)}};var vr=class extends K{constructor(t,e,r){super();this.parentTask=t;this.input=e;this.useTinyLandmarkNet=r}get landmarkNet(){return this.useTinyLandmarkNet?T.faceLandmark68TinyNet:T.faceLandmark68Net}},yr=class extends vr{async run(){let t=await this.parentTask,e=t.map(a=>a.detection),r=this.input instanceof je.Tensor?await ne(this.input,e):await oe(this.input,e),n=await Promise.all(r.map(a=>this.landmarkNet.detectLandmarks(a)));return r.forEach(a=>a instanceof je.Tensor&&a.dispose()),t.map((a,s)=>ue(a,n[s]))}withFaceExpressions(){return new qt(this,this.input)}withAgeAndGender(){return new Xt(this,this.input)}withFaceDescriptors(){return new kt(this,this.input)}},Fr=class extends vr{async run(){let t=await this.parentTask;if(!t)return;let{detection:e}=t,r=this.input instanceof je.Tensor?await ne(this.input,[e]):await oe(this.input,[e]),n=await this.landmarkNet.detectLandmarks(r[0]);return r.forEach(a=>a instanceof je.Tensor&&a.dispose()),ue(t,n)}withFaceExpressions(){return new Zt(this,this.input)}withAgeAndGender(){return new Jt(this,this.input)}withFaceDescriptor(){return new St(this,this.input)}};var Tr=class extends K{constructor(t,e=new J){super();this.input=t;this.options=e}},He=class extends Tr{async run(){let{input:t,options:e}=this,r;if(e instanceof br)r=T.tinyFaceDetector.locateFaces(t,e);else if(e instanceof J)r=T.ssdMobilenetv1.locateFaces(t,e);else if(e instanceof dt)r=T.tinyYolov2.locateFaces(t,e);else throw new Error("detectFaces - expected options to be instance of TinyFaceDetectorOptions | SsdMobilenetv1Options | TinyYolov2Options");return r}runAndExtendWithFaceDetections(){return new Promise(async t=>{let e=await this.run();t(e.map(r=>Rt({},r)))})}withFaceLandmarks(t=!1){return new yr(this.runAndExtendWithFaceDetections(),this.input,t)}withFaceExpressions(){return new we(this.runAndExtendWithFaceDetections(),this.input)}withAgeAndGender(){return new Te(this.runAndExtendWithFaceDetections(),this.input)}},_r=class extends Tr{async run(){let t=await new He(this.input,this.options),e=t[0];return t.forEach(r=>{r.score>e.score&&(e=r)}),e}runAndExtendWithFaceDetection(){return new Promise(async t=>{let e=await this.run();t(e?Rt({},e):void 0)})}withFaceLandmarks(t=!1){return new Fr(this.runAndExtendWithFaceDetection(),this.input,t)}withFaceExpressions(){return new Pe(this.runAndExtendWithFaceDetection(),this.input)}withAgeAndGender(){return new _e(this.runAndExtendWithFaceDetection(),this.input)}};function xa(o,t=new J){return new _r(o,t)}function wr(o,t=new J){return new He(o,t)}async function cn(o,t){return wr(o,new J(t?{minConfidence:t}:{})).withFaceLandmarks().withFaceDescriptors()}async function ba(o,t={}){return wr(o,new dt(t)).withFaceLandmarks().withFaceDescriptors()}var ga=cn;function mo(o,t){if(o.length!==t.length)throw new Error("euclideanDistance: arr1.length !== arr2.length");let e=Array.from(o),r=Array.from(t);return Math.sqrt(e.map((n,a)=>n-r[a]).reduce((n,a)=>n+a**2,0))}var Pr=class{constructor(t,e=.6){this._distanceThreshold=e;let r=Array.isArray(t)?t:[t];if(!r.length)throw new Error("FaceRecognizer.constructor - expected atleast one input");let n=1,a=()=>`person ${n++}`;this._labeledDescriptors=r.map(s=>{if(s instanceof ht)return s;if(s instanceof Float32Array)return new ht(a(),[s]);if(s.descriptor&&s.descriptor instanceof Float32Array)return new ht(a(),[s.descriptor]);throw new Error("FaceRecognizer.constructor - expected inputs to be of type LabeledFaceDescriptors | WithFaceDescriptor<any> | Float32Array | Array<LabeledFaceDescriptors | WithFaceDescriptor<any> | Float32Array>")})}get labeledDescriptors(){return this._labeledDescriptors}get distanceThreshold(){return this._distanceThreshold}computeMeanDistance(t,e){return e.map(r=>mo(r,t)).reduce((r,n)=>r+n,0)/(e.length||1)}matchDescriptor(t){return this.labeledDescriptors.map(({descriptors:e,label:r})=>new Ee(r,this.computeMeanDistance(t,e))).reduce((e,r)=>e.distance<r.distance?e:r)}findBestMatch(t){let e=this.matchDescriptor(t);return e.distance<this.distanceThreshold?e:new Ee("unknown",e.distance)}toJSON(){return{distanceThreshold:this.distanceThreshold,labeledDescriptors:this.labeledDescriptors.map(t=>t.toJSON())}}static fromJSON(t){let e=t.labeledDescriptors.map(r=>ht.fromJSON(r));return new Pr(e,t.distanceThreshold)}};function va(o){let t=new Fe;return t.extractWeights(o),t}function mn(o,t){let{width:e,height:r}=new S(t.width,t.height);if(e<=0||r<=0)throw new Error(`resizeResults - invalid dimensions: ${JSON.stringify({width:e,height:r})}`);if(Array.isArray(o))return o.map(n=>mn(n,{width:e,height:r}));if(Gt(o)){let n=o.detection.forSize(e,r),a=o.unshiftedLandmarks.forSize(n.box.width,n.box.height);return ue(Rt(o,n),a)}return ct(o)?Rt(o,o.detection.forSize(e,r)):o instanceof V||o instanceof E?o.forSize(e,r):o}var Fa=typeof process!="undefined",Ta=typeof navigator!="undefined"&&typeof navigator.userAgent!="undefined",_a={faceapi:Do,node:Fa,browser:Ta};export{mr as AgeGenderNet,te as BoundingBox,P as Box,K as ComposableTask,kt as ComputeAllFaceDescriptorsTask,gr as ComputeFaceDescriptorsTaskBase,St as ComputeSingleFaceDescriptorTask,yr as DetectAllFaceLandmarksTask,He as DetectAllFacesTask,vr as DetectFaceLandmarksTaskBase,Tr as DetectFacesTaskBase,Fr as DetectSingleFaceLandmarksTask,_r as DetectSingleFaceTask,S as Dimensions,Xr as FACE_EXPRESSION_LABELS,E as FaceDetection,Vo as FaceDetectionNet,ir as FaceExpressionNet,Ct as FaceExpressions,le as FaceLandmark68Net,pr as FaceLandmark68TinyNet,So as FaceLandmarkNet,V as FaceLandmarks,ho as FaceLandmarks5,re as FaceLandmarks68,Ee as FaceMatch,Pr as FaceMatcher,xe as FaceRecognitionNet,gt as Gender,Me as LabeledBox,ht as LabeledFaceDescriptors,xt as NetInput,k as NeuralNetwork,Pt as ObjectDetection,x as Point,xo as PredictedBox,ee as Rect,Vt as SsdMobilenetv1,J as SsdMobilenetv1Options,Fe as TinyFaceDetector,br as TinyFaceDetectorOptions,ve as TinyYolov2,dt as TinyYolov2Options,ga as allFaces,cn as allFacesSsdMobilenetv1,ba as allFacesTinyYolov2,Hr as awaitMediaLoaded,Yr as bufferToImage,oa as computeFaceDescriptor,jt as createCanvas,Ie as createCanvasFromMedia,qn as createFaceDetectionNet,$n as createFaceRecognitionNet,zo as createSsdMobilenetv1,va as createTinyFaceDetector,Qn as createTinyYolov2,wr as detectAllFaces,an as detectFaceLandmarks,ra as detectFaceLandmarksTiny,ha as detectLandmarks,xa as detectSingleFace,Po as draw,w as env,mo as euclideanDistance,fr as extendWithAge,lr as extendWithFaceDescriptor,Rt as extendWithFaceDetection,cr as extendWithFaceExpressions,ue as extendWithFaceLandmarks,hr as extendWithGender,ne as extractFaceTensors,oe as extractFaces,Mn as fetchImage,Vr as fetchJson,Cn as fetchNetWeights,Ht as fetchOrThrow,R as getContext2dOrThrow,Ot as getMediaDimensions,Gr as imageTensorToCanvas,zr as imageToSquare,vn as inverseSigmoid,Ir as iou,Je as isMediaElement,Ne as isMediaLoaded,On as isWithAge,ct as isWithFaceDetection,Jr as isWithFaceExpressions,Gt as isWithFaceLandmarks,jn as isWithGender,ua as loadAgeGenderModel,la as loadFaceDetectionModel,da as loadFaceExpressionModel,ca as loadFaceLandmarkModel,ma as loadFaceLandmarkTinyModel,pa as loadFaceRecognitionModel,sn as loadSsdMobilenetv1Model,sa as loadTinyFaceDetectorModel,ia as loadTinyYolov2Model,Ur as loadWeightMap,fa as locateFaces,Nn as matchDimensions,Lr as minBbox,T as nets,kr as nonMaxSuppression,et as normalize,Sr as padToSquare,aa as predictAgeAndGender,na as recognizeFaceExpressions,mn as resizeResults,$t as resolveInput,gn as shuffleArray,De as sigmoid,nn as ssdMobilenetv1,ya as tf,ta as tinyFaceDetector,ea as tinyYolov2,D as toNetInput,lo as utils,oo as validateConfig,_a as version};
+var __create = Object.create;
+var __defProp = Object.defineProperty;
+var __getProtoOf = Object.getPrototypeOf;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __markAsModule = (target) => __defProp(target, "__esModule", {value: true});
+var __commonJS = (callback, module) => () => {
+  if (!module) {
+    module = {exports: {}};
+    callback(module.exports, module);
+  }
+  return module.exports;
+};
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, {get: all[name], enumerable: true});
+};
+var __exportStar = (target, module, desc) => {
+  if (module && typeof module === "object" || typeof module === "function") {
+    for (let key of __getOwnPropNames(module))
+      if (!__hasOwnProp.call(target, key) && key !== "default")
+        __defProp(target, key, {get: () => module[key], enumerable: !(desc = __getOwnPropDesc(module, key)) || desc.enumerable});
+  }
+  return target;
+};
+var __toModule = (module) => {
+  return __exportStar(__markAsModule(__defProp(module != null ? __create(__getProtoOf(module)) : {}, "default", module && module.__esModule && "default" in module ? {get: () => module.default, enumerable: true} : {value: module, enumerable: true})), module);
+};
+
+// dist/tfjs.esm.js
+import * as dist_star from "@tensorflow/tfjs/dist/index.js";
+import * as tfjs_backend_wasm_star from "@tensorflow/tfjs-backend-wasm";
+var require_tfjs_esm = __commonJS((exports) => {
+  __markAsModule(exports);
+  __exportStar(exports, dist_star);
+  __exportStar(exports, tfjs_backend_wasm_star);
+});
+
+// src/env/isNodejs.ts
+var require_isNodejs = __commonJS((exports, module) => {
+  __markAsModule(exports);
+  __export(exports, {
+    isNodejs: () => isNodejs2
+  });
+  function isNodejs2() {
+    return typeof global === "object" && true && typeof module !== "undefined" && typeof process !== "undefined" && !!process.version;
+  }
+});
+
+// src/index.ts
+var tf42 = require_tfjs_esm();
+
+// src/draw/index.ts
+var draw_exports = {};
+__export(draw_exports, {
+  AnchorPosition: () => AnchorPosition,
+  DrawBox: () => DrawBox,
+  DrawBoxOptions: () => DrawBoxOptions,
+  DrawFaceLandmarks: () => DrawFaceLandmarks,
+  DrawFaceLandmarksOptions: () => DrawFaceLandmarksOptions,
+  DrawTextField: () => DrawTextField,
+  DrawTextFieldOptions: () => DrawTextFieldOptions,
+  drawContour: () => drawContour,
+  drawDetections: () => drawDetections,
+  drawFaceExpressions: () => drawFaceExpressions,
+  drawFaceLandmarks: () => drawFaceLandmarks
+});
+
+// src/draw/drawContour.ts
+function drawContour(ctx, points, isClosed = false) {
+  ctx.beginPath();
+  points.slice(1).forEach(({x, y}, prevIdx) => {
+    const from = points[prevIdx];
+    ctx.moveTo(from.x, from.y);
+    ctx.lineTo(x, y);
+  });
+  if (isClosed) {
+    const from = points[points.length - 1];
+    const to = points[0];
+    if (!from || !to) {
+      return;
+    }
+    ctx.moveTo(from.x, from.y);
+    ctx.lineTo(to.x, to.y);
+  }
+  ctx.stroke();
+}
+
+// src/utils/index.ts
+var utils_exports = {};
+__export(utils_exports, {
+  computeReshapedDimensions: () => computeReshapedDimensions,
+  getCenterPoint: () => getCenterPoint,
+  isDimensions: () => isDimensions,
+  isEven: () => isEven,
+  isFloat: () => isFloat,
+  isTensor: () => isTensor,
+  isTensor1D: () => isTensor1D,
+  isTensor2D: () => isTensor2D,
+  isTensor3D: () => isTensor3D,
+  isTensor4D: () => isTensor4D,
+  isValidNumber: () => isValidNumber,
+  isValidProbablitiy: () => isValidProbablitiy,
+  range: () => range,
+  round: () => round
+});
+var tf = require_tfjs_esm();
+
+// src/classes/Dimensions.ts
+var Dimensions = class {
+  constructor(width, height) {
+    if (!isValidNumber(width) || !isValidNumber(height)) {
+      throw new Error(`Dimensions.constructor - expected width and height to be valid numbers, instead have ${JSON.stringify({width, height})}`);
+    }
+    this._width = width;
+    this._height = height;
+  }
+  get width() {
+    return this._width;
+  }
+  get height() {
+    return this._height;
+  }
+  reverse() {
+    return new Dimensions(1 / this.width, 1 / this.height);
+  }
+};
+
+// src/utils/index.ts
+function isTensor(tensor2, dim) {
+  return tensor2 instanceof tf.Tensor && tensor2.shape.length === dim;
+}
+function isTensor1D(tensor2) {
+  return isTensor(tensor2, 1);
+}
+function isTensor2D(tensor2) {
+  return isTensor(tensor2, 2);
+}
+function isTensor3D(tensor2) {
+  return isTensor(tensor2, 3);
+}
+function isTensor4D(tensor2) {
+  return isTensor(tensor2, 4);
+}
+function isFloat(num) {
+  return num % 1 !== 0;
+}
+function isEven(num) {
+  return num % 2 === 0;
+}
+function round(num, prec = 2) {
+  const f = 10 ** prec;
+  return Math.floor(num * f) / f;
+}
+function isDimensions(obj) {
+  return obj && obj.width && obj.height;
+}
+function computeReshapedDimensions({width, height}, inputSize) {
+  const scale2 = inputSize / Math.max(height, width);
+  return new Dimensions(Math.round(width * scale2), Math.round(height * scale2));
+}
+function getCenterPoint(pts) {
+  return pts.reduce((sum, pt) => sum.add(pt), new Point(0, 0)).div(new Point(pts.length, pts.length));
+}
+function range(num, start, step) {
+  return Array(num).fill(0).map((_, i) => start + i * step);
+}
+function isValidNumber(num) {
+  return !!num && num !== Infinity && num !== -Infinity && !Number.isNaN(num) || num === 0;
+}
+function isValidProbablitiy(num) {
+  return isValidNumber(num) && num >= 0 && num <= 1;
+}
+
+// src/classes/Point.ts
+var Point = class {
+  constructor(x, y) {
+    this._x = x;
+    this._y = y;
+  }
+  get x() {
+    return this._x;
+  }
+  get y() {
+    return this._y;
+  }
+  add(pt) {
+    return new Point(this.x + pt.x, this.y + pt.y);
+  }
+  sub(pt) {
+    return new Point(this.x - pt.x, this.y - pt.y);
+  }
+  mul(pt) {
+    return new Point(this.x * pt.x, this.y * pt.y);
+  }
+  div(pt) {
+    return new Point(this.x / pt.x, this.y / pt.y);
+  }
+  abs() {
+    return new Point(Math.abs(this.x), Math.abs(this.y));
+  }
+  magnitude() {
+    return Math.sqrt(this.x ** 2 + this.y ** 2);
+  }
+  floor() {
+    return new Point(Math.floor(this.x), Math.floor(this.y));
+  }
+};
+
+// src/classes/Box.ts
+var Box = class {
+  static isRect(rect) {
+    return !!rect && [rect.x, rect.y, rect.width, rect.height].every(isValidNumber);
+  }
+  static assertIsValidBox(box, callee, allowNegativeDimensions = false) {
+    if (!Box.isRect(box)) {
+      throw new Error(`${callee} - invalid box: ${JSON.stringify(box)}, expected object with properties x, y, width, height`);
+    }
+    if (!allowNegativeDimensions && (box.width < 0 || box.height < 0)) {
+      throw new Error(`${callee} - width (${box.width}) and height (${box.height}) must be positive numbers`);
+    }
+  }
+  constructor(_box, allowNegativeDimensions = true) {
+    const box = _box || {};
+    const isBbox = [box.left, box.top, box.right, box.bottom].every(isValidNumber);
+    const isRect = [box.x, box.y, box.width, box.height].every(isValidNumber);
+    if (!isRect && !isBbox) {
+      throw new Error(`Box.constructor - expected box to be IBoundingBox | IRect, instead have ${JSON.stringify(box)}`);
+    }
+    const [x, y, width, height] = isRect ? [box.x, box.y, box.width, box.height] : [box.left, box.top, box.right - box.left, box.bottom - box.top];
+    Box.assertIsValidBox({
+      x,
+      y,
+      width,
+      height
+    }, "Box.constructor", allowNegativeDimensions);
+    this._x = x;
+    this._y = y;
+    this._width = width;
+    this._height = height;
+  }
+  get x() {
+    return this._x;
+  }
+  get y() {
+    return this._y;
+  }
+  get width() {
+    return this._width;
+  }
+  get height() {
+    return this._height;
+  }
+  get left() {
+    return this.x;
+  }
+  get top() {
+    return this.y;
+  }
+  get right() {
+    return this.x + this.width;
+  }
+  get bottom() {
+    return this.y + this.height;
+  }
+  get area() {
+    return this.width * this.height;
+  }
+  get topLeft() {
+    return new Point(this.left, this.top);
+  }
+  get topRight() {
+    return new Point(this.right, this.top);
+  }
+  get bottomLeft() {
+    return new Point(this.left, this.bottom);
+  }
+  get bottomRight() {
+    return new Point(this.right, this.bottom);
+  }
+  round() {
+    const [x, y, width, height] = [this.x, this.y, this.width, this.height].map((val) => Math.round(val));
+    return new Box({
+      x,
+      y,
+      width,
+      height
+    });
+  }
+  floor() {
+    const [x, y, width, height] = [this.x, this.y, this.width, this.height].map((val) => Math.floor(val));
+    return new Box({
+      x,
+      y,
+      width,
+      height
+    });
+  }
+  toSquare() {
+    let {
+      x,
+      y,
+      width,
+      height
+    } = this;
+    const diff = Math.abs(width - height);
+    if (width < height) {
+      x -= diff / 2;
+      width += diff;
+    }
+    if (height < width) {
+      y -= diff / 2;
+      height += diff;
+    }
+    return new Box({x, y, width, height});
+  }
+  rescale(s) {
+    const scaleX = isDimensions(s) ? s.width : s;
+    const scaleY = isDimensions(s) ? s.height : s;
+    return new Box({
+      x: this.x * scaleX,
+      y: this.y * scaleY,
+      width: this.width * scaleX,
+      height: this.height * scaleY
+    });
+  }
+  pad(padX, padY) {
+    const [x, y, width, height] = [
+      this.x - padX / 2,
+      this.y - padY / 2,
+      this.width + padX,
+      this.height + padY
+    ];
+    return new Box({
+      x,
+      y,
+      width,
+      height
+    });
+  }
+  clipAtImageBorders(imgWidth, imgHeight) {
+    const {x, y, right, bottom} = this;
+    const clippedX = Math.max(x, 0);
+    const clippedY = Math.max(y, 0);
+    const newWidth = right - clippedX;
+    const newHeight = bottom - clippedY;
+    const clippedWidth = Math.min(newWidth, imgWidth - clippedX);
+    const clippedHeight = Math.min(newHeight, imgHeight - clippedY);
+    return new Box({
+      x: clippedX,
+      y: clippedY,
+      width: clippedWidth,
+      height: clippedHeight
+    }).floor();
+  }
+  shift(sx, sy) {
+    const {width, height} = this;
+    const x = this.x + sx;
+    const y = this.y + sy;
+    return new Box({
+      x,
+      y,
+      width,
+      height
+    });
+  }
+  padAtBorders(imageHeight, imageWidth) {
+    const w = this.width + 1;
+    const h = this.height + 1;
+    const dx = 1;
+    const dy = 1;
+    let edx = w;
+    let edy = h;
+    let x = this.left;
+    let y = this.top;
+    let ex = this.right;
+    let ey = this.bottom;
+    if (ex > imageWidth) {
+      edx = -ex + imageWidth + w;
+      ex = imageWidth;
+    }
+    if (ey > imageHeight) {
+      edy = -ey + imageHeight + h;
+      ey = imageHeight;
+    }
+    if (x < 1) {
+      edy = 2 - x;
+      x = 1;
+    }
+    if (y < 1) {
+      edy = 2 - y;
+      y = 1;
+    }
+    return {
+      dy,
+      edy,
+      dx,
+      edx,
+      y,
+      ey,
+      x,
+      ex,
+      w,
+      h
+    };
+  }
+  calibrate(region) {
+    return new Box({
+      left: this.left + region.left * this.width,
+      top: this.top + region.top * this.height,
+      right: this.right + region.right * this.width,
+      bottom: this.bottom + region.bottom * this.height
+    }).toSquare().round();
+  }
+};
+
+// src/classes/BoundingBox.ts
+var BoundingBox = class extends Box {
+  constructor(left, top, right, bottom, allowNegativeDimensions = false) {
+    super({
+      left,
+      top,
+      right,
+      bottom
+    }, allowNegativeDimensions);
+  }
+};
+
+// src/classes/ObjectDetection.ts
+var ObjectDetection = class {
+  constructor(score, classScore, className, relativeBox, imageDims) {
+    this._imageDims = new Dimensions(imageDims.width, imageDims.height);
+    this._score = score;
+    this._classScore = classScore;
+    this._className = className;
+    this._box = new Box(relativeBox).rescale(this._imageDims);
+  }
+  get score() {
+    return this._score;
+  }
+  get classScore() {
+    return this._classScore;
+  }
+  get className() {
+    return this._className;
+  }
+  get box() {
+    return this._box;
+  }
+  get imageDims() {
+    return this._imageDims;
+  }
+  get imageWidth() {
+    return this.imageDims.width;
+  }
+  get imageHeight() {
+    return this.imageDims.height;
+  }
+  get relativeBox() {
+    return new Box(this._box).rescale(this.imageDims.reverse());
+  }
+  forSize(width, height) {
+    return new ObjectDetection(this.score, this.classScore, this.className, this.relativeBox, {width, height});
+  }
+};
+
+// src/classes/FaceDetection.ts
+var FaceDetection = class extends ObjectDetection {
+  constructor(score, relativeBox, imageDims) {
+    super(score, score, "", relativeBox, imageDims);
+  }
+  forSize(width, height) {
+    const {score, relativeBox, imageDims} = super.forSize(width, height);
+    return new FaceDetection(score, relativeBox, imageDims);
+  }
+};
+
+// src/ops/iou.ts
+function iou(box1, box2, isIOU = true) {
+  const width = Math.max(0, Math.min(box1.right, box2.right) - Math.max(box1.left, box2.left));
+  const height = Math.max(0, Math.min(box1.bottom, box2.bottom) - Math.max(box1.top, box2.top));
+  const interSection = width * height;
+  return isIOU ? interSection / (box1.area + box2.area - interSection) : interSection / Math.min(box1.area, box2.area);
+}
+
+// src/ops/minBbox.ts
+function minBbox(pts) {
+  const xs = pts.map((pt) => pt.x);
+  const ys = pts.map((pt) => pt.y);
+  const minX = xs.reduce((min, x) => x < min ? x : min, Infinity);
+  const minY = ys.reduce((min, y) => y < min ? y : min, Infinity);
+  const maxX = xs.reduce((max, x) => max < x ? x : max, 0);
+  const maxY = ys.reduce((max, y) => max < y ? y : max, 0);
+  return new BoundingBox(minX, minY, maxX, maxY);
+}
+
+// src/ops/nonMaxSuppression.ts
+function nonMaxSuppression(boxes, scores, iouThreshold, isIOU = true) {
+  let indicesSortedByScore = scores.map((score, boxIndex) => ({score, boxIndex})).sort((c1, c2) => c1.score - c2.score).map((c) => c.boxIndex);
+  const pick = [];
+  while (indicesSortedByScore.length > 0) {
+    const curr = indicesSortedByScore.pop();
+    pick.push(curr);
+    const indices = indicesSortedByScore;
+    const outputs = [];
+    for (let i = 0; i < indices.length; i++) {
+      const idx = indices[i];
+      const currBox = boxes[curr];
+      const idxBox = boxes[idx];
+      outputs.push(iou(currBox, idxBox, isIOU));
+    }
+    indicesSortedByScore = indicesSortedByScore.filter((_, j) => outputs[j] <= iouThreshold);
+  }
+  return pick;
+}
+
+// src/ops/normalize.ts
+var tf2 = require_tfjs_esm();
+function normalize(x, meanRgb) {
+  return tf2.tidy(() => {
+    const [r, g, b] = meanRgb;
+    const avg_r = tf2.fill([...x.shape.slice(0, 3), 1], r, "float32");
+    const avg_g = tf2.fill([...x.shape.slice(0, 3), 1], g, "float32");
+    const avg_b = tf2.fill([...x.shape.slice(0, 3), 1], b, "float32");
+    const avg_rgb = tf2.concat([avg_r, avg_g, avg_b], 3);
+    return tf2.sub(x, avg_rgb);
+  });
+}
+
+// src/ops/padToSquare.ts
+var tf3 = require_tfjs_esm();
+function padToSquare(imgTensor, isCenterImage = false) {
+  return tf3.tidy(() => {
+    const [height, width] = imgTensor.shape.slice(1);
+    if (height === width) {
+      return imgTensor;
+    }
+    const dimDiff = Math.abs(height - width);
+    const paddingAmount = Math.round(dimDiff * (isCenterImage ? 0.5 : 1));
+    const paddingAxis = height > width ? 2 : 1;
+    const createPaddingTensor = (paddingAmountLocal) => {
+      const paddingTensorShape = imgTensor.shape.slice();
+      paddingTensorShape[paddingAxis] = paddingAmountLocal;
+      return tf3.fill(paddingTensorShape, 0, "float32");
+    };
+    const paddingTensorAppend = createPaddingTensor(paddingAmount);
+    const remainingPaddingAmount = dimDiff - paddingTensorAppend.shape[paddingAxis];
+    const paddingTensorPrepend = isCenterImage && remainingPaddingAmount ? createPaddingTensor(remainingPaddingAmount) : null;
+    const tensorsToStack = [
+      paddingTensorPrepend,
+      imgTensor,
+      paddingTensorAppend
+    ].filter((t) => !!t).map((t) => tf3.cast(t, "float32"));
+    return tf3.concat(tensorsToStack, paddingAxis);
+  });
+}
+
+// src/ops/shuffleArray.ts
+function shuffleArray(inputArray) {
+  const array = inputArray.slice();
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const x = array[i];
+    array[i] = array[j];
+    array[j] = x;
+  }
+  return array;
+}
+
+// src/ops/index.ts
+function sigmoid(x) {
+  return 1 / (1 + Math.exp(-x));
+}
+function inverseSigmoid(x) {
+  return Math.log(x / (1 - x));
+}
+
+// src/classes/Rect.ts
+var Rect = class extends Box {
+  constructor(x, y, width, height, allowNegativeDimensions = false) {
+    super({
+      x,
+      y,
+      width,
+      height
+    }, allowNegativeDimensions);
+  }
+};
+
+// src/classes/FaceLandmarks.ts
+var relX = 0.5;
+var relY = 0.43;
+var relScale = 0.45;
+var FaceLandmarks = class {
+  constructor(relativeFaceLandmarkPositions, imgDims, shift = new Point(0, 0)) {
+    const {width, height} = imgDims;
+    this._imgDims = new Dimensions(width, height);
+    this._shift = shift;
+    this._positions = relativeFaceLandmarkPositions.map((pt) => pt.mul(new Point(width, height)).add(shift));
+  }
+  get shift() {
+    return new Point(this._shift.x, this._shift.y);
+  }
+  get imageWidth() {
+    return this._imgDims.width;
+  }
+  get imageHeight() {
+    return this._imgDims.height;
+  }
+  get positions() {
+    return this._positions;
+  }
+  get relativePositions() {
+    return this._positions.map((pt) => pt.sub(this._shift).div(new Point(this.imageWidth, this.imageHeight)));
+  }
+  forSize(width, height) {
+    return new this.constructor(this.relativePositions, {width, height});
+  }
+  shiftBy(x, y) {
+    return new this.constructor(this.relativePositions, this._imgDims, new Point(x, y));
+  }
+  shiftByPoint(pt) {
+    return this.shiftBy(pt.x, pt.y);
+  }
+  align(detection, options = {}) {
+    if (detection) {
+      const box = detection instanceof FaceDetection ? detection.box.floor() : new Box(detection);
+      return this.shiftBy(box.x, box.y).align(null, options);
+    }
+    const {useDlibAlignment, minBoxPadding} = {useDlibAlignment: false, minBoxPadding: 0.2, ...options};
+    if (useDlibAlignment) {
+      return this.alignDlib();
+    }
+    return this.alignMinBbox(minBoxPadding);
+  }
+  alignDlib() {
+    const centers = this.getRefPointsForAlignment();
+    const [leftEyeCenter, rightEyeCenter, mouthCenter] = centers;
+    const distToMouth = (pt) => mouthCenter.sub(pt).magnitude();
+    const eyeToMouthDist = (distToMouth(leftEyeCenter) + distToMouth(rightEyeCenter)) / 2;
+    const size = Math.floor(eyeToMouthDist / relScale);
+    const refPoint = getCenterPoint(centers);
+    const x = Math.floor(Math.max(0, refPoint.x - relX * size));
+    const y = Math.floor(Math.max(0, refPoint.y - relY * size));
+    return new Rect(x, y, Math.min(size, this.imageWidth + x), Math.min(size, this.imageHeight + y));
+  }
+  alignMinBbox(padding) {
+    const box = minBbox(this.positions);
+    return box.pad(box.width * padding, box.height * padding);
+  }
+  getRefPointsForAlignment() {
+    throw new Error("getRefPointsForAlignment not implemented by base class");
+  }
+};
+
+// src/classes/FaceLandmarks5.ts
+var FaceLandmarks5 = class extends FaceLandmarks {
+  getRefPointsForAlignment() {
+    const pts = this.positions;
+    return [
+      pts[0],
+      pts[1],
+      getCenterPoint([pts[3], pts[4]])
+    ];
+  }
+};
+
+// src/classes/FaceLandmarks68.ts
+var FaceLandmarks68 = class extends FaceLandmarks {
+  getJawOutline() {
+    return this.positions.slice(0, 17);
+  }
+  getLeftEyeBrow() {
+    return this.positions.slice(17, 22);
+  }
+  getRightEyeBrow() {
+    return this.positions.slice(22, 27);
+  }
+  getNose() {
+    return this.positions.slice(27, 36);
+  }
+  getLeftEye() {
+    return this.positions.slice(36, 42);
+  }
+  getRightEye() {
+    return this.positions.slice(42, 48);
+  }
+  getMouth() {
+    return this.positions.slice(48, 68);
+  }
+  getRefPointsForAlignment() {
+    return [
+      this.getLeftEye(),
+      this.getRightEye(),
+      this.getMouth()
+    ].map(getCenterPoint);
+  }
+};
+
+// src/classes/FaceMatch.ts
+var FaceMatch = class {
+  constructor(label, distance) {
+    this._label = label;
+    this._distance = distance;
+  }
+  get label() {
+    return this._label;
+  }
+  get distance() {
+    return this._distance;
+  }
+  toString(withDistance = true) {
+    return `${this.label}${withDistance ? ` (${round(this.distance)})` : ""}`;
+  }
+};
+
+// src/classes/LabeledBox.ts
+var LabeledBox = class extends Box {
+  static assertIsValidLabeledBox(box, callee) {
+    Box.assertIsValidBox(box, callee);
+    if (!isValidNumber(box.label)) {
+      throw new Error(`${callee} - expected property label (${box.label}) to be a number`);
+    }
+  }
+  constructor(box, label) {
+    super(box);
+    this._label = label;
+  }
+  get label() {
+    return this._label;
+  }
+};
+
+// src/classes/LabeledFaceDescriptors.ts
+var LabeledFaceDescriptors = class {
+  constructor(label, descriptors) {
+    if (!(typeof label === "string")) {
+      throw new Error("LabeledFaceDescriptors - constructor expected label to be a string");
+    }
+    if (!Array.isArray(descriptors) || descriptors.some((desc) => !(desc instanceof Float32Array))) {
+      throw new Error("LabeledFaceDescriptors - constructor expected descriptors to be an array of Float32Array");
+    }
+    this._label = label;
+    this._descriptors = descriptors;
+  }
+  get label() {
+    return this._label;
+  }
+  get descriptors() {
+    return this._descriptors;
+  }
+  toJSON() {
+    return {
+      label: this.label,
+      descriptors: this.descriptors.map((d) => Array.from(d))
+    };
+  }
+  static fromJSON(json) {
+    const descriptors = json.descriptors.map((d) => new Float32Array(d));
+    return new LabeledFaceDescriptors(json.label, descriptors);
+  }
+};
+
+// src/classes/PredictedBox.ts
+var PredictedBox = class extends LabeledBox {
+  static assertIsValidPredictedBox(box, callee) {
+    LabeledBox.assertIsValidLabeledBox(box, callee);
+    if (!isValidProbablitiy(box.score) || !isValidProbablitiy(box.classScore)) {
+      throw new Error(`${callee} - expected properties score (${box.score}) and (${box.classScore}) to be a number between [0, 1]`);
+    }
+  }
+  constructor(box, label, score, classScore) {
+    super(box, label);
+    this._score = score;
+    this._classScore = classScore;
+  }
+  get score() {
+    return this._score;
+  }
+  get classScore() {
+    return this._classScore;
+  }
+};
+
+// src/factories/WithFaceDetection.ts
+function isWithFaceDetection(obj) {
+  return obj.detection instanceof FaceDetection;
+}
+function extendWithFaceDetection(sourceObj, detection) {
+  const extension = {detection};
+  return {...sourceObj, ...extension};
+}
+
+// src/env/createBrowserEnv.ts
+function createBrowserEnv() {
+  const fetch = window.fetch;
+  if (!fetch)
+    throw new Error("fetch - missing fetch implementation for browser environment");
+  const readFile = () => {
+    throw new Error("readFile - filesystem not available for browser environment");
+  };
+  return {
+    Canvas: HTMLCanvasElement,
+    CanvasRenderingContext2D,
+    Image: HTMLImageElement,
+    ImageData,
+    Video: HTMLVideoElement,
+    createCanvasElement: () => document.createElement("canvas"),
+    createImageElement: () => document.createElement("img"),
+    fetch,
+    readFile
+  };
+}
+
+// src/env/createFileSystem.ts
+function createFileSystem(fs) {
+  let requireFsError = "";
+  if (!fs) {
+    try {
+      fs = require("fs");
+    } catch (err) {
+      requireFsError = err.toString();
+    }
+  }
+  const readFile = fs ? (filePath) => new Promise((resolve, reject) => {
+    fs.readFile(filePath, (err, buffer) => err ? reject(err) : resolve(buffer));
+  }) : () => {
+    throw new Error(`readFile - failed to require fs in nodejs environment with error: ${requireFsError}`);
+  };
+  return {
+    readFile
+  };
+}
+
+// src/env/createNodejsEnv.ts
+function createNodejsEnv() {
+  const Canvas = global["Canvas"] || global.HTMLCanvasElement;
+  const Image = global.Image || global.HTMLImageElement;
+  const createCanvasElement = () => {
+    if (Canvas)
+      return new Canvas();
+    throw new Error("createCanvasElement - missing Canvas implementation for nodejs environment");
+  };
+  const createImageElement = () => {
+    if (Image)
+      return new Image();
+    throw new Error("createImageElement - missing Image implementation for nodejs environment");
+  };
+  const fetch = global.fetch;
+  const fileSystem = createFileSystem();
+  return {
+    Canvas: Canvas || class {
+    },
+    CanvasRenderingContext2D: global.CanvasRenderingContext2D || class {
+    },
+    Image: Image || class {
+    },
+    ImageData: global.ImageData || class {
+    },
+    Video: global.HTMLVideoElement || class {
+    },
+    createCanvasElement,
+    createImageElement,
+    fetch,
+    ...fileSystem
+  };
+}
+
+// src/env/isBrowser.ts
+function isBrowser() {
+  return typeof window === "object" && typeof document !== "undefined" && typeof HTMLImageElement !== "undefined" && typeof HTMLCanvasElement !== "undefined" && typeof HTMLVideoElement !== "undefined" && typeof ImageData !== "undefined" && typeof CanvasRenderingContext2D !== "undefined";
+}
+
+// src/env/index.ts
+var import_isNodejs = __toModule(require_isNodejs());
+var environment;
+function getEnv() {
+  if (!environment) {
+    throw new Error("getEnv - environment is not defined, check isNodejs() and isBrowser()");
+  }
+  return environment;
+}
+function setEnv(env2) {
+  environment = env2;
+}
+function initialize() {
+  if (isBrowser())
+    return setEnv(createBrowserEnv());
+  if ((0, import_isNodejs.isNodejs)())
+    return setEnv(createNodejsEnv());
+  return null;
+}
+function monkeyPatch(env2) {
+  if (!environment) {
+    initialize();
+  }
+  if (!environment) {
+    throw new Error("monkeyPatch - environment is not defined, check isNodejs() and isBrowser()");
+  }
+  const {Canvas = environment.Canvas, Image = environment.Image} = env2;
+  environment.Canvas = Canvas;
+  environment.Image = Image;
+  environment.createCanvasElement = env2.createCanvasElement || (() => new Canvas());
+  environment.createImageElement = env2.createImageElement || (() => new Image());
+  environment.ImageData = env2.ImageData || environment.ImageData;
+  environment.Video = env2.Video || environment.Video;
+  environment.fetch = env2.fetch || environment.fetch;
+  environment.readFile = env2.readFile || environment.readFile;
+}
+var env = {
+  getEnv,
+  setEnv,
+  initialize,
+  createBrowserEnv,
+  createFileSystem,
+  createNodejsEnv,
+  monkeyPatch,
+  isBrowser,
+  isNodejs: import_isNodejs.isNodejs
+};
+initialize();
+
+// src/dom/resolveInput.ts
+function resolveInput(arg) {
+  if (!env.isNodejs() && typeof arg === "string") {
+    return document.getElementById(arg);
+  }
+  return arg;
+}
+
+// src/dom/getContext2dOrThrow.ts
+function getContext2dOrThrow(canvasArg) {
+  const {Canvas, CanvasRenderingContext2D: CanvasRenderingContext2D2} = env.getEnv();
+  if (canvasArg instanceof CanvasRenderingContext2D2) {
+    return canvasArg;
+  }
+  const canvas = resolveInput(canvasArg);
+  if (!(canvas instanceof Canvas)) {
+    throw new Error("resolveContext2d - expected canvas to be of instance of Canvas");
+  }
+  const ctx = canvas.getContext("2d");
+  if (!ctx) {
+    throw new Error("resolveContext2d - canvas 2d context is null");
+  }
+  return ctx;
+}
+
+// src/draw/DrawTextField.ts
+var AnchorPosition;
+(function(AnchorPosition2) {
+  AnchorPosition2["TOP_LEFT"] = "TOP_LEFT";
+  AnchorPosition2["TOP_RIGHT"] = "TOP_RIGHT";
+  AnchorPosition2["BOTTOM_LEFT"] = "BOTTOM_LEFT";
+  AnchorPosition2["BOTTOM_RIGHT"] = "BOTTOM_RIGHT";
+})(AnchorPosition || (AnchorPosition = {}));
+var DrawTextFieldOptions = class {
+  constructor(options = {}) {
+    const {
+      anchorPosition,
+      backgroundColor,
+      fontColor,
+      fontSize,
+      fontStyle,
+      padding
+    } = options;
+    this.anchorPosition = anchorPosition || AnchorPosition.TOP_LEFT;
+    this.backgroundColor = backgroundColor || "rgba(0, 0, 0, 0.5)";
+    this.fontColor = fontColor || "rgba(255, 255, 255, 1)";
+    this.fontSize = fontSize || 14;
+    this.fontStyle = fontStyle || "Georgia";
+    this.padding = padding || 4;
+  }
+};
+var DrawTextField = class {
+  constructor(text, anchor, options = {}) {
+    this.text = typeof text === "string" ? [text] : text instanceof DrawTextField ? text.text : text;
+    this.anchor = anchor;
+    this.options = new DrawTextFieldOptions(options);
+  }
+  measureWidth(ctx) {
+    const {padding} = this.options;
+    return this.text.map((l) => ctx.measureText(l).width).reduce((w0, w1) => w0 < w1 ? w1 : w0, 0) + 2 * padding;
+  }
+  measureHeight() {
+    const {fontSize, padding} = this.options;
+    return this.text.length * fontSize + 2 * padding;
+  }
+  getUpperLeft(ctx, canvasDims) {
+    const {anchorPosition} = this.options;
+    const isShiftLeft = anchorPosition === AnchorPosition.BOTTOM_RIGHT || anchorPosition === AnchorPosition.TOP_RIGHT;
+    const isShiftTop = anchorPosition === AnchorPosition.BOTTOM_LEFT || anchorPosition === AnchorPosition.BOTTOM_RIGHT;
+    const textFieldWidth = this.measureWidth(ctx);
+    const textFieldHeight = this.measureHeight();
+    const x = isShiftLeft ? this.anchor.x - textFieldWidth : this.anchor.x;
+    const y = isShiftTop ? this.anchor.y - textFieldHeight : this.anchor.y;
+    if (canvasDims) {
+      const {width, height} = canvasDims;
+      const newX = Math.max(Math.min(x, width - textFieldWidth), 0);
+      const newY = Math.max(Math.min(y, height - textFieldHeight), 0);
+      return {x: newX, y: newY};
+    }
+    return {x, y};
+  }
+  draw(canvasArg) {
+    const canvas = resolveInput(canvasArg);
+    const ctx = getContext2dOrThrow(canvas);
+    const {
+      backgroundColor,
+      fontColor,
+      fontSize,
+      fontStyle,
+      padding
+    } = this.options;
+    ctx.font = `${fontSize}px ${fontStyle}`;
+    const maxTextWidth = this.measureWidth(ctx);
+    const textHeight = this.measureHeight();
+    ctx.fillStyle = backgroundColor;
+    const upperLeft = this.getUpperLeft(ctx, canvas);
+    ctx.fillRect(upperLeft.x, upperLeft.y, maxTextWidth, textHeight);
+    ctx.fillStyle = fontColor;
+    this.text.forEach((textLine, i) => {
+      const x = padding + upperLeft.x;
+      const y = padding + upperLeft.y + (i + 1) * fontSize;
+      ctx.fillText(textLine, x, y);
+    });
+  }
+};
+
+// src/draw/DrawBox.ts
+var DrawBoxOptions = class {
+  constructor(options = {}) {
+    const {
+      boxColor,
+      lineWidth,
+      label,
+      drawLabelOptions
+    } = options;
+    this.boxColor = boxColor || "rgba(0, 0, 255, 1)";
+    this.lineWidth = lineWidth || 2;
+    this.label = label;
+    const defaultDrawLabelOptions = {
+      anchorPosition: AnchorPosition.BOTTOM_LEFT,
+      backgroundColor: this.boxColor
+    };
+    this.drawLabelOptions = new DrawTextFieldOptions({...defaultDrawLabelOptions, ...drawLabelOptions});
+  }
+};
+var DrawBox = class {
+  constructor(box, options = {}) {
+    this.box = new Box(box);
+    this.options = new DrawBoxOptions(options);
+  }
+  draw(canvasArg) {
+    const ctx = getContext2dOrThrow(canvasArg);
+    const {boxColor, lineWidth} = this.options;
+    const {
+      x,
+      y,
+      width,
+      height
+    } = this.box;
+    ctx.strokeStyle = boxColor;
+    ctx.lineWidth = lineWidth;
+    ctx.strokeRect(x, y, width, height);
+    const {label} = this.options;
+    if (label) {
+      new DrawTextField([label], {x: x - lineWidth / 2, y}, this.options.drawLabelOptions).draw(canvasArg);
+    }
+  }
+};
+
+// src/draw/drawDetections.ts
+function drawDetections(canvasArg, detections) {
+  const detectionsArray = Array.isArray(detections) ? detections : [detections];
+  detectionsArray.forEach((det) => {
+    const score = det instanceof FaceDetection ? det.score : isWithFaceDetection(det) ? det.detection.score : void 0;
+    const box = det instanceof FaceDetection ? det.box : isWithFaceDetection(det) ? det.detection.box : new Box(det);
+    const label = score ? `${round(score)}` : void 0;
+    new DrawBox(box, {label}).draw(canvasArg);
+  });
+}
+
+// src/faceExpressionNet/FaceExpressionNet.ts
+var tf18 = require_tfjs_esm();
+
+// src/dom/isMediaLoaded.ts
+function isMediaLoaded(media) {
+  const {Image, Video} = env.getEnv();
+  return media instanceof Image && media.complete || media instanceof Video && media.readyState >= 3;
+}
+
+// src/dom/awaitMediaLoaded.ts
+function awaitMediaLoaded(media) {
+  return new Promise((resolve, reject) => {
+    if (media instanceof env.getEnv().Canvas || isMediaLoaded(media))
+      return resolve(null);
+    function onError(e) {
+      if (!e.currentTarget)
+        return;
+      e.currentTarget.removeEventListener("load", onLoad);
+      e.currentTarget.removeEventListener("error", onError);
+      reject(e);
+    }
+    function onLoad(e) {
+      if (!e.currentTarget)
+        return;
+      e.currentTarget.removeEventListener("load", onLoad);
+      e.currentTarget.removeEventListener("error", onError);
+      resolve(e);
+    }
+    media.addEventListener("load", onLoad);
+    media.addEventListener("error", onError);
+  });
+}
+
+// src/dom/bufferToImage.ts
+function bufferToImage(buf) {
+  return new Promise((resolve, reject) => {
+    if (!(buf instanceof Blob))
+      reject(new Error("bufferToImage - expected buf to be of type: Blob"));
+    const reader = new FileReader();
+    reader.onload = () => {
+      if (typeof reader.result !== "string")
+        reject(new Error("bufferToImage - expected reader.result to be a string, in onload"));
+      const img = env.getEnv().createImageElement();
+      img.onload = () => resolve(img);
+      img.onerror = reject;
+      img.src = reader.result;
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(buf);
+  });
+}
+
+// src/dom/getMediaDimensions.ts
+function getMediaDimensions(input) {
+  const {Image, Video} = env.getEnv();
+  if (input instanceof Image) {
+    return new Dimensions(input.naturalWidth, input.naturalHeight);
+  }
+  if (input instanceof Video) {
+    return new Dimensions(input.videoWidth, input.videoHeight);
+  }
+  return new Dimensions(input.width, input.height);
+}
+
+// src/dom/createCanvas.ts
+function createCanvas({width, height}) {
+  const {createCanvasElement} = env.getEnv();
+  const canvas = createCanvasElement();
+  canvas.width = width;
+  canvas.height = height;
+  return canvas;
+}
+function createCanvasFromMedia(media, dims) {
+  const {ImageData: ImageData2} = env.getEnv();
+  if (!(media instanceof ImageData2) && !isMediaLoaded(media)) {
+    throw new Error("createCanvasFromMedia - media has not finished loading yet");
+  }
+  const {width, height} = dims || getMediaDimensions(media);
+  const canvas = createCanvas({width, height});
+  if (media instanceof ImageData2) {
+    getContext2dOrThrow(canvas).putImageData(media, 0, 0);
+  } else {
+    getContext2dOrThrow(canvas).drawImage(media, 0, 0, width, height);
+  }
+  return canvas;
+}
+
+// src/dom/imageTensorToCanvas.ts
+var tf4 = require_tfjs_esm();
+async function imageTensorToCanvas(imgTensor, canvas) {
+  const targetCanvas = canvas || env.getEnv().createCanvasElement();
+  const [height, width, numChannels] = imgTensor.shape.slice(isTensor4D(imgTensor) ? 1 : 0);
+  const imgTensor3D = tf4.tidy(() => imgTensor.as3D(height, width, numChannels).toInt());
+  await tf4.browser.toPixels(imgTensor3D, targetCanvas);
+  imgTensor3D.dispose();
+  return targetCanvas;
+}
+
+// src/dom/isMediaElement.ts
+function isMediaElement(input) {
+  const {Image, Canvas, Video} = env.getEnv();
+  return input instanceof Image || input instanceof Canvas || input instanceof Video;
+}
+
+// src/dom/NetInput.ts
+var tf5 = require_tfjs_esm();
+
+// src/dom/imageToSquare.ts
+function imageToSquare(input, inputSize, centerImage = false) {
+  const {Image, Canvas} = env.getEnv();
+  if (!(input instanceof Image || input instanceof Canvas)) {
+    throw new Error("imageToSquare - expected arg0 to be HTMLImageElement | HTMLCanvasElement");
+  }
+  if (inputSize <= 0)
+    return createCanvas({width: 1, height: 1});
+  const dims = getMediaDimensions(input);
+  const scale2 = inputSize / Math.max(dims.height, dims.width);
+  const width = scale2 * dims.width;
+  const height = scale2 * dims.height;
+  const targetCanvas = createCanvas({width: inputSize, height: inputSize});
+  const inputCanvas = input instanceof Canvas ? input : createCanvasFromMedia(input);
+  const offset = Math.abs(width - height) / 2;
+  const dx = centerImage && width < height ? offset : 0;
+  const dy = centerImage && height < width ? offset : 0;
+  if (inputCanvas.width > 0 && inputCanvas.height > 0)
+    getContext2dOrThrow(targetCanvas).drawImage(inputCanvas, dx, dy, width, height);
+  return targetCanvas;
+}
+
+// src/dom/NetInput.ts
+var NetInput = class {
+  constructor(inputs, treatAsBatchInput = false) {
+    this._imageTensors = [];
+    this._canvases = [];
+    this._treatAsBatchInput = false;
+    this._inputDimensions = [];
+    if (!Array.isArray(inputs)) {
+      throw new Error(`NetInput.constructor - expected inputs to be an Array of TResolvedNetInput or to be instanceof tf.Tensor4D, instead have ${inputs}`);
+    }
+    this._treatAsBatchInput = treatAsBatchInput;
+    this._batchSize = inputs.length;
+    inputs.forEach((input, idx) => {
+      if (isTensor3D(input)) {
+        this._imageTensors[idx] = input;
+        this._inputDimensions[idx] = input.shape;
+        return;
+      }
+      if (isTensor4D(input)) {
+        const batchSize = input.shape[0];
+        if (batchSize !== 1) {
+          throw new Error(`NetInput - tf.Tensor4D with batchSize ${batchSize} passed, but not supported in input array`);
+        }
+        this._imageTensors[idx] = input;
+        this._inputDimensions[idx] = input.shape.slice(1);
+        return;
+      }
+      const canvas = input instanceof env.getEnv().Canvas ? input : createCanvasFromMedia(input);
+      this._canvases[idx] = canvas;
+      this._inputDimensions[idx] = [canvas.height, canvas.width, 3];
+    });
+  }
+  get imageTensors() {
+    return this._imageTensors;
+  }
+  get canvases() {
+    return this._canvases;
+  }
+  get isBatchInput() {
+    return this.batchSize > 1 || this._treatAsBatchInput;
+  }
+  get batchSize() {
+    return this._batchSize;
+  }
+  get inputDimensions() {
+    return this._inputDimensions;
+  }
+  get inputSize() {
+    return this._inputSize;
+  }
+  get reshapedInputDimensions() {
+    return range(this.batchSize, 0, 1).map((_, batchIdx) => this.getReshapedInputDimensions(batchIdx));
+  }
+  getInput(batchIdx) {
+    return this.canvases[batchIdx] || this.imageTensors[batchIdx];
+  }
+  getInputDimensions(batchIdx) {
+    return this._inputDimensions[batchIdx];
+  }
+  getInputHeight(batchIdx) {
+    return this._inputDimensions[batchIdx][0];
+  }
+  getInputWidth(batchIdx) {
+    return this._inputDimensions[batchIdx][1];
+  }
+  getReshapedInputDimensions(batchIdx) {
+    if (typeof this.inputSize !== "number") {
+      throw new Error("getReshapedInputDimensions - inputSize not set, toBatchTensor has not been called yet");
+    }
+    const width = this.getInputWidth(batchIdx);
+    const height = this.getInputHeight(batchIdx);
+    return computeReshapedDimensions({width, height}, this.inputSize);
+  }
+  toBatchTensor(inputSize, isCenterInputs = true) {
+    this._inputSize = inputSize;
+    return tf5.tidy(() => {
+      const inputTensors = range(this.batchSize, 0, 1).map((batchIdx) => {
+        const input = this.getInput(batchIdx);
+        if (input instanceof tf5.Tensor) {
+          let imgTensor = isTensor4D(input) ? input : tf5.expandDims(input);
+          imgTensor = padToSquare(imgTensor, isCenterInputs);
+          if (imgTensor.shape[1] !== inputSize || imgTensor.shape[2] !== inputSize) {
+            imgTensor = tf5.image.resizeBilinear(imgTensor, [inputSize, inputSize], false, false);
+          }
+          return imgTensor.as3D(inputSize, inputSize, 3);
+        }
+        if (input instanceof env.getEnv().Canvas) {
+          return tf5.browser.fromPixels(imageToSquare(input, inputSize, isCenterInputs));
+        }
+        throw new Error(`toBatchTensor - at batchIdx ${batchIdx}, expected input to be instanceof tf.Tensor or instanceof HTMLCanvasElement, instead have ${input}`);
+      });
+      const batchTensor = tf5.stack(inputTensors.map((t) => tf5.cast(t, "float32"))).as4D(this.batchSize, inputSize, inputSize, 3);
+      return batchTensor;
+    });
+  }
+};
+
+// src/dom/toNetInput.ts
+async function toNetInput(inputs) {
+  if (inputs instanceof NetInput)
+    return inputs;
+  const inputArgArray = Array.isArray(inputs) ? inputs : [inputs];
+  if (!inputArgArray.length)
+    throw new Error("toNetInput - empty array passed as input");
+  const getIdxHint = (idx) => Array.isArray(inputs) ? ` at input index ${idx}:` : "";
+  const inputArray = inputArgArray.map(resolveInput);
+  inputArray.forEach((input, i) => {
+    if (!isMediaElement(input) && !isTensor3D(input) && !isTensor4D(input)) {
+      if (typeof inputArgArray[i] === "string")
+        throw new Error(`toNetInput -${getIdxHint(i)} string passed, but could not resolve HTMLElement for element id ${inputArgArray[i]}`);
+      throw new Error(`toNetInput -${getIdxHint(i)} expected media to be of type HTMLImageElement | HTMLVideoElement | HTMLCanvasElement | tf.Tensor3D, or to be an element id`);
+    }
+    if (isTensor4D(input)) {
+      const batchSize = input.shape[0];
+      if (batchSize !== 1)
+        throw new Error(`toNetInput -${getIdxHint(i)} tf.Tensor4D with batchSize ${batchSize} passed, but not supported in input array`);
+    }
+  });
+  await Promise.all(inputArray.map((input) => isMediaElement(input) && awaitMediaLoaded(input)));
+  return new NetInput(inputArray, Array.isArray(inputs));
+}
+
+// src/dom/extractFaces.ts
+async function extractFaces(input, detections) {
+  const {Canvas} = env.getEnv();
+  let canvas = input;
+  if (!(input instanceof Canvas)) {
+    const netInput = await toNetInput(input);
+    if (netInput.batchSize > 1)
+      throw new Error("extractFaces - batchSize > 1 not supported");
+    const tensorOrCanvas = netInput.getInput(0);
+    canvas = tensorOrCanvas instanceof Canvas ? tensorOrCanvas : await imageTensorToCanvas(tensorOrCanvas);
+  }
+  const ctx = getContext2dOrThrow(canvas);
+  const boxes = detections.map((det) => det instanceof FaceDetection ? det.forSize(canvas.width, canvas.height).box.floor() : det).map((box) => box.clipAtImageBorders(canvas.width, canvas.height));
+  return boxes.map(({x, y, width, height}) => {
+    const faceImg = createCanvas({width, height});
+    if (width > 0 && height > 0)
+      getContext2dOrThrow(faceImg).putImageData(ctx.getImageData(x, y, width, height), 0, 0);
+    return faceImg;
+  });
+}
+
+// src/dom/extractFaceTensors.ts
+var tf6 = require_tfjs_esm();
+async function extractFaceTensors(imageTensor, detections) {
+  if (!isTensor3D(imageTensor) && !isTensor4D(imageTensor)) {
+    throw new Error("extractFaceTensors - expected image tensor to be 3D or 4D");
+  }
+  if (isTensor4D(imageTensor) && imageTensor.shape[0] > 1) {
+    throw new Error("extractFaceTensors - batchSize > 1 not supported");
+  }
+  return tf6.tidy(() => {
+    const [imgHeight, imgWidth, numChannels] = imageTensor.shape.slice(isTensor4D(imageTensor) ? 1 : 0);
+    const boxes = detections.map((det) => det instanceof FaceDetection ? det.forSize(imgWidth, imgHeight).box : det).map((box) => box.clipAtImageBorders(imgWidth, imgHeight));
+    const faceTensors = boxes.map(({
+      x,
+      y,
+      width,
+      height
+    }) => tf6.slice3d(imageTensor.as3D(imgHeight, imgWidth, numChannels), [y, x, 0], [height, width, numChannels]));
+    return faceTensors;
+  });
+}
+
+// src/dom/fetchOrThrow.ts
+async function fetchOrThrow(url, init) {
+  const {fetch} = env.getEnv();
+  const res = await fetch(url, init);
+  if (!(res.status < 400)) {
+    throw new Error(`failed to fetch: (${res.status}) ${res.statusText}, from url: ${res.url}`);
+  }
+  return res;
+}
+
+// src/dom/fetchImage.ts
+async function fetchImage(uri) {
+  const res = await fetchOrThrow(uri);
+  const blob = await res.blob();
+  if (!blob.type.startsWith("image/")) {
+    throw new Error(`fetchImage - expected blob type to be of type image/*, instead have: ${blob.type}, for url: ${res.url}`);
+  }
+  return bufferToImage(blob);
+}
+
+// src/dom/fetchJson.ts
+async function fetchJson(uri) {
+  return (await fetchOrThrow(uri)).json();
+}
+
+// src/dom/fetchNetWeights.ts
+async function fetchNetWeights(uri) {
+  return new Float32Array(await (await fetchOrThrow(uri)).arrayBuffer());
+}
+
+// src/dom/loadWeightMap.ts
+var tf7 = require_tfjs_esm();
+
+// src/common/getModelUris.ts
+function getModelUris(uri, defaultModelName) {
+  const defaultManifestFilename = `${defaultModelName}-weights_manifest.json`;
+  if (!uri) {
+    return {
+      modelBaseUri: "",
+      manifestUri: defaultManifestFilename
+    };
+  }
+  if (uri === "/") {
+    return {
+      modelBaseUri: "/",
+      manifestUri: `/${defaultManifestFilename}`
+    };
+  }
+  const protocol = uri.startsWith("http://") ? "http://" : uri.startsWith("https://") ? "https://" : "";
+  uri = uri.replace(protocol, "");
+  const parts = uri.split("/").filter((s) => s);
+  const manifestFile = uri.endsWith(".json") ? parts[parts.length - 1] : defaultManifestFilename;
+  let modelBaseUri = protocol + (uri.endsWith(".json") ? parts.slice(0, parts.length - 1) : parts).join("/");
+  modelBaseUri = uri.startsWith("/") ? `/${modelBaseUri}` : modelBaseUri;
+  return {
+    modelBaseUri,
+    manifestUri: modelBaseUri === "/" ? `/${manifestFile}` : `${modelBaseUri}/${manifestFile}`
+  };
+}
+
+// src/dom/loadWeightMap.ts
+async function loadWeightMap(uri, defaultModelName) {
+  const {manifestUri, modelBaseUri} = getModelUris(uri, defaultModelName);
+  const manifest = await fetchJson(manifestUri);
+  return tf7.io.loadWeights(manifest, modelBaseUri);
+}
+
+// src/dom/matchDimensions.ts
+function matchDimensions(input, reference, useMediaDimensions = false) {
+  const {width, height} = useMediaDimensions ? getMediaDimensions(reference) : reference;
+  input.width = width;
+  input.height = height;
+  return {width, height};
+}
+
+// src/faceFeatureExtractor/FaceFeatureExtractor.ts
+var tf15 = require_tfjs_esm();
+
+// src/NeuralNetwork.ts
+var tf8 = require_tfjs_esm();
+var NeuralNetwork = class {
+  constructor(name) {
+    this._params = void 0;
+    this._paramMappings = [];
+    this._name = name;
+  }
+  get params() {
+    return this._params;
+  }
+  get paramMappings() {
+    return this._paramMappings;
+  }
+  get isLoaded() {
+    return !!this.params;
+  }
+  getParamFromPath(paramPath) {
+    const {obj, objProp} = this.traversePropertyPath(paramPath);
+    return obj[objProp];
+  }
+  reassignParamFromPath(paramPath, tensor2) {
+    const {obj, objProp} = this.traversePropertyPath(paramPath);
+    obj[objProp].dispose();
+    obj[objProp] = tensor2;
+  }
+  getParamList() {
+    return this._paramMappings.map(({paramPath}) => ({
+      path: paramPath,
+      tensor: this.getParamFromPath(paramPath)
+    }));
+  }
+  getTrainableParams() {
+    return this.getParamList().filter((param) => param.tensor instanceof tf8.Variable);
+  }
+  getFrozenParams() {
+    return this.getParamList().filter((param) => !(param.tensor instanceof tf8.Variable));
+  }
+  variable() {
+    this.getFrozenParams().forEach(({path, tensor: tensor2}) => {
+      this.reassignParamFromPath(path, tensor2.variable());
+    });
+  }
+  freeze() {
+    this.getTrainableParams().forEach(({path, tensor: variable}) => {
+      const tensor2 = tf8.tensor(variable.dataSync());
+      variable.dispose();
+      this.reassignParamFromPath(path, tensor2);
+    });
+  }
+  dispose(throwOnRedispose = true) {
+    this.getParamList().forEach((param) => {
+      if (throwOnRedispose && param.tensor.isDisposed) {
+        throw new Error(`param tensor has already been disposed for path ${param.path}`);
+      }
+      param.tensor.dispose();
+    });
+    this._params = void 0;
+  }
+  serializeParams() {
+    return new Float32Array(this.getParamList().map(({tensor: tensor2}) => Array.from(tensor2.dataSync())).reduce((flat, arr) => flat.concat(arr)));
+  }
+  async load(weightsOrUrl) {
+    if (weightsOrUrl instanceof Float32Array) {
+      this.extractWeights(weightsOrUrl);
+      return;
+    }
+    await this.loadFromUri(weightsOrUrl);
+  }
+  async loadFromUri(uri) {
+    if (uri && typeof uri !== "string") {
+      throw new Error(`${this._name}.loadFromUri - expected model uri`);
+    }
+    const weightMap = await loadWeightMap(uri, this.getDefaultModelName());
+    this.loadFromWeightMap(weightMap);
+  }
+  async loadFromDisk(filePath) {
+    if (filePath && typeof filePath !== "string") {
+      throw new Error(`${this._name}.loadFromDisk - expected model file path`);
+    }
+    const {readFile} = env.getEnv();
+    const {manifestUri, modelBaseUri} = getModelUris(filePath, this.getDefaultModelName());
+    const fetchWeightsFromDisk = (filePaths) => Promise.all(filePaths.map((fp) => readFile(fp).then((buf) => buf.buffer)));
+    const loadWeights = tf8.io.weightsLoaderFactory(fetchWeightsFromDisk);
+    const manifest = JSON.parse((await readFile(manifestUri)).toString());
+    const weightMap = await loadWeights(manifest, modelBaseUri);
+    this.loadFromWeightMap(weightMap);
+  }
+  loadFromWeightMap(weightMap) {
+    const {paramMappings, params} = this.extractParamsFromWeightMap(weightMap);
+    this._paramMappings = paramMappings;
+    this._params = params;
+  }
+  extractWeights(weights) {
+    const {paramMappings, params} = this.extractParams(weights);
+    this._paramMappings = paramMappings;
+    this._params = params;
+  }
+  traversePropertyPath(paramPath) {
+    if (!this.params) {
+      throw new Error("traversePropertyPath - model has no loaded params");
+    }
+    const result = paramPath.split("/").reduce((res, objProp2) => {
+      if (!res.nextObj.hasOwnProperty(objProp2)) {
+        throw new Error(`traversePropertyPath - object does not have property ${objProp2}, for path ${paramPath}`);
+      }
+      return {obj: res.nextObj, objProp: objProp2, nextObj: res.nextObj[objProp2]};
+    }, {nextObj: this.params});
+    const {obj, objProp} = result;
+    if (!obj || !objProp || !(obj[objProp] instanceof tf8.Tensor)) {
+      throw new Error(`traversePropertyPath - parameter is not a tensor, for path ${paramPath}`);
+    }
+    return {obj, objProp};
+  }
+};
+
+// src/faceFeatureExtractor/denseBlock.ts
+var tf10 = require_tfjs_esm();
+
+// src/common/depthwiseSeparableConv.ts
+var tf9 = require_tfjs_esm();
+function depthwiseSeparableConv(x, params, stride) {
+  return tf9.tidy(() => {
+    let out = tf9.separableConv2d(x, params.depthwise_filter, params.pointwise_filter, stride, "same");
+    out = tf9.add(out, params.bias);
+    return out;
+  });
+}
+
+// src/faceFeatureExtractor/denseBlock.ts
+function denseBlock3(x, denseBlockParams, isFirstLayer = false) {
+  return tf10.tidy(() => {
+    const out1 = tf10.relu(isFirstLayer ? tf10.add(tf10.conv2d(x, denseBlockParams.conv0.filters, [2, 2], "same"), denseBlockParams.conv0.bias) : depthwiseSeparableConv(x, denseBlockParams.conv0, [2, 2]));
+    const out2 = depthwiseSeparableConv(out1, denseBlockParams.conv1, [1, 1]);
+    const in3 = tf10.relu(tf10.add(out1, out2));
+    const out3 = depthwiseSeparableConv(in3, denseBlockParams.conv2, [1, 1]);
+    return tf10.relu(tf10.add(out1, tf10.add(out2, out3)));
+  });
+}
+function denseBlock4(x, denseBlockParams, isFirstLayer = false, isScaleDown = true) {
+  return tf10.tidy(() => {
+    const out1 = tf10.relu(isFirstLayer ? tf10.add(tf10.conv2d(x, denseBlockParams.conv0.filters, isScaleDown ? [2, 2] : [1, 1], "same"), denseBlockParams.conv0.bias) : depthwiseSeparableConv(x, denseBlockParams.conv0, isScaleDown ? [2, 2] : [1, 1]));
+    const out2 = depthwiseSeparableConv(out1, denseBlockParams.conv1, [1, 1]);
+    const in3 = tf10.relu(tf10.add(out1, out2));
+    const out3 = depthwiseSeparableConv(in3, denseBlockParams.conv2, [1, 1]);
+    const in4 = tf10.relu(tf10.add(out1, tf10.add(out2, out3)));
+    const out4 = depthwiseSeparableConv(in4, denseBlockParams.conv3, [1, 1]);
+    return tf10.relu(tf10.add(out1, tf10.add(out2, tf10.add(out3, out4))));
+  });
+}
+
+// src/common/convLayer.ts
+var tf11 = require_tfjs_esm();
+function convLayer(x, params, padding = "same", withRelu = false) {
+  return tf11.tidy(() => {
+    const out = tf11.add(tf11.conv2d(x, params.filters, [1, 1], padding), params.bias);
+    return withRelu ? tf11.relu(out) : out;
+  });
+}
+
+// src/common/disposeUnusedWeightTensors.ts
+function disposeUnusedWeightTensors(weightMap, paramMappings) {
+  Object.keys(weightMap).forEach((path) => {
+    if (!paramMappings.some((pm) => pm.originalPath === path)) {
+      weightMap[path].dispose();
+    }
+  });
+}
+
+// src/common/extractConvParamsFactory.ts
+var tf12 = require_tfjs_esm();
+function extractConvParamsFactory(extractWeights, paramMappings) {
+  return (channelsIn, channelsOut, filterSize, mappedPrefix) => {
+    const filters = tf12.tensor4d(extractWeights(channelsIn * channelsOut * filterSize * filterSize), [filterSize, filterSize, channelsIn, channelsOut]);
+    const bias = tf12.tensor1d(extractWeights(channelsOut));
+    paramMappings.push({paramPath: `${mappedPrefix}/filters`}, {paramPath: `${mappedPrefix}/bias`});
+    return {filters, bias};
+  };
+}
+
+// src/common/extractFCParamsFactory.ts
+var tf13 = require_tfjs_esm();
+function extractFCParamsFactory(extractWeights, paramMappings) {
+  return (channelsIn, channelsOut, mappedPrefix) => {
+    const fc_weights = tf13.tensor2d(extractWeights(channelsIn * channelsOut), [channelsIn, channelsOut]);
+    const fc_bias = tf13.tensor1d(extractWeights(channelsOut));
+    paramMappings.push({paramPath: `${mappedPrefix}/weights`}, {paramPath: `${mappedPrefix}/bias`});
+    return {
+      weights: fc_weights,
+      bias: fc_bias
+    };
+  };
+}
+
+// src/common/extractSeparableConvParamsFactory.ts
+var tf14 = require_tfjs_esm();
+
+// src/common/types.ts
+var SeparableConvParams = class {
+  constructor(depthwise_filter, pointwise_filter, bias) {
+    this.depthwise_filter = depthwise_filter;
+    this.pointwise_filter = pointwise_filter;
+    this.bias = bias;
+  }
+};
+
+// src/common/extractSeparableConvParamsFactory.ts
+function extractSeparableConvParamsFactory(extractWeights, paramMappings) {
+  return (channelsIn, channelsOut, mappedPrefix) => {
+    const depthwise_filter = tf14.tensor4d(extractWeights(3 * 3 * channelsIn), [3, 3, channelsIn, 1]);
+    const pointwise_filter = tf14.tensor4d(extractWeights(channelsIn * channelsOut), [1, 1, channelsIn, channelsOut]);
+    const bias = tf14.tensor1d(extractWeights(channelsOut));
+    paramMappings.push({paramPath: `${mappedPrefix}/depthwise_filter`}, {paramPath: `${mappedPrefix}/pointwise_filter`}, {paramPath: `${mappedPrefix}/bias`});
+    return new SeparableConvParams(depthwise_filter, pointwise_filter, bias);
+  };
+}
+function loadSeparableConvParamsFactory(extractWeightEntry) {
+  return (prefix) => {
+    const depthwise_filter = extractWeightEntry(`${prefix}/depthwise_filter`, 4);
+    const pointwise_filter = extractWeightEntry(`${prefix}/pointwise_filter`, 4);
+    const bias = extractWeightEntry(`${prefix}/bias`, 1);
+    return new SeparableConvParams(depthwise_filter, pointwise_filter, bias);
+  };
+}
+
+// src/common/extractWeightEntryFactory.ts
+function extractWeightEntryFactory(weightMap, paramMappings) {
+  return (originalPath, paramRank, mappedPath) => {
+    const tensor2 = weightMap[originalPath];
+    if (!isTensor(tensor2, paramRank)) {
+      throw new Error(`expected weightMap[${originalPath}] to be a Tensor${paramRank}D, instead have ${tensor2}`);
+    }
+    paramMappings.push({originalPath, paramPath: mappedPath || originalPath});
+    return tensor2;
+  };
+}
+
+// src/common/extractWeightsFactory.ts
+function extractWeightsFactory(weights) {
+  let remainingWeights = weights;
+  function extractWeights(numWeights) {
+    const ret = remainingWeights.slice(0, numWeights);
+    remainingWeights = remainingWeights.slice(numWeights);
+    return ret;
+  }
+  function getRemainingWeights() {
+    return remainingWeights;
+  }
+  return {
+    extractWeights,
+    getRemainingWeights
+  };
+}
+
+// src/faceFeatureExtractor/extractorsFactory.ts
+function extractorsFactory(extractWeights, paramMappings) {
+  const extractConvParams = extractConvParamsFactory(extractWeights, paramMappings);
+  const extractSeparableConvParams = extractSeparableConvParamsFactory(extractWeights, paramMappings);
+  function extractDenseBlock3Params(channelsIn, channelsOut, mappedPrefix, isFirstLayer = false) {
+    const conv0 = isFirstLayer ? extractConvParams(channelsIn, channelsOut, 3, `${mappedPrefix}/conv0`) : extractSeparableConvParams(channelsIn, channelsOut, `${mappedPrefix}/conv0`);
+    const conv1 = extractSeparableConvParams(channelsOut, channelsOut, `${mappedPrefix}/conv1`);
+    const conv22 = extractSeparableConvParams(channelsOut, channelsOut, `${mappedPrefix}/conv2`);
+    return {conv0, conv1, conv2: conv22};
+  }
+  function extractDenseBlock4Params(channelsIn, channelsOut, mappedPrefix, isFirstLayer = false) {
+    const {conv0, conv1, conv2: conv22} = extractDenseBlock3Params(channelsIn, channelsOut, mappedPrefix, isFirstLayer);
+    const conv3 = extractSeparableConvParams(channelsOut, channelsOut, `${mappedPrefix}/conv3`);
+    return {
+      conv0,
+      conv1,
+      conv2: conv22,
+      conv3
+    };
+  }
+  return {
+    extractDenseBlock3Params,
+    extractDenseBlock4Params
+  };
+}
+
+// src/faceFeatureExtractor/extractParams.ts
+function extractParams(weights) {
+  const paramMappings = [];
+  const {
+    extractWeights,
+    getRemainingWeights
+  } = extractWeightsFactory(weights);
+  const {
+    extractDenseBlock4Params
+  } = extractorsFactory(extractWeights, paramMappings);
+  const dense0 = extractDenseBlock4Params(3, 32, "dense0", true);
+  const dense1 = extractDenseBlock4Params(32, 64, "dense1");
+  const dense2 = extractDenseBlock4Params(64, 128, "dense2");
+  const dense3 = extractDenseBlock4Params(128, 256, "dense3");
+  if (getRemainingWeights().length !== 0) {
+    throw new Error(`weights remaing after extract: ${getRemainingWeights().length}`);
+  }
+  return {
+    paramMappings,
+    params: {
+      dense0,
+      dense1,
+      dense2,
+      dense3
+    }
+  };
+}
+
+// src/common/loadConvParamsFactory.ts
+function loadConvParamsFactory(extractWeightEntry) {
+  return (prefix) => {
+    const filters = extractWeightEntry(`${prefix}/filters`, 4);
+    const bias = extractWeightEntry(`${prefix}/bias`, 1);
+    return {filters, bias};
+  };
+}
+
+// src/faceFeatureExtractor/loadParamsFactory.ts
+function loadParamsFactory(weightMap, paramMappings) {
+  const extractWeightEntry = extractWeightEntryFactory(weightMap, paramMappings);
+  const extractConvParams = loadConvParamsFactory(extractWeightEntry);
+  const extractSeparableConvParams = loadSeparableConvParamsFactory(extractWeightEntry);
+  function extractDenseBlock3Params(prefix, isFirstLayer = false) {
+    const conv0 = isFirstLayer ? extractConvParams(`${prefix}/conv0`) : extractSeparableConvParams(`${prefix}/conv0`);
+    const conv1 = extractSeparableConvParams(`${prefix}/conv1`);
+    const conv22 = extractSeparableConvParams(`${prefix}/conv2`);
+    return {conv0, conv1, conv2: conv22};
+  }
+  function extractDenseBlock4Params(prefix, isFirstLayer = false) {
+    const conv0 = isFirstLayer ? extractConvParams(`${prefix}/conv0`) : extractSeparableConvParams(`${prefix}/conv0`);
+    const conv1 = extractSeparableConvParams(`${prefix}/conv1`);
+    const conv22 = extractSeparableConvParams(`${prefix}/conv2`);
+    const conv3 = extractSeparableConvParams(`${prefix}/conv3`);
+    return {
+      conv0,
+      conv1,
+      conv2: conv22,
+      conv3
+    };
+  }
+  return {
+    extractDenseBlock3Params,
+    extractDenseBlock4Params
+  };
+}
+
+// src/faceFeatureExtractor/extractParamsFromWeightMap.ts
+function extractParamsFromWeightMap(weightMap) {
+  const paramMappings = [];
+  const {
+    extractDenseBlock4Params
+  } = loadParamsFactory(weightMap, paramMappings);
+  const params = {
+    dense0: extractDenseBlock4Params("dense0", true),
+    dense1: extractDenseBlock4Params("dense1"),
+    dense2: extractDenseBlock4Params("dense2"),
+    dense3: extractDenseBlock4Params("dense3")
+  };
+  disposeUnusedWeightTensors(weightMap, paramMappings);
+  return {params, paramMappings};
+}
+
+// src/faceFeatureExtractor/FaceFeatureExtractor.ts
+var FaceFeatureExtractor = class extends NeuralNetwork {
+  constructor() {
+    super("FaceFeatureExtractor");
+  }
+  forwardInput(input) {
+    const {params} = this;
+    if (!params) {
+      throw new Error("FaceFeatureExtractor - load model before inference");
+    }
+    return tf15.tidy(() => {
+      const batchTensor = tf15.cast(input.toBatchTensor(112, true), "float32");
+      const meanRgb = [122.782, 117.001, 104.298];
+      const normalized = normalize(batchTensor, meanRgb).div(255);
+      let out = denseBlock4(normalized, params.dense0, true);
+      out = denseBlock4(out, params.dense1);
+      out = denseBlock4(out, params.dense2);
+      out = denseBlock4(out, params.dense3);
+      out = tf15.avgPool(out, [7, 7], [2, 2], "valid");
+      return out;
+    });
+  }
+  async forward(input) {
+    return this.forwardInput(await toNetInput(input));
+  }
+  getDefaultModelName() {
+    return "face_feature_extractor_model";
+  }
+  extractParamsFromWeightMap(weightMap) {
+    return extractParamsFromWeightMap(weightMap);
+  }
+  extractParams(weights) {
+    return extractParams(weights);
+  }
+};
+
+// src/faceProcessor/FaceProcessor.ts
+var tf17 = require_tfjs_esm();
+
+// src/common/fullyConnectedLayer.ts
+var tf16 = require_tfjs_esm();
+function fullyConnectedLayer(x, params) {
+  return tf16.tidy(() => tf16.add(tf16.matMul(x, params.weights), params.bias));
+}
+
+// src/faceProcessor/extractParams.ts
+function extractParams2(weights, channelsIn, channelsOut) {
+  const paramMappings = [];
+  const {
+    extractWeights,
+    getRemainingWeights
+  } = extractWeightsFactory(weights);
+  const extractFCParams = extractFCParamsFactory(extractWeights, paramMappings);
+  const fc = extractFCParams(channelsIn, channelsOut, "fc");
+  if (getRemainingWeights().length !== 0) {
+    throw new Error(`weights remaing after extract: ${getRemainingWeights().length}`);
+  }
+  return {
+    paramMappings,
+    params: {fc}
+  };
+}
+
+// src/faceProcessor/extractParamsFromWeightMap.ts
+function extractParamsFromWeightMap2(weightMap) {
+  const paramMappings = [];
+  const extractWeightEntry = extractWeightEntryFactory(weightMap, paramMappings);
+  function extractFcParams(prefix) {
+    const weights = extractWeightEntry(`${prefix}/weights`, 2);
+    const bias = extractWeightEntry(`${prefix}/bias`, 1);
+    return {weights, bias};
+  }
+  const params = {
+    fc: extractFcParams("fc")
+  };
+  disposeUnusedWeightTensors(weightMap, paramMappings);
+  return {params, paramMappings};
+}
+
+// src/faceProcessor/util.ts
+function seperateWeightMaps(weightMap) {
+  const featureExtractorMap = {};
+  const classifierMap = {};
+  Object.keys(weightMap).forEach((key) => {
+    const map = key.startsWith("fc") ? classifierMap : featureExtractorMap;
+    map[key] = weightMap[key];
+  });
+  return {featureExtractorMap, classifierMap};
+}
+
+// src/faceProcessor/FaceProcessor.ts
+var FaceProcessor = class extends NeuralNetwork {
+  constructor(_name, faceFeatureExtractor) {
+    super(_name);
+    this._faceFeatureExtractor = faceFeatureExtractor;
+  }
+  get faceFeatureExtractor() {
+    return this._faceFeatureExtractor;
+  }
+  runNet(input) {
+    const {params} = this;
+    if (!params) {
+      throw new Error(`${this._name} - load model before inference`);
+    }
+    return tf17.tidy(() => {
+      const bottleneckFeatures = input instanceof NetInput ? this.faceFeatureExtractor.forwardInput(input) : input;
+      return fullyConnectedLayer(bottleneckFeatures.as2D(bottleneckFeatures.shape[0], -1), params.fc);
+    });
+  }
+  dispose(throwOnRedispose = true) {
+    this.faceFeatureExtractor.dispose(throwOnRedispose);
+    super.dispose(throwOnRedispose);
+  }
+  loadClassifierParams(weights) {
+    const {params, paramMappings} = this.extractClassifierParams(weights);
+    this._params = params;
+    this._paramMappings = paramMappings;
+  }
+  extractClassifierParams(weights) {
+    return extractParams2(weights, this.getClassifierChannelsIn(), this.getClassifierChannelsOut());
+  }
+  extractParamsFromWeightMap(weightMap) {
+    const {featureExtractorMap, classifierMap} = seperateWeightMaps(weightMap);
+    this.faceFeatureExtractor.loadFromWeightMap(featureExtractorMap);
+    return extractParamsFromWeightMap2(classifierMap);
+  }
+  extractParams(weights) {
+    const cIn = this.getClassifierChannelsIn();
+    const cOut = this.getClassifierChannelsOut();
+    const classifierWeightSize = cOut * cIn + cOut;
+    const featureExtractorWeights = weights.slice(0, weights.length - classifierWeightSize);
+    const classifierWeights = weights.slice(weights.length - classifierWeightSize);
+    this.faceFeatureExtractor.extractWeights(featureExtractorWeights);
+    return this.extractClassifierParams(classifierWeights);
+  }
+};
+
+// src/faceExpressionNet/FaceExpressions.ts
+var FACE_EXPRESSION_LABELS = ["neutral", "happy", "sad", "angry", "fearful", "disgusted", "surprised"];
+var FaceExpressions = class {
+  constructor(probabilities) {
+    if (probabilities.length !== 7) {
+      throw new Error(`FaceExpressions.constructor - expected probabilities.length to be 7, have: ${probabilities.length}`);
+    }
+    FACE_EXPRESSION_LABELS.forEach((expression, idx) => {
+      this[expression] = probabilities[idx];
+    });
+  }
+  asSortedArray() {
+    return FACE_EXPRESSION_LABELS.map((expression) => ({expression, probability: this[expression]})).sort((e0, e1) => e1.probability - e0.probability);
+  }
+};
+
+// src/faceExpressionNet/FaceExpressionNet.ts
+var FaceExpressionNet = class extends FaceProcessor {
+  constructor(faceFeatureExtractor = new FaceFeatureExtractor()) {
+    super("FaceExpressionNet", faceFeatureExtractor);
+  }
+  forwardInput(input) {
+    return tf18.tidy(() => tf18.softmax(this.runNet(input)));
+  }
+  async forward(input) {
+    return this.forwardInput(await toNetInput(input));
+  }
+  async predictExpressions(input) {
+    const netInput = await toNetInput(input);
+    const out = await this.forwardInput(netInput);
+    const probabilitesByBatch = await Promise.all(tf18.unstack(out).map(async (t) => {
+      const data = t.dataSync();
+      t.dispose();
+      return data;
+    }));
+    out.dispose();
+    const predictionsByBatch = probabilitesByBatch.map((probabilites) => new FaceExpressions(probabilites));
+    return netInput.isBatchInput ? predictionsByBatch : predictionsByBatch[0];
+  }
+  getDefaultModelName() {
+    return "face_expression_model";
+  }
+  getClassifierChannelsIn() {
+    return 256;
+  }
+  getClassifierChannelsOut() {
+    return 7;
+  }
+};
+
+// src/factories/WithFaceExpressions.ts
+function isWithFaceExpressions(obj) {
+  return obj.expressions instanceof FaceExpressions;
+}
+function extendWithFaceExpressions(sourceObj, expressions) {
+  const extension = {expressions};
+  return {...sourceObj, ...extension};
+}
+
+// src/draw/drawFaceExpressions.ts
+function drawFaceExpressions(canvasArg, faceExpressions, minConfidence = 0.1, textFieldAnchor) {
+  const faceExpressionsArray = Array.isArray(faceExpressions) ? faceExpressions : [faceExpressions];
+  faceExpressionsArray.forEach((e) => {
+    const expr = e instanceof FaceExpressions ? e : isWithFaceExpressions(e) ? e.expressions : void 0;
+    if (!expr) {
+      throw new Error("drawFaceExpressions - expected faceExpressions to be FaceExpressions | WithFaceExpressions<{}> or array thereof");
+    }
+    const sorted = expr.asSortedArray();
+    const resultsToDisplay = sorted.filter((exprLocal) => exprLocal.probability > minConfidence);
+    const anchor = isWithFaceDetection(e) ? e.detection.box.bottomLeft : textFieldAnchor || new Point(0, 0);
+    const drawTextField = new DrawTextField(resultsToDisplay.map((exprLocal) => `${exprLocal.expression} (${round(exprLocal.probability)})`), anchor);
+    drawTextField.draw(canvasArg);
+  });
+}
+
+// src/factories/WithFaceLandmarks.ts
+function isWithFaceLandmarks(obj) {
+  return isWithFaceDetection(obj) && obj["landmarks"] instanceof FaceLandmarks && obj["unshiftedLandmarks"] instanceof FaceLandmarks && obj["alignedRect"] instanceof FaceDetection;
+}
+function calculateFaceAngle(mesh) {
+  const radians = (a1, a2, b1, b2) => Math.atan2(b2 - a2, b1 - a1) % Math.PI;
+  const degrees = (theta) => theta * 180 / Math.PI;
+  const angle = {roll: void 0, pitch: void 0, yaw: void 0};
+  if (!mesh || !mesh._positions || mesh._positions.length !== 68)
+    return angle;
+  const pt = mesh._positions;
+  angle.roll = -radians(pt[36]._x, pt[36]._y, pt[45]._x, pt[45]._y);
+  angle.pitch = radians(0, Math.abs(pt[0]._x - pt[30]._x) / pt[30]._x, Math.PI, Math.abs(pt[16]._x - pt[30]._x) / pt[30]._x);
+  const bottom = pt.reduce((prev, cur) => prev < cur._y ? prev : cur._y, Infinity);
+  const top = pt.reduce((prev, cur) => prev > cur._y ? prev : cur._y, -Infinity);
+  angle.yaw = Math.PI * (mesh._imgDims._height / (top - bottom) / 1.4 - 1);
+  return angle;
+}
+function extendWithFaceLandmarks(sourceObj, unshiftedLandmarks) {
+  const {box: shift} = sourceObj.detection;
+  const landmarks = unshiftedLandmarks.shiftBy(shift.x, shift.y);
+  const rect = landmarks.align();
+  const {imageDims} = sourceObj.detection;
+  const alignedRect = new FaceDetection(sourceObj.detection.score, rect.rescale(imageDims.reverse()), imageDims);
+  const angle = calculateFaceAngle(unshiftedLandmarks);
+  const extension = {
+    landmarks,
+    unshiftedLandmarks,
+    alignedRect,
+    angle
+  };
+  return {...sourceObj, ...extension};
+}
+
+// src/draw/DrawFaceLandmarks.ts
+var DrawFaceLandmarksOptions = class {
+  constructor(options = {}) {
+    const {
+      drawLines = true,
+      drawPoints = true,
+      lineWidth,
+      lineColor,
+      pointSize,
+      pointColor
+    } = options;
+    this.drawLines = drawLines;
+    this.drawPoints = drawPoints;
+    this.lineWidth = lineWidth || 1;
+    this.pointSize = pointSize || 2;
+    this.lineColor = lineColor || "rgba(0, 255, 255, 1)";
+    this.pointColor = pointColor || "rgba(255, 0, 255, 1)";
+  }
+};
+var DrawFaceLandmarks = class {
+  constructor(faceLandmarks, options = {}) {
+    this.faceLandmarks = faceLandmarks;
+    this.options = new DrawFaceLandmarksOptions(options);
+  }
+  draw(canvasArg) {
+    const ctx = getContext2dOrThrow(canvasArg);
+    const {
+      drawLines,
+      drawPoints,
+      lineWidth,
+      lineColor,
+      pointSize,
+      pointColor
+    } = this.options;
+    if (drawLines && this.faceLandmarks instanceof FaceLandmarks68) {
+      ctx.strokeStyle = lineColor;
+      ctx.lineWidth = lineWidth;
+      drawContour(ctx, this.faceLandmarks.getJawOutline());
+      drawContour(ctx, this.faceLandmarks.getLeftEyeBrow());
+      drawContour(ctx, this.faceLandmarks.getRightEyeBrow());
+      drawContour(ctx, this.faceLandmarks.getNose());
+      drawContour(ctx, this.faceLandmarks.getLeftEye(), true);
+      drawContour(ctx, this.faceLandmarks.getRightEye(), true);
+      drawContour(ctx, this.faceLandmarks.getMouth(), true);
+    }
+    if (drawPoints) {
+      ctx.strokeStyle = pointColor;
+      ctx.fillStyle = pointColor;
+      const drawPoint = (pt) => {
+        ctx.beginPath();
+        ctx.arc(pt.x, pt.y, pointSize, 0, 2 * Math.PI);
+        ctx.fill();
+      };
+      this.faceLandmarks.positions.forEach(drawPoint);
+    }
+  }
+};
+function drawFaceLandmarks(canvasArg, faceLandmarks) {
+  const faceLandmarksArray = Array.isArray(faceLandmarks) ? faceLandmarks : [faceLandmarks];
+  faceLandmarksArray.forEach((f) => {
+    const landmarks = f instanceof FaceLandmarks ? f : isWithFaceLandmarks(f) ? f.landmarks : void 0;
+    if (!landmarks) {
+      throw new Error("drawFaceLandmarks - expected faceExpressions to be FaceLandmarks | WithFaceLandmarks<WithFaceDetection<{}>> or array thereof");
+    }
+    new DrawFaceLandmarks(landmarks).draw(canvasArg);
+  });
+}
+
+// package.json
+var version = "1.1.5";
+
+// src/ageGenderNet/AgeGenderNet.ts
+var tf20 = require_tfjs_esm();
+
+// src/xception/TinyXception.ts
+var tf19 = require_tfjs_esm();
+
+// src/xception/extractParams.ts
+function extractorsFactory2(extractWeights, paramMappings) {
+  const extractConvParams = extractConvParamsFactory(extractWeights, paramMappings);
+  const extractSeparableConvParams = extractSeparableConvParamsFactory(extractWeights, paramMappings);
+  function extractReductionBlockParams(channelsIn, channelsOut, mappedPrefix) {
+    const separable_conv0 = extractSeparableConvParams(channelsIn, channelsOut, `${mappedPrefix}/separable_conv0`);
+    const separable_conv1 = extractSeparableConvParams(channelsOut, channelsOut, `${mappedPrefix}/separable_conv1`);
+    const expansion_conv = extractConvParams(channelsIn, channelsOut, 1, `${mappedPrefix}/expansion_conv`);
+    return {separable_conv0, separable_conv1, expansion_conv};
+  }
+  function extractMainBlockParams(channels, mappedPrefix) {
+    const separable_conv0 = extractSeparableConvParams(channels, channels, `${mappedPrefix}/separable_conv0`);
+    const separable_conv1 = extractSeparableConvParams(channels, channels, `${mappedPrefix}/separable_conv1`);
+    const separable_conv2 = extractSeparableConvParams(channels, channels, `${mappedPrefix}/separable_conv2`);
+    return {separable_conv0, separable_conv1, separable_conv2};
+  }
+  return {
+    extractConvParams,
+    extractSeparableConvParams,
+    extractReductionBlockParams,
+    extractMainBlockParams
+  };
+}
+function extractParams3(weights, numMainBlocks) {
+  const paramMappings = [];
+  const {
+    extractWeights,
+    getRemainingWeights
+  } = extractWeightsFactory(weights);
+  const {
+    extractConvParams,
+    extractSeparableConvParams,
+    extractReductionBlockParams,
+    extractMainBlockParams
+  } = extractorsFactory2(extractWeights, paramMappings);
+  const entry_flow_conv_in = extractConvParams(3, 32, 3, "entry_flow/conv_in");
+  const entry_flow_reduction_block_0 = extractReductionBlockParams(32, 64, "entry_flow/reduction_block_0");
+  const entry_flow_reduction_block_1 = extractReductionBlockParams(64, 128, "entry_flow/reduction_block_1");
+  const entry_flow = {
+    conv_in: entry_flow_conv_in,
+    reduction_block_0: entry_flow_reduction_block_0,
+    reduction_block_1: entry_flow_reduction_block_1
+  };
+  const middle_flow = {};
+  range(numMainBlocks, 0, 1).forEach((idx) => {
+    middle_flow[`main_block_${idx}`] = extractMainBlockParams(128, `middle_flow/main_block_${idx}`);
+  });
+  const exit_flow_reduction_block = extractReductionBlockParams(128, 256, "exit_flow/reduction_block");
+  const exit_flow_separable_conv = extractSeparableConvParams(256, 512, "exit_flow/separable_conv");
+  const exit_flow = {
+    reduction_block: exit_flow_reduction_block,
+    separable_conv: exit_flow_separable_conv
+  };
+  if (getRemainingWeights().length !== 0) {
+    throw new Error(`weights remaing after extract: ${getRemainingWeights().length}`);
+  }
+  return {
+    paramMappings,
+    params: {entry_flow, middle_flow, exit_flow}
+  };
+}
+
+// src/xception/extractParamsFromWeightMap.ts
+function loadParamsFactory2(weightMap, paramMappings) {
+  const extractWeightEntry = extractWeightEntryFactory(weightMap, paramMappings);
+  const extractConvParams = loadConvParamsFactory(extractWeightEntry);
+  const extractSeparableConvParams = loadSeparableConvParamsFactory(extractWeightEntry);
+  function extractReductionBlockParams(mappedPrefix) {
+    const separable_conv0 = extractSeparableConvParams(`${mappedPrefix}/separable_conv0`);
+    const separable_conv1 = extractSeparableConvParams(`${mappedPrefix}/separable_conv1`);
+    const expansion_conv = extractConvParams(`${mappedPrefix}/expansion_conv`);
+    return {separable_conv0, separable_conv1, expansion_conv};
+  }
+  function extractMainBlockParams(mappedPrefix) {
+    const separable_conv0 = extractSeparableConvParams(`${mappedPrefix}/separable_conv0`);
+    const separable_conv1 = extractSeparableConvParams(`${mappedPrefix}/separable_conv1`);
+    const separable_conv2 = extractSeparableConvParams(`${mappedPrefix}/separable_conv2`);
+    return {separable_conv0, separable_conv1, separable_conv2};
+  }
+  return {
+    extractConvParams,
+    extractSeparableConvParams,
+    extractReductionBlockParams,
+    extractMainBlockParams
+  };
+}
+function extractParamsFromWeightMap3(weightMap, numMainBlocks) {
+  const paramMappings = [];
+  const {
+    extractConvParams,
+    extractSeparableConvParams,
+    extractReductionBlockParams,
+    extractMainBlockParams
+  } = loadParamsFactory2(weightMap, paramMappings);
+  const entry_flow_conv_in = extractConvParams("entry_flow/conv_in");
+  const entry_flow_reduction_block_0 = extractReductionBlockParams("entry_flow/reduction_block_0");
+  const entry_flow_reduction_block_1 = extractReductionBlockParams("entry_flow/reduction_block_1");
+  const entry_flow = {
+    conv_in: entry_flow_conv_in,
+    reduction_block_0: entry_flow_reduction_block_0,
+    reduction_block_1: entry_flow_reduction_block_1
+  };
+  const middle_flow = {};
+  range(numMainBlocks, 0, 1).forEach((idx) => {
+    middle_flow[`main_block_${idx}`] = extractMainBlockParams(`middle_flow/main_block_${idx}`);
+  });
+  const exit_flow_reduction_block = extractReductionBlockParams("exit_flow/reduction_block");
+  const exit_flow_separable_conv = extractSeparableConvParams("exit_flow/separable_conv");
+  const exit_flow = {
+    reduction_block: exit_flow_reduction_block,
+    separable_conv: exit_flow_separable_conv
+  };
+  disposeUnusedWeightTensors(weightMap, paramMappings);
+  return {params: {entry_flow, middle_flow, exit_flow}, paramMappings};
+}
+
+// src/xception/TinyXception.ts
+function conv(x, params, stride) {
+  return tf19.add(tf19.conv2d(x, params.filters, stride, "same"), params.bias);
+}
+function reductionBlock(x, params, isActivateInput = true) {
+  let out = isActivateInput ? tf19.relu(x) : x;
+  out = depthwiseSeparableConv(out, params.separable_conv0, [1, 1]);
+  out = depthwiseSeparableConv(tf19.relu(out), params.separable_conv1, [1, 1]);
+  out = tf19.maxPool(out, [3, 3], [2, 2], "same");
+  out = tf19.add(out, conv(x, params.expansion_conv, [2, 2]));
+  return out;
+}
+function mainBlock(x, params) {
+  let out = depthwiseSeparableConv(tf19.relu(x), params.separable_conv0, [1, 1]);
+  out = depthwiseSeparableConv(tf19.relu(out), params.separable_conv1, [1, 1]);
+  out = depthwiseSeparableConv(tf19.relu(out), params.separable_conv2, [1, 1]);
+  out = tf19.add(out, x);
+  return out;
+}
+var TinyXception = class extends NeuralNetwork {
+  constructor(numMainBlocks) {
+    super("TinyXception");
+    this._numMainBlocks = numMainBlocks;
+  }
+  forwardInput(input) {
+    const {params} = this;
+    if (!params) {
+      throw new Error("TinyXception - load model before inference");
+    }
+    return tf19.tidy(() => {
+      const batchTensor = tf19.cast(input.toBatchTensor(112, true), "float32");
+      const meanRgb = [122.782, 117.001, 104.298];
+      const normalized = normalize(batchTensor, meanRgb).div(255);
+      let out = tf19.relu(conv(normalized, params.entry_flow.conv_in, [2, 2]));
+      out = reductionBlock(out, params.entry_flow.reduction_block_0, false);
+      out = reductionBlock(out, params.entry_flow.reduction_block_1);
+      range(this._numMainBlocks, 0, 1).forEach((idx) => {
+        out = mainBlock(out, params.middle_flow[`main_block_${idx}`]);
+      });
+      out = reductionBlock(out, params.exit_flow.reduction_block);
+      out = tf19.relu(depthwiseSeparableConv(out, params.exit_flow.separable_conv, [1, 1]));
+      return out;
+    });
+  }
+  async forward(input) {
+    return this.forwardInput(await toNetInput(input));
+  }
+  getDefaultModelName() {
+    return "tiny_xception_model";
+  }
+  extractParamsFromWeightMap(weightMap) {
+    return extractParamsFromWeightMap3(weightMap, this._numMainBlocks);
+  }
+  extractParams(weights) {
+    return extractParams3(weights, this._numMainBlocks);
+  }
+};
+
+// src/ageGenderNet/extractParams.ts
+function extractParams4(weights) {
+  const paramMappings = [];
+  const {
+    extractWeights,
+    getRemainingWeights
+  } = extractWeightsFactory(weights);
+  const extractFCParams = extractFCParamsFactory(extractWeights, paramMappings);
+  const age = extractFCParams(512, 1, "fc/age");
+  const gender = extractFCParams(512, 2, "fc/gender");
+  if (getRemainingWeights().length !== 0) {
+    throw new Error(`weights remaing after extract: ${getRemainingWeights().length}`);
+  }
+  return {
+    paramMappings,
+    params: {fc: {age, gender}}
+  };
+}
+
+// src/ageGenderNet/extractParamsFromWeightMap.ts
+function extractParamsFromWeightMap4(weightMap) {
+  const paramMappings = [];
+  const extractWeightEntry = extractWeightEntryFactory(weightMap, paramMappings);
+  function extractFcParams(prefix) {
+    const weights = extractWeightEntry(`${prefix}/weights`, 2);
+    const bias = extractWeightEntry(`${prefix}/bias`, 1);
+    return {weights, bias};
+  }
+  const params = {
+    fc: {
+      age: extractFcParams("fc/age"),
+      gender: extractFcParams("fc/gender")
+    }
+  };
+  disposeUnusedWeightTensors(weightMap, paramMappings);
+  return {params, paramMappings};
+}
+
+// src/ageGenderNet/types.ts
+var Gender;
+(function(Gender2) {
+  Gender2["FEMALE"] = "female";
+  Gender2["MALE"] = "male";
+})(Gender || (Gender = {}));
+
+// src/ageGenderNet/AgeGenderNet.ts
+var AgeGenderNet = class extends NeuralNetwork {
+  constructor(faceFeatureExtractor = new TinyXception(2)) {
+    super("AgeGenderNet");
+    this._faceFeatureExtractor = faceFeatureExtractor;
+  }
+  get faceFeatureExtractor() {
+    return this._faceFeatureExtractor;
+  }
+  runNet(input) {
+    const {params} = this;
+    if (!params) {
+      throw new Error(`${this._name} - load model before inference`);
+    }
+    return tf20.tidy(() => {
+      const bottleneckFeatures = input instanceof NetInput ? this.faceFeatureExtractor.forwardInput(input) : input;
+      const pooled = tf20.avgPool(bottleneckFeatures, [7, 7], [2, 2], "valid").as2D(bottleneckFeatures.shape[0], -1);
+      const age = fullyConnectedLayer(pooled, params.fc.age).as1D();
+      const gender = fullyConnectedLayer(pooled, params.fc.gender);
+      return {age, gender};
+    });
+  }
+  forwardInput(input) {
+    return tf20.tidy(() => {
+      const {age, gender} = this.runNet(input);
+      return {age, gender: tf20.softmax(gender)};
+    });
+  }
+  async forward(input) {
+    return this.forwardInput(await toNetInput(input));
+  }
+  async predictAgeAndGender(input) {
+    const netInput = await toNetInput(input);
+    const out = await this.forwardInput(netInput);
+    const ages = tf20.unstack(out.age);
+    const genders = tf20.unstack(out.gender);
+    const ageAndGenderTensors = ages.map((ageTensor, i) => ({
+      ageTensor,
+      genderTensor: genders[i]
+    }));
+    const predictionsByBatch = await Promise.all(ageAndGenderTensors.map(async ({ageTensor, genderTensor}) => {
+      const age = ageTensor.dataSync()[0];
+      const probMale = genderTensor.dataSync()[0];
+      const isMale = probMale > 0.5;
+      const gender = isMale ? Gender.MALE : Gender.FEMALE;
+      const genderProbability = isMale ? probMale : 1 - probMale;
+      ageTensor.dispose();
+      genderTensor.dispose();
+      return {age, gender, genderProbability};
+    }));
+    out.age.dispose();
+    out.gender.dispose();
+    return netInput.isBatchInput ? predictionsByBatch : predictionsByBatch[0];
+  }
+  getDefaultModelName() {
+    return "age_gender_model";
+  }
+  dispose(throwOnRedispose = true) {
+    this.faceFeatureExtractor.dispose(throwOnRedispose);
+    super.dispose(throwOnRedispose);
+  }
+  loadClassifierParams(weights) {
+    const {params, paramMappings} = this.extractClassifierParams(weights);
+    this._params = params;
+    this._paramMappings = paramMappings;
+  }
+  extractClassifierParams(weights) {
+    return extractParams4(weights);
+  }
+  extractParamsFromWeightMap(weightMap) {
+    const {featureExtractorMap, classifierMap} = seperateWeightMaps(weightMap);
+    this.faceFeatureExtractor.loadFromWeightMap(featureExtractorMap);
+    return extractParamsFromWeightMap4(classifierMap);
+  }
+  extractParams(weights) {
+    const classifierWeightSize = 512 * 1 + 1 + (512 * 2 + 2);
+    const featureExtractorWeights = weights.slice(0, weights.length - classifierWeightSize);
+    const classifierWeights = weights.slice(weights.length - classifierWeightSize);
+    this.faceFeatureExtractor.extractWeights(featureExtractorWeights);
+    return this.extractClassifierParams(classifierWeights);
+  }
+};
+
+// src/faceLandmarkNet/FaceLandmark68NetBase.ts
+var tf21 = require_tfjs_esm();
+var FaceLandmark68NetBase = class extends FaceProcessor {
+  postProcess(output, inputSize, originalDimensions) {
+    const inputDimensions = originalDimensions.map(({width, height}) => {
+      const scale2 = inputSize / Math.max(height, width);
+      return {
+        width: width * scale2,
+        height: height * scale2
+      };
+    });
+    const batchSize = inputDimensions.length;
+    return tf21.tidy(() => {
+      const createInterleavedTensor = (fillX, fillY) => tf21.stack([tf21.fill([68], fillX, "float32"), tf21.fill([68], fillY, "float32")], 1).as2D(1, 136).as1D();
+      const getPadding = (batchIdx, cond) => {
+        const {width, height} = inputDimensions[batchIdx];
+        return cond(width, height) ? Math.abs(width - height) / 2 : 0;
+      };
+      const getPaddingX = (batchIdx) => getPadding(batchIdx, (w, h) => w < h);
+      const getPaddingY = (batchIdx) => getPadding(batchIdx, (w, h) => h < w);
+      const landmarkTensors = output.mul(tf21.fill([batchSize, 136], inputSize, "float32")).sub(tf21.stack(Array.from(Array(batchSize), (_, batchIdx) => createInterleavedTensor(getPaddingX(batchIdx), getPaddingY(batchIdx))))).div(tf21.stack(Array.from(Array(batchSize), (_, batchIdx) => createInterleavedTensor(inputDimensions[batchIdx].width, inputDimensions[batchIdx].height))));
+      return landmarkTensors;
+    });
+  }
+  forwardInput(input) {
+    return tf21.tidy(() => {
+      const out = this.runNet(input);
+      return this.postProcess(out, input.inputSize, input.inputDimensions.map(([height, width]) => ({height, width})));
+    });
+  }
+  async forward(input) {
+    return this.forwardInput(await toNetInput(input));
+  }
+  async detectLandmarks(input) {
+    const netInput = await toNetInput(input);
+    const landmarkTensors = tf21.tidy(() => tf21.unstack(this.forwardInput(netInput)));
+    const landmarksForBatch = await Promise.all(landmarkTensors.map(async (landmarkTensor, batchIdx) => {
+      const landmarksArray = Array.from(landmarkTensor.dataSync());
+      const xCoords = landmarksArray.filter((_, i) => isEven(i));
+      const yCoords = landmarksArray.filter((_, i) => !isEven(i));
+      return new FaceLandmarks68(Array(68).fill(0).map((_, i) => new Point(xCoords[i], yCoords[i])), {
+        height: netInput.getInputHeight(batchIdx),
+        width: netInput.getInputWidth(batchIdx)
+      });
+    }));
+    landmarkTensors.forEach((t) => t.dispose());
+    return netInput.isBatchInput ? landmarksForBatch : landmarksForBatch[0];
+  }
+  getClassifierChannelsOut() {
+    return 136;
+  }
+};
+
+// src/faceLandmarkNet/FaceLandmark68Net.ts
+var FaceLandmark68Net = class extends FaceLandmark68NetBase {
+  constructor(faceFeatureExtractor = new FaceFeatureExtractor()) {
+    super("FaceLandmark68Net", faceFeatureExtractor);
+  }
+  getDefaultModelName() {
+    return "face_landmark_68_model";
+  }
+  getClassifierChannelsIn() {
+    return 256;
+  }
+};
+
+// src/faceFeatureExtractor/TinyFaceFeatureExtractor.ts
+var tf22 = require_tfjs_esm();
+
+// src/faceFeatureExtractor/extractParamsFromWeightMapTiny.ts
+function extractParamsFromWeightMapTiny(weightMap) {
+  const paramMappings = [];
+  const {
+    extractDenseBlock3Params
+  } = loadParamsFactory(weightMap, paramMappings);
+  const params = {
+    dense0: extractDenseBlock3Params("dense0", true),
+    dense1: extractDenseBlock3Params("dense1"),
+    dense2: extractDenseBlock3Params("dense2")
+  };
+  disposeUnusedWeightTensors(weightMap, paramMappings);
+  return {params, paramMappings};
+}
+
+// src/faceFeatureExtractor/extractParamsTiny.ts
+function extractParamsTiny(weights) {
+  const paramMappings = [];
+  const {
+    extractWeights,
+    getRemainingWeights
+  } = extractWeightsFactory(weights);
+  const {
+    extractDenseBlock3Params
+  } = extractorsFactory(extractWeights, paramMappings);
+  const dense0 = extractDenseBlock3Params(3, 32, "dense0", true);
+  const dense1 = extractDenseBlock3Params(32, 64, "dense1");
+  const dense2 = extractDenseBlock3Params(64, 128, "dense2");
+  if (getRemainingWeights().length !== 0) {
+    throw new Error(`weights remaing after extract: ${getRemainingWeights().length}`);
+  }
+  return {
+    paramMappings,
+    params: {dense0, dense1, dense2}
+  };
+}
+
+// src/faceFeatureExtractor/TinyFaceFeatureExtractor.ts
+var TinyFaceFeatureExtractor = class extends NeuralNetwork {
+  constructor() {
+    super("TinyFaceFeatureExtractor");
+  }
+  forwardInput(input) {
+    const {params} = this;
+    if (!params) {
+      throw new Error("TinyFaceFeatureExtractor - load model before inference");
+    }
+    return tf22.tidy(() => {
+      const batchTensor = tf22.cast(input.toBatchTensor(112, true), "float32");
+      const meanRgb = [122.782, 117.001, 104.298];
+      const normalized = normalize(batchTensor, meanRgb).div(255);
+      let out = denseBlock3(normalized, params.dense0, true);
+      out = denseBlock3(out, params.dense1);
+      out = denseBlock3(out, params.dense2);
+      out = tf22.avgPool(out, [14, 14], [2, 2], "valid");
+      return out;
+    });
+  }
+  async forward(input) {
+    return this.forwardInput(await toNetInput(input));
+  }
+  getDefaultModelName() {
+    return "face_feature_extractor_tiny_model";
+  }
+  extractParamsFromWeightMap(weightMap) {
+    return extractParamsFromWeightMapTiny(weightMap);
+  }
+  extractParams(weights) {
+    return extractParamsTiny(weights);
+  }
+};
+
+// src/faceLandmarkNet/FaceLandmark68TinyNet.ts
+var FaceLandmark68TinyNet = class extends FaceLandmark68NetBase {
+  constructor(faceFeatureExtractor = new TinyFaceFeatureExtractor()) {
+    super("FaceLandmark68TinyNet", faceFeatureExtractor);
+  }
+  getDefaultModelName() {
+    return "face_landmark_68_tiny_model";
+  }
+  getClassifierChannelsIn() {
+    return 128;
+  }
+};
+
+// src/faceLandmarkNet/index.ts
+var FaceLandmarkNet = class extends FaceLandmark68Net {
+};
+
+// src/faceRecognitionNet/FaceRecognitionNet.ts
+var tf27 = require_tfjs_esm();
+
+// src/faceRecognitionNet/convLayer.ts
+var tf24 = require_tfjs_esm();
+
+// src/faceRecognitionNet/scaleLayer.ts
+var tf23 = require_tfjs_esm();
+function scale(x, params) {
+  return tf23.add(tf23.mul(x, params.weights), params.biases);
+}
+
+// src/faceRecognitionNet/convLayer.ts
+function convLayer2(x, params, strides, withRelu, padding = "same") {
+  const {filters, bias} = params.conv;
+  let out = tf24.conv2d(x, filters, strides, padding);
+  out = tf24.add(out, bias);
+  out = scale(out, params.scale);
+  return withRelu ? tf24.relu(out) : out;
+}
+function conv2(x, params) {
+  return convLayer2(x, params, [1, 1], true);
+}
+function convNoRelu(x, params) {
+  return convLayer2(x, params, [1, 1], false);
+}
+function convDown(x, params) {
+  return convLayer2(x, params, [2, 2], true, "valid");
+}
+
+// src/faceRecognitionNet/extractParams.ts
+var tf25 = require_tfjs_esm();
+function extractorsFactory3(extractWeights, paramMappings) {
+  function extractFilterValues(numFilterValues, numFilters, filterSize) {
+    const weights = extractWeights(numFilterValues);
+    const depth = weights.length / (numFilters * filterSize * filterSize);
+    if (isFloat(depth)) {
+      throw new Error(`depth has to be an integer: ${depth}, weights.length: ${weights.length}, numFilters: ${numFilters}, filterSize: ${filterSize}`);
+    }
+    return tf25.tidy(() => tf25.transpose(tf25.tensor4d(weights, [numFilters, depth, filterSize, filterSize]), [2, 3, 1, 0]));
+  }
+  function extractConvParams(numFilterValues, numFilters, filterSize, mappedPrefix) {
+    const filters = extractFilterValues(numFilterValues, numFilters, filterSize);
+    const bias = tf25.tensor1d(extractWeights(numFilters));
+    paramMappings.push({paramPath: `${mappedPrefix}/filters`}, {paramPath: `${mappedPrefix}/bias`});
+    return {filters, bias};
+  }
+  function extractScaleLayerParams(numWeights, mappedPrefix) {
+    const weights = tf25.tensor1d(extractWeights(numWeights));
+    const biases = tf25.tensor1d(extractWeights(numWeights));
+    paramMappings.push({paramPath: `${mappedPrefix}/weights`}, {paramPath: `${mappedPrefix}/biases`});
+    return {
+      weights,
+      biases
+    };
+  }
+  function extractConvLayerParams(numFilterValues, numFilters, filterSize, mappedPrefix) {
+    const conv3 = extractConvParams(numFilterValues, numFilters, filterSize, `${mappedPrefix}/conv`);
+    const scale2 = extractScaleLayerParams(numFilters, `${mappedPrefix}/scale`);
+    return {conv: conv3, scale: scale2};
+  }
+  function extractResidualLayerParams(numFilterValues, numFilters, filterSize, mappedPrefix, isDown = false) {
+    const conv1 = extractConvLayerParams((isDown ? 0.5 : 1) * numFilterValues, numFilters, filterSize, `${mappedPrefix}/conv1`);
+    const conv22 = extractConvLayerParams(numFilterValues, numFilters, filterSize, `${mappedPrefix}/conv2`);
+    return {conv1, conv2: conv22};
+  }
+  return {
+    extractConvLayerParams,
+    extractResidualLayerParams
+  };
+}
+function extractParams5(weights) {
+  const {
+    extractWeights,
+    getRemainingWeights
+  } = extractWeightsFactory(weights);
+  const paramMappings = [];
+  const {
+    extractConvLayerParams,
+    extractResidualLayerParams
+  } = extractorsFactory3(extractWeights, paramMappings);
+  const conv32_down = extractConvLayerParams(4704, 32, 7, "conv32_down");
+  const conv32_1 = extractResidualLayerParams(9216, 32, 3, "conv32_1");
+  const conv32_2 = extractResidualLayerParams(9216, 32, 3, "conv32_2");
+  const conv32_3 = extractResidualLayerParams(9216, 32, 3, "conv32_3");
+  const conv64_down = extractResidualLayerParams(36864, 64, 3, "conv64_down", true);
+  const conv64_1 = extractResidualLayerParams(36864, 64, 3, "conv64_1");
+  const conv64_2 = extractResidualLayerParams(36864, 64, 3, "conv64_2");
+  const conv64_3 = extractResidualLayerParams(36864, 64, 3, "conv64_3");
+  const conv128_down = extractResidualLayerParams(147456, 128, 3, "conv128_down", true);
+  const conv128_1 = extractResidualLayerParams(147456, 128, 3, "conv128_1");
+  const conv128_2 = extractResidualLayerParams(147456, 128, 3, "conv128_2");
+  const conv256_down = extractResidualLayerParams(589824, 256, 3, "conv256_down", true);
+  const conv256_1 = extractResidualLayerParams(589824, 256, 3, "conv256_1");
+  const conv256_2 = extractResidualLayerParams(589824, 256, 3, "conv256_2");
+  const conv256_down_out = extractResidualLayerParams(589824, 256, 3, "conv256_down_out");
+  const fc = tf25.tidy(() => tf25.transpose(tf25.tensor2d(extractWeights(256 * 128), [128, 256]), [1, 0]));
+  paramMappings.push({paramPath: "fc"});
+  if (getRemainingWeights().length !== 0) {
+    throw new Error(`weights remaing after extract: ${getRemainingWeights().length}`);
+  }
+  const params = {
+    conv32_down,
+    conv32_1,
+    conv32_2,
+    conv32_3,
+    conv64_down,
+    conv64_1,
+    conv64_2,
+    conv64_3,
+    conv128_down,
+    conv128_1,
+    conv128_2,
+    conv256_down,
+    conv256_1,
+    conv256_2,
+    conv256_down_out,
+    fc
+  };
+  return {params, paramMappings};
+}
+
+// src/faceRecognitionNet/extractParamsFromWeightMap.ts
+function extractorsFactory4(weightMap, paramMappings) {
+  const extractWeightEntry = extractWeightEntryFactory(weightMap, paramMappings);
+  function extractScaleLayerParams(prefix) {
+    const weights = extractWeightEntry(`${prefix}/scale/weights`, 1);
+    const biases = extractWeightEntry(`${prefix}/scale/biases`, 1);
+    return {weights, biases};
+  }
+  function extractConvLayerParams(prefix) {
+    const filters = extractWeightEntry(`${prefix}/conv/filters`, 4);
+    const bias = extractWeightEntry(`${prefix}/conv/bias`, 1);
+    const scale2 = extractScaleLayerParams(prefix);
+    return {conv: {filters, bias}, scale: scale2};
+  }
+  function extractResidualLayerParams(prefix) {
+    return {
+      conv1: extractConvLayerParams(`${prefix}/conv1`),
+      conv2: extractConvLayerParams(`${prefix}/conv2`)
+    };
+  }
+  return {
+    extractConvLayerParams,
+    extractResidualLayerParams
+  };
+}
+function extractParamsFromWeightMap5(weightMap) {
+  const paramMappings = [];
+  const {
+    extractConvLayerParams,
+    extractResidualLayerParams
+  } = extractorsFactory4(weightMap, paramMappings);
+  const conv32_down = extractConvLayerParams("conv32_down");
+  const conv32_1 = extractResidualLayerParams("conv32_1");
+  const conv32_2 = extractResidualLayerParams("conv32_2");
+  const conv32_3 = extractResidualLayerParams("conv32_3");
+  const conv64_down = extractResidualLayerParams("conv64_down");
+  const conv64_1 = extractResidualLayerParams("conv64_1");
+  const conv64_2 = extractResidualLayerParams("conv64_2");
+  const conv64_3 = extractResidualLayerParams("conv64_3");
+  const conv128_down = extractResidualLayerParams("conv128_down");
+  const conv128_1 = extractResidualLayerParams("conv128_1");
+  const conv128_2 = extractResidualLayerParams("conv128_2");
+  const conv256_down = extractResidualLayerParams("conv256_down");
+  const conv256_1 = extractResidualLayerParams("conv256_1");
+  const conv256_2 = extractResidualLayerParams("conv256_2");
+  const conv256_down_out = extractResidualLayerParams("conv256_down_out");
+  const {fc} = weightMap;
+  paramMappings.push({originalPath: "fc", paramPath: "fc"});
+  if (!isTensor2D(fc)) {
+    throw new Error(`expected weightMap[fc] to be a Tensor2D, instead have ${fc}`);
+  }
+  const params = {
+    conv32_down,
+    conv32_1,
+    conv32_2,
+    conv32_3,
+    conv64_down,
+    conv64_1,
+    conv64_2,
+    conv64_3,
+    conv128_down,
+    conv128_1,
+    conv128_2,
+    conv256_down,
+    conv256_1,
+    conv256_2,
+    conv256_down_out,
+    fc
+  };
+  disposeUnusedWeightTensors(weightMap, paramMappings);
+  return {params, paramMappings};
+}
+
+// src/faceRecognitionNet/residualLayer.ts
+var tf26 = require_tfjs_esm();
+function residual(x, params) {
+  let out = conv2(x, params.conv1);
+  out = convNoRelu(out, params.conv2);
+  out = tf26.add(out, x);
+  out = tf26.relu(out);
+  return out;
+}
+function residualDown(x, params) {
+  let out = convDown(x, params.conv1);
+  out = convNoRelu(out, params.conv2);
+  let pooled = tf26.avgPool(x, 2, 2, "valid");
+  const zeros2 = tf26.zeros(pooled.shape);
+  const isPad = pooled.shape[3] !== out.shape[3];
+  const isAdjustShape = pooled.shape[1] !== out.shape[1] || pooled.shape[2] !== out.shape[2];
+  if (isAdjustShape) {
+    const padShapeX = [...out.shape];
+    padShapeX[1] = 1;
+    const zerosW = tf26.zeros(padShapeX);
+    out = tf26.concat([out, zerosW], 1);
+    const padShapeY = [...out.shape];
+    padShapeY[2] = 1;
+    const zerosH = tf26.zeros(padShapeY);
+    out = tf26.concat([out, zerosH], 2);
+  }
+  pooled = isPad ? tf26.concat([pooled, zeros2], 3) : pooled;
+  out = tf26.add(pooled, out);
+  out = tf26.relu(out);
+  return out;
+}
+
+// src/faceRecognitionNet/FaceRecognitionNet.ts
+var FaceRecognitionNet = class extends NeuralNetwork {
+  constructor() {
+    super("FaceRecognitionNet");
+  }
+  forwardInput(input) {
+    const {params} = this;
+    if (!params) {
+      throw new Error("FaceRecognitionNet - load model before inference");
+    }
+    return tf27.tidy(() => {
+      const batchTensor = tf27.cast(input.toBatchTensor(150, true), "float32");
+      const meanRgb = [122.782, 117.001, 104.298];
+      const normalized = normalize(batchTensor, meanRgb).div(255);
+      let out = convDown(normalized, params.conv32_down);
+      out = tf27.maxPool(out, 3, 2, "valid");
+      out = residual(out, params.conv32_1);
+      out = residual(out, params.conv32_2);
+      out = residual(out, params.conv32_3);
+      out = residualDown(out, params.conv64_down);
+      out = residual(out, params.conv64_1);
+      out = residual(out, params.conv64_2);
+      out = residual(out, params.conv64_3);
+      out = residualDown(out, params.conv128_down);
+      out = residual(out, params.conv128_1);
+      out = residual(out, params.conv128_2);
+      out = residualDown(out, params.conv256_down);
+      out = residual(out, params.conv256_1);
+      out = residual(out, params.conv256_2);
+      out = residualDown(out, params.conv256_down_out);
+      const globalAvg = out.mean([1, 2]);
+      const fullyConnected = tf27.matMul(globalAvg, params.fc);
+      return fullyConnected;
+    });
+  }
+  async forward(input) {
+    return this.forwardInput(await toNetInput(input));
+  }
+  async computeFaceDescriptor(input) {
+    var _a;
+    if ((_a = input == null ? void 0 : input.shape) == null ? void 0 : _a.some((dim) => dim <= 0))
+      return new Float32Array(128);
+    const netInput = await toNetInput(input);
+    const faceDescriptorTensors = tf27.tidy(() => tf27.unstack(this.forwardInput(netInput)));
+    const faceDescriptorsForBatch = await Promise.all(faceDescriptorTensors.map((t) => t.data()));
+    faceDescriptorTensors.forEach((t) => t.dispose());
+    return netInput.isBatchInput ? faceDescriptorsForBatch : faceDescriptorsForBatch[0];
+  }
+  getDefaultModelName() {
+    return "face_recognition_model";
+  }
+  extractParamsFromWeightMap(weightMap) {
+    return extractParamsFromWeightMap5(weightMap);
+  }
+  extractParams(weights) {
+    return extractParams5(weights);
+  }
+};
+
+// src/faceRecognitionNet/index.ts
+function createFaceRecognitionNet(weights) {
+  const net = new FaceRecognitionNet();
+  net.extractWeights(weights);
+  return net;
+}
+
+// src/factories/WithFaceDescriptor.ts
+function extendWithFaceDescriptor(sourceObj, descriptor) {
+  const extension = {descriptor};
+  return {...sourceObj, ...extension};
+}
+
+// src/factories/WithAge.ts
+function isWithAge(obj) {
+  return typeof obj.age === "number";
+}
+function extendWithAge(sourceObj, age) {
+  const extension = {age};
+  return {...sourceObj, ...extension};
+}
+
+// src/factories/WithGender.ts
+function isWithGender(obj) {
+  return (obj.gender === Gender.MALE || obj.gender === Gender.FEMALE) && isValidProbablitiy(obj.genderProbability);
+}
+function extendWithGender(sourceObj, gender, genderProbability) {
+  const extension = {gender, genderProbability};
+  return {...sourceObj, ...extension};
+}
+
+// src/ssdMobilenetv1/SsdMobilenetv1.ts
+var tf34 = require_tfjs_esm();
+
+// src/ssdMobilenetv1/extractParams.ts
+var tf28 = require_tfjs_esm();
+function extractorsFactory5(extractWeights, paramMappings) {
+  function extractDepthwiseConvParams(numChannels, mappedPrefix) {
+    const filters = tf28.tensor4d(extractWeights(3 * 3 * numChannels), [3, 3, numChannels, 1]);
+    const batch_norm_scale = tf28.tensor1d(extractWeights(numChannels));
+    const batch_norm_offset = tf28.tensor1d(extractWeights(numChannels));
+    const batch_norm_mean = tf28.tensor1d(extractWeights(numChannels));
+    const batch_norm_variance = tf28.tensor1d(extractWeights(numChannels));
+    paramMappings.push({paramPath: `${mappedPrefix}/filters`}, {paramPath: `${mappedPrefix}/batch_norm_scale`}, {paramPath: `${mappedPrefix}/batch_norm_offset`}, {paramPath: `${mappedPrefix}/batch_norm_mean`}, {paramPath: `${mappedPrefix}/batch_norm_variance`});
+    return {
+      filters,
+      batch_norm_scale,
+      batch_norm_offset,
+      batch_norm_mean,
+      batch_norm_variance
+    };
+  }
+  function extractConvParams(channelsIn, channelsOut, filterSize, mappedPrefix, isPointwiseConv) {
+    const filters = tf28.tensor4d(extractWeights(channelsIn * channelsOut * filterSize * filterSize), [filterSize, filterSize, channelsIn, channelsOut]);
+    const bias = tf28.tensor1d(extractWeights(channelsOut));
+    paramMappings.push({paramPath: `${mappedPrefix}/filters`}, {paramPath: `${mappedPrefix}/${isPointwiseConv ? "batch_norm_offset" : "bias"}`});
+    return {filters, bias};
+  }
+  function extractPointwiseConvParams(channelsIn, channelsOut, filterSize, mappedPrefix) {
+    const {
+      filters,
+      bias
+    } = extractConvParams(channelsIn, channelsOut, filterSize, mappedPrefix, true);
+    return {
+      filters,
+      batch_norm_offset: bias
+    };
+  }
+  function extractConvPairParams(channelsIn, channelsOut, mappedPrefix) {
+    const depthwise_conv = extractDepthwiseConvParams(channelsIn, `${mappedPrefix}/depthwise_conv`);
+    const pointwise_conv = extractPointwiseConvParams(channelsIn, channelsOut, 1, `${mappedPrefix}/pointwise_conv`);
+    return {depthwise_conv, pointwise_conv};
+  }
+  function extractMobilenetV1Params() {
+    const conv_0 = extractPointwiseConvParams(3, 32, 3, "mobilenetv1/conv_0");
+    const conv_1 = extractConvPairParams(32, 64, "mobilenetv1/conv_1");
+    const conv_2 = extractConvPairParams(64, 128, "mobilenetv1/conv_2");
+    const conv_3 = extractConvPairParams(128, 128, "mobilenetv1/conv_3");
+    const conv_4 = extractConvPairParams(128, 256, "mobilenetv1/conv_4");
+    const conv_5 = extractConvPairParams(256, 256, "mobilenetv1/conv_5");
+    const conv_6 = extractConvPairParams(256, 512, "mobilenetv1/conv_6");
+    const conv_7 = extractConvPairParams(512, 512, "mobilenetv1/conv_7");
+    const conv_8 = extractConvPairParams(512, 512, "mobilenetv1/conv_8");
+    const conv_9 = extractConvPairParams(512, 512, "mobilenetv1/conv_9");
+    const conv_10 = extractConvPairParams(512, 512, "mobilenetv1/conv_10");
+    const conv_11 = extractConvPairParams(512, 512, "mobilenetv1/conv_11");
+    const conv_12 = extractConvPairParams(512, 1024, "mobilenetv1/conv_12");
+    const conv_13 = extractConvPairParams(1024, 1024, "mobilenetv1/conv_13");
+    return {
+      conv_0,
+      conv_1,
+      conv_2,
+      conv_3,
+      conv_4,
+      conv_5,
+      conv_6,
+      conv_7,
+      conv_8,
+      conv_9,
+      conv_10,
+      conv_11,
+      conv_12,
+      conv_13
+    };
+  }
+  function extractPredictionLayerParams() {
+    const conv_0 = extractPointwiseConvParams(1024, 256, 1, "prediction_layer/conv_0");
+    const conv_1 = extractPointwiseConvParams(256, 512, 3, "prediction_layer/conv_1");
+    const conv_2 = extractPointwiseConvParams(512, 128, 1, "prediction_layer/conv_2");
+    const conv_3 = extractPointwiseConvParams(128, 256, 3, "prediction_layer/conv_3");
+    const conv_4 = extractPointwiseConvParams(256, 128, 1, "prediction_layer/conv_4");
+    const conv_5 = extractPointwiseConvParams(128, 256, 3, "prediction_layer/conv_5");
+    const conv_6 = extractPointwiseConvParams(256, 64, 1, "prediction_layer/conv_6");
+    const conv_7 = extractPointwiseConvParams(64, 128, 3, "prediction_layer/conv_7");
+    const box_encoding_0_predictor = extractConvParams(512, 12, 1, "prediction_layer/box_predictor_0/box_encoding_predictor");
+    const class_predictor_0 = extractConvParams(512, 9, 1, "prediction_layer/box_predictor_0/class_predictor");
+    const box_encoding_1_predictor = extractConvParams(1024, 24, 1, "prediction_layer/box_predictor_1/box_encoding_predictor");
+    const class_predictor_1 = extractConvParams(1024, 18, 1, "prediction_layer/box_predictor_1/class_predictor");
+    const box_encoding_2_predictor = extractConvParams(512, 24, 1, "prediction_layer/box_predictor_2/box_encoding_predictor");
+    const class_predictor_2 = extractConvParams(512, 18, 1, "prediction_layer/box_predictor_2/class_predictor");
+    const box_encoding_3_predictor = extractConvParams(256, 24, 1, "prediction_layer/box_predictor_3/box_encoding_predictor");
+    const class_predictor_3 = extractConvParams(256, 18, 1, "prediction_layer/box_predictor_3/class_predictor");
+    const box_encoding_4_predictor = extractConvParams(256, 24, 1, "prediction_layer/box_predictor_4/box_encoding_predictor");
+    const class_predictor_4 = extractConvParams(256, 18, 1, "prediction_layer/box_predictor_4/class_predictor");
+    const box_encoding_5_predictor = extractConvParams(128, 24, 1, "prediction_layer/box_predictor_5/box_encoding_predictor");
+    const class_predictor_5 = extractConvParams(128, 18, 1, "prediction_layer/box_predictor_5/class_predictor");
+    const box_predictor_0 = {
+      box_encoding_predictor: box_encoding_0_predictor,
+      class_predictor: class_predictor_0
+    };
+    const box_predictor_1 = {
+      box_encoding_predictor: box_encoding_1_predictor,
+      class_predictor: class_predictor_1
+    };
+    const box_predictor_2 = {
+      box_encoding_predictor: box_encoding_2_predictor,
+      class_predictor: class_predictor_2
+    };
+    const box_predictor_3 = {
+      box_encoding_predictor: box_encoding_3_predictor,
+      class_predictor: class_predictor_3
+    };
+    const box_predictor_4 = {
+      box_encoding_predictor: box_encoding_4_predictor,
+      class_predictor: class_predictor_4
+    };
+    const box_predictor_5 = {
+      box_encoding_predictor: box_encoding_5_predictor,
+      class_predictor: class_predictor_5
+    };
+    return {
+      conv_0,
+      conv_1,
+      conv_2,
+      conv_3,
+      conv_4,
+      conv_5,
+      conv_6,
+      conv_7,
+      box_predictor_0,
+      box_predictor_1,
+      box_predictor_2,
+      box_predictor_3,
+      box_predictor_4,
+      box_predictor_5
+    };
+  }
+  return {
+    extractMobilenetV1Params,
+    extractPredictionLayerParams
+  };
+}
+function extractParams6(weights) {
+  const paramMappings = [];
+  const {
+    extractWeights,
+    getRemainingWeights
+  } = extractWeightsFactory(weights);
+  const {
+    extractMobilenetV1Params,
+    extractPredictionLayerParams
+  } = extractorsFactory5(extractWeights, paramMappings);
+  const mobilenetv1 = extractMobilenetV1Params();
+  const prediction_layer = extractPredictionLayerParams();
+  const extra_dim = tf28.tensor3d(extractWeights(5118 * 4), [1, 5118, 4]);
+  const output_layer = {
+    extra_dim
+  };
+  paramMappings.push({paramPath: "output_layer/extra_dim"});
+  if (getRemainingWeights().length !== 0) {
+    throw new Error(`weights remaing after extract: ${getRemainingWeights().length}`);
+  }
+  return {
+    params: {
+      mobilenetv1,
+      prediction_layer,
+      output_layer
+    },
+    paramMappings
+  };
+}
+
+// src/ssdMobilenetv1/extractParamsFromWeightMap.ts
+function extractorsFactory6(weightMap, paramMappings) {
+  const extractWeightEntry = extractWeightEntryFactory(weightMap, paramMappings);
+  function extractPointwiseConvParams(prefix, idx, mappedPrefix) {
+    const filters = extractWeightEntry(`${prefix}/Conv2d_${idx}_pointwise/weights`, 4, `${mappedPrefix}/filters`);
+    const batch_norm_offset = extractWeightEntry(`${prefix}/Conv2d_${idx}_pointwise/convolution_bn_offset`, 1, `${mappedPrefix}/batch_norm_offset`);
+    return {filters, batch_norm_offset};
+  }
+  function extractConvPairParams(idx) {
+    const mappedPrefix = `mobilenetv1/conv_${idx}`;
+    const prefixDepthwiseConv = `MobilenetV1/Conv2d_${idx}_depthwise`;
+    const mappedPrefixDepthwiseConv = `${mappedPrefix}/depthwise_conv`;
+    const mappedPrefixPointwiseConv = `${mappedPrefix}/pointwise_conv`;
+    const filters = extractWeightEntry(`${prefixDepthwiseConv}/depthwise_weights`, 4, `${mappedPrefixDepthwiseConv}/filters`);
+    const batch_norm_scale = extractWeightEntry(`${prefixDepthwiseConv}/BatchNorm/gamma`, 1, `${mappedPrefixDepthwiseConv}/batch_norm_scale`);
+    const batch_norm_offset = extractWeightEntry(`${prefixDepthwiseConv}/BatchNorm/beta`, 1, `${mappedPrefixDepthwiseConv}/batch_norm_offset`);
+    const batch_norm_mean = extractWeightEntry(`${prefixDepthwiseConv}/BatchNorm/moving_mean`, 1, `${mappedPrefixDepthwiseConv}/batch_norm_mean`);
+    const batch_norm_variance = extractWeightEntry(`${prefixDepthwiseConv}/BatchNorm/moving_variance`, 1, `${mappedPrefixDepthwiseConv}/batch_norm_variance`);
+    return {
+      depthwise_conv: {
+        filters,
+        batch_norm_scale,
+        batch_norm_offset,
+        batch_norm_mean,
+        batch_norm_variance
+      },
+      pointwise_conv: extractPointwiseConvParams("MobilenetV1", idx, mappedPrefixPointwiseConv)
+    };
+  }
+  function extractMobilenetV1Params() {
+    return {
+      conv_0: extractPointwiseConvParams("MobilenetV1", 0, "mobilenetv1/conv_0"),
+      conv_1: extractConvPairParams(1),
+      conv_2: extractConvPairParams(2),
+      conv_3: extractConvPairParams(3),
+      conv_4: extractConvPairParams(4),
+      conv_5: extractConvPairParams(5),
+      conv_6: extractConvPairParams(6),
+      conv_7: extractConvPairParams(7),
+      conv_8: extractConvPairParams(8),
+      conv_9: extractConvPairParams(9),
+      conv_10: extractConvPairParams(10),
+      conv_11: extractConvPairParams(11),
+      conv_12: extractConvPairParams(12),
+      conv_13: extractConvPairParams(13)
+    };
+  }
+  function extractConvParams(prefix, mappedPrefix) {
+    const filters = extractWeightEntry(`${prefix}/weights`, 4, `${mappedPrefix}/filters`);
+    const bias = extractWeightEntry(`${prefix}/biases`, 1, `${mappedPrefix}/bias`);
+    return {filters, bias};
+  }
+  function extractBoxPredictorParams(idx) {
+    const box_encoding_predictor = extractConvParams(`Prediction/BoxPredictor_${idx}/BoxEncodingPredictor`, `prediction_layer/box_predictor_${idx}/box_encoding_predictor`);
+    const class_predictor = extractConvParams(`Prediction/BoxPredictor_${idx}/ClassPredictor`, `prediction_layer/box_predictor_${idx}/class_predictor`);
+    return {box_encoding_predictor, class_predictor};
+  }
+  function extractPredictionLayerParams() {
+    return {
+      conv_0: extractPointwiseConvParams("Prediction", 0, "prediction_layer/conv_0"),
+      conv_1: extractPointwiseConvParams("Prediction", 1, "prediction_layer/conv_1"),
+      conv_2: extractPointwiseConvParams("Prediction", 2, "prediction_layer/conv_2"),
+      conv_3: extractPointwiseConvParams("Prediction", 3, "prediction_layer/conv_3"),
+      conv_4: extractPointwiseConvParams("Prediction", 4, "prediction_layer/conv_4"),
+      conv_5: extractPointwiseConvParams("Prediction", 5, "prediction_layer/conv_5"),
+      conv_6: extractPointwiseConvParams("Prediction", 6, "prediction_layer/conv_6"),
+      conv_7: extractPointwiseConvParams("Prediction", 7, "prediction_layer/conv_7"),
+      box_predictor_0: extractBoxPredictorParams(0),
+      box_predictor_1: extractBoxPredictorParams(1),
+      box_predictor_2: extractBoxPredictorParams(2),
+      box_predictor_3: extractBoxPredictorParams(3),
+      box_predictor_4: extractBoxPredictorParams(4),
+      box_predictor_5: extractBoxPredictorParams(5)
+    };
+  }
+  return {
+    extractMobilenetV1Params,
+    extractPredictionLayerParams
+  };
+}
+function extractParamsFromWeightMap6(weightMap) {
+  const paramMappings = [];
+  const {
+    extractMobilenetV1Params,
+    extractPredictionLayerParams
+  } = extractorsFactory6(weightMap, paramMappings);
+  const extra_dim = weightMap["Output/extra_dim"];
+  paramMappings.push({originalPath: "Output/extra_dim", paramPath: "output_layer/extra_dim"});
+  if (!isTensor3D(extra_dim)) {
+    throw new Error(`expected weightMap['Output/extra_dim'] to be a Tensor3D, instead have ${extra_dim}`);
+  }
+  const params = {
+    mobilenetv1: extractMobilenetV1Params(),
+    prediction_layer: extractPredictionLayerParams(),
+    output_layer: {
+      extra_dim
+    }
+  };
+  disposeUnusedWeightTensors(weightMap, paramMappings);
+  return {params, paramMappings};
+}
+
+// src/ssdMobilenetv1/mobileNetV1.ts
+var tf30 = require_tfjs_esm();
+
+// src/ssdMobilenetv1/pointwiseConvLayer.ts
+var tf29 = require_tfjs_esm();
+function pointwiseConvLayer(x, params, strides) {
+  return tf29.tidy(() => {
+    let out = tf29.conv2d(x, params.filters, strides, "same");
+    out = tf29.add(out, params.batch_norm_offset);
+    return tf29.clipByValue(out, 0, 6);
+  });
+}
+
+// src/ssdMobilenetv1/mobileNetV1.ts
+var epsilon = 0.0010000000474974513;
+function depthwiseConvLayer(x, params, strides) {
+  return tf30.tidy(() => {
+    let out = tf30.depthwiseConv2d(x, params.filters, strides, "same");
+    out = tf30.batchNorm(out, params.batch_norm_mean, params.batch_norm_variance, params.batch_norm_offset, params.batch_norm_scale, epsilon);
+    return tf30.clipByValue(out, 0, 6);
+  });
+}
+function getStridesForLayerIdx(layerIdx) {
+  return [2, 4, 6, 12].some((idx) => idx === layerIdx) ? [2, 2] : [1, 1];
+}
+function mobileNetV1(x, params) {
+  return tf30.tidy(() => {
+    let conv11;
+    let out = pointwiseConvLayer(x, params.conv_0, [2, 2]);
+    const convPairParams = [
+      params.conv_1,
+      params.conv_2,
+      params.conv_3,
+      params.conv_4,
+      params.conv_5,
+      params.conv_6,
+      params.conv_7,
+      params.conv_8,
+      params.conv_9,
+      params.conv_10,
+      params.conv_11,
+      params.conv_12,
+      params.conv_13
+    ];
+    convPairParams.forEach((param, i) => {
+      const layerIdx = i + 1;
+      const depthwiseConvStrides = getStridesForLayerIdx(layerIdx);
+      out = depthwiseConvLayer(out, param.depthwise_conv, depthwiseConvStrides);
+      out = pointwiseConvLayer(out, param.pointwise_conv, [1, 1]);
+      if (layerIdx === 11)
+        conv11 = out;
+    });
+    if (conv11 === null) {
+      throw new Error("mobileNetV1 - output of conv layer 11 is null");
+    }
+    return {
+      out,
+      conv11
+    };
+  });
+}
+
+// src/ssdMobilenetv1/nonMaxSuppression.ts
+function IOU(boxes, i, j) {
+  const boxesData = boxes.arraySync();
+  const yminI = Math.min(boxesData[i][0], boxesData[i][2]);
+  const xminI = Math.min(boxesData[i][1], boxesData[i][3]);
+  const ymaxI = Math.max(boxesData[i][0], boxesData[i][2]);
+  const xmaxI = Math.max(boxesData[i][1], boxesData[i][3]);
+  const yminJ = Math.min(boxesData[j][0], boxesData[j][2]);
+  const xminJ = Math.min(boxesData[j][1], boxesData[j][3]);
+  const ymaxJ = Math.max(boxesData[j][0], boxesData[j][2]);
+  const xmaxJ = Math.max(boxesData[j][1], boxesData[j][3]);
+  const areaI = (ymaxI - yminI) * (xmaxI - xminI);
+  const areaJ = (ymaxJ - yminJ) * (xmaxJ - xminJ);
+  if (areaI <= 0 || areaJ <= 0)
+    return 0;
+  const intersectionYmin = Math.max(yminI, yminJ);
+  const intersectionXmin = Math.max(xminI, xminJ);
+  const intersectionYmax = Math.min(ymaxI, ymaxJ);
+  const intersectionXmax = Math.min(xmaxI, xmaxJ);
+  const intersectionArea = Math.max(intersectionYmax - intersectionYmin, 0) * Math.max(intersectionXmax - intersectionXmin, 0);
+  return intersectionArea / (areaI + areaJ - intersectionArea);
+}
+function nonMaxSuppression2(boxes, scores, maxOutputSize, iouThreshold, scoreThreshold) {
+  const numBoxes = boxes.shape[0];
+  const outputSize = Math.min(maxOutputSize, numBoxes);
+  const candidates = scores.map((score, boxIndex) => ({score, boxIndex})).filter((c) => c.score > scoreThreshold).sort((c1, c2) => c2.score - c1.score);
+  const suppressFunc = (x) => x <= iouThreshold ? 1 : 0;
+  const selected = [];
+  candidates.forEach((c) => {
+    if (selected.length >= outputSize)
+      return;
+    const originalScore = c.score;
+    for (let j = selected.length - 1; j >= 0; --j) {
+      const iou2 = IOU(boxes, c.boxIndex, selected[j]);
+      if (iou2 === 0)
+        continue;
+      c.score *= suppressFunc(iou2);
+      if (c.score <= scoreThreshold)
+        break;
+    }
+    if (originalScore === c.score) {
+      selected.push(c.boxIndex);
+    }
+  });
+  return selected;
+}
+
+// src/ssdMobilenetv1/outputLayer.ts
+var tf31 = require_tfjs_esm();
+function getCenterCoordinatesAndSizesLayer(x) {
+  const vec = tf31.unstack(tf31.transpose(x, [1, 0]));
+  const sizes = [
+    tf31.sub(vec[2], vec[0]),
+    tf31.sub(vec[3], vec[1])
+  ];
+  const centers = [
+    tf31.add(vec[0], tf31.div(sizes[0], 2)),
+    tf31.add(vec[1], tf31.div(sizes[1], 2))
+  ];
+  return {sizes, centers};
+}
+function decodeBoxesLayer(x0, x1) {
+  const {sizes, centers} = getCenterCoordinatesAndSizesLayer(x0);
+  const vec = tf31.unstack(tf31.transpose(x1, [1, 0]));
+  const div0_out = tf31.div(tf31.mul(tf31.exp(tf31.div(vec[2], 5)), sizes[0]), 2);
+  const add0_out = tf31.add(tf31.mul(tf31.div(vec[0], 10), sizes[0]), centers[0]);
+  const div1_out = tf31.div(tf31.mul(tf31.exp(tf31.div(vec[3], 5)), sizes[1]), 2);
+  const add1_out = tf31.add(tf31.mul(tf31.div(vec[1], 10), sizes[1]), centers[1]);
+  return tf31.transpose(tf31.stack([
+    tf31.sub(add0_out, div0_out),
+    tf31.sub(add1_out, div1_out),
+    tf31.add(add0_out, div0_out),
+    tf31.add(add1_out, div1_out)
+  ]), [1, 0]);
+}
+function outputLayer(boxPredictions, classPredictions, params) {
+  return tf31.tidy(() => {
+    const batchSize = boxPredictions.shape[0];
+    let boxes = decodeBoxesLayer(tf31.reshape(tf31.tile(params.extra_dim, [batchSize, 1, 1]), [-1, 4]), tf31.reshape(boxPredictions, [-1, 4]));
+    boxes = tf31.reshape(boxes, [batchSize, boxes.shape[0] / batchSize, 4]);
+    const scoresAndClasses = tf31.sigmoid(tf31.slice(classPredictions, [0, 0, 1], [-1, -1, -1]));
+    let scores = tf31.slice(scoresAndClasses, [0, 0, 0], [-1, -1, 1]);
+    scores = tf31.reshape(scores, [batchSize, scores.shape[1]]);
+    const boxesByBatch = tf31.unstack(boxes);
+    const scoresByBatch = tf31.unstack(scores);
+    return {boxes: boxesByBatch, scores: scoresByBatch};
+  });
+}
+
+// src/ssdMobilenetv1/predictionLayer.ts
+var tf33 = require_tfjs_esm();
+
+// src/ssdMobilenetv1/boxPredictionLayer.ts
+var tf32 = require_tfjs_esm();
+function boxPredictionLayer(x, params) {
+  return tf32.tidy(() => {
+    const batchSize = x.shape[0];
+    const boxPredictionEncoding = tf32.reshape(convLayer(x, params.box_encoding_predictor), [batchSize, -1, 1, 4]);
+    const classPrediction = tf32.reshape(convLayer(x, params.class_predictor), [batchSize, -1, 3]);
+    return {boxPredictionEncoding, classPrediction};
+  });
+}
+
+// src/ssdMobilenetv1/predictionLayer.ts
+function predictionLayer(x, conv11, params) {
+  return tf33.tidy(() => {
+    const conv0 = pointwiseConvLayer(x, params.conv_0, [1, 1]);
+    const conv1 = pointwiseConvLayer(conv0, params.conv_1, [2, 2]);
+    const conv22 = pointwiseConvLayer(conv1, params.conv_2, [1, 1]);
+    const conv3 = pointwiseConvLayer(conv22, params.conv_3, [2, 2]);
+    const conv4 = pointwiseConvLayer(conv3, params.conv_4, [1, 1]);
+    const conv5 = pointwiseConvLayer(conv4, params.conv_5, [2, 2]);
+    const conv6 = pointwiseConvLayer(conv5, params.conv_6, [1, 1]);
+    const conv7 = pointwiseConvLayer(conv6, params.conv_7, [2, 2]);
+    const boxPrediction0 = boxPredictionLayer(conv11, params.box_predictor_0);
+    const boxPrediction1 = boxPredictionLayer(x, params.box_predictor_1);
+    const boxPrediction2 = boxPredictionLayer(conv1, params.box_predictor_2);
+    const boxPrediction3 = boxPredictionLayer(conv3, params.box_predictor_3);
+    const boxPrediction4 = boxPredictionLayer(conv5, params.box_predictor_4);
+    const boxPrediction5 = boxPredictionLayer(conv7, params.box_predictor_5);
+    const boxPredictions = tf33.concat([
+      boxPrediction0.boxPredictionEncoding,
+      boxPrediction1.boxPredictionEncoding,
+      boxPrediction2.boxPredictionEncoding,
+      boxPrediction3.boxPredictionEncoding,
+      boxPrediction4.boxPredictionEncoding,
+      boxPrediction5.boxPredictionEncoding
+    ], 1);
+    const classPredictions = tf33.concat([
+      boxPrediction0.classPrediction,
+      boxPrediction1.classPrediction,
+      boxPrediction2.classPrediction,
+      boxPrediction3.classPrediction,
+      boxPrediction4.classPrediction,
+      boxPrediction5.classPrediction
+    ], 1);
+    return {
+      boxPredictions,
+      classPredictions
+    };
+  });
+}
+
+// src/ssdMobilenetv1/SsdMobilenetv1Options.ts
+var SsdMobilenetv1Options = class {
+  constructor({minConfidence, maxResults} = {}) {
+    this._name = "SsdMobilenetv1Options";
+    this._minConfidence = minConfidence || 0.5;
+    this._maxResults = maxResults || 100;
+    if (typeof this._minConfidence !== "number" || this._minConfidence <= 0 || this._minConfidence >= 1) {
+      throw new Error(`${this._name} - expected minConfidence to be a number between 0 and 1`);
+    }
+    if (typeof this._maxResults !== "number") {
+      throw new Error(`${this._name} - expected maxResults to be a number`);
+    }
+  }
+  get minConfidence() {
+    return this._minConfidence;
+  }
+  get maxResults() {
+    return this._maxResults;
+  }
+};
+
+// src/ssdMobilenetv1/SsdMobilenetv1.ts
+var SsdMobilenetv1 = class extends NeuralNetwork {
+  constructor() {
+    super("SsdMobilenetv1");
+  }
+  forwardInput(input) {
+    const {params} = this;
+    if (!params) {
+      throw new Error("SsdMobilenetv1 - load model before inference");
+    }
+    return tf34.tidy(() => {
+      const batchTensor = tf34.cast(input.toBatchTensor(512, false), "float32");
+      const x = tf34.sub(tf34.div(batchTensor, 127.5), 1);
+      const features = mobileNetV1(x, params.mobilenetv1);
+      const {boxPredictions, classPredictions} = predictionLayer(features.out, features.conv11, params.prediction_layer);
+      return outputLayer(boxPredictions, classPredictions, params.output_layer);
+    });
+  }
+  async forward(input) {
+    return this.forwardInput(await toNetInput(input));
+  }
+  async locateFaces(input, options = {}) {
+    const {maxResults, minConfidence} = new SsdMobilenetv1Options(options);
+    const netInput = await toNetInput(input);
+    const {boxes: _boxes, scores: _scores} = this.forwardInput(netInput);
+    const boxes = _boxes[0];
+    const scores = _scores[0];
+    for (let i = 1; i < _boxes.length; i++) {
+      _boxes[i].dispose();
+      _scores[i].dispose();
+    }
+    const scoresData = Array.from(scores.dataSync());
+    const iouThreshold = 0.5;
+    const indices = nonMaxSuppression2(boxes, scoresData, maxResults, iouThreshold, minConfidence);
+    const reshapedDims = netInput.getReshapedInputDimensions(0);
+    const inputSize = netInput.inputSize;
+    const padX = inputSize / reshapedDims.width;
+    const padY = inputSize / reshapedDims.height;
+    const boxesData = boxes.arraySync();
+    const results = indices.map((idx) => {
+      const [top, bottom] = [
+        Math.max(0, boxesData[idx][0]),
+        Math.min(1, boxesData[idx][2])
+      ].map((val) => val * padY);
+      const [left, right] = [
+        Math.max(0, boxesData[idx][1]),
+        Math.min(1, boxesData[idx][3])
+      ].map((val) => val * padX);
+      return new FaceDetection(scoresData[idx], new Rect(left, top, right - left, bottom - top), {height: netInput.getInputHeight(0), width: netInput.getInputWidth(0)});
+    });
+    boxes.dispose();
+    scores.dispose();
+    return results;
+  }
+  getDefaultModelName() {
+    return "ssd_mobilenetv1_model";
+  }
+  extractParamsFromWeightMap(weightMap) {
+    return extractParamsFromWeightMap6(weightMap);
+  }
+  extractParams(weights) {
+    return extractParams6(weights);
+  }
+};
+
+// src/ssdMobilenetv1/index.ts
+function createSsdMobilenetv1(weights) {
+  const net = new SsdMobilenetv1();
+  net.extractWeights(weights);
+  return net;
+}
+function createFaceDetectionNet(weights) {
+  return createSsdMobilenetv1(weights);
+}
+var FaceDetectionNet = class extends SsdMobilenetv1 {
+};
+
+// src/tinyYolov2/const.ts
+var IOU_THRESHOLD = 0.4;
+var BOX_ANCHORS = [
+  new Point(0.738768, 0.874946),
+  new Point(2.42204, 2.65704),
+  new Point(4.30971, 7.04493),
+  new Point(10.246, 4.59428),
+  new Point(12.6868, 11.8741)
+];
+var BOX_ANCHORS_SEPARABLE = [
+  new Point(1.603231, 2.094468),
+  new Point(6.041143, 7.080126),
+  new Point(2.882459, 3.518061),
+  new Point(4.266906, 5.178857),
+  new Point(9.041765, 10.66308)
+];
+var MEAN_RGB_SEPARABLE = [117.001, 114.697, 97.404];
+var DEFAULT_MODEL_NAME = "tiny_yolov2_model";
+var DEFAULT_MODEL_NAME_SEPARABLE_CONV = "tiny_yolov2_separable_conv_model";
+
+// src/tinyYolov2/TinyYolov2Base.ts
+var tf39 = require_tfjs_esm();
+
+// src/tinyYolov2/config.ts
+var isNumber = (arg) => typeof arg === "number";
+function validateConfig(config) {
+  if (!config) {
+    throw new Error(`invalid config: ${config}`);
+  }
+  if (typeof config.withSeparableConvs !== "boolean") {
+    throw new Error(`config.withSeparableConvs has to be a boolean, have: ${config.withSeparableConvs}`);
+  }
+  if (!isNumber(config.iouThreshold) || config.iouThreshold < 0 || config.iouThreshold > 1) {
+    throw new Error(`config.iouThreshold has to be a number between [0, 1], have: ${config.iouThreshold}`);
+  }
+  if (!Array.isArray(config.classes) || !config.classes.length || !config.classes.every((c) => typeof c === "string")) {
+    throw new Error(`config.classes has to be an array class names: string[], have: ${JSON.stringify(config.classes)}`);
+  }
+  if (!Array.isArray(config.anchors) || !config.anchors.length || !config.anchors.map((a) => a || {}).every((a) => isNumber(a.x) && isNumber(a.y))) {
+    throw new Error(`config.anchors has to be an array of { x: number, y: number }, have: ${JSON.stringify(config.anchors)}`);
+  }
+  if (config.meanRgb && (!Array.isArray(config.meanRgb) || config.meanRgb.length !== 3 || !config.meanRgb.every(isNumber))) {
+    throw new Error(`config.meanRgb has to be an array of shape [number, number, number], have: ${JSON.stringify(config.meanRgb)}`);
+  }
+}
+
+// src/tinyYolov2/convWithBatchNorm.ts
+var tf36 = require_tfjs_esm();
+
+// src/tinyYolov2/leaky.ts
+var tf35 = require_tfjs_esm();
+function leaky(x) {
+  return tf35.tidy(() => {
+    const min = tf35.mul(x, tf35.scalar(0.10000000149011612));
+    return tf35.add(tf35.relu(tf35.sub(x, min)), min);
+  });
+}
+
+// src/tinyYolov2/convWithBatchNorm.ts
+function convWithBatchNorm(x, params) {
+  return tf36.tidy(() => {
+    let out = tf36.pad(x, [[0, 0], [1, 1], [1, 1], [0, 0]]);
+    out = tf36.conv2d(out, params.conv.filters, [1, 1], "valid");
+    out = tf36.sub(out, params.bn.sub);
+    out = tf36.mul(out, params.bn.truediv);
+    out = tf36.add(out, params.conv.bias);
+    return leaky(out);
+  });
+}
+
+// src/tinyYolov2/depthwiseSeparableConv.ts
+var tf37 = require_tfjs_esm();
+function depthwiseSeparableConv2(x, params) {
+  return tf37.tidy(() => {
+    let out = tf37.pad(x, [[0, 0], [1, 1], [1, 1], [0, 0]]);
+    out = tf37.separableConv2d(out, params.depthwise_filter, params.pointwise_filter, [1, 1], "valid");
+    out = tf37.add(out, params.bias);
+    return leaky(out);
+  });
+}
+
+// src/tinyYolov2/extractParams.ts
+var tf38 = require_tfjs_esm();
+function extractorsFactory7(extractWeights, paramMappings) {
+  const extractConvParams = extractConvParamsFactory(extractWeights, paramMappings);
+  function extractBatchNormParams(size, mappedPrefix) {
+    const sub6 = tf38.tensor1d(extractWeights(size));
+    const truediv = tf38.tensor1d(extractWeights(size));
+    paramMappings.push({paramPath: `${mappedPrefix}/sub`}, {paramPath: `${mappedPrefix}/truediv`});
+    return {sub: sub6, truediv};
+  }
+  function extractConvWithBatchNormParams(channelsIn, channelsOut, mappedPrefix) {
+    const conv3 = extractConvParams(channelsIn, channelsOut, 3, `${mappedPrefix}/conv`);
+    const bn = extractBatchNormParams(channelsOut, `${mappedPrefix}/bn`);
+    return {conv: conv3, bn};
+  }
+  const extractSeparableConvParams = extractSeparableConvParamsFactory(extractWeights, paramMappings);
+  return {
+    extractConvParams,
+    extractConvWithBatchNormParams,
+    extractSeparableConvParams
+  };
+}
+function extractParams7(weights, config, boxEncodingSize, filterSizes) {
+  const {
+    extractWeights,
+    getRemainingWeights
+  } = extractWeightsFactory(weights);
+  const paramMappings = [];
+  const {
+    extractConvParams,
+    extractConvWithBatchNormParams,
+    extractSeparableConvParams
+  } = extractorsFactory7(extractWeights, paramMappings);
+  let params;
+  if (config.withSeparableConvs) {
+    const [s0, s1, s2, s3, s4, s5, s6, s7, s8] = filterSizes;
+    const conv0 = config.isFirstLayerConv2d ? extractConvParams(s0, s1, 3, "conv0") : extractSeparableConvParams(s0, s1, "conv0");
+    const conv1 = extractSeparableConvParams(s1, s2, "conv1");
+    const conv22 = extractSeparableConvParams(s2, s3, "conv2");
+    const conv3 = extractSeparableConvParams(s3, s4, "conv3");
+    const conv4 = extractSeparableConvParams(s4, s5, "conv4");
+    const conv5 = extractSeparableConvParams(s5, s6, "conv5");
+    const conv6 = s7 ? extractSeparableConvParams(s6, s7, "conv6") : void 0;
+    const conv7 = s8 ? extractSeparableConvParams(s7, s8, "conv7") : void 0;
+    const conv8 = extractConvParams(s8 || s7 || s6, 5 * boxEncodingSize, 1, "conv8");
+    params = {
+      conv0,
+      conv1,
+      conv2: conv22,
+      conv3,
+      conv4,
+      conv5,
+      conv6,
+      conv7,
+      conv8
+    };
+  } else {
+    const [s0, s1, s2, s3, s4, s5, s6, s7, s8] = filterSizes;
+    const conv0 = extractConvWithBatchNormParams(s0, s1, "conv0");
+    const conv1 = extractConvWithBatchNormParams(s1, s2, "conv1");
+    const conv22 = extractConvWithBatchNormParams(s2, s3, "conv2");
+    const conv3 = extractConvWithBatchNormParams(s3, s4, "conv3");
+    const conv4 = extractConvWithBatchNormParams(s4, s5, "conv4");
+    const conv5 = extractConvWithBatchNormParams(s5, s6, "conv5");
+    const conv6 = extractConvWithBatchNormParams(s6, s7, "conv6");
+    const conv7 = extractConvWithBatchNormParams(s7, s8, "conv7");
+    const conv8 = extractConvParams(s8, 5 * boxEncodingSize, 1, "conv8");
+    params = {
+      conv0,
+      conv1,
+      conv2: conv22,
+      conv3,
+      conv4,
+      conv5,
+      conv6,
+      conv7,
+      conv8
+    };
+  }
+  if (getRemainingWeights().length !== 0) {
+    throw new Error(`weights remaing after extract: ${getRemainingWeights().length}`);
+  }
+  return {params, paramMappings};
+}
+
+// src/tinyYolov2/extractParamsFromWeightMap.ts
+function extractorsFactory8(weightMap, paramMappings) {
+  const extractWeightEntry = extractWeightEntryFactory(weightMap, paramMappings);
+  function extractBatchNormParams(prefix) {
+    const sub6 = extractWeightEntry(`${prefix}/sub`, 1);
+    const truediv = extractWeightEntry(`${prefix}/truediv`, 1);
+    return {sub: sub6, truediv};
+  }
+  function extractConvParams(prefix) {
+    const filters = extractWeightEntry(`${prefix}/filters`, 4);
+    const bias = extractWeightEntry(`${prefix}/bias`, 1);
+    return {filters, bias};
+  }
+  function extractConvWithBatchNormParams(prefix) {
+    const conv3 = extractConvParams(`${prefix}/conv`);
+    const bn = extractBatchNormParams(`${prefix}/bn`);
+    return {conv: conv3, bn};
+  }
+  const extractSeparableConvParams = loadSeparableConvParamsFactory(extractWeightEntry);
+  return {
+    extractConvParams,
+    extractConvWithBatchNormParams,
+    extractSeparableConvParams
+  };
+}
+function extractParamsFromWeightMap7(weightMap, config) {
+  const paramMappings = [];
+  const {
+    extractConvParams,
+    extractConvWithBatchNormParams,
+    extractSeparableConvParams
+  } = extractorsFactory8(weightMap, paramMappings);
+  let params;
+  if (config.withSeparableConvs) {
+    const numFilters = config.filterSizes && config.filterSizes.length || 9;
+    params = {
+      conv0: config.isFirstLayerConv2d ? extractConvParams("conv0") : extractSeparableConvParams("conv0"),
+      conv1: extractSeparableConvParams("conv1"),
+      conv2: extractSeparableConvParams("conv2"),
+      conv3: extractSeparableConvParams("conv3"),
+      conv4: extractSeparableConvParams("conv4"),
+      conv5: extractSeparableConvParams("conv5"),
+      conv6: numFilters > 7 ? extractSeparableConvParams("conv6") : void 0,
+      conv7: numFilters > 8 ? extractSeparableConvParams("conv7") : void 0,
+      conv8: extractConvParams("conv8")
+    };
+  } else {
+    params = {
+      conv0: extractConvWithBatchNormParams("conv0"),
+      conv1: extractConvWithBatchNormParams("conv1"),
+      conv2: extractConvWithBatchNormParams("conv2"),
+      conv3: extractConvWithBatchNormParams("conv3"),
+      conv4: extractConvWithBatchNormParams("conv4"),
+      conv5: extractConvWithBatchNormParams("conv5"),
+      conv6: extractConvWithBatchNormParams("conv6"),
+      conv7: extractConvWithBatchNormParams("conv7"),
+      conv8: extractConvParams("conv8")
+    };
+  }
+  disposeUnusedWeightTensors(weightMap, paramMappings);
+  return {params, paramMappings};
+}
+
+// src/tinyYolov2/TinyYolov2Options.ts
+var TinyYolov2Options = class {
+  constructor({inputSize, scoreThreshold} = {}) {
+    this._name = "TinyYolov2Options";
+    this._inputSize = inputSize || 416;
+    this._scoreThreshold = scoreThreshold || 0.5;
+    if (typeof this._inputSize !== "number" || this._inputSize % 32 !== 0) {
+      throw new Error(`${this._name} - expected inputSize to be a number divisible by 32`);
+    }
+    if (typeof this._scoreThreshold !== "number" || this._scoreThreshold <= 0 || this._scoreThreshold >= 1) {
+      throw new Error(`${this._name} - expected scoreThreshold to be a number between 0 and 1`);
+    }
+  }
+  get inputSize() {
+    return this._inputSize;
+  }
+  get scoreThreshold() {
+    return this._scoreThreshold;
+  }
+};
+
+// src/tinyYolov2/TinyYolov2Base.ts
+var _TinyYolov2Base = class extends NeuralNetwork {
+  constructor(config) {
+    super("TinyYolov2");
+    validateConfig(config);
+    this._config = config;
+  }
+  get config() {
+    return this._config;
+  }
+  get withClassScores() {
+    return this.config.withClassScores || this.config.classes.length > 1;
+  }
+  get boxEncodingSize() {
+    return 5 + (this.withClassScores ? this.config.classes.length : 0);
+  }
+  runTinyYolov2(x, params) {
+    let out = convWithBatchNorm(x, params.conv0);
+    out = tf39.maxPool(out, [2, 2], [2, 2], "same");
+    out = convWithBatchNorm(out, params.conv1);
+    out = tf39.maxPool(out, [2, 2], [2, 2], "same");
+    out = convWithBatchNorm(out, params.conv2);
+    out = tf39.maxPool(out, [2, 2], [2, 2], "same");
+    out = convWithBatchNorm(out, params.conv3);
+    out = tf39.maxPool(out, [2, 2], [2, 2], "same");
+    out = convWithBatchNorm(out, params.conv4);
+    out = tf39.maxPool(out, [2, 2], [2, 2], "same");
+    out = convWithBatchNorm(out, params.conv5);
+    out = tf39.maxPool(out, [2, 2], [1, 1], "same");
+    out = convWithBatchNorm(out, params.conv6);
+    out = convWithBatchNorm(out, params.conv7);
+    return convLayer(out, params.conv8, "valid", false);
+  }
+  runMobilenet(x, params) {
+    let out = this.config.isFirstLayerConv2d ? leaky(convLayer(x, params.conv0, "valid", false)) : depthwiseSeparableConv2(x, params.conv0);
+    out = tf39.maxPool(out, [2, 2], [2, 2], "same");
+    out = depthwiseSeparableConv2(out, params.conv1);
+    out = tf39.maxPool(out, [2, 2], [2, 2], "same");
+    out = depthwiseSeparableConv2(out, params.conv2);
+    out = tf39.maxPool(out, [2, 2], [2, 2], "same");
+    out = depthwiseSeparableConv2(out, params.conv3);
+    out = tf39.maxPool(out, [2, 2], [2, 2], "same");
+    out = depthwiseSeparableConv2(out, params.conv4);
+    out = tf39.maxPool(out, [2, 2], [2, 2], "same");
+    out = depthwiseSeparableConv2(out, params.conv5);
+    out = tf39.maxPool(out, [2, 2], [1, 1], "same");
+    out = params.conv6 ? depthwiseSeparableConv2(out, params.conv6) : out;
+    out = params.conv7 ? depthwiseSeparableConv2(out, params.conv7) : out;
+    return convLayer(out, params.conv8, "valid", false);
+  }
+  forwardInput(input, inputSize) {
+    const {params} = this;
+    if (!params) {
+      throw new Error("TinyYolov2 - load model before inference");
+    }
+    return tf39.tidy(() => {
+      let batchTensor = tf39.cast(input.toBatchTensor(inputSize, false), "float32");
+      batchTensor = this.config.meanRgb ? normalize(batchTensor, this.config.meanRgb) : batchTensor;
+      batchTensor = batchTensor.div(255);
+      return this.config.withSeparableConvs ? this.runMobilenet(batchTensor, params) : this.runTinyYolov2(batchTensor, params);
+    });
+  }
+  async forward(input, inputSize) {
+    return this.forwardInput(await toNetInput(input), inputSize);
+  }
+  async detect(input, forwardParams = {}) {
+    const {inputSize, scoreThreshold} = new TinyYolov2Options(forwardParams);
+    const netInput = await toNetInput(input);
+    const out = await this.forwardInput(netInput, inputSize);
+    const out0 = tf39.tidy(() => tf39.unstack(out)[0].expandDims());
+    const inputDimensions = {
+      width: netInput.getInputWidth(0),
+      height: netInput.getInputHeight(0)
+    };
+    const results = await this.extractBoxes(out0, netInput.getReshapedInputDimensions(0), scoreThreshold);
+    out.dispose();
+    out0.dispose();
+    const boxes = results.map((res) => res.box);
+    const scores = results.map((res) => res.score);
+    const classScores = results.map((res) => res.classScore);
+    const classNames = results.map((res) => this.config.classes[res.label]);
+    const indices = nonMaxSuppression(boxes.map((box) => box.rescale(inputSize)), scores, this.config.iouThreshold, true);
+    const detections = indices.map((idx) => new ObjectDetection(scores[idx], classScores[idx], classNames[idx], boxes[idx], inputDimensions));
+    return detections;
+  }
+  getDefaultModelName() {
+    return "";
+  }
+  extractParamsFromWeightMap(weightMap) {
+    return extractParamsFromWeightMap7(weightMap, this.config);
+  }
+  extractParams(weights) {
+    const filterSizes = this.config.filterSizes || _TinyYolov2Base.DEFAULT_FILTER_SIZES;
+    const numFilters = filterSizes ? filterSizes.length : void 0;
+    if (numFilters !== 7 && numFilters !== 8 && numFilters !== 9) {
+      throw new Error(`TinyYolov2 - expected 7 | 8 | 9 convolutional filters, but found ${numFilters} filterSizes in config`);
+    }
+    return extractParams7(weights, this.config, this.boxEncodingSize, filterSizes);
+  }
+  async extractBoxes(outputTensor, inputBlobDimensions, scoreThreshold) {
+    const {width, height} = inputBlobDimensions;
+    const inputSize = Math.max(width, height);
+    const correctionFactorX = inputSize / width;
+    const correctionFactorY = inputSize / height;
+    const numCells = outputTensor.shape[1];
+    const numBoxes = this.config.anchors.length;
+    const [boxesTensor, scoresTensor, classScoresTensor] = tf39.tidy(() => {
+      const reshaped = outputTensor.reshape([numCells, numCells, numBoxes, this.boxEncodingSize]);
+      const boxes = reshaped.slice([0, 0, 0, 0], [numCells, numCells, numBoxes, 4]);
+      const scores = reshaped.slice([0, 0, 0, 4], [numCells, numCells, numBoxes, 1]);
+      const classScores = this.withClassScores ? tf39.softmax(reshaped.slice([0, 0, 0, 5], [numCells, numCells, numBoxes, this.config.classes.length]), 3) : tf39.scalar(0);
+      return [boxes, scores, classScores];
+    });
+    const results = [];
+    const scoresData = await scoresTensor.array();
+    const boxesData = await boxesTensor.array();
+    for (let row = 0; row < numCells; row++) {
+      for (let col = 0; col < numCells; col++) {
+        for (let anchor = 0; anchor < numBoxes; anchor++) {
+          const score = sigmoid(scoresData[row][col][anchor][0]);
+          if (!scoreThreshold || score > scoreThreshold) {
+            const ctX = (col + sigmoid(boxesData[row][col][anchor][0])) / numCells * correctionFactorX;
+            const ctY = (row + sigmoid(boxesData[row][col][anchor][1])) / numCells * correctionFactorY;
+            const widthLocal = Math.exp(boxesData[row][col][anchor][2]) * this.config.anchors[anchor].x / numCells * correctionFactorX;
+            const heightLocal = Math.exp(boxesData[row][col][anchor][3]) * this.config.anchors[anchor].y / numCells * correctionFactorY;
+            const x = ctX - widthLocal / 2;
+            const y = ctY - heightLocal / 2;
+            const pos = {row, col, anchor};
+            const {classScore, label} = this.withClassScores ? await this.extractPredictedClass(classScoresTensor, pos) : {classScore: 1, label: 0};
+            results.push({
+              box: new BoundingBox(x, y, x + widthLocal, y + heightLocal),
+              score,
+              classScore: score * classScore,
+              label,
+              ...pos
+            });
+          }
+        }
+      }
+    }
+    boxesTensor.dispose();
+    scoresTensor.dispose();
+    classScoresTensor.dispose();
+    return results;
+  }
+  async extractPredictedClass(classesTensor, pos) {
+    const {row, col, anchor} = pos;
+    const classesData = await classesTensor.array();
+    return Array(this.config.classes.length).fill(0).map((_, i) => classesData[row][col][anchor][i]).map((classScore, label) => ({
+      classScore,
+      label
+    })).reduce((max, curr) => max.classScore > curr.classScore ? max : curr);
+  }
+};
+var TinyYolov2Base = _TinyYolov2Base;
+TinyYolov2Base.DEFAULT_FILTER_SIZES = [3, 16, 32, 64, 128, 256, 512, 1024, 1024];
+
+// src/tinyYolov2/TinyYolov2.ts
+var TinyYolov2 = class extends TinyYolov2Base {
+  constructor(withSeparableConvs = true) {
+    const config = {
+      withSeparableConvs,
+      iouThreshold: IOU_THRESHOLD,
+      classes: ["face"],
+      ...withSeparableConvs ? {
+        anchors: BOX_ANCHORS_SEPARABLE,
+        meanRgb: MEAN_RGB_SEPARABLE
+      } : {
+        anchors: BOX_ANCHORS,
+        withClassScores: true
+      }
+    };
+    super(config);
+  }
+  get withSeparableConvs() {
+    return this.config.withSeparableConvs;
+  }
+  get anchors() {
+    return this.config.anchors;
+  }
+  async locateFaces(input, forwardParams) {
+    const objectDetections = await this.detect(input, forwardParams);
+    return objectDetections.map((det) => new FaceDetection(det.score, det.relativeBox, {width: det.imageWidth, height: det.imageHeight}));
+  }
+  getDefaultModelName() {
+    return this.withSeparableConvs ? DEFAULT_MODEL_NAME_SEPARABLE_CONV : DEFAULT_MODEL_NAME;
+  }
+  extractParamsFromWeightMap(weightMap) {
+    return super.extractParamsFromWeightMap(weightMap);
+  }
+};
+
+// src/tinyYolov2/index.ts
+function createTinyYolov2(weights, withSeparableConvs = true) {
+  const net = new TinyYolov2(withSeparableConvs);
+  net.extractWeights(weights);
+  return net;
+}
+
+// src/tinyFaceDetector/TinyFaceDetectorOptions.ts
+var TinyFaceDetectorOptions = class extends TinyYolov2Options {
+  constructor() {
+    super(...arguments);
+    this._name = "TinyFaceDetectorOptions";
+  }
+};
+
+// src/globalApi/ComposableTask.ts
+var ComposableTask = class {
+  async then(onfulfilled) {
+    return onfulfilled(await this.run());
+  }
+  async run() {
+    throw new Error("ComposableTask - run is not implemented");
+  }
+};
+
+// src/globalApi/DetectFaceLandmarksTasks.ts
+var tf41 = require_tfjs_esm();
+
+// src/globalApi/extractFacesAndComputeResults.ts
+var tf40 = require_tfjs_esm();
+async function extractAllFacesAndComputeResults(parentResults, input, computeResults, extractedFaces, getRectForAlignment = ({alignedRect}) => alignedRect) {
+  const faceBoxes = parentResults.map((parentResult) => isWithFaceLandmarks(parentResult) ? getRectForAlignment(parentResult) : parentResult.detection);
+  const faces = extractedFaces || (input instanceof tf40.Tensor ? await extractFaceTensors(input, faceBoxes) : await extractFaces(input, faceBoxes));
+  const results = await computeResults(faces);
+  faces.forEach((f) => f instanceof tf40.Tensor && f.dispose());
+  return results;
+}
+async function extractSingleFaceAndComputeResult(parentResult, input, computeResult, extractedFaces, getRectForAlignment) {
+  return extractAllFacesAndComputeResults([parentResult], input, async (faces) => computeResult(faces[0]), extractedFaces, getRectForAlignment);
+}
+
+// src/tinyFaceDetector/const.ts
+var IOU_THRESHOLD2 = 0.4;
+var BOX_ANCHORS2 = [
+  new Point(1.603231, 2.094468),
+  new Point(6.041143, 7.080126),
+  new Point(2.882459, 3.518061),
+  new Point(4.266906, 5.178857),
+  new Point(9.041765, 10.66308)
+];
+var MEAN_RGB = [117.001, 114.697, 97.404];
+
+// src/tinyFaceDetector/TinyFaceDetector.ts
+var TinyFaceDetector = class extends TinyYolov2Base {
+  constructor() {
+    const config = {
+      withSeparableConvs: true,
+      iouThreshold: IOU_THRESHOLD2,
+      classes: ["face"],
+      anchors: BOX_ANCHORS2,
+      meanRgb: MEAN_RGB,
+      isFirstLayerConv2d: true,
+      filterSizes: [3, 16, 32, 64, 128, 256, 512]
+    };
+    super(config);
+  }
+  get anchors() {
+    return this.config.anchors;
+  }
+  async locateFaces(input, forwardParams) {
+    const objectDetections = await this.detect(input, forwardParams);
+    return objectDetections.map((det) => new FaceDetection(det.score, det.relativeBox, {width: det.imageWidth, height: det.imageHeight}));
+  }
+  getDefaultModelName() {
+    return "tiny_face_detector_model";
+  }
+  extractParamsFromWeightMap(weightMap) {
+    return super.extractParamsFromWeightMap(weightMap);
+  }
+};
+
+// src/globalApi/nets.ts
+var nets = {
+  ssdMobilenetv1: new SsdMobilenetv1(),
+  tinyFaceDetector: new TinyFaceDetector(),
+  tinyYolov2: new TinyYolov2(),
+  faceLandmark68Net: new FaceLandmark68Net(),
+  faceLandmark68TinyNet: new FaceLandmark68TinyNet(),
+  faceRecognitionNet: new FaceRecognitionNet(),
+  faceExpressionNet: new FaceExpressionNet(),
+  ageGenderNet: new AgeGenderNet()
+};
+var ssdMobilenetv1 = (input, options) => nets.ssdMobilenetv1.locateFaces(input, options);
+var tinyFaceDetector = (input, options) => nets.tinyFaceDetector.locateFaces(input, options);
+var tinyYolov2 = (input, options) => nets.tinyYolov2.locateFaces(input, options);
+var detectFaceLandmarks = (input) => nets.faceLandmark68Net.detectLandmarks(input);
+var detectFaceLandmarksTiny = (input) => nets.faceLandmark68TinyNet.detectLandmarks(input);
+var computeFaceDescriptor = (input) => nets.faceRecognitionNet.computeFaceDescriptor(input);
+var recognizeFaceExpressions = (input) => nets.faceExpressionNet.predictExpressions(input);
+var predictAgeAndGender = (input) => nets.ageGenderNet.predictAgeAndGender(input);
+var loadSsdMobilenetv1Model = (url) => nets.ssdMobilenetv1.load(url);
+var loadTinyFaceDetectorModel = (url) => nets.tinyFaceDetector.load(url);
+var loadTinyYolov2Model = (url) => nets.tinyYolov2.load(url);
+var loadFaceLandmarkModel = (url) => nets.faceLandmark68Net.load(url);
+var loadFaceLandmarkTinyModel = (url) => nets.faceLandmark68TinyNet.load(url);
+var loadFaceRecognitionModel = (url) => nets.faceRecognitionNet.load(url);
+var loadFaceExpressionModel = (url) => nets.faceExpressionNet.load(url);
+var loadAgeGenderModel = (url) => nets.ageGenderNet.load(url);
+var loadFaceDetectionModel = loadSsdMobilenetv1Model;
+var locateFaces = ssdMobilenetv1;
+var detectLandmarks = detectFaceLandmarks;
+
+// src/globalApi/PredictFaceExpressionsTask.ts
+var PredictFaceExpressionsTaskBase = class extends ComposableTask {
+  constructor(parentTask, input, extractedFaces) {
+    super();
+    this.parentTask = parentTask;
+    this.input = input;
+    this.extractedFaces = extractedFaces;
+  }
+};
+var PredictAllFaceExpressionsTask = class extends PredictFaceExpressionsTaskBase {
+  async run() {
+    const parentResults = await this.parentTask;
+    const faceExpressionsByFace = await extractAllFacesAndComputeResults(parentResults, this.input, async (faces) => Promise.all(faces.map((face) => nets.faceExpressionNet.predictExpressions(face))), this.extractedFaces);
+    return parentResults.map((parentResult, i) => extendWithFaceExpressions(parentResult, faceExpressionsByFace[i]));
+  }
+  withAgeAndGender() {
+    return new PredictAllAgeAndGenderTask(this, this.input);
+  }
+};
+var PredictSingleFaceExpressionsTask = class extends PredictFaceExpressionsTaskBase {
+  async run() {
+    const parentResult = await this.parentTask;
+    if (!parentResult) {
+      return void 0;
+    }
+    const faceExpressions = await extractSingleFaceAndComputeResult(parentResult, this.input, (face) => nets.faceExpressionNet.predictExpressions(face), this.extractedFaces);
+    return extendWithFaceExpressions(parentResult, faceExpressions);
+  }
+  withAgeAndGender() {
+    return new PredictSingleAgeAndGenderTask(this, this.input);
+  }
+};
+var PredictAllFaceExpressionsWithFaceAlignmentTask = class extends PredictAllFaceExpressionsTask {
+  withAgeAndGender() {
+    return new PredictAllAgeAndGenderWithFaceAlignmentTask(this, this.input);
+  }
+  withFaceDescriptors() {
+    return new ComputeAllFaceDescriptorsTask(this, this.input);
+  }
+};
+var PredictSingleFaceExpressionsWithFaceAlignmentTask = class extends PredictSingleFaceExpressionsTask {
+  withAgeAndGender() {
+    return new PredictSingleAgeAndGenderWithFaceAlignmentTask(this, this.input);
+  }
+  withFaceDescriptor() {
+    return new ComputeSingleFaceDescriptorTask(this, this.input);
+  }
+};
+
+// src/globalApi/PredictAgeAndGenderTask.ts
+var PredictAgeAndGenderTaskBase = class extends ComposableTask {
+  constructor(parentTask, input, extractedFaces) {
+    super();
+    this.parentTask = parentTask;
+    this.input = input;
+    this.extractedFaces = extractedFaces;
+  }
+};
+var PredictAllAgeAndGenderTask = class extends PredictAgeAndGenderTaskBase {
+  async run() {
+    const parentResults = await this.parentTask;
+    const ageAndGenderByFace = await extractAllFacesAndComputeResults(parentResults, this.input, async (faces) => Promise.all(faces.map((face) => nets.ageGenderNet.predictAgeAndGender(face))), this.extractedFaces);
+    return parentResults.map((parentResult, i) => {
+      const {age, gender, genderProbability} = ageAndGenderByFace[i];
+      return extendWithAge(extendWithGender(parentResult, gender, genderProbability), age);
+    });
+  }
+  withFaceExpressions() {
+    return new PredictAllFaceExpressionsTask(this, this.input);
+  }
+};
+var PredictSingleAgeAndGenderTask = class extends PredictAgeAndGenderTaskBase {
+  async run() {
+    const parentResult = await this.parentTask;
+    if (!parentResult) {
+      return void 0;
+    }
+    const {age, gender, genderProbability} = await extractSingleFaceAndComputeResult(parentResult, this.input, (face) => nets.ageGenderNet.predictAgeAndGender(face), this.extractedFaces);
+    return extendWithAge(extendWithGender(parentResult, gender, genderProbability), age);
+  }
+  withFaceExpressions() {
+    return new PredictSingleFaceExpressionsTask(this, this.input);
+  }
+};
+var PredictAllAgeAndGenderWithFaceAlignmentTask = class extends PredictAllAgeAndGenderTask {
+  withFaceExpressions() {
+    return new PredictAllFaceExpressionsWithFaceAlignmentTask(this, this.input);
+  }
+  withFaceDescriptors() {
+    return new ComputeAllFaceDescriptorsTask(this, this.input);
+  }
+};
+var PredictSingleAgeAndGenderWithFaceAlignmentTask = class extends PredictSingleAgeAndGenderTask {
+  withFaceExpressions() {
+    return new PredictSingleFaceExpressionsWithFaceAlignmentTask(this, this.input);
+  }
+  withFaceDescriptor() {
+    return new ComputeSingleFaceDescriptorTask(this, this.input);
+  }
+};
+
+// src/globalApi/ComputeFaceDescriptorsTasks.ts
+var ComputeFaceDescriptorsTaskBase = class extends ComposableTask {
+  constructor(parentTask, input) {
+    super();
+    this.parentTask = parentTask;
+    this.input = input;
+  }
+};
+var ComputeAllFaceDescriptorsTask = class extends ComputeFaceDescriptorsTaskBase {
+  async run() {
+    const parentResults = await this.parentTask;
+    const descriptors = await extractAllFacesAndComputeResults(parentResults, this.input, (faces) => Promise.all(faces.map((face) => nets.faceRecognitionNet.computeFaceDescriptor(face))), null, (parentResult) => parentResult.landmarks.align(null, {useDlibAlignment: true}));
+    return descriptors.map((descriptor, i) => extendWithFaceDescriptor(parentResults[i], descriptor));
+  }
+  withFaceExpressions() {
+    return new PredictAllFaceExpressionsWithFaceAlignmentTask(this, this.input);
+  }
+  withAgeAndGender() {
+    return new PredictAllAgeAndGenderWithFaceAlignmentTask(this, this.input);
+  }
+};
+var ComputeSingleFaceDescriptorTask = class extends ComputeFaceDescriptorsTaskBase {
+  async run() {
+    const parentResult = await this.parentTask;
+    if (!parentResult) {
+      return void 0;
+    }
+    const descriptor = await extractSingleFaceAndComputeResult(parentResult, this.input, (face) => nets.faceRecognitionNet.computeFaceDescriptor(face), null, (parentResult2) => parentResult2.landmarks.align(null, {useDlibAlignment: true}));
+    return extendWithFaceDescriptor(parentResult, descriptor);
+  }
+  withFaceExpressions() {
+    return new PredictSingleFaceExpressionsWithFaceAlignmentTask(this, this.input);
+  }
+  withAgeAndGender() {
+    return new PredictSingleAgeAndGenderWithFaceAlignmentTask(this, this.input);
+  }
+};
+
+// src/globalApi/DetectFaceLandmarksTasks.ts
+var DetectFaceLandmarksTaskBase = class extends ComposableTask {
+  constructor(parentTask, input, useTinyLandmarkNet) {
+    super();
+    this.parentTask = parentTask;
+    this.input = input;
+    this.useTinyLandmarkNet = useTinyLandmarkNet;
+  }
+  get landmarkNet() {
+    return this.useTinyLandmarkNet ? nets.faceLandmark68TinyNet : nets.faceLandmark68Net;
+  }
+};
+var DetectAllFaceLandmarksTask = class extends DetectFaceLandmarksTaskBase {
+  async run() {
+    const parentResults = await this.parentTask;
+    const detections = parentResults.map((res) => res.detection);
+    const faces = this.input instanceof tf41.Tensor ? await extractFaceTensors(this.input, detections) : await extractFaces(this.input, detections);
+    const faceLandmarksByFace = await Promise.all(faces.map((face) => this.landmarkNet.detectLandmarks(face)));
+    faces.forEach((f) => f instanceof tf41.Tensor && f.dispose());
+    return parentResults.map((parentResult, i) => extendWithFaceLandmarks(parentResult, faceLandmarksByFace[i]));
+  }
+  withFaceExpressions() {
+    return new PredictAllFaceExpressionsWithFaceAlignmentTask(this, this.input);
+  }
+  withAgeAndGender() {
+    return new PredictAllAgeAndGenderWithFaceAlignmentTask(this, this.input);
+  }
+  withFaceDescriptors() {
+    return new ComputeAllFaceDescriptorsTask(this, this.input);
+  }
+};
+var DetectSingleFaceLandmarksTask = class extends DetectFaceLandmarksTaskBase {
+  async run() {
+    const parentResult = await this.parentTask;
+    if (!parentResult) {
+      return void 0;
+    }
+    const {detection} = parentResult;
+    const faces = this.input instanceof tf41.Tensor ? await extractFaceTensors(this.input, [detection]) : await extractFaces(this.input, [detection]);
+    const landmarks = await this.landmarkNet.detectLandmarks(faces[0]);
+    faces.forEach((f) => f instanceof tf41.Tensor && f.dispose());
+    return extendWithFaceLandmarks(parentResult, landmarks);
+  }
+  withFaceExpressions() {
+    return new PredictSingleFaceExpressionsWithFaceAlignmentTask(this, this.input);
+  }
+  withAgeAndGender() {
+    return new PredictSingleAgeAndGenderWithFaceAlignmentTask(this, this.input);
+  }
+  withFaceDescriptor() {
+    return new ComputeSingleFaceDescriptorTask(this, this.input);
+  }
+};
+
+// src/globalApi/DetectFacesTasks.ts
+var DetectFacesTaskBase = class extends ComposableTask {
+  constructor(input, options = new SsdMobilenetv1Options()) {
+    super();
+    this.input = input;
+    this.options = options;
+  }
+};
+var DetectAllFacesTask = class extends DetectFacesTaskBase {
+  async run() {
+    const {input, options} = this;
+    let result;
+    if (options instanceof TinyFaceDetectorOptions)
+      result = nets.tinyFaceDetector.locateFaces(input, options);
+    else if (options instanceof SsdMobilenetv1Options)
+      result = nets.ssdMobilenetv1.locateFaces(input, options);
+    else if (options instanceof TinyYolov2Options)
+      result = nets.tinyYolov2.locateFaces(input, options);
+    else
+      throw new Error("detectFaces - expected options to be instance of TinyFaceDetectorOptions | SsdMobilenetv1Options | TinyYolov2Options");
+    return result;
+  }
+  runAndExtendWithFaceDetections() {
+    return new Promise(async (resolve) => {
+      const detections = await this.run();
+      resolve(detections.map((detection) => extendWithFaceDetection({}, detection)));
+    });
+  }
+  withFaceLandmarks(useTinyLandmarkNet = false) {
+    return new DetectAllFaceLandmarksTask(this.runAndExtendWithFaceDetections(), this.input, useTinyLandmarkNet);
+  }
+  withFaceExpressions() {
+    return new PredictAllFaceExpressionsTask(this.runAndExtendWithFaceDetections(), this.input);
+  }
+  withAgeAndGender() {
+    return new PredictAllAgeAndGenderTask(this.runAndExtendWithFaceDetections(), this.input);
+  }
+};
+var DetectSingleFaceTask = class extends DetectFacesTaskBase {
+  async run() {
+    const faceDetections = await new DetectAllFacesTask(this.input, this.options);
+    let faceDetectionWithHighestScore = faceDetections[0];
+    faceDetections.forEach((faceDetection) => {
+      if (faceDetection.score > faceDetectionWithHighestScore.score)
+        faceDetectionWithHighestScore = faceDetection;
+    });
+    return faceDetectionWithHighestScore;
+  }
+  runAndExtendWithFaceDetection() {
+    return new Promise(async (resolve) => {
+      const detection = await this.run();
+      resolve(detection ? extendWithFaceDetection({}, detection) : void 0);
+    });
+  }
+  withFaceLandmarks(useTinyLandmarkNet = false) {
+    return new DetectSingleFaceLandmarksTask(this.runAndExtendWithFaceDetection(), this.input, useTinyLandmarkNet);
+  }
+  withFaceExpressions() {
+    return new PredictSingleFaceExpressionsTask(this.runAndExtendWithFaceDetection(), this.input);
+  }
+  withAgeAndGender() {
+    return new PredictSingleAgeAndGenderTask(this.runAndExtendWithFaceDetection(), this.input);
+  }
+};
+
+// src/globalApi/detectFaces.ts
+function detectSingleFace(input, options = new SsdMobilenetv1Options()) {
+  return new DetectSingleFaceTask(input, options);
+}
+function detectAllFaces(input, options = new SsdMobilenetv1Options()) {
+  return new DetectAllFacesTask(input, options);
+}
+
+// src/globalApi/allFaces.ts
+async function allFacesSsdMobilenetv1(input, minConfidence) {
+  return detectAllFaces(input, new SsdMobilenetv1Options(minConfidence ? {minConfidence} : {})).withFaceLandmarks().withFaceDescriptors();
+}
+async function allFacesTinyYolov2(input, forwardParams = {}) {
+  return detectAllFaces(input, new TinyYolov2Options(forwardParams)).withFaceLandmarks().withFaceDescriptors();
+}
+var allFaces = allFacesSsdMobilenetv1;
+
+// src/euclideanDistance.ts
+function euclideanDistance(arr1, arr2) {
+  if (arr1.length !== arr2.length)
+    throw new Error("euclideanDistance: arr1.length !== arr2.length");
+  const desc1 = Array.from(arr1);
+  const desc2 = Array.from(arr2);
+  return Math.sqrt(desc1.map((val, i) => val - desc2[i]).reduce((res, diff) => res + diff ** 2, 0));
+}
+
+// src/globalApi/FaceMatcher.ts
+var FaceMatcher = class {
+  constructor(inputs, distanceThreshold = 0.6) {
+    this._distanceThreshold = distanceThreshold;
+    const inputArray = Array.isArray(inputs) ? inputs : [inputs];
+    if (!inputArray.length) {
+      throw new Error("FaceRecognizer.constructor - expected atleast one input");
+    }
+    let count = 1;
+    const createUniqueLabel = () => `person ${count++}`;
+    this._labeledDescriptors = inputArray.map((desc) => {
+      if (desc instanceof LabeledFaceDescriptors) {
+        return desc;
+      }
+      if (desc instanceof Float32Array) {
+        return new LabeledFaceDescriptors(createUniqueLabel(), [desc]);
+      }
+      if (desc.descriptor && desc.descriptor instanceof Float32Array) {
+        return new LabeledFaceDescriptors(createUniqueLabel(), [desc.descriptor]);
+      }
+      throw new Error("FaceRecognizer.constructor - expected inputs to be of type LabeledFaceDescriptors | WithFaceDescriptor<any> | Float32Array | Array<LabeledFaceDescriptors | WithFaceDescriptor<any> | Float32Array>");
+    });
+  }
+  get labeledDescriptors() {
+    return this._labeledDescriptors;
+  }
+  get distanceThreshold() {
+    return this._distanceThreshold;
+  }
+  computeMeanDistance(queryDescriptor, descriptors) {
+    return descriptors.map((d) => euclideanDistance(d, queryDescriptor)).reduce((d1, d2) => d1 + d2, 0) / (descriptors.length || 1);
+  }
+  matchDescriptor(queryDescriptor) {
+    return this.labeledDescriptors.map(({descriptors, label}) => new FaceMatch(label, this.computeMeanDistance(queryDescriptor, descriptors))).reduce((best, curr) => best.distance < curr.distance ? best : curr);
+  }
+  findBestMatch(queryDescriptor) {
+    const bestMatch = this.matchDescriptor(queryDescriptor);
+    return bestMatch.distance < this.distanceThreshold ? bestMatch : new FaceMatch("unknown", bestMatch.distance);
+  }
+  toJSON() {
+    return {
+      distanceThreshold: this.distanceThreshold,
+      labeledDescriptors: this.labeledDescriptors.map((ld) => ld.toJSON())
+    };
+  }
+  static fromJSON(json) {
+    const labeledDescriptors = json.labeledDescriptors.map((ld) => LabeledFaceDescriptors.fromJSON(ld));
+    return new FaceMatcher(labeledDescriptors, json.distanceThreshold);
+  }
+};
+
+// src/tinyFaceDetector/index.ts
+function createTinyFaceDetector(weights) {
+  const net = new TinyFaceDetector();
+  net.extractWeights(weights);
+  return net;
+}
+
+// src/resizeResults.ts
+function resizeResults(results, dimensions) {
+  const {width, height} = new Dimensions(dimensions.width, dimensions.height);
+  if (width <= 0 || height <= 0) {
+    throw new Error(`resizeResults - invalid dimensions: ${JSON.stringify({width, height})}`);
+  }
+  if (Array.isArray(results)) {
+    return results.map((obj) => resizeResults(obj, {width, height}));
+  }
+  if (isWithFaceLandmarks(results)) {
+    const resizedDetection = results.detection.forSize(width, height);
+    const resizedLandmarks = results.unshiftedLandmarks.forSize(resizedDetection.box.width, resizedDetection.box.height);
+    return extendWithFaceLandmarks(extendWithFaceDetection(results, resizedDetection), resizedLandmarks);
+  }
+  if (isWithFaceDetection(results)) {
+    return extendWithFaceDetection(results, results.detection.forSize(width, height));
+  }
+  if (results instanceof FaceLandmarks || results instanceof FaceDetection) {
+    return results.forSize(width, height);
+  }
+  return results;
+}
+
+// src/index.ts
+var node = typeof process !== "undefined";
+var browser3 = typeof navigator !== "undefined" && typeof navigator.userAgent !== "undefined";
+var version2 = {faceapi: version, node, browser: browser3};
+export {
+  AgeGenderNet,
+  BoundingBox,
+  Box,
+  ComposableTask,
+  ComputeAllFaceDescriptorsTask,
+  ComputeFaceDescriptorsTaskBase,
+  ComputeSingleFaceDescriptorTask,
+  DetectAllFaceLandmarksTask,
+  DetectAllFacesTask,
+  DetectFaceLandmarksTaskBase,
+  DetectFacesTaskBase,
+  DetectSingleFaceLandmarksTask,
+  DetectSingleFaceTask,
+  Dimensions,
+  FACE_EXPRESSION_LABELS,
+  FaceDetection,
+  FaceDetectionNet,
+  FaceExpressionNet,
+  FaceExpressions,
+  FaceLandmark68Net,
+  FaceLandmark68TinyNet,
+  FaceLandmarkNet,
+  FaceLandmarks,
+  FaceLandmarks5,
+  FaceLandmarks68,
+  FaceMatch,
+  FaceMatcher,
+  FaceRecognitionNet,
+  Gender,
+  LabeledBox,
+  LabeledFaceDescriptors,
+  NetInput,
+  NeuralNetwork,
+  ObjectDetection,
+  Point,
+  PredictedBox,
+  Rect,
+  SsdMobilenetv1,
+  SsdMobilenetv1Options,
+  TinyFaceDetector,
+  TinyFaceDetectorOptions,
+  TinyYolov2,
+  TinyYolov2Options,
+  allFaces,
+  allFacesSsdMobilenetv1,
+  allFacesTinyYolov2,
+  awaitMediaLoaded,
+  bufferToImage,
+  computeFaceDescriptor,
+  createCanvas,
+  createCanvasFromMedia,
+  createFaceDetectionNet,
+  createFaceRecognitionNet,
+  createSsdMobilenetv1,
+  createTinyFaceDetector,
+  createTinyYolov2,
+  detectAllFaces,
+  detectFaceLandmarks,
+  detectFaceLandmarksTiny,
+  detectLandmarks,
+  detectSingleFace,
+  draw_exports as draw,
+  env,
+  euclideanDistance,
+  extendWithAge,
+  extendWithFaceDescriptor,
+  extendWithFaceDetection,
+  extendWithFaceExpressions,
+  extendWithFaceLandmarks,
+  extendWithGender,
+  extractFaceTensors,
+  extractFaces,
+  fetchImage,
+  fetchJson,
+  fetchNetWeights,
+  fetchOrThrow,
+  getContext2dOrThrow,
+  getMediaDimensions,
+  imageTensorToCanvas,
+  imageToSquare,
+  inverseSigmoid,
+  iou,
+  isMediaElement,
+  isMediaLoaded,
+  isWithAge,
+  isWithFaceDetection,
+  isWithFaceExpressions,
+  isWithFaceLandmarks,
+  isWithGender,
+  loadAgeGenderModel,
+  loadFaceDetectionModel,
+  loadFaceExpressionModel,
+  loadFaceLandmarkModel,
+  loadFaceLandmarkTinyModel,
+  loadFaceRecognitionModel,
+  loadSsdMobilenetv1Model,
+  loadTinyFaceDetectorModel,
+  loadTinyYolov2Model,
+  loadWeightMap,
+  locateFaces,
+  matchDimensions,
+  minBbox,
+  nets,
+  nonMaxSuppression,
+  normalize,
+  padToSquare,
+  predictAgeAndGender,
+  recognizeFaceExpressions,
+  resizeResults,
+  resolveInput,
+  shuffleArray,
+  sigmoid,
+  ssdMobilenetv1,
+  tf42 as tf,
+  tinyFaceDetector,
+  tinyYolov2,
+  toNetInput,
+  utils_exports as utils,
+  validateConfig,
+  version2 as version
+};
 //# sourceMappingURL=face-api.esm-nobundle.js.map

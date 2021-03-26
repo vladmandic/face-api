@@ -13,12 +13,8 @@ import { PredictAllFaceExpressionsTask, PredictSingleFaceExpressionsTask } from 
 import { FaceDetectionOptions } from './types';
 
 export class DetectFacesTaskBase<TReturn> extends ComposableTask<TReturn> {
-  constructor(
-    // eslint-disable-next-line no-unused-vars
-    protected input: TNetInput,
-    // eslint-disable-next-line no-unused-vars
-    protected options: FaceDetectionOptions = new SsdMobilenetv1Options(),
-  ) {
+  // eslint-disable-next-line no-unused-vars
+  constructor(protected input: TNetInput, protected options: FaceDetectionOptions = new SsdMobilenetv1Options()) {
     super();
   }
 }

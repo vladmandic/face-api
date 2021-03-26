@@ -12,7 +12,7 @@ const faceapi = require('../dist/face-api.node.js'); // this is equivalent to '@
 
 // options used by faceapi
 const modelPathRoot = '../model';
-const minScore = 0.1;
+const minConfidence = 0.15;
 const maxResults = 5;
 let optionsSSDMobileNet;
 
@@ -62,7 +62,7 @@ async function main() {
   await faceapi.nets.faceLandmark68Net.loadFromDisk(modelPath);
   await faceapi.nets.faceRecognitionNet.loadFromDisk(modelPath);
   await faceapi.nets.faceExpressionNet.loadFromDisk(modelPath);
-  optionsSSDMobileNet = new faceapi.SsdMobilenetv1Options({ minConfidence: minScore, maxResults });
+  optionsSSDMobileNet = new faceapi.SsdMobilenetv1Options({ minConfidence, maxResults });
 
   // now we're ready, so send message back to main that it knows it can use this worker
   process.send({ ready: true });

@@ -16,29 +16,17 @@ import { TNetInput } from './types';
  */
 export async function extractFaces(input: TNetInput, detections: Array<FaceDetection | Rect>): Promise<HTMLCanvasElement[]> {
   const { Canvas } = env.getEnv();
-
   let canvas = input as HTMLCanvasElement;
-
   if (!(input instanceof Canvas)) {
     const netInput = await toNetInput(input);
-
-    if (netInput.batchSize > 1) {
-      throw new Error('extractFaces - batchSize > 1 not supported');
-    }
-
+    if (netInput.batchSize > 1) throw new Error('extractFaces - batchSize > 1 not supported');
     const tensorOrCanvas = netInput.getInput(0);
-    canvas = tensorOrCanvas instanceof Canvas
-      ? tensorOrCanvas
-      : await imageTensorToCanvas(tensorOrCanvas);
+    canvas = tensorOrCanvas instanceof Canvas ? tensorOrCanvas : await imageTensorToCanvas(tensorOrCanvas);
   }
-
   const ctx = getContext2dOrThrow(canvas);
   const boxes = detections
-    .map((det) => (det instanceof FaceDetection
-      ? det.forSize(canvas.width, canvas.height).box.floor()
-      : det))
+    .map((det) => (det instanceof FaceDetection ? det.forSize(canvas.width, canvas.height).box.floor() : det))
     .map((box) => box.clipAtImageBorders(canvas.width, canvas.height));
-
   return boxes.map(({ x, y, width, height }) => {
     const faceImg = createCanvas({ width, height });
     if (width > 0 && height > 0) getContext2dOrThrow(faceImg).putImageData(ctx.getImageData(x, y, width, height), 0, 0);

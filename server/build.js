@@ -1,8 +1,5 @@
-#!/usr/bin/env -S node --trace-warnings
-
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable node/no-unpublished-require */
-/* eslint-disable node/shebang */
 
 const esbuild = require('esbuild');
 const ts = require('typescript');
@@ -42,9 +39,9 @@ const tsconfig = {
 // common configuration
 const common = {
   banner,
-  minifyWhitespace: false,
-  minifyIdentifiers: false,
-  minifySyntax: false,
+  minifyWhitespace: true,
+  minifyIdentifiers: true,
+  minifySyntax: true,
   bundle: true,
   sourcemap: true,
   metafile: true,

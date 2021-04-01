@@ -20,12 +20,9 @@ export class ComputeFaceDescriptorsTaskBase<TReturn, TParentReturn> extends Comp
   }
 }
 
-export class ComputeAllFaceDescriptorsTask<
-  TSource extends WithFaceLandmarks<WithFaceDetection<{}>>
-> extends ComputeFaceDescriptorsTaskBase<WithFaceDescriptor<TSource>[], TSource[]> {
+export class ComputeAllFaceDescriptorsTask<TSource extends WithFaceLandmarks<WithFaceDetection<{}>>> extends ComputeFaceDescriptorsTaskBase<WithFaceDescriptor<TSource>[], TSource[]> {
   public async run(): Promise<WithFaceDescriptor<TSource>[]> {
     const parentResults = await this.parentTask;
-
     const descriptors = await extractAllFacesAndComputeResults<TSource, Float32Array[]>(
       parentResults,
       this.input,
@@ -33,7 +30,6 @@ export class ComputeAllFaceDescriptorsTask<
       null,
       (parentResult) => parentResult.landmarks.align(null, { useDlibAlignment: true }),
     );
-
     return descriptors.map((descriptor, i) => extendWithFaceDescriptor<TSource>(parentResults[i], descriptor));
   }
 
@@ -46,9 +42,7 @@ export class ComputeAllFaceDescriptorsTask<
   }
 }
 
-export class ComputeSingleFaceDescriptorTask<
-  TSource extends WithFaceLandmarks<WithFaceDetection<{}>>
-> extends ComputeFaceDescriptorsTaskBase<WithFaceDescriptor<TSource> | undefined, TSource | undefined> {
+export class ComputeSingleFaceDescriptorTask<TSource extends WithFaceLandmarks<WithFaceDetection<{}>>> extends ComputeFaceDescriptorsTaskBase<WithFaceDescriptor<TSource> | undefined, TSource | undefined> {
   public async run(): Promise<WithFaceDescriptor<TSource> | undefined> {
     const parentResult = await this.parentTask;
     if (!parentResult) {

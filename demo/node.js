@@ -26,13 +26,33 @@ async function image(img) {
 }
 
 async function detect(tensor) {
-  const result = await faceapi
+  try {
+    const result = await faceapi
+      .detectAllFaces(tensor, optionsSSDMobileNet)
+      .withFaceLandmarks()
+      .withFaceExpressions()
+      .withFaceDescriptors()
+      .withAgeAndGender();
+    return result;
+  } catch (err) {
+    log.error('Caught error', err.message);
+    return [];
+  }
+}
+
+// eslint-disable-next-line no-unused-vars
+function detectPromise(tensor) {
+  return new Promise((resolve) => faceapi
     .detectAllFaces(tensor, optionsSSDMobileNet)
     .withFaceLandmarks()
     .withFaceExpressions()
     .withFaceDescriptors()
-    .withAgeAndGender();
-  return result;
+    .withAgeAndGender()
+    .then((res) => resolve(res))
+    .catch((err) => {
+      log.error('Caught error', err.message);
+      resolve([]);
+    }));
 }
 
 function print(face) {
@@ -80,6 +100,7 @@ async function main() {
     if (fs.existsSync(param)) {
       const tensor = await image(param);
       const result = await detect(tensor);
+      // const result = await detectPromise(null);
       log.data('Image:', param, 'Detected faces:', result.length);
       for (const face of result) print(face);
       tensor.dispose();

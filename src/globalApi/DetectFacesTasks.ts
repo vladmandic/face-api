@@ -27,15 +27,14 @@ export class DetectAllFacesTask extends DetectFacesTaskBase<FaceDetection[]> {
     else if (options instanceof SsdMobilenetv1Options) result = nets.ssdMobilenetv1.locateFaces(input, options);
     else if (options instanceof TinyYolov2Options) result = nets.tinyYolov2.locateFaces(input, options);
     else throw new Error('detectFaces - expected options to be instance of TinyFaceDetectorOptions | SsdMobilenetv1Options | TinyYolov2Options');
-
     return result;
   }
 
   private runAndExtendWithFaceDetections(): Promise<WithFaceDetection<{}>[]> {
-    // eslint-disable-next-line no-async-promise-executor
-    return new Promise<WithFaceDetection<{}>[]>(async (resolve) => {
-      const detections = await this.run();
-      resolve(detections.map((detection) => extendWithFaceDetection({}, detection)));
+    return new Promise<WithFaceDetection<{}>[]>((resolve, reject) => {
+      this.run()
+        .then((detections) => resolve(detections.map((detection) => extendWithFaceDetection({}, detection))))
+        .catch((err) => reject(err));
     });
   }
 

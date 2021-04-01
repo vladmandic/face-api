@@ -39,9 +39,9 @@ const tsconfig = {
 // common configuration
 const common = {
   banner,
-  minifyWhitespace: true,
-  minifyIdentifiers: true,
-  minifySyntax: true,
+  minifyWhitespace: false,
+  minifyIdentifiers: false,
+  minifySyntax: false,
   bundle: true,
   sourcemap: true,
   metafile: true,

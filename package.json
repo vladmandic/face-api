@@ -28,15 +28,17 @@
     "test": "node --trace-warnings test/test-node.js"
   },
   "keywords": [
-    "tensorflow",
-    "tf",
-    "tfjs",
-    "face",
     "face-api",
+    "faceapi",
     "face-detection",
     "age-gender",
     "emotion-detection",
-    "face-recognition"
+    "face-recognition",
+    "face",
+    "face-description",
+    "tensorflow",
+    "tensorflowjs",
+    "tfjs"
   ],
   "devDependencies": {
     "@tensorflow/tfjs": "^3.3.0",

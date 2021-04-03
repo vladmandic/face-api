@@ -17,7 +17,7 @@ var __export = (target, all) => {
   for (var name in all)
     __defProp(target, name, {get: all[name], enumerable: true});
 };
-var __exportStar = (target, module2, desc) => {
+var __reExport = (target, module2, desc) => {
   if (module2 && typeof module2 === "object" || typeof module2 === "function") {
     for (let key of __getOwnPropNames(module2))
       if (!__hasOwnProp.call(target, key) && key !== "default")
@@ -26,7 +26,7 @@ var __exportStar = (target, module2, desc) => {
   return target;
 };
 var __toModule = (module2) => {
-  return __exportStar(__markAsModule(__defProp(module2 != null ? __create(__getProtoOf(module2)) : {}, "default", module2 && module2.__esModule && "default" in module2 ? {get: () => module2.default, enumerable: true} : {value: module2, enumerable: true})), module2);
+  return __reExport(__markAsModule(__defProp(module2 != null ? __create(__getProtoOf(module2)) : {}, "default", module2 && module2.__esModule && "default" in module2 ? {get: () => module2.default, enumerable: true} : {value: module2, enumerable: true})), module2);
 };
 
 // dist/tfjs.esm.js
@@ -38,7 +38,7 @@ var require_tfjs_esm = __commonJS((exports) => {
   var __getOwnPropNames2 = Object.getOwnPropertyNames;
   var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
   var __markAsModule2 = (target) => __defProp2(target, "__esModule", {value: true});
-  var __exportStar2 = (target, module22, desc) => {
+  var __reExport2 = (target, module22, desc) => {
     if (module22 && typeof module22 === "object" || typeof module22 === "function") {
       for (let key of __getOwnPropNames2(module22))
         if (!__hasOwnProp2.call(target, key) && key !== "default")
@@ -47,10 +47,10 @@ var require_tfjs_esm = __commonJS((exports) => {
     return target;
   };
   var __toModule2 = (module22) => {
-    return __exportStar2(__markAsModule2(__defProp2(module22 != null ? __create2(__getProtoOf2(module22)) : {}, "default", module22 && module22.__esModule && "default" in module22 ? {get: () => module22.default, enumerable: true} : {value: module22, enumerable: true})), module22);
+    return __reExport2(__markAsModule2(__defProp2(module22 != null ? __create2(__getProtoOf2(module22)) : {}, "default", module22 && module22.__esModule && "default" in module22 ? {get: () => module22.default, enumerable: true} : {value: module22, enumerable: true})), module22);
   };
   __markAsModule2(exports);
-  __exportStar2(exports, __toModule2(require("@tensorflow/tfjs")));
+  __reExport2(exports, __toModule2(require("@tensorflow/tfjs")));
 });
 
 // src/index.ts
@@ -2262,7 +2262,7 @@ function drawFaceLandmarks(canvasArg, faceLandmarks) {
 }
 
 // package.json
-var version = "1.1.7";
+var version = "1.1.8";
 
 // src/ageGenderNet/AgeGenderNet.ts
 var tf20 = __toModule(require_tfjs_esm());

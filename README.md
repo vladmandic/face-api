@@ -1,4 +1,5 @@
-![Version](https://img.shields.io/github/package-json/v/vladmandic/face-api?style=flat-square?svg=true)
+![Git Version](https://img.shields.io/github/package-json/v/vladmandic/face-api?style=flat-square&svg=true&label=git)
+![NPM Version](https://img.shields.io/npm/v/@vladmandic/face-api.png?style=flat-square)
 ![Last Commit](https://img.shields.io/github/last-commit/vladmandic/face-api?style=flat-square?svg=true)
 ![License](https://img.shields.io/github/license/vladmandic/face-api?style=flat-square?svg=true)
 ![GitHub Status Checks](https://img.shields.io/github/checks-status/vladmandic/face-api/master?style=flat-square?svg=true)
@@ -443,6 +444,8 @@ Compared to [face-api.js](https://github.com/justadudewhohacks/face-api.js) vers
 
 <br>
 
-![Downloads](https://img.shields.io/npm/dm/@vladmandic/face-api?style=flat-square?svg=true)
 ![Stars](https://img.shields.io/github/stars/vladmandic/face-api?style=flat-square?svg=true)
 ![Code Size](https://img.shields.io/github/languages/code-size/vladmandic/face-api?style=flat-square?svg=true)
+![Downloads](https://img.shields.io/npm/dw/@vladmandic/face-api.png?style=flat-square)
+![Downloads](https://img.shields.io/npm/dm/@vladmandic/face-api.png?style=flat-square)
+![Downloads](https://img.shields.io/npm/dy/@vladmandic/face-api.png?style=flat-square)

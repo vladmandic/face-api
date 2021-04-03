@@ -13,7 +13,7 @@ var __export = (target, all) => {
   for (var name in all)
     __defProp(target, name, {get: all[name], enumerable: true});
 };
-var __exportStar = (target, module2, desc) => {
+var __reExport = (target, module2, desc) => {
   if (module2 && typeof module2 === "object" || typeof module2 === "function") {
     for (let key of __getOwnPropNames(module2))
       if (!__hasOwnProp.call(target, key) && key !== "default")
@@ -24,8 +24,8 @@ var __exportStar = (target, module2, desc) => {
 
 // dist/tfjs.esm.js
 var tfjs_esm_exports = {};
-__exportStar(tfjs_esm_exports, dist_star);
-__exportStar(tfjs_esm_exports, tfjs_backend_wasm_star);
+__reExport(tfjs_esm_exports, dist_star);
+__reExport(tfjs_esm_exports, tfjs_backend_wasm_star);
 import * as dist_star from "@tensorflow/tfjs/dist/index.js";
 import * as tfjs_backend_wasm_star from "@tensorflow/tfjs-backend-wasm";
 
@@ -2080,7 +2080,7 @@ function drawFaceLandmarks(canvasArg, faceLandmarks) {
 }
 
 // package.json
-var version = "1.1.7";
+var version = "1.1.8";
 
 // src/xception/extractParams.ts
 function extractorsFactory2(extractWeights, paramMappings) {

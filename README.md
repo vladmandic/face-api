@@ -106,9 +106,17 @@ must be installed before using NodeJS example
 
 <br><hr><br>
 
+## Quick Start
+
+Simply include latest version of `FaceAPI` directly from a CDN in your HTML:
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/@vladmandic/face-api/dist/face-api.js"></script>
+```
+
 ## Installation
 
-Face-API ships with several pre-build versions of the library:
+`FaceAPI` ships with several pre-build versions of the library:
 
 - `dist/face-api.js`: IIFE format for client-side Browser execution  
    *with* TFJS pre-bundled
@@ -144,17 +152,23 @@ All versions include `sourcemap`
 
 <br><hr><br>
 
-There are several ways to use Face-API:
+There are several ways to use FaceAPI:
 
 ### 1. IIFE script
 
 *Recommened for quick tests and backward compatibility with older Browsers that do not support ESM such as IE*
 
 This is simplest way for usage within Browser  
-Simply download `dist/face-api.js`, include it in your `HTML` file & it's ready to use
+Simply download `dist/face-api.js`, include it in your `HTML` file & it's ready to use:
 
 ```html
 <script src="dist/face-api.js"><script>
+```
+
+Or skip the download and include it directly from a CDN:
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/@vladmandic/face-api/dist/face-api.js"></script>
 ```
 
 IIFE script bundles TFJS and auto-registers global namespace `faceapi` within Window object which can be accessed directly from a `<script>` tag or from your JS file.  
@@ -215,7 +229,7 @@ or to use non-bundled version
 
 *Recommended for NodeJS projects*
 
-*Node: Face-API for NodeJS does not bundle TFJS due to binary dependencies that are installed during TFJS installation*
+*Node: FaceAPI for NodeJS does not bundle TFJS due to binary dependencies that are installed during TFJS installation*
 
 Install with:
 
@@ -238,7 +252,7 @@ If you want to force CommonJS module instead of relying on `recommended` field:
 ```
 
 If you want to GPU Accelerated execution in NodeJS, you must have CUDA libraries already installed and working  
-Then install appropriate version of `Face-API`:
+Then install appropriate version of `FaceAPI`:
 
 ```shell
   npm install @tensorflow/tfjs-node
@@ -252,7 +266,7 @@ And then use with:
   const faceapi = require('@vladmandic/face-api/dist/face-api.node-gpu.js'); // this loads face-api version with correct bindings for tfjs-node-gpu
 ```
 
-If you want to use `Face-API` in a NodeJS on platforms where NodeJS binary libraries are not supported, you can use JavaScript CPU backend.  
+If you want to use `FaceAPI` in a NodeJS on platforms where NodeJS binary libraries are not supported, you can use JavaScript CPU backend.  
 
 ```shell
   npm install @tensorflow/tfjs
@@ -389,8 +403,8 @@ Forked from [face-api.js](https://github.com/justadudewhohacks/face-api.js) vers
 
 Currently based on **`TensorFlow/JS` 3.3.0**  
 
-*Why?* I needed Face-API that does not cause version conflict with newer versions of TensorFlow  
-And since original Face-API was open-source, I've released this version as well  
+*Why?* I needed FaceAPI that does not cause version conflict with newer versions of TensorFlow  
+And since original FaceAPI was open-source, I've released this version as well  
 
 Changes ended up being too large for a simple pull request  
 and it ended up being a full-fledged version on its own  
@@ -427,7 +441,7 @@ Compared to [face-api.js](https://github.com/justadudewhohacks/face-api.js) vers
 - Updated `mobileNetv1` model due to `batchNorm()` dependency
 - Added `version` class that returns JSON object with version of FaceAPI as well as linked TFJS
 - Added test/dev built-in HTTP & HTTPS Web server
-- Removed `mtcnn` and `tinyYolov2` models as they were non-functional in latest public version of `Face-API`
+- Removed `mtcnn` and `tinyYolov2` models as they were non-functional in latest public version of `FaceAPI`
   Which means valid models are **tinyFaceDetector** and **mobileNetv1**
   *If there is a demand, I can re-implement them back.*
 - Added `face angle` calculations that returns `roll`, `yaw` and `pitch`
@@ -438,14 +452,15 @@ Compared to [face-api.js](https://github.com/justadudewhohacks/face-api.js) vers
 
 ## Credits
 
-- Original project: [Face-API](https://github.com/justadudewhohacks/face-api.js)
-- Original model weighs: [Face-API](https://github.com/justadudewhohacks/face-api.js-models)
+- Original project: [face-api.js](https://github.com/justadudewhohacks/face-api.js)
+- Original model weighs: [face-api.js-models](https://github.com/justadudewhohacks/face-api.js-models)
 - ML API Documentation: [Tensorflow/JS](https://js.tensorflow.org/api/latest/)
 
 <br>
 
 ![Stars](https://img.shields.io/github/stars/vladmandic/face-api?style=flat-square?svg=true)
 ![Code Size](https://img.shields.io/github/languages/code-size/vladmandic/face-api?style=flat-square?svg=true)
+![CDN](https://data.jsdelivr.com/v1/package/npm/@vladmandic/face-api/badge)
 ![Downloads](https://img.shields.io/npm/dw/@vladmandic/face-api.png?style=flat-square)
 ![Downloads](https://img.shields.io/npm/dm/@vladmandic/face-api.png?style=flat-square)
 ![Downloads](https://img.shields.io/npm/dy/@vladmandic/face-api.png?style=flat-square)

@@ -67,15 +67,17 @@ async function main() {
   if (process.argv.length !== 3) {
     const t0 = process.hrtime.bigint();
     const dir = fs.readdirSync(imgPathRoot);
+    let numImages = 0;
     for (const img of dir) {
       if (!img.toLocaleLowerCase().endsWith('.jpg')) continue;
+      numImages += 1;
       const c = await image(path.join(imgPathRoot, img));
       const result = await detect(c);
       log.data('Image:', img, 'Detected faces:', result.length);
       for (const face of result) print(face);
     }
     const t1 = process.hrtime.bigint();
-    log.info('Processed', dir.length, 'images in', Math.trunc(parseInt(t1 - t0) / 1000 / 1000), 'ms');
+    log.info('Processed', numImages, 'images in', Math.trunc(parseInt(t1 - t0) / 1000 / 1000), 'ms');
   } else {
     const param = process.argv[2];
     if (fs.existsSync(param)) {

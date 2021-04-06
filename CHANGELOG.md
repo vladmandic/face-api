@@ -1,6 +1,6 @@
 # @vladmandic/face-api  
 
-Version: **1.1.9**  
+Version: **1.1.10**  
 Description: **FaceAPI: AI-powered Face Detection, Description & Recognition using Tensorflow/JS**  
 
 Author: **Vladimir Mandic <mandic00@live.com>**  
@@ -9,8 +9,14 @@ Repository: **<git+https://github.com/vladmandic/face-api.git>**
 
 ## Changelog
 
-### **HEAD -> master** 2021/04/03 mandic00@live.com
+### **HEAD -> master** 2021/04/06 mandic00@live.com
 
+- fixed bug which led to latency not being measured and wrong output on console for demo
+- add cdn links
+
+### **1.1.10** 2021/04/04 mandic00@live.com
+
+- added webhints
 
 ### **1.1.9** 2021/04/03 mandic00@live.com
 

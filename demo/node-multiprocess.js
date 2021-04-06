@@ -12,13 +12,13 @@ const numWorkers = 2; // how many workers will be started
 const workers = []; // this holds worker processes
 const images = []; // this holds queue of enumerated images
 const t = []; // timers
-let dir;
+let numImages;
 
 // trigered by main when worker sends ready message
 // if image pool is empty, signal worker to exit otherwise dispatch image to worker and remove image from queue
 async function detect(worker) {
   if (!t[2]) t[2] = process.hrtime.bigint(); // first time do a timestamp so we can measure initial latency
-  if (images.length === dir.length) worker.send({ test: true }); // for first image in queue just measure latency
+  if (images.length === numImages) worker.send({ test: true }); // for first image in queue just measure latency
   if (images.length === 0) worker.send({ exit: true }); // nothing left in queue
   else {
     log.state('Main: dispatching to worker:', worker.pid);
@@ -33,7 +33,7 @@ function waitCompletion() {
   if (activeWorkers > 0) setImmediate(() => waitCompletion());
   else {
     t[1] = process.hrtime.bigint();
-    log.info('Processed', dir.length, 'images in', Math.trunc(parseInt(t[1] - t[0]) / 1000 / 1000), 'ms');
+    log.info('Processed', numImages, 'images in', Math.trunc(parseInt(t[1] - t[0]) / 1000 / 1000), 'ms');
   }
 }
 
@@ -49,10 +49,11 @@ async function main() {
   log.info('FaceAPI multi-process test');
 
   // enumerate all images into queue
-  dir = fs.readdirSync(imgPathRoot);
+  const dir = fs.readdirSync(imgPathRoot);
   for (const imgFile of dir) {
     if (imgFile.toLocaleLowerCase().endsWith('.jpg')) images.push(path.join(imgPathRoot, imgFile));
   }
+  numImages = images.length;
 
   t[0] = process.hrtime.bigint();
   // manage worker processes

@@ -465,8 +465,9 @@ Compared to [face-api.js](https://github.com/justadudewhohacks/face-api.js) vers
 <br>
 
 ![Stars](https://img.shields.io/github/stars/vladmandic/face-api?style=flat-square?svg=true)
+![Forks](https://badgen.net/github/forks/vladmandic/face-api)
 ![Code Size](https://img.shields.io/github/languages/code-size/vladmandic/face-api?style=flat-square?svg=true)
-![CDN](https://data.jsdelivr.com/v1/package/npm/@vladmandic/face-api/badge)
+![CDN](https://data.jsdelivr.com/v1/package/npm/@vladmandic/face-api/badge)<br>
 ![Downloads](https://img.shields.io/npm/dw/@vladmandic/face-api.png?style=flat-square)
 ![Downloads](https://img.shields.io/npm/dm/@vladmandic/face-api.png?style=flat-square)
 ![Downloads](https://img.shields.io/npm/dy/@vladmandic/face-api.png?style=flat-square)

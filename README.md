@@ -114,6 +114,12 @@ Simply include latest version of `FaceAPI` directly from a CDN in your HTML:
 <script src="https://cdn.jsdelivr.net/npm/@vladmandic/face-api/dist/face-api.js"></script>
 ```
 
+or
+
+```html
+<script src="https://unpkg.dev/@vladmandic/face-api/dist/face-api.js"></script>
+```
+
 ## Installation
 
 `FaceAPI` ships with several pre-build versions of the library:

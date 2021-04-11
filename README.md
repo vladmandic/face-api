@@ -7,7 +7,7 @@
 
 # FaceAPI
 
-**AI-powered Face Detection, Description & Recognition for Browser and NodeJS using Tensorflow/JS**
+**AI-powered Face Detection & Rotation Tracking, Face Description & Recognition, Age & Gender & Emotion Prediction for Browser and NodeJS using TensorFlow/JS**
 
 <br>
 
@@ -108,15 +108,11 @@ must be installed before using NodeJS example
 
 ## Quick Start
 
-Simply include latest version of `FaceAPI` directly from a CDN in your HTML:
+Simply include latest version of `FaceAPI` directly from a CDN in your HTML:  
+(pick one, `jsdelivr` or `unpkg`)
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/@vladmandic/face-api/dist/face-api.js"></script>
-```
-
-or
-
-```html
 <script src="https://unpkg.dev/@vladmandic/face-api/dist/face-api.js"></script>
 ```
 

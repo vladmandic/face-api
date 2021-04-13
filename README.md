@@ -15,10 +15,10 @@
 
 <br>
 
-## Documentation
+## Additional Documentation
 
 - [**Tutorial**](TUTORIAL.md)
-- [**API Specification**](https://vladmandic.github.io/face-api/typedoc/index.html)
+- [**TypeDoc API Specification**](https://vladmandic.github.io/face-api/typedoc/index.html)
 
 <br><hr><br>
 

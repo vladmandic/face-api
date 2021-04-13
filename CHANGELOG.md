@@ -1,7 +1,7 @@
 # @vladmandic/face-api  
 
-Version: **1.1.10**  
-Description: **FaceAPI: AI-powered Face Detection, Description & Recognition using Tensorflow/JS**  
+Version: **1.1.11**  
+Description: **FaceAPI: AI-powered Face Detection & Rotation Tracking, Face Description & Recognition, Age & Gender & Emotion Prediction for Browser and NodeJS using TensorFlow/JS**  
 
 Author: **Vladimir Mandic <mandic00@live.com>**  
 License: **MIT** </LICENSE>  
@@ -9,8 +9,12 @@ Repository: **<git+https://github.com/vladmandic/face-api.git>**
 
 ## Changelog
 
-### **HEAD -> master** 2021/04/06 mandic00@live.com
+### **HEAD -> master** 2021/04/10 mandic00@live.com
 
+
+### **1.1.11** 2021/04/06 mandic00@live.com
+
+- merge pull request #46 from mayankagarwals/demo_latencytest_fix
 - fixed bug which led to latency not being measured and wrong output on console for demo
 - add cdn links
 

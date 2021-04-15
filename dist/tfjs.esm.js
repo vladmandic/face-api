@@ -13,9 +13,9 @@ var __getOwnPropNames = Object.getOwnPropertyNames;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __markAsModule = (target) => __defProp(target, "__esModule", {value: true});
 var __commonJS = (cb, mod4) => () => (mod4 || cb((mod4 = {exports: {}}).exports, mod4), mod4.exports);
-var __export = (target, all4) => {
-  for (var name in all4)
-    __defProp(target, name, {get: all4[name], enumerable: true});
+var __export = (target, all5) => {
+  for (var name in all5)
+    __defProp(target, name, {get: all5[name], enumerable: true});
 };
 var __reExport = (target, module, desc) => {
   if (module && typeof module === "object" || typeof module === "function") {
@@ -1326,14 +1326,14 @@ var require_worker_threads = __commonJS(() => {
 var require_perf_hooks = __commonJS(() => {
 });
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/wasm-out/tfjs-backend-wasm-threaded-simd.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/wasm-out/tfjs-backend-wasm-threaded-simd.js
 var require_tfjs_backend_wasm_threaded_simd = __commonJS((exports, module) => {
-  var WasmBackendModuleThreadedSimd = function() {
+  var WasmBackendModule = function() {
     var _scriptDir = typeof document !== "undefined" && document.currentScript ? document.currentScript.src : void 0;
     if (typeof __filename !== "undefined")
       _scriptDir = _scriptDir || __filename;
-    return function(WasmBackendModuleThreadedSimd2) {
-      WasmBackendModuleThreadedSimd2 = WasmBackendModuleThreadedSimd2 || {};
+    return function(WasmBackendModule2) {
+      WasmBackendModule2 = WasmBackendModule2 || {};
       function GROWABLE_HEAP_I8() {
         if (wasmMemory.buffer != buffer2) {
           updateGlobalBufferAndViews(wasmMemory.buffer);
@@ -1364,7 +1364,7 @@ var require_tfjs_backend_wasm_threaded_simd = __commonJS((exports, module) => {
         }
         return HEAPF64;
       }
-      var Module = typeof WasmBackendModuleThreadedSimd2 !== "undefined" ? WasmBackendModuleThreadedSimd2 : {};
+      var Module = typeof WasmBackendModule2 !== "undefined" ? WasmBackendModule2 : {};
       var readyPromiseResolve, readyPromiseReject;
       Module["ready"] = new Promise(function(resolve, reject) {
         readyPromiseResolve = resolve;
@@ -1794,8 +1794,6 @@ var require_tfjs_backend_wasm_threaded_simd = __commonJS((exports, module) => {
         __ATINIT__.push({func: function() {
           ___wasm_call_ctors();
         }});
-      if (ENVIRONMENT_IS_PTHREAD)
-        runtimeInitialized = true;
       function preRun() {
         if (ENVIRONMENT_IS_PTHREAD)
           return;
@@ -1810,6 +1808,8 @@ var require_tfjs_backend_wasm_threaded_simd = __commonJS((exports, module) => {
       }
       function initRuntime() {
         runtimeInitialized = true;
+        if (ENVIRONMENT_IS_PTHREAD)
+          return;
         callRuntimeCallbacks(__ATINIT__);
       }
       function preMain() {
@@ -1895,7 +1895,7 @@ var require_tfjs_backend_wasm_threaded_simd = __commonJS((exports, module) => {
       function isFileURI(filename) {
         return hasPrefix(filename, fileURIPrefix);
       }
-      var wasmBinaryFile = "tfjs-backend-wasm-threaded-simd.wasm";
+      var wasmBinaryFile = "tfjs-backend-wasm.wasm";
       if (!isDataURI(wasmBinaryFile)) {
         wasmBinaryFile = locateFile(wasmBinaryFile);
       }
@@ -1943,16 +1943,10 @@ var require_tfjs_backend_wasm_threaded_simd = __commonJS((exports, module) => {
         function receiveInstance(instance, module2) {
           var exports3 = instance.exports;
           Module["asm"] = exports3;
-          wasmTable = Module["asm"]["F"];
+          wasmTable = Module["asm"]["D"];
           wasmModule = module2;
           if (!ENVIRONMENT_IS_PTHREAD) {
-            var numWorkersToLoad = PThread.unusedWorkers.length;
-            PThread.unusedWorkers.forEach(function(w) {
-              PThread.loadWasmModuleToWorker(w, function() {
-                if (!--numWorkersToLoad)
-                  removeRunDependency("wasm-instantiate");
-              });
-            });
+            removeRunDependency("wasm-instantiate");
           }
         }
         if (!ENVIRONMENT_IS_PTHREAD) {
@@ -1995,7 +1989,9 @@ var require_tfjs_backend_wasm_threaded_simd = __commonJS((exports, module) => {
         instantiateAsync().catch(readyPromiseReject);
         return {};
       }
-      var ASM_CONSTS = {8991: function($0, $1) {
+      var ASM_CONSTS = {9800: function() {
+        throw "Canceled!";
+      }, 9818: function($0, $1) {
         setTimeout(function() {
           __emscripten_do_dispatch_to_thread($0, $1);
         }, 0);
@@ -2071,18 +2067,14 @@ var require_tfjs_backend_wasm_threaded_simd = __commonJS((exports, module) => {
           throw "Internal Error! cleanupThread() can only ever be called from main application thread!";
         if (!pthread_ptr)
           throw "Internal Error! Null pthread_ptr in cleanupThread!";
-        GROWABLE_HEAP_I32()[pthread_ptr + 12 >> 2] = 0;
         var pthread = PThread.pthreads[pthread_ptr];
         if (pthread) {
+          GROWABLE_HEAP_I32()[pthread_ptr + 12 >> 2] = 0;
           var worker = pthread.worker;
           PThread.returnWorkerToPool(worker);
         }
       }
       var PThread = {unusedWorkers: [], runningWorkers: [], initMainThreadBlock: function() {
-        var pthreadPoolSize = 8;
-        for (var i = 0; i < pthreadPoolSize; ++i) {
-          PThread.allocateUnusedWorker();
-        }
       }, initRuntime: function() {
         var tb = _malloc(228);
         for (var i = 0; i < 228 / 4; ++i)
@@ -2105,27 +2097,24 @@ var require_tfjs_backend_wasm_threaded_simd = __commonJS((exports, module) => {
         }
         if (ENVIRONMENT_IS_PTHREAD && _pthread_self())
           ___pthread_tsd_run_dtors();
+      }, runExitHandlersAndDeinitThread: function(tb, exitCode) {
+        Atomics.store(GROWABLE_HEAP_U32(), tb + 56 >> 2, 1);
+        Atomics.store(GROWABLE_HEAP_U32(), tb + 60 >> 2, 0);
+        PThread.runExitHandlers();
+        Atomics.store(GROWABLE_HEAP_U32(), tb + 4 >> 2, exitCode);
+        Atomics.store(GROWABLE_HEAP_U32(), tb + 0 >> 2, 1);
+        _emscripten_futex_wake(tb + 0, 2147483647);
+        __emscripten_thread_init(0, 0, 0);
       }, threadExit: function(exitCode) {
         var tb = _pthread_self();
         if (tb) {
-          Atomics.store(GROWABLE_HEAP_U32(), tb + 4 >> 2, exitCode);
-          Atomics.store(GROWABLE_HEAP_U32(), tb + 0 >> 2, 1);
-          Atomics.store(GROWABLE_HEAP_U32(), tb + 56 >> 2, 1);
-          Atomics.store(GROWABLE_HEAP_U32(), tb + 60 >> 2, 0);
-          PThread.runExitHandlers();
-          _emscripten_futex_wake(tb + 0, 2147483647);
-          __emscripten_thread_init(0, 0, 0);
+          PThread.runExitHandlersAndDeinitThread(tb, exitCode);
           if (ENVIRONMENT_IS_PTHREAD) {
             postMessage({cmd: "exit"});
           }
         }
       }, threadCancel: function() {
-        PThread.runExitHandlers();
-        var tb = _pthread_self();
-        Atomics.store(GROWABLE_HEAP_U32(), tb + 4 >> 2, -1);
-        Atomics.store(GROWABLE_HEAP_U32(), tb + 0 >> 2, 1);
-        _emscripten_futex_wake(tb + 0, 2147483647);
-        __emscripten_thread_init(0, 0, 0);
+        PThread.runExitHandlersAndDeinitThread(_pthread_self(), -1);
         postMessage({cmd: "cancelDone"});
       }, terminateAllThreads: function() {
         for (var t in PThread.pthreads) {
@@ -2257,7 +2246,7 @@ var require_tfjs_backend_wasm_threaded_simd = __commonJS((exports, module) => {
         }
         worker.postMessage({cmd: "load", urlOrBlob: Module["mainScriptUrlOrBlob"] || _scriptDir, wasmMemory, wasmModule});
       }, allocateUnusedWorker: function() {
-        var pthreadMainJs = locateFile("tfjs-backend-wasm-threaded-simd.worker.js");
+        var pthreadMainJs = locateFile("tfjs-backend-wasm.worker.js");
         PThread.unusedWorkers.push(new Worker(pthreadMainJs));
       }, getNewWorker: function() {
         if (PThread.unusedWorkers.length == 0) {
@@ -2288,9 +2277,6 @@ var require_tfjs_backend_wasm_threaded_simd = __commonJS((exports, module) => {
       Module["invokeEntryPoint"] = invokeEntryPoint;
       function ___assert_fail(condition, filename, line, func2) {
         abort("Assertion failed: " + UTF8ToString(condition) + ", at: " + [filename ? UTF8ToString(filename) : "unknown filename", line, func2 ? UTF8ToString(func2) : "unknown function"]);
-      }
-      function ___call_main(argc, argv) {
-        var returnCode = _main(argc, argv);
       }
       var _emscripten_get_now;
       if (ENVIRONMENT_IS_NODE) {
@@ -2644,8 +2630,6 @@ var require_tfjs_backend_wasm_threaded_simd = __commonJS((exports, module) => {
         }
       }
       function _emscripten_set_current_thread_status(newStatus) {
-      }
-      function _emscripten_set_thread_name(threadId, name) {
       }
       function __webgl_enable_ANGLE_instanced_arrays(ctx) {
         var ext = ctx.getExtension("ANGLE_instanced_arrays");
@@ -3109,31 +3093,37 @@ var require_tfjs_backend_wasm_threaded_simd = __commonJS((exports, module) => {
         PThread.initMainThreadBlock();
       var GLctx;
       var proxiedFunctionTable = [null, _atexit, _emscripten_set_canvas_element_size_main_thread, _fd_close, _fd_seek, _fd_write, _sysconf];
-      var asmLibraryArg = {e: ___assert_fail, r: ___call_main, x: __emscripten_notify_thread_queue, b: _abort, y: _emscripten_asm_const_int, j: _emscripten_conditional_set_current_thread_status, c: _emscripten_futex_wait, d: _emscripten_futex_wake, f: _emscripten_get_now, p: _emscripten_memcpy_big, z: _emscripten_num_logical_cores, u: _emscripten_receive_on_main_thread_js, q: _emscripten_resize_heap, v: _emscripten_set_canvas_element_size, i: _emscripten_set_current_thread_status, t: _emscripten_set_thread_name, w: _emscripten_webgl_create_context, m: _fd_close, n: _fd_seek, g: _fd_write, o: initPthreadsJS, a: wasmMemory || Module["wasmMemory"], k: _pthread_cleanup_pop, l: _pthread_cleanup_push, h: _pthread_create, s: _sysconf};
+      var asmLibraryArg = {e: ___assert_fail, v: __emscripten_notify_thread_queue, b: _abort, w: _emscripten_asm_const_int, j: _emscripten_conditional_set_current_thread_status, c: _emscripten_futex_wait, d: _emscripten_futex_wake, f: _emscripten_get_now, p: _emscripten_memcpy_big, x: _emscripten_num_logical_cores, s: _emscripten_receive_on_main_thread_js, r: _emscripten_resize_heap, t: _emscripten_set_canvas_element_size, i: _emscripten_set_current_thread_status, u: _emscripten_webgl_create_context, m: _fd_close, n: _fd_seek, g: _fd_write, o: initPthreadsJS, a: wasmMemory || Module["wasmMemory"], k: _pthread_cleanup_pop, l: _pthread_cleanup_push, h: _pthread_create, q: _sysconf};
       var asm = createWasm();
       var ___wasm_call_ctors = Module["___wasm_call_ctors"] = function() {
-        return (___wasm_call_ctors = Module["___wasm_call_ctors"] = Module["asm"]["A"]).apply(null, arguments);
+        return (___wasm_call_ctors = Module["___wasm_call_ctors"] = Module["asm"]["y"]).apply(null, arguments);
       };
       var _init = Module["_init"] = function() {
-        return (_init = Module["_init"] = Module["asm"]["B"]).apply(null, arguments);
+        return (_init = Module["_init"] = Module["asm"]["z"]).apply(null, arguments);
       };
       var _register_tensor = Module["_register_tensor"] = function() {
-        return (_register_tensor = Module["_register_tensor"] = Module["asm"]["C"]).apply(null, arguments);
+        return (_register_tensor = Module["_register_tensor"] = Module["asm"]["A"]).apply(null, arguments);
       };
       var _dispose_data = Module["_dispose_data"] = function() {
-        return (_dispose_data = Module["_dispose_data"] = Module["asm"]["D"]).apply(null, arguments);
+        return (_dispose_data = Module["_dispose_data"] = Module["asm"]["B"]).apply(null, arguments);
       };
       var _dispose = Module["_dispose"] = function() {
-        return (_dispose = Module["_dispose"] = Module["asm"]["E"]).apply(null, arguments);
+        return (_dispose = Module["_dispose"] = Module["asm"]["C"]).apply(null, arguments);
       };
       var _Abs = Module["_Abs"] = function() {
-        return (_Abs = Module["_Abs"] = Module["asm"]["G"]).apply(null, arguments);
+        return (_Abs = Module["_Abs"] = Module["asm"]["E"]).apply(null, arguments);
       };
       var _Add = Module["_Add"] = function() {
-        return (_Add = Module["_Add"] = Module["asm"]["H"]).apply(null, arguments);
+        return (_Add = Module["_Add"] = Module["asm"]["F"]).apply(null, arguments);
       };
       var _AddN = Module["_AddN"] = function() {
-        return (_AddN = Module["_AddN"] = Module["asm"]["I"]).apply(null, arguments);
+        return (_AddN = Module["_AddN"] = Module["asm"]["G"]).apply(null, arguments);
+      };
+      var _All = Module["_All"] = function() {
+        return (_All = Module["_All"] = Module["asm"]["H"]).apply(null, arguments);
+      };
+      var _Any = Module["_Any"] = function() {
+        return (_Any = Module["_Any"] = Module["asm"]["I"]).apply(null, arguments);
       };
       var _ArgMax = Module["_ArgMax"] = function() {
         return (_ArgMax = Module["_ArgMax"] = Module["asm"]["J"]).apply(null, arguments);
@@ -3240,176 +3230,182 @@ var require_tfjs_backend_wasm_threaded_simd = __commonJS((exports, module) => {
       var _Minimum = Module["_Minimum"] = function() {
         return (_Minimum = Module["_Minimum"] = Module["asm"]["pa"]).apply(null, arguments);
       };
+      var _MirrorPad = Module["_MirrorPad"] = function() {
+        return (_MirrorPad = Module["_MirrorPad"] = Module["asm"]["qa"]).apply(null, arguments);
+      };
       var _Multiply = Module["_Multiply"] = function() {
-        return (_Multiply = Module["_Multiply"] = Module["asm"]["qa"]).apply(null, arguments);
+        return (_Multiply = Module["_Multiply"] = Module["asm"]["ra"]).apply(null, arguments);
       };
       var _Neg = Module["_Neg"] = function() {
-        return (_Neg = Module["_Neg"] = Module["asm"]["ra"]).apply(null, arguments);
+        return (_Neg = Module["_Neg"] = Module["asm"]["sa"]).apply(null, arguments);
       };
       var _NonMaxSuppressionV3 = Module["_NonMaxSuppressionV3"] = function() {
-        return (_NonMaxSuppressionV3 = Module["_NonMaxSuppressionV3"] = Module["asm"]["sa"]).apply(null, arguments);
+        return (_NonMaxSuppressionV3 = Module["_NonMaxSuppressionV3"] = Module["asm"]["ta"]).apply(null, arguments);
       };
       var _NonMaxSuppressionV4 = Module["_NonMaxSuppressionV4"] = function() {
-        return (_NonMaxSuppressionV4 = Module["_NonMaxSuppressionV4"] = Module["asm"]["ta"]).apply(null, arguments);
+        return (_NonMaxSuppressionV4 = Module["_NonMaxSuppressionV4"] = Module["asm"]["ua"]).apply(null, arguments);
       };
       var _NonMaxSuppressionV5 = Module["_NonMaxSuppressionV5"] = function() {
-        return (_NonMaxSuppressionV5 = Module["_NonMaxSuppressionV5"] = Module["asm"]["ua"]).apply(null, arguments);
+        return (_NonMaxSuppressionV5 = Module["_NonMaxSuppressionV5"] = Module["asm"]["va"]).apply(null, arguments);
       };
       var _NotEqual = Module["_NotEqual"] = function() {
-        return (_NotEqual = Module["_NotEqual"] = Module["asm"]["va"]).apply(null, arguments);
+        return (_NotEqual = Module["_NotEqual"] = Module["asm"]["wa"]).apply(null, arguments);
       };
       var _OneHot = Module["_OneHot"] = function() {
-        return (_OneHot = Module["_OneHot"] = Module["asm"]["wa"]).apply(null, arguments);
+        return (_OneHot = Module["_OneHot"] = Module["asm"]["xa"]).apply(null, arguments);
       };
       var _PadV2 = Module["_PadV2"] = function() {
-        return (_PadV2 = Module["_PadV2"] = Module["asm"]["xa"]).apply(null, arguments);
+        return (_PadV2 = Module["_PadV2"] = Module["asm"]["ya"]).apply(null, arguments);
       };
       var _Pow = Module["_Pow"] = function() {
-        return (_Pow = Module["_Pow"] = Module["asm"]["ya"]).apply(null, arguments);
+        return (_Pow = Module["_Pow"] = Module["asm"]["za"]).apply(null, arguments);
       };
       var _Prelu = Module["_Prelu"] = function() {
-        return (_Prelu = Module["_Prelu"] = Module["asm"]["za"]).apply(null, arguments);
+        return (_Prelu = Module["_Prelu"] = Module["asm"]["Aa"]).apply(null, arguments);
       };
       var _Prod = Module["_Prod"] = function() {
-        return (_Prod = Module["_Prod"] = Module["asm"]["Aa"]).apply(null, arguments);
+        return (_Prod = Module["_Prod"] = Module["asm"]["Ba"]).apply(null, arguments);
       };
       var _RealDiv = Module["_RealDiv"] = function() {
-        return (_RealDiv = Module["_RealDiv"] = Module["asm"]["Ba"]).apply(null, arguments);
+        return (_RealDiv = Module["_RealDiv"] = Module["asm"]["Ca"]).apply(null, arguments);
       };
       var _Relu = Module["_Relu"] = function() {
-        return (_Relu = Module["_Relu"] = Module["asm"]["Ca"]).apply(null, arguments);
+        return (_Relu = Module["_Relu"] = Module["asm"]["Da"]).apply(null, arguments);
       };
       var _Relu6 = Module["_Relu6"] = function() {
-        return (_Relu6 = Module["_Relu6"] = Module["asm"]["Da"]).apply(null, arguments);
+        return (_Relu6 = Module["_Relu6"] = Module["asm"]["Ea"]).apply(null, arguments);
       };
       var _ResizeBilinear = Module["_ResizeBilinear"] = function() {
-        return (_ResizeBilinear = Module["_ResizeBilinear"] = Module["asm"]["Ea"]).apply(null, arguments);
+        return (_ResizeBilinear = Module["_ResizeBilinear"] = Module["asm"]["Fa"]).apply(null, arguments);
       };
       var _Reverse = Module["_Reverse"] = function() {
-        return (_Reverse = Module["_Reverse"] = Module["asm"]["Fa"]).apply(null, arguments);
+        return (_Reverse = Module["_Reverse"] = Module["asm"]["Ga"]).apply(null, arguments);
       };
       var _RotateWithOffset = Module["_RotateWithOffset"] = function() {
-        return (_RotateWithOffset = Module["_RotateWithOffset"] = Module["asm"]["Ga"]).apply(null, arguments);
+        return (_RotateWithOffset = Module["_RotateWithOffset"] = Module["asm"]["Ha"]).apply(null, arguments);
       };
       var _Round = Module["_Round"] = function() {
-        return (_Round = Module["_Round"] = Module["asm"]["Ha"]).apply(null, arguments);
+        return (_Round = Module["_Round"] = Module["asm"]["Ia"]).apply(null, arguments);
       };
       var _Rsqrt = Module["_Rsqrt"] = function() {
-        return (_Rsqrt = Module["_Rsqrt"] = Module["asm"]["Ia"]).apply(null, arguments);
+        return (_Rsqrt = Module["_Rsqrt"] = Module["asm"]["Ja"]).apply(null, arguments);
       };
       var _ScatterNd = Module["_ScatterNd"] = function() {
-        return (_ScatterNd = Module["_ScatterNd"] = Module["asm"]["Ja"]).apply(null, arguments);
+        return (_ScatterNd = Module["_ScatterNd"] = Module["asm"]["Ka"]).apply(null, arguments);
       };
       var _SelectV2 = Module["_SelectV2"] = function() {
-        return (_SelectV2 = Module["_SelectV2"] = Module["asm"]["Ka"]).apply(null, arguments);
+        return (_SelectV2 = Module["_SelectV2"] = Module["asm"]["La"]).apply(null, arguments);
       };
       var _Sigmoid = Module["_Sigmoid"] = function() {
-        return (_Sigmoid = Module["_Sigmoid"] = Module["asm"]["La"]).apply(null, arguments);
+        return (_Sigmoid = Module["_Sigmoid"] = Module["asm"]["Ma"]).apply(null, arguments);
       };
       var _Sin = Module["_Sin"] = function() {
-        return (_Sin = Module["_Sin"] = Module["asm"]["Ma"]).apply(null, arguments);
+        return (_Sin = Module["_Sin"] = Module["asm"]["Na"]).apply(null, arguments);
       };
       var _Softmax = Module["_Softmax"] = function() {
-        return (_Softmax = Module["_Softmax"] = Module["asm"]["Na"]).apply(null, arguments);
+        return (_Softmax = Module["_Softmax"] = Module["asm"]["Oa"]).apply(null, arguments);
       };
       var _Sqrt = Module["_Sqrt"] = function() {
-        return (_Sqrt = Module["_Sqrt"] = Module["asm"]["Oa"]).apply(null, arguments);
+        return (_Sqrt = Module["_Sqrt"] = Module["asm"]["Pa"]).apply(null, arguments);
       };
       var _Square = Module["_Square"] = function() {
-        return (_Square = Module["_Square"] = Module["asm"]["Pa"]).apply(null, arguments);
+        return (_Square = Module["_Square"] = Module["asm"]["Qa"]).apply(null, arguments);
       };
       var _SquaredDifference = Module["_SquaredDifference"] = function() {
-        return (_SquaredDifference = Module["_SquaredDifference"] = Module["asm"]["Qa"]).apply(null, arguments);
+        return (_SquaredDifference = Module["_SquaredDifference"] = Module["asm"]["Ra"]).apply(null, arguments);
       };
       var _Step = Module["_Step"] = function() {
-        return (_Step = Module["_Step"] = Module["asm"]["Ra"]).apply(null, arguments);
+        return (_Step = Module["_Step"] = Module["asm"]["Sa"]).apply(null, arguments);
       };
       var _StridedSlice = Module["_StridedSlice"] = function() {
-        return (_StridedSlice = Module["_StridedSlice"] = Module["asm"]["Sa"]).apply(null, arguments);
+        return (_StridedSlice = Module["_StridedSlice"] = Module["asm"]["Ta"]).apply(null, arguments);
       };
       var _Sub = Module["_Sub"] = function() {
-        return (_Sub = Module["_Sub"] = Module["asm"]["Ta"]).apply(null, arguments);
+        return (_Sub = Module["_Sub"] = Module["asm"]["Ua"]).apply(null, arguments);
       };
       var _Sum = Module["_Sum"] = function() {
-        return (_Sum = Module["_Sum"] = Module["asm"]["Ua"]).apply(null, arguments);
+        return (_Sum = Module["_Sum"] = Module["asm"]["Va"]).apply(null, arguments);
+      };
+      var _Tan = Module["_Tan"] = function() {
+        return (_Tan = Module["_Tan"] = Module["asm"]["Wa"]).apply(null, arguments);
       };
       var _Tanh = Module["_Tanh"] = function() {
-        return (_Tanh = Module["_Tanh"] = Module["asm"]["Va"]).apply(null, arguments);
+        return (_Tanh = Module["_Tanh"] = Module["asm"]["Xa"]).apply(null, arguments);
       };
       var _Tile = Module["_Tile"] = function() {
-        return (_Tile = Module["_Tile"] = Module["asm"]["Wa"]).apply(null, arguments);
+        return (_Tile = Module["_Tile"] = Module["asm"]["Ya"]).apply(null, arguments);
       };
       var _TopK = Module["_TopK"] = function() {
-        return (_TopK = Module["_TopK"] = Module["asm"]["Xa"]).apply(null, arguments);
+        return (_TopK = Module["_TopK"] = Module["asm"]["Za"]).apply(null, arguments);
       };
       var _Transpose = Module["_Transpose"] = function() {
-        return (_Transpose = Module["_Transpose"] = Module["asm"]["Ya"]).apply(null, arguments);
+        return (_Transpose = Module["_Transpose"] = Module["asm"]["_a"]).apply(null, arguments);
       };
       var __FusedMatMul = Module["__FusedMatMul"] = function() {
-        return (__FusedMatMul = Module["__FusedMatMul"] = Module["asm"]["Za"]).apply(null, arguments);
+        return (__FusedMatMul = Module["__FusedMatMul"] = Module["asm"]["$a"]).apply(null, arguments);
       };
       var _malloc = Module["_malloc"] = function() {
-        return (_malloc = Module["_malloc"] = Module["asm"]["_a"]).apply(null, arguments);
+        return (_malloc = Module["_malloc"] = Module["asm"]["ab"]).apply(null, arguments);
       };
       var _free = Module["_free"] = function() {
-        return (_free = Module["_free"] = Module["asm"]["$a"]).apply(null, arguments);
+        return (_free = Module["_free"] = Module["asm"]["bb"]).apply(null, arguments);
       };
       var ___errno_location = Module["___errno_location"] = function() {
-        return (___errno_location = Module["___errno_location"] = Module["asm"]["ab"]).apply(null, arguments);
+        return (___errno_location = Module["___errno_location"] = Module["asm"]["cb"]).apply(null, arguments);
       };
       var _emscripten_get_global_libc = Module["_emscripten_get_global_libc"] = function() {
-        return (_emscripten_get_global_libc = Module["_emscripten_get_global_libc"] = Module["asm"]["bb"]).apply(null, arguments);
+        return (_emscripten_get_global_libc = Module["_emscripten_get_global_libc"] = Module["asm"]["db"]).apply(null, arguments);
       };
       var _pthread_self = Module["_pthread_self"] = function() {
-        return (_pthread_self = Module["_pthread_self"] = Module["asm"]["cb"]).apply(null, arguments);
+        return (_pthread_self = Module["_pthread_self"] = Module["asm"]["eb"]).apply(null, arguments);
       };
       var ___pthread_tsd_run_dtors = Module["___pthread_tsd_run_dtors"] = function() {
-        return (___pthread_tsd_run_dtors = Module["___pthread_tsd_run_dtors"] = Module["asm"]["db"]).apply(null, arguments);
+        return (___pthread_tsd_run_dtors = Module["___pthread_tsd_run_dtors"] = Module["asm"]["fb"]).apply(null, arguments);
       };
       var _emscripten_main_thread_process_queued_calls = Module["_emscripten_main_thread_process_queued_calls"] = function() {
-        return (_emscripten_main_thread_process_queued_calls = Module["_emscripten_main_thread_process_queued_calls"] = Module["asm"]["eb"]).apply(null, arguments);
+        return (_emscripten_main_thread_process_queued_calls = Module["_emscripten_main_thread_process_queued_calls"] = Module["asm"]["gb"]).apply(null, arguments);
       };
       var _emscripten_current_thread_process_queued_calls = Module["_emscripten_current_thread_process_queued_calls"] = function() {
-        return (_emscripten_current_thread_process_queued_calls = Module["_emscripten_current_thread_process_queued_calls"] = Module["asm"]["fb"]).apply(null, arguments);
+        return (_emscripten_current_thread_process_queued_calls = Module["_emscripten_current_thread_process_queued_calls"] = Module["asm"]["hb"]).apply(null, arguments);
       };
       var _emscripten_register_main_browser_thread_id = Module["_emscripten_register_main_browser_thread_id"] = function() {
-        return (_emscripten_register_main_browser_thread_id = Module["_emscripten_register_main_browser_thread_id"] = Module["asm"]["gb"]).apply(null, arguments);
+        return (_emscripten_register_main_browser_thread_id = Module["_emscripten_register_main_browser_thread_id"] = Module["asm"]["ib"]).apply(null, arguments);
       };
       var __emscripten_do_dispatch_to_thread = Module["__emscripten_do_dispatch_to_thread"] = function() {
-        return (__emscripten_do_dispatch_to_thread = Module["__emscripten_do_dispatch_to_thread"] = Module["asm"]["hb"]).apply(null, arguments);
+        return (__emscripten_do_dispatch_to_thread = Module["__emscripten_do_dispatch_to_thread"] = Module["asm"]["jb"]).apply(null, arguments);
       };
       var _emscripten_sync_run_in_main_thread_4 = Module["_emscripten_sync_run_in_main_thread_4"] = function() {
-        return (_emscripten_sync_run_in_main_thread_4 = Module["_emscripten_sync_run_in_main_thread_4"] = Module["asm"]["ib"]).apply(null, arguments);
+        return (_emscripten_sync_run_in_main_thread_4 = Module["_emscripten_sync_run_in_main_thread_4"] = Module["asm"]["kb"]).apply(null, arguments);
       };
       var _emscripten_run_in_main_runtime_thread_js = Module["_emscripten_run_in_main_runtime_thread_js"] = function() {
-        return (_emscripten_run_in_main_runtime_thread_js = Module["_emscripten_run_in_main_runtime_thread_js"] = Module["asm"]["jb"]).apply(null, arguments);
+        return (_emscripten_run_in_main_runtime_thread_js = Module["_emscripten_run_in_main_runtime_thread_js"] = Module["asm"]["lb"]).apply(null, arguments);
       };
       var __emscripten_call_on_thread = Module["__emscripten_call_on_thread"] = function() {
-        return (__emscripten_call_on_thread = Module["__emscripten_call_on_thread"] = Module["asm"]["kb"]).apply(null, arguments);
+        return (__emscripten_call_on_thread = Module["__emscripten_call_on_thread"] = Module["asm"]["mb"]).apply(null, arguments);
       };
       var _emscripten_tls_init = Module["_emscripten_tls_init"] = function() {
-        return (_emscripten_tls_init = Module["_emscripten_tls_init"] = Module["asm"]["lb"]).apply(null, arguments);
+        return (_emscripten_tls_init = Module["_emscripten_tls_init"] = Module["asm"]["nb"]).apply(null, arguments);
       };
       var __emscripten_thread_init = Module["__emscripten_thread_init"] = function() {
-        return (__emscripten_thread_init = Module["__emscripten_thread_init"] = Module["asm"]["mb"]).apply(null, arguments);
+        return (__emscripten_thread_init = Module["__emscripten_thread_init"] = Module["asm"]["ob"]).apply(null, arguments);
       };
       var stackSave = Module["stackSave"] = function() {
-        return (stackSave = Module["stackSave"] = Module["asm"]["nb"]).apply(null, arguments);
+        return (stackSave = Module["stackSave"] = Module["asm"]["pb"]).apply(null, arguments);
       };
       var stackRestore = Module["stackRestore"] = function() {
-        return (stackRestore = Module["stackRestore"] = Module["asm"]["ob"]).apply(null, arguments);
+        return (stackRestore = Module["stackRestore"] = Module["asm"]["qb"]).apply(null, arguments);
       };
       var stackAlloc = Module["stackAlloc"] = function() {
-        return (stackAlloc = Module["stackAlloc"] = Module["asm"]["pb"]).apply(null, arguments);
+        return (stackAlloc = Module["stackAlloc"] = Module["asm"]["rb"]).apply(null, arguments);
       };
       var _emscripten_stack_set_limits = Module["_emscripten_stack_set_limits"] = function() {
-        return (_emscripten_stack_set_limits = Module["_emscripten_stack_set_limits"] = Module["asm"]["qb"]).apply(null, arguments);
+        return (_emscripten_stack_set_limits = Module["_emscripten_stack_set_limits"] = Module["asm"]["sb"]).apply(null, arguments);
       };
       var _memalign = Module["_memalign"] = function() {
-        return (_memalign = Module["_memalign"] = Module["asm"]["rb"]).apply(null, arguments);
+        return (_memalign = Module["_memalign"] = Module["asm"]["tb"]).apply(null, arguments);
       };
-      var __emscripten_allow_main_runtime_queued_calls = Module["__emscripten_allow_main_runtime_queued_calls"] = 9880;
-      var __emscripten_main_thread_futex = Module["__emscripten_main_thread_futex"] = 11368;
+      var __emscripten_allow_main_runtime_queued_calls = Module["__emscripten_allow_main_runtime_queued_calls"] = 9792;
+      var __emscripten_main_thread_futex = Module["__emscripten_main_thread_futex"] = 11408;
       Module["cwrap"] = cwrap;
       Module["PThread"] = PThread;
       Module["PThread"] = PThread;
@@ -3434,6 +3430,7 @@ var require_tfjs_backend_wasm_threaded_simd = __commonJS((exports, module) => {
         }
         if (ENVIRONMENT_IS_PTHREAD) {
           readyPromiseResolve(Module);
+          initRuntime();
           postMessage({cmd: "loaded"});
           return;
         }
@@ -3502,20 +3499,20 @@ var require_tfjs_backend_wasm_threaded_simd = __commonJS((exports, module) => {
         PThread.initWorker();
       }
       run();
-      return WasmBackendModuleThreadedSimd2.ready;
+      return WasmBackendModule2.ready;
     };
   }();
   if (typeof exports === "object" && typeof module === "object")
-    module.exports = WasmBackendModuleThreadedSimd;
+    module.exports = WasmBackendModule;
   else if (typeof define === "function" && define["amd"])
     define([], function() {
-      return WasmBackendModuleThreadedSimd;
+      return WasmBackendModule;
     });
   else if (typeof exports === "object")
-    exports["WasmBackendModuleThreadedSimd"] = WasmBackendModuleThreadedSimd;
+    exports["WasmBackendModule"] = WasmBackendModule;
 });
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/wasm-out/tfjs-backend-wasm.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/wasm-out/tfjs-backend-wasm.js
 var require_tfjs_backend_wasm = __commonJS((exports, module) => {
   var WasmBackendModule = function() {
     var _scriptDir = typeof document !== "undefined" && document.currentScript ? document.currentScript.src : void 0;
@@ -4012,9 +4009,9 @@ var require_tfjs_backend_wasm = __commonJS((exports, module) => {
         function receiveInstance(instance, module2) {
           var exports3 = instance.exports;
           Module["asm"] = exports3;
-          wasmMemory = Module["asm"]["g"];
+          wasmMemory = Module["asm"]["i"];
           updateGlobalBufferAndViews(wasmMemory.buffer);
-          wasmTable = Module["asm"]["m"];
+          wasmTable = Module["asm"]["o"];
           removeRunDependency("wasm-instantiate");
         }
         addRunDependency("wasm-instantiate");
@@ -4144,259 +4141,441 @@ var require_tfjs_backend_wasm = __commonJS((exports, module) => {
         HEAP32[pnum >> 2] = num;
         return 0;
       }
-      var asmLibraryArg = {a: _abort, d: _emscripten_memcpy_big, e: _emscripten_resize_heap, f: _fd_close, c: _fd_seek, b: _fd_write};
+      function _pthread_create() {
+        return 6;
+      }
+      function setErrNo(value) {
+        HEAP32[___errno_location() >> 2] = value;
+        return value;
+      }
+      function _sysconf(name) {
+        switch (name) {
+          case 30:
+            return 16384;
+          case 85:
+            var maxHeapSize = 2147483648;
+            return maxHeapSize / 16384;
+          case 132:
+          case 133:
+          case 12:
+          case 137:
+          case 138:
+          case 15:
+          case 235:
+          case 16:
+          case 17:
+          case 18:
+          case 19:
+          case 20:
+          case 149:
+          case 13:
+          case 10:
+          case 236:
+          case 153:
+          case 9:
+          case 21:
+          case 22:
+          case 159:
+          case 154:
+          case 14:
+          case 77:
+          case 78:
+          case 139:
+          case 82:
+          case 68:
+          case 67:
+          case 164:
+          case 11:
+          case 29:
+          case 47:
+          case 48:
+          case 95:
+          case 52:
+          case 51:
+          case 46:
+            return 200809;
+          case 27:
+          case 246:
+          case 127:
+          case 128:
+          case 23:
+          case 24:
+          case 160:
+          case 161:
+          case 181:
+          case 182:
+          case 242:
+          case 183:
+          case 184:
+          case 243:
+          case 244:
+          case 245:
+          case 165:
+          case 178:
+          case 179:
+          case 49:
+          case 50:
+          case 168:
+          case 169:
+          case 175:
+          case 170:
+          case 171:
+          case 172:
+          case 97:
+          case 76:
+          case 32:
+          case 173:
+          case 35:
+          case 80:
+          case 81:
+          case 79:
+            return -1;
+          case 176:
+          case 177:
+          case 7:
+          case 155:
+          case 8:
+          case 157:
+          case 125:
+          case 126:
+          case 92:
+          case 93:
+          case 129:
+          case 130:
+          case 131:
+          case 94:
+          case 91:
+            return 1;
+          case 74:
+          case 60:
+          case 69:
+          case 70:
+          case 4:
+            return 1024;
+          case 31:
+          case 42:
+          case 72:
+            return 32;
+          case 87:
+          case 26:
+          case 33:
+            return 2147483647;
+          case 34:
+          case 1:
+            return 47839;
+          case 38:
+          case 36:
+            return 99;
+          case 43:
+          case 37:
+            return 2048;
+          case 0:
+            return 2097152;
+          case 3:
+            return 65536;
+          case 28:
+            return 32768;
+          case 44:
+            return 32767;
+          case 75:
+            return 16384;
+          case 39:
+            return 1e3;
+          case 89:
+            return 700;
+          case 71:
+            return 256;
+          case 40:
+            return 255;
+          case 2:
+            return 100;
+          case 180:
+            return 64;
+          case 25:
+            return 20;
+          case 5:
+            return 16;
+          case 6:
+            return 6;
+          case 73:
+            return 4;
+          case 84: {
+            if (typeof navigator === "object")
+              return navigator["hardwareConcurrency"] || 1;
+            return 1;
+          }
+        }
+        setErrNo(28);
+        return -1;
+      }
+      var asmLibraryArg = {a: _abort, d: _emscripten_memcpy_big, e: _emscripten_resize_heap, f: _fd_close, c: _fd_seek, b: _fd_write, g: _pthread_create, h: _sysconf};
       var asm = createWasm();
       var ___wasm_call_ctors = Module["___wasm_call_ctors"] = function() {
-        return (___wasm_call_ctors = Module["___wasm_call_ctors"] = Module["asm"]["h"]).apply(null, arguments);
+        return (___wasm_call_ctors = Module["___wasm_call_ctors"] = Module["asm"]["j"]).apply(null, arguments);
       };
       var _init = Module["_init"] = function() {
-        return (_init = Module["_init"] = Module["asm"]["i"]).apply(null, arguments);
+        return (_init = Module["_init"] = Module["asm"]["k"]).apply(null, arguments);
       };
       var _register_tensor = Module["_register_tensor"] = function() {
-        return (_register_tensor = Module["_register_tensor"] = Module["asm"]["j"]).apply(null, arguments);
+        return (_register_tensor = Module["_register_tensor"] = Module["asm"]["l"]).apply(null, arguments);
       };
       var _dispose_data = Module["_dispose_data"] = function() {
-        return (_dispose_data = Module["_dispose_data"] = Module["asm"]["k"]).apply(null, arguments);
+        return (_dispose_data = Module["_dispose_data"] = Module["asm"]["m"]).apply(null, arguments);
       };
       var _dispose = Module["_dispose"] = function() {
-        return (_dispose = Module["_dispose"] = Module["asm"]["l"]).apply(null, arguments);
+        return (_dispose = Module["_dispose"] = Module["asm"]["n"]).apply(null, arguments);
       };
       var _Abs = Module["_Abs"] = function() {
-        return (_Abs = Module["_Abs"] = Module["asm"]["n"]).apply(null, arguments);
+        return (_Abs = Module["_Abs"] = Module["asm"]["p"]).apply(null, arguments);
       };
       var _Add = Module["_Add"] = function() {
-        return (_Add = Module["_Add"] = Module["asm"]["o"]).apply(null, arguments);
+        return (_Add = Module["_Add"] = Module["asm"]["q"]).apply(null, arguments);
       };
       var _AddN = Module["_AddN"] = function() {
-        return (_AddN = Module["_AddN"] = Module["asm"]["p"]).apply(null, arguments);
+        return (_AddN = Module["_AddN"] = Module["asm"]["r"]).apply(null, arguments);
+      };
+      var _All = Module["_All"] = function() {
+        return (_All = Module["_All"] = Module["asm"]["s"]).apply(null, arguments);
+      };
+      var _Any = Module["_Any"] = function() {
+        return (_Any = Module["_Any"] = Module["asm"]["t"]).apply(null, arguments);
       };
       var _ArgMax = Module["_ArgMax"] = function() {
-        return (_ArgMax = Module["_ArgMax"] = Module["asm"]["q"]).apply(null, arguments);
+        return (_ArgMax = Module["_ArgMax"] = Module["asm"]["u"]).apply(null, arguments);
       };
       var _AvgPool = Module["_AvgPool"] = function() {
-        return (_AvgPool = Module["_AvgPool"] = Module["asm"]["r"]).apply(null, arguments);
+        return (_AvgPool = Module["_AvgPool"] = Module["asm"]["v"]).apply(null, arguments);
       };
       var _BatchMatMul = Module["_BatchMatMul"] = function() {
-        return (_BatchMatMul = Module["_BatchMatMul"] = Module["asm"]["s"]).apply(null, arguments);
+        return (_BatchMatMul = Module["_BatchMatMul"] = Module["asm"]["w"]).apply(null, arguments);
       };
       var _Ceil = Module["_Ceil"] = function() {
-        return (_Ceil = Module["_Ceil"] = Module["asm"]["t"]).apply(null, arguments);
+        return (_Ceil = Module["_Ceil"] = Module["asm"]["x"]).apply(null, arguments);
       };
       var _ClipByValue = Module["_ClipByValue"] = function() {
-        return (_ClipByValue = Module["_ClipByValue"] = Module["asm"]["u"]).apply(null, arguments);
+        return (_ClipByValue = Module["_ClipByValue"] = Module["asm"]["y"]).apply(null, arguments);
       };
       var _Conv2D = Module["_Conv2D"] = function() {
-        return (_Conv2D = Module["_Conv2D"] = Module["asm"]["v"]).apply(null, arguments);
+        return (_Conv2D = Module["_Conv2D"] = Module["asm"]["z"]).apply(null, arguments);
       };
       var _Conv2DBackpropInput = Module["_Conv2DBackpropInput"] = function() {
-        return (_Conv2DBackpropInput = Module["_Conv2DBackpropInput"] = Module["asm"]["w"]).apply(null, arguments);
+        return (_Conv2DBackpropInput = Module["_Conv2DBackpropInput"] = Module["asm"]["A"]).apply(null, arguments);
       };
       var _Cos = Module["_Cos"] = function() {
-        return (_Cos = Module["_Cos"] = Module["asm"]["x"]).apply(null, arguments);
+        return (_Cos = Module["_Cos"] = Module["asm"]["B"]).apply(null, arguments);
       };
       var _CropAndResize = Module["_CropAndResize"] = function() {
-        return (_CropAndResize = Module["_CropAndResize"] = Module["asm"]["y"]).apply(null, arguments);
+        return (_CropAndResize = Module["_CropAndResize"] = Module["asm"]["C"]).apply(null, arguments);
       };
       var _Cumsum = Module["_Cumsum"] = function() {
-        return (_Cumsum = Module["_Cumsum"] = Module["asm"]["z"]).apply(null, arguments);
+        return (_Cumsum = Module["_Cumsum"] = Module["asm"]["D"]).apply(null, arguments);
       };
       var _DepthToSpace = Module["_DepthToSpace"] = function() {
-        return (_DepthToSpace = Module["_DepthToSpace"] = Module["asm"]["A"]).apply(null, arguments);
+        return (_DepthToSpace = Module["_DepthToSpace"] = Module["asm"]["E"]).apply(null, arguments);
       };
       var _DepthwiseConv2dNative = Module["_DepthwiseConv2dNative"] = function() {
-        return (_DepthwiseConv2dNative = Module["_DepthwiseConv2dNative"] = Module["asm"]["B"]).apply(null, arguments);
+        return (_DepthwiseConv2dNative = Module["_DepthwiseConv2dNative"] = Module["asm"]["F"]).apply(null, arguments);
       };
       var _Equal = Module["_Equal"] = function() {
-        return (_Equal = Module["_Equal"] = Module["asm"]["C"]).apply(null, arguments);
+        return (_Equal = Module["_Equal"] = Module["asm"]["G"]).apply(null, arguments);
       };
       var _Exp = Module["_Exp"] = function() {
-        return (_Exp = Module["_Exp"] = Module["asm"]["D"]).apply(null, arguments);
+        return (_Exp = Module["_Exp"] = Module["asm"]["H"]).apply(null, arguments);
       };
       var _FlipLeftRight = Module["_FlipLeftRight"] = function() {
-        return (_FlipLeftRight = Module["_FlipLeftRight"] = Module["asm"]["E"]).apply(null, arguments);
+        return (_FlipLeftRight = Module["_FlipLeftRight"] = Module["asm"]["I"]).apply(null, arguments);
       };
       var _Floor = Module["_Floor"] = function() {
-        return (_Floor = Module["_Floor"] = Module["asm"]["F"]).apply(null, arguments);
+        return (_Floor = Module["_Floor"] = Module["asm"]["J"]).apply(null, arguments);
       };
       var _FloorDiv = Module["_FloorDiv"] = function() {
-        return (_FloorDiv = Module["_FloorDiv"] = Module["asm"]["G"]).apply(null, arguments);
+        return (_FloorDiv = Module["_FloorDiv"] = Module["asm"]["K"]).apply(null, arguments);
       };
       var _FusedBatchNorm = Module["_FusedBatchNorm"] = function() {
-        return (_FusedBatchNorm = Module["_FusedBatchNorm"] = Module["asm"]["H"]).apply(null, arguments);
+        return (_FusedBatchNorm = Module["_FusedBatchNorm"] = Module["asm"]["L"]).apply(null, arguments);
       };
       var _FusedConv2D = Module["_FusedConv2D"] = function() {
-        return (_FusedConv2D = Module["_FusedConv2D"] = Module["asm"]["I"]).apply(null, arguments);
+        return (_FusedConv2D = Module["_FusedConv2D"] = Module["asm"]["M"]).apply(null, arguments);
       };
       var _FusedDepthwiseConv2D = Module["_FusedDepthwiseConv2D"] = function() {
-        return (_FusedDepthwiseConv2D = Module["_FusedDepthwiseConv2D"] = Module["asm"]["J"]).apply(null, arguments);
+        return (_FusedDepthwiseConv2D = Module["_FusedDepthwiseConv2D"] = Module["asm"]["N"]).apply(null, arguments);
       };
       var _Gather = Module["_Gather"] = function() {
-        return (_Gather = Module["_Gather"] = Module["asm"]["K"]).apply(null, arguments);
+        return (_Gather = Module["_Gather"] = Module["asm"]["O"]).apply(null, arguments);
       };
       var _GatherNd = Module["_GatherNd"] = function() {
-        return (_GatherNd = Module["_GatherNd"] = Module["asm"]["L"]).apply(null, arguments);
+        return (_GatherNd = Module["_GatherNd"] = Module["asm"]["P"]).apply(null, arguments);
       };
       var _Greater = Module["_Greater"] = function() {
-        return (_Greater = Module["_Greater"] = Module["asm"]["M"]).apply(null, arguments);
+        return (_Greater = Module["_Greater"] = Module["asm"]["Q"]).apply(null, arguments);
       };
       var _GreaterEqual = Module["_GreaterEqual"] = function() {
-        return (_GreaterEqual = Module["_GreaterEqual"] = Module["asm"]["N"]).apply(null, arguments);
+        return (_GreaterEqual = Module["_GreaterEqual"] = Module["asm"]["R"]).apply(null, arguments);
       };
       var _LeakyRelu = Module["_LeakyRelu"] = function() {
-        return (_LeakyRelu = Module["_LeakyRelu"] = Module["asm"]["O"]).apply(null, arguments);
+        return (_LeakyRelu = Module["_LeakyRelu"] = Module["asm"]["S"]).apply(null, arguments);
       };
       var _Less = Module["_Less"] = function() {
-        return (_Less = Module["_Less"] = Module["asm"]["P"]).apply(null, arguments);
+        return (_Less = Module["_Less"] = Module["asm"]["T"]).apply(null, arguments);
       };
       var _LessEqual = Module["_LessEqual"] = function() {
-        return (_LessEqual = Module["_LessEqual"] = Module["asm"]["Q"]).apply(null, arguments);
+        return (_LessEqual = Module["_LessEqual"] = Module["asm"]["U"]).apply(null, arguments);
       };
       var _Log = Module["_Log"] = function() {
-        return (_Log = Module["_Log"] = Module["asm"]["R"]).apply(null, arguments);
+        return (_Log = Module["_Log"] = Module["asm"]["V"]).apply(null, arguments);
       };
       var _LogicalAnd = Module["_LogicalAnd"] = function() {
-        return (_LogicalAnd = Module["_LogicalAnd"] = Module["asm"]["S"]).apply(null, arguments);
+        return (_LogicalAnd = Module["_LogicalAnd"] = Module["asm"]["W"]).apply(null, arguments);
       };
       var _Max = Module["_Max"] = function() {
-        return (_Max = Module["_Max"] = Module["asm"]["T"]).apply(null, arguments);
+        return (_Max = Module["_Max"] = Module["asm"]["X"]).apply(null, arguments);
       };
       var _MaxPool = Module["_MaxPool"] = function() {
-        return (_MaxPool = Module["_MaxPool"] = Module["asm"]["U"]).apply(null, arguments);
+        return (_MaxPool = Module["_MaxPool"] = Module["asm"]["Y"]).apply(null, arguments);
       };
       var _Maximum = Module["_Maximum"] = function() {
-        return (_Maximum = Module["_Maximum"] = Module["asm"]["V"]).apply(null, arguments);
+        return (_Maximum = Module["_Maximum"] = Module["asm"]["Z"]).apply(null, arguments);
       };
       var _Mean = Module["_Mean"] = function() {
-        return (_Mean = Module["_Mean"] = Module["asm"]["W"]).apply(null, arguments);
+        return (_Mean = Module["_Mean"] = Module["asm"]["_"]).apply(null, arguments);
       };
       var _Min = Module["_Min"] = function() {
-        return (_Min = Module["_Min"] = Module["asm"]["X"]).apply(null, arguments);
+        return (_Min = Module["_Min"] = Module["asm"]["$"]).apply(null, arguments);
       };
       var _Minimum = Module["_Minimum"] = function() {
-        return (_Minimum = Module["_Minimum"] = Module["asm"]["Y"]).apply(null, arguments);
+        return (_Minimum = Module["_Minimum"] = Module["asm"]["aa"]).apply(null, arguments);
+      };
+      var _MirrorPad = Module["_MirrorPad"] = function() {
+        return (_MirrorPad = Module["_MirrorPad"] = Module["asm"]["ba"]).apply(null, arguments);
       };
       var _Multiply = Module["_Multiply"] = function() {
-        return (_Multiply = Module["_Multiply"] = Module["asm"]["Z"]).apply(null, arguments);
+        return (_Multiply = Module["_Multiply"] = Module["asm"]["ca"]).apply(null, arguments);
       };
       var _Neg = Module["_Neg"] = function() {
-        return (_Neg = Module["_Neg"] = Module["asm"]["_"]).apply(null, arguments);
+        return (_Neg = Module["_Neg"] = Module["asm"]["da"]).apply(null, arguments);
       };
       var _NonMaxSuppressionV3 = Module["_NonMaxSuppressionV3"] = function() {
-        return (_NonMaxSuppressionV3 = Module["_NonMaxSuppressionV3"] = Module["asm"]["$"]).apply(null, arguments);
+        return (_NonMaxSuppressionV3 = Module["_NonMaxSuppressionV3"] = Module["asm"]["ea"]).apply(null, arguments);
       };
       var _NonMaxSuppressionV4 = Module["_NonMaxSuppressionV4"] = function() {
-        return (_NonMaxSuppressionV4 = Module["_NonMaxSuppressionV4"] = Module["asm"]["aa"]).apply(null, arguments);
+        return (_NonMaxSuppressionV4 = Module["_NonMaxSuppressionV4"] = Module["asm"]["fa"]).apply(null, arguments);
       };
       var _NonMaxSuppressionV5 = Module["_NonMaxSuppressionV5"] = function() {
-        return (_NonMaxSuppressionV5 = Module["_NonMaxSuppressionV5"] = Module["asm"]["ba"]).apply(null, arguments);
+        return (_NonMaxSuppressionV5 = Module["_NonMaxSuppressionV5"] = Module["asm"]["ga"]).apply(null, arguments);
       };
       var _NotEqual = Module["_NotEqual"] = function() {
-        return (_NotEqual = Module["_NotEqual"] = Module["asm"]["ca"]).apply(null, arguments);
+        return (_NotEqual = Module["_NotEqual"] = Module["asm"]["ha"]).apply(null, arguments);
       };
       var _OneHot = Module["_OneHot"] = function() {
-        return (_OneHot = Module["_OneHot"] = Module["asm"]["da"]).apply(null, arguments);
+        return (_OneHot = Module["_OneHot"] = Module["asm"]["ia"]).apply(null, arguments);
       };
       var _PadV2 = Module["_PadV2"] = function() {
-        return (_PadV2 = Module["_PadV2"] = Module["asm"]["ea"]).apply(null, arguments);
+        return (_PadV2 = Module["_PadV2"] = Module["asm"]["ja"]).apply(null, arguments);
       };
       var _Pow = Module["_Pow"] = function() {
-        return (_Pow = Module["_Pow"] = Module["asm"]["fa"]).apply(null, arguments);
+        return (_Pow = Module["_Pow"] = Module["asm"]["ka"]).apply(null, arguments);
       };
       var _Prelu = Module["_Prelu"] = function() {
-        return (_Prelu = Module["_Prelu"] = Module["asm"]["ga"]).apply(null, arguments);
+        return (_Prelu = Module["_Prelu"] = Module["asm"]["la"]).apply(null, arguments);
       };
       var _Prod = Module["_Prod"] = function() {
-        return (_Prod = Module["_Prod"] = Module["asm"]["ha"]).apply(null, arguments);
+        return (_Prod = Module["_Prod"] = Module["asm"]["ma"]).apply(null, arguments);
       };
       var _RealDiv = Module["_RealDiv"] = function() {
-        return (_RealDiv = Module["_RealDiv"] = Module["asm"]["ia"]).apply(null, arguments);
+        return (_RealDiv = Module["_RealDiv"] = Module["asm"]["na"]).apply(null, arguments);
       };
       var _Relu = Module["_Relu"] = function() {
-        return (_Relu = Module["_Relu"] = Module["asm"]["ja"]).apply(null, arguments);
+        return (_Relu = Module["_Relu"] = Module["asm"]["oa"]).apply(null, arguments);
       };
       var _Relu6 = Module["_Relu6"] = function() {
-        return (_Relu6 = Module["_Relu6"] = Module["asm"]["ka"]).apply(null, arguments);
+        return (_Relu6 = Module["_Relu6"] = Module["asm"]["pa"]).apply(null, arguments);
       };
       var _ResizeBilinear = Module["_ResizeBilinear"] = function() {
-        return (_ResizeBilinear = Module["_ResizeBilinear"] = Module["asm"]["la"]).apply(null, arguments);
+        return (_ResizeBilinear = Module["_ResizeBilinear"] = Module["asm"]["qa"]).apply(null, arguments);
       };
       var _Reverse = Module["_Reverse"] = function() {
-        return (_Reverse = Module["_Reverse"] = Module["asm"]["ma"]).apply(null, arguments);
+        return (_Reverse = Module["_Reverse"] = Module["asm"]["ra"]).apply(null, arguments);
       };
       var _RotateWithOffset = Module["_RotateWithOffset"] = function() {
-        return (_RotateWithOffset = Module["_RotateWithOffset"] = Module["asm"]["na"]).apply(null, arguments);
+        return (_RotateWithOffset = Module["_RotateWithOffset"] = Module["asm"]["sa"]).apply(null, arguments);
       };
       var _Round = Module["_Round"] = function() {
-        return (_Round = Module["_Round"] = Module["asm"]["oa"]).apply(null, arguments);
+        return (_Round = Module["_Round"] = Module["asm"]["ta"]).apply(null, arguments);
       };
       var _Rsqrt = Module["_Rsqrt"] = function() {
-        return (_Rsqrt = Module["_Rsqrt"] = Module["asm"]["pa"]).apply(null, arguments);
+        return (_Rsqrt = Module["_Rsqrt"] = Module["asm"]["ua"]).apply(null, arguments);
       };
       var _ScatterNd = Module["_ScatterNd"] = function() {
-        return (_ScatterNd = Module["_ScatterNd"] = Module["asm"]["qa"]).apply(null, arguments);
+        return (_ScatterNd = Module["_ScatterNd"] = Module["asm"]["va"]).apply(null, arguments);
       };
       var _SelectV2 = Module["_SelectV2"] = function() {
-        return (_SelectV2 = Module["_SelectV2"] = Module["asm"]["ra"]).apply(null, arguments);
+        return (_SelectV2 = Module["_SelectV2"] = Module["asm"]["wa"]).apply(null, arguments);
       };
       var _Sigmoid = Module["_Sigmoid"] = function() {
-        return (_Sigmoid = Module["_Sigmoid"] = Module["asm"]["sa"]).apply(null, arguments);
+        return (_Sigmoid = Module["_Sigmoid"] = Module["asm"]["xa"]).apply(null, arguments);
       };
       var _Sin = Module["_Sin"] = function() {
-        return (_Sin = Module["_Sin"] = Module["asm"]["ta"]).apply(null, arguments);
+        return (_Sin = Module["_Sin"] = Module["asm"]["ya"]).apply(null, arguments);
       };
       var _Softmax = Module["_Softmax"] = function() {
-        return (_Softmax = Module["_Softmax"] = Module["asm"]["ua"]).apply(null, arguments);
+        return (_Softmax = Module["_Softmax"] = Module["asm"]["za"]).apply(null, arguments);
       };
       var _Sqrt = Module["_Sqrt"] = function() {
-        return (_Sqrt = Module["_Sqrt"] = Module["asm"]["va"]).apply(null, arguments);
+        return (_Sqrt = Module["_Sqrt"] = Module["asm"]["Aa"]).apply(null, arguments);
       };
       var _Square = Module["_Square"] = function() {
-        return (_Square = Module["_Square"] = Module["asm"]["wa"]).apply(null, arguments);
+        return (_Square = Module["_Square"] = Module["asm"]["Ba"]).apply(null, arguments);
       };
       var _SquaredDifference = Module["_SquaredDifference"] = function() {
-        return (_SquaredDifference = Module["_SquaredDifference"] = Module["asm"]["xa"]).apply(null, arguments);
+        return (_SquaredDifference = Module["_SquaredDifference"] = Module["asm"]["Ca"]).apply(null, arguments);
       };
       var _Step = Module["_Step"] = function() {
-        return (_Step = Module["_Step"] = Module["asm"]["ya"]).apply(null, arguments);
+        return (_Step = Module["_Step"] = Module["asm"]["Da"]).apply(null, arguments);
       };
       var _StridedSlice = Module["_StridedSlice"] = function() {
-        return (_StridedSlice = Module["_StridedSlice"] = Module["asm"]["za"]).apply(null, arguments);
+        return (_StridedSlice = Module["_StridedSlice"] = Module["asm"]["Ea"]).apply(null, arguments);
       };
       var _Sub = Module["_Sub"] = function() {
-        return (_Sub = Module["_Sub"] = Module["asm"]["Aa"]).apply(null, arguments);
+        return (_Sub = Module["_Sub"] = Module["asm"]["Fa"]).apply(null, arguments);
       };
       var _Sum = Module["_Sum"] = function() {
-        return (_Sum = Module["_Sum"] = Module["asm"]["Ba"]).apply(null, arguments);
+        return (_Sum = Module["_Sum"] = Module["asm"]["Ga"]).apply(null, arguments);
+      };
+      var _Tan = Module["_Tan"] = function() {
+        return (_Tan = Module["_Tan"] = Module["asm"]["Ha"]).apply(null, arguments);
       };
       var _Tanh = Module["_Tanh"] = function() {
-        return (_Tanh = Module["_Tanh"] = Module["asm"]["Ca"]).apply(null, arguments);
+        return (_Tanh = Module["_Tanh"] = Module["asm"]["Ia"]).apply(null, arguments);
       };
       var _Tile = Module["_Tile"] = function() {
-        return (_Tile = Module["_Tile"] = Module["asm"]["Da"]).apply(null, arguments);
+        return (_Tile = Module["_Tile"] = Module["asm"]["Ja"]).apply(null, arguments);
       };
       var _TopK = Module["_TopK"] = function() {
-        return (_TopK = Module["_TopK"] = Module["asm"]["Ea"]).apply(null, arguments);
+        return (_TopK = Module["_TopK"] = Module["asm"]["Ka"]).apply(null, arguments);
       };
       var _Transpose = Module["_Transpose"] = function() {
-        return (_Transpose = Module["_Transpose"] = Module["asm"]["Fa"]).apply(null, arguments);
+        return (_Transpose = Module["_Transpose"] = Module["asm"]["La"]).apply(null, arguments);
       };
       var __FusedMatMul = Module["__FusedMatMul"] = function() {
-        return (__FusedMatMul = Module["__FusedMatMul"] = Module["asm"]["Ga"]).apply(null, arguments);
+        return (__FusedMatMul = Module["__FusedMatMul"] = Module["asm"]["Ma"]).apply(null, arguments);
       };
       var _malloc = Module["_malloc"] = function() {
-        return (_malloc = Module["_malloc"] = Module["asm"]["Ha"]).apply(null, arguments);
+        return (_malloc = Module["_malloc"] = Module["asm"]["Na"]).apply(null, arguments);
       };
       var _free = Module["_free"] = function() {
-        return (_free = Module["_free"] = Module["asm"]["Ia"]).apply(null, arguments);
+        return (_free = Module["_free"] = Module["asm"]["Oa"]).apply(null, arguments);
+      };
+      var ___errno_location = Module["___errno_location"] = function() {
+        return (___errno_location = Module["___errno_location"] = Module["asm"]["Pa"]).apply(null, arguments);
       };
       var stackSave = Module["stackSave"] = function() {
-        return (stackSave = Module["stackSave"] = Module["asm"]["Ja"]).apply(null, arguments);
+        return (stackSave = Module["stackSave"] = Module["asm"]["Qa"]).apply(null, arguments);
       };
       var stackRestore = Module["stackRestore"] = function() {
-        return (stackRestore = Module["stackRestore"] = Module["asm"]["Ka"]).apply(null, arguments);
+        return (stackRestore = Module["stackRestore"] = Module["asm"]["Ra"]).apply(null, arguments);
       };
       var stackAlloc = Module["stackAlloc"] = function() {
-        return (stackAlloc = Module["stackAlloc"] = Module["asm"]["La"]).apply(null, arguments);
+        return (stackAlloc = Module["stackAlloc"] = Module["asm"]["Sa"]).apply(null, arguments);
       };
       Module["cwrap"] = cwrap;
       var calledRun;
@@ -4468,7 +4647,7 @@ var require_tfjs_backend_wasm = __commonJS((exports, module) => {
     exports["WasmBackendModule"] = WasmBackendModule;
 });
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/backends/backend.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/backends/backend.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -4563,7 +4742,7 @@ function notYetImplemented(kernelName) {
   throw new Error(`'${kernelName}' not yet implemented or not found in the registry. This kernel may not be supported by the tfjs backend you have chosen`);
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/util_base.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/util_base.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -4931,35 +5110,35 @@ function computeStrides(shape) {
   }
   return strides;
 }
-function createNestedArray(offset, shape, a) {
+function createNestedArray(offset, shape, a, isComplex = false) {
   const ret = new Array();
   if (shape.length === 1) {
-    const d = shape[0];
+    const d = shape[0] * (isComplex ? 2 : 1);
     for (let i = 0; i < d; i++) {
       ret[i] = a[offset + i];
     }
   } else {
     const d = shape[0];
     const rest = shape.slice(1);
-    const len = rest.reduce((acc, c) => acc * c);
+    const len = rest.reduce((acc, c) => acc * c) * (isComplex ? 2 : 1);
     for (let i = 0; i < d; i++) {
-      ret[i] = createNestedArray(offset + i * len, rest, a);
+      ret[i] = createNestedArray(offset + i * len, rest, a, isComplex);
     }
   }
   return ret;
 }
-function toNestedArray(shape, a) {
+function toNestedArray(shape, a, isComplex = false) {
   if (shape.length === 0) {
     return a[0];
   }
-  const size = shape.reduce((acc, c) => acc * c);
+  const size = shape.reduce((acc, c) => acc * c) * (isComplex ? 2 : 1);
   if (size === 0) {
     return [];
   }
   if (size !== a.length) {
-    throw new Error(`[${shape}] does not match the input size ${a.length}.`);
+    throw new Error(`[${shape}] does not match the input size ${a.length}${isComplex ? " for a complex tensor" : ""}.`);
   }
-  return createNestedArray(0, shape, a);
+  return createNestedArray(0, shape, a, isComplex);
 }
 function makeOnesTypedArray(size, dtype) {
   const array2 = makeZerosTypedArray(size, dtype);
@@ -5026,7 +5205,7 @@ function isPromise(object) {
   return object && object.then && typeof object.then === "function";
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/environment.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/environment.js
 /**
  * @license
  * Copyright 2017 Google LLC. All Rights Reserved.
@@ -5050,6 +5229,7 @@ var Environment = class {
     this.flags = {};
     this.flagRegistry = {};
     this.urlFlags = {};
+    this.getQueryParams = getQueryParams;
     this.populateURLFlags();
   }
   setPlatform(platformName, platform) {
@@ -5124,7 +5304,7 @@ var Environment = class {
     if (typeof this.global === "undefined" || typeof this.global.location === "undefined" || typeof this.global.location.search === "undefined") {
       return;
     }
-    const urlParams = getQueryParams(this.global.location.search);
+    const urlParams = this.getQueryParams(this.global.location.search);
     if (TENSORFLOWJS_FLAGS_PREFIX in urlParams) {
       const keyValues = urlParams[TENSORFLOWJS_FLAGS_PREFIX].split(",");
       keyValues.forEach((keyValue) => {
@@ -5162,7 +5342,7 @@ function setEnvironmentGlobal(environment) {
   ENV = environment;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/global_util.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/global_util.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -5216,7 +5396,7 @@ function getGlobal(key, init2) {
   }
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/kernel_names.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/kernel_names.js
 var Abs = "Abs";
 var Acos = "Acos";
 var Acosh = "Acosh";
@@ -5265,6 +5445,7 @@ var Dilation2D = "Dilation2D";
 var Dilation2DBackpropInput = "Dilation2DBackpropInput";
 var Dilation2DBackpropFilter = "Dilation2DBackpropFilter";
 var RealDiv = "RealDiv";
+var Einsum = "Einsum";
 var Elu = "Elu";
 var EluGrad = "EluGrad";
 var Erf = "Erf";
@@ -5376,7 +5557,7 @@ var _FusedMatMul = "_FusedMatMul";
 var FusedConv2D = "FusedConv2D";
 var FusedDepthwiseConv2D = "FusedDepthwiseConv2D";
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/kernel_registry.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/kernel_registry.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -5459,7 +5640,7 @@ function makeKey(kernelName, backendName) {
   return `${backendName}_${kernelName}`;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/util.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/util.js
 var util_exports = {};
 __export(util_exports, {
   arraysEqual: () => arraysEqual,
@@ -5584,7 +5765,7 @@ function decodeString(bytes, encoding = "utf-8") {
   return env().platform.decode(bytes, encoding);
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/profiler.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/profiler.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -5684,7 +5865,7 @@ var Logger = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/tape.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/tape.js
 /**
  * @license
  * Copyright 2017 Google LLC. All Rights Reserved.
@@ -5800,7 +5981,7 @@ function backpropagateGradients(tensorAccumulatedGradientMap, filteredTape, tidy
   }
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/tensor_format.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/tensor_format.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -5942,7 +6123,7 @@ function createComplexTuples(vals) {
   return complexTuples;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/tensor.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/tensor.js
 /**
  * @license
  * Copyright 2017 Google LLC. All Rights Reserved.
@@ -6069,10 +6250,10 @@ var Tensor = class {
   }
   async array() {
     const vals = await this.data();
-    return toNestedArray(this.shape, vals);
+    return toNestedArray(this.shape, vals, this.dtype === "complex64");
   }
   arraySync() {
-    return toNestedArray(this.shape, this.dataSync());
+    return toNestedArray(this.shape, this.dataSync(), this.dtype === "complex64");
   }
   async data() {
     this.throwIfDisposed();
@@ -6182,7 +6363,7 @@ Object.defineProperty(Variable, Symbol.hasInstance, {
   }
 });
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/tensor_util.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/tensor_util.js
 var tensor_util_exports = {};
 __export(tensor_util_exports, {
   assertTypesMatch: () => assertTypesMatch,
@@ -6191,7 +6372,7 @@ __export(tensor_util_exports, {
   makeTypesMatch: () => makeTypesMatch
 });
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/types.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/types.js
 /**
  * @license
  * Copyright 2017 Google LLC. All Rights Reserved.
@@ -6265,7 +6446,7 @@ function sumOutType(type) {
   return upcastType(type, "int32");
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/tensor_util.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/tensor_util.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -6325,7 +6506,7 @@ function isIterable(obj) {
   return Array.isArray(obj) || typeof obj === "object";
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/engine.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/engine.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -7080,7 +7261,7 @@ function add(a, b) {
   return ENGINE.runKernel(Add, inputs);
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/device_util.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/device_util.js
 var device_util_exports = {};
 __export(device_util_exports, {
   isBrowser: () => isBrowser,
@@ -7105,9 +7286,15 @@ __export(device_util_exports, {
 function _isNavigatorDefined() {
   return typeof navigator !== "undefined" && navigator != null;
 }
-function isMobile() {
-  if (_isNavigatorDefined()) {
-    const a = navigator.userAgent || navigator.vendor || window.opera;
+function isMobile(nav) {
+  if (nav || _isNavigatorDefined()) {
+    if (!nav) {
+      nav = navigator;
+    }
+    if (nav.product === "ReactNative") {
+      return true;
+    }
+    const a = nav.userAgent || nav.vendor || window.opera;
     return /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(a) || /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0, 4));
   }
   return false;
@@ -7116,7 +7303,7 @@ function isBrowser() {
   return typeof window !== "undefined" && window.document != null || typeof WorkerGlobalScope !== "undefined";
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/flags.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/flags.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -7149,7 +7336,7 @@ ENV2.registerFlag("IS_TEST", () => false);
 ENV2.registerFlag("CHECK_COMPUTATION_FOR_ERRORS", () => true);
 ENV2.registerFlag("WRAP_TO_IMAGEBITMAP", () => false);
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/tensor_util_env.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/tensor_util_env.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -7238,7 +7425,7 @@ function convertToTensorArray(arg, argName, functionName, parseAsDtype = "numeri
   return tensors.map((t, i) => convertToTensor(t, `${argName}[${i}]`, functionName, parseAsDtype));
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/operation.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/operation.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -7285,7 +7472,7 @@ function op(f) {
   return f2;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/complex.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/complex.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -7311,7 +7498,7 @@ function complex_(real4, imag4) {
 }
 var complex = op({complex_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/tensor_ops_util.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/tensor_ops_util.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -7357,7 +7544,7 @@ function makeTensor(values, shape, inferredShape, dtype) {
   return ENGINE.makeTensor(values, shape, dtype);
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/tensor.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/tensor.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -7379,7 +7566,7 @@ function tensor(values, shape, dtype) {
   return makeTensor(values, shape, inferredShape, dtype);
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/io/types.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/io/types.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -7406,7 +7593,7 @@ var DTYPE_VALUE_SIZE_MAP = {
   complex64: 8
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/io/io_utils.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/io/io_utils.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -7708,7 +7895,7 @@ function getFloat16Decoder() {
   };
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/io/router_registry.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/io/router_registry.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -7765,7 +7952,7 @@ var registerLoadRouter = (loudRouter) => IORouterRegistry.registerLoadRouter(lou
 var getSaveHandlers = (url) => IORouterRegistry.getSaveHandlers(url);
 var getLoadHandlers = (url, loadOptions) => IORouterRegistry.getLoadHandlers(url, loadOptions);
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/io/indexed_db.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/io/indexed_db.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -7985,7 +8172,7 @@ var BrowserIndexedDBManager = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/io/local_storage.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/io/local_storage.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -8172,7 +8359,7 @@ var BrowserLocalStorageManager = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/io/model_management.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/io/model_management.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -8279,7 +8466,7 @@ async function moveModel(sourceURL, destURL) {
   return cloneModelInternal(sourceURL, destURL, deleteSource);
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/platforms/platform_browser.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/platforms/platform_browser.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -8328,7 +8515,7 @@ if (env().get("IS_BROWSER")) {
   }
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/platforms/platform_node.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/platforms/platform_node.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -8384,7 +8571,7 @@ if (env().get("IS_NODE")) {
   env().setPlatform("node", new PlatformNode());
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/buffer.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/buffer.js
 /**
  * @license
  * Copyright 2020 Google Inc. All Rights Reserved.
@@ -8407,7 +8594,7 @@ function buffer(shape, dtype = "float32", values) {
   return new TensorBuffer(shape, dtype, values);
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/cast.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/cast.js
 /**
  * @license
  * Copyright 2020 Google Inc. All Rights Reserved.
@@ -8438,7 +8625,7 @@ function cast_(x, dtype) {
 }
 var cast = op({cast_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/clone.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/clone.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -8462,7 +8649,7 @@ function clone_(x) {
 }
 var clone = op({clone_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/print.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/print.js
 /**
  * @license
  * Copyright 2020 Google Inc. All Rights Reserved.
@@ -8483,7 +8670,7 @@ function print2(x, verbose = false) {
   console.log(x.toString(verbose));
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/base_side_effects.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/base_side_effects.js
 /**
  * @license
  * Copyright 2020 Google Inc. All Rights Reserved.
@@ -8509,7 +8696,7 @@ var opHandler2 = {
 };
 setOpHandler(opHandler2);
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/io/io.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/io/io.js
 var io_exports = {};
 __export(io_exports, {
   browserFiles: () => browserFiles,
@@ -8534,7 +8721,7 @@ __export(io_exports, {
   withSaveHandler: () => withSaveHandler
 });
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/io/browser_files.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/io/browser_files.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -8739,7 +8926,7 @@ function browserFiles(files) {
   return new BrowserFiles(files);
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/io/progress.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/io/progress.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -8781,7 +8968,7 @@ function monitorPromisesProgress(promises, onProgress, startFraction, endFractio
   return Promise.all(promises.map(registerMonitor));
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/io/weights_loader.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/io/weights_loader.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -8903,7 +9090,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
   };
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/io/http.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/io/http.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -9106,7 +9293,7 @@ function browserHTTPRequest(path, loadOptions) {
   return http(path, loadOptions);
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/io/passthrough.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/io/passthrough.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -9162,7 +9349,7 @@ function withSaveHandler(saveHandler) {
   return new PassthroughSaver(saveHandler);
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/io/io.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/io/io.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -9180,13 +9367,13 @@ function withSaveHandler(saveHandler) {
  * =============================================================================
  */
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/math.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/math.js
 var math_exports = {};
 __export(math_exports, {
   confusionMatrix: () => confusionMatrix
 });
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/mat_mul.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/mat_mul.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -9213,7 +9400,7 @@ function matMul_(a, b, transposeA = false, transposeB = false) {
 }
 var matMul = op({matMul_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/one_hot.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/one_hot.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -9241,7 +9428,7 @@ function oneHot_(indices, depth, onValue = 1, offValue = 0) {
 }
 var oneHot = op({oneHot_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/transpose.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/transpose.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -9276,7 +9463,7 @@ function transpose_(x, perm) {
 }
 var transpose = op({transpose_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/confusion_matrix.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/confusion_matrix.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -9309,7 +9496,7 @@ function confusionMatrix_(labels, predictions, numClasses) {
 }
 var confusionMatrix = op({confusionMatrix_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/math.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/math.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -9327,7 +9514,7 @@ var confusionMatrix = op({confusionMatrix_});
  * =============================================================================
  */
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/browser.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/browser.js
 var browser_exports = {};
 __export(browser_exports, {
   fromPixels: () => fromPixels,
@@ -9335,7 +9522,7 @@ __export(browser_exports, {
   toPixels: () => toPixels
 });
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/tensor3d.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/tensor3d.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -9367,7 +9554,7 @@ function tensor3d(values, shape, dtype) {
   return makeTensor(values, shape, inferredShape, dtype);
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/browser.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/browser.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -9551,7 +9738,7 @@ async function toPixels(img, canvas) {
 }
 var fromPixels = op({fromPixels_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/gather_nd_util.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/gather_nd_util.js
 var gather_nd_util_exports = {};
 __export(gather_nd_util_exports, {
   prepareAndValidate: () => prepareAndValidate
@@ -9595,7 +9782,7 @@ function prepareAndValidate(tensor2, indices) {
   return [resultShape, nResult, sliceSize, strides];
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/scatter_nd_util.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/scatter_nd_util.js
 var scatter_nd_util_exports = {};
 __export(scatter_nd_util_exports, {
   calculateShapes: () => calculateShapes,
@@ -9664,7 +9851,7 @@ function calculateShapes(updates, indices, shape) {
   return {sliceRank, numUpdates, sliceSize, strides, outputSize};
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/slice_util.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/slice_util.js
 var slice_util_exports = {};
 __export(slice_util_exports, {
   assertParamsValid: () => assertParamsValid,
@@ -9956,7 +10143,7 @@ function sliceInfo(xShape, begin, end, strides, beginMask, endMask, ellipsisMask
   return {nonStrided, $begin, $end, $strides, size, newShape, outShape};
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/serialization.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/serialization.js
 var serialization_exports = {};
 __export(serialization_exports, {
   Serializable: () => Serializable,
@@ -10008,7 +10195,7 @@ function registerClass(cls) {
   SerializationMap.register(cls);
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/test_util.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/test_util.js
 var test_util_exports = {};
 __export(test_util_exports, {
   TEST_EPSILON_FLOAT16: () => TEST_EPSILON_FLOAT16,
@@ -10136,11 +10323,11 @@ function encodeStrings(a) {
   return a;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/version.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/version.js
 /** @license See the LICENSE file. */
-var version = "3.3.0";
+var version = "3.4.0";
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/globals.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/globals.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -10226,7 +10413,7 @@ function setPlatform(platformName, platform) {
   env().setPlatform(platformName, platform);
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/add.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/add.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -10252,7 +10439,7 @@ function add_(a, b) {
 }
 var add2 = op({add_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/floorDiv.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/floorDiv.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -10278,7 +10465,7 @@ function floorDiv_(a, b) {
 }
 var floorDiv = op({floorDiv_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/div.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/div.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -10308,7 +10495,7 @@ function div_(a, b) {
 }
 var div = op({div_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/mul.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/mul.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -10334,7 +10521,7 @@ function mul_(a, b) {
 }
 var mul = op({mul_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/abs.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/abs.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -10363,7 +10550,7 @@ function abs_(x) {
 }
 var abs = op({abs_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/acos.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/acos.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -10387,7 +10574,7 @@ function acos_(x) {
 }
 var acos = op({acos_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/acosh.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/acosh.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -10411,7 +10598,7 @@ function acosh_(x) {
 }
 var acosh = op({acosh_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/add_n.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/add_n.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -10448,7 +10635,7 @@ function addN_(tensors) {
 }
 var addN = op({addN_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/all.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/all.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -10473,7 +10660,7 @@ function all_(x, axis = null, keepDims = false) {
 }
 var all = op({all_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/any.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/any.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -10498,7 +10685,7 @@ function any_(x, axis = null, keepDims = false) {
 }
 var any = op({any_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/arg_max.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/arg_max.js
 /**
  * @license
  * Copyright 2020 Google Inc. All Rights Reserved.
@@ -10523,7 +10710,7 @@ function argMax_(x, axis = 0) {
 }
 var argMax = op({argMax_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/arg_min.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/arg_min.js
 /**
  * @license
  * Copyright 2020 Google Inc. All Rights Reserved.
@@ -10548,7 +10735,7 @@ function argMin_(x, axis = 0) {
 }
 var argMin = op({argMin_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/asin.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/asin.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -10572,7 +10759,7 @@ function asin_(x) {
 }
 var asin = op({asin_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/asinh.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/asinh.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -10596,7 +10783,7 @@ function asinh_(x) {
 }
 var asinh = op({asinh_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/atan.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/atan.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -10620,7 +10807,7 @@ function atan_(x) {
 }
 var atan = op({atan_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/atan2.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/atan2.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -10646,7 +10833,7 @@ function atan2_(a, b) {
 }
 var atan2 = op({atan2_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/atanh.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/atanh.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -10670,7 +10857,7 @@ function atanh_(x) {
 }
 var atanh = op({atanh_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/conv_util.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/conv_util.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -10983,7 +11170,7 @@ function convertConv2DDataFormat(dataFormat) {
   }
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/reshape.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/reshape.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -11008,7 +11195,7 @@ function reshape_(x, shape) {
 }
 var reshape = op({reshape_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/avg_pool.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/avg_pool.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -11050,7 +11237,7 @@ function avgPool_(x, filterSize, strides, pad3, dimRoundingMode) {
 }
 var avgPool = op({avgPool_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/avg_pool_3d.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/avg_pool_3d.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -11091,7 +11278,7 @@ function avgPool3d_(x, filterSize, strides, pad3, dimRoundingMode, dataFormat = 
 }
 var avgPool3d = op({avgPool3d_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/concat.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/concat.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -11128,7 +11315,7 @@ function concat_(tensors, axis = 0) {
 }
 var concat = op({concat_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/sigmoid.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/sigmoid.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -11152,7 +11339,7 @@ function sigmoid_(x) {
 }
 var sigmoid = op({sigmoid_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/slice.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/slice.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -11180,7 +11367,7 @@ function slice_(x, begin, size) {
 }
 var slice = op({slice_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/tanh.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/tanh.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -11204,7 +11391,7 @@ function tanh_(x) {
 }
 var tanh2 = op({tanh_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/basic_lstm_cell.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/basic_lstm_cell.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -11244,7 +11431,7 @@ function basicLSTMCell_(forgetBias, lstmKernel, lstmBias, data, c, h) {
 }
 var basicLSTMCell = op({basicLSTMCell_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/batch_to_space_nd.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/batch_to_space_nd.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -11273,7 +11460,7 @@ function batchToSpaceND_(x, blockShape, crops) {
 }
 var batchToSpaceND = op({batchToSpaceND_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/batchnorm_util.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/batchnorm_util.js
 function xAs4D(x) {
   let x4D;
   if (x.rank === 0 || x.rank === 1) {
@@ -11288,7 +11475,7 @@ function xAs4D(x) {
   return x4D;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/batchnorm.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/batchnorm.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -11337,7 +11524,7 @@ function batchNorm_(x, mean4, variance, offset, scale2, varianceEpsilon) {
 }
 var batchNorm = op({batchNorm_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/batchnorm2d.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/batchnorm2d.js
 function batchNorm2d_(x, mean4, variance, offset, scale2, varianceEpsilon) {
   const $x = convertToTensor(x, "x", "batchNorm");
   const $mean = convertToTensor(mean4, "mean", "batchNorm");
@@ -11363,7 +11550,7 @@ function batchNorm2d_(x, mean4, variance, offset, scale2, varianceEpsilon) {
 }
 var batchNorm2d = op({batchNorm2d_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/batchnorm3d.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/batchnorm3d.js
 function batchNorm3d_(x, mean4, variance, offset, scale2, varianceEpsilon) {
   const $x = convertToTensor(x, "x", "batchNorm");
   const $mean = convertToTensor(mean4, "mean", "batchNorm");
@@ -11389,7 +11576,7 @@ function batchNorm3d_(x, mean4, variance, offset, scale2, varianceEpsilon) {
 }
 var batchNorm3d = op({batchNorm3d_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/batchnorm4d.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/batchnorm4d.js
 function batchNorm4d_(x, mean4, variance, offset, scale2, varianceEpsilon) {
   const $x = convertToTensor(x, "x", "batchNorm");
   const $mean = convertToTensor(mean4, "mean", "batchNorm");
@@ -11415,7 +11602,7 @@ function batchNorm4d_(x, mean4, variance, offset, scale2, varianceEpsilon) {
 }
 var batchNorm4d = op({batchNorm4d_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/bincount.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/bincount.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -11444,7 +11631,7 @@ function bincount_(x, weights, size) {
 }
 var bincount = op({bincount_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/broadcast_to.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/broadcast_to.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -11496,7 +11683,7 @@ function broadcastTo_(x, shape) {
 }
 var broadcastTo = op({broadcastTo_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/ceil.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/ceil.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -11520,7 +11707,7 @@ function ceil_(x) {
 }
 var ceil = op({ceil_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/clip_by_value.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/clip_by_value.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -11546,31 +11733,31 @@ function clipByValue_(x, clipValueMin, clipValueMax) {
 }
 var clipByValue = op({clipByValue_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/concat_1d.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/concat_1d.js
 function concat1d_(tensors) {
   return concat(tensors, 0);
 }
 var concat1d = op({concat1d_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/concat_2d.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/concat_2d.js
 function concat2d_(tensors, axis) {
   return concat(tensors, axis);
 }
 var concat2d = op({concat2d_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/concat_3d.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/concat_3d.js
 function concat3d_(tensors, axis) {
   return concat(tensors, axis);
 }
 var concat3d = op({concat3d_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/concat_4d.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/concat_4d.js
 function concat4d_(tensors, axis) {
   return concat(tensors, axis);
 }
 var concat4d = op({concat4d_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/conv2d.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/conv2d.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -11614,7 +11801,7 @@ function conv2d_(x, filter, strides, pad3, dataFormat = "NHWC", dilations = [1, 
 }
 var conv2d = op({conv2d_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/conv1d.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/conv1d.js
 function conv1d_(x, filter, stride, pad3, dataFormat = "NWC", dilation = 1, dimRoundingMode) {
   const $x = convertToTensor(x, "x", "conv1d");
   const $filter = convertToTensor(filter, "filter", "conv1d");
@@ -11645,7 +11832,7 @@ function conv1d_(x, filter, stride, pad3, dataFormat = "NWC", dilation = 1, dimR
 }
 var conv1d = op({conv1d_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/conv2d_backprop_input.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/conv2d_backprop_input.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -11692,7 +11879,7 @@ function conv2DBackpropInput_(xShape, dy, filter, strides, pad3, dataFormat = "N
 }
 var conv2DBackpropInput = op({conv2DBackpropInput_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/conv2d_transpose.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/conv2d_transpose.js
 function conv2dTranspose_(x, filter, outputShape, strides, pad3, dimRoundingMode) {
   const $x = convertToTensor(x, "x", "conv2dTranspose");
   const $filter = convertToTensor(filter, "filter", "conv2dTranspose");
@@ -11700,7 +11887,7 @@ function conv2dTranspose_(x, filter, outputShape, strides, pad3, dimRoundingMode
 }
 var conv2dTranspose = op({conv2dTranspose_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/conv3d.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/conv3d.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -11741,7 +11928,7 @@ function conv3d_(x, filter, strides, pad3, dataFormat = "NDHWC", dilations = [1,
 }
 var conv3d = op({conv3d_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/conv3d_backprop_input.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/conv3d_backprop_input.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -11785,7 +11972,7 @@ function conv3DBackpropInput_(xShape, dy, filter, strides, pad3) {
 }
 var conv3DBackpropInput = op({conv3DBackpropInput_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/conv3d_transpose.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/conv3d_transpose.js
 function conv3dTranspose_(x, filter, outputShape, strides, pad3) {
   const $x = convertToTensor(x, "x", "conv3dTranspose");
   const $filter = convertToTensor(filter, "filter", "conv3dTranspose");
@@ -11793,7 +11980,7 @@ function conv3dTranspose_(x, filter, outputShape, strides, pad3) {
 }
 var conv3dTranspose = op({conv3dTranspose_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/cos.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/cos.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -11817,7 +12004,7 @@ function cos_(x) {
 }
 var cos = op({cos_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/cosh.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/cosh.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -11841,7 +12028,7 @@ function cosh_(x) {
 }
 var cosh = op({cosh_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/cumsum.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/cumsum.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -11866,7 +12053,7 @@ function cumsum_(x, axis = 0, exclusive = false, reverse5 = false) {
 }
 var cumsum = op({cumsum_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/dense_bincount.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/dense_bincount.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -11896,7 +12083,7 @@ function denseBincount_(x, weights, size, binaryOutput = false) {
 }
 var denseBincount = op({denseBincount_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/depth_to_space.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/depth_to_space.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -11931,7 +12118,7 @@ function depthToSpace_(x, blockSize, dataFormat = "NHWC") {
 }
 var depthToSpace = op({depthToSpace_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/depthwise_conv2d.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/depthwise_conv2d.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -11973,7 +12160,7 @@ function depthwiseConv2d_(x, filter, strides, pad3, dataFormat = "NHWC", dilatio
 }
 var depthwiseConv2d = op({depthwiseConv2d_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/diag.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/diag.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -11997,7 +12184,7 @@ function diag_(x) {
 }
 var diag = op({diag_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/dilation2d.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/dilation2d.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -12036,7 +12223,7 @@ function dilation2d_(x, filter, strides, pad3, dilations = [1, 1], dataFormat = 
 }
 var dilation2d = op({dilation2d_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/broadcast_util.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/broadcast_util.js
 /**
  * @license
  * Copyright 2017 Google LLC. All Rights Reserved.
@@ -12104,7 +12291,7 @@ function assertAndGetBroadcastShape(shapeA, shapeB) {
   return result;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/equal.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/equal.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -12131,7 +12318,7 @@ function equal_(a, b) {
 }
 var equal = op({equal_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/where.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/where.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -12152,17 +12339,12 @@ function where_(condition, a, b) {
   const $a = convertToTensor(a, "a", "where");
   const $b = convertToTensor(b, "b", "where");
   const $condition = convertToTensor(condition, "condition", "where", "bool");
-  const broadcastShape = assertAndGetBroadcastShape($a.shape, $b.shape);
+  const broadcastShape = assertAndGetBroadcastShape(assertAndGetBroadcastShape($condition.shape, $a.shape), $b.shape);
+  const $broadcastedCondition = broadcastTo($condition, broadcastShape);
   const $broadcastedA = broadcastTo($a, broadcastShape);
   const $broadcastedB = broadcastTo($b, broadcastShape);
-  if ($condition.rank === 1) {
-    assert($condition.shape[0] === $a.shape[0], () => "The first dimension of `a` must match the size of `condition`.");
-  }
-  if ($condition.rank !== 1) {
-    assertShapesMatch($condition.shape, $broadcastedB.shape, "Error in where: ");
-  }
   const inputs = {
-    condition: $condition,
+    condition: $broadcastedCondition,
     t: $broadcastedA,
     e: $broadcastedB
   };
@@ -12170,7 +12352,7 @@ function where_(condition, a, b) {
 }
 var where = op({where_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/zeros_like.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/zeros_like.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -12194,7 +12376,7 @@ function zerosLike_(x) {
 }
 var zerosLike = op({zerosLike_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/div_no_nan.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/div_no_nan.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -12222,7 +12404,7 @@ function divNoNan_(a, b) {
 }
 var divNoNan = op({divNoNan_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/dot.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/dot.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -12268,7 +12450,31 @@ function dot_(t1, t2) {
 }
 var dot = op({dot_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/elu.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/einsum.js
+/**
+ * @license
+ * Copyright 2021 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+function einsum_(equation, ...tensors) {
+  const $tensors = tensors.map((t, i) => convertToTensor(t, `tensors${i}`, "einsum"));
+  const attrs = {equation};
+  return ENGINE.runKernel(Einsum, $tensors, attrs);
+}
+var einsum = op({einsum_});
+
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/elu.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -12292,7 +12498,7 @@ function elu_(x) {
 }
 var elu = op({elu_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/erf.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/erf.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -12320,7 +12526,7 @@ function erf_(x) {
 }
 var erf = op({erf_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/exp.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/exp.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -12344,7 +12550,7 @@ function exp_(x) {
 }
 var exp = op({exp_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/expand_dims.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/expand_dims.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -12370,7 +12576,7 @@ function expandDims_(x, axis = 0) {
 }
 var expandDims = op({expandDims_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/expm1.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/expm1.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -12394,7 +12600,7 @@ function expm1_(x) {
 }
 var expm1 = op({expm1_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/tile.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/tile.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -12420,7 +12626,7 @@ function tile_(x, reps) {
 }
 var tile = op({tile_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/eye.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/eye.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -12469,7 +12675,7 @@ function eye_(numRows, numColumns, batchShape, dtype = "float32") {
 }
 var eye = op({eye_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/fill.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/fill.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -12491,7 +12697,7 @@ function fill(shape, value, dtype) {
   return ENGINE.runKernel(Fill, {}, attrs);
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/floor.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/floor.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -12515,7 +12721,7 @@ function floor_(x) {
 }
 var floor = op({floor_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/gather.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/gather.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -12541,7 +12747,7 @@ function gather_(x, indices, axis = 0, batchDims = 0) {
 }
 var gather = op({gather_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/greater.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/greater.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -12568,7 +12774,7 @@ function greater_(a, b) {
 }
 var greater = op({greater_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/greater_equal.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/greater_equal.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -12595,7 +12801,7 @@ function greaterEqual_(a, b) {
 }
 var greaterEqual = op({greaterEqual_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/imag.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/imag.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -12619,7 +12825,7 @@ function imag_(input2) {
 }
 var imag = op({imag_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/is_finite.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/is_finite.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -12643,7 +12849,7 @@ function isFinite_(x) {
 }
 var isFinite2 = op({isFinite_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/is_inf.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/is_inf.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -12667,7 +12873,7 @@ function isInf_(x) {
 }
 var isInf = op({isInf_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/is_nan.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/is_nan.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -12691,7 +12897,7 @@ function isNaN_(x) {
 }
 var isNaN2 = op({isNaN_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/leaky_relu.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/leaky_relu.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -12716,7 +12922,7 @@ function leakyRelu_(x, alpha = 0.2) {
 }
 var leakyRelu = op({leakyRelu_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/less.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/less.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -12743,7 +12949,7 @@ function less_(a, b) {
 }
 var less = op({less_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/less_equal.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/less_equal.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -12770,7 +12976,7 @@ function lessEqual_(a, b) {
 }
 var lessEqual = op({lessEqual_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/linspace.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/linspace.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -12795,7 +13001,7 @@ function linspace(start, stop, num) {
   return ENGINE.runKernel(LinSpace, {}, attrs);
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/local_response_normalization.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/local_response_normalization.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -12834,7 +13040,7 @@ function localResponseNormalization_(x, depthRadius = 5, bias = 1, alpha = 1, be
 }
 var localResponseNormalization = op({localResponseNormalization_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/log.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/log.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -12858,7 +13064,7 @@ function log_(x) {
 }
 var log = op({log_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/log1p.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/log1p.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -12882,7 +13088,7 @@ function log1p_(x) {
 }
 var log1p = op({log1p_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -12993,7 +13199,7 @@ function checkGrads(grads2) {
   }
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/neg.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/neg.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -13017,7 +13223,7 @@ function neg_(x) {
 }
 var neg = op({neg_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/softplus.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/softplus.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -13041,7 +13247,7 @@ function softplus_(x) {
 }
 var softplus = op({softplus_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/log_sigmoid.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/log_sigmoid.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -13072,7 +13278,7 @@ function logSigmoid_(x) {
 }
 var logSigmoid = op({logSigmoid_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/max.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/max.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -13097,7 +13303,7 @@ function max_(x, axis = null, keepDims = false) {
 }
 var max = op({max_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/sub.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/sub.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -13123,7 +13329,7 @@ function sub_(a, b) {
 }
 var sub = op({sub_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/sum.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/sum.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -13151,7 +13357,7 @@ function sum_(x, axis = null, keepDims = false) {
 }
 var sum2 = op({sum_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/log_softmax.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/log_softmax.js
 /**
  * @license
  * Copyright 2020 Google Inc. All Rights Reserved.
@@ -13194,7 +13400,7 @@ function logSoftmax_(logits, axis = -1) {
 }
 var logSoftmax = op({logSoftmax_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/axis_util.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/axis_util.js
 /**
  * @license
  * Copyright 2017 Google LLC. All Rights Reserved.
@@ -13275,7 +13481,7 @@ function getInnerMostAxes(numAxes, rank) {
   return res;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/log_sum_exp.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/log_sum_exp.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -13309,7 +13515,7 @@ function logSumExp_(x, axis = null, keepDims = false) {
 }
 var logSumExp = op({logSumExp_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/logical_and.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/logical_and.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -13335,7 +13541,7 @@ function logicalAnd_(a, b) {
 }
 var logicalAnd = op({logicalAnd_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/logical_not.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/logical_not.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -13359,7 +13565,7 @@ function logicalNot_(x) {
 }
 var logicalNot = op({logicalNot_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/logical_or.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/logical_or.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -13385,7 +13591,7 @@ function logicalOr_(a, b) {
 }
 var logicalOr = op({logicalOr_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/logical_xor.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/logical_xor.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -13410,7 +13616,7 @@ function logicalXor_(a, b) {
 }
 var logicalXor = op({logicalXor_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/max_pool.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/max_pool.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -13451,7 +13657,7 @@ function maxPool_(x, filterSize, strides, pad3, dimRoundingMode) {
 }
 var maxPool = op({maxPool_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/max_pool_3d.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/max_pool_3d.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -13491,7 +13697,7 @@ function maxPool3d_(x, filterSize = [1, 1, 1], strides, pad3, dimRoundingMode, d
 }
 var maxPool3d = op({maxPool3d_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/max_pool_with_argmax.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/max_pool_with_argmax.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -13517,7 +13723,7 @@ function maxPoolWithArgmax_(x, filterSize, strides, pad3, includeBatchInIndex = 
 }
 var maxPoolWithArgmax = op({maxPoolWithArgmax_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/maximum.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/maximum.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -13548,7 +13754,7 @@ function maximum_(a, b) {
 }
 var maximum = op({maximum_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/mean.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/mean.js
 /**
  * @license
  * Copyright 2020 Google Inc. All Rights Reserved.
@@ -13573,7 +13779,108 @@ function mean_(x, axis = null, keepDims = false) {
 }
 var mean = op({mean_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/min.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/zeros.js
+/**
+ * @license
+ * Copyright 2018 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+function zeros(shape, dtype = "float32") {
+  if (dtype === "complex64") {
+    const real4 = zeros(shape, "float32");
+    const imag4 = zeros(shape, "float32");
+    return complex(real4, imag4);
+  }
+  const values = makeZerosTypedArray(sizeFromShape(shape), dtype);
+  return ENGINE.makeTensor(values, shape, dtype);
+}
+
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/ones.js
+/**
+ * @license
+ * Copyright 2018 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+function ones2(shape, dtype = "float32") {
+  if (dtype === "complex64") {
+    const real4 = ones2(shape, "float32");
+    const imag4 = zeros(shape, "float32");
+    return complex(real4, imag4);
+  }
+  const values = makeOnesTypedArray(sizeFromShape(shape), dtype);
+  return ENGINE.makeTensor(values, shape, dtype);
+}
+
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/meshgrid.js
+/**
+ * @license
+ * Copyright 2021 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+function meshgrid(x, y, {indexing = "xy"} = {}) {
+  if (indexing !== "xy" && indexing !== "ij") {
+    throw new TypeError(`${indexing} is not a valid third argument to meshgrid`);
+  }
+  if (x === void 0) {
+    return [];
+  }
+  let $x = convertToTensor(x, "x", "meshgrid", x instanceof Tensor ? x.dtype : "float32");
+  if (y === void 0) {
+    return [$x];
+  }
+  let $y = convertToTensor(y, "y", "meshgrid", y instanceof Tensor ? y.dtype : "float32");
+  const w = sizeFromShape($x.shape);
+  const h = sizeFromShape($y.shape);
+  if (indexing === "xy") {
+    $x = reshape($x, [1, -1]);
+    $y = reshape($y, [-1, 1]);
+    return [
+      matMul(ones2([h, 1], $x.dtype), $x),
+      matMul($y, ones2([1, w], $y.dtype))
+    ];
+  }
+  $x = reshape($x, [-1, 1]);
+  $y = reshape($y, [1, -1]);
+  return [
+    matMul($x, ones2([1, h], $x.dtype)),
+    matMul(ones2([w, 1], $y.dtype), $y)
+  ];
+}
+
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/min.js
 /**
  * @license
  * Copyright 2020 Google Inc. All Rights Reserved.
@@ -13598,7 +13905,7 @@ function min_(x, axis = null, keepDims = false) {
 }
 var min = op({min_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/minimum.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/minimum.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -13629,7 +13936,7 @@ function minimum_(a, b) {
 }
 var minimum = op({minimum_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/mirror_pad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/mirror_pad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -13664,7 +13971,7 @@ function mirrorPad_(x, paddings, mode) {
 }
 var mirrorPad = op({mirrorPad_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/mod.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/mod.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -13690,7 +13997,7 @@ function mod_(a, b) {
 }
 var mod = op({mod_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/square.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/square.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -13714,7 +14021,7 @@ function square_(x) {
 }
 var square = op({square_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/moments.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/moments.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -13745,7 +14052,7 @@ function moments_(x, axis = null, keepDims = false) {
 }
 var moments = op({moments_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/multi_rnn_cell.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/multi_rnn_cell.js
 function multiRNNCell_(lstmCells, data, c, h) {
   const $data = convertToTensor(data, "data", "multiRNNCell");
   const $c = convertToTensorArray(c, "c", "multiRNNCell");
@@ -13768,7 +14075,7 @@ function multiRNNCell_(lstmCells, data, c, h) {
 }
 var multiRNNCell = op({multiRNNCell_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/multinomial.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/multinomial.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -13804,7 +14111,7 @@ function multinomial_(logits, numSamples, seed, normalized = false) {
 }
 var multinomial = op({multinomial_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/not_equal.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/not_equal.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -13831,61 +14138,7 @@ function notEqual_(a, b) {
 }
 var notEqual = op({notEqual_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/zeros.js
-/**
- * @license
- * Copyright 2018 Google LLC. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =============================================================================
- */
-function zeros(shape, dtype = "float32") {
-  if (dtype === "complex64") {
-    const real4 = zeros(shape, "float32");
-    const imag4 = zeros(shape, "float32");
-    return complex(real4, imag4);
-  }
-  const values = makeZerosTypedArray(sizeFromShape(shape), dtype);
-  return ENGINE.makeTensor(values, shape, dtype);
-}
-
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/ones.js
-/**
- * @license
- * Copyright 2018 Google LLC. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =============================================================================
- */
-function ones2(shape, dtype = "float32") {
-  if (dtype === "complex64") {
-    const real4 = ones2(shape, "float32");
-    const imag4 = zeros(shape, "float32");
-    return complex(real4, imag4);
-  }
-  const values = makeOnesTypedArray(sizeFromShape(shape), dtype);
-  return ENGINE.makeTensor(values, shape, dtype);
-}
-
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/ones_like.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/ones_like.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -13909,7 +14162,7 @@ function onesLike_(x) {
 }
 var onesLike = op({onesLike_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/outer_product.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/outer_product.js
 function outerProduct_(v1, v2) {
   const $v1 = convertToTensor(v1, "v1", "outerProduct");
   const $v2 = convertToTensor(v2, "v2", "outerProduct");
@@ -13920,7 +14173,7 @@ function outerProduct_(v1, v2) {
 }
 var outerProduct = op({outerProduct_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/pad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/pad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -13948,35 +14201,35 @@ function pad_(x, paddings, constantValue = 0) {
 }
 var pad = op({pad_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/pad1d.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/pad1d.js
 function pad1d_(x, paddings, constantValue = 0) {
   assert(paddings.length === 2, () => "Invalid number of paddings. Must be length of 2.");
   return pad(x, [paddings], constantValue);
 }
 var pad1d = op({pad1d_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/pad2d.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/pad2d.js
 function pad2d_(x, paddings, constantValue = 0) {
   assert(paddings.length === 2 && paddings[0].length === 2 && paddings[1].length === 2, () => "Invalid number of paddings. Must be length of 2 each.");
   return pad(x, paddings, constantValue);
 }
 var pad2d = op({pad2d_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/pad3d.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/pad3d.js
 function pad3d_(x, paddings, constantValue = 0) {
   assert(paddings.length === 3 && paddings[0].length === 2 && paddings[1].length === 2 && paddings[2].length === 2, () => "Invalid number of paddings. Must be length of 2 each.");
   return pad(x, paddings, constantValue);
 }
 var pad3d = op({pad3d_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/pad4d.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/pad4d.js
 function pad4d_(x, paddings, constantValue = 0) {
   assert(paddings.length === 4 && paddings[0].length === 2 && paddings[1].length === 2 && paddings[2].length === 2 && paddings[3].length === 2, () => "Invalid number of paddings. Must be length of 2 each.");
   return pad(x, paddings, constantValue);
 }
 var pad4d = op({pad4d_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/space_to_batch_nd.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/space_to_batch_nd.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -14009,7 +14262,7 @@ function spaceToBatchND_(x, blockShape, paddings) {
 }
 var spaceToBatchND = op({spaceToBatchND_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/pool.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/pool.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -14087,7 +14340,7 @@ function withSpaceToBatchBasePaddings(filterShape, dilation) {
 }
 var pool = op({pool_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/pow.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/pow.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -14113,7 +14366,7 @@ function pow_(base2, exp4) {
 }
 var pow = op({pow_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/prelu.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/prelu.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -14138,7 +14391,7 @@ function prelu_(x, alpha) {
 }
 var prelu = op({prelu_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/prod.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/prod.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -14166,7 +14419,7 @@ function prod_(x, axis = null, keepDims = false) {
 }
 var prod = op({prod_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/rand.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/rand.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -14202,7 +14455,7 @@ function rand_(shape, randFunction, dtype) {
 }
 var rand = op({rand_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/rand_util.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/rand_util.js
 var seedrandom = __toModule(require_seedrandom2());
 /**
  * @license
@@ -14343,7 +14596,7 @@ var UniformRandom = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/random_gamma.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/random_gamma.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -14379,7 +14632,7 @@ function randomGamma_(shape, alpha, beta = 1, dtype = "float32", seed) {
 }
 var randomGamma = op({randomGamma_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/random_normal.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/random_normal.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -14409,7 +14662,7 @@ function randomNormal_(shape, mean4 = 0, stdDev = 1, dtype, seed) {
 }
 var randomNormal = op({randomNormal_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/random_uniform.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/random_uniform.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -14436,7 +14689,7 @@ function randomUniform_(shape, minval = 0, maxval = 1, dtype = "float32", seed) 
 }
 var randomUniform = op({randomUniform_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/range.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/range.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -14461,7 +14714,7 @@ function range(start, stop, step5 = 1, dtype = "float32") {
   return ENGINE.runKernel(Range, {}, attrs);
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/real.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/real.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -14485,7 +14738,7 @@ function real_(input2) {
 }
 var real = op({real_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/reciprocal.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/reciprocal.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -14509,7 +14762,7 @@ function reciprocal_(x) {
 }
 var reciprocal = op({reciprocal_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/relu.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/relu.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -14533,7 +14786,7 @@ function relu_(x) {
 }
 var relu = op({relu_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/relu6.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/relu6.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -14557,7 +14810,7 @@ function relu6_(x) {
 }
 var relu6 = op({relu6_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/reverse.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/reverse.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -14582,7 +14835,7 @@ function reverse_(x, axis) {
 }
 var reverse = op({reverse_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/reverse_1d.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/reverse_1d.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -14606,7 +14859,7 @@ function reverse1d_(x) {
 }
 var reverse1d = op({reverse1d_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/reverse_2d.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/reverse_2d.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -14630,7 +14883,7 @@ function reverse2d_(x, axis) {
 }
 var reverse2d = op({reverse2d_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/reverse_3d.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/reverse_3d.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -14654,7 +14907,7 @@ function reverse3d_(x, axis) {
 }
 var reverse3d = op({reverse3d_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/reverse_4d.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/reverse_4d.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -14678,7 +14931,7 @@ function reverse4d_(x, axis) {
 }
 var reverse4d = op({reverse4d_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/round.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/round.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -14702,7 +14955,7 @@ function round_(x) {
 }
 var round2 = op({round_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/rsqrt.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/rsqrt.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -14726,7 +14979,7 @@ function rsqrt_(x) {
 }
 var rsqrt = op({rsqrt_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/scalar.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/scalar.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -14755,7 +15008,7 @@ function scalar(value, dtype) {
   return makeTensor(value, shape, inferredShape, dtype);
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/selu.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/selu.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -14779,7 +15032,7 @@ function selu_(x) {
 }
 var selu = op({selu_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/separable_conv2d.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/separable_conv2d.js
 function separableConv2d_(x, depthwiseFilter, pointwiseFilter, strides, pad3, dilation = [1, 1], dataFormat = "NHWC") {
   const $x = convertToTensor(x, "x", "separableConv2d");
   const $depthwiseFilter = convertToTensor(depthwiseFilter, "depthwiseFilter", "separableConv2d");
@@ -14811,7 +15064,7 @@ function separableConv2d_(x, depthwiseFilter, pointwiseFilter, strides, pad3, di
 }
 var separableConv2d = op({separableConv2d_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/setdiff1d_async.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/setdiff1d_async.js
 /**
  * @license
  * Copyright 2020 Google Inc. All Rights Reserved.
@@ -14856,7 +15109,7 @@ async function setdiff1dAsync_(x, y) {
 }
 var setdiff1dAsync = setdiff1dAsync_;
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/sign.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/sign.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -14880,7 +15133,7 @@ function sign_(x) {
 }
 var sign = op({sign_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/sin.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/sin.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -14904,7 +15157,7 @@ function sin_(x) {
 }
 var sin = op({sin_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/sinh.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/sinh.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -14928,7 +15181,7 @@ function sinh_(x) {
 }
 var sinh = op({sinh_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/slice1d.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/slice1d.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -14952,7 +15205,7 @@ function slice1d_(x, begin, size) {
 }
 var slice1d = op({slice1d_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/slice2d.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/slice2d.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -14976,7 +15229,7 @@ function slice2d_(x, begin, size) {
 }
 var slice2d = op({slice2d_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/slice3d.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/slice3d.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -15000,7 +15253,7 @@ function slice3d_(x, begin, size) {
 }
 var slice3d = op({slice3d_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/slice4d.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/slice4d.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -15024,7 +15277,7 @@ function slice4d_(x, begin, size) {
 }
 var slice4d = op({slice4d_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/softmax.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/softmax.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -15055,7 +15308,7 @@ function softmax_(logits, dim = -1) {
 }
 var softmax = op({softmax_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/spectral/fft.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/spectral/fft.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -15079,7 +15332,7 @@ function fft_(input2) {
 }
 var fft = op({fft_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/spectral/ifft.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/spectral/ifft.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -15103,7 +15356,7 @@ function ifft_(input2) {
 }
 var ifft = op({ifft_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/spectral/irfft.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/spectral/irfft.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -15149,7 +15402,7 @@ function irfft_(input2) {
 }
 var irfft = op({irfft_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/split.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/split.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -15174,7 +15427,7 @@ function split_(x, numOrSizeSplits, axis = 0) {
 }
 var split = op({split_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/spectral/rfft.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/spectral/rfft.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -15224,7 +15477,7 @@ function rfft_(input2, fftLength) {
 }
 var rfft = op({rfft_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/sqrt.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/sqrt.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -15248,7 +15501,7 @@ function sqrt_(x) {
 }
 var sqrt = op({sqrt_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/squared_difference.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/squared_difference.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -15276,7 +15529,7 @@ function squaredDifference_(a, b) {
 }
 var squaredDifference = op({squaredDifference_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/squeeze.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/squeeze.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -15299,7 +15552,7 @@ function squeeze_(x, axis) {
 }
 var squeeze = op({squeeze_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/stack.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/stack.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -15328,7 +15581,7 @@ function stack_(tensors, axis = 0) {
 }
 var stack = op({stack_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/step.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/step.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -15353,7 +15606,7 @@ function step_(x, alpha = 0) {
 }
 var step = op({step_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/strided_slice.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/strided_slice.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -15387,7 +15640,7 @@ function stridedSlice_(x, begin, end, strides, beginMask = 0, endMask = 0, ellip
 }
 var stridedSlice = op({stridedSlice_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/tan.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/tan.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -15411,7 +15664,7 @@ function tan_(x) {
 }
 var tan = op({tan_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/tensor1d.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/tensor1d.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -15438,7 +15691,7 @@ function tensor1d(values, dtype) {
   return makeTensor(values, shape, inferredShape, dtype);
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/tensor2d.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/tensor2d.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -15470,7 +15723,7 @@ function tensor2d(values, shape, dtype) {
   return makeTensor(values, shape, inferredShape, dtype);
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/tensor4d.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/tensor4d.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -15502,7 +15755,7 @@ function tensor4d(values, shape, dtype) {
   return makeTensor(values, shape, inferredShape, dtype);
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/tensor5d.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/tensor5d.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -15534,7 +15787,7 @@ function tensor5d(values, shape, dtype) {
   return makeTensor(values, shape, inferredShape, dtype);
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/tensor6d.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/tensor6d.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -15567,7 +15820,7 @@ function tensor6d(values, shape, dtype) {
   return makeTensor(values, shape, inferredShape, dtype);
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/topk.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/topk.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -15600,7 +15853,7 @@ function topk_(x, k = 1, sorted = true) {
 }
 var topk = op({topk_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/truncated_normal.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/truncated_normal.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -15630,7 +15883,7 @@ function truncatedNormal_(shape, mean4 = 0, stdDev = 1, dtype, seed) {
 }
 var truncatedNormal = op({truncatedNormal_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/unique.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/unique.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -15657,7 +15910,7 @@ function unique_(x, axis = 0) {
 }
 var unique = op({unique_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/unsorted_segment_sum.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/unsorted_segment_sum.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -15684,7 +15937,7 @@ function unsortedSegmentSum_(x, segmentIds, numSegments) {
 }
 var unsortedSegmentSum = op({unsortedSegmentSum_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/unstack.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/unstack.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -15710,7 +15963,7 @@ function unstack_(x, axis = 0) {
 }
 var unstack = op({unstack_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/variable.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/variable.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -15731,7 +15984,7 @@ function variable(initialValue, trainable = true, name, dtype) {
   return ENGINE.makeVariable(initialValue, trainable, name, dtype);
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/backends/where_impl.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/backends/where_impl.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -15765,7 +16018,7 @@ function whereImpl(condShape, condVals) {
   return out.toTensor();
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/where_async.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/where_async.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -15793,7 +16046,7 @@ async function whereAsync_(condition) {
 }
 var whereAsync = whereAsync_;
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/boolean_mask.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/boolean_mask.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -15842,7 +16095,7 @@ async function booleanMaskAsync_(tensor2, mask, axis) {
 }
 var booleanMaskAsync = booleanMaskAsync_;
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/norm.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/norm.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -15910,7 +16163,7 @@ function normImpl(x, p2, axis = null) {
 }
 var norm = op({norm_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/moving_average.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/moving_average.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -15945,7 +16198,7 @@ function movingAverage_(v, x, decay, step5, zeroDebias = true) {
 }
 var movingAverage = op({movingAverage_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/scatter_nd.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/scatter_nd.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -15972,7 +16225,7 @@ function scatterND_(indices, updates, shape) {
 }
 var scatterND = op({scatterND_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/sparse_to_dense_util.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/sparse_to_dense_util.js
 function validateInput2(sparseIndices, sparseValues, outputShape, defaultValues) {
   if (sparseIndices.dtype !== "int32") {
     throw new Error(`tf.sparseToDense() expects the indices to be int32 type, but the dtype was ${sparseIndices.dtype}.`);
@@ -15994,7 +16247,7 @@ function validateInput2(sparseIndices, sparseValues, outputShape, defaultValues)
   }
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/sparse_to_dense.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/sparse_to_dense.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -16026,7 +16279,7 @@ function sparseToDense_(sparseIndices, sparseValues, outputShape, defaultValue =
 }
 var sparseToDense = op({sparseToDense_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/gather_nd.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/gather_nd.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -16051,7 +16304,7 @@ function gatherND_(x, indices) {
 }
 var gatherND = op({gatherND_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/dropout_util.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/dropout_util.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -16089,7 +16342,7 @@ function getNoiseShape(x, noiseShape) {
   return noiseShape;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/dropout.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/dropout.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -16120,7 +16373,7 @@ function dropout_(x, rate, noiseShape, seed) {
 }
 var dropout = op({dropout_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/signal_ops_util.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/signal_ops_util.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -16150,7 +16403,7 @@ function cosineWindow(windowLength, a, b) {
   return tensor1d(newValues, "float32");
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/in_top_k.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/in_top_k.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -16205,7 +16458,7 @@ async function inTopKAsync_(predictions, targets, k = 1) {
 }
 var inTopKAsync = inTopKAsync_;
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/fused_ops.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/fused_ops.js
 var fused_ops_exports = {};
 __export(fused_ops_exports, {
   conv2d: () => conv2d2,
@@ -16213,7 +16466,7 @@ __export(fused_ops_exports, {
   matMul: () => matMul2
 });
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/conv2d_backprop_filter.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/conv2d_backprop_filter.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -16255,7 +16508,7 @@ function conv2DBackpropFilter_(x, dy, filterShape, strides, pad3, dataFormat = "
 }
 var conv2DBackpropFilter = op({conv2DBackpropFilter_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/fused_util.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/fused_util.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -16310,7 +16563,7 @@ var shouldFuse = (gradientDepth, activation2) => {
   return !gradientMode || activation2 === "linear";
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/fused/conv2d.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/fused/conv2d.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -16415,7 +16668,7 @@ function fusedConv2d_({x, filter, strides, pad: pad3, dataFormat = "NHWC", dilat
 }
 var conv2d2 = op({fusedConv2d_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/depthwise_conv2d_native_backprop_filter.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/depthwise_conv2d_native_backprop_filter.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -16447,7 +16700,7 @@ function depthwiseConv2dNativeBackpropFilter_(x, dy, filterShape, strides, pad3,
 }
 var depthwiseConv2dNativeBackpropFilter = op({depthwiseConv2dNativeBackpropFilter_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/depthwise_conv2d_native_backprop_input.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/depthwise_conv2d_native_backprop_input.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -16481,7 +16734,7 @@ function depthwiseConv2dNativeBackpropInput_(xShape, dy, filter, strides, pad3, 
 }
 var depthwiseConv2dNativeBackpropInput = op({depthwiseConv2dNativeBackpropInput_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/fused/depthwise_conv2d.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/fused/depthwise_conv2d.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -16586,7 +16839,7 @@ function fusedDepthwiseConv2d_({x, filter, strides, pad: pad3, dataFormat = "NHW
 }
 var depthwiseConv2d2 = op({fusedDepthwiseConv2d_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/fused/mat_mul.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/fused/mat_mul.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -16688,7 +16941,7 @@ function fusedMatMul_({a, b, transposeA = false, transposeB = false, bias, activ
 }
 var matMul2 = op({fusedMatMul_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/fused_ops.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/fused_ops.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -16706,7 +16959,7 @@ var matMul2 = op({fusedMatMul_});
  * =============================================================================
  */
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/signal/hamming_window.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/signal/hamming_window.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -16728,7 +16981,7 @@ function hammingWindow_(windowLength) {
 }
 var hammingWindow = op({hammingWindow_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/signal/hann_window.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/signal/hann_window.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -16750,7 +17003,7 @@ function hannWindow_(windowLength) {
 }
 var hannWindow = op({hannWindow_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/signal/frame.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/signal/frame.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -16792,7 +17045,7 @@ function frame_(signal2, frameLength, frameStep, padEnd = false, padValue = 0) {
 }
 var frame = op({frame_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/signal/stft.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/signal/stft.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -16815,15 +17068,11 @@ function stft_(signal2, frameLength, frameStep, fftLength, windowFn = hannWindow
   }
   const framedSignal = frame(signal2, frameLength, frameStep);
   const windowedSignal = mul(framedSignal, windowFn(frameLength));
-  const output = [];
-  for (let i = 0; i < framedSignal.shape[0]; i++) {
-    output.push(rfft(slice(windowedSignal, [i, 0], [1, frameLength]), fftLength));
-  }
-  return concat(output);
+  return rfft(windowedSignal, fftLength);
 }
 var stft = op({stft_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/image/crop_and_resize.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/image/crop_and_resize.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -16858,7 +17107,7 @@ function cropAndResize_(image3, boxes, boxInd, cropSize, method = "bilinear", ex
 }
 var cropAndResize = op({cropAndResize_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/image/flip_left_right.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/image/flip_left_right.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -16884,7 +17133,7 @@ function flipLeftRight_(image3) {
 }
 var flipLeftRight = op({flipLeftRight_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/image/rotate_with_offset.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/image/rotate_with_offset.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -16911,7 +17160,7 @@ function rotateWithOffset_(image3, radians, fillValue = 0, center = 0.5) {
 }
 var rotateWithOffset = op({rotateWithOffset_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/nonmax_util.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/nonmax_util.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -16949,7 +17198,7 @@ function nonMaxSuppSanityCheck(boxes, scores, maxOutputSize, iouThreshold, score
   return {maxOutputSize, iouThreshold, scoreThreshold, softNmsSigma};
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/image/non_max_suppression.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/image/non_max_suppression.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -16978,7 +17227,7 @@ function nonMaxSuppression_(boxes, scores, maxOutputSize, iouThreshold = 0.5, sc
 }
 var nonMaxSuppression = op({nonMaxSuppression_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/backends/non_max_suppression_util.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/backends/non_max_suppression_util.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -17024,7 +17273,7 @@ function binarySearch_(arr, target, comparator) {
   return found ? left : -left - 1;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/backends/non_max_suppression_impl.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/backends/non_max_suppression_impl.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -17135,7 +17384,7 @@ function ascendingComparator(c1, c2) {
   return c1.score - c2.score || c1.score === c2.score && c2.boxIndex - c1.boxIndex;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/image/non_max_suppression_async.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/image/non_max_suppression_async.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -17173,7 +17422,7 @@ async function nonMaxSuppressionAsync_(boxes, scores, maxOutputSize, iouThreshol
 }
 var nonMaxSuppressionAsync = nonMaxSuppressionAsync_;
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/image/non_max_suppression_with_score.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/image/non_max_suppression_with_score.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -17205,7 +17454,7 @@ function nonMaxSuppressionWithScore_(boxes, scores, maxOutputSize, iouThreshold 
 }
 var nonMaxSuppressionWithScore = op({nonMaxSuppressionWithScore_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/image/non_max_suppression_with_score_async.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/image/non_max_suppression_with_score_async.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -17247,7 +17496,7 @@ async function nonMaxSuppressionWithScoreAsync_(boxes, scores, maxOutputSize, io
 }
 var nonMaxSuppressionWithScoreAsync = nonMaxSuppressionWithScoreAsync_;
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/image/non_max_suppression_padded.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/image/non_max_suppression_padded.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -17283,7 +17532,7 @@ function nonMaxSuppressionPadded_(boxes, scores, maxOutputSize, iouThreshold = 0
 }
 var nonMaxSuppressionPadded = op({nonMaxSuppressionPadded_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/image/non_max_suppression_padded_async.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/image/non_max_suppression_padded_async.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -17322,7 +17571,7 @@ async function nonMaxSuppressionPaddedAsync_(boxes, scores, maxOutputSize, iouTh
 }
 var nonMaxSuppressionPaddedAsync = nonMaxSuppressionPaddedAsync_;
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/image/resize_bilinear.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/image/resize_bilinear.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -17361,7 +17610,7 @@ function resizeBilinear_(images, size, alignCorners = false, halfPixelCenters = 
 }
 var resizeBilinear = op({resizeBilinear_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/image/resize_nearest_neighbor.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/image/resize_nearest_neighbor.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -17401,7 +17650,7 @@ function resizeNearestNeighbor_(images, size, alignCorners = false, halfPixelCen
 }
 var resizeNearestNeighbor = op({resizeNearestNeighbor_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/image/transform.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/image/transform.js
 /**
  * @license
  * Copyright 2021 Google LLC. All Rights Reserved.
@@ -17430,7 +17679,7 @@ function transform_(image3, transforms, interpolation = "nearest", fillMode = "c
 }
 var transform = op({transform_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/linalg/band_part.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/linalg/band_part.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -17475,7 +17724,7 @@ function bandPart_(a, numLower, numUpper) {
 }
 var bandPart = op({bandPart_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/linalg/gram_schmidt.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/linalg/gram_schmidt.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -17528,7 +17777,7 @@ function gramSchmidt_(xs) {
 }
 var gramSchmidt = op({gramSchmidt_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/linalg/qr.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/linalg/qr.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -17628,7 +17877,7 @@ function qr2d(x, fullMatrices = false) {
 }
 var qr = op({qr_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/loss_ops_utils.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/loss_ops_utils.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -17653,7 +17902,7 @@ var Reduction;
   Reduction2[Reduction2["SUM_BY_NONZERO_WEIGHTS"] = 3] = "SUM_BY_NONZERO_WEIGHTS";
 })(Reduction || (Reduction = {}));
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/losses/compute_weighted_loss.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/losses/compute_weighted_loss.js
 function computeWeightedLoss_(losses4, weights, reduction2 = Reduction.SUM_BY_NONZERO_WEIGHTS) {
   const $losses = convertToTensor(losses4, "losses", "computeWeightedLoss");
   let $weights = null;
@@ -17689,7 +17938,7 @@ function computeWeightedLoss_(losses4, weights, reduction2 = Reduction.SUM_BY_NO
 }
 var computeWeightedLoss = op({computeWeightedLoss_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/losses/absolute_difference.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/losses/absolute_difference.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -17719,7 +17968,7 @@ function absoluteDifference_(labels, predictions, weights, reduction2 = Reductio
 }
 var absoluteDifference = op({absoluteDifference_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/losses/cosine_distance.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/losses/cosine_distance.js
 function cosineDistance_(labels, predictions, axis, weights, reduction2 = Reduction.SUM_BY_NONZERO_WEIGHTS) {
   const $labels = convertToTensor(labels, "labels", "cosineDistance");
   const $predictions = convertToTensor(predictions, "predictions", "cosineDistance");
@@ -17734,7 +17983,7 @@ function cosineDistance_(labels, predictions, axis, weights, reduction2 = Reduct
 }
 var cosineDistance = op({cosineDistance_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/losses/hinge_loss.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/losses/hinge_loss.js
 function hingeLoss_(labels, predictions, weights, reduction2 = Reduction.SUM_BY_NONZERO_WEIGHTS) {
   let $labels = convertToTensor(labels, "labels", "hingeLoss");
   const $predictions = convertToTensor(predictions, "predictions", "hingeLoss");
@@ -17750,7 +17999,7 @@ function hingeLoss_(labels, predictions, weights, reduction2 = Reduction.SUM_BY_
 }
 var hingeLoss = op({hingeLoss_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/losses/huber_loss.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/losses/huber_loss.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -17784,7 +18033,7 @@ function huberLoss_(labels, predictions, weights, delta = 1, reduction2 = Reduct
 }
 var huberLoss = op({huberLoss_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/losses/log_loss.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/losses/log_loss.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -17818,7 +18067,7 @@ function logLoss_(labels, predictions, weights, epsilon3 = 1e-7, reduction2 = Re
 }
 var logLoss = op({logLoss_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/losses/mean_squared_error.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/losses/mean_squared_error.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -17848,7 +18097,7 @@ function meanSquaredError_(labels, predictions, weights, reduction2 = Reduction.
 }
 var meanSquaredError = op({meanSquaredError_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/losses/sigmoid_cross_entropy.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/losses/sigmoid_cross_entropy.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -17893,7 +18142,7 @@ function sigmoidCrossEntropy_(multiClassLabels, logits, weights, labelSmoothing 
 }
 var sigmoidCrossEntropy = op({sigmoidCrossEntropy_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/losses/softmax_cross_entropy.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/losses/softmax_cross_entropy.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -17955,7 +18204,7 @@ function softmaxCrossEntropy_(onehotLabels, logits, weights, labelSmoothing = 0,
 }
 var softmaxCrossEntropy = op({softmaxCrossEntropy_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/ops.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/ops.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -18015,7 +18264,7 @@ var losses = {
   softmaxCrossEntropy
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/optimizers/optimizer.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/optimizers/optimizer.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -18092,7 +18341,7 @@ Object.defineProperty(Optimizer, Symbol.hasInstance, {
   }
 });
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/optimizers/adadelta_optimizer.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/optimizers/adadelta_optimizer.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -18193,7 +18442,7 @@ var AdadeltaOptimizer = class extends Optimizer {
 AdadeltaOptimizer.className = "Adadelta";
 registerClass(AdadeltaOptimizer);
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/optimizers/adagrad_optimizer.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/optimizers/adagrad_optimizer.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -18268,7 +18517,7 @@ var AdagradOptimizer = class extends Optimizer {
 AdagradOptimizer.className = "Adagrad";
 registerClass(AdagradOptimizer);
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/optimizers/adam_optimizer.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/optimizers/adam_optimizer.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -18388,7 +18637,7 @@ var AdamOptimizer = class extends Optimizer {
 AdamOptimizer.className = "Adam";
 registerClass(AdamOptimizer);
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/optimizers/adamax_optimizer.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/optimizers/adamax_optimizer.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -18495,7 +18744,7 @@ var AdamaxOptimizer = class extends Optimizer {
 AdamaxOptimizer.className = "Adamax";
 registerClass(AdamaxOptimizer);
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/optimizers/sgd_optimizer.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/optimizers/sgd_optimizer.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -18562,7 +18811,7 @@ var SGDOptimizer = class extends Optimizer {
 SGDOptimizer.className = "SGD";
 registerClass(SGDOptimizer);
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/optimizers/momentum_optimizer.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/optimizers/momentum_optimizer.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -18649,7 +18898,7 @@ var MomentumOptimizer = class extends SGDOptimizer {
 MomentumOptimizer.className = "Momentum";
 registerClass(MomentumOptimizer);
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/optimizers/rmsprop_optimizer.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/optimizers/rmsprop_optimizer.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -18790,7 +19039,7 @@ var RMSPropOptimizer = class extends Optimizer {
 RMSPropOptimizer.className = "RMSProp";
 registerClass(RMSPropOptimizer);
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/optimizers/optimizer_constructors.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/optimizers/optimizer_constructors.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -18831,7 +19080,7 @@ var OptimizerConstructors = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/train.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/train.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -18858,7 +19107,7 @@ var train = {
   adam: OptimizerConstructors.adam
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/browser_util.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/browser_util.js
 /**
  * @license
  * Copyright 2017 Google LLC. All Rights Reserved.
@@ -18887,7 +19136,7 @@ function nextFrame() {
   return new Promise((resolve) => delayCallback(() => resolve()));
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/backends/backend_util.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/backends/backend_util.js
 var backend_util_exports = {};
 __export(backend_util_exports, {
   ERF_A1: () => ERF_A1,
@@ -18906,6 +19155,7 @@ __export(backend_util_exports, {
   assignToTypedArray: () => assignToTypedArray,
   axesAreInnerMostDims: () => axesAreInnerMostDims,
   calculateShapes: () => calculateShapes,
+  checkEinsumDimSizes: () => checkEinsumDimSizes,
   combineLocations: () => combineLocations,
   complexWithEvenIndex: () => complexWithEvenIndex,
   complexWithOddIndex: () => complexWithOddIndex,
@@ -18919,6 +19169,7 @@ __export(backend_util_exports, {
   computePool2DInfo: () => computePool2DInfo,
   computePool3DInfo: () => computePool3DInfo,
   convertConv2DDataFormat: () => convertConv2DDataFormat,
+  decodeEinsumEquation: () => decodeEinsumEquation,
   eitherStridesOrDilationsAreOne: () => eitherStridesOrDilationsAreOne,
   expandShapeToKeepDim: () => expandShapeToKeepDim,
   exponent: () => exponent,
@@ -18928,6 +19179,8 @@ __export(backend_util_exports, {
   getAxesPermutation: () => getAxesPermutation,
   getBroadcastDims: () => getBroadcastDims,
   getComplexWithIndex: () => getComplexWithIndex,
+  getEinsumComputePath: () => getEinsumComputePath,
+  getEinsumPermutation: () => getEinsumPermutation,
   getFusedBiasGradient: () => getFusedBiasGradient,
   getFusedDyActivation: () => getFusedDyActivation,
   getImageCenter: () => getImageCenter,
@@ -18939,6 +19192,7 @@ __export(backend_util_exports, {
   getSliceBeginCoords: () => getSliceBeginCoords,
   getSliceSize: () => getSliceSize,
   getUndoAxesPermutation: () => getUndoAxesPermutation,
+  isIdentityPermutation: () => isIdentityPermutation,
   log: () => log2,
   mergeRealAndImagArrays: () => mergeRealAndImagArrays,
   prepareAndValidate: () => prepareAndValidate,
@@ -18954,7 +19208,7 @@ __export(backend_util_exports, {
   warn: () => warn
 });
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/concat_util.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/concat_util.js
 /**
  * @license
  * Copyright 2017 Google LLC. All Rights Reserved.
@@ -18992,7 +19246,7 @@ function computeOutShape2(shapes, axis) {
   return outputShape;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/reduce_util.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/reduce_util.js
 /**
  * @license
  * Copyright 2017 Google LLC. All Rights Reserved.
@@ -19017,7 +19271,7 @@ function computeOptimalWindowSize(inSize) {
   return nearestDivisor(inSize, Math.floor(Math.sqrt(inSize)));
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/rotate_util.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/rotate_util.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -19040,7 +19294,7 @@ function getImageCenter(center, imageHeight, imageWidth) {
   return [centerX, centerY];
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/array_ops_util.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/array_ops_util.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -19136,7 +19390,7 @@ function getSliceSize(uncroppedShape, crops, blockShape) {
   return sliceSize;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/selu_util.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/selu_util.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -19156,7 +19410,7 @@ function getSliceSize(uncroppedShape, crops, blockShape) {
 var SELU_SCALEALPHA = 1.7580993408473768;
 var SELU_SCALE = 1.0507009873554805;
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/erf_util.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/erf_util.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -19180,7 +19434,7 @@ var ERF_A3 = 1.421413741;
 var ERF_A4 = -1.453152027;
 var ERF_A5 = 1.061405429;
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/log.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/log.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -19208,7 +19462,7 @@ function log2(...msg) {
   }
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/backends/complex_util.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/backends/complex_util.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -19291,7 +19545,145 @@ function exponent(k, n, inverse) {
   return {real: real4, imag: imag4};
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/split_util.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/backends/einsum_util.js
+/**
+ * @license
+ * Copyright 2021 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+var ARROW = "->";
+var ARROW_REGEX = /->/g;
+var COMMA = ",";
+var ELLIPSIS = "...";
+function decodeEinsumEquation(equation, numTensors) {
+  equation = equation.replace(/\s/g, "");
+  const numArrows = (equation.length - equation.replace(ARROW_REGEX, "").length) / ARROW.length;
+  if (numArrows < 1) {
+    throw new Error("Equations without an arrow are not supported.");
+  } else if (numArrows > 1) {
+    throw new Error(`Equation must contain exactly one arrow ("${ARROW}").`);
+  }
+  const [inputString, outputString] = equation.split(ARROW);
+  assert(inputString.indexOf(ELLIPSIS) === -1, () => `The ellipsis notation ("${ELLIPSIS}") is not supported yet.`);
+  const inputTerms = inputString.split(COMMA);
+  const numInputs = inputTerms.length;
+  if (numTensors !== numInputs) {
+    throw new Error(`Expected ${numInputs} input tensors, received ${numTensors}`);
+  }
+  if (numInputs > 2) {
+    throw new Error("Support for more than 2 input tensors is not implemented yet.");
+  }
+  const allDims = [];
+  for (let i = 0; i < outputString.length; ++i) {
+    const dimName = outputString[i];
+    if (!inputTerms.some((inputTerm) => inputTerm.indexOf(dimName) !== -1)) {
+      throw new Error(`Output subscripts contain the label ${dimName} not present in the input subscripts.`);
+    }
+    if (allDims.indexOf(dimName) === -1) {
+      allDims.push(dimName);
+    }
+  }
+  for (let i = 0; i < inputString.length; ++i) {
+    const dimName = inputString[i];
+    if (allDims.indexOf(dimName) === -1 && dimName !== COMMA) {
+      allDims.push(dimName);
+    }
+  }
+  const idDims = new Array(inputTerms.length);
+  for (let i = 0; i < numInputs; ++i) {
+    if (new Set(inputTerms[i].split("")).size !== inputTerms[i].length) {
+      throw new Error(`Found duplicate axes in input component ${inputTerms[i]}. Support for duplicate axes in input is not implemented yet.`);
+    }
+    idDims[i] = [];
+    for (let j = 0; j < inputTerms[i].length; ++j) {
+      idDims[i].push(allDims.indexOf(inputTerms[i][j]));
+    }
+  }
+  const numDims = allDims.length;
+  const numOutDims = outputString.length;
+  const summedDims = [];
+  for (let i = numOutDims; i < numDims; ++i) {
+    summedDims.push(i);
+  }
+  return {allDims, summedDims, idDims};
+}
+function getEinsumPermutation(nDims, idDims) {
+  let permutationIndices = new Array(nDims);
+  permutationIndices.fill(-1);
+  for (let i = 0; i < idDims.length; ++i) {
+    permutationIndices[idDims[i]] = i;
+  }
+  const expandDims6 = [];
+  for (let i = 0; i < nDims; ++i) {
+    if (permutationIndices[i] === -1) {
+      expandDims6.push(i);
+    }
+  }
+  permutationIndices = permutationIndices.filter((d) => d !== -1);
+  return {permutationIndices, expandDims: expandDims6};
+}
+function checkEinsumDimSizes(nDims, idDims, tensors) {
+  const dimSizes = new Array(nDims);
+  for (let i = 0; i < tensors.length; ++i) {
+    const shape = tensors[i].shape;
+    for (let j = 0; j < idDims[i].length; ++j) {
+      if (dimSizes[idDims[i][j]] === void 0) {
+        dimSizes[idDims[i][j]] = shape[j];
+      } else {
+        assert(dimSizes[idDims[i][j]] === shape[j], () => `Expected dimension ${dimSizes[idDims[i][j]]} at axis ${j} of input shaped ${JSON.stringify(shape)}, but got dimension ${shape[j]}`);
+      }
+    }
+  }
+}
+function getEinsumComputePath(summedDims, idDims) {
+  const path = summedDims;
+  const steps = [];
+  let nSteps = 0;
+  if (summedDims.length === 0) {
+    path.push(-1);
+  }
+  nSteps = summedDims.length + 1;
+  for (let i = 0; i < nSteps; ++i) {
+    steps.push([]);
+  }
+  const computedTermIndices = [];
+  for (let i = 0; i < path.length; ++i) {
+    const summedDim = path[i];
+    const termIndices = findTermsWithDim(idDims, summedDim);
+    for (const termIndex of termIndices) {
+      if (computedTermIndices.indexOf(termIndex) === -1) {
+        steps[i].push(termIndex);
+        computedTermIndices.push(termIndex);
+      }
+    }
+  }
+  return {path, steps};
+}
+function isIdentityPermutation(perm) {
+  return perm.every((dim, index) => dim === index);
+}
+function findTermsWithDim(idDims, dim) {
+  const termIndices = [];
+  for (let i = 0; i < idDims.length; ++i) {
+    if (idDims[i].length === 0 || idDims[i].indexOf(dim) !== -1 || dim === -1) {
+      termIndices.push(i);
+    }
+  }
+  return termIndices;
+}
+
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/split_util.js
 function prepareSplitSize(x, numOrSizeSplits, axis = 0) {
   let splitSizes = [];
   if (typeof numOrSizeSplits === "number") {
@@ -19316,7 +19708,7 @@ function prepareSplitSize(x, numOrSizeSplits, axis = 0) {
   return splitSizes;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/segment_util.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/segment_util.js
 var segment_util_exports = {};
 __export(segment_util_exports, {
   collectGatherOpShapeInfo: () => collectGatherOpShapeInfo,
@@ -19415,7 +19807,7 @@ function collectGatherOpShapeInfo(x, indices, axis, batchDims) {
   return {batchSize, sliceSize, outerSize, dimSize, outputShape};
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/backends/backend_util.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/backends/backend_util.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -19443,7 +19835,7 @@ function fromStringArrayToUint8(strings) {
   return strings.map((s) => encodeString(s));
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/backends/kernel_impls.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/backends/kernel_impls.js
 var kernel_impls_exports = {};
 __export(kernel_impls_exports, {
   nonMaxSuppressionV3Impl: () => nonMaxSuppressionV3Impl,
@@ -19468,7 +19860,7 @@ __export(kernel_impls_exports, {
  * =============================================================================
  */
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/base.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/base.js
 /**
  * @license
  * Copyright 2020 Google Inc. All Rights Reserved.
@@ -19486,7 +19878,7 @@ __export(kernel_impls_exports, {
  * =============================================================================
  */
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/index.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/index.js
 /**
  * @license
  * Copyright 2017 Google LLC. All Rights Reserved.
@@ -19504,7 +19896,7 @@ __export(kernel_impls_exports, {
  * =============================================================================
  */
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Abs_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Abs_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -19530,7 +19922,7 @@ var absGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Acos_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Acos_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -19562,7 +19954,7 @@ var acosGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Acosh_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Acosh_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -19593,7 +19985,7 @@ var acoshGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Add_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Add_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -19636,7 +20028,7 @@ var addGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/AddN_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/AddN_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -19665,7 +20057,7 @@ var addNGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/ArgMax_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/ArgMax_grad.js
 /**
  * @license
  * Copyright 2020 Google Inc. All Rights Reserved.
@@ -19691,7 +20083,7 @@ var argMaxGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/ArgMin_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/ArgMin_grad.js
 /**
  * @license
  * Copyright 2020 Google Inc. All Rights Reserved.
@@ -19717,7 +20109,7 @@ var argMinGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Asin_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Asin_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -19743,7 +20135,7 @@ var asinGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Asinh_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Asinh_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -19774,7 +20166,7 @@ var asinhGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Atan2_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Atan2_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -19819,7 +20211,7 @@ var atan2GradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Atan_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Atan_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -19845,7 +20237,7 @@ var atanGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Atanh_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Atanh_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -19871,7 +20263,7 @@ var atanhGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/avg_pool_3d_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/avg_pool_3d_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -19920,7 +20312,7 @@ function avgPool3dGrad_(dy, input2, filterSize, strides, pad3, dimRoundingMode) 
 }
 var avgPool3dGrad = op({avgPool3dGrad_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/AvgPool3D_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/AvgPool3D_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -19949,7 +20341,7 @@ var avgPool3DGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/avg_pool_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/avg_pool_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -19990,7 +20382,7 @@ function avgPoolGrad_(dy, input2, filterSize, strides, pad3) {
 }
 var avgPoolGrad = op({avgPoolGrad_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/AvgPool_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/AvgPool_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -20017,7 +20409,7 @@ var avgPoolGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/BatchMatMul_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/BatchMatMul_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -20064,7 +20456,7 @@ var batchMatMulGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/BatchToSpaceND_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/BatchToSpaceND_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -20089,7 +20481,7 @@ var batchToSpaceNDGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/BroadcastTo_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/BroadcastTo_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -20130,7 +20522,7 @@ var broadcastToGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Cast_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Cast_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -20154,7 +20546,7 @@ var castGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Ceil_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Ceil_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -20178,7 +20570,7 @@ var ceilGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/ClipByValue_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/ClipByValue_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -20207,7 +20599,7 @@ var clipByValueGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/ComplexAbs_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/ComplexAbs_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -20230,7 +20622,7 @@ var complexAbsGradConfig = {
   gradFunc: absGradConfig.gradFunc
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Concat_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Concat_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -20260,7 +20652,7 @@ var concatGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Conv2D_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Conv2D_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -20291,7 +20683,7 @@ var conv2DGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Conv2DBackpropInput_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Conv2DBackpropInput_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -20321,7 +20713,7 @@ var conv2DBackpropInputGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/conv3d_backprop_filter.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/conv3d_backprop_filter.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -20358,7 +20750,7 @@ function conv3DBackpropFilter_(x, dy, filterShape, strides, pad3) {
 }
 var conv3DBackpropFilter = op({conv3DBackpropFilter_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Conv3D_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Conv3D_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -20389,7 +20781,7 @@ var conv3DGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Cos_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Cos_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -20415,7 +20807,7 @@ var cosGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Cosh_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Cosh_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -20441,7 +20833,7 @@ var coshGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Cumsum_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Cumsum_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -20477,7 +20869,7 @@ var cumsumGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/DepthwiseConv2dNative_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/DepthwiseConv2dNative_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -20516,7 +20908,7 @@ var depthwiseConv2dNativeGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Dilation2D_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Dilation2D_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -20547,7 +20939,7 @@ var dilation2dGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Elu_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Elu_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -20574,7 +20966,7 @@ var eluGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Erf_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Erf_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -20601,7 +20993,7 @@ var erfGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Exp_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Exp_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -20627,7 +21019,7 @@ var expGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/ExpandDims_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/ExpandDims_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -20653,7 +21045,7 @@ var expandDimsGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Expm1_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Expm1_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -20679,7 +21071,7 @@ var expm1GradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Floor_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Floor_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -20703,7 +21095,7 @@ var floorGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/FloorDiv_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/FloorDiv_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -20747,7 +21139,7 @@ var floorDivGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/FusedBatchNorm_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/FusedBatchNorm_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -20829,7 +21221,7 @@ var fusedBatchNormGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/GatherV2_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/GatherV2_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -20892,7 +21284,7 @@ function arrayConcat(arrays) {
   return result;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/GreaterEqual_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/GreaterEqual_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -20918,7 +21310,7 @@ var greaterEqualGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Identity_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Identity_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -20942,7 +21334,7 @@ var identityGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/IsFinite_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/IsFinite_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -20966,7 +21358,7 @@ var isFiniteGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/IsInf_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/IsInf_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -20990,7 +21382,7 @@ var isInfGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/IsNan_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/IsNan_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -21014,7 +21406,7 @@ var isNanGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/LeakyRelu_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/LeakyRelu_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -21042,7 +21434,7 @@ var leakyReluGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Log1p_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Log1p_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -21068,7 +21460,7 @@ var log1pGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Log_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Log_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -21094,7 +21486,7 @@ var logGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/LogSoftmax_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/LogSoftmax_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -21128,7 +21520,7 @@ var logSoftmaxGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/local_response_normalization_backprop.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/local_response_normalization_backprop.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -21152,7 +21544,7 @@ function localResponseNormalizationBackprop_(x, y, dy, depthRadius = 5, bias = 1
 }
 var localResponseNormalizationBackprop = op({localResponseNormalizationBackprop_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/LRN_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/LRN_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -21182,7 +21574,7 @@ var lrnGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/min_max_grad_util.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/min_max_grad_util.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -21214,7 +21606,7 @@ function gradForMinAndMax(dy, y, xOrig, origAxes) {
   };
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Max_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Max_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -21250,7 +21642,7 @@ var maxGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Maximum_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Maximum_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -21278,7 +21670,7 @@ var maximumGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/max_pool_3d_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/max_pool_3d_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -21337,7 +21729,7 @@ function maxPool3dGrad_(dy, input2, output, filterSize, strides, pad3, dimRoundi
 }
 var maxPool3dGrad = op({maxPool3dGrad_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/MaxPool3D_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/MaxPool3D_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -21367,7 +21759,7 @@ var maxPool3DGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/ops/max_pool_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/ops/max_pool_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -21400,7 +21792,7 @@ function maxPoolGrad_(dy, input2, output, filterSize, strides, pad3, dimRounding
 }
 var maxPoolGrad = op({maxPoolGrad_});
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/MaxPool_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/MaxPool_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -21430,7 +21822,7 @@ var maxPoolGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Mean_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Mean_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -21470,7 +21862,7 @@ var meanGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Min_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Min_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -21505,7 +21897,7 @@ var minGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Minimum_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Minimum_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -21533,7 +21925,7 @@ var minimumGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/MirrorPad_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/MirrorPad_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -21561,7 +21953,7 @@ var mirrorPadGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Mod_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Mod_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -21603,7 +21995,7 @@ var modGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Multiply_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Multiply_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -21646,7 +22038,7 @@ var multiplyGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Neg_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Neg_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -21670,7 +22062,7 @@ var negGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/OneHot_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/OneHot_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -21696,7 +22088,7 @@ var oneHotGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/OnesLike_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/OnesLike_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -21720,7 +22112,7 @@ var onesLikeGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Pack_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Pack_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -21747,7 +22139,7 @@ var packGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/PadV2_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/PadV2_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -21775,7 +22167,7 @@ var padV2GradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Pow_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Pow_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -21824,7 +22216,7 @@ var powGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Prelu_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Prelu_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -21861,7 +22253,7 @@ var preluGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/RealDiv_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/RealDiv_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -21905,7 +22297,7 @@ var divGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Reciprocal_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Reciprocal_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -21931,7 +22323,7 @@ var reciprocalGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Relu6_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Relu6_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -21958,7 +22350,7 @@ var relu6GradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Relu_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Relu_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -21984,7 +22376,7 @@ var reluGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Reshape_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Reshape_grad.js
 /**
  * @license
  * Copyright 2020 Google Inc. All Rights Reserved.
@@ -22010,7 +22402,7 @@ var reshapeGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/ResizeBilinear_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/ResizeBilinear_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -22038,7 +22430,7 @@ var resizeBilinearGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/ResizeNearestNeighbor_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/ResizeNearestNeighbor_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -22066,7 +22458,7 @@ var resizeNearestNeighborGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Reverse_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Reverse_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -22092,7 +22484,7 @@ var reverseGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Round_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Round_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -22116,7 +22508,7 @@ var roundGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Rsqrt_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Rsqrt_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -22142,7 +22534,7 @@ var rsqrtGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Select_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Select_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -22172,7 +22564,7 @@ var selectGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Selu_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Selu_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -22207,7 +22599,7 @@ var seluGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Sigmoid_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Sigmoid_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -22233,7 +22625,7 @@ var sigmoidGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Sign_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Sign_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -22257,7 +22649,7 @@ var signGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Sin_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Sin_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -22283,7 +22675,7 @@ var sinGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Sinh_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Sinh_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -22309,7 +22701,7 @@ var sinhGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Slice_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Slice_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -22342,7 +22734,7 @@ var sliceGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Softmax_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Softmax_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -22373,7 +22765,7 @@ var softmaxGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Softplus_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Softplus_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -22399,7 +22791,7 @@ var softplusGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/SpaceToBatchND_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/SpaceToBatchND_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -22424,7 +22816,7 @@ var spaceToBatchNDGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/SplitV_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/SplitV_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -22449,7 +22841,7 @@ var splitVGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Sqrt_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Sqrt_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -22475,7 +22867,7 @@ var sqrtGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Square_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Square_grad.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -22501,7 +22893,7 @@ var squareGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/SquaredDifference_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/SquaredDifference_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -22530,7 +22922,7 @@ var squaredDifferenceGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Step_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Step_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -22554,7 +22946,7 @@ var stepGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Sub_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Sub_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -22597,7 +22989,7 @@ var subGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Sum_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Sum_grad.js
 /**
  * @license
  * Copyright 2020 Google Inc. All Rights Reserved.
@@ -22631,7 +23023,7 @@ var sumGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Tan_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Tan_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -22657,7 +23049,7 @@ var tanGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Tanh_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Tanh_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -22683,7 +23075,7 @@ var tanhGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Tile_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Tile_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -22753,7 +23145,7 @@ var tileGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Transpose_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Transpose_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -22780,7 +23172,7 @@ var transposeGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Unpack_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/Unpack_grad.js
 /**
  * @license
  * Copyright 2020 Google Inc. All Rights Reserved.
@@ -22806,7 +23198,7 @@ var unpackGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/UnsortedSegmentSum_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/UnsortedSegmentSum_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -22847,7 +23239,7 @@ function gatherDropNegatives(x, indices) {
   return where(isPositive, gathered, zeroSlice);
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/gradients/ZerosLike_grad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/gradients/ZerosLike_grad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -22871,7 +23263,7 @@ var zerosLikeGradConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/register_all_gradients.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/register_all_gradients.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -22998,7 +23390,7 @@ for (const gradientConfig of gradConfigs) {
   registerGradient(gradientConfig);
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/abs.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/abs.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -23020,7 +23412,7 @@ getGlobalTensorClass().prototype.abs = function() {
   return abs(this);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/acos.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/acos.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -23042,7 +23434,7 @@ getGlobalTensorClass().prototype.acos = function() {
   return acos(this);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/acosh.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/acosh.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -23064,7 +23456,7 @@ getGlobalTensorClass().prototype.acosh = function() {
   return acosh(this);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/add.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/add.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -23086,7 +23478,7 @@ getGlobalTensorClass().prototype.add = function(b) {
   return add2(this, b);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/all.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/all.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -23108,7 +23500,7 @@ getGlobalTensorClass().prototype.all = function(axis, keepDims) {
   return all(this, axis, keepDims);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/any.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/any.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -23130,7 +23522,7 @@ getGlobalTensorClass().prototype.any = function(axis, keepDims) {
   return any(this, axis, keepDims);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/arg_max.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/arg_max.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -23152,7 +23544,7 @@ getGlobalTensorClass().prototype.argMax = function(axis) {
   return argMax(this, axis);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/arg_min.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/arg_min.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -23174,7 +23566,7 @@ getGlobalTensorClass().prototype.argMin = function(axis) {
   return argMin(this, axis);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/as_scalar.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/as_scalar.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -23197,7 +23589,7 @@ getGlobalTensorClass().prototype.asScalar = function() {
   return reshape(this, []);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/as_type.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/as_type.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -23219,7 +23611,7 @@ getGlobalTensorClass().prototype.asType = function(dtype) {
   return cast(this, dtype);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/as1d.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/as1d.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -23241,7 +23633,7 @@ getGlobalTensorClass().prototype.as1D = function() {
   return reshape(this, [this.size]);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/as2d.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/as2d.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -23263,7 +23655,7 @@ getGlobalTensorClass().prototype.as2D = function(rows, columns) {
   return reshape(this, [rows, columns]);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/as3d.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/as3d.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -23285,7 +23677,7 @@ getGlobalTensorClass().prototype.as3D = function(rows, columns, depth) {
   return reshape(this, [rows, columns, depth]);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/as4d.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/as4d.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -23307,7 +23699,7 @@ getGlobalTensorClass().prototype.as4D = function(rows, columns, depth, depth2) {
   return reshape(this, [rows, columns, depth, depth2]);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/as5d.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/as5d.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -23329,7 +23721,7 @@ getGlobalTensorClass().prototype.as5D = function(rows, columns, depth, depth2, d
   return reshape(this, [rows, columns, depth, depth2, depth3]);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/asin.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/asin.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -23351,7 +23743,7 @@ getGlobalTensorClass().prototype.asin = function() {
   return asin(this);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/asinh.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/asinh.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -23373,7 +23765,7 @@ getGlobalTensorClass().prototype.asinh = function() {
   return asinh(this);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/atan.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/atan.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -23395,7 +23787,7 @@ getGlobalTensorClass().prototype.atan = function() {
   return atan(this);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/atan2.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/atan2.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -23417,7 +23809,7 @@ getGlobalTensorClass().prototype.atan2 = function(b) {
   return atan2(this, b);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/atanh.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/atanh.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -23439,7 +23831,7 @@ getGlobalTensorClass().prototype.atanh = function() {
   return atanh(this);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/avg_pool.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/avg_pool.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -23461,7 +23853,7 @@ getGlobalTensorClass().prototype.avgPool = function(filterSize, strides, pad3, d
   return avgPool(this, filterSize, strides, pad3, dimRoundingMode);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/batch_to_space_nd.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/batch_to_space_nd.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -23483,7 +23875,7 @@ getGlobalTensorClass().prototype.batchToSpaceND = function(blockShape, crops) {
   return batchToSpaceND(this, blockShape, crops);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/batchnorm.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/batchnorm.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -23505,7 +23897,7 @@ getGlobalTensorClass().prototype.batchNorm = function(mean4, variance, offset, s
   return batchNorm(this, mean4, variance, offset, scale2, varianceEpsilon);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/broadcast_to.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/broadcast_to.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -23527,7 +23919,7 @@ getGlobalTensorClass().prototype.broadcastTo = function(shape) {
   return broadcastTo(this, shape);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/cast.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/cast.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -23549,7 +23941,7 @@ getGlobalTensorClass().prototype.cast = function(dtype) {
   return cast(this, dtype);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/ceil.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/ceil.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -23571,7 +23963,7 @@ getGlobalTensorClass().prototype.ceil = function() {
   return ceil(this);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/clip_by_value.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/clip_by_value.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -23593,7 +23985,7 @@ getGlobalTensorClass().prototype.clipByValue = function(min6, max6) {
   return clipByValue(this, min6, max6);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/concat.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/concat.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -23618,7 +24010,7 @@ getGlobalTensorClass().prototype.concat = function(x, axis) {
   return concat([this, ...x], axis);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/conv1d.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/conv1d.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -23640,7 +24032,7 @@ getGlobalTensorClass().prototype.conv1d = function(filter, stride, pad3, dataFor
   return conv1d(this, filter, stride, pad3, dataFormat, dilation, dimRoundingMode);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/conv2d_transpose.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/conv2d_transpose.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -23662,7 +24054,7 @@ getGlobalTensorClass().prototype.conv2dTranspose = function(filter, outputShape,
   return conv2dTranspose(this, filter, outputShape, strides, pad3, dimRoundingMode);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/conv2d.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/conv2d.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -23684,7 +24076,7 @@ getGlobalTensorClass().prototype.conv2d = function(filter, strides, pad3, dataFo
   return conv2d(this, filter, strides, pad3, dataFormat, dilations, dimRoundingMode);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/cos.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/cos.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -23706,7 +24098,7 @@ getGlobalTensorClass().prototype.cos = function() {
   return cos(this);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/cosh.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/cosh.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -23728,7 +24120,7 @@ getGlobalTensorClass().prototype.cosh = function() {
   return cosh(this);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/cumsum.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/cumsum.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -23750,7 +24142,7 @@ getGlobalTensorClass().prototype.cumsum = function(axis, exclusive, reverse5) {
   return cumsum(this, axis, exclusive, reverse5);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/depth_to_space.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/depth_to_space.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -23772,7 +24164,7 @@ getGlobalTensorClass().prototype.depthToSpace = function(blockSize, dataFormat) 
   return depthToSpace(this, blockSize, dataFormat);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/depthwise_conv2d.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/depthwise_conv2d.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -23794,7 +24186,7 @@ getGlobalTensorClass().prototype.depthwiseConv2d = function(filter, strides, pad
   return depthwiseConv2d(this, filter, strides, pad3, dataFormat, dilations, dimRoundingMode);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/dilation2d.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/dilation2d.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -23816,7 +24208,7 @@ getGlobalTensorClass().prototype.dilation2d = function(filter, strides, pad3, di
   return dilation2d(this, filter, strides, pad3, dilations, dataFormat);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/div_no_nan.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/div_no_nan.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -23838,7 +24230,7 @@ getGlobalTensorClass().prototype.divNoNan = function(b) {
   return divNoNan(this, b);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/div.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/div.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -23860,7 +24252,7 @@ getGlobalTensorClass().prototype.div = function(b) {
   return div(this, b);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/dot.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/dot.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -23882,7 +24274,7 @@ getGlobalTensorClass().prototype.dot = function(b) {
   return dot(this, b);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/elu.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/elu.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -23904,7 +24296,7 @@ getGlobalTensorClass().prototype.elu = function() {
   return elu(this);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/equal.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/equal.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -23926,7 +24318,7 @@ getGlobalTensorClass().prototype.equal = function(b) {
   return equal(this, b);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/erf.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/erf.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -23948,7 +24340,7 @@ getGlobalTensorClass().prototype.erf = function() {
   return erf(this);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/exp.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/exp.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -23970,7 +24362,7 @@ getGlobalTensorClass().prototype.exp = function() {
   return exp(this);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/expand_dims.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/expand_dims.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -23992,7 +24384,7 @@ getGlobalTensorClass().prototype.expandDims = function(axis) {
   return expandDims(this, axis);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/expm1.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/expm1.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -24014,7 +24406,7 @@ getGlobalTensorClass().prototype.expm1 = function() {
   return expm1(this);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/fft.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/fft.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -24036,7 +24428,7 @@ getGlobalTensorClass().prototype.fft = function() {
   return fft(this);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/flatten.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/flatten.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -24058,7 +24450,7 @@ getGlobalTensorClass().prototype.flatten = function() {
   return reshape(this, [this.size]);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/floor.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/floor.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -24080,7 +24472,7 @@ getGlobalTensorClass().prototype.floor = function() {
   return floor(this);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/floorDiv.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/floorDiv.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -24102,7 +24494,7 @@ getGlobalTensorClass().prototype.floorDiv = function(b) {
   return floorDiv(this, b);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/gather.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/gather.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -24124,7 +24516,7 @@ getGlobalTensorClass().prototype.gather = function(indices, axis) {
   return gather(this, indices, axis);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/greater_equal.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/greater_equal.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -24146,7 +24538,7 @@ getGlobalTensorClass().prototype.greaterEqual = function(b) {
   return greaterEqual(this, b);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/greater.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/greater.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -24168,7 +24560,7 @@ getGlobalTensorClass().prototype.greater = function(b) {
   return greater(this, b);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/ifft.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/ifft.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -24190,7 +24582,7 @@ getGlobalTensorClass().prototype.ifft = function() {
   return ifft(this);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/irfft.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/irfft.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -24212,7 +24604,7 @@ getGlobalTensorClass().prototype.irfft = function() {
   return irfft(this);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/is_finite.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/is_finite.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -24234,7 +24626,7 @@ getGlobalTensorClass().prototype.isFinite = function() {
   return isFinite2(this);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/is_inf.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/is_inf.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -24256,7 +24648,7 @@ getGlobalTensorClass().prototype.isInf = function() {
   return isInf(this);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/is_nan.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/is_nan.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -24278,7 +24670,7 @@ getGlobalTensorClass().prototype.isNaN = function() {
   return isNaN2(this);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/leaky_relu.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/leaky_relu.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -24300,7 +24692,7 @@ getGlobalTensorClass().prototype.leakyRelu = function(alpha) {
   return leakyRelu(this, alpha);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/less_equal.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/less_equal.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -24322,7 +24714,7 @@ getGlobalTensorClass().prototype.lessEqual = function(b) {
   return lessEqual(this, b);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/less.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/less.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -24344,7 +24736,7 @@ getGlobalTensorClass().prototype.less = function(b) {
   return less(this, b);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/local_response_normalization.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/local_response_normalization.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -24366,7 +24758,7 @@ getGlobalTensorClass().prototype.localResponseNormalization = function(depthRadi
   return localResponseNormalization(this, depthRadius, bias, alpha, beta);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/log_sigmoid.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/log_sigmoid.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -24388,7 +24780,7 @@ getGlobalTensorClass().prototype.logSigmoid = function() {
   return logSigmoid(this);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/log_softmax.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/log_softmax.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -24410,7 +24802,7 @@ getGlobalTensorClass().prototype.logSoftmax = function(axis) {
   return logSoftmax(this, axis);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/log_sum_exp.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/log_sum_exp.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -24432,7 +24824,7 @@ getGlobalTensorClass().prototype.logSumExp = function(axis, keepDims) {
   return logSumExp(this, axis, keepDims);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/log.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/log.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -24454,7 +24846,7 @@ getGlobalTensorClass().prototype.log = function() {
   return log(this);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/log1p.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/log1p.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -24476,7 +24868,7 @@ getGlobalTensorClass().prototype.log1p = function() {
   return log1p(this);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/logical_and.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/logical_and.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -24498,7 +24890,7 @@ getGlobalTensorClass().prototype.logicalAnd = function(b) {
   return logicalAnd(this, b);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/logical_not.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/logical_not.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -24520,7 +24912,7 @@ getGlobalTensorClass().prototype.logicalNot = function() {
   return logicalNot(this);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/logical_or.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/logical_or.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -24542,7 +24934,7 @@ getGlobalTensorClass().prototype.logicalOr = function(b) {
   return logicalOr(this, b);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/logical_xor.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/logical_xor.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -24564,7 +24956,7 @@ getGlobalTensorClass().prototype.logicalXor = function(b) {
   return logicalXor(this, b);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/mat_mul.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/mat_mul.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -24586,7 +24978,7 @@ getGlobalTensorClass().prototype.matMul = function(b, transposeA, transposeB) {
   return matMul(this, b, transposeA, transposeB);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/max_pool.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/max_pool.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -24608,7 +25000,7 @@ getGlobalTensorClass().prototype.maxPool = function(filterSize, strides, pad3, d
   return maxPool(this, filterSize, strides, pad3, dimRoundingMode);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/max.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/max.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -24630,7 +25022,7 @@ getGlobalTensorClass().prototype.max = function(axis, keepDims) {
   return max(this, axis, keepDims);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/maximum.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/maximum.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -24652,7 +25044,7 @@ getGlobalTensorClass().prototype.maximum = function(b) {
   return maximum(this, b);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/mean.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/mean.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -24674,7 +25066,7 @@ getGlobalTensorClass().prototype.mean = function(axis, keepDims) {
   return mean(this, axis, keepDims);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/min.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/min.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -24696,7 +25088,7 @@ getGlobalTensorClass().prototype.min = function(axis, keepDims) {
   return min(this, axis, keepDims);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/minimum.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/minimum.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -24718,7 +25110,7 @@ getGlobalTensorClass().prototype.minimum = function(b) {
   return minimum(this, b);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/mirror_pad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/mirror_pad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -24740,7 +25132,7 @@ getGlobalTensorClass().prototype.mirrorPad = function(paddings, mode) {
   return mirrorPad(this, paddings, mode);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/mod.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/mod.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -24762,7 +25154,7 @@ getGlobalTensorClass().prototype.mod = function(b) {
   return mod(this, b);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/mul.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/mul.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -24784,7 +25176,7 @@ getGlobalTensorClass().prototype.mul = function(b) {
   return mul(this, b);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/neg.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/neg.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -24806,7 +25198,7 @@ getGlobalTensorClass().prototype.neg = function() {
   return neg(this);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/norm.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/norm.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -24828,7 +25220,7 @@ getGlobalTensorClass().prototype.norm = function(ord, axis, keepDims) {
   return norm(this, ord, axis, keepDims);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/not_equal.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/not_equal.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -24850,7 +25242,7 @@ getGlobalTensorClass().prototype.notEqual = function(b) {
   return notEqual(this, b);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/one_hot.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/one_hot.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -24872,7 +25264,7 @@ getGlobalTensorClass().prototype.oneHot = function(depth, onValue = 1, offValue 
   return oneHot(this, depth, onValue, offValue);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/ones_like.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/ones_like.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -24894,7 +25286,7 @@ getGlobalTensorClass().prototype.onesLike = function() {
   return onesLike(this);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/pad.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/pad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -24916,7 +25308,7 @@ getGlobalTensorClass().prototype.pad = function(paddings, constantValue) {
   return pad(this, paddings, constantValue);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/pool.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/pool.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -24938,7 +25330,7 @@ getGlobalTensorClass().prototype.pool = function(windowShape, poolingType, paddi
   return pool(this, windowShape, poolingType, padding, dilationRate, strides);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/pow.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/pow.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -24960,7 +25352,7 @@ getGlobalTensorClass().prototype.pow = function(exp4) {
   return pow(this, exp4);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/prelu.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/prelu.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -24982,7 +25374,7 @@ getGlobalTensorClass().prototype.prelu = function(alpha) {
   return prelu(this, alpha);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/prod.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/prod.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -25004,7 +25396,7 @@ getGlobalTensorClass().prototype.prod = function(axis, keepDims) {
   return prod(this, axis, keepDims);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/reciprocal.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/reciprocal.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -25026,7 +25418,7 @@ getGlobalTensorClass().prototype.reciprocal = function() {
   return reciprocal(this);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/relu.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/relu.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -25048,7 +25440,7 @@ getGlobalTensorClass().prototype.relu = function() {
   return relu(this);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/relu6.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/relu6.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -25070,7 +25462,7 @@ getGlobalTensorClass().prototype.relu6 = function() {
   return relu6(this);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/reshape_as.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/reshape_as.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -25092,7 +25484,7 @@ getGlobalTensorClass().prototype.reshapeAs = function(x) {
   return reshape(this, x.shape);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/reshape.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/reshape.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -25114,7 +25506,7 @@ getGlobalTensorClass().prototype.reshape = function(shape) {
   return reshape(this, shape);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/resize_bilinear.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/resize_bilinear.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -25136,7 +25528,7 @@ getGlobalTensorClass().prototype.resizeBilinear = function(newShape2D, alignCorn
   return resizeBilinear(this, newShape2D, alignCorners, halfPixelCenters);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/resize_nearest_neighbor.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/resize_nearest_neighbor.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -25158,7 +25550,7 @@ getGlobalTensorClass().prototype.resizeNearestNeighbor = function(newShape2D, al
   return resizeNearestNeighbor(this, newShape2D, alignCorners, halfFloatCenters);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/reverse.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/reverse.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -25180,7 +25572,7 @@ getGlobalTensorClass().prototype.reverse = function(axis) {
   return reverse(this, axis);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/rfft.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/rfft.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -25202,7 +25594,7 @@ getGlobalTensorClass().prototype.rfft = function() {
   return rfft(this);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/round.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/round.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -25224,7 +25616,7 @@ getGlobalTensorClass().prototype.round = function() {
   return round2(this);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/rsqrt.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/rsqrt.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -25246,7 +25638,7 @@ getGlobalTensorClass().prototype.rsqrt = function() {
   return rsqrt(this);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/selu.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/selu.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -25268,7 +25660,7 @@ getGlobalTensorClass().prototype.selu = function() {
   return selu(this);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/separable_conv2d.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/separable_conv2d.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -25290,7 +25682,7 @@ getGlobalTensorClass().prototype.separableConv2d = function(depthwiseFilter, poi
   return separableConv2d(this, depthwiseFilter, pointwiseFilter, strides, pad3, dilation, dataFormat);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/sigmoid.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/sigmoid.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -25312,7 +25704,7 @@ getGlobalTensorClass().prototype.sigmoid = function() {
   return sigmoid(this);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/sign.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/sign.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -25334,7 +25726,7 @@ getGlobalTensorClass().prototype.sign = function() {
   return sign(this);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/sin.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/sin.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -25356,7 +25748,7 @@ getGlobalTensorClass().prototype.sin = function() {
   return sin(this);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/sinh.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/sinh.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -25378,7 +25770,7 @@ getGlobalTensorClass().prototype.sinh = function() {
   return sinh(this);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/slice.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/slice.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -25400,7 +25792,7 @@ getGlobalTensorClass().prototype.slice = function(begin, size) {
   return slice(this, begin, size);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/softmax.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/softmax.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -25422,7 +25814,7 @@ getGlobalTensorClass().prototype.softmax = function(dim) {
   return softmax(this, dim);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/softplus.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/softplus.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -25444,7 +25836,7 @@ getGlobalTensorClass().prototype.softplus = function() {
   return softplus(this);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/space_to_batch_nd.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/space_to_batch_nd.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -25466,7 +25858,7 @@ getGlobalTensorClass().prototype.spaceToBatchND = function(blockShape, paddings)
   return spaceToBatchND(this, blockShape, paddings);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/split.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/split.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -25488,7 +25880,7 @@ getGlobalTensorClass().prototype.split = function(numOrSizeSplits, axis) {
   return split(this, numOrSizeSplits, axis);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/sqrt.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/sqrt.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -25510,7 +25902,7 @@ getGlobalTensorClass().prototype.sqrt = function() {
   return sqrt(this);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/square.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/square.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -25532,7 +25924,7 @@ getGlobalTensorClass().prototype.square = function() {
   return square(this);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/squared_difference.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/squared_difference.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -25554,7 +25946,7 @@ getGlobalTensorClass().prototype.squaredDifference = function(b) {
   return squaredDifference(this, b);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/squeeze.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/squeeze.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -25576,7 +25968,7 @@ getGlobalTensorClass().prototype.squeeze = function(axis) {
   return squeeze(this, axis);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/stack.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/stack.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -25599,7 +25991,7 @@ getGlobalTensorClass().prototype.stack = function(x, axis) {
   return stack(tensorsToBeStacked, axis);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/step.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/step.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -25621,7 +26013,7 @@ getGlobalTensorClass().prototype.step = function(alpha) {
   return step(this, alpha);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/strided_slice.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/strided_slice.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -25643,7 +26035,7 @@ getGlobalTensorClass().prototype.stridedSlice = function(begin, end, strides, be
   return stridedSlice(this, begin, end, strides, beginMask, endMask, ellipsisMask, newAxisMask, shrinkAxisMask);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/sub.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/sub.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -25665,7 +26057,7 @@ getGlobalTensorClass().prototype.sub = function(b) {
   return sub(this, b);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/sum.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/sum.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -25687,7 +26079,7 @@ getGlobalTensorClass().prototype.sum = function(axis, keepDims) {
   return sum2(this, axis, keepDims);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/tan.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/tan.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -25709,7 +26101,7 @@ getGlobalTensorClass().prototype.tan = function() {
   return tan(this);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/tanh.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/tanh.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -25731,7 +26123,7 @@ getGlobalTensorClass().prototype.tanh = function() {
   return tanh2(this);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/tile.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/tile.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -25753,7 +26145,7 @@ getGlobalTensorClass().prototype.tile = function(reps) {
   return tile(this, reps);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/to_bool.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/to_bool.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -25775,7 +26167,7 @@ getGlobalTensorClass().prototype.toBool = function() {
   return cast(this, "bool");
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/to_float.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/to_float.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -25797,7 +26189,7 @@ getGlobalTensorClass().prototype.toFloat = function() {
   return cast(this, "float32");
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/to_int.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/to_int.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -25819,7 +26211,7 @@ getGlobalTensorClass().prototype.toInt = function() {
   return cast(this, "int32");
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/topk.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/topk.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -25841,7 +26233,7 @@ getGlobalTensorClass().prototype.topk = function(k, sorted) {
   return topk(this, k, sorted);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/transpose.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/transpose.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -25863,7 +26255,7 @@ getGlobalTensorClass().prototype.transpose = function(perm) {
   return transpose(this, perm);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/unique.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/unique.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -25885,7 +26277,7 @@ getGlobalTensorClass().prototype.unique = function(axis) {
   return unique(this, axis);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/unsorted_segment_sum.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/unsorted_segment_sum.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -25907,7 +26299,7 @@ getGlobalTensorClass().prototype.unsortedSegmentSum = function(segmentIds, numSe
   return unsortedSegmentSum(this, segmentIds, numSegments);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/unstack.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/unstack.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -25929,7 +26321,7 @@ getGlobalTensorClass().prototype.unstack = function(axis) {
   return unstack(this, axis);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/where.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/where.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -25951,7 +26343,7 @@ getGlobalTensorClass().prototype.where = function(condition, x) {
   return where(condition, this, x);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/zeros_like.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/zeros_like.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -25973,7 +26365,7 @@ getGlobalTensorClass().prototype.zerosLike = function() {
   return zerosLike(this);
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/register_all_chained_ops.js
+// node_modules/.pnpm/@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-core/dist/public/chained_ops/register_all_chained_ops.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -25991,7 +26383,7 @@ getGlobalTensorClass().prototype.zerosLike = function() {
  * =============================================================================
  */
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/exports_constraints.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/exports_constraints.js
 var exports_constraints_exports = {};
 __export(exports_constraints_exports, {
   maxNorm: () => maxNorm,
@@ -26000,7 +26392,7 @@ __export(exports_constraints_exports, {
   unitNorm: () => unitNorm
 });
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/backend/common.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/backend/common.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -26021,7 +26413,7 @@ function imageDataFormat() {
   return "channelsLast";
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/errors.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/errors.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -26062,7 +26454,7 @@ var AssertionError = class extends Error {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/utils/generic_utils.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/utils/generic_utils.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -26311,7 +26703,7 @@ function mapActivationToFusedKernel(activationName) {
   return null;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/constraints.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/constraints.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -26429,7 +26821,7 @@ function getConstraint(identifier) {
   }
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/exports_constraints.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/exports_constraints.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -26452,7 +26844,7 @@ function minMaxNorm(config) {
   return new MinMaxNorm(config);
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/exports_initializers.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/exports_initializers.js
 var exports_initializers_exports = {};
 __export(exports_initializers_exports, {
   constant: () => constant,
@@ -26472,7 +26864,7 @@ __export(exports_initializers_exports, {
   zeros: () => zeros2
 });
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/keras_format/common.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/keras_format/common.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -26488,7 +26880,7 @@ var VALID_PADDING_MODE_VALUES = ["valid", "same", "causal"];
 var VALID_POOL_MODE_VALUES = ["max", "avg"];
 var VALID_BIDIRECTIONAL_MERGE_MODES = ["sum", "mul", "concat", "ave"];
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/common.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/common.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -26559,7 +26951,7 @@ function isValidTensorName(name) {
   return !!name.match(tensorNameRegex);
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/utils/math_utils.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/utils/math_utils.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -26606,7 +26998,7 @@ function range2(begin, end) {
   return out;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/backend/tfjs_backend.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/backend/tfjs_backend.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -26928,7 +27320,7 @@ function inTrainPhase(x, alt, training = false) {
   return training ? x() : alt();
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/keras_format/initializer_config.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/keras_format/initializer_config.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -26941,7 +27333,7 @@ function inTrainPhase(x, alt, training = false) {
 var VALID_FAN_MODE_VALUES = ["fanIn", "fanOut", "fanAvg"];
 var VALID_DISTRIBUTION_VALUES = ["normal", "uniform", "truncatedNormal"];
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/initializers.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/initializers.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -27332,7 +27724,7 @@ function getInitializer(identifier) {
   }
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/exports_initializers.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/exports_initializers.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -27388,7 +27780,7 @@ function orthogonal(args) {
   return new Orthogonal(args);
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/exports_layers.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/exports_layers.js
 var exports_layers_exports = {};
 __export(exports_layers_exports, {
   Layer: () => Layer,
@@ -27414,6 +27806,7 @@ __export(exports_layers_exports, {
   conv2d: () => conv2d3,
   conv2dTranspose: () => conv2dTranspose2,
   conv3d: () => conv3d2,
+  conv3dTranspose: () => conv3dTranspose2,
   convLstm2d: () => convLstm2d,
   convLstm2dCell: () => convLstm2dCell,
   cropping2D: () => cropping2D,
@@ -27467,7 +27860,7 @@ __export(exports_layers_exports, {
   zeroPadding2d: () => zeroPadding2d
 });
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/backend/state.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/backend/state.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -27490,7 +27883,7 @@ function getUid(prefix = "") {
   return prefix + _uidPrefixes[prefix].toString();
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/utils/types_utils.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/utils/types_utils.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -27537,7 +27930,7 @@ function getExactlyOneShape(shapes) {
   }
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/utils/variable_utils.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/utils/variable_utils.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -27559,7 +27952,7 @@ function countParamsInWeights(weights) {
   return count2;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/variables.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/variables.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -27629,7 +28022,7 @@ function batchSetValue(variablesAndValues) {
   });
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/engine/topology.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/engine/topology.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -28237,7 +28630,7 @@ function getSourceInputs(tensor2, layer, nodeIndex) {
   }
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/engine/input_layer.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/engine/input_layer.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -28339,7 +28732,7 @@ function Input(config) {
   return outputs[0];
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/logs.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/logs.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -28385,7 +28778,7 @@ function disposeTensorsInLogs(logs) {
   }
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/base_callbacks.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/base_callbacks.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -28743,7 +29136,7 @@ function configureCallbacks(callbacks2, verbose, epochs, initialEpoch, numTrainS
   return {callbackList, history};
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/layers/serialization.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/layers/serialization.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -28757,7 +29150,7 @@ function deserialize(config, customObjects = {}, fastWeightInit = false) {
   return deserializeKerasObject(config, serialization_exports.SerializationMap.getMap().classNameMap, customObjects, "layer", fastWeightInit);
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/losses.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/losses.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -28919,7 +29312,7 @@ function get(identifierOrFn) {
   }
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/metrics.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/metrics.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -29043,7 +29436,7 @@ function getLossOrMetricName(fn) {
   }
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/optimizers.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/optimizers.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -29074,7 +29467,7 @@ function getOptimizer(identifier) {
   throw new ValueError(`Unknown Optimizer ${identifier}`);
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/user_defined_metadata.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/user_defined_metadata.js
 /**
  * @license
  * Copyright 2019 Google LLC
@@ -29129,7 +29522,7 @@ function plainObjectCheck(x) {
   }
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/utils/layer_utils.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/utils/layer_utils.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -29281,7 +29674,7 @@ function printLayerSummaryWithConnections(layer, positions, relevantNodes, print
   }
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/utils/serialization_utils.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/utils/serialization_utils.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -29361,11 +29754,11 @@ function convertTsToPythonic(tsConfig, key) {
   }
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/version.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/version.js
 /** @license See the LICENSE file. */
-var version2 = "3.3.0";
+var version2 = "3.4.0";
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/engine/executor.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/engine/executor.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -29657,7 +30050,7 @@ function getNodeOutputs(fetch3) {
   return layerOutputs;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/engine/container.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/engine/container.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -30389,7 +30782,7 @@ var Container = class extends Layer {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/engine/training_utils.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/engine/training_utils.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -30475,7 +30868,7 @@ function computeWeightedLoss2(losses4, sampleWeights) {
   return mul(losses4, sampleWeights);
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/engine/training_dataset.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/engine/training_dataset.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -30715,7 +31108,7 @@ async function evaluateDataset(model2, dataset, args) {
   return singletonOrArray(outs);
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/engine/training_tensors.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/engine/training_tensors.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -30993,7 +31386,7 @@ function disposeNewTensors(tensors, refTensors) {
   });
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/engine/training.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/engine/training.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -31860,7 +32253,7 @@ var Functional = class extends LayersModel {
 Functional.className = "Functional";
 serialization_exports.registerClass(Functional);
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/models.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/models.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -32213,7 +32606,7 @@ var Sequential = class extends LayersModel {
 Sequential.className = "Sequential";
 serialization_exports.registerClass(Sequential);
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/exports.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/exports.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -32242,7 +32635,7 @@ function registerCallbackConstructor(verbosityLevel, callbackConstructor) {
   CallbackConstructorRegistry.registerCallbackConstructor(verbosityLevel, callbackConstructor);
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/activations.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/activations.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -32373,7 +32766,7 @@ function getActivation(identifier) {
   }
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/regularizers.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/regularizers.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -32452,7 +32845,7 @@ function getRegularizer(identifier) {
   }
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/layers/advanced_activations.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/layers/advanced_activations.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -32655,7 +33048,7 @@ var Softmax3 = class extends Layer {
 Softmax3.className = "Softmax";
 serialization_exports.registerClass(Softmax3);
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/utils/conv_utils.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/utils/conv_utils.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -32708,7 +33101,7 @@ function deconvLength(dimSize, strideSize, kernelSize, padding) {
   return dimSize;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/layers/convolutional.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/layers/convolutional.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -33114,6 +33507,119 @@ var Conv2DTranspose = class extends Conv2D2 {
 };
 Conv2DTranspose.className = "Conv2DTranspose";
 serialization_exports.registerClass(Conv2DTranspose);
+var Conv3DTranspose = class extends Conv3D2 {
+  constructor(args) {
+    super(args);
+    this.inputSpec = [new InputSpec({ndim: 5})];
+    if (this.padding !== "same" && this.padding !== "valid") {
+      throw new ValueError(`Conv3DTranspose currently supports only padding modes 'same' and 'valid', but received padding mode ${this.padding}`);
+    }
+  }
+  build(inputShape) {
+    inputShape = getExactlyOneShape(inputShape);
+    if (inputShape.length !== 5) {
+      throw new ValueError("Input should have rank 5; Received input shape: " + JSON.stringify(inputShape));
+    }
+    const channelAxis = this.dataFormat === "channelsFirst" ? 1 : inputShape.length - 1;
+    if (inputShape[channelAxis] == null) {
+      throw new ValueError("The channel dimension of the inputs should be defined. Found `None`.");
+    }
+    const inputDim = inputShape[channelAxis];
+    const kernelShape = this.kernelSize.concat([this.filters, inputDim]);
+    this.kernel = this.addWeight("kernel", kernelShape, "float32", this.kernelInitializer, this.kernelRegularizer, true, this.kernelConstraint);
+    if (this.useBias) {
+      this.bias = this.addWeight("bias", [this.filters], "float32", this.biasInitializer, this.biasRegularizer, true, this.biasConstraint);
+    }
+    this.inputSpec = [new InputSpec({ndim: 5, axes: {[channelAxis]: inputDim}})];
+    this.built = true;
+  }
+  call(inputs, kwargs) {
+    return tidy(() => {
+      let input2 = getExactlyOneTensor(inputs);
+      if (input2.shape.length !== 5) {
+        throw new ValueError(`Conv3DTranspose.call() expects input tensor to be rank-4, but received a tensor of rank-${input2.shape.length}`);
+      }
+      const inputShape = input2.shape;
+      const batchSize = inputShape[0];
+      let hAxis;
+      let wAxis;
+      let dAxis;
+      if (this.dataFormat === "channelsFirst") {
+        dAxis = 2;
+        hAxis = 3;
+        wAxis = 4;
+      } else {
+        dAxis = 1;
+        hAxis = 2;
+        wAxis = 3;
+      }
+      const depth = inputShape[dAxis];
+      const height = inputShape[hAxis];
+      const width = inputShape[wAxis];
+      const kernelD = this.kernelSize[0];
+      const kernelH = this.kernelSize[1];
+      const kernelW = this.kernelSize[2];
+      const strideD = this.strides[0];
+      const strideH = this.strides[1];
+      const strideW = this.strides[2];
+      const outDepth = deconvLength(depth, strideD, kernelD, this.padding);
+      const outHeight = deconvLength(height, strideH, kernelH, this.padding);
+      const outWidth = deconvLength(width, strideW, kernelW, this.padding);
+      const outputShape = [batchSize, outDepth, outHeight, outWidth, this.filters];
+      if (this.dataFormat !== "channelsLast") {
+        input2 = transpose(input2, [0, 2, 3, 4, 1]);
+      }
+      let outputs = conv3dTranspose(input2, this.kernel.read(), outputShape, this.strides, this.padding);
+      if (this.dataFormat !== "channelsLast") {
+        outputs = transpose(outputs, [0, 4, 1, 2, 3]);
+      }
+      if (this.bias !== null) {
+        outputs = biasAdd(outputs, this.bias.read(), this.dataFormat);
+      }
+      if (this.activation !== null) {
+        outputs = this.activation.apply(outputs);
+      }
+      return outputs;
+    });
+  }
+  computeOutputShape(inputShape) {
+    inputShape = getExactlyOneShape(inputShape);
+    const outputShape = inputShape.slice();
+    let channelAxis;
+    let depthAxis;
+    let heightAxis;
+    let widthAxis;
+    if (this.dataFormat === "channelsFirst") {
+      channelAxis = 1;
+      depthAxis = 2;
+      heightAxis = 3;
+      widthAxis = 4;
+    } else {
+      channelAxis = 4;
+      depthAxis = 1;
+      heightAxis = 2;
+      widthAxis = 3;
+    }
+    const kernelD = this.kernelSize[0];
+    const kernelH = this.kernelSize[1];
+    const kernelW = this.kernelSize[2];
+    const strideD = this.strides[0];
+    const strideH = this.strides[1];
+    const strideW = this.strides[2];
+    outputShape[channelAxis] = this.filters;
+    outputShape[depthAxis] = deconvLength(outputShape[depthAxis], strideD, kernelD, this.padding);
+    outputShape[heightAxis] = deconvLength(outputShape[heightAxis], strideH, kernelH, this.padding);
+    outputShape[widthAxis] = deconvLength(outputShape[widthAxis], strideW, kernelW, this.padding);
+    return outputShape;
+  }
+  getConfig() {
+    const config = super.getConfig();
+    delete config["dilationRate"];
+    return config;
+  }
+};
+Conv3DTranspose.className = "Conv3DTranspose";
+serialization_exports.registerClass(Conv3DTranspose);
 var SeparableConv = class extends Conv {
   constructor(rank, config) {
     super(rank, config);
@@ -33335,7 +33841,7 @@ var UpSampling2D = class extends Layer {
 UpSampling2D.className = "UpSampling2D";
 serialization_exports.registerClass(UpSampling2D);
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/layers/convolutional_depthwise.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/layers/convolutional_depthwise.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -33436,7 +33942,7 @@ var DepthwiseConv2D = class extends BaseConv {
 DepthwiseConv2D.className = "DepthwiseConv2D";
 serialization_exports.registerClass(DepthwiseConv2D);
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/layers/recurrent.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/layers/recurrent.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -34468,7 +34974,7 @@ function generateDropoutMask(args) {
   return masks.map((m) => keep(m.clone()));
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/layers/convolutional_recurrent.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/layers/convolutional_recurrent.js
 /**
  * @license
  * Copyright 2020 Google LLC
@@ -34760,7 +35266,7 @@ var ConvLSTM2D = class extends ConvRNN2D {
 ConvLSTM2D.className = "ConvLSTM2D";
 serialization_exports.registerClass(ConvLSTM2D);
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/layers/core.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/layers/core.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -35164,7 +35670,7 @@ var Masking = class extends Layer {
 Masking.className = "Masking";
 serialization_exports.registerClass(Masking);
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/layers/embeddings.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/layers/embeddings.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -35271,7 +35777,7 @@ var Embedding = class extends Layer {
 Embedding.className = "Embedding";
 serialization_exports.registerClass(Embedding);
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/layers/merge.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/layers/merge.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -35811,7 +36317,7 @@ var Dot = class extends Merge {
 Dot.className = "Dot";
 serialization_exports.registerClass(Dot);
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/layers/noise.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/layers/noise.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -35924,7 +36430,7 @@ var AlphaDropout = class extends Layer {
 AlphaDropout.className = "AlphaDropout";
 serialization_exports.registerClass(AlphaDropout);
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/layers/normalization.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/layers/normalization.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -36211,7 +36717,7 @@ var LayerNormalization = class extends Layer {
 LayerNormalization.className = "LayerNormalization";
 serialization_exports.registerClass(LayerNormalization);
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/layers/padding.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/layers/padding.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -36329,7 +36835,7 @@ var ZeroPadding2D = class extends Layer {
 ZeroPadding2D.className = "ZeroPadding2D";
 serialization_exports.registerClass(ZeroPadding2D);
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/layers/pooling.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/layers/pooling.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -36731,7 +37237,7 @@ var GlobalMaxPooling2D = class extends GlobalPooling2D {
 GlobalMaxPooling2D.className = "GlobalMaxPooling2D";
 serialization_exports.registerClass(GlobalMaxPooling2D);
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/layers/wrappers.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/layers/wrappers.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -37109,7 +37615,7 @@ var Bidirectional = class extends Wrapper {
 Bidirectional.className = "Bidirectional";
 serialization_exports.registerClass(Bidirectional);
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/exports_layers.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/exports_layers.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -37151,6 +37657,9 @@ function conv2dTranspose2(args) {
 }
 function conv3d2(args) {
   return new Conv3D2(args);
+}
+function conv3dTranspose2(args) {
+  return new Conv3DTranspose(args);
 }
 function separableConv2d2(args) {
   return new SeparableConv2D(args);
@@ -37322,7 +37831,7 @@ function masking(args) {
   return new Masking(args);
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/exports_metrics.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/exports_metrics.js
 var exports_metrics_exports = {};
 __export(exports_metrics_exports, {
   MAPE: () => MAPE2,
@@ -37387,7 +37896,7 @@ function mse2(yTrue, yPred) {
   return meanSquaredError2(yTrue, yPred);
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/exports_models.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/exports_models.js
 var exports_models_exports = {};
 __export(exports_models_exports, {
   modelFromJSON: () => modelFromJSON
@@ -37402,7 +37911,7 @@ __export(exports_models_exports, {
  * =============================================================================
  */
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/exports_regularizers.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/exports_regularizers.js
 var exports_regularizers_exports = {};
 __export(exports_regularizers_exports, {
   l1: () => l12,
@@ -37428,7 +37937,7 @@ function l22(config) {
   return l2(config);
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/callbacks.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/callbacks.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -37537,7 +38046,7 @@ function earlyStopping(args) {
 }
 var callbacks = {earlyStopping};
 
-// node_modules/.pnpm/@tensorflow+tfjs-layers@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-layers/dist/index.js
+// node_modules/.pnpm/@tensorflow+tfjs-layers@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-layers/dist/index.js
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -37548,7 +38057,7 @@ var callbacks = {earlyStopping};
  * =============================================================================
  */
 
-// node_modules/.pnpm/@tensorflow+tfjs-converter@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-converter/dist/data/compiled_api.js
+// node_modules/.pnpm/@tensorflow+tfjs-converter@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-converter/dist/data/compiled_api.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -37608,7 +38117,7 @@ var SaverDef;
   })(CheckpointFormatVersion = SaverDef2.CheckpointFormatVersion || (SaverDef2.CheckpointFormatVersion = {}));
 })(SaverDef || (SaverDef = {}));
 
-// node_modules/.pnpm/@tensorflow+tfjs-converter@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-converter/dist/operations/custom_op/register.js
+// node_modules/.pnpm/@tensorflow+tfjs-converter@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-converter/dist/operations/custom_op/register.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -37643,7 +38152,7 @@ function deregisterOp(name) {
   delete CUSTOM_OPS[name];
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-converter@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-converter/dist/operations/executors/utils.js
+// node_modules/.pnpm/@tensorflow+tfjs-converter@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-converter/dist/operations/executors/utils.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -37730,7 +38239,7 @@ function cloneTensor(tensor2) {
   return tensor2.kept ? tensor2 : clone(tensor2);
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-converter@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-converter/dist/operations/op_list/arithmetic.js
+// node_modules/.pnpm/@tensorflow+tfjs-converter@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-converter/dist/operations/op_list/arithmetic.js
 var arithmetic_exports = {};
 __export(arithmetic_exports, {
   json: () => json
@@ -37933,7 +38442,7 @@ var json = [
   }
 ];
 
-// node_modules/.pnpm/@tensorflow+tfjs-converter@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-converter/dist/operations/op_list/basic_math.js
+// node_modules/.pnpm/@tensorflow+tfjs-converter@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-converter/dist/operations/op_list/basic_math.js
 var basic_math_exports = {};
 __export(basic_math_exports, {
   json: () => json2
@@ -38402,17 +38911,25 @@ var json2 = [
         type: "number",
         defaultValue: 0.2
       },
-      {
-        tfName: "T",
-        name: "dtype",
-        type: "dtype",
-        notSupported: true
-      }
+      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
     ]
+  },
+  {
+    tfOpName: "IsNan",
+    category: "basic_math",
+    inputs: [
+      {start: 0, name: "x", type: "tensor"}
+    ],
+    attrs: [{
+      tfName: "T",
+      name: "dtype",
+      type: "dtype",
+      notSupported: true
+    }]
   }
 ];
 
-// node_modules/.pnpm/@tensorflow+tfjs-converter@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-converter/dist/operations/op_list/control.js
+// node_modules/.pnpm/@tensorflow+tfjs-converter@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-converter/dist/operations/op_list/control.js
 var control_exports = {};
 __export(control_exports, {
   json: () => json3
@@ -38759,7 +39276,7 @@ var json3 = [
   }
 ];
 
-// node_modules/.pnpm/@tensorflow+tfjs-converter@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-converter/dist/operations/op_list/convolution.js
+// node_modules/.pnpm/@tensorflow+tfjs-converter@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-converter/dist/operations/op_list/convolution.js
 var convolution_exports = {};
 __export(convolution_exports, {
   json: () => json4
@@ -39144,7 +39661,7 @@ var json4 = [
   }
 ];
 
-// node_modules/.pnpm/@tensorflow+tfjs-converter@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-converter/dist/operations/op_list/creation.js
+// node_modules/.pnpm/@tensorflow+tfjs-converter@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-converter/dist/operations/op_list/creation.js
 var creation_exports = {};
 __export(creation_exports, {
   json: () => json5
@@ -39326,7 +39843,7 @@ var json5 = [
   }
 ];
 
-// node_modules/.pnpm/@tensorflow+tfjs-converter@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-converter/dist/operations/op_list/dynamic.js
+// node_modules/.pnpm/@tensorflow+tfjs-converter@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-converter/dist/operations/op_list/dynamic.js
 var dynamic_exports = {};
 __export(dynamic_exports, {
   json: () => json6
@@ -39432,7 +39949,7 @@ var json6 = [
   }
 ];
 
-// node_modules/.pnpm/@tensorflow+tfjs-converter@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-converter/dist/operations/op_list/evaluation.js
+// node_modules/.pnpm/@tensorflow+tfjs-converter@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-converter/dist/operations/op_list/evaluation.js
 var evaluation_exports = {};
 __export(evaluation_exports, {
   json: () => json7
@@ -39480,7 +39997,7 @@ var json7 = [
   }
 ];
 
-// node_modules/.pnpm/@tensorflow+tfjs-converter@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-converter/dist/operations/op_list/graph.js
+// node_modules/.pnpm/@tensorflow+tfjs-converter@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-converter/dist/operations/op_list/graph.js
 var graph_exports = {};
 __export(graph_exports, {
   json: () => json8
@@ -39599,7 +40116,7 @@ var json8 = [
   }
 ];
 
-// node_modules/.pnpm/@tensorflow+tfjs-converter@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-converter/dist/operations/op_list/hash_table.js
+// node_modules/.pnpm/@tensorflow+tfjs-converter@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-converter/dist/operations/op_list/hash_table.js
 var hash_table_exports = {};
 __export(hash_table_exports, {
   json: () => json9
@@ -39723,7 +40240,7 @@ var json9 = [
   }
 ];
 
-// node_modules/.pnpm/@tensorflow+tfjs-converter@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-converter/dist/operations/op_list/image.js
+// node_modules/.pnpm/@tensorflow+tfjs-converter@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-converter/dist/operations/op_list/image.js
 var image_exports = {};
 __export(image_exports, {
   json: () => json10
@@ -39799,7 +40316,7 @@ var json10 = [
   }
 ];
 
-// node_modules/.pnpm/@tensorflow+tfjs-converter@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-converter/dist/operations/op_list/logical.js
+// node_modules/.pnpm/@tensorflow+tfjs-converter@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-converter/dist/operations/op_list/logical.js
 var logical_exports = {};
 __export(logical_exports, {
   json: () => json11
@@ -39948,7 +40465,7 @@ var json11 = [
   }
 ];
 
-// node_modules/.pnpm/@tensorflow+tfjs-converter@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-converter/dist/operations/op_list/matrices.js
+// node_modules/.pnpm/@tensorflow+tfjs-converter@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-converter/dist/operations/op_list/matrices.js
 var matrices_exports = {};
 __export(matrices_exports, {
   json: () => json12
@@ -40083,16 +40600,23 @@ var json12 = [
       {start: 0, name: "x", type: "tensor"},
       {start: 1, name: "perm", type: "number[]"}
     ],
-    attrs: [{
-      tfName: "T",
-      name: "dtype",
-      type: "dtype",
-      notSupported: true
-    }]
+    attrs: [
+      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    ]
+  },
+  {
+    tfOpName: "Einsum",
+    category: "matrices",
+    inputs: [{start: 0, end: 0, name: "tensors", type: "tensors"}],
+    attrs: [
+      {tfName: "equation", name: "equation", type: "string"},
+      {tfName: "N", name: "n", type: "number", defaultValue: 2},
+      {tfName: "T", name: "dtype", type: "dtype"}
+    ]
   }
 ];
 
-// node_modules/.pnpm/@tensorflow+tfjs-converter@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-converter/dist/operations/op_list/normalization.js
+// node_modules/.pnpm/@tensorflow+tfjs-converter@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-converter/dist/operations/op_list/normalization.js
 var normalization_exports = {};
 __export(normalization_exports, {
   json: () => json13
@@ -40246,7 +40770,7 @@ var json13 = [
   }
 ];
 
-// node_modules/.pnpm/@tensorflow+tfjs-converter@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-converter/dist/operations/op_list/reduction.js
+// node_modules/.pnpm/@tensorflow+tfjs-converter@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-converter/dist/operations/op_list/reduction.js
 var reduction_exports = {};
 __export(reduction_exports, {
   json: () => json14
@@ -40380,7 +40904,7 @@ var json14 = [
   }
 ];
 
-// node_modules/.pnpm/@tensorflow+tfjs-converter@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-converter/dist/operations/op_list/slice_join.js
+// node_modules/.pnpm/@tensorflow+tfjs-converter@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-converter/dist/operations/op_list/slice_join.js
 var slice_join_exports = {};
 __export(slice_join_exports, {
   json: () => json15
@@ -40610,7 +41134,7 @@ var json15 = [
   }
 ];
 
-// node_modules/.pnpm/@tensorflow+tfjs-converter@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-converter/dist/operations/op_list/spectral.js
+// node_modules/.pnpm/@tensorflow+tfjs-converter@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-converter/dist/operations/op_list/spectral.js
 var spectral_exports = {};
 __export(spectral_exports, {
   json: () => json16
@@ -40670,7 +41194,7 @@ var json16 = [
   }
 ];
 
-// node_modules/.pnpm/@tensorflow+tfjs-converter@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-converter/dist/operations/op_list/transformation.js
+// node_modules/.pnpm/@tensorflow+tfjs-converter@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-converter/dist/operations/op_list/transformation.js
 var transformation_exports = {};
 __export(transformation_exports, {
   json: () => json17
@@ -40814,7 +41338,7 @@ var json17 = [
   }
 ];
 
-// node_modules/.pnpm/@tensorflow+tfjs-converter@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-converter/dist/operations/operation_mapper.js
+// node_modules/.pnpm/@tensorflow+tfjs-converter@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-converter/dist/operations/operation_mapper.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -41247,7 +41771,7 @@ function getBoolArrayParam(attrs, name, def) {
   return def;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-converter@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-converter/dist/operations/custom_op/node_value_impl.js
+// node_modules/.pnpm/@tensorflow+tfjs-converter@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-converter/dist/operations/custom_op/node_value_impl.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -41323,7 +41847,7 @@ var NodeValueImpl = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-converter@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-converter/dist/operations/executors/arithmetic_executor.js
+// node_modules/.pnpm/@tensorflow+tfjs-converter@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-converter/dist/operations/executors/arithmetic_executor.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -41385,7 +41909,7 @@ var executeOp = (node, tensorMap, context) => {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-converter@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-converter/dist/operations/executors/basic_math_executor.js
+// node_modules/.pnpm/@tensorflow+tfjs-converter@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-converter/dist/operations/executors/basic_math_executor.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -41497,12 +42021,14 @@ var executeOp2 = (node, tensorMap, context) => {
       return [leakyRelu(getParamValue("x", node, tensorMap, context), getParamValue("alpha", node, tensorMap, context))];
     case "Prelu":
       return [prelu(getParamValue("x", node, tensorMap, context), getParamValue("alpha", node, tensorMap, context))];
+    case "IsNan":
+      return [isNaN2(getTensor(node.inputNames[0], tensorMap, context))];
     default:
       throw TypeError(`Node type ${node.op} is not implemented`);
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-converter@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-converter/dist/executor/tensor_utils.js
+// node_modules/.pnpm/@tensorflow+tfjs-converter@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-converter/dist/executor/tensor_utils.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -41574,7 +42100,7 @@ function mergeElementShape(elementShapeA, elementShapeB) {
   return result;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-converter@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-converter/dist/executor/tensor_array.js
+// node_modules/.pnpm/@tensorflow+tfjs-converter@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-converter/dist/executor/tensor_array.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -41761,7 +42287,7 @@ var TensorArray = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-converter@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-converter/dist/executor/tensor_list.js
+// node_modules/.pnpm/@tensorflow+tfjs-converter@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-converter/dist/executor/tensor_list.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -41979,7 +42505,7 @@ function split2(tensor2, length, elementShape) {
   return list;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-converter@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-converter/dist/operations/executors/control_executor.js
+// node_modules/.pnpm/@tensorflow+tfjs-converter@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-converter/dist/operations/executors/control_executor.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -42245,7 +42771,7 @@ var executeOp3 = async (node, tensorMap, context) => {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-converter@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-converter/dist/operations/executors/convolution_executor.js
+// node_modules/.pnpm/@tensorflow+tfjs-converter@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-converter/dist/operations/executors/convolution_executor.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -42277,7 +42803,7 @@ function fusedConvAndDepthWiseParams(node, tensorMap, context) {
     }
   }
   if (isBatchNorm) {
-    throw new Error("FusedConv2d and DepthwiseConv2d with FusedBatchNorm is not supported.");
+    throw new Error("FusedConv2d and DepthwiseConv2d with FusedBatchNorm is not supported");
   }
   const stride = getParamValue("strides", node, tensorMap, context);
   const pad3 = getPadding(node, tensorMap, context);
@@ -42411,7 +42937,7 @@ var executeOp4 = (node, tensorMap, context) => {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-converter@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-converter/dist/operations/executors/creation_executor.js
+// node_modules/.pnpm/@tensorflow+tfjs-converter@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-converter/dist/operations/executors/creation_executor.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -42488,7 +43014,7 @@ var executeOp5 = (node, tensorMap, context) => {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-converter@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-converter/dist/operations/executors/dynamic_executor.js
+// node_modules/.pnpm/@tensorflow+tfjs-converter@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-converter/dist/operations/executors/dynamic_executor.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -42553,7 +43079,7 @@ var executeOp6 = async (node, tensorMap, context) => {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-converter@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-converter/dist/operations/executors/evaluation_executor.js
+// node_modules/.pnpm/@tensorflow+tfjs-converter@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-converter/dist/operations/executors/evaluation_executor.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -42595,7 +43121,7 @@ var executeOp7 = (node, tensorMap, context) => {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-converter@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-converter/dist/operations/executors/graph_executor.js
+// node_modules/.pnpm/@tensorflow+tfjs-converter@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-converter/dist/operations/executors/graph_executor.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -42659,7 +43185,7 @@ var executeOp8 = (node, tensorMap, context) => {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-converter@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-converter/dist/executor/hash_table.js
+// node_modules/.pnpm/@tensorflow+tfjs-converter@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-converter/dist/executor/hash_table.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -42744,7 +43270,7 @@ var HashTable = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-converter@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-converter/dist/operations/executors/hash_table_executor.js
+// node_modules/.pnpm/@tensorflow+tfjs-converter@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-converter/dist/operations/executors/hash_table_executor.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -42798,7 +43324,7 @@ var executeOp9 = async (node, tensorMap, context, resourceManager) => {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-converter@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-converter/dist/operations/executors/image_executor.js
+// node_modules/.pnpm/@tensorflow+tfjs-converter@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-converter/dist/operations/executors/image_executor.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -42845,7 +43371,7 @@ var executeOp10 = (node, tensorMap, context) => {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-converter@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-converter/dist/operations/executors/logical_executor.js
+// node_modules/.pnpm/@tensorflow+tfjs-converter@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-converter/dist/operations/executors/logical_executor.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -42900,7 +43426,7 @@ var executeOp11 = (node, tensorMap, context) => {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-converter@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-converter/dist/operations/executors/matrices_executor.js
+// node_modules/.pnpm/@tensorflow+tfjs-converter@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-converter/dist/operations/executors/matrices_executor.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -42923,6 +43449,8 @@ var executeOp12 = (node, tensorMap, context) => {
     case "BatchMatMulV2":
     case "MatMul":
       return [matMul(getParamValue("a", node, tensorMap, context), getParamValue("b", node, tensorMap, context), getParamValue("transposeA", node, tensorMap, context), getParamValue("transposeB", node, tensorMap, context))];
+    case "Einsum":
+      return [einsum(getParamValue("equation", node, tensorMap, context), ...getParamValue("tensors", node, tensorMap, context))];
     case "Transpose":
       return [transpose(getParamValue("x", node, tensorMap, context), getParamValue("perm", node, tensorMap, context))];
     case "_FusedMatMul":
@@ -42955,7 +43483,7 @@ var executeOp12 = (node, tensorMap, context) => {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-converter@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-converter/dist/operations/executors/normalization_executor.js
+// node_modules/.pnpm/@tensorflow+tfjs-converter@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-converter/dist/operations/executors/normalization_executor.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -42998,7 +43526,7 @@ var executeOp13 = (node, tensorMap, context) => {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-converter@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-converter/dist/operations/executors/reduction_executor.js
+// node_modules/.pnpm/@tensorflow+tfjs-converter@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-converter/dist/operations/executors/reduction_executor.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -43083,7 +43611,7 @@ var executeOp14 = (node, tensorMap, context) => {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-converter@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-converter/dist/operations/executors/slice_join_executor.js
+// node_modules/.pnpm/@tensorflow+tfjs-converter@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-converter/dist/operations/executors/slice_join_executor.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -43210,7 +43738,7 @@ var executeOp15 = (node, tensorMap, context) => {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-converter@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-converter/dist/operations/executors/spectral_executor.js
+// node_modules/.pnpm/@tensorflow+tfjs-converter@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-converter/dist/operations/executors/spectral_executor.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -43246,7 +43774,7 @@ var executeOp16 = (node, tensorMap, context) => {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-converter@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-converter/dist/operations/executors/transformation_executor.js
+// node_modules/.pnpm/@tensorflow+tfjs-converter@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-converter/dist/operations/executors/transformation_executor.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -43309,7 +43837,7 @@ var executeOp17 = (node, tensorMap, context) => {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-converter@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-converter/dist/operations/operation_executor.js
+// node_modules/.pnpm/@tensorflow+tfjs-converter@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-converter/dist/operations/operation_executor.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -43380,7 +43908,7 @@ function executeOp18(node, tensorMap, context, resourceManager) {
   return [].concat(value);
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-converter@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-converter/dist/executor/execution_context.js
+// node_modules/.pnpm/@tensorflow+tfjs-converter@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-converter/dist/executor/execution_context.js
 var ExecutionContext = class {
   constructor(weightMap = {}, tensorArrayMap = {}, tensorListMap = {}, functionMap = {}) {
     this.weightMap = weightMap;
@@ -43477,7 +44005,7 @@ var ExecutionContext = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-converter@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-converter/dist/executor/model_analysis.js
+// node_modules/.pnpm/@tensorflow+tfjs-converter@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-converter/dist/executor/model_analysis.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -43613,7 +44141,7 @@ function isHashTable(node) {
   return HASH_TABLE_OPS.indexOf(node.op) >= 0;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-converter@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-converter/dist/executor/graph_executor.js
+// node_modules/.pnpm/@tensorflow+tfjs-converter@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-converter/dist/executor/graph_executor.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -43785,7 +44313,7 @@ var GraphExecutor = class {
         const tensors = getTensorsForCurrentContenxt(input2.name, tensorMap, context);
         if (tensors != null) {
           tensors.forEach((tensor2) => {
-            if (tensor2 && !tensorsToKeep.has(tensor2.id)) {
+            if (tensor2 && !tensor2.kept && !tensorsToKeep.has(tensor2.id)) {
               const count2 = intermediateTensorConsumerCount[tensor2.id];
               if (count2 === 1) {
                 tensor2.dispose();
@@ -43819,7 +44347,7 @@ var GraphExecutor = class {
     Object.keys(tensorMap).forEach((key) => {
       const tensorArray = tensorMap[key];
       tensorArray.forEach((tensor2) => {
-        if (tensor2 && !tensor2.isDisposed && !keepIds.has(tensor2.id)) {
+        if (tensor2 && !tensor2.kept && !tensor2.isDisposed && !keepIds.has(tensor2.id)) {
           tensor2.dispose();
         }
       });
@@ -43992,7 +44520,7 @@ var GraphExecutor = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-converter@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-converter/dist/executor/resource_manager.js
+// node_modules/.pnpm/@tensorflow+tfjs-converter@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-converter/dist/executor/resource_manager.js
 var ResourceManager = class {
   constructor(hashTableNameToHandle = {}, hashTableMap = {}) {
     this.hashTableNameToHandle = hashTableNameToHandle;
@@ -44020,7 +44548,7 @@ var ResourceManager = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-converter@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-converter/dist/executor/graph_model.js
+// node_modules/.pnpm/@tensorflow+tfjs-converter@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-converter/dist/executor/graph_model.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -44202,11 +44730,11 @@ async function loadGraphModel(modelUrl, options = {}) {
   return model2;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-converter@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-converter/dist/version.js
+// node_modules/.pnpm/@tensorflow+tfjs-converter@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-converter/dist/version.js
 /** @license See the LICENSE file. */
-var version3 = "3.3.0";
+var version3 = "3.4.0";
 
-// node_modules/.pnpm/@tensorflow+tfjs-converter@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-converter/dist/index.js
+// node_modules/.pnpm/@tensorflow+tfjs-converter@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-converter/dist/index.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -44224,7 +44752,7 @@ var version3 = "3.3.0";
  * =============================================================================
  */
 
-// node_modules/.pnpm/@tensorflow+tfjs-data@3.3.0_67c79a722ac85e5c2aacae49a2e61dcd/node_modules/@tensorflow/tfjs-data/dist/index.js
+// node_modules/.pnpm/@tensorflow+tfjs-data@3.4.0_15f1d8fa2c106e460afa620f86ffb6a4/node_modules/@tensorflow/tfjs-data/dist/index.js
 var dist_exports = {};
 __export(dist_exports, {
   CSVDataset: () => CSVDataset,
@@ -44242,13 +44770,13 @@ __export(dist_exports, {
   zip: () => zip
 });
 
-// node_modules/.pnpm/@tensorflow+tfjs-data@3.3.0_67c79a722ac85e5c2aacae49a2e61dcd/node_modules/@tensorflow/tfjs-data/dist/dataset.js
+// node_modules/.pnpm/@tensorflow+tfjs-data@3.4.0_15f1d8fa2c106e460afa620f86ffb6a4/node_modules/@tensorflow/tfjs-data/dist/dataset.js
 var seedrandom3 = __toModule(require_seedrandom4());
 
-// node_modules/.pnpm/@tensorflow+tfjs-data@3.3.0_67c79a722ac85e5c2aacae49a2e61dcd/node_modules/@tensorflow/tfjs-data/dist/iterators/lazy_iterator.js
+// node_modules/.pnpm/@tensorflow+tfjs-data@3.4.0_15f1d8fa2c106e460afa620f86ffb6a4/node_modules/@tensorflow/tfjs-data/dist/iterators/lazy_iterator.js
 var seedrandom2 = __toModule(require_seedrandom4());
 
-// node_modules/.pnpm/@tensorflow+tfjs-data@3.3.0_67c79a722ac85e5c2aacae49a2e61dcd/node_modules/@tensorflow/tfjs-data/dist/util/deep_map.js
+// node_modules/.pnpm/@tensorflow+tfjs-data@3.4.0_15f1d8fa2c106e460afa620f86ffb6a4/node_modules/@tensorflow/tfjs-data/dist/util/deep_map.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -44361,7 +44889,7 @@ function isPrimitive(value) {
   return value === null || typeof value !== "object" && typeof value !== "function";
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-data@3.3.0_67c79a722ac85e5c2aacae49a2e61dcd/node_modules/@tensorflow/tfjs-data/dist/util/deep_clone.js
+// node_modules/.pnpm/@tensorflow+tfjs-data@3.4.0_15f1d8fa2c106e460afa620f86ffb6a4/node_modules/@tensorflow/tfjs-data/dist/util/deep_clone.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -44392,7 +44920,7 @@ function cloneIfTensor(item) {
   }
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-data@3.3.0_67c79a722ac85e5c2aacae49a2e61dcd/node_modules/@tensorflow/tfjs-data/dist/util/ring_buffer.js
+// node_modules/.pnpm/@tensorflow+tfjs-data@3.4.0_15f1d8fa2c106e460afa620f86ffb6a4/node_modules/@tensorflow/tfjs-data/dist/util/ring_buffer.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -44503,7 +45031,7 @@ var RingBuffer = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-data@3.3.0_67c79a722ac85e5c2aacae49a2e61dcd/node_modules/@tensorflow/tfjs-data/dist/util/growing_ring_buffer.js
+// node_modules/.pnpm/@tensorflow+tfjs-data@3.4.0_15f1d8fa2c106e460afa620f86ffb6a4/node_modules/@tensorflow/tfjs-data/dist/util/growing_ring_buffer.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -44556,7 +45084,7 @@ var GrowingRingBuffer = class extends RingBuffer {
 };
 GrowingRingBuffer.INITIAL_CAPACITY = 32;
 
-// node_modules/.pnpm/@tensorflow+tfjs-data@3.3.0_67c79a722ac85e5c2aacae49a2e61dcd/node_modules/@tensorflow/tfjs-data/dist/iterators/lazy_iterator.js
+// node_modules/.pnpm/@tensorflow+tfjs-data@3.4.0_15f1d8fa2c106e460afa620f86ffb6a4/node_modules/@tensorflow/tfjs-data/dist/iterators/lazy_iterator.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -45102,7 +45630,7 @@ var ShuffleIterator = class extends PrefetchIterator {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-data@3.3.0_67c79a722ac85e5c2aacae49a2e61dcd/node_modules/@tensorflow/tfjs-data/dist/dataset.js
+// node_modules/.pnpm/@tensorflow+tfjs-data@3.4.0_15f1d8fa2c106e460afa620f86ffb6a4/node_modules/@tensorflow/tfjs-data/dist/dataset.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -45322,7 +45850,7 @@ function batchConcat(arrays) {
   }
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-data@3.3.0_67c79a722ac85e5c2aacae49a2e61dcd/node_modules/@tensorflow/tfjs-data/dist/datasets/text_line_dataset.js
+// node_modules/.pnpm/@tensorflow+tfjs-data@3.4.0_15f1d8fa2c106e460afa620f86ffb6a4/node_modules/@tensorflow/tfjs-data/dist/datasets/text_line_dataset.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -45358,7 +45886,7 @@ var TextLineDataset = class extends Dataset {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-data@3.3.0_67c79a722ac85e5c2aacae49a2e61dcd/node_modules/@tensorflow/tfjs-data/dist/datasets/csv_dataset.js
+// node_modules/.pnpm/@tensorflow+tfjs-data@3.4.0_15f1d8fa2c106e460afa620f86ffb6a4/node_modules/@tensorflow/tfjs-data/dist/datasets/csv_dataset.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -45610,7 +46138,7 @@ var CSVDataset = class extends Dataset {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-data@3.3.0_67c79a722ac85e5c2aacae49a2e61dcd/node_modules/@tensorflow/tfjs-data/dist/iterators/microphone_iterator.js
+// node_modules/.pnpm/@tensorflow+tfjs-data@3.4.0_15f1d8fa2c106e460afa620f86ffb6a4/node_modules/@tensorflow/tfjs-data/dist/iterators/microphone_iterator.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -45764,7 +46292,7 @@ var MicrophoneIterator = class extends LazyIterator {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-data@3.3.0_67c79a722ac85e5c2aacae49a2e61dcd/node_modules/@tensorflow/tfjs-data/dist/iterators/webcam_iterator.js
+// node_modules/.pnpm/@tensorflow+tfjs-data@3.4.0_15f1d8fa2c106e460afa620f86ffb6a4/node_modules/@tensorflow/tfjs-data/dist/iterators/webcam_iterator.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -45915,7 +46443,7 @@ var WebcamIterator = class extends LazyIterator {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-data@3.3.0_67c79a722ac85e5c2aacae49a2e61dcd/node_modules/@tensorflow/tfjs-data/dist/datasource.js
+// node_modules/.pnpm/@tensorflow+tfjs-data@3.4.0_15f1d8fa2c106e460afa620f86ffb6a4/node_modules/@tensorflow/tfjs-data/dist/datasource.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -45936,7 +46464,7 @@ var WebcamIterator = class extends LazyIterator {
 var DataSource = class {
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-data@3.3.0_67c79a722ac85e5c2aacae49a2e61dcd/node_modules/@tensorflow/tfjs-data/dist/iterators/string_iterator.js
+// node_modules/.pnpm/@tensorflow+tfjs-data@3.4.0_15f1d8fa2c106e460afa620f86ffb6a4/node_modules/@tensorflow/tfjs-data/dist/iterators/string_iterator.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -46002,7 +46530,7 @@ var SplitIteratorImpl = class extends OneToManyIterator {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-data@3.3.0_67c79a722ac85e5c2aacae49a2e61dcd/node_modules/@tensorflow/tfjs-data/dist/iterators/byte_chunk_iterator.js
+// node_modules/.pnpm/@tensorflow+tfjs-data@3.4.0_15f1d8fa2c106e460afa620f86ffb6a4/node_modules/@tensorflow/tfjs-data/dist/iterators/byte_chunk_iterator.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -46071,7 +46599,7 @@ var Utf8IteratorImpl = class extends OneToManyIterator {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-data@3.3.0_67c79a722ac85e5c2aacae49a2e61dcd/node_modules/@tensorflow/tfjs-data/dist/iterators/file_chunk_iterator.js
+// node_modules/.pnpm/@tensorflow+tfjs-data@3.4.0_15f1d8fa2c106e460afa620f86ffb6a4/node_modules/@tensorflow/tfjs-data/dist/iterators/file_chunk_iterator.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -46136,7 +46664,7 @@ var FileChunkIterator = class extends ByteChunkIterator {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-data@3.3.0_67c79a722ac85e5c2aacae49a2e61dcd/node_modules/@tensorflow/tfjs-data/dist/iterators/url_chunk_iterator.js
+// node_modules/.pnpm/@tensorflow+tfjs-data@3.4.0_15f1d8fa2c106e460afa620f86ffb6a4/node_modules/@tensorflow/tfjs-data/dist/iterators/url_chunk_iterator.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -46186,7 +46714,7 @@ var getRequestInitFromRequest = (request) => {
   return init2;
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-data@3.3.0_67c79a722ac85e5c2aacae49a2e61dcd/node_modules/@tensorflow/tfjs-data/dist/util/source_util.js
+// node_modules/.pnpm/@tensorflow+tfjs-data@3.4.0_15f1d8fa2c106e460afa620f86ffb6a4/node_modules/@tensorflow/tfjs-data/dist/util/source_util.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -46208,7 +46736,7 @@ function isLocalPath(source) {
   return typeof source === "string" && source.substr(0, 7) === "file://";
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-data@3.3.0_67c79a722ac85e5c2aacae49a2e61dcd/node_modules/@tensorflow/tfjs-data/dist/sources/file_data_source.js
+// node_modules/.pnpm/@tensorflow+tfjs-data@3.4.0_15f1d8fa2c106e460afa620f86ffb6a4/node_modules/@tensorflow/tfjs-data/dist/sources/file_data_source.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -46241,7 +46769,7 @@ var FileDataSource = class extends DataSource {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-data@3.3.0_67c79a722ac85e5c2aacae49a2e61dcd/node_modules/@tensorflow/tfjs-data/dist/sources/url_data_source.js
+// node_modules/.pnpm/@tensorflow+tfjs-data@3.4.0_15f1d8fa2c106e460afa620f86ffb6a4/node_modules/@tensorflow/tfjs-data/dist/sources/url_data_source.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -46274,7 +46802,7 @@ var URLDataSource = class extends DataSource {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-data@3.3.0_67c79a722ac85e5c2aacae49a2e61dcd/node_modules/@tensorflow/tfjs-data/dist/readers.js
+// node_modules/.pnpm/@tensorflow+tfjs-data@3.4.0_15f1d8fa2c106e460afa620f86ffb6a4/node_modules/@tensorflow/tfjs-data/dist/readers.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -46312,11 +46840,11 @@ async function microphone(microphoneConfig) {
   return MicrophoneIterator.create(microphoneConfig);
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-data@3.3.0_67c79a722ac85e5c2aacae49a2e61dcd/node_modules/@tensorflow/tfjs-data/dist/version.js
+// node_modules/.pnpm/@tensorflow+tfjs-data@3.4.0_15f1d8fa2c106e460afa620f86ffb6a4/node_modules/@tensorflow/tfjs-data/dist/version.js
 /** @license See the LICENSE file. */
-var version4 = "3.3.0";
+var version4 = "3.4.0";
 
-// node_modules/.pnpm/@tensorflow+tfjs-data@3.3.0_67c79a722ac85e5c2aacae49a2e61dcd/node_modules/@tensorflow/tfjs-data/dist/index.js
+// node_modules/.pnpm/@tensorflow+tfjs-data@3.4.0_15f1d8fa2c106e460afa620f86ffb6a4/node_modules/@tensorflow/tfjs-data/dist/index.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -46334,7 +46862,7 @@ var version4 = "3.3.0";
  * =============================================================================
  */
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/cpu_util.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/cpu_util.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -46362,7 +46890,7 @@ function assertNotComplex(tensor2, opName) {
   });
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/backend_cpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/backend_cpu.js
 /**
  * @license
  * Copyright 2021 Google LLC. All Rights Reserved.
@@ -46508,7 +47036,7 @@ var MathBackendCPU = class extends KernelBackend {
 };
 MathBackendCPU.nextDataId = 0;
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/shared.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/shared.js
 var shared_exports = {};
 __export(shared_exports, {
   addImpl: () => addImpl,
@@ -46544,7 +47072,7 @@ __export(shared_exports, {
   uniqueImpl: () => uniqueImpl
 });
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Abs.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Abs.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -46583,7 +47111,7 @@ var absConfig = {
   kernelFunc: abs2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/utils/binary_impl.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/utils/binary_impl.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -46633,7 +47161,7 @@ function createSimpleBinaryKernelImpl(op2) {
   };
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Complex.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Complex.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -46669,7 +47197,7 @@ var complexConfig = {
   kernelFunc: complex2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/utils/zeros_impl.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/utils/zeros_impl.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -46696,7 +47224,7 @@ function zeros3(backend2, shape, dtype = "float32") {
   return backend2.makeTensorInfo(shape, dtype, values);
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Identity.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Identity.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -46725,7 +47253,7 @@ var identityConfig = {
   kernelFunc: identity2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Real.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Real.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -46755,7 +47283,7 @@ var realConfig = {
   kernelFunc: real2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Cast.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Cast.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -46816,7 +47344,7 @@ var castConfig = {
   kernelFunc: cast3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/utils/binary_utils.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/utils/binary_utils.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -46922,7 +47450,7 @@ function createComplexBinaryKernelImpl(op2) {
   };
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Add.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Add.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -46950,7 +47478,7 @@ var addConfig = {
   kernelFunc: add4
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Bincount_impl.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Bincount_impl.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -47013,7 +47541,7 @@ function bincountReduceImpl(xBuf, weightsBuf, size, binaryOutput = false) {
   return outBuf;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/utils/unary_impl.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/utils/unary_impl.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -47040,7 +47568,7 @@ function createSimpleUnaryImpl(op2) {
   };
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/utils/unary_utils.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/utils/unary_utils.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -47090,7 +47618,7 @@ function unaryKernelFuncFromImpl(name, unaryImpl, dtype) {
   };
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Ceil.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Ceil.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -47115,7 +47643,7 @@ var ceilConfig = {
   kernelFunc: ceil2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Concat_impl.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Concat_impl.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -47158,7 +47686,7 @@ function concatImpl(inputs, outShape, dtype, simplyConcat) {
   return outVals;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Exp.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Exp.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -47183,7 +47711,7 @@ var expConfig = {
   kernelFunc: exp2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Expm1.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Expm1.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -47208,7 +47736,7 @@ var expm1Config = {
   kernelFunc: expm12
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Floor.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Floor.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -47233,7 +47761,7 @@ var floorConfig = {
   kernelFunc: floor2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/GatherV2_impl.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/GatherV2_impl.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -47265,7 +47793,7 @@ function gatherV2Impl(xBuf, indicesBuf, flattenOutputShape) {
   return outBuf;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Greater.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Greater.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -47290,7 +47818,7 @@ var greaterConfig = {
   kernelFunc: greater3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Less.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Less.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -47315,7 +47843,7 @@ var lessConfig = {
   kernelFunc: less3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/LinSpace_impl.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/LinSpace_impl.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -47342,7 +47870,7 @@ function linSpaceImpl(start, stop, num) {
   return values;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Log.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Log.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -47367,7 +47895,7 @@ var logConfig = {
   kernelFunc: log3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Max_impl.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Max_impl.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -47400,7 +47928,7 @@ function maxImpl(aVals, reduceSize, outShape, dtype) {
   return vals;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Maximum.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Maximum.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -47425,7 +47953,7 @@ var maximumConfig = {
   kernelFunc: maximum3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Minimum.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Minimum.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -47450,7 +47978,7 @@ var minimumConfig = {
   kernelFunc: minimum3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Multiply.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Multiply.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -47481,7 +48009,7 @@ var multiplyConfig = {
   kernelFunc: multiply2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Neg.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Neg.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -47516,7 +48044,7 @@ var negConfig = {
   kernelFunc: neg2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/NotEqual.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/NotEqual.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -47541,7 +48069,7 @@ var notEqualConfig = {
   kernelFunc: notEqual2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Transpose_impl.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Transpose_impl.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -47576,7 +48104,7 @@ function transposeImpl(xVals, xShape, dtype, perm, newShape) {
   return result;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Transpose.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Transpose.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -47614,7 +48142,7 @@ var transposeConfig = {
   kernelFunc: transpose2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Prod.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Prod.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -47677,7 +48205,7 @@ var prodConfig = {
   kernelFunc: prod2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Range_impl.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Range_impl.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -47713,7 +48241,7 @@ function rangeImpl(start, stop, step5, dtype) {
   return values;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Rsqrt.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Rsqrt.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -47738,7 +48266,7 @@ var rsqrtConfig = {
   kernelFunc: rsqrt2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Slice.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Slice.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -47796,7 +48324,7 @@ var sliceConfig = {
   kernelFunc: slice2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/SquaredDifference.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/SquaredDifference.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -47824,7 +48352,7 @@ var squaredDifferenceConfig = {
   kernelFunc: squaredDifference2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/StridedSlice_impl.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/StridedSlice_impl.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -47854,7 +48382,7 @@ function stridedSliceImpl(outShape, xBuf, strides, begin) {
   return outBuf;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Sub.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Sub.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -47882,7 +48410,7 @@ var subConfig = {
   kernelFunc: sub2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Tile_impl.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Tile_impl.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -47917,7 +48445,7 @@ function tileImpl(xBuf, reps) {
   return result;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/TopK_impl.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/TopK_impl.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -47963,7 +48491,7 @@ function topKImpl(x, xShape, xDtype, k, sorted) {
   ];
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Unique_impl.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Unique_impl.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -48036,7 +48564,7 @@ function uniqueImpl(values, axis, shape, dtype) {
   };
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/shared.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/shared.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -48054,11 +48582,11 @@ function uniqueImpl(values, axis, shape, dtype) {
  * =============================================================================
  */
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/version.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/version.js
 /** @license See the LICENSE file. */
-var version5 = "3.3.0";
+var version5 = "3.4.0";
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/base.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/base.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -48077,7 +48605,7 @@ var version5 = "3.3.0";
  */
 registerBackend("cpu", () => new MathBackendCPU(), 1);
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Elu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Elu.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -48101,7 +48629,7 @@ var eluConfig = {
   kernelFunc: elu4
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/LeakyRelu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/LeakyRelu.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -48137,7 +48665,7 @@ var leakyReluConfig = {
   kernelFunc: leakyRelu2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Prelu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Prelu.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -48170,7 +48698,7 @@ var preluConfig = {
   kernelFunc: prelu3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Relu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Relu.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -48194,7 +48722,7 @@ var reluConfig = {
   kernelFunc: relu2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Relu6.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Relu6.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -48218,7 +48746,7 @@ var relu6Config = {
   kernelFunc: relu62
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/utils/fused_utils.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/utils/fused_utils.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -48252,7 +48780,7 @@ function applyActivation2(backend2, x, activation2, preluActivationWeights, leak
   throw new Error(`Activation ${activation2} has not been implemented for the CPU backend.`);
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Reshape.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Reshape.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -48293,7 +48821,7 @@ var reshapeConfig = {
   kernelFunc: reshape3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/BatchMatMul.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/BatchMatMul.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -48382,7 +48910,7 @@ var batchMatMulConfig = {
   kernelFunc: batchMatMul
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/_FusedMatMul.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/_FusedMatMul.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -48430,7 +48958,7 @@ var _fusedMatMulConfig = {
   kernelFunc: _fusedMatMul
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Acos.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Acos.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -48454,7 +48982,7 @@ var acosConfig = {
   kernelFunc: acos2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Acosh.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Acosh.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -48478,7 +49006,7 @@ var acoshConfig = {
   kernelFunc: acosh2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/AddN.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/AddN.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -48516,7 +49044,7 @@ var addNConfig = {
   kernelFunc: addN2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/All.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/All.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -48553,12 +49081,12 @@ function all2(args) {
   const aVals = backend2.data.get($x.dataId).values;
   for (let i = 0; i < vals.length; ++i) {
     const offset = i * reduceSize;
-    let all4 = aVals[offset];
+    let all5 = aVals[offset];
     for (let j = 0; j < reduceSize; ++j) {
       const value = aVals[offset + j];
-      all4 = all4 && value;
+      all5 = all5 && value;
     }
-    vals[i] = all4;
+    vals[i] = all5;
   }
   if (permutedAxes != null) {
     backend2.disposeIntermediateTensorInfo($x);
@@ -48578,7 +49106,7 @@ var allConfig = {
   kernelFunc: all2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Any.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Any.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -48640,7 +49168,7 @@ var anyConfig = {
   kernelFunc: any2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/ArgMax.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/ArgMax.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -48700,7 +49228,7 @@ var argMaxConfig = {
   kernelFunc: argMax2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/ArgMin.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/ArgMin.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -48760,7 +49288,7 @@ var argMinConfig = {
   kernelFunc: argMin2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Asin.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Asin.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -48784,7 +49312,7 @@ var asinConfig = {
   kernelFunc: asin2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Asinh.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Asinh.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -48808,7 +49336,7 @@ var asinhConfig = {
   kernelFunc: asinh2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Atan.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Atan.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -48832,7 +49360,7 @@ var atanConfig = {
   kernelFunc: atan3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Atan2.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Atan2.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -48857,7 +49385,7 @@ var atan2Config = {
   kernelFunc: atan22
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Atanh.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Atanh.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -48881,7 +49409,7 @@ var atanhConfig = {
   kernelFunc: atanh2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/utils/pool_utils.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/utils/pool_utils.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -49151,7 +49679,7 @@ function maxPool3dPositions(xBuf, convInfo) {
   return maxPositions;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/AvgPool.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/AvgPool.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -49193,7 +49721,7 @@ var avgPoolConfig = {
   kernelFunc: avgPool2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/AvgPool3D.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/AvgPool3D.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -49226,7 +49754,7 @@ var avgPool3DConfig = {
   kernelFunc: avgPool3D
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/AvgPool3DGrad.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/AvgPool3DGrad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -49310,7 +49838,7 @@ var avgPool3DGradConfig2 = {
   kernelFunc: avgPool3DGrad
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/AvgPoolGrad.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/AvgPoolGrad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -49382,7 +49910,7 @@ var avgPoolGradConfig2 = {
   kernelFunc: avgPoolGrad2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/BatchNorm.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/BatchNorm.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -49447,7 +49975,7 @@ var batchNormConfig = {
   kernelFunc: batchNorm2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/BatchToSpaceND.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/BatchToSpaceND.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -49494,7 +50022,7 @@ var batchToSpaceNDConfig = {
   kernelFunc: batchToSpaceND2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Bincount.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Bincount.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -49526,7 +50054,7 @@ var bincountConfig = {
   kernelFunc: bincount2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Clip.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Clip.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -49556,7 +50084,7 @@ var clipConfig = {
   kernelFunc: clip
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/ComplexAbs.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/ComplexAbs.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -49595,7 +50123,7 @@ var complexAbsConfig = {
   kernelFunc: complexAbs
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Imag.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Imag.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -49625,7 +50153,7 @@ var imagConfig = {
   kernelFunc: imag2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Concat.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Concat.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -49690,7 +50218,7 @@ var concatConfig = {
   kernelFunc: concat2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Conv2D.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Conv2D.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -49779,7 +50307,7 @@ var conv2DConfig = {
   kernelFunc: conv2D
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Conv2DBackpropFilter.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Conv2DBackpropFilter.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -49847,7 +50375,7 @@ var conv2DBackpropFilterConfig = {
   kernelFunc: conv2DBackpropFilter2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Conv2DBackpropInput.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Conv2DBackpropInput.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -49929,7 +50457,7 @@ var conv2DBackpropInputConfig = {
   kernelFunc: conv2DBackpropInput2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Conv3D.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Conv3D.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -50018,7 +50546,7 @@ var conv3DConfig = {
   kernelFunc: conv3D
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Conv3DBackpropFilterV2.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Conv3DBackpropFilterV2.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -50109,7 +50637,7 @@ var conv3DBackpropFilterV2Config = {
   kernelFunc: conv3DBackpropFilterV2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Conv3DBackpropInputV2.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Conv3DBackpropInputV2.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -50190,7 +50718,7 @@ var conv3DBackpropInputV2Config = {
   kernelFunc: conv3DBackpropInputV2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Cos.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Cos.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -50214,7 +50742,7 @@ var cosConfig = {
   kernelFunc: cos2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Cosh.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Cosh.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -50238,7 +50766,7 @@ var coshConfig = {
   kernelFunc: cosh2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/CropAndResize.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/CropAndResize.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -50351,7 +50879,7 @@ var cropAndResizeConfig = {
   kernelFunc: cropAndResize2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Cumsum.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Cumsum.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -50414,7 +50942,7 @@ var cumsumConfig = {
   kernelFunc: cumsum2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/DenseBincount.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/DenseBincount.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -50454,7 +50982,7 @@ var denseBincountConfig = {
   kernelFunc: denseBincount2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/DepthToSpace.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/DepthToSpace.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -50511,7 +51039,7 @@ var depthToSpaceConfig = {
   kernelFunc: depthToSpace2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/DepthwiseConv2dNative.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/DepthwiseConv2dNative.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -50595,7 +51123,7 @@ var depthwiseConv2dNativeConfig = {
   kernelFunc: depthwiseConv2dNative
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/DepthwiseConv2dNativeBackpropFilter.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/DepthwiseConv2dNativeBackpropFilter.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -50658,7 +51186,7 @@ var depthwiseConv2dNativeBackpropFilterConfig = {
   kernelFunc: depthwiseConv2dNativeBackpropFilter2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/DepthwiseConv2dNativeBackpropInput.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/DepthwiseConv2dNativeBackpropInput.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -50732,7 +51260,7 @@ var depthwiseConv2dNativeBackpropInputConfig = {
   kernelFunc: depthwiseConv2dNativeBackpropInput2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Diag.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Diag.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -50768,7 +51296,7 @@ var diagConfig = {
   kernelFunc: diag2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Dilation2D.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Dilation2D.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -50834,7 +51362,7 @@ var dilation2dConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Dilation2DBackpropFilter.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Dilation2DBackpropFilter.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -50899,7 +51427,7 @@ var dilation2dBackpropFilterConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Dilation2DBackpropInput.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Dilation2DBackpropInput.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -50964,7 +51492,159 @@ var dilation2dBackpropInputConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/EluGrad.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Sum.js
+/**
+ * @license
+ * Copyright 2020 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+function sum3(args) {
+  const {inputs, backend: backend2, attrs} = args;
+  const {x} = inputs;
+  const {axis, keepDims} = attrs;
+  assertNotComplex(x, "sum");
+  let $x;
+  if (x.dtype === "bool") {
+    $x = cast3({inputs: {x}, backend: backend2, attrs: {dtype: "int32"}});
+  } else {
+    $x = identity2({inputs: {x}, backend: backend2});
+  }
+  const xRank = $x.shape.length;
+  const axes = util_exports.parseAxisParam(axis, $x.shape);
+  const permutation = backend_util_exports.getAxesPermutation(axes, xRank);
+  let reductionAxes = axes;
+  let permutedX = $x;
+  if (permutation != null) {
+    permutedX = transpose2({inputs: {x: $x}, backend: backend2, attrs: {perm: permutation}});
+    reductionAxes = backend_util_exports.getInnerMostAxes(reductionAxes.length, xRank);
+  }
+  backend_util_exports.assertAxesAreInnerMostDims("sum", reductionAxes, permutedX.shape.length);
+  const [outShape, reduceShape] = backend_util_exports.computeOutAndReduceShapes(permutedX.shape, reductionAxes);
+  const resultDtype = backend_util_exports.upcastType(permutedX.dtype, "int32");
+  let result = zeros3(backend2, outShape, resultDtype);
+  const reduceSize = util_exports.sizeFromShape(reduceShape);
+  const vals = backend2.data.get(result.dataId).values;
+  const aVals = backend2.data.get(permutedX.dataId).values;
+  for (let i = 0; i < vals.length; ++i) {
+    const offset = i * reduceSize;
+    let sum6 = 0;
+    for (let j = 0; j < reduceSize; ++j) {
+      sum6 += aVals[offset + j];
+    }
+    vals[i] = sum6;
+  }
+  if (keepDims) {
+    const newShape = backend_util_exports.expandShapeToKeepDim(result.shape, axes);
+    const oldResult = result;
+    result = reshape3({inputs: {x: result}, backend: backend2, attrs: {shape: newShape}});
+    backend2.disposeIntermediateTensorInfo(oldResult);
+  }
+  backend2.disposeIntermediateTensorInfo($x);
+  if (permutation != null) {
+    backend2.disposeIntermediateTensorInfo(permutedX);
+  }
+  return result;
+}
+var sumConfig = {
+  kernelName: Sum,
+  backendName: "cpu",
+  kernelFunc: sum3
+};
+
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Einsum.js
+/**
+ * @license
+ * Copyright 2021 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+function einsum2(args) {
+  const {inputs, backend: backend2, attrs} = args;
+  const {equation} = attrs;
+  const tensors = inputs;
+  const {allDims, summedDims, idDims} = backend_util_exports.decodeEinsumEquation(equation, tensors.length);
+  backend_util_exports.checkEinsumDimSizes(allDims.length, idDims, tensors);
+  const {path, steps} = backend_util_exports.getEinsumComputePath(summedDims, idDims);
+  const nSteps = steps.length;
+  let out = null;
+  let numDimsRemaining = allDims.length;
+  const tensorsToDispose = [];
+  for (let i = 0; i < nSteps; ++i) {
+    for (const idTerm of steps[i]) {
+      const {permutationIndices: perm, expandDims: dimsToExpand} = backend_util_exports.getEinsumPermutation(numDimsRemaining, idDims[idTerm]);
+      let x;
+      if (backend_util_exports.isIdentityPermutation(perm)) {
+        x = tensors[idTerm];
+      } else {
+        x = transpose2({inputs: {x: tensors[idTerm]}, backend: backend2, attrs: {perm}});
+        tensorsToDispose.push(x);
+      }
+      const targetShape = x.shape.slice();
+      for (let k = 0; k < dimsToExpand.length; ++k) {
+        targetShape.splice(dimsToExpand[k], 0, 1);
+      }
+      if (!util_exports.arraysEqual(x.shape, targetShape)) {
+        x = reshape3({inputs: {x}, backend: backend2, attrs: {shape: targetShape}});
+        tensorsToDispose.push(x);
+      }
+      if (out === null) {
+        out = x;
+      } else {
+        out = multiply2({inputs: {a: x, b: out}, backend: backend2});
+        tensorsToDispose.push(out);
+      }
+    }
+    if (i < nSteps - 1) {
+      if (path[i] >= 0) {
+        out = sum3({
+          inputs: {x: out},
+          backend: backend2,
+          attrs: {
+            axis: path[i] - (allDims.length - numDimsRemaining),
+            keepDims: false
+          }
+        });
+        tensorsToDispose.push(out);
+      }
+      numDimsRemaining--;
+    }
+  }
+  for (const tensorInfo of tensorsToDispose) {
+    if (tensorInfo === out) {
+      continue;
+    }
+    backend2.disposeIntermediateTensorInfo(tensorInfo);
+  }
+  return out;
+}
+var einsumConfig = {
+  kernelName: Einsum,
+  backendName: "cpu",
+  kernelFunc: einsum2
+};
+
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/EluGrad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -51004,7 +51684,7 @@ var eluGradConfig2 = {
   kernelFunc: eluGrad
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Equal.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Equal.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -51029,7 +51709,7 @@ var equalConfig = {
   kernelFunc: equal2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Erf.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Erf.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -51064,7 +51744,7 @@ var erfConfig = {
   kernelFunc: erf2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/ExpandDims.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/ExpandDims.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -51101,7 +51781,7 @@ var expandDimsConfig = {
   kernelFunc: expandDims3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/RealDiv.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/RealDiv.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -51126,7 +51806,7 @@ var realDivConfig = {
   kernelFunc: div2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/utils/fft_utils.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/utils/fft_utils.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -51332,7 +52012,7 @@ function fourierTransformByMatmul(data, size, inverse) {
   return ret;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/FFT.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/FFT.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -51372,7 +52052,7 @@ var fftConfig = {
   kernelFunc: fft2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Fill.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Fill.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -51410,7 +52090,7 @@ function fillValues(values, value, dtype) {
   }
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/FlipLeftRight.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/FlipLeftRight.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -51463,7 +52143,7 @@ var flipLeftRightConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/FloorDiv.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/FloorDiv.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -51488,7 +52168,7 @@ var floorDivConfig = {
   kernelFunc: floorDiv2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/FusedConv2D.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/FusedConv2D.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -51532,7 +52212,7 @@ var fusedConv2DConfig = {
   kernelFunc: fusedConv2D
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/FusedDepthwiseConv2D.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/FusedDepthwiseConv2D.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -51576,7 +52256,7 @@ var fusedDepthwiseConv2DConfig = {
   kernelFunc: fusedDepthwiseConv2D
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/GatherNd.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/GatherNd.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -51629,7 +52309,7 @@ var gatherNdConfig = {
   kernelFunc: gatherNd
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/GatherV2.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/GatherV2.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -51694,7 +52374,7 @@ var gatherV2Config = {
   kernelFunc: gatherV2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/GreaterEqual.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/GreaterEqual.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -51719,7 +52399,7 @@ var greaterEqualConfig = {
   kernelFunc: greaterEqual2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/IFFT.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/IFFT.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -51759,7 +52439,7 @@ var ifftConfig = {
   kernelFunc: ifft2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/IsFinite.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/IsFinite.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -51783,7 +52463,7 @@ var isFiniteConfig = {
   kernelFunc: isFinite3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/IsInf.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/IsInf.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -51807,7 +52487,7 @@ var isInfConfig = {
   kernelFunc: isInf2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/IsNaN.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/IsNaN.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -51831,7 +52511,7 @@ var isNaNConfig = {
   kernelFunc: isNaN3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/LessEqual.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/LessEqual.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -51856,7 +52536,7 @@ var lessEqualConfig = {
   kernelFunc: lessEqual2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/LinSpace.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/LinSpace.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -51885,7 +52565,7 @@ var linSpaceConfig = {
   kernelFunc: linSpace
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Log1p.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Log1p.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -51909,7 +52589,7 @@ var log1pConfig = {
   kernelFunc: log1p2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/LogicalAnd.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/LogicalAnd.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -51934,7 +52614,7 @@ var logicalAndConfig = {
   kernelFunc: logicalAnd2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/LogicalNot.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/LogicalNot.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -51958,7 +52638,7 @@ var logicalNotConfig = {
   kernelFunc: logicalNot2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/LogicalOr.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/LogicalOr.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -51983,7 +52663,7 @@ var logicalOrConfig = {
   kernelFunc: logicalOr2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/LRN.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/LRN.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -52034,7 +52714,7 @@ var lRNConfig = {
   kernelFunc: lRN
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/LRNGrad.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/LRNGrad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -52089,7 +52769,7 @@ var lRNGradConfig = {
   kernelFunc: lRNGrad
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Max.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Max.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -52145,7 +52825,7 @@ var maxConfig = {
   kernelFunc: max3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/MaxPool.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/MaxPool.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -52187,7 +52867,7 @@ var maxPoolConfig = {
   kernelFunc: maxPool2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/MaxPool3D.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/MaxPool3D.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -52220,7 +52900,7 @@ var maxPool3DConfig = {
   kernelFunc: maxPool3D
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/MaxPool3DGrad.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/MaxPool3DGrad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -52308,7 +52988,7 @@ var maxPool3DGradConfig2 = {
   kernelFunc: maxPool3DGrad
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/MaxPoolGrad.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/MaxPoolGrad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -52385,7 +53065,7 @@ var maxPoolGradConfig2 = {
   kernelFunc: maxPoolGrad2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/MaxPoolWithArgmax_impl.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/MaxPoolWithArgmax_impl.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -52409,7 +53089,7 @@ function maxPoolWithArgmaxImpl(xValues, xShape, dtype, includeBatchInIndex, conv
   return [maxPools.values, maxPositions.values];
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/MaxPoolWithArgmax.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/MaxPoolWithArgmax.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -52446,77 +53126,7 @@ var maxPoolWithArgmaxConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Sum.js
-/**
- * @license
- * Copyright 2020 Google LLC. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =============================================================================
- */
-function sum3(args) {
-  const {inputs, backend: backend2, attrs} = args;
-  const {x} = inputs;
-  const {axis, keepDims} = attrs;
-  assertNotComplex(x, "sum");
-  let $x;
-  if (x.dtype === "bool") {
-    $x = cast3({inputs: {x}, backend: backend2, attrs: {dtype: "int32"}});
-  } else {
-    $x = identity2({inputs: {x}, backend: backend2});
-  }
-  const xRank = $x.shape.length;
-  const axes = util_exports.parseAxisParam(axis, $x.shape);
-  const permutation = backend_util_exports.getAxesPermutation(axes, xRank);
-  let reductionAxes = axes;
-  let permutedX = $x;
-  if (permutation != null) {
-    permutedX = transpose2({inputs: {x: $x}, backend: backend2, attrs: {perm: permutation}});
-    reductionAxes = backend_util_exports.getInnerMostAxes(reductionAxes.length, xRank);
-  }
-  backend_util_exports.assertAxesAreInnerMostDims("sum", reductionAxes, permutedX.shape.length);
-  const [outShape, reduceShape] = backend_util_exports.computeOutAndReduceShapes(permutedX.shape, reductionAxes);
-  const resultDtype = backend_util_exports.upcastType(permutedX.dtype, "int32");
-  let result = zeros3(backend2, outShape, resultDtype);
-  const reduceSize = util_exports.sizeFromShape(reduceShape);
-  const vals = backend2.data.get(result.dataId).values;
-  const aVals = backend2.data.get(permutedX.dataId).values;
-  for (let i = 0; i < vals.length; ++i) {
-    const offset = i * reduceSize;
-    let sum6 = 0;
-    for (let j = 0; j < reduceSize; ++j) {
-      sum6 += aVals[offset + j];
-    }
-    vals[i] = sum6;
-  }
-  if (keepDims) {
-    const newShape = backend_util_exports.expandShapeToKeepDim(result.shape, axes);
-    const oldResult = result;
-    result = reshape3({inputs: {x: result}, backend: backend2, attrs: {shape: newShape}});
-    backend2.disposeIntermediateTensorInfo(oldResult);
-  }
-  backend2.disposeIntermediateTensorInfo($x);
-  if (permutation != null) {
-    backend2.disposeIntermediateTensorInfo(permutedX);
-  }
-  return result;
-}
-var sumConfig = {
-  kernelName: Sum,
-  backendName: "cpu",
-  kernelFunc: sum3
-};
-
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Mean.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Mean.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -52558,7 +53168,7 @@ var meanConfig = {
   kernelFunc: mean2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Min.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Min.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -52622,7 +53232,7 @@ var minConfig = {
   kernelFunc: min3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/MirrorPad.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/MirrorPad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -52677,7 +53287,7 @@ var mirrorPadConfig = {
   kernelFunc: mirrorPad2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Mod.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Mod.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -52709,10 +53319,10 @@ var modConfig = {
   kernelFunc: mod2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Multinomial.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Multinomial.js
 var seedrandom4 = __toModule(require_seedrandom2());
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Softmax.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Softmax.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -52768,7 +53378,7 @@ var softmaxConfig = {
   kernelFunc: softmax3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Multinomial.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Multinomial.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -52827,7 +53437,7 @@ var multinomialConfig = {
   kernelFunc: multinomial2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/NonMaxSuppressionV3.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/NonMaxSuppressionV3.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -52861,7 +53471,7 @@ var nonMaxSuppressionV3Config = {
   kernelFunc: nonMaxSuppressionV3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/NonMaxSuppressionV4.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/NonMaxSuppressionV4.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -52898,7 +53508,7 @@ var nonMaxSuppressionV4Config = {
   kernelFunc: nonMaxSuppressionV4
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/NonMaxSuppressionV5.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/NonMaxSuppressionV5.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -52939,7 +53549,7 @@ var nonMaxSuppressionV5Config = {
   kernelFunc: nonMaxSuppressionV5
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/OneHot.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/OneHot.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -52978,7 +53588,7 @@ var oneHotConfig = {
   kernelFunc: oneHot2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/ZerosLike.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/ZerosLike.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -53021,7 +53631,7 @@ var zerosLikeConfig = {
   kernelFunc: zerosLike2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/OnesLike.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/OnesLike.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -53064,7 +53674,7 @@ var onesLikeConfig = {
   kernelFunc: onesLike2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Pack.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Pack.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -53109,7 +53719,7 @@ var packConfig = {
   kernelFunc: pack
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/PadV2.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/PadV2.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -53159,7 +53769,7 @@ var padV2Config = {
   kernelFunc: padV2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Pow.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Pow.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -53184,7 +53794,7 @@ var powConfig = {
   kernelFunc: pow2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Range.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Range.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -53213,7 +53823,7 @@ var rangeConfig = {
   kernelFunc: range3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Reciprocal.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Reciprocal.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -53237,7 +53847,7 @@ var reciprocalConfig = {
   kernelFunc: reciprocal2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/ResizeBilinear.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/ResizeBilinear.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -53323,7 +53933,7 @@ var resizeBilinearConfig = {
   kernelFunc: resizeBilinear2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/ResizeBilinearGrad.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/ResizeBilinearGrad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -53403,7 +54013,7 @@ var resizeBilinearGradConfig2 = {
   kernelFunc: resizeBilinearGrad
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/ResizeNearestNeighbor.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/ResizeNearestNeighbor.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -53472,7 +54082,7 @@ var resizeNearestNeighborConfig = {
   kernelFunc: resizeNearestNeighbor2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/ResizeNearestNeighborGrad.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/ResizeNearestNeighborGrad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -53563,7 +54173,7 @@ var resizeNearestNeighborGradConfig2 = {
   kernelFunc: resizeNearestNeighborGrad
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Reverse.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Reverse.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -53606,7 +54216,7 @@ var reverseConfig = {
   kernelFunc: reverse2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/RotateWithOffset.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/RotateWithOffset.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -53676,7 +54286,7 @@ var rotateWithOffsetConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Round.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Round.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -53713,7 +54323,7 @@ var roundConfig = {
   kernelFunc: round3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Scatter_impl.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Scatter_impl.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -53761,7 +54371,7 @@ function scatterImpl(indices, updates, shape, outputSize, sliceSize, numUpdates,
   return outBuf;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/ScatterNd.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/ScatterNd.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -53795,7 +54405,7 @@ var scatterNdConfig = {
   kernelFunc: scatterNd
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Select.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Select.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -53841,7 +54451,7 @@ var selectConfig = {
   kernelFunc: select
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Selu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Selu.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -53873,7 +54483,7 @@ var seluConfig = {
   kernelFunc: selu2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Sigmoid.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Sigmoid.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -53897,7 +54507,7 @@ var sigmoidConfig = {
   kernelFunc: sigmoid2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Sign.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Sign.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -53929,7 +54539,7 @@ var signConfig = {
   kernelFunc: sign2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Sin.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Sin.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -53953,7 +54563,7 @@ var sinConfig = {
   kernelFunc: sin2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Sinh.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Sinh.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -53977,7 +54587,7 @@ var sinhConfig = {
   kernelFunc: sinh2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Softplus.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Softplus.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -54016,7 +54626,7 @@ var softplusConfig = {
   kernelFunc: softplus2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/SpaceToBatchND.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/SpaceToBatchND.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -54072,7 +54682,7 @@ var spaceToBatchNDConfig = {
   kernelFunc: spaceToBatchND2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/SparseToDense.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/SparseToDense.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -54107,7 +54717,7 @@ var sparseToDenseConfig = {
   kernelFunc: sparseToDense2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/SplitV.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/SplitV.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -54146,7 +54756,7 @@ var splitVConfig = {
   kernelFunc: splitV
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Sqrt.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Sqrt.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -54170,7 +54780,7 @@ var sqrtConfig = {
   kernelFunc: sqrt2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Square.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Square.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -54205,7 +54815,7 @@ var squareConfig = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Step.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Step.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -54236,7 +54846,7 @@ var stepConfig = {
   kernelFunc: step2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/StridedSlice.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/StridedSlice.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -54283,7 +54893,7 @@ var stridedSliceConfig = {
   kernelFunc: stridedSlice2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Tan.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Tan.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -54307,7 +54917,7 @@ var tanConfig = {
   kernelFunc: tan2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Tanh.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Tanh.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -54331,7 +54941,7 @@ var tanhConfig = {
   kernelFunc: tanh3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Tile.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Tile.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -54362,7 +54972,7 @@ var tileConfig = {
   kernelFunc: tile3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/TopK.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/TopK.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -54397,7 +55007,7 @@ var topKConfig = {
   kernelFunc: topK
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Transform.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Transform.js
 /**
  * @license
  * Copyright 2021 Google LLC. All Rights Reserved.
@@ -54554,7 +55164,7 @@ function bilinearInterpolation(imageVals, imageHeight, imageWidth, batchStride, 
   return (yCeil - y) * valueYFloor + (y - yFloor) * valueYCeil;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Unique.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Unique.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -54589,7 +55199,7 @@ var uniqueConfig = {
   kernelFunc: unique3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Unpack.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Unpack.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -54640,7 +55250,7 @@ var unpackConfig = {
   kernelFunc: unpack
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/UnsortedSegmentSum.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/UnsortedSegmentSum.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -54697,7 +55307,7 @@ var unsortedSegmentSumConfig = {
   kernelFunc: unsortedSegmentSum2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/register_all_kernels.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/register_all_kernels.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -54764,6 +55374,7 @@ var kernelConfigs = [
   dilation2dBackpropInputConfig,
   dilation2dBackpropFilterConfig,
   realDivConfig,
+  einsumConfig,
   eluConfig,
   eluGradConfig2,
   equalConfig,
@@ -54874,7 +55485,7 @@ for (const kernelConfig of kernelConfigs) {
   registerKernel(kernelConfig);
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/index.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/index.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -54892,7 +55503,7 @@ for (const kernelConfig of kernelConfigs) {
  * =============================================================================
  */
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/canvas_util.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/canvas_util.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -54972,7 +55583,7 @@ function getWebGLRenderingContext(webGLVersion) {
   return canvas.getContext("webgl2", WEBGL_ATTRIBUTES);
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/tex_util.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/tex_util.js
 /**
  * @license
  * Copyright 2017 Google LLC. All Rights Reserved.
@@ -55078,7 +55689,7 @@ function getTextureConfig(gl, textureHalfFloatExtension) {
   };
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/webgl_util.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/webgl_util.js
 /**
  * @license
  * Copyright 2017 Google LLC. All Rights Reserved.
@@ -55527,7 +56138,7 @@ function assertNotComplex2(tensor2, opName) {
   });
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/flags_webgl.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/flags_webgl.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -55561,7 +56172,7 @@ ENV3.registerFlag("WEBGL_FORCE_F16_TEXTURES", () => false);
 ENV3.registerFlag("WEBGL_PACK", () => ENV3.getBool("HAS_WEBGL"));
 ENV3.registerFlag("WEBGL_PACK_NORMALIZATION", () => ENV3.getBool("WEBGL_PACK"));
 ENV3.registerFlag("WEBGL_PACK_CLIP", () => ENV3.getBool("WEBGL_PACK"));
-ENV3.registerFlag("WEBGL_PACK_DEPTHWISECONV", () => false);
+ENV3.registerFlag("WEBGL_PACK_DEPTHWISECONV", () => true);
 ENV3.registerFlag("WEBGL_PACK_BINARY_OPERATIONS", () => ENV3.getBool("WEBGL_PACK"));
 ENV3.registerFlag("WEBGL_PACK_UNARY_OPERATIONS", () => ENV3.getBool("WEBGL_PACK"));
 ENV3.registerFlag("WEBGL_PACK_ARRAY_OPERATIONS", () => ENV3.getBool("WEBGL_PACK"));
@@ -55604,7 +56215,7 @@ ENV3.registerFlag("WEBGL_FLUSH_THRESHOLD", () => {
   }
 });
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/glsl_version.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/glsl_version.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -55714,7 +56325,7 @@ function getGlslDifferences() {
   };
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/shader_compiler_util.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/shader_compiler_util.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -55788,7 +56399,7 @@ var ENCODE_FLOAT_SNIPPET = `
   }
 `;
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/decode_matrix_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/decode_matrix_gpu.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -55839,7 +56450,7 @@ var DecodeMatrixProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/decode_matrix_packed_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/decode_matrix_packed_gpu.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -55890,7 +56501,7 @@ var DecodeMatrixPackedProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/encode_float_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/encode_float_gpu.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -55924,7 +56535,7 @@ var EncodeFloatProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/encode_float_packed_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/encode_float_packed_gpu.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -55961,7 +56572,7 @@ var EncodeFloatPackedProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/encode_matrix_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/encode_matrix_gpu.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -56022,7 +56633,7 @@ var EncodeMatrixProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/encode_matrix_packed_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/encode_matrix_packed_gpu.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -56106,7 +56717,7 @@ var EncodeMatrixPackedProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/gpgpu_util.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/gpgpu_util.js
 /**
  * @license
  * Copyright 2017 Google LLC. All Rights Reserved.
@@ -56266,7 +56877,7 @@ function downloadMatrixFromPackedOutputTexture(gl, physicalRows, physicalCols) {
   return packedRGBA;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/gpgpu_context.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/gpgpu_context.js
 /**
  * @license
  * Copyright 2017 Google LLC. All Rights Reserved.
@@ -56676,7 +57287,7 @@ function linearSearchLastTrue(arr) {
   return i - 1;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/shader_compiler.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/shader_compiler.js
 /**
  * @license
  * Copyright 2017 Google LLC. All Rights Reserved.
@@ -57843,7 +58454,7 @@ function getSqueezedParams(params, keptDims) {
   return keptDims.map((d) => params[d]).join(", ");
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/gpgpu_math.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/gpgpu_math.js
 /**
  * @license
  * Copyright 2017 Google LLC. All Rights Reserved.
@@ -57990,7 +58601,7 @@ function makeShaderKey(program, inputs, output) {
   return key;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernel_utils/shared.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernel_utils/shared.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -58009,7 +58620,7 @@ function makeShaderKey(program, inputs, output) {
  */
 var {addImpl: addImplCPU, bincountImpl: bincountImplCPU, bincountReduceImpl: bincountReduceImplCPU, ceilImpl: ceilImplCPU, concatImpl: concatImplCPU, expImpl: expImplCPU, expm1Impl: expm1ImplCPU, floorImpl: floorImplCPU, gatherV2Impl: gatherV2ImplCPU, greaterImpl: greaterImplCPU, lessImpl: lessImplCPU, linSpaceImpl: linSpaceImplCPU, logImpl: logImplCPU, maxImpl: maxImplCPU, maximumImpl: maximumImplCPU, minimumImpl: minimumImplCPU, multiplyImpl: multiplyImplCPU, negImpl: negImplCPU, prodImpl: prodImplCPU, rangeImpl: rangeImplCPU, rsqrtImpl: rsqrtImplCPU, simpleAbsImpl: simpleAbsImplCPU, sliceImpl: sliceImplCPU, stridedSliceImpl: stridedSliceImplCPU, subImpl: subImplCPU, tileImpl: tileImplCPU, topKImpl: topKImplCPU, transposeImpl: transposeImplCPU, uniqueImpl: uniqueImplCPU} = shared_exports;
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/packing_util.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/packing_util.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -58049,7 +58660,7 @@ function getSourceCoords(rank, dims) {
   return coords2;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/pack_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/pack_gpu.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -58083,7 +58694,7 @@ var PackProgram = class {
       const channels = getChannels("rc", rank);
       const dtype = getCoordsDataType(rank);
       const outOfBoundsCondition = getOutOfBoundsCondition(rank, outputShape, channels);
-      const setup42 = getSetup(rank, outputShape[outputShape.length - 1], outputShape[outputShape.length - 2], channels);
+      const setup45 = getSetup(rank, outputShape[outputShape.length - 1], outputShape[outputShape.length - 2], channels);
       const output = getOutput(outputShape, channels);
       this.userCode = `
         void main() {
@@ -58092,7 +58703,7 @@ var PackProgram = class {
           if(${outOfBoundsCondition}) {
             setOutput(vec4(0));
           } else {
-            ${setup42}
+            ${setup45}
 
             setOutput(vec4(${output}));
           }
@@ -58156,7 +58767,7 @@ function getOutput(shape, dims) {
           rEdge || cEdge ? 0. : getA(${sourceCoords[3]})`;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/reshape_packed_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/reshape_packed_gpu.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -58231,7 +58842,7 @@ function getReshapedInputCoords(shape) {
   `;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/texture_manager.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/texture_manager.js
 /**
  * @license
  * Copyright 2017 Google LLC. All Rights Reserved.
@@ -58438,7 +59049,7 @@ function getKeyFromTextureShape(shapeRowsCol, physicalTexType, isPacked) {
   return `${shapeRowsCol[0]}_${shapeRowsCol[1]}_${physicalTexType}_${isPacked}`;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/unaryop_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/unaryop_gpu.js
 /**
  * @license
  * Copyright 2017 Google LLC. All Rights Reserved.
@@ -58485,7 +59096,7 @@ var RELU6 = CHECK_NAN_SNIPPET + `
 `;
 var CLONE = "return x;";
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/unaryop_packed_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/unaryop_packed_gpu.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -58556,7 +59167,7 @@ var UnaryOpPackedProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/unpack_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/unpack_gpu.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -58596,7 +59207,7 @@ var UnpackProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/backend_webgl.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/backend_webgl.js
 /**
  * @license
  * Copyright 2017 Google LLC. All Rights Reserved.
@@ -58643,7 +59254,6 @@ var MathBackendWebGL = class extends KernelBackend {
     this.downloadWaitMs = 0;
     this.lastGlFlushTime = 0;
     this.warnedAboutMemory = false;
-    this.warnedAboutCPUBackend = false;
     this.pendingDeletes = 0;
     this.disposed = false;
     if (!env().getBool("HAS_WEBGL")) {
@@ -58986,22 +59596,8 @@ var MathBackendWebGL = class extends KernelBackend {
   getDataInfo(dataId) {
     return this.texData.get(dataId);
   }
-  getCPUBackend() {
-    if (!env().getBool("WEBGL_CPU_FORWARD")) {
-      return null;
-    }
-    if (this.cpuBackend == null) {
-      this.cpuBackend = engine().findBackend("cpu");
-    }
-    return this.cpuBackend;
-  }
   shouldExecuteOnCPU(inputs, sizeThreshold = CPU_HANDOFF_SIZE_THRESHOLD) {
-    const cpuBackend = this.getCPUBackend();
-    if (!env().getBool("IS_TEST") && !this.warnedAboutCPUBackend && cpuBackend == null) {
-      console.warn("Your application contains ops that are small enough to be executed on the CPU backend, however the CPU backend cannot be found. Consider importing the CPU backend (@tensorflow/tfjs-backend-cpu) for better performance.");
-      this.warnedAboutCPUBackend = true;
-    }
-    return cpuBackend != null && inputs.every((input2) => this.texData.get(input2.dataId).texture == null && util_exports.sizeFromShape(input2.shape) < sizeThreshold);
+    return env().getBool("WEBGL_CPU_FORWARD") && inputs.every((input2) => this.texData.get(input2.dataId).texture == null && util_exports.sizeFromShape(input2.shape) < sizeThreshold);
   }
   getGPGPUContext() {
     return this.gpgpu;
@@ -59315,11 +59911,11 @@ function float32ToTypedArray(a, dtype) {
   }
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/version.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/version.js
 /** @license See the LICENSE file. */
-var version6 = "3.3.0";
+var version6 = "3.4.0";
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/base.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/base.js
 /**
  * @license
  * Copyright 2020 Google Inc. All Rights Reserved.
@@ -59340,7 +59936,7 @@ if (device_util_exports.isBrowser()) {
   registerBackend("webgl", () => new MathBackendWebGL(), 2);
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/binaryop_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/binaryop_gpu.js
 /**
  * @license
  * Copyright 2017 Google LLC. All Rights Reserved.
@@ -59379,7 +59975,7 @@ var BinaryOpProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/binaryop_packed_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/binaryop_packed_gpu.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -59461,7 +60057,7 @@ var BinaryOpPackedProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Identity.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Identity.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -59490,7 +60086,7 @@ var identityConfig2 = {
   kernelFunc: identity3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Complex.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Complex.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -59523,7 +60119,7 @@ var complexConfig2 = {
   kernelFunc: complex3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/LeakyRelu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/LeakyRelu.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -59561,7 +60157,7 @@ var leakyReluConfig2 = {
   kernelFunc: leakyRelu3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Prelu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Prelu.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -59595,7 +60191,7 @@ var preluConfig2 = {
   kernelFunc: prelu4
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernel_utils/kernel_funcs_utils.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernel_utils/kernel_funcs_utils.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -59728,7 +60324,7 @@ function mapActivationToShaderProgram(activation2, packed = false) {
   throw new Error(`Activation ${activation2} has not been implemented for the WebGL backend.`);
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/mulmat_packed_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/mulmat_packed_gpu.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -59828,7 +60424,7 @@ var MatMulPackedProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/binaryop_complex_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/binaryop_complex_gpu.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -59870,7 +60466,7 @@ var BinaryOpComplexProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Multiply.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Multiply.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -59949,7 +60545,7 @@ var multiplyConfig2 = {
   kernelFunc: multiply3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernel_utils/reshape.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernel_utils/reshape.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -59986,7 +60582,7 @@ function packedReshape(input2, afterShape, backend2) {
   return {dataId: output.dataId, shape: afterShape, dtype: output.dtype};
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Reshape.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Reshape.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -60025,7 +60621,7 @@ var reshapeConfig2 = {
   kernelFunc: reshape4
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/mean_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/mean_gpu.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -60115,7 +60711,7 @@ var MeanProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/reduce_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/reduce_gpu.js
 /**
  * @license
  * Copyright 2017 Google LLC. All Rights Reserved.
@@ -60264,7 +60860,7 @@ var ReduceProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernel_utils/reduce.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernel_utils/reduce.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -60315,7 +60911,7 @@ function reduce(x, dtype, reductionType, backend2) {
   return result;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/transpose_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/transpose_gpu.js
 /**
  * @license
  * Copyright 2017 Google LLC. All Rights Reserved.
@@ -60364,7 +60960,7 @@ function getSwitchedCoords(newDim) {
   return switchedCoords.join();
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/transpose_packed_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/transpose_packed_gpu.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -60425,7 +61021,7 @@ var TransposePackedProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Transpose_impl.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Transpose_impl.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -60447,7 +61043,7 @@ function transposeImpl2(x, perm, backend2) {
   return backend2.runWebGLProgram(program, [x], x.dtype);
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Sum_impl.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Sum_impl.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -60497,7 +61093,7 @@ function sumImpl(x, axis, keepDims, backend2) {
   return out;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Sum.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Sum.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -60526,7 +61122,7 @@ var sumConfig2 = {
   kernelFunc: sum4
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Transpose.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Transpose.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -60572,7 +61168,7 @@ var transposeConfig2 = {
   kernelFunc: transpose3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/BatchMatMul_impl.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/BatchMatMul_impl.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -60679,7 +61275,7 @@ function batchMatMulImpl({a, b, transposeA, transposeB, backend: backend2, bias 
   return outReshaped;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/_FusedMatMul.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/_FusedMatMul.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -60718,7 +61314,7 @@ var _fusedMatMulConfig2 = {
   kernelFunc: _fusedMatMul2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Abs.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Abs.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -60758,7 +61354,7 @@ var absConfig2 = {
   kernelFunc: abs3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Acos.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Acos.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -60788,7 +61384,7 @@ var acosConfig2 = {
   kernelFunc: acos3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Acosh.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Acosh.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -60815,7 +61411,7 @@ var acoshConfig2 = {
   kernelFunc: acosh3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Add.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Add.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -60845,7 +61441,7 @@ var addConfig2 = {
   kernelFunc: addKernelFunc
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/addn_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/addn_gpu.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -60885,7 +61481,7 @@ var AddNProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/addn_packed_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/addn_packed_gpu.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -60927,7 +61523,7 @@ var AddNPackedProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/AddN.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/AddN.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -60968,7 +61564,7 @@ var addNConfig2 = {
   kernelFunc: addN3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/All.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/All.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -61023,7 +61619,7 @@ var allConfig2 = {
   kernelFunc: all3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Any.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Any.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -61078,7 +61674,7 @@ var anyConfig2 = {
   kernelFunc: any3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/argminmax_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/argminmax_gpu.js
 /**
  * @license
  * Copyright 2017 Google LLC. All Rights Reserved.
@@ -61129,7 +61725,7 @@ var ArgMinMaxProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/argminmax_packed_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/argminmax_packed_gpu.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -61252,7 +61848,7 @@ var ArgMinMaxPackedProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernel_utils/arg_min_max.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernel_utils/arg_min_max.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -61323,7 +61919,7 @@ function argMinMaxReduce(backend2, x, axis, reduceType) {
   return argReducePacked(backend2, x, reduceType);
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/ArgMax.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/ArgMax.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -61364,7 +61960,7 @@ var argMaxConfig2 = {
   kernelFunc: argMax3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/ArgMin.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/ArgMin.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -61405,7 +62001,7 @@ var argMinConfig2 = {
   kernelFunc: argMin3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Asin.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Asin.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -61435,7 +62031,7 @@ var asinConfig2 = {
   kernelFunc: asin3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Asinh.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Asinh.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -61460,7 +62056,7 @@ var asinhConfig2 = {
   kernelFunc: asinh3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Atan.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Atan.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -61487,7 +62083,7 @@ var atanConfig2 = {
   kernelFunc: atan4
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Atan2.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Atan2.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -61520,7 +62116,7 @@ var atan2Config2 = {
   kernelFunc: atan23
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Atanh.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Atanh.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -61547,7 +62143,7 @@ var atanhConfig2 = {
   kernelFunc: atanh3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/pool_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/pool_gpu.js
 /**
  * @license
  * Copyright 2017 Google LLC. All Rights Reserved.
@@ -61949,7 +62545,7 @@ var Pool3DProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/AvgPool.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/AvgPool.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -61986,7 +62582,7 @@ var avgPoolConfig2 = {
   kernelFunc: avgPool3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/AvgPool3D.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/AvgPool3D.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -62018,7 +62614,7 @@ var avgPool3DConfig2 = {
   kernelFunc: avgPool3D2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/avg_pool_backprop_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/avg_pool_backprop_gpu.js
 /**
  * @license
  * Copyright 2017 Google LLC. All Rights Reserved.
@@ -62175,7 +62771,7 @@ var AvgPool3DBackpropProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/AvgPool3DGrad.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/AvgPool3DGrad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -62208,7 +62804,7 @@ var avgPoolGrad3DConfig = {
   kernelFunc: avgPool3DGrad2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/AvgPoolGrad.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/AvgPoolGrad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -62241,7 +62837,7 @@ var avgPoolGradConfig3 = {
   kernelFunc: avgPoolGrad3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/BatchMatMul.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/BatchMatMul.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -62270,7 +62866,7 @@ var batchMatMulConfig2 = {
   kernelFunc: batchMatMul2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/batchnorm_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/batchnorm_gpu.js
 /**
  * @license
  * Copyright 2017 Google LLC. All Rights Reserved.
@@ -62320,7 +62916,7 @@ var BatchNormProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/batchnorm_packed_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/batchnorm_packed_gpu.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -62374,7 +62970,7 @@ var BatchNormPackedProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/BatchNorm.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/BatchNorm.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -62421,7 +63017,7 @@ var batchNormConfig2 = {
   kernelFunc: batchNorm3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/slice_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/slice_gpu.js
 /**
  * @license
  * Copyright 2017 Google LLC. All Rights Reserved.
@@ -62489,7 +63085,7 @@ function getCoords(rank) {
   }
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/slice_packed_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/slice_packed_gpu.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -62568,7 +63164,7 @@ var SlicePackedProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Slice.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Slice.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -62635,7 +63231,7 @@ var sliceConfig2 = {
   kernelFunc: slice3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/BatchToSpaceND.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/BatchToSpaceND.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -62688,7 +63284,7 @@ var batchToSpaceNDConfig2 = {
   kernelFunc: batchToSpaceND3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Bincount.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Bincount.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -62720,7 +63316,7 @@ var bincountConfig2 = {
   kernelFunc: bincount3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/NotEqual.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/NotEqual.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -62745,7 +63341,7 @@ var notEqualConfig2 = {
   kernelFunc: notEqual3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Real.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Real.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -62774,7 +63370,7 @@ var realConfig2 = {
   kernelFunc: real3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernel_utils/int.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernel_utils/int.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -62798,7 +63394,7 @@ function int(input2, backend2) {
   return {dataId: output.dataId, shape: output.shape, dtype: output.dtype};
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Cast.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Cast.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -62858,7 +63454,7 @@ var castConfig2 = {
   kernelFunc: cast4
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Ceil.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Ceil.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -62883,7 +63479,7 @@ var ceilConfig2 = {
   kernelFunc: ceil3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/clip_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/clip_gpu.js
 /**
  * @license
  * Copyright 2017 Google LLC. All Rights Reserved.
@@ -62931,7 +63527,7 @@ var ClipProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/clip_packed_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/clip_packed_gpu.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -62982,7 +63578,7 @@ var ClipPackedProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/ClipByValue.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/ClipByValue.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -63018,7 +63614,7 @@ var clipByValueConfig = {
   kernelFunc: clipByValue2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/complex_abs_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/complex_abs_gpu.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -63056,7 +63652,7 @@ var ComplexAbsProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/ComplexAbs.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/ComplexAbs.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -63097,7 +63693,7 @@ var complexAbsConfig2 = {
   kernelFunc: complexAbs2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/concat_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/concat_gpu.js
 /**
  * @license
  * Copyright 2017 Google LLC. All Rights Reserved.
@@ -63144,7 +63740,7 @@ var ConcatProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/concat_packed_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/concat_packed_gpu.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -63241,7 +63837,7 @@ function shiftedChannels(channels, channel, shift) {
   return res.join();
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Imag.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Imag.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -63270,7 +63866,7 @@ var imagConfig2 = {
   kernelFunc: imag3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Concat_impl.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Concat_impl.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -63344,7 +63940,7 @@ function computeTensors2D(inputs, axis, backend2) {
   return {tensors2D, outShape};
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Concat.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Concat.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -63383,7 +63979,7 @@ var concatConfig2 = {
   kernelFunc: concat3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/conv_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/conv_gpu.js
 /**
  * @license
  * Copyright 2017 Google LLC. All Rights Reserved.
@@ -63686,7 +64282,7 @@ var Conv3DProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/im2col_packed_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/im2col_packed_gpu.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -63770,7 +64366,7 @@ var Im2ColPackedProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Conv2D_impl.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Conv2D_impl.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -63921,7 +64517,7 @@ function conv2dWithIm2Row({x, filter, convInfo, backend: backend2, bias = null, 
   return out;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Conv2D.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Conv2D.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -63963,7 +64559,7 @@ var conv2DConfig2 = {
   kernelFunc: conv2d4
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/conv_backprop_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/conv_backprop_gpu.js
 /**
  * @license
  * Copyright 2017 Google LLC. All Rights Reserved.
@@ -64233,7 +64829,7 @@ var Conv3DDerInputProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Conv2DBackpropFilter.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Conv2DBackpropFilter.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -64265,7 +64861,7 @@ var conv2DBackpropFilterConfig2 = {
   kernelFunc: conv2DBackpropFilter3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Conv2DBackpropInput.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Conv2DBackpropInput.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -64297,7 +64893,7 @@ var conv2DBackpropInputConfig2 = {
   kernelFunc: conv2DBackpropInput3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Conv3D.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Conv3D.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -64328,7 +64924,7 @@ var conv3DConfig2 = {
   kernelFunc: conv3D2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Conv3DBackpropFilterV2.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Conv3DBackpropFilterV2.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -64359,7 +64955,7 @@ var conv3DBackpropFilterV2Config2 = {
   kernelFunc: conv3DBackpropFilterV22
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Conv3DBackpropInputV2.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Conv3DBackpropInputV2.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -64390,7 +64986,7 @@ var conv3DBackpropInputConfig = {
   kernelFunc: conv3DBackpropInput2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Cos.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Cos.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -64417,7 +65013,7 @@ var cosConfig2 = {
   kernelFunc: cos3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Cosh.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Cosh.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -64445,7 +65041,7 @@ var coshConfig2 = {
   kernelFunc: cosh3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/crop_and_resize_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/crop_and_resize_gpu.js
 /**
  * @license
  * Copyright 2017 Google LLC. All Rights Reserved.
@@ -64555,7 +65151,7 @@ var CropAndResizeProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/CropAndResize.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/CropAndResize.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -64585,7 +65181,7 @@ var cropAndResizeConfig2 = {
   kernelFunc: cropAndResize3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/cumsum_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/cumsum_gpu.js
 var CumSumProgram = class {
   constructor(shape, exclusive, reverse5) {
     this.variableNames = ["x"];
@@ -64654,7 +65250,7 @@ function getFinalCoord(rank, name) {
   }
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Cumsum.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Cumsum.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -64715,7 +65311,7 @@ var cumsumConfig2 = {
   kernelFunc: cumsum3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/DenseBincount.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/DenseBincount.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -64755,7 +65351,7 @@ var denseBincountConfig2 = {
   kernelFunc: denseBincount3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/depth_to_space_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/depth_to_space_gpu.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -64837,7 +65433,7 @@ var DepthToSpaceProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/DepthToSpace.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/DepthToSpace.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -64876,7 +65472,7 @@ var depthToSpaceConfig2 = {
   kernelFunc: depthToSpace3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/conv_gpu_depthwise.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/conv_gpu_depthwise.js
 /**
  * @license
  * Copyright 2017 Google LLC. All Rights Reserved.
@@ -64989,7 +65585,7 @@ var DepthwiseConv2DProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/conv_packed_gpu_depthwise.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/conv_packed_gpu_depthwise.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -65012,6 +65608,7 @@ var DepthwiseConvPacked2DProgram = class {
     this.packedInputs = true;
     this.packedOutput = true;
     this.outputShape = convInfo.outShape;
+    const channelMul = convInfo.outChannels / convInfo.inChannels;
     const xNumRows = convInfo.inHeight;
     const xNumCols = convInfo.inWidth;
     const padTop = convInfo.padInfo.top;
@@ -65023,64 +65620,78 @@ var DepthwiseConvPacked2DProgram = class {
     const filterHeight = convInfo.filterHeight;
     const filterWidth = convInfo.filterWidth;
     const texelsAcross = filterWidth;
-    let mainLoop = `int xR; int xC; int xCOffset;`;
+    let mainLoop = `
+      int xR; int xC; int xCOffset;
+      vec4 wTexel; vec4 previous; vec4 final;`;
+    for (let c = 0; c < filterWidth; c++) {
+      mainLoop += `
+          vec4 xTexelC${c * 2};
+          vec4 xC${c};`;
+    }
     for (let r = 0; r < filterHeight; r++) {
       for (let c = 0; c < filterWidth; c++) {
         mainLoop += `
-          vec4 xTexelR${r}C${c * 2} = vec4(0.);
-          vec4 wR${r}C${c} = vec4(0.);
-          vec4 xR${r}C${c} = vec4(0.);`;
+          xTexelC${c * 2} = vec4(0.0);
+          xC${c} = vec4(0.0);`;
       }
-    }
-    for (let r = 0; r < filterHeight; r++) {
-      for (let texelC = 0; texelC < texelsAcross; texelC++) {
+      mainLoop += `
+        xR = xRCorner + ${r * dilationHeight};
+        if (xR >=0 && xR < ${xNumRows}) {
+      `;
+      for (let texelC = 0; texelC < texelsAcross / 2 + 1; texelC++) {
         const c = texelC * 2;
         mainLoop += `
-          xR = xRCorner + ${r * dilationHeight};
           xC = xCCorner + ${c * dilationWidth};
-        `;
+          `;
         if (strideWidth === 1) {
           if (c < filterWidth) {
             if (padLeft % 2 === 1) {
               mainLoop += `
                 xCOffset = xC + 1;
-                if(xR >= 0 && xR < ${xNumRows} && xCOffset >= 0 && xCOffset < ${xNumCols}) {
-                  xTexelR${r}C${c} = getX(batch, xR, xCOffset, d1);
+                if (xCOffset >= 0 && xCOffset < ${xNumCols}) {
+                  xTexelC${c} = getX(batch, xR, xCOffset, d1);
 
                   // Need to manually clear unused channels in case
                   // we're reading from recycled texture.
-                  if(xCOffset + 1 >= ${xNumCols}) {
-                    xTexelR${r}C${c}.zw = vec2(0.);
+                  if (xCOffset + 1 >= ${xNumCols}) {
+                    xTexelC${c}.zw = vec2(0.0);
                   }
-                } else {
-                  xTexelR${r}C${c} = vec4(0.);
-                }
-
-                xCOffset = xC + 1 - 2;
-                if(xR >= 0 && xR < ${xNumRows} && xCOffset >= 0 && xCOffset < ${xNumCols}) {
-                  vec4 previous = getX(batch, xR, xCOffset, d1);
-
-                  // Need to manually clear unused channels in case
-                  // we're reading from recycled texture.
-                  if(xCOffset + 1 >= ${xNumCols}) {
-                    previous.zw = vec2(0.);
-                  }
-
-                  xR${r}C${c} = vec4(previous.zw, xTexelR${r}C${c}.xy);
-                } else {
-                  xR${r}C${c} = vec4(0, 0, xTexelR${r}C${c}.xy);
                 }
               `;
+              if (dilationWidth === 1 && c > 0) {
+                mainLoop += `
+                xC${c} = vec4(xTexelC${c - 2}.zw, xTexelC${c}.xy);
+                `;
+              } else {
+                mainLoop += `
+                  xCOffset = xC + 1 - 2;
+
+                  if (xCOffset >= 0 && xCOffset < ${xNumCols}) {
+                    previous = getX(batch, xR, xCOffset, d1);
+
+                    // Need to manually clear unused channels in case
+                    // we're reading from recycled texture.
+                    if (xCOffset + 1 >= ${xNumCols}) {
+                      previous.zw = vec2(0.0);
+                    }
+
+                    xC${c} = vec4(previous.zw, xTexelC${c}.xy);
+                  } else {
+                    xC${c} = vec4(0.0, 0.0, xTexelC${c}.xy);
+                  }
+                  `;
+              }
             } else {
               mainLoop += `
-                if(xR >= 0 && xR < ${xNumRows} && xC >= 0 && xC < ${xNumCols}) {
-                  xTexelR${r}C${c} = getX(batch, xR, xC, d1);
-                } else {
-                  xTexelR${r}C${c} = vec4(0.);
+                if (xC >= 0 && xC < ${xNumCols}) {
+                  xTexelC${c} = getX(batch, xR, xC, d1);
+                  if (xC + 1 >= ${xNumCols}) {
+                    xTexelC${c}.zw = vec2(0.0);
+                  }
                 }
 
-                xR${r}C${c} = xTexelR${r}C${c};
-              `;
+                xC${c} = xTexelC${c};
+                `;
             }
             if (c + 1 < filterWidth) {
               const nextTexelOffset = padLeft % 2 === 0 ? util_exports.nearestLargerEven(dilationWidth) : dilationWidth;
@@ -65088,119 +65699,128 @@ var DepthwiseConvPacked2DProgram = class {
                 mainLoop += `
                   xCOffset = xC + ${padLeft % 2} + ${nextTexelOffset};
 
-                  if(xR >= 0 && xR < ${xNumRows} &&
-                    xCOffset >= 0 && xCOffset < ${xNumCols}) {
-                    xTexelR${r}C${c + 2} = getX(batch, xR, xCOffset, d1);
+                  if (xCOffset >= 0 && xCOffset < ${xNumCols}) {
+                    xTexelC${c + 2} = getX(batch, xR, xCOffset, d1);
+
+                    // Need to manually clear unused channels in case
+                    // we're reading from recycled texture.
+                    if (xCOffset + 1 >= ${xNumCols}) {
+                      xTexelC${c + 2}.zw = vec2(0.0);
+                    }
                   }
-                `;
+                  `;
                 if (dilationWidth > 1) {
                   mainLoop += `
                     xCOffset -= 2;
-                    if(xR >= 0 && xR < ${xNumRows} &&
-                      xCOffset >= 0 && xCOffset < ${xNumCols}) {
-                      xTexelR${r}C${c} = getX(batch, xR, xCOffset, d1);
-                    } else {
-                      xTexelR${r}C${c} = vec4(0.);
+                    if (xCOffset >= 0 && xCOffset < ${xNumCols}) {
+                      xTexelC${c} = getX(batch, xR, xCOffset, d1);
                     }
-                  `;
+                    `;
                 }
                 mainLoop += `
-                  xR${r}C${c + 1} = vec4(
-                    xTexelR${r}C${c}.zw, xTexelR${r}C${c + 2}.xy);
-                `;
+                  xC${c + 1} = vec4(xTexelC${c}.zw, xTexelC${c + 2}.xy);
+                  `;
               } else {
-                mainLoop += `
-                  xCOffset = xC + ${nextTexelOffset};
+                if (nextTexelOffset === 1) {
+                  mainLoop += `
+                    xC${c + 1} = xTexelC${c};
+                    `;
+                } else {
+                  mainLoop += `
+                    xCOffset = xC + ${nextTexelOffset};
 
-                  if(xR >= 0 && xR < ${xNumRows} &&
-                    xCOffset >= 0 && xCOffset < ${xNumCols}) {
-                    xTexelR${r}C${c + 2} = getX(batch, xR, xCOffset, d1);
-                  }
+                    if (xCOffset >= 0 && xCOffset < ${xNumCols}) {
+                      xTexelC${c + 2} = getX(batch, xR, xCOffset, d1);
+                      if (xCOffset + 1 >= ${xNumCols}) {
+                        xTexelC${c + 2}.zw = vec2(0.0);
+                      }
+                    }
 
-                  xR${r}C${c + 1} = xTexelR${r}C${c + 2};
-                `;
+                    xC${c + 1} = xTexelC${c + 2};
+                    `;
+                }
               }
             }
           }
         } else {
           if (c < filterWidth) {
-            mainLoop += `
-              if(xR >= 0 && xR < ${xNumRows}) {
-            `;
             if (padLeft % 2 === 1) {
               mainLoop += `
                 xCOffset = xC + 1 - ${strideWidth};
                 if(xCOffset >= 0 && xCOffset < ${xNumCols}) {
-                  xTexelR${r}C${c} = getX(batch, xR, xCOffset, d1);
-                } else {
-                  xTexelR${r}C${c} = vec4(0.);
+                  xTexelC${c} = getX(batch, xR, xCOffset, d1);
+                  // Need to manually clear unused channels in case
+                  // we're reading from recycled texture.
+                  if (xCOffset + 1 >= ${xNumCols}) {
+                    xTexelC${c}.zw = vec2(0.0);
+                  }
                 }
 
                 if(xC + 1 >= 0 && xC + 1 < ${xNumCols}) {
-                  xTexelR${r}C${c + 2} = getX(batch, xR, xC + 1, d1);
-                } else {
-                  xTexelR${r}C${c + 2} = vec4(0.);
+                  xTexelC${c + 2} = getX(batch, xR, xC + 1, d1);
+                  // Need to manually clear unused channels in case
+                  // we're reading from recycled texture.
+                  if (xC + 2 >= ${xNumCols}) {
+                    xTexelC${c + 2}.zw = vec2(0.0);
+                  }
                 }
 
-                xR${r}C${c} = vec4(
-                  xTexelR${r}C${c}.zw, xTexelR${r}C${c + 2}.zw);
+                xC${c} = vec4(xTexelC${c}.zw, xTexelC${c + 2}.zw);
               `;
               if (c + 1 < filterWidth) {
                 mainLoop += `
-                  vec4 final = vec4(0.);
+                  final = vec4(0.0);
                   xCOffset = xC + 1 + ${strideWidth};
                   if(xCOffset >= 0 && xCOffset < ${xNumCols}) {
                     final = getX(batch, xR, xCOffset, d1);
                   }
-                  xR${r}C${c + 1} = vec4(xTexelR${r}C${c + 2}.xy, final.xy);
+                  xC${c + 1} = vec4(xTexelC${c + 2}.xy, final.xy);
                 `;
               }
             } else {
               mainLoop += `
                 if(xC >= 0 && xC < ${xNumCols}) {
-                  xTexelR${r}C${c} = getX(batch, xR, xC, d1);
-                } else {
-                  xTexelR${r}C${c} = vec4(0.);
+                  xTexelC${c} = getX(batch, xR, xC, d1);
+                  if (xC + 1 >= ${xNumCols}) {
+                    xTexelC${c}.zw = vec2(0.0);
+                  }
                 }
 
                 xCOffset = xC + ${strideWidth};
                 if(xCOffset >= 0 && xCOffset < ${xNumCols}) {
-                  xTexelR${r}C${c + 2} = getX(batch, xR, xCOffset, d1);
-                } else {
-                  xTexelR${r}C${c + 2} = vec4(0.);
+                  xTexelC${c + 2} = getX(batch, xR, xCOffset, d1);
+                  if (xCOffset + 1 >= ${xNumCols}) {
+                    xTexelC${c + 2}.zw = vec2(0.);
+                  }
                 }
 
-                xR${r}C${c} = vec4(
-                  xTexelR${r}C${c}.xy, xTexelR${r}C${c + 2}.xy);
+                xC${c} = vec4(
+                  xTexelC${c}.xy, xTexelC${c + 2}.xy);
               `;
               if (c + 1 < filterWidth) {
                 mainLoop += `
-                  xR${r}C${c + 1} = vec4(
-                    xTexelR${r}C${c}.zw, xTexelR${r}C${c + 2}.zw);
+                  xC${c + 1} = vec4(xTexelC${c}.zw, xTexelC${c + 2}.zw);
                 `;
               }
             }
-            mainLoop += `}`;
           }
         }
         if (c < filterWidth) {
           mainLoop += `
-            vec4 wTexelR${r}C${c} = getW(${r}, ${c}, d1, q);
-            wR${r}C${c} = vec4(wTexelR${r}C${c}.xz, wTexelR${r}C${c}.xz);
+            wTexel = getW(${r}, ${c}, d1, q);
+            dotProd += xC${c} * vec4(wTexel.xz, wTexel.xz);
           `;
           if (c + 1 < filterWidth) {
             mainLoop += `
-              vec4 wTexelR${r}C${c + 1} = getW(${r}, ${c + 1}, d1, q);
-              wR${r}C${c + 1} =
-                vec4(wTexelR${r}C${c + 1}.xz, wTexelR${r}C${c + 1}.xz);`;
+              wTexel = getW(${r}, ${c + 1}, d1, q);
+              dotProd += xC${c + 1} * vec4(wTexel.xz, wTexel.xz);
+            `;
           }
         }
       }
-    }
-    for (let r = 0; r < filterHeight; r++) {
-      for (let c = 0; c < filterWidth; c++) {
-        mainLoop += `dotProd += xR${r}C${c} * wR${r}C${c};`;
-      }
+      mainLoop += `
+        }
+      `;
     }
     let activationSnippet = "", applyActivationSnippet = "";
     if (activation2) {
@@ -65243,16 +65863,17 @@ var DepthwiseConvPacked2DProgram = class {
         int batch = coords.x;
         ivec2 xRCCorner = coords.yz * strides - pads;
         int d2 = coords.w;
-        int d1 = d2;
-        int q = 0;
+        int d1 = d2 / ${channelMul};
+        int q = d2 - d1 * ${channelMul};
         int xRCorner = xRCCorner.x;
         int xCCorner = xRCCorner.y;
 
-        vec4 dotProd = vec4(0.);
+        //intialize dotProd with a small epsilon seems to reduce GPU accuracy loss.
+        vec4 dotProd = vec4(0.000000000000001);
 
         ${mainLoop}
 
-        vec4 result = dotProd;
+        vec4 result = dotProd - vec4(0.000000000000001);
         ${addBiasSnippet}
         ${applyActivationSnippet}
         setOutput(result);
@@ -65261,7 +65882,7 @@ var DepthwiseConvPacked2DProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/DepthwiseConv2dNative.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/DepthwiseConv2dNative.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -65302,7 +65923,7 @@ var depthwiseConv2dNativeConfig2 = {
   kernelFunc: depthwiseConv2dNative2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/conv_backprop_gpu_depthwise.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/conv_backprop_gpu_depthwise.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -65426,7 +66047,7 @@ var DepthwiseConv2DDerInputProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/DepthwiseConv2dNativeBackpropFilter.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/DepthwiseConv2dNativeBackpropFilter.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -65457,7 +66078,7 @@ var depthwiseConv2dNativeBackpropFilterConfig2 = {
   kernelFunc: depthwiseConv2dNativeBackpropFilter3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/DepthwiseConv2dNativeBackpropInput.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/DepthwiseConv2dNativeBackpropInput.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -65488,7 +66109,7 @@ var depthwiseConv2dNativeBackpropInputConfig2 = {
   kernelFunc: depthwiseConv2dNativeBackpropInput3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/diag_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/diag_gpu.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -65519,7 +66140,7 @@ var DiagProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Diag.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Diag.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -65555,7 +66176,7 @@ var diagConfig2 = {
   kernelFunc: diag3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/dilation_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/dilation_gpu.js
 /**
  * @license
  * Copyright 2017 Google LLC. All Rights Reserved.
@@ -65620,7 +66241,7 @@ var Dilation2DProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Dilation2D.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Dilation2D.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -65655,7 +66276,89 @@ var dilation2DConfig = {
   kernelFunc: dilation2D
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Elu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Einsum.js
+/**
+ * @license
+ * Copyright 2021 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+function einsum3(args) {
+  const {inputs, backend: backend2, attrs} = args;
+  const {equation} = attrs;
+  const tensors = inputs;
+  const {allDims, summedDims, idDims} = backend_util_exports.decodeEinsumEquation(equation, tensors.length);
+  backend_util_exports.checkEinsumDimSizes(allDims.length, idDims, tensors);
+  const {path, steps} = backend_util_exports.getEinsumComputePath(summedDims, idDims);
+  const nSteps = steps.length;
+  let out = null;
+  let numDimsRemaining = allDims.length;
+  const tensorsToDispose = [];
+  for (let i = 0; i < nSteps; ++i) {
+    for (const idTerm of steps[i]) {
+      const {permutationIndices: perm, expandDims: dimsToExpand} = backend_util_exports.getEinsumPermutation(numDimsRemaining, idDims[idTerm]);
+      let x;
+      if (backend_util_exports.isIdentityPermutation(perm)) {
+        x = tensors[idTerm];
+      } else {
+        x = transpose3({inputs: {x: tensors[idTerm]}, backend: backend2, attrs: {perm}});
+        tensorsToDispose.push(x);
+      }
+      const targetShape = x.shape.slice();
+      for (let k = 0; k < dimsToExpand.length; ++k) {
+        targetShape.splice(dimsToExpand[k], 0, 1);
+      }
+      if (!util_exports.arraysEqual(x.shape, targetShape)) {
+        x = reshape4({inputs: {x}, backend: backend2, attrs: {shape: targetShape}});
+        tensorsToDispose.push(x);
+      }
+      if (out === null) {
+        out = x;
+      } else {
+        out = multiply3({inputs: {a: x, b: out}, backend: backend2});
+        tensorsToDispose.push(out);
+      }
+    }
+    if (i < nSteps - 1) {
+      if (path[i] >= 0) {
+        out = sum4({
+          inputs: {x: out},
+          backend: backend2,
+          attrs: {
+            axis: path[i] - (allDims.length - numDimsRemaining),
+            keepDims: false
+          }
+        });
+        tensorsToDispose.push(out);
+      }
+      numDimsRemaining--;
+    }
+  }
+  for (const tensorInfo of tensorsToDispose) {
+    if (tensorInfo === out) {
+      continue;
+    }
+    backend2.disposeIntermediateTensorInfo(tensorInfo);
+  }
+  return out;
+}
+var einsumConfig2 = {
+  kernelName: Einsum,
+  backendName: "webgl",
+  kernelFunc: einsum3
+};
+
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Elu.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -65690,7 +66393,7 @@ var eluConfig2 = {
   kernelFunc: elu5
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/EluGrad.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/EluGrad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -65724,7 +66427,7 @@ var eluGradConfig3 = {
   kernelFunc: eluGrad2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Equal.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Equal.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -65752,7 +66455,7 @@ var equalConfig2 = {
   kernelFunc: equal3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Erf.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Erf.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -65792,7 +66495,7 @@ var erfConfig2 = {
   kernelFunc: erf3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Exp.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Exp.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -65817,7 +66520,7 @@ var expConfig2 = {
   kernelFunc: exp3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/ExpandDims.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/ExpandDims.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -65854,7 +66557,7 @@ var expandDimsConfig2 = {
   kernelFunc: expandDims4
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Expm1.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Expm1.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -65879,7 +66582,7 @@ var expm1Config2 = {
   kernelFunc: expm13
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/fft_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/fft_gpu.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -65948,7 +66651,7 @@ var FFTProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/FFT_impl.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/FFT_impl.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -65997,7 +66700,7 @@ function fftImpl2(x, inverse, backend2) {
   return complexOutputReshaped;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/FFT.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/FFT.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -66025,7 +66728,7 @@ var fftConfig2 = {
   kernelFunc: fft3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/fill_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/fill_gpu.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -66065,7 +66768,7 @@ var FillProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Fill.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Fill.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -66103,7 +66806,7 @@ var fillConfig2 = {
   kernelFunc: fill3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/flip_left_right_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/flip_left_right_gpu.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -66144,7 +66847,7 @@ var FlipLeftRightProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/FlipLeftRight.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/FlipLeftRight.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -66173,7 +66876,7 @@ var flipLeftRightConfig2 = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Floor.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Floor.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -66198,7 +66901,7 @@ var floorConfig2 = {
   kernelFunc: floor3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/FloorDiv.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/FloorDiv.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -66255,7 +66958,7 @@ var floorDivConfig2 = {
   kernelFunc: floorDiv3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/FromPixels_utils/from_pixels_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/FromPixels_utils/from_pixels_gpu.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -66304,7 +67007,7 @@ var FromPixelsProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/FromPixels_utils/from_pixels_packed_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/FromPixels_utils/from_pixels_packed_gpu.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -66367,7 +67070,7 @@ var FromPixelsPackedProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/FromPixels.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/FromPixels.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -66420,7 +67123,7 @@ function fromPixels2(args) {
   return res;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/FusedConv2D.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/FusedConv2D.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -66498,7 +67201,7 @@ var fusedConv2DConfig2 = {
   kernelFunc: fusedConv2d
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/FusedDepthwiseConv2D.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/FusedDepthwiseConv2D.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -66559,7 +67262,7 @@ var fusedDepthwiseConv2DConfig2 = {
   kernelFunc: fusedDepthwiseConv2D2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/gather_nd_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/gather_nd_gpu.js
 var GatherNDProgram = class {
   constructor(sliceDim, strides, shape) {
     this.sliceDim = sliceDim;
@@ -66584,7 +67287,7 @@ var GatherNDProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/GatherNd.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/GatherNd.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -66627,7 +67330,7 @@ var gatherNdConfig2 = {
   kernelFunc: gatherNd2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/gather_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/gather_gpu.js
 /**
  * @license
  * Copyright 2017 Google LLC. All Rights Reserved.
@@ -66672,7 +67375,7 @@ function getSourceCoords2(aShape, axis) {
   return sourceCoords.join();
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/GatherV2.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/GatherV2.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -66742,7 +67445,7 @@ var gatherV2Config2 = {
   kernelFunc: gatherV22
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Greater.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Greater.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -66775,7 +67478,7 @@ var greaterConfig2 = {
   kernelFunc: greater4
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/GreaterEqual.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/GreaterEqual.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -66807,7 +67510,7 @@ var greaterEqualConfig2 = {
   kernelFunc: greaterEqual3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/IFFT.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/IFFT.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -66835,7 +67538,7 @@ var ifftConfig2 = {
   kernelFunc: ifft3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/IsFinite.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/IsFinite.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -66860,7 +67563,7 @@ var isFiniteConfig2 = {
   kernelFunc: isFinite4
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/IsInf.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/IsInf.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -66885,7 +67588,7 @@ var isInfConfig2 = {
   kernelFunc: isInf3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/IsNaN.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/IsNaN.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -66910,7 +67613,7 @@ var isNaNConfig2 = {
   kernelFunc: isNaN4
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Less.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Less.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -66943,7 +67646,7 @@ var lessConfig2 = {
   kernelFunc: less4
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/LessEqual.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/LessEqual.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -66971,7 +67674,7 @@ var lessEqualConfig2 = {
   kernelFunc: lessEqual3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/LinSpace.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/LinSpace.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -67000,7 +67703,7 @@ var linSpaceConfig2 = {
   kernelFunc: linSpace2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Log.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Log.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -67036,7 +67739,7 @@ var logConfig2 = {
   kernelFunc: log4
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Log1p.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Log1p.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -67061,7 +67764,7 @@ var log1pConfig2 = {
   kernelFunc: log1p3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/LogicalAnd.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/LogicalAnd.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -67095,7 +67798,7 @@ var logicalAndConfig2 = {
   kernelFunc: logicalAnd3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/LogicalNot.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/LogicalNot.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -67120,7 +67823,7 @@ var logicalNotConfig2 = {
   kernelFunc: logicalNot3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/LogicalOr.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/LogicalOr.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -67151,7 +67854,7 @@ var logicalOrConfig2 = {
   kernelFunc: logicalOr3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/lrn_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/lrn_gpu.js
 /**
  * @license
  * Copyright 2017 Google LLC. All Rights Reserved.
@@ -67207,7 +67910,7 @@ var LRNProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/lrn_packed_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/lrn_packed_gpu.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -67308,7 +68011,7 @@ var LRNPackedProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/LRN.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/LRN.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -67338,7 +68041,7 @@ var LRNConfig = {
   kernelFunc: lrn
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/lrn_grad_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/lrn_grad_gpu.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -67424,7 +68127,7 @@ var LRNGradProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/LRNGrad.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/LRNGrad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -67454,7 +68157,7 @@ var LRNGradConfig = {
   kernelFunc: lrnGrad
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Max_impl.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Max_impl.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -67483,7 +68186,7 @@ function maxImpl2(x, reduceShape, outShape, backend2) {
   return reshapedOutput;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Max.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Max.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -67556,7 +68259,7 @@ var maxConfig2 = {
   kernelFunc: max4
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Maximum.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Maximum.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -67593,7 +68296,7 @@ var maximumConfig2 = {
   kernelFunc: maximum4
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/MaxPool.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/MaxPool.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -67630,7 +68333,7 @@ var maxPoolConfig2 = {
   kernelFunc: maxPool3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/MaxPool3D.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/MaxPool3D.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -67662,7 +68365,7 @@ var maxPool3DConfig2 = {
   kernelFunc: maxPool3d2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/max_pool_backprop_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/max_pool_backprop_gpu.js
 /**
  * @license
  * Copyright 2017 Google LLC. All Rights Reserved.
@@ -67825,7 +68528,7 @@ var MaxPool3DBackpropProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/MaxPool3DGrad.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/MaxPool3DGrad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -67862,7 +68565,7 @@ var maxPoolGrad3DConfig = {
   kernelFunc: maxPool3DGrad2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/MaxPoolGrad.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/MaxPoolGrad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -67900,7 +68603,7 @@ var maxPoolGradConfig3 = {
   kernelFunc: maxPoolGrad3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/MaxPoolWithArgmax_impl.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/MaxPoolWithArgmax_impl.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -67925,7 +68628,7 @@ function maxPoolWithArgmaxImpl2(x, includeBatchInIndex, convInfo, backend2) {
   return [poolOutput, indexOutput];
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/MaxPoolWithArgmax.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/MaxPoolWithArgmax.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -67958,7 +68661,7 @@ var maxPoolWithArgmaxConfig2 = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Mean_impl.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Mean_impl.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -67987,7 +68690,7 @@ function meanImpl(x, reduceShape, outShape, backend2) {
   return reshapedOutput;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Mean.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Mean.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -68051,7 +68754,7 @@ var meanConfig2 = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Min.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Min.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -68106,7 +68809,7 @@ var minConfig2 = {
   kernelFunc: min4
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Minimum.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Minimum.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -68143,7 +68846,7 @@ var minimumConfig2 = {
   kernelFunc: minimum4
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/mirror_pad_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/mirror_pad_gpu.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -68207,7 +68910,7 @@ var MirrorPadProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/mirror_pad_packed_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/mirror_pad_packed_gpu.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -68307,7 +69010,7 @@ var MirrorPadPackedProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/MirrorPad.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/MirrorPad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -68337,7 +69040,7 @@ var mirrorPadConfig2 = {
   kernelFunc: mirrorPadKernelFunc
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Mod.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Mod.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -68372,7 +69075,7 @@ var modConfig2 = {
   kernelFunc: mod3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/multinomial_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/multinomial_gpu.js
 /**
  * @license
  * Copyright 2017 Google LLC. All Rights Reserved.
@@ -68427,7 +69130,7 @@ var MultinomialProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/RealDiv.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/RealDiv.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -68475,7 +69178,7 @@ var realDivConfig2 = {
   kernelFunc: realDiv
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Sub.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Sub.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -68505,7 +69208,7 @@ var subConfig2 = {
   kernelFunc: sub3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Softmax.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Softmax.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -68553,7 +69256,7 @@ var softmaxConfig2 = {
   kernelFunc: softmax4
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Multinomial.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Multinomial.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -68591,7 +69294,7 @@ var multinomialConfig2 = {
   kernelFunc: multinomial3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Neg.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Neg.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -68631,7 +69334,7 @@ var negConfig2 = {
   kernelFunc: neg3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/NonMaxSuppressionV3.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/NonMaxSuppressionV3.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -68665,7 +69368,7 @@ var nonMaxSuppressionV3Config2 = {
   kernelFunc: nonMaxSuppressionV32
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/NonMaxSuppressionV4.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/NonMaxSuppressionV4.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -68702,7 +69405,7 @@ var nonMaxSuppressionV4Config2 = {
   kernelFunc: nonMaxSuppressionV42
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/NonMaxSuppressionV5.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/NonMaxSuppressionV5.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -68743,7 +69446,7 @@ var nonMaxSuppressionV5Config2 = {
   kernelFunc: nonMaxSuppressionV52
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/onehot_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/onehot_gpu.js
 /**
  * @license
  * Copyright 2017 Google LLC. All Rights Reserved.
@@ -68775,7 +69478,7 @@ var OneHotProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/OneHot.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/OneHot.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -68812,7 +69515,7 @@ var oneHotConfig2 = {
   kernelFunc: oneHot3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/ZerosLike.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/ZerosLike.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -68860,7 +69563,7 @@ var zerosLikeConfig2 = {
   kernelFunc: zerosLike3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/OnesLike.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/OnesLike.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -68903,7 +69606,7 @@ var onesLikeConfig2 = {
   kernelFunc: onesLike3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Pack.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Pack.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -68948,7 +69651,7 @@ var packConfig2 = {
   kernelFunc: pack2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/pad_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/pad_gpu.js
 /**
  * @license
  * Copyright 2017 Google LLC. All Rights Reserved.
@@ -69017,7 +69720,7 @@ var PadProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/pad_packed_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/pad_packed_gpu.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -69097,7 +69800,7 @@ var PadPackedProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/PadV2.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/PadV2.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -69128,7 +69831,7 @@ var padV2Config2 = {
   kernelFunc: padV22
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Pow.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Pow.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -69179,7 +69882,7 @@ var powConfig2 = {
   kernelFunc: pow3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Prod.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Prod.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -69241,7 +69944,7 @@ var prodConfig2 = {
   kernelFunc: prod3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Range.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Range.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -69270,7 +69973,7 @@ var rangeConfig2 = {
   kernelFunc: range4
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Reciprocal.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Reciprocal.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -69295,7 +69998,7 @@ var reciprocalConfig2 = {
   kernelFunc: reciprocal3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Relu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Relu.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -69333,7 +70036,7 @@ var reluConfig2 = {
   kernelFunc: relu3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Relu6.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Relu6.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -69371,7 +70074,7 @@ var relu6Config2 = {
   kernelFunc: relu63
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/resize_bilinear_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/resize_bilinear_gpu.js
 /**
  * @license
  * Copyright 2017 Google LLC. All Rights Reserved.
@@ -69445,7 +70148,7 @@ var ResizeBilinearProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/resize_bilinear_packed_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/resize_bilinear_packed_gpu.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -69565,7 +70268,7 @@ var ResizeBilinearPackedProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/ResizeBilinear.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/ResizeBilinear.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -69596,7 +70299,7 @@ var resizeBilinearConfig2 = {
   kernelFunc: resizeBilinear3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/resize_bilinear_backprop_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/resize_bilinear_backprop_gpu.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -69719,7 +70422,7 @@ var ResizeBilinearBackpropProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/ResizeBilinearGrad.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/ResizeBilinearGrad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -69749,7 +70452,7 @@ var resizeBilinearGradConfig3 = {
   kernelFunc: resizeBilinearGrad2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/resize_nearest_neighbor_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/resize_nearest_neighbor_gpu.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -69813,7 +70516,7 @@ var ResizeNearestNeighborProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/ResizeNearestNeighbor.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/ResizeNearestNeighbor.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -69844,7 +70547,7 @@ var resizeNearestNeighborConfig2 = {
   kernelFunc: resizeNearestNeighbor3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/resize_nearest_neighbor_backprop_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/resize_nearest_neighbor_backprop_gpu.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -69956,7 +70659,7 @@ var ResizeNearestNeigborBackpropProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/ResizeNearestNeighborGrad.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/ResizeNearestNeighborGrad.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -69986,7 +70689,7 @@ var resizeNearestNeighborGradConfig3 = {
   kernelFunc: resizeNearestNeighborGrad2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/reverse_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/reverse_gpu.js
 /**
  * @license
  * Copyright 2017 Google LLC. All Rights Reserved.
@@ -70037,7 +70740,7 @@ var ReverseProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/reverse_packed_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/reverse_packed_gpu.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -70133,7 +70836,7 @@ var ReversePackedProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Reverse.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Reverse.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -70168,7 +70871,7 @@ var reverseConfig2 = {
   kernelFunc: reverse3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/rotate_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/rotate_gpu.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -70230,7 +70933,7 @@ var RotateProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/RotateWithOffset.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/RotateWithOffset.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -70262,7 +70965,7 @@ var rotateWithOffsetConfig2 = {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Round.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Round.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -70302,7 +71005,7 @@ var roundConfig2 = {
   kernelFunc: round4
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Rsqrt.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Rsqrt.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -70327,7 +71030,7 @@ var rsqrtConfig2 = {
   kernelFunc: rsqrt3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/scatter_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/scatter_gpu.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -70389,7 +71092,7 @@ var ScatterProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/ScatterNd.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/ScatterNd.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -70433,7 +71136,7 @@ var scatterNdConfig2 = {
   kernelFunc: scatterNd2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/select_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/select_gpu.js
 /**
  * @license
  * Copyright 2017 Google LLC. All Rights Reserved.
@@ -70490,7 +71193,7 @@ var SelectProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Select.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Select.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -70519,7 +71222,7 @@ var selectConfig2 = {
   kernelFunc: select2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Selu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Selu.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -70550,7 +71253,7 @@ var seluConfig2 = {
   kernelFunc: selu3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Sigmoid.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Sigmoid.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -70575,7 +71278,7 @@ var sigmoidConfig2 = {
   kernelFunc: sigmoid3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Sign.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Sign.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -70603,7 +71306,7 @@ var signConfig2 = {
   kernelFunc: sign3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Sin.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Sin.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -70630,7 +71333,7 @@ var sinConfig2 = {
   kernelFunc: sin3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Sinh.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Sinh.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -70658,7 +71361,7 @@ var sinhConfig2 = {
   kernelFunc: sinh3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Softplus.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Softplus.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -70703,7 +71406,7 @@ var softplusConfig2 = {
   kernelFunc: softplus3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/SpaceToBatchND.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/SpaceToBatchND.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -70759,7 +71462,7 @@ var spaceToBatchNDConfig2 = {
   kernelFunc: spaceToBatchND3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/SparseToDense.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/SparseToDense.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -70794,7 +71497,7 @@ var sparseToDenseConfig2 = {
   kernelFunc: sparseToDense3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/SplitV.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/SplitV.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -70834,7 +71537,7 @@ var splitVConfig2 = {
   kernelFunc: splitV2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Sqrt.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Sqrt.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -70859,7 +71562,7 @@ var sqrtConfig2 = {
   kernelFunc: sqrt3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Square.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Square.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -70884,7 +71587,7 @@ var squareConfig2 = {
   kernelFunc: square3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/SquaredDifference.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/SquaredDifference.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -70909,7 +71612,7 @@ var squaredDifferenceConfig2 = {
   kernelFunc: squaredDifference3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Step.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Step.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -70940,7 +71643,7 @@ var stepConfig2 = {
   kernelFunc: step3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/strided_slice_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/strided_slice_gpu.js
 /**
  * @license
  * Copyright 2017 Google LLC. All Rights Reserved.
@@ -70986,7 +71689,7 @@ var StridedSliceProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/StridedSlice.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/StridedSlice.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -71040,7 +71743,7 @@ var stridedSliceConfig2 = {
   kernelFunc: stridedSlice3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Tan.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Tan.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -71065,7 +71768,7 @@ var tanConfig2 = {
   kernelFunc: tan3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Tanh.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Tanh.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -71093,7 +71796,7 @@ var tanhConfig2 = {
   kernelFunc: tanh4
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/tile_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/tile_gpu.js
 /**
  * @license
  * Copyright 2017 Google LLC. All Rights Reserved.
@@ -71145,7 +71848,7 @@ function getSourceCoords3(aShape) {
   return sourceCoords.join();
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Tile.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Tile.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -71183,7 +71886,7 @@ var tileConfig2 = {
   kernelFunc: tile4
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/TopK.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/TopK.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -71217,7 +71920,7 @@ var topKConfig2 = {
   kernelFunc: topK2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/transform_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/transform_gpu.js
 /**
  * @license
  * Copyright 2021 Google LLC. All Rights Reserved.
@@ -71373,7 +72076,7 @@ var TransformProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Transform.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Transform.js
 /**
  * @license
  * Copyright 2021 Google LLC. All Rights Reserved.
@@ -71411,7 +72114,7 @@ var transformConfig2 = {
   kernelFunc: transform3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Unique.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Unique.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -71447,7 +72150,7 @@ var uniqueConfig2 = {
   kernelFunc: unique4
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Unpack.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/Unpack.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -71502,7 +72205,7 @@ var unpackConfig2 = {
   kernelFunc: unpack2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/segment_gpu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/segment_gpu.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -71651,7 +72354,7 @@ var SegmentOpProgram = class {
   }
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/UnsortedSegmentSum.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/kernels/UnsortedSegmentSum.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -71729,7 +72432,7 @@ var unsortedSegmentSumConfig2 = {
   kernelFunc: unsortedSegmentSum3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/register_all_kernels.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/register_all_kernels.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -71795,6 +72498,7 @@ var kernelConfigs2 = [
   depthwiseConv2dNativeConfig2,
   diagConfig2,
   dilation2DConfig,
+  einsumConfig2,
   eluConfig2,
   eluGradConfig3,
   equalConfig2,
@@ -71905,7 +72609,7 @@ for (const kernelConfig of kernelConfigs2) {
   registerKernel(kernelConfig);
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.3.0_@tensorflow+tfjs-core@3.3.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/index.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@3.4.0_@tensorflow+tfjs-core@3.4.0/node_modules/@tensorflow/tfjs-backend-webgl/dist/index.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -71923,11 +72627,11 @@ for (const kernelConfig of kernelConfigs2) {
  * =============================================================================
  */
 
-// node_modules/.pnpm/@tensorflow+tfjs@3.3.0_seedrandom@3.0.5/node_modules/@tensorflow/tfjs/dist/version.js
+// node_modules/.pnpm/@tensorflow+tfjs@3.4.0_seedrandom@3.0.5/node_modules/@tensorflow/tfjs/dist/version.js
 /** @license See the LICENSE file. */
-var version7 = "3.3.0";
+var version7 = "3.4.0";
 
-// node_modules/.pnpm/@tensorflow+tfjs@3.3.0_seedrandom@3.0.5/node_modules/@tensorflow/tfjs/dist/index.js
+// node_modules/.pnpm/@tensorflow+tfjs@3.4.0_seedrandom@3.0.5/node_modules/@tensorflow/tfjs/dist/index.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -71954,7 +72658,7 @@ var version8 = {
   tfjs: version7
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/types.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/types.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -71988,7 +72692,7 @@ var FusableActivation;
   FusableActivation2[FusableActivation2["leakyrelu"] = 4] = "leakyrelu";
 })(FusableActivation || (FusableActivation = {}));
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/_FusedMatMul.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/_FusedMatMul.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -72062,7 +72766,7 @@ var fusedMatMulConfig = {
   kernelFunc: fusedBatchMatMul
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/unary_kernel.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/unary_kernel.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -72098,7 +72802,7 @@ function createUnaryKernelConfig(kernelName) {
   return {kernelName, backendName: "wasm", setupFunc: setupFunc3, kernelFunc: kernelFunc3};
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Abs.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Abs.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -72117,7 +72821,7 @@ function createUnaryKernelConfig(kernelName) {
  */
 var absConfig3 = createUnaryKernelConfig(Abs);
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/binary_kernel.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/binary_kernel.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -72181,7 +72885,7 @@ function createBinaryKernelConfig(kernelName, supportsFullBroadcast17, dtype) {
   return {kernelName, backendName: "wasm", setupFunc: setupFunc3, kernelFunc: kernelFunc3};
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Add.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Add.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -72201,7 +72905,7 @@ function createBinaryKernelConfig(kernelName, supportsFullBroadcast17, dtype) {
 var supportsFullBroadcast = true;
 var addConfig3 = createBinaryKernelConfig(Add, supportsFullBroadcast);
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/AddN.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/AddN.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -72246,7 +72950,7 @@ var addNConfig3 = {
   kernelFunc: addn
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Identity.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Identity.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -72277,7 +72981,7 @@ var identityConfig3 = {
   kernelFunc: identity4
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Transpose.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Transpose.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -72370,7 +73074,7 @@ var transposeConfig3 = {
   setupFunc: setup2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/kernel_utils.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/kernel_utils.js
 /**
  * @license
  * Copyright 2020 Google Inc. All Rights Reserved.
@@ -72411,7 +73115,125 @@ function permuteAxesAndTranspose(x, axis, backend2) {
   return {transposed: xTransposed, originalAxes, axes, inputWasTransposed};
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/ArgMax.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/All.js
+/**
+ * @license
+ * Copyright 2021 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+var wasmAll;
+function setup3(backend2) {
+  wasmAll = backend2.wasm.cwrap(All, null, ["number, number, number"]);
+}
+function all4(args) {
+  const {backend: backend2, inputs, attrs} = args;
+  const {axis, keepDims} = attrs;
+  const {x} = inputs;
+  const xId = backend2.dataIdMap.get(x.dataId).id;
+  let inputId = xId;
+  let input2 = x;
+  const {transposed, axes, originalAxes, inputWasTransposed} = permuteAxesAndTranspose(x, axis, backend2);
+  if (inputWasTransposed) {
+    const transposedId = backend2.dataIdMap.get(transposed.dataId).id;
+    input2 = transposed;
+    inputId = transposedId;
+  }
+  const inputRank = input2.shape.length;
+  backend_util_exports.assertAxesAreInnerMostDims("all", axes, inputRank);
+  const [outShape, reduceShape] = backend_util_exports.computeOutAndReduceShapes(input2.shape, axes);
+  const reduceSize = util_exports.sizeFromShape(reduceShape);
+  const out = backend2.makeOutput(outShape, x.dtype);
+  if (util_exports.sizeFromShape(input2.shape) !== 0) {
+    const outId = backend2.dataIdMap.get(out.dataId).id;
+    wasmAll(inputId, reduceSize, outId);
+  }
+  if (inputWasTransposed) {
+    backend2.disposeData(transposed.dataId);
+  }
+  if (keepDims) {
+    const newShape = backend_util_exports.expandShapeToKeepDim(out.shape, originalAxes);
+    out.shape = newShape;
+  }
+  return out;
+}
+var allConfig3 = {
+  kernelName: All,
+  backendName: "wasm",
+  setupFunc: setup3,
+  kernelFunc: all4
+};
+
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Any.js
+/**
+ * @license
+ * Copyright 2021 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+var wasmAny;
+function setup4(backend2) {
+  wasmAny = backend2.wasm.cwrap(Any, null, ["number, number, number"]);
+}
+function any4(args) {
+  const {backend: backend2, inputs, attrs} = args;
+  const {axis, keepDims} = attrs;
+  const {x} = inputs;
+  const xId = backend2.dataIdMap.get(x.dataId).id;
+  let inputId = xId;
+  let input2 = x;
+  const {transposed, axes, originalAxes, inputWasTransposed} = permuteAxesAndTranspose(x, axis, backend2);
+  if (inputWasTransposed) {
+    const transposedId = backend2.dataIdMap.get(transposed.dataId).id;
+    input2 = transposed;
+    inputId = transposedId;
+  }
+  const inputRank = input2.shape.length;
+  backend_util_exports.assertAxesAreInnerMostDims("any", axes, inputRank);
+  const [outShape, reduceShape] = backend_util_exports.computeOutAndReduceShapes(input2.shape, axes);
+  const reduceSize = util_exports.sizeFromShape(reduceShape);
+  const out = backend2.makeOutput(outShape, x.dtype);
+  if (util_exports.sizeFromShape(input2.shape) !== 0) {
+    const outId = backend2.dataIdMap.get(out.dataId).id;
+    wasmAny(inputId, reduceSize, outId);
+  }
+  if (inputWasTransposed) {
+    backend2.disposeData(transposed.dataId);
+  }
+  if (keepDims) {
+    const newShape = backend_util_exports.expandShapeToKeepDim(out.shape, originalAxes);
+    out.shape = newShape;
+  }
+  return out;
+}
+var anyConfig3 = {
+  kernelName: Any,
+  backendName: "wasm",
+  setupFunc: setup4,
+  kernelFunc: any4
+};
+
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/ArgMax.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -72429,7 +73251,7 @@ function permuteAxesAndTranspose(x, axis, backend2) {
  * =============================================================================
  */
 var wasmFunc2;
-function setup3(backend2) {
+function setup5(backend2) {
   wasmFunc2 = backend2.wasm.cwrap(ArgMax, null, [
     "number",
     "number",
@@ -72468,10 +73290,10 @@ var argMaxConfig3 = {
   kernelName: ArgMax,
   backendName: "wasm",
   kernelFunc: argmax,
-  setupFunc: setup3
+  setupFunc: setup5
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/AvgPool.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/AvgPool.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -72489,7 +73311,7 @@ var argMaxConfig3 = {
  * =============================================================================
  */
 var wasmAvgPool;
-function setup4(backend2) {
+function setup6(backend2) {
   wasmAvgPool = backend2.wasm.cwrap(AvgPool, null, [
     "number",
     "number",
@@ -72536,11 +73358,11 @@ function avgPool4(args) {
 var avgPoolConfig3 = {
   kernelName: AvgPool,
   backendName: "wasm",
-  setupFunc: setup4,
+  setupFunc: setup6,
   kernelFunc: avgPool4
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Reshape.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Reshape.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -72573,7 +73395,7 @@ var reshapeConfig3 = {
   kernelFunc: reshape5
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/BatchMatMul.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/BatchMatMul.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -72591,7 +73413,7 @@ var reshapeConfig3 = {
  * =============================================================================
  */
 var wasmBatchMatMul;
-function setup5(backend2) {
+function setup7(backend2) {
   wasmBatchMatMul = backend2.wasm.cwrap(BatchMatMul, null, [
     "number",
     "array",
@@ -72648,11 +73470,11 @@ function batchMatMul3(args) {
 var batchMatMulConfig3 = {
   kernelName: BatchMatMul,
   backendName: "wasm",
-  setupFunc: setup5,
+  setupFunc: setup7,
   kernelFunc: batchMatMul3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Cast.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Cast.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -72683,7 +73505,7 @@ var castConfig3 = {
   kernelFunc: cast5
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Ceil.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Ceil.js
 /**
  * @license
  * Copyright 2021 Google LLC. All Rights Reserved.
@@ -72702,7 +73524,7 @@ var castConfig3 = {
  */
 var ceilConfig3 = createUnaryKernelConfig(Ceil);
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/ClipByValue.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/ClipByValue.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -72720,7 +73542,7 @@ var ceilConfig3 = createUnaryKernelConfig(Ceil);
  * =============================================================================
  */
 var wasmClip;
-function setup6(backend2) {
+function setup8(backend2) {
   wasmClip = backend2.wasm.cwrap(ClipByValue, null, [
     "number",
     "number",
@@ -72741,11 +73563,11 @@ function clip2(args) {
 var clipByValueConfig2 = {
   kernelName: ClipByValue,
   backendName: "wasm",
-  setupFunc: setup6,
+  setupFunc: setup8,
   kernelFunc: clip2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Concat_impl.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Concat_impl.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -72788,7 +73610,7 @@ function concatImpl3(inputs, outShape, dtype, simplyConcat) {
   return outVals;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Range_impl.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Range_impl.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -72824,7 +73646,7 @@ function rangeImpl2(start, stop, step5, dtype) {
   return values;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Slice.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/kernels/Slice.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -72866,7 +73688,7 @@ function sliceImpl2(vals, begin, size, shape, dtype) {
   return outBuf.values;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.3.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/shared.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@3.4.0/node_modules/@tensorflow/tfjs-backend-cpu/dist/shared.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -72884,7 +73706,7 @@ function sliceImpl2(vals, begin, size, shape, dtype) {
  * =============================================================================
  */
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernel_utils/shared.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernel_utils/shared.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -72902,7 +73724,7 @@ function sliceImpl2(vals, begin, size, shape, dtype) {
  * =============================================================================
  */
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Concat.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Concat.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -72979,7 +73801,7 @@ var concatConfig3 = {
   kernelFunc: concat4
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Conv2D.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Conv2D.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -72997,7 +73819,7 @@ var concatConfig3 = {
  * =============================================================================
  */
 var wasmConv2d;
-function setup7(backend2) {
+function setup9(backend2) {
   wasmConv2d = backend2.wasm.cwrap(Conv2D, null, [
     "number",
     "number",
@@ -73052,11 +73874,11 @@ function conv2d5(args) {
 var conv2DConfig3 = {
   kernelName: Conv2D,
   backendName: "wasm",
-  setupFunc: setup7,
+  setupFunc: setup9,
   kernelFunc: conv2d5
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Conv2DBackpropInput.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Conv2DBackpropInput.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -73074,7 +73896,7 @@ var conv2DConfig3 = {
  * =============================================================================
  */
 var wasmConv2DBackpropInput;
-function setup8(backend2) {
+function setup10(backend2) {
   wasmConv2DBackpropInput = backend2.wasm.cwrap(Conv2DBackpropInput, null, [
     "number",
     "number",
@@ -73137,11 +73959,11 @@ function conv2DBackpropInput4(args) {
 var conv2DBackpropInputConfig3 = {
   kernelName: Conv2DBackpropInput,
   backendName: "wasm",
-  setupFunc: setup8,
+  setupFunc: setup10,
   kernelFunc: conv2DBackpropInput4
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Cos.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Cos.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -73160,7 +73982,7 @@ var conv2DBackpropInputConfig3 = {
  */
 var cosConfig3 = createUnaryKernelConfig(Cos);
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/CropAndResize.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/CropAndResize.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -73183,7 +74005,7 @@ var InterpolationMethod;
   InterpolationMethod2[InterpolationMethod2["nearest"] = 1] = "nearest";
 })(InterpolationMethod || (InterpolationMethod = {}));
 var wasmCropAndResize;
-function setup9(backend2) {
+function setup11(backend2) {
   wasmCropAndResize = backend2.wasm.cwrap(CropAndResize, null, [
     "number",
     "number",
@@ -73225,11 +74047,11 @@ function cropAndResize4(args) {
 var cropAndResizeConfig3 = {
   kernelName: CropAndResize,
   backendName: "wasm",
-  setupFunc: setup9,
+  setupFunc: setup11,
   kernelFunc: cropAndResize4
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Cumsum.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Cumsum.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -73247,7 +74069,7 @@ var cropAndResizeConfig3 = {
  * =============================================================================
  */
 var wasmCumsum;
-function setup10(backend2) {
+function setup12(backend2) {
   wasmCumsum = backend2.wasm.cwrap(Cumsum, null, [
     "number",
     "number",
@@ -73287,11 +74109,11 @@ function cumsum4(args) {
 var cumsumConfig3 = {
   kernelName: Cumsum,
   backendName: "wasm",
-  setupFunc: setup10,
+  setupFunc: setup12,
   kernelFunc: cumsum4
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/DepthToSpace.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/DepthToSpace.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -73309,7 +74131,7 @@ var cumsumConfig3 = {
  * =============================================================================
  */
 var wasmDepthToSpace;
-function setup11(backend2) {
+function setup13(backend2) {
   wasmDepthToSpace = backend2.wasm.cwrap(DepthToSpace, null, [
     "number",
     "number",
@@ -73349,11 +74171,11 @@ function depthToSpace4(args) {
 var depthToSpaceConfig3 = {
   kernelName: DepthToSpace,
   backendName: "wasm",
-  setupFunc: setup11,
+  setupFunc: setup13,
   kernelFunc: depthToSpace4
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/DepthwiseConv2dNative.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/DepthwiseConv2dNative.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -73371,7 +74193,7 @@ var depthToSpaceConfig3 = {
  * =============================================================================
  */
 var wasmDepthwiseConv2d;
-function setup12(backend2) {
+function setup14(backend2) {
   wasmDepthwiseConv2d = backend2.wasm.cwrap(DepthwiseConv2dNative, null, [
     "number",
     "number",
@@ -73426,11 +74248,11 @@ function depthwiseConv2d5(args) {
 var depthwiseConv2dNativeConfig3 = {
   kernelName: DepthwiseConv2dNative,
   backendName: "wasm",
-  setupFunc: setup12,
+  setupFunc: setup14,
   kernelFunc: depthwiseConv2d5
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Equal.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Equal.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -73450,7 +74272,7 @@ var depthwiseConv2dNativeConfig3 = {
 var supportsFullBroadcast2 = false;
 var equalConfig3 = createBinaryKernelConfig(Equal, supportsFullBroadcast2, "bool");
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Exp.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Exp.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -73469,7 +74291,7 @@ var equalConfig3 = createBinaryKernelConfig(Equal, supportsFullBroadcast2, "bool
  */
 var expConfig3 = createUnaryKernelConfig(Exp);
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/ExpandDims.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/ExpandDims.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -73506,7 +74328,7 @@ var expandDimsConfig3 = {
   kernelFunc: expandDims5
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Fill.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Fill.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -73536,7 +74358,7 @@ var fillConfig3 = {
   kernelFunc: fill4
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/FlipLeftRight.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/FlipLeftRight.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -73554,7 +74376,7 @@ var fillConfig3 = {
  * =============================================================================
  */
 var wasmFlipLeftRight;
-function setup13(backend2) {
+function setup15(backend2) {
   wasmFlipLeftRight = backend2.wasm.cwrap(FlipLeftRight, null, [
     "number",
     "number",
@@ -73578,10 +74400,10 @@ var flipLeftRightConfig3 = {
   kernelName: FlipLeftRight,
   backendName: "wasm",
   kernelFunc: flipLeftRight2,
-  setupFunc: setup13
+  setupFunc: setup15
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Floor.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Floor.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -73600,7 +74422,7 @@ var flipLeftRightConfig3 = {
  */
 var floorConfig3 = createUnaryKernelConfig(Floor);
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/FloorDiv.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/FloorDiv.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -73620,7 +74442,7 @@ var floorConfig3 = createUnaryKernelConfig(Floor);
 var supportsFullBroadcast3 = false;
 var floorDivConfig3 = createBinaryKernelConfig(FloorDiv, supportsFullBroadcast3);
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/FusedBatchNorm.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/FusedBatchNorm.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -73638,7 +74460,7 @@ var floorDivConfig3 = createBinaryKernelConfig(FloorDiv, supportsFullBroadcast3)
  * =============================================================================
  */
 var wasmBatchNorm;
-function setup14(backend2) {
+function setup16(backend2) {
   wasmBatchNorm = backend2.wasm.cwrap(FusedBatchNorm, null, ["number", "number", "number", "number", "number", "number", "number"]);
 }
 function fusedBatchNorm(args) {
@@ -73661,11 +74483,11 @@ function fusedBatchNorm(args) {
 var fusedBatchNormConfig = {
   kernelName: FusedBatchNorm,
   backendName: "wasm",
-  setupFunc: setup14,
+  setupFunc: setup16,
   kernelFunc: fusedBatchNorm
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/FusedConv2D.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/FusedConv2D.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -73683,7 +74505,7 @@ var fusedBatchNormConfig = {
  * =============================================================================
  */
 var wasmFusedConv2d;
-function setup15(backend2) {
+function setup17(backend2) {
   wasmFusedConv2d = backend2.wasm.cwrap(FusedConv2D, null, [
     "number",
     "number",
@@ -73760,11 +74582,11 @@ function fusedConv2d2(args) {
 var fusedConv2DConfig3 = {
   kernelName: FusedConv2D,
   backendName: "wasm",
-  setupFunc: setup15,
+  setupFunc: setup17,
   kernelFunc: fusedConv2d2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/FusedDepthwiseConv2D.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/FusedDepthwiseConv2D.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -73782,7 +74604,7 @@ var fusedConv2DConfig3 = {
  * =============================================================================
  */
 var wasmFusedDepthwiseConv2d;
-function setup16(backend2) {
+function setup18(backend2) {
   wasmFusedDepthwiseConv2d = backend2.wasm.cwrap(FusedDepthwiseConv2D, null, [
     "number",
     "number",
@@ -73859,11 +74681,11 @@ function fusedDepthwiseConv2d(args) {
 var fusedDepthwiseConv2DConfig3 = {
   kernelName: FusedDepthwiseConv2D,
   backendName: "wasm",
-  setupFunc: setup16,
+  setupFunc: setup18,
   kernelFunc: fusedDepthwiseConv2d
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/GatherNd.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/GatherNd.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -73881,7 +74703,7 @@ var fusedDepthwiseConv2DConfig3 = {
  * =============================================================================
  */
 var wasmGatherNd;
-function setup17(backend2) {
+function setup19(backend2) {
   wasmGatherNd = backend2.wasm.cwrap(GatherNd, null, [
     "number",
     "number",
@@ -73915,11 +74737,11 @@ function gatherNd3(args) {
 var gatherNdConfig3 = {
   kernelName: GatherNd,
   backendName: "wasm",
-  setupFunc: setup17,
+  setupFunc: setup19,
   kernelFunc: gatherNd3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/GatherV2.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/GatherV2.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -73937,7 +74759,7 @@ var gatherNdConfig3 = {
  * =============================================================================
  */
 var wasmGather;
-function setup18(backend2) {
+function setup20(backend2) {
   wasmGather = backend2.wasm.cwrap("Gather", null, [
     "number",
     "number",
@@ -74000,11 +74822,11 @@ function gatherV23(args) {
 var gatherV2Config3 = {
   kernelName: GatherV2,
   backendName: "wasm",
-  setupFunc: setup18,
+  setupFunc: setup20,
   kernelFunc: gatherV23
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Greater.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Greater.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -74024,7 +74846,7 @@ var gatherV2Config3 = {
 var supportsFullBroadcast4 = false;
 var greaterConfig3 = createBinaryKernelConfig(Greater, supportsFullBroadcast4, "bool");
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/GreaterEqual.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/GreaterEqual.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -74044,7 +74866,7 @@ var greaterConfig3 = createBinaryKernelConfig(Greater, supportsFullBroadcast4, "
 var supportsFullBroadcast5 = false;
 var greaterEqualConfig3 = createBinaryKernelConfig(GreaterEqual, supportsFullBroadcast5, "bool");
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/LeakyRelu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/LeakyRelu.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -74086,7 +74908,7 @@ var leakyReluConfig3 = {
   kernelFunc: leakyRelu4
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Less.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Less.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -74106,7 +74928,7 @@ var leakyReluConfig3 = {
 var supportsFullBroadcast6 = false;
 var lessConfig3 = createBinaryKernelConfig(Less, supportsFullBroadcast6, "bool");
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/LessEqual.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/LessEqual.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -74126,7 +74948,7 @@ var lessConfig3 = createBinaryKernelConfig(Less, supportsFullBroadcast6, "bool")
 var supportsFullBroadcast7 = false;
 var lessEqualConfig3 = createBinaryKernelConfig(LessEqual, supportsFullBroadcast7, "bool");
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Log.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Log.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -74145,7 +74967,7 @@ var lessEqualConfig3 = createBinaryKernelConfig(LessEqual, supportsFullBroadcast
  */
 var logConfig3 = createUnaryKernelConfig(Log);
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/LogicalAnd.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/LogicalAnd.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -74165,7 +74987,7 @@ var logConfig3 = createUnaryKernelConfig(Log);
 var supportsFullBroadcast8 = false;
 var logicalAndConfig3 = createBinaryKernelConfig(LogicalAnd, supportsFullBroadcast8, "bool");
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Max.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Max.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -74183,7 +75005,7 @@ var logicalAndConfig3 = createBinaryKernelConfig(LogicalAnd, supportsFullBroadca
  * =============================================================================
  */
 var wasmMax;
-function setup19(backend2) {
+function setup21(backend2) {
   wasmMax = backend2.wasm.cwrap(Max, null, ["number, number, number"]);
 }
 function max5(args) {
@@ -74220,11 +75042,11 @@ function max5(args) {
 var maxConfig3 = {
   kernelName: Max,
   backendName: "wasm",
-  setupFunc: setup19,
+  setupFunc: setup21,
   kernelFunc: max5
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Maximum.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Maximum.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -74244,7 +75066,7 @@ var maxConfig3 = {
 var supportsFullBroadcast9 = false;
 var maximumConfig3 = createBinaryKernelConfig(Maximum, supportsFullBroadcast9);
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/MaxPool.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/MaxPool.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -74262,7 +75084,7 @@ var maximumConfig3 = createBinaryKernelConfig(Maximum, supportsFullBroadcast9);
  * =============================================================================
  */
 var wasmMaxPool;
-function setup20(backend2) {
+function setup22(backend2) {
   wasmMaxPool = backend2.wasm.cwrap(MaxPool, null, [
     "number",
     "number",
@@ -74312,11 +75134,11 @@ function maxPool4(args) {
 var maxPoolConfig3 = {
   kernelName: MaxPool,
   backendName: "wasm",
-  setupFunc: setup20,
+  setupFunc: setup22,
   kernelFunc: maxPool4
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Mean.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Mean.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -74334,7 +75156,7 @@ var maxPoolConfig3 = {
  * =============================================================================
  */
 var wasmMean;
-function setup21(backend2) {
+function setup23(backend2) {
   wasmMean = backend2.wasm.cwrap(Mean, null, ["number, number, number"]);
 }
 function mean3(args) {
@@ -74382,11 +75204,11 @@ function mean3(args) {
 var meanConfig3 = {
   kernelName: Mean,
   backendName: "wasm",
-  setupFunc: setup21,
+  setupFunc: setup23,
   kernelFunc: mean3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Min.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Min.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -74404,7 +75226,7 @@ var meanConfig3 = {
  * =============================================================================
  */
 var wasmMin;
-function setup22(backend2) {
+function setup24(backend2) {
   wasmMin = backend2.wasm.cwrap(Min, null, ["number, number, number"]);
 }
 function min5(args) {
@@ -74443,11 +75265,11 @@ function min5(args) {
 var minConfig3 = {
   kernelName: Min,
   backendName: "wasm",
-  setupFunc: setup22,
+  setupFunc: setup24,
   kernelFunc: min5
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Minimum.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Minimum.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -74467,7 +75289,63 @@ var minConfig3 = {
 var supportsFullBroadcast10 = false;
 var minimumConfig3 = createBinaryKernelConfig(Minimum, supportsFullBroadcast10);
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Multiply.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/MirrorPad.js
+/**
+ * @license
+ * Copyright 2021 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+var MirrorPaddingMode;
+(function(MirrorPaddingMode2) {
+  MirrorPaddingMode2[MirrorPaddingMode2["reflect"] = 0] = "reflect";
+  MirrorPaddingMode2[MirrorPaddingMode2["symmetric"] = 1] = "symmetric";
+})(MirrorPaddingMode || (MirrorPaddingMode = {}));
+var wasmMirrorPad;
+function setup25(backend2) {
+  wasmMirrorPad = backend2.wasm.cwrap(MirrorPad, null, [
+    "number",
+    "array",
+    "number",
+    "number",
+    "array",
+    "array",
+    "number",
+    "number"
+  ]);
+}
+function mirrorPad3(args) {
+  const {inputs: {x}, backend: backend2, attrs: {paddings, mode}} = args;
+  const outShape = paddings.map((p2, i) => p2[0] + x.shape[i] + p2[1]);
+  const xId = backend2.dataIdMap.get(x.dataId).id;
+  const out = backend2.makeOutput(outShape, x.dtype);
+  const outId = backend2.dataIdMap.get(out.dataId).id;
+  const xShapeBytes = new Uint8Array(new Int32Array(x.shape).buffer);
+  const prePaddingsFlat = paddings.map((padTuple) => padTuple[0]);
+  const postPaddingsFlat = paddings.map((padTuple) => padTuple[1]);
+  const prePaddingsBytes = new Uint8Array(new Int32Array(prePaddingsFlat).buffer);
+  const postPaddingsBytes = new Uint8Array(new Int32Array(postPaddingsFlat).buffer);
+  wasmMirrorPad(xId, xShapeBytes, x.shape.length, CppDType[x.dtype], prePaddingsBytes, postPaddingsBytes, MirrorPaddingMode[mode], outId);
+  return out;
+}
+var mirrorPadConfig3 = {
+  kernelName: MirrorPad,
+  backendName: "wasm",
+  kernelFunc: mirrorPad3,
+  setupFunc: setup25
+};
+
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Multiply.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -74487,7 +75365,7 @@ var minimumConfig3 = createBinaryKernelConfig(Minimum, supportsFullBroadcast10);
 var supportsFullBroadcast11 = true;
 var multiplyConfig3 = createBinaryKernelConfig(Multiply, supportsFullBroadcast11);
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Neg.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Neg.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -74506,7 +75384,7 @@ var multiplyConfig3 = createBinaryKernelConfig(Multiply, supportsFullBroadcast11
  */
 var negConfig3 = createUnaryKernelConfig(Neg);
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/NonMaxSuppression_util.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/NonMaxSuppression_util.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -74533,7 +75411,7 @@ function parseResultStruct(backend2, resOffset) {
   return {pSelectedIndices, selectedSize, pSelectedScores, pValidOutputs};
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/NonMaxSuppressionV3.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/NonMaxSuppressionV3.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -74551,7 +75429,7 @@ function parseResultStruct(backend2, resOffset) {
  * =============================================================================
  */
 var wasmFunc4;
-function setup23(backend2) {
+function setup26(backend2) {
   wasmFunc4 = backend2.wasm.cwrap(NonMaxSuppressionV3, "number", [
     "number",
     "number",
@@ -74576,11 +75454,11 @@ function kernelFunc(args) {
 var nonMaxSuppressionV3Config3 = {
   kernelName: NonMaxSuppressionV3,
   backendName: "wasm",
-  setupFunc: setup23,
+  setupFunc: setup26,
   kernelFunc
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/NonMaxSuppressionV4.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/NonMaxSuppressionV4.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -74598,7 +75476,7 @@ var nonMaxSuppressionV3Config3 = {
  * =============================================================================
  */
 var wasmFunc5;
-function setup24(backend2) {
+function setup27(backend2) {
   wasmFunc5 = backend2.wasm.cwrap(NonMaxSuppressionV4, "number", [
     "number",
     "number",
@@ -74624,11 +75502,11 @@ function nonMaxSuppressionV43(args) {
 var nonMaxSuppressionV4Config3 = {
   kernelName: NonMaxSuppressionV4,
   backendName: "wasm",
-  setupFunc: setup24,
+  setupFunc: setup27,
   kernelFunc: nonMaxSuppressionV43
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/NonMaxSuppressionV5.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/NonMaxSuppressionV5.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -74646,7 +75524,7 @@ var nonMaxSuppressionV4Config3 = {
  * =============================================================================
  */
 var wasmFunc6;
-function setup25(backend2) {
+function setup28(backend2) {
   wasmFunc6 = backend2.wasm.cwrap(NonMaxSuppressionV5, "number", [
     "number",
     "number",
@@ -74672,11 +75550,11 @@ function kernelFunc2(args) {
 var nonMaxSuppressionV5Config3 = {
   kernelName: NonMaxSuppressionV5,
   backendName: "wasm",
-  setupFunc: setup25,
+  setupFunc: setup28,
   kernelFunc: kernelFunc2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/NotEqual.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/NotEqual.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -74696,7 +75574,7 @@ var nonMaxSuppressionV5Config3 = {
 var supportsFullBroadcast12 = false;
 var notEqualConfig3 = createBinaryKernelConfig(NotEqual, supportsFullBroadcast12, "bool");
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/OneHot.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/OneHot.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -74714,7 +75592,7 @@ var notEqualConfig3 = createBinaryKernelConfig(NotEqual, supportsFullBroadcast12
  * =============================================================================
  */
 var wasmOneHot;
-function setup26(backend2) {
+function setup29(backend2) {
   wasmOneHot = backend2.wasm.cwrap(OneHot, null, [
     "number",
     "number",
@@ -74737,11 +75615,11 @@ function oneHot4(args) {
 var oneHotConfig3 = {
   kernelName: OneHot,
   backendName: "wasm",
-  setupFunc: setup26,
+  setupFunc: setup29,
   kernelFunc: oneHot4
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/OnesLike.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/OnesLike.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -74771,7 +75649,7 @@ var onesLikeConfig3 = {
   kernelFunc: onesLike4
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Pack.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Pack.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -74816,7 +75694,7 @@ var packConfig3 = {
   kernelFunc: pack3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/PadV2.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/PadV2.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -74834,7 +75712,7 @@ var packConfig3 = {
  * =============================================================================
  */
 var wasmPadV2;
-function setup27(backend2) {
+function setup30(backend2) {
   wasmPadV2 = backend2.wasm.cwrap(PadV2, null, [
     "number",
     "array",
@@ -74864,10 +75742,10 @@ var padV2Config3 = {
   kernelName: PadV2,
   backendName: "wasm",
   kernelFunc: pad2,
-  setupFunc: setup27
+  setupFunc: setup30
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Pow.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Pow.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -74887,7 +75765,7 @@ var padV2Config3 = {
 var supportsFullBroadcast13 = false;
 var powConfig3 = createBinaryKernelConfig(Pow, supportsFullBroadcast13);
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Prelu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Prelu.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -74905,7 +75783,7 @@ var powConfig3 = createBinaryKernelConfig(Pow, supportsFullBroadcast13);
  * =============================================================================
  */
 var wasmPrelu;
-function setup28(backend2) {
+function setup31(backend2) {
   wasmPrelu = backend2.wasm.cwrap(Prelu, null, [
     "number",
     "number",
@@ -74925,11 +75803,11 @@ function prelu5(args) {
 var preluConfig3 = {
   kernelName: Prelu,
   backendName: "wasm",
-  setupFunc: setup28,
+  setupFunc: setup31,
   kernelFunc: prelu5
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Prod.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Prod.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -74947,7 +75825,7 @@ var preluConfig3 = {
  * =============================================================================
  */
 var wasmProd;
-function setup29(backend2) {
+function setup32(backend2) {
   wasmProd = backend2.wasm.cwrap(Prod, null, [
     "number",
     "number",
@@ -74992,11 +75870,11 @@ function prod4(args) {
 var prodConfig3 = {
   kernelName: Prod,
   backendName: "wasm",
-  setupFunc: setup29,
+  setupFunc: setup32,
   kernelFunc: prod4
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Range.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Range.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -75028,7 +75906,7 @@ var rangeConfig3 = {
   kernelFunc: range5
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/RealDiv.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/RealDiv.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -75048,7 +75926,7 @@ var rangeConfig3 = {
 var supportsFullBroadcast14 = true;
 var realDivConfig3 = createBinaryKernelConfig(RealDiv, supportsFullBroadcast14);
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Relu.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Relu.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -75067,7 +75945,7 @@ var realDivConfig3 = createBinaryKernelConfig(RealDiv, supportsFullBroadcast14);
  */
 var reluConfig3 = createUnaryKernelConfig(Relu);
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Relu6.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Relu6.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -75086,7 +75964,7 @@ var reluConfig3 = createUnaryKernelConfig(Relu);
  */
 var relu6Config3 = createUnaryKernelConfig(Relu6);
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/ResizeBilinear.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/ResizeBilinear.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -75104,7 +75982,7 @@ var relu6Config3 = createUnaryKernelConfig(Relu6);
  * =============================================================================
  */
 var wasmResizeBilinear;
-function setup30(backend2) {
+function setup33(backend2) {
   wasmResizeBilinear = backend2.wasm.cwrap(ResizeBilinear, null, [
     "number",
     "number",
@@ -75146,11 +76024,11 @@ function resizeBilinear4(args) {
 var resizeBilinearConfig3 = {
   kernelName: ResizeBilinear,
   backendName: "wasm",
-  setupFunc: setup30,
+  setupFunc: setup33,
   kernelFunc: resizeBilinear4
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Reverse.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Reverse.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -75168,7 +76046,7 @@ var resizeBilinearConfig3 = {
  * =============================================================================
  */
 var wasmReverse;
-function setup31(backend2) {
+function setup34(backend2) {
   wasmReverse = backend2.wasm.cwrap(Reverse, null, [
     "number",
     "array",
@@ -75200,10 +76078,10 @@ var reverseConfig3 = {
   kernelName: Reverse,
   backendName: "wasm",
   kernelFunc: reverse4,
-  setupFunc: setup31
+  setupFunc: setup34
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/RotateWithOffset.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/RotateWithOffset.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -75221,7 +76099,7 @@ var reverseConfig3 = {
  * =============================================================================
  */
 var wasmRotate;
-function setup32(backend2) {
+function setup35(backend2) {
   wasmRotate = backend2.wasm.cwrap(RotateWithOffset, null, [
     "number",
     "number",
@@ -75256,10 +76134,10 @@ var rotateWithOffsetConfig3 = {
   kernelName: RotateWithOffset,
   backendName: "wasm",
   kernelFunc: rotateWithOffset2,
-  setupFunc: setup32
+  setupFunc: setup35
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Round.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Round.js
 /**
  * @license
  * Copyright 2021 Google LLC. All Rights Reserved.
@@ -75278,7 +76156,7 @@ var rotateWithOffsetConfig3 = {
  */
 var roundConfig3 = createUnaryKernelConfig(Round);
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Rsqrt.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Rsqrt.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -75297,7 +76175,7 @@ var roundConfig3 = createUnaryKernelConfig(Round);
  */
 var rsqrtConfig3 = createUnaryKernelConfig(Rsqrt);
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/ScatterNd.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/ScatterNd.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -75315,7 +76193,7 @@ var rsqrtConfig3 = createUnaryKernelConfig(Rsqrt);
  * =============================================================================
  */
 var wasmScatterNd;
-function setup33(backend2) {
+function setup36(backend2) {
   wasmScatterNd = backend2.wasm.cwrap(ScatterNd, null, [
     "number",
     "number",
@@ -75349,11 +76227,11 @@ function scatterNd3(args) {
 var scatterNdConfig3 = {
   kernelName: ScatterNd,
   backendName: "wasm",
-  setupFunc: setup33,
+  setupFunc: setup36,
   kernelFunc: scatterNd3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Select.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Select.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -75371,7 +76249,7 @@ var scatterNdConfig3 = {
  * =============================================================================
  */
 var wasmSelect;
-function setup34(backend2) {
+function setup37(backend2) {
   wasmSelect = backend2.wasm.cwrap("SelectV2", null, [
     "number",
     "number",
@@ -75398,10 +76276,10 @@ var selectConfig3 = {
   kernelName: Select,
   backendName: "wasm",
   kernelFunc: select3,
-  setupFunc: setup34
+  setupFunc: setup37
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Sigmoid.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Sigmoid.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -75419,7 +76297,7 @@ var selectConfig3 = {
  * =============================================================================
  */
 var wasmFunc7;
-function setup35(backend2) {
+function setup38(backend2) {
   wasmFunc7 = backend2.wasm.cwrap(Sigmoid, null, ["number", "number"]);
 }
 function sigmoid4(args) {
@@ -75436,11 +76314,11 @@ function sigmoid4(args) {
 var sigmoidConfig3 = {
   kernelName: "Sigmoid",
   backendName: "wasm",
-  setupFunc: setup35,
+  setupFunc: setup38,
   kernelFunc: sigmoid4
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Sin.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Sin.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -75459,7 +76337,7 @@ var sigmoidConfig3 = {
  */
 var sinConfig3 = createUnaryKernelConfig(Sin);
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Slice.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Slice.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -75564,7 +76442,7 @@ var sliceConfig3 = {
   kernelFunc: slice4
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Softmax.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Softmax.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -75582,7 +76460,7 @@ var sliceConfig3 = {
  * =============================================================================
  */
 var wasmFunc8;
-function setup36(backend2) {
+function setup39(backend2) {
   wasmFunc8 = backend2.wasm.cwrap(Softmax, null, [
     "number",
     "number",
@@ -75606,11 +76484,11 @@ function softmax5(args) {
 var softmaxConfig3 = {
   kernelName: Softmax,
   backendName: "wasm",
-  setupFunc: setup36,
+  setupFunc: setup39,
   kernelFunc: softmax5
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/SplitV.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/SplitV.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -75649,7 +76527,7 @@ var splitVConfig3 = {
   kernelFunc: splitV3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Sqrt.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Sqrt.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -75668,7 +76546,7 @@ var splitVConfig3 = {
  */
 var sqrtConfig3 = createUnaryKernelConfig(Sqrt);
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Square.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Square.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -75687,7 +76565,7 @@ var sqrtConfig3 = createUnaryKernelConfig(Sqrt);
  */
 var squareConfig3 = createUnaryKernelConfig(Square);
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/SquaredDifference.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/SquaredDifference.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -75707,7 +76585,7 @@ var squareConfig3 = createUnaryKernelConfig(Square);
 var supportsFullBroadcast15 = true;
 var squaredDifferenceConfig3 = createBinaryKernelConfig(SquaredDifference, supportsFullBroadcast15);
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Step.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Step.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -75725,7 +76603,7 @@ var squaredDifferenceConfig3 = createBinaryKernelConfig(SquaredDifference, suppo
  * =============================================================================
  */
 var wasmStep;
-function setup37(backend2) {
+function setup40(backend2) {
   wasmStep = backend2.wasm.cwrap(Step, null, [
     "number",
     "number",
@@ -75745,11 +76623,11 @@ function step4(args) {
 var stepConfig3 = {
   kernelName: Step,
   backendName: "wasm",
-  setupFunc: setup37,
+  setupFunc: setup40,
   kernelFunc: step4
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/StridedSlice.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/StridedSlice.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -75767,7 +76645,7 @@ var stepConfig3 = {
  * =============================================================================
  */
 var wasmStridedSlice;
-function setup38(backend2) {
+function setup41(backend2) {
   wasmStridedSlice = backend2.wasm.cwrap(StridedSlice, null, [
     "number",
     "array",
@@ -75847,11 +76725,11 @@ function stridedSlice4(args) {
 var stridedSliceConfig3 = {
   kernelName: StridedSlice,
   backendName: "wasm",
-  setupFunc: setup38,
+  setupFunc: setup41,
   kernelFunc: stridedSlice4
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Sub.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Sub.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -75871,7 +76749,7 @@ var stridedSliceConfig3 = {
 var supportsFullBroadcast16 = true;
 var subConfig3 = createBinaryKernelConfig(Sub, supportsFullBroadcast16);
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Sum.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Sum.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -75889,7 +76767,7 @@ var subConfig3 = createBinaryKernelConfig(Sub, supportsFullBroadcast16);
  * =============================================================================
  */
 var wasmSum;
-function setup39(backend2) {
+function setup42(backend2) {
   wasmSum = backend2.wasm.cwrap(Sum, null, ["number, number, number"]);
 }
 function sum5(args) {
@@ -75929,11 +76807,30 @@ function sum5(args) {
 var sumConfig3 = {
   kernelName: Sum,
   backendName: "wasm",
-  setupFunc: setup39,
+  setupFunc: setup42,
   kernelFunc: sum5
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Tanh.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Tan.js
+/**
+ * @license
+ * Copyright 2021 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+var tanConfig3 = createUnaryKernelConfig(Tan);
+
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Tanh.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -75952,7 +76849,7 @@ var sumConfig3 = {
  */
 var tanhConfig3 = createUnaryKernelConfig(Tanh);
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Tile.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Tile.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -75970,7 +76867,7 @@ var tanhConfig3 = createUnaryKernelConfig(Tanh);
  * =============================================================================
  */
 var wasmTile;
-function setup40(backend2) {
+function setup43(backend2) {
   wasmTile = backend2.wasm.cwrap(Tile, null, [
     "number",
     "array",
@@ -75999,11 +76896,11 @@ function tile5(args) {
 var tileConfig3 = {
   kernelName: Tile,
   backendName: "wasm",
-  setupFunc: setup40,
+  setupFunc: setup43,
   kernelFunc: tile5
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/TopK.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/TopK.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -76021,7 +76918,7 @@ var tileConfig3 = {
  * =============================================================================
  */
 var wasmTopK;
-function setup41(backend2) {
+function setup44(backend2) {
   wasmTopK = backend2.wasm.cwrap(TopK, null, [
     "number",
     "array",
@@ -76050,11 +76947,11 @@ var topk2 = ({inputs, backend: backend2, attrs}) => {
 var topKConfig3 = {
   kernelName: TopK,
   backendName: "wasm",
-  setupFunc: setup41,
+  setupFunc: setup44,
   kernelFunc: topk2
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Unpack.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/Unpack.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -76103,7 +77000,7 @@ var unpackConfig3 = {
   kernelFunc: unpack3
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/ZerosLike.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/ZerosLike.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -76133,7 +77030,7 @@ var zerosLikeConfig3 = {
   kernelFunc: zerosLike4
 };
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/register_all_kernels.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/register_all_kernels.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -76154,6 +77051,8 @@ var kernelConfigs3 = [
   absConfig3,
   addConfig3,
   addNConfig3,
+  allConfig3,
+  anyConfig3,
   argMaxConfig3,
   avgPoolConfig3,
   batchMatMulConfig3,
@@ -76195,6 +77094,7 @@ var kernelConfigs3 = [
   meanConfig3,
   minConfig3,
   minimumConfig3,
+  mirrorPadConfig3,
   multiplyConfig3,
   negConfig3,
   nonMaxSuppressionV3Config3,
@@ -76232,6 +77132,7 @@ var kernelConfigs3 = [
   stridedSliceConfig3,
   subConfig3,
   sumConfig3,
+  tanConfig3,
   tanhConfig3,
   tileConfig3,
   topKConfig3,
@@ -76243,7 +77144,7 @@ for (const kernelConfig of kernelConfigs3) {
   registerKernel(kernelConfig);
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/flags_wasm.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/flags_wasm.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -76342,13 +77243,13 @@ ENV4.registerFlag("WASM_HAS_MULTITHREAD_SUPPORT", async () => {
   }
 });
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/backend_wasm.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/backend_wasm.js
 var import_tfjs_backend_wasm_threaded_simd = __toModule(require_tfjs_backend_wasm_threaded_simd());
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/wasm-out/tfjs-backend-wasm-threaded-simd.worker.js
-var wasmWorkerContents = 'var Module={};function threadPrintErr(){var text=Array.prototype.slice.call(arguments).join(" ");console.error(text)}function threadAlert(){var text=Array.prototype.slice.call(arguments).join(" ");postMessage({cmd:"alert",text:text,threadId:Module["_pthread_self"]()})}var err=threadPrintErr;this.alert=threadAlert;Module["instantiateWasm"]=function(info,receiveInstance){var instance=new WebAssembly.Instance(Module["wasmModule"],info);Module["wasmModule"]=null;receiveInstance(instance);return instance.exports};function moduleLoaded(){}this.onmessage=function(e){try{if(e.data.cmd==="load"){Module["wasmModule"]=e.data.wasmModule;Module["wasmMemory"]=e.data.wasmMemory;Module["buffer"]=Module["wasmMemory"].buffer;Module["ENVIRONMENT_IS_PTHREAD"]=true;if(typeof e.data.urlOrBlob==="string"){importScripts(e.data.urlOrBlob)}else{var objectUrl=URL.createObjectURL(e.data.urlOrBlob);importScripts(objectUrl);URL.revokeObjectURL(objectUrl)}WasmBackendModuleThreadedSimd(Module).then(function(instance){Module=instance;moduleLoaded()})}else if(e.data.cmd==="objectTransfer"){Module["PThread"].receiveObjectTransfer(e.data)}else if(e.data.cmd==="run"){Module["__performance_now_clock_drift"]=performance.now()-e.data.time;Module["__emscripten_thread_init"](e.data.threadInfoStruct,0,0);var max=e.data.stackBase;var top=e.data.stackBase+e.data.stackSize;Module["establishStackSpace"](top,max);Module["_emscripten_tls_init"]();Module["PThread"].receiveObjectTransfer(e.data);Module["PThread"].setThreadStatus(Module["_pthread_self"](),1);try{var result=Module["invokeEntryPoint"](e.data.start_routine,e.data.arg);if(!Module["getNoExitRuntime"]())Module["PThread"].threadExit(result)}catch(ex){if(ex==="Canceled!"){Module["PThread"].threadCancel()}else if(ex!="unwind"){if(ex instanceof Module["ExitStatus"]){if(Module["getNoExitRuntime"]()){}else{Module["PThread"].threadExit(ex.status)}}else{Module["PThread"].threadExit(-2);throw ex}}}}else if(e.data.cmd==="cancel"){if(Module["_pthread_self"]()){Module["PThread"].threadCancel()}}else if(e.data.target==="setimmediate"){}else if(e.data.cmd==="processThreadQueue"){if(Module["_pthread_self"]()){Module["_emscripten_current_thread_process_queued_calls"]()}}else{err("worker.js received unknown command "+e.data.cmd);err(e.data)}}catch(ex){err("worker.js onmessage() captured an uncaught exception: "+ex);if(ex&&ex.stack)err(ex.stack);throw ex}};if(typeof process==="object"&&typeof process.versions==="object"&&typeof process.versions.node==="string"){self={location:{href:__filename}};var onmessage=this.onmessage;var nodeWorkerThreads=require("worker_threads");global.Worker=nodeWorkerThreads.Worker;var parentPort=nodeWorkerThreads.parentPort;parentPort.on("message",function(data){onmessage({data:data})});var nodeFS=require("fs");var nodeRead=function(filename){return nodeFS.readFileSync(filename,"utf8")};function globalEval(x){global.require=require;global.Module=Module;eval.call(null,x)}importScripts=function(f){globalEval(nodeRead(f))};postMessage=function(msg){parentPort.postMessage(msg)};if(typeof performance==="undefined"){performance={now:function(){return Date.now()}}}}';
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/wasm-out/tfjs-backend-wasm-threaded-simd.worker.js
+var wasmWorkerContents = 'var Module={};function threadPrintErr(){var text=Array.prototype.slice.call(arguments).join(" ");console.error(text)}function threadAlert(){var text=Array.prototype.slice.call(arguments).join(" ");postMessage({cmd:"alert",text:text,threadId:Module["_pthread_self"]()})}var err=threadPrintErr;this.alert=threadAlert;Module["instantiateWasm"]=function(info,receiveInstance){var instance=new WebAssembly.Instance(Module["wasmModule"],info);Module["wasmModule"]=null;receiveInstance(instance);return instance.exports};function moduleLoaded(){}this.onmessage=function(e){try{if(e.data.cmd==="load"){Module["wasmModule"]=e.data.wasmModule;Module["wasmMemory"]=e.data.wasmMemory;Module["buffer"]=Module["wasmMemory"].buffer;Module["ENVIRONMENT_IS_PTHREAD"]=true;if(typeof e.data.urlOrBlob==="string"){importScripts(e.data.urlOrBlob)}else{var objectUrl=URL.createObjectURL(e.data.urlOrBlob);importScripts(objectUrl);URL.revokeObjectURL(objectUrl)}WasmBackendModule(Module).then(function(instance){Module=instance;moduleLoaded()})}else if(e.data.cmd==="objectTransfer"){Module["PThread"].receiveObjectTransfer(e.data)}else if(e.data.cmd==="run"){Module["__performance_now_clock_drift"]=performance.now()-e.data.time;Module["__emscripten_thread_init"](e.data.threadInfoStruct,0,0);var max=e.data.stackBase;var top=e.data.stackBase+e.data.stackSize;Module["establishStackSpace"](top,max);Module["_emscripten_tls_init"]();Module["PThread"].receiveObjectTransfer(e.data);Module["PThread"].setThreadStatus(Module["_pthread_self"](),1);try{var result=Module["invokeEntryPoint"](e.data.start_routine,e.data.arg);if(!Module["getNoExitRuntime"]())Module["PThread"].threadExit(result)}catch(ex){if(ex==="Canceled!"){Module["PThread"].threadCancel()}else if(ex!="unwind"){if(ex instanceof Module["ExitStatus"]){if(Module["getNoExitRuntime"]()){}else{Module["PThread"].threadExit(ex.status)}}else{Module["PThread"].threadExit(-2);throw ex}}}}else if(e.data.cmd==="cancel"){if(Module["_pthread_self"]()){Module["PThread"].threadCancel()}}else if(e.data.target==="setimmediate"){}else if(e.data.cmd==="processThreadQueue"){if(Module["_pthread_self"]()){Module["_emscripten_current_thread_process_queued_calls"]()}}else{err("worker.js received unknown command "+e.data.cmd);err(e.data)}}catch(ex){err("worker.js onmessage() captured an uncaught exception: "+ex);if(ex&&ex.stack)err(ex.stack);throw ex}};if(typeof process==="object"&&typeof process.versions==="object"&&typeof process.versions.node==="string"){self={location:{href:__filename}};var onmessage=this.onmessage;var nodeWorkerThreads=require("worker_threads");global.Worker=nodeWorkerThreads.Worker;var parentPort=nodeWorkerThreads.parentPort;parentPort.on("message",function(data){onmessage({data:data})});var nodeFS=require("fs");var nodeRead=function(filename){return nodeFS.readFileSync(filename,"utf8")};function globalEval(x){global.require=require;global.Module=Module;eval.call(null,x)}importScripts=function(f){globalEval(nodeRead(f))};postMessage=function(msg){parentPort.postMessage(msg)};if(typeof performance==="undefined"){performance={now:function(){return Date.now()}}}}';
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/backend_wasm.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/backend_wasm.js
 var import_tfjs_backend_wasm = __toModule(require_tfjs_backend_wasm());
 /**
  * @license
@@ -76619,11 +77520,11 @@ function setWasmPaths(prefixOrFileMap, usePlatformFetch = false) {
   customFetch = usePlatformFetch;
 }
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/version.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/version.js
 /** @license See the LICENSE file. */
-var version9 = "3.3.0";
+var version9 = "3.4.0";
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/base.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/base.js
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -76646,7 +77547,7 @@ registerBackend("wasm", async () => {
   return new BackendWasm(wasm);
 }, WASM_PRIORITY);
 
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.3.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/index.js
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.4.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/index.js
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -76722,6 +77623,7 @@ export {
   Dilation2DBackpropInput,
   ENV,
   EarlyStopping,
+  Einsum,
   Elu,
   EluGrad,
   Environment,
@@ -76921,6 +77823,7 @@ export {
   divNoNan,
   dot,
   dropout,
+  einsum,
   elu,
   enableDebugMode,
   enableProdMode,
@@ -76992,6 +77895,7 @@ export {
   maximum,
   mean,
   memory,
+  meshgrid,
   exports_metrics_exports as metrics,
   min,
   minimum,

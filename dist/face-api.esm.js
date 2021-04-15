@@ -6,9 +6,9 @@
   */
 
 var __defProp = Object.defineProperty;
-var __export = (target, all4) => {
-  for (var name in all4)
-    __defProp(target, name, {get: all4[name], enumerable: true});
+var __export = (target, all5) => {
+  for (var name in all5)
+    __defProp(target, name, {get: all5[name], enumerable: true});
 };
 
 // dist/tfjs.esm.js
@@ -72,6 +72,7 @@ __export(tfjs_esm_exports, {
   Dilation2DBackpropInput: () => Dilation2DBackpropInput,
   ENV: () => ENV,
   EarlyStopping: () => EarlyStopping,
+  Einsum: () => Einsum,
   Elu: () => Elu,
   EluGrad: () => EluGrad,
   Environment: () => Environment,
@@ -271,6 +272,7 @@ __export(tfjs_esm_exports, {
   divNoNan: () => divNoNan,
   dot: () => dot,
   dropout: () => dropout,
+  einsum: () => einsum,
   elu: () => elu,
   enableDebugMode: () => enableDebugMode,
   enableProdMode: () => enableProdMode,
@@ -342,6 +344,7 @@ __export(tfjs_esm_exports, {
   maximum: () => maximum,
   mean: () => mean,
   memory: () => memory,
+  meshgrid: () => meshgrid,
   metrics: () => exports_metrics_exports,
   min: () => min,
   minimum: () => minimum,
@@ -486,9 +489,9 @@ var __getOwnPropNames = Object.getOwnPropertyNames;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __markAsModule = (target) => __defProp2(target, "__esModule", {value: true});
 var __commonJS = (cb, mod4) => () => (mod4 || cb((mod4 = {exports: {}}).exports, mod4), mod4.exports);
-var __export2 = (target, all4) => {
-  for (var name in all4)
-    __defProp2(target, name, {get: all4[name], enumerable: true});
+var __export2 = (target, all5) => {
+  for (var name in all5)
+    __defProp2(target, name, {get: all5[name], enumerable: true});
 };
 var __reExport = (target, module2, desc) => {
   if (module2 && typeof module2 === "object" || typeof module2 === "function") {
@@ -1755,12 +1758,12 @@ var require_worker_threads = __commonJS(() => {
 var require_perf_hooks = __commonJS(() => {
 });
 var require_tfjs_backend_wasm_threaded_simd = __commonJS((exports, module2) => {
-  var WasmBackendModuleThreadedSimd = function() {
+  var WasmBackendModule = function() {
     var _scriptDir = typeof document !== "undefined" && document.currentScript ? document.currentScript.src : void 0;
     if (typeof __filename !== "undefined")
       _scriptDir = _scriptDir || __filename;
-    return function(WasmBackendModuleThreadedSimd2) {
-      WasmBackendModuleThreadedSimd2 = WasmBackendModuleThreadedSimd2 || {};
+    return function(WasmBackendModule2) {
+      WasmBackendModule2 = WasmBackendModule2 || {};
       function GROWABLE_HEAP_I8() {
         if (wasmMemory.buffer != buffer2) {
           updateGlobalBufferAndViews(wasmMemory.buffer);
@@ -1791,7 +1794,7 @@ var require_tfjs_backend_wasm_threaded_simd = __commonJS((exports, module2) => {
         }
         return HEAPF64;
       }
-      var Module = typeof WasmBackendModuleThreadedSimd2 !== "undefined" ? WasmBackendModuleThreadedSimd2 : {};
+      var Module = typeof WasmBackendModule2 !== "undefined" ? WasmBackendModule2 : {};
       var readyPromiseResolve, readyPromiseReject;
       Module["ready"] = new Promise(function(resolve, reject) {
         readyPromiseResolve = resolve;
@@ -2221,8 +2224,6 @@ var require_tfjs_backend_wasm_threaded_simd = __commonJS((exports, module2) => {
         __ATINIT__.push({func: function() {
           ___wasm_call_ctors();
         }});
-      if (ENVIRONMENT_IS_PTHREAD)
-        runtimeInitialized = true;
       function preRun() {
         if (ENVIRONMENT_IS_PTHREAD)
           return;
@@ -2237,6 +2238,8 @@ var require_tfjs_backend_wasm_threaded_simd = __commonJS((exports, module2) => {
       }
       function initRuntime() {
         runtimeInitialized = true;
+        if (ENVIRONMENT_IS_PTHREAD)
+          return;
         callRuntimeCallbacks(__ATINIT__);
       }
       function preMain() {
@@ -2322,7 +2325,7 @@ var require_tfjs_backend_wasm_threaded_simd = __commonJS((exports, module2) => {
       function isFileURI(filename) {
         return hasPrefix(filename, fileURIPrefix);
       }
-      var wasmBinaryFile = "tfjs-backend-wasm-threaded-simd.wasm";
+      var wasmBinaryFile = "tfjs-backend-wasm.wasm";
       if (!isDataURI(wasmBinaryFile)) {
         wasmBinaryFile = locateFile(wasmBinaryFile);
       }
@@ -2370,16 +2373,10 @@ var require_tfjs_backend_wasm_threaded_simd = __commonJS((exports, module2) => {
         function receiveInstance(instance, module22) {
           var exports3 = instance.exports;
           Module["asm"] = exports3;
-          wasmTable = Module["asm"]["F"];
+          wasmTable = Module["asm"]["D"];
           wasmModule = module22;
           if (!ENVIRONMENT_IS_PTHREAD) {
-            var numWorkersToLoad = PThread.unusedWorkers.length;
-            PThread.unusedWorkers.forEach(function(w) {
-              PThread.loadWasmModuleToWorker(w, function() {
-                if (!--numWorkersToLoad)
-                  removeRunDependency("wasm-instantiate");
-              });
-            });
+            removeRunDependency("wasm-instantiate");
           }
         }
         if (!ENVIRONMENT_IS_PTHREAD) {
@@ -2422,7 +2419,9 @@ var require_tfjs_backend_wasm_threaded_simd = __commonJS((exports, module2) => {
         instantiateAsync().catch(readyPromiseReject);
         return {};
       }
-      var ASM_CONSTS = {8991: function($0, $1) {
+      var ASM_CONSTS = {9800: function() {
+        throw "Canceled!";
+      }, 9818: function($0, $1) {
         setTimeout(function() {
           __emscripten_do_dispatch_to_thread($0, $1);
         }, 0);
@@ -2498,18 +2497,14 @@ var require_tfjs_backend_wasm_threaded_simd = __commonJS((exports, module2) => {
           throw "Internal Error! cleanupThread() can only ever be called from main application thread!";
         if (!pthread_ptr)
           throw "Internal Error! Null pthread_ptr in cleanupThread!";
-        GROWABLE_HEAP_I32()[pthread_ptr + 12 >> 2] = 0;
         var pthread = PThread.pthreads[pthread_ptr];
         if (pthread) {
+          GROWABLE_HEAP_I32()[pthread_ptr + 12 >> 2] = 0;
           var worker = pthread.worker;
           PThread.returnWorkerToPool(worker);
         }
       }
       var PThread = {unusedWorkers: [], runningWorkers: [], initMainThreadBlock: function() {
-        var pthreadPoolSize = 8;
-        for (var i = 0; i < pthreadPoolSize; ++i) {
-          PThread.allocateUnusedWorker();
-        }
       }, initRuntime: function() {
         var tb = _malloc(228);
         for (var i = 0; i < 228 / 4; ++i)
@@ -2532,27 +2527,24 @@ var require_tfjs_backend_wasm_threaded_simd = __commonJS((exports, module2) => {
         }
         if (ENVIRONMENT_IS_PTHREAD && _pthread_self())
           ___pthread_tsd_run_dtors();
+      }, runExitHandlersAndDeinitThread: function(tb, exitCode) {
+        Atomics.store(GROWABLE_HEAP_U32(), tb + 56 >> 2, 1);
+        Atomics.store(GROWABLE_HEAP_U32(), tb + 60 >> 2, 0);
+        PThread.runExitHandlers();
+        Atomics.store(GROWABLE_HEAP_U32(), tb + 4 >> 2, exitCode);
+        Atomics.store(GROWABLE_HEAP_U32(), tb + 0 >> 2, 1);
+        _emscripten_futex_wake(tb + 0, 2147483647);
+        __emscripten_thread_init(0, 0, 0);
       }, threadExit: function(exitCode) {
         var tb = _pthread_self();
         if (tb) {
-          Atomics.store(GROWABLE_HEAP_U32(), tb + 4 >> 2, exitCode);
-          Atomics.store(GROWABLE_HEAP_U32(), tb + 0 >> 2, 1);
-          Atomics.store(GROWABLE_HEAP_U32(), tb + 56 >> 2, 1);
-          Atomics.store(GROWABLE_HEAP_U32(), tb + 60 >> 2, 0);
-          PThread.runExitHandlers();
-          _emscripten_futex_wake(tb + 0, 2147483647);
-          __emscripten_thread_init(0, 0, 0);
+          PThread.runExitHandlersAndDeinitThread(tb, exitCode);
           if (ENVIRONMENT_IS_PTHREAD) {
             postMessage({cmd: "exit"});
           }
         }
       }, threadCancel: function() {
-        PThread.runExitHandlers();
-        var tb = _pthread_self();
-        Atomics.store(GROWABLE_HEAP_U32(), tb + 4 >> 2, -1);
-        Atomics.store(GROWABLE_HEAP_U32(), tb + 0 >> 2, 1);
-        _emscripten_futex_wake(tb + 0, 2147483647);
-        __emscripten_thread_init(0, 0, 0);
+        PThread.runExitHandlersAndDeinitThread(_pthread_self(), -1);
         postMessage({cmd: "cancelDone"});
       }, terminateAllThreads: function() {
         for (var t in PThread.pthreads) {
@@ -2684,7 +2676,7 @@ var require_tfjs_backend_wasm_threaded_simd = __commonJS((exports, module2) => {
         }
         worker.postMessage({cmd: "load", urlOrBlob: Module["mainScriptUrlOrBlob"] || _scriptDir, wasmMemory, wasmModule});
       }, allocateUnusedWorker: function() {
-        var pthreadMainJs = locateFile("tfjs-backend-wasm-threaded-simd.worker.js");
+        var pthreadMainJs = locateFile("tfjs-backend-wasm.worker.js");
         PThread.unusedWorkers.push(new Worker(pthreadMainJs));
       }, getNewWorker: function() {
         if (PThread.unusedWorkers.length == 0) {
@@ -2715,9 +2707,6 @@ var require_tfjs_backend_wasm_threaded_simd = __commonJS((exports, module2) => {
       Module["invokeEntryPoint"] = invokeEntryPoint;
       function ___assert_fail(condition, filename, line, func2) {
         abort("Assertion failed: " + UTF8ToString(condition) + ", at: " + [filename ? UTF8ToString(filename) : "unknown filename", line, func2 ? UTF8ToString(func2) : "unknown function"]);
-      }
-      function ___call_main(argc, argv) {
-        var returnCode = _main(argc, argv);
       }
       var _emscripten_get_now;
       if (ENVIRONMENT_IS_NODE) {
@@ -3071,8 +3060,6 @@ var require_tfjs_backend_wasm_threaded_simd = __commonJS((exports, module2) => {
         }
       }
       function _emscripten_set_current_thread_status(newStatus) {
-      }
-      function _emscripten_set_thread_name(threadId, name) {
       }
       function __webgl_enable_ANGLE_instanced_arrays(ctx) {
         var ext = ctx.getExtension("ANGLE_instanced_arrays");
@@ -3536,31 +3523,37 @@ var require_tfjs_backend_wasm_threaded_simd = __commonJS((exports, module2) => {
         PThread.initMainThreadBlock();
       var GLctx;
       var proxiedFunctionTable = [null, _atexit, _emscripten_set_canvas_element_size_main_thread, _fd_close, _fd_seek, _fd_write, _sysconf];
-      var asmLibraryArg = {e: ___assert_fail, r: ___call_main, x: __emscripten_notify_thread_queue, b: _abort, y: _emscripten_asm_const_int, j: _emscripten_conditional_set_current_thread_status, c: _emscripten_futex_wait, d: _emscripten_futex_wake, f: _emscripten_get_now, p: _emscripten_memcpy_big, z: _emscripten_num_logical_cores, u: _emscripten_receive_on_main_thread_js, q: _emscripten_resize_heap, v: _emscripten_set_canvas_element_size, i: _emscripten_set_current_thread_status, t: _emscripten_set_thread_name, w: _emscripten_webgl_create_context, m: _fd_close, n: _fd_seek, g: _fd_write, o: initPthreadsJS, a: wasmMemory || Module["wasmMemory"], k: _pthread_cleanup_pop, l: _pthread_cleanup_push, h: _pthread_create, s: _sysconf};
+      var asmLibraryArg = {e: ___assert_fail, v: __emscripten_notify_thread_queue, b: _abort, w: _emscripten_asm_const_int, j: _emscripten_conditional_set_current_thread_status, c: _emscripten_futex_wait, d: _emscripten_futex_wake, f: _emscripten_get_now, p: _emscripten_memcpy_big, x: _emscripten_num_logical_cores, s: _emscripten_receive_on_main_thread_js, r: _emscripten_resize_heap, t: _emscripten_set_canvas_element_size, i: _emscripten_set_current_thread_status, u: _emscripten_webgl_create_context, m: _fd_close, n: _fd_seek, g: _fd_write, o: initPthreadsJS, a: wasmMemory || Module["wasmMemory"], k: _pthread_cleanup_pop, l: _pthread_cleanup_push, h: _pthread_create, q: _sysconf};
       var asm = createWasm();
       var ___wasm_call_ctors = Module["___wasm_call_ctors"] = function() {
-        return (___wasm_call_ctors = Module["___wasm_call_ctors"] = Module["asm"]["A"]).apply(null, arguments);
+        return (___wasm_call_ctors = Module["___wasm_call_ctors"] = Module["asm"]["y"]).apply(null, arguments);
       };
       var _init = Module["_init"] = function() {
-        return (_init = Module["_init"] = Module["asm"]["B"]).apply(null, arguments);
+        return (_init = Module["_init"] = Module["asm"]["z"]).apply(null, arguments);
       };
       var _register_tensor = Module["_register_tensor"] = function() {
-        return (_register_tensor = Module["_register_tensor"] = Module["asm"]["C"]).apply(null, arguments);
+        return (_register_tensor = Module["_register_tensor"] = Module["asm"]["A"]).apply(null, arguments);
       };
       var _dispose_data = Module["_dispose_data"] = function() {
-        return (_dispose_data = Module["_dispose_data"] = Module["asm"]["D"]).apply(null, arguments);
+        return (_dispose_data = Module["_dispose_data"] = Module["asm"]["B"]).apply(null, arguments);
       };
       var _dispose = Module["_dispose"] = function() {
-        return (_dispose = Module["_dispose"] = Module["asm"]["E"]).apply(null, arguments);
+        return (_dispose = Module["_dispose"] = Module["asm"]["C"]).apply(null, arguments);
       };
       var _Abs = Module["_Abs"] = function() {
-        return (_Abs = Module["_Abs"] = Module["asm"]["G"]).apply(null, arguments);
+        return (_Abs = Module["_Abs"] = Module["asm"]["E"]).apply(null, arguments);
       };
       var _Add = Module["_Add"] = function() {
-        return (_Add = Module["_Add"] = Module["asm"]["H"]).apply(null, arguments);
+        return (_Add = Module["_Add"] = Module["asm"]["F"]).apply(null, arguments);
       };
       var _AddN = Module["_AddN"] = function() {
-        return (_AddN = Module["_AddN"] = Module["asm"]["I"]).apply(null, arguments);
+        return (_AddN = Module["_AddN"] = Module["asm"]["G"]).apply(null, arguments);
+      };
+      var _All = Module["_All"] = function() {
+        return (_All = Module["_All"] = Module["asm"]["H"]).apply(null, arguments);
+      };
+      var _Any = Module["_Any"] = function() {
+        return (_Any = Module["_Any"] = Module["asm"]["I"]).apply(null, arguments);
       };
       var _ArgMax = Module["_ArgMax"] = function() {
         return (_ArgMax = Module["_ArgMax"] = Module["asm"]["J"]).apply(null, arguments);
@@ -3667,176 +3660,182 @@ var require_tfjs_backend_wasm_threaded_simd = __commonJS((exports, module2) => {
       var _Minimum = Module["_Minimum"] = function() {
         return (_Minimum = Module["_Minimum"] = Module["asm"]["pa"]).apply(null, arguments);
       };
+      var _MirrorPad = Module["_MirrorPad"] = function() {
+        return (_MirrorPad = Module["_MirrorPad"] = Module["asm"]["qa"]).apply(null, arguments);
+      };
       var _Multiply = Module["_Multiply"] = function() {
-        return (_Multiply = Module["_Multiply"] = Module["asm"]["qa"]).apply(null, arguments);
+        return (_Multiply = Module["_Multiply"] = Module["asm"]["ra"]).apply(null, arguments);
       };
       var _Neg = Module["_Neg"] = function() {
-        return (_Neg = Module["_Neg"] = Module["asm"]["ra"]).apply(null, arguments);
+        return (_Neg = Module["_Neg"] = Module["asm"]["sa"]).apply(null, arguments);
       };
       var _NonMaxSuppressionV3 = Module["_NonMaxSuppressionV3"] = function() {
-        return (_NonMaxSuppressionV3 = Module["_NonMaxSuppressionV3"] = Module["asm"]["sa"]).apply(null, arguments);
+        return (_NonMaxSuppressionV3 = Module["_NonMaxSuppressionV3"] = Module["asm"]["ta"]).apply(null, arguments);
       };
       var _NonMaxSuppressionV4 = Module["_NonMaxSuppressionV4"] = function() {
-        return (_NonMaxSuppressionV4 = Module["_NonMaxSuppressionV4"] = Module["asm"]["ta"]).apply(null, arguments);
+        return (_NonMaxSuppressionV4 = Module["_NonMaxSuppressionV4"] = Module["asm"]["ua"]).apply(null, arguments);
       };
       var _NonMaxSuppressionV5 = Module["_NonMaxSuppressionV5"] = function() {
-        return (_NonMaxSuppressionV5 = Module["_NonMaxSuppressionV5"] = Module["asm"]["ua"]).apply(null, arguments);
+        return (_NonMaxSuppressionV5 = Module["_NonMaxSuppressionV5"] = Module["asm"]["va"]).apply(null, arguments);
       };
       var _NotEqual = Module["_NotEqual"] = function() {
-        return (_NotEqual = Module["_NotEqual"] = Module["asm"]["va"]).apply(null, arguments);
+        return (_NotEqual = Module["_NotEqual"] = Module["asm"]["wa"]).apply(null, arguments);
       };
       var _OneHot = Module["_OneHot"] = function() {
-        return (_OneHot = Module["_OneHot"] = Module["asm"]["wa"]).apply(null, arguments);
+        return (_OneHot = Module["_OneHot"] = Module["asm"]["xa"]).apply(null, arguments);
       };
       var _PadV2 = Module["_PadV2"] = function() {
-        return (_PadV2 = Module["_PadV2"] = Module["asm"]["xa"]).apply(null, arguments);
+        return (_PadV2 = Module["_PadV2"] = Module["asm"]["ya"]).apply(null, arguments);
       };
       var _Pow = Module["_Pow"] = function() {
-        return (_Pow = Module["_Pow"] = Module["asm"]["ya"]).apply(null, arguments);
+        return (_Pow = Module["_Pow"] = Module["asm"]["za"]).apply(null, arguments);
       };
       var _Prelu = Module["_Prelu"] = function() {
-        return (_Prelu = Module["_Prelu"] = Module["asm"]["za"]).apply(null, arguments);
+        return (_Prelu = Module["_Prelu"] = Module["asm"]["Aa"]).apply(null, arguments);
       };
       var _Prod = Module["_Prod"] = function() {
-        return (_Prod = Module["_Prod"] = Module["asm"]["Aa"]).apply(null, arguments);
+        return (_Prod = Module["_Prod"] = Module["asm"]["Ba"]).apply(null, arguments);
       };
       var _RealDiv = Module["_RealDiv"] = function() {
-        return (_RealDiv = Module["_RealDiv"] = Module["asm"]["Ba"]).apply(null, arguments);
+        return (_RealDiv = Module["_RealDiv"] = Module["asm"]["Ca"]).apply(null, arguments);
       };
       var _Relu = Module["_Relu"] = function() {
-        return (_Relu = Module["_Relu"] = Module["asm"]["Ca"]).apply(null, arguments);
+        return (_Relu = Module["_Relu"] = Module["asm"]["Da"]).apply(null, arguments);
       };
       var _Relu6 = Module["_Relu6"] = function() {
-        return (_Relu6 = Module["_Relu6"] = Module["asm"]["Da"]).apply(null, arguments);
+        return (_Relu6 = Module["_Relu6"] = Module["asm"]["Ea"]).apply(null, arguments);
       };
       var _ResizeBilinear = Module["_ResizeBilinear"] = function() {
-        return (_ResizeBilinear = Module["_ResizeBilinear"] = Module["asm"]["Ea"]).apply(null, arguments);
+        return (_ResizeBilinear = Module["_ResizeBilinear"] = Module["asm"]["Fa"]).apply(null, arguments);
       };
       var _Reverse = Module["_Reverse"] = function() {
-        return (_Reverse = Module["_Reverse"] = Module["asm"]["Fa"]).apply(null, arguments);
+        return (_Reverse = Module["_Reverse"] = Module["asm"]["Ga"]).apply(null, arguments);
       };
       var _RotateWithOffset = Module["_RotateWithOffset"] = function() {
-        return (_RotateWithOffset = Module["_RotateWithOffset"] = Module["asm"]["Ga"]).apply(null, arguments);
+        return (_RotateWithOffset = Module["_RotateWithOffset"] = Module["asm"]["Ha"]).apply(null, arguments);
       };
       var _Round = Module["_Round"] = function() {
-        return (_Round = Module["_Round"] = Module["asm"]["Ha"]).apply(null, arguments);
+        return (_Round = Module["_Round"] = Module["asm"]["Ia"]).apply(null, arguments);
       };
       var _Rsqrt = Module["_Rsqrt"] = function() {
-        return (_Rsqrt = Module["_Rsqrt"] = Module["asm"]["Ia"]).apply(null, arguments);
+        return (_Rsqrt = Module["_Rsqrt"] = Module["asm"]["Ja"]).apply(null, arguments);
       };
       var _ScatterNd = Module["_ScatterNd"] = function() {
-        return (_ScatterNd = Module["_ScatterNd"] = Module["asm"]["Ja"]).apply(null, arguments);
+        return (_ScatterNd = Module["_ScatterNd"] = Module["asm"]["Ka"]).apply(null, arguments);
       };
       var _SelectV2 = Module["_SelectV2"] = function() {
-        return (_SelectV2 = Module["_SelectV2"] = Module["asm"]["Ka"]).apply(null, arguments);
+        return (_SelectV2 = Module["_SelectV2"] = Module["asm"]["La"]).apply(null, arguments);
       };
       var _Sigmoid = Module["_Sigmoid"] = function() {
-        return (_Sigmoid = Module["_Sigmoid"] = Module["asm"]["La"]).apply(null, arguments);
+        return (_Sigmoid = Module["_Sigmoid"] = Module["asm"]["Ma"]).apply(null, arguments);
       };
       var _Sin = Module["_Sin"] = function() {
-        return (_Sin = Module["_Sin"] = Module["asm"]["Ma"]).apply(null, arguments);
+        return (_Sin = Module["_Sin"] = Module["asm"]["Na"]).apply(null, arguments);
       };
       var _Softmax = Module["_Softmax"] = function() {
-        return (_Softmax = Module["_Softmax"] = Module["asm"]["Na"]).apply(null, arguments);
+        return (_Softmax = Module["_Softmax"] = Module["asm"]["Oa"]).apply(null, arguments);
       };
       var _Sqrt = Module["_Sqrt"] = function() {
-        return (_Sqrt = Module["_Sqrt"] = Module["asm"]["Oa"]).apply(null, arguments);
+        return (_Sqrt = Module["_Sqrt"] = Module["asm"]["Pa"]).apply(null, arguments);
       };
       var _Square = Module["_Square"] = function() {
-        return (_Square = Module["_Square"] = Module["asm"]["Pa"]).apply(null, arguments);
+        return (_Square = Module["_Square"] = Module["asm"]["Qa"]).apply(null, arguments);
       };
       var _SquaredDifference = Module["_SquaredDifference"] = function() {
-        return (_SquaredDifference = Module["_SquaredDifference"] = Module["asm"]["Qa"]).apply(null, arguments);
+        return (_SquaredDifference = Module["_SquaredDifference"] = Module["asm"]["Ra"]).apply(null, arguments);
       };
       var _Step = Module["_Step"] = function() {
-        return (_Step = Module["_Step"] = Module["asm"]["Ra"]).apply(null, arguments);
+        return (_Step = Module["_Step"] = Module["asm"]["Sa"]).apply(null, arguments);
       };
       var _StridedSlice = Module["_StridedSlice"] = function() {
-        return (_StridedSlice = Module["_StridedSlice"] = Module["asm"]["Sa"]).apply(null, arguments);
+        return (_StridedSlice = Module["_StridedSlice"] = Module["asm"]["Ta"]).apply(null, arguments);
       };
       var _Sub = Module["_Sub"] = function() {
-        return (_Sub = Module["_Sub"] = Module["asm"]["Ta"]).apply(null, arguments);
+        return (_Sub = Module["_Sub"] = Module["asm"]["Ua"]).apply(null, arguments);
       };
       var _Sum = Module["_Sum"] = function() {
-        return (_Sum = Module["_Sum"] = Module["asm"]["Ua"]).apply(null, arguments);
+        return (_Sum = Module["_Sum"] = Module["asm"]["Va"]).apply(null, arguments);
+      };
+      var _Tan = Module["_Tan"] = function() {
+        return (_Tan = Module["_Tan"] = Module["asm"]["Wa"]).apply(null, arguments);
       };
       var _Tanh = Module["_Tanh"] = function() {
-        return (_Tanh = Module["_Tanh"] = Module["asm"]["Va"]).apply(null, arguments);
+        return (_Tanh = Module["_Tanh"] = Module["asm"]["Xa"]).apply(null, arguments);
       };
       var _Tile = Module["_Tile"] = function() {
-        return (_Tile = Module["_Tile"] = Module["asm"]["Wa"]).apply(null, arguments);
+        return (_Tile = Module["_Tile"] = Module["asm"]["Ya"]).apply(null, arguments);
       };
       var _TopK = Module["_TopK"] = function() {
-        return (_TopK = Module["_TopK"] = Module["asm"]["Xa"]).apply(null, arguments);
+        return (_TopK = Module["_TopK"] = Module["asm"]["Za"]).apply(null, arguments);
       };
       var _Transpose = Module["_Transpose"] = function() {
-        return (_Transpose = Module["_Transpose"] = Module["asm"]["Ya"]).apply(null, arguments);
+        return (_Transpose = Module["_Transpose"] = Module["asm"]["_a"]).apply(null, arguments);
       };
       var __FusedMatMul = Module["__FusedMatMul"] = function() {
-        return (__FusedMatMul = Module["__FusedMatMul"] = Module["asm"]["Za"]).apply(null, arguments);
+        return (__FusedMatMul = Module["__FusedMatMul"] = Module["asm"]["$a"]).apply(null, arguments);
       };
       var _malloc = Module["_malloc"] = function() {
-        return (_malloc = Module["_malloc"] = Module["asm"]["_a"]).apply(null, arguments);
+        return (_malloc = Module["_malloc"] = Module["asm"]["ab"]).apply(null, arguments);
       };
       var _free = Module["_free"] = function() {
-        return (_free = Module["_free"] = Module["asm"]["$a"]).apply(null, arguments);
+        return (_free = Module["_free"] = Module["asm"]["bb"]).apply(null, arguments);
       };
       var ___errno_location = Module["___errno_location"] = function() {
-        return (___errno_location = Module["___errno_location"] = Module["asm"]["ab"]).apply(null, arguments);
+        return (___errno_location = Module["___errno_location"] = Module["asm"]["cb"]).apply(null, arguments);
       };
       var _emscripten_get_global_libc = Module["_emscripten_get_global_libc"] = function() {
-        return (_emscripten_get_global_libc = Module["_emscripten_get_global_libc"] = Module["asm"]["bb"]).apply(null, arguments);
+        return (_emscripten_get_global_libc = Module["_emscripten_get_global_libc"] = Module["asm"]["db"]).apply(null, arguments);
       };
       var _pthread_self = Module["_pthread_self"] = function() {
-        return (_pthread_self = Module["_pthread_self"] = Module["asm"]["cb"]).apply(null, arguments);
+        return (_pthread_self = Module["_pthread_self"] = Module["asm"]["eb"]).apply(null, arguments);
       };
       var ___pthread_tsd_run_dtors = Module["___pthread_tsd_run_dtors"] = function() {
-        return (___pthread_tsd_run_dtors = Module["___pthread_tsd_run_dtors"] = Module["asm"]["db"]).apply(null, arguments);
+        return (___pthread_tsd_run_dtors = Module["___pthread_tsd_run_dtors"] = Module["asm"]["fb"]).apply(null, arguments);
       };
       var _emscripten_main_thread_process_queued_calls = Module["_emscripten_main_thread_process_queued_calls"] = function() {
-        return (_emscripten_main_thread_process_queued_calls = Module["_emscripten_main_thread_process_queued_calls"] = Module["asm"]["eb"]).apply(null, arguments);
+        return (_emscripten_main_thread_process_queued_calls = Module["_emscripten_main_thread_process_queued_calls"] = Module["asm"]["gb"]).apply(null, arguments);
       };
       var _emscripten_current_thread_process_queued_calls = Module["_emscripten_current_thread_process_queued_calls"] = function() {
-        return (_emscripten_current_thread_process_queued_calls = Module["_emscripten_current_thread_process_queued_calls"] = Module["asm"]["fb"]).apply(null, arguments);
+        return (_emscripten_current_thread_process_queued_calls = Module["_emscripten_current_thread_process_queued_calls"] = Module["asm"]["hb"]).apply(null, arguments);
       };
       var _emscripten_register_main_browser_thread_id = Module["_emscripten_register_main_browser_thread_id"] = function() {
-        return (_emscripten_register_main_browser_thread_id = Module["_emscripten_register_main_browser_thread_id"] = Module["asm"]["gb"]).apply(null, arguments);
+        return (_emscripten_register_main_browser_thread_id = Module["_emscripten_register_main_browser_thread_id"] = Module["asm"]["ib"]).apply(null, arguments);
       };
       var __emscripten_do_dispatch_to_thread = Module["__emscripten_do_dispatch_to_thread"] = function() {
-        return (__emscripten_do_dispatch_to_thread = Module["__emscripten_do_dispatch_to_thread"] = Module["asm"]["hb"]).apply(null, arguments);
+        return (__emscripten_do_dispatch_to_thread = Module["__emscripten_do_dispatch_to_thread"] = Module["asm"]["jb"]).apply(null, arguments);
       };
       var _emscripten_sync_run_in_main_thread_4 = Module["_emscripten_sync_run_in_main_thread_4"] = function() {
-        return (_emscripten_sync_run_in_main_thread_4 = Module["_emscripten_sync_run_in_main_thread_4"] = Module["asm"]["ib"]).apply(null, arguments);
+        return (_emscripten_sync_run_in_main_thread_4 = Module["_emscripten_sync_run_in_main_thread_4"] = Module["asm"]["kb"]).apply(null, arguments);
       };
       var _emscripten_run_in_main_runtime_thread_js = Module["_emscripten_run_in_main_runtime_thread_js"] = function() {
-        return (_emscripten_run_in_main_runtime_thread_js = Module["_emscripten_run_in_main_runtime_thread_js"] = Module["asm"]["jb"]).apply(null, arguments);
+        return (_emscripten_run_in_main_runtime_thread_js = Module["_emscripten_run_in_main_runtime_thread_js"] = Module["asm"]["lb"]).apply(null, arguments);
       };
       var __emscripten_call_on_thread = Module["__emscripten_call_on_thread"] = function() {
-        return (__emscripten_call_on_thread = Module["__emscripten_call_on_thread"] = Module["asm"]["kb"]).apply(null, arguments);
+        return (__emscripten_call_on_thread = Module["__emscripten_call_on_thread"] = Module["asm"]["mb"]).apply(null, arguments);
       };
       var _emscripten_tls_init = Module["_emscripten_tls_init"] = function() {
-        return (_emscripten_tls_init = Module["_emscripten_tls_init"] = Module["asm"]["lb"]).apply(null, arguments);
+        return (_emscripten_tls_init = Module["_emscripten_tls_init"] = Module["asm"]["nb"]).apply(null, arguments);
       };
       var __emscripten_thread_init = Module["__emscripten_thread_init"] = function() {
-        return (__emscripten_thread_init = Module["__emscripten_thread_init"] = Module["asm"]["mb"]).apply(null, arguments);
+        return (__emscripten_thread_init = Module["__emscripten_thread_init"] = Module["asm"]["ob"]).apply(null, arguments);
       };
       var stackSave = Module["stackSave"] = function() {
-        return (stackSave = Module["stackSave"] = Module["asm"]["nb"]).apply(null, arguments);
+        return (stackSave = Module["stackSave"] = Module["asm"]["pb"]).apply(null, arguments);
       };
       var stackRestore = Module["stackRestore"] = function() {
-        return (stackRestore = Module["stackRestore"] = Module["asm"]["ob"]).apply(null, arguments);
+        return (stackRestore = Module["stackRestore"] = Module["asm"]["qb"]).apply(null, arguments);
       };
       var stackAlloc = Module["stackAlloc"] = function() {
-        return (stackAlloc = Module["stackAlloc"] = Module["asm"]["pb"]).apply(null, arguments);
+        return (stackAlloc = Module["stackAlloc"] = Module["asm"]["rb"]).apply(null, arguments);
       };
       var _emscripten_stack_set_limits = Module["_emscripten_stack_set_limits"] = function() {
-        return (_emscripten_stack_set_limits = Module["_emscripten_stack_set_limits"] = Module["asm"]["qb"]).apply(null, arguments);
+        return (_emscripten_stack_set_limits = Module["_emscripten_stack_set_limits"] = Module["asm"]["sb"]).apply(null, arguments);
       };
       var _memalign = Module["_memalign"] = function() {
-        return (_memalign = Module["_memalign"] = Module["asm"]["rb"]).apply(null, arguments);
+        return (_memalign = Module["_memalign"] = Module["asm"]["tb"]).apply(null, arguments);
       };
-      var __emscripten_allow_main_runtime_queued_calls = Module["__emscripten_allow_main_runtime_queued_calls"] = 9880;
-      var __emscripten_main_thread_futex = Module["__emscripten_main_thread_futex"] = 11368;
+      var __emscripten_allow_main_runtime_queued_calls = Module["__emscripten_allow_main_runtime_queued_calls"] = 9792;
+      var __emscripten_main_thread_futex = Module["__emscripten_main_thread_futex"] = 11408;
       Module["cwrap"] = cwrap;
       Module["PThread"] = PThread;
       Module["PThread"] = PThread;
@@ -3861,6 +3860,7 @@ var require_tfjs_backend_wasm_threaded_simd = __commonJS((exports, module2) => {
         }
         if (ENVIRONMENT_IS_PTHREAD) {
           readyPromiseResolve(Module);
+          initRuntime();
           postMessage({cmd: "loaded"});
           return;
         }
@@ -3929,17 +3929,17 @@ var require_tfjs_backend_wasm_threaded_simd = __commonJS((exports, module2) => {
         PThread.initWorker();
       }
       run();
-      return WasmBackendModuleThreadedSimd2.ready;
+      return WasmBackendModule2.ready;
     };
   }();
   if (typeof exports === "object" && typeof module2 === "object")
-    module2.exports = WasmBackendModuleThreadedSimd;
+    module2.exports = WasmBackendModule;
   else if (typeof define === "function" && define["amd"])
     define([], function() {
-      return WasmBackendModuleThreadedSimd;
+      return WasmBackendModule;
     });
   else if (typeof exports === "object")
-    exports["WasmBackendModuleThreadedSimd"] = WasmBackendModuleThreadedSimd;
+    exports["WasmBackendModule"] = WasmBackendModule;
 });
 var require_tfjs_backend_wasm = __commonJS((exports, module2) => {
   var WasmBackendModule = function() {
@@ -4437,9 +4437,9 @@ var require_tfjs_backend_wasm = __commonJS((exports, module2) => {
         function receiveInstance(instance, module22) {
           var exports3 = instance.exports;
           Module["asm"] = exports3;
-          wasmMemory = Module["asm"]["g"];
+          wasmMemory = Module["asm"]["i"];
           updateGlobalBufferAndViews(wasmMemory.buffer);
-          wasmTable = Module["asm"]["m"];
+          wasmTable = Module["asm"]["o"];
           removeRunDependency("wasm-instantiate");
         }
         addRunDependency("wasm-instantiate");
@@ -4569,259 +4569,441 @@ var require_tfjs_backend_wasm = __commonJS((exports, module2) => {
         HEAP32[pnum >> 2] = num;
         return 0;
       }
-      var asmLibraryArg = {a: _abort, d: _emscripten_memcpy_big, e: _emscripten_resize_heap, f: _fd_close, c: _fd_seek, b: _fd_write};
+      function _pthread_create() {
+        return 6;
+      }
+      function setErrNo(value) {
+        HEAP32[___errno_location() >> 2] = value;
+        return value;
+      }
+      function _sysconf(name) {
+        switch (name) {
+          case 30:
+            return 16384;
+          case 85:
+            var maxHeapSize = 2147483648;
+            return maxHeapSize / 16384;
+          case 132:
+          case 133:
+          case 12:
+          case 137:
+          case 138:
+          case 15:
+          case 235:
+          case 16:
+          case 17:
+          case 18:
+          case 19:
+          case 20:
+          case 149:
+          case 13:
+          case 10:
+          case 236:
+          case 153:
+          case 9:
+          case 21:
+          case 22:
+          case 159:
+          case 154:
+          case 14:
+          case 77:
+          case 78:
+          case 139:
+          case 82:
+          case 68:
+          case 67:
+          case 164:
+          case 11:
+          case 29:
+          case 47:
+          case 48:
+          case 95:
+          case 52:
+          case 51:
+          case 46:
+            return 200809;
+          case 27:
+          case 246:
+          case 127:
+          case 128:
+          case 23:
+          case 24:
+          case 160:
+          case 161:
+          case 181:
+          case 182:
+          case 242:
+          case 183:
+          case 184:
+          case 243:
+          case 244:
+          case 245:
+          case 165:
+          case 178:
+          case 179:
+          case 49:
+          case 50:
+          case 168:
+          case 169:
+          case 175:
+          case 170:
+          case 171:
+          case 172:
+          case 97:
+          case 76:
+          case 32:
+          case 173:
+          case 35:
+          case 80:
+          case 81:
+          case 79:
+            return -1;
+          case 176:
+          case 177:
+          case 7:
+          case 155:
+          case 8:
+          case 157:
+          case 125:
+          case 126:
+          case 92:
+          case 93:
+          case 129:
+          case 130:
+          case 131:
+          case 94:
+          case 91:
+            return 1;
+          case 74:
+          case 60:
+          case 69:
+          case 70:
+          case 4:
+            return 1024;
+          case 31:
+          case 42:
+          case 72:
+            return 32;
+          case 87:
+          case 26:
+          case 33:
+            return 2147483647;
+          case 34:
+          case 1:
+            return 47839;
+          case 38:
+          case 36:
+            return 99;
+          case 43:
+          case 37:
+            return 2048;
+          case 0:
+            return 2097152;
+          case 3:
+            return 65536;
+          case 28:
+            return 32768;
+          case 44:
+            return 32767;
+          case 75:
+            return 16384;
+          case 39:
+            return 1e3;
+          case 89:
+            return 700;
+          case 71:
+            return 256;
+          case 40:
+            return 255;
+          case 2:
+            return 100;
+          case 180:
+            return 64;
+          case 25:
+            return 20;
+          case 5:
+            return 16;
+          case 6:
+            return 6;
+          case 73:
+            return 4;
+          case 84: {
+            if (typeof navigator === "object")
+              return navigator["hardwareConcurrency"] || 1;
+            return 1;
+          }
+        }
+        setErrNo(28);
+        return -1;
+      }
+      var asmLibraryArg = {a: _abort, d: _emscripten_memcpy_big, e: _emscripten_resize_heap, f: _fd_close, c: _fd_seek, b: _fd_write, g: _pthread_create, h: _sysconf};
       var asm = createWasm();
       var ___wasm_call_ctors = Module["___wasm_call_ctors"] = function() {
-        return (___wasm_call_ctors = Module["___wasm_call_ctors"] = Module["asm"]["h"]).apply(null, arguments);
+        return (___wasm_call_ctors = Module["___wasm_call_ctors"] = Module["asm"]["j"]).apply(null, arguments);
       };
       var _init = Module["_init"] = function() {
-        return (_init = Module["_init"] = Module["asm"]["i"]).apply(null, arguments);
+        return (_init = Module["_init"] = Module["asm"]["k"]).apply(null, arguments);
       };
       var _register_tensor = Module["_register_tensor"] = function() {
-        return (_register_tensor = Module["_register_tensor"] = Module["asm"]["j"]).apply(null, arguments);
+        return (_register_tensor = Module["_register_tensor"] = Module["asm"]["l"]).apply(null, arguments);
       };
       var _dispose_data = Module["_dispose_data"] = function() {
-        return (_dispose_data = Module["_dispose_data"] = Module["asm"]["k"]).apply(null, arguments);
+        return (_dispose_data = Module["_dispose_data"] = Module["asm"]["m"]).apply(null, arguments);
       };
       var _dispose = Module["_dispose"] = function() {
-        return (_dispose = Module["_dispose"] = Module["asm"]["l"]).apply(null, arguments);
+        return (_dispose = Module["_dispose"] = Module["asm"]["n"]).apply(null, arguments);
       };
       var _Abs = Module["_Abs"] = function() {
-        return (_Abs = Module["_Abs"] = Module["asm"]["n"]).apply(null, arguments);
+        return (_Abs = Module["_Abs"] = Module["asm"]["p"]).apply(null, arguments);
       };
       var _Add = Module["_Add"] = function() {
-        return (_Add = Module["_Add"] = Module["asm"]["o"]).apply(null, arguments);
+        return (_Add = Module["_Add"] = Module["asm"]["q"]).apply(null, arguments);
       };
       var _AddN = Module["_AddN"] = function() {
-        return (_AddN = Module["_AddN"] = Module["asm"]["p"]).apply(null, arguments);
+        return (_AddN = Module["_AddN"] = Module["asm"]["r"]).apply(null, arguments);
+      };
+      var _All = Module["_All"] = function() {
+        return (_All = Module["_All"] = Module["asm"]["s"]).apply(null, arguments);
+      };
+      var _Any = Module["_Any"] = function() {
+        return (_Any = Module["_Any"] = Module["asm"]["t"]).apply(null, arguments);
       };
       var _ArgMax = Module["_ArgMax"] = function() {
-        return (_ArgMax = Module["_ArgMax"] = Module["asm"]["q"]).apply(null, arguments);
+        return (_ArgMax = Module["_ArgMax"] = Module["asm"]["u"]).apply(null, arguments);
       };
       var _AvgPool = Module["_AvgPool"] = function() {
-        return (_AvgPool = Module["_AvgPool"] = Module["asm"]["r"]).apply(null, arguments);
+        return (_AvgPool = Module["_AvgPool"] = Module["asm"]["v"]).apply(null, arguments);
       };
       var _BatchMatMul = Module["_BatchMatMul"] = function() {
-        return (_BatchMatMul = Module["_BatchMatMul"] = Module["asm"]["s"]).apply(null, arguments);
+        return (_BatchMatMul = Module["_BatchMatMul"] = Module["asm"]["w"]).apply(null, arguments);
       };
       var _Ceil = Module["_Ceil"] = function() {
-        return (_Ceil = Module["_Ceil"] = Module["asm"]["t"]).apply(null, arguments);
+        return (_Ceil = Module["_Ceil"] = Module["asm"]["x"]).apply(null, arguments);
       };
       var _ClipByValue = Module["_ClipByValue"] = function() {
-        return (_ClipByValue = Module["_ClipByValue"] = Module["asm"]["u"]).apply(null, arguments);
+        return (_ClipByValue = Module["_ClipByValue"] = Module["asm"]["y"]).apply(null, arguments);
       };
       var _Conv2D = Module["_Conv2D"] = function() {
-        return (_Conv2D = Module["_Conv2D"] = Module["asm"]["v"]).apply(null, arguments);
+        return (_Conv2D = Module["_Conv2D"] = Module["asm"]["z"]).apply(null, arguments);
       };
       var _Conv2DBackpropInput = Module["_Conv2DBackpropInput"] = function() {
-        return (_Conv2DBackpropInput = Module["_Conv2DBackpropInput"] = Module["asm"]["w"]).apply(null, arguments);
+        return (_Conv2DBackpropInput = Module["_Conv2DBackpropInput"] = Module["asm"]["A"]).apply(null, arguments);
       };
       var _Cos = Module["_Cos"] = function() {
-        return (_Cos = Module["_Cos"] = Module["asm"]["x"]).apply(null, arguments);
+        return (_Cos = Module["_Cos"] = Module["asm"]["B"]).apply(null, arguments);
       };
       var _CropAndResize = Module["_CropAndResize"] = function() {
-        return (_CropAndResize = Module["_CropAndResize"] = Module["asm"]["y"]).apply(null, arguments);
+        return (_CropAndResize = Module["_CropAndResize"] = Module["asm"]["C"]).apply(null, arguments);
       };
       var _Cumsum = Module["_Cumsum"] = function() {
-        return (_Cumsum = Module["_Cumsum"] = Module["asm"]["z"]).apply(null, arguments);
+        return (_Cumsum = Module["_Cumsum"] = Module["asm"]["D"]).apply(null, arguments);
       };
       var _DepthToSpace = Module["_DepthToSpace"] = function() {
-        return (_DepthToSpace = Module["_DepthToSpace"] = Module["asm"]["A"]).apply(null, arguments);
+        return (_DepthToSpace = Module["_DepthToSpace"] = Module["asm"]["E"]).apply(null, arguments);
       };
       var _DepthwiseConv2dNative = Module["_DepthwiseConv2dNative"] = function() {
-        return (_DepthwiseConv2dNative = Module["_DepthwiseConv2dNative"] = Module["asm"]["B"]).apply(null, arguments);
+        return (_DepthwiseConv2dNative = Module["_DepthwiseConv2dNative"] = Module["asm"]["F"]).apply(null, arguments);
       };
       var _Equal = Module["_Equal"] = function() {
-        return (_Equal = Module["_Equal"] = Module["asm"]["C"]).apply(null, arguments);
+        return (_Equal = Module["_Equal"] = Module["asm"]["G"]).apply(null, arguments);
       };
       var _Exp = Module["_Exp"] = function() {
-        return (_Exp = Module["_Exp"] = Module["asm"]["D"]).apply(null, arguments);
+        return (_Exp = Module["_Exp"] = Module["asm"]["H"]).apply(null, arguments);
       };
       var _FlipLeftRight = Module["_FlipLeftRight"] = function() {
-        return (_FlipLeftRight = Module["_FlipLeftRight"] = Module["asm"]["E"]).apply(null, arguments);
+        return (_FlipLeftRight = Module["_FlipLeftRight"] = Module["asm"]["I"]).apply(null, arguments);
       };
       var _Floor = Module["_Floor"] = function() {
-        return (_Floor = Module["_Floor"] = Module["asm"]["F"]).apply(null, arguments);
+        return (_Floor = Module["_Floor"] = Module["asm"]["J"]).apply(null, arguments);
       };
       var _FloorDiv = Module["_FloorDiv"] = function() {
-        return (_FloorDiv = Module["_FloorDiv"] = Module["asm"]["G"]).apply(null, arguments);
+        return (_FloorDiv = Module["_FloorDiv"] = Module["asm"]["K"]).apply(null, arguments);
       };
       var _FusedBatchNorm = Module["_FusedBatchNorm"] = function() {
-        return (_FusedBatchNorm = Module["_FusedBatchNorm"] = Module["asm"]["H"]).apply(null, arguments);
+        return (_FusedBatchNorm = Module["_FusedBatchNorm"] = Module["asm"]["L"]).apply(null, arguments);
       };
       var _FusedConv2D = Module["_FusedConv2D"] = function() {
-        return (_FusedConv2D = Module["_FusedConv2D"] = Module["asm"]["I"]).apply(null, arguments);
+        return (_FusedConv2D = Module["_FusedConv2D"] = Module["asm"]["M"]).apply(null, arguments);
       };
       var _FusedDepthwiseConv2D = Module["_FusedDepthwiseConv2D"] = function() {
-        return (_FusedDepthwiseConv2D = Module["_FusedDepthwiseConv2D"] = Module["asm"]["J"]).apply(null, arguments);
+        return (_FusedDepthwiseConv2D = Module["_FusedDepthwiseConv2D"] = Module["asm"]["N"]).apply(null, arguments);
       };
       var _Gather = Module["_Gather"] = function() {
-        return (_Gather = Module["_Gather"] = Module["asm"]["K"]).apply(null, arguments);
+        return (_Gather = Module["_Gather"] = Module["asm"]["O"]).apply(null, arguments);
       };
       var _GatherNd = Module["_GatherNd"] = function() {
-        return (_GatherNd = Module["_GatherNd"] = Module["asm"]["L"]).apply(null, arguments);
+        return (_GatherNd = Module["_GatherNd"] = Module["asm"]["P"]).apply(null, arguments);
       };
       var _Greater = Module["_Greater"] = function() {
-        return (_Greater = Module["_Greater"] = Module["asm"]["M"]).apply(null, arguments);
+        return (_Greater = Module["_Greater"] = Module["asm"]["Q"]).apply(null, arguments);
       };
       var _GreaterEqual = Module["_GreaterEqual"] = function() {
-        return (_GreaterEqual = Module["_GreaterEqual"] = Module["asm"]["N"]).apply(null, arguments);
+        return (_GreaterEqual = Module["_GreaterEqual"] = Module["asm"]["R"]).apply(null, arguments);
       };
       var _LeakyRelu = Module["_LeakyRelu"] = function() {
-        return (_LeakyRelu = Module["_LeakyRelu"] = Module["asm"]["O"]).apply(null, arguments);
+        return (_LeakyRelu = Module["_LeakyRelu"] = Module["asm"]["S"]).apply(null, arguments);
       };
       var _Less = Module["_Less"] = function() {
-        return (_Less = Module["_Less"] = Module["asm"]["P"]).apply(null, arguments);
+        return (_Less = Module["_Less"] = Module["asm"]["T"]).apply(null, arguments);
       };
       var _LessEqual = Module["_LessEqual"] = function() {
-        return (_LessEqual = Module["_LessEqual"] = Module["asm"]["Q"]).apply(null, arguments);
+        return (_LessEqual = Module["_LessEqual"] = Module["asm"]["U"]).apply(null, arguments);
       };
       var _Log = Module["_Log"] = function() {
-        return (_Log = Module["_Log"] = Module["asm"]["R"]).apply(null, arguments);
+        return (_Log = Module["_Log"] = Module["asm"]["V"]).apply(null, arguments);
       };
       var _LogicalAnd = Module["_LogicalAnd"] = function() {
-        return (_LogicalAnd = Module["_LogicalAnd"] = Module["asm"]["S"]).apply(null, arguments);
+        return (_LogicalAnd = Module["_LogicalAnd"] = Module["asm"]["W"]).apply(null, arguments);
       };
       var _Max = Module["_Max"] = function() {
-        return (_Max = Module["_Max"] = Module["asm"]["T"]).apply(null, arguments);
+        return (_Max = Module["_Max"] = Module["asm"]["X"]).apply(null, arguments);
       };
       var _MaxPool = Module["_MaxPool"] = function() {
-        return (_MaxPool = Module["_MaxPool"] = Module["asm"]["U"]).apply(null, arguments);
+        return (_MaxPool = Module["_MaxPool"] = Module["asm"]["Y"]).apply(null, arguments);
       };
       var _Maximum = Module["_Maximum"] = function() {
-        return (_Maximum = Module["_Maximum"] = Module["asm"]["V"]).apply(null, arguments);
+        return (_Maximum = Module["_Maximum"] = Module["asm"]["Z"]).apply(null, arguments);
       };
       var _Mean = Module["_Mean"] = function() {
-        return (_Mean = Module["_Mean"] = Module["asm"]["W"]).apply(null, arguments);
+        return (_Mean = Module["_Mean"] = Module["asm"]["_"]).apply(null, arguments);
       };
       var _Min = Module["_Min"] = function() {
-        return (_Min = Module["_Min"] = Module["asm"]["X"]).apply(null, arguments);
+        return (_Min = Module["_Min"] = Module["asm"]["$"]).apply(null, arguments);
       };
       var _Minimum = Module["_Minimum"] = function() {
-        return (_Minimum = Module["_Minimum"] = Module["asm"]["Y"]).apply(null, arguments);
+        return (_Minimum = Module["_Minimum"] = Module["asm"]["aa"]).apply(null, arguments);
+      };
+      var _MirrorPad = Module["_MirrorPad"] = function() {
+        return (_MirrorPad = Module["_MirrorPad"] = Module["asm"]["ba"]).apply(null, arguments);
       };
       var _Multiply = Module["_Multiply"] = function() {
-        return (_Multiply = Module["_Multiply"] = Module["asm"]["Z"]).apply(null, arguments);
+        return (_Multiply = Module["_Multiply"] = Module["asm"]["ca"]).apply(null, arguments);
       };
       var _Neg = Module["_Neg"] = function() {
-        return (_Neg = Module["_Neg"] = Module["asm"]["_"]).apply(null, arguments);
+        return (_Neg = Module["_Neg"] = Module["asm"]["da"]).apply(null, arguments);
       };
       var _NonMaxSuppressionV3 = Module["_NonMaxSuppressionV3"] = function() {
-        return (_NonMaxSuppressionV3 = Module["_NonMaxSuppressionV3"] = Module["asm"]["$"]).apply(null, arguments);
+        return (_NonMaxSuppressionV3 = Module["_NonMaxSuppressionV3"] = Module["asm"]["ea"]).apply(null, arguments);
       };
       var _NonMaxSuppressionV4 = Module["_NonMaxSuppressionV4"] = function() {
-        return (_NonMaxSuppressionV4 = Module["_NonMaxSuppressionV4"] = Module["asm"]["aa"]).apply(null, arguments);
+        return (_NonMaxSuppressionV4 = Module["_NonMaxSuppressionV4"] = Module["asm"]["fa"]).apply(null, arguments);
       };
       var _NonMaxSuppressionV5 = Module["_NonMaxSuppressionV5"] = function() {
-        return (_NonMaxSuppressionV5 = Module["_NonMaxSuppressionV5"] = Module["asm"]["ba"]).apply(null, arguments);
+        return (_NonMaxSuppressionV5 = Module["_NonMaxSuppressionV5"] = Module["asm"]["ga"]).apply(null, arguments);
       };
       var _NotEqual = Module["_NotEqual"] = function() {
-        return (_NotEqual = Module["_NotEqual"] = Module["asm"]["ca"]).apply(null, arguments);
+        return (_NotEqual = Module["_NotEqual"] = Module["asm"]["ha"]).apply(null, arguments);
       };
       var _OneHot = Module["_OneHot"] = function() {
-        return (_OneHot = Module["_OneHot"] = Module["asm"]["da"]).apply(null, arguments);
+        return (_OneHot = Module["_OneHot"] = Module["asm"]["ia"]).apply(null, arguments);
       };
       var _PadV2 = Module["_PadV2"] = function() {
-        return (_PadV2 = Module["_PadV2"] = Module["asm"]["ea"]).apply(null, arguments);
+        return (_PadV2 = Module["_PadV2"] = Module["asm"]["ja"]).apply(null, arguments);
       };
       var _Pow = Module["_Pow"] = function() {
-        return (_Pow = Module["_Pow"] = Module["asm"]["fa"]).apply(null, arguments);
+        return (_Pow = Module["_Pow"] = Module["asm"]["ka"]).apply(null, arguments);
       };
       var _Prelu = Module["_Prelu"] = function() {
-        return (_Prelu = Module["_Prelu"] = Module["asm"]["ga"]).apply(null, arguments);
+        return (_Prelu = Module["_Prelu"] = Module["asm"]["la"]).apply(null, arguments);
       };
       var _Prod = Module["_Prod"] = function() {
-        return (_Prod = Module["_Prod"] = Module["asm"]["ha"]).apply(null, arguments);
+        return (_Prod = Module["_Prod"] = Module["asm"]["ma"]).apply(null, arguments);
       };
       var _RealDiv = Module["_RealDiv"] = function() {
-        return (_RealDiv = Module["_RealDiv"] = Module["asm"]["ia"]).apply(null, arguments);
+        return (_RealDiv = Module["_RealDiv"] = Module["asm"]["na"]).apply(null, arguments);
       };
       var _Relu = Module["_Relu"] = function() {
-        return (_Relu = Module["_Relu"] = Module["asm"]["ja"]).apply(null, arguments);
+        return (_Relu = Module["_Relu"] = Module["asm"]["oa"]).apply(null, arguments);
       };
       var _Relu6 = Module["_Relu6"] = function() {
-        return (_Relu6 = Module["_Relu6"] = Module["asm"]["ka"]).apply(null, arguments);
+        return (_Relu6 = Module["_Relu6"] = Module["asm"]["pa"]).apply(null, arguments);
       };
       var _ResizeBilinear = Module["_ResizeBilinear"] = function() {
-        return (_ResizeBilinear = Module["_ResizeBilinear"] = Module["asm"]["la"]).apply(null, arguments);
+        return (_ResizeBilinear = Module["_ResizeBilinear"] = Module["asm"]["qa"]).apply(null, arguments);
       };
       var _Reverse = Module["_Reverse"] = function() {
-        return (_Reverse = Module["_Reverse"] = Module["asm"]["ma"]).apply(null, arguments);
+        return (_Reverse = Module["_Reverse"] = Module["asm"]["ra"]).apply(null, arguments);
       };
       var _RotateWithOffset = Module["_RotateWithOffset"] = function() {
-        return (_RotateWithOffset = Module["_RotateWithOffset"] = Module["asm"]["na"]).apply(null, arguments);
+        return (_RotateWithOffset = Module["_RotateWithOffset"] = Module["asm"]["sa"]).apply(null, arguments);
       };
       var _Round = Module["_Round"] = function() {
-        return (_Round = Module["_Round"] = Module["asm"]["oa"]).apply(null, arguments);
+        return (_Round = Module["_Round"] = Module["asm"]["ta"]).apply(null, arguments);
       };
       var _Rsqrt = Module["_Rsqrt"] = function() {
-        return (_Rsqrt = Module["_Rsqrt"] = Module["asm"]["pa"]).apply(null, arguments);
+        return (_Rsqrt = Module["_Rsqrt"] = Module["asm"]["ua"]).apply(null, arguments);
       };
       var _ScatterNd = Module["_ScatterNd"] = function() {
-        return (_ScatterNd = Module["_ScatterNd"] = Module["asm"]["qa"]).apply(null, arguments);
+        return (_ScatterNd = Module["_ScatterNd"] = Module["asm"]["va"]).apply(null, arguments);
       };
       var _SelectV2 = Module["_SelectV2"] = function() {
-        return (_SelectV2 = Module["_SelectV2"] = Module["asm"]["ra"]).apply(null, arguments);
+        return (_SelectV2 = Module["_SelectV2"] = Module["asm"]["wa"]).apply(null, arguments);
       };
       var _Sigmoid = Module["_Sigmoid"] = function() {
-        return (_Sigmoid = Module["_Sigmoid"] = Module["asm"]["sa"]).apply(null, arguments);
+        return (_Sigmoid = Module["_Sigmoid"] = Module["asm"]["xa"]).apply(null, arguments);
       };
       var _Sin = Module["_Sin"] = function() {
-        return (_Sin = Module["_Sin"] = Module["asm"]["ta"]).apply(null, arguments);
+        return (_Sin = Module["_Sin"] = Module["asm"]["ya"]).apply(null, arguments);
       };
       var _Softmax = Module["_Softmax"] = function() {
-        return (_Softmax = Module["_Softmax"] = Module["asm"]["ua"]).apply(null, arguments);
+        return (_Softmax = Module["_Softmax"] = Module["asm"]["za"]).apply(null, arguments);
       };
       var _Sqrt = Module["_Sqrt"] = function() {
-        return (_Sqrt = Module["_Sqrt"] = Module["asm"]["va"]).apply(null, arguments);
+        return (_Sqrt = Module["_Sqrt"] = Module["asm"]["Aa"]).apply(null, arguments);
       };
       var _Square = Module["_Square"] = function() {
-        return (_Square = Module["_Square"] = Module["asm"]["wa"]).apply(null, arguments);
+        return (_Square = Module["_Square"] = Module["asm"]["Ba"]).apply(null, arguments);
       };
       var _SquaredDifference = Module["_SquaredDifference"] = function() {
-        return (_SquaredDifference = Module["_SquaredDifference"] = Module["asm"]["xa"]).apply(null, arguments);
+        return (_SquaredDifference = Module["_SquaredDifference"] = Module["asm"]["Ca"]).apply(null, arguments);
       };
       var _Step = Module["_Step"] = function() {
-        return (_Step = Module["_Step"] = Module["asm"]["ya"]).apply(null, arguments);
+        return (_Step = Module["_Step"] = Module["asm"]["Da"]).apply(null, arguments);
       };
       var _StridedSlice = Module["_StridedSlice"] = function() {
-        return (_StridedSlice = Module["_StridedSlice"] = Module["asm"]["za"]).apply(null, arguments);
+        return (_StridedSlice = Module["_StridedSlice"] = Module["asm"]["Ea"]).apply(null, arguments);
       };
       var _Sub = Module["_Sub"] = function() {
-        return (_Sub = Module["_Sub"] = Module["asm"]["Aa"]).apply(null, arguments);
+        return (_Sub = Module["_Sub"] = Module["asm"]["Fa"]).apply(null, arguments);
       };
       var _Sum = Module["_Sum"] = function() {
-        return (_Sum = Module["_Sum"] = Module["asm"]["Ba"]).apply(null, arguments);
+        return (_Sum = Module["_Sum"] = Module["asm"]["Ga"]).apply(null, arguments);
+      };
+      var _Tan = Module["_Tan"] = function() {
+        return (_Tan = Module["_Tan"] = Module["asm"]["Ha"]).apply(null, arguments);
       };
       var _Tanh = Module["_Tanh"] = function() {
-        return (_Tanh = Module["_Tanh"] = Module["asm"]["Ca"]).apply(null, arguments);
+        return (_Tanh = Module["_Tanh"] = Module["asm"]["Ia"]).apply(null, arguments);
       };
       var _Tile = Module["_Tile"] = function() {
-        return (_Tile = Module["_Tile"] = Module["asm"]["Da"]).apply(null, arguments);
+        return (_Tile = Module["_Tile"] = Module["asm"]["Ja"]).apply(null, arguments);
       };
       var _TopK = Module["_TopK"] = function() {
-        return (_TopK = Module["_TopK"] = Module["asm"]["Ea"]).apply(null, arguments);
+        return (_TopK = Module["_TopK"] = Module["asm"]["Ka"]).apply(null, arguments);
       };
       var _Transpose = Module["_Transpose"] = function() {
-        return (_Transpose = Module["_Transpose"] = Module["asm"]["Fa"]).apply(null, arguments);
+        return (_Transpose = Module["_Transpose"] = Module["asm"]["La"]).apply(null, arguments);
       };
       var __FusedMatMul = Module["__FusedMatMul"] = function() {
-        return (__FusedMatMul = Module["__FusedMatMul"] = Module["asm"]["Ga"]).apply(null, arguments);
+        return (__FusedMatMul = Module["__FusedMatMul"] = Module["asm"]["Ma"]).apply(null, arguments);
       };
       var _malloc = Module["_malloc"] = function() {
-        return (_malloc = Module["_malloc"] = Module["asm"]["Ha"]).apply(null, arguments);
+        return (_malloc = Module["_malloc"] = Module["asm"]["Na"]).apply(null, arguments);
       };
       var _free = Module["_free"] = function() {
-        return (_free = Module["_free"] = Module["asm"]["Ia"]).apply(null, arguments);
+        return (_free = Module["_free"] = Module["asm"]["Oa"]).apply(null, arguments);
+      };
+      var ___errno_location = Module["___errno_location"] = function() {
+        return (___errno_location = Module["___errno_location"] = Module["asm"]["Pa"]).apply(null, arguments);
       };
       var stackSave = Module["stackSave"] = function() {
-        return (stackSave = Module["stackSave"] = Module["asm"]["Ja"]).apply(null, arguments);
+        return (stackSave = Module["stackSave"] = Module["asm"]["Qa"]).apply(null, arguments);
       };
       var stackRestore = Module["stackRestore"] = function() {
-        return (stackRestore = Module["stackRestore"] = Module["asm"]["Ka"]).apply(null, arguments);
+        return (stackRestore = Module["stackRestore"] = Module["asm"]["Ra"]).apply(null, arguments);
       };
       var stackAlloc = Module["stackAlloc"] = function() {
-        return (stackAlloc = Module["stackAlloc"] = Module["asm"]["La"]).apply(null, arguments);
+        return (stackAlloc = Module["stackAlloc"] = Module["asm"]["Sa"]).apply(null, arguments);
       };
       Module["cwrap"] = cwrap;
       var calledRun;
@@ -5352,35 +5534,35 @@ function computeStrides(shape) {
   }
   return strides;
 }
-function createNestedArray(offset, shape, a) {
+function createNestedArray(offset, shape, a, isComplex = false) {
   const ret = new Array();
   if (shape.length === 1) {
-    const d = shape[0];
+    const d = shape[0] * (isComplex ? 2 : 1);
     for (let i = 0; i < d; i++) {
       ret[i] = a[offset + i];
     }
   } else {
     const d = shape[0];
     const rest = shape.slice(1);
-    const len = rest.reduce((acc, c) => acc * c);
+    const len = rest.reduce((acc, c) => acc * c) * (isComplex ? 2 : 1);
     for (let i = 0; i < d; i++) {
-      ret[i] = createNestedArray(offset + i * len, rest, a);
+      ret[i] = createNestedArray(offset + i * len, rest, a, isComplex);
     }
   }
   return ret;
 }
-function toNestedArray(shape, a) {
+function toNestedArray(shape, a, isComplex = false) {
   if (shape.length === 0) {
     return a[0];
   }
-  const size = shape.reduce((acc, c) => acc * c);
+  const size = shape.reduce((acc, c) => acc * c) * (isComplex ? 2 : 1);
   if (size === 0) {
     return [];
   }
   if (size !== a.length) {
-    throw new Error(`[${shape}] does not match the input size ${a.length}.`);
+    throw new Error(`[${shape}] does not match the input size ${a.length}${isComplex ? " for a complex tensor" : ""}.`);
   }
-  return createNestedArray(0, shape, a);
+  return createNestedArray(0, shape, a, isComplex);
 }
 function makeOnesTypedArray(size, dtype) {
   const array2 = makeZerosTypedArray(size, dtype);
@@ -5469,6 +5651,7 @@ var Environment = class {
     this.flags = {};
     this.flagRegistry = {};
     this.urlFlags = {};
+    this.getQueryParams = getQueryParams;
     this.populateURLFlags();
   }
   setPlatform(platformName, platform) {
@@ -5543,7 +5726,7 @@ var Environment = class {
     if (typeof this.global === "undefined" || typeof this.global.location === "undefined" || typeof this.global.location.search === "undefined") {
       return;
     }
-    const urlParams = getQueryParams(this.global.location.search);
+    const urlParams = this.getQueryParams(this.global.location.search);
     if (TENSORFLOWJS_FLAGS_PREFIX in urlParams) {
       const keyValues = urlParams[TENSORFLOWJS_FLAGS_PREFIX].split(",");
       keyValues.forEach((keyValue) => {
@@ -5680,6 +5863,7 @@ var Dilation2D = "Dilation2D";
 var Dilation2DBackpropInput = "Dilation2DBackpropInput";
 var Dilation2DBackpropFilter = "Dilation2DBackpropFilter";
 var RealDiv = "RealDiv";
+var Einsum = "Einsum";
 var Elu = "Elu";
 var EluGrad = "EluGrad";
 var Erf = "Erf";
@@ -6472,10 +6656,10 @@ var Tensor = class {
   }
   async array() {
     const vals = await this.data();
-    return toNestedArray(this.shape, vals);
+    return toNestedArray(this.shape, vals, this.dtype === "complex64");
   }
   arraySync() {
-    return toNestedArray(this.shape, this.dataSync());
+    return toNestedArray(this.shape, this.dataSync(), this.dtype === "complex64");
   }
   async data() {
     this.throwIfDisposed();
@@ -7498,9 +7682,15 @@ __export2(device_util_exports, {
 function _isNavigatorDefined() {
   return typeof navigator !== "undefined" && navigator != null;
 }
-function isMobile() {
-  if (_isNavigatorDefined()) {
-    const a = navigator.userAgent || navigator.vendor || window.opera;
+function isMobile(nav) {
+  if (nav || _isNavigatorDefined()) {
+    if (!nav) {
+      nav = navigator;
+    }
+    if (nav.product === "ReactNative") {
+      return true;
+    }
+    const a = nav.userAgent || nav.vendor || window.opera;
     return /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(a) || /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0, 4));
   }
   return false;
@@ -10449,7 +10639,7 @@ function encodeStrings(a) {
   return a;
 }
 /** @license See the LICENSE file. */
-var version = "3.3.0";
+var version = "3.4.0";
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -12345,17 +12535,12 @@ function where_(condition, a, b) {
   const $a = convertToTensor(a, "a", "where");
   const $b = convertToTensor(b, "b", "where");
   const $condition = convertToTensor(condition, "condition", "where", "bool");
-  const broadcastShape = assertAndGetBroadcastShape($a.shape, $b.shape);
+  const broadcastShape = assertAndGetBroadcastShape(assertAndGetBroadcastShape($condition.shape, $a.shape), $b.shape);
+  const $broadcastedCondition = broadcastTo($condition, broadcastShape);
   const $broadcastedA = broadcastTo($a, broadcastShape);
   const $broadcastedB = broadcastTo($b, broadcastShape);
-  if ($condition.rank === 1) {
-    assert($condition.shape[0] === $a.shape[0], () => "The first dimension of `a` must match the size of `condition`.");
-  }
-  if ($condition.rank !== 1) {
-    assertShapesMatch($condition.shape, $broadcastedB.shape, "Error in where: ");
-  }
   const inputs = {
-    condition: $condition,
+    condition: $broadcastedCondition,
     t: $broadcastedA,
     e: $broadcastedB
   };
@@ -12454,6 +12639,28 @@ function dot_(t1, t2) {
   }
 }
 var dot = op({dot_});
+/**
+ * @license
+ * Copyright 2021 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+function einsum_(equation, ...tensors) {
+  const $tensors = tensors.map((t, i) => convertToTensor(t, `tensors${i}`, "einsum"));
+  const attrs = {equation};
+  return ENGINE.runKernel(Einsum, $tensors, attrs);
+}
+var einsum = op({einsum_});
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -13677,6 +13884,101 @@ function mean_(x, axis = null, keepDims = false) {
 var mean = op({mean_});
 /**
  * @license
+ * Copyright 2018 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+function zeros(shape, dtype = "float32") {
+  if (dtype === "complex64") {
+    const real4 = zeros(shape, "float32");
+    const imag4 = zeros(shape, "float32");
+    return complex(real4, imag4);
+  }
+  const values = makeZerosTypedArray(sizeFromShape(shape), dtype);
+  return ENGINE.makeTensor(values, shape, dtype);
+}
+/**
+ * @license
+ * Copyright 2018 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+function ones2(shape, dtype = "float32") {
+  if (dtype === "complex64") {
+    const real4 = ones2(shape, "float32");
+    const imag4 = zeros(shape, "float32");
+    return complex(real4, imag4);
+  }
+  const values = makeOnesTypedArray(sizeFromShape(shape), dtype);
+  return ENGINE.makeTensor(values, shape, dtype);
+}
+/**
+ * @license
+ * Copyright 2021 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+function meshgrid(x, y, {indexing = "xy"} = {}) {
+  if (indexing !== "xy" && indexing !== "ij") {
+    throw new TypeError(`${indexing} is not a valid third argument to meshgrid`);
+  }
+  if (x === void 0) {
+    return [];
+  }
+  let $x = convertToTensor(x, "x", "meshgrid", x instanceof Tensor ? x.dtype : "float32");
+  if (y === void 0) {
+    return [$x];
+  }
+  let $y = convertToTensor(y, "y", "meshgrid", y instanceof Tensor ? y.dtype : "float32");
+  const w = sizeFromShape($x.shape);
+  const h = sizeFromShape($y.shape);
+  if (indexing === "xy") {
+    $x = reshape($x, [1, -1]);
+    $y = reshape($y, [-1, 1]);
+    return [
+      matMul(ones2([h, 1], $x.dtype), $x),
+      matMul($y, ones2([1, w], $y.dtype))
+    ];
+  }
+  $x = reshape($x, [-1, 1]);
+  $y = reshape($y, [1, -1]);
+  return [
+    matMul($x, ones2([1, h], $x.dtype)),
+    matMul(ones2([w, 1], $y.dtype), $y)
+  ];
+}
+/**
+ * @license
  * Copyright 2020 Google Inc. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13915,56 +14217,6 @@ function notEqual_(a, b) {
   return ENGINE.runKernel(NotEqual, inputs);
 }
 var notEqual = op({notEqual_});
-/**
- * @license
- * Copyright 2018 Google LLC. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =============================================================================
- */
-function zeros(shape, dtype = "float32") {
-  if (dtype === "complex64") {
-    const real4 = zeros(shape, "float32");
-    const imag4 = zeros(shape, "float32");
-    return complex(real4, imag4);
-  }
-  const values = makeZerosTypedArray(sizeFromShape(shape), dtype);
-  return ENGINE.makeTensor(values, shape, dtype);
-}
-/**
- * @license
- * Copyright 2018 Google LLC. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =============================================================================
- */
-function ones2(shape, dtype = "float32") {
-  if (dtype === "complex64") {
-    const real4 = ones2(shape, "float32");
-    const imag4 = zeros(shape, "float32");
-    return complex(real4, imag4);
-  }
-  const values = makeOnesTypedArray(sizeFromShape(shape), dtype);
-  return ENGINE.makeTensor(values, shape, dtype);
-}
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -16716,11 +16968,7 @@ function stft_(signal2, frameLength, frameStep, fftLength, windowFn = hannWindow
   }
   const framedSignal = frame(signal2, frameLength, frameStep);
   const windowedSignal = mul(framedSignal, windowFn(frameLength));
-  const output = [];
-  for (let i = 0; i < framedSignal.shape[0]; i++) {
-    output.push(rfft(slice(windowedSignal, [i, 0], [1, frameLength]), fftLength));
-  }
-  return concat(output);
+  return rfft(windowedSignal, fftLength);
 }
 var stft = op({stft_});
 /**
@@ -18725,6 +18973,7 @@ __export2(backend_util_exports, {
   assignToTypedArray: () => assignToTypedArray,
   axesAreInnerMostDims: () => axesAreInnerMostDims,
   calculateShapes: () => calculateShapes,
+  checkEinsumDimSizes: () => checkEinsumDimSizes,
   combineLocations: () => combineLocations,
   complexWithEvenIndex: () => complexWithEvenIndex,
   complexWithOddIndex: () => complexWithOddIndex,
@@ -18738,6 +18987,7 @@ __export2(backend_util_exports, {
   computePool2DInfo: () => computePool2DInfo,
   computePool3DInfo: () => computePool3DInfo,
   convertConv2DDataFormat: () => convertConv2DDataFormat,
+  decodeEinsumEquation: () => decodeEinsumEquation,
   eitherStridesOrDilationsAreOne: () => eitherStridesOrDilationsAreOne,
   expandShapeToKeepDim: () => expandShapeToKeepDim,
   exponent: () => exponent,
@@ -18747,6 +18997,8 @@ __export2(backend_util_exports, {
   getAxesPermutation: () => getAxesPermutation,
   getBroadcastDims: () => getBroadcastDims,
   getComplexWithIndex: () => getComplexWithIndex,
+  getEinsumComputePath: () => getEinsumComputePath,
+  getEinsumPermutation: () => getEinsumPermutation,
   getFusedBiasGradient: () => getFusedBiasGradient,
   getFusedDyActivation: () => getFusedDyActivation,
   getImageCenter: () => getImageCenter,
@@ -18758,6 +19010,7 @@ __export2(backend_util_exports, {
   getSliceBeginCoords: () => getSliceBeginCoords,
   getSliceSize: () => getSliceSize,
   getUndoAxesPermutation: () => getUndoAxesPermutation,
+  isIdentityPermutation: () => isIdentityPermutation,
   log: () => log2,
   mergeRealAndImagArrays: () => mergeRealAndImagArrays,
   prepareAndValidate: () => prepareAndValidate,
@@ -19092,6 +19345,142 @@ function exponent(k, n, inverse) {
   const real4 = Math.cos(x);
   const imag4 = Math.sin(x);
   return {real: real4, imag: imag4};
+}
+/**
+ * @license
+ * Copyright 2021 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+var ARROW = "->";
+var ARROW_REGEX = /->/g;
+var COMMA = ",";
+var ELLIPSIS = "...";
+function decodeEinsumEquation(equation, numTensors) {
+  equation = equation.replace(/\s/g, "");
+  const numArrows = (equation.length - equation.replace(ARROW_REGEX, "").length) / ARROW.length;
+  if (numArrows < 1) {
+    throw new Error("Equations without an arrow are not supported.");
+  } else if (numArrows > 1) {
+    throw new Error(`Equation must contain exactly one arrow ("${ARROW}").`);
+  }
+  const [inputString, outputString] = equation.split(ARROW);
+  assert(inputString.indexOf(ELLIPSIS) === -1, () => `The ellipsis notation ("${ELLIPSIS}") is not supported yet.`);
+  const inputTerms = inputString.split(COMMA);
+  const numInputs = inputTerms.length;
+  if (numTensors !== numInputs) {
+    throw new Error(`Expected ${numInputs} input tensors, received ${numTensors}`);
+  }
+  if (numInputs > 2) {
+    throw new Error("Support for more than 2 input tensors is not implemented yet.");
+  }
+  const allDims = [];
+  for (let i = 0; i < outputString.length; ++i) {
+    const dimName = outputString[i];
+    if (!inputTerms.some((inputTerm) => inputTerm.indexOf(dimName) !== -1)) {
+      throw new Error(`Output subscripts contain the label ${dimName} not present in the input subscripts.`);
+    }
+    if (allDims.indexOf(dimName) === -1) {
+      allDims.push(dimName);
+    }
+  }
+  for (let i = 0; i < inputString.length; ++i) {
+    const dimName = inputString[i];
+    if (allDims.indexOf(dimName) === -1 && dimName !== COMMA) {
+      allDims.push(dimName);
+    }
+  }
+  const idDims = new Array(inputTerms.length);
+  for (let i = 0; i < numInputs; ++i) {
+    if (new Set(inputTerms[i].split("")).size !== inputTerms[i].length) {
+      throw new Error(`Found duplicate axes in input component ${inputTerms[i]}. Support for duplicate axes in input is not implemented yet.`);
+    }
+    idDims[i] = [];
+    for (let j = 0; j < inputTerms[i].length; ++j) {
+      idDims[i].push(allDims.indexOf(inputTerms[i][j]));
+    }
+  }
+  const numDims = allDims.length;
+  const numOutDims = outputString.length;
+  const summedDims = [];
+  for (let i = numOutDims; i < numDims; ++i) {
+    summedDims.push(i);
+  }
+  return {allDims, summedDims, idDims};
+}
+function getEinsumPermutation(nDims, idDims) {
+  let permutationIndices = new Array(nDims);
+  permutationIndices.fill(-1);
+  for (let i = 0; i < idDims.length; ++i) {
+    permutationIndices[idDims[i]] = i;
+  }
+  const expandDims6 = [];
+  for (let i = 0; i < nDims; ++i) {
+    if (permutationIndices[i] === -1) {
+      expandDims6.push(i);
+    }
+  }
+  permutationIndices = permutationIndices.filter((d) => d !== -1);
+  return {permutationIndices, expandDims: expandDims6};
+}
+function checkEinsumDimSizes(nDims, idDims, tensors) {
+  const dimSizes = new Array(nDims);
+  for (let i = 0; i < tensors.length; ++i) {
+    const shape = tensors[i].shape;
+    for (let j = 0; j < idDims[i].length; ++j) {
+      if (dimSizes[idDims[i][j]] === void 0) {
+        dimSizes[idDims[i][j]] = shape[j];
+      } else {
+        assert(dimSizes[idDims[i][j]] === shape[j], () => `Expected dimension ${dimSizes[idDims[i][j]]} at axis ${j} of input shaped ${JSON.stringify(shape)}, but got dimension ${shape[j]}`);
+      }
+    }
+  }
+}
+function getEinsumComputePath(summedDims, idDims) {
+  const path = summedDims;
+  const steps = [];
+  let nSteps = 0;
+  if (summedDims.length === 0) {
+    path.push(-1);
+  }
+  nSteps = summedDims.length + 1;
+  for (let i = 0; i < nSteps; ++i) {
+    steps.push([]);
+  }
+  const computedTermIndices = [];
+  for (let i = 0; i < path.length; ++i) {
+    const summedDim = path[i];
+    const termIndices = findTermsWithDim(idDims, summedDim);
+    for (const termIndex of termIndices) {
+      if (computedTermIndices.indexOf(termIndex) === -1) {
+        steps[i].push(termIndex);
+        computedTermIndices.push(termIndex);
+      }
+    }
+  }
+  return {path, steps};
+}
+function isIdentityPermutation(perm) {
+  return perm.every((dim, index) => dim === index);
+}
+function findTermsWithDim(idDims, dim) {
+  const termIndices = [];
+  for (let i = 0; i < idDims.length; ++i) {
+    if (idDims[i].length === 0 || idDims[i].indexOf(dim) !== -1 || dim === -1) {
+      termIndices.push(i);
+    }
+  }
+  return termIndices;
 }
 function prepareSplitSize(x, numOrSizeSplits, axis = 0) {
   let splitSizes = [];
@@ -26687,6 +27076,7 @@ __export2(exports_layers_exports, {
   conv2d: () => conv2d3,
   conv2dTranspose: () => conv2dTranspose2,
   conv3d: () => conv3d2,
+  conv3dTranspose: () => conv3dTranspose2,
   convLstm2d: () => convLstm2d,
   convLstm2dCell: () => convLstm2dCell,
   cropping2D: () => cropping2D,
@@ -28604,7 +28994,7 @@ function convertTsToPythonic(tsConfig, key) {
   }
 }
 /** @license See the LICENSE file. */
-var version2 = "3.3.0";
+var version2 = "3.4.0";
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -32329,6 +32719,119 @@ var Conv2DTranspose = class extends Conv2D2 {
 };
 Conv2DTranspose.className = "Conv2DTranspose";
 serialization_exports.registerClass(Conv2DTranspose);
+var Conv3DTranspose = class extends Conv3D2 {
+  constructor(args) {
+    super(args);
+    this.inputSpec = [new InputSpec({ndim: 5})];
+    if (this.padding !== "same" && this.padding !== "valid") {
+      throw new ValueError(`Conv3DTranspose currently supports only padding modes 'same' and 'valid', but received padding mode ${this.padding}`);
+    }
+  }
+  build(inputShape) {
+    inputShape = getExactlyOneShape(inputShape);
+    if (inputShape.length !== 5) {
+      throw new ValueError("Input should have rank 5; Received input shape: " + JSON.stringify(inputShape));
+    }
+    const channelAxis = this.dataFormat === "channelsFirst" ? 1 : inputShape.length - 1;
+    if (inputShape[channelAxis] == null) {
+      throw new ValueError("The channel dimension of the inputs should be defined. Found `None`.");
+    }
+    const inputDim = inputShape[channelAxis];
+    const kernelShape = this.kernelSize.concat([this.filters, inputDim]);
+    this.kernel = this.addWeight("kernel", kernelShape, "float32", this.kernelInitializer, this.kernelRegularizer, true, this.kernelConstraint);
+    if (this.useBias) {
+      this.bias = this.addWeight("bias", [this.filters], "float32", this.biasInitializer, this.biasRegularizer, true, this.biasConstraint);
+    }
+    this.inputSpec = [new InputSpec({ndim: 5, axes: {[channelAxis]: inputDim}})];
+    this.built = true;
+  }
+  call(inputs, kwargs) {
+    return tidy(() => {
+      let input2 = getExactlyOneTensor(inputs);
+      if (input2.shape.length !== 5) {
+        throw new ValueError(`Conv3DTranspose.call() expects input tensor to be rank-4, but received a tensor of rank-${input2.shape.length}`);
+      }
+      const inputShape = input2.shape;
+      const batchSize = inputShape[0];
+      let hAxis;
+      let wAxis;
+      let dAxis;
+      if (this.dataFormat === "channelsFirst") {
+        dAxis = 2;
+        hAxis = 3;
+        wAxis = 4;
+      } else {
+        dAxis = 1;
+        hAxis = 2;
+        wAxis = 3;
+      }
+      const depth = inputShape[dAxis];
+      const height = inputShape[hAxis];
+      const width = inputShape[wAxis];
+      const kernelD = this.kernelSize[0];
+      const kernelH = this.kernelSize[1];
+      const kernelW = this.kernelSize[2];
+      const strideD = this.strides[0];
+      const strideH = this.strides[1];
+      const strideW = this.strides[2];
+      const outDepth = deconvLength(depth, strideD, kernelD, this.padding);
+      const outHeight = deconvLength(height, strideH, kernelH, this.padding);
+      const outWidth = deconvLength(width, strideW, kernelW, this.padding);
+      const outputShape = [batchSize, outDepth, outHeight, outWidth, this.filters];
+      if (this.dataFormat !== "channelsLast") {
+        input2 = transpose(input2, [0, 2, 3, 4, 1]);
+      }
+      let outputs = conv3dTranspose(input2, this.kernel.read(), outputShape, this.strides, this.padding);
+      if (this.dataFormat !== "channelsLast") {
+        outputs = transpose(outputs, [0, 4, 1, 2, 3]);
+      }
+      if (this.bias !== null) {
+        outputs = biasAdd(outputs, this.bias.read(), this.dataFormat);
+      }
+      if (this.activation !== null) {
+        outputs = this.activation.apply(outputs);
+      }
+      return outputs;
+    });
+  }
+  computeOutputShape(inputShape) {
+    inputShape = getExactlyOneShape(inputShape);
+    const outputShape = inputShape.slice();
+    let channelAxis;
+    let depthAxis;
+    let heightAxis;
+    let widthAxis;
+    if (this.dataFormat === "channelsFirst") {
+      channelAxis = 1;
+      depthAxis = 2;
+      heightAxis = 3;
+      widthAxis = 4;
+    } else {
+      channelAxis = 4;
+      depthAxis = 1;
+      heightAxis = 2;
+      widthAxis = 3;
+    }
+    const kernelD = this.kernelSize[0];
+    const kernelH = this.kernelSize[1];
+    const kernelW = this.kernelSize[2];
+    const strideD = this.strides[0];
+    const strideH = this.strides[1];
+    const strideW = this.strides[2];
+    outputShape[channelAxis] = this.filters;
+    outputShape[depthAxis] = deconvLength(outputShape[depthAxis], strideD, kernelD, this.padding);
+    outputShape[heightAxis] = deconvLength(outputShape[heightAxis], strideH, kernelH, this.padding);
+    outputShape[widthAxis] = deconvLength(outputShape[widthAxis], strideW, kernelW, this.padding);
+    return outputShape;
+  }
+  getConfig() {
+    const config = super.getConfig();
+    delete config["dilationRate"];
+    return config;
+  }
+};
+Conv3DTranspose.className = "Conv3DTranspose";
+serialization_exports.registerClass(Conv3DTranspose);
 var SeparableConv = class extends Conv {
   constructor(rank, config) {
     super(rank, config);
@@ -36343,6 +36846,9 @@ function conv2dTranspose2(args) {
 function conv3d2(args) {
   return new Conv3D2(args);
 }
+function conv3dTranspose2(args) {
+  return new Conv3DTranspose(args);
+}
 function separableConv2d2(args) {
   return new SeparableConv2D(args);
 }
@@ -37573,13 +38079,21 @@ var json2 = [
         type: "number",
         defaultValue: 0.2
       },
-      {
-        tfName: "T",
-        name: "dtype",
-        type: "dtype",
-        notSupported: true
-      }
+      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
     ]
+  },
+  {
+    tfOpName: "IsNan",
+    category: "basic_math",
+    inputs: [
+      {start: 0, name: "x", type: "tensor"}
+    ],
+    attrs: [{
+      tfName: "T",
+      name: "dtype",
+      type: "dtype",
+      notSupported: true
+    }]
   }
 ];
 var control_exports = {};
@@ -39234,12 +39748,19 @@ var json12 = [
       {start: 0, name: "x", type: "tensor"},
       {start: 1, name: "perm", type: "number[]"}
     ],
-    attrs: [{
-      tfName: "T",
-      name: "dtype",
-      type: "dtype",
-      notSupported: true
-    }]
+    attrs: [
+      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    ]
+  },
+  {
+    tfOpName: "Einsum",
+    category: "matrices",
+    inputs: [{start: 0, end: 0, name: "tensors", type: "tensors"}],
+    attrs: [
+      {tfName: "equation", name: "equation", type: "string"},
+      {tfName: "N", name: "n", type: "number", defaultValue: 2},
+      {tfName: "T", name: "dtype", type: "dtype"}
+    ]
   }
 ];
 var normalization_exports = {};
@@ -40630,6 +41151,8 @@ var executeOp2 = (node2, tensorMap, context) => {
       return [leakyRelu(getParamValue("x", node2, tensorMap, context), getParamValue("alpha", node2, tensorMap, context))];
     case "Prelu":
       return [prelu(getParamValue("x", node2, tensorMap, context), getParamValue("alpha", node2, tensorMap, context))];
+    case "IsNan":
+      return [isNaN2(getTensor(node2.inputNames[0], tensorMap, context))];
     default:
       throw TypeError(`Node type ${node2.op} is not implemented`);
   }
@@ -41400,7 +41923,7 @@ function fusedConvAndDepthWiseParams(node2, tensorMap, context) {
     }
   }
   if (isBatchNorm) {
-    throw new Error("FusedConv2d and DepthwiseConv2d with FusedBatchNorm is not supported.");
+    throw new Error("FusedConv2d and DepthwiseConv2d with FusedBatchNorm is not supported");
   }
   const stride = getParamValue("strides", node2, tensorMap, context);
   const pad3 = getPadding(node2, tensorMap, context);
@@ -42028,6 +42551,8 @@ var executeOp12 = (node2, tensorMap, context) => {
     case "BatchMatMulV2":
     case "MatMul":
       return [matMul(getParamValue("a", node2, tensorMap, context), getParamValue("b", node2, tensorMap, context), getParamValue("transposeA", node2, tensorMap, context), getParamValue("transposeB", node2, tensorMap, context))];
+    case "Einsum":
+      return [einsum(getParamValue("equation", node2, tensorMap, context), ...getParamValue("tensors", node2, tensorMap, context))];
     case "Transpose":
       return [transpose(getParamValue("x", node2, tensorMap, context), getParamValue("perm", node2, tensorMap, context))];
     case "_FusedMatMul":
@@ -42872,7 +43397,7 @@ var GraphExecutor = class {
         const tensors = getTensorsForCurrentContenxt(input2.name, tensorMap, context);
         if (tensors != null) {
           tensors.forEach((tensor2) => {
-            if (tensor2 && !tensorsToKeep.has(tensor2.id)) {
+            if (tensor2 && !tensor2.kept && !tensorsToKeep.has(tensor2.id)) {
               const count2 = intermediateTensorConsumerCount[tensor2.id];
               if (count2 === 1) {
                 tensor2.dispose();
@@ -42906,7 +43431,7 @@ var GraphExecutor = class {
     Object.keys(tensorMap).forEach((key) => {
       const tensorArray = tensorMap[key];
       tensorArray.forEach((tensor2) => {
-        if (tensor2 && !tensor2.isDisposed && !keepIds.has(tensor2.id)) {
+        if (tensor2 && !tensor2.kept && !tensor2.isDisposed && !keepIds.has(tensor2.id)) {
           tensor2.dispose();
         }
       });
@@ -43285,7 +43810,7 @@ async function loadGraphModel(modelUrl, options = {}) {
   return model2;
 }
 /** @license See the LICENSE file. */
-var version3 = "3.3.0";
+var version3 = "3.4.0";
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -45347,7 +45872,7 @@ async function microphone(microphoneConfig) {
   return MicrophoneIterator.create(microphoneConfig);
 }
 /** @license See the LICENSE file. */
-var version4 = "3.3.0";
+var version4 = "3.4.0";
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -46997,7 +47522,7 @@ function uniqueImpl(values, axis, shape, dtype) {
  * =============================================================================
  */
 /** @license See the LICENSE file. */
-var version5 = "3.3.0";
+var version5 = "3.4.0";
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -47466,12 +47991,12 @@ function all2(args) {
   const aVals = backend2.data.get($x.dataId).values;
   for (let i = 0; i < vals.length; ++i) {
     const offset = i * reduceSize;
-    let all4 = aVals[offset];
+    let all5 = aVals[offset];
     for (let j = 0; j < reduceSize; ++j) {
       const value = aVals[offset + j];
-      all4 = all4 && value;
+      all5 = all5 && value;
     }
-    vals[i] = all4;
+    vals[i] = all5;
   }
   if (permutedAxes != null) {
     backend2.disposeIntermediateTensorInfo($x);
@@ -49814,6 +50339,154 @@ var dilation2dBackpropInputConfig = {
  * limitations under the License.
  * =============================================================================
  */
+function sum3(args) {
+  const {inputs, backend: backend2, attrs} = args;
+  const {x} = inputs;
+  const {axis, keepDims} = attrs;
+  assertNotComplex(x, "sum");
+  let $x;
+  if (x.dtype === "bool") {
+    $x = cast3({inputs: {x}, backend: backend2, attrs: {dtype: "int32"}});
+  } else {
+    $x = identity2({inputs: {x}, backend: backend2});
+  }
+  const xRank = $x.shape.length;
+  const axes = util_exports.parseAxisParam(axis, $x.shape);
+  const permutation = backend_util_exports.getAxesPermutation(axes, xRank);
+  let reductionAxes = axes;
+  let permutedX = $x;
+  if (permutation != null) {
+    permutedX = transpose2({inputs: {x: $x}, backend: backend2, attrs: {perm: permutation}});
+    reductionAxes = backend_util_exports.getInnerMostAxes(reductionAxes.length, xRank);
+  }
+  backend_util_exports.assertAxesAreInnerMostDims("sum", reductionAxes, permutedX.shape.length);
+  const [outShape, reduceShape] = backend_util_exports.computeOutAndReduceShapes(permutedX.shape, reductionAxes);
+  const resultDtype = backend_util_exports.upcastType(permutedX.dtype, "int32");
+  let result = zeros3(backend2, outShape, resultDtype);
+  const reduceSize = util_exports.sizeFromShape(reduceShape);
+  const vals = backend2.data.get(result.dataId).values;
+  const aVals = backend2.data.get(permutedX.dataId).values;
+  for (let i = 0; i < vals.length; ++i) {
+    const offset = i * reduceSize;
+    let sum6 = 0;
+    for (let j = 0; j < reduceSize; ++j) {
+      sum6 += aVals[offset + j];
+    }
+    vals[i] = sum6;
+  }
+  if (keepDims) {
+    const newShape = backend_util_exports.expandShapeToKeepDim(result.shape, axes);
+    const oldResult = result;
+    result = reshape3({inputs: {x: result}, backend: backend2, attrs: {shape: newShape}});
+    backend2.disposeIntermediateTensorInfo(oldResult);
+  }
+  backend2.disposeIntermediateTensorInfo($x);
+  if (permutation != null) {
+    backend2.disposeIntermediateTensorInfo(permutedX);
+  }
+  return result;
+}
+var sumConfig = {
+  kernelName: Sum,
+  backendName: "cpu",
+  kernelFunc: sum3
+};
+/**
+ * @license
+ * Copyright 2021 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+function einsum2(args) {
+  const {inputs, backend: backend2, attrs} = args;
+  const {equation} = attrs;
+  const tensors = inputs;
+  const {allDims, summedDims, idDims} = backend_util_exports.decodeEinsumEquation(equation, tensors.length);
+  backend_util_exports.checkEinsumDimSizes(allDims.length, idDims, tensors);
+  const {path, steps} = backend_util_exports.getEinsumComputePath(summedDims, idDims);
+  const nSteps = steps.length;
+  let out = null;
+  let numDimsRemaining = allDims.length;
+  const tensorsToDispose = [];
+  for (let i = 0; i < nSteps; ++i) {
+    for (const idTerm of steps[i]) {
+      const {permutationIndices: perm, expandDims: dimsToExpand} = backend_util_exports.getEinsumPermutation(numDimsRemaining, idDims[idTerm]);
+      let x;
+      if (backend_util_exports.isIdentityPermutation(perm)) {
+        x = tensors[idTerm];
+      } else {
+        x = transpose2({inputs: {x: tensors[idTerm]}, backend: backend2, attrs: {perm}});
+        tensorsToDispose.push(x);
+      }
+      const targetShape = x.shape.slice();
+      for (let k = 0; k < dimsToExpand.length; ++k) {
+        targetShape.splice(dimsToExpand[k], 0, 1);
+      }
+      if (!util_exports.arraysEqual(x.shape, targetShape)) {
+        x = reshape3({inputs: {x}, backend: backend2, attrs: {shape: targetShape}});
+        tensorsToDispose.push(x);
+      }
+      if (out === null) {
+        out = x;
+      } else {
+        out = multiply2({inputs: {a: x, b: out}, backend: backend2});
+        tensorsToDispose.push(out);
+      }
+    }
+    if (i < nSteps - 1) {
+      if (path[i] >= 0) {
+        out = sum3({
+          inputs: {x: out},
+          backend: backend2,
+          attrs: {
+            axis: path[i] - (allDims.length - numDimsRemaining),
+            keepDims: false
+          }
+        });
+        tensorsToDispose.push(out);
+      }
+      numDimsRemaining--;
+    }
+  }
+  for (const tensorInfo of tensorsToDispose) {
+    if (tensorInfo === out) {
+      continue;
+    }
+    backend2.disposeIntermediateTensorInfo(tensorInfo);
+  }
+  return out;
+}
+var einsumConfig = {
+  kernelName: Einsum,
+  backendName: "cpu",
+  kernelFunc: einsum2
+};
+/**
+ * @license
+ * Copyright 2020 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
 function eluGrad(args) {
   const {inputs, backend: backend2} = args;
   const {dy, y} = inputs;
@@ -51211,74 +51884,6 @@ var maxPoolWithArgmaxConfig = {
       {dataId: indexesDataId, shape: convInfo.outShape, dtype: "int32"}
     ];
   }
-};
-/**
- * @license
- * Copyright 2020 Google LLC. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =============================================================================
- */
-function sum3(args) {
-  const {inputs, backend: backend2, attrs} = args;
-  const {x} = inputs;
-  const {axis, keepDims} = attrs;
-  assertNotComplex(x, "sum");
-  let $x;
-  if (x.dtype === "bool") {
-    $x = cast3({inputs: {x}, backend: backend2, attrs: {dtype: "int32"}});
-  } else {
-    $x = identity2({inputs: {x}, backend: backend2});
-  }
-  const xRank = $x.shape.length;
-  const axes = util_exports.parseAxisParam(axis, $x.shape);
-  const permutation = backend_util_exports.getAxesPermutation(axes, xRank);
-  let reductionAxes = axes;
-  let permutedX = $x;
-  if (permutation != null) {
-    permutedX = transpose2({inputs: {x: $x}, backend: backend2, attrs: {perm: permutation}});
-    reductionAxes = backend_util_exports.getInnerMostAxes(reductionAxes.length, xRank);
-  }
-  backend_util_exports.assertAxesAreInnerMostDims("sum", reductionAxes, permutedX.shape.length);
-  const [outShape, reduceShape] = backend_util_exports.computeOutAndReduceShapes(permutedX.shape, reductionAxes);
-  const resultDtype = backend_util_exports.upcastType(permutedX.dtype, "int32");
-  let result = zeros3(backend2, outShape, resultDtype);
-  const reduceSize = util_exports.sizeFromShape(reduceShape);
-  const vals = backend2.data.get(result.dataId).values;
-  const aVals = backend2.data.get(permutedX.dataId).values;
-  for (let i = 0; i < vals.length; ++i) {
-    const offset = i * reduceSize;
-    let sum6 = 0;
-    for (let j = 0; j < reduceSize; ++j) {
-      sum6 += aVals[offset + j];
-    }
-    vals[i] = sum6;
-  }
-  if (keepDims) {
-    const newShape = backend_util_exports.expandShapeToKeepDim(result.shape, axes);
-    const oldResult = result;
-    result = reshape3({inputs: {x: result}, backend: backend2, attrs: {shape: newShape}});
-    backend2.disposeIntermediateTensorInfo(oldResult);
-  }
-  backend2.disposeIntermediateTensorInfo($x);
-  if (permutation != null) {
-    backend2.disposeIntermediateTensorInfo(permutedX);
-  }
-  return result;
-}
-var sumConfig = {
-  kernelName: Sum,
-  backendName: "cpu",
-  kernelFunc: sum3
 };
 /**
  * @license
@@ -53429,6 +54034,7 @@ var kernelConfigs = [
   dilation2dBackpropInputConfig,
   dilation2dBackpropFilterConfig,
   realDivConfig,
+  einsumConfig,
   eluConfig,
   eluGradConfig2,
   equalConfig,
@@ -54216,7 +54822,7 @@ ENV3.registerFlag("WEBGL_FORCE_F16_TEXTURES", () => false);
 ENV3.registerFlag("WEBGL_PACK", () => ENV3.getBool("HAS_WEBGL"));
 ENV3.registerFlag("WEBGL_PACK_NORMALIZATION", () => ENV3.getBool("WEBGL_PACK"));
 ENV3.registerFlag("WEBGL_PACK_CLIP", () => ENV3.getBool("WEBGL_PACK"));
-ENV3.registerFlag("WEBGL_PACK_DEPTHWISECONV", () => false);
+ENV3.registerFlag("WEBGL_PACK_DEPTHWISECONV", () => true);
 ENV3.registerFlag("WEBGL_PACK_BINARY_OPERATIONS", () => ENV3.getBool("WEBGL_PACK"));
 ENV3.registerFlag("WEBGL_PACK_UNARY_OPERATIONS", () => ENV3.getBool("WEBGL_PACK"));
 ENV3.registerFlag("WEBGL_PACK_ARRAY_OPERATIONS", () => ENV3.getBool("WEBGL_PACK"));
@@ -56708,7 +57314,7 @@ var PackProgram = class {
       const channels = getChannels("rc", rank);
       const dtype = getCoordsDataType(rank);
       const outOfBoundsCondition = getOutOfBoundsCondition(rank, outputShape, channels);
-      const setup42 = getSetup(rank, outputShape[outputShape.length - 1], outputShape[outputShape.length - 2], channels);
+      const setup45 = getSetup(rank, outputShape[outputShape.length - 1], outputShape[outputShape.length - 2], channels);
       const output = getOutput(outputShape, channels);
       this.userCode = `
         void main() {
@@ -56717,7 +57323,7 @@ var PackProgram = class {
           if(${outOfBoundsCondition}) {
             setOutput(vec4(0));
           } else {
-            ${setup42}
+            ${setup45}
 
             setOutput(vec4(${output}));
           }
@@ -57256,7 +57862,6 @@ var MathBackendWebGL = class extends KernelBackend {
     this.downloadWaitMs = 0;
     this.lastGlFlushTime = 0;
     this.warnedAboutMemory = false;
-    this.warnedAboutCPUBackend = false;
     this.pendingDeletes = 0;
     this.disposed = false;
     if (!env().getBool("HAS_WEBGL")) {
@@ -57599,22 +58204,8 @@ var MathBackendWebGL = class extends KernelBackend {
   getDataInfo(dataId) {
     return this.texData.get(dataId);
   }
-  getCPUBackend() {
-    if (!env().getBool("WEBGL_CPU_FORWARD")) {
-      return null;
-    }
-    if (this.cpuBackend == null) {
-      this.cpuBackend = engine().findBackend("cpu");
-    }
-    return this.cpuBackend;
-  }
   shouldExecuteOnCPU(inputs, sizeThreshold = CPU_HANDOFF_SIZE_THRESHOLD) {
-    const cpuBackend = this.getCPUBackend();
-    if (!env().getBool("IS_TEST") && !this.warnedAboutCPUBackend && cpuBackend == null) {
-      console.warn("Your application contains ops that are small enough to be executed on the CPU backend, however the CPU backend cannot be found. Consider importing the CPU backend (@tensorflow/tfjs-backend-cpu) for better performance.");
-      this.warnedAboutCPUBackend = true;
-    }
-    return cpuBackend != null && inputs.every((input2) => this.texData.get(input2.dataId).texture == null && util_exports.sizeFromShape(input2.shape) < sizeThreshold);
+    return env().getBool("WEBGL_CPU_FORWARD") && inputs.every((input2) => this.texData.get(input2.dataId).texture == null && util_exports.sizeFromShape(input2.shape) < sizeThreshold);
   }
   getGPGPUContext() {
     return this.gpgpu;
@@ -57928,7 +58519,7 @@ function float32ToTypedArray(a, dtype) {
   }
 }
 /** @license See the LICENSE file. */
-var version6 = "3.3.0";
+var version6 = "3.4.0";
 /**
  * @license
  * Copyright 2020 Google Inc. All Rights Reserved.
@@ -63435,6 +64026,7 @@ var DepthwiseConvPacked2DProgram = class {
     this.packedInputs = true;
     this.packedOutput = true;
     this.outputShape = convInfo.outShape;
+    const channelMul = convInfo.outChannels / convInfo.inChannels;
     const xNumRows = convInfo.inHeight;
     const xNumCols = convInfo.inWidth;
     const padTop = convInfo.padInfo.top;
@@ -63446,64 +64038,78 @@ var DepthwiseConvPacked2DProgram = class {
     const filterHeight = convInfo.filterHeight;
     const filterWidth = convInfo.filterWidth;
     const texelsAcross = filterWidth;
-    let mainLoop = `int xR; int xC; int xCOffset;`;
+    let mainLoop = `
+      int xR; int xC; int xCOffset;
+      vec4 wTexel; vec4 previous; vec4 final;`;
+    for (let c = 0; c < filterWidth; c++) {
+      mainLoop += `
+          vec4 xTexelC${c * 2};
+          vec4 xC${c};`;
+    }
     for (let r = 0; r < filterHeight; r++) {
       for (let c = 0; c < filterWidth; c++) {
         mainLoop += `
-          vec4 xTexelR${r}C${c * 2} = vec4(0.);
-          vec4 wR${r}C${c} = vec4(0.);
-          vec4 xR${r}C${c} = vec4(0.);`;
+          xTexelC${c * 2} = vec4(0.0);
+          xC${c} = vec4(0.0);`;
       }
-    }
-    for (let r = 0; r < filterHeight; r++) {
-      for (let texelC = 0; texelC < texelsAcross; texelC++) {
+      mainLoop += `
+        xR = xRCorner + ${r * dilationHeight};
+        if (xR >=0 && xR < ${xNumRows}) {
+      `;
+      for (let texelC = 0; texelC < texelsAcross / 2 + 1; texelC++) {
         const c = texelC * 2;
         mainLoop += `
-          xR = xRCorner + ${r * dilationHeight};
           xC = xCCorner + ${c * dilationWidth};
-        `;
+          `;
         if (strideWidth === 1) {
           if (c < filterWidth) {
             if (padLeft % 2 === 1) {
               mainLoop += `
                 xCOffset = xC + 1;
-                if(xR >= 0 && xR < ${xNumRows} && xCOffset >= 0 && xCOffset < ${xNumCols}) {
-                  xTexelR${r}C${c} = getX(batch, xR, xCOffset, d1);
+                if (xCOffset >= 0 && xCOffset < ${xNumCols}) {
+                  xTexelC${c} = getX(batch, xR, xCOffset, d1);
 
                   // Need to manually clear unused channels in case
                   // we're reading from recycled texture.
-                  if(xCOffset + 1 >= ${xNumCols}) {
-                    xTexelR${r}C${c}.zw = vec2(0.);
+                  if (xCOffset + 1 >= ${xNumCols}) {
+                    xTexelC${c}.zw = vec2(0.0);
                   }
-                } else {
-                  xTexelR${r}C${c} = vec4(0.);
-                }
-
-                xCOffset = xC + 1 - 2;
-                if(xR >= 0 && xR < ${xNumRows} && xCOffset >= 0 && xCOffset < ${xNumCols}) {
-                  vec4 previous = getX(batch, xR, xCOffset, d1);
-
-                  // Need to manually clear unused channels in case
-                  // we're reading from recycled texture.
-                  if(xCOffset + 1 >= ${xNumCols}) {
-                    previous.zw = vec2(0.);
-                  }
-
-                  xR${r}C${c} = vec4(previous.zw, xTexelR${r}C${c}.xy);
-                } else {
-                  xR${r}C${c} = vec4(0, 0, xTexelR${r}C${c}.xy);
                 }
               `;
+              if (dilationWidth === 1 && c > 0) {
+                mainLoop += `
+                xC${c} = vec4(xTexelC${c - 2}.zw, xTexelC${c}.xy);
+                `;
+              } else {
+                mainLoop += `
+                  xCOffset = xC + 1 - 2;
+
+                  if (xCOffset >= 0 && xCOffset < ${xNumCols}) {
+                    previous = getX(batch, xR, xCOffset, d1);
+
+                    // Need to manually clear unused channels in case
+                    // we're reading from recycled texture.
+                    if (xCOffset + 1 >= ${xNumCols}) {
+                      previous.zw = vec2(0.0);
+                    }
+
+                    xC${c} = vec4(previous.zw, xTexelC${c}.xy);
+                  } else {
+                    xC${c} = vec4(0.0, 0.0, xTexelC${c}.xy);
+                  }
+                  `;
+              }
             } else {
               mainLoop += `
-                if(xR >= 0 && xR < ${xNumRows} && xC >= 0 && xC < ${xNumCols}) {
-                  xTexelR${r}C${c} = getX(batch, xR, xC, d1);
-                } else {
-                  xTexelR${r}C${c} = vec4(0.);
+                if (xC >= 0 && xC < ${xNumCols}) {
+                  xTexelC${c} = getX(batch, xR, xC, d1);
+                  if (xC + 1 >= ${xNumCols}) {
+                    xTexelC${c}.zw = vec2(0.0);
+                  }
                 }
 
-                xR${r}C${c} = xTexelR${r}C${c};
-              `;
+                xC${c} = xTexelC${c};
+                `;
             }
             if (c + 1 < filterWidth) {
               const nextTexelOffset = padLeft % 2 === 0 ? util_exports.nearestLargerEven(dilationWidth) : dilationWidth;
@@ -63511,119 +64117,128 @@ var DepthwiseConvPacked2DProgram = class {
                 mainLoop += `
                   xCOffset = xC + ${padLeft % 2} + ${nextTexelOffset};
 
-                  if(xR >= 0 && xR < ${xNumRows} &&
-                    xCOffset >= 0 && xCOffset < ${xNumCols}) {
-                    xTexelR${r}C${c + 2} = getX(batch, xR, xCOffset, d1);
+                  if (xCOffset >= 0 && xCOffset < ${xNumCols}) {
+                    xTexelC${c + 2} = getX(batch, xR, xCOffset, d1);
+
+                    // Need to manually clear unused channels in case
+                    // we're reading from recycled texture.
+                    if (xCOffset + 1 >= ${xNumCols}) {
+                      xTexelC${c + 2}.zw = vec2(0.0);
+                    }
                   }
-                `;
+                  `;
                 if (dilationWidth > 1) {
                   mainLoop += `
                     xCOffset -= 2;
-                    if(xR >= 0 && xR < ${xNumRows} &&
-                      xCOffset >= 0 && xCOffset < ${xNumCols}) {
-                      xTexelR${r}C${c} = getX(batch, xR, xCOffset, d1);
-                    } else {
-                      xTexelR${r}C${c} = vec4(0.);
+                    if (xCOffset >= 0 && xCOffset < ${xNumCols}) {
+                      xTexelC${c} = getX(batch, xR, xCOffset, d1);
                     }
-                  `;
+                    `;
                 }
                 mainLoop += `
-                  xR${r}C${c + 1} = vec4(
-                    xTexelR${r}C${c}.zw, xTexelR${r}C${c + 2}.xy);
-                `;
+                  xC${c + 1} = vec4(xTexelC${c}.zw, xTexelC${c + 2}.xy);
+                  `;
               } else {
-                mainLoop += `
-                  xCOffset = xC + ${nextTexelOffset};
+                if (nextTexelOffset === 1) {
+                  mainLoop += `
+                    xC${c + 1} = xTexelC${c};
+                    `;
+                } else {
+                  mainLoop += `
+                    xCOffset = xC + ${nextTexelOffset};
 
-                  if(xR >= 0 && xR < ${xNumRows} &&
-                    xCOffset >= 0 && xCOffset < ${xNumCols}) {
-                    xTexelR${r}C${c + 2} = getX(batch, xR, xCOffset, d1);
-                  }
+                    if (xCOffset >= 0 && xCOffset < ${xNumCols}) {
+                      xTexelC${c + 2} = getX(batch, xR, xCOffset, d1);
+                      if (xCOffset + 1 >= ${xNumCols}) {
+                        xTexelC${c + 2}.zw = vec2(0.0);
+                      }
+                    }
 
-                  xR${r}C${c + 1} = xTexelR${r}C${c + 2};
-                `;
+                    xC${c + 1} = xTexelC${c + 2};
+                    `;
+                }
               }
             }
           }
         } else {
           if (c < filterWidth) {
-            mainLoop += `
-              if(xR >= 0 && xR < ${xNumRows}) {
-            `;
             if (padLeft % 2 === 1) {
               mainLoop += `
                 xCOffset = xC + 1 - ${strideWidth};
                 if(xCOffset >= 0 && xCOffset < ${xNumCols}) {
-                  xTexelR${r}C${c} = getX(batch, xR, xCOffset, d1);
-                } else {
-                  xTexelR${r}C${c} = vec4(0.);
+                  xTexelC${c} = getX(batch, xR, xCOffset, d1);
+                  // Need to manually clear unused channels in case
+                  // we're reading from recycled texture.
+                  if (xCOffset + 1 >= ${xNumCols}) {
+                    xTexelC${c}.zw = vec2(0.0);
+                  }
                 }
 
                 if(xC + 1 >= 0 && xC + 1 < ${xNumCols}) {
-                  xTexelR${r}C${c + 2} = getX(batch, xR, xC + 1, d1);
-                } else {
-                  xTexelR${r}C${c + 2} = vec4(0.);
+                  xTexelC${c + 2} = getX(batch, xR, xC + 1, d1);
+                  // Need to manually clear unused channels in case
+                  // we're reading from recycled texture.
+                  if (xC + 2 >= ${xNumCols}) {
+                    xTexelC${c + 2}.zw = vec2(0.0);
+                  }
                 }
 
-                xR${r}C${c} = vec4(
-                  xTexelR${r}C${c}.zw, xTexelR${r}C${c + 2}.zw);
+                xC${c} = vec4(xTexelC${c}.zw, xTexelC${c + 2}.zw);
               `;
               if (c + 1 < filterWidth) {
                 mainLoop += `
-                  vec4 final = vec4(0.);
+                  final = vec4(0.0);
                   xCOffset = xC + 1 + ${strideWidth};
                   if(xCOffset >= 0 && xCOffset < ${xNumCols}) {
                     final = getX(batch, xR, xCOffset, d1);
                   }
-                  xR${r}C${c + 1} = vec4(xTexelR${r}C${c + 2}.xy, final.xy);
+                  xC${c + 1} = vec4(xTexelC${c + 2}.xy, final.xy);
                 `;
               }
             } else {
               mainLoop += `
                 if(xC >= 0 && xC < ${xNumCols}) {
-                  xTexelR${r}C${c} = getX(batch, xR, xC, d1);
-                } else {
-                  xTexelR${r}C${c} = vec4(0.);
+                  xTexelC${c} = getX(batch, xR, xC, d1);
+                  if (xC + 1 >= ${xNumCols}) {
+                    xTexelC${c}.zw = vec2(0.0);
+                  }
                 }
 
                 xCOffset = xC + ${strideWidth};
                 if(xCOffset >= 0 && xCOffset < ${xNumCols}) {
-                  xTexelR${r}C${c + 2} = getX(batch, xR, xCOffset, d1);
-                } else {
-                  xTexelR${r}C${c + 2} = vec4(0.);
+                  xTexelC${c + 2} = getX(batch, xR, xCOffset, d1);
+                  if (xCOffset + 1 >= ${xNumCols}) {
+                    xTexelC${c + 2}.zw = vec2(0.);
+                  }
                 }
 
-                xR${r}C${c} = vec4(
-                  xTexelR${r}C${c}.xy, xTexelR${r}C${c + 2}.xy);
+                xC${c} = vec4(
+                  xTexelC${c}.xy, xTexelC${c + 2}.xy);
               `;
               if (c + 1 < filterWidth) {
                 mainLoop += `
-                  xR${r}C${c + 1} = vec4(
-                    xTexelR${r}C${c}.zw, xTexelR${r}C${c + 2}.zw);
+                  xC${c + 1} = vec4(xTexelC${c}.zw, xTexelC${c + 2}.zw);
                 `;
               }
             }
-            mainLoop += `}`;
           }
         }
         if (c < filterWidth) {
           mainLoop += `
-            vec4 wTexelR${r}C${c} = getW(${r}, ${c}, d1, q);
-            wR${r}C${c} = vec4(wTexelR${r}C${c}.xz, wTexelR${r}C${c}.xz);
+            wTexel = getW(${r}, ${c}, d1, q);
+            dotProd += xC${c} * vec4(wTexel.xz, wTexel.xz);
           `;
           if (c + 1 < filterWidth) {
             mainLoop += `
-              vec4 wTexelR${r}C${c + 1} = getW(${r}, ${c + 1}, d1, q);
-              wR${r}C${c + 1} =
-                vec4(wTexelR${r}C${c + 1}.xz, wTexelR${r}C${c + 1}.xz);`;
+              wTexel = getW(${r}, ${c + 1}, d1, q);
+              dotProd += xC${c + 1} * vec4(wTexel.xz, wTexel.xz);
+            `;
           }
         }
       }
-    }
-    for (let r = 0; r < filterHeight; r++) {
-      for (let c = 0; c < filterWidth; c++) {
-        mainLoop += `dotProd += xR${r}C${c} * wR${r}C${c};`;
-      }
+      mainLoop += `
+        }
+      `;
     }
     let activationSnippet = "", applyActivationSnippet = "";
     if (activation2) {
@@ -63666,16 +64281,17 @@ var DepthwiseConvPacked2DProgram = class {
         int batch = coords.x;
         ivec2 xRCCorner = coords.yz * strides - pads;
         int d2 = coords.w;
-        int d1 = d2;
-        int q = 0;
+        int d1 = d2 / ${channelMul};
+        int q = d2 - d1 * ${channelMul};
         int xRCorner = xRCCorner.x;
         int xCCorner = xRCCorner.y;
 
-        vec4 dotProd = vec4(0.);
+        //intialize dotProd with a small epsilon seems to reduce GPU accuracy loss.
+        vec4 dotProd = vec4(0.000000000000001);
 
         ${mainLoop}
 
-        vec4 result = dotProd;
+        vec4 result = dotProd - vec4(0.000000000000001);
         ${addBiasSnippet}
         ${applyActivationSnippet}
         setOutput(result);
@@ -64060,6 +64676,86 @@ var dilation2DConfig = {
   kernelName: Dilation2D,
   backendName: "webgl",
   kernelFunc: dilation2D
+};
+/**
+ * @license
+ * Copyright 2021 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+function einsum3(args) {
+  const {inputs, backend: backend2, attrs} = args;
+  const {equation} = attrs;
+  const tensors = inputs;
+  const {allDims, summedDims, idDims} = backend_util_exports.decodeEinsumEquation(equation, tensors.length);
+  backend_util_exports.checkEinsumDimSizes(allDims.length, idDims, tensors);
+  const {path, steps} = backend_util_exports.getEinsumComputePath(summedDims, idDims);
+  const nSteps = steps.length;
+  let out = null;
+  let numDimsRemaining = allDims.length;
+  const tensorsToDispose = [];
+  for (let i = 0; i < nSteps; ++i) {
+    for (const idTerm of steps[i]) {
+      const {permutationIndices: perm, expandDims: dimsToExpand} = backend_util_exports.getEinsumPermutation(numDimsRemaining, idDims[idTerm]);
+      let x;
+      if (backend_util_exports.isIdentityPermutation(perm)) {
+        x = tensors[idTerm];
+      } else {
+        x = transpose3({inputs: {x: tensors[idTerm]}, backend: backend2, attrs: {perm}});
+        tensorsToDispose.push(x);
+      }
+      const targetShape = x.shape.slice();
+      for (let k = 0; k < dimsToExpand.length; ++k) {
+        targetShape.splice(dimsToExpand[k], 0, 1);
+      }
+      if (!util_exports.arraysEqual(x.shape, targetShape)) {
+        x = reshape4({inputs: {x}, backend: backend2, attrs: {shape: targetShape}});
+        tensorsToDispose.push(x);
+      }
+      if (out === null) {
+        out = x;
+      } else {
+        out = multiply3({inputs: {a: x, b: out}, backend: backend2});
+        tensorsToDispose.push(out);
+      }
+    }
+    if (i < nSteps - 1) {
+      if (path[i] >= 0) {
+        out = sum4({
+          inputs: {x: out},
+          backend: backend2,
+          attrs: {
+            axis: path[i] - (allDims.length - numDimsRemaining),
+            keepDims: false
+          }
+        });
+        tensorsToDispose.push(out);
+      }
+      numDimsRemaining--;
+    }
+  }
+  for (const tensorInfo of tensorsToDispose) {
+    if (tensorInfo === out) {
+      continue;
+    }
+    backend2.disposeIntermediateTensorInfo(tensorInfo);
+  }
+  return out;
+}
+var einsumConfig2 = {
+  kernelName: Einsum,
+  backendName: "webgl",
+  kernelFunc: einsum3
 };
 /**
  * @license
@@ -69938,6 +70634,7 @@ var kernelConfigs2 = [
   depthwiseConv2dNativeConfig2,
   diagConfig2,
   dilation2DConfig,
+  einsumConfig2,
   eluConfig2,
   eluGradConfig3,
   equalConfig2,
@@ -70064,7 +70761,7 @@ for (const kernelConfig of kernelConfigs2) {
  * =============================================================================
  */
 /** @license See the LICENSE file. */
-var version7 = "3.3.0";
+var version7 = "3.4.0";
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -70529,6 +71226,120 @@ function permuteAxesAndTranspose(x, axis, backend2) {
 }
 /**
  * @license
+ * Copyright 2021 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+var wasmAll;
+function setup3(backend2) {
+  wasmAll = backend2.wasm.cwrap(All, null, ["number, number, number"]);
+}
+function all4(args) {
+  const {backend: backend2, inputs, attrs} = args;
+  const {axis, keepDims} = attrs;
+  const {x} = inputs;
+  const xId = backend2.dataIdMap.get(x.dataId).id;
+  let inputId = xId;
+  let input2 = x;
+  const {transposed, axes, originalAxes, inputWasTransposed} = permuteAxesAndTranspose(x, axis, backend2);
+  if (inputWasTransposed) {
+    const transposedId = backend2.dataIdMap.get(transposed.dataId).id;
+    input2 = transposed;
+    inputId = transposedId;
+  }
+  const inputRank = input2.shape.length;
+  backend_util_exports.assertAxesAreInnerMostDims("all", axes, inputRank);
+  const [outShape, reduceShape] = backend_util_exports.computeOutAndReduceShapes(input2.shape, axes);
+  const reduceSize = util_exports.sizeFromShape(reduceShape);
+  const out = backend2.makeOutput(outShape, x.dtype);
+  if (util_exports.sizeFromShape(input2.shape) !== 0) {
+    const outId = backend2.dataIdMap.get(out.dataId).id;
+    wasmAll(inputId, reduceSize, outId);
+  }
+  if (inputWasTransposed) {
+    backend2.disposeData(transposed.dataId);
+  }
+  if (keepDims) {
+    const newShape = backend_util_exports.expandShapeToKeepDim(out.shape, originalAxes);
+    out.shape = newShape;
+  }
+  return out;
+}
+var allConfig3 = {
+  kernelName: All,
+  backendName: "wasm",
+  setupFunc: setup3,
+  kernelFunc: all4
+};
+/**
+ * @license
+ * Copyright 2021 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+var wasmAny;
+function setup4(backend2) {
+  wasmAny = backend2.wasm.cwrap(Any, null, ["number, number, number"]);
+}
+function any4(args) {
+  const {backend: backend2, inputs, attrs} = args;
+  const {axis, keepDims} = attrs;
+  const {x} = inputs;
+  const xId = backend2.dataIdMap.get(x.dataId).id;
+  let inputId = xId;
+  let input2 = x;
+  const {transposed, axes, originalAxes, inputWasTransposed} = permuteAxesAndTranspose(x, axis, backend2);
+  if (inputWasTransposed) {
+    const transposedId = backend2.dataIdMap.get(transposed.dataId).id;
+    input2 = transposed;
+    inputId = transposedId;
+  }
+  const inputRank = input2.shape.length;
+  backend_util_exports.assertAxesAreInnerMostDims("any", axes, inputRank);
+  const [outShape, reduceShape] = backend_util_exports.computeOutAndReduceShapes(input2.shape, axes);
+  const reduceSize = util_exports.sizeFromShape(reduceShape);
+  const out = backend2.makeOutput(outShape, x.dtype);
+  if (util_exports.sizeFromShape(input2.shape) !== 0) {
+    const outId = backend2.dataIdMap.get(out.dataId).id;
+    wasmAny(inputId, reduceSize, outId);
+  }
+  if (inputWasTransposed) {
+    backend2.disposeData(transposed.dataId);
+  }
+  if (keepDims) {
+    const newShape = backend_util_exports.expandShapeToKeepDim(out.shape, originalAxes);
+    out.shape = newShape;
+  }
+  return out;
+}
+var anyConfig3 = {
+  kernelName: Any,
+  backendName: "wasm",
+  setupFunc: setup4,
+  kernelFunc: any4
+};
+/**
+ * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -70544,7 +71355,7 @@ function permuteAxesAndTranspose(x, axis, backend2) {
  * =============================================================================
  */
 var wasmFunc2;
-function setup3(backend2) {
+function setup5(backend2) {
   wasmFunc2 = backend2.wasm.cwrap(ArgMax, null, [
     "number",
     "number",
@@ -70583,7 +71394,7 @@ var argMaxConfig3 = {
   kernelName: ArgMax,
   backendName: "wasm",
   kernelFunc: argmax,
-  setupFunc: setup3
+  setupFunc: setup5
 };
 /**
  * @license
@@ -70602,7 +71413,7 @@ var argMaxConfig3 = {
  * =============================================================================
  */
 var wasmAvgPool;
-function setup4(backend2) {
+function setup6(backend2) {
   wasmAvgPool = backend2.wasm.cwrap(AvgPool, null, [
     "number",
     "number",
@@ -70649,7 +71460,7 @@ function avgPool4(args) {
 var avgPoolConfig3 = {
   kernelName: AvgPool,
   backendName: "wasm",
-  setupFunc: setup4,
+  setupFunc: setup6,
   kernelFunc: avgPool4
 };
 /**
@@ -70700,7 +71511,7 @@ var reshapeConfig3 = {
  * =============================================================================
  */
 var wasmBatchMatMul;
-function setup5(backend2) {
+function setup7(backend2) {
   wasmBatchMatMul = backend2.wasm.cwrap(BatchMatMul, null, [
     "number",
     "array",
@@ -70757,7 +71568,7 @@ function batchMatMul3(args) {
 var batchMatMulConfig3 = {
   kernelName: BatchMatMul,
   backendName: "wasm",
-  setupFunc: setup5,
+  setupFunc: setup7,
   kernelFunc: batchMatMul3
 };
 /**
@@ -70823,7 +71634,7 @@ var ceilConfig3 = createUnaryKernelConfig(Ceil);
  * =============================================================================
  */
 var wasmClip;
-function setup6(backend2) {
+function setup8(backend2) {
   wasmClip = backend2.wasm.cwrap(ClipByValue, null, [
     "number",
     "number",
@@ -70844,7 +71655,7 @@ function clip2(args) {
 var clipByValueConfig2 = {
   kernelName: ClipByValue,
   backendName: "wasm",
-  setupFunc: setup6,
+  setupFunc: setup8,
   kernelFunc: clip2
 };
 /**
@@ -71086,7 +71897,7 @@ var concatConfig3 = {
  * =============================================================================
  */
 var wasmConv2d;
-function setup7(backend2) {
+function setup9(backend2) {
   wasmConv2d = backend2.wasm.cwrap(Conv2D, null, [
     "number",
     "number",
@@ -71141,7 +71952,7 @@ function conv2d5(args) {
 var conv2DConfig3 = {
   kernelName: Conv2D,
   backendName: "wasm",
-  setupFunc: setup7,
+  setupFunc: setup9,
   kernelFunc: conv2d5
 };
 /**
@@ -71161,7 +71972,7 @@ var conv2DConfig3 = {
  * =============================================================================
  */
 var wasmConv2DBackpropInput;
-function setup8(backend2) {
+function setup10(backend2) {
   wasmConv2DBackpropInput = backend2.wasm.cwrap(Conv2DBackpropInput, null, [
     "number",
     "number",
@@ -71224,7 +72035,7 @@ function conv2DBackpropInput4(args) {
 var conv2DBackpropInputConfig3 = {
   kernelName: Conv2DBackpropInput,
   backendName: "wasm",
-  setupFunc: setup8,
+  setupFunc: setup10,
   kernelFunc: conv2DBackpropInput4
 };
 /**
@@ -71266,7 +72077,7 @@ var InterpolationMethod;
   InterpolationMethod2[InterpolationMethod2["nearest"] = 1] = "nearest";
 })(InterpolationMethod || (InterpolationMethod = {}));
 var wasmCropAndResize;
-function setup9(backend2) {
+function setup11(backend2) {
   wasmCropAndResize = backend2.wasm.cwrap(CropAndResize, null, [
     "number",
     "number",
@@ -71308,7 +72119,7 @@ function cropAndResize4(args) {
 var cropAndResizeConfig3 = {
   kernelName: CropAndResize,
   backendName: "wasm",
-  setupFunc: setup9,
+  setupFunc: setup11,
   kernelFunc: cropAndResize4
 };
 /**
@@ -71328,7 +72139,7 @@ var cropAndResizeConfig3 = {
  * =============================================================================
  */
 var wasmCumsum;
-function setup10(backend2) {
+function setup12(backend2) {
   wasmCumsum = backend2.wasm.cwrap(Cumsum, null, [
     "number",
     "number",
@@ -71368,7 +72179,7 @@ function cumsum4(args) {
 var cumsumConfig3 = {
   kernelName: Cumsum,
   backendName: "wasm",
-  setupFunc: setup10,
+  setupFunc: setup12,
   kernelFunc: cumsum4
 };
 /**
@@ -71388,7 +72199,7 @@ var cumsumConfig3 = {
  * =============================================================================
  */
 var wasmDepthToSpace;
-function setup11(backend2) {
+function setup13(backend2) {
   wasmDepthToSpace = backend2.wasm.cwrap(DepthToSpace, null, [
     "number",
     "number",
@@ -71428,7 +72239,7 @@ function depthToSpace4(args) {
 var depthToSpaceConfig3 = {
   kernelName: DepthToSpace,
   backendName: "wasm",
-  setupFunc: setup11,
+  setupFunc: setup13,
   kernelFunc: depthToSpace4
 };
 /**
@@ -71448,7 +72259,7 @@ var depthToSpaceConfig3 = {
  * =============================================================================
  */
 var wasmDepthwiseConv2d;
-function setup12(backend2) {
+function setup14(backend2) {
   wasmDepthwiseConv2d = backend2.wasm.cwrap(DepthwiseConv2dNative, null, [
     "number",
     "number",
@@ -71503,7 +72314,7 @@ function depthwiseConv2d5(args) {
 var depthwiseConv2dNativeConfig3 = {
   kernelName: DepthwiseConv2dNative,
   backendName: "wasm",
-  setupFunc: setup12,
+  setupFunc: setup14,
   kernelFunc: depthwiseConv2d5
 };
 /**
@@ -71621,7 +72432,7 @@ var fillConfig3 = {
  * =============================================================================
  */
 var wasmFlipLeftRight;
-function setup13(backend2) {
+function setup15(backend2) {
   wasmFlipLeftRight = backend2.wasm.cwrap(FlipLeftRight, null, [
     "number",
     "number",
@@ -71645,7 +72456,7 @@ var flipLeftRightConfig3 = {
   kernelName: FlipLeftRight,
   backendName: "wasm",
   kernelFunc: flipLeftRight2,
-  setupFunc: setup13
+  setupFunc: setup15
 };
 /**
  * @license
@@ -71699,7 +72510,7 @@ var floorDivConfig3 = createBinaryKernelConfig(FloorDiv, supportsFullBroadcast3)
  * =============================================================================
  */
 var wasmBatchNorm;
-function setup14(backend2) {
+function setup16(backend2) {
   wasmBatchNorm = backend2.wasm.cwrap(FusedBatchNorm, null, ["number", "number", "number", "number", "number", "number", "number"]);
 }
 function fusedBatchNorm(args) {
@@ -71722,7 +72533,7 @@ function fusedBatchNorm(args) {
 var fusedBatchNormConfig = {
   kernelName: FusedBatchNorm,
   backendName: "wasm",
-  setupFunc: setup14,
+  setupFunc: setup16,
   kernelFunc: fusedBatchNorm
 };
 /**
@@ -71742,7 +72553,7 @@ var fusedBatchNormConfig = {
  * =============================================================================
  */
 var wasmFusedConv2d;
-function setup15(backend2) {
+function setup17(backend2) {
   wasmFusedConv2d = backend2.wasm.cwrap(FusedConv2D, null, [
     "number",
     "number",
@@ -71819,7 +72630,7 @@ function fusedConv2d2(args) {
 var fusedConv2DConfig3 = {
   kernelName: FusedConv2D,
   backendName: "wasm",
-  setupFunc: setup15,
+  setupFunc: setup17,
   kernelFunc: fusedConv2d2
 };
 /**
@@ -71839,7 +72650,7 @@ var fusedConv2DConfig3 = {
  * =============================================================================
  */
 var wasmFusedDepthwiseConv2d;
-function setup16(backend2) {
+function setup18(backend2) {
   wasmFusedDepthwiseConv2d = backend2.wasm.cwrap(FusedDepthwiseConv2D, null, [
     "number",
     "number",
@@ -71916,7 +72727,7 @@ function fusedDepthwiseConv2d(args) {
 var fusedDepthwiseConv2DConfig3 = {
   kernelName: FusedDepthwiseConv2D,
   backendName: "wasm",
-  setupFunc: setup16,
+  setupFunc: setup18,
   kernelFunc: fusedDepthwiseConv2d
 };
 /**
@@ -71936,7 +72747,7 @@ var fusedDepthwiseConv2DConfig3 = {
  * =============================================================================
  */
 var wasmGatherNd;
-function setup17(backend2) {
+function setup19(backend2) {
   wasmGatherNd = backend2.wasm.cwrap(GatherNd, null, [
     "number",
     "number",
@@ -71970,7 +72781,7 @@ function gatherNd3(args) {
 var gatherNdConfig3 = {
   kernelName: GatherNd,
   backendName: "wasm",
-  setupFunc: setup17,
+  setupFunc: setup19,
   kernelFunc: gatherNd3
 };
 /**
@@ -71990,7 +72801,7 @@ var gatherNdConfig3 = {
  * =============================================================================
  */
 var wasmGather;
-function setup18(backend2) {
+function setup20(backend2) {
   wasmGather = backend2.wasm.cwrap("Gather", null, [
     "number",
     "number",
@@ -72053,7 +72864,7 @@ function gatherV23(args) {
 var gatherV2Config3 = {
   kernelName: GatherV2,
   backendName: "wasm",
-  setupFunc: setup18,
+  setupFunc: setup20,
   kernelFunc: gatherV23
 };
 /**
@@ -72220,7 +73031,7 @@ var logicalAndConfig3 = createBinaryKernelConfig(LogicalAnd, supportsFullBroadca
  * =============================================================================
  */
 var wasmMax;
-function setup19(backend2) {
+function setup21(backend2) {
   wasmMax = backend2.wasm.cwrap(Max, null, ["number, number, number"]);
 }
 function max5(args) {
@@ -72257,7 +73068,7 @@ function max5(args) {
 var maxConfig3 = {
   kernelName: Max,
   backendName: "wasm",
-  setupFunc: setup19,
+  setupFunc: setup21,
   kernelFunc: max5
 };
 /**
@@ -72295,7 +73106,7 @@ var maximumConfig3 = createBinaryKernelConfig(Maximum, supportsFullBroadcast9);
  * =============================================================================
  */
 var wasmMaxPool;
-function setup20(backend2) {
+function setup22(backend2) {
   wasmMaxPool = backend2.wasm.cwrap(MaxPool, null, [
     "number",
     "number",
@@ -72345,7 +73156,7 @@ function maxPool4(args) {
 var maxPoolConfig3 = {
   kernelName: MaxPool,
   backendName: "wasm",
-  setupFunc: setup20,
+  setupFunc: setup22,
   kernelFunc: maxPool4
 };
 /**
@@ -72365,7 +73176,7 @@ var maxPoolConfig3 = {
  * =============================================================================
  */
 var wasmMean;
-function setup21(backend2) {
+function setup23(backend2) {
   wasmMean = backend2.wasm.cwrap(Mean, null, ["number, number, number"]);
 }
 function mean3(args) {
@@ -72413,7 +73224,7 @@ function mean3(args) {
 var meanConfig3 = {
   kernelName: Mean,
   backendName: "wasm",
-  setupFunc: setup21,
+  setupFunc: setup23,
   kernelFunc: mean3
 };
 /**
@@ -72433,7 +73244,7 @@ var meanConfig3 = {
  * =============================================================================
  */
 var wasmMin;
-function setup22(backend2) {
+function setup24(backend2) {
   wasmMin = backend2.wasm.cwrap(Min, null, ["number, number, number"]);
 }
 function min5(args) {
@@ -72472,7 +73283,7 @@ function min5(args) {
 var minConfig3 = {
   kernelName: Min,
   backendName: "wasm",
-  setupFunc: setup22,
+  setupFunc: setup24,
   kernelFunc: min5
 };
 /**
@@ -72493,6 +73304,60 @@ var minConfig3 = {
  */
 var supportsFullBroadcast10 = false;
 var minimumConfig3 = createBinaryKernelConfig(Minimum, supportsFullBroadcast10);
+/**
+ * @license
+ * Copyright 2021 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+var MirrorPaddingMode;
+(function(MirrorPaddingMode2) {
+  MirrorPaddingMode2[MirrorPaddingMode2["reflect"] = 0] = "reflect";
+  MirrorPaddingMode2[MirrorPaddingMode2["symmetric"] = 1] = "symmetric";
+})(MirrorPaddingMode || (MirrorPaddingMode = {}));
+var wasmMirrorPad;
+function setup25(backend2) {
+  wasmMirrorPad = backend2.wasm.cwrap(MirrorPad, null, [
+    "number",
+    "array",
+    "number",
+    "number",
+    "array",
+    "array",
+    "number",
+    "number"
+  ]);
+}
+function mirrorPad3(args) {
+  const {inputs: {x}, backend: backend2, attrs: {paddings, mode}} = args;
+  const outShape = paddings.map((p2, i) => p2[0] + x.shape[i] + p2[1]);
+  const xId = backend2.dataIdMap.get(x.dataId).id;
+  const out = backend2.makeOutput(outShape, x.dtype);
+  const outId = backend2.dataIdMap.get(out.dataId).id;
+  const xShapeBytes = new Uint8Array(new Int32Array(x.shape).buffer);
+  const prePaddingsFlat = paddings.map((padTuple) => padTuple[0]);
+  const postPaddingsFlat = paddings.map((padTuple) => padTuple[1]);
+  const prePaddingsBytes = new Uint8Array(new Int32Array(prePaddingsFlat).buffer);
+  const postPaddingsBytes = new Uint8Array(new Int32Array(postPaddingsFlat).buffer);
+  wasmMirrorPad(xId, xShapeBytes, x.shape.length, CppDType[x.dtype], prePaddingsBytes, postPaddingsBytes, MirrorPaddingMode[mode], outId);
+  return out;
+}
+var mirrorPadConfig3 = {
+  kernelName: MirrorPad,
+  backendName: "wasm",
+  kernelFunc: mirrorPad3,
+  setupFunc: setup25
+};
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -72570,7 +73435,7 @@ function parseResultStruct(backend2, resOffset) {
  * =============================================================================
  */
 var wasmFunc4;
-function setup23(backend2) {
+function setup26(backend2) {
   wasmFunc4 = backend2.wasm.cwrap(NonMaxSuppressionV3, "number", [
     "number",
     "number",
@@ -72595,7 +73460,7 @@ function kernelFunc(args) {
 var nonMaxSuppressionV3Config3 = {
   kernelName: NonMaxSuppressionV3,
   backendName: "wasm",
-  setupFunc: setup23,
+  setupFunc: setup26,
   kernelFunc
 };
 /**
@@ -72615,7 +73480,7 @@ var nonMaxSuppressionV3Config3 = {
  * =============================================================================
  */
 var wasmFunc5;
-function setup24(backend2) {
+function setup27(backend2) {
   wasmFunc5 = backend2.wasm.cwrap(NonMaxSuppressionV4, "number", [
     "number",
     "number",
@@ -72641,7 +73506,7 @@ function nonMaxSuppressionV43(args) {
 var nonMaxSuppressionV4Config3 = {
   kernelName: NonMaxSuppressionV4,
   backendName: "wasm",
-  setupFunc: setup24,
+  setupFunc: setup27,
   kernelFunc: nonMaxSuppressionV43
 };
 /**
@@ -72661,7 +73526,7 @@ var nonMaxSuppressionV4Config3 = {
  * =============================================================================
  */
 var wasmFunc6;
-function setup25(backend2) {
+function setup28(backend2) {
   wasmFunc6 = backend2.wasm.cwrap(NonMaxSuppressionV5, "number", [
     "number",
     "number",
@@ -72687,7 +73552,7 @@ function kernelFunc2(args) {
 var nonMaxSuppressionV5Config3 = {
   kernelName: NonMaxSuppressionV5,
   backendName: "wasm",
-  setupFunc: setup25,
+  setupFunc: setup28,
   kernelFunc: kernelFunc2
 };
 /**
@@ -72725,7 +73590,7 @@ var notEqualConfig3 = createBinaryKernelConfig(NotEqual, supportsFullBroadcast12
  * =============================================================================
  */
 var wasmOneHot;
-function setup26(backend2) {
+function setup29(backend2) {
   wasmOneHot = backend2.wasm.cwrap(OneHot, null, [
     "number",
     "number",
@@ -72748,7 +73613,7 @@ function oneHot4(args) {
 var oneHotConfig3 = {
   kernelName: OneHot,
   backendName: "wasm",
-  setupFunc: setup26,
+  setupFunc: setup29,
   kernelFunc: oneHot4
 };
 /**
@@ -72839,7 +73704,7 @@ var packConfig3 = {
  * =============================================================================
  */
 var wasmPadV2;
-function setup27(backend2) {
+function setup30(backend2) {
   wasmPadV2 = backend2.wasm.cwrap(PadV2, null, [
     "number",
     "array",
@@ -72869,7 +73734,7 @@ var padV2Config3 = {
   kernelName: PadV2,
   backendName: "wasm",
   kernelFunc: pad2,
-  setupFunc: setup27
+  setupFunc: setup30
 };
 /**
  * @license
@@ -72906,7 +73771,7 @@ var powConfig3 = createBinaryKernelConfig(Pow, supportsFullBroadcast13);
  * =============================================================================
  */
 var wasmPrelu;
-function setup28(backend2) {
+function setup31(backend2) {
   wasmPrelu = backend2.wasm.cwrap(Prelu, null, [
     "number",
     "number",
@@ -72926,7 +73791,7 @@ function prelu5(args) {
 var preluConfig3 = {
   kernelName: Prelu,
   backendName: "wasm",
-  setupFunc: setup28,
+  setupFunc: setup31,
   kernelFunc: prelu5
 };
 /**
@@ -72946,7 +73811,7 @@ var preluConfig3 = {
  * =============================================================================
  */
 var wasmProd;
-function setup29(backend2) {
+function setup32(backend2) {
   wasmProd = backend2.wasm.cwrap(Prod, null, [
     "number",
     "number",
@@ -72991,7 +73856,7 @@ function prod4(args) {
 var prodConfig3 = {
   kernelName: Prod,
   backendName: "wasm",
-  setupFunc: setup29,
+  setupFunc: setup32,
   kernelFunc: prod4
 };
 /**
@@ -73093,7 +73958,7 @@ var relu6Config3 = createUnaryKernelConfig(Relu6);
  * =============================================================================
  */
 var wasmResizeBilinear;
-function setup30(backend2) {
+function setup33(backend2) {
   wasmResizeBilinear = backend2.wasm.cwrap(ResizeBilinear, null, [
     "number",
     "number",
@@ -73135,7 +74000,7 @@ function resizeBilinear4(args) {
 var resizeBilinearConfig3 = {
   kernelName: ResizeBilinear,
   backendName: "wasm",
-  setupFunc: setup30,
+  setupFunc: setup33,
   kernelFunc: resizeBilinear4
 };
 /**
@@ -73155,7 +74020,7 @@ var resizeBilinearConfig3 = {
  * =============================================================================
  */
 var wasmReverse;
-function setup31(backend2) {
+function setup34(backend2) {
   wasmReverse = backend2.wasm.cwrap(Reverse, null, [
     "number",
     "array",
@@ -73187,7 +74052,7 @@ var reverseConfig3 = {
   kernelName: Reverse,
   backendName: "wasm",
   kernelFunc: reverse4,
-  setupFunc: setup31
+  setupFunc: setup34
 };
 /**
  * @license
@@ -73206,7 +74071,7 @@ var reverseConfig3 = {
  * =============================================================================
  */
 var wasmRotate;
-function setup32(backend2) {
+function setup35(backend2) {
   wasmRotate = backend2.wasm.cwrap(RotateWithOffset, null, [
     "number",
     "number",
@@ -73241,7 +74106,7 @@ var rotateWithOffsetConfig3 = {
   kernelName: RotateWithOffset,
   backendName: "wasm",
   kernelFunc: rotateWithOffset2,
-  setupFunc: setup32
+  setupFunc: setup35
 };
 /**
  * @license
@@ -73294,7 +74159,7 @@ var rsqrtConfig3 = createUnaryKernelConfig(Rsqrt);
  * =============================================================================
  */
 var wasmScatterNd;
-function setup33(backend2) {
+function setup36(backend2) {
   wasmScatterNd = backend2.wasm.cwrap(ScatterNd, null, [
     "number",
     "number",
@@ -73328,7 +74193,7 @@ function scatterNd3(args) {
 var scatterNdConfig3 = {
   kernelName: ScatterNd,
   backendName: "wasm",
-  setupFunc: setup33,
+  setupFunc: setup36,
   kernelFunc: scatterNd3
 };
 /**
@@ -73348,7 +74213,7 @@ var scatterNdConfig3 = {
  * =============================================================================
  */
 var wasmSelect;
-function setup34(backend2) {
+function setup37(backend2) {
   wasmSelect = backend2.wasm.cwrap("SelectV2", null, [
     "number",
     "number",
@@ -73375,7 +74240,7 @@ var selectConfig3 = {
   kernelName: Select,
   backendName: "wasm",
   kernelFunc: select3,
-  setupFunc: setup34
+  setupFunc: setup37
 };
 /**
  * @license
@@ -73394,7 +74259,7 @@ var selectConfig3 = {
  * =============================================================================
  */
 var wasmFunc7;
-function setup35(backend2) {
+function setup38(backend2) {
   wasmFunc7 = backend2.wasm.cwrap(Sigmoid, null, ["number", "number"]);
 }
 function sigmoid4(args) {
@@ -73411,7 +74276,7 @@ function sigmoid4(args) {
 var sigmoidConfig3 = {
   kernelName: "Sigmoid",
   backendName: "wasm",
-  setupFunc: setup35,
+  setupFunc: setup38,
   kernelFunc: sigmoid4
 };
 /**
@@ -73551,7 +74416,7 @@ var sliceConfig3 = {
  * =============================================================================
  */
 var wasmFunc8;
-function setup36(backend2) {
+function setup39(backend2) {
   wasmFunc8 = backend2.wasm.cwrap(Softmax, null, [
     "number",
     "number",
@@ -73575,7 +74440,7 @@ function softmax5(args) {
 var softmaxConfig3 = {
   kernelName: Softmax,
   backendName: "wasm",
-  setupFunc: setup36,
+  setupFunc: setup39,
   kernelFunc: softmax5
 };
 /**
@@ -73684,7 +74549,7 @@ var squaredDifferenceConfig3 = createBinaryKernelConfig(SquaredDifference, suppo
  * =============================================================================
  */
 var wasmStep;
-function setup37(backend2) {
+function setup40(backend2) {
   wasmStep = backend2.wasm.cwrap(Step, null, [
     "number",
     "number",
@@ -73704,7 +74569,7 @@ function step4(args) {
 var stepConfig3 = {
   kernelName: Step,
   backendName: "wasm",
-  setupFunc: setup37,
+  setupFunc: setup40,
   kernelFunc: step4
 };
 /**
@@ -73724,7 +74589,7 @@ var stepConfig3 = {
  * =============================================================================
  */
 var wasmStridedSlice;
-function setup38(backend2) {
+function setup41(backend2) {
   wasmStridedSlice = backend2.wasm.cwrap(StridedSlice, null, [
     "number",
     "array",
@@ -73804,7 +74669,7 @@ function stridedSlice4(args) {
 var stridedSliceConfig3 = {
   kernelName: StridedSlice,
   backendName: "wasm",
-  setupFunc: setup38,
+  setupFunc: setup41,
   kernelFunc: stridedSlice4
 };
 /**
@@ -73842,7 +74707,7 @@ var subConfig3 = createBinaryKernelConfig(Sub, supportsFullBroadcast16);
  * =============================================================================
  */
 var wasmSum;
-function setup39(backend2) {
+function setup42(backend2) {
   wasmSum = backend2.wasm.cwrap(Sum, null, ["number, number, number"]);
 }
 function sum5(args) {
@@ -73882,9 +74747,26 @@ function sum5(args) {
 var sumConfig3 = {
   kernelName: Sum,
   backendName: "wasm",
-  setupFunc: setup39,
+  setupFunc: setup42,
   kernelFunc: sum5
 };
+/**
+ * @license
+ * Copyright 2021 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+var tanConfig3 = createUnaryKernelConfig(Tan);
 /**
  * @license
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -73919,7 +74801,7 @@ var tanhConfig3 = createUnaryKernelConfig(Tanh);
  * =============================================================================
  */
 var wasmTile;
-function setup40(backend2) {
+function setup43(backend2) {
   wasmTile = backend2.wasm.cwrap(Tile, null, [
     "number",
     "array",
@@ -73948,7 +74830,7 @@ function tile5(args) {
 var tileConfig3 = {
   kernelName: Tile,
   backendName: "wasm",
-  setupFunc: setup40,
+  setupFunc: setup43,
   kernelFunc: tile5
 };
 /**
@@ -73968,7 +74850,7 @@ var tileConfig3 = {
  * =============================================================================
  */
 var wasmTopK;
-function setup41(backend2) {
+function setup44(backend2) {
   wasmTopK = backend2.wasm.cwrap(TopK, null, [
     "number",
     "array",
@@ -73997,7 +74879,7 @@ var topk2 = ({inputs, backend: backend2, attrs}) => {
 var topKConfig3 = {
   kernelName: TopK,
   backendName: "wasm",
-  setupFunc: setup41,
+  setupFunc: setup44,
   kernelFunc: topk2
 };
 /**
@@ -74095,6 +74977,8 @@ var kernelConfigs3 = [
   absConfig3,
   addConfig3,
   addNConfig3,
+  allConfig3,
+  anyConfig3,
   argMaxConfig3,
   avgPoolConfig3,
   batchMatMulConfig3,
@@ -74136,6 +75020,7 @@ var kernelConfigs3 = [
   meanConfig3,
   minConfig3,
   minimumConfig3,
+  mirrorPadConfig3,
   multiplyConfig3,
   negConfig3,
   nonMaxSuppressionV3Config3,
@@ -74173,6 +75058,7 @@ var kernelConfigs3 = [
   stridedSliceConfig3,
   subConfig3,
   sumConfig3,
+  tanConfig3,
   tanhConfig3,
   tileConfig3,
   topKConfig3,
@@ -74281,7 +75167,7 @@ ENV4.registerFlag("WASM_HAS_MULTITHREAD_SUPPORT", async () => {
   }
 });
 var import_tfjs_backend_wasm_threaded_simd = __toModule(require_tfjs_backend_wasm_threaded_simd());
-var wasmWorkerContents = 'var Module={};function threadPrintErr(){var text=Array.prototype.slice.call(arguments).join(" ");console.error(text)}function threadAlert(){var text=Array.prototype.slice.call(arguments).join(" ");postMessage({cmd:"alert",text:text,threadId:Module["_pthread_self"]()})}var err=threadPrintErr;this.alert=threadAlert;Module["instantiateWasm"]=function(info,receiveInstance){var instance=new WebAssembly.Instance(Module["wasmModule"],info);Module["wasmModule"]=null;receiveInstance(instance);return instance.exports};function moduleLoaded(){}this.onmessage=function(e){try{if(e.data.cmd==="load"){Module["wasmModule"]=e.data.wasmModule;Module["wasmMemory"]=e.data.wasmMemory;Module["buffer"]=Module["wasmMemory"].buffer;Module["ENVIRONMENT_IS_PTHREAD"]=true;if(typeof e.data.urlOrBlob==="string"){importScripts(e.data.urlOrBlob)}else{var objectUrl=URL.createObjectURL(e.data.urlOrBlob);importScripts(objectUrl);URL.revokeObjectURL(objectUrl)}WasmBackendModuleThreadedSimd(Module).then(function(instance){Module=instance;moduleLoaded()})}else if(e.data.cmd==="objectTransfer"){Module["PThread"].receiveObjectTransfer(e.data)}else if(e.data.cmd==="run"){Module["__performance_now_clock_drift"]=performance.now()-e.data.time;Module["__emscripten_thread_init"](e.data.threadInfoStruct,0,0);var max=e.data.stackBase;var top=e.data.stackBase+e.data.stackSize;Module["establishStackSpace"](top,max);Module["_emscripten_tls_init"]();Module["PThread"].receiveObjectTransfer(e.data);Module["PThread"].setThreadStatus(Module["_pthread_self"](),1);try{var result=Module["invokeEntryPoint"](e.data.start_routine,e.data.arg);if(!Module["getNoExitRuntime"]())Module["PThread"].threadExit(result)}catch(ex){if(ex==="Canceled!"){Module["PThread"].threadCancel()}else if(ex!="unwind"){if(ex instanceof Module["ExitStatus"]){if(Module["getNoExitRuntime"]()){}else{Module["PThread"].threadExit(ex.status)}}else{Module["PThread"].threadExit(-2);throw ex}}}}else if(e.data.cmd==="cancel"){if(Module["_pthread_self"]()){Module["PThread"].threadCancel()}}else if(e.data.target==="setimmediate"){}else if(e.data.cmd==="processThreadQueue"){if(Module["_pthread_self"]()){Module["_emscripten_current_thread_process_queued_calls"]()}}else{err("worker.js received unknown command "+e.data.cmd);err(e.data)}}catch(ex){err("worker.js onmessage() captured an uncaught exception: "+ex);if(ex&&ex.stack)err(ex.stack);throw ex}};if(typeof process==="object"&&typeof process.versions==="object"&&typeof process.versions.node==="string"){self={location:{href:__filename}};var onmessage=this.onmessage;var nodeWorkerThreads=require("worker_threads");global.Worker=nodeWorkerThreads.Worker;var parentPort=nodeWorkerThreads.parentPort;parentPort.on("message",function(data){onmessage({data:data})});var nodeFS=require("fs");var nodeRead=function(filename){return nodeFS.readFileSync(filename,"utf8")};function globalEval(x){global.require=require;global.Module=Module;eval.call(null,x)}importScripts=function(f){globalEval(nodeRead(f))};postMessage=function(msg){parentPort.postMessage(msg)};if(typeof performance==="undefined"){performance={now:function(){return Date.now()}}}}';
+var wasmWorkerContents = 'var Module={};function threadPrintErr(){var text=Array.prototype.slice.call(arguments).join(" ");console.error(text)}function threadAlert(){var text=Array.prototype.slice.call(arguments).join(" ");postMessage({cmd:"alert",text:text,threadId:Module["_pthread_self"]()})}var err=threadPrintErr;this.alert=threadAlert;Module["instantiateWasm"]=function(info,receiveInstance){var instance=new WebAssembly.Instance(Module["wasmModule"],info);Module["wasmModule"]=null;receiveInstance(instance);return instance.exports};function moduleLoaded(){}this.onmessage=function(e){try{if(e.data.cmd==="load"){Module["wasmModule"]=e.data.wasmModule;Module["wasmMemory"]=e.data.wasmMemory;Module["buffer"]=Module["wasmMemory"].buffer;Module["ENVIRONMENT_IS_PTHREAD"]=true;if(typeof e.data.urlOrBlob==="string"){importScripts(e.data.urlOrBlob)}else{var objectUrl=URL.createObjectURL(e.data.urlOrBlob);importScripts(objectUrl);URL.revokeObjectURL(objectUrl)}WasmBackendModule(Module).then(function(instance){Module=instance;moduleLoaded()})}else if(e.data.cmd==="objectTransfer"){Module["PThread"].receiveObjectTransfer(e.data)}else if(e.data.cmd==="run"){Module["__performance_now_clock_drift"]=performance.now()-e.data.time;Module["__emscripten_thread_init"](e.data.threadInfoStruct,0,0);var max=e.data.stackBase;var top=e.data.stackBase+e.data.stackSize;Module["establishStackSpace"](top,max);Module["_emscripten_tls_init"]();Module["PThread"].receiveObjectTransfer(e.data);Module["PThread"].setThreadStatus(Module["_pthread_self"](),1);try{var result=Module["invokeEntryPoint"](e.data.start_routine,e.data.arg);if(!Module["getNoExitRuntime"]())Module["PThread"].threadExit(result)}catch(ex){if(ex==="Canceled!"){Module["PThread"].threadCancel()}else if(ex!="unwind"){if(ex instanceof Module["ExitStatus"]){if(Module["getNoExitRuntime"]()){}else{Module["PThread"].threadExit(ex.status)}}else{Module["PThread"].threadExit(-2);throw ex}}}}else if(e.data.cmd==="cancel"){if(Module["_pthread_self"]()){Module["PThread"].threadCancel()}}else if(e.data.target==="setimmediate"){}else if(e.data.cmd==="processThreadQueue"){if(Module["_pthread_self"]()){Module["_emscripten_current_thread_process_queued_calls"]()}}else{err("worker.js received unknown command "+e.data.cmd);err(e.data)}}catch(ex){err("worker.js onmessage() captured an uncaught exception: "+ex);if(ex&&ex.stack)err(ex.stack);throw ex}};if(typeof process==="object"&&typeof process.versions==="object"&&typeof process.versions.node==="string"){self={location:{href:__filename}};var onmessage=this.onmessage;var nodeWorkerThreads=require("worker_threads");global.Worker=nodeWorkerThreads.Worker;var parentPort=nodeWorkerThreads.parentPort;parentPort.on("message",function(data){onmessage({data:data})});var nodeFS=require("fs");var nodeRead=function(filename){return nodeFS.readFileSync(filename,"utf8")};function globalEval(x){global.require=require;global.Module=Module;eval.call(null,x)}importScripts=function(f){globalEval(nodeRead(f))};postMessage=function(msg){parentPort.postMessage(msg)};if(typeof performance==="undefined"){performance={now:function(){return Date.now()}}}}';
 var import_tfjs_backend_wasm = __toModule(require_tfjs_backend_wasm());
 /**
  * @license
@@ -74552,7 +75438,7 @@ function setWasmPaths(prefixOrFileMap, usePlatformFetch = false) {
   customFetch = usePlatformFetch;
 }
 /** @license See the LICENSE file. */
-var version9 = "3.3.0";
+var version9 = "3.4.0";
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -75411,7 +76297,7 @@ function isBrowser2() {
 
 // src/env/isNodejs.ts
 function isNodejs() {
-  return typeof global === "object" && true && typeof module !== "undefined" && typeof process !== "undefined" && !!process.version;
+  return typeof global === "object" && typeof require === "function" && typeof module !== "undefined" && typeof process !== "undefined" && !!process.version;
 }
 
 // src/env/index.ts
@@ -76642,7 +77528,7 @@ function drawFaceLandmarks(canvasArg, faceLandmarks) {
 }
 
 // package.json
-var version10 = "1.1.11";
+var version10 = "1.1.12";
 
 // src/xception/extractParams.ts
 function extractorsFactory2(extractWeights, paramMappings) {

@@ -849,7 +849,7 @@ function isBrowser() {
 
 // src/env/isNodejs.ts
 function isNodejs() {
-  return typeof global === "object" && true && typeof module !== "undefined" && typeof process !== "undefined" && !!process.version;
+  return typeof global === "object" && typeof require === "function" && typeof module !== "undefined" && typeof process !== "undefined" && !!process.version;
 }
 
 // src/env/index.ts
@@ -2080,7 +2080,7 @@ function drawFaceLandmarks(canvasArg, faceLandmarks) {
 }
 
 // package.json
-var version = "1.1.11";
+var version = "1.1.12";
 
 // src/xception/extractParams.ts
 function extractorsFactory2(extractWeights, paramMappings) {

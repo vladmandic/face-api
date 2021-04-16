@@ -30,10 +30,10 @@ async function detect(img) {
   const tensor = await image(img);
   const result = await faceapi
     .detectAllFaces(tensor, optionsSSDMobileNet)
-    .withFaceLandmarks()
-    .withFaceExpressions()
-    .withFaceDescriptors()
-    .withAgeAndGender();
+    .withFaceLandmarks();
+    // .withFaceExpressions()
+    // .withFaceDescriptors()
+    // .withAgeAndGender();
   process.send({ image: img, detected: result }); // send results back to main
   process.send({ ready: true }); // send signal back to main that this worker is now idle and ready for next image
   tensor.dispose();

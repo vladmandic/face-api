@@ -8,7 +8,7 @@ const child_process = require('child_process');
 // note that main process import faceapi or tfjs at all
 
 const imgPathRoot = './demo'; // modify to include your sample images
-const numWorkers = 2; // how many workers will be started
+const numWorkers = 4; // how many workers will be started
 const workers = []; // this holds worker processes
 const images = []; // this holds queue of enumerated images
 const t = []; // timers
@@ -33,7 +33,7 @@ function waitCompletion() {
   if (activeWorkers > 0) setImmediate(() => waitCompletion());
   else {
     t[1] = process.hrtime.bigint();
-    log.info('Processed', numImages, 'images in', Math.trunc(parseInt(t[1] - t[0]) / 1000 / 1000), 'ms');
+    log.info('Processed:', numImages, 'images in', 'total:', Math.trunc(parseInt(t[1] - t[0]) / 1000000), 'ms', 'working:', Math.trunc(parseInt(t[1] - t[2]) / 1000000), 'ms', 'average:', Math.trunc(parseInt(t[1] - t[2]) / numImages / 1000000), 'ms');
   }
 }
 

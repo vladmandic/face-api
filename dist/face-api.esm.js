@@ -180,6 +180,7 @@ __export(tfjs_esm_exports, {
   Softmax: () => Softmax,
   Softplus: () => Softplus,
   SpaceToBatchND: () => SpaceToBatchND,
+  SparseReshape: () => SparseReshape,
   SparseToDense: () => SparseToDense,
   SplitV: () => SplitV,
   Sqrt: () => Sqrt,
@@ -429,6 +430,7 @@ __export(tfjs_esm_exports, {
   softmax: () => softmax,
   softplus: () => softplus,
   spaceToBatchND: () => spaceToBatchND,
+  sparse: () => sparse,
   sparseToDense: () => sparseToDense,
   spectral: () => spectral,
   split: () => split,
@@ -1758,12 +1760,12 @@ var require_worker_threads = __commonJS(() => {
 var require_perf_hooks = __commonJS(() => {
 });
 var require_tfjs_backend_wasm_threaded_simd = __commonJS((exports, module2) => {
-  var WasmBackendModule = function() {
+  var WasmBackendModuleThreadedSimd = function() {
     var _scriptDir = typeof document !== "undefined" && document.currentScript ? document.currentScript.src : void 0;
     if (typeof __filename !== "undefined")
       _scriptDir = _scriptDir || __filename;
-    return function(WasmBackendModule2) {
-      WasmBackendModule2 = WasmBackendModule2 || {};
+    return function(WasmBackendModuleThreadedSimd2) {
+      WasmBackendModuleThreadedSimd2 = WasmBackendModuleThreadedSimd2 || {};
       function GROWABLE_HEAP_I8() {
         if (wasmMemory.buffer != buffer2) {
           updateGlobalBufferAndViews(wasmMemory.buffer);
@@ -1794,7 +1796,7 @@ var require_tfjs_backend_wasm_threaded_simd = __commonJS((exports, module2) => {
         }
         return HEAPF64;
       }
-      var Module = typeof WasmBackendModule2 !== "undefined" ? WasmBackendModule2 : {};
+      var Module = typeof WasmBackendModuleThreadedSimd2 !== "undefined" ? WasmBackendModuleThreadedSimd2 : {};
       var readyPromiseResolve, readyPromiseReject;
       Module["ready"] = new Promise(function(resolve, reject) {
         readyPromiseResolve = resolve;
@@ -2325,7 +2327,7 @@ var require_tfjs_backend_wasm_threaded_simd = __commonJS((exports, module2) => {
       function isFileURI(filename) {
         return hasPrefix(filename, fileURIPrefix);
       }
-      var wasmBinaryFile = "tfjs-backend-wasm.wasm";
+      var wasmBinaryFile = "tfjs-backend-wasm-threaded-simd.wasm";
       if (!isDataURI(wasmBinaryFile)) {
         wasmBinaryFile = locateFile(wasmBinaryFile);
       }
@@ -2373,10 +2375,16 @@ var require_tfjs_backend_wasm_threaded_simd = __commonJS((exports, module2) => {
         function receiveInstance(instance, module22) {
           var exports3 = instance.exports;
           Module["asm"] = exports3;
-          wasmTable = Module["asm"]["D"];
+          wasmTable = Module["asm"]["F"];
           wasmModule = module22;
           if (!ENVIRONMENT_IS_PTHREAD) {
-            removeRunDependency("wasm-instantiate");
+            var numWorkersToLoad = PThread.unusedWorkers.length;
+            PThread.unusedWorkers.forEach(function(w) {
+              PThread.loadWasmModuleToWorker(w, function() {
+                if (!--numWorkersToLoad)
+                  removeRunDependency("wasm-instantiate");
+              });
+            });
           }
         }
         if (!ENVIRONMENT_IS_PTHREAD) {
@@ -2419,9 +2427,9 @@ var require_tfjs_backend_wasm_threaded_simd = __commonJS((exports, module2) => {
         instantiateAsync().catch(readyPromiseReject);
         return {};
       }
-      var ASM_CONSTS = {9800: function() {
+      var ASM_CONSTS = {9816: function() {
         throw "Canceled!";
-      }, 9818: function($0, $1) {
+      }, 9834: function($0, $1) {
         setTimeout(function() {
           __emscripten_do_dispatch_to_thread($0, $1);
         }, 0);
@@ -2505,6 +2513,10 @@ var require_tfjs_backend_wasm_threaded_simd = __commonJS((exports, module2) => {
         }
       }
       var PThread = {unusedWorkers: [], runningWorkers: [], initMainThreadBlock: function() {
+        var pthreadPoolSize = Math.min(4, Math.max(1, (navigator.hardwareConcurrency || 1) / 2));
+        for (var i = 0; i < pthreadPoolSize; ++i) {
+          PThread.allocateUnusedWorker();
+        }
       }, initRuntime: function() {
         var tb = _malloc(228);
         for (var i = 0; i < 228 / 4; ++i)
@@ -2676,7 +2688,7 @@ var require_tfjs_backend_wasm_threaded_simd = __commonJS((exports, module2) => {
         }
         worker.postMessage({cmd: "load", urlOrBlob: Module["mainScriptUrlOrBlob"] || _scriptDir, wasmMemory, wasmModule});
       }, allocateUnusedWorker: function() {
-        var pthreadMainJs = locateFile("tfjs-backend-wasm.worker.js");
+        var pthreadMainJs = locateFile("tfjs-backend-wasm-threaded-simd.worker.js");
         PThread.unusedWorkers.push(new Worker(pthreadMainJs));
       }, getNewWorker: function() {
         if (PThread.unusedWorkers.length == 0) {
@@ -2707,6 +2719,9 @@ var require_tfjs_backend_wasm_threaded_simd = __commonJS((exports, module2) => {
       Module["invokeEntryPoint"] = invokeEntryPoint;
       function ___assert_fail(condition, filename, line, func2) {
         abort("Assertion failed: " + UTF8ToString(condition) + ", at: " + [filename ? UTF8ToString(filename) : "unknown filename", line, func2 ? UTF8ToString(func2) : "unknown function"]);
+      }
+      function ___call_main(argc, argv) {
+        var returnCode = _main(argc, argv);
       }
       var _emscripten_get_now;
       if (ENVIRONMENT_IS_NODE) {
@@ -3060,6 +3075,8 @@ var require_tfjs_backend_wasm_threaded_simd = __commonJS((exports, module2) => {
         }
       }
       function _emscripten_set_current_thread_status(newStatus) {
+      }
+      function _emscripten_set_thread_name(threadId, name) {
       }
       function __webgl_enable_ANGLE_instanced_arrays(ctx) {
         var ext = ctx.getExtension("ANGLE_instanced_arrays");
@@ -3523,319 +3540,319 @@ var require_tfjs_backend_wasm_threaded_simd = __commonJS((exports, module2) => {
         PThread.initMainThreadBlock();
       var GLctx;
       var proxiedFunctionTable = [null, _atexit, _emscripten_set_canvas_element_size_main_thread, _fd_close, _fd_seek, _fd_write, _sysconf];
-      var asmLibraryArg = {e: ___assert_fail, v: __emscripten_notify_thread_queue, b: _abort, w: _emscripten_asm_const_int, j: _emscripten_conditional_set_current_thread_status, c: _emscripten_futex_wait, d: _emscripten_futex_wake, f: _emscripten_get_now, p: _emscripten_memcpy_big, x: _emscripten_num_logical_cores, s: _emscripten_receive_on_main_thread_js, r: _emscripten_resize_heap, t: _emscripten_set_canvas_element_size, i: _emscripten_set_current_thread_status, u: _emscripten_webgl_create_context, m: _fd_close, n: _fd_seek, g: _fd_write, o: initPthreadsJS, a: wasmMemory || Module["wasmMemory"], k: _pthread_cleanup_pop, l: _pthread_cleanup_push, h: _pthread_create, q: _sysconf};
+      var asmLibraryArg = {e: ___assert_fail, r: ___call_main, x: __emscripten_notify_thread_queue, b: _abort, y: _emscripten_asm_const_int, j: _emscripten_conditional_set_current_thread_status, c: _emscripten_futex_wait, d: _emscripten_futex_wake, f: _emscripten_get_now, p: _emscripten_memcpy_big, z: _emscripten_num_logical_cores, u: _emscripten_receive_on_main_thread_js, q: _emscripten_resize_heap, v: _emscripten_set_canvas_element_size, i: _emscripten_set_current_thread_status, t: _emscripten_set_thread_name, w: _emscripten_webgl_create_context, m: _fd_close, n: _fd_seek, g: _fd_write, o: initPthreadsJS, a: wasmMemory || Module["wasmMemory"], k: _pthread_cleanup_pop, l: _pthread_cleanup_push, h: _pthread_create, s: _sysconf};
       var asm = createWasm();
       var ___wasm_call_ctors = Module["___wasm_call_ctors"] = function() {
-        return (___wasm_call_ctors = Module["___wasm_call_ctors"] = Module["asm"]["y"]).apply(null, arguments);
+        return (___wasm_call_ctors = Module["___wasm_call_ctors"] = Module["asm"]["A"]).apply(null, arguments);
       };
       var _init = Module["_init"] = function() {
-        return (_init = Module["_init"] = Module["asm"]["z"]).apply(null, arguments);
+        return (_init = Module["_init"] = Module["asm"]["B"]).apply(null, arguments);
       };
       var _register_tensor = Module["_register_tensor"] = function() {
-        return (_register_tensor = Module["_register_tensor"] = Module["asm"]["A"]).apply(null, arguments);
+        return (_register_tensor = Module["_register_tensor"] = Module["asm"]["C"]).apply(null, arguments);
       };
       var _dispose_data = Module["_dispose_data"] = function() {
-        return (_dispose_data = Module["_dispose_data"] = Module["asm"]["B"]).apply(null, arguments);
+        return (_dispose_data = Module["_dispose_data"] = Module["asm"]["D"]).apply(null, arguments);
       };
       var _dispose = Module["_dispose"] = function() {
-        return (_dispose = Module["_dispose"] = Module["asm"]["C"]).apply(null, arguments);
+        return (_dispose = Module["_dispose"] = Module["asm"]["E"]).apply(null, arguments);
       };
       var _Abs = Module["_Abs"] = function() {
-        return (_Abs = Module["_Abs"] = Module["asm"]["E"]).apply(null, arguments);
+        return (_Abs = Module["_Abs"] = Module["asm"]["G"]).apply(null, arguments);
       };
       var _Add = Module["_Add"] = function() {
-        return (_Add = Module["_Add"] = Module["asm"]["F"]).apply(null, arguments);
+        return (_Add = Module["_Add"] = Module["asm"]["H"]).apply(null, arguments);
       };
       var _AddN = Module["_AddN"] = function() {
-        return (_AddN = Module["_AddN"] = Module["asm"]["G"]).apply(null, arguments);
+        return (_AddN = Module["_AddN"] = Module["asm"]["I"]).apply(null, arguments);
       };
       var _All = Module["_All"] = function() {
-        return (_All = Module["_All"] = Module["asm"]["H"]).apply(null, arguments);
+        return (_All = Module["_All"] = Module["asm"]["J"]).apply(null, arguments);
       };
       var _Any = Module["_Any"] = function() {
-        return (_Any = Module["_Any"] = Module["asm"]["I"]).apply(null, arguments);
+        return (_Any = Module["_Any"] = Module["asm"]["K"]).apply(null, arguments);
       };
       var _ArgMax = Module["_ArgMax"] = function() {
-        return (_ArgMax = Module["_ArgMax"] = Module["asm"]["J"]).apply(null, arguments);
+        return (_ArgMax = Module["_ArgMax"] = Module["asm"]["L"]).apply(null, arguments);
       };
       var _AvgPool = Module["_AvgPool"] = function() {
-        return (_AvgPool = Module["_AvgPool"] = Module["asm"]["K"]).apply(null, arguments);
+        return (_AvgPool = Module["_AvgPool"] = Module["asm"]["M"]).apply(null, arguments);
       };
       var _BatchMatMul = Module["_BatchMatMul"] = function() {
-        return (_BatchMatMul = Module["_BatchMatMul"] = Module["asm"]["L"]).apply(null, arguments);
+        return (_BatchMatMul = Module["_BatchMatMul"] = Module["asm"]["N"]).apply(null, arguments);
       };
       var _Ceil = Module["_Ceil"] = function() {
-        return (_Ceil = Module["_Ceil"] = Module["asm"]["M"]).apply(null, arguments);
+        return (_Ceil = Module["_Ceil"] = Module["asm"]["O"]).apply(null, arguments);
       };
       var _ClipByValue = Module["_ClipByValue"] = function() {
-        return (_ClipByValue = Module["_ClipByValue"] = Module["asm"]["N"]).apply(null, arguments);
+        return (_ClipByValue = Module["_ClipByValue"] = Module["asm"]["P"]).apply(null, arguments);
       };
       var _Conv2D = Module["_Conv2D"] = function() {
-        return (_Conv2D = Module["_Conv2D"] = Module["asm"]["O"]).apply(null, arguments);
+        return (_Conv2D = Module["_Conv2D"] = Module["asm"]["Q"]).apply(null, arguments);
       };
       var _Conv2DBackpropInput = Module["_Conv2DBackpropInput"] = function() {
-        return (_Conv2DBackpropInput = Module["_Conv2DBackpropInput"] = Module["asm"]["P"]).apply(null, arguments);
+        return (_Conv2DBackpropInput = Module["_Conv2DBackpropInput"] = Module["asm"]["R"]).apply(null, arguments);
       };
       var _Cos = Module["_Cos"] = function() {
-        return (_Cos = Module["_Cos"] = Module["asm"]["Q"]).apply(null, arguments);
+        return (_Cos = Module["_Cos"] = Module["asm"]["S"]).apply(null, arguments);
       };
       var _CropAndResize = Module["_CropAndResize"] = function() {
-        return (_CropAndResize = Module["_CropAndResize"] = Module["asm"]["R"]).apply(null, arguments);
+        return (_CropAndResize = Module["_CropAndResize"] = Module["asm"]["T"]).apply(null, arguments);
       };
       var _Cumsum = Module["_Cumsum"] = function() {
-        return (_Cumsum = Module["_Cumsum"] = Module["asm"]["S"]).apply(null, arguments);
+        return (_Cumsum = Module["_Cumsum"] = Module["asm"]["U"]).apply(null, arguments);
       };
       var _DepthToSpace = Module["_DepthToSpace"] = function() {
-        return (_DepthToSpace = Module["_DepthToSpace"] = Module["asm"]["T"]).apply(null, arguments);
+        return (_DepthToSpace = Module["_DepthToSpace"] = Module["asm"]["V"]).apply(null, arguments);
       };
       var _DepthwiseConv2dNative = Module["_DepthwiseConv2dNative"] = function() {
-        return (_DepthwiseConv2dNative = Module["_DepthwiseConv2dNative"] = Module["asm"]["U"]).apply(null, arguments);
+        return (_DepthwiseConv2dNative = Module["_DepthwiseConv2dNative"] = Module["asm"]["W"]).apply(null, arguments);
       };
       var _Equal = Module["_Equal"] = function() {
-        return (_Equal = Module["_Equal"] = Module["asm"]["V"]).apply(null, arguments);
+        return (_Equal = Module["_Equal"] = Module["asm"]["X"]).apply(null, arguments);
       };
       var _Exp = Module["_Exp"] = function() {
-        return (_Exp = Module["_Exp"] = Module["asm"]["W"]).apply(null, arguments);
+        return (_Exp = Module["_Exp"] = Module["asm"]["Y"]).apply(null, arguments);
       };
       var _FlipLeftRight = Module["_FlipLeftRight"] = function() {
-        return (_FlipLeftRight = Module["_FlipLeftRight"] = Module["asm"]["X"]).apply(null, arguments);
+        return (_FlipLeftRight = Module["_FlipLeftRight"] = Module["asm"]["Z"]).apply(null, arguments);
       };
       var _Floor = Module["_Floor"] = function() {
-        return (_Floor = Module["_Floor"] = Module["asm"]["Y"]).apply(null, arguments);
+        return (_Floor = Module["_Floor"] = Module["asm"]["_"]).apply(null, arguments);
       };
       var _FloorDiv = Module["_FloorDiv"] = function() {
-        return (_FloorDiv = Module["_FloorDiv"] = Module["asm"]["Z"]).apply(null, arguments);
+        return (_FloorDiv = Module["_FloorDiv"] = Module["asm"]["$"]).apply(null, arguments);
       };
       var _FusedBatchNorm = Module["_FusedBatchNorm"] = function() {
-        return (_FusedBatchNorm = Module["_FusedBatchNorm"] = Module["asm"]["_"]).apply(null, arguments);
+        return (_FusedBatchNorm = Module["_FusedBatchNorm"] = Module["asm"]["aa"]).apply(null, arguments);
       };
       var _FusedConv2D = Module["_FusedConv2D"] = function() {
-        return (_FusedConv2D = Module["_FusedConv2D"] = Module["asm"]["$"]).apply(null, arguments);
+        return (_FusedConv2D = Module["_FusedConv2D"] = Module["asm"]["ba"]).apply(null, arguments);
       };
       var _FusedDepthwiseConv2D = Module["_FusedDepthwiseConv2D"] = function() {
-        return (_FusedDepthwiseConv2D = Module["_FusedDepthwiseConv2D"] = Module["asm"]["aa"]).apply(null, arguments);
+        return (_FusedDepthwiseConv2D = Module["_FusedDepthwiseConv2D"] = Module["asm"]["ca"]).apply(null, arguments);
       };
       var _Gather = Module["_Gather"] = function() {
-        return (_Gather = Module["_Gather"] = Module["asm"]["ba"]).apply(null, arguments);
+        return (_Gather = Module["_Gather"] = Module["asm"]["da"]).apply(null, arguments);
       };
       var _GatherNd = Module["_GatherNd"] = function() {
-        return (_GatherNd = Module["_GatherNd"] = Module["asm"]["ca"]).apply(null, arguments);
+        return (_GatherNd = Module["_GatherNd"] = Module["asm"]["ea"]).apply(null, arguments);
       };
       var _Greater = Module["_Greater"] = function() {
-        return (_Greater = Module["_Greater"] = Module["asm"]["da"]).apply(null, arguments);
+        return (_Greater = Module["_Greater"] = Module["asm"]["fa"]).apply(null, arguments);
       };
       var _GreaterEqual = Module["_GreaterEqual"] = function() {
-        return (_GreaterEqual = Module["_GreaterEqual"] = Module["asm"]["ea"]).apply(null, arguments);
+        return (_GreaterEqual = Module["_GreaterEqual"] = Module["asm"]["ga"]).apply(null, arguments);
       };
       var _LeakyRelu = Module["_LeakyRelu"] = function() {
-        return (_LeakyRelu = Module["_LeakyRelu"] = Module["asm"]["fa"]).apply(null, arguments);
+        return (_LeakyRelu = Module["_LeakyRelu"] = Module["asm"]["ha"]).apply(null, arguments);
       };
       var _Less = Module["_Less"] = function() {
-        return (_Less = Module["_Less"] = Module["asm"]["ga"]).apply(null, arguments);
+        return (_Less = Module["_Less"] = Module["asm"]["ia"]).apply(null, arguments);
       };
       var _LessEqual = Module["_LessEqual"] = function() {
-        return (_LessEqual = Module["_LessEqual"] = Module["asm"]["ha"]).apply(null, arguments);
+        return (_LessEqual = Module["_LessEqual"] = Module["asm"]["ja"]).apply(null, arguments);
       };
       var _Log = Module["_Log"] = function() {
-        return (_Log = Module["_Log"] = Module["asm"]["ia"]).apply(null, arguments);
+        return (_Log = Module["_Log"] = Module["asm"]["ka"]).apply(null, arguments);
       };
       var _LogicalAnd = Module["_LogicalAnd"] = function() {
-        return (_LogicalAnd = Module["_LogicalAnd"] = Module["asm"]["ja"]).apply(null, arguments);
+        return (_LogicalAnd = Module["_LogicalAnd"] = Module["asm"]["la"]).apply(null, arguments);
       };
       var _Max = Module["_Max"] = function() {
-        return (_Max = Module["_Max"] = Module["asm"]["ka"]).apply(null, arguments);
+        return (_Max = Module["_Max"] = Module["asm"]["ma"]).apply(null, arguments);
       };
       var _MaxPool = Module["_MaxPool"] = function() {
-        return (_MaxPool = Module["_MaxPool"] = Module["asm"]["la"]).apply(null, arguments);
+        return (_MaxPool = Module["_MaxPool"] = Module["asm"]["na"]).apply(null, arguments);
       };
       var _Maximum = Module["_Maximum"] = function() {
-        return (_Maximum = Module["_Maximum"] = Module["asm"]["ma"]).apply(null, arguments);
+        return (_Maximum = Module["_Maximum"] = Module["asm"]["oa"]).apply(null, arguments);
       };
       var _Mean = Module["_Mean"] = function() {
-        return (_Mean = Module["_Mean"] = Module["asm"]["na"]).apply(null, arguments);
+        return (_Mean = Module["_Mean"] = Module["asm"]["pa"]).apply(null, arguments);
       };
       var _Min = Module["_Min"] = function() {
-        return (_Min = Module["_Min"] = Module["asm"]["oa"]).apply(null, arguments);
+        return (_Min = Module["_Min"] = Module["asm"]["qa"]).apply(null, arguments);
       };
       var _Minimum = Module["_Minimum"] = function() {
-        return (_Minimum = Module["_Minimum"] = Module["asm"]["pa"]).apply(null, arguments);
+        return (_Minimum = Module["_Minimum"] = Module["asm"]["ra"]).apply(null, arguments);
       };
       var _MirrorPad = Module["_MirrorPad"] = function() {
-        return (_MirrorPad = Module["_MirrorPad"] = Module["asm"]["qa"]).apply(null, arguments);
+        return (_MirrorPad = Module["_MirrorPad"] = Module["asm"]["sa"]).apply(null, arguments);
       };
       var _Multiply = Module["_Multiply"] = function() {
-        return (_Multiply = Module["_Multiply"] = Module["asm"]["ra"]).apply(null, arguments);
+        return (_Multiply = Module["_Multiply"] = Module["asm"]["ta"]).apply(null, arguments);
       };
       var _Neg = Module["_Neg"] = function() {
-        return (_Neg = Module["_Neg"] = Module["asm"]["sa"]).apply(null, arguments);
+        return (_Neg = Module["_Neg"] = Module["asm"]["ua"]).apply(null, arguments);
       };
       var _NonMaxSuppressionV3 = Module["_NonMaxSuppressionV3"] = function() {
-        return (_NonMaxSuppressionV3 = Module["_NonMaxSuppressionV3"] = Module["asm"]["ta"]).apply(null, arguments);
+        return (_NonMaxSuppressionV3 = Module["_NonMaxSuppressionV3"] = Module["asm"]["va"]).apply(null, arguments);
       };
       var _NonMaxSuppressionV4 = Module["_NonMaxSuppressionV4"] = function() {
-        return (_NonMaxSuppressionV4 = Module["_NonMaxSuppressionV4"] = Module["asm"]["ua"]).apply(null, arguments);
+        return (_NonMaxSuppressionV4 = Module["_NonMaxSuppressionV4"] = Module["asm"]["wa"]).apply(null, arguments);
       };
       var _NonMaxSuppressionV5 = Module["_NonMaxSuppressionV5"] = function() {
-        return (_NonMaxSuppressionV5 = Module["_NonMaxSuppressionV5"] = Module["asm"]["va"]).apply(null, arguments);
+        return (_NonMaxSuppressionV5 = Module["_NonMaxSuppressionV5"] = Module["asm"]["xa"]).apply(null, arguments);
       };
       var _NotEqual = Module["_NotEqual"] = function() {
-        return (_NotEqual = Module["_NotEqual"] = Module["asm"]["wa"]).apply(null, arguments);
+        return (_NotEqual = Module["_NotEqual"] = Module["asm"]["ya"]).apply(null, arguments);
       };
       var _OneHot = Module["_OneHot"] = function() {
-        return (_OneHot = Module["_OneHot"] = Module["asm"]["xa"]).apply(null, arguments);
+        return (_OneHot = Module["_OneHot"] = Module["asm"]["za"]).apply(null, arguments);
       };
       var _PadV2 = Module["_PadV2"] = function() {
-        return (_PadV2 = Module["_PadV2"] = Module["asm"]["ya"]).apply(null, arguments);
+        return (_PadV2 = Module["_PadV2"] = Module["asm"]["Aa"]).apply(null, arguments);
       };
       var _Pow = Module["_Pow"] = function() {
-        return (_Pow = Module["_Pow"] = Module["asm"]["za"]).apply(null, arguments);
+        return (_Pow = Module["_Pow"] = Module["asm"]["Ba"]).apply(null, arguments);
       };
       var _Prelu = Module["_Prelu"] = function() {
-        return (_Prelu = Module["_Prelu"] = Module["asm"]["Aa"]).apply(null, arguments);
+        return (_Prelu = Module["_Prelu"] = Module["asm"]["Ca"]).apply(null, arguments);
       };
       var _Prod = Module["_Prod"] = function() {
-        return (_Prod = Module["_Prod"] = Module["asm"]["Ba"]).apply(null, arguments);
+        return (_Prod = Module["_Prod"] = Module["asm"]["Da"]).apply(null, arguments);
       };
       var _RealDiv = Module["_RealDiv"] = function() {
-        return (_RealDiv = Module["_RealDiv"] = Module["asm"]["Ca"]).apply(null, arguments);
+        return (_RealDiv = Module["_RealDiv"] = Module["asm"]["Ea"]).apply(null, arguments);
       };
       var _Relu = Module["_Relu"] = function() {
-        return (_Relu = Module["_Relu"] = Module["asm"]["Da"]).apply(null, arguments);
+        return (_Relu = Module["_Relu"] = Module["asm"]["Fa"]).apply(null, arguments);
       };
       var _Relu6 = Module["_Relu6"] = function() {
-        return (_Relu6 = Module["_Relu6"] = Module["asm"]["Ea"]).apply(null, arguments);
+        return (_Relu6 = Module["_Relu6"] = Module["asm"]["Ga"]).apply(null, arguments);
       };
       var _ResizeBilinear = Module["_ResizeBilinear"] = function() {
-        return (_ResizeBilinear = Module["_ResizeBilinear"] = Module["asm"]["Fa"]).apply(null, arguments);
+        return (_ResizeBilinear = Module["_ResizeBilinear"] = Module["asm"]["Ha"]).apply(null, arguments);
       };
       var _Reverse = Module["_Reverse"] = function() {
-        return (_Reverse = Module["_Reverse"] = Module["asm"]["Ga"]).apply(null, arguments);
+        return (_Reverse = Module["_Reverse"] = Module["asm"]["Ia"]).apply(null, arguments);
       };
       var _RotateWithOffset = Module["_RotateWithOffset"] = function() {
-        return (_RotateWithOffset = Module["_RotateWithOffset"] = Module["asm"]["Ha"]).apply(null, arguments);
+        return (_RotateWithOffset = Module["_RotateWithOffset"] = Module["asm"]["Ja"]).apply(null, arguments);
       };
       var _Round = Module["_Round"] = function() {
-        return (_Round = Module["_Round"] = Module["asm"]["Ia"]).apply(null, arguments);
+        return (_Round = Module["_Round"] = Module["asm"]["Ka"]).apply(null, arguments);
       };
       var _Rsqrt = Module["_Rsqrt"] = function() {
-        return (_Rsqrt = Module["_Rsqrt"] = Module["asm"]["Ja"]).apply(null, arguments);
+        return (_Rsqrt = Module["_Rsqrt"] = Module["asm"]["La"]).apply(null, arguments);
       };
       var _ScatterNd = Module["_ScatterNd"] = function() {
-        return (_ScatterNd = Module["_ScatterNd"] = Module["asm"]["Ka"]).apply(null, arguments);
+        return (_ScatterNd = Module["_ScatterNd"] = Module["asm"]["Ma"]).apply(null, arguments);
       };
       var _SelectV2 = Module["_SelectV2"] = function() {
-        return (_SelectV2 = Module["_SelectV2"] = Module["asm"]["La"]).apply(null, arguments);
+        return (_SelectV2 = Module["_SelectV2"] = Module["asm"]["Na"]).apply(null, arguments);
       };
       var _Sigmoid = Module["_Sigmoid"] = function() {
-        return (_Sigmoid = Module["_Sigmoid"] = Module["asm"]["Ma"]).apply(null, arguments);
+        return (_Sigmoid = Module["_Sigmoid"] = Module["asm"]["Oa"]).apply(null, arguments);
       };
       var _Sin = Module["_Sin"] = function() {
-        return (_Sin = Module["_Sin"] = Module["asm"]["Na"]).apply(null, arguments);
+        return (_Sin = Module["_Sin"] = Module["asm"]["Pa"]).apply(null, arguments);
       };
       var _Softmax = Module["_Softmax"] = function() {
-        return (_Softmax = Module["_Softmax"] = Module["asm"]["Oa"]).apply(null, arguments);
+        return (_Softmax = Module["_Softmax"] = Module["asm"]["Qa"]).apply(null, arguments);
       };
       var _Sqrt = Module["_Sqrt"] = function() {
-        return (_Sqrt = Module["_Sqrt"] = Module["asm"]["Pa"]).apply(null, arguments);
+        return (_Sqrt = Module["_Sqrt"] = Module["asm"]["Ra"]).apply(null, arguments);
       };
       var _Square = Module["_Square"] = function() {
-        return (_Square = Module["_Square"] = Module["asm"]["Qa"]).apply(null, arguments);
+        return (_Square = Module["_Square"] = Module["asm"]["Sa"]).apply(null, arguments);
       };
       var _SquaredDifference = Module["_SquaredDifference"] = function() {
-        return (_SquaredDifference = Module["_SquaredDifference"] = Module["asm"]["Ra"]).apply(null, arguments);
+        return (_SquaredDifference = Module["_SquaredDifference"] = Module["asm"]["Ta"]).apply(null, arguments);
       };
       var _Step = Module["_Step"] = function() {
-        return (_Step = Module["_Step"] = Module["asm"]["Sa"]).apply(null, arguments);
+        return (_Step = Module["_Step"] = Module["asm"]["Ua"]).apply(null, arguments);
       };
       var _StridedSlice = Module["_StridedSlice"] = function() {
-        return (_StridedSlice = Module["_StridedSlice"] = Module["asm"]["Ta"]).apply(null, arguments);
+        return (_StridedSlice = Module["_StridedSlice"] = Module["asm"]["Va"]).apply(null, arguments);
       };
       var _Sub = Module["_Sub"] = function() {
-        return (_Sub = Module["_Sub"] = Module["asm"]["Ua"]).apply(null, arguments);
+        return (_Sub = Module["_Sub"] = Module["asm"]["Wa"]).apply(null, arguments);
       };
       var _Sum = Module["_Sum"] = function() {
-        return (_Sum = Module["_Sum"] = Module["asm"]["Va"]).apply(null, arguments);
+        return (_Sum = Module["_Sum"] = Module["asm"]["Xa"]).apply(null, arguments);
       };
       var _Tan = Module["_Tan"] = function() {
-        return (_Tan = Module["_Tan"] = Module["asm"]["Wa"]).apply(null, arguments);
+        return (_Tan = Module["_Tan"] = Module["asm"]["Ya"]).apply(null, arguments);
       };
       var _Tanh = Module["_Tanh"] = function() {
-        return (_Tanh = Module["_Tanh"] = Module["asm"]["Xa"]).apply(null, arguments);
+        return (_Tanh = Module["_Tanh"] = Module["asm"]["Za"]).apply(null, arguments);
       };
       var _Tile = Module["_Tile"] = function() {
-        return (_Tile = Module["_Tile"] = Module["asm"]["Ya"]).apply(null, arguments);
+        return (_Tile = Module["_Tile"] = Module["asm"]["_a"]).apply(null, arguments);
       };
       var _TopK = Module["_TopK"] = function() {
-        return (_TopK = Module["_TopK"] = Module["asm"]["Za"]).apply(null, arguments);
+        return (_TopK = Module["_TopK"] = Module["asm"]["$a"]).apply(null, arguments);
       };
       var _Transpose = Module["_Transpose"] = function() {
-        return (_Transpose = Module["_Transpose"] = Module["asm"]["_a"]).apply(null, arguments);
+        return (_Transpose = Module["_Transpose"] = Module["asm"]["ab"]).apply(null, arguments);
       };
       var __FusedMatMul = Module["__FusedMatMul"] = function() {
-        return (__FusedMatMul = Module["__FusedMatMul"] = Module["asm"]["$a"]).apply(null, arguments);
+        return (__FusedMatMul = Module["__FusedMatMul"] = Module["asm"]["bb"]).apply(null, arguments);
       };
       var _malloc = Module["_malloc"] = function() {
-        return (_malloc = Module["_malloc"] = Module["asm"]["ab"]).apply(null, arguments);
+        return (_malloc = Module["_malloc"] = Module["asm"]["cb"]).apply(null, arguments);
       };
       var _free = Module["_free"] = function() {
-        return (_free = Module["_free"] = Module["asm"]["bb"]).apply(null, arguments);
+        return (_free = Module["_free"] = Module["asm"]["db"]).apply(null, arguments);
       };
       var ___errno_location = Module["___errno_location"] = function() {
-        return (___errno_location = Module["___errno_location"] = Module["asm"]["cb"]).apply(null, arguments);
+        return (___errno_location = Module["___errno_location"] = Module["asm"]["eb"]).apply(null, arguments);
       };
       var _emscripten_get_global_libc = Module["_emscripten_get_global_libc"] = function() {
-        return (_emscripten_get_global_libc = Module["_emscripten_get_global_libc"] = Module["asm"]["db"]).apply(null, arguments);
+        return (_emscripten_get_global_libc = Module["_emscripten_get_global_libc"] = Module["asm"]["fb"]).apply(null, arguments);
       };
       var _pthread_self = Module["_pthread_self"] = function() {
-        return (_pthread_self = Module["_pthread_self"] = Module["asm"]["eb"]).apply(null, arguments);
+        return (_pthread_self = Module["_pthread_self"] = Module["asm"]["gb"]).apply(null, arguments);
       };
       var ___pthread_tsd_run_dtors = Module["___pthread_tsd_run_dtors"] = function() {
-        return (___pthread_tsd_run_dtors = Module["___pthread_tsd_run_dtors"] = Module["asm"]["fb"]).apply(null, arguments);
+        return (___pthread_tsd_run_dtors = Module["___pthread_tsd_run_dtors"] = Module["asm"]["hb"]).apply(null, arguments);
       };
       var _emscripten_main_thread_process_queued_calls = Module["_emscripten_main_thread_process_queued_calls"] = function() {
-        return (_emscripten_main_thread_process_queued_calls = Module["_emscripten_main_thread_process_queued_calls"] = Module["asm"]["gb"]).apply(null, arguments);
+        return (_emscripten_main_thread_process_queued_calls = Module["_emscripten_main_thread_process_queued_calls"] = Module["asm"]["ib"]).apply(null, arguments);
       };
       var _emscripten_current_thread_process_queued_calls = Module["_emscripten_current_thread_process_queued_calls"] = function() {
-        return (_emscripten_current_thread_process_queued_calls = Module["_emscripten_current_thread_process_queued_calls"] = Module["asm"]["hb"]).apply(null, arguments);
+        return (_emscripten_current_thread_process_queued_calls = Module["_emscripten_current_thread_process_queued_calls"] = Module["asm"]["jb"]).apply(null, arguments);
       };
       var _emscripten_register_main_browser_thread_id = Module["_emscripten_register_main_browser_thread_id"] = function() {
-        return (_emscripten_register_main_browser_thread_id = Module["_emscripten_register_main_browser_thread_id"] = Module["asm"]["ib"]).apply(null, arguments);
+        return (_emscripten_register_main_browser_thread_id = Module["_emscripten_register_main_browser_thread_id"] = Module["asm"]["kb"]).apply(null, arguments);
       };
       var __emscripten_do_dispatch_to_thread = Module["__emscripten_do_dispatch_to_thread"] = function() {
-        return (__emscripten_do_dispatch_to_thread = Module["__emscripten_do_dispatch_to_thread"] = Module["asm"]["jb"]).apply(null, arguments);
+        return (__emscripten_do_dispatch_to_thread = Module["__emscripten_do_dispatch_to_thread"] = Module["asm"]["lb"]).apply(null, arguments);
       };
       var _emscripten_sync_run_in_main_thread_4 = Module["_emscripten_sync_run_in_main_thread_4"] = function() {
-        return (_emscripten_sync_run_in_main_thread_4 = Module["_emscripten_sync_run_in_main_thread_4"] = Module["asm"]["kb"]).apply(null, arguments);
+        return (_emscripten_sync_run_in_main_thread_4 = Module["_emscripten_sync_run_in_main_thread_4"] = Module["asm"]["mb"]).apply(null, arguments);
       };
       var _emscripten_run_in_main_runtime_thread_js = Module["_emscripten_run_in_main_runtime_thread_js"] = function() {
-        return (_emscripten_run_in_main_runtime_thread_js = Module["_emscripten_run_in_main_runtime_thread_js"] = Module["asm"]["lb"]).apply(null, arguments);
+        return (_emscripten_run_in_main_runtime_thread_js = Module["_emscripten_run_in_main_runtime_thread_js"] = Module["asm"]["nb"]).apply(null, arguments);
       };
       var __emscripten_call_on_thread = Module["__emscripten_call_on_thread"] = function() {
-        return (__emscripten_call_on_thread = Module["__emscripten_call_on_thread"] = Module["asm"]["mb"]).apply(null, arguments);
+        return (__emscripten_call_on_thread = Module["__emscripten_call_on_thread"] = Module["asm"]["ob"]).apply(null, arguments);
       };
       var _emscripten_tls_init = Module["_emscripten_tls_init"] = function() {
-        return (_emscripten_tls_init = Module["_emscripten_tls_init"] = Module["asm"]["nb"]).apply(null, arguments);
+        return (_emscripten_tls_init = Module["_emscripten_tls_init"] = Module["asm"]["pb"]).apply(null, arguments);
       };
       var __emscripten_thread_init = Module["__emscripten_thread_init"] = function() {
-        return (__emscripten_thread_init = Module["__emscripten_thread_init"] = Module["asm"]["ob"]).apply(null, arguments);
+        return (__emscripten_thread_init = Module["__emscripten_thread_init"] = Module["asm"]["qb"]).apply(null, arguments);
       };
       var stackSave = Module["stackSave"] = function() {
-        return (stackSave = Module["stackSave"] = Module["asm"]["pb"]).apply(null, arguments);
+        return (stackSave = Module["stackSave"] = Module["asm"]["rb"]).apply(null, arguments);
       };
       var stackRestore = Module["stackRestore"] = function() {
-        return (stackRestore = Module["stackRestore"] = Module["asm"]["qb"]).apply(null, arguments);
+        return (stackRestore = Module["stackRestore"] = Module["asm"]["sb"]).apply(null, arguments);
       };
       var stackAlloc = Module["stackAlloc"] = function() {
-        return (stackAlloc = Module["stackAlloc"] = Module["asm"]["rb"]).apply(null, arguments);
+        return (stackAlloc = Module["stackAlloc"] = Module["asm"]["tb"]).apply(null, arguments);
       };
       var _emscripten_stack_set_limits = Module["_emscripten_stack_set_limits"] = function() {
-        return (_emscripten_stack_set_limits = Module["_emscripten_stack_set_limits"] = Module["asm"]["sb"]).apply(null, arguments);
+        return (_emscripten_stack_set_limits = Module["_emscripten_stack_set_limits"] = Module["asm"]["ub"]).apply(null, arguments);
       };
       var _memalign = Module["_memalign"] = function() {
-        return (_memalign = Module["_memalign"] = Module["asm"]["tb"]).apply(null, arguments);
+        return (_memalign = Module["_memalign"] = Module["asm"]["vb"]).apply(null, arguments);
       };
-      var __emscripten_allow_main_runtime_queued_calls = Module["__emscripten_allow_main_runtime_queued_calls"] = 9792;
-      var __emscripten_main_thread_futex = Module["__emscripten_main_thread_futex"] = 11408;
+      var __emscripten_allow_main_runtime_queued_calls = Module["__emscripten_allow_main_runtime_queued_calls"] = 9808;
+      var __emscripten_main_thread_futex = Module["__emscripten_main_thread_futex"] = 11432;
       Module["cwrap"] = cwrap;
       Module["PThread"] = PThread;
       Module["PThread"] = PThread;
@@ -3929,17 +3946,17 @@ var require_tfjs_backend_wasm_threaded_simd = __commonJS((exports, module2) => {
         PThread.initWorker();
       }
       run();
-      return WasmBackendModule2.ready;
+      return WasmBackendModuleThreadedSimd2.ready;
     };
   }();
   if (typeof exports === "object" && typeof module2 === "object")
-    module2.exports = WasmBackendModule;
+    module2.exports = WasmBackendModuleThreadedSimd;
   else if (typeof define === "function" && define["amd"])
     define([], function() {
-      return WasmBackendModule;
+      return WasmBackendModuleThreadedSimd;
     });
   else if (typeof exports === "object")
-    exports["WasmBackendModule"] = WasmBackendModule;
+    exports["WasmBackendModuleThreadedSimd"] = WasmBackendModuleThreadedSimd;
 });
 var require_tfjs_backend_wasm = __commonJS((exports, module2) => {
   var WasmBackendModule = function() {
@@ -5953,11 +5970,12 @@ var Sum = "Sum";
 var SpaceToBatchND = "SpaceToBatchND";
 var SplitV = "SplitV";
 var Softmax = "Softmax";
+var SparseReshape = "SparseReshape";
+var SparseToDense = "SparseToDense";
 var SquaredDifference = "SquaredDifference";
 var Square = "Square";
-var Sub = "Sub";
-var SparseToDense = "SparseToDense";
 var StridedSlice = "StridedSlice";
+var Sub = "Sub";
 var Tan = "Tan";
 var Tanh = "Tanh";
 var Tile = "Tile";
@@ -10639,7 +10657,7 @@ function encodeStrings(a) {
   return a;
 }
 /** @license See the LICENSE file. */
-var version = "3.4.0";
+var version = "3.5.0";
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -16475,6 +16493,8 @@ function applyActivation(x, activation2, preluActivationWeights, leakyreluAlpha)
     return prelu(x, preluActivationWeights);
   } else if (activation2 === "leakyrelu") {
     return leakyRelu(x, leakyreluAlpha);
+  } else if (activation2 === "sigmoid") {
+    return sigmoid(x);
   }
   throw new Error(`Unknown fused activation ${activation2}.`);
 }
@@ -18049,6 +18069,45 @@ function softmaxCrossEntropy_(onehotLabels, logits, weights, labelSmoothing = 0,
 var softmaxCrossEntropy = op({softmaxCrossEntropy_});
 /**
  * @license
+ * Copyright 2021 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+function sparseReshape_(inputIndices, inputShape, newShape) {
+  const $inputIndices = convertToTensor(inputIndices, "inputIndices", "sparseReshape");
+  const $inputShape = convertToTensor(inputShape, "inputShape", "sparseReshape");
+  const $newShape = convertToTensor(newShape, "newShape", "sparseReshape");
+  if ($inputIndices.rank !== 2) {
+    throw new Error(`Input indices should be Tensor2D but received shape
+        ${$inputIndices.shape}`);
+  }
+  if ($inputShape.rank !== 1) {
+    throw new Error(`Input shape should be Tensor1D but received shape ${$inputShape.shape}`);
+  }
+  if ($newShape.rank !== 1) {
+    throw new Error(`New shape should be Tensor1D but received shape ${$newShape.shape}`);
+  }
+  const inputs = {
+    inputIndices: $inputIndices,
+    inputShape: $inputShape,
+    newShape: $newShape
+  };
+  const result = ENGINE.runKernel(SparseReshape, inputs);
+  return {outputIndices: result[0], outputShape: result[1]};
+}
+var sparseReshape = op({sparseReshape_});
+/**
+ * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18105,6 +18164,7 @@ var losses = {
   sigmoidCrossEntropy,
   softmaxCrossEntropy
 };
+var sparse = {sparseReshape};
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -28994,7 +29054,7 @@ function convertTsToPythonic(tsConfig, key) {
   }
 }
 /** @license See the LICENSE file. */
-var version2 = "3.4.0";
+var version2 = "3.5.0";
 /**
  * @license
  * Copyright 2018 Google LLC
@@ -31961,6 +32021,13 @@ var Swish = class extends Activation {
 };
 Swish.className = "swish";
 serialization_exports.registerClass(Swish);
+var Mish = class extends Activation {
+  apply(x) {
+    return tidy(() => mul(x, tanh2(softplus(x))));
+  }
+};
+Mish.className = "mish";
+serialization_exports.registerClass(Mish);
 function serializeActivation(activation2) {
   return activation2.getClassName();
 }
@@ -42835,7 +42902,7 @@ var executeOp15 = (node2, tensorMap, context) => {
 };
 /**
  * @license
- * Copyright 2018 Google LLC. All Rights Reserved.
+ * Copyright 2021 Google LLC. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -42850,6 +42917,32 @@ var executeOp15 = (node2, tensorMap, context) => {
  * =============================================================================
  */
 var executeOp16 = (node2, tensorMap, context) => {
+  switch (node2.op) {
+    case "SparseReshape": {
+      const {outputIndices, outputShape} = sparse.sparseReshape(getParamValue("inputIndices", node2, tensorMap, context), getParamValue("inputShape", node2, tensorMap, context), getParamValue("newShape", node2, tensorMap, context));
+      return [outputIndices, outputShape];
+    }
+    default:
+      throw TypeError(`Node type ${node2.op} is not implemented`);
+  }
+};
+/**
+ * @license
+ * Copyright 2018 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+var executeOp17 = (node2, tensorMap, context) => {
   switch (node2.op) {
     case "FFT": {
       return [fft(getParamValue("x", node2, tensorMap, context))];
@@ -42883,7 +42976,7 @@ var executeOp16 = (node2, tensorMap, context) => {
  * limitations under the License.
  * =============================================================================
  */
-var executeOp17 = (node2, tensorMap, context) => {
+var executeOp18 = (node2, tensorMap, context) => {
   switch (node2.op) {
     case "Cast": {
       return [cast(getParamValue("x", node2, tensorMap, context), getParamValue("dtype", node2, tensorMap, context))];
@@ -42944,7 +43037,7 @@ var executeOp17 = (node2, tensorMap, context) => {
  * limitations under the License.
  * =============================================================================
  */
-function executeOp18(node2, tensorMap, context, resourceManager) {
+function executeOp19(node2, tensorMap, context, resourceManager) {
   const value = ((node22, tensorMap2, context2) => {
     switch (node22.category) {
       case "arithmetic":
@@ -42975,10 +43068,12 @@ function executeOp18(node2, tensorMap, context, resourceManager) {
         return tidy(() => executeOp14(node22, tensorMap2, context2));
       case "slice_join":
         return tidy(() => executeOp15(node22, tensorMap2, context2));
-      case "spectral":
+      case "sparse":
         return tidy(() => executeOp16(node22, tensorMap2, context2));
-      case "transformation":
+      case "spectral":
         return tidy(() => executeOp17(node22, tensorMap2, context2));
+      case "transformation":
+        return tidy(() => executeOp18(node22, tensorMap2, context2));
       case "hash_table":
         return executeOp9(node22, tensorMap2, context2, resourceManager);
       case "custom":
@@ -43365,7 +43460,7 @@ var GraphExecutor = class {
       for (let i = 0; i < orderedNodes.length; i++) {
         const node2 = orderedNodes[i];
         if (!tensorsMap[node2.name]) {
-          const tensors = executeOp18(node2, tensorsMap, context, this._resourceManager);
+          const tensors = executeOp19(node2, tensorsMap, context, this._resourceManager);
           if (util_exports.isPromise(tensors)) {
             throw new Error(`The execution of the op '${node2.op}' returned a promise. Please use model.executeAsync() instead.`);
           }
@@ -43501,7 +43596,7 @@ var GraphExecutor = class {
         [nodeName] = getNodeNameAndIndex(item.node.name, context);
       }
       if (tensorMap[item.node.name] == null) {
-        const tensors = executeOp18(item.node, tensorMap, context, this._resourceManager);
+        const tensors = executeOp19(item.node, tensorMap, context, this._resourceManager);
         if (!nodeName) {
           [nodeName] = getNodeNameAndIndex(item.node.name, context);
         }
@@ -43810,7 +43905,7 @@ async function loadGraphModel(modelUrl, options = {}) {
   return model2;
 }
 /** @license See the LICENSE file. */
-var version3 = "3.4.0";
+var version3 = "3.5.0";
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -45872,7 +45967,7 @@ async function microphone(microphoneConfig) {
   return MicrophoneIterator.create(microphoneConfig);
 }
 /** @license See the LICENSE file. */
-var version4 = "3.4.0";
+var version4 = "3.5.0";
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -46085,6 +46180,7 @@ __export2(shared_exports, {
   rsqrtImpl: () => rsqrtImpl,
   simpleAbsImpl: () => simpleAbsImpl,
   sliceImpl: () => sliceImpl,
+  sparseReshapeImpl: () => sparseReshapeImpl,
   squaredDifferenceImpl: () => squaredDifferenceImpl,
   stridedSliceImpl: () => stridedSliceImpl,
   subImpl: () => subImpl,
@@ -47279,6 +47375,88 @@ var sliceConfig = {
 };
 /**
  * @license
+ * Copyright 2021 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+function sparseReshapeImpl(inputIndices, inputIndicesShape, inputDType, inputShape, targetShape) {
+  const denseSize = util_exports.sizeFromShape(inputShape);
+  const nnz = inputIndicesShape[0];
+  const outputRank = targetShape.length;
+  const outputShape = [];
+  let product = 1;
+  let unknownIndex = -1;
+  for (let d = 0; d < outputRank; ++d) {
+    const size = targetShape[d];
+    if (size === -1) {
+      if (unknownIndex !== -1) {
+        throw new Error(`only one output dimension may be -1, not both ${unknownIndex} and ${d}`);
+      }
+      unknownIndex = d;
+      outputShape.push(1);
+    } else {
+      if (size < 0) {
+        throw new Error(`size ${d} must be non-negative, not ${size}`);
+      }
+      product *= size;
+      outputShape.push(size);
+    }
+  }
+  if (unknownIndex !== -1) {
+    if (product <= 0) {
+      throw new Error("reshape cannot infer the missing input size for an empty tensor unless all specified input sizes are non-zero");
+    }
+    const missing = Math.trunc(denseSize / product);
+    if (product * missing !== denseSize) {
+      throw new Error(`Input to reshape is a SparseTensor with ${denseSize}
+          dense values, but the requested shape requires a multiple of ${product}. inputShape=${inputShape} outputShape= ${outputShape}`);
+    }
+    outputShape[unknownIndex] = missing;
+  }
+  const outputSize = util_exports.sizeFromShape(outputShape);
+  if (outputSize !== denseSize) {
+    throw new Error(`Input to reshape is a tensor with ${denseSize} dense values, but the requested shape has ${outputSize}. inputShape=${inputShape} outputShape=${outputShape}`);
+  }
+  const inputRank = inputShape.length;
+  const inputStrides = [];
+  if (inputRank > 0) {
+    inputStrides[inputRank - 1] = 1;
+    for (let d = inputRank - 2; d >= 0; --d) {
+      inputStrides[d] = inputStrides[d + 1] * inputShape[d + 1];
+    }
+  }
+  const outputStrides = [];
+  if (outputRank > 0) {
+    outputStrides[outputRank - 1] = 1;
+    for (let d = outputRank - 2; d >= 0; --d) {
+      outputStrides[d] = outputStrides[d + 1] * outputShape[d + 1];
+    }
+  }
+  const newIndices = util_exports.getArrayFromDType(inputDType, nnz * outputRank);
+  for (let i = 0; i < nnz; ++i) {
+    let id = 0;
+    for (let j = 0; j < inputRank; ++j) {
+      id += inputIndices[i * inputRank + j] * inputStrides[j];
+    }
+    for (let j = 0; j < outputRank; ++j) {
+      newIndices[i * outputRank + j] = Math.trunc(id / outputStrides[j]);
+      id %= outputStrides[j];
+    }
+  }
+  return [newIndices, [nnz, outputRank], outputShape];
+}
+/**
+ * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47522,7 +47700,7 @@ function uniqueImpl(values, axis, shape, dtype) {
  * =============================================================================
  */
 /** @license See the LICENSE file. */
-var version5 = "3.4.0";
+var version5 = "3.5.0";
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -47674,6 +47852,28 @@ var relu6Config = {
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the License);
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an AS IS BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+var sigmoid2 = unaryKernelFunc(Sigmoid, (xi) => 1 / (1 + Math.exp(-xi)));
+var sigmoidConfig = {
+  kernelName: Sigmoid,
+  backendName: "cpu",
+  kernelFunc: sigmoid2
+};
+/**
+ * @license
+ * Copyright 2020 Google LLC. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -47700,6 +47900,8 @@ function applyActivation2(backend2, x, activation2, preluActivationWeights, leak
     return prelu3({inputs: {x, alpha: preluActivationWeights}, backend: backend2});
   } else if (activation2 === "leakyrelu") {
     return leakyRelu2({inputs: {x}, backend: backend2, attrs: {alpha: leakyreluAlpha}});
+  } else if (activation2 === "sigmoid") {
+    return sigmoid2({inputs: {x}, backend: backend2});
   }
   throw new Error(`Activation ${activation2} has not been implemented for the CPU backend.`);
 }
@@ -49926,7 +50128,7 @@ function depthwiseConv2dNative(args) {
     const yOffset1 = b * y.strides[0];
     for (let yR = 0; yR < convInfo.outHeight; ++yR) {
       const yOffset2 = yOffset1 + yR * y.strides[1];
-      const xRCorner = yR * convInfo.strideHeight - padLeft;
+      const xRCorner = yR * convInfo.strideHeight - padTop;
       for (let wR = 0; wR < filterHeight; ++wR) {
         const xR = xRCorner + wR * dilationHeight;
         if (xR < 0 || xR >= convInfo.inHeight) {
@@ -49936,7 +50138,7 @@ function depthwiseConv2dNative(args) {
         const xOffset2 = xOffset1 + xR * xStrides[1];
         for (let yC = 0; yC < convInfo.outWidth; ++yC) {
           const yOffset3 = yOffset2 + yC * y.strides[2];
-          const xCCorner = yC * convInfo.strideWidth - padTop;
+          const xCCorner = yC * convInfo.strideWidth - padLeft;
           for (let wC = 0; wC < filterWidth; ++wC) {
             const xC = xCCorner + wC * dilationWidth;
             if (xC < 0 || xC >= convInfo.inWidth) {
@@ -53200,28 +53402,6 @@ var seluConfig = {
  * limitations under the License.
  * =============================================================================
  */
-var sigmoid2 = unaryKernelFunc(Sigmoid, (xi) => 1 / (1 + Math.exp(-xi)));
-var sigmoidConfig = {
-  kernelName: Sigmoid,
-  backendName: "cpu",
-  kernelFunc: sigmoid2
-};
-/**
- * @license
- * Copyright 2020 Google LLC. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the License);
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an AS IS BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =============================================================================
- */
 var sign2 = unaryKernelFunc(Sign, (xi) => {
   if (xi < 0) {
     return -1;
@@ -53370,6 +53550,50 @@ var spaceToBatchNDConfig = {
   kernelName: SpaceToBatchND,
   backendName: "cpu",
   kernelFunc: spaceToBatchND2
+};
+/**
+ * @license
+ * Copyright 2021 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+function sparseReshape2(args) {
+  const {inputs, backend: backend2} = args;
+  const {inputIndices, inputShape, newShape} = inputs;
+  if (inputIndices.shape.length !== 2) {
+    throw new Error(`Input indices should be a matrix but received shape
+        ${inputIndices.shape}`);
+  }
+  if (inputShape.shape.length !== 1) {
+    throw new Error(`Input shape should be a vector but received shape
+        ${inputShape.shape}`);
+  }
+  if (newShape.shape.length !== 1) {
+    throw new Error(`Target shape should be a vector but received shape ${newShape.shape}`);
+  }
+  const $inputShape = Array.from(backend2.data.get(inputShape.dataId).values);
+  const $inputIndices = backend2.data.get(inputIndices.dataId).values;
+  const targetShape = Array.from(backend2.data.get(newShape.dataId).values);
+  const [newIndices, indicesShape, outputShape] = sparseReshapeImpl($inputIndices, inputIndices.shape, inputIndices.dtype, $inputShape, targetShape);
+  return [
+    backend2.makeTensorInfo(indicesShape, inputIndices.dtype, newIndices),
+    backend2.makeTensorInfo([outputShape.length], newShape.dtype, new Int32Array(outputShape))
+  ];
+}
+var sparseReshapeConfig = {
+  kernelName: SparseReshape,
+  backendName: "cpu",
+  kernelFunc: sparseReshape2
 };
 /**
  * @license
@@ -54121,6 +54345,7 @@ var kernelConfigs = [
   softmaxConfig,
   softplusConfig,
   spaceToBatchNDConfig,
+  sparseReshapeConfig,
   sparseToDenseConfig,
   splitVConfig,
   sqrtConfig,
@@ -54822,7 +55047,7 @@ ENV3.registerFlag("WEBGL_FORCE_F16_TEXTURES", () => false);
 ENV3.registerFlag("WEBGL_PACK", () => ENV3.getBool("HAS_WEBGL"));
 ENV3.registerFlag("WEBGL_PACK_NORMALIZATION", () => ENV3.getBool("WEBGL_PACK"));
 ENV3.registerFlag("WEBGL_PACK_CLIP", () => ENV3.getBool("WEBGL_PACK"));
-ENV3.registerFlag("WEBGL_PACK_DEPTHWISECONV", () => true);
+ENV3.registerFlag("WEBGL_PACK_DEPTHWISECONV", () => ENV3.getBool("WEBGL_PACK"));
 ENV3.registerFlag("WEBGL_PACK_BINARY_OPERATIONS", () => ENV3.getBool("WEBGL_PACK"));
 ENV3.registerFlag("WEBGL_PACK_UNARY_OPERATIONS", () => ENV3.getBool("WEBGL_PACK"));
 ENV3.registerFlag("WEBGL_PACK_ARRAY_OPERATIONS", () => ENV3.getBool("WEBGL_PACK"));
@@ -57242,7 +57467,7 @@ function makeShaderKey(program, inputs, output) {
  * limitations under the License.
  * =============================================================================
  */
-var {addImpl: addImplCPU, bincountImpl: bincountImplCPU, bincountReduceImpl: bincountReduceImplCPU, ceilImpl: ceilImplCPU, concatImpl: concatImplCPU, expImpl: expImplCPU, expm1Impl: expm1ImplCPU, floorImpl: floorImplCPU, gatherV2Impl: gatherV2ImplCPU, greaterImpl: greaterImplCPU, lessImpl: lessImplCPU, linSpaceImpl: linSpaceImplCPU, logImpl: logImplCPU, maxImpl: maxImplCPU, maximumImpl: maximumImplCPU, minimumImpl: minimumImplCPU, multiplyImpl: multiplyImplCPU, negImpl: negImplCPU, prodImpl: prodImplCPU, rangeImpl: rangeImplCPU, rsqrtImpl: rsqrtImplCPU, simpleAbsImpl: simpleAbsImplCPU, sliceImpl: sliceImplCPU, stridedSliceImpl: stridedSliceImplCPU, subImpl: subImplCPU, tileImpl: tileImplCPU, topKImpl: topKImplCPU, transposeImpl: transposeImplCPU, uniqueImpl: uniqueImplCPU} = shared_exports;
+var {addImpl: addImplCPU, bincountImpl: bincountImplCPU, bincountReduceImpl: bincountReduceImplCPU, ceilImpl: ceilImplCPU, concatImpl: concatImplCPU, expImpl: expImplCPU, expm1Impl: expm1ImplCPU, floorImpl: floorImplCPU, gatherV2Impl: gatherV2ImplCPU, greaterImpl: greaterImplCPU, lessImpl: lessImplCPU, linSpaceImpl: linSpaceImplCPU, logImpl: logImplCPU, maxImpl: maxImplCPU, maximumImpl: maximumImplCPU, minimumImpl: minimumImplCPU, multiplyImpl: multiplyImplCPU, negImpl: negImplCPU, prodImpl: prodImplCPU, rangeImpl: rangeImplCPU, rsqrtImpl: rsqrtImplCPU, simpleAbsImpl: simpleAbsImplCPU, sliceImpl: sliceImplCPU, sparseReshapeImpl: sparseReshapeImplCPU, stridedSliceImpl: stridedSliceImplCPU, subImpl: subImplCPU, tileImpl: tileImplCPU, topKImpl: topKImplCPU, transposeImpl: transposeImplCPU, uniqueImpl: uniqueImplCPU} = shared_exports;
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -57709,6 +57934,7 @@ var RELU6 = CHECK_NAN_SNIPPET + `
   return (x < 0.0) ? 0.0 : min(6.0, x);
 `;
 var CLONE = "return x;";
+var SIGMOID = `return 1.0 / (1.0 + exp(-1.0 * x));`;
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -57758,6 +57984,7 @@ var RELU62 = `
 
   return result;
 `;
+var SIGMOID2 = `return 1.0 / (1.0 + exp(-1.0 * x));`;
 var UnaryOpPackedProgram = class {
   constructor(aShape, opSnippet) {
     this.variableNames = ["A"];
@@ -57887,7 +58114,7 @@ var MathBackendWebGL = class extends KernelBackend {
     return MathBackendWebGL.nextDataId++;
   }
   numDataIds() {
-    return this.texData.numDataIds() + (this.cpuBackend ? this.cpuBackend.numDataIds() : 0) - this.pendingDeletes;
+    return this.texData.numDataIds() - this.pendingDeletes;
   }
   write(values, shape, dtype) {
     if (env().getBool("WEBGL_CHECK_NUMERICAL_PROBLEMS") || env().getBool("DEBUG")) {
@@ -58519,7 +58746,7 @@ function float32ToTypedArray(a, dtype) {
   }
 }
 /** @license See the LICENSE file. */
-var version6 = "3.4.0";
+var version6 = "3.5.0";
 /**
  * @license
  * Copyright 2020 Google Inc. All Rights Reserved.
@@ -58910,6 +59137,11 @@ function mapActivationToShaderProgram(activation2, packed = false) {
       return LEAKYRELU_PACKED;
     }
     return LEAKYRELU;
+  } else if (activation2 === "sigmoid") {
+    if (packed) {
+      return SIGMOID2;
+    }
+    return SIGMOID;
   }
   throw new Error(`Activation ${activation2} has not been implemented for the WebGL backend.`);
 }
@@ -62359,11 +62591,20 @@ function concatImpl2(inputs, axis, backend2) {
     backend2.disposeIntermediateTensorInfo(imagConcated);
     return result2;
   }
+  let runOnCpu = backend2.shouldExecuteOnCPU(inputs);
   if (dtype === "string") {
-    const {tensors2D: tensors2D2, outShape: outShape2} = computeTensors2D(inputs, axis, backend2);
+    runOnCpu = true;
+  }
+  if (runOnCpu) {
+    const tensors2D2 = inputs.map((t) => {
+      const innerSize = util_exports.sizeFromShape(t.shape.slice(axis));
+      const shape = [-1, innerSize];
+      return reshape4({inputs: {x: t}, backend: backend2, attrs: {shape}});
+    });
     const inputsValShapes = tensors2D2.map((t) => {
       return {vals: backend2.readSync(t.dataId), shape: t.shape};
     });
+    const outShape2 = backend_util_exports.computeOutShape(tensors2D2.map((t) => t.shape), 1);
     const simplyConcat = tensors2D2[0].shape[0] === 1;
     const outVals = concatImplCPU(inputsValShapes, outShape2, dtype, simplyConcat);
     const finalOutShape = backend_util_exports.computeOutShape(inputs.map((t) => t.shape), axis);
@@ -69456,8 +69697,8 @@ var seluConfig2 = {
  * limitations under the License.
  * =============================================================================
  */
-var SIGMOID = `return 1.0 / (1.0 + exp(-1.0 * x));`;
-var sigmoid3 = unaryKernelFunc2({opSnippet: SIGMOID});
+var SIGMOID3 = `return 1.0 / (1.0 + exp(-1.0 * x));`;
+var sigmoid3 = unaryKernelFunc2({opSnippet: SIGMOID3});
 var sigmoidConfig2 = {
   kernelName: Sigmoid,
   backendName: "webgl",
@@ -69636,6 +69877,48 @@ var spaceToBatchNDConfig2 = {
   kernelName: SpaceToBatchND,
   backendName: "webgl",
   kernelFunc: spaceToBatchND3
+};
+/**
+ * @license
+ * Copyright 2021 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+function sparseReshape3(args) {
+  const {inputs, backend: backend2} = args;
+  const {inputIndices, inputShape, newShape} = inputs;
+  if (inputIndices.shape.length !== 2) {
+    throw new Error(`Input indices should be a matrix but received shape ${inputIndices.shape}`);
+  }
+  if (inputShape.shape.length !== 1) {
+    throw new Error(`Input shape should be a vector but received shape ${inputShape.shape}`);
+  }
+  if (newShape.shape.length !== 1) {
+    throw new Error(`Target shape should be a vector but received shape ${newShape.shape}`);
+  }
+  const $inputShape = Array.from(backend2.readSync(inputShape.dataId));
+  const $inputIndices = backend2.readSync(inputIndices.dataId);
+  const targetShape = Array.from(backend2.readSync(newShape.dataId));
+  const [newIndices, indicesShape, outputShape] = sparseReshapeImplCPU($inputIndices, inputIndices.shape, inputIndices.dtype, $inputShape, targetShape);
+  return [
+    backend2.makeTensorInfo(indicesShape, inputIndices.dtype, newIndices),
+    backend2.makeTensorInfo([outputShape.length], newShape.dtype, new Int32Array(outputShape))
+  ];
+}
+var sparseReshapeConfig2 = {
+  kernelName: SparseReshape,
+  backendName: "webgl",
+  kernelFunc: sparseReshape3
 };
 /**
  * @license
@@ -70021,7 +70304,7 @@ function tile4(params) {
   const {inputs, backend: backend2, attrs} = params;
   const {x} = inputs;
   const {reps} = attrs;
-  if (x.dtype === "string") {
+  if (x.dtype === "string" || x.shape.length > 5) {
     const data = backend2.readSync(x.dataId);
     const decodedData = data.map((d) => util_exports.decodeString(d));
     const buf = buffer(x.shape, x.dtype, decodedData);
@@ -70721,6 +71004,7 @@ var kernelConfigs2 = [
   softmaxConfig2,
   softplusConfig2,
   spaceToBatchNDConfig2,
+  sparseReshapeConfig2,
   sparseToDenseConfig2,
   splitVConfig2,
   sqrtConfig2,
@@ -70761,7 +71045,7 @@ for (const kernelConfig of kernelConfigs2) {
  * =============================================================================
  */
 /** @license See the LICENSE file. */
-var version7 = "3.4.0";
+var version7 = "3.5.0";
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -70818,6 +71102,7 @@ var FusableActivation;
   FusableActivation2[FusableActivation2["relu6"] = 2] = "relu6";
   FusableActivation2[FusableActivation2["prelu"] = 3] = "prelu";
   FusableActivation2[FusableActivation2["leakyrelu"] = 4] = "leakyrelu";
+  FusableActivation2[FusableActivation2["sigmoid"] = 5] = "sigmoid";
 })(FusableActivation || (FusableActivation = {}));
 /**
  * @license
@@ -75167,7 +75452,7 @@ ENV4.registerFlag("WASM_HAS_MULTITHREAD_SUPPORT", async () => {
   }
 });
 var import_tfjs_backend_wasm_threaded_simd = __toModule(require_tfjs_backend_wasm_threaded_simd());
-var wasmWorkerContents = 'var Module={};function threadPrintErr(){var text=Array.prototype.slice.call(arguments).join(" ");console.error(text)}function threadAlert(){var text=Array.prototype.slice.call(arguments).join(" ");postMessage({cmd:"alert",text:text,threadId:Module["_pthread_self"]()})}var err=threadPrintErr;this.alert=threadAlert;Module["instantiateWasm"]=function(info,receiveInstance){var instance=new WebAssembly.Instance(Module["wasmModule"],info);Module["wasmModule"]=null;receiveInstance(instance);return instance.exports};function moduleLoaded(){}this.onmessage=function(e){try{if(e.data.cmd==="load"){Module["wasmModule"]=e.data.wasmModule;Module["wasmMemory"]=e.data.wasmMemory;Module["buffer"]=Module["wasmMemory"].buffer;Module["ENVIRONMENT_IS_PTHREAD"]=true;if(typeof e.data.urlOrBlob==="string"){importScripts(e.data.urlOrBlob)}else{var objectUrl=URL.createObjectURL(e.data.urlOrBlob);importScripts(objectUrl);URL.revokeObjectURL(objectUrl)}WasmBackendModule(Module).then(function(instance){Module=instance;moduleLoaded()})}else if(e.data.cmd==="objectTransfer"){Module["PThread"].receiveObjectTransfer(e.data)}else if(e.data.cmd==="run"){Module["__performance_now_clock_drift"]=performance.now()-e.data.time;Module["__emscripten_thread_init"](e.data.threadInfoStruct,0,0);var max=e.data.stackBase;var top=e.data.stackBase+e.data.stackSize;Module["establishStackSpace"](top,max);Module["_emscripten_tls_init"]();Module["PThread"].receiveObjectTransfer(e.data);Module["PThread"].setThreadStatus(Module["_pthread_self"](),1);try{var result=Module["invokeEntryPoint"](e.data.start_routine,e.data.arg);if(!Module["getNoExitRuntime"]())Module["PThread"].threadExit(result)}catch(ex){if(ex==="Canceled!"){Module["PThread"].threadCancel()}else if(ex!="unwind"){if(ex instanceof Module["ExitStatus"]){if(Module["getNoExitRuntime"]()){}else{Module["PThread"].threadExit(ex.status)}}else{Module["PThread"].threadExit(-2);throw ex}}}}else if(e.data.cmd==="cancel"){if(Module["_pthread_self"]()){Module["PThread"].threadCancel()}}else if(e.data.target==="setimmediate"){}else if(e.data.cmd==="processThreadQueue"){if(Module["_pthread_self"]()){Module["_emscripten_current_thread_process_queued_calls"]()}}else{err("worker.js received unknown command "+e.data.cmd);err(e.data)}}catch(ex){err("worker.js onmessage() captured an uncaught exception: "+ex);if(ex&&ex.stack)err(ex.stack);throw ex}};if(typeof process==="object"&&typeof process.versions==="object"&&typeof process.versions.node==="string"){self={location:{href:__filename}};var onmessage=this.onmessage;var nodeWorkerThreads=require("worker_threads");global.Worker=nodeWorkerThreads.Worker;var parentPort=nodeWorkerThreads.parentPort;parentPort.on("message",function(data){onmessage({data:data})});var nodeFS=require("fs");var nodeRead=function(filename){return nodeFS.readFileSync(filename,"utf8")};function globalEval(x){global.require=require;global.Module=Module;eval.call(null,x)}importScripts=function(f){globalEval(nodeRead(f))};postMessage=function(msg){parentPort.postMessage(msg)};if(typeof performance==="undefined"){performance={now:function(){return Date.now()}}}}';
+var wasmWorkerContents = 'var Module={};function threadPrintErr(){var text=Array.prototype.slice.call(arguments).join(" ");console.error(text)}function threadAlert(){var text=Array.prototype.slice.call(arguments).join(" ");postMessage({cmd:"alert",text:text,threadId:Module["_pthread_self"]()})}var err=threadPrintErr;this.alert=threadAlert;Module["instantiateWasm"]=function(info,receiveInstance){var instance=new WebAssembly.Instance(Module["wasmModule"],info);Module["wasmModule"]=null;receiveInstance(instance);return instance.exports};function moduleLoaded(){}this.onmessage=function(e){try{if(e.data.cmd==="load"){Module["wasmModule"]=e.data.wasmModule;Module["wasmMemory"]=e.data.wasmMemory;Module["buffer"]=Module["wasmMemory"].buffer;Module["ENVIRONMENT_IS_PTHREAD"]=true;if(typeof e.data.urlOrBlob==="string"){importScripts(e.data.urlOrBlob)}else{var objectUrl=URL.createObjectURL(e.data.urlOrBlob);importScripts(objectUrl);URL.revokeObjectURL(objectUrl)}WasmBackendModuleThreadedSimd(Module).then(function(instance){Module=instance;moduleLoaded()})}else if(e.data.cmd==="objectTransfer"){Module["PThread"].receiveObjectTransfer(e.data)}else if(e.data.cmd==="run"){Module["__performance_now_clock_drift"]=performance.now()-e.data.time;Module["__emscripten_thread_init"](e.data.threadInfoStruct,0,0);var max=e.data.stackBase;var top=e.data.stackBase+e.data.stackSize;Module["establishStackSpace"](top,max);Module["_emscripten_tls_init"]();Module["PThread"].receiveObjectTransfer(e.data);Module["PThread"].setThreadStatus(Module["_pthread_self"](),1);try{var result=Module["invokeEntryPoint"](e.data.start_routine,e.data.arg);if(!Module["getNoExitRuntime"]())Module["PThread"].threadExit(result)}catch(ex){if(ex==="Canceled!"){Module["PThread"].threadCancel()}else if(ex!="unwind"){if(ex instanceof Module["ExitStatus"]){if(Module["getNoExitRuntime"]()){}else{Module["PThread"].threadExit(ex.status)}}else{Module["PThread"].threadExit(-2);throw ex}}}}else if(e.data.cmd==="cancel"){if(Module["_pthread_self"]()){Module["PThread"].threadCancel()}}else if(e.data.target==="setimmediate"){}else if(e.data.cmd==="processThreadQueue"){if(Module["_pthread_self"]()){Module["_emscripten_current_thread_process_queued_calls"]()}}else{err("worker.js received unknown command "+e.data.cmd);err(e.data)}}catch(ex){err("worker.js onmessage() captured an uncaught exception: "+ex);if(ex&&ex.stack)err(ex.stack);throw ex}};if(typeof process==="object"&&typeof process.versions==="object"&&typeof process.versions.node==="string"){self={location:{href:__filename}};var onmessage=this.onmessage;var nodeWorkerThreads=require("worker_threads");global.Worker=nodeWorkerThreads.Worker;var parentPort=nodeWorkerThreads.parentPort;parentPort.on("message",function(data){onmessage({data:data})});var nodeFS=require("fs");var nodeRead=function(filename){return nodeFS.readFileSync(filename,"utf8")};function globalEval(x){global.require=require;global.Module=Module;eval.call(null,x)}importScripts=function(f){globalEval(nodeRead(f))};postMessage=function(msg){parentPort.postMessage(msg)};if(typeof performance==="undefined"){performance={now:function(){return Date.now()}}}}';
 var import_tfjs_backend_wasm = __toModule(require_tfjs_backend_wasm());
 /**
  * @license
@@ -75268,6 +75553,9 @@ var BackendWasm = class extends KernelBackend {
   }
   dispose() {
     this.wasm.tfjs.dispose();
+    if ("PThread" in this.wasm) {
+      this.wasm.PThread.terminateAllThreads();
+    }
     this.wasm = null;
   }
   memory() {
@@ -75310,7 +75598,7 @@ function createInstantiateWasmFunc(path) {
       }
       response.arrayBuffer().then((binary) => {
         WebAssembly.instantiate(binary, imports).then((output) => {
-          callback(output.instance);
+          callback(output.instance, output.module);
         });
       });
     });
@@ -75438,7 +75726,7 @@ function setWasmPaths(prefixOrFileMap, usePlatformFetch = false) {
   customFetch = usePlatformFetch;
 }
 /** @license See the LICENSE file. */
-var version9 = "3.4.0";
+var version9 = "3.5.0";
 /**
  * @license
  * Copyright 2020 Google LLC. All Rights Reserved.
@@ -77528,7 +77816,7 @@ function drawFaceLandmarks(canvasArg, faceLandmarks) {
 }
 
 // package.json
-var version10 = "1.1.12";
+var version10 = "1.2.0";
 
 // src/xception/extractParams.ts
 function extractorsFactory2(extractWeights, paramMappings) {

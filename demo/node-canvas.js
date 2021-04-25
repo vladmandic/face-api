@@ -22,6 +22,9 @@ async function image(input) {
   const c = canvas.createCanvas(img.width, img.height);
   const ctx = c.getContext('2d');
   ctx.drawImage(img, 0, 0, img.width, img.height);
+  // const out = fs.createWriteStream('test.jpg');
+  // const stream = c.createJPEGStream({ quality: 0.6, progressive: true, chromaSubsampling: true });
+  // stream.pipe(out);
   return c;
 }
 
@@ -80,7 +83,7 @@ async function main() {
     log.info('Processed', numImages, 'images in', Math.trunc(parseInt(t1 - t0) / 1000 / 1000), 'ms');
   } else {
     const param = process.argv[2];
-    if (fs.existsSync(param)) {
+    if (fs.existsSync(param) || param.startsWith('http:') || param.startsWith('https:')) {
       const c = await image(param);
       const result = await detect(c);
       log.data('Image:', param, 'Detected faces:', result.length);

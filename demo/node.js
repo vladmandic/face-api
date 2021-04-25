@@ -6,6 +6,8 @@ const path = require('path');
 // eslint-disable-next-line import/no-extraneous-dependencies, node/no-unpublished-require
 const log = require('@vladmandic/pilogger');
 // eslint-disable-next-line import/no-extraneous-dependencies, node/no-unpublished-require
+const fetch = require('node-fetch').default;
+// eslint-disable-next-line import/no-extraneous-dependencies, node/no-unpublished-require
 const tf = require('@tensorflow/tfjs-node');
 const faceapi = require('../dist/face-api.node.js'); // this is equivalent to '@vladmandic/faceapi'
 
@@ -15,14 +17,35 @@ const minConfidence = 0.15;
 const maxResults = 5;
 let optionsSSDMobileNet;
 
-async function image(img) {
-  const buffer = fs.readFileSync(img);
-  const decoded = tf.node.decodeImage(buffer);
-  const casted = decoded.toFloat();
-  const result = casted.expandDims(0);
-  decoded.dispose();
-  casted.dispose();
-  return result;
+async function image(input) {
+  // read input image file and create tensor to be used for processing
+  let buffer;
+  log.info('Loading image:', input);
+  if (input.startsWith('http:') || input.startsWith('https:')) {
+    const res = await fetch(input);
+    if (res && res.ok) buffer = await res.buffer();
+    else log.error('Invalid image URL:', input, res.status, res.statusText, res.headers.get('content-type'));
+  } else {
+    buffer = fs.readFileSync(input);
+  }
+
+  // decode image using tfjs-node so we don't need external depenencies
+  // can also be done using canvas.js or some other 3rd party image library
+  if (!buffer) return {};
+  const tensor = tf.tidy(() => {
+    const decode = faceapi.tf.node.decodeImage(buffer, 3);
+    let expand;
+    if (decode.shape[2] === 4) { // input is in rgba format, need to convert to rgb
+      const channels = faceapi.tf.split(decode, 4, 2); // tf.split(tensor, 4, 2); // split rgba to channels
+      const rgb = faceapi.tf.stack([channels[0], channels[1], channels[2]], 2); // stack channels back to rgb and ignore alpha
+      expand = faceapi.tf.reshape(rgb, [1, decode.shape[0], decode.shape[1], 3]); // move extra dim from the end of tensor and use it as batch number instead
+    } else {
+      expand = faceapi.tf.expandDims(decode, 0);
+    }
+    const cast = faceapi.tf.cast(expand, 'float32');
+    return cast;
+  });
+  return tensor;
 }
 
 async function detect(tensor) {
@@ -97,7 +120,7 @@ async function main() {
     log.info('Processed', dir.length, 'images in', Math.trunc(parseInt(t1 - t0) / 1000 / 1000), 'ms');
   } else {
     const param = process.argv[2];
-    if (fs.existsSync(param)) {
+    if (fs.existsSync(param) || param.startsWith('http:') || param.startsWith('https:')) {
       const tensor = await image(param);
       const result = await detect(tensor);
       // const result = await detectPromise(null);

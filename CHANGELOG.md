@@ -9,11 +9,13 @@ Repository: **<git+https://github.com/vladmandic/face-api.git>**
 
 ## Changelog
 
+### **HEAD -> master** 2021/04/25 mandic00@live.com
+
+- major version full rebuild
+
 ### **1.2.1** 2021/04/22 mandic00@live.com
 
-
-### **origin/master** 2021/04/20 mandic00@live.com
-
+- add npmrc
 - add canvas/image based demo to decode webp
 
 ### **1.1.12** 2021/04/13 mandic00@live.com

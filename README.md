@@ -57,11 +57,14 @@ Three NodeJS examples are:
 
 - `/demo/node.js`:  
   Regular usage of `FaceAPI` from `NodeJS`  
-  Using `TFJS` native methods to load images
+  Using `TFJS` native methods to load images without external dependencies
 - `/demo/node-canvas.js`:  
   Regular usage of `FaceAPI` from `NodeJS`  
   Using external `canvas` module to load images  
-  Which also allows for image drawing and saving inside `NodeJS`
+  Which also allows for image drawing and saving inside `NodeJS` environment
+- `/demo/node-wasm.js`:
+  Same as `node-canvas`, but using `WASM` backend in `NodeJS` environment  
+  Because why not :)
 - `/demo/node-multiprocess.js`:  
   Multiprocessing showcase that uses pool of worker processes  
   (`node-multiprocess-worker.js`)  

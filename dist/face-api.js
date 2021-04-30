@@ -306,6 +306,7 @@ var faceapi = (() => {
     Softmax: () => Softmax,
     Softplus: () => Softplus,
     SpaceToBatchND: () => SpaceToBatchND,
+    SparseFillEmptyRows: () => SparseFillEmptyRows,
     SparseReshape: () => SparseReshape,
     SparseToDense: () => SparseToDense,
     SplitV: () => SplitV,
@@ -3911,71 +3912,74 @@ var faceapi = (() => {
         var _TopK = Module["_TopK"] = function() {
           return (_TopK = Module["_TopK"] = Module["asm"]["$a"]).apply(null, arguments);
         };
+        var _Transform = Module["_Transform"] = function() {
+          return (_Transform = Module["_Transform"] = Module["asm"]["ab"]).apply(null, arguments);
+        };
         var _Transpose = Module["_Transpose"] = function() {
-          return (_Transpose = Module["_Transpose"] = Module["asm"]["ab"]).apply(null, arguments);
+          return (_Transpose = Module["_Transpose"] = Module["asm"]["bb"]).apply(null, arguments);
         };
         var __FusedMatMul = Module["__FusedMatMul"] = function() {
-          return (__FusedMatMul = Module["__FusedMatMul"] = Module["asm"]["bb"]).apply(null, arguments);
+          return (__FusedMatMul = Module["__FusedMatMul"] = Module["asm"]["cb"]).apply(null, arguments);
         };
         var _malloc = Module["_malloc"] = function() {
-          return (_malloc = Module["_malloc"] = Module["asm"]["cb"]).apply(null, arguments);
+          return (_malloc = Module["_malloc"] = Module["asm"]["db"]).apply(null, arguments);
         };
         var _free = Module["_free"] = function() {
-          return (_free = Module["_free"] = Module["asm"]["db"]).apply(null, arguments);
+          return (_free = Module["_free"] = Module["asm"]["eb"]).apply(null, arguments);
         };
         var ___errno_location = Module["___errno_location"] = function() {
-          return (___errno_location = Module["___errno_location"] = Module["asm"]["eb"]).apply(null, arguments);
+          return (___errno_location = Module["___errno_location"] = Module["asm"]["fb"]).apply(null, arguments);
         };
         var _emscripten_get_global_libc = Module["_emscripten_get_global_libc"] = function() {
-          return (_emscripten_get_global_libc = Module["_emscripten_get_global_libc"] = Module["asm"]["fb"]).apply(null, arguments);
+          return (_emscripten_get_global_libc = Module["_emscripten_get_global_libc"] = Module["asm"]["gb"]).apply(null, arguments);
         };
         var _pthread_self = Module["_pthread_self"] = function() {
-          return (_pthread_self = Module["_pthread_self"] = Module["asm"]["gb"]).apply(null, arguments);
+          return (_pthread_self = Module["_pthread_self"] = Module["asm"]["hb"]).apply(null, arguments);
         };
         var ___pthread_tsd_run_dtors = Module["___pthread_tsd_run_dtors"] = function() {
-          return (___pthread_tsd_run_dtors = Module["___pthread_tsd_run_dtors"] = Module["asm"]["hb"]).apply(null, arguments);
+          return (___pthread_tsd_run_dtors = Module["___pthread_tsd_run_dtors"] = Module["asm"]["ib"]).apply(null, arguments);
         };
         var _emscripten_main_thread_process_queued_calls = Module["_emscripten_main_thread_process_queued_calls"] = function() {
-          return (_emscripten_main_thread_process_queued_calls = Module["_emscripten_main_thread_process_queued_calls"] = Module["asm"]["ib"]).apply(null, arguments);
+          return (_emscripten_main_thread_process_queued_calls = Module["_emscripten_main_thread_process_queued_calls"] = Module["asm"]["jb"]).apply(null, arguments);
         };
         var _emscripten_current_thread_process_queued_calls = Module["_emscripten_current_thread_process_queued_calls"] = function() {
-          return (_emscripten_current_thread_process_queued_calls = Module["_emscripten_current_thread_process_queued_calls"] = Module["asm"]["jb"]).apply(null, arguments);
+          return (_emscripten_current_thread_process_queued_calls = Module["_emscripten_current_thread_process_queued_calls"] = Module["asm"]["kb"]).apply(null, arguments);
         };
         var _emscripten_register_main_browser_thread_id = Module["_emscripten_register_main_browser_thread_id"] = function() {
-          return (_emscripten_register_main_browser_thread_id = Module["_emscripten_register_main_browser_thread_id"] = Module["asm"]["kb"]).apply(null, arguments);
+          return (_emscripten_register_main_browser_thread_id = Module["_emscripten_register_main_browser_thread_id"] = Module["asm"]["lb"]).apply(null, arguments);
         };
         var __emscripten_do_dispatch_to_thread = Module["__emscripten_do_dispatch_to_thread"] = function() {
-          return (__emscripten_do_dispatch_to_thread = Module["__emscripten_do_dispatch_to_thread"] = Module["asm"]["lb"]).apply(null, arguments);
+          return (__emscripten_do_dispatch_to_thread = Module["__emscripten_do_dispatch_to_thread"] = Module["asm"]["mb"]).apply(null, arguments);
         };
         var _emscripten_sync_run_in_main_thread_4 = Module["_emscripten_sync_run_in_main_thread_4"] = function() {
-          return (_emscripten_sync_run_in_main_thread_4 = Module["_emscripten_sync_run_in_main_thread_4"] = Module["asm"]["mb"]).apply(null, arguments);
+          return (_emscripten_sync_run_in_main_thread_4 = Module["_emscripten_sync_run_in_main_thread_4"] = Module["asm"]["nb"]).apply(null, arguments);
         };
         var _emscripten_run_in_main_runtime_thread_js = Module["_emscripten_run_in_main_runtime_thread_js"] = function() {
-          return (_emscripten_run_in_main_runtime_thread_js = Module["_emscripten_run_in_main_runtime_thread_js"] = Module["asm"]["nb"]).apply(null, arguments);
+          return (_emscripten_run_in_main_runtime_thread_js = Module["_emscripten_run_in_main_runtime_thread_js"] = Module["asm"]["ob"]).apply(null, arguments);
         };
         var __emscripten_call_on_thread = Module["__emscripten_call_on_thread"] = function() {
-          return (__emscripten_call_on_thread = Module["__emscripten_call_on_thread"] = Module["asm"]["ob"]).apply(null, arguments);
+          return (__emscripten_call_on_thread = Module["__emscripten_call_on_thread"] = Module["asm"]["pb"]).apply(null, arguments);
         };
         var _emscripten_tls_init = Module["_emscripten_tls_init"] = function() {
-          return (_emscripten_tls_init = Module["_emscripten_tls_init"] = Module["asm"]["pb"]).apply(null, arguments);
+          return (_emscripten_tls_init = Module["_emscripten_tls_init"] = Module["asm"]["qb"]).apply(null, arguments);
         };
         var __emscripten_thread_init = Module["__emscripten_thread_init"] = function() {
-          return (__emscripten_thread_init = Module["__emscripten_thread_init"] = Module["asm"]["qb"]).apply(null, arguments);
+          return (__emscripten_thread_init = Module["__emscripten_thread_init"] = Module["asm"]["rb"]).apply(null, arguments);
         };
         var stackSave = Module["stackSave"] = function() {
-          return (stackSave = Module["stackSave"] = Module["asm"]["rb"]).apply(null, arguments);
+          return (stackSave = Module["stackSave"] = Module["asm"]["sb"]).apply(null, arguments);
         };
         var stackRestore = Module["stackRestore"] = function() {
-          return (stackRestore = Module["stackRestore"] = Module["asm"]["sb"]).apply(null, arguments);
+          return (stackRestore = Module["stackRestore"] = Module["asm"]["tb"]).apply(null, arguments);
         };
         var stackAlloc = Module["stackAlloc"] = function() {
-          return (stackAlloc = Module["stackAlloc"] = Module["asm"]["tb"]).apply(null, arguments);
+          return (stackAlloc = Module["stackAlloc"] = Module["asm"]["ub"]).apply(null, arguments);
         };
         var _emscripten_stack_set_limits = Module["_emscripten_stack_set_limits"] = function() {
-          return (_emscripten_stack_set_limits = Module["_emscripten_stack_set_limits"] = Module["asm"]["ub"]).apply(null, arguments);
+          return (_emscripten_stack_set_limits = Module["_emscripten_stack_set_limits"] = Module["asm"]["vb"]).apply(null, arguments);
         };
         var _memalign = Module["_memalign"] = function() {
-          return (_memalign = Module["_memalign"] = Module["asm"]["vb"]).apply(null, arguments);
+          return (_memalign = Module["_memalign"] = Module["asm"]["wb"]).apply(null, arguments);
         };
         var __emscripten_allow_main_runtime_queued_calls = Module["__emscripten_allow_main_runtime_queued_calls"] = 9808;
         var __emscripten_main_thread_futex = Module["__emscripten_main_thread_futex"] = 11432;
@@ -5124,29 +5128,32 @@ var faceapi = (() => {
         var _TopK = Module["_TopK"] = function() {
           return (_TopK = Module["_TopK"] = Module["asm"]["Ka"]).apply(null, arguments);
         };
+        var _Transform = Module["_Transform"] = function() {
+          return (_Transform = Module["_Transform"] = Module["asm"]["La"]).apply(null, arguments);
+        };
         var _Transpose = Module["_Transpose"] = function() {
-          return (_Transpose = Module["_Transpose"] = Module["asm"]["La"]).apply(null, arguments);
+          return (_Transpose = Module["_Transpose"] = Module["asm"]["Ma"]).apply(null, arguments);
         };
         var __FusedMatMul = Module["__FusedMatMul"] = function() {
-          return (__FusedMatMul = Module["__FusedMatMul"] = Module["asm"]["Ma"]).apply(null, arguments);
+          return (__FusedMatMul = Module["__FusedMatMul"] = Module["asm"]["Na"]).apply(null, arguments);
         };
         var _malloc = Module["_malloc"] = function() {
-          return (_malloc = Module["_malloc"] = Module["asm"]["Na"]).apply(null, arguments);
+          return (_malloc = Module["_malloc"] = Module["asm"]["Oa"]).apply(null, arguments);
         };
         var _free = Module["_free"] = function() {
-          return (_free = Module["_free"] = Module["asm"]["Oa"]).apply(null, arguments);
+          return (_free = Module["_free"] = Module["asm"]["Pa"]).apply(null, arguments);
         };
         var ___errno_location = Module["___errno_location"] = function() {
-          return (___errno_location = Module["___errno_location"] = Module["asm"]["Pa"]).apply(null, arguments);
+          return (___errno_location = Module["___errno_location"] = Module["asm"]["Qa"]).apply(null, arguments);
         };
         var stackSave = Module["stackSave"] = function() {
-          return (stackSave = Module["stackSave"] = Module["asm"]["Qa"]).apply(null, arguments);
+          return (stackSave = Module["stackSave"] = Module["asm"]["Ra"]).apply(null, arguments);
         };
         var stackRestore = Module["stackRestore"] = function() {
-          return (stackRestore = Module["stackRestore"] = Module["asm"]["Ra"]).apply(null, arguments);
+          return (stackRestore = Module["stackRestore"] = Module["asm"]["Sa"]).apply(null, arguments);
         };
         var stackAlloc = Module["stackAlloc"] = function() {
-          return (stackAlloc = Module["stackAlloc"] = Module["asm"]["Sa"]).apply(null, arguments);
+          return (stackAlloc = Module["stackAlloc"] = Module["asm"]["Ta"]).apply(null, arguments);
         };
         Module["cwrap"] = cwrap;
         var calledRun;
@@ -6032,6 +6039,7 @@ var faceapi = (() => {
   var SpaceToBatchND = "SpaceToBatchND";
   var SplitV = "SplitV";
   var Softmax = "Softmax";
+  var SparseFillEmptyRows = "SparseFillEmptyRows";
   var SparseReshape = "SparseReshape";
   var SparseToDense = "SparseToDense";
   var SquaredDifference = "SquaredDifference";
@@ -9998,7 +10006,7 @@ Expected: ${expectedFlat}.`);
     }
     return a;
   }
-  var version = "3.5.0";
+  var version = "3.6.0";
   function enableProdMode() {
     env().set("PROD", true);
   }
@@ -13666,6 +13674,62 @@ Expected: ${expectedFlat}.`);
     return res;
   }
   var resizeNearestNeighbor = op({resizeNearestNeighbor_});
+  function threshold_(image3, method = "binary", inverted = false, threshValue = 0.5) {
+    const $image = convertToTensor(image3, "image", "threshold");
+    const RED_INTENCITY_COEF = 0.2989;
+    const GREEN_INTENCITY_COEF = 0.587;
+    const BLUE_INTENCITY_COEF = 0.114;
+    const totalPixelsInImage = $image.shape[0] * $image.shape[1];
+    let $threshold = mul(tensor1d([threshValue]), 255);
+    let r, g, b, grayscale;
+    assert($image.rank === 3, () => `Error in threshold: image must be rank 3,but got rank ${$image.rank}.`);
+    assert($image.shape[2] === 3 || $image.shape[2] === 1, () => `Error in threshold: image color channel must be equal to 3 or 1but got ${$image.shape[2]}.`);
+    assert($image.dtype === "int32" || $image.dtype === "float32", () => `Error in dtype: image dtype must be int32 or float32,but got dtype ${$image.dtype}.`);
+    assert(method === "otsu" || method === "binary", () => `Method must be binary or otsu, but was ${method}`);
+    if ($image.shape[2] === 3) {
+      [r, g, b] = split($image, [1, 1, 1], -1);
+      const $r = mul(r, RED_INTENCITY_COEF);
+      const $g = mul(g, GREEN_INTENCITY_COEF);
+      const $b = mul(b, BLUE_INTENCITY_COEF);
+      grayscale = add2(add2($r, $g), $b);
+    } else {
+      grayscale = image3;
+    }
+    if (method === "otsu") {
+      const $histogram = bincount(cast(round2(grayscale), "int32"), tensor([]), 256);
+      $threshold = otsu($histogram, totalPixelsInImage);
+    }
+    const invCondition = inverted ? lessEqual(grayscale, $threshold) : greater(grayscale, $threshold);
+    const result = cast(mul(invCondition, 255), "int32");
+    return result;
+  }
+  function otsu(histogram, total) {
+    let bestThresh = tensor1d([-1]);
+    let bestInBetVar = tensor1d([0]);
+    let cInBetVar = tensor1d([0]);
+    let classFirst, classSecond, meanFirst, meanSec, weightForeground, weightBack;
+    for (let index = 0; index < histogram.size - 1; index++) {
+      classFirst = slice(histogram, 0, index + 1);
+      classSecond = slice(histogram, index + 1);
+      weightForeground = div(sum2(classFirst), total);
+      weightBack = div(sum2(classSecond), total);
+      const meanFirstDivA = sum2(mul(classFirst, range(0, classFirst.size)));
+      meanFirst = div(meanFirstDivA, sum2(classFirst));
+      const meanSecFill = fill(classSecond.shape, classFirst.size);
+      const meanSecAdd = add2(range(0, classSecond.size), meanSecFill);
+      const meanSecMul = mul(classSecond, meanSecAdd);
+      meanSec = div(sum2(meanSecMul), sum2(classSecond));
+      const cInBetVarSubA = sub(meanFirst, meanSec);
+      const cInBetVarSubB = sub(meanFirst, meanSec);
+      const cInBetVarMul = mul(weightForeground, weightBack);
+      cInBetVar = mul(mul(cInBetVarMul, cInBetVarSubA), cInBetVarSubB);
+      const condition = greater(cInBetVar, bestInBetVar);
+      bestInBetVar = where(condition, cInBetVar, bestInBetVar);
+      bestThresh = where(condition, tensor1d([index]), bestThresh);
+    }
+    return bestThresh;
+  }
+  var threshold = op({threshold_});
   function transform_(image3, transforms, interpolation = "nearest", fillMode = "constant", fillValue = 0, outputShape) {
     const $image = convertToTensor(image3, "image", "transform", "float32");
     const $transforms = convertToTensor(transforms, "transforms", "transform", "float32");
@@ -14016,6 +14080,39 @@ Expected: ${expectedFlat}.`);
     return computeWeightedLoss(losses4, $weights, reduction2);
   }
   var softmaxCrossEntropy = op({softmaxCrossEntropy_});
+  function sparseFillEmptyRows_(indices, values, denseShape, defaultValue) {
+    const $indices = convertToTensor(indices, "indices", "sparseFillEmptyRows");
+    const $values = convertToTensor(values, "values", "sparseFillEmptyRows");
+    const $denseShape = convertToTensor(denseShape, "denseShape", "sparseFillEmptyRows");
+    const $defaultValue = convertToTensor(defaultValue, "defaultValue", "sparseFillEmptyRows", $values.dtype);
+    if ($indices.rank !== 2) {
+      throw new Error(`Indices should be Tensor2D but received shape
+        ${$indices.shape}`);
+    }
+    if ($values.rank !== 1) {
+      throw new Error(`Values should be Tensor1D but received shape ${$values.shape}`);
+    }
+    if ($denseShape.rank !== 1) {
+      throw new Error(`Dense shape should be Tensor1D but received shape ${$denseShape.shape}`);
+    }
+    if ($defaultValue.rank !== 0) {
+      throw new Error(`Default value should be a scalar but received shape ${$defaultValue.shape}`);
+    }
+    const inputs = {
+      indices: $indices,
+      values: $values,
+      denseShape: $denseShape,
+      defaultValue: $defaultValue
+    };
+    const result = ENGINE.runKernel(SparseFillEmptyRows, inputs);
+    return {
+      outputIndices: result[0],
+      outputValues: result[1],
+      emptyRowIndicator: result[2],
+      reverseIndexMap: result[3]
+    };
+  }
+  var sparseFillEmptyRows = op({sparseFillEmptyRows_});
   function sparseReshape_(inputIndices, inputShape, newShape) {
     const $inputIndices = convertToTensor(inputIndices, "inputIndices", "sparseReshape");
     const $inputShape = convertToTensor(inputShape, "inputShape", "sparseReshape");
@@ -14063,6 +14160,7 @@ Expected: ${expectedFlat}.`);
     nonMaxSuppressionWithScoreAsync,
     nonMaxSuppressionPadded,
     nonMaxSuppressionPaddedAsync,
+    threshold,
     transform
   };
   var linalg = {
@@ -14081,7 +14179,10 @@ Expected: ${expectedFlat}.`);
     sigmoidCrossEntropy,
     softmaxCrossEntropy
   };
-  var sparse = {sparseReshape};
+  var sparse = {
+    sparseFillEmptyRows,
+    sparseReshape
+  };
   var Optimizer = class extends Serializable {
     minimize(f, returnCost = false, varList) {
       const {value, grads: grads2} = this.computeGradients(f, varList);
@@ -20038,8 +20139,8 @@ Expected: ${expectedFlat}.`);
   }
   function binaryAccuracy(yTrue, yPred) {
     return tidy(() => {
-      const threshold2 = mul(0.5, onesLike(yPred));
-      const yPredThresholded = cast2(greater(yPred, threshold2), yTrue.dtype);
+      const threshold3 = mul(0.5, onesLike(yPred));
+      const yPredThresholded = cast2(greater(yPred, threshold3), yTrue.dtype);
       return mean(equal(yTrue, yPredThresholded), -1);
     });
   }
@@ -20423,7 +20524,7 @@ Expected: ${expectedFlat}.`);
       return pyDict;
     }
   }
-  var version2 = "3.5.0";
+  var version2 = "3.6.0";
   function assertFeedCompatibility(key, val) {
     if (key.dtype == null || key.dtype === val.dtype) {
       return val;
@@ -34275,7 +34376,7 @@ Expected: ${expectedFlat}.`);
     await model2.load();
     return model2;
   }
-  var version3 = "3.5.0";
+  var version3 = "3.6.0";
   var dist_exports = {};
   __export2(dist_exports, {
     CSVDataset: () => CSVDataset,
@@ -34578,17 +34679,17 @@ Expected: ${expectedFlat}.`);
     filter(predicate) {
       return new FilterIterator(this, predicate);
     }
-    map(transform4) {
-      return new MapIterator(this, transform4);
+    map(transform5) {
+      return new MapIterator(this, transform5);
     }
-    mapAsync(transform4) {
-      return new AsyncMapIterator(this, transform4);
+    mapAsync(transform5) {
+      return new AsyncMapIterator(this, transform5);
     }
-    serialMapAsync(transform4) {
-      return new AsyncMapIterator(this, transform4).serial();
+    serialMapAsync(transform5) {
+      return new AsyncMapIterator(this, transform5).serial();
     }
-    flatmap(transform4) {
-      return new FlatmapIterator(this, transform4);
+    flatmap(transform5) {
+      return new FlatmapIterator(this, transform5);
     }
     async forEachAsync(f) {
       return this.map(f).resolveFully();
@@ -34778,10 +34879,10 @@ Expected: ${expectedFlat}.`);
     }
   };
   var MapIterator = class extends LazyIterator {
-    constructor(upstream, transform4) {
+    constructor(upstream, transform5) {
       super();
       this.upstream = upstream;
-      this.transform = transform4;
+      this.transform = transform5;
     }
     summary() {
       return `${this.upstream.summary()} -> Map`;
@@ -34830,10 +34931,10 @@ Expected: ${expectedFlat}.`);
     }
   };
   var AsyncMapIterator = class extends LazyIterator {
-    constructor(upstream, transform4) {
+    constructor(upstream, transform5) {
       super();
       this.upstream = upstream;
-      this.transform = transform4;
+      this.transform = transform5;
     }
     summary() {
       return `${this.upstream.summary()} -> AsyncMap`;
@@ -34874,10 +34975,10 @@ Expected: ${expectedFlat}.`);
     }
   };
   var FlatmapIterator = class extends OneToManyIterator {
-    constructor(upstream, transform4) {
+    constructor(upstream, transform5) {
       super();
       this.upstream = upstream;
-      this.transform = transform4;
+      this.transform = transform5;
     }
     summary() {
       return `${this.upstream.summary()} -> Flatmap`;
@@ -35100,16 +35201,16 @@ Expected: ${expectedFlat}.`);
     async forEachAsync(f) {
       return (await this.iterator()).forEachAsync(f);
     }
-    map(transform4) {
+    map(transform5) {
       const base2 = this;
       return datasetFromIteratorFn(async () => {
-        return (await base2.iterator()).map((x) => tidy(() => transform4(x)));
+        return (await base2.iterator()).map((x) => tidy(() => transform5(x)));
       }, this.size);
     }
-    mapAsync(transform4) {
+    mapAsync(transform5) {
       const base2 = this;
       return datasetFromIteratorFn(async () => {
-        return (await base2.iterator()).mapAsync(transform4);
+        return (await base2.iterator()).mapAsync(transform5);
       }, this.size);
     }
     prefetch(bufferSize) {
@@ -35997,7 +36098,7 @@ Expected: ${expectedFlat}.`);
   async function microphone(microphoneConfig) {
     return MicrophoneIterator.create(microphoneConfig);
   }
-  var version4 = "3.5.0";
+  var version4 = "3.6.0";
   function assertNotComplex(tensor2, opName) {
     if (!Array.isArray(tensor2)) {
       tensor2 = [tensor2];
@@ -36162,6 +36263,7 @@ Expected: ${expectedFlat}.`);
     rsqrtImpl: () => rsqrtImpl,
     simpleAbsImpl: () => simpleAbsImpl,
     sliceImpl: () => sliceImpl,
+    sparseFillEmptyRowsImpl: () => sparseFillEmptyRowsImpl,
     sparseReshapeImpl: () => sparseReshapeImpl,
     squaredDifferenceImpl: () => squaredDifferenceImpl,
     stridedSliceImpl: () => stridedSliceImpl,
@@ -36811,6 +36913,101 @@ Expected: ${expectedFlat}.`);
     backendName: "cpu",
     kernelFunc: slice2
   };
+  function sparseFillEmptyRowsImpl(indices, indicesShape, indicesDType, values, valuesDType, denseShape, defaultValue) {
+    const indicesCount = indicesShape[0];
+    const denseRows = denseShape[0];
+    const emptyRowIndicator = new Array(denseRows);
+    const reverseIndexMap = new Array(indicesCount);
+    const rank = indicesShape[1];
+    if (denseRows === 0) {
+      if (indicesCount !== 0) {
+        throw new Error(`Received SparseTensor with denseShape[0] = 0 but
+         indices.shape[0] = ${indicesCount}`);
+      }
+      const outputIndices = util_exports.getArrayFromDType(indicesDType, 0);
+      const outputValues = util_exports.getArrayFromDType(valuesDType, 0);
+      return [
+        outputIndices,
+        [0, rank],
+        outputValues,
+        emptyRowIndicator,
+        reverseIndexMap
+      ];
+    }
+    let rowsAreOrdered = true;
+    let lastIndicesRow = 0;
+    const csrOffset = new Array(denseRows).fill(0);
+    for (let i = 0; i < indicesCount; ++i) {
+      const row = indices[i * rank];
+      if (row < 0) {
+        throw new Error(`indices(${i}, 0) is invalid: ${row} < 0`);
+      }
+      if (row >= denseRows) {
+        throw new Error(`indices(${i}, 0) is invalid: ${row} >= ${denseRows}`);
+      }
+      ++csrOffset[row];
+      rowsAreOrdered = rowsAreOrdered && row >= lastIndicesRow;
+      lastIndicesRow = row;
+    }
+    let allRowsFull = true;
+    for (let row = 0; row < denseRows; ++row) {
+      const rowEmpty = csrOffset[row] === 0;
+      emptyRowIndicator[row] = rowEmpty;
+      allRowsFull = allRowsFull && !rowEmpty;
+      csrOffset[row] = Math.max(csrOffset[row], 1);
+      if (row > 0) {
+        csrOffset[row] += csrOffset[row - 1];
+      }
+    }
+    if (allRowsFull && rowsAreOrdered) {
+      const outputIndices = indices;
+      const outputValues = values;
+      for (let i = 0; i < indicesCount; ++i) {
+        reverseIndexMap[i] = i;
+      }
+      return [
+        outputIndices,
+        [indicesCount, rank],
+        outputValues,
+        emptyRowIndicator,
+        reverseIndexMap
+      ];
+    } else {
+      const fullIndicesCount = csrOffset[denseRows - 1];
+      const outputIndices = util_exports.getArrayFromDType(indicesDType, fullIndicesCount * rank);
+      const outputValues = util_exports.getArrayFromDType(valuesDType, fullIndicesCount);
+      const filledCount = new Array(denseRows).fill(0);
+      for (let i = 0; i < indicesCount; ++i) {
+        const row = indices[i * rank];
+        const offset = filledCount[row];
+        const outputI = (row === 0 ? 0 : csrOffset[row - 1]) + offset;
+        filledCount[row]++;
+        for (let j = 0; j < rank; ++j) {
+          outputIndices[outputI * rank + j] = indices[i * rank + j];
+        }
+        outputValues[outputI] = values[i];
+        reverseIndexMap[i] = outputI;
+      }
+      for (let row = 0; row < denseRows; ++row) {
+        const rowCount = filledCount[row];
+        if (rowCount === 0) {
+          const startingIndex = row === 0 ? 0 : csrOffset[row - 1];
+          outputIndices[startingIndex * rank + 0] = row;
+          for (let col = 1; col < rank; ++col) {
+            outputIndices[startingIndex * rank + col] = 0;
+          }
+          outputValues[startingIndex] = defaultValue;
+        }
+      }
+      return [
+        outputIndices,
+        [indicesCount, rank],
+        outputValues,
+        emptyRowIndicator,
+        reverseIndexMap
+      ];
+    }
+  }
   function sparseReshapeImpl(inputIndices, inputIndicesShape, inputDType, inputShape, targetShape) {
     const denseSize = util_exports.sizeFromShape(inputShape);
     const nnz = inputIndicesShape[0];
@@ -37009,7 +37206,7 @@ Expected: ${expectedFlat}.`);
       indices
     };
   }
-  var version5 = "3.5.0";
+  var version5 = "3.6.0";
   registerBackend("cpu", () => new MathBackendCPU(), 1);
   var elu4 = unaryKernelFunc(Elu, (xi) => xi >= 0 ? xi : Math.exp(xi) - 1);
   var eluConfig = {
@@ -40834,10 +41031,10 @@ Expected: ${expectedFlat}.`);
     kernelFunc: sinh2
   };
   var epsilon2 = 11920928955078125e-23;
-  var threshold = Math.log(epsilon2) + 2;
+  var threshold2 = Math.log(epsilon2) + 2;
   var softplus2 = unaryKernelFunc(Softplus, (xi) => {
-    const tooLarge = xi > -threshold;
-    const tooSmall = xi < threshold;
+    const tooLarge = xi > -threshold2;
+    const tooSmall = xi < threshold2;
     const expX = Math.exp(xi);
     let result;
     if (tooSmall) {
@@ -40891,6 +41088,42 @@ Expected: ${expectedFlat}.`);
     kernelName: SpaceToBatchND,
     backendName: "cpu",
     kernelFunc: spaceToBatchND2
+  };
+  function sparseFillEmptyRows2(args) {
+    const {inputs, backend: backend2} = args;
+    const {indices, values, denseShape, defaultValue} = inputs;
+    if (denseShape.shape.length !== 1) {
+      throw new Error(`Dense shape must be a vector, saw:
+        ${denseShape.shape}`);
+    }
+    if (indices.shape.length !== 2) {
+      throw new Error(`Indices must be a matrix, saw:
+        ${indices.shape}`);
+    }
+    if (values.shape.length !== 1) {
+      throw new Error(`Values must be a vector, saw:
+        ${values.shape}`);
+    }
+    if (defaultValue.shape.length !== 0) {
+      throw new Error(`Default value must be a scalar, saw:
+        ${defaultValue.shape}`);
+    }
+    const $indices = backend2.data.get(indices.dataId).values;
+    const $values = backend2.data.get(values.dataId).values;
+    const $denseShape = backend2.data.get(denseShape.dataId).values;
+    const $defaultValue = backend2.data.get(defaultValue.dataId).values[0];
+    const [outputIndices, outputIndicesShape, outputValues, emptyRowIndicator, reverseIndexMap] = sparseFillEmptyRowsImpl($indices, indices.shape, indices.dtype, $values, values.dtype, $denseShape, $defaultValue);
+    return [
+      backend2.makeTensorInfo(outputIndicesShape, indices.dtype, outputIndices),
+      backend2.makeTensorInfo([outputIndicesShape[0]], values.dtype, outputValues),
+      backend2.makeTensorInfo([emptyRowIndicator.length], "bool", new Uint8Array(emptyRowIndicator.map((value) => Number(value)))),
+      backend2.makeTensorInfo([reverseIndexMap.length], indices.dtype, new Int32Array(reverseIndexMap))
+    ];
+  }
+  var sparseFillEmptyRowsConfig = {
+    kernelName: SparseFillEmptyRows,
+    backendName: "cpu",
+    kernelFunc: sparseFillEmptyRows2
   };
   function sparseReshape2(args) {
     const {inputs, backend: backend2} = args;
@@ -41081,17 +41314,17 @@ Expected: ${expectedFlat}.`);
     const imageVals = backend2.data.get(image3.dataId).values;
     const transformVals = backend2.data.get(transforms.dataId).values;
     for (let b = 0; b < batch; ++b) {
-      const transform4 = transforms.shape[0] === 1 ? transformVals : transformVals.subarray(b * 8, b * 8 + 8);
+      const transform5 = transforms.shape[0] === 1 ? transformVals : transformVals.subarray(b * 8, b * 8 + 8);
       for (let outY = 0; outY < outHeight; ++outY) {
         for (let outX = 0; outX < outWidth; ++outX) {
           for (let channel = 0; channel < numChannels; ++channel) {
             let val;
-            const projection = transform4[6] * outX + transform4[7] * outY + 1;
+            const projection = transform5[6] * outX + transform5[7] * outY + 1;
             if (projection === 0) {
               continue;
             }
-            const inX = (transform4[0] * outX + transform4[1] * outY + transform4[2]) / projection;
-            const inY = (transform4[3] * outX + transform4[4] * outY + transform4[5]) / projection;
+            const inX = (transform5[0] * outX + transform5[1] * outY + transform5[2]) / projection;
+            const inY = (transform5[3] * outX + transform5[4] * outY + transform5[5]) / projection;
             const x = mapCoord(inX, imageWidth, fillMode);
             const y = mapCoord(inY, imageHeight, fillMode);
             switch (interpolation) {
@@ -41430,6 +41663,7 @@ Expected: ${expectedFlat}.`);
     softmaxConfig,
     softplusConfig,
     spaceToBatchNDConfig,
+    sparseFillEmptyRowsConfig,
     sparseReshapeConfig,
     sparseToDenseConfig,
     splitVConfig,
@@ -42082,16 +42316,16 @@ Expected: ${expectedFlat}.`);
   });
   ENV3.registerFlag("WEBGL_DELETE_TEXTURE_THRESHOLD", () => {
     return -1;
-  }, (threshold2) => {
-    if (threshold2 < 0 && threshold2 !== -1) {
-      throw new Error(`WEBGL_DELETE_TEXTURE_THRESHOLD must be -1 (indicating never delete) or at least 0, but got ${threshold2}.`);
+  }, (threshold3) => {
+    if (threshold3 < 0 && threshold3 !== -1) {
+      throw new Error(`WEBGL_DELETE_TEXTURE_THRESHOLD must be -1 (indicating never delete) or at least 0, but got ${threshold3}.`);
     }
   });
   ENV3.registerFlag("WEBGL_FLUSH_THRESHOLD", () => {
     return device_util_exports.isMobile() && ENV3.getBool("IS_CHROME") ? 1 : -1;
-  }, (threshold2) => {
-    if (threshold2 < 0 && threshold2 !== -1) {
-      throw new Error(`WEBGL_FLUSH_THRESHOLD must be -1 (indicating never manual flush) or at least 0, but got ${threshold2}.`);
+  }, (threshold3) => {
+    if (threshold3 < 0 && threshold3 !== -1) {
+      throw new Error(`WEBGL_FLUSH_THRESHOLD must be -1 (indicating never manual flush) or at least 0, but got ${threshold3}.`);
     }
   });
   function getGlslDifferences() {
@@ -42745,9 +42979,11 @@ Expected: ${expectedFlat}.`);
       this.throwIfDisposed();
       const gl = this.gl;
       const fragmentShader = createFragmentShader(gl, fragmentShaderSource);
-      const vertexShader = createVertexShader2(gl);
+      if (this.vertexShader == null) {
+        this.vertexShader = createVertexShader2(gl);
+      }
       const program = createProgram(gl);
-      callAndCheck(gl, () => gl.attachShader(program, vertexShader));
+      callAndCheck(gl, () => gl.attachShader(program, this.vertexShader));
       callAndCheck(gl, () => gl.attachShader(program, fragmentShader));
       linkProgram(gl, program);
       if (this.debug) {
@@ -44264,7 +44500,7 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     key += "_" + keyInputs + "_" + keyUserCode;
     return key;
   }
-  var {addImpl: addImplCPU, bincountImpl: bincountImplCPU, bincountReduceImpl: bincountReduceImplCPU, ceilImpl: ceilImplCPU, concatImpl: concatImplCPU, expImpl: expImplCPU, expm1Impl: expm1ImplCPU, floorImpl: floorImplCPU, gatherV2Impl: gatherV2ImplCPU, greaterImpl: greaterImplCPU, lessImpl: lessImplCPU, linSpaceImpl: linSpaceImplCPU, logImpl: logImplCPU, maxImpl: maxImplCPU, maximumImpl: maximumImplCPU, minimumImpl: minimumImplCPU, multiplyImpl: multiplyImplCPU, negImpl: negImplCPU, prodImpl: prodImplCPU, rangeImpl: rangeImplCPU, rsqrtImpl: rsqrtImplCPU, simpleAbsImpl: simpleAbsImplCPU, sliceImpl: sliceImplCPU, sparseReshapeImpl: sparseReshapeImplCPU, stridedSliceImpl: stridedSliceImplCPU, subImpl: subImplCPU, tileImpl: tileImplCPU, topKImpl: topKImplCPU, transposeImpl: transposeImplCPU, uniqueImpl: uniqueImplCPU} = shared_exports;
+  var {addImpl: addImplCPU, bincountImpl: bincountImplCPU, bincountReduceImpl: bincountReduceImplCPU, ceilImpl: ceilImplCPU, concatImpl: concatImplCPU, expImpl: expImplCPU, expm1Impl: expm1ImplCPU, floorImpl: floorImplCPU, gatherV2Impl: gatherV2ImplCPU, greaterImpl: greaterImplCPU, lessImpl: lessImplCPU, linSpaceImpl: linSpaceImplCPU, logImpl: logImplCPU, maxImpl: maxImplCPU, maximumImpl: maximumImplCPU, minimumImpl: minimumImplCPU, multiplyImpl: multiplyImplCPU, negImpl: negImplCPU, prodImpl: prodImplCPU, rangeImpl: rangeImplCPU, rsqrtImpl: rsqrtImplCPU, simpleAbsImpl: simpleAbsImplCPU, sliceImpl: sliceImplCPU, sparseFillEmptyRowsImpl: sparseFillEmptyRowsImplCPU, sparseReshapeImpl: sparseReshapeImplCPU, stridedSliceImpl: stridedSliceImplCPU, subImpl: subImplCPU, tileImpl: tileImplCPU, topKImpl: topKImplCPU, transposeImpl: transposeImplCPU, uniqueImpl: uniqueImplCPU} = shared_exports;
   function getVecChannels(name, rank) {
     return ["x", "y", "z", "w", "u", "v"].slice(0, rank).map((d) => `${name}.${d}`);
   }
@@ -44304,7 +44540,7 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
         const channels = getChannels("rc", rank);
         const dtype = getCoordsDataType(rank);
         const outOfBoundsCondition = getOutOfBoundsCondition(rank, outputShape, channels);
-        const setup45 = getSetup(rank, outputShape[outputShape.length - 1], outputShape[outputShape.length - 2], channels);
+        const setup46 = getSetup(rank, outputShape[outputShape.length - 1], outputShape[outputShape.length - 2], channels);
         const output = getOutput(outputShape, channels);
         this.userCode = `
         void main() {
@@ -44313,7 +44549,7 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
           if(${outOfBoundsCondition}) {
             setOutput(vec4(0));
           } else {
-            ${setup45}
+            ${setup46}
 
             setOutput(vec4(${output}));
           }
@@ -45414,7 +45650,7 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
       throw new Error(`Unknown dtype ${dtype}`);
     }
   }
-  var version6 = "3.5.0";
+  var version6 = "3.6.0";
   if (device_util_exports.isBrowser()) {
     registerBackend("webgl", () => new MathBackendWebGL(), 2);
   }
@@ -49465,29 +49701,32 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
       for (let c = 0; c < filterWidth; c++) {
         mainLoop += `
           vec4 xTexelC${c * 2};
+          int xTexelC${c * 2}Ready;
           vec4 xC${c};`;
       }
       for (let r = 0; r < filterHeight; r++) {
         for (let c = 0; c < filterWidth; c++) {
           mainLoop += `
           xTexelC${c * 2} = vec4(0.0);
+          xTexelC${c * 2}Ready = 0;
           xC${c} = vec4(0.0);`;
         }
         mainLoop += `
         xR = xRCorner + ${r * dilationHeight};
         if (xR >=0 && xR < ${xNumRows}) {
       `;
-        for (let texelC = 0; texelC < texelsAcross / 2 + 1; texelC++) {
-          const c = texelC * 2;
+        for (let texelC = 0; texelC < (texelsAcross + 1) / 2; texelC++) {
+          const colIndex = texelC * 2;
+          const c = colIndex * dilationWidth;
           mainLoop += `
-          xC = xCCorner + ${c * dilationWidth};
+          xC = xCCorner + ${c};
           `;
           if (strideWidth === 1) {
-            if (c < filterWidth) {
+            if (colIndex < filterWidth) {
               if (padLeft % 2 === 1) {
                 mainLoop += `
                 xCOffset = xC + 1;
-                if (xCOffset >= 0 && xCOffset < ${xNumCols}) {
+                if (xCOffset >= 0 && xCOffset < ${xNumCols} && xTexelC${c}Ready == 0) {
                   xTexelC${c} = getX(batch, xR, xCOffset, d1);
 
                   // Need to manually clear unused channels in case
@@ -49495,11 +49734,12 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
                   if (xCOffset + 1 >= ${xNumCols}) {
                     xTexelC${c}.zw = vec2(0.0);
                   }
+                  xTexelC${c}Ready = 1;
                 }
               `;
                 if (dilationWidth === 1 && c > 0) {
                   mainLoop += `
-                xC${c} = vec4(xTexelC${c - 2}.zw, xTexelC${c}.xy);
+                xC${colIndex} = vec4(xTexelC${c - 2}.zw, xTexelC${c}.xy);
                 `;
                 } else {
                   mainLoop += `
@@ -49514,22 +49754,23 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
                       previous.zw = vec2(0.0);
                     }
 
-                    xC${c} = vec4(previous.zw, xTexelC${c}.xy);
+                    xC${colIndex} = vec4(previous.zw, xTexelC${c}.xy);
                   } else {
-                    xC${c} = vec4(0.0, 0.0, xTexelC${c}.xy);
+                    xC${colIndex} = vec4(0.0, 0.0, xTexelC${c}.xy);
                   }
                   `;
                 }
               } else {
                 mainLoop += `
-                if (xC >= 0 && xC < ${xNumCols}) {
+                if (xC >= 0 && xC < ${xNumCols} && xTexelC${c}Ready == 0) {
                   xTexelC${c} = getX(batch, xR, xC, d1);
                   if (xC + 1 >= ${xNumCols}) {
                     xTexelC${c}.zw = vec2(0.0);
                   }
+                  xTexelC${c}Ready = 1;
                 }
 
-                xC${c} = xTexelC${c};
+                xC${colIndex} = xTexelC${c};
                 `;
               }
               if (c + 1 < filterWidth) {
@@ -49538,7 +49779,7 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
                   mainLoop += `
                   xCOffset = xC + ${padLeft % 2} + ${nextTexelOffset};
 
-                  if (xCOffset >= 0 && xCOffset < ${xNumCols}) {
+                  if (xCOffset >= 0 && xCOffset < ${xNumCols} && xTexelC${c + 2}Ready == 0) {
                     xTexelC${c + 2} = getX(batch, xR, xCOffset, d1);
 
                     // Need to manually clear unused channels in case
@@ -49546,36 +49787,39 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
                     if (xCOffset + 1 >= ${xNumCols}) {
                       xTexelC${c + 2}.zw = vec2(0.0);
                     }
+                    xTexelC${c + 2}Ready = 1;
                   }
                   `;
                   if (dilationWidth > 1) {
                     mainLoop += `
                     xCOffset -= 2;
-                    if (xCOffset >= 0 && xCOffset < ${xNumCols}) {
+                    if (xCOffset >= 0 && xCOffset < ${xNumCols} && xTexelC${c}Ready == 0) {
                       xTexelC${c} = getX(batch, xR, xCOffset, d1);
+                      xTexelC${c}Ready = 1;
                     }
                     `;
                   }
                   mainLoop += `
-                  xC${c + 1} = vec4(xTexelC${c}.zw, xTexelC${c + 2}.xy);
+                  xC${colIndex + 1} = vec4(xTexelC${c}.zw, xTexelC${c + 2}.xy);
                   `;
                 } else {
                   if (nextTexelOffset === 1) {
                     mainLoop += `
-                    xC${c + 1} = xTexelC${c};
+                    xC${colIndex + 1} = xTexelC${c};
                     `;
                   } else {
                     mainLoop += `
                     xCOffset = xC + ${nextTexelOffset};
 
-                    if (xCOffset >= 0 && xCOffset < ${xNumCols}) {
+                    if (xCOffset >= 0 && xCOffset < ${xNumCols} && xTexelC${c + 2}Ready == 0) {
                       xTexelC${c + 2} = getX(batch, xR, xCOffset, d1);
                       if (xCOffset + 1 >= ${xNumCols}) {
                         xTexelC${c + 2}.zw = vec2(0.0);
                       }
+                      xTexelC${c + 2}Ready = 1;
                     }
 
-                    xC${c + 1} = xTexelC${c + 2};
+                    xC${colIndex + 1} = xTexelC${c + 2};
                     `;
                   }
                 }
@@ -49586,25 +49830,27 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
               if (padLeft % 2 === 1) {
                 mainLoop += `
                 xCOffset = xC + 1 - ${strideWidth};
-                if(xCOffset >= 0 && xCOffset < ${xNumCols}) {
+                if(xCOffset >= 0 && xCOffset < ${xNumCols} && xTexelC${c}Ready == 0) {
                   xTexelC${c} = getX(batch, xR, xCOffset, d1);
                   // Need to manually clear unused channels in case
                   // we're reading from recycled texture.
                   if (xCOffset + 1 >= ${xNumCols}) {
                     xTexelC${c}.zw = vec2(0.0);
                   }
+                  xTexelC${c}Ready = 1;
                 }
 
-                if(xC + 1 >= 0 && xC + 1 < ${xNumCols}) {
+                if(xC + 1 >= 0 && xC + 1 < ${xNumCols} && xTexelC${c + 2}Ready == 0) {
                   xTexelC${c + 2} = getX(batch, xR, xC + 1, d1);
                   // Need to manually clear unused channels in case
                   // we're reading from recycled texture.
                   if (xC + 2 >= ${xNumCols}) {
                     xTexelC${c + 2}.zw = vec2(0.0);
                   }
+                  xTexelC${c + 2}Ready = 1;
                 }
 
-                xC${c} = vec4(xTexelC${c}.zw, xTexelC${c + 2}.zw);
+                xC${colIndex} = vec4(xTexelC${c}.zw, xTexelC${c + 2}.zw);
               `;
                 if (c + 1 < filterWidth) {
                   mainLoop += `
@@ -49613,46 +49859,48 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
                   if(xCOffset >= 0 && xCOffset < ${xNumCols}) {
                     final = getX(batch, xR, xCOffset, d1);
                   }
-                  xC${c + 1} = vec4(xTexelC${c + 2}.xy, final.xy);
+                  xC${colIndex + 1} = vec4(xTexelC${c + 2}.xy, final.xy);
                 `;
                 }
               } else {
                 mainLoop += `
-                if(xC >= 0 && xC < ${xNumCols}) {
+                if(xC >= 0 && xC < ${xNumCols} && xTexelC${c}Ready == 0) {
                   xTexelC${c} = getX(batch, xR, xC, d1);
                   if (xC + 1 >= ${xNumCols}) {
                     xTexelC${c}.zw = vec2(0.0);
                   }
+                  xTexelC${c}Ready = 1;
                 }
 
                 xCOffset = xC + ${strideWidth};
-                if(xCOffset >= 0 && xCOffset < ${xNumCols}) {
+                if(xCOffset >= 0 && xCOffset < ${xNumCols} && xTexelC${c + 2}Ready == 0) {
                   xTexelC${c + 2} = getX(batch, xR, xCOffset, d1);
                   if (xCOffset + 1 >= ${xNumCols}) {
                     xTexelC${c + 2}.zw = vec2(0.);
                   }
+                  xTexelC${c + 2}Ready = 1;
                 }
 
-                xC${c} = vec4(
+                xC${colIndex} = vec4(
                   xTexelC${c}.xy, xTexelC${c + 2}.xy);
               `;
                 if (c + 1 < filterWidth) {
                   mainLoop += `
-                  xC${c + 1} = vec4(xTexelC${c}.zw, xTexelC${c + 2}.zw);
+                  xC${colIndex + 1} = vec4(xTexelC${c}.zw, xTexelC${c + 2}.zw);
                 `;
                 }
               }
             }
           }
-          if (c < filterWidth) {
+          if (colIndex < filterWidth) {
             mainLoop += `
             wTexel = getW(${r}, ${c}, d1, q);
-            dotProd += xC${c} * vec4(wTexel.xz, wTexel.xz);
+            dotProd += xC${colIndex} * vec4(wTexel.xz, wTexel.xz);
           `;
             if (c + 1 < filterWidth) {
               mainLoop += `
               wTexel = getW(${r}, ${c + 1}, d1, q);
-              dotProd += xC${c + 1} * vec4(wTexel.xz, wTexel.xz);
+              dotProd += xC${colIndex + 1} * vec4(wTexel.xz, wTexel.xz);
             `;
             }
           }
@@ -52570,12 +52818,79 @@ return a / b;`;
     `;
     }
   };
+  var ResizeNearestNeighborPackedProgram = class {
+    constructor(inputShape, newHeight, newWidth, alignCorners, halfPixelCenters) {
+      this.variableNames = ["A"];
+      this.packedInputs = true;
+      this.packedOutput = true;
+      this.outputShape = [];
+      const [batch, oldHeight, oldWidth, depth] = inputShape;
+      this.outputShape = [batch, newHeight, newWidth, depth];
+      const effectiveInSize = [
+        alignCorners && newHeight > 1 ? oldHeight - 1 : oldHeight,
+        alignCorners && newWidth > 1 ? oldWidth - 1 : oldWidth
+      ];
+      const effectiveOutSize = [
+        alignCorners && newHeight > 1 ? newHeight - 1 : newHeight,
+        alignCorners && newWidth > 1 ? newWidth - 1 : newWidth
+      ];
+      const roundBase = alignCorners ? "0.5" : "0.0";
+      let sourceFracIndexRC;
+      if (halfPixelCenters) {
+        sourceFracIndexRC = `max((vec3(yRC) + vec3(0.5)) * effectiveInputOverOutputRatioRC, vec3(0.0))`;
+      } else {
+        sourceFracIndexRC = `vec3(yRC) * effectiveInputOverOutputRatioRC`;
+      }
+      this.userCode = `
+      const vec3 effectiveInputOverOutputRatioRC = vec3(
+          ${effectiveInSize[0] / effectiveOutSize[0]},
+          ${effectiveInSize[1] / effectiveOutSize[1]},
+          ${effectiveInSize[1] / effectiveOutSize[1]});
+      const vec3 inputShapeRC = vec3(${oldHeight}.0, ${oldWidth}.0,
+                                     ${oldWidth}.0);
+
+      float getAValue(int b, int r, int c, int d) {
+        return getChannel(getA(b, r, c, d), vec2(c, d));
+      }
+
+      void main() {
+        ivec4 coords = getOutputCoords();
+        int b = coords[0];
+        int d = coords[3];
+        // Calculate values for next column in yRC.z.
+        ivec3 yRC = coords.yzz + ivec3(0, 0, 1);
+
+        // Fractional source index.
+        vec3 sourceFracIndexRC = ${sourceFracIndexRC};
+
+        // Compute the coordinators of nearest neighbor point.
+        ivec3 sourceNearestRC = ivec3(
+          min(inputShapeRC - 1.0, floor(sourceFracIndexRC + ${roundBase})));
+
+        // Should we calculate next column and row elements in 2x2 packed cell.
+        bool hasNextCol = d < ${depth - 1};
+        bool hasNextRow = coords.z < ${newWidth - 1};
+
+        vec4 newValue = vec4(
+          getAValue(b, sourceNearestRC.x, sourceNearestRC.y, d),
+          hasNextCol ? getAValue(b, sourceNearestRC.x, sourceNearestRC.y, d + 1)
+                     : 0.0,
+          hasNextRow ? getAValue(b, sourceNearestRC.x, sourceNearestRC.z, d)
+                     : 0.0,
+          (hasNextRow && hasNextCol) ?
+            getAValue(b, sourceNearestRC.x, sourceNearestRC.z, d + 1) : 0.0);
+
+        setOutput(newValue);
+      }
+    `;
+    }
+  };
   function resizeNearestNeighbor3(args) {
     const {inputs, backend: backend2, attrs} = args;
     const {images} = inputs;
     const {alignCorners, halfPixelCenters, size} = attrs;
     const [newHeight, newWidth] = size;
-    const program = new ResizeNearestNeighborProgram(images.shape, newHeight, newWidth, alignCorners, halfPixelCenters);
+    const program = env().getBool("WEBGL_PACK_IMAGE_OPERATIONS") ? new ResizeNearestNeighborPackedProgram(images.shape, newHeight, newWidth, alignCorners, halfPixelCenters) : new ResizeNearestNeighborProgram(images.shape, newHeight, newWidth, alignCorners, halfPixelCenters);
     return backend2.runWebGLProgram(program, [images], images.dtype);
   }
   var resizeNearestNeighborConfig2 = {
@@ -53138,6 +53453,42 @@ return a / b;`;
     backendName: "webgl",
     kernelFunc: spaceToBatchND3
   };
+  function sparseFillEmptyRows3(args) {
+    const {inputs, backend: backend2} = args;
+    const {indices, values, denseShape, defaultValue} = inputs;
+    if (denseShape.shape.length !== 1) {
+      throw new Error(`Dense shape must be a vector, saw:
+         ${denseShape.shape}`);
+    }
+    if (indices.shape.length !== 2) {
+      throw new Error(`Indices must be a matrix, saw:
+         ${indices.shape}`);
+    }
+    if (values.shape.length !== 1) {
+      throw new Error(`Values must be a vector, saw:
+         ${values.shape}`);
+    }
+    if (defaultValue.shape.length !== 0) {
+      throw new Error(`Default value must be a scalar, saw:
+        ${defaultValue.shape}`);
+    }
+    const $indices = backend2.readSync(indices.dataId);
+    const $values = backend2.readSync(values.dataId);
+    const $denseShape = backend2.readSync(denseShape.dataId);
+    const $defaultValue = backend2.readSync(defaultValue.dataId)[0];
+    const [outputIndices, outputIndicesShape, outputValues, emptyRowIndicator, reverseIndexMap] = sparseFillEmptyRowsImplCPU($indices, indices.shape, indices.dtype, $values, values.dtype, $denseShape, $defaultValue);
+    return [
+      backend2.makeTensorInfo(outputIndicesShape, indices.dtype, outputIndices),
+      backend2.makeTensorInfo([outputIndicesShape[0]], values.dtype, outputValues),
+      backend2.makeTensorInfo([emptyRowIndicator.length], "bool", new Uint8Array(emptyRowIndicator.map((value) => Number(value)))),
+      backend2.makeTensorInfo([reverseIndexMap.length], indices.dtype, new Int32Array(reverseIndexMap))
+    ];
+  }
+  var sparseFillEmptyRowsConfig2 = {
+    kernelName: SparseFillEmptyRows,
+    backendName: "webgl",
+    kernelFunc: sparseFillEmptyRows3
+  };
   function sparseReshape3(args) {
     const {inputs, backend: backend2} = args;
     const {inputIndices, inputShape, newShape} = inputs;
@@ -53358,8 +53709,8 @@ return a / b;`;
     const {reps} = attrs;
     if (x.dtype === "string" || x.shape.length > 5) {
       const data = backend2.readSync(x.dataId);
-      const decodedData = data.map((d) => util_exports.decodeString(d));
-      const buf = buffer(x.shape, x.dtype, decodedData);
+      const value = x.dtype === "string" ? data.map((d) => util_exports.decodeString(d)) : data;
+      const buf = buffer(x.shape, x.dtype, value);
       const outBuf = tileImplCPU(buf, reps);
       return backend2.makeTensorInfo(outBuf.shape, outBuf.dtype, outBuf.values);
     }
@@ -53928,6 +54279,7 @@ return a / b;`;
     softmaxConfig2,
     softplusConfig2,
     spaceToBatchNDConfig2,
+    sparseFillEmptyRowsConfig2,
     sparseReshapeConfig2,
     sparseToDenseConfig2,
     splitVConfig2,
@@ -53952,7 +54304,7 @@ return a / b;`;
   for (const kernelConfig of kernelConfigs2) {
     registerKernel(kernelConfig);
   }
-  var version7 = "3.5.0";
+  var version7 = "3.6.0";
   var version8 = {
     "tfjs-core": version,
     "tfjs-backend-cpu": version5,
@@ -56474,6 +56826,73 @@ return a / b;`;
     setupFunc: setup44,
     kernelFunc: topk2
   };
+  var wasmTransform;
+  function setup45(backend2) {
+    wasmTransform = backend2.wasm.cwrap(Transform, null, [
+      "number",
+      "number",
+      "bool",
+      "number",
+      "number",
+      "number",
+      "number",
+      "number",
+      "number",
+      "array",
+      "number",
+      "number",
+      "number",
+      "number",
+      "number"
+    ]);
+  }
+  function transform4(args) {
+    const {backend: backend2, inputs, attrs} = args;
+    const {image: image3, transforms} = inputs;
+    const {interpolation, fillMode, fillValue, outputShape} = attrs;
+    const [batch, imageHeight, imageWidth, numChannels] = image3.shape;
+    const [outHeight, outWidth] = outputShape != null ? outputShape : [imageHeight, imageWidth];
+    const outShape = [
+      batch,
+      outHeight,
+      outWidth,
+      numChannels
+    ];
+    const strides = new Uint8Array(new Int32Array(util_exports.computeStrides(image3.shape)).buffer);
+    const out = backend2.makeOutput(outShape, image3.dtype);
+    const outId = backend2.dataIdMap.get(out.dataId).id;
+    const imageData = backend2.dataIdMap.get(image3.dataId);
+    const imageId = imageData.id;
+    const transformsData = backend2.dataIdMap.get(transforms.dataId);
+    const transformsId = transformsData.id;
+    const interpolationModeId = interpolation === "nearest" ? 1 : 2;
+    let fillModeId;
+    switch (fillMode) {
+      case "constant":
+        fillModeId = 1;
+        break;
+      case "reflect":
+        fillModeId = 2;
+        break;
+      case "wrap":
+        fillModeId = 3;
+        break;
+      case "nearest":
+        fillModeId = 4;
+        break;
+      default:
+        fillModeId = 1;
+        break;
+    }
+    wasmTransform(imageId, transformsId, transforms.shape[0] > 1, batch, outHeight, outWidth, numChannels, imageWidth, imageHeight, strides, image3.shape.length - 1, interpolationModeId, fillModeId, fillValue, outId);
+    return out;
+  }
+  var transformConfig3 = {
+    kernelName: Transform,
+    backendName: "wasm",
+    setupFunc: setup45,
+    kernelFunc: transform4
+  };
   function unpack3(args) {
     const {inputs, backend: backend2, attrs} = args;
     const {value} = inputs;
@@ -56606,6 +57025,7 @@ return a / b;`;
     tanhConfig3,
     tileConfig3,
     topKConfig3,
+    transformConfig3,
     transposeConfig3,
     unpackConfig3,
     zerosLikeConfig3
@@ -56952,7 +57372,7 @@ return a / b;`;
     }
     customFetch = usePlatformFetch;
   }
-  var version9 = "3.5.0";
+  var version9 = "3.6.0";
   var WASM_PRIORITY = 2;
   registerBackend("wasm", async () => {
     const {wasm} = await init();
@@ -59010,7 +59430,7 @@ return a / b;`;
   }
 
   // package.json
-  var version10 = "1.2.1";
+  var version10 = "1.2.2";
 
   // src/xception/extractParams.ts
   function extractorsFactory2(extractWeights, paramMappings) {
@@ -61413,6 +61833,22 @@ return a / b;`;
  * You may obtain a copy of the License at
  *
  * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+/**
+ * @license
+ * Copyright 2021 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,

@@ -59430,7 +59430,7 @@ return a / b;`;
   }
 
   // package.json
-  var version10 = "1.2.2";
+  var version10 = "1.2.3";
 
   // src/xception/extractParams.ts
   function extractorsFactory2(extractWeights, paramMappings) {

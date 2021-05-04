@@ -1,6 +1,6 @@
 # @vladmandic/face-api  
 
-Version: **1.2.2**  
+Version: **1.2.3**  
 Description: **FaceAPI: AI-powered Face Detection & Rotation Tracking, Face Description & Recognition, Age & Gender & Emotion Prediction for Browser and NodeJS using TensorFlow/JS**  
 
 Author: **Vladimir Mandic <mandic00@live.com>**  
@@ -9,11 +9,15 @@ Repository: **<git+https://github.com/vladmandic/face-api.git>**
 
 ## Changelog
 
+### **1.2.3** 2021/05/04 mandic00@live.com
+
+
+### **update for tfjs 3.6.0** 2021/04/30 mandic00@live.com
+
+
 ### **1.2.2** 2021/04/30 mandic00@live.com
 
-
-### **origin/master** 2021/04/26 mandic00@live.com
-
+- add node-wasm demo
 - accept uri as input to demo node and node-canvas
 - major version full rebuild
 

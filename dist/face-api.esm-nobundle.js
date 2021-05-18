@@ -6,9 +6,14 @@
   */
 
 var __defProp = Object.defineProperty;
-var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __getOwnPropNames = Object.getOwnPropertyNames;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __require = (x) => {
+  if (typeof require !== "undefined")
+    return require(x);
+  throw new Error('Dynamic require of "' + x + '" is not supported');
+};
 var __export = (target, all) => {
   for (var name in all)
     __defProp(target, name, {get: all[name], enumerable: true});
@@ -793,7 +798,7 @@ function createFileSystem(fs) {
   let requireFsError = "";
   if (!fs) {
     try {
-      fs = require("fs");
+      fs = __require("fs");
     } catch (err) {
       requireFsError = err.toString();
     }
@@ -849,7 +854,7 @@ function isBrowser() {
 
 // src/env/isNodejs.ts
 function isNodejs() {
-  return typeof global === "object" && typeof require === "function" && typeof module !== "undefined" && typeof process !== "undefined" && !!process.version;
+  return typeof global === "object" && typeof __require === "function" && typeof module !== "undefined" && typeof process !== "undefined" && !!process.version;
 }
 
 // src/env/index.ts
@@ -2080,7 +2085,7 @@ function drawFaceLandmarks(canvasArg, faceLandmarks) {
 }
 
 // package.json
-var version = "1.2.3";
+var version = "1.2.4";
 
 // src/xception/extractParams.ts
 function extractorsFactory2(extractWeights, paramMappings) {

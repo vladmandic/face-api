@@ -7,12 +7,14 @@
 
 var __create = Object.create;
 var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
 var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __getOwnPropNames = Object.getOwnPropertyNames;
-var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __markAsModule = (target) => __defProp(target, "__esModule", {value: true});
-var __commonJS = (cb, mod) => () => (mod || cb((mod = {exports: {}}).exports, mod), mod.exports);
+var __commonJS = (cb, mod) => function __require() {
+  return mod || (0, cb[Object.keys(cb)[0]])((mod = {exports: {}}).exports, mod), mod.exports;
+};
 var __export = (target, all) => {
   for (var name in all)
     __defProp(target, name, {get: all[name], enumerable: true});
@@ -30,27 +32,29 @@ var __toModule = (module2) => {
 };
 
 // dist/tfjs.esm.js
-var require_tfjs_esm = __commonJS((exports) => {
-  var __create2 = Object.create;
-  var __defProp2 = Object.defineProperty;
-  var __getProtoOf2 = Object.getPrototypeOf;
-  var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-  var __getOwnPropNames2 = Object.getOwnPropertyNames;
-  var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
-  var __markAsModule2 = (target) => __defProp2(target, "__esModule", {value: true});
-  var __reExport2 = (target, module22, desc) => {
-    if (module22 && typeof module22 === "object" || typeof module22 === "function") {
-      for (let key of __getOwnPropNames2(module22))
-        if (!__hasOwnProp2.call(target, key) && key !== "default")
-          __defProp2(target, key, {get: () => module22[key], enumerable: !(desc = __getOwnPropDesc2(module22, key)) || desc.enumerable});
-    }
-    return target;
-  };
-  var __toModule2 = (module22) => {
-    return __reExport2(__markAsModule2(__defProp2(module22 != null ? __create2(__getProtoOf2(module22)) : {}, "default", module22 && module22.__esModule && "default" in module22 ? {get: () => module22.default, enumerable: true} : {value: module22, enumerable: true})), module22);
-  };
-  __markAsModule2(exports);
-  __reExport2(exports, __toModule2(require("@tensorflow/tfjs")));
+var require_tfjs_esm = __commonJS({
+  "dist/tfjs.esm.js"(exports) {
+    var __create2 = Object.create;
+    var __defProp2 = Object.defineProperty;
+    var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
+    var __getOwnPropNames2 = Object.getOwnPropertyNames;
+    var __getProtoOf2 = Object.getPrototypeOf;
+    var __hasOwnProp2 = Object.prototype.hasOwnProperty;
+    var __markAsModule2 = (target) => __defProp2(target, "__esModule", {value: true});
+    var __reExport2 = (target, module22, desc) => {
+      if (module22 && typeof module22 === "object" || typeof module22 === "function") {
+        for (let key of __getOwnPropNames2(module22))
+          if (!__hasOwnProp2.call(target, key) && key !== "default")
+            __defProp2(target, key, {get: () => module22[key], enumerable: !(desc = __getOwnPropDesc2(module22, key)) || desc.enumerable});
+      }
+      return target;
+    };
+    var __toModule2 = (module22) => {
+      return __reExport2(__markAsModule2(__defProp2(module22 != null ? __create2(__getProtoOf2(module22)) : {}, "default", module22 && module22.__esModule && "default" in module22 ? {get: () => module22.default, enumerable: true} : {value: module22, enumerable: true})), module22);
+    };
+    __markAsModule2(exports);
+    __reExport2(exports, __toModule2(require("@tensorflow/tfjs")));
+  }
 });
 
 // src/index.ts
@@ -2262,7 +2266,7 @@ function drawFaceLandmarks(canvasArg, faceLandmarks) {
 }
 
 // package.json
-var version = "1.2.3";
+var version = "1.2.4";
 
 // src/ageGenderNet/AgeGenderNet.ts
 var tf20 = __toModule(require_tfjs_esm());

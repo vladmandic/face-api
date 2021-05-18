@@ -7,12 +7,19 @@
 
 var __create = Object.create;
 var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
 var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __getOwnPropNames = Object.getOwnPropertyNames;
-var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __markAsModule = (target) => __defProp(target, "__esModule", {value: true});
-var __commonJS = (cb, mod4) => () => (mod4 || cb((mod4 = {exports: {}}).exports, mod4), mod4.exports);
+var __require = (x) => {
+  if (typeof require !== "undefined")
+    return require(x);
+  throw new Error('Dynamic require of "' + x + '" is not supported');
+};
+var __commonJS = (cb, mod4) => function __require2() {
+  return mod4 || (0, cb[Object.keys(cb)[0]])((mod4 = {exports: {}}).exports, mod4), mod4.exports;
+};
 var __export = (target, all5) => {
   for (var name in all5)
     __defProp(target, name, {get: all5[name], enumerable: true});
@@ -30,1475 +37,1434 @@ var __toModule = (module) => {
 };
 
 // (disabled):node_modules/.pnpm/node-fetch@2.6.1/node_modules/node-fetch/browser.js
-var require_browser = __commonJS(() => {
+var require_browser = __commonJS({
+  "(disabled):node_modules/.pnpm/node-fetch@2.6.1/node_modules/node-fetch/browser.js"() {
+  }
 });
 
 // node_modules/.pnpm/seedrandom@2.4.3/node_modules/seedrandom/lib/alea.js
-var require_alea = __commonJS((exports, module) => {
-  (function(global2, module2, define2) {
-    function Alea(seed) {
-      var me = this, mash = Mash();
-      me.next = function() {
-        var t = 2091639 * me.s0 + me.c * 23283064365386963e-26;
-        me.s0 = me.s1;
-        me.s1 = me.s2;
-        return me.s2 = t - (me.c = t | 0);
-      };
-      me.c = 1;
-      me.s0 = mash(" ");
-      me.s1 = mash(" ");
-      me.s2 = mash(" ");
-      me.s0 -= mash(seed);
-      if (me.s0 < 0) {
-        me.s0 += 1;
-      }
-      me.s1 -= mash(seed);
-      if (me.s1 < 0) {
-        me.s1 += 1;
-      }
-      me.s2 -= mash(seed);
-      if (me.s2 < 0) {
-        me.s2 += 1;
-      }
-      mash = null;
-    }
-    function copy(f, t) {
-      t.c = f.c;
-      t.s0 = f.s0;
-      t.s1 = f.s1;
-      t.s2 = f.s2;
-      return t;
-    }
-    function impl(seed, opts) {
-      var xg = new Alea(seed), state = opts && opts.state, prng = xg.next;
-      prng.int32 = function() {
-        return xg.next() * 4294967296 | 0;
-      };
-      prng.double = function() {
-        return prng() + (prng() * 2097152 | 0) * 11102230246251565e-32;
-      };
-      prng.quick = prng;
-      if (state) {
-        if (typeof state == "object")
-          copy(state, xg);
-        prng.state = function() {
-          return copy(xg, {});
+var require_alea = __commonJS({
+  "node_modules/.pnpm/seedrandom@2.4.3/node_modules/seedrandom/lib/alea.js"(exports, module) {
+    (function(global2, module2, define2) {
+      function Alea(seed) {
+        var me = this, mash = Mash();
+        me.next = function() {
+          var t = 2091639 * me.s0 + me.c * 23283064365386963e-26;
+          me.s0 = me.s1;
+          me.s1 = me.s2;
+          return me.s2 = t - (me.c = t | 0);
         };
-      }
-      return prng;
-    }
-    function Mash() {
-      var n = 4022871197;
-      var mash = function(data) {
-        data = data.toString();
-        for (var i = 0; i < data.length; i++) {
-          n += data.charCodeAt(i);
-          var h = 0.02519603282416938 * n;
-          n = h >>> 0;
-          h -= n;
-          h *= n;
-          n = h >>> 0;
-          h -= n;
-          n += h * 4294967296;
+        me.c = 1;
+        me.s0 = mash(" ");
+        me.s1 = mash(" ");
+        me.s2 = mash(" ");
+        me.s0 -= mash(seed);
+        if (me.s0 < 0) {
+          me.s0 += 1;
         }
-        return (n >>> 0) * 23283064365386963e-26;
-      };
-      return mash;
-    }
-    if (module2 && module2.exports) {
-      module2.exports = impl;
-    } else if (define2 && define2.amd) {
-      define2(function() {
-        return impl;
-      });
-    } else {
-      this.alea = impl;
-    }
-  })(exports, typeof module == "object" && module, typeof define == "function" && define);
+        me.s1 -= mash(seed);
+        if (me.s1 < 0) {
+          me.s1 += 1;
+        }
+        me.s2 -= mash(seed);
+        if (me.s2 < 0) {
+          me.s2 += 1;
+        }
+        mash = null;
+      }
+      function copy(f, t) {
+        t.c = f.c;
+        t.s0 = f.s0;
+        t.s1 = f.s1;
+        t.s2 = f.s2;
+        return t;
+      }
+      function impl(seed, opts) {
+        var xg = new Alea(seed), state = opts && opts.state, prng = xg.next;
+        prng.int32 = function() {
+          return xg.next() * 4294967296 | 0;
+        };
+        prng.double = function() {
+          return prng() + (prng() * 2097152 | 0) * 11102230246251565e-32;
+        };
+        prng.quick = prng;
+        if (state) {
+          if (typeof state == "object")
+            copy(state, xg);
+          prng.state = function() {
+            return copy(xg, {});
+          };
+        }
+        return prng;
+      }
+      function Mash() {
+        var n = 4022871197;
+        var mash = function(data) {
+          data = data.toString();
+          for (var i = 0; i < data.length; i++) {
+            n += data.charCodeAt(i);
+            var h = 0.02519603282416938 * n;
+            n = h >>> 0;
+            h -= n;
+            h *= n;
+            n = h >>> 0;
+            h -= n;
+            n += h * 4294967296;
+          }
+          return (n >>> 0) * 23283064365386963e-26;
+        };
+        return mash;
+      }
+      if (module2 && module2.exports) {
+        module2.exports = impl;
+      } else if (define2 && define2.amd) {
+        define2(function() {
+          return impl;
+        });
+      } else {
+        this.alea = impl;
+      }
+    })(exports, typeof module == "object" && module, typeof define == "function" && define);
+  }
 });
 
 // node_modules/.pnpm/seedrandom@2.4.3/node_modules/seedrandom/lib/xor128.js
-var require_xor128 = __commonJS((exports, module) => {
-  (function(global2, module2, define2) {
-    function XorGen(seed) {
-      var me = this, strseed = "";
-      me.x = 0;
-      me.y = 0;
-      me.z = 0;
-      me.w = 0;
-      me.next = function() {
-        var t = me.x ^ me.x << 11;
-        me.x = me.y;
-        me.y = me.z;
-        me.z = me.w;
-        return me.w ^= me.w >>> 19 ^ t ^ t >>> 8;
-      };
-      if (seed === (seed | 0)) {
-        me.x = seed;
-      } else {
-        strseed += seed;
-      }
-      for (var k = 0; k < strseed.length + 64; k++) {
-        me.x ^= strseed.charCodeAt(k) | 0;
-        me.next();
-      }
-    }
-    function copy(f, t) {
-      t.x = f.x;
-      t.y = f.y;
-      t.z = f.z;
-      t.w = f.w;
-      return t;
-    }
-    function impl(seed, opts) {
-      var xg = new XorGen(seed), state = opts && opts.state, prng = function() {
-        return (xg.next() >>> 0) / 4294967296;
-      };
-      prng.double = function() {
-        do {
-          var top = xg.next() >>> 11, bot = (xg.next() >>> 0) / 4294967296, result = (top + bot) / (1 << 21);
-        } while (result === 0);
-        return result;
-      };
-      prng.int32 = xg.next;
-      prng.quick = prng;
-      if (state) {
-        if (typeof state == "object")
-          copy(state, xg);
-        prng.state = function() {
-          return copy(xg, {});
+var require_xor128 = __commonJS({
+  "node_modules/.pnpm/seedrandom@2.4.3/node_modules/seedrandom/lib/xor128.js"(exports, module) {
+    (function(global2, module2, define2) {
+      function XorGen(seed) {
+        var me = this, strseed = "";
+        me.x = 0;
+        me.y = 0;
+        me.z = 0;
+        me.w = 0;
+        me.next = function() {
+          var t = me.x ^ me.x << 11;
+          me.x = me.y;
+          me.y = me.z;
+          me.z = me.w;
+          return me.w ^= me.w >>> 19 ^ t ^ t >>> 8;
         };
+        if (seed === (seed | 0)) {
+          me.x = seed;
+        } else {
+          strseed += seed;
+        }
+        for (var k = 0; k < strseed.length + 64; k++) {
+          me.x ^= strseed.charCodeAt(k) | 0;
+          me.next();
+        }
       }
-      return prng;
-    }
-    if (module2 && module2.exports) {
-      module2.exports = impl;
-    } else if (define2 && define2.amd) {
-      define2(function() {
-        return impl;
-      });
-    } else {
-      this.xor128 = impl;
-    }
-  })(exports, typeof module == "object" && module, typeof define == "function" && define);
+      function copy(f, t) {
+        t.x = f.x;
+        t.y = f.y;
+        t.z = f.z;
+        t.w = f.w;
+        return t;
+      }
+      function impl(seed, opts) {
+        var xg = new XorGen(seed), state = opts && opts.state, prng = function() {
+          return (xg.next() >>> 0) / 4294967296;
+        };
+        prng.double = function() {
+          do {
+            var top = xg.next() >>> 11, bot = (xg.next() >>> 0) / 4294967296, result = (top + bot) / (1 << 21);
+          } while (result === 0);
+          return result;
+        };
+        prng.int32 = xg.next;
+        prng.quick = prng;
+        if (state) {
+          if (typeof state == "object")
+            copy(state, xg);
+          prng.state = function() {
+            return copy(xg, {});
+          };
+        }
+        return prng;
+      }
+      if (module2 && module2.exports) {
+        module2.exports = impl;
+      } else if (define2 && define2.amd) {
+        define2(function() {
+          return impl;
+        });
+      } else {
+        this.xor128 = impl;
+      }
+    })(exports, typeof module == "object" && module, typeof define == "function" && define);
+  }
 });
 
 // node_modules/.pnpm/seedrandom@2.4.3/node_modules/seedrandom/lib/xorwow.js
-var require_xorwow = __commonJS((exports, module) => {
-  (function(global2, module2, define2) {
-    function XorGen(seed) {
-      var me = this, strseed = "";
-      me.next = function() {
-        var t = me.x ^ me.x >>> 2;
-        me.x = me.y;
-        me.y = me.z;
-        me.z = me.w;
-        me.w = me.v;
-        return (me.d = me.d + 362437 | 0) + (me.v = me.v ^ me.v << 4 ^ (t ^ t << 1)) | 0;
-      };
-      me.x = 0;
-      me.y = 0;
-      me.z = 0;
-      me.w = 0;
-      me.v = 0;
-      if (seed === (seed | 0)) {
-        me.x = seed;
-      } else {
-        strseed += seed;
-      }
-      for (var k = 0; k < strseed.length + 64; k++) {
-        me.x ^= strseed.charCodeAt(k) | 0;
-        if (k == strseed.length) {
-          me.d = me.x << 10 ^ me.x >>> 4;
-        }
-        me.next();
-      }
-    }
-    function copy(f, t) {
-      t.x = f.x;
-      t.y = f.y;
-      t.z = f.z;
-      t.w = f.w;
-      t.v = f.v;
-      t.d = f.d;
-      return t;
-    }
-    function impl(seed, opts) {
-      var xg = new XorGen(seed), state = opts && opts.state, prng = function() {
-        return (xg.next() >>> 0) / 4294967296;
-      };
-      prng.double = function() {
-        do {
-          var top = xg.next() >>> 11, bot = (xg.next() >>> 0) / 4294967296, result = (top + bot) / (1 << 21);
-        } while (result === 0);
-        return result;
-      };
-      prng.int32 = xg.next;
-      prng.quick = prng;
-      if (state) {
-        if (typeof state == "object")
-          copy(state, xg);
-        prng.state = function() {
-          return copy(xg, {});
+var require_xorwow = __commonJS({
+  "node_modules/.pnpm/seedrandom@2.4.3/node_modules/seedrandom/lib/xorwow.js"(exports, module) {
+    (function(global2, module2, define2) {
+      function XorGen(seed) {
+        var me = this, strseed = "";
+        me.next = function() {
+          var t = me.x ^ me.x >>> 2;
+          me.x = me.y;
+          me.y = me.z;
+          me.z = me.w;
+          me.w = me.v;
+          return (me.d = me.d + 362437 | 0) + (me.v = me.v ^ me.v << 4 ^ (t ^ t << 1)) | 0;
         };
+        me.x = 0;
+        me.y = 0;
+        me.z = 0;
+        me.w = 0;
+        me.v = 0;
+        if (seed === (seed | 0)) {
+          me.x = seed;
+        } else {
+          strseed += seed;
+        }
+        for (var k = 0; k < strseed.length + 64; k++) {
+          me.x ^= strseed.charCodeAt(k) | 0;
+          if (k == strseed.length) {
+            me.d = me.x << 10 ^ me.x >>> 4;
+          }
+          me.next();
+        }
       }
-      return prng;
-    }
-    if (module2 && module2.exports) {
-      module2.exports = impl;
-    } else if (define2 && define2.amd) {
-      define2(function() {
-        return impl;
-      });
-    } else {
-      this.xorwow = impl;
-    }
-  })(exports, typeof module == "object" && module, typeof define == "function" && define);
+      function copy(f, t) {
+        t.x = f.x;
+        t.y = f.y;
+        t.z = f.z;
+        t.w = f.w;
+        t.v = f.v;
+        t.d = f.d;
+        return t;
+      }
+      function impl(seed, opts) {
+        var xg = new XorGen(seed), state = opts && opts.state, prng = function() {
+          return (xg.next() >>> 0) / 4294967296;
+        };
+        prng.double = function() {
+          do {
+            var top = xg.next() >>> 11, bot = (xg.next() >>> 0) / 4294967296, result = (top + bot) / (1 << 21);
+          } while (result === 0);
+          return result;
+        };
+        prng.int32 = xg.next;
+        prng.quick = prng;
+        if (state) {
+          if (typeof state == "object")
+            copy(state, xg);
+          prng.state = function() {
+            return copy(xg, {});
+          };
+        }
+        return prng;
+      }
+      if (module2 && module2.exports) {
+        module2.exports = impl;
+      } else if (define2 && define2.amd) {
+        define2(function() {
+          return impl;
+        });
+      } else {
+        this.xorwow = impl;
+      }
+    })(exports, typeof module == "object" && module, typeof define == "function" && define);
+  }
 });
 
 // node_modules/.pnpm/seedrandom@2.4.3/node_modules/seedrandom/lib/xorshift7.js
-var require_xorshift7 = __commonJS((exports, module) => {
-  (function(global2, module2, define2) {
-    function XorGen(seed) {
-      var me = this;
-      me.next = function() {
-        var X = me.x, i = me.i, t, v, w;
-        t = X[i];
-        t ^= t >>> 7;
-        v = t ^ t << 24;
-        t = X[i + 1 & 7];
-        v ^= t ^ t >>> 10;
-        t = X[i + 3 & 7];
-        v ^= t ^ t >>> 3;
-        t = X[i + 4 & 7];
-        v ^= t ^ t << 7;
-        t = X[i + 7 & 7];
-        t = t ^ t << 13;
-        v ^= t ^ t << 9;
-        X[i] = v;
-        me.i = i + 1 & 7;
-        return v;
-      };
-      function init2(me2, seed2) {
-        var j, w, X = [];
-        if (seed2 === (seed2 | 0)) {
-          w = X[0] = seed2;
-        } else {
-          seed2 = "" + seed2;
-          for (j = 0; j < seed2.length; ++j) {
-            X[j & 7] = X[j & 7] << 15 ^ seed2.charCodeAt(j) + X[j + 1 & 7] << 13;
+var require_xorshift7 = __commonJS({
+  "node_modules/.pnpm/seedrandom@2.4.3/node_modules/seedrandom/lib/xorshift7.js"(exports, module) {
+    (function(global2, module2, define2) {
+      function XorGen(seed) {
+        var me = this;
+        me.next = function() {
+          var X = me.x, i = me.i, t, v, w;
+          t = X[i];
+          t ^= t >>> 7;
+          v = t ^ t << 24;
+          t = X[i + 1 & 7];
+          v ^= t ^ t >>> 10;
+          t = X[i + 3 & 7];
+          v ^= t ^ t >>> 3;
+          t = X[i + 4 & 7];
+          v ^= t ^ t << 7;
+          t = X[i + 7 & 7];
+          t = t ^ t << 13;
+          v ^= t ^ t << 9;
+          X[i] = v;
+          me.i = i + 1 & 7;
+          return v;
+        };
+        function init2(me2, seed2) {
+          var j, w, X = [];
+          if (seed2 === (seed2 | 0)) {
+            w = X[0] = seed2;
+          } else {
+            seed2 = "" + seed2;
+            for (j = 0; j < seed2.length; ++j) {
+              X[j & 7] = X[j & 7] << 15 ^ seed2.charCodeAt(j) + X[j + 1 & 7] << 13;
+            }
+          }
+          while (X.length < 8)
+            X.push(0);
+          for (j = 0; j < 8 && X[j] === 0; ++j)
+            ;
+          if (j == 8)
+            w = X[7] = -1;
+          else
+            w = X[j];
+          me2.x = X;
+          me2.i = 0;
+          for (j = 256; j > 0; --j) {
+            me2.next();
           }
         }
-        while (X.length < 8)
-          X.push(0);
-        for (j = 0; j < 8 && X[j] === 0; ++j)
-          ;
-        if (j == 8)
-          w = X[7] = -1;
-        else
-          w = X[j];
-        me2.x = X;
-        me2.i = 0;
-        for (j = 256; j > 0; --j) {
-          me2.next();
-        }
+        init2(me, seed);
       }
-      init2(me, seed);
-    }
-    function copy(f, t) {
-      t.x = f.x.slice();
-      t.i = f.i;
-      return t;
-    }
-    function impl(seed, opts) {
-      if (seed == null)
-        seed = +new Date();
-      var xg = new XorGen(seed), state = opts && opts.state, prng = function() {
-        return (xg.next() >>> 0) / 4294967296;
-      };
-      prng.double = function() {
-        do {
-          var top = xg.next() >>> 11, bot = (xg.next() >>> 0) / 4294967296, result = (top + bot) / (1 << 21);
-        } while (result === 0);
-        return result;
-      };
-      prng.int32 = xg.next;
-      prng.quick = prng;
-      if (state) {
-        if (state.x)
-          copy(state, xg);
-        prng.state = function() {
-          return copy(xg, {});
+      function copy(f, t) {
+        t.x = f.x.slice();
+        t.i = f.i;
+        return t;
+      }
+      function impl(seed, opts) {
+        if (seed == null)
+          seed = +new Date();
+        var xg = new XorGen(seed), state = opts && opts.state, prng = function() {
+          return (xg.next() >>> 0) / 4294967296;
         };
+        prng.double = function() {
+          do {
+            var top = xg.next() >>> 11, bot = (xg.next() >>> 0) / 4294967296, result = (top + bot) / (1 << 21);
+          } while (result === 0);
+          return result;
+        };
+        prng.int32 = xg.next;
+        prng.quick = prng;
+        if (state) {
+          if (state.x)
+            copy(state, xg);
+          prng.state = function() {
+            return copy(xg, {});
+          };
+        }
+        return prng;
       }
-      return prng;
-    }
-    if (module2 && module2.exports) {
-      module2.exports = impl;
-    } else if (define2 && define2.amd) {
-      define2(function() {
-        return impl;
-      });
-    } else {
-      this.xorshift7 = impl;
-    }
-  })(exports, typeof module == "object" && module, typeof define == "function" && define);
+      if (module2 && module2.exports) {
+        module2.exports = impl;
+      } else if (define2 && define2.amd) {
+        define2(function() {
+          return impl;
+        });
+      } else {
+        this.xorshift7 = impl;
+      }
+    })(exports, typeof module == "object" && module, typeof define == "function" && define);
+  }
 });
 
 // node_modules/.pnpm/seedrandom@2.4.3/node_modules/seedrandom/lib/xor4096.js
-var require_xor4096 = __commonJS((exports, module) => {
-  (function(global2, module2, define2) {
-    function XorGen(seed) {
-      var me = this;
-      me.next = function() {
-        var w = me.w, X = me.X, i = me.i, t, v;
-        me.w = w = w + 1640531527 | 0;
-        v = X[i + 34 & 127];
-        t = X[i = i + 1 & 127];
-        v ^= v << 13;
-        t ^= t << 17;
-        v ^= v >>> 15;
-        t ^= t >>> 12;
-        v = X[i] = v ^ t;
-        me.i = i;
-        return v + (w ^ w >>> 16) | 0;
-      };
-      function init2(me2, seed2) {
-        var t, v, i, j, w, X = [], limit = 128;
-        if (seed2 === (seed2 | 0)) {
-          v = seed2;
-          seed2 = null;
-        } else {
-          seed2 = seed2 + "\0";
-          v = 0;
-          limit = Math.max(limit, seed2.length);
-        }
-        for (i = 0, j = -32; j < limit; ++j) {
-          if (seed2)
-            v ^= seed2.charCodeAt((j + 32) % seed2.length);
-          if (j === 0)
-            w = v;
-          v ^= v << 10;
-          v ^= v >>> 15;
-          v ^= v << 4;
-          v ^= v >>> 13;
-          if (j >= 0) {
-            w = w + 1640531527 | 0;
-            t = X[j & 127] ^= v + w;
-            i = t == 0 ? i + 1 : 0;
-          }
-        }
-        if (i >= 128) {
-          X[(seed2 && seed2.length || 0) & 127] = -1;
-        }
-        i = 127;
-        for (j = 4 * 128; j > 0; --j) {
+var require_xor4096 = __commonJS({
+  "node_modules/.pnpm/seedrandom@2.4.3/node_modules/seedrandom/lib/xor4096.js"(exports, module) {
+    (function(global2, module2, define2) {
+      function XorGen(seed) {
+        var me = this;
+        me.next = function() {
+          var w = me.w, X = me.X, i = me.i, t, v;
+          me.w = w = w + 1640531527 | 0;
           v = X[i + 34 & 127];
           t = X[i = i + 1 & 127];
           v ^= v << 13;
           t ^= t << 17;
           v ^= v >>> 15;
           t ^= t >>> 12;
-          X[i] = v ^ t;
-        }
-        me2.w = w;
-        me2.X = X;
-        me2.i = i;
-      }
-      init2(me, seed);
-    }
-    function copy(f, t) {
-      t.i = f.i;
-      t.w = f.w;
-      t.X = f.X.slice();
-      return t;
-    }
-    ;
-    function impl(seed, opts) {
-      if (seed == null)
-        seed = +new Date();
-      var xg = new XorGen(seed), state = opts && opts.state, prng = function() {
-        return (xg.next() >>> 0) / 4294967296;
-      };
-      prng.double = function() {
-        do {
-          var top = xg.next() >>> 11, bot = (xg.next() >>> 0) / 4294967296, result = (top + bot) / (1 << 21);
-        } while (result === 0);
-        return result;
-      };
-      prng.int32 = xg.next;
-      prng.quick = prng;
-      if (state) {
-        if (state.X)
-          copy(state, xg);
-        prng.state = function() {
-          return copy(xg, {});
+          v = X[i] = v ^ t;
+          me.i = i;
+          return v + (w ^ w >>> 16) | 0;
         };
+        function init2(me2, seed2) {
+          var t, v, i, j, w, X = [], limit = 128;
+          if (seed2 === (seed2 | 0)) {
+            v = seed2;
+            seed2 = null;
+          } else {
+            seed2 = seed2 + "\0";
+            v = 0;
+            limit = Math.max(limit, seed2.length);
+          }
+          for (i = 0, j = -32; j < limit; ++j) {
+            if (seed2)
+              v ^= seed2.charCodeAt((j + 32) % seed2.length);
+            if (j === 0)
+              w = v;
+            v ^= v << 10;
+            v ^= v >>> 15;
+            v ^= v << 4;
+            v ^= v >>> 13;
+            if (j >= 0) {
+              w = w + 1640531527 | 0;
+              t = X[j & 127] ^= v + w;
+              i = t == 0 ? i + 1 : 0;
+            }
+          }
+          if (i >= 128) {
+            X[(seed2 && seed2.length || 0) & 127] = -1;
+          }
+          i = 127;
+          for (j = 4 * 128; j > 0; --j) {
+            v = X[i + 34 & 127];
+            t = X[i = i + 1 & 127];
+            v ^= v << 13;
+            t ^= t << 17;
+            v ^= v >>> 15;
+            t ^= t >>> 12;
+            X[i] = v ^ t;
+          }
+          me2.w = w;
+          me2.X = X;
+          me2.i = i;
+        }
+        init2(me, seed);
       }
-      return prng;
-    }
-    if (module2 && module2.exports) {
-      module2.exports = impl;
-    } else if (define2 && define2.amd) {
-      define2(function() {
-        return impl;
-      });
-    } else {
-      this.xor4096 = impl;
-    }
-  })(exports, typeof module == "object" && module, typeof define == "function" && define);
+      function copy(f, t) {
+        t.i = f.i;
+        t.w = f.w;
+        t.X = f.X.slice();
+        return t;
+      }
+      ;
+      function impl(seed, opts) {
+        if (seed == null)
+          seed = +new Date();
+        var xg = new XorGen(seed), state = opts && opts.state, prng = function() {
+          return (xg.next() >>> 0) / 4294967296;
+        };
+        prng.double = function() {
+          do {
+            var top = xg.next() >>> 11, bot = (xg.next() >>> 0) / 4294967296, result = (top + bot) / (1 << 21);
+          } while (result === 0);
+          return result;
+        };
+        prng.int32 = xg.next;
+        prng.quick = prng;
+        if (state) {
+          if (state.X)
+            copy(state, xg);
+          prng.state = function() {
+            return copy(xg, {});
+          };
+        }
+        return prng;
+      }
+      if (module2 && module2.exports) {
+        module2.exports = impl;
+      } else if (define2 && define2.amd) {
+        define2(function() {
+          return impl;
+        });
+      } else {
+        this.xor4096 = impl;
+      }
+    })(exports, typeof module == "object" && module, typeof define == "function" && define);
+  }
 });
 
 // node_modules/.pnpm/seedrandom@2.4.3/node_modules/seedrandom/lib/tychei.js
-var require_tychei = __commonJS((exports, module) => {
-  (function(global2, module2, define2) {
-    function XorGen(seed) {
-      var me = this, strseed = "";
-      me.next = function() {
-        var b = me.b, c = me.c, d = me.d, a = me.a;
-        b = b << 25 ^ b >>> 7 ^ c;
-        c = c - d | 0;
-        d = d << 24 ^ d >>> 8 ^ a;
-        a = a - b | 0;
-        me.b = b = b << 20 ^ b >>> 12 ^ c;
-        me.c = c = c - d | 0;
-        me.d = d << 16 ^ c >>> 16 ^ a;
-        return me.a = a - b | 0;
-      };
-      me.a = 0;
-      me.b = 0;
-      me.c = 2654435769 | 0;
-      me.d = 1367130551;
-      if (seed === Math.floor(seed)) {
-        me.a = seed / 4294967296 | 0;
-        me.b = seed | 0;
-      } else {
-        strseed += seed;
-      }
-      for (var k = 0; k < strseed.length + 20; k++) {
-        me.b ^= strseed.charCodeAt(k) | 0;
-        me.next();
-      }
-    }
-    function copy(f, t) {
-      t.a = f.a;
-      t.b = f.b;
-      t.c = f.c;
-      t.d = f.d;
-      return t;
-    }
-    ;
-    function impl(seed, opts) {
-      var xg = new XorGen(seed), state = opts && opts.state, prng = function() {
-        return (xg.next() >>> 0) / 4294967296;
-      };
-      prng.double = function() {
-        do {
-          var top = xg.next() >>> 11, bot = (xg.next() >>> 0) / 4294967296, result = (top + bot) / (1 << 21);
-        } while (result === 0);
-        return result;
-      };
-      prng.int32 = xg.next;
-      prng.quick = prng;
-      if (state) {
-        if (typeof state == "object")
-          copy(state, xg);
-        prng.state = function() {
-          return copy(xg, {});
+var require_tychei = __commonJS({
+  "node_modules/.pnpm/seedrandom@2.4.3/node_modules/seedrandom/lib/tychei.js"(exports, module) {
+    (function(global2, module2, define2) {
+      function XorGen(seed) {
+        var me = this, strseed = "";
+        me.next = function() {
+          var b = me.b, c = me.c, d = me.d, a = me.a;
+          b = b << 25 ^ b >>> 7 ^ c;
+          c = c - d | 0;
+          d = d << 24 ^ d >>> 8 ^ a;
+          a = a - b | 0;
+          me.b = b = b << 20 ^ b >>> 12 ^ c;
+          me.c = c = c - d | 0;
+          me.d = d << 16 ^ c >>> 16 ^ a;
+          return me.a = a - b | 0;
         };
+        me.a = 0;
+        me.b = 0;
+        me.c = 2654435769 | 0;
+        me.d = 1367130551;
+        if (seed === Math.floor(seed)) {
+          me.a = seed / 4294967296 | 0;
+          me.b = seed | 0;
+        } else {
+          strseed += seed;
+        }
+        for (var k = 0; k < strseed.length + 20; k++) {
+          me.b ^= strseed.charCodeAt(k) | 0;
+          me.next();
+        }
       }
-      return prng;
-    }
-    if (module2 && module2.exports) {
-      module2.exports = impl;
-    } else if (define2 && define2.amd) {
-      define2(function() {
-        return impl;
-      });
-    } else {
-      this.tychei = impl;
-    }
-  })(exports, typeof module == "object" && module, typeof define == "function" && define);
+      function copy(f, t) {
+        t.a = f.a;
+        t.b = f.b;
+        t.c = f.c;
+        t.d = f.d;
+        return t;
+      }
+      ;
+      function impl(seed, opts) {
+        var xg = new XorGen(seed), state = opts && opts.state, prng = function() {
+          return (xg.next() >>> 0) / 4294967296;
+        };
+        prng.double = function() {
+          do {
+            var top = xg.next() >>> 11, bot = (xg.next() >>> 0) / 4294967296, result = (top + bot) / (1 << 21);
+          } while (result === 0);
+          return result;
+        };
+        prng.int32 = xg.next;
+        prng.quick = prng;
+        if (state) {
+          if (typeof state == "object")
+            copy(state, xg);
+          prng.state = function() {
+            return copy(xg, {});
+          };
+        }
+        return prng;
+      }
+      if (module2 && module2.exports) {
+        module2.exports = impl;
+      } else if (define2 && define2.amd) {
+        define2(function() {
+          return impl;
+        });
+      } else {
+        this.tychei = impl;
+      }
+    })(exports, typeof module == "object" && module, typeof define == "function" && define);
+  }
 });
 
 // (disabled):crypto
-var require_crypto = __commonJS(() => {
+var require_crypto = __commonJS({
+  "(disabled):crypto"() {
+  }
 });
 
 // node_modules/.pnpm/seedrandom@2.4.3/node_modules/seedrandom/seedrandom.js
-var require_seedrandom = __commonJS((exports, module) => {
-  (function(pool3, math) {
-    var global2 = this, width = 256, chunks = 6, digits = 52, rngname = "random", startdenom = math.pow(width, chunks), significance = math.pow(2, digits), overflow = significance * 2, mask = width - 1, nodecrypto;
-    function seedrandom5(seed, options, callback) {
-      var key = [];
-      options = options == true ? {entropy: true} : options || {};
-      var shortseed = mixkey(flatten4(options.entropy ? [seed, tostring(pool3)] : seed == null ? autoseed() : seed, 3), key);
-      var arc4 = new ARC4(key);
-      var prng = function() {
-        var n = arc4.g(chunks), d = startdenom, x = 0;
-        while (n < significance) {
-          n = (n + x) * width;
-          d *= width;
-          x = arc4.g(1);
-        }
-        while (n >= overflow) {
-          n /= 2;
-          d /= 2;
-          x >>>= 1;
-        }
-        return (n + x) / d;
-      };
-      prng.int32 = function() {
-        return arc4.g(4) | 0;
-      };
-      prng.quick = function() {
-        return arc4.g(4) / 4294967296;
-      };
-      prng.double = prng;
-      mixkey(tostring(arc4.S), pool3);
-      return (options.pass || callback || function(prng2, seed2, is_math_call, state) {
-        if (state) {
-          if (state.S) {
-            copy(state, arc4);
+var require_seedrandom = __commonJS({
+  "node_modules/.pnpm/seedrandom@2.4.3/node_modules/seedrandom/seedrandom.js"(exports, module) {
+    (function(pool3, math) {
+      var global2 = this, width = 256, chunks = 6, digits = 52, rngname = "random", startdenom = math.pow(width, chunks), significance = math.pow(2, digits), overflow = significance * 2, mask = width - 1, nodecrypto;
+      function seedrandom5(seed, options, callback) {
+        var key = [];
+        options = options == true ? {entropy: true} : options || {};
+        var shortseed = mixkey(flatten4(options.entropy ? [seed, tostring(pool3)] : seed == null ? autoseed() : seed, 3), key);
+        var arc4 = new ARC4(key);
+        var prng = function() {
+          var n = arc4.g(chunks), d = startdenom, x = 0;
+          while (n < significance) {
+            n = (n + x) * width;
+            d *= width;
+            x = arc4.g(1);
           }
-          prng2.state = function() {
-            return copy(arc4, {});
-          };
+          while (n >= overflow) {
+            n /= 2;
+            d /= 2;
+            x >>>= 1;
+          }
+          return (n + x) / d;
+        };
+        prng.int32 = function() {
+          return arc4.g(4) | 0;
+        };
+        prng.quick = function() {
+          return arc4.g(4) / 4294967296;
+        };
+        prng.double = prng;
+        mixkey(tostring(arc4.S), pool3);
+        return (options.pass || callback || function(prng2, seed2, is_math_call, state) {
+          if (state) {
+            if (state.S) {
+              copy(state, arc4);
+            }
+            prng2.state = function() {
+              return copy(arc4, {});
+            };
+          }
+          if (is_math_call) {
+            math[rngname] = prng2;
+            return seed2;
+          } else
+            return prng2;
+        })(prng, shortseed, "global" in options ? options.global : this == math, options.state);
+      }
+      math["seed" + rngname] = seedrandom5;
+      function ARC4(key) {
+        var t, keylen = key.length, me = this, i = 0, j = me.i = me.j = 0, s = me.S = [];
+        if (!keylen) {
+          key = [keylen++];
         }
-        if (is_math_call) {
-          math[rngname] = prng2;
-          return seed2;
-        } else
-          return prng2;
-      })(prng, shortseed, "global" in options ? options.global : this == math, options.state);
-    }
-    math["seed" + rngname] = seedrandom5;
-    function ARC4(key) {
-      var t, keylen = key.length, me = this, i = 0, j = me.i = me.j = 0, s = me.S = [];
-      if (!keylen) {
-        key = [keylen++];
-      }
-      while (i < width) {
-        s[i] = i++;
-      }
-      for (i = 0; i < width; i++) {
-        s[i] = s[j = mask & j + key[i % keylen] + (t = s[i])];
-        s[j] = t;
-      }
-      (me.g = function(count2) {
-        var t2, r = 0, i2 = me.i, j2 = me.j, s2 = me.S;
-        while (count2--) {
-          t2 = s2[i2 = mask & i2 + 1];
-          r = r * width + s2[mask & (s2[i2] = s2[j2 = mask & j2 + t2]) + (s2[j2] = t2)];
+        while (i < width) {
+          s[i] = i++;
         }
-        me.i = i2;
-        me.j = j2;
-        return r;
-      })(width);
-    }
-    function copy(f, t) {
-      t.i = f.i;
-      t.j = f.j;
-      t.S = f.S.slice();
-      return t;
-    }
-    ;
-    function flatten4(obj, depth) {
-      var result = [], typ = typeof obj, prop;
-      if (depth && typ == "object") {
-        for (prop in obj) {
-          try {
-            result.push(flatten4(obj[prop], depth - 1));
-          } catch (e) {
+        for (i = 0; i < width; i++) {
+          s[i] = s[j = mask & j + key[i % keylen] + (t = s[i])];
+          s[j] = t;
+        }
+        (me.g = function(count2) {
+          var t2, r = 0, i2 = me.i, j2 = me.j, s2 = me.S;
+          while (count2--) {
+            t2 = s2[i2 = mask & i2 + 1];
+            r = r * width + s2[mask & (s2[i2] = s2[j2 = mask & j2 + t2]) + (s2[j2] = t2)];
+          }
+          me.i = i2;
+          me.j = j2;
+          return r;
+        })(width);
+      }
+      function copy(f, t) {
+        t.i = f.i;
+        t.j = f.j;
+        t.S = f.S.slice();
+        return t;
+      }
+      ;
+      function flatten4(obj, depth) {
+        var result = [], typ = typeof obj, prop;
+        if (depth && typ == "object") {
+          for (prop in obj) {
+            try {
+              result.push(flatten4(obj[prop], depth - 1));
+            } catch (e) {
+            }
           }
         }
+        return result.length ? result : typ == "string" ? obj : obj + "\0";
       }
-      return result.length ? result : typ == "string" ? obj : obj + "\0";
-    }
-    function mixkey(seed, key) {
-      var stringseed = seed + "", smear, j = 0;
-      while (j < stringseed.length) {
-        key[mask & j] = mask & (smear ^= key[mask & j] * 19) + stringseed.charCodeAt(j++);
-      }
-      return tostring(key);
-    }
-    function autoseed() {
-      try {
-        var out;
-        if (nodecrypto && (out = nodecrypto.randomBytes)) {
-          out = out(width);
-        } else {
-          out = new Uint8Array(width);
-          (global2.crypto || global2.msCrypto).getRandomValues(out);
+      function mixkey(seed, key) {
+        var stringseed = seed + "", smear, j = 0;
+        while (j < stringseed.length) {
+          key[mask & j] = mask & (smear ^= key[mask & j] * 19) + stringseed.charCodeAt(j++);
         }
-        return tostring(out);
-      } catch (e) {
-        var browser = global2.navigator, plugins = browser && browser.plugins;
-        return [+new Date(), global2, plugins, global2.screen, tostring(pool3)];
+        return tostring(key);
       }
-    }
-    function tostring(a) {
-      return String.fromCharCode.apply(0, a);
-    }
-    mixkey(math.random(), pool3);
-    if (typeof module == "object" && module.exports) {
-      module.exports = seedrandom5;
-      try {
-        nodecrypto = require_crypto();
-      } catch (ex) {
+      function autoseed() {
+        try {
+          var out;
+          if (nodecrypto && (out = nodecrypto.randomBytes)) {
+            out = out(width);
+          } else {
+            out = new Uint8Array(width);
+            (global2.crypto || global2.msCrypto).getRandomValues(out);
+          }
+          return tostring(out);
+        } catch (e) {
+          var browser = global2.navigator, plugins = browser && browser.plugins;
+          return [+new Date(), global2, plugins, global2.screen, tostring(pool3)];
+        }
       }
-    } else if (typeof define == "function" && define.amd) {
-      define(function() {
-        return seedrandom5;
-      });
-    }
-  })([], Math);
+      function tostring(a) {
+        return String.fromCharCode.apply(0, a);
+      }
+      mixkey(math.random(), pool3);
+      if (typeof module == "object" && module.exports) {
+        module.exports = seedrandom5;
+        try {
+          nodecrypto = require_crypto();
+        } catch (ex) {
+        }
+      } else if (typeof define == "function" && define.amd) {
+        define(function() {
+          return seedrandom5;
+        });
+      }
+    })([], Math);
+  }
 });
 
 // node_modules/.pnpm/seedrandom@2.4.3/node_modules/seedrandom/index.js
-var require_seedrandom2 = __commonJS((exports, module) => {
-  var alea5 = require_alea();
-  var xor128 = require_xor128();
-  var xorwow = require_xorwow();
-  var xorshift7 = require_xorshift7();
-  var xor4096 = require_xor4096();
-  var tychei = require_tychei();
-  var sr = require_seedrandom();
-  sr.alea = alea5;
-  sr.xor128 = xor128;
-  sr.xorwow = xorwow;
-  sr.xorshift7 = xorshift7;
-  sr.xor4096 = xor4096;
-  sr.tychei = tychei;
-  module.exports = sr;
+var require_seedrandom2 = __commonJS({
+  "node_modules/.pnpm/seedrandom@2.4.3/node_modules/seedrandom/index.js"(exports, module) {
+    var alea5 = require_alea();
+    var xor128 = require_xor128();
+    var xorwow = require_xorwow();
+    var xorshift7 = require_xorshift7();
+    var xor4096 = require_xor4096();
+    var tychei = require_tychei();
+    var sr = require_seedrandom();
+    sr.alea = alea5;
+    sr.xor128 = xor128;
+    sr.xorwow = xorwow;
+    sr.xorshift7 = xorshift7;
+    sr.xor4096 = xor4096;
+    sr.tychei = tychei;
+    module.exports = sr;
+  }
 });
 
 // node_modules/.pnpm/seedrandom@3.0.5/node_modules/seedrandom/lib/alea.js
-var require_alea2 = __commonJS((exports, module) => {
-  (function(global2, module2, define2) {
-    function Alea(seed) {
-      var me = this, mash = Mash();
-      me.next = function() {
-        var t = 2091639 * me.s0 + me.c * 23283064365386963e-26;
-        me.s0 = me.s1;
-        me.s1 = me.s2;
-        return me.s2 = t - (me.c = t | 0);
-      };
-      me.c = 1;
-      me.s0 = mash(" ");
-      me.s1 = mash(" ");
-      me.s2 = mash(" ");
-      me.s0 -= mash(seed);
-      if (me.s0 < 0) {
-        me.s0 += 1;
-      }
-      me.s1 -= mash(seed);
-      if (me.s1 < 0) {
-        me.s1 += 1;
-      }
-      me.s2 -= mash(seed);
-      if (me.s2 < 0) {
-        me.s2 += 1;
-      }
-      mash = null;
-    }
-    function copy(f, t) {
-      t.c = f.c;
-      t.s0 = f.s0;
-      t.s1 = f.s1;
-      t.s2 = f.s2;
-      return t;
-    }
-    function impl(seed, opts) {
-      var xg = new Alea(seed), state = opts && opts.state, prng = xg.next;
-      prng.int32 = function() {
-        return xg.next() * 4294967296 | 0;
-      };
-      prng.double = function() {
-        return prng() + (prng() * 2097152 | 0) * 11102230246251565e-32;
-      };
-      prng.quick = prng;
-      if (state) {
-        if (typeof state == "object")
-          copy(state, xg);
-        prng.state = function() {
-          return copy(xg, {});
+var require_alea2 = __commonJS({
+  "node_modules/.pnpm/seedrandom@3.0.5/node_modules/seedrandom/lib/alea.js"(exports, module) {
+    (function(global2, module2, define2) {
+      function Alea(seed) {
+        var me = this, mash = Mash();
+        me.next = function() {
+          var t = 2091639 * me.s0 + me.c * 23283064365386963e-26;
+          me.s0 = me.s1;
+          me.s1 = me.s2;
+          return me.s2 = t - (me.c = t | 0);
         };
-      }
-      return prng;
-    }
-    function Mash() {
-      var n = 4022871197;
-      var mash = function(data) {
-        data = String(data);
-        for (var i = 0; i < data.length; i++) {
-          n += data.charCodeAt(i);
-          var h = 0.02519603282416938 * n;
-          n = h >>> 0;
-          h -= n;
-          h *= n;
-          n = h >>> 0;
-          h -= n;
-          n += h * 4294967296;
+        me.c = 1;
+        me.s0 = mash(" ");
+        me.s1 = mash(" ");
+        me.s2 = mash(" ");
+        me.s0 -= mash(seed);
+        if (me.s0 < 0) {
+          me.s0 += 1;
         }
-        return (n >>> 0) * 23283064365386963e-26;
-      };
-      return mash;
-    }
-    if (module2 && module2.exports) {
-      module2.exports = impl;
-    } else if (define2 && define2.amd) {
-      define2(function() {
-        return impl;
-      });
-    } else {
-      this.alea = impl;
-    }
-  })(exports, typeof module == "object" && module, typeof define == "function" && define);
+        me.s1 -= mash(seed);
+        if (me.s1 < 0) {
+          me.s1 += 1;
+        }
+        me.s2 -= mash(seed);
+        if (me.s2 < 0) {
+          me.s2 += 1;
+        }
+        mash = null;
+      }
+      function copy(f, t) {
+        t.c = f.c;
+        t.s0 = f.s0;
+        t.s1 = f.s1;
+        t.s2 = f.s2;
+        return t;
+      }
+      function impl(seed, opts) {
+        var xg = new Alea(seed), state = opts && opts.state, prng = xg.next;
+        prng.int32 = function() {
+          return xg.next() * 4294967296 | 0;
+        };
+        prng.double = function() {
+          return prng() + (prng() * 2097152 | 0) * 11102230246251565e-32;
+        };
+        prng.quick = prng;
+        if (state) {
+          if (typeof state == "object")
+            copy(state, xg);
+          prng.state = function() {
+            return copy(xg, {});
+          };
+        }
+        return prng;
+      }
+      function Mash() {
+        var n = 4022871197;
+        var mash = function(data) {
+          data = String(data);
+          for (var i = 0; i < data.length; i++) {
+            n += data.charCodeAt(i);
+            var h = 0.02519603282416938 * n;
+            n = h >>> 0;
+            h -= n;
+            h *= n;
+            n = h >>> 0;
+            h -= n;
+            n += h * 4294967296;
+          }
+          return (n >>> 0) * 23283064365386963e-26;
+        };
+        return mash;
+      }
+      if (module2 && module2.exports) {
+        module2.exports = impl;
+      } else if (define2 && define2.amd) {
+        define2(function() {
+          return impl;
+        });
+      } else {
+        this.alea = impl;
+      }
+    })(exports, typeof module == "object" && module, typeof define == "function" && define);
+  }
 });
 
 // node_modules/.pnpm/seedrandom@3.0.5/node_modules/seedrandom/lib/xor128.js
-var require_xor1282 = __commonJS((exports, module) => {
-  (function(global2, module2, define2) {
-    function XorGen(seed) {
-      var me = this, strseed = "";
-      me.x = 0;
-      me.y = 0;
-      me.z = 0;
-      me.w = 0;
-      me.next = function() {
-        var t = me.x ^ me.x << 11;
-        me.x = me.y;
-        me.y = me.z;
-        me.z = me.w;
-        return me.w ^= me.w >>> 19 ^ t ^ t >>> 8;
-      };
-      if (seed === (seed | 0)) {
-        me.x = seed;
-      } else {
-        strseed += seed;
-      }
-      for (var k = 0; k < strseed.length + 64; k++) {
-        me.x ^= strseed.charCodeAt(k) | 0;
-        me.next();
-      }
-    }
-    function copy(f, t) {
-      t.x = f.x;
-      t.y = f.y;
-      t.z = f.z;
-      t.w = f.w;
-      return t;
-    }
-    function impl(seed, opts) {
-      var xg = new XorGen(seed), state = opts && opts.state, prng = function() {
-        return (xg.next() >>> 0) / 4294967296;
-      };
-      prng.double = function() {
-        do {
-          var top = xg.next() >>> 11, bot = (xg.next() >>> 0) / 4294967296, result = (top + bot) / (1 << 21);
-        } while (result === 0);
-        return result;
-      };
-      prng.int32 = xg.next;
-      prng.quick = prng;
-      if (state) {
-        if (typeof state == "object")
-          copy(state, xg);
-        prng.state = function() {
-          return copy(xg, {});
+var require_xor1282 = __commonJS({
+  "node_modules/.pnpm/seedrandom@3.0.5/node_modules/seedrandom/lib/xor128.js"(exports, module) {
+    (function(global2, module2, define2) {
+      function XorGen(seed) {
+        var me = this, strseed = "";
+        me.x = 0;
+        me.y = 0;
+        me.z = 0;
+        me.w = 0;
+        me.next = function() {
+          var t = me.x ^ me.x << 11;
+          me.x = me.y;
+          me.y = me.z;
+          me.z = me.w;
+          return me.w ^= me.w >>> 19 ^ t ^ t >>> 8;
         };
+        if (seed === (seed | 0)) {
+          me.x = seed;
+        } else {
+          strseed += seed;
+        }
+        for (var k = 0; k < strseed.length + 64; k++) {
+          me.x ^= strseed.charCodeAt(k) | 0;
+          me.next();
+        }
       }
-      return prng;
-    }
-    if (module2 && module2.exports) {
-      module2.exports = impl;
-    } else if (define2 && define2.amd) {
-      define2(function() {
-        return impl;
-      });
-    } else {
-      this.xor128 = impl;
-    }
-  })(exports, typeof module == "object" && module, typeof define == "function" && define);
+      function copy(f, t) {
+        t.x = f.x;
+        t.y = f.y;
+        t.z = f.z;
+        t.w = f.w;
+        return t;
+      }
+      function impl(seed, opts) {
+        var xg = new XorGen(seed), state = opts && opts.state, prng = function() {
+          return (xg.next() >>> 0) / 4294967296;
+        };
+        prng.double = function() {
+          do {
+            var top = xg.next() >>> 11, bot = (xg.next() >>> 0) / 4294967296, result = (top + bot) / (1 << 21);
+          } while (result === 0);
+          return result;
+        };
+        prng.int32 = xg.next;
+        prng.quick = prng;
+        if (state) {
+          if (typeof state == "object")
+            copy(state, xg);
+          prng.state = function() {
+            return copy(xg, {});
+          };
+        }
+        return prng;
+      }
+      if (module2 && module2.exports) {
+        module2.exports = impl;
+      } else if (define2 && define2.amd) {
+        define2(function() {
+          return impl;
+        });
+      } else {
+        this.xor128 = impl;
+      }
+    })(exports, typeof module == "object" && module, typeof define == "function" && define);
+  }
 });
 
 // node_modules/.pnpm/seedrandom@3.0.5/node_modules/seedrandom/lib/xorwow.js
-var require_xorwow2 = __commonJS((exports, module) => {
-  (function(global2, module2, define2) {
-    function XorGen(seed) {
-      var me = this, strseed = "";
-      me.next = function() {
-        var t = me.x ^ me.x >>> 2;
-        me.x = me.y;
-        me.y = me.z;
-        me.z = me.w;
-        me.w = me.v;
-        return (me.d = me.d + 362437 | 0) + (me.v = me.v ^ me.v << 4 ^ (t ^ t << 1)) | 0;
-      };
-      me.x = 0;
-      me.y = 0;
-      me.z = 0;
-      me.w = 0;
-      me.v = 0;
-      if (seed === (seed | 0)) {
-        me.x = seed;
-      } else {
-        strseed += seed;
-      }
-      for (var k = 0; k < strseed.length + 64; k++) {
-        me.x ^= strseed.charCodeAt(k) | 0;
-        if (k == strseed.length) {
-          me.d = me.x << 10 ^ me.x >>> 4;
-        }
-        me.next();
-      }
-    }
-    function copy(f, t) {
-      t.x = f.x;
-      t.y = f.y;
-      t.z = f.z;
-      t.w = f.w;
-      t.v = f.v;
-      t.d = f.d;
-      return t;
-    }
-    function impl(seed, opts) {
-      var xg = new XorGen(seed), state = opts && opts.state, prng = function() {
-        return (xg.next() >>> 0) / 4294967296;
-      };
-      prng.double = function() {
-        do {
-          var top = xg.next() >>> 11, bot = (xg.next() >>> 0) / 4294967296, result = (top + bot) / (1 << 21);
-        } while (result === 0);
-        return result;
-      };
-      prng.int32 = xg.next;
-      prng.quick = prng;
-      if (state) {
-        if (typeof state == "object")
-          copy(state, xg);
-        prng.state = function() {
-          return copy(xg, {});
+var require_xorwow2 = __commonJS({
+  "node_modules/.pnpm/seedrandom@3.0.5/node_modules/seedrandom/lib/xorwow.js"(exports, module) {
+    (function(global2, module2, define2) {
+      function XorGen(seed) {
+        var me = this, strseed = "";
+        me.next = function() {
+          var t = me.x ^ me.x >>> 2;
+          me.x = me.y;
+          me.y = me.z;
+          me.z = me.w;
+          me.w = me.v;
+          return (me.d = me.d + 362437 | 0) + (me.v = me.v ^ me.v << 4 ^ (t ^ t << 1)) | 0;
         };
+        me.x = 0;
+        me.y = 0;
+        me.z = 0;
+        me.w = 0;
+        me.v = 0;
+        if (seed === (seed | 0)) {
+          me.x = seed;
+        } else {
+          strseed += seed;
+        }
+        for (var k = 0; k < strseed.length + 64; k++) {
+          me.x ^= strseed.charCodeAt(k) | 0;
+          if (k == strseed.length) {
+            me.d = me.x << 10 ^ me.x >>> 4;
+          }
+          me.next();
+        }
       }
-      return prng;
-    }
-    if (module2 && module2.exports) {
-      module2.exports = impl;
-    } else if (define2 && define2.amd) {
-      define2(function() {
-        return impl;
-      });
-    } else {
-      this.xorwow = impl;
-    }
-  })(exports, typeof module == "object" && module, typeof define == "function" && define);
+      function copy(f, t) {
+        t.x = f.x;
+        t.y = f.y;
+        t.z = f.z;
+        t.w = f.w;
+        t.v = f.v;
+        t.d = f.d;
+        return t;
+      }
+      function impl(seed, opts) {
+        var xg = new XorGen(seed), state = opts && opts.state, prng = function() {
+          return (xg.next() >>> 0) / 4294967296;
+        };
+        prng.double = function() {
+          do {
+            var top = xg.next() >>> 11, bot = (xg.next() >>> 0) / 4294967296, result = (top + bot) / (1 << 21);
+          } while (result === 0);
+          return result;
+        };
+        prng.int32 = xg.next;
+        prng.quick = prng;
+        if (state) {
+          if (typeof state == "object")
+            copy(state, xg);
+          prng.state = function() {
+            return copy(xg, {});
+          };
+        }
+        return prng;
+      }
+      if (module2 && module2.exports) {
+        module2.exports = impl;
+      } else if (define2 && define2.amd) {
+        define2(function() {
+          return impl;
+        });
+      } else {
+        this.xorwow = impl;
+      }
+    })(exports, typeof module == "object" && module, typeof define == "function" && define);
+  }
 });
 
 // node_modules/.pnpm/seedrandom@3.0.5/node_modules/seedrandom/lib/xorshift7.js
-var require_xorshift72 = __commonJS((exports, module) => {
-  (function(global2, module2, define2) {
-    function XorGen(seed) {
-      var me = this;
-      me.next = function() {
-        var X = me.x, i = me.i, t, v, w;
-        t = X[i];
-        t ^= t >>> 7;
-        v = t ^ t << 24;
-        t = X[i + 1 & 7];
-        v ^= t ^ t >>> 10;
-        t = X[i + 3 & 7];
-        v ^= t ^ t >>> 3;
-        t = X[i + 4 & 7];
-        v ^= t ^ t << 7;
-        t = X[i + 7 & 7];
-        t = t ^ t << 13;
-        v ^= t ^ t << 9;
-        X[i] = v;
-        me.i = i + 1 & 7;
-        return v;
-      };
-      function init2(me2, seed2) {
-        var j, w, X = [];
-        if (seed2 === (seed2 | 0)) {
-          w = X[0] = seed2;
-        } else {
-          seed2 = "" + seed2;
-          for (j = 0; j < seed2.length; ++j) {
-            X[j & 7] = X[j & 7] << 15 ^ seed2.charCodeAt(j) + X[j + 1 & 7] << 13;
+var require_xorshift72 = __commonJS({
+  "node_modules/.pnpm/seedrandom@3.0.5/node_modules/seedrandom/lib/xorshift7.js"(exports, module) {
+    (function(global2, module2, define2) {
+      function XorGen(seed) {
+        var me = this;
+        me.next = function() {
+          var X = me.x, i = me.i, t, v, w;
+          t = X[i];
+          t ^= t >>> 7;
+          v = t ^ t << 24;
+          t = X[i + 1 & 7];
+          v ^= t ^ t >>> 10;
+          t = X[i + 3 & 7];
+          v ^= t ^ t >>> 3;
+          t = X[i + 4 & 7];
+          v ^= t ^ t << 7;
+          t = X[i + 7 & 7];
+          t = t ^ t << 13;
+          v ^= t ^ t << 9;
+          X[i] = v;
+          me.i = i + 1 & 7;
+          return v;
+        };
+        function init2(me2, seed2) {
+          var j, w, X = [];
+          if (seed2 === (seed2 | 0)) {
+            w = X[0] = seed2;
+          } else {
+            seed2 = "" + seed2;
+            for (j = 0; j < seed2.length; ++j) {
+              X[j & 7] = X[j & 7] << 15 ^ seed2.charCodeAt(j) + X[j + 1 & 7] << 13;
+            }
+          }
+          while (X.length < 8)
+            X.push(0);
+          for (j = 0; j < 8 && X[j] === 0; ++j)
+            ;
+          if (j == 8)
+            w = X[7] = -1;
+          else
+            w = X[j];
+          me2.x = X;
+          me2.i = 0;
+          for (j = 256; j > 0; --j) {
+            me2.next();
           }
         }
-        while (X.length < 8)
-          X.push(0);
-        for (j = 0; j < 8 && X[j] === 0; ++j)
-          ;
-        if (j == 8)
-          w = X[7] = -1;
-        else
-          w = X[j];
-        me2.x = X;
-        me2.i = 0;
-        for (j = 256; j > 0; --j) {
-          me2.next();
-        }
+        init2(me, seed);
       }
-      init2(me, seed);
-    }
-    function copy(f, t) {
-      t.x = f.x.slice();
-      t.i = f.i;
-      return t;
-    }
-    function impl(seed, opts) {
-      if (seed == null)
-        seed = +new Date();
-      var xg = new XorGen(seed), state = opts && opts.state, prng = function() {
-        return (xg.next() >>> 0) / 4294967296;
-      };
-      prng.double = function() {
-        do {
-          var top = xg.next() >>> 11, bot = (xg.next() >>> 0) / 4294967296, result = (top + bot) / (1 << 21);
-        } while (result === 0);
-        return result;
-      };
-      prng.int32 = xg.next;
-      prng.quick = prng;
-      if (state) {
-        if (state.x)
-          copy(state, xg);
-        prng.state = function() {
-          return copy(xg, {});
+      function copy(f, t) {
+        t.x = f.x.slice();
+        t.i = f.i;
+        return t;
+      }
+      function impl(seed, opts) {
+        if (seed == null)
+          seed = +new Date();
+        var xg = new XorGen(seed), state = opts && opts.state, prng = function() {
+          return (xg.next() >>> 0) / 4294967296;
         };
+        prng.double = function() {
+          do {
+            var top = xg.next() >>> 11, bot = (xg.next() >>> 0) / 4294967296, result = (top + bot) / (1 << 21);
+          } while (result === 0);
+          return result;
+        };
+        prng.int32 = xg.next;
+        prng.quick = prng;
+        if (state) {
+          if (state.x)
+            copy(state, xg);
+          prng.state = function() {
+            return copy(xg, {});
+          };
+        }
+        return prng;
       }
-      return prng;
-    }
-    if (module2 && module2.exports) {
-      module2.exports = impl;
-    } else if (define2 && define2.amd) {
-      define2(function() {
-        return impl;
-      });
-    } else {
-      this.xorshift7 = impl;
-    }
-  })(exports, typeof module == "object" && module, typeof define == "function" && define);
+      if (module2 && module2.exports) {
+        module2.exports = impl;
+      } else if (define2 && define2.amd) {
+        define2(function() {
+          return impl;
+        });
+      } else {
+        this.xorshift7 = impl;
+      }
+    })(exports, typeof module == "object" && module, typeof define == "function" && define);
+  }
 });
 
 // node_modules/.pnpm/seedrandom@3.0.5/node_modules/seedrandom/lib/xor4096.js
-var require_xor40962 = __commonJS((exports, module) => {
-  (function(global2, module2, define2) {
-    function XorGen(seed) {
-      var me = this;
-      me.next = function() {
-        var w = me.w, X = me.X, i = me.i, t, v;
-        me.w = w = w + 1640531527 | 0;
-        v = X[i + 34 & 127];
-        t = X[i = i + 1 & 127];
-        v ^= v << 13;
-        t ^= t << 17;
-        v ^= v >>> 15;
-        t ^= t >>> 12;
-        v = X[i] = v ^ t;
-        me.i = i;
-        return v + (w ^ w >>> 16) | 0;
-      };
-      function init2(me2, seed2) {
-        var t, v, i, j, w, X = [], limit = 128;
-        if (seed2 === (seed2 | 0)) {
-          v = seed2;
-          seed2 = null;
-        } else {
-          seed2 = seed2 + "\0";
-          v = 0;
-          limit = Math.max(limit, seed2.length);
-        }
-        for (i = 0, j = -32; j < limit; ++j) {
-          if (seed2)
-            v ^= seed2.charCodeAt((j + 32) % seed2.length);
-          if (j === 0)
-            w = v;
-          v ^= v << 10;
-          v ^= v >>> 15;
-          v ^= v << 4;
-          v ^= v >>> 13;
-          if (j >= 0) {
-            w = w + 1640531527 | 0;
-            t = X[j & 127] ^= v + w;
-            i = t == 0 ? i + 1 : 0;
-          }
-        }
-        if (i >= 128) {
-          X[(seed2 && seed2.length || 0) & 127] = -1;
-        }
-        i = 127;
-        for (j = 4 * 128; j > 0; --j) {
+var require_xor40962 = __commonJS({
+  "node_modules/.pnpm/seedrandom@3.0.5/node_modules/seedrandom/lib/xor4096.js"(exports, module) {
+    (function(global2, module2, define2) {
+      function XorGen(seed) {
+        var me = this;
+        me.next = function() {
+          var w = me.w, X = me.X, i = me.i, t, v;
+          me.w = w = w + 1640531527 | 0;
           v = X[i + 34 & 127];
           t = X[i = i + 1 & 127];
           v ^= v << 13;
           t ^= t << 17;
           v ^= v >>> 15;
           t ^= t >>> 12;
-          X[i] = v ^ t;
-        }
-        me2.w = w;
-        me2.X = X;
-        me2.i = i;
-      }
-      init2(me, seed);
-    }
-    function copy(f, t) {
-      t.i = f.i;
-      t.w = f.w;
-      t.X = f.X.slice();
-      return t;
-    }
-    ;
-    function impl(seed, opts) {
-      if (seed == null)
-        seed = +new Date();
-      var xg = new XorGen(seed), state = opts && opts.state, prng = function() {
-        return (xg.next() >>> 0) / 4294967296;
-      };
-      prng.double = function() {
-        do {
-          var top = xg.next() >>> 11, bot = (xg.next() >>> 0) / 4294967296, result = (top + bot) / (1 << 21);
-        } while (result === 0);
-        return result;
-      };
-      prng.int32 = xg.next;
-      prng.quick = prng;
-      if (state) {
-        if (state.X)
-          copy(state, xg);
-        prng.state = function() {
-          return copy(xg, {});
+          v = X[i] = v ^ t;
+          me.i = i;
+          return v + (w ^ w >>> 16) | 0;
         };
+        function init2(me2, seed2) {
+          var t, v, i, j, w, X = [], limit = 128;
+          if (seed2 === (seed2 | 0)) {
+            v = seed2;
+            seed2 = null;
+          } else {
+            seed2 = seed2 + "\0";
+            v = 0;
+            limit = Math.max(limit, seed2.length);
+          }
+          for (i = 0, j = -32; j < limit; ++j) {
+            if (seed2)
+              v ^= seed2.charCodeAt((j + 32) % seed2.length);
+            if (j === 0)
+              w = v;
+            v ^= v << 10;
+            v ^= v >>> 15;
+            v ^= v << 4;
+            v ^= v >>> 13;
+            if (j >= 0) {
+              w = w + 1640531527 | 0;
+              t = X[j & 127] ^= v + w;
+              i = t == 0 ? i + 1 : 0;
+            }
+          }
+          if (i >= 128) {
+            X[(seed2 && seed2.length || 0) & 127] = -1;
+          }
+          i = 127;
+          for (j = 4 * 128; j > 0; --j) {
+            v = X[i + 34 & 127];
+            t = X[i = i + 1 & 127];
+            v ^= v << 13;
+            t ^= t << 17;
+            v ^= v >>> 15;
+            t ^= t >>> 12;
+            X[i] = v ^ t;
+          }
+          me2.w = w;
+          me2.X = X;
+          me2.i = i;
+        }
+        init2(me, seed);
       }
-      return prng;
-    }
-    if (module2 && module2.exports) {
-      module2.exports = impl;
-    } else if (define2 && define2.amd) {
-      define2(function() {
-        return impl;
-      });
-    } else {
-      this.xor4096 = impl;
-    }
-  })(exports, typeof module == "object" && module, typeof define == "function" && define);
+      function copy(f, t) {
+        t.i = f.i;
+        t.w = f.w;
+        t.X = f.X.slice();
+        return t;
+      }
+      ;
+      function impl(seed, opts) {
+        if (seed == null)
+          seed = +new Date();
+        var xg = new XorGen(seed), state = opts && opts.state, prng = function() {
+          return (xg.next() >>> 0) / 4294967296;
+        };
+        prng.double = function() {
+          do {
+            var top = xg.next() >>> 11, bot = (xg.next() >>> 0) / 4294967296, result = (top + bot) / (1 << 21);
+          } while (result === 0);
+          return result;
+        };
+        prng.int32 = xg.next;
+        prng.quick = prng;
+        if (state) {
+          if (state.X)
+            copy(state, xg);
+          prng.state = function() {
+            return copy(xg, {});
+          };
+        }
+        return prng;
+      }
+      if (module2 && module2.exports) {
+        module2.exports = impl;
+      } else if (define2 && define2.amd) {
+        define2(function() {
+          return impl;
+        });
+      } else {
+        this.xor4096 = impl;
+      }
+    })(exports, typeof module == "object" && module, typeof define == "function" && define);
+  }
 });
 
 // node_modules/.pnpm/seedrandom@3.0.5/node_modules/seedrandom/lib/tychei.js
-var require_tychei2 = __commonJS((exports, module) => {
-  (function(global2, module2, define2) {
-    function XorGen(seed) {
-      var me = this, strseed = "";
-      me.next = function() {
-        var b = me.b, c = me.c, d = me.d, a = me.a;
-        b = b << 25 ^ b >>> 7 ^ c;
-        c = c - d | 0;
-        d = d << 24 ^ d >>> 8 ^ a;
-        a = a - b | 0;
-        me.b = b = b << 20 ^ b >>> 12 ^ c;
-        me.c = c = c - d | 0;
-        me.d = d << 16 ^ c >>> 16 ^ a;
-        return me.a = a - b | 0;
-      };
-      me.a = 0;
-      me.b = 0;
-      me.c = 2654435769 | 0;
-      me.d = 1367130551;
-      if (seed === Math.floor(seed)) {
-        me.a = seed / 4294967296 | 0;
-        me.b = seed | 0;
-      } else {
-        strseed += seed;
-      }
-      for (var k = 0; k < strseed.length + 20; k++) {
-        me.b ^= strseed.charCodeAt(k) | 0;
-        me.next();
-      }
-    }
-    function copy(f, t) {
-      t.a = f.a;
-      t.b = f.b;
-      t.c = f.c;
-      t.d = f.d;
-      return t;
-    }
-    ;
-    function impl(seed, opts) {
-      var xg = new XorGen(seed), state = opts && opts.state, prng = function() {
-        return (xg.next() >>> 0) / 4294967296;
-      };
-      prng.double = function() {
-        do {
-          var top = xg.next() >>> 11, bot = (xg.next() >>> 0) / 4294967296, result = (top + bot) / (1 << 21);
-        } while (result === 0);
-        return result;
-      };
-      prng.int32 = xg.next;
-      prng.quick = prng;
-      if (state) {
-        if (typeof state == "object")
-          copy(state, xg);
-        prng.state = function() {
-          return copy(xg, {});
+var require_tychei2 = __commonJS({
+  "node_modules/.pnpm/seedrandom@3.0.5/node_modules/seedrandom/lib/tychei.js"(exports, module) {
+    (function(global2, module2, define2) {
+      function XorGen(seed) {
+        var me = this, strseed = "";
+        me.next = function() {
+          var b = me.b, c = me.c, d = me.d, a = me.a;
+          b = b << 25 ^ b >>> 7 ^ c;
+          c = c - d | 0;
+          d = d << 24 ^ d >>> 8 ^ a;
+          a = a - b | 0;
+          me.b = b = b << 20 ^ b >>> 12 ^ c;
+          me.c = c = c - d | 0;
+          me.d = d << 16 ^ c >>> 16 ^ a;
+          return me.a = a - b | 0;
         };
+        me.a = 0;
+        me.b = 0;
+        me.c = 2654435769 | 0;
+        me.d = 1367130551;
+        if (seed === Math.floor(seed)) {
+          me.a = seed / 4294967296 | 0;
+          me.b = seed | 0;
+        } else {
+          strseed += seed;
+        }
+        for (var k = 0; k < strseed.length + 20; k++) {
+          me.b ^= strseed.charCodeAt(k) | 0;
+          me.next();
+        }
       }
-      return prng;
-    }
-    if (module2 && module2.exports) {
-      module2.exports = impl;
-    } else if (define2 && define2.amd) {
-      define2(function() {
-        return impl;
-      });
-    } else {
-      this.tychei = impl;
-    }
-  })(exports, typeof module == "object" && module, typeof define == "function" && define);
+      function copy(f, t) {
+        t.a = f.a;
+        t.b = f.b;
+        t.c = f.c;
+        t.d = f.d;
+        return t;
+      }
+      ;
+      function impl(seed, opts) {
+        var xg = new XorGen(seed), state = opts && opts.state, prng = function() {
+          return (xg.next() >>> 0) / 4294967296;
+        };
+        prng.double = function() {
+          do {
+            var top = xg.next() >>> 11, bot = (xg.next() >>> 0) / 4294967296, result = (top + bot) / (1 << 21);
+          } while (result === 0);
+          return result;
+        };
+        prng.int32 = xg.next;
+        prng.quick = prng;
+        if (state) {
+          if (typeof state == "object")
+            copy(state, xg);
+          prng.state = function() {
+            return copy(xg, {});
+          };
+        }
+        return prng;
+      }
+      if (module2 && module2.exports) {
+        module2.exports = impl;
+      } else if (define2 && define2.amd) {
+        define2(function() {
+          return impl;
+        });
+      } else {
+        this.tychei = impl;
+      }
+    })(exports, typeof module == "object" && module, typeof define == "function" && define);
+  }
 });
 
 // node_modules/.pnpm/seedrandom@3.0.5/node_modules/seedrandom/seedrandom.js
-var require_seedrandom3 = __commonJS((exports, module) => {
-  (function(global2, pool3, math) {
-    var width = 256, chunks = 6, digits = 52, rngname = "random", startdenom = math.pow(width, chunks), significance = math.pow(2, digits), overflow = significance * 2, mask = width - 1, nodecrypto;
-    function seedrandom5(seed, options, callback) {
-      var key = [];
-      options = options == true ? {entropy: true} : options || {};
-      var shortseed = mixkey(flatten4(options.entropy ? [seed, tostring(pool3)] : seed == null ? autoseed() : seed, 3), key);
-      var arc4 = new ARC4(key);
-      var prng = function() {
-        var n = arc4.g(chunks), d = startdenom, x = 0;
-        while (n < significance) {
-          n = (n + x) * width;
-          d *= width;
-          x = arc4.g(1);
-        }
-        while (n >= overflow) {
-          n /= 2;
-          d /= 2;
-          x >>>= 1;
-        }
-        return (n + x) / d;
-      };
-      prng.int32 = function() {
-        return arc4.g(4) | 0;
-      };
-      prng.quick = function() {
-        return arc4.g(4) / 4294967296;
-      };
-      prng.double = prng;
-      mixkey(tostring(arc4.S), pool3);
-      return (options.pass || callback || function(prng2, seed2, is_math_call, state) {
-        if (state) {
-          if (state.S) {
-            copy(state, arc4);
+var require_seedrandom3 = __commonJS({
+  "node_modules/.pnpm/seedrandom@3.0.5/node_modules/seedrandom/seedrandom.js"(exports, module) {
+    (function(global2, pool3, math) {
+      var width = 256, chunks = 6, digits = 52, rngname = "random", startdenom = math.pow(width, chunks), significance = math.pow(2, digits), overflow = significance * 2, mask = width - 1, nodecrypto;
+      function seedrandom5(seed, options, callback) {
+        var key = [];
+        options = options == true ? {entropy: true} : options || {};
+        var shortseed = mixkey(flatten4(options.entropy ? [seed, tostring(pool3)] : seed == null ? autoseed() : seed, 3), key);
+        var arc4 = new ARC4(key);
+        var prng = function() {
+          var n = arc4.g(chunks), d = startdenom, x = 0;
+          while (n < significance) {
+            n = (n + x) * width;
+            d *= width;
+            x = arc4.g(1);
           }
-          prng2.state = function() {
-            return copy(arc4, {});
-          };
+          while (n >= overflow) {
+            n /= 2;
+            d /= 2;
+            x >>>= 1;
+          }
+          return (n + x) / d;
+        };
+        prng.int32 = function() {
+          return arc4.g(4) | 0;
+        };
+        prng.quick = function() {
+          return arc4.g(4) / 4294967296;
+        };
+        prng.double = prng;
+        mixkey(tostring(arc4.S), pool3);
+        return (options.pass || callback || function(prng2, seed2, is_math_call, state) {
+          if (state) {
+            if (state.S) {
+              copy(state, arc4);
+            }
+            prng2.state = function() {
+              return copy(arc4, {});
+            };
+          }
+          if (is_math_call) {
+            math[rngname] = prng2;
+            return seed2;
+          } else
+            return prng2;
+        })(prng, shortseed, "global" in options ? options.global : this == math, options.state);
+      }
+      function ARC4(key) {
+        var t, keylen = key.length, me = this, i = 0, j = me.i = me.j = 0, s = me.S = [];
+        if (!keylen) {
+          key = [keylen++];
         }
-        if (is_math_call) {
-          math[rngname] = prng2;
-          return seed2;
-        } else
-          return prng2;
-      })(prng, shortseed, "global" in options ? options.global : this == math, options.state);
-    }
-    function ARC4(key) {
-      var t, keylen = key.length, me = this, i = 0, j = me.i = me.j = 0, s = me.S = [];
-      if (!keylen) {
-        key = [keylen++];
-      }
-      while (i < width) {
-        s[i] = i++;
-      }
-      for (i = 0; i < width; i++) {
-        s[i] = s[j = mask & j + key[i % keylen] + (t = s[i])];
-        s[j] = t;
-      }
-      (me.g = function(count2) {
-        var t2, r = 0, i2 = me.i, j2 = me.j, s2 = me.S;
-        while (count2--) {
-          t2 = s2[i2 = mask & i2 + 1];
-          r = r * width + s2[mask & (s2[i2] = s2[j2 = mask & j2 + t2]) + (s2[j2] = t2)];
+        while (i < width) {
+          s[i] = i++;
         }
-        me.i = i2;
-        me.j = j2;
-        return r;
-      })(width);
-    }
-    function copy(f, t) {
-      t.i = f.i;
-      t.j = f.j;
-      t.S = f.S.slice();
-      return t;
-    }
-    ;
-    function flatten4(obj, depth) {
-      var result = [], typ = typeof obj, prop;
-      if (depth && typ == "object") {
-        for (prop in obj) {
-          try {
-            result.push(flatten4(obj[prop], depth - 1));
-          } catch (e) {
+        for (i = 0; i < width; i++) {
+          s[i] = s[j = mask & j + key[i % keylen] + (t = s[i])];
+          s[j] = t;
+        }
+        (me.g = function(count2) {
+          var t2, r = 0, i2 = me.i, j2 = me.j, s2 = me.S;
+          while (count2--) {
+            t2 = s2[i2 = mask & i2 + 1];
+            r = r * width + s2[mask & (s2[i2] = s2[j2 = mask & j2 + t2]) + (s2[j2] = t2)];
+          }
+          me.i = i2;
+          me.j = j2;
+          return r;
+        })(width);
+      }
+      function copy(f, t) {
+        t.i = f.i;
+        t.j = f.j;
+        t.S = f.S.slice();
+        return t;
+      }
+      ;
+      function flatten4(obj, depth) {
+        var result = [], typ = typeof obj, prop;
+        if (depth && typ == "object") {
+          for (prop in obj) {
+            try {
+              result.push(flatten4(obj[prop], depth - 1));
+            } catch (e) {
+            }
           }
         }
+        return result.length ? result : typ == "string" ? obj : obj + "\0";
       }
-      return result.length ? result : typ == "string" ? obj : obj + "\0";
-    }
-    function mixkey(seed, key) {
-      var stringseed = seed + "", smear, j = 0;
-      while (j < stringseed.length) {
-        key[mask & j] = mask & (smear ^= key[mask & j] * 19) + stringseed.charCodeAt(j++);
-      }
-      return tostring(key);
-    }
-    function autoseed() {
-      try {
-        var out;
-        if (nodecrypto && (out = nodecrypto.randomBytes)) {
-          out = out(width);
-        } else {
-          out = new Uint8Array(width);
-          (global2.crypto || global2.msCrypto).getRandomValues(out);
+      function mixkey(seed, key) {
+        var stringseed = seed + "", smear, j = 0;
+        while (j < stringseed.length) {
+          key[mask & j] = mask & (smear ^= key[mask & j] * 19) + stringseed.charCodeAt(j++);
         }
-        return tostring(out);
-      } catch (e) {
-        var browser = global2.navigator, plugins = browser && browser.plugins;
-        return [+new Date(), global2, plugins, global2.screen, tostring(pool3)];
+        return tostring(key);
       }
-    }
-    function tostring(a) {
-      return String.fromCharCode.apply(0, a);
-    }
-    mixkey(math.random(), pool3);
-    if (typeof module == "object" && module.exports) {
-      module.exports = seedrandom5;
-      try {
-        nodecrypto = require_crypto();
-      } catch (ex) {
+      function autoseed() {
+        try {
+          var out;
+          if (nodecrypto && (out = nodecrypto.randomBytes)) {
+            out = out(width);
+          } else {
+            out = new Uint8Array(width);
+            (global2.crypto || global2.msCrypto).getRandomValues(out);
+          }
+          return tostring(out);
+        } catch (e) {
+          var browser = global2.navigator, plugins = browser && browser.plugins;
+          return [+new Date(), global2, plugins, global2.screen, tostring(pool3)];
+        }
       }
-    } else if (typeof define == "function" && define.amd) {
-      define(function() {
-        return seedrandom5;
-      });
-    } else {
-      math["seed" + rngname] = seedrandom5;
-    }
-  })(typeof self !== "undefined" ? self : exports, [], Math);
+      function tostring(a) {
+        return String.fromCharCode.apply(0, a);
+      }
+      mixkey(math.random(), pool3);
+      if (typeof module == "object" && module.exports) {
+        module.exports = seedrandom5;
+        try {
+          nodecrypto = require_crypto();
+        } catch (ex) {
+        }
+      } else if (typeof define == "function" && define.amd) {
+        define(function() {
+          return seedrandom5;
+        });
+      } else {
+        math["seed" + rngname] = seedrandom5;
+      }
+    })(typeof self !== "undefined" ? self : exports, [], Math);
+  }
 });
 
 // node_modules/.pnpm/seedrandom@3.0.5/node_modules/seedrandom/index.js
-var require_seedrandom4 = __commonJS((exports, module) => {
-  var alea5 = require_alea2();
-  var xor128 = require_xor1282();
-  var xorwow = require_xorwow2();
-  var xorshift7 = require_xorshift72();
-  var xor4096 = require_xor40962();
-  var tychei = require_tychei2();
-  var sr = require_seedrandom3();
-  sr.alea = alea5;
-  sr.xor128 = xor128;
-  sr.xorwow = xorwow;
-  sr.xorshift7 = xorshift7;
-  sr.xor4096 = xor4096;
-  sr.tychei = tychei;
-  module.exports = sr;
+var require_seedrandom4 = __commonJS({
+  "node_modules/.pnpm/seedrandom@3.0.5/node_modules/seedrandom/index.js"(exports, module) {
+    var alea5 = require_alea2();
+    var xor128 = require_xor1282();
+    var xorwow = require_xorwow2();
+    var xorshift7 = require_xorshift72();
+    var xor4096 = require_xor40962();
+    var tychei = require_tychei2();
+    var sr = require_seedrandom3();
+    sr.alea = alea5;
+    sr.xor128 = xor128;
+    sr.xorwow = xorwow;
+    sr.xorshift7 = xorshift7;
+    sr.xor4096 = xor4096;
+    sr.tychei = tychei;
+    module.exports = sr;
+  }
 });
 
 // (disabled):node_modules/.pnpm/string_decoder@1.1.1/node_modules/string_decoder/lib/string_decoder.js
-var require_string_decoder = __commonJS(() => {
+var require_string_decoder = __commonJS({
+  "(disabled):node_modules/.pnpm/string_decoder@1.1.1/node_modules/string_decoder/lib/string_decoder.js"() {
+  }
 });
 
 // (disabled):path
-var require_path = __commonJS(() => {
+var require_path = __commonJS({
+  "(disabled):path"() {
+  }
 });
 
 // (disabled):worker_threads
-var require_worker_threads = __commonJS(() => {
+var require_worker_threads = __commonJS({
+  "(disabled):worker_threads"() {
+  }
 });
 
 // (disabled):perf_hooks
-var require_perf_hooks = __commonJS(() => {
+var require_perf_hooks = __commonJS({
+  "(disabled):perf_hooks"() {
+  }
 });
 
 // node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.6.0/node_modules/@tensorflow/tfjs-backend-wasm/wasm-out/tfjs-backend-wasm-threaded-simd.js
-var require_tfjs_backend_wasm_threaded_simd = __commonJS((exports, module) => {
-  var WasmBackendModuleThreadedSimd = function() {
-    var _scriptDir = typeof document !== "undefined" && document.currentScript ? document.currentScript.src : void 0;
-    if (typeof __filename !== "undefined")
-      _scriptDir = _scriptDir || __filename;
-    return function(WasmBackendModuleThreadedSimd2) {
-      WasmBackendModuleThreadedSimd2 = WasmBackendModuleThreadedSimd2 || {};
-      function GROWABLE_HEAP_I8() {
-        if (wasmMemory.buffer != buffer2) {
-          updateGlobalBufferAndViews(wasmMemory.buffer);
-        }
-        return HEAP8;
-      }
-      function GROWABLE_HEAP_U8() {
-        if (wasmMemory.buffer != buffer2) {
-          updateGlobalBufferAndViews(wasmMemory.buffer);
-        }
-        return HEAPU8;
-      }
-      function GROWABLE_HEAP_I32() {
-        if (wasmMemory.buffer != buffer2) {
-          updateGlobalBufferAndViews(wasmMemory.buffer);
-        }
-        return HEAP32;
-      }
-      function GROWABLE_HEAP_U32() {
-        if (wasmMemory.buffer != buffer2) {
-          updateGlobalBufferAndViews(wasmMemory.buffer);
-        }
-        return HEAPU32;
-      }
-      function GROWABLE_HEAP_F64() {
-        if (wasmMemory.buffer != buffer2) {
-          updateGlobalBufferAndViews(wasmMemory.buffer);
-        }
-        return HEAPF64;
-      }
-      var Module = typeof WasmBackendModuleThreadedSimd2 !== "undefined" ? WasmBackendModuleThreadedSimd2 : {};
-      var readyPromiseResolve, readyPromiseReject;
-      Module["ready"] = new Promise(function(resolve, reject) {
-        readyPromiseResolve = resolve;
-        readyPromiseReject = reject;
-      });
-      var moduleOverrides = {};
-      var key;
-      for (key in Module) {
-        if (Module.hasOwnProperty(key)) {
-          moduleOverrides[key] = Module[key];
-        }
-      }
-      var arguments_ = [];
-      var thisProgram = "./this.program";
-      var quit_ = function(status, toThrow) {
-        throw toThrow;
-      };
-      var ENVIRONMENT_IS_WEB = false;
-      var ENVIRONMENT_IS_WORKER = false;
-      var ENVIRONMENT_IS_NODE = false;
-      var ENVIRONMENT_IS_SHELL = false;
-      ENVIRONMENT_IS_WEB = typeof window === "object";
-      ENVIRONMENT_IS_WORKER = typeof importScripts === "function";
-      ENVIRONMENT_IS_NODE = typeof process === "object" && typeof process.versions === "object" && typeof process.versions.node === "string";
-      ENVIRONMENT_IS_SHELL = !ENVIRONMENT_IS_WEB && !ENVIRONMENT_IS_NODE && !ENVIRONMENT_IS_WORKER;
-      var ENVIRONMENT_IS_PTHREAD = Module["ENVIRONMENT_IS_PTHREAD"] || false;
-      if (ENVIRONMENT_IS_PTHREAD) {
-        buffer2 = Module["buffer"];
-      }
-      var scriptDirectory = "";
-      function locateFile(path) {
-        if (Module["locateFile"]) {
-          return Module["locateFile"](path, scriptDirectory);
-        }
-        return scriptDirectory + path;
-      }
-      var read_, readAsync, readBinary, setWindowTitle;
-      var nodeFS;
-      var nodePath;
-      if (ENVIRONMENT_IS_NODE) {
-        if (ENVIRONMENT_IS_WORKER) {
-          scriptDirectory = require_path().dirname(scriptDirectory) + "/";
-        } else {
-          scriptDirectory = __dirname + "/";
-        }
-        read_ = function shell_read(filename, binary) {
-          if (!nodeFS)
-            nodeFS = require("fs");
-          if (!nodePath)
-            nodePath = require_path();
-          filename = nodePath["normalize"](filename);
-          return nodeFS["readFileSync"](filename, binary ? null : "utf8");
-        };
-        readBinary = function readBinary2(filename) {
-          var ret = read_(filename, true);
-          if (!ret.buffer) {
-            ret = new Uint8Array(ret);
+var require_tfjs_backend_wasm_threaded_simd = __commonJS({
+  "node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.6.0/node_modules/@tensorflow/tfjs-backend-wasm/wasm-out/tfjs-backend-wasm-threaded-simd.js"(exports, module) {
+    var WasmBackendModuleThreadedSimd = function() {
+      var _scriptDir = typeof document !== "undefined" && document.currentScript ? document.currentScript.src : void 0;
+      if (typeof __filename !== "undefined")
+        _scriptDir = _scriptDir || __filename;
+      return function(WasmBackendModuleThreadedSimd2) {
+        WasmBackendModuleThreadedSimd2 = WasmBackendModuleThreadedSimd2 || {};
+        function GROWABLE_HEAP_I8() {
+          if (wasmMemory.buffer != buffer2) {
+            updateGlobalBufferAndViews(wasmMemory.buffer);
           }
-          assert3(ret.buffer);
-          return ret;
-        };
-        if (process["argv"].length > 1) {
-          thisProgram = process["argv"][1].replace(/\\/g, "/");
+          return HEAP8;
         }
-        arguments_ = process["argv"].slice(2);
-        process["on"]("uncaughtException", function(ex) {
-          if (!(ex instanceof ExitStatus)) {
-            throw ex;
+        function GROWABLE_HEAP_U8() {
+          if (wasmMemory.buffer != buffer2) {
+            updateGlobalBufferAndViews(wasmMemory.buffer);
           }
+          return HEAPU8;
+        }
+        function GROWABLE_HEAP_I32() {
+          if (wasmMemory.buffer != buffer2) {
+            updateGlobalBufferAndViews(wasmMemory.buffer);
+          }
+          return HEAP32;
+        }
+        function GROWABLE_HEAP_U32() {
+          if (wasmMemory.buffer != buffer2) {
+            updateGlobalBufferAndViews(wasmMemory.buffer);
+          }
+          return HEAPU32;
+        }
+        function GROWABLE_HEAP_F64() {
+          if (wasmMemory.buffer != buffer2) {
+            updateGlobalBufferAndViews(wasmMemory.buffer);
+          }
+          return HEAPF64;
+        }
+        var Module = typeof WasmBackendModuleThreadedSimd2 !== "undefined" ? WasmBackendModuleThreadedSimd2 : {};
+        var readyPromiseResolve, readyPromiseReject;
+        Module["ready"] = new Promise(function(resolve, reject) {
+          readyPromiseResolve = resolve;
+          readyPromiseReject = reject;
         });
-        process["on"]("unhandledRejection", abort);
-        quit_ = function(status) {
-          process["exit"](status);
-        };
-        Module["inspect"] = function() {
-          return "[Emscripten Module object]";
-        };
-        var nodeWorkerThreads;
-        try {
-          nodeWorkerThreads = require_worker_threads();
-        } catch (e) {
-          console.error('The "worker_threads" module is not supported in this node.js build - perhaps a newer version is needed?');
-          throw e;
-        }
-        global.Worker = nodeWorkerThreads.Worker;
-      } else if (ENVIRONMENT_IS_SHELL) {
-        if (typeof read != "undefined") {
-          read_ = function shell_read(f) {
-            return read(f);
-          };
-        }
-        readBinary = function readBinary2(f) {
-          var data;
-          if (typeof readbuffer === "function") {
-            return new Uint8Array(readbuffer(f));
+        var moduleOverrides = {};
+        var key;
+        for (key in Module) {
+          if (Module.hasOwnProperty(key)) {
+            moduleOverrides[key] = Module[key];
           }
-          data = read(f, "binary");
-          assert3(typeof data === "object");
-          return data;
+        }
+        var arguments_ = [];
+        var thisProgram = "./this.program";
+        var quit_ = function(status, toThrow) {
+          throw toThrow;
         };
-        if (typeof scriptArgs != "undefined") {
-          arguments_ = scriptArgs;
-        } else if (typeof arguments != "undefined") {
-          arguments_ = arguments;
+        var ENVIRONMENT_IS_WEB = false;
+        var ENVIRONMENT_IS_WORKER = false;
+        var ENVIRONMENT_IS_NODE = false;
+        var ENVIRONMENT_IS_SHELL = false;
+        ENVIRONMENT_IS_WEB = typeof window === "object";
+        ENVIRONMENT_IS_WORKER = typeof importScripts === "function";
+        ENVIRONMENT_IS_NODE = typeof process === "object" && typeof process.versions === "object" && typeof process.versions.node === "string";
+        ENVIRONMENT_IS_SHELL = !ENVIRONMENT_IS_WEB && !ENVIRONMENT_IS_NODE && !ENVIRONMENT_IS_WORKER;
+        var ENVIRONMENT_IS_PTHREAD = Module["ENVIRONMENT_IS_PTHREAD"] || false;
+        if (ENVIRONMENT_IS_PTHREAD) {
+          buffer2 = Module["buffer"];
         }
-        if (typeof quit === "function") {
-          quit_ = function(status) {
-            quit(status);
-          };
+        var scriptDirectory = "";
+        function locateFile(path) {
+          if (Module["locateFile"]) {
+            return Module["locateFile"](path, scriptDirectory);
+          }
+          return scriptDirectory + path;
         }
-        if (typeof print !== "undefined") {
-          if (typeof console === "undefined")
-            console = {};
-          console.log = print;
-          console.warn = console.error = typeof printErr !== "undefined" ? printErr : print;
-        }
-      } else if (ENVIRONMENT_IS_WEB || ENVIRONMENT_IS_WORKER) {
-        if (ENVIRONMENT_IS_WORKER) {
-          scriptDirectory = self.location.href;
-        } else if (typeof document !== "undefined" && document.currentScript) {
-          scriptDirectory = document.currentScript.src;
-        }
-        if (typeof _scriptDir !== "undefined" && _scriptDir) {
-          scriptDirectory = _scriptDir;
-        }
-        if (scriptDirectory.indexOf("blob:") !== 0) {
-          scriptDirectory = scriptDirectory.substr(0, scriptDirectory.lastIndexOf("/") + 1);
-        } else {
-          scriptDirectory = "";
-        }
+        var read_, readAsync, readBinary, setWindowTitle;
+        var nodeFS;
+        var nodePath;
         if (ENVIRONMENT_IS_NODE) {
+          if (ENVIRONMENT_IS_WORKER) {
+            scriptDirectory = require_path().dirname(scriptDirectory) + "/";
+          } else {
+            scriptDirectory = __dirname + "/";
+          }
           read_ = function shell_read(filename, binary) {
             if (!nodeFS)
-              nodeFS = require("fs");
+              nodeFS = __require("fs");
             if (!nodePath)
               nodePath = require_path();
             filename = nodePath["normalize"](filename);
@@ -1512,2288 +1478,233 @@ var require_tfjs_backend_wasm_threaded_simd = __commonJS((exports, module) => {
             assert3(ret.buffer);
             return ret;
           };
-        } else {
-          read_ = function(url) {
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", url, false);
-            xhr.send(null);
-            return xhr.responseText;
-          };
-          if (ENVIRONMENT_IS_WORKER) {
-            readBinary = function(url) {
-              var xhr = new XMLHttpRequest();
-              xhr.open("GET", url, false);
-              xhr.responseType = "arraybuffer";
-              xhr.send(null);
-              return new Uint8Array(xhr.response);
-            };
+          if (process["argv"].length > 1) {
+            thisProgram = process["argv"][1].replace(/\\/g, "/");
           }
-          readAsync = function(url, onload, onerror) {
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", url, true);
-            xhr.responseType = "arraybuffer";
-            xhr.onload = function() {
-              if (xhr.status == 200 || xhr.status == 0 && xhr.response) {
-                onload(xhr.response);
-                return;
-              }
-              onerror();
-            };
-            xhr.onerror = onerror;
-            xhr.send(null);
-          };
-        }
-        setWindowTitle = function(title) {
-          document.title = title;
-        };
-      } else {
-      }
-      if (ENVIRONMENT_IS_NODE) {
-        if (typeof performance === "undefined") {
-          global.performance = require_perf_hooks().performance;
-        }
-      }
-      var out = Module["print"] || console.log.bind(console);
-      var err = Module["printErr"] || console.warn.bind(console);
-      for (key in moduleOverrides) {
-        if (moduleOverrides.hasOwnProperty(key)) {
-          Module[key] = moduleOverrides[key];
-        }
-      }
-      moduleOverrides = null;
-      if (Module["arguments"])
-        arguments_ = Module["arguments"];
-      if (Module["thisProgram"])
-        thisProgram = Module["thisProgram"];
-      if (Module["quit"])
-        quit_ = Module["quit"];
-      var Atomics_load = Atomics.load;
-      var Atomics_store = Atomics.store;
-      var Atomics_compareExchange = Atomics.compareExchange;
-      var wasmBinary;
-      if (Module["wasmBinary"])
-        wasmBinary = Module["wasmBinary"];
-      var noExitRuntime = Module["noExitRuntime"] || true;
-      if (typeof WebAssembly !== "object") {
-        abort("no native wasm support detected");
-      }
-      var wasmMemory;
-      var wasmModule;
-      var ABORT = false;
-      var EXITSTATUS;
-      function assert3(condition, text) {
-        if (!condition) {
-          abort("Assertion failed: " + text);
-        }
-      }
-      function getCFunc(ident) {
-        var func2 = Module["_" + ident];
-        assert3(func2, "Cannot call unknown function " + ident + ", make sure it is exported");
-        return func2;
-      }
-      function ccall(ident, returnType, argTypes, args, opts) {
-        var toC = {string: function(str) {
-          var ret2 = 0;
-          if (str !== null && str !== void 0 && str !== 0) {
-            var len = (str.length << 2) + 1;
-            ret2 = stackAlloc(len);
-            stringToUTF8(str, ret2, len);
-          }
-          return ret2;
-        }, array: function(arr) {
-          var ret2 = stackAlloc(arr.length);
-          writeArrayToMemory(arr, ret2);
-          return ret2;
-        }};
-        function convertReturnValue(ret2) {
-          if (returnType === "string")
-            return UTF8ToString(ret2);
-          if (returnType === "boolean")
-            return Boolean(ret2);
-          return ret2;
-        }
-        var func2 = getCFunc(ident);
-        var cArgs = [];
-        var stack2 = 0;
-        if (args) {
-          for (var i = 0; i < args.length; i++) {
-            var converter = toC[argTypes[i]];
-            if (converter) {
-              if (stack2 === 0)
-                stack2 = stackSave();
-              cArgs[i] = converter(args[i]);
-            } else {
-              cArgs[i] = args[i];
+          arguments_ = process["argv"].slice(2);
+          process["on"]("uncaughtException", function(ex) {
+            if (!(ex instanceof ExitStatus)) {
+              throw ex;
             }
-          }
-        }
-        var ret = func2.apply(null, cArgs);
-        ret = convertReturnValue(ret);
-        if (stack2 !== 0)
-          stackRestore(stack2);
-        return ret;
-      }
-      function cwrap(ident, returnType, argTypes, opts) {
-        argTypes = argTypes || [];
-        var numericArgs = argTypes.every(function(type) {
-          return type === "number";
-        });
-        var numericRet = returnType !== "string";
-        if (numericRet && numericArgs && !opts) {
-          return getCFunc(ident);
-        }
-        return function() {
-          return ccall(ident, returnType, argTypes, arguments, opts);
-        };
-      }
-      function UTF8ArrayToString(heap, idx, maxBytesToRead) {
-        var endIdx = idx + maxBytesToRead;
-        var str = "";
-        while (!(idx >= endIdx)) {
-          var u0 = heap[idx++];
-          if (!u0)
-            return str;
-          if (!(u0 & 128)) {
-            str += String.fromCharCode(u0);
-            continue;
-          }
-          var u1 = heap[idx++] & 63;
-          if ((u0 & 224) == 192) {
-            str += String.fromCharCode((u0 & 31) << 6 | u1);
-            continue;
-          }
-          var u2 = heap[idx++] & 63;
-          if ((u0 & 240) == 224) {
-            u0 = (u0 & 15) << 12 | u1 << 6 | u2;
-          } else {
-            u0 = (u0 & 7) << 18 | u1 << 12 | u2 << 6 | heap[idx++] & 63;
-          }
-          if (u0 < 65536) {
-            str += String.fromCharCode(u0);
-          } else {
-            var ch = u0 - 65536;
-            str += String.fromCharCode(55296 | ch >> 10, 56320 | ch & 1023);
-          }
-        }
-        return str;
-      }
-      function UTF8ToString(ptr, maxBytesToRead) {
-        return ptr ? UTF8ArrayToString(GROWABLE_HEAP_U8(), ptr, maxBytesToRead) : "";
-      }
-      function stringToUTF8Array(str, heap, outIdx, maxBytesToWrite) {
-        if (!(maxBytesToWrite > 0))
-          return 0;
-        var startIdx = outIdx;
-        var endIdx = outIdx + maxBytesToWrite - 1;
-        for (var i = 0; i < str.length; ++i) {
-          var u = str.charCodeAt(i);
-          if (u >= 55296 && u <= 57343) {
-            var u1 = str.charCodeAt(++i);
-            u = 65536 + ((u & 1023) << 10) | u1 & 1023;
-          }
-          if (u <= 127) {
-            if (outIdx >= endIdx)
-              break;
-            heap[outIdx++] = u;
-          } else if (u <= 2047) {
-            if (outIdx + 1 >= endIdx)
-              break;
-            heap[outIdx++] = 192 | u >> 6;
-            heap[outIdx++] = 128 | u & 63;
-          } else if (u <= 65535) {
-            if (outIdx + 2 >= endIdx)
-              break;
-            heap[outIdx++] = 224 | u >> 12;
-            heap[outIdx++] = 128 | u >> 6 & 63;
-            heap[outIdx++] = 128 | u & 63;
-          } else {
-            if (outIdx + 3 >= endIdx)
-              break;
-            heap[outIdx++] = 240 | u >> 18;
-            heap[outIdx++] = 128 | u >> 12 & 63;
-            heap[outIdx++] = 128 | u >> 6 & 63;
-            heap[outIdx++] = 128 | u & 63;
-          }
-        }
-        heap[outIdx] = 0;
-        return outIdx - startIdx;
-      }
-      function stringToUTF8(str, outPtr, maxBytesToWrite) {
-        return stringToUTF8Array(str, GROWABLE_HEAP_U8(), outPtr, maxBytesToWrite);
-      }
-      function lengthBytesUTF8(str) {
-        var len = 0;
-        for (var i = 0; i < str.length; ++i) {
-          var u = str.charCodeAt(i);
-          if (u >= 55296 && u <= 57343)
-            u = 65536 + ((u & 1023) << 10) | str.charCodeAt(++i) & 1023;
-          if (u <= 127)
-            ++len;
-          else if (u <= 2047)
-            len += 2;
-          else if (u <= 65535)
-            len += 3;
-          else
-            len += 4;
-        }
-        return len;
-      }
-      function writeArrayToMemory(array2, buffer3) {
-        GROWABLE_HEAP_I8().set(array2, buffer3);
-      }
-      function alignUp(x, multiple) {
-        if (x % multiple > 0) {
-          x += multiple - x % multiple;
-        }
-        return x;
-      }
-      var buffer2, HEAP8, HEAPU8, HEAP16, HEAPU16, HEAP32, HEAPU32, HEAPF32, HEAPF64;
-      function updateGlobalBufferAndViews(buf) {
-        buffer2 = buf;
-        Module["HEAP8"] = HEAP8 = new Int8Array(buf);
-        Module["HEAP16"] = HEAP16 = new Int16Array(buf);
-        Module["HEAP32"] = HEAP32 = new Int32Array(buf);
-        Module["HEAPU8"] = HEAPU8 = new Uint8Array(buf);
-        Module["HEAPU16"] = HEAPU16 = new Uint16Array(buf);
-        Module["HEAPU32"] = HEAPU32 = new Uint32Array(buf);
-        Module["HEAPF32"] = HEAPF32 = new Float32Array(buf);
-        Module["HEAPF64"] = HEAPF64 = new Float64Array(buf);
-      }
-      var INITIAL_MEMORY = Module["INITIAL_MEMORY"] || 16777216;
-      if (ENVIRONMENT_IS_PTHREAD) {
-        wasmMemory = Module["wasmMemory"];
-        buffer2 = Module["buffer"];
-      } else {
-        if (Module["wasmMemory"]) {
-          wasmMemory = Module["wasmMemory"];
-        } else {
-          wasmMemory = new WebAssembly.Memory({initial: INITIAL_MEMORY / 65536, maximum: 2147483648 / 65536, shared: true});
-          if (!(wasmMemory.buffer instanceof SharedArrayBuffer)) {
-            err("requested a shared WebAssembly.Memory but the returned buffer is not a SharedArrayBuffer, indicating that while the browser has SharedArrayBuffer it does not have WebAssembly threads support - you may need to set a flag");
-            if (ENVIRONMENT_IS_NODE) {
-              console.log("(on node you may need: --experimental-wasm-threads --experimental-wasm-bulk-memory and also use a recent version)");
-            }
-            throw Error("bad memory");
-          }
-        }
-      }
-      if (wasmMemory) {
-        buffer2 = wasmMemory.buffer;
-      }
-      INITIAL_MEMORY = buffer2.byteLength;
-      updateGlobalBufferAndViews(buffer2);
-      var wasmTable;
-      var __ATPRERUN__ = [];
-      var __ATINIT__ = [];
-      var __ATMAIN__ = [];
-      var __ATEXIT__ = [];
-      var __ATPOSTRUN__ = [];
-      var runtimeInitialized = false;
-      var runtimeExited = false;
-      if (!ENVIRONMENT_IS_PTHREAD)
-        __ATINIT__.push({func: function() {
-          ___wasm_call_ctors();
-        }});
-      function preRun() {
-        if (ENVIRONMENT_IS_PTHREAD)
-          return;
-        if (Module["preRun"]) {
-          if (typeof Module["preRun"] == "function")
-            Module["preRun"] = [Module["preRun"]];
-          while (Module["preRun"].length) {
-            addOnPreRun(Module["preRun"].shift());
-          }
-        }
-        callRuntimeCallbacks(__ATPRERUN__);
-      }
-      function initRuntime() {
-        runtimeInitialized = true;
-        if (ENVIRONMENT_IS_PTHREAD)
-          return;
-        callRuntimeCallbacks(__ATINIT__);
-      }
-      function preMain() {
-        if (ENVIRONMENT_IS_PTHREAD)
-          return;
-        callRuntimeCallbacks(__ATMAIN__);
-      }
-      function exitRuntime() {
-        if (ENVIRONMENT_IS_PTHREAD)
-          return;
-        runtimeExited = true;
-      }
-      function postRun() {
-        if (ENVIRONMENT_IS_PTHREAD)
-          return;
-        if (Module["postRun"]) {
-          if (typeof Module["postRun"] == "function")
-            Module["postRun"] = [Module["postRun"]];
-          while (Module["postRun"].length) {
-            addOnPostRun(Module["postRun"].shift());
-          }
-        }
-        callRuntimeCallbacks(__ATPOSTRUN__);
-      }
-      function addOnPreRun(cb) {
-        __ATPRERUN__.unshift(cb);
-      }
-      function addOnPostRun(cb) {
-        __ATPOSTRUN__.unshift(cb);
-      }
-      var runDependencies = 0;
-      var runDependencyWatcher = null;
-      var dependenciesFulfilled = null;
-      function addRunDependency(id) {
-        assert3(!ENVIRONMENT_IS_PTHREAD, "addRunDependency cannot be used in a pthread worker");
-        runDependencies++;
-        if (Module["monitorRunDependencies"]) {
-          Module["monitorRunDependencies"](runDependencies);
-        }
-      }
-      function removeRunDependency(id) {
-        runDependencies--;
-        if (Module["monitorRunDependencies"]) {
-          Module["monitorRunDependencies"](runDependencies);
-        }
-        if (runDependencies == 0) {
-          if (runDependencyWatcher !== null) {
-            clearInterval(runDependencyWatcher);
-            runDependencyWatcher = null;
-          }
-          if (dependenciesFulfilled) {
-            var callback = dependenciesFulfilled;
-            dependenciesFulfilled = null;
-            callback();
-          }
-        }
-      }
-      Module["preloadedImages"] = {};
-      Module["preloadedAudios"] = {};
-      function abort(what) {
-        if (Module["onAbort"]) {
-          Module["onAbort"](what);
-        }
-        if (ENVIRONMENT_IS_PTHREAD)
-          console.error("Pthread aborting at " + new Error().stack);
-        what += "";
-        err(what);
-        ABORT = true;
-        EXITSTATUS = 1;
-        what = "abort(" + what + "). Build with -s ASSERTIONS=1 for more info.";
-        var e = new WebAssembly.RuntimeError(what);
-        readyPromiseReject(e);
-        throw e;
-      }
-      function hasPrefix(str, prefix) {
-        return String.prototype.startsWith ? str.startsWith(prefix) : str.indexOf(prefix) === 0;
-      }
-      var dataURIPrefix = "data:application/octet-stream;base64,";
-      function isDataURI(filename) {
-        return hasPrefix(filename, dataURIPrefix);
-      }
-      var fileURIPrefix = "file://";
-      function isFileURI(filename) {
-        return hasPrefix(filename, fileURIPrefix);
-      }
-      var wasmBinaryFile = "tfjs-backend-wasm-threaded-simd.wasm";
-      if (!isDataURI(wasmBinaryFile)) {
-        wasmBinaryFile = locateFile(wasmBinaryFile);
-      }
-      function getBinary(file) {
-        try {
-          if (file == wasmBinaryFile && wasmBinary) {
-            return new Uint8Array(wasmBinary);
-          }
-          if (readBinary) {
-            return readBinary(file);
-          } else {
-            throw "both async and sync fetching of the wasm failed";
-          }
-        } catch (err2) {
-          abort(err2);
-        }
-      }
-      function getBinaryPromise() {
-        if (!wasmBinary && (ENVIRONMENT_IS_WEB || ENVIRONMENT_IS_WORKER)) {
-          if (typeof fetch === "function" && !isFileURI(wasmBinaryFile)) {
-            return fetch(wasmBinaryFile, {credentials: "same-origin"}).then(function(response) {
-              if (!response["ok"]) {
-                throw "failed to load wasm binary file at '" + wasmBinaryFile + "'";
-              }
-              return response["arrayBuffer"]();
-            }).catch(function() {
-              return getBinary(wasmBinaryFile);
-            });
-          } else {
-            if (readAsync) {
-              return new Promise(function(resolve, reject) {
-                readAsync(wasmBinaryFile, function(response) {
-                  resolve(new Uint8Array(response));
-                }, reject);
-              });
-            }
-          }
-        }
-        return Promise.resolve().then(function() {
-          return getBinary(wasmBinaryFile);
-        });
-      }
-      function createWasm() {
-        var info = {a: asmLibraryArg};
-        function receiveInstance(instance, module2) {
-          var exports3 = instance.exports;
-          Module["asm"] = exports3;
-          wasmTable = Module["asm"]["F"];
-          wasmModule = module2;
-          if (!ENVIRONMENT_IS_PTHREAD) {
-            var numWorkersToLoad = PThread.unusedWorkers.length;
-            PThread.unusedWorkers.forEach(function(w) {
-              PThread.loadWasmModuleToWorker(w, function() {
-                if (!--numWorkersToLoad)
-                  removeRunDependency("wasm-instantiate");
-              });
-            });
-          }
-        }
-        if (!ENVIRONMENT_IS_PTHREAD) {
-          addRunDependency("wasm-instantiate");
-        }
-        function receiveInstantiatedSource(output) {
-          receiveInstance(output["instance"], output["module"]);
-        }
-        function instantiateArrayBuffer(receiver) {
-          return getBinaryPromise().then(function(binary) {
-            return WebAssembly.instantiate(binary, info);
-          }).then(receiver, function(reason) {
-            err("failed to asynchronously prepare wasm: " + reason);
-            abort(reason);
           });
-        }
-        function instantiateAsync() {
-          if (!wasmBinary && typeof WebAssembly.instantiateStreaming === "function" && !isDataURI(wasmBinaryFile) && !isFileURI(wasmBinaryFile) && typeof fetch === "function") {
-            return fetch(wasmBinaryFile, {credentials: "same-origin"}).then(function(response) {
-              var result = WebAssembly.instantiateStreaming(response, info);
-              return result.then(receiveInstantiatedSource, function(reason) {
-                err("wasm streaming compile failed: " + reason);
-                err("falling back to ArrayBuffer instantiation");
-                return instantiateArrayBuffer(receiveInstantiatedSource);
-              });
-            });
-          } else {
-            return instantiateArrayBuffer(receiveInstantiatedSource);
-          }
-        }
-        if (Module["instantiateWasm"]) {
-          try {
-            var exports2 = Module["instantiateWasm"](info, receiveInstance);
-            return exports2;
-          } catch (e) {
-            err("Module.instantiateWasm callback failed with error: " + e);
-            return false;
-          }
-        }
-        instantiateAsync().catch(readyPromiseReject);
-        return {};
-      }
-      var ASM_CONSTS = {9816: function() {
-        throw "Canceled!";
-      }, 9834: function($0, $1) {
-        setTimeout(function() {
-          __emscripten_do_dispatch_to_thread($0, $1);
-        }, 0);
-      }};
-      function initPthreadsJS() {
-        PThread.initRuntime();
-      }
-      function callRuntimeCallbacks(callbacks2) {
-        while (callbacks2.length > 0) {
-          var callback = callbacks2.shift();
-          if (typeof callback == "function") {
-            callback(Module);
-            continue;
-          }
-          var func2 = callback.func;
-          if (typeof func2 === "number") {
-            if (callback.arg === void 0) {
-              wasmTable.get(func2)();
-            } else {
-              wasmTable.get(func2)(callback.arg);
-            }
-          } else {
-            func2(callback.arg === void 0 ? null : callback.arg);
-          }
-        }
-      }
-      function _emscripten_futex_wake(addr, count2) {
-        if (addr <= 0 || addr > GROWABLE_HEAP_I8().length || addr & true || count2 < 0)
-          return -28;
-        if (count2 == 0)
-          return 0;
-        if (count2 >= 2147483647)
-          count2 = Infinity;
-        var mainThreadWaitAddress = Atomics.load(GROWABLE_HEAP_I32(), __emscripten_main_thread_futex >> 2);
-        var mainThreadWoken = 0;
-        if (mainThreadWaitAddress == addr) {
-          var loadedAddr = Atomics.compareExchange(GROWABLE_HEAP_I32(), __emscripten_main_thread_futex >> 2, mainThreadWaitAddress, 0);
-          if (loadedAddr == mainThreadWaitAddress) {
-            --count2;
-            mainThreadWoken = 1;
-            if (count2 <= 0)
-              return 1;
-          }
-        }
-        var ret = Atomics.notify(GROWABLE_HEAP_I32(), addr >> 2, count2);
-        if (ret >= 0)
-          return ret + mainThreadWoken;
-        throw "Atomics.notify returned an unexpected value " + ret;
-      }
-      Module["_emscripten_futex_wake"] = _emscripten_futex_wake;
-      function killThread(pthread_ptr) {
-        if (ENVIRONMENT_IS_PTHREAD)
-          throw "Internal Error! killThread() can only ever be called from main application thread!";
-        if (!pthread_ptr)
-          throw "Internal Error! Null pthread_ptr in killThread!";
-        GROWABLE_HEAP_I32()[pthread_ptr + 12 >> 2] = 0;
-        var pthread = PThread.pthreads[pthread_ptr];
-        pthread.worker.terminate();
-        PThread.freeThreadData(pthread);
-        PThread.runningWorkers.splice(PThread.runningWorkers.indexOf(pthread.worker), 1);
-        pthread.worker.pthread = void 0;
-      }
-      function cancelThread(pthread_ptr) {
-        if (ENVIRONMENT_IS_PTHREAD)
-          throw "Internal Error! cancelThread() can only ever be called from main application thread!";
-        if (!pthread_ptr)
-          throw "Internal Error! Null pthread_ptr in cancelThread!";
-        var pthread = PThread.pthreads[pthread_ptr];
-        pthread.worker.postMessage({cmd: "cancel"});
-      }
-      function cleanupThread(pthread_ptr) {
-        if (ENVIRONMENT_IS_PTHREAD)
-          throw "Internal Error! cleanupThread() can only ever be called from main application thread!";
-        if (!pthread_ptr)
-          throw "Internal Error! Null pthread_ptr in cleanupThread!";
-        var pthread = PThread.pthreads[pthread_ptr];
-        if (pthread) {
-          GROWABLE_HEAP_I32()[pthread_ptr + 12 >> 2] = 0;
-          var worker = pthread.worker;
-          PThread.returnWorkerToPool(worker);
-        }
-      }
-      var PThread = {unusedWorkers: [], runningWorkers: [], initMainThreadBlock: function() {
-        var pthreadPoolSize = Math.min(4, Math.max(1, (navigator.hardwareConcurrency || 1) / 2));
-        for (var i = 0; i < pthreadPoolSize; ++i) {
-          PThread.allocateUnusedWorker();
-        }
-      }, initRuntime: function() {
-        var tb = _malloc(228);
-        for (var i = 0; i < 228 / 4; ++i)
-          GROWABLE_HEAP_U32()[tb / 4 + i] = 0;
-        GROWABLE_HEAP_I32()[tb + 12 >> 2] = tb;
-        var headPtr = tb + 152;
-        GROWABLE_HEAP_I32()[headPtr >> 2] = headPtr;
-        var tlsMemory = _malloc(512);
-        for (var i = 0; i < 128; ++i)
-          GROWABLE_HEAP_U32()[tlsMemory / 4 + i] = 0;
-        Atomics.store(GROWABLE_HEAP_U32(), tb + 100 >> 2, tlsMemory);
-        Atomics.store(GROWABLE_HEAP_U32(), tb + 40 >> 2, tb);
-        __emscripten_thread_init(tb, !ENVIRONMENT_IS_WORKER, 1);
-        _emscripten_register_main_browser_thread_id(tb);
-      }, initWorker: function() {
-      }, pthreads: {}, threadExitHandlers: [], setThreadStatus: function() {
-      }, runExitHandlers: function() {
-        while (PThread.threadExitHandlers.length > 0) {
-          PThread.threadExitHandlers.pop()();
-        }
-        if (ENVIRONMENT_IS_PTHREAD && _pthread_self())
-          ___pthread_tsd_run_dtors();
-      }, runExitHandlersAndDeinitThread: function(tb, exitCode) {
-        Atomics.store(GROWABLE_HEAP_U32(), tb + 56 >> 2, 1);
-        Atomics.store(GROWABLE_HEAP_U32(), tb + 60 >> 2, 0);
-        PThread.runExitHandlers();
-        Atomics.store(GROWABLE_HEAP_U32(), tb + 4 >> 2, exitCode);
-        Atomics.store(GROWABLE_HEAP_U32(), tb + 0 >> 2, 1);
-        _emscripten_futex_wake(tb + 0, 2147483647);
-        __emscripten_thread_init(0, 0, 0);
-      }, threadExit: function(exitCode) {
-        var tb = _pthread_self();
-        if (tb) {
-          PThread.runExitHandlersAndDeinitThread(tb, exitCode);
-          if (ENVIRONMENT_IS_PTHREAD) {
-            postMessage({cmd: "exit"});
-          }
-        }
-      }, threadCancel: function() {
-        PThread.runExitHandlersAndDeinitThread(_pthread_self(), -1);
-        postMessage({cmd: "cancelDone"});
-      }, terminateAllThreads: function() {
-        for (var t in PThread.pthreads) {
-          var pthread = PThread.pthreads[t];
-          if (pthread && pthread.worker) {
-            PThread.returnWorkerToPool(pthread.worker);
-          }
-        }
-        PThread.pthreads = {};
-        for (var i = 0; i < PThread.unusedWorkers.length; ++i) {
-          var worker = PThread.unusedWorkers[i];
-          worker.terminate();
-        }
-        PThread.unusedWorkers = [];
-        for (var i = 0; i < PThread.runningWorkers.length; ++i) {
-          var worker = PThread.runningWorkers[i];
-          var pthread = worker.pthread;
-          PThread.freeThreadData(pthread);
-          worker.terminate();
-        }
-        PThread.runningWorkers = [];
-      }, freeThreadData: function(pthread) {
-        if (!pthread)
-          return;
-        if (pthread.threadInfoStruct) {
-          var tlsMemory = GROWABLE_HEAP_I32()[pthread.threadInfoStruct + 100 >> 2];
-          GROWABLE_HEAP_I32()[pthread.threadInfoStruct + 100 >> 2] = 0;
-          _free(tlsMemory);
-          _free(pthread.threadInfoStruct);
-        }
-        pthread.threadInfoStruct = 0;
-        if (pthread.allocatedOwnStack && pthread.stackBase)
-          _free(pthread.stackBase);
-        pthread.stackBase = 0;
-        if (pthread.worker)
-          pthread.worker.pthread = null;
-      }, returnWorkerToPool: function(worker) {
-        PThread.runWithoutMainThreadQueuedCalls(function() {
-          delete PThread.pthreads[worker.pthread.threadInfoStruct];
-          PThread.unusedWorkers.push(worker);
-          PThread.runningWorkers.splice(PThread.runningWorkers.indexOf(worker), 1);
-          PThread.freeThreadData(worker.pthread);
-          worker.pthread = void 0;
-        });
-      }, runWithoutMainThreadQueuedCalls: function(func2) {
-        GROWABLE_HEAP_I32()[__emscripten_allow_main_runtime_queued_calls >> 2] = 0;
-        try {
-          func2();
-        } finally {
-          GROWABLE_HEAP_I32()[__emscripten_allow_main_runtime_queued_calls >> 2] = 1;
-        }
-      }, receiveObjectTransfer: function(data) {
-      }, loadWasmModuleToWorker: function(worker, onFinishedLoading) {
-        worker.onmessage = function(e) {
-          var d = e["data"];
-          var cmd = d["cmd"];
-          if (worker.pthread)
-            PThread.currentProxiedOperationCallerThread = worker.pthread.threadInfoStruct;
-          if (d["targetThread"] && d["targetThread"] != _pthread_self()) {
-            var thread = PThread.pthreads[d.targetThread];
-            if (thread) {
-              thread.worker.postMessage(e.data, d["transferList"]);
-            } else {
-              console.error('Internal error! Worker sent a message "' + cmd + '" to target pthread ' + d["targetThread"] + ", but that thread no longer exists!");
-            }
-            PThread.currentProxiedOperationCallerThread = void 0;
-            return;
-          }
-          if (cmd === "processQueuedMainThreadWork") {
-            _emscripten_main_thread_process_queued_calls();
-          } else if (cmd === "spawnThread") {
-            spawnThread(e.data);
-          } else if (cmd === "cleanupThread") {
-            cleanupThread(d["thread"]);
-          } else if (cmd === "killThread") {
-            killThread(d["thread"]);
-          } else if (cmd === "cancelThread") {
-            cancelThread(d["thread"]);
-          } else if (cmd === "loaded") {
-            worker.loaded = true;
-            if (onFinishedLoading)
-              onFinishedLoading(worker);
-            if (worker.runPthread) {
-              worker.runPthread();
-              delete worker.runPthread;
-            }
-          } else if (cmd === "print") {
-            out("Thread " + d["threadId"] + ": " + d["text"]);
-          } else if (cmd === "printErr") {
-            err("Thread " + d["threadId"] + ": " + d["text"]);
-          } else if (cmd === "alert") {
-            alert("Thread " + d["threadId"] + ": " + d["text"]);
-          } else if (cmd === "exit") {
-            var detached = worker.pthread && Atomics.load(GROWABLE_HEAP_U32(), worker.pthread.threadInfoStruct + 64 >> 2);
-            if (detached) {
-              PThread.returnWorkerToPool(worker);
-            }
-          } else if (cmd === "exitProcess") {
-            try {
-              exit(d["returnCode"]);
-            } catch (e2) {
-              if (e2 instanceof ExitStatus)
-                return;
-              throw e2;
-            }
-          } else if (cmd === "cancelDone") {
-            PThread.returnWorkerToPool(worker);
-          } else if (cmd === "objectTransfer") {
-            PThread.receiveObjectTransfer(e.data);
-          } else if (e.data.target === "setimmediate") {
-            worker.postMessage(e.data);
-          } else {
-            err("worker sent an unknown command " + cmd);
-          }
-          PThread.currentProxiedOperationCallerThread = void 0;
-        };
-        worker.onerror = function(e) {
-          err("pthread sent an error! " + e.filename + ":" + e.lineno + ": " + e.message);
-        };
-        if (ENVIRONMENT_IS_NODE) {
-          worker.on("message", function(data) {
-            worker.onmessage({data});
-          });
-          worker.on("error", function(data) {
-            worker.onerror(data);
-          });
-          worker.on("exit", function(data) {
-          });
-        }
-        worker.postMessage({cmd: "load", urlOrBlob: Module["mainScriptUrlOrBlob"] || _scriptDir, wasmMemory, wasmModule});
-      }, allocateUnusedWorker: function() {
-        var pthreadMainJs = locateFile("tfjs-backend-wasm-threaded-simd.worker.js");
-        PThread.unusedWorkers.push(new Worker(pthreadMainJs));
-      }, getNewWorker: function() {
-        if (PThread.unusedWorkers.length == 0) {
-          PThread.allocateUnusedWorker();
-          PThread.loadWasmModuleToWorker(PThread.unusedWorkers[0]);
-        }
-        if (PThread.unusedWorkers.length > 0)
-          return PThread.unusedWorkers.pop();
-        else
-          return null;
-      }, busySpinWait: function(msecs) {
-        var t = performance.now() + msecs;
-        while (performance.now() < t) {
-        }
-      }};
-      function establishStackSpace(stackTop, stackMax) {
-        _emscripten_stack_set_limits(stackTop, stackMax);
-        stackRestore(stackTop);
-      }
-      Module["establishStackSpace"] = establishStackSpace;
-      function getNoExitRuntime() {
-        return noExitRuntime;
-      }
-      Module["getNoExitRuntime"] = getNoExitRuntime;
-      function invokeEntryPoint(ptr, arg) {
-        return wasmTable.get(ptr)(arg);
-      }
-      Module["invokeEntryPoint"] = invokeEntryPoint;
-      function ___assert_fail(condition, filename, line, func2) {
-        abort("Assertion failed: " + UTF8ToString(condition) + ", at: " + [filename ? UTF8ToString(filename) : "unknown filename", line, func2 ? UTF8ToString(func2) : "unknown function"]);
-      }
-      function ___call_main(argc, argv) {
-        var returnCode = _main(argc, argv);
-      }
-      var _emscripten_get_now;
-      if (ENVIRONMENT_IS_NODE) {
-        _emscripten_get_now = function() {
-          var t = process["hrtime"]();
-          return t[0] * 1e3 + t[1] / 1e6;
-        };
-      } else if (ENVIRONMENT_IS_PTHREAD) {
-        _emscripten_get_now = function() {
-          return performance.now() - Module["__performance_now_clock_drift"];
-        };
-      } else if (typeof dateNow !== "undefined") {
-        _emscripten_get_now = dateNow;
-      } else
-        _emscripten_get_now = function() {
-          return performance.now();
-        };
-      function setErrNo(value) {
-        GROWABLE_HEAP_I32()[___errno_location() >> 2] = value;
-        return value;
-      }
-      function _atexit(func2, arg) {
-        if (ENVIRONMENT_IS_PTHREAD)
-          return _emscripten_proxy_to_main_thread_js(1, 1, func2, arg);
-      }
-      function __emscripten_notify_thread_queue(targetThreadId, mainThreadId) {
-        if (targetThreadId == mainThreadId) {
-          postMessage({cmd: "processQueuedMainThreadWork"});
-        } else if (ENVIRONMENT_IS_PTHREAD) {
-          postMessage({targetThread: targetThreadId, cmd: "processThreadQueue"});
-        } else {
-          var pthread = PThread.pthreads[targetThreadId];
-          var worker = pthread && pthread.worker;
-          if (!worker) {
-            return;
-          }
-          worker.postMessage({cmd: "processThreadQueue"});
-        }
-        return 1;
-      }
-      function _abort() {
-        abort();
-      }
-      function _emscripten_asm_const_int(code, sigPtr, argbuf) {
-        var args = readAsmConstArgs(sigPtr, argbuf);
-        return ASM_CONSTS[code].apply(null, args);
-      }
-      function _emscripten_conditional_set_current_thread_status(expectedStatus, newStatus) {
-      }
-      function _emscripten_futex_wait(addr, val, timeout) {
-        if (addr <= 0 || addr > GROWABLE_HEAP_I8().length || addr & true)
-          return -28;
-        if (!ENVIRONMENT_IS_WEB) {
-          var ret = Atomics.wait(GROWABLE_HEAP_I32(), addr >> 2, val, timeout);
-          if (ret === "timed-out")
-            return -73;
-          if (ret === "not-equal")
-            return -6;
-          if (ret === "ok")
-            return 0;
-          throw "Atomics.wait returned an unexpected value " + ret;
-        } else {
-          if (Atomics.load(GROWABLE_HEAP_I32(), addr >> 2) != val) {
-            return -6;
-          }
-          var tNow = performance.now();
-          var tEnd = tNow + timeout;
-          var lastAddr = Atomics.exchange(GROWABLE_HEAP_I32(), __emscripten_main_thread_futex >> 2, addr);
-          while (1) {
-            tNow = performance.now();
-            if (tNow > tEnd) {
-              lastAddr = Atomics.exchange(GROWABLE_HEAP_I32(), __emscripten_main_thread_futex >> 2, 0);
-              return -73;
-            }
-            lastAddr = Atomics.exchange(GROWABLE_HEAP_I32(), __emscripten_main_thread_futex >> 2, 0);
-            if (lastAddr == 0) {
-              break;
-            }
-            _emscripten_main_thread_process_queued_calls();
-            if (Atomics.load(GROWABLE_HEAP_I32(), addr >> 2) != val) {
-              return -6;
-            }
-            lastAddr = Atomics.exchange(GROWABLE_HEAP_I32(), __emscripten_main_thread_futex >> 2, addr);
-          }
-          return 0;
-        }
-      }
-      function _emscripten_memcpy_big(dest, src, num) {
-        GROWABLE_HEAP_U8().copyWithin(dest, src, src + num);
-      }
-      function _emscripten_num_logical_cores() {
-        if (ENVIRONMENT_IS_NODE)
-          return require("os").cpus().length;
-        return navigator["hardwareConcurrency"];
-      }
-      function _emscripten_proxy_to_main_thread_js(index, sync) {
-        var numCallArgs = arguments.length - 2;
-        var stack2 = stackSave();
-        var serializedNumCallArgs = numCallArgs;
-        var args = stackAlloc(serializedNumCallArgs * 8);
-        var b = args >> 3;
-        for (var i = 0; i < numCallArgs; i++) {
-          var arg = arguments[2 + i];
-          GROWABLE_HEAP_F64()[b + i] = arg;
-        }
-        var ret = _emscripten_run_in_main_runtime_thread_js(index, serializedNumCallArgs, args, sync);
-        stackRestore(stack2);
-        return ret;
-      }
-      var _emscripten_receive_on_main_thread_js_callArgs = [];
-      var readAsmConstArgsArray = [];
-      function readAsmConstArgs(sigPtr, buf) {
-        readAsmConstArgsArray.length = 0;
-        var ch;
-        buf >>= 2;
-        while (ch = GROWABLE_HEAP_U8()[sigPtr++]) {
-          var double = ch < 105;
-          if (double && buf & 1)
-            buf++;
-          readAsmConstArgsArray.push(double ? GROWABLE_HEAP_F64()[buf++ >> 1] : GROWABLE_HEAP_I32()[buf]);
-          ++buf;
-        }
-        return readAsmConstArgsArray;
-      }
-      function _emscripten_receive_on_main_thread_js(index, numCallArgs, args) {
-        _emscripten_receive_on_main_thread_js_callArgs.length = numCallArgs;
-        var b = args >> 3;
-        for (var i = 0; i < numCallArgs; i++) {
-          _emscripten_receive_on_main_thread_js_callArgs[i] = GROWABLE_HEAP_F64()[b + i];
-        }
-        var isEmAsmConst = index < 0;
-        var func2 = !isEmAsmConst ? proxiedFunctionTable[index] : ASM_CONSTS[-index - 1];
-        return func2.apply(null, _emscripten_receive_on_main_thread_js_callArgs);
-      }
-      function _emscripten_get_heap_size() {
-        return GROWABLE_HEAP_U8().length;
-      }
-      function emscripten_realloc_buffer(size) {
-        try {
-          wasmMemory.grow(size - buffer2.byteLength + 65535 >>> 16);
-          updateGlobalBufferAndViews(wasmMemory.buffer);
-          return 1;
-        } catch (e) {
-        }
-      }
-      function _emscripten_resize_heap(requestedSize) {
-        var oldSize = _emscripten_get_heap_size();
-        if (requestedSize <= oldSize) {
-          return false;
-        }
-        var maxHeapSize = 2147483648;
-        if (requestedSize > maxHeapSize) {
-          return false;
-        }
-        for (var cutDown = 1; cutDown <= 4; cutDown *= 2) {
-          var overGrownHeapSize = oldSize * (1 + 0.2 / cutDown);
-          overGrownHeapSize = Math.min(overGrownHeapSize, requestedSize + 100663296);
-          var newSize = Math.min(maxHeapSize, alignUp(Math.max(requestedSize, overGrownHeapSize), 65536));
-          var replacement = emscripten_realloc_buffer(newSize);
-          if (replacement) {
-            return true;
-          }
-        }
-        return false;
-      }
-      var JSEvents = {inEventHandler: 0, removeAllEventListeners: function() {
-        for (var i = JSEvents.eventHandlers.length - 1; i >= 0; --i) {
-          JSEvents._removeHandler(i);
-        }
-        JSEvents.eventHandlers = [];
-        JSEvents.deferredCalls = [];
-      }, registerRemoveEventListeners: function() {
-        if (!JSEvents.removeEventListenersRegistered) {
-          __ATEXIT__.push(JSEvents.removeAllEventListeners);
-          JSEvents.removeEventListenersRegistered = true;
-        }
-      }, deferredCalls: [], deferCall: function(targetFunction, precedence, argsList) {
-        function arraysHaveEqualContent(arrA, arrB) {
-          if (arrA.length != arrB.length)
-            return false;
-          for (var i2 in arrA) {
-            if (arrA[i2] != arrB[i2])
-              return false;
-          }
-          return true;
-        }
-        for (var i in JSEvents.deferredCalls) {
-          var call = JSEvents.deferredCalls[i];
-          if (call.targetFunction == targetFunction && arraysHaveEqualContent(call.argsList, argsList)) {
-            return;
-          }
-        }
-        JSEvents.deferredCalls.push({targetFunction, precedence, argsList});
-        JSEvents.deferredCalls.sort(function(x, y) {
-          return x.precedence < y.precedence;
-        });
-      }, removeDeferredCalls: function(targetFunction) {
-        for (var i = 0; i < JSEvents.deferredCalls.length; ++i) {
-          if (JSEvents.deferredCalls[i].targetFunction == targetFunction) {
-            JSEvents.deferredCalls.splice(i, 1);
-            --i;
-          }
-        }
-      }, canPerformEventHandlerRequests: function() {
-        return JSEvents.inEventHandler && JSEvents.currentEventHandler.allowsDeferredCalls;
-      }, runDeferredCalls: function() {
-        if (!JSEvents.canPerformEventHandlerRequests()) {
-          return;
-        }
-        for (var i = 0; i < JSEvents.deferredCalls.length; ++i) {
-          var call = JSEvents.deferredCalls[i];
-          JSEvents.deferredCalls.splice(i, 1);
-          --i;
-          call.targetFunction.apply(null, call.argsList);
-        }
-      }, eventHandlers: [], removeAllHandlersOnTarget: function(target, eventTypeString) {
-        for (var i = 0; i < JSEvents.eventHandlers.length; ++i) {
-          if (JSEvents.eventHandlers[i].target == target && (!eventTypeString || eventTypeString == JSEvents.eventHandlers[i].eventTypeString)) {
-            JSEvents._removeHandler(i--);
-          }
-        }
-      }, _removeHandler: function(i) {
-        var h = JSEvents.eventHandlers[i];
-        h.target.removeEventListener(h.eventTypeString, h.eventListenerFunc, h.useCapture);
-        JSEvents.eventHandlers.splice(i, 1);
-      }, registerOrRemoveHandler: function(eventHandler) {
-        var jsEventHandler = function jsEventHandler2(event) {
-          ++JSEvents.inEventHandler;
-          JSEvents.currentEventHandler = eventHandler;
-          JSEvents.runDeferredCalls();
-          eventHandler.handlerFunc(event);
-          JSEvents.runDeferredCalls();
-          --JSEvents.inEventHandler;
-        };
-        if (eventHandler.callbackfunc) {
-          eventHandler.eventListenerFunc = jsEventHandler;
-          eventHandler.target.addEventListener(eventHandler.eventTypeString, jsEventHandler, eventHandler.useCapture);
-          JSEvents.eventHandlers.push(eventHandler);
-          JSEvents.registerRemoveEventListeners();
-        } else {
-          for (var i = 0; i < JSEvents.eventHandlers.length; ++i) {
-            if (JSEvents.eventHandlers[i].target == eventHandler.target && JSEvents.eventHandlers[i].eventTypeString == eventHandler.eventTypeString) {
-              JSEvents._removeHandler(i--);
-            }
-          }
-        }
-      }, queueEventHandlerOnThread_iiii: function(targetThread, eventHandlerFunc, eventTypeId, eventData, userData) {
-        var stackTop = stackSave();
-        var varargs = stackAlloc(12);
-        GROWABLE_HEAP_I32()[varargs >> 2] = eventTypeId;
-        GROWABLE_HEAP_I32()[varargs + 4 >> 2] = eventData;
-        GROWABLE_HEAP_I32()[varargs + 8 >> 2] = userData;
-        __emscripten_call_on_thread(0, targetThread, 637534208, eventHandlerFunc, eventData, varargs);
-        stackRestore(stackTop);
-      }, getTargetThreadForEventCallback: function(targetThread) {
-        switch (targetThread) {
-          case 1:
-            return 0;
-          case 2:
-            return PThread.currentProxiedOperationCallerThread;
-          default:
-            return targetThread;
-        }
-      }, getNodeNameForTarget: function(target) {
-        if (!target)
-          return "";
-        if (target == window)
-          return "#window";
-        if (target == screen)
-          return "#screen";
-        return target && target.nodeName ? target.nodeName : "";
-      }, fullscreenEnabled: function() {
-        return document.fullscreenEnabled || document.webkitFullscreenEnabled;
-      }};
-      function stringToNewUTF8(jsString) {
-        var length = lengthBytesUTF8(jsString) + 1;
-        var cString = _malloc(length);
-        stringToUTF8(jsString, cString, length);
-        return cString;
-      }
-      function _emscripten_set_offscreencanvas_size_on_target_thread_js(targetThread, targetCanvas, width, height) {
-        var stackTop = stackSave();
-        var varargs = stackAlloc(12);
-        var targetCanvasPtr = 0;
-        if (targetCanvas) {
-          targetCanvasPtr = stringToNewUTF8(targetCanvas);
-        }
-        GROWABLE_HEAP_I32()[varargs >> 2] = targetCanvasPtr;
-        GROWABLE_HEAP_I32()[varargs + 4 >> 2] = width;
-        GROWABLE_HEAP_I32()[varargs + 8 >> 2] = height;
-        __emscripten_call_on_thread(0, targetThread, 657457152, 0, targetCanvasPtr, varargs);
-        stackRestore(stackTop);
-      }
-      function _emscripten_set_offscreencanvas_size_on_target_thread(targetThread, targetCanvas, width, height) {
-        targetCanvas = targetCanvas ? UTF8ToString(targetCanvas) : "";
-        _emscripten_set_offscreencanvas_size_on_target_thread_js(targetThread, targetCanvas, width, height);
-      }
-      function maybeCStringToJsString(cString) {
-        return cString > 2 ? UTF8ToString(cString) : cString;
-      }
-      var specialHTMLTargets = [0, typeof document !== "undefined" ? document : 0, typeof window !== "undefined" ? window : 0];
-      function findEventTarget(target) {
-        target = maybeCStringToJsString(target);
-        var domElement = specialHTMLTargets[target] || (typeof document !== "undefined" ? document.querySelector(target) : void 0);
-        return domElement;
-      }
-      function findCanvasEventTarget(target) {
-        return findEventTarget(target);
-      }
-      function _emscripten_set_canvas_element_size_calling_thread(target, width, height) {
-        var canvas = findCanvasEventTarget(target);
-        if (!canvas)
-          return -4;
-        if (canvas.canvasSharedPtr) {
-          GROWABLE_HEAP_I32()[canvas.canvasSharedPtr >> 2] = width;
-          GROWABLE_HEAP_I32()[canvas.canvasSharedPtr + 4 >> 2] = height;
-        }
-        if (canvas.offscreenCanvas || !canvas.controlTransferredOffscreen) {
-          if (canvas.offscreenCanvas)
-            canvas = canvas.offscreenCanvas;
-          var autoResizeViewport = false;
-          if (canvas.GLctxObject && canvas.GLctxObject.GLctx) {
-            var prevViewport = canvas.GLctxObject.GLctx.getParameter(2978);
-            autoResizeViewport = prevViewport[0] === 0 && prevViewport[1] === 0 && prevViewport[2] === canvas.width && prevViewport[3] === canvas.height;
-          }
-          canvas.width = width;
-          canvas.height = height;
-          if (autoResizeViewport) {
-            canvas.GLctxObject.GLctx.viewport(0, 0, width, height);
-          }
-        } else if (canvas.canvasSharedPtr) {
-          var targetThread = GROWABLE_HEAP_I32()[canvas.canvasSharedPtr + 8 >> 2];
-          _emscripten_set_offscreencanvas_size_on_target_thread(targetThread, target, width, height);
-          return 1;
-        } else {
-          return -4;
-        }
-        return 0;
-      }
-      function _emscripten_set_canvas_element_size_main_thread(target, width, height) {
-        if (ENVIRONMENT_IS_PTHREAD)
-          return _emscripten_proxy_to_main_thread_js(2, 1, target, width, height);
-        return _emscripten_set_canvas_element_size_calling_thread(target, width, height);
-      }
-      function _emscripten_set_canvas_element_size(target, width, height) {
-        var canvas = findCanvasEventTarget(target);
-        if (canvas) {
-          return _emscripten_set_canvas_element_size_calling_thread(target, width, height);
-        } else {
-          return _emscripten_set_canvas_element_size_main_thread(target, width, height);
-        }
-      }
-      function _emscripten_set_current_thread_status(newStatus) {
-      }
-      function _emscripten_set_thread_name(threadId, name) {
-      }
-      function __webgl_enable_ANGLE_instanced_arrays(ctx) {
-        var ext = ctx.getExtension("ANGLE_instanced_arrays");
-        if (ext) {
-          ctx["vertexAttribDivisor"] = function(index, divisor) {
-            ext["vertexAttribDivisorANGLE"](index, divisor);
-          };
-          ctx["drawArraysInstanced"] = function(mode, first, count2, primcount) {
-            ext["drawArraysInstancedANGLE"](mode, first, count2, primcount);
-          };
-          ctx["drawElementsInstanced"] = function(mode, count2, type, indices, primcount) {
-            ext["drawElementsInstancedANGLE"](mode, count2, type, indices, primcount);
-          };
-          return 1;
-        }
-      }
-      function __webgl_enable_OES_vertex_array_object(ctx) {
-        var ext = ctx.getExtension("OES_vertex_array_object");
-        if (ext) {
-          ctx["createVertexArray"] = function() {
-            return ext["createVertexArrayOES"]();
-          };
-          ctx["deleteVertexArray"] = function(vao) {
-            ext["deleteVertexArrayOES"](vao);
-          };
-          ctx["bindVertexArray"] = function(vao) {
-            ext["bindVertexArrayOES"](vao);
-          };
-          ctx["isVertexArray"] = function(vao) {
-            return ext["isVertexArrayOES"](vao);
-          };
-          return 1;
-        }
-      }
-      function __webgl_enable_WEBGL_draw_buffers(ctx) {
-        var ext = ctx.getExtension("WEBGL_draw_buffers");
-        if (ext) {
-          ctx["drawBuffers"] = function(n, bufs) {
-            ext["drawBuffersWEBGL"](n, bufs);
-          };
-          return 1;
-        }
-      }
-      function __webgl_enable_WEBGL_multi_draw(ctx) {
-        return !!(ctx.multiDrawWebgl = ctx.getExtension("WEBGL_multi_draw"));
-      }
-      var GL = {counter: 1, buffers: [], programs: [], framebuffers: [], renderbuffers: [], textures: [], uniforms: [], shaders: [], vaos: [], contexts: {}, offscreenCanvases: {}, timerQueriesEXT: [], programInfos: {}, stringCache: {}, unpackAlignment: 4, recordError: function recordError(errorCode) {
-        if (!GL.lastError) {
-          GL.lastError = errorCode;
-        }
-      }, getNewId: function(table) {
-        var ret = GL.counter++;
-        for (var i = table.length; i < ret; i++) {
-          table[i] = null;
-        }
-        return ret;
-      }, getSource: function(shader, count2, string, length) {
-        var source = "";
-        for (var i = 0; i < count2; ++i) {
-          var len = length ? GROWABLE_HEAP_I32()[length + i * 4 >> 2] : -1;
-          source += UTF8ToString(GROWABLE_HEAP_I32()[string + i * 4 >> 2], len < 0 ? void 0 : len);
-        }
-        return source;
-      }, createContext: function(canvas, webGLContextAttributes) {
-        var ctx = canvas.getContext("webgl", webGLContextAttributes);
-        if (!ctx)
-          return 0;
-        var handle = GL.registerContext(ctx, webGLContextAttributes);
-        return handle;
-      }, registerContext: function(ctx, webGLContextAttributes) {
-        var handle = _malloc(8);
-        GROWABLE_HEAP_I32()[handle + 4 >> 2] = _pthread_self();
-        var context = {handle, attributes: webGLContextAttributes, version: webGLContextAttributes.majorVersion, GLctx: ctx};
-        if (ctx.canvas)
-          ctx.canvas.GLctxObject = context;
-        GL.contexts[handle] = context;
-        if (typeof webGLContextAttributes.enableExtensionsByDefault === "undefined" || webGLContextAttributes.enableExtensionsByDefault) {
-          GL.initExtensions(context);
-        }
-        return handle;
-      }, makeContextCurrent: function(contextHandle) {
-        GL.currentContext = GL.contexts[contextHandle];
-        Module.ctx = GLctx = GL.currentContext && GL.currentContext.GLctx;
-        return !(contextHandle && !GLctx);
-      }, getContext: function(contextHandle) {
-        return GL.contexts[contextHandle];
-      }, deleteContext: function(contextHandle) {
-        if (GL.currentContext === GL.contexts[contextHandle])
-          GL.currentContext = null;
-        if (typeof JSEvents === "object")
-          JSEvents.removeAllHandlersOnTarget(GL.contexts[contextHandle].GLctx.canvas);
-        if (GL.contexts[contextHandle] && GL.contexts[contextHandle].GLctx.canvas)
-          GL.contexts[contextHandle].GLctx.canvas.GLctxObject = void 0;
-        _free(GL.contexts[contextHandle].handle);
-        GL.contexts[contextHandle] = null;
-      }, initExtensions: function(context) {
-        if (!context)
-          context = GL.currentContext;
-        if (context.initExtensionsDone)
-          return;
-        context.initExtensionsDone = true;
-        var GLctx2 = context.GLctx;
-        __webgl_enable_ANGLE_instanced_arrays(GLctx2);
-        __webgl_enable_OES_vertex_array_object(GLctx2);
-        __webgl_enable_WEBGL_draw_buffers(GLctx2);
-        GLctx2.disjointTimerQueryExt = GLctx2.getExtension("EXT_disjoint_timer_query");
-        __webgl_enable_WEBGL_multi_draw(GLctx2);
-        var exts = GLctx2.getSupportedExtensions() || [];
-        exts.forEach(function(ext) {
-          if (ext.indexOf("lose_context") < 0 && ext.indexOf("debug") < 0) {
-            GLctx2.getExtension(ext);
-          }
-        });
-      }, populateUniformTable: function(program) {
-        var p2 = GL.programs[program];
-        var ptable = GL.programInfos[program] = {uniforms: {}, maxUniformLength: 0, maxAttributeLength: -1, maxUniformBlockNameLength: -1};
-        var utable = ptable.uniforms;
-        var numUniforms = GLctx.getProgramParameter(p2, 35718);
-        for (var i = 0; i < numUniforms; ++i) {
-          var u = GLctx.getActiveUniform(p2, i);
-          var name = u.name;
-          ptable.maxUniformLength = Math.max(ptable.maxUniformLength, name.length + 1);
-          if (name.slice(-1) == "]") {
-            name = name.slice(0, name.lastIndexOf("["));
-          }
-          var loc = GLctx.getUniformLocation(p2, name);
-          if (loc) {
-            var id = GL.getNewId(GL.uniforms);
-            utable[name] = [u.size, id];
-            GL.uniforms[id] = loc;
-            for (var j = 1; j < u.size; ++j) {
-              var n = name + "[" + j + "]";
-              loc = GLctx.getUniformLocation(p2, n);
-              id = GL.getNewId(GL.uniforms);
-              GL.uniforms[id] = loc;
-            }
-          }
-        }
-      }};
-      var __emscripten_webgl_power_preferences = ["default", "low-power", "high-performance"];
-      function _emscripten_webgl_do_create_context(target, attributes) {
-        var a = attributes >> 2;
-        var powerPreference = GROWABLE_HEAP_I32()[a + (24 >> 2)];
-        var contextAttributes = {alpha: !!GROWABLE_HEAP_I32()[a + (0 >> 2)], depth: !!GROWABLE_HEAP_I32()[a + (4 >> 2)], stencil: !!GROWABLE_HEAP_I32()[a + (8 >> 2)], antialias: !!GROWABLE_HEAP_I32()[a + (12 >> 2)], premultipliedAlpha: !!GROWABLE_HEAP_I32()[a + (16 >> 2)], preserveDrawingBuffer: !!GROWABLE_HEAP_I32()[a + (20 >> 2)], powerPreference: __emscripten_webgl_power_preferences[powerPreference], failIfMajorPerformanceCaveat: !!GROWABLE_HEAP_I32()[a + (28 >> 2)], majorVersion: GROWABLE_HEAP_I32()[a + (32 >> 2)], minorVersion: GROWABLE_HEAP_I32()[a + (36 >> 2)], enableExtensionsByDefault: GROWABLE_HEAP_I32()[a + (40 >> 2)], explicitSwapControl: GROWABLE_HEAP_I32()[a + (44 >> 2)], proxyContextToMainThread: GROWABLE_HEAP_I32()[a + (48 >> 2)], renderViaOffscreenBackBuffer: GROWABLE_HEAP_I32()[a + (52 >> 2)]};
-        var canvas = findCanvasEventTarget(target);
-        if (!canvas) {
-          return 0;
-        }
-        if (contextAttributes.explicitSwapControl) {
-          return 0;
-        }
-        var contextHandle = GL.createContext(canvas, contextAttributes);
-        return contextHandle;
-      }
-      function _emscripten_webgl_create_context(a0, a12) {
-        return _emscripten_webgl_do_create_context(a0, a12);
-      }
-      var SYSCALLS = {mappings: {}, buffers: [null, [], []], printChar: function(stream, curr) {
-        var buffer3 = SYSCALLS.buffers[stream];
-        if (curr === 0 || curr === 10) {
-          (stream === 1 ? out : err)(UTF8ArrayToString(buffer3, 0));
-          buffer3.length = 0;
-        } else {
-          buffer3.push(curr);
-        }
-      }, varargs: void 0, get: function() {
-        SYSCALLS.varargs += 4;
-        var ret = GROWABLE_HEAP_I32()[SYSCALLS.varargs - 4 >> 2];
-        return ret;
-      }, getStr: function(ptr) {
-        var ret = UTF8ToString(ptr);
-        return ret;
-      }, get64: function(low, high) {
-        return low;
-      }};
-      function _fd_close(fd) {
-        if (ENVIRONMENT_IS_PTHREAD)
-          return _emscripten_proxy_to_main_thread_js(3, 1, fd);
-        return 0;
-      }
-      function _fd_seek(fd, offset_low, offset_high, whence, newOffset) {
-        if (ENVIRONMENT_IS_PTHREAD)
-          return _emscripten_proxy_to_main_thread_js(4, 1, fd, offset_low, offset_high, whence, newOffset);
-      }
-      function _fd_write(fd, iov, iovcnt, pnum) {
-        if (ENVIRONMENT_IS_PTHREAD)
-          return _emscripten_proxy_to_main_thread_js(5, 1, fd, iov, iovcnt, pnum);
-        var num = 0;
-        for (var i = 0; i < iovcnt; i++) {
-          var ptr = GROWABLE_HEAP_I32()[iov + i * 8 >> 2];
-          var len = GROWABLE_HEAP_I32()[iov + (i * 8 + 4) >> 2];
-          for (var j = 0; j < len; j++) {
-            SYSCALLS.printChar(fd, GROWABLE_HEAP_U8()[ptr + j]);
-          }
-          num += len;
-        }
-        GROWABLE_HEAP_I32()[pnum >> 2] = num;
-        return 0;
-      }
-      function _pthread_cleanup_pop(execute2) {
-        var routine = PThread.threadExitHandlers.pop();
-        if (execute2)
-          routine();
-      }
-      function _pthread_cleanup_push(routine, arg) {
-        PThread.threadExitHandlers.push(function() {
-          wasmTable.get(routine)(arg);
-        });
-      }
-      function spawnThread(threadParams) {
-        if (ENVIRONMENT_IS_PTHREAD)
-          throw "Internal Error! spawnThread() can only ever be called from main application thread!";
-        var worker = PThread.getNewWorker();
-        if (worker.pthread !== void 0)
-          throw "Internal error!";
-        if (!threadParams.pthread_ptr)
-          throw "Internal error, no pthread ptr!";
-        PThread.runningWorkers.push(worker);
-        var tlsMemory = _malloc(128 * 4);
-        for (var i = 0; i < 128; ++i) {
-          GROWABLE_HEAP_I32()[tlsMemory + i * 4 >> 2] = 0;
-        }
-        var stackHigh = threadParams.stackBase + threadParams.stackSize;
-        var pthread = PThread.pthreads[threadParams.pthread_ptr] = {worker, stackBase: threadParams.stackBase, stackSize: threadParams.stackSize, allocatedOwnStack: threadParams.allocatedOwnStack, threadInfoStruct: threadParams.pthread_ptr};
-        var tis = pthread.threadInfoStruct >> 2;
-        Atomics.store(GROWABLE_HEAP_U32(), tis + (64 >> 2), threadParams.detached);
-        Atomics.store(GROWABLE_HEAP_U32(), tis + (100 >> 2), tlsMemory);
-        Atomics.store(GROWABLE_HEAP_U32(), tis + (40 >> 2), pthread.threadInfoStruct);
-        Atomics.store(GROWABLE_HEAP_U32(), tis + (80 >> 2), threadParams.stackSize);
-        Atomics.store(GROWABLE_HEAP_U32(), tis + (76 >> 2), stackHigh);
-        Atomics.store(GROWABLE_HEAP_U32(), tis + (104 >> 2), threadParams.stackSize);
-        Atomics.store(GROWABLE_HEAP_U32(), tis + (104 + 8 >> 2), stackHigh);
-        Atomics.store(GROWABLE_HEAP_U32(), tis + (104 + 12 >> 2), threadParams.detached);
-        var global_libc = _emscripten_get_global_libc();
-        var global_locale = global_libc + 40;
-        Atomics.store(GROWABLE_HEAP_U32(), tis + (172 >> 2), global_locale);
-        worker.pthread = pthread;
-        var msg = {cmd: "run", start_routine: threadParams.startRoutine, arg: threadParams.arg, threadInfoStruct: threadParams.pthread_ptr, stackBase: threadParams.stackBase, stackSize: threadParams.stackSize};
-        worker.runPthread = function() {
-          msg.time = performance.now();
-          worker.postMessage(msg, threadParams.transferList);
-        };
-        if (worker.loaded) {
-          worker.runPthread();
-          delete worker.runPthread;
-        }
-      }
-      function _pthread_create(pthread_ptr, attr, start_routine, arg) {
-        if (typeof SharedArrayBuffer === "undefined") {
-          err("Current environment does not support SharedArrayBuffer, pthreads are not available!");
-          return 6;
-        }
-        if (!pthread_ptr) {
-          err("pthread_create called with a null thread pointer!");
-          return 28;
-        }
-        var transferList = [];
-        var error = 0;
-        if (ENVIRONMENT_IS_PTHREAD && (transferList.length === 0 || error)) {
-          return _emscripten_sync_run_in_main_thread_4(687865856, pthread_ptr, attr, start_routine, arg);
-        }
-        if (error)
-          return error;
-        var stackSize = 0;
-        var stackBase = 0;
-        var detached = 0;
-        if (attr && attr != -1) {
-          stackSize = GROWABLE_HEAP_I32()[attr >> 2];
-          stackSize += 81920;
-          stackBase = GROWABLE_HEAP_I32()[attr + 8 >> 2];
-          detached = GROWABLE_HEAP_I32()[attr + 12 >> 2] !== 0;
-        } else {
-          stackSize = 2097152;
-        }
-        var allocatedOwnStack = stackBase == 0;
-        if (allocatedOwnStack) {
-          stackBase = _memalign(16, stackSize);
-        } else {
-          stackBase -= stackSize;
-          assert3(stackBase > 0);
-        }
-        var threadInfoStruct = _malloc(228);
-        for (var i = 0; i < 228 >> 2; ++i)
-          GROWABLE_HEAP_U32()[(threadInfoStruct >> 2) + i] = 0;
-        GROWABLE_HEAP_I32()[pthread_ptr >> 2] = threadInfoStruct;
-        GROWABLE_HEAP_I32()[threadInfoStruct + 12 >> 2] = threadInfoStruct;
-        var headPtr = threadInfoStruct + 152;
-        GROWABLE_HEAP_I32()[headPtr >> 2] = headPtr;
-        var threadParams = {stackBase, stackSize, allocatedOwnStack, detached, startRoutine: start_routine, pthread_ptr: threadInfoStruct, arg, transferList};
-        if (ENVIRONMENT_IS_PTHREAD) {
-          threadParams.cmd = "spawnThread";
-          postMessage(threadParams, transferList);
-        } else {
-          spawnThread(threadParams);
-        }
-        return 0;
-      }
-      function _sysconf(name) {
-        if (ENVIRONMENT_IS_PTHREAD)
-          return _emscripten_proxy_to_main_thread_js(6, 1, name);
-        switch (name) {
-          case 30:
-            return 16384;
-          case 85:
-            var maxHeapSize = 2147483648;
-            return maxHeapSize / 16384;
-          case 132:
-          case 133:
-          case 12:
-          case 137:
-          case 138:
-          case 15:
-          case 235:
-          case 16:
-          case 17:
-          case 18:
-          case 19:
-          case 20:
-          case 149:
-          case 13:
-          case 10:
-          case 236:
-          case 153:
-          case 9:
-          case 21:
-          case 22:
-          case 159:
-          case 154:
-          case 14:
-          case 77:
-          case 78:
-          case 139:
-          case 82:
-          case 68:
-          case 67:
-          case 164:
-          case 11:
-          case 29:
-          case 47:
-          case 48:
-          case 95:
-          case 52:
-          case 51:
-          case 46:
-            return 200809;
-          case 27:
-          case 246:
-          case 127:
-          case 128:
-          case 23:
-          case 24:
-          case 160:
-          case 161:
-          case 181:
-          case 182:
-          case 242:
-          case 183:
-          case 184:
-          case 243:
-          case 244:
-          case 245:
-          case 165:
-          case 178:
-          case 179:
-          case 49:
-          case 50:
-          case 168:
-          case 169:
-          case 175:
-          case 170:
-          case 171:
-          case 172:
-          case 97:
-          case 76:
-          case 32:
-          case 173:
-          case 35:
-          case 80:
-          case 81:
-          case 79:
-            return -1;
-          case 176:
-          case 177:
-          case 7:
-          case 155:
-          case 8:
-          case 157:
-          case 125:
-          case 126:
-          case 92:
-          case 93:
-          case 129:
-          case 130:
-          case 131:
-          case 94:
-          case 91:
-            return 1;
-          case 74:
-          case 60:
-          case 69:
-          case 70:
-          case 4:
-            return 1024;
-          case 31:
-          case 42:
-          case 72:
-            return 32;
-          case 87:
-          case 26:
-          case 33:
-            return 2147483647;
-          case 34:
-          case 1:
-            return 47839;
-          case 38:
-          case 36:
-            return 99;
-          case 43:
-          case 37:
-            return 2048;
-          case 0:
-            return 2097152;
-          case 3:
-            return 65536;
-          case 28:
-            return 32768;
-          case 44:
-            return 32767;
-          case 75:
-            return 16384;
-          case 39:
-            return 1e3;
-          case 89:
-            return 700;
-          case 71:
-            return 256;
-          case 40:
-            return 255;
-          case 2:
-            return 100;
-          case 180:
-            return 64;
-          case 25:
-            return 20;
-          case 5:
-            return 16;
-          case 6:
-            return 6;
-          case 73:
-            return 4;
-          case 84: {
-            if (typeof navigator === "object")
-              return navigator["hardwareConcurrency"] || 1;
-            return 1;
-          }
-        }
-        setErrNo(28);
-        return -1;
-      }
-      if (!ENVIRONMENT_IS_PTHREAD)
-        PThread.initMainThreadBlock();
-      var GLctx;
-      var proxiedFunctionTable = [null, _atexit, _emscripten_set_canvas_element_size_main_thread, _fd_close, _fd_seek, _fd_write, _sysconf];
-      var asmLibraryArg = {e: ___assert_fail, r: ___call_main, x: __emscripten_notify_thread_queue, b: _abort, y: _emscripten_asm_const_int, j: _emscripten_conditional_set_current_thread_status, c: _emscripten_futex_wait, d: _emscripten_futex_wake, f: _emscripten_get_now, p: _emscripten_memcpy_big, z: _emscripten_num_logical_cores, u: _emscripten_receive_on_main_thread_js, q: _emscripten_resize_heap, v: _emscripten_set_canvas_element_size, i: _emscripten_set_current_thread_status, t: _emscripten_set_thread_name, w: _emscripten_webgl_create_context, m: _fd_close, n: _fd_seek, g: _fd_write, o: initPthreadsJS, a: wasmMemory || Module["wasmMemory"], k: _pthread_cleanup_pop, l: _pthread_cleanup_push, h: _pthread_create, s: _sysconf};
-      var asm = createWasm();
-      var ___wasm_call_ctors = Module["___wasm_call_ctors"] = function() {
-        return (___wasm_call_ctors = Module["___wasm_call_ctors"] = Module["asm"]["A"]).apply(null, arguments);
-      };
-      var _init = Module["_init"] = function() {
-        return (_init = Module["_init"] = Module["asm"]["B"]).apply(null, arguments);
-      };
-      var _register_tensor = Module["_register_tensor"] = function() {
-        return (_register_tensor = Module["_register_tensor"] = Module["asm"]["C"]).apply(null, arguments);
-      };
-      var _dispose_data = Module["_dispose_data"] = function() {
-        return (_dispose_data = Module["_dispose_data"] = Module["asm"]["D"]).apply(null, arguments);
-      };
-      var _dispose = Module["_dispose"] = function() {
-        return (_dispose = Module["_dispose"] = Module["asm"]["E"]).apply(null, arguments);
-      };
-      var _Abs = Module["_Abs"] = function() {
-        return (_Abs = Module["_Abs"] = Module["asm"]["G"]).apply(null, arguments);
-      };
-      var _Add = Module["_Add"] = function() {
-        return (_Add = Module["_Add"] = Module["asm"]["H"]).apply(null, arguments);
-      };
-      var _AddN = Module["_AddN"] = function() {
-        return (_AddN = Module["_AddN"] = Module["asm"]["I"]).apply(null, arguments);
-      };
-      var _All = Module["_All"] = function() {
-        return (_All = Module["_All"] = Module["asm"]["J"]).apply(null, arguments);
-      };
-      var _Any = Module["_Any"] = function() {
-        return (_Any = Module["_Any"] = Module["asm"]["K"]).apply(null, arguments);
-      };
-      var _ArgMax = Module["_ArgMax"] = function() {
-        return (_ArgMax = Module["_ArgMax"] = Module["asm"]["L"]).apply(null, arguments);
-      };
-      var _AvgPool = Module["_AvgPool"] = function() {
-        return (_AvgPool = Module["_AvgPool"] = Module["asm"]["M"]).apply(null, arguments);
-      };
-      var _BatchMatMul = Module["_BatchMatMul"] = function() {
-        return (_BatchMatMul = Module["_BatchMatMul"] = Module["asm"]["N"]).apply(null, arguments);
-      };
-      var _Ceil = Module["_Ceil"] = function() {
-        return (_Ceil = Module["_Ceil"] = Module["asm"]["O"]).apply(null, arguments);
-      };
-      var _ClipByValue = Module["_ClipByValue"] = function() {
-        return (_ClipByValue = Module["_ClipByValue"] = Module["asm"]["P"]).apply(null, arguments);
-      };
-      var _Conv2D = Module["_Conv2D"] = function() {
-        return (_Conv2D = Module["_Conv2D"] = Module["asm"]["Q"]).apply(null, arguments);
-      };
-      var _Conv2DBackpropInput = Module["_Conv2DBackpropInput"] = function() {
-        return (_Conv2DBackpropInput = Module["_Conv2DBackpropInput"] = Module["asm"]["R"]).apply(null, arguments);
-      };
-      var _Cos = Module["_Cos"] = function() {
-        return (_Cos = Module["_Cos"] = Module["asm"]["S"]).apply(null, arguments);
-      };
-      var _CropAndResize = Module["_CropAndResize"] = function() {
-        return (_CropAndResize = Module["_CropAndResize"] = Module["asm"]["T"]).apply(null, arguments);
-      };
-      var _Cumsum = Module["_Cumsum"] = function() {
-        return (_Cumsum = Module["_Cumsum"] = Module["asm"]["U"]).apply(null, arguments);
-      };
-      var _DepthToSpace = Module["_DepthToSpace"] = function() {
-        return (_DepthToSpace = Module["_DepthToSpace"] = Module["asm"]["V"]).apply(null, arguments);
-      };
-      var _DepthwiseConv2dNative = Module["_DepthwiseConv2dNative"] = function() {
-        return (_DepthwiseConv2dNative = Module["_DepthwiseConv2dNative"] = Module["asm"]["W"]).apply(null, arguments);
-      };
-      var _Equal = Module["_Equal"] = function() {
-        return (_Equal = Module["_Equal"] = Module["asm"]["X"]).apply(null, arguments);
-      };
-      var _Exp = Module["_Exp"] = function() {
-        return (_Exp = Module["_Exp"] = Module["asm"]["Y"]).apply(null, arguments);
-      };
-      var _FlipLeftRight = Module["_FlipLeftRight"] = function() {
-        return (_FlipLeftRight = Module["_FlipLeftRight"] = Module["asm"]["Z"]).apply(null, arguments);
-      };
-      var _Floor = Module["_Floor"] = function() {
-        return (_Floor = Module["_Floor"] = Module["asm"]["_"]).apply(null, arguments);
-      };
-      var _FloorDiv = Module["_FloorDiv"] = function() {
-        return (_FloorDiv = Module["_FloorDiv"] = Module["asm"]["$"]).apply(null, arguments);
-      };
-      var _FusedBatchNorm = Module["_FusedBatchNorm"] = function() {
-        return (_FusedBatchNorm = Module["_FusedBatchNorm"] = Module["asm"]["aa"]).apply(null, arguments);
-      };
-      var _FusedConv2D = Module["_FusedConv2D"] = function() {
-        return (_FusedConv2D = Module["_FusedConv2D"] = Module["asm"]["ba"]).apply(null, arguments);
-      };
-      var _FusedDepthwiseConv2D = Module["_FusedDepthwiseConv2D"] = function() {
-        return (_FusedDepthwiseConv2D = Module["_FusedDepthwiseConv2D"] = Module["asm"]["ca"]).apply(null, arguments);
-      };
-      var _Gather = Module["_Gather"] = function() {
-        return (_Gather = Module["_Gather"] = Module["asm"]["da"]).apply(null, arguments);
-      };
-      var _GatherNd = Module["_GatherNd"] = function() {
-        return (_GatherNd = Module["_GatherNd"] = Module["asm"]["ea"]).apply(null, arguments);
-      };
-      var _Greater = Module["_Greater"] = function() {
-        return (_Greater = Module["_Greater"] = Module["asm"]["fa"]).apply(null, arguments);
-      };
-      var _GreaterEqual = Module["_GreaterEqual"] = function() {
-        return (_GreaterEqual = Module["_GreaterEqual"] = Module["asm"]["ga"]).apply(null, arguments);
-      };
-      var _LeakyRelu = Module["_LeakyRelu"] = function() {
-        return (_LeakyRelu = Module["_LeakyRelu"] = Module["asm"]["ha"]).apply(null, arguments);
-      };
-      var _Less = Module["_Less"] = function() {
-        return (_Less = Module["_Less"] = Module["asm"]["ia"]).apply(null, arguments);
-      };
-      var _LessEqual = Module["_LessEqual"] = function() {
-        return (_LessEqual = Module["_LessEqual"] = Module["asm"]["ja"]).apply(null, arguments);
-      };
-      var _Log = Module["_Log"] = function() {
-        return (_Log = Module["_Log"] = Module["asm"]["ka"]).apply(null, arguments);
-      };
-      var _LogicalAnd = Module["_LogicalAnd"] = function() {
-        return (_LogicalAnd = Module["_LogicalAnd"] = Module["asm"]["la"]).apply(null, arguments);
-      };
-      var _Max = Module["_Max"] = function() {
-        return (_Max = Module["_Max"] = Module["asm"]["ma"]).apply(null, arguments);
-      };
-      var _MaxPool = Module["_MaxPool"] = function() {
-        return (_MaxPool = Module["_MaxPool"] = Module["asm"]["na"]).apply(null, arguments);
-      };
-      var _Maximum = Module["_Maximum"] = function() {
-        return (_Maximum = Module["_Maximum"] = Module["asm"]["oa"]).apply(null, arguments);
-      };
-      var _Mean = Module["_Mean"] = function() {
-        return (_Mean = Module["_Mean"] = Module["asm"]["pa"]).apply(null, arguments);
-      };
-      var _Min = Module["_Min"] = function() {
-        return (_Min = Module["_Min"] = Module["asm"]["qa"]).apply(null, arguments);
-      };
-      var _Minimum = Module["_Minimum"] = function() {
-        return (_Minimum = Module["_Minimum"] = Module["asm"]["ra"]).apply(null, arguments);
-      };
-      var _MirrorPad = Module["_MirrorPad"] = function() {
-        return (_MirrorPad = Module["_MirrorPad"] = Module["asm"]["sa"]).apply(null, arguments);
-      };
-      var _Multiply = Module["_Multiply"] = function() {
-        return (_Multiply = Module["_Multiply"] = Module["asm"]["ta"]).apply(null, arguments);
-      };
-      var _Neg = Module["_Neg"] = function() {
-        return (_Neg = Module["_Neg"] = Module["asm"]["ua"]).apply(null, arguments);
-      };
-      var _NonMaxSuppressionV3 = Module["_NonMaxSuppressionV3"] = function() {
-        return (_NonMaxSuppressionV3 = Module["_NonMaxSuppressionV3"] = Module["asm"]["va"]).apply(null, arguments);
-      };
-      var _NonMaxSuppressionV4 = Module["_NonMaxSuppressionV4"] = function() {
-        return (_NonMaxSuppressionV4 = Module["_NonMaxSuppressionV4"] = Module["asm"]["wa"]).apply(null, arguments);
-      };
-      var _NonMaxSuppressionV5 = Module["_NonMaxSuppressionV5"] = function() {
-        return (_NonMaxSuppressionV5 = Module["_NonMaxSuppressionV5"] = Module["asm"]["xa"]).apply(null, arguments);
-      };
-      var _NotEqual = Module["_NotEqual"] = function() {
-        return (_NotEqual = Module["_NotEqual"] = Module["asm"]["ya"]).apply(null, arguments);
-      };
-      var _OneHot = Module["_OneHot"] = function() {
-        return (_OneHot = Module["_OneHot"] = Module["asm"]["za"]).apply(null, arguments);
-      };
-      var _PadV2 = Module["_PadV2"] = function() {
-        return (_PadV2 = Module["_PadV2"] = Module["asm"]["Aa"]).apply(null, arguments);
-      };
-      var _Pow = Module["_Pow"] = function() {
-        return (_Pow = Module["_Pow"] = Module["asm"]["Ba"]).apply(null, arguments);
-      };
-      var _Prelu = Module["_Prelu"] = function() {
-        return (_Prelu = Module["_Prelu"] = Module["asm"]["Ca"]).apply(null, arguments);
-      };
-      var _Prod = Module["_Prod"] = function() {
-        return (_Prod = Module["_Prod"] = Module["asm"]["Da"]).apply(null, arguments);
-      };
-      var _RealDiv = Module["_RealDiv"] = function() {
-        return (_RealDiv = Module["_RealDiv"] = Module["asm"]["Ea"]).apply(null, arguments);
-      };
-      var _Relu = Module["_Relu"] = function() {
-        return (_Relu = Module["_Relu"] = Module["asm"]["Fa"]).apply(null, arguments);
-      };
-      var _Relu6 = Module["_Relu6"] = function() {
-        return (_Relu6 = Module["_Relu6"] = Module["asm"]["Ga"]).apply(null, arguments);
-      };
-      var _ResizeBilinear = Module["_ResizeBilinear"] = function() {
-        return (_ResizeBilinear = Module["_ResizeBilinear"] = Module["asm"]["Ha"]).apply(null, arguments);
-      };
-      var _Reverse = Module["_Reverse"] = function() {
-        return (_Reverse = Module["_Reverse"] = Module["asm"]["Ia"]).apply(null, arguments);
-      };
-      var _RotateWithOffset = Module["_RotateWithOffset"] = function() {
-        return (_RotateWithOffset = Module["_RotateWithOffset"] = Module["asm"]["Ja"]).apply(null, arguments);
-      };
-      var _Round = Module["_Round"] = function() {
-        return (_Round = Module["_Round"] = Module["asm"]["Ka"]).apply(null, arguments);
-      };
-      var _Rsqrt = Module["_Rsqrt"] = function() {
-        return (_Rsqrt = Module["_Rsqrt"] = Module["asm"]["La"]).apply(null, arguments);
-      };
-      var _ScatterNd = Module["_ScatterNd"] = function() {
-        return (_ScatterNd = Module["_ScatterNd"] = Module["asm"]["Ma"]).apply(null, arguments);
-      };
-      var _SelectV2 = Module["_SelectV2"] = function() {
-        return (_SelectV2 = Module["_SelectV2"] = Module["asm"]["Na"]).apply(null, arguments);
-      };
-      var _Sigmoid = Module["_Sigmoid"] = function() {
-        return (_Sigmoid = Module["_Sigmoid"] = Module["asm"]["Oa"]).apply(null, arguments);
-      };
-      var _Sin = Module["_Sin"] = function() {
-        return (_Sin = Module["_Sin"] = Module["asm"]["Pa"]).apply(null, arguments);
-      };
-      var _Softmax = Module["_Softmax"] = function() {
-        return (_Softmax = Module["_Softmax"] = Module["asm"]["Qa"]).apply(null, arguments);
-      };
-      var _Sqrt = Module["_Sqrt"] = function() {
-        return (_Sqrt = Module["_Sqrt"] = Module["asm"]["Ra"]).apply(null, arguments);
-      };
-      var _Square = Module["_Square"] = function() {
-        return (_Square = Module["_Square"] = Module["asm"]["Sa"]).apply(null, arguments);
-      };
-      var _SquaredDifference = Module["_SquaredDifference"] = function() {
-        return (_SquaredDifference = Module["_SquaredDifference"] = Module["asm"]["Ta"]).apply(null, arguments);
-      };
-      var _Step = Module["_Step"] = function() {
-        return (_Step = Module["_Step"] = Module["asm"]["Ua"]).apply(null, arguments);
-      };
-      var _StridedSlice = Module["_StridedSlice"] = function() {
-        return (_StridedSlice = Module["_StridedSlice"] = Module["asm"]["Va"]).apply(null, arguments);
-      };
-      var _Sub = Module["_Sub"] = function() {
-        return (_Sub = Module["_Sub"] = Module["asm"]["Wa"]).apply(null, arguments);
-      };
-      var _Sum = Module["_Sum"] = function() {
-        return (_Sum = Module["_Sum"] = Module["asm"]["Xa"]).apply(null, arguments);
-      };
-      var _Tan = Module["_Tan"] = function() {
-        return (_Tan = Module["_Tan"] = Module["asm"]["Ya"]).apply(null, arguments);
-      };
-      var _Tanh = Module["_Tanh"] = function() {
-        return (_Tanh = Module["_Tanh"] = Module["asm"]["Za"]).apply(null, arguments);
-      };
-      var _Tile = Module["_Tile"] = function() {
-        return (_Tile = Module["_Tile"] = Module["asm"]["_a"]).apply(null, arguments);
-      };
-      var _TopK = Module["_TopK"] = function() {
-        return (_TopK = Module["_TopK"] = Module["asm"]["$a"]).apply(null, arguments);
-      };
-      var _Transform = Module["_Transform"] = function() {
-        return (_Transform = Module["_Transform"] = Module["asm"]["ab"]).apply(null, arguments);
-      };
-      var _Transpose = Module["_Transpose"] = function() {
-        return (_Transpose = Module["_Transpose"] = Module["asm"]["bb"]).apply(null, arguments);
-      };
-      var __FusedMatMul = Module["__FusedMatMul"] = function() {
-        return (__FusedMatMul = Module["__FusedMatMul"] = Module["asm"]["cb"]).apply(null, arguments);
-      };
-      var _malloc = Module["_malloc"] = function() {
-        return (_malloc = Module["_malloc"] = Module["asm"]["db"]).apply(null, arguments);
-      };
-      var _free = Module["_free"] = function() {
-        return (_free = Module["_free"] = Module["asm"]["eb"]).apply(null, arguments);
-      };
-      var ___errno_location = Module["___errno_location"] = function() {
-        return (___errno_location = Module["___errno_location"] = Module["asm"]["fb"]).apply(null, arguments);
-      };
-      var _emscripten_get_global_libc = Module["_emscripten_get_global_libc"] = function() {
-        return (_emscripten_get_global_libc = Module["_emscripten_get_global_libc"] = Module["asm"]["gb"]).apply(null, arguments);
-      };
-      var _pthread_self = Module["_pthread_self"] = function() {
-        return (_pthread_self = Module["_pthread_self"] = Module["asm"]["hb"]).apply(null, arguments);
-      };
-      var ___pthread_tsd_run_dtors = Module["___pthread_tsd_run_dtors"] = function() {
-        return (___pthread_tsd_run_dtors = Module["___pthread_tsd_run_dtors"] = Module["asm"]["ib"]).apply(null, arguments);
-      };
-      var _emscripten_main_thread_process_queued_calls = Module["_emscripten_main_thread_process_queued_calls"] = function() {
-        return (_emscripten_main_thread_process_queued_calls = Module["_emscripten_main_thread_process_queued_calls"] = Module["asm"]["jb"]).apply(null, arguments);
-      };
-      var _emscripten_current_thread_process_queued_calls = Module["_emscripten_current_thread_process_queued_calls"] = function() {
-        return (_emscripten_current_thread_process_queued_calls = Module["_emscripten_current_thread_process_queued_calls"] = Module["asm"]["kb"]).apply(null, arguments);
-      };
-      var _emscripten_register_main_browser_thread_id = Module["_emscripten_register_main_browser_thread_id"] = function() {
-        return (_emscripten_register_main_browser_thread_id = Module["_emscripten_register_main_browser_thread_id"] = Module["asm"]["lb"]).apply(null, arguments);
-      };
-      var __emscripten_do_dispatch_to_thread = Module["__emscripten_do_dispatch_to_thread"] = function() {
-        return (__emscripten_do_dispatch_to_thread = Module["__emscripten_do_dispatch_to_thread"] = Module["asm"]["mb"]).apply(null, arguments);
-      };
-      var _emscripten_sync_run_in_main_thread_4 = Module["_emscripten_sync_run_in_main_thread_4"] = function() {
-        return (_emscripten_sync_run_in_main_thread_4 = Module["_emscripten_sync_run_in_main_thread_4"] = Module["asm"]["nb"]).apply(null, arguments);
-      };
-      var _emscripten_run_in_main_runtime_thread_js = Module["_emscripten_run_in_main_runtime_thread_js"] = function() {
-        return (_emscripten_run_in_main_runtime_thread_js = Module["_emscripten_run_in_main_runtime_thread_js"] = Module["asm"]["ob"]).apply(null, arguments);
-      };
-      var __emscripten_call_on_thread = Module["__emscripten_call_on_thread"] = function() {
-        return (__emscripten_call_on_thread = Module["__emscripten_call_on_thread"] = Module["asm"]["pb"]).apply(null, arguments);
-      };
-      var _emscripten_tls_init = Module["_emscripten_tls_init"] = function() {
-        return (_emscripten_tls_init = Module["_emscripten_tls_init"] = Module["asm"]["qb"]).apply(null, arguments);
-      };
-      var __emscripten_thread_init = Module["__emscripten_thread_init"] = function() {
-        return (__emscripten_thread_init = Module["__emscripten_thread_init"] = Module["asm"]["rb"]).apply(null, arguments);
-      };
-      var stackSave = Module["stackSave"] = function() {
-        return (stackSave = Module["stackSave"] = Module["asm"]["sb"]).apply(null, arguments);
-      };
-      var stackRestore = Module["stackRestore"] = function() {
-        return (stackRestore = Module["stackRestore"] = Module["asm"]["tb"]).apply(null, arguments);
-      };
-      var stackAlloc = Module["stackAlloc"] = function() {
-        return (stackAlloc = Module["stackAlloc"] = Module["asm"]["ub"]).apply(null, arguments);
-      };
-      var _emscripten_stack_set_limits = Module["_emscripten_stack_set_limits"] = function() {
-        return (_emscripten_stack_set_limits = Module["_emscripten_stack_set_limits"] = Module["asm"]["vb"]).apply(null, arguments);
-      };
-      var _memalign = Module["_memalign"] = function() {
-        return (_memalign = Module["_memalign"] = Module["asm"]["wb"]).apply(null, arguments);
-      };
-      var __emscripten_allow_main_runtime_queued_calls = Module["__emscripten_allow_main_runtime_queued_calls"] = 9808;
-      var __emscripten_main_thread_futex = Module["__emscripten_main_thread_futex"] = 11432;
-      Module["cwrap"] = cwrap;
-      Module["PThread"] = PThread;
-      Module["PThread"] = PThread;
-      Module["wasmMemory"] = wasmMemory;
-      Module["ExitStatus"] = ExitStatus;
-      var calledRun;
-      function ExitStatus(status) {
-        this.name = "ExitStatus";
-        this.message = "Program terminated with exit(" + status + ")";
-        this.status = status;
-      }
-      dependenciesFulfilled = function runCaller() {
-        if (!calledRun)
-          run();
-        if (!calledRun)
-          dependenciesFulfilled = runCaller;
-      };
-      function run(args) {
-        args = args || arguments_;
-        if (runDependencies > 0) {
-          return;
-        }
-        if (ENVIRONMENT_IS_PTHREAD) {
-          readyPromiseResolve(Module);
-          initRuntime();
-          postMessage({cmd: "loaded"});
-          return;
-        }
-        preRun();
-        if (runDependencies > 0) {
-          return;
-        }
-        function doRun() {
-          if (calledRun)
-            return;
-          calledRun = true;
-          Module["calledRun"] = true;
-          if (ABORT)
-            return;
-          initRuntime();
-          preMain();
-          readyPromiseResolve(Module);
-          if (Module["onRuntimeInitialized"])
-            Module["onRuntimeInitialized"]();
-          postRun();
-        }
-        if (Module["setStatus"]) {
-          Module["setStatus"]("Running...");
-          setTimeout(function() {
-            setTimeout(function() {
-              Module["setStatus"]("");
-            }, 1);
-            doRun();
-          }, 1);
-        } else {
-          doRun();
-        }
-      }
-      Module["run"] = run;
-      function exit(status, implicit) {
-        if (implicit && noExitRuntime && status === 0) {
-          return;
-        }
-        if (!implicit) {
-          if (ENVIRONMENT_IS_PTHREAD) {
-            postMessage({cmd: "exitProcess", returnCode: status});
-            throw new ExitStatus(status);
-          } else {
-          }
-        }
-        if (noExitRuntime) {
-        } else {
-          PThread.terminateAllThreads();
-          EXITSTATUS = status;
-          exitRuntime();
-          if (Module["onExit"])
-            Module["onExit"](status);
-          ABORT = true;
-        }
-        quit_(status, new ExitStatus(status));
-      }
-      if (Module["preInit"]) {
-        if (typeof Module["preInit"] == "function")
-          Module["preInit"] = [Module["preInit"]];
-        while (Module["preInit"].length > 0) {
-          Module["preInit"].pop()();
-        }
-      }
-      if (ENVIRONMENT_IS_PTHREAD) {
-        noExitRuntime = false;
-        PThread.initWorker();
-      }
-      run();
-      return WasmBackendModuleThreadedSimd2.ready;
-    };
-  }();
-  if (typeof exports === "object" && typeof module === "object")
-    module.exports = WasmBackendModuleThreadedSimd;
-  else if (typeof define === "function" && define["amd"])
-    define([], function() {
-      return WasmBackendModuleThreadedSimd;
-    });
-  else if (typeof exports === "object")
-    exports["WasmBackendModuleThreadedSimd"] = WasmBackendModuleThreadedSimd;
-});
-
-// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.6.0/node_modules/@tensorflow/tfjs-backend-wasm/wasm-out/tfjs-backend-wasm.js
-var require_tfjs_backend_wasm = __commonJS((exports, module) => {
-  var WasmBackendModule = function() {
-    var _scriptDir = typeof document !== "undefined" && document.currentScript ? document.currentScript.src : void 0;
-    if (typeof __filename !== "undefined")
-      _scriptDir = _scriptDir || __filename;
-    return function(WasmBackendModule2) {
-      WasmBackendModule2 = WasmBackendModule2 || {};
-      var Module = typeof WasmBackendModule2 !== "undefined" ? WasmBackendModule2 : {};
-      var readyPromiseResolve, readyPromiseReject;
-      Module["ready"] = new Promise(function(resolve, reject) {
-        readyPromiseResolve = resolve;
-        readyPromiseReject = reject;
-      });
-      var moduleOverrides = {};
-      var key;
-      for (key in Module) {
-        if (Module.hasOwnProperty(key)) {
-          moduleOverrides[key] = Module[key];
-        }
-      }
-      var arguments_ = [];
-      var thisProgram = "./this.program";
-      var quit_ = function(status, toThrow) {
-        throw toThrow;
-      };
-      var ENVIRONMENT_IS_WEB = false;
-      var ENVIRONMENT_IS_WORKER = false;
-      var ENVIRONMENT_IS_NODE = false;
-      var ENVIRONMENT_IS_SHELL = false;
-      ENVIRONMENT_IS_WEB = typeof window === "object";
-      ENVIRONMENT_IS_WORKER = typeof importScripts === "function";
-      ENVIRONMENT_IS_NODE = typeof process === "object" && typeof process.versions === "object" && typeof process.versions.node === "string";
-      ENVIRONMENT_IS_SHELL = !ENVIRONMENT_IS_WEB && !ENVIRONMENT_IS_NODE && !ENVIRONMENT_IS_WORKER;
-      var scriptDirectory = "";
-      function locateFile(path) {
-        if (Module["locateFile"]) {
-          return Module["locateFile"](path, scriptDirectory);
-        }
-        return scriptDirectory + path;
-      }
-      var read_, readAsync, readBinary, setWindowTitle;
-      var nodeFS;
-      var nodePath;
-      if (ENVIRONMENT_IS_NODE) {
-        if (ENVIRONMENT_IS_WORKER) {
-          scriptDirectory = require_path().dirname(scriptDirectory) + "/";
-        } else {
-          scriptDirectory = __dirname + "/";
-        }
-        read_ = function shell_read(filename, binary) {
-          if (!nodeFS)
-            nodeFS = require("fs");
-          if (!nodePath)
-            nodePath = require_path();
-          filename = nodePath["normalize"](filename);
-          return nodeFS["readFileSync"](filename, binary ? null : "utf8");
-        };
-        readBinary = function readBinary2(filename) {
-          var ret = read_(filename, true);
-          if (!ret.buffer) {
-            ret = new Uint8Array(ret);
-          }
-          assert3(ret.buffer);
-          return ret;
-        };
-        if (process["argv"].length > 1) {
-          thisProgram = process["argv"][1].replace(/\\/g, "/");
-        }
-        arguments_ = process["argv"].slice(2);
-        process["on"]("uncaughtException", function(ex) {
-          if (!(ex instanceof ExitStatus)) {
-            throw ex;
-          }
-        });
-        process["on"]("unhandledRejection", abort);
-        quit_ = function(status) {
-          process["exit"](status);
-        };
-        Module["inspect"] = function() {
-          return "[Emscripten Module object]";
-        };
-      } else if (ENVIRONMENT_IS_SHELL) {
-        if (typeof read != "undefined") {
-          read_ = function shell_read(f) {
-            return read(f);
-          };
-        }
-        readBinary = function readBinary2(f) {
-          var data;
-          if (typeof readbuffer === "function") {
-            return new Uint8Array(readbuffer(f));
-          }
-          data = read(f, "binary");
-          assert3(typeof data === "object");
-          return data;
-        };
-        if (typeof scriptArgs != "undefined") {
-          arguments_ = scriptArgs;
-        } else if (typeof arguments != "undefined") {
-          arguments_ = arguments;
-        }
-        if (typeof quit === "function") {
+          process["on"]("unhandledRejection", abort);
           quit_ = function(status) {
-            quit(status);
+            process["exit"](status);
           };
-        }
-        if (typeof print !== "undefined") {
-          if (typeof console === "undefined")
-            console = {};
-          console.log = print;
-          console.warn = console.error = typeof printErr !== "undefined" ? printErr : print;
-        }
-      } else if (ENVIRONMENT_IS_WEB || ENVIRONMENT_IS_WORKER) {
-        if (ENVIRONMENT_IS_WORKER) {
-          scriptDirectory = self.location.href;
-        } else if (typeof document !== "undefined" && document.currentScript) {
-          scriptDirectory = document.currentScript.src;
-        }
-        if (_scriptDir) {
-          scriptDirectory = _scriptDir;
-        }
-        if (scriptDirectory.indexOf("blob:") !== 0) {
-          scriptDirectory = scriptDirectory.substr(0, scriptDirectory.lastIndexOf("/") + 1);
-        } else {
-          scriptDirectory = "";
-        }
-        {
-          read_ = function(url) {
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", url, false);
-            xhr.send(null);
-            return xhr.responseText;
+          Module["inspect"] = function() {
+            return "[Emscripten Module object]";
           };
+          var nodeWorkerThreads;
+          try {
+            nodeWorkerThreads = require_worker_threads();
+          } catch (e) {
+            console.error('The "worker_threads" module is not supported in this node.js build - perhaps a newer version is needed?');
+            throw e;
+          }
+          global.Worker = nodeWorkerThreads.Worker;
+        } else if (ENVIRONMENT_IS_SHELL) {
+          if (typeof read != "undefined") {
+            read_ = function shell_read(f) {
+              return read(f);
+            };
+          }
+          readBinary = function readBinary2(f) {
+            var data;
+            if (typeof readbuffer === "function") {
+              return new Uint8Array(readbuffer(f));
+            }
+            data = read(f, "binary");
+            assert3(typeof data === "object");
+            return data;
+          };
+          if (typeof scriptArgs != "undefined") {
+            arguments_ = scriptArgs;
+          } else if (typeof arguments != "undefined") {
+            arguments_ = arguments;
+          }
+          if (typeof quit === "function") {
+            quit_ = function(status) {
+              quit(status);
+            };
+          }
+          if (typeof print !== "undefined") {
+            if (typeof console === "undefined")
+              console = {};
+            console.log = print;
+            console.warn = console.error = typeof printErr !== "undefined" ? printErr : print;
+          }
+        } else if (ENVIRONMENT_IS_WEB || ENVIRONMENT_IS_WORKER) {
           if (ENVIRONMENT_IS_WORKER) {
-            readBinary = function(url) {
+            scriptDirectory = self.location.href;
+          } else if (typeof document !== "undefined" && document.currentScript) {
+            scriptDirectory = document.currentScript.src;
+          }
+          if (typeof _scriptDir !== "undefined" && _scriptDir) {
+            scriptDirectory = _scriptDir;
+          }
+          if (scriptDirectory.indexOf("blob:") !== 0) {
+            scriptDirectory = scriptDirectory.substr(0, scriptDirectory.lastIndexOf("/") + 1);
+          } else {
+            scriptDirectory = "";
+          }
+          if (ENVIRONMENT_IS_NODE) {
+            read_ = function shell_read(filename, binary) {
+              if (!nodeFS)
+                nodeFS = __require("fs");
+              if (!nodePath)
+                nodePath = require_path();
+              filename = nodePath["normalize"](filename);
+              return nodeFS["readFileSync"](filename, binary ? null : "utf8");
+            };
+            readBinary = function readBinary2(filename) {
+              var ret = read_(filename, true);
+              if (!ret.buffer) {
+                ret = new Uint8Array(ret);
+              }
+              assert3(ret.buffer);
+              return ret;
+            };
+          } else {
+            read_ = function(url) {
               var xhr = new XMLHttpRequest();
               xhr.open("GET", url, false);
-              xhr.responseType = "arraybuffer";
               xhr.send(null);
-              return new Uint8Array(xhr.response);
+              return xhr.responseText;
+            };
+            if (ENVIRONMENT_IS_WORKER) {
+              readBinary = function(url) {
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", url, false);
+                xhr.responseType = "arraybuffer";
+                xhr.send(null);
+                return new Uint8Array(xhr.response);
+              };
+            }
+            readAsync = function(url, onload, onerror) {
+              var xhr = new XMLHttpRequest();
+              xhr.open("GET", url, true);
+              xhr.responseType = "arraybuffer";
+              xhr.onload = function() {
+                if (xhr.status == 200 || xhr.status == 0 && xhr.response) {
+                  onload(xhr.response);
+                  return;
+                }
+                onerror();
+              };
+              xhr.onerror = onerror;
+              xhr.send(null);
             };
           }
-          readAsync = function(url, onload, onerror) {
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", url, true);
-            xhr.responseType = "arraybuffer";
-            xhr.onload = function() {
-              if (xhr.status == 200 || xhr.status == 0 && xhr.response) {
-                onload(xhr.response);
-                return;
-              }
-              onerror();
-            };
-            xhr.onerror = onerror;
-            xhr.send(null);
+          setWindowTitle = function(title) {
+            document.title = title;
           };
+        } else {
         }
-        setWindowTitle = function(title) {
-          document.title = title;
-        };
-      } else {
-      }
-      var out = Module["print"] || console.log.bind(console);
-      var err = Module["printErr"] || console.warn.bind(console);
-      for (key in moduleOverrides) {
-        if (moduleOverrides.hasOwnProperty(key)) {
-          Module[key] = moduleOverrides[key];
-        }
-      }
-      moduleOverrides = null;
-      if (Module["arguments"])
-        arguments_ = Module["arguments"];
-      if (Module["thisProgram"])
-        thisProgram = Module["thisProgram"];
-      if (Module["quit"])
-        quit_ = Module["quit"];
-      var wasmBinary;
-      if (Module["wasmBinary"])
-        wasmBinary = Module["wasmBinary"];
-      var noExitRuntime = Module["noExitRuntime"] || true;
-      if (typeof WebAssembly !== "object") {
-        abort("no native wasm support detected");
-      }
-      var wasmMemory;
-      var ABORT = false;
-      var EXITSTATUS;
-      function assert3(condition, text) {
-        if (!condition) {
-          abort("Assertion failed: " + text);
-        }
-      }
-      function getCFunc(ident) {
-        var func2 = Module["_" + ident];
-        assert3(func2, "Cannot call unknown function " + ident + ", make sure it is exported");
-        return func2;
-      }
-      function ccall(ident, returnType, argTypes, args, opts) {
-        var toC = {string: function(str) {
-          var ret2 = 0;
-          if (str !== null && str !== void 0 && str !== 0) {
-            var len = (str.length << 2) + 1;
-            ret2 = stackAlloc(len);
-            stringToUTF8(str, ret2, len);
+        if (ENVIRONMENT_IS_NODE) {
+          if (typeof performance === "undefined") {
+            global.performance = require_perf_hooks().performance;
           }
-          return ret2;
-        }, array: function(arr) {
-          var ret2 = stackAlloc(arr.length);
-          writeArrayToMemory(arr, ret2);
-          return ret2;
-        }};
-        function convertReturnValue(ret2) {
-          if (returnType === "string")
-            return UTF8ToString(ret2);
-          if (returnType === "boolean")
-            return Boolean(ret2);
-          return ret2;
         }
-        var func2 = getCFunc(ident);
-        var cArgs = [];
-        var stack2 = 0;
-        if (args) {
-          for (var i = 0; i < args.length; i++) {
-            var converter = toC[argTypes[i]];
-            if (converter) {
-              if (stack2 === 0)
-                stack2 = stackSave();
-              cArgs[i] = converter(args[i]);
-            } else {
-              cArgs[i] = args[i];
+        var out = Module["print"] || console.log.bind(console);
+        var err = Module["printErr"] || console.warn.bind(console);
+        for (key in moduleOverrides) {
+          if (moduleOverrides.hasOwnProperty(key)) {
+            Module[key] = moduleOverrides[key];
+          }
+        }
+        moduleOverrides = null;
+        if (Module["arguments"])
+          arguments_ = Module["arguments"];
+        if (Module["thisProgram"])
+          thisProgram = Module["thisProgram"];
+        if (Module["quit"])
+          quit_ = Module["quit"];
+        var Atomics_load = Atomics.load;
+        var Atomics_store = Atomics.store;
+        var Atomics_compareExchange = Atomics.compareExchange;
+        var wasmBinary;
+        if (Module["wasmBinary"])
+          wasmBinary = Module["wasmBinary"];
+        var noExitRuntime = Module["noExitRuntime"] || true;
+        if (typeof WebAssembly !== "object") {
+          abort("no native wasm support detected");
+        }
+        var wasmMemory;
+        var wasmModule;
+        var ABORT = false;
+        var EXITSTATUS;
+        function assert3(condition, text) {
+          if (!condition) {
+            abort("Assertion failed: " + text);
+          }
+        }
+        function getCFunc(ident) {
+          var func2 = Module["_" + ident];
+          assert3(func2, "Cannot call unknown function " + ident + ", make sure it is exported");
+          return func2;
+        }
+        function ccall(ident, returnType, argTypes, args, opts) {
+          var toC = {"string": function(str) {
+            var ret2 = 0;
+            if (str !== null && str !== void 0 && str !== 0) {
+              var len = (str.length << 2) + 1;
+              ret2 = stackAlloc(len);
+              stringToUTF8(str, ret2, len);
+            }
+            return ret2;
+          }, "array": function(arr) {
+            var ret2 = stackAlloc(arr.length);
+            writeArrayToMemory(arr, ret2);
+            return ret2;
+          }};
+          function convertReturnValue(ret2) {
+            if (returnType === "string")
+              return UTF8ToString(ret2);
+            if (returnType === "boolean")
+              return Boolean(ret2);
+            return ret2;
+          }
+          var func2 = getCFunc(ident);
+          var cArgs = [];
+          var stack2 = 0;
+          if (args) {
+            for (var i = 0; i < args.length; i++) {
+              var converter = toC[argTypes[i]];
+              if (converter) {
+                if (stack2 === 0)
+                  stack2 = stackSave();
+                cArgs[i] = converter(args[i]);
+              } else {
+                cArgs[i] = args[i];
+              }
             }
           }
+          var ret = func2.apply(null, cArgs);
+          ret = convertReturnValue(ret);
+          if (stack2 !== 0)
+            stackRestore(stack2);
+          return ret;
         }
-        var ret = func2.apply(null, cArgs);
-        ret = convertReturnValue(ret);
-        if (stack2 !== 0)
-          stackRestore(stack2);
-        return ret;
-      }
-      function cwrap(ident, returnType, argTypes, opts) {
-        argTypes = argTypes || [];
-        var numericArgs = argTypes.every(function(type) {
-          return type === "number";
-        });
-        var numericRet = returnType !== "string";
-        if (numericRet && numericArgs && !opts) {
-          return getCFunc(ident);
+        function cwrap(ident, returnType, argTypes, opts) {
+          argTypes = argTypes || [];
+          var numericArgs = argTypes.every(function(type) {
+            return type === "number";
+          });
+          var numericRet = returnType !== "string";
+          if (numericRet && numericArgs && !opts) {
+            return getCFunc(ident);
+          }
+          return function() {
+            return ccall(ident, returnType, argTypes, arguments, opts);
+          };
         }
-        return function() {
-          return ccall(ident, returnType, argTypes, arguments, opts);
-        };
-      }
-      var UTF8Decoder = typeof TextDecoder !== "undefined" ? new TextDecoder("utf8") : void 0;
-      function UTF8ArrayToString(heap, idx, maxBytesToRead) {
-        var endIdx = idx + maxBytesToRead;
-        var endPtr = idx;
-        while (heap[endPtr] && !(endPtr >= endIdx))
-          ++endPtr;
-        if (endPtr - idx > 16 && heap.subarray && UTF8Decoder) {
-          return UTF8Decoder.decode(heap.subarray(idx, endPtr));
-        } else {
+        function UTF8ArrayToString(heap, idx, maxBytesToRead) {
+          var endIdx = idx + maxBytesToRead;
           var str = "";
-          while (idx < endPtr) {
+          while (!(idx >= endIdx)) {
             var u0 = heap[idx++];
+            if (!u0)
+              return str;
             if (!(u0 & 128)) {
               str += String.fromCharCode(u0);
               continue;
@@ -3816,856 +1727,3000 @@ var require_tfjs_backend_wasm = __commonJS((exports, module) => {
               str += String.fromCharCode(55296 | ch >> 10, 56320 | ch & 1023);
             }
           }
+          return str;
         }
-        return str;
-      }
-      function UTF8ToString(ptr, maxBytesToRead) {
-        return ptr ? UTF8ArrayToString(HEAPU8, ptr, maxBytesToRead) : "";
-      }
-      function stringToUTF8Array(str, heap, outIdx, maxBytesToWrite) {
-        if (!(maxBytesToWrite > 0))
-          return 0;
-        var startIdx = outIdx;
-        var endIdx = outIdx + maxBytesToWrite - 1;
-        for (var i = 0; i < str.length; ++i) {
-          var u = str.charCodeAt(i);
-          if (u >= 55296 && u <= 57343) {
-            var u1 = str.charCodeAt(++i);
-            u = 65536 + ((u & 1023) << 10) | u1 & 1023;
+        function UTF8ToString(ptr, maxBytesToRead) {
+          return ptr ? UTF8ArrayToString(GROWABLE_HEAP_U8(), ptr, maxBytesToRead) : "";
+        }
+        function stringToUTF8Array(str, heap, outIdx, maxBytesToWrite) {
+          if (!(maxBytesToWrite > 0))
+            return 0;
+          var startIdx = outIdx;
+          var endIdx = outIdx + maxBytesToWrite - 1;
+          for (var i = 0; i < str.length; ++i) {
+            var u = str.charCodeAt(i);
+            if (u >= 55296 && u <= 57343) {
+              var u1 = str.charCodeAt(++i);
+              u = 65536 + ((u & 1023) << 10) | u1 & 1023;
+            }
+            if (u <= 127) {
+              if (outIdx >= endIdx)
+                break;
+              heap[outIdx++] = u;
+            } else if (u <= 2047) {
+              if (outIdx + 1 >= endIdx)
+                break;
+              heap[outIdx++] = 192 | u >> 6;
+              heap[outIdx++] = 128 | u & 63;
+            } else if (u <= 65535) {
+              if (outIdx + 2 >= endIdx)
+                break;
+              heap[outIdx++] = 224 | u >> 12;
+              heap[outIdx++] = 128 | u >> 6 & 63;
+              heap[outIdx++] = 128 | u & 63;
+            } else {
+              if (outIdx + 3 >= endIdx)
+                break;
+              heap[outIdx++] = 240 | u >> 18;
+              heap[outIdx++] = 128 | u >> 12 & 63;
+              heap[outIdx++] = 128 | u >> 6 & 63;
+              heap[outIdx++] = 128 | u & 63;
+            }
           }
-          if (u <= 127) {
-            if (outIdx >= endIdx)
-              break;
-            heap[outIdx++] = u;
-          } else if (u <= 2047) {
-            if (outIdx + 1 >= endIdx)
-              break;
-            heap[outIdx++] = 192 | u >> 6;
-            heap[outIdx++] = 128 | u & 63;
-          } else if (u <= 65535) {
-            if (outIdx + 2 >= endIdx)
-              break;
-            heap[outIdx++] = 224 | u >> 12;
-            heap[outIdx++] = 128 | u >> 6 & 63;
-            heap[outIdx++] = 128 | u & 63;
+          heap[outIdx] = 0;
+          return outIdx - startIdx;
+        }
+        function stringToUTF8(str, outPtr, maxBytesToWrite) {
+          return stringToUTF8Array(str, GROWABLE_HEAP_U8(), outPtr, maxBytesToWrite);
+        }
+        function lengthBytesUTF8(str) {
+          var len = 0;
+          for (var i = 0; i < str.length; ++i) {
+            var u = str.charCodeAt(i);
+            if (u >= 55296 && u <= 57343)
+              u = 65536 + ((u & 1023) << 10) | str.charCodeAt(++i) & 1023;
+            if (u <= 127)
+              ++len;
+            else if (u <= 2047)
+              len += 2;
+            else if (u <= 65535)
+              len += 3;
+            else
+              len += 4;
+          }
+          return len;
+        }
+        function writeArrayToMemory(array2, buffer3) {
+          GROWABLE_HEAP_I8().set(array2, buffer3);
+        }
+        function alignUp(x, multiple) {
+          if (x % multiple > 0) {
+            x += multiple - x % multiple;
+          }
+          return x;
+        }
+        var buffer2, HEAP8, HEAPU8, HEAP16, HEAPU16, HEAP32, HEAPU32, HEAPF32, HEAPF64;
+        function updateGlobalBufferAndViews(buf) {
+          buffer2 = buf;
+          Module["HEAP8"] = HEAP8 = new Int8Array(buf);
+          Module["HEAP16"] = HEAP16 = new Int16Array(buf);
+          Module["HEAP32"] = HEAP32 = new Int32Array(buf);
+          Module["HEAPU8"] = HEAPU8 = new Uint8Array(buf);
+          Module["HEAPU16"] = HEAPU16 = new Uint16Array(buf);
+          Module["HEAPU32"] = HEAPU32 = new Uint32Array(buf);
+          Module["HEAPF32"] = HEAPF32 = new Float32Array(buf);
+          Module["HEAPF64"] = HEAPF64 = new Float64Array(buf);
+        }
+        var INITIAL_MEMORY = Module["INITIAL_MEMORY"] || 16777216;
+        if (ENVIRONMENT_IS_PTHREAD) {
+          wasmMemory = Module["wasmMemory"];
+          buffer2 = Module["buffer"];
+        } else {
+          if (Module["wasmMemory"]) {
+            wasmMemory = Module["wasmMemory"];
           } else {
-            if (outIdx + 3 >= endIdx)
-              break;
-            heap[outIdx++] = 240 | u >> 18;
-            heap[outIdx++] = 128 | u >> 12 & 63;
-            heap[outIdx++] = 128 | u >> 6 & 63;
-            heap[outIdx++] = 128 | u & 63;
-          }
-        }
-        heap[outIdx] = 0;
-        return outIdx - startIdx;
-      }
-      function stringToUTF8(str, outPtr, maxBytesToWrite) {
-        return stringToUTF8Array(str, HEAPU8, outPtr, maxBytesToWrite);
-      }
-      function writeArrayToMemory(array2, buffer3) {
-        HEAP8.set(array2, buffer3);
-      }
-      function alignUp(x, multiple) {
-        if (x % multiple > 0) {
-          x += multiple - x % multiple;
-        }
-        return x;
-      }
-      var buffer2, HEAP8, HEAPU8, HEAP16, HEAPU16, HEAP32, HEAPU32, HEAPF32, HEAPF64;
-      function updateGlobalBufferAndViews(buf) {
-        buffer2 = buf;
-        Module["HEAP8"] = HEAP8 = new Int8Array(buf);
-        Module["HEAP16"] = HEAP16 = new Int16Array(buf);
-        Module["HEAP32"] = HEAP32 = new Int32Array(buf);
-        Module["HEAPU8"] = HEAPU8 = new Uint8Array(buf);
-        Module["HEAPU16"] = HEAPU16 = new Uint16Array(buf);
-        Module["HEAPU32"] = HEAPU32 = new Uint32Array(buf);
-        Module["HEAPF32"] = HEAPF32 = new Float32Array(buf);
-        Module["HEAPF64"] = HEAPF64 = new Float64Array(buf);
-      }
-      var INITIAL_MEMORY = Module["INITIAL_MEMORY"] || 16777216;
-      var wasmTable;
-      var __ATPRERUN__ = [];
-      var __ATINIT__ = [];
-      var __ATMAIN__ = [];
-      var __ATPOSTRUN__ = [];
-      var runtimeInitialized = false;
-      __ATINIT__.push({func: function() {
-        ___wasm_call_ctors();
-      }});
-      function preRun() {
-        if (Module["preRun"]) {
-          if (typeof Module["preRun"] == "function")
-            Module["preRun"] = [Module["preRun"]];
-          while (Module["preRun"].length) {
-            addOnPreRun(Module["preRun"].shift());
-          }
-        }
-        callRuntimeCallbacks(__ATPRERUN__);
-      }
-      function initRuntime() {
-        runtimeInitialized = true;
-        callRuntimeCallbacks(__ATINIT__);
-      }
-      function preMain() {
-        callRuntimeCallbacks(__ATMAIN__);
-      }
-      function postRun() {
-        if (Module["postRun"]) {
-          if (typeof Module["postRun"] == "function")
-            Module["postRun"] = [Module["postRun"]];
-          while (Module["postRun"].length) {
-            addOnPostRun(Module["postRun"].shift());
-          }
-        }
-        callRuntimeCallbacks(__ATPOSTRUN__);
-      }
-      function addOnPreRun(cb) {
-        __ATPRERUN__.unshift(cb);
-      }
-      function addOnPostRun(cb) {
-        __ATPOSTRUN__.unshift(cb);
-      }
-      var runDependencies = 0;
-      var runDependencyWatcher = null;
-      var dependenciesFulfilled = null;
-      function addRunDependency(id) {
-        runDependencies++;
-        if (Module["monitorRunDependencies"]) {
-          Module["monitorRunDependencies"](runDependencies);
-        }
-      }
-      function removeRunDependency(id) {
-        runDependencies--;
-        if (Module["monitorRunDependencies"]) {
-          Module["monitorRunDependencies"](runDependencies);
-        }
-        if (runDependencies == 0) {
-          if (runDependencyWatcher !== null) {
-            clearInterval(runDependencyWatcher);
-            runDependencyWatcher = null;
-          }
-          if (dependenciesFulfilled) {
-            var callback = dependenciesFulfilled;
-            dependenciesFulfilled = null;
-            callback();
-          }
-        }
-      }
-      Module["preloadedImages"] = {};
-      Module["preloadedAudios"] = {};
-      function abort(what) {
-        if (Module["onAbort"]) {
-          Module["onAbort"](what);
-        }
-        what += "";
-        err(what);
-        ABORT = true;
-        EXITSTATUS = 1;
-        what = "abort(" + what + "). Build with -s ASSERTIONS=1 for more info.";
-        var e = new WebAssembly.RuntimeError(what);
-        readyPromiseReject(e);
-        throw e;
-      }
-      function hasPrefix(str, prefix) {
-        return String.prototype.startsWith ? str.startsWith(prefix) : str.indexOf(prefix) === 0;
-      }
-      var dataURIPrefix = "data:application/octet-stream;base64,";
-      function isDataURI(filename) {
-        return hasPrefix(filename, dataURIPrefix);
-      }
-      var fileURIPrefix = "file://";
-      function isFileURI(filename) {
-        return hasPrefix(filename, fileURIPrefix);
-      }
-      var wasmBinaryFile = "tfjs-backend-wasm.wasm";
-      if (!isDataURI(wasmBinaryFile)) {
-        wasmBinaryFile = locateFile(wasmBinaryFile);
-      }
-      function getBinary(file) {
-        try {
-          if (file == wasmBinaryFile && wasmBinary) {
-            return new Uint8Array(wasmBinary);
-          }
-          if (readBinary) {
-            return readBinary(file);
-          } else {
-            throw "both async and sync fetching of the wasm failed";
-          }
-        } catch (err2) {
-          abort(err2);
-        }
-      }
-      function getBinaryPromise() {
-        if (!wasmBinary && (ENVIRONMENT_IS_WEB || ENVIRONMENT_IS_WORKER)) {
-          if (typeof fetch === "function" && !isFileURI(wasmBinaryFile)) {
-            return fetch(wasmBinaryFile, {credentials: "same-origin"}).then(function(response) {
-              if (!response["ok"]) {
-                throw "failed to load wasm binary file at '" + wasmBinaryFile + "'";
+            wasmMemory = new WebAssembly.Memory({"initial": INITIAL_MEMORY / 65536, "maximum": 2147483648 / 65536, "shared": true});
+            if (!(wasmMemory.buffer instanceof SharedArrayBuffer)) {
+              err("requested a shared WebAssembly.Memory but the returned buffer is not a SharedArrayBuffer, indicating that while the browser has SharedArrayBuffer it does not have WebAssembly threads support - you may need to set a flag");
+              if (ENVIRONMENT_IS_NODE) {
+                console.log("(on node you may need: --experimental-wasm-threads --experimental-wasm-bulk-memory and also use a recent version)");
               }
-              return response["arrayBuffer"]();
-            }).catch(function() {
-              return getBinary(wasmBinaryFile);
-            });
-          } else {
-            if (readAsync) {
-              return new Promise(function(resolve, reject) {
-                readAsync(wasmBinaryFile, function(response) {
-                  resolve(new Uint8Array(response));
-                }, reject);
-              });
+              throw Error("bad memory");
             }
           }
         }
-        return Promise.resolve().then(function() {
-          return getBinary(wasmBinaryFile);
-        });
-      }
-      function createWasm() {
-        var info = {a: asmLibraryArg};
-        function receiveInstance(instance, module2) {
-          var exports3 = instance.exports;
-          Module["asm"] = exports3;
-          wasmMemory = Module["asm"]["i"];
-          updateGlobalBufferAndViews(wasmMemory.buffer);
-          wasmTable = Module["asm"]["o"];
-          removeRunDependency("wasm-instantiate");
+        if (wasmMemory) {
+          buffer2 = wasmMemory.buffer;
         }
-        addRunDependency("wasm-instantiate");
-        function receiveInstantiatedSource(output) {
-          receiveInstance(output["instance"]);
+        INITIAL_MEMORY = buffer2.byteLength;
+        updateGlobalBufferAndViews(buffer2);
+        var wasmTable;
+        var __ATPRERUN__ = [];
+        var __ATINIT__ = [];
+        var __ATMAIN__ = [];
+        var __ATEXIT__ = [];
+        var __ATPOSTRUN__ = [];
+        var runtimeInitialized = false;
+        var runtimeExited = false;
+        if (!ENVIRONMENT_IS_PTHREAD)
+          __ATINIT__.push({func: function() {
+            ___wasm_call_ctors();
+          }});
+        function preRun() {
+          if (ENVIRONMENT_IS_PTHREAD)
+            return;
+          if (Module["preRun"]) {
+            if (typeof Module["preRun"] == "function")
+              Module["preRun"] = [Module["preRun"]];
+            while (Module["preRun"].length) {
+              addOnPreRun(Module["preRun"].shift());
+            }
+          }
+          callRuntimeCallbacks(__ATPRERUN__);
         }
-        function instantiateArrayBuffer(receiver) {
-          return getBinaryPromise().then(function(binary) {
-            return WebAssembly.instantiate(binary, info);
-          }).then(receiver, function(reason) {
-            err("failed to asynchronously prepare wasm: " + reason);
-            abort(reason);
+        function initRuntime() {
+          runtimeInitialized = true;
+          if (ENVIRONMENT_IS_PTHREAD)
+            return;
+          callRuntimeCallbacks(__ATINIT__);
+        }
+        function preMain() {
+          if (ENVIRONMENT_IS_PTHREAD)
+            return;
+          callRuntimeCallbacks(__ATMAIN__);
+        }
+        function exitRuntime() {
+          if (ENVIRONMENT_IS_PTHREAD)
+            return;
+          runtimeExited = true;
+        }
+        function postRun() {
+          if (ENVIRONMENT_IS_PTHREAD)
+            return;
+          if (Module["postRun"]) {
+            if (typeof Module["postRun"] == "function")
+              Module["postRun"] = [Module["postRun"]];
+            while (Module["postRun"].length) {
+              addOnPostRun(Module["postRun"].shift());
+            }
+          }
+          callRuntimeCallbacks(__ATPOSTRUN__);
+        }
+        function addOnPreRun(cb) {
+          __ATPRERUN__.unshift(cb);
+        }
+        function addOnPostRun(cb) {
+          __ATPOSTRUN__.unshift(cb);
+        }
+        var runDependencies = 0;
+        var runDependencyWatcher = null;
+        var dependenciesFulfilled = null;
+        function addRunDependency(id) {
+          assert3(!ENVIRONMENT_IS_PTHREAD, "addRunDependency cannot be used in a pthread worker");
+          runDependencies++;
+          if (Module["monitorRunDependencies"]) {
+            Module["monitorRunDependencies"](runDependencies);
+          }
+        }
+        function removeRunDependency(id) {
+          runDependencies--;
+          if (Module["monitorRunDependencies"]) {
+            Module["monitorRunDependencies"](runDependencies);
+          }
+          if (runDependencies == 0) {
+            if (runDependencyWatcher !== null) {
+              clearInterval(runDependencyWatcher);
+              runDependencyWatcher = null;
+            }
+            if (dependenciesFulfilled) {
+              var callback = dependenciesFulfilled;
+              dependenciesFulfilled = null;
+              callback();
+            }
+          }
+        }
+        Module["preloadedImages"] = {};
+        Module["preloadedAudios"] = {};
+        function abort(what) {
+          if (Module["onAbort"]) {
+            Module["onAbort"](what);
+          }
+          if (ENVIRONMENT_IS_PTHREAD)
+            console.error("Pthread aborting at " + new Error().stack);
+          what += "";
+          err(what);
+          ABORT = true;
+          EXITSTATUS = 1;
+          what = "abort(" + what + "). Build with -s ASSERTIONS=1 for more info.";
+          var e = new WebAssembly.RuntimeError(what);
+          readyPromiseReject(e);
+          throw e;
+        }
+        function hasPrefix(str, prefix) {
+          return String.prototype.startsWith ? str.startsWith(prefix) : str.indexOf(prefix) === 0;
+        }
+        var dataURIPrefix = "data:application/octet-stream;base64,";
+        function isDataURI(filename) {
+          return hasPrefix(filename, dataURIPrefix);
+        }
+        var fileURIPrefix = "file://";
+        function isFileURI(filename) {
+          return hasPrefix(filename, fileURIPrefix);
+        }
+        var wasmBinaryFile = "tfjs-backend-wasm-threaded-simd.wasm";
+        if (!isDataURI(wasmBinaryFile)) {
+          wasmBinaryFile = locateFile(wasmBinaryFile);
+        }
+        function getBinary(file) {
+          try {
+            if (file == wasmBinaryFile && wasmBinary) {
+              return new Uint8Array(wasmBinary);
+            }
+            if (readBinary) {
+              return readBinary(file);
+            } else {
+              throw "both async and sync fetching of the wasm failed";
+            }
+          } catch (err2) {
+            abort(err2);
+          }
+        }
+        function getBinaryPromise() {
+          if (!wasmBinary && (ENVIRONMENT_IS_WEB || ENVIRONMENT_IS_WORKER)) {
+            if (typeof fetch === "function" && !isFileURI(wasmBinaryFile)) {
+              return fetch(wasmBinaryFile, {credentials: "same-origin"}).then(function(response) {
+                if (!response["ok"]) {
+                  throw "failed to load wasm binary file at '" + wasmBinaryFile + "'";
+                }
+                return response["arrayBuffer"]();
+              }).catch(function() {
+                return getBinary(wasmBinaryFile);
+              });
+            } else {
+              if (readAsync) {
+                return new Promise(function(resolve, reject) {
+                  readAsync(wasmBinaryFile, function(response) {
+                    resolve(new Uint8Array(response));
+                  }, reject);
+                });
+              }
+            }
+          }
+          return Promise.resolve().then(function() {
+            return getBinary(wasmBinaryFile);
           });
         }
-        function instantiateAsync() {
-          if (!wasmBinary && typeof WebAssembly.instantiateStreaming === "function" && !isDataURI(wasmBinaryFile) && !isFileURI(wasmBinaryFile) && typeof fetch === "function") {
-            return fetch(wasmBinaryFile, {credentials: "same-origin"}).then(function(response) {
-              var result = WebAssembly.instantiateStreaming(response, info);
-              return result.then(receiveInstantiatedSource, function(reason) {
-                err("wasm streaming compile failed: " + reason);
-                err("falling back to ArrayBuffer instantiation");
-                return instantiateArrayBuffer(receiveInstantiatedSource);
+        function createWasm() {
+          var info = {"a": asmLibraryArg};
+          function receiveInstance(instance, module2) {
+            var exports3 = instance.exports;
+            Module["asm"] = exports3;
+            wasmTable = Module["asm"]["F"];
+            wasmModule = module2;
+            if (!ENVIRONMENT_IS_PTHREAD) {
+              var numWorkersToLoad = PThread.unusedWorkers.length;
+              PThread.unusedWorkers.forEach(function(w) {
+                PThread.loadWasmModuleToWorker(w, function() {
+                  if (!--numWorkersToLoad)
+                    removeRunDependency("wasm-instantiate");
+                });
               });
+            }
+          }
+          if (!ENVIRONMENT_IS_PTHREAD) {
+            addRunDependency("wasm-instantiate");
+          }
+          function receiveInstantiatedSource(output) {
+            receiveInstance(output["instance"], output["module"]);
+          }
+          function instantiateArrayBuffer(receiver) {
+            return getBinaryPromise().then(function(binary) {
+              return WebAssembly.instantiate(binary, info);
+            }).then(receiver, function(reason) {
+              err("failed to asynchronously prepare wasm: " + reason);
+              abort(reason);
             });
-          } else {
-            return instantiateArrayBuffer(receiveInstantiatedSource);
+          }
+          function instantiateAsync() {
+            if (!wasmBinary && typeof WebAssembly.instantiateStreaming === "function" && !isDataURI(wasmBinaryFile) && !isFileURI(wasmBinaryFile) && typeof fetch === "function") {
+              return fetch(wasmBinaryFile, {credentials: "same-origin"}).then(function(response) {
+                var result = WebAssembly.instantiateStreaming(response, info);
+                return result.then(receiveInstantiatedSource, function(reason) {
+                  err("wasm streaming compile failed: " + reason);
+                  err("falling back to ArrayBuffer instantiation");
+                  return instantiateArrayBuffer(receiveInstantiatedSource);
+                });
+              });
+            } else {
+              return instantiateArrayBuffer(receiveInstantiatedSource);
+            }
+          }
+          if (Module["instantiateWasm"]) {
+            try {
+              var exports2 = Module["instantiateWasm"](info, receiveInstance);
+              return exports2;
+            } catch (e) {
+              err("Module.instantiateWasm callback failed with error: " + e);
+              return false;
+            }
+          }
+          instantiateAsync().catch(readyPromiseReject);
+          return {};
+        }
+        var ASM_CONSTS = {9816: function() {
+          throw "Canceled!";
+        }, 9834: function($0, $1) {
+          setTimeout(function() {
+            __emscripten_do_dispatch_to_thread($0, $1);
+          }, 0);
+        }};
+        function initPthreadsJS() {
+          PThread.initRuntime();
+        }
+        function callRuntimeCallbacks(callbacks2) {
+          while (callbacks2.length > 0) {
+            var callback = callbacks2.shift();
+            if (typeof callback == "function") {
+              callback(Module);
+              continue;
+            }
+            var func2 = callback.func;
+            if (typeof func2 === "number") {
+              if (callback.arg === void 0) {
+                wasmTable.get(func2)();
+              } else {
+                wasmTable.get(func2)(callback.arg);
+              }
+            } else {
+              func2(callback.arg === void 0 ? null : callback.arg);
+            }
           }
         }
-        if (Module["instantiateWasm"]) {
+        function _emscripten_futex_wake(addr, count2) {
+          if (addr <= 0 || addr > GROWABLE_HEAP_I8().length || addr & true || count2 < 0)
+            return -28;
+          if (count2 == 0)
+            return 0;
+          if (count2 >= 2147483647)
+            count2 = Infinity;
+          var mainThreadWaitAddress = Atomics.load(GROWABLE_HEAP_I32(), __emscripten_main_thread_futex >> 2);
+          var mainThreadWoken = 0;
+          if (mainThreadWaitAddress == addr) {
+            var loadedAddr = Atomics.compareExchange(GROWABLE_HEAP_I32(), __emscripten_main_thread_futex >> 2, mainThreadWaitAddress, 0);
+            if (loadedAddr == mainThreadWaitAddress) {
+              --count2;
+              mainThreadWoken = 1;
+              if (count2 <= 0)
+                return 1;
+            }
+          }
+          var ret = Atomics.notify(GROWABLE_HEAP_I32(), addr >> 2, count2);
+          if (ret >= 0)
+            return ret + mainThreadWoken;
+          throw "Atomics.notify returned an unexpected value " + ret;
+        }
+        Module["_emscripten_futex_wake"] = _emscripten_futex_wake;
+        function killThread(pthread_ptr) {
+          if (ENVIRONMENT_IS_PTHREAD)
+            throw "Internal Error! killThread() can only ever be called from main application thread!";
+          if (!pthread_ptr)
+            throw "Internal Error! Null pthread_ptr in killThread!";
+          GROWABLE_HEAP_I32()[pthread_ptr + 12 >> 2] = 0;
+          var pthread = PThread.pthreads[pthread_ptr];
+          pthread.worker.terminate();
+          PThread.freeThreadData(pthread);
+          PThread.runningWorkers.splice(PThread.runningWorkers.indexOf(pthread.worker), 1);
+          pthread.worker.pthread = void 0;
+        }
+        function cancelThread(pthread_ptr) {
+          if (ENVIRONMENT_IS_PTHREAD)
+            throw "Internal Error! cancelThread() can only ever be called from main application thread!";
+          if (!pthread_ptr)
+            throw "Internal Error! Null pthread_ptr in cancelThread!";
+          var pthread = PThread.pthreads[pthread_ptr];
+          pthread.worker.postMessage({"cmd": "cancel"});
+        }
+        function cleanupThread(pthread_ptr) {
+          if (ENVIRONMENT_IS_PTHREAD)
+            throw "Internal Error! cleanupThread() can only ever be called from main application thread!";
+          if (!pthread_ptr)
+            throw "Internal Error! Null pthread_ptr in cleanupThread!";
+          var pthread = PThread.pthreads[pthread_ptr];
+          if (pthread) {
+            GROWABLE_HEAP_I32()[pthread_ptr + 12 >> 2] = 0;
+            var worker = pthread.worker;
+            PThread.returnWorkerToPool(worker);
+          }
+        }
+        var PThread = {unusedWorkers: [], runningWorkers: [], initMainThreadBlock: function() {
+          var pthreadPoolSize = Math.min(4, Math.max(1, (navigator.hardwareConcurrency || 1) / 2));
+          for (var i = 0; i < pthreadPoolSize; ++i) {
+            PThread.allocateUnusedWorker();
+          }
+        }, initRuntime: function() {
+          var tb = _malloc(228);
+          for (var i = 0; i < 228 / 4; ++i)
+            GROWABLE_HEAP_U32()[tb / 4 + i] = 0;
+          GROWABLE_HEAP_I32()[tb + 12 >> 2] = tb;
+          var headPtr = tb + 152;
+          GROWABLE_HEAP_I32()[headPtr >> 2] = headPtr;
+          var tlsMemory = _malloc(512);
+          for (var i = 0; i < 128; ++i)
+            GROWABLE_HEAP_U32()[tlsMemory / 4 + i] = 0;
+          Atomics.store(GROWABLE_HEAP_U32(), tb + 100 >> 2, tlsMemory);
+          Atomics.store(GROWABLE_HEAP_U32(), tb + 40 >> 2, tb);
+          __emscripten_thread_init(tb, !ENVIRONMENT_IS_WORKER, 1);
+          _emscripten_register_main_browser_thread_id(tb);
+        }, initWorker: function() {
+        }, pthreads: {}, threadExitHandlers: [], setThreadStatus: function() {
+        }, runExitHandlers: function() {
+          while (PThread.threadExitHandlers.length > 0) {
+            PThread.threadExitHandlers.pop()();
+          }
+          if (ENVIRONMENT_IS_PTHREAD && _pthread_self())
+            ___pthread_tsd_run_dtors();
+        }, runExitHandlersAndDeinitThread: function(tb, exitCode) {
+          Atomics.store(GROWABLE_HEAP_U32(), tb + 56 >> 2, 1);
+          Atomics.store(GROWABLE_HEAP_U32(), tb + 60 >> 2, 0);
+          PThread.runExitHandlers();
+          Atomics.store(GROWABLE_HEAP_U32(), tb + 4 >> 2, exitCode);
+          Atomics.store(GROWABLE_HEAP_U32(), tb + 0 >> 2, 1);
+          _emscripten_futex_wake(tb + 0, 2147483647);
+          __emscripten_thread_init(0, 0, 0);
+        }, threadExit: function(exitCode) {
+          var tb = _pthread_self();
+          if (tb) {
+            PThread.runExitHandlersAndDeinitThread(tb, exitCode);
+            if (ENVIRONMENT_IS_PTHREAD) {
+              postMessage({"cmd": "exit"});
+            }
+          }
+        }, threadCancel: function() {
+          PThread.runExitHandlersAndDeinitThread(_pthread_self(), -1);
+          postMessage({"cmd": "cancelDone"});
+        }, terminateAllThreads: function() {
+          for (var t in PThread.pthreads) {
+            var pthread = PThread.pthreads[t];
+            if (pthread && pthread.worker) {
+              PThread.returnWorkerToPool(pthread.worker);
+            }
+          }
+          PThread.pthreads = {};
+          for (var i = 0; i < PThread.unusedWorkers.length; ++i) {
+            var worker = PThread.unusedWorkers[i];
+            worker.terminate();
+          }
+          PThread.unusedWorkers = [];
+          for (var i = 0; i < PThread.runningWorkers.length; ++i) {
+            var worker = PThread.runningWorkers[i];
+            var pthread = worker.pthread;
+            PThread.freeThreadData(pthread);
+            worker.terminate();
+          }
+          PThread.runningWorkers = [];
+        }, freeThreadData: function(pthread) {
+          if (!pthread)
+            return;
+          if (pthread.threadInfoStruct) {
+            var tlsMemory = GROWABLE_HEAP_I32()[pthread.threadInfoStruct + 100 >> 2];
+            GROWABLE_HEAP_I32()[pthread.threadInfoStruct + 100 >> 2] = 0;
+            _free(tlsMemory);
+            _free(pthread.threadInfoStruct);
+          }
+          pthread.threadInfoStruct = 0;
+          if (pthread.allocatedOwnStack && pthread.stackBase)
+            _free(pthread.stackBase);
+          pthread.stackBase = 0;
+          if (pthread.worker)
+            pthread.worker.pthread = null;
+        }, returnWorkerToPool: function(worker) {
+          PThread.runWithoutMainThreadQueuedCalls(function() {
+            delete PThread.pthreads[worker.pthread.threadInfoStruct];
+            PThread.unusedWorkers.push(worker);
+            PThread.runningWorkers.splice(PThread.runningWorkers.indexOf(worker), 1);
+            PThread.freeThreadData(worker.pthread);
+            worker.pthread = void 0;
+          });
+        }, runWithoutMainThreadQueuedCalls: function(func2) {
+          GROWABLE_HEAP_I32()[__emscripten_allow_main_runtime_queued_calls >> 2] = 0;
           try {
-            var exports2 = Module["instantiateWasm"](info, receiveInstance);
-            return exports2;
+            func2();
+          } finally {
+            GROWABLE_HEAP_I32()[__emscripten_allow_main_runtime_queued_calls >> 2] = 1;
+          }
+        }, receiveObjectTransfer: function(data) {
+        }, loadWasmModuleToWorker: function(worker, onFinishedLoading) {
+          worker.onmessage = function(e) {
+            var d = e["data"];
+            var cmd = d["cmd"];
+            if (worker.pthread)
+              PThread.currentProxiedOperationCallerThread = worker.pthread.threadInfoStruct;
+            if (d["targetThread"] && d["targetThread"] != _pthread_self()) {
+              var thread = PThread.pthreads[d.targetThread];
+              if (thread) {
+                thread.worker.postMessage(e.data, d["transferList"]);
+              } else {
+                console.error('Internal error! Worker sent a message "' + cmd + '" to target pthread ' + d["targetThread"] + ", but that thread no longer exists!");
+              }
+              PThread.currentProxiedOperationCallerThread = void 0;
+              return;
+            }
+            if (cmd === "processQueuedMainThreadWork") {
+              _emscripten_main_thread_process_queued_calls();
+            } else if (cmd === "spawnThread") {
+              spawnThread(e.data);
+            } else if (cmd === "cleanupThread") {
+              cleanupThread(d["thread"]);
+            } else if (cmd === "killThread") {
+              killThread(d["thread"]);
+            } else if (cmd === "cancelThread") {
+              cancelThread(d["thread"]);
+            } else if (cmd === "loaded") {
+              worker.loaded = true;
+              if (onFinishedLoading)
+                onFinishedLoading(worker);
+              if (worker.runPthread) {
+                worker.runPthread();
+                delete worker.runPthread;
+              }
+            } else if (cmd === "print") {
+              out("Thread " + d["threadId"] + ": " + d["text"]);
+            } else if (cmd === "printErr") {
+              err("Thread " + d["threadId"] + ": " + d["text"]);
+            } else if (cmd === "alert") {
+              alert("Thread " + d["threadId"] + ": " + d["text"]);
+            } else if (cmd === "exit") {
+              var detached = worker.pthread && Atomics.load(GROWABLE_HEAP_U32(), worker.pthread.threadInfoStruct + 64 >> 2);
+              if (detached) {
+                PThread.returnWorkerToPool(worker);
+              }
+            } else if (cmd === "exitProcess") {
+              try {
+                exit(d["returnCode"]);
+              } catch (e2) {
+                if (e2 instanceof ExitStatus)
+                  return;
+                throw e2;
+              }
+            } else if (cmd === "cancelDone") {
+              PThread.returnWorkerToPool(worker);
+            } else if (cmd === "objectTransfer") {
+              PThread.receiveObjectTransfer(e.data);
+            } else if (e.data.target === "setimmediate") {
+              worker.postMessage(e.data);
+            } else {
+              err("worker sent an unknown command " + cmd);
+            }
+            PThread.currentProxiedOperationCallerThread = void 0;
+          };
+          worker.onerror = function(e) {
+            err("pthread sent an error! " + e.filename + ":" + e.lineno + ": " + e.message);
+          };
+          if (ENVIRONMENT_IS_NODE) {
+            worker.on("message", function(data) {
+              worker.onmessage({data});
+            });
+            worker.on("error", function(data) {
+              worker.onerror(data);
+            });
+            worker.on("exit", function(data) {
+            });
+          }
+          worker.postMessage({"cmd": "load", "urlOrBlob": Module["mainScriptUrlOrBlob"] || _scriptDir, "wasmMemory": wasmMemory, "wasmModule": wasmModule});
+        }, allocateUnusedWorker: function() {
+          var pthreadMainJs = locateFile("tfjs-backend-wasm-threaded-simd.worker.js");
+          PThread.unusedWorkers.push(new Worker(pthreadMainJs));
+        }, getNewWorker: function() {
+          if (PThread.unusedWorkers.length == 0) {
+            PThread.allocateUnusedWorker();
+            PThread.loadWasmModuleToWorker(PThread.unusedWorkers[0]);
+          }
+          if (PThread.unusedWorkers.length > 0)
+            return PThread.unusedWorkers.pop();
+          else
+            return null;
+        }, busySpinWait: function(msecs) {
+          var t = performance.now() + msecs;
+          while (performance.now() < t) {
+          }
+        }};
+        function establishStackSpace(stackTop, stackMax) {
+          _emscripten_stack_set_limits(stackTop, stackMax);
+          stackRestore(stackTop);
+        }
+        Module["establishStackSpace"] = establishStackSpace;
+        function getNoExitRuntime() {
+          return noExitRuntime;
+        }
+        Module["getNoExitRuntime"] = getNoExitRuntime;
+        function invokeEntryPoint(ptr, arg) {
+          return wasmTable.get(ptr)(arg);
+        }
+        Module["invokeEntryPoint"] = invokeEntryPoint;
+        function ___assert_fail(condition, filename, line, func2) {
+          abort("Assertion failed: " + UTF8ToString(condition) + ", at: " + [filename ? UTF8ToString(filename) : "unknown filename", line, func2 ? UTF8ToString(func2) : "unknown function"]);
+        }
+        function ___call_main(argc, argv) {
+          var returnCode = _main(argc, argv);
+        }
+        var _emscripten_get_now;
+        if (ENVIRONMENT_IS_NODE) {
+          _emscripten_get_now = function() {
+            var t = process["hrtime"]();
+            return t[0] * 1e3 + t[1] / 1e6;
+          };
+        } else if (ENVIRONMENT_IS_PTHREAD) {
+          _emscripten_get_now = function() {
+            return performance.now() - Module["__performance_now_clock_drift"];
+          };
+        } else if (typeof dateNow !== "undefined") {
+          _emscripten_get_now = dateNow;
+        } else
+          _emscripten_get_now = function() {
+            return performance.now();
+          };
+        function setErrNo(value) {
+          GROWABLE_HEAP_I32()[___errno_location() >> 2] = value;
+          return value;
+        }
+        function _atexit(func2, arg) {
+          if (ENVIRONMENT_IS_PTHREAD)
+            return _emscripten_proxy_to_main_thread_js(1, 1, func2, arg);
+        }
+        function __emscripten_notify_thread_queue(targetThreadId, mainThreadId) {
+          if (targetThreadId == mainThreadId) {
+            postMessage({"cmd": "processQueuedMainThreadWork"});
+          } else if (ENVIRONMENT_IS_PTHREAD) {
+            postMessage({"targetThread": targetThreadId, "cmd": "processThreadQueue"});
+          } else {
+            var pthread = PThread.pthreads[targetThreadId];
+            var worker = pthread && pthread.worker;
+            if (!worker) {
+              return;
+            }
+            worker.postMessage({"cmd": "processThreadQueue"});
+          }
+          return 1;
+        }
+        function _abort() {
+          abort();
+        }
+        function _emscripten_asm_const_int(code, sigPtr, argbuf) {
+          var args = readAsmConstArgs(sigPtr, argbuf);
+          return ASM_CONSTS[code].apply(null, args);
+        }
+        function _emscripten_conditional_set_current_thread_status(expectedStatus, newStatus) {
+        }
+        function _emscripten_futex_wait(addr, val, timeout) {
+          if (addr <= 0 || addr > GROWABLE_HEAP_I8().length || addr & true)
+            return -28;
+          if (!ENVIRONMENT_IS_WEB) {
+            var ret = Atomics.wait(GROWABLE_HEAP_I32(), addr >> 2, val, timeout);
+            if (ret === "timed-out")
+              return -73;
+            if (ret === "not-equal")
+              return -6;
+            if (ret === "ok")
+              return 0;
+            throw "Atomics.wait returned an unexpected value " + ret;
+          } else {
+            if (Atomics.load(GROWABLE_HEAP_I32(), addr >> 2) != val) {
+              return -6;
+            }
+            var tNow = performance.now();
+            var tEnd = tNow + timeout;
+            var lastAddr = Atomics.exchange(GROWABLE_HEAP_I32(), __emscripten_main_thread_futex >> 2, addr);
+            while (1) {
+              tNow = performance.now();
+              if (tNow > tEnd) {
+                lastAddr = Atomics.exchange(GROWABLE_HEAP_I32(), __emscripten_main_thread_futex >> 2, 0);
+                return -73;
+              }
+              lastAddr = Atomics.exchange(GROWABLE_HEAP_I32(), __emscripten_main_thread_futex >> 2, 0);
+              if (lastAddr == 0) {
+                break;
+              }
+              _emscripten_main_thread_process_queued_calls();
+              if (Atomics.load(GROWABLE_HEAP_I32(), addr >> 2) != val) {
+                return -6;
+              }
+              lastAddr = Atomics.exchange(GROWABLE_HEAP_I32(), __emscripten_main_thread_futex >> 2, addr);
+            }
+            return 0;
+          }
+        }
+        function _emscripten_memcpy_big(dest, src, num) {
+          GROWABLE_HEAP_U8().copyWithin(dest, src, src + num);
+        }
+        function _emscripten_num_logical_cores() {
+          if (ENVIRONMENT_IS_NODE)
+            return __require("os").cpus().length;
+          return navigator["hardwareConcurrency"];
+        }
+        function _emscripten_proxy_to_main_thread_js(index, sync) {
+          var numCallArgs = arguments.length - 2;
+          var stack2 = stackSave();
+          var serializedNumCallArgs = numCallArgs;
+          var args = stackAlloc(serializedNumCallArgs * 8);
+          var b = args >> 3;
+          for (var i = 0; i < numCallArgs; i++) {
+            var arg = arguments[2 + i];
+            GROWABLE_HEAP_F64()[b + i] = arg;
+          }
+          var ret = _emscripten_run_in_main_runtime_thread_js(index, serializedNumCallArgs, args, sync);
+          stackRestore(stack2);
+          return ret;
+        }
+        var _emscripten_receive_on_main_thread_js_callArgs = [];
+        var readAsmConstArgsArray = [];
+        function readAsmConstArgs(sigPtr, buf) {
+          readAsmConstArgsArray.length = 0;
+          var ch;
+          buf >>= 2;
+          while (ch = GROWABLE_HEAP_U8()[sigPtr++]) {
+            var double = ch < 105;
+            if (double && buf & 1)
+              buf++;
+            readAsmConstArgsArray.push(double ? GROWABLE_HEAP_F64()[buf++ >> 1] : GROWABLE_HEAP_I32()[buf]);
+            ++buf;
+          }
+          return readAsmConstArgsArray;
+        }
+        function _emscripten_receive_on_main_thread_js(index, numCallArgs, args) {
+          _emscripten_receive_on_main_thread_js_callArgs.length = numCallArgs;
+          var b = args >> 3;
+          for (var i = 0; i < numCallArgs; i++) {
+            _emscripten_receive_on_main_thread_js_callArgs[i] = GROWABLE_HEAP_F64()[b + i];
+          }
+          var isEmAsmConst = index < 0;
+          var func2 = !isEmAsmConst ? proxiedFunctionTable[index] : ASM_CONSTS[-index - 1];
+          return func2.apply(null, _emscripten_receive_on_main_thread_js_callArgs);
+        }
+        function _emscripten_get_heap_size() {
+          return GROWABLE_HEAP_U8().length;
+        }
+        function emscripten_realloc_buffer(size) {
+          try {
+            wasmMemory.grow(size - buffer2.byteLength + 65535 >>> 16);
+            updateGlobalBufferAndViews(wasmMemory.buffer);
+            return 1;
           } catch (e) {
-            err("Module.instantiateWasm callback failed with error: " + e);
+          }
+        }
+        function _emscripten_resize_heap(requestedSize) {
+          var oldSize = _emscripten_get_heap_size();
+          if (requestedSize <= oldSize) {
             return false;
           }
-        }
-        instantiateAsync().catch(readyPromiseReject);
-        return {};
-      }
-      function callRuntimeCallbacks(callbacks2) {
-        while (callbacks2.length > 0) {
-          var callback = callbacks2.shift();
-          if (typeof callback == "function") {
-            callback(Module);
-            continue;
+          var maxHeapSize = 2147483648;
+          if (requestedSize > maxHeapSize) {
+            return false;
           }
-          var func2 = callback.func;
-          if (typeof func2 === "number") {
-            if (callback.arg === void 0) {
-              wasmTable.get(func2)();
-            } else {
-              wasmTable.get(func2)(callback.arg);
+          for (var cutDown = 1; cutDown <= 4; cutDown *= 2) {
+            var overGrownHeapSize = oldSize * (1 + 0.2 / cutDown);
+            overGrownHeapSize = Math.min(overGrownHeapSize, requestedSize + 100663296);
+            var newSize = Math.min(maxHeapSize, alignUp(Math.max(requestedSize, overGrownHeapSize), 65536));
+            var replacement = emscripten_realloc_buffer(newSize);
+            if (replacement) {
+              return true;
             }
-          } else {
-            func2(callback.arg === void 0 ? null : callback.arg);
           }
-        }
-      }
-      function _abort() {
-        abort();
-      }
-      function _emscripten_memcpy_big(dest, src, num) {
-        HEAPU8.copyWithin(dest, src, src + num);
-      }
-      function _emscripten_get_heap_size() {
-        return HEAPU8.length;
-      }
-      function emscripten_realloc_buffer(size) {
-        try {
-          wasmMemory.grow(size - buffer2.byteLength + 65535 >>> 16);
-          updateGlobalBufferAndViews(wasmMemory.buffer);
-          return 1;
-        } catch (e) {
-        }
-      }
-      function _emscripten_resize_heap(requestedSize) {
-        var oldSize = _emscripten_get_heap_size();
-        var maxHeapSize = 2147483648;
-        if (requestedSize > maxHeapSize) {
           return false;
         }
-        for (var cutDown = 1; cutDown <= 4; cutDown *= 2) {
-          var overGrownHeapSize = oldSize * (1 + 0.2 / cutDown);
-          overGrownHeapSize = Math.min(overGrownHeapSize, requestedSize + 100663296);
-          var newSize = Math.min(maxHeapSize, alignUp(Math.max(requestedSize, overGrownHeapSize), 65536));
-          var replacement = emscripten_realloc_buffer(newSize);
-          if (replacement) {
+        var JSEvents = {inEventHandler: 0, removeAllEventListeners: function() {
+          for (var i = JSEvents.eventHandlers.length - 1; i >= 0; --i) {
+            JSEvents._removeHandler(i);
+          }
+          JSEvents.eventHandlers = [];
+          JSEvents.deferredCalls = [];
+        }, registerRemoveEventListeners: function() {
+          if (!JSEvents.removeEventListenersRegistered) {
+            __ATEXIT__.push(JSEvents.removeAllEventListeners);
+            JSEvents.removeEventListenersRegistered = true;
+          }
+        }, deferredCalls: [], deferCall: function(targetFunction, precedence, argsList) {
+          function arraysHaveEqualContent(arrA, arrB) {
+            if (arrA.length != arrB.length)
+              return false;
+            for (var i2 in arrA) {
+              if (arrA[i2] != arrB[i2])
+                return false;
+            }
             return true;
           }
-        }
-        return false;
-      }
-      var SYSCALLS = {mappings: {}, buffers: [null, [], []], printChar: function(stream, curr) {
-        var buffer3 = SYSCALLS.buffers[stream];
-        if (curr === 0 || curr === 10) {
-          (stream === 1 ? out : err)(UTF8ArrayToString(buffer3, 0));
-          buffer3.length = 0;
-        } else {
-          buffer3.push(curr);
-        }
-      }, varargs: void 0, get: function() {
-        SYSCALLS.varargs += 4;
-        var ret = HEAP32[SYSCALLS.varargs - 4 >> 2];
-        return ret;
-      }, getStr: function(ptr) {
-        var ret = UTF8ToString(ptr);
-        return ret;
-      }, get64: function(low, high) {
-        return low;
-      }};
-      function _fd_close(fd) {
-        return 0;
-      }
-      function _fd_seek(fd, offset_low, offset_high, whence, newOffset) {
-      }
-      function _fd_write(fd, iov, iovcnt, pnum) {
-        var num = 0;
-        for (var i = 0; i < iovcnt; i++) {
-          var ptr = HEAP32[iov + i * 8 >> 2];
-          var len = HEAP32[iov + (i * 8 + 4) >> 2];
-          for (var j = 0; j < len; j++) {
-            SYSCALLS.printChar(fd, HEAPU8[ptr + j]);
+          for (var i in JSEvents.deferredCalls) {
+            var call = JSEvents.deferredCalls[i];
+            if (call.targetFunction == targetFunction && arraysHaveEqualContent(call.argsList, argsList)) {
+              return;
+            }
           }
-          num += len;
+          JSEvents.deferredCalls.push({targetFunction, precedence, argsList});
+          JSEvents.deferredCalls.sort(function(x, y) {
+            return x.precedence < y.precedence;
+          });
+        }, removeDeferredCalls: function(targetFunction) {
+          for (var i = 0; i < JSEvents.deferredCalls.length; ++i) {
+            if (JSEvents.deferredCalls[i].targetFunction == targetFunction) {
+              JSEvents.deferredCalls.splice(i, 1);
+              --i;
+            }
+          }
+        }, canPerformEventHandlerRequests: function() {
+          return JSEvents.inEventHandler && JSEvents.currentEventHandler.allowsDeferredCalls;
+        }, runDeferredCalls: function() {
+          if (!JSEvents.canPerformEventHandlerRequests()) {
+            return;
+          }
+          for (var i = 0; i < JSEvents.deferredCalls.length; ++i) {
+            var call = JSEvents.deferredCalls[i];
+            JSEvents.deferredCalls.splice(i, 1);
+            --i;
+            call.targetFunction.apply(null, call.argsList);
+          }
+        }, eventHandlers: [], removeAllHandlersOnTarget: function(target, eventTypeString) {
+          for (var i = 0; i < JSEvents.eventHandlers.length; ++i) {
+            if (JSEvents.eventHandlers[i].target == target && (!eventTypeString || eventTypeString == JSEvents.eventHandlers[i].eventTypeString)) {
+              JSEvents._removeHandler(i--);
+            }
+          }
+        }, _removeHandler: function(i) {
+          var h = JSEvents.eventHandlers[i];
+          h.target.removeEventListener(h.eventTypeString, h.eventListenerFunc, h.useCapture);
+          JSEvents.eventHandlers.splice(i, 1);
+        }, registerOrRemoveHandler: function(eventHandler) {
+          var jsEventHandler = function jsEventHandler2(event) {
+            ++JSEvents.inEventHandler;
+            JSEvents.currentEventHandler = eventHandler;
+            JSEvents.runDeferredCalls();
+            eventHandler.handlerFunc(event);
+            JSEvents.runDeferredCalls();
+            --JSEvents.inEventHandler;
+          };
+          if (eventHandler.callbackfunc) {
+            eventHandler.eventListenerFunc = jsEventHandler;
+            eventHandler.target.addEventListener(eventHandler.eventTypeString, jsEventHandler, eventHandler.useCapture);
+            JSEvents.eventHandlers.push(eventHandler);
+            JSEvents.registerRemoveEventListeners();
+          } else {
+            for (var i = 0; i < JSEvents.eventHandlers.length; ++i) {
+              if (JSEvents.eventHandlers[i].target == eventHandler.target && JSEvents.eventHandlers[i].eventTypeString == eventHandler.eventTypeString) {
+                JSEvents._removeHandler(i--);
+              }
+            }
+          }
+        }, queueEventHandlerOnThread_iiii: function(targetThread, eventHandlerFunc, eventTypeId, eventData, userData) {
+          var stackTop = stackSave();
+          var varargs = stackAlloc(12);
+          GROWABLE_HEAP_I32()[varargs >> 2] = eventTypeId;
+          GROWABLE_HEAP_I32()[varargs + 4 >> 2] = eventData;
+          GROWABLE_HEAP_I32()[varargs + 8 >> 2] = userData;
+          __emscripten_call_on_thread(0, targetThread, 637534208, eventHandlerFunc, eventData, varargs);
+          stackRestore(stackTop);
+        }, getTargetThreadForEventCallback: function(targetThread) {
+          switch (targetThread) {
+            case 1:
+              return 0;
+            case 2:
+              return PThread.currentProxiedOperationCallerThread;
+            default:
+              return targetThread;
+          }
+        }, getNodeNameForTarget: function(target) {
+          if (!target)
+            return "";
+          if (target == window)
+            return "#window";
+          if (target == screen)
+            return "#screen";
+          return target && target.nodeName ? target.nodeName : "";
+        }, fullscreenEnabled: function() {
+          return document.fullscreenEnabled || document.webkitFullscreenEnabled;
+        }};
+        function stringToNewUTF8(jsString) {
+          var length = lengthBytesUTF8(jsString) + 1;
+          var cString = _malloc(length);
+          stringToUTF8(jsString, cString, length);
+          return cString;
         }
-        HEAP32[pnum >> 2] = num;
-        return 0;
-      }
-      function _pthread_create() {
-        return 6;
-      }
-      function setErrNo(value) {
-        HEAP32[___errno_location() >> 2] = value;
-        return value;
-      }
-      function _sysconf(name) {
-        switch (name) {
-          case 30:
-            return 16384;
-          case 85:
-            var maxHeapSize = 2147483648;
-            return maxHeapSize / 16384;
-          case 132:
-          case 133:
-          case 12:
-          case 137:
-          case 138:
-          case 15:
-          case 235:
-          case 16:
-          case 17:
-          case 18:
-          case 19:
-          case 20:
-          case 149:
-          case 13:
-          case 10:
-          case 236:
-          case 153:
-          case 9:
-          case 21:
-          case 22:
-          case 159:
-          case 154:
-          case 14:
-          case 77:
-          case 78:
-          case 139:
-          case 82:
-          case 68:
-          case 67:
-          case 164:
-          case 11:
-          case 29:
-          case 47:
-          case 48:
-          case 95:
-          case 52:
-          case 51:
-          case 46:
-            return 200809;
-          case 27:
-          case 246:
-          case 127:
-          case 128:
-          case 23:
-          case 24:
-          case 160:
-          case 161:
-          case 181:
-          case 182:
-          case 242:
-          case 183:
-          case 184:
-          case 243:
-          case 244:
-          case 245:
-          case 165:
-          case 178:
-          case 179:
-          case 49:
-          case 50:
-          case 168:
-          case 169:
-          case 175:
-          case 170:
-          case 171:
-          case 172:
-          case 97:
-          case 76:
-          case 32:
-          case 173:
-          case 35:
-          case 80:
-          case 81:
-          case 79:
-            return -1;
-          case 176:
-          case 177:
-          case 7:
-          case 155:
-          case 8:
-          case 157:
-          case 125:
-          case 126:
-          case 92:
-          case 93:
-          case 129:
-          case 130:
-          case 131:
-          case 94:
-          case 91:
+        function _emscripten_set_offscreencanvas_size_on_target_thread_js(targetThread, targetCanvas, width, height) {
+          var stackTop = stackSave();
+          var varargs = stackAlloc(12);
+          var targetCanvasPtr = 0;
+          if (targetCanvas) {
+            targetCanvasPtr = stringToNewUTF8(targetCanvas);
+          }
+          GROWABLE_HEAP_I32()[varargs >> 2] = targetCanvasPtr;
+          GROWABLE_HEAP_I32()[varargs + 4 >> 2] = width;
+          GROWABLE_HEAP_I32()[varargs + 8 >> 2] = height;
+          __emscripten_call_on_thread(0, targetThread, 657457152, 0, targetCanvasPtr, varargs);
+          stackRestore(stackTop);
+        }
+        function _emscripten_set_offscreencanvas_size_on_target_thread(targetThread, targetCanvas, width, height) {
+          targetCanvas = targetCanvas ? UTF8ToString(targetCanvas) : "";
+          _emscripten_set_offscreencanvas_size_on_target_thread_js(targetThread, targetCanvas, width, height);
+        }
+        function maybeCStringToJsString(cString) {
+          return cString > 2 ? UTF8ToString(cString) : cString;
+        }
+        var specialHTMLTargets = [0, typeof document !== "undefined" ? document : 0, typeof window !== "undefined" ? window : 0];
+        function findEventTarget(target) {
+          target = maybeCStringToJsString(target);
+          var domElement = specialHTMLTargets[target] || (typeof document !== "undefined" ? document.querySelector(target) : void 0);
+          return domElement;
+        }
+        function findCanvasEventTarget(target) {
+          return findEventTarget(target);
+        }
+        function _emscripten_set_canvas_element_size_calling_thread(target, width, height) {
+          var canvas = findCanvasEventTarget(target);
+          if (!canvas)
+            return -4;
+          if (canvas.canvasSharedPtr) {
+            GROWABLE_HEAP_I32()[canvas.canvasSharedPtr >> 2] = width;
+            GROWABLE_HEAP_I32()[canvas.canvasSharedPtr + 4 >> 2] = height;
+          }
+          if (canvas.offscreenCanvas || !canvas.controlTransferredOffscreen) {
+            if (canvas.offscreenCanvas)
+              canvas = canvas.offscreenCanvas;
+            var autoResizeViewport = false;
+            if (canvas.GLctxObject && canvas.GLctxObject.GLctx) {
+              var prevViewport = canvas.GLctxObject.GLctx.getParameter(2978);
+              autoResizeViewport = prevViewport[0] === 0 && prevViewport[1] === 0 && prevViewport[2] === canvas.width && prevViewport[3] === canvas.height;
+            }
+            canvas.width = width;
+            canvas.height = height;
+            if (autoResizeViewport) {
+              canvas.GLctxObject.GLctx.viewport(0, 0, width, height);
+            }
+          } else if (canvas.canvasSharedPtr) {
+            var targetThread = GROWABLE_HEAP_I32()[canvas.canvasSharedPtr + 8 >> 2];
+            _emscripten_set_offscreencanvas_size_on_target_thread(targetThread, target, width, height);
             return 1;
-          case 74:
-          case 60:
-          case 69:
-          case 70:
-          case 4:
-            return 1024;
-          case 31:
-          case 42:
-          case 72:
-            return 32;
-          case 87:
-          case 26:
-          case 33:
-            return 2147483647;
-          case 34:
-          case 1:
-            return 47839;
-          case 38:
-          case 36:
-            return 99;
-          case 43:
-          case 37:
-            return 2048;
-          case 0:
-            return 2097152;
-          case 3:
-            return 65536;
-          case 28:
-            return 32768;
-          case 44:
-            return 32767;
-          case 75:
-            return 16384;
-          case 39:
-            return 1e3;
-          case 89:
-            return 700;
-          case 71:
-            return 256;
-          case 40:
-            return 255;
-          case 2:
-            return 100;
-          case 180:
-            return 64;
-          case 25:
-            return 20;
-          case 5:
-            return 16;
-          case 6:
+          } else {
+            return -4;
+          }
+          return 0;
+        }
+        function _emscripten_set_canvas_element_size_main_thread(target, width, height) {
+          if (ENVIRONMENT_IS_PTHREAD)
+            return _emscripten_proxy_to_main_thread_js(2, 1, target, width, height);
+          return _emscripten_set_canvas_element_size_calling_thread(target, width, height);
+        }
+        function _emscripten_set_canvas_element_size(target, width, height) {
+          var canvas = findCanvasEventTarget(target);
+          if (canvas) {
+            return _emscripten_set_canvas_element_size_calling_thread(target, width, height);
+          } else {
+            return _emscripten_set_canvas_element_size_main_thread(target, width, height);
+          }
+        }
+        function _emscripten_set_current_thread_status(newStatus) {
+        }
+        function _emscripten_set_thread_name(threadId, name) {
+        }
+        function __webgl_enable_ANGLE_instanced_arrays(ctx) {
+          var ext = ctx.getExtension("ANGLE_instanced_arrays");
+          if (ext) {
+            ctx["vertexAttribDivisor"] = function(index, divisor) {
+              ext["vertexAttribDivisorANGLE"](index, divisor);
+            };
+            ctx["drawArraysInstanced"] = function(mode, first, count2, primcount) {
+              ext["drawArraysInstancedANGLE"](mode, first, count2, primcount);
+            };
+            ctx["drawElementsInstanced"] = function(mode, count2, type, indices, primcount) {
+              ext["drawElementsInstancedANGLE"](mode, count2, type, indices, primcount);
+            };
+            return 1;
+          }
+        }
+        function __webgl_enable_OES_vertex_array_object(ctx) {
+          var ext = ctx.getExtension("OES_vertex_array_object");
+          if (ext) {
+            ctx["createVertexArray"] = function() {
+              return ext["createVertexArrayOES"]();
+            };
+            ctx["deleteVertexArray"] = function(vao) {
+              ext["deleteVertexArrayOES"](vao);
+            };
+            ctx["bindVertexArray"] = function(vao) {
+              ext["bindVertexArrayOES"](vao);
+            };
+            ctx["isVertexArray"] = function(vao) {
+              return ext["isVertexArrayOES"](vao);
+            };
+            return 1;
+          }
+        }
+        function __webgl_enable_WEBGL_draw_buffers(ctx) {
+          var ext = ctx.getExtension("WEBGL_draw_buffers");
+          if (ext) {
+            ctx["drawBuffers"] = function(n, bufs) {
+              ext["drawBuffersWEBGL"](n, bufs);
+            };
+            return 1;
+          }
+        }
+        function __webgl_enable_WEBGL_multi_draw(ctx) {
+          return !!(ctx.multiDrawWebgl = ctx.getExtension("WEBGL_multi_draw"));
+        }
+        var GL = {counter: 1, buffers: [], programs: [], framebuffers: [], renderbuffers: [], textures: [], uniforms: [], shaders: [], vaos: [], contexts: {}, offscreenCanvases: {}, timerQueriesEXT: [], programInfos: {}, stringCache: {}, unpackAlignment: 4, recordError: function recordError(errorCode) {
+          if (!GL.lastError) {
+            GL.lastError = errorCode;
+          }
+        }, getNewId: function(table) {
+          var ret = GL.counter++;
+          for (var i = table.length; i < ret; i++) {
+            table[i] = null;
+          }
+          return ret;
+        }, getSource: function(shader, count2, string, length) {
+          var source = "";
+          for (var i = 0; i < count2; ++i) {
+            var len = length ? GROWABLE_HEAP_I32()[length + i * 4 >> 2] : -1;
+            source += UTF8ToString(GROWABLE_HEAP_I32()[string + i * 4 >> 2], len < 0 ? void 0 : len);
+          }
+          return source;
+        }, createContext: function(canvas, webGLContextAttributes) {
+          var ctx = canvas.getContext("webgl", webGLContextAttributes);
+          if (!ctx)
+            return 0;
+          var handle = GL.registerContext(ctx, webGLContextAttributes);
+          return handle;
+        }, registerContext: function(ctx, webGLContextAttributes) {
+          var handle = _malloc(8);
+          GROWABLE_HEAP_I32()[handle + 4 >> 2] = _pthread_self();
+          var context = {handle, attributes: webGLContextAttributes, version: webGLContextAttributes.majorVersion, GLctx: ctx};
+          if (ctx.canvas)
+            ctx.canvas.GLctxObject = context;
+          GL.contexts[handle] = context;
+          if (typeof webGLContextAttributes.enableExtensionsByDefault === "undefined" || webGLContextAttributes.enableExtensionsByDefault) {
+            GL.initExtensions(context);
+          }
+          return handle;
+        }, makeContextCurrent: function(contextHandle) {
+          GL.currentContext = GL.contexts[contextHandle];
+          Module.ctx = GLctx = GL.currentContext && GL.currentContext.GLctx;
+          return !(contextHandle && !GLctx);
+        }, getContext: function(contextHandle) {
+          return GL.contexts[contextHandle];
+        }, deleteContext: function(contextHandle) {
+          if (GL.currentContext === GL.contexts[contextHandle])
+            GL.currentContext = null;
+          if (typeof JSEvents === "object")
+            JSEvents.removeAllHandlersOnTarget(GL.contexts[contextHandle].GLctx.canvas);
+          if (GL.contexts[contextHandle] && GL.contexts[contextHandle].GLctx.canvas)
+            GL.contexts[contextHandle].GLctx.canvas.GLctxObject = void 0;
+          _free(GL.contexts[contextHandle].handle);
+          GL.contexts[contextHandle] = null;
+        }, initExtensions: function(context) {
+          if (!context)
+            context = GL.currentContext;
+          if (context.initExtensionsDone)
+            return;
+          context.initExtensionsDone = true;
+          var GLctx2 = context.GLctx;
+          __webgl_enable_ANGLE_instanced_arrays(GLctx2);
+          __webgl_enable_OES_vertex_array_object(GLctx2);
+          __webgl_enable_WEBGL_draw_buffers(GLctx2);
+          GLctx2.disjointTimerQueryExt = GLctx2.getExtension("EXT_disjoint_timer_query");
+          __webgl_enable_WEBGL_multi_draw(GLctx2);
+          var exts = GLctx2.getSupportedExtensions() || [];
+          exts.forEach(function(ext) {
+            if (ext.indexOf("lose_context") < 0 && ext.indexOf("debug") < 0) {
+              GLctx2.getExtension(ext);
+            }
+          });
+        }, populateUniformTable: function(program) {
+          var p2 = GL.programs[program];
+          var ptable = GL.programInfos[program] = {uniforms: {}, maxUniformLength: 0, maxAttributeLength: -1, maxUniformBlockNameLength: -1};
+          var utable = ptable.uniforms;
+          var numUniforms = GLctx.getProgramParameter(p2, 35718);
+          for (var i = 0; i < numUniforms; ++i) {
+            var u = GLctx.getActiveUniform(p2, i);
+            var name = u.name;
+            ptable.maxUniformLength = Math.max(ptable.maxUniformLength, name.length + 1);
+            if (name.slice(-1) == "]") {
+              name = name.slice(0, name.lastIndexOf("["));
+            }
+            var loc = GLctx.getUniformLocation(p2, name);
+            if (loc) {
+              var id = GL.getNewId(GL.uniforms);
+              utable[name] = [u.size, id];
+              GL.uniforms[id] = loc;
+              for (var j = 1; j < u.size; ++j) {
+                var n = name + "[" + j + "]";
+                loc = GLctx.getUniformLocation(p2, n);
+                id = GL.getNewId(GL.uniforms);
+                GL.uniforms[id] = loc;
+              }
+            }
+          }
+        }};
+        var __emscripten_webgl_power_preferences = ["default", "low-power", "high-performance"];
+        function _emscripten_webgl_do_create_context(target, attributes) {
+          var a = attributes >> 2;
+          var powerPreference = GROWABLE_HEAP_I32()[a + (24 >> 2)];
+          var contextAttributes = {"alpha": !!GROWABLE_HEAP_I32()[a + (0 >> 2)], "depth": !!GROWABLE_HEAP_I32()[a + (4 >> 2)], "stencil": !!GROWABLE_HEAP_I32()[a + (8 >> 2)], "antialias": !!GROWABLE_HEAP_I32()[a + (12 >> 2)], "premultipliedAlpha": !!GROWABLE_HEAP_I32()[a + (16 >> 2)], "preserveDrawingBuffer": !!GROWABLE_HEAP_I32()[a + (20 >> 2)], "powerPreference": __emscripten_webgl_power_preferences[powerPreference], "failIfMajorPerformanceCaveat": !!GROWABLE_HEAP_I32()[a + (28 >> 2)], majorVersion: GROWABLE_HEAP_I32()[a + (32 >> 2)], minorVersion: GROWABLE_HEAP_I32()[a + (36 >> 2)], enableExtensionsByDefault: GROWABLE_HEAP_I32()[a + (40 >> 2)], explicitSwapControl: GROWABLE_HEAP_I32()[a + (44 >> 2)], proxyContextToMainThread: GROWABLE_HEAP_I32()[a + (48 >> 2)], renderViaOffscreenBackBuffer: GROWABLE_HEAP_I32()[a + (52 >> 2)]};
+          var canvas = findCanvasEventTarget(target);
+          if (!canvas) {
+            return 0;
+          }
+          if (contextAttributes.explicitSwapControl) {
+            return 0;
+          }
+          var contextHandle = GL.createContext(canvas, contextAttributes);
+          return contextHandle;
+        }
+        function _emscripten_webgl_create_context(a0, a12) {
+          return _emscripten_webgl_do_create_context(a0, a12);
+        }
+        var SYSCALLS = {mappings: {}, buffers: [null, [], []], printChar: function(stream, curr) {
+          var buffer3 = SYSCALLS.buffers[stream];
+          if (curr === 0 || curr === 10) {
+            (stream === 1 ? out : err)(UTF8ArrayToString(buffer3, 0));
+            buffer3.length = 0;
+          } else {
+            buffer3.push(curr);
+          }
+        }, varargs: void 0, get: function() {
+          SYSCALLS.varargs += 4;
+          var ret = GROWABLE_HEAP_I32()[SYSCALLS.varargs - 4 >> 2];
+          return ret;
+        }, getStr: function(ptr) {
+          var ret = UTF8ToString(ptr);
+          return ret;
+        }, get64: function(low, high) {
+          return low;
+        }};
+        function _fd_close(fd) {
+          if (ENVIRONMENT_IS_PTHREAD)
+            return _emscripten_proxy_to_main_thread_js(3, 1, fd);
+          return 0;
+        }
+        function _fd_seek(fd, offset_low, offset_high, whence, newOffset) {
+          if (ENVIRONMENT_IS_PTHREAD)
+            return _emscripten_proxy_to_main_thread_js(4, 1, fd, offset_low, offset_high, whence, newOffset);
+        }
+        function _fd_write(fd, iov, iovcnt, pnum) {
+          if (ENVIRONMENT_IS_PTHREAD)
+            return _emscripten_proxy_to_main_thread_js(5, 1, fd, iov, iovcnt, pnum);
+          var num = 0;
+          for (var i = 0; i < iovcnt; i++) {
+            var ptr = GROWABLE_HEAP_I32()[iov + i * 8 >> 2];
+            var len = GROWABLE_HEAP_I32()[iov + (i * 8 + 4) >> 2];
+            for (var j = 0; j < len; j++) {
+              SYSCALLS.printChar(fd, GROWABLE_HEAP_U8()[ptr + j]);
+            }
+            num += len;
+          }
+          GROWABLE_HEAP_I32()[pnum >> 2] = num;
+          return 0;
+        }
+        function _pthread_cleanup_pop(execute2) {
+          var routine = PThread.threadExitHandlers.pop();
+          if (execute2)
+            routine();
+        }
+        function _pthread_cleanup_push(routine, arg) {
+          PThread.threadExitHandlers.push(function() {
+            wasmTable.get(routine)(arg);
+          });
+        }
+        function spawnThread(threadParams) {
+          if (ENVIRONMENT_IS_PTHREAD)
+            throw "Internal Error! spawnThread() can only ever be called from main application thread!";
+          var worker = PThread.getNewWorker();
+          if (worker.pthread !== void 0)
+            throw "Internal error!";
+          if (!threadParams.pthread_ptr)
+            throw "Internal error, no pthread ptr!";
+          PThread.runningWorkers.push(worker);
+          var tlsMemory = _malloc(128 * 4);
+          for (var i = 0; i < 128; ++i) {
+            GROWABLE_HEAP_I32()[tlsMemory + i * 4 >> 2] = 0;
+          }
+          var stackHigh = threadParams.stackBase + threadParams.stackSize;
+          var pthread = PThread.pthreads[threadParams.pthread_ptr] = {worker, stackBase: threadParams.stackBase, stackSize: threadParams.stackSize, allocatedOwnStack: threadParams.allocatedOwnStack, threadInfoStruct: threadParams.pthread_ptr};
+          var tis = pthread.threadInfoStruct >> 2;
+          Atomics.store(GROWABLE_HEAP_U32(), tis + (64 >> 2), threadParams.detached);
+          Atomics.store(GROWABLE_HEAP_U32(), tis + (100 >> 2), tlsMemory);
+          Atomics.store(GROWABLE_HEAP_U32(), tis + (40 >> 2), pthread.threadInfoStruct);
+          Atomics.store(GROWABLE_HEAP_U32(), tis + (80 >> 2), threadParams.stackSize);
+          Atomics.store(GROWABLE_HEAP_U32(), tis + (76 >> 2), stackHigh);
+          Atomics.store(GROWABLE_HEAP_U32(), tis + (104 >> 2), threadParams.stackSize);
+          Atomics.store(GROWABLE_HEAP_U32(), tis + (104 + 8 >> 2), stackHigh);
+          Atomics.store(GROWABLE_HEAP_U32(), tis + (104 + 12 >> 2), threadParams.detached);
+          var global_libc = _emscripten_get_global_libc();
+          var global_locale = global_libc + 40;
+          Atomics.store(GROWABLE_HEAP_U32(), tis + (172 >> 2), global_locale);
+          worker.pthread = pthread;
+          var msg = {"cmd": "run", "start_routine": threadParams.startRoutine, "arg": threadParams.arg, "threadInfoStruct": threadParams.pthread_ptr, "stackBase": threadParams.stackBase, "stackSize": threadParams.stackSize};
+          worker.runPthread = function() {
+            msg.time = performance.now();
+            worker.postMessage(msg, threadParams.transferList);
+          };
+          if (worker.loaded) {
+            worker.runPthread();
+            delete worker.runPthread;
+          }
+        }
+        function _pthread_create(pthread_ptr, attr, start_routine, arg) {
+          if (typeof SharedArrayBuffer === "undefined") {
+            err("Current environment does not support SharedArrayBuffer, pthreads are not available!");
             return 6;
-          case 73:
-            return 4;
-          case 84: {
-            if (typeof navigator === "object")
-              return navigator["hardwareConcurrency"] || 1;
-            return 1;
+          }
+          if (!pthread_ptr) {
+            err("pthread_create called with a null thread pointer!");
+            return 28;
+          }
+          var transferList = [];
+          var error = 0;
+          if (ENVIRONMENT_IS_PTHREAD && (transferList.length === 0 || error)) {
+            return _emscripten_sync_run_in_main_thread_4(687865856, pthread_ptr, attr, start_routine, arg);
+          }
+          if (error)
+            return error;
+          var stackSize = 0;
+          var stackBase = 0;
+          var detached = 0;
+          if (attr && attr != -1) {
+            stackSize = GROWABLE_HEAP_I32()[attr >> 2];
+            stackSize += 81920;
+            stackBase = GROWABLE_HEAP_I32()[attr + 8 >> 2];
+            detached = GROWABLE_HEAP_I32()[attr + 12 >> 2] !== 0;
+          } else {
+            stackSize = 2097152;
+          }
+          var allocatedOwnStack = stackBase == 0;
+          if (allocatedOwnStack) {
+            stackBase = _memalign(16, stackSize);
+          } else {
+            stackBase -= stackSize;
+            assert3(stackBase > 0);
+          }
+          var threadInfoStruct = _malloc(228);
+          for (var i = 0; i < 228 >> 2; ++i)
+            GROWABLE_HEAP_U32()[(threadInfoStruct >> 2) + i] = 0;
+          GROWABLE_HEAP_I32()[pthread_ptr >> 2] = threadInfoStruct;
+          GROWABLE_HEAP_I32()[threadInfoStruct + 12 >> 2] = threadInfoStruct;
+          var headPtr = threadInfoStruct + 152;
+          GROWABLE_HEAP_I32()[headPtr >> 2] = headPtr;
+          var threadParams = {stackBase, stackSize, allocatedOwnStack, detached, startRoutine: start_routine, pthread_ptr: threadInfoStruct, arg, transferList};
+          if (ENVIRONMENT_IS_PTHREAD) {
+            threadParams.cmd = "spawnThread";
+            postMessage(threadParams, transferList);
+          } else {
+            spawnThread(threadParams);
+          }
+          return 0;
+        }
+        function _sysconf(name) {
+          if (ENVIRONMENT_IS_PTHREAD)
+            return _emscripten_proxy_to_main_thread_js(6, 1, name);
+          switch (name) {
+            case 30:
+              return 16384;
+            case 85:
+              var maxHeapSize = 2147483648;
+              return maxHeapSize / 16384;
+            case 132:
+            case 133:
+            case 12:
+            case 137:
+            case 138:
+            case 15:
+            case 235:
+            case 16:
+            case 17:
+            case 18:
+            case 19:
+            case 20:
+            case 149:
+            case 13:
+            case 10:
+            case 236:
+            case 153:
+            case 9:
+            case 21:
+            case 22:
+            case 159:
+            case 154:
+            case 14:
+            case 77:
+            case 78:
+            case 139:
+            case 82:
+            case 68:
+            case 67:
+            case 164:
+            case 11:
+            case 29:
+            case 47:
+            case 48:
+            case 95:
+            case 52:
+            case 51:
+            case 46:
+              return 200809;
+            case 27:
+            case 246:
+            case 127:
+            case 128:
+            case 23:
+            case 24:
+            case 160:
+            case 161:
+            case 181:
+            case 182:
+            case 242:
+            case 183:
+            case 184:
+            case 243:
+            case 244:
+            case 245:
+            case 165:
+            case 178:
+            case 179:
+            case 49:
+            case 50:
+            case 168:
+            case 169:
+            case 175:
+            case 170:
+            case 171:
+            case 172:
+            case 97:
+            case 76:
+            case 32:
+            case 173:
+            case 35:
+            case 80:
+            case 81:
+            case 79:
+              return -1;
+            case 176:
+            case 177:
+            case 7:
+            case 155:
+            case 8:
+            case 157:
+            case 125:
+            case 126:
+            case 92:
+            case 93:
+            case 129:
+            case 130:
+            case 131:
+            case 94:
+            case 91:
+              return 1;
+            case 74:
+            case 60:
+            case 69:
+            case 70:
+            case 4:
+              return 1024;
+            case 31:
+            case 42:
+            case 72:
+              return 32;
+            case 87:
+            case 26:
+            case 33:
+              return 2147483647;
+            case 34:
+            case 1:
+              return 47839;
+            case 38:
+            case 36:
+              return 99;
+            case 43:
+            case 37:
+              return 2048;
+            case 0:
+              return 2097152;
+            case 3:
+              return 65536;
+            case 28:
+              return 32768;
+            case 44:
+              return 32767;
+            case 75:
+              return 16384;
+            case 39:
+              return 1e3;
+            case 89:
+              return 700;
+            case 71:
+              return 256;
+            case 40:
+              return 255;
+            case 2:
+              return 100;
+            case 180:
+              return 64;
+            case 25:
+              return 20;
+            case 5:
+              return 16;
+            case 6:
+              return 6;
+            case 73:
+              return 4;
+            case 84: {
+              if (typeof navigator === "object")
+                return navigator["hardwareConcurrency"] || 1;
+              return 1;
+            }
+          }
+          setErrNo(28);
+          return -1;
+        }
+        if (!ENVIRONMENT_IS_PTHREAD)
+          PThread.initMainThreadBlock();
+        var GLctx;
+        var proxiedFunctionTable = [null, _atexit, _emscripten_set_canvas_element_size_main_thread, _fd_close, _fd_seek, _fd_write, _sysconf];
+        var asmLibraryArg = {"e": ___assert_fail, "r": ___call_main, "x": __emscripten_notify_thread_queue, "b": _abort, "y": _emscripten_asm_const_int, "j": _emscripten_conditional_set_current_thread_status, "c": _emscripten_futex_wait, "d": _emscripten_futex_wake, "f": _emscripten_get_now, "p": _emscripten_memcpy_big, "z": _emscripten_num_logical_cores, "u": _emscripten_receive_on_main_thread_js, "q": _emscripten_resize_heap, "v": _emscripten_set_canvas_element_size, "i": _emscripten_set_current_thread_status, "t": _emscripten_set_thread_name, "w": _emscripten_webgl_create_context, "m": _fd_close, "n": _fd_seek, "g": _fd_write, "o": initPthreadsJS, "a": wasmMemory || Module["wasmMemory"], "k": _pthread_cleanup_pop, "l": _pthread_cleanup_push, "h": _pthread_create, "s": _sysconf};
+        var asm = createWasm();
+        var ___wasm_call_ctors = Module["___wasm_call_ctors"] = function() {
+          return (___wasm_call_ctors = Module["___wasm_call_ctors"] = Module["asm"]["A"]).apply(null, arguments);
+        };
+        var _init = Module["_init"] = function() {
+          return (_init = Module["_init"] = Module["asm"]["B"]).apply(null, arguments);
+        };
+        var _register_tensor = Module["_register_tensor"] = function() {
+          return (_register_tensor = Module["_register_tensor"] = Module["asm"]["C"]).apply(null, arguments);
+        };
+        var _dispose_data = Module["_dispose_data"] = function() {
+          return (_dispose_data = Module["_dispose_data"] = Module["asm"]["D"]).apply(null, arguments);
+        };
+        var _dispose = Module["_dispose"] = function() {
+          return (_dispose = Module["_dispose"] = Module["asm"]["E"]).apply(null, arguments);
+        };
+        var _Abs = Module["_Abs"] = function() {
+          return (_Abs = Module["_Abs"] = Module["asm"]["G"]).apply(null, arguments);
+        };
+        var _Add = Module["_Add"] = function() {
+          return (_Add = Module["_Add"] = Module["asm"]["H"]).apply(null, arguments);
+        };
+        var _AddN = Module["_AddN"] = function() {
+          return (_AddN = Module["_AddN"] = Module["asm"]["I"]).apply(null, arguments);
+        };
+        var _All = Module["_All"] = function() {
+          return (_All = Module["_All"] = Module["asm"]["J"]).apply(null, arguments);
+        };
+        var _Any = Module["_Any"] = function() {
+          return (_Any = Module["_Any"] = Module["asm"]["K"]).apply(null, arguments);
+        };
+        var _ArgMax = Module["_ArgMax"] = function() {
+          return (_ArgMax = Module["_ArgMax"] = Module["asm"]["L"]).apply(null, arguments);
+        };
+        var _AvgPool = Module["_AvgPool"] = function() {
+          return (_AvgPool = Module["_AvgPool"] = Module["asm"]["M"]).apply(null, arguments);
+        };
+        var _BatchMatMul = Module["_BatchMatMul"] = function() {
+          return (_BatchMatMul = Module["_BatchMatMul"] = Module["asm"]["N"]).apply(null, arguments);
+        };
+        var _Ceil = Module["_Ceil"] = function() {
+          return (_Ceil = Module["_Ceil"] = Module["asm"]["O"]).apply(null, arguments);
+        };
+        var _ClipByValue = Module["_ClipByValue"] = function() {
+          return (_ClipByValue = Module["_ClipByValue"] = Module["asm"]["P"]).apply(null, arguments);
+        };
+        var _Conv2D = Module["_Conv2D"] = function() {
+          return (_Conv2D = Module["_Conv2D"] = Module["asm"]["Q"]).apply(null, arguments);
+        };
+        var _Conv2DBackpropInput = Module["_Conv2DBackpropInput"] = function() {
+          return (_Conv2DBackpropInput = Module["_Conv2DBackpropInput"] = Module["asm"]["R"]).apply(null, arguments);
+        };
+        var _Cos = Module["_Cos"] = function() {
+          return (_Cos = Module["_Cos"] = Module["asm"]["S"]).apply(null, arguments);
+        };
+        var _CropAndResize = Module["_CropAndResize"] = function() {
+          return (_CropAndResize = Module["_CropAndResize"] = Module["asm"]["T"]).apply(null, arguments);
+        };
+        var _Cumsum = Module["_Cumsum"] = function() {
+          return (_Cumsum = Module["_Cumsum"] = Module["asm"]["U"]).apply(null, arguments);
+        };
+        var _DepthToSpace = Module["_DepthToSpace"] = function() {
+          return (_DepthToSpace = Module["_DepthToSpace"] = Module["asm"]["V"]).apply(null, arguments);
+        };
+        var _DepthwiseConv2dNative = Module["_DepthwiseConv2dNative"] = function() {
+          return (_DepthwiseConv2dNative = Module["_DepthwiseConv2dNative"] = Module["asm"]["W"]).apply(null, arguments);
+        };
+        var _Equal = Module["_Equal"] = function() {
+          return (_Equal = Module["_Equal"] = Module["asm"]["X"]).apply(null, arguments);
+        };
+        var _Exp = Module["_Exp"] = function() {
+          return (_Exp = Module["_Exp"] = Module["asm"]["Y"]).apply(null, arguments);
+        };
+        var _FlipLeftRight = Module["_FlipLeftRight"] = function() {
+          return (_FlipLeftRight = Module["_FlipLeftRight"] = Module["asm"]["Z"]).apply(null, arguments);
+        };
+        var _Floor = Module["_Floor"] = function() {
+          return (_Floor = Module["_Floor"] = Module["asm"]["_"]).apply(null, arguments);
+        };
+        var _FloorDiv = Module["_FloorDiv"] = function() {
+          return (_FloorDiv = Module["_FloorDiv"] = Module["asm"]["$"]).apply(null, arguments);
+        };
+        var _FusedBatchNorm = Module["_FusedBatchNorm"] = function() {
+          return (_FusedBatchNorm = Module["_FusedBatchNorm"] = Module["asm"]["aa"]).apply(null, arguments);
+        };
+        var _FusedConv2D = Module["_FusedConv2D"] = function() {
+          return (_FusedConv2D = Module["_FusedConv2D"] = Module["asm"]["ba"]).apply(null, arguments);
+        };
+        var _FusedDepthwiseConv2D = Module["_FusedDepthwiseConv2D"] = function() {
+          return (_FusedDepthwiseConv2D = Module["_FusedDepthwiseConv2D"] = Module["asm"]["ca"]).apply(null, arguments);
+        };
+        var _Gather = Module["_Gather"] = function() {
+          return (_Gather = Module["_Gather"] = Module["asm"]["da"]).apply(null, arguments);
+        };
+        var _GatherNd = Module["_GatherNd"] = function() {
+          return (_GatherNd = Module["_GatherNd"] = Module["asm"]["ea"]).apply(null, arguments);
+        };
+        var _Greater = Module["_Greater"] = function() {
+          return (_Greater = Module["_Greater"] = Module["asm"]["fa"]).apply(null, arguments);
+        };
+        var _GreaterEqual = Module["_GreaterEqual"] = function() {
+          return (_GreaterEqual = Module["_GreaterEqual"] = Module["asm"]["ga"]).apply(null, arguments);
+        };
+        var _LeakyRelu = Module["_LeakyRelu"] = function() {
+          return (_LeakyRelu = Module["_LeakyRelu"] = Module["asm"]["ha"]).apply(null, arguments);
+        };
+        var _Less = Module["_Less"] = function() {
+          return (_Less = Module["_Less"] = Module["asm"]["ia"]).apply(null, arguments);
+        };
+        var _LessEqual = Module["_LessEqual"] = function() {
+          return (_LessEqual = Module["_LessEqual"] = Module["asm"]["ja"]).apply(null, arguments);
+        };
+        var _Log = Module["_Log"] = function() {
+          return (_Log = Module["_Log"] = Module["asm"]["ka"]).apply(null, arguments);
+        };
+        var _LogicalAnd = Module["_LogicalAnd"] = function() {
+          return (_LogicalAnd = Module["_LogicalAnd"] = Module["asm"]["la"]).apply(null, arguments);
+        };
+        var _Max = Module["_Max"] = function() {
+          return (_Max = Module["_Max"] = Module["asm"]["ma"]).apply(null, arguments);
+        };
+        var _MaxPool = Module["_MaxPool"] = function() {
+          return (_MaxPool = Module["_MaxPool"] = Module["asm"]["na"]).apply(null, arguments);
+        };
+        var _Maximum = Module["_Maximum"] = function() {
+          return (_Maximum = Module["_Maximum"] = Module["asm"]["oa"]).apply(null, arguments);
+        };
+        var _Mean = Module["_Mean"] = function() {
+          return (_Mean = Module["_Mean"] = Module["asm"]["pa"]).apply(null, arguments);
+        };
+        var _Min = Module["_Min"] = function() {
+          return (_Min = Module["_Min"] = Module["asm"]["qa"]).apply(null, arguments);
+        };
+        var _Minimum = Module["_Minimum"] = function() {
+          return (_Minimum = Module["_Minimum"] = Module["asm"]["ra"]).apply(null, arguments);
+        };
+        var _MirrorPad = Module["_MirrorPad"] = function() {
+          return (_MirrorPad = Module["_MirrorPad"] = Module["asm"]["sa"]).apply(null, arguments);
+        };
+        var _Multiply = Module["_Multiply"] = function() {
+          return (_Multiply = Module["_Multiply"] = Module["asm"]["ta"]).apply(null, arguments);
+        };
+        var _Neg = Module["_Neg"] = function() {
+          return (_Neg = Module["_Neg"] = Module["asm"]["ua"]).apply(null, arguments);
+        };
+        var _NonMaxSuppressionV3 = Module["_NonMaxSuppressionV3"] = function() {
+          return (_NonMaxSuppressionV3 = Module["_NonMaxSuppressionV3"] = Module["asm"]["va"]).apply(null, arguments);
+        };
+        var _NonMaxSuppressionV4 = Module["_NonMaxSuppressionV4"] = function() {
+          return (_NonMaxSuppressionV4 = Module["_NonMaxSuppressionV4"] = Module["asm"]["wa"]).apply(null, arguments);
+        };
+        var _NonMaxSuppressionV5 = Module["_NonMaxSuppressionV5"] = function() {
+          return (_NonMaxSuppressionV5 = Module["_NonMaxSuppressionV5"] = Module["asm"]["xa"]).apply(null, arguments);
+        };
+        var _NotEqual = Module["_NotEqual"] = function() {
+          return (_NotEqual = Module["_NotEqual"] = Module["asm"]["ya"]).apply(null, arguments);
+        };
+        var _OneHot = Module["_OneHot"] = function() {
+          return (_OneHot = Module["_OneHot"] = Module["asm"]["za"]).apply(null, arguments);
+        };
+        var _PadV2 = Module["_PadV2"] = function() {
+          return (_PadV2 = Module["_PadV2"] = Module["asm"]["Aa"]).apply(null, arguments);
+        };
+        var _Pow = Module["_Pow"] = function() {
+          return (_Pow = Module["_Pow"] = Module["asm"]["Ba"]).apply(null, arguments);
+        };
+        var _Prelu = Module["_Prelu"] = function() {
+          return (_Prelu = Module["_Prelu"] = Module["asm"]["Ca"]).apply(null, arguments);
+        };
+        var _Prod = Module["_Prod"] = function() {
+          return (_Prod = Module["_Prod"] = Module["asm"]["Da"]).apply(null, arguments);
+        };
+        var _RealDiv = Module["_RealDiv"] = function() {
+          return (_RealDiv = Module["_RealDiv"] = Module["asm"]["Ea"]).apply(null, arguments);
+        };
+        var _Relu = Module["_Relu"] = function() {
+          return (_Relu = Module["_Relu"] = Module["asm"]["Fa"]).apply(null, arguments);
+        };
+        var _Relu6 = Module["_Relu6"] = function() {
+          return (_Relu6 = Module["_Relu6"] = Module["asm"]["Ga"]).apply(null, arguments);
+        };
+        var _ResizeBilinear = Module["_ResizeBilinear"] = function() {
+          return (_ResizeBilinear = Module["_ResizeBilinear"] = Module["asm"]["Ha"]).apply(null, arguments);
+        };
+        var _Reverse = Module["_Reverse"] = function() {
+          return (_Reverse = Module["_Reverse"] = Module["asm"]["Ia"]).apply(null, arguments);
+        };
+        var _RotateWithOffset = Module["_RotateWithOffset"] = function() {
+          return (_RotateWithOffset = Module["_RotateWithOffset"] = Module["asm"]["Ja"]).apply(null, arguments);
+        };
+        var _Round = Module["_Round"] = function() {
+          return (_Round = Module["_Round"] = Module["asm"]["Ka"]).apply(null, arguments);
+        };
+        var _Rsqrt = Module["_Rsqrt"] = function() {
+          return (_Rsqrt = Module["_Rsqrt"] = Module["asm"]["La"]).apply(null, arguments);
+        };
+        var _ScatterNd = Module["_ScatterNd"] = function() {
+          return (_ScatterNd = Module["_ScatterNd"] = Module["asm"]["Ma"]).apply(null, arguments);
+        };
+        var _SelectV2 = Module["_SelectV2"] = function() {
+          return (_SelectV2 = Module["_SelectV2"] = Module["asm"]["Na"]).apply(null, arguments);
+        };
+        var _Sigmoid = Module["_Sigmoid"] = function() {
+          return (_Sigmoid = Module["_Sigmoid"] = Module["asm"]["Oa"]).apply(null, arguments);
+        };
+        var _Sin = Module["_Sin"] = function() {
+          return (_Sin = Module["_Sin"] = Module["asm"]["Pa"]).apply(null, arguments);
+        };
+        var _Softmax = Module["_Softmax"] = function() {
+          return (_Softmax = Module["_Softmax"] = Module["asm"]["Qa"]).apply(null, arguments);
+        };
+        var _Sqrt = Module["_Sqrt"] = function() {
+          return (_Sqrt = Module["_Sqrt"] = Module["asm"]["Ra"]).apply(null, arguments);
+        };
+        var _Square = Module["_Square"] = function() {
+          return (_Square = Module["_Square"] = Module["asm"]["Sa"]).apply(null, arguments);
+        };
+        var _SquaredDifference = Module["_SquaredDifference"] = function() {
+          return (_SquaredDifference = Module["_SquaredDifference"] = Module["asm"]["Ta"]).apply(null, arguments);
+        };
+        var _Step = Module["_Step"] = function() {
+          return (_Step = Module["_Step"] = Module["asm"]["Ua"]).apply(null, arguments);
+        };
+        var _StridedSlice = Module["_StridedSlice"] = function() {
+          return (_StridedSlice = Module["_StridedSlice"] = Module["asm"]["Va"]).apply(null, arguments);
+        };
+        var _Sub = Module["_Sub"] = function() {
+          return (_Sub = Module["_Sub"] = Module["asm"]["Wa"]).apply(null, arguments);
+        };
+        var _Sum = Module["_Sum"] = function() {
+          return (_Sum = Module["_Sum"] = Module["asm"]["Xa"]).apply(null, arguments);
+        };
+        var _Tan = Module["_Tan"] = function() {
+          return (_Tan = Module["_Tan"] = Module["asm"]["Ya"]).apply(null, arguments);
+        };
+        var _Tanh = Module["_Tanh"] = function() {
+          return (_Tanh = Module["_Tanh"] = Module["asm"]["Za"]).apply(null, arguments);
+        };
+        var _Tile = Module["_Tile"] = function() {
+          return (_Tile = Module["_Tile"] = Module["asm"]["_a"]).apply(null, arguments);
+        };
+        var _TopK = Module["_TopK"] = function() {
+          return (_TopK = Module["_TopK"] = Module["asm"]["$a"]).apply(null, arguments);
+        };
+        var _Transform = Module["_Transform"] = function() {
+          return (_Transform = Module["_Transform"] = Module["asm"]["ab"]).apply(null, arguments);
+        };
+        var _Transpose = Module["_Transpose"] = function() {
+          return (_Transpose = Module["_Transpose"] = Module["asm"]["bb"]).apply(null, arguments);
+        };
+        var __FusedMatMul = Module["__FusedMatMul"] = function() {
+          return (__FusedMatMul = Module["__FusedMatMul"] = Module["asm"]["cb"]).apply(null, arguments);
+        };
+        var _malloc = Module["_malloc"] = function() {
+          return (_malloc = Module["_malloc"] = Module["asm"]["db"]).apply(null, arguments);
+        };
+        var _free = Module["_free"] = function() {
+          return (_free = Module["_free"] = Module["asm"]["eb"]).apply(null, arguments);
+        };
+        var ___errno_location = Module["___errno_location"] = function() {
+          return (___errno_location = Module["___errno_location"] = Module["asm"]["fb"]).apply(null, arguments);
+        };
+        var _emscripten_get_global_libc = Module["_emscripten_get_global_libc"] = function() {
+          return (_emscripten_get_global_libc = Module["_emscripten_get_global_libc"] = Module["asm"]["gb"]).apply(null, arguments);
+        };
+        var _pthread_self = Module["_pthread_self"] = function() {
+          return (_pthread_self = Module["_pthread_self"] = Module["asm"]["hb"]).apply(null, arguments);
+        };
+        var ___pthread_tsd_run_dtors = Module["___pthread_tsd_run_dtors"] = function() {
+          return (___pthread_tsd_run_dtors = Module["___pthread_tsd_run_dtors"] = Module["asm"]["ib"]).apply(null, arguments);
+        };
+        var _emscripten_main_thread_process_queued_calls = Module["_emscripten_main_thread_process_queued_calls"] = function() {
+          return (_emscripten_main_thread_process_queued_calls = Module["_emscripten_main_thread_process_queued_calls"] = Module["asm"]["jb"]).apply(null, arguments);
+        };
+        var _emscripten_current_thread_process_queued_calls = Module["_emscripten_current_thread_process_queued_calls"] = function() {
+          return (_emscripten_current_thread_process_queued_calls = Module["_emscripten_current_thread_process_queued_calls"] = Module["asm"]["kb"]).apply(null, arguments);
+        };
+        var _emscripten_register_main_browser_thread_id = Module["_emscripten_register_main_browser_thread_id"] = function() {
+          return (_emscripten_register_main_browser_thread_id = Module["_emscripten_register_main_browser_thread_id"] = Module["asm"]["lb"]).apply(null, arguments);
+        };
+        var __emscripten_do_dispatch_to_thread = Module["__emscripten_do_dispatch_to_thread"] = function() {
+          return (__emscripten_do_dispatch_to_thread = Module["__emscripten_do_dispatch_to_thread"] = Module["asm"]["mb"]).apply(null, arguments);
+        };
+        var _emscripten_sync_run_in_main_thread_4 = Module["_emscripten_sync_run_in_main_thread_4"] = function() {
+          return (_emscripten_sync_run_in_main_thread_4 = Module["_emscripten_sync_run_in_main_thread_4"] = Module["asm"]["nb"]).apply(null, arguments);
+        };
+        var _emscripten_run_in_main_runtime_thread_js = Module["_emscripten_run_in_main_runtime_thread_js"] = function() {
+          return (_emscripten_run_in_main_runtime_thread_js = Module["_emscripten_run_in_main_runtime_thread_js"] = Module["asm"]["ob"]).apply(null, arguments);
+        };
+        var __emscripten_call_on_thread = Module["__emscripten_call_on_thread"] = function() {
+          return (__emscripten_call_on_thread = Module["__emscripten_call_on_thread"] = Module["asm"]["pb"]).apply(null, arguments);
+        };
+        var _emscripten_tls_init = Module["_emscripten_tls_init"] = function() {
+          return (_emscripten_tls_init = Module["_emscripten_tls_init"] = Module["asm"]["qb"]).apply(null, arguments);
+        };
+        var __emscripten_thread_init = Module["__emscripten_thread_init"] = function() {
+          return (__emscripten_thread_init = Module["__emscripten_thread_init"] = Module["asm"]["rb"]).apply(null, arguments);
+        };
+        var stackSave = Module["stackSave"] = function() {
+          return (stackSave = Module["stackSave"] = Module["asm"]["sb"]).apply(null, arguments);
+        };
+        var stackRestore = Module["stackRestore"] = function() {
+          return (stackRestore = Module["stackRestore"] = Module["asm"]["tb"]).apply(null, arguments);
+        };
+        var stackAlloc = Module["stackAlloc"] = function() {
+          return (stackAlloc = Module["stackAlloc"] = Module["asm"]["ub"]).apply(null, arguments);
+        };
+        var _emscripten_stack_set_limits = Module["_emscripten_stack_set_limits"] = function() {
+          return (_emscripten_stack_set_limits = Module["_emscripten_stack_set_limits"] = Module["asm"]["vb"]).apply(null, arguments);
+        };
+        var _memalign = Module["_memalign"] = function() {
+          return (_memalign = Module["_memalign"] = Module["asm"]["wb"]).apply(null, arguments);
+        };
+        var __emscripten_allow_main_runtime_queued_calls = Module["__emscripten_allow_main_runtime_queued_calls"] = 9808;
+        var __emscripten_main_thread_futex = Module["__emscripten_main_thread_futex"] = 11432;
+        Module["cwrap"] = cwrap;
+        Module["PThread"] = PThread;
+        Module["PThread"] = PThread;
+        Module["wasmMemory"] = wasmMemory;
+        Module["ExitStatus"] = ExitStatus;
+        var calledRun;
+        function ExitStatus(status) {
+          this.name = "ExitStatus";
+          this.message = "Program terminated with exit(" + status + ")";
+          this.status = status;
+        }
+        dependenciesFulfilled = function runCaller() {
+          if (!calledRun)
+            run();
+          if (!calledRun)
+            dependenciesFulfilled = runCaller;
+        };
+        function run(args) {
+          args = args || arguments_;
+          if (runDependencies > 0) {
+            return;
+          }
+          if (ENVIRONMENT_IS_PTHREAD) {
+            readyPromiseResolve(Module);
+            initRuntime();
+            postMessage({"cmd": "loaded"});
+            return;
+          }
+          preRun();
+          if (runDependencies > 0) {
+            return;
+          }
+          function doRun() {
+            if (calledRun)
+              return;
+            calledRun = true;
+            Module["calledRun"] = true;
+            if (ABORT)
+              return;
+            initRuntime();
+            preMain();
+            readyPromiseResolve(Module);
+            if (Module["onRuntimeInitialized"])
+              Module["onRuntimeInitialized"]();
+            postRun();
+          }
+          if (Module["setStatus"]) {
+            Module["setStatus"]("Running...");
+            setTimeout(function() {
+              setTimeout(function() {
+                Module["setStatus"]("");
+              }, 1);
+              doRun();
+            }, 1);
+          } else {
+            doRun();
           }
         }
-        setErrNo(28);
-        return -1;
-      }
-      var asmLibraryArg = {a: _abort, d: _emscripten_memcpy_big, e: _emscripten_resize_heap, f: _fd_close, c: _fd_seek, b: _fd_write, g: _pthread_create, h: _sysconf};
-      var asm = createWasm();
-      var ___wasm_call_ctors = Module["___wasm_call_ctors"] = function() {
-        return (___wasm_call_ctors = Module["___wasm_call_ctors"] = Module["asm"]["j"]).apply(null, arguments);
-      };
-      var _init = Module["_init"] = function() {
-        return (_init = Module["_init"] = Module["asm"]["k"]).apply(null, arguments);
-      };
-      var _register_tensor = Module["_register_tensor"] = function() {
-        return (_register_tensor = Module["_register_tensor"] = Module["asm"]["l"]).apply(null, arguments);
-      };
-      var _dispose_data = Module["_dispose_data"] = function() {
-        return (_dispose_data = Module["_dispose_data"] = Module["asm"]["m"]).apply(null, arguments);
-      };
-      var _dispose = Module["_dispose"] = function() {
-        return (_dispose = Module["_dispose"] = Module["asm"]["n"]).apply(null, arguments);
-      };
-      var _Abs = Module["_Abs"] = function() {
-        return (_Abs = Module["_Abs"] = Module["asm"]["p"]).apply(null, arguments);
-      };
-      var _Add = Module["_Add"] = function() {
-        return (_Add = Module["_Add"] = Module["asm"]["q"]).apply(null, arguments);
-      };
-      var _AddN = Module["_AddN"] = function() {
-        return (_AddN = Module["_AddN"] = Module["asm"]["r"]).apply(null, arguments);
-      };
-      var _All = Module["_All"] = function() {
-        return (_All = Module["_All"] = Module["asm"]["s"]).apply(null, arguments);
-      };
-      var _Any = Module["_Any"] = function() {
-        return (_Any = Module["_Any"] = Module["asm"]["t"]).apply(null, arguments);
-      };
-      var _ArgMax = Module["_ArgMax"] = function() {
-        return (_ArgMax = Module["_ArgMax"] = Module["asm"]["u"]).apply(null, arguments);
-      };
-      var _AvgPool = Module["_AvgPool"] = function() {
-        return (_AvgPool = Module["_AvgPool"] = Module["asm"]["v"]).apply(null, arguments);
-      };
-      var _BatchMatMul = Module["_BatchMatMul"] = function() {
-        return (_BatchMatMul = Module["_BatchMatMul"] = Module["asm"]["w"]).apply(null, arguments);
-      };
-      var _Ceil = Module["_Ceil"] = function() {
-        return (_Ceil = Module["_Ceil"] = Module["asm"]["x"]).apply(null, arguments);
-      };
-      var _ClipByValue = Module["_ClipByValue"] = function() {
-        return (_ClipByValue = Module["_ClipByValue"] = Module["asm"]["y"]).apply(null, arguments);
-      };
-      var _Conv2D = Module["_Conv2D"] = function() {
-        return (_Conv2D = Module["_Conv2D"] = Module["asm"]["z"]).apply(null, arguments);
-      };
-      var _Conv2DBackpropInput = Module["_Conv2DBackpropInput"] = function() {
-        return (_Conv2DBackpropInput = Module["_Conv2DBackpropInput"] = Module["asm"]["A"]).apply(null, arguments);
-      };
-      var _Cos = Module["_Cos"] = function() {
-        return (_Cos = Module["_Cos"] = Module["asm"]["B"]).apply(null, arguments);
-      };
-      var _CropAndResize = Module["_CropAndResize"] = function() {
-        return (_CropAndResize = Module["_CropAndResize"] = Module["asm"]["C"]).apply(null, arguments);
-      };
-      var _Cumsum = Module["_Cumsum"] = function() {
-        return (_Cumsum = Module["_Cumsum"] = Module["asm"]["D"]).apply(null, arguments);
-      };
-      var _DepthToSpace = Module["_DepthToSpace"] = function() {
-        return (_DepthToSpace = Module["_DepthToSpace"] = Module["asm"]["E"]).apply(null, arguments);
-      };
-      var _DepthwiseConv2dNative = Module["_DepthwiseConv2dNative"] = function() {
-        return (_DepthwiseConv2dNative = Module["_DepthwiseConv2dNative"] = Module["asm"]["F"]).apply(null, arguments);
-      };
-      var _Equal = Module["_Equal"] = function() {
-        return (_Equal = Module["_Equal"] = Module["asm"]["G"]).apply(null, arguments);
-      };
-      var _Exp = Module["_Exp"] = function() {
-        return (_Exp = Module["_Exp"] = Module["asm"]["H"]).apply(null, arguments);
-      };
-      var _FlipLeftRight = Module["_FlipLeftRight"] = function() {
-        return (_FlipLeftRight = Module["_FlipLeftRight"] = Module["asm"]["I"]).apply(null, arguments);
-      };
-      var _Floor = Module["_Floor"] = function() {
-        return (_Floor = Module["_Floor"] = Module["asm"]["J"]).apply(null, arguments);
-      };
-      var _FloorDiv = Module["_FloorDiv"] = function() {
-        return (_FloorDiv = Module["_FloorDiv"] = Module["asm"]["K"]).apply(null, arguments);
-      };
-      var _FusedBatchNorm = Module["_FusedBatchNorm"] = function() {
-        return (_FusedBatchNorm = Module["_FusedBatchNorm"] = Module["asm"]["L"]).apply(null, arguments);
-      };
-      var _FusedConv2D = Module["_FusedConv2D"] = function() {
-        return (_FusedConv2D = Module["_FusedConv2D"] = Module["asm"]["M"]).apply(null, arguments);
-      };
-      var _FusedDepthwiseConv2D = Module["_FusedDepthwiseConv2D"] = function() {
-        return (_FusedDepthwiseConv2D = Module["_FusedDepthwiseConv2D"] = Module["asm"]["N"]).apply(null, arguments);
-      };
-      var _Gather = Module["_Gather"] = function() {
-        return (_Gather = Module["_Gather"] = Module["asm"]["O"]).apply(null, arguments);
-      };
-      var _GatherNd = Module["_GatherNd"] = function() {
-        return (_GatherNd = Module["_GatherNd"] = Module["asm"]["P"]).apply(null, arguments);
-      };
-      var _Greater = Module["_Greater"] = function() {
-        return (_Greater = Module["_Greater"] = Module["asm"]["Q"]).apply(null, arguments);
-      };
-      var _GreaterEqual = Module["_GreaterEqual"] = function() {
-        return (_GreaterEqual = Module["_GreaterEqual"] = Module["asm"]["R"]).apply(null, arguments);
-      };
-      var _LeakyRelu = Module["_LeakyRelu"] = function() {
-        return (_LeakyRelu = Module["_LeakyRelu"] = Module["asm"]["S"]).apply(null, arguments);
-      };
-      var _Less = Module["_Less"] = function() {
-        return (_Less = Module["_Less"] = Module["asm"]["T"]).apply(null, arguments);
-      };
-      var _LessEqual = Module["_LessEqual"] = function() {
-        return (_LessEqual = Module["_LessEqual"] = Module["asm"]["U"]).apply(null, arguments);
-      };
-      var _Log = Module["_Log"] = function() {
-        return (_Log = Module["_Log"] = Module["asm"]["V"]).apply(null, arguments);
-      };
-      var _LogicalAnd = Module["_LogicalAnd"] = function() {
-        return (_LogicalAnd = Module["_LogicalAnd"] = Module["asm"]["W"]).apply(null, arguments);
-      };
-      var _Max = Module["_Max"] = function() {
-        return (_Max = Module["_Max"] = Module["asm"]["X"]).apply(null, arguments);
-      };
-      var _MaxPool = Module["_MaxPool"] = function() {
-        return (_MaxPool = Module["_MaxPool"] = Module["asm"]["Y"]).apply(null, arguments);
-      };
-      var _Maximum = Module["_Maximum"] = function() {
-        return (_Maximum = Module["_Maximum"] = Module["asm"]["Z"]).apply(null, arguments);
-      };
-      var _Mean = Module["_Mean"] = function() {
-        return (_Mean = Module["_Mean"] = Module["asm"]["_"]).apply(null, arguments);
-      };
-      var _Min = Module["_Min"] = function() {
-        return (_Min = Module["_Min"] = Module["asm"]["$"]).apply(null, arguments);
-      };
-      var _Minimum = Module["_Minimum"] = function() {
-        return (_Minimum = Module["_Minimum"] = Module["asm"]["aa"]).apply(null, arguments);
-      };
-      var _MirrorPad = Module["_MirrorPad"] = function() {
-        return (_MirrorPad = Module["_MirrorPad"] = Module["asm"]["ba"]).apply(null, arguments);
-      };
-      var _Multiply = Module["_Multiply"] = function() {
-        return (_Multiply = Module["_Multiply"] = Module["asm"]["ca"]).apply(null, arguments);
-      };
-      var _Neg = Module["_Neg"] = function() {
-        return (_Neg = Module["_Neg"] = Module["asm"]["da"]).apply(null, arguments);
-      };
-      var _NonMaxSuppressionV3 = Module["_NonMaxSuppressionV3"] = function() {
-        return (_NonMaxSuppressionV3 = Module["_NonMaxSuppressionV3"] = Module["asm"]["ea"]).apply(null, arguments);
-      };
-      var _NonMaxSuppressionV4 = Module["_NonMaxSuppressionV4"] = function() {
-        return (_NonMaxSuppressionV4 = Module["_NonMaxSuppressionV4"] = Module["asm"]["fa"]).apply(null, arguments);
-      };
-      var _NonMaxSuppressionV5 = Module["_NonMaxSuppressionV5"] = function() {
-        return (_NonMaxSuppressionV5 = Module["_NonMaxSuppressionV5"] = Module["asm"]["ga"]).apply(null, arguments);
-      };
-      var _NotEqual = Module["_NotEqual"] = function() {
-        return (_NotEqual = Module["_NotEqual"] = Module["asm"]["ha"]).apply(null, arguments);
-      };
-      var _OneHot = Module["_OneHot"] = function() {
-        return (_OneHot = Module["_OneHot"] = Module["asm"]["ia"]).apply(null, arguments);
-      };
-      var _PadV2 = Module["_PadV2"] = function() {
-        return (_PadV2 = Module["_PadV2"] = Module["asm"]["ja"]).apply(null, arguments);
-      };
-      var _Pow = Module["_Pow"] = function() {
-        return (_Pow = Module["_Pow"] = Module["asm"]["ka"]).apply(null, arguments);
-      };
-      var _Prelu = Module["_Prelu"] = function() {
-        return (_Prelu = Module["_Prelu"] = Module["asm"]["la"]).apply(null, arguments);
-      };
-      var _Prod = Module["_Prod"] = function() {
-        return (_Prod = Module["_Prod"] = Module["asm"]["ma"]).apply(null, arguments);
-      };
-      var _RealDiv = Module["_RealDiv"] = function() {
-        return (_RealDiv = Module["_RealDiv"] = Module["asm"]["na"]).apply(null, arguments);
-      };
-      var _Relu = Module["_Relu"] = function() {
-        return (_Relu = Module["_Relu"] = Module["asm"]["oa"]).apply(null, arguments);
-      };
-      var _Relu6 = Module["_Relu6"] = function() {
-        return (_Relu6 = Module["_Relu6"] = Module["asm"]["pa"]).apply(null, arguments);
-      };
-      var _ResizeBilinear = Module["_ResizeBilinear"] = function() {
-        return (_ResizeBilinear = Module["_ResizeBilinear"] = Module["asm"]["qa"]).apply(null, arguments);
-      };
-      var _Reverse = Module["_Reverse"] = function() {
-        return (_Reverse = Module["_Reverse"] = Module["asm"]["ra"]).apply(null, arguments);
-      };
-      var _RotateWithOffset = Module["_RotateWithOffset"] = function() {
-        return (_RotateWithOffset = Module["_RotateWithOffset"] = Module["asm"]["sa"]).apply(null, arguments);
-      };
-      var _Round = Module["_Round"] = function() {
-        return (_Round = Module["_Round"] = Module["asm"]["ta"]).apply(null, arguments);
-      };
-      var _Rsqrt = Module["_Rsqrt"] = function() {
-        return (_Rsqrt = Module["_Rsqrt"] = Module["asm"]["ua"]).apply(null, arguments);
-      };
-      var _ScatterNd = Module["_ScatterNd"] = function() {
-        return (_ScatterNd = Module["_ScatterNd"] = Module["asm"]["va"]).apply(null, arguments);
-      };
-      var _SelectV2 = Module["_SelectV2"] = function() {
-        return (_SelectV2 = Module["_SelectV2"] = Module["asm"]["wa"]).apply(null, arguments);
-      };
-      var _Sigmoid = Module["_Sigmoid"] = function() {
-        return (_Sigmoid = Module["_Sigmoid"] = Module["asm"]["xa"]).apply(null, arguments);
-      };
-      var _Sin = Module["_Sin"] = function() {
-        return (_Sin = Module["_Sin"] = Module["asm"]["ya"]).apply(null, arguments);
-      };
-      var _Softmax = Module["_Softmax"] = function() {
-        return (_Softmax = Module["_Softmax"] = Module["asm"]["za"]).apply(null, arguments);
-      };
-      var _Sqrt = Module["_Sqrt"] = function() {
-        return (_Sqrt = Module["_Sqrt"] = Module["asm"]["Aa"]).apply(null, arguments);
-      };
-      var _Square = Module["_Square"] = function() {
-        return (_Square = Module["_Square"] = Module["asm"]["Ba"]).apply(null, arguments);
-      };
-      var _SquaredDifference = Module["_SquaredDifference"] = function() {
-        return (_SquaredDifference = Module["_SquaredDifference"] = Module["asm"]["Ca"]).apply(null, arguments);
-      };
-      var _Step = Module["_Step"] = function() {
-        return (_Step = Module["_Step"] = Module["asm"]["Da"]).apply(null, arguments);
-      };
-      var _StridedSlice = Module["_StridedSlice"] = function() {
-        return (_StridedSlice = Module["_StridedSlice"] = Module["asm"]["Ea"]).apply(null, arguments);
-      };
-      var _Sub = Module["_Sub"] = function() {
-        return (_Sub = Module["_Sub"] = Module["asm"]["Fa"]).apply(null, arguments);
-      };
-      var _Sum = Module["_Sum"] = function() {
-        return (_Sum = Module["_Sum"] = Module["asm"]["Ga"]).apply(null, arguments);
-      };
-      var _Tan = Module["_Tan"] = function() {
-        return (_Tan = Module["_Tan"] = Module["asm"]["Ha"]).apply(null, arguments);
-      };
-      var _Tanh = Module["_Tanh"] = function() {
-        return (_Tanh = Module["_Tanh"] = Module["asm"]["Ia"]).apply(null, arguments);
-      };
-      var _Tile = Module["_Tile"] = function() {
-        return (_Tile = Module["_Tile"] = Module["asm"]["Ja"]).apply(null, arguments);
-      };
-      var _TopK = Module["_TopK"] = function() {
-        return (_TopK = Module["_TopK"] = Module["asm"]["Ka"]).apply(null, arguments);
-      };
-      var _Transform = Module["_Transform"] = function() {
-        return (_Transform = Module["_Transform"] = Module["asm"]["La"]).apply(null, arguments);
-      };
-      var _Transpose = Module["_Transpose"] = function() {
-        return (_Transpose = Module["_Transpose"] = Module["asm"]["Ma"]).apply(null, arguments);
-      };
-      var __FusedMatMul = Module["__FusedMatMul"] = function() {
-        return (__FusedMatMul = Module["__FusedMatMul"] = Module["asm"]["Na"]).apply(null, arguments);
-      };
-      var _malloc = Module["_malloc"] = function() {
-        return (_malloc = Module["_malloc"] = Module["asm"]["Oa"]).apply(null, arguments);
-      };
-      var _free = Module["_free"] = function() {
-        return (_free = Module["_free"] = Module["asm"]["Pa"]).apply(null, arguments);
-      };
-      var ___errno_location = Module["___errno_location"] = function() {
-        return (___errno_location = Module["___errno_location"] = Module["asm"]["Qa"]).apply(null, arguments);
-      };
-      var stackSave = Module["stackSave"] = function() {
-        return (stackSave = Module["stackSave"] = Module["asm"]["Ra"]).apply(null, arguments);
-      };
-      var stackRestore = Module["stackRestore"] = function() {
-        return (stackRestore = Module["stackRestore"] = Module["asm"]["Sa"]).apply(null, arguments);
-      };
-      var stackAlloc = Module["stackAlloc"] = function() {
-        return (stackAlloc = Module["stackAlloc"] = Module["asm"]["Ta"]).apply(null, arguments);
-      };
-      Module["cwrap"] = cwrap;
-      var calledRun;
-      function ExitStatus(status) {
-        this.name = "ExitStatus";
-        this.message = "Program terminated with exit(" + status + ")";
-        this.status = status;
-      }
-      dependenciesFulfilled = function runCaller() {
-        if (!calledRun)
-          run();
-        if (!calledRun)
-          dependenciesFulfilled = runCaller;
-      };
-      function run(args) {
-        args = args || arguments_;
-        if (runDependencies > 0) {
-          return;
-        }
-        preRun();
-        if (runDependencies > 0) {
-          return;
-        }
-        function doRun() {
-          if (calledRun)
+        Module["run"] = run;
+        function exit(status, implicit) {
+          if (implicit && noExitRuntime && status === 0) {
             return;
-          calledRun = true;
-          Module["calledRun"] = true;
-          if (ABORT)
-            return;
-          initRuntime();
-          preMain();
-          readyPromiseResolve(Module);
-          if (Module["onRuntimeInitialized"])
-            Module["onRuntimeInitialized"]();
-          postRun();
+          }
+          if (!implicit) {
+            if (ENVIRONMENT_IS_PTHREAD) {
+              postMessage({"cmd": "exitProcess", "returnCode": status});
+              throw new ExitStatus(status);
+            } else {
+            }
+          }
+          if (noExitRuntime) {
+          } else {
+            PThread.terminateAllThreads();
+            EXITSTATUS = status;
+            exitRuntime();
+            if (Module["onExit"])
+              Module["onExit"](status);
+            ABORT = true;
+          }
+          quit_(status, new ExitStatus(status));
         }
-        if (Module["setStatus"]) {
-          Module["setStatus"]("Running...");
-          setTimeout(function() {
-            setTimeout(function() {
-              Module["setStatus"]("");
-            }, 1);
-            doRun();
-          }, 1);
+        if (Module["preInit"]) {
+          if (typeof Module["preInit"] == "function")
+            Module["preInit"] = [Module["preInit"]];
+          while (Module["preInit"].length > 0) {
+            Module["preInit"].pop()();
+          }
+        }
+        if (ENVIRONMENT_IS_PTHREAD) {
+          noExitRuntime = false;
+          PThread.initWorker();
+        }
+        run();
+        return WasmBackendModuleThreadedSimd2.ready;
+      };
+    }();
+    if (typeof exports === "object" && typeof module === "object")
+      module.exports = WasmBackendModuleThreadedSimd;
+    else if (typeof define === "function" && define["amd"])
+      define([], function() {
+        return WasmBackendModuleThreadedSimd;
+      });
+    else if (typeof exports === "object")
+      exports["WasmBackendModuleThreadedSimd"] = WasmBackendModuleThreadedSimd;
+  }
+});
+
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.6.0/node_modules/@tensorflow/tfjs-backend-wasm/wasm-out/tfjs-backend-wasm.js
+var require_tfjs_backend_wasm = __commonJS({
+  "node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.6.0/node_modules/@tensorflow/tfjs-backend-wasm/wasm-out/tfjs-backend-wasm.js"(exports, module) {
+    var WasmBackendModule = function() {
+      var _scriptDir = typeof document !== "undefined" && document.currentScript ? document.currentScript.src : void 0;
+      if (typeof __filename !== "undefined")
+        _scriptDir = _scriptDir || __filename;
+      return function(WasmBackendModule2) {
+        WasmBackendModule2 = WasmBackendModule2 || {};
+        var Module = typeof WasmBackendModule2 !== "undefined" ? WasmBackendModule2 : {};
+        var readyPromiseResolve, readyPromiseReject;
+        Module["ready"] = new Promise(function(resolve, reject) {
+          readyPromiseResolve = resolve;
+          readyPromiseReject = reject;
+        });
+        var moduleOverrides = {};
+        var key;
+        for (key in Module) {
+          if (Module.hasOwnProperty(key)) {
+            moduleOverrides[key] = Module[key];
+          }
+        }
+        var arguments_ = [];
+        var thisProgram = "./this.program";
+        var quit_ = function(status, toThrow) {
+          throw toThrow;
+        };
+        var ENVIRONMENT_IS_WEB = false;
+        var ENVIRONMENT_IS_WORKER = false;
+        var ENVIRONMENT_IS_NODE = false;
+        var ENVIRONMENT_IS_SHELL = false;
+        ENVIRONMENT_IS_WEB = typeof window === "object";
+        ENVIRONMENT_IS_WORKER = typeof importScripts === "function";
+        ENVIRONMENT_IS_NODE = typeof process === "object" && typeof process.versions === "object" && typeof process.versions.node === "string";
+        ENVIRONMENT_IS_SHELL = !ENVIRONMENT_IS_WEB && !ENVIRONMENT_IS_NODE && !ENVIRONMENT_IS_WORKER;
+        var scriptDirectory = "";
+        function locateFile(path) {
+          if (Module["locateFile"]) {
+            return Module["locateFile"](path, scriptDirectory);
+          }
+          return scriptDirectory + path;
+        }
+        var read_, readAsync, readBinary, setWindowTitle;
+        var nodeFS;
+        var nodePath;
+        if (ENVIRONMENT_IS_NODE) {
+          if (ENVIRONMENT_IS_WORKER) {
+            scriptDirectory = require_path().dirname(scriptDirectory) + "/";
+          } else {
+            scriptDirectory = __dirname + "/";
+          }
+          read_ = function shell_read(filename, binary) {
+            if (!nodeFS)
+              nodeFS = __require("fs");
+            if (!nodePath)
+              nodePath = require_path();
+            filename = nodePath["normalize"](filename);
+            return nodeFS["readFileSync"](filename, binary ? null : "utf8");
+          };
+          readBinary = function readBinary2(filename) {
+            var ret = read_(filename, true);
+            if (!ret.buffer) {
+              ret = new Uint8Array(ret);
+            }
+            assert3(ret.buffer);
+            return ret;
+          };
+          if (process["argv"].length > 1) {
+            thisProgram = process["argv"][1].replace(/\\/g, "/");
+          }
+          arguments_ = process["argv"].slice(2);
+          process["on"]("uncaughtException", function(ex) {
+            if (!(ex instanceof ExitStatus)) {
+              throw ex;
+            }
+          });
+          process["on"]("unhandledRejection", abort);
+          quit_ = function(status) {
+            process["exit"](status);
+          };
+          Module["inspect"] = function() {
+            return "[Emscripten Module object]";
+          };
+        } else if (ENVIRONMENT_IS_SHELL) {
+          if (typeof read != "undefined") {
+            read_ = function shell_read(f) {
+              return read(f);
+            };
+          }
+          readBinary = function readBinary2(f) {
+            var data;
+            if (typeof readbuffer === "function") {
+              return new Uint8Array(readbuffer(f));
+            }
+            data = read(f, "binary");
+            assert3(typeof data === "object");
+            return data;
+          };
+          if (typeof scriptArgs != "undefined") {
+            arguments_ = scriptArgs;
+          } else if (typeof arguments != "undefined") {
+            arguments_ = arguments;
+          }
+          if (typeof quit === "function") {
+            quit_ = function(status) {
+              quit(status);
+            };
+          }
+          if (typeof print !== "undefined") {
+            if (typeof console === "undefined")
+              console = {};
+            console.log = print;
+            console.warn = console.error = typeof printErr !== "undefined" ? printErr : print;
+          }
+        } else if (ENVIRONMENT_IS_WEB || ENVIRONMENT_IS_WORKER) {
+          if (ENVIRONMENT_IS_WORKER) {
+            scriptDirectory = self.location.href;
+          } else if (typeof document !== "undefined" && document.currentScript) {
+            scriptDirectory = document.currentScript.src;
+          }
+          if (_scriptDir) {
+            scriptDirectory = _scriptDir;
+          }
+          if (scriptDirectory.indexOf("blob:") !== 0) {
+            scriptDirectory = scriptDirectory.substr(0, scriptDirectory.lastIndexOf("/") + 1);
+          } else {
+            scriptDirectory = "";
+          }
+          {
+            read_ = function(url) {
+              var xhr = new XMLHttpRequest();
+              xhr.open("GET", url, false);
+              xhr.send(null);
+              return xhr.responseText;
+            };
+            if (ENVIRONMENT_IS_WORKER) {
+              readBinary = function(url) {
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", url, false);
+                xhr.responseType = "arraybuffer";
+                xhr.send(null);
+                return new Uint8Array(xhr.response);
+              };
+            }
+            readAsync = function(url, onload, onerror) {
+              var xhr = new XMLHttpRequest();
+              xhr.open("GET", url, true);
+              xhr.responseType = "arraybuffer";
+              xhr.onload = function() {
+                if (xhr.status == 200 || xhr.status == 0 && xhr.response) {
+                  onload(xhr.response);
+                  return;
+                }
+                onerror();
+              };
+              xhr.onerror = onerror;
+              xhr.send(null);
+            };
+          }
+          setWindowTitle = function(title) {
+            document.title = title;
+          };
         } else {
-          doRun();
         }
-      }
-      Module["run"] = run;
-      if (Module["preInit"]) {
-        if (typeof Module["preInit"] == "function")
-          Module["preInit"] = [Module["preInit"]];
-        while (Module["preInit"].length > 0) {
-          Module["preInit"].pop()();
+        var out = Module["print"] || console.log.bind(console);
+        var err = Module["printErr"] || console.warn.bind(console);
+        for (key in moduleOverrides) {
+          if (moduleOverrides.hasOwnProperty(key)) {
+            Module[key] = moduleOverrides[key];
+          }
         }
-      }
-      run();
-      return WasmBackendModule2.ready;
-    };
-  }();
-  if (typeof exports === "object" && typeof module === "object")
-    module.exports = WasmBackendModule;
-  else if (typeof define === "function" && define["amd"])
-    define([], function() {
-      return WasmBackendModule;
-    });
-  else if (typeof exports === "object")
-    exports["WasmBackendModule"] = WasmBackendModule;
+        moduleOverrides = null;
+        if (Module["arguments"])
+          arguments_ = Module["arguments"];
+        if (Module["thisProgram"])
+          thisProgram = Module["thisProgram"];
+        if (Module["quit"])
+          quit_ = Module["quit"];
+        var wasmBinary;
+        if (Module["wasmBinary"])
+          wasmBinary = Module["wasmBinary"];
+        var noExitRuntime = Module["noExitRuntime"] || true;
+        if (typeof WebAssembly !== "object") {
+          abort("no native wasm support detected");
+        }
+        var wasmMemory;
+        var ABORT = false;
+        var EXITSTATUS;
+        function assert3(condition, text) {
+          if (!condition) {
+            abort("Assertion failed: " + text);
+          }
+        }
+        function getCFunc(ident) {
+          var func2 = Module["_" + ident];
+          assert3(func2, "Cannot call unknown function " + ident + ", make sure it is exported");
+          return func2;
+        }
+        function ccall(ident, returnType, argTypes, args, opts) {
+          var toC = {"string": function(str) {
+            var ret2 = 0;
+            if (str !== null && str !== void 0 && str !== 0) {
+              var len = (str.length << 2) + 1;
+              ret2 = stackAlloc(len);
+              stringToUTF8(str, ret2, len);
+            }
+            return ret2;
+          }, "array": function(arr) {
+            var ret2 = stackAlloc(arr.length);
+            writeArrayToMemory(arr, ret2);
+            return ret2;
+          }};
+          function convertReturnValue(ret2) {
+            if (returnType === "string")
+              return UTF8ToString(ret2);
+            if (returnType === "boolean")
+              return Boolean(ret2);
+            return ret2;
+          }
+          var func2 = getCFunc(ident);
+          var cArgs = [];
+          var stack2 = 0;
+          if (args) {
+            for (var i = 0; i < args.length; i++) {
+              var converter = toC[argTypes[i]];
+              if (converter) {
+                if (stack2 === 0)
+                  stack2 = stackSave();
+                cArgs[i] = converter(args[i]);
+              } else {
+                cArgs[i] = args[i];
+              }
+            }
+          }
+          var ret = func2.apply(null, cArgs);
+          ret = convertReturnValue(ret);
+          if (stack2 !== 0)
+            stackRestore(stack2);
+          return ret;
+        }
+        function cwrap(ident, returnType, argTypes, opts) {
+          argTypes = argTypes || [];
+          var numericArgs = argTypes.every(function(type) {
+            return type === "number";
+          });
+          var numericRet = returnType !== "string";
+          if (numericRet && numericArgs && !opts) {
+            return getCFunc(ident);
+          }
+          return function() {
+            return ccall(ident, returnType, argTypes, arguments, opts);
+          };
+        }
+        var UTF8Decoder = typeof TextDecoder !== "undefined" ? new TextDecoder("utf8") : void 0;
+        function UTF8ArrayToString(heap, idx, maxBytesToRead) {
+          var endIdx = idx + maxBytesToRead;
+          var endPtr = idx;
+          while (heap[endPtr] && !(endPtr >= endIdx))
+            ++endPtr;
+          if (endPtr - idx > 16 && heap.subarray && UTF8Decoder) {
+            return UTF8Decoder.decode(heap.subarray(idx, endPtr));
+          } else {
+            var str = "";
+            while (idx < endPtr) {
+              var u0 = heap[idx++];
+              if (!(u0 & 128)) {
+                str += String.fromCharCode(u0);
+                continue;
+              }
+              var u1 = heap[idx++] & 63;
+              if ((u0 & 224) == 192) {
+                str += String.fromCharCode((u0 & 31) << 6 | u1);
+                continue;
+              }
+              var u2 = heap[idx++] & 63;
+              if ((u0 & 240) == 224) {
+                u0 = (u0 & 15) << 12 | u1 << 6 | u2;
+              } else {
+                u0 = (u0 & 7) << 18 | u1 << 12 | u2 << 6 | heap[idx++] & 63;
+              }
+              if (u0 < 65536) {
+                str += String.fromCharCode(u0);
+              } else {
+                var ch = u0 - 65536;
+                str += String.fromCharCode(55296 | ch >> 10, 56320 | ch & 1023);
+              }
+            }
+          }
+          return str;
+        }
+        function UTF8ToString(ptr, maxBytesToRead) {
+          return ptr ? UTF8ArrayToString(HEAPU8, ptr, maxBytesToRead) : "";
+        }
+        function stringToUTF8Array(str, heap, outIdx, maxBytesToWrite) {
+          if (!(maxBytesToWrite > 0))
+            return 0;
+          var startIdx = outIdx;
+          var endIdx = outIdx + maxBytesToWrite - 1;
+          for (var i = 0; i < str.length; ++i) {
+            var u = str.charCodeAt(i);
+            if (u >= 55296 && u <= 57343) {
+              var u1 = str.charCodeAt(++i);
+              u = 65536 + ((u & 1023) << 10) | u1 & 1023;
+            }
+            if (u <= 127) {
+              if (outIdx >= endIdx)
+                break;
+              heap[outIdx++] = u;
+            } else if (u <= 2047) {
+              if (outIdx + 1 >= endIdx)
+                break;
+              heap[outIdx++] = 192 | u >> 6;
+              heap[outIdx++] = 128 | u & 63;
+            } else if (u <= 65535) {
+              if (outIdx + 2 >= endIdx)
+                break;
+              heap[outIdx++] = 224 | u >> 12;
+              heap[outIdx++] = 128 | u >> 6 & 63;
+              heap[outIdx++] = 128 | u & 63;
+            } else {
+              if (outIdx + 3 >= endIdx)
+                break;
+              heap[outIdx++] = 240 | u >> 18;
+              heap[outIdx++] = 128 | u >> 12 & 63;
+              heap[outIdx++] = 128 | u >> 6 & 63;
+              heap[outIdx++] = 128 | u & 63;
+            }
+          }
+          heap[outIdx] = 0;
+          return outIdx - startIdx;
+        }
+        function stringToUTF8(str, outPtr, maxBytesToWrite) {
+          return stringToUTF8Array(str, HEAPU8, outPtr, maxBytesToWrite);
+        }
+        function writeArrayToMemory(array2, buffer3) {
+          HEAP8.set(array2, buffer3);
+        }
+        function alignUp(x, multiple) {
+          if (x % multiple > 0) {
+            x += multiple - x % multiple;
+          }
+          return x;
+        }
+        var buffer2, HEAP8, HEAPU8, HEAP16, HEAPU16, HEAP32, HEAPU32, HEAPF32, HEAPF64;
+        function updateGlobalBufferAndViews(buf) {
+          buffer2 = buf;
+          Module["HEAP8"] = HEAP8 = new Int8Array(buf);
+          Module["HEAP16"] = HEAP16 = new Int16Array(buf);
+          Module["HEAP32"] = HEAP32 = new Int32Array(buf);
+          Module["HEAPU8"] = HEAPU8 = new Uint8Array(buf);
+          Module["HEAPU16"] = HEAPU16 = new Uint16Array(buf);
+          Module["HEAPU32"] = HEAPU32 = new Uint32Array(buf);
+          Module["HEAPF32"] = HEAPF32 = new Float32Array(buf);
+          Module["HEAPF64"] = HEAPF64 = new Float64Array(buf);
+        }
+        var INITIAL_MEMORY = Module["INITIAL_MEMORY"] || 16777216;
+        var wasmTable;
+        var __ATPRERUN__ = [];
+        var __ATINIT__ = [];
+        var __ATMAIN__ = [];
+        var __ATPOSTRUN__ = [];
+        var runtimeInitialized = false;
+        __ATINIT__.push({func: function() {
+          ___wasm_call_ctors();
+        }});
+        function preRun() {
+          if (Module["preRun"]) {
+            if (typeof Module["preRun"] == "function")
+              Module["preRun"] = [Module["preRun"]];
+            while (Module["preRun"].length) {
+              addOnPreRun(Module["preRun"].shift());
+            }
+          }
+          callRuntimeCallbacks(__ATPRERUN__);
+        }
+        function initRuntime() {
+          runtimeInitialized = true;
+          callRuntimeCallbacks(__ATINIT__);
+        }
+        function preMain() {
+          callRuntimeCallbacks(__ATMAIN__);
+        }
+        function postRun() {
+          if (Module["postRun"]) {
+            if (typeof Module["postRun"] == "function")
+              Module["postRun"] = [Module["postRun"]];
+            while (Module["postRun"].length) {
+              addOnPostRun(Module["postRun"].shift());
+            }
+          }
+          callRuntimeCallbacks(__ATPOSTRUN__);
+        }
+        function addOnPreRun(cb) {
+          __ATPRERUN__.unshift(cb);
+        }
+        function addOnPostRun(cb) {
+          __ATPOSTRUN__.unshift(cb);
+        }
+        var runDependencies = 0;
+        var runDependencyWatcher = null;
+        var dependenciesFulfilled = null;
+        function addRunDependency(id) {
+          runDependencies++;
+          if (Module["monitorRunDependencies"]) {
+            Module["monitorRunDependencies"](runDependencies);
+          }
+        }
+        function removeRunDependency(id) {
+          runDependencies--;
+          if (Module["monitorRunDependencies"]) {
+            Module["monitorRunDependencies"](runDependencies);
+          }
+          if (runDependencies == 0) {
+            if (runDependencyWatcher !== null) {
+              clearInterval(runDependencyWatcher);
+              runDependencyWatcher = null;
+            }
+            if (dependenciesFulfilled) {
+              var callback = dependenciesFulfilled;
+              dependenciesFulfilled = null;
+              callback();
+            }
+          }
+        }
+        Module["preloadedImages"] = {};
+        Module["preloadedAudios"] = {};
+        function abort(what) {
+          if (Module["onAbort"]) {
+            Module["onAbort"](what);
+          }
+          what += "";
+          err(what);
+          ABORT = true;
+          EXITSTATUS = 1;
+          what = "abort(" + what + "). Build with -s ASSERTIONS=1 for more info.";
+          var e = new WebAssembly.RuntimeError(what);
+          readyPromiseReject(e);
+          throw e;
+        }
+        function hasPrefix(str, prefix) {
+          return String.prototype.startsWith ? str.startsWith(prefix) : str.indexOf(prefix) === 0;
+        }
+        var dataURIPrefix = "data:application/octet-stream;base64,";
+        function isDataURI(filename) {
+          return hasPrefix(filename, dataURIPrefix);
+        }
+        var fileURIPrefix = "file://";
+        function isFileURI(filename) {
+          return hasPrefix(filename, fileURIPrefix);
+        }
+        var wasmBinaryFile = "tfjs-backend-wasm.wasm";
+        if (!isDataURI(wasmBinaryFile)) {
+          wasmBinaryFile = locateFile(wasmBinaryFile);
+        }
+        function getBinary(file) {
+          try {
+            if (file == wasmBinaryFile && wasmBinary) {
+              return new Uint8Array(wasmBinary);
+            }
+            if (readBinary) {
+              return readBinary(file);
+            } else {
+              throw "both async and sync fetching of the wasm failed";
+            }
+          } catch (err2) {
+            abort(err2);
+          }
+        }
+        function getBinaryPromise() {
+          if (!wasmBinary && (ENVIRONMENT_IS_WEB || ENVIRONMENT_IS_WORKER)) {
+            if (typeof fetch === "function" && !isFileURI(wasmBinaryFile)) {
+              return fetch(wasmBinaryFile, {credentials: "same-origin"}).then(function(response) {
+                if (!response["ok"]) {
+                  throw "failed to load wasm binary file at '" + wasmBinaryFile + "'";
+                }
+                return response["arrayBuffer"]();
+              }).catch(function() {
+                return getBinary(wasmBinaryFile);
+              });
+            } else {
+              if (readAsync) {
+                return new Promise(function(resolve, reject) {
+                  readAsync(wasmBinaryFile, function(response) {
+                    resolve(new Uint8Array(response));
+                  }, reject);
+                });
+              }
+            }
+          }
+          return Promise.resolve().then(function() {
+            return getBinary(wasmBinaryFile);
+          });
+        }
+        function createWasm() {
+          var info = {"a": asmLibraryArg};
+          function receiveInstance(instance, module2) {
+            var exports3 = instance.exports;
+            Module["asm"] = exports3;
+            wasmMemory = Module["asm"]["i"];
+            updateGlobalBufferAndViews(wasmMemory.buffer);
+            wasmTable = Module["asm"]["o"];
+            removeRunDependency("wasm-instantiate");
+          }
+          addRunDependency("wasm-instantiate");
+          function receiveInstantiatedSource(output) {
+            receiveInstance(output["instance"]);
+          }
+          function instantiateArrayBuffer(receiver) {
+            return getBinaryPromise().then(function(binary) {
+              return WebAssembly.instantiate(binary, info);
+            }).then(receiver, function(reason) {
+              err("failed to asynchronously prepare wasm: " + reason);
+              abort(reason);
+            });
+          }
+          function instantiateAsync() {
+            if (!wasmBinary && typeof WebAssembly.instantiateStreaming === "function" && !isDataURI(wasmBinaryFile) && !isFileURI(wasmBinaryFile) && typeof fetch === "function") {
+              return fetch(wasmBinaryFile, {credentials: "same-origin"}).then(function(response) {
+                var result = WebAssembly.instantiateStreaming(response, info);
+                return result.then(receiveInstantiatedSource, function(reason) {
+                  err("wasm streaming compile failed: " + reason);
+                  err("falling back to ArrayBuffer instantiation");
+                  return instantiateArrayBuffer(receiveInstantiatedSource);
+                });
+              });
+            } else {
+              return instantiateArrayBuffer(receiveInstantiatedSource);
+            }
+          }
+          if (Module["instantiateWasm"]) {
+            try {
+              var exports2 = Module["instantiateWasm"](info, receiveInstance);
+              return exports2;
+            } catch (e) {
+              err("Module.instantiateWasm callback failed with error: " + e);
+              return false;
+            }
+          }
+          instantiateAsync().catch(readyPromiseReject);
+          return {};
+        }
+        function callRuntimeCallbacks(callbacks2) {
+          while (callbacks2.length > 0) {
+            var callback = callbacks2.shift();
+            if (typeof callback == "function") {
+              callback(Module);
+              continue;
+            }
+            var func2 = callback.func;
+            if (typeof func2 === "number") {
+              if (callback.arg === void 0) {
+                wasmTable.get(func2)();
+              } else {
+                wasmTable.get(func2)(callback.arg);
+              }
+            } else {
+              func2(callback.arg === void 0 ? null : callback.arg);
+            }
+          }
+        }
+        function _abort() {
+          abort();
+        }
+        function _emscripten_memcpy_big(dest, src, num) {
+          HEAPU8.copyWithin(dest, src, src + num);
+        }
+        function _emscripten_get_heap_size() {
+          return HEAPU8.length;
+        }
+        function emscripten_realloc_buffer(size) {
+          try {
+            wasmMemory.grow(size - buffer2.byteLength + 65535 >>> 16);
+            updateGlobalBufferAndViews(wasmMemory.buffer);
+            return 1;
+          } catch (e) {
+          }
+        }
+        function _emscripten_resize_heap(requestedSize) {
+          var oldSize = _emscripten_get_heap_size();
+          var maxHeapSize = 2147483648;
+          if (requestedSize > maxHeapSize) {
+            return false;
+          }
+          for (var cutDown = 1; cutDown <= 4; cutDown *= 2) {
+            var overGrownHeapSize = oldSize * (1 + 0.2 / cutDown);
+            overGrownHeapSize = Math.min(overGrownHeapSize, requestedSize + 100663296);
+            var newSize = Math.min(maxHeapSize, alignUp(Math.max(requestedSize, overGrownHeapSize), 65536));
+            var replacement = emscripten_realloc_buffer(newSize);
+            if (replacement) {
+              return true;
+            }
+          }
+          return false;
+        }
+        var SYSCALLS = {mappings: {}, buffers: [null, [], []], printChar: function(stream, curr) {
+          var buffer3 = SYSCALLS.buffers[stream];
+          if (curr === 0 || curr === 10) {
+            (stream === 1 ? out : err)(UTF8ArrayToString(buffer3, 0));
+            buffer3.length = 0;
+          } else {
+            buffer3.push(curr);
+          }
+        }, varargs: void 0, get: function() {
+          SYSCALLS.varargs += 4;
+          var ret = HEAP32[SYSCALLS.varargs - 4 >> 2];
+          return ret;
+        }, getStr: function(ptr) {
+          var ret = UTF8ToString(ptr);
+          return ret;
+        }, get64: function(low, high) {
+          return low;
+        }};
+        function _fd_close(fd) {
+          return 0;
+        }
+        function _fd_seek(fd, offset_low, offset_high, whence, newOffset) {
+        }
+        function _fd_write(fd, iov, iovcnt, pnum) {
+          var num = 0;
+          for (var i = 0; i < iovcnt; i++) {
+            var ptr = HEAP32[iov + i * 8 >> 2];
+            var len = HEAP32[iov + (i * 8 + 4) >> 2];
+            for (var j = 0; j < len; j++) {
+              SYSCALLS.printChar(fd, HEAPU8[ptr + j]);
+            }
+            num += len;
+          }
+          HEAP32[pnum >> 2] = num;
+          return 0;
+        }
+        function _pthread_create() {
+          return 6;
+        }
+        function setErrNo(value) {
+          HEAP32[___errno_location() >> 2] = value;
+          return value;
+        }
+        function _sysconf(name) {
+          switch (name) {
+            case 30:
+              return 16384;
+            case 85:
+              var maxHeapSize = 2147483648;
+              return maxHeapSize / 16384;
+            case 132:
+            case 133:
+            case 12:
+            case 137:
+            case 138:
+            case 15:
+            case 235:
+            case 16:
+            case 17:
+            case 18:
+            case 19:
+            case 20:
+            case 149:
+            case 13:
+            case 10:
+            case 236:
+            case 153:
+            case 9:
+            case 21:
+            case 22:
+            case 159:
+            case 154:
+            case 14:
+            case 77:
+            case 78:
+            case 139:
+            case 82:
+            case 68:
+            case 67:
+            case 164:
+            case 11:
+            case 29:
+            case 47:
+            case 48:
+            case 95:
+            case 52:
+            case 51:
+            case 46:
+              return 200809;
+            case 27:
+            case 246:
+            case 127:
+            case 128:
+            case 23:
+            case 24:
+            case 160:
+            case 161:
+            case 181:
+            case 182:
+            case 242:
+            case 183:
+            case 184:
+            case 243:
+            case 244:
+            case 245:
+            case 165:
+            case 178:
+            case 179:
+            case 49:
+            case 50:
+            case 168:
+            case 169:
+            case 175:
+            case 170:
+            case 171:
+            case 172:
+            case 97:
+            case 76:
+            case 32:
+            case 173:
+            case 35:
+            case 80:
+            case 81:
+            case 79:
+              return -1;
+            case 176:
+            case 177:
+            case 7:
+            case 155:
+            case 8:
+            case 157:
+            case 125:
+            case 126:
+            case 92:
+            case 93:
+            case 129:
+            case 130:
+            case 131:
+            case 94:
+            case 91:
+              return 1;
+            case 74:
+            case 60:
+            case 69:
+            case 70:
+            case 4:
+              return 1024;
+            case 31:
+            case 42:
+            case 72:
+              return 32;
+            case 87:
+            case 26:
+            case 33:
+              return 2147483647;
+            case 34:
+            case 1:
+              return 47839;
+            case 38:
+            case 36:
+              return 99;
+            case 43:
+            case 37:
+              return 2048;
+            case 0:
+              return 2097152;
+            case 3:
+              return 65536;
+            case 28:
+              return 32768;
+            case 44:
+              return 32767;
+            case 75:
+              return 16384;
+            case 39:
+              return 1e3;
+            case 89:
+              return 700;
+            case 71:
+              return 256;
+            case 40:
+              return 255;
+            case 2:
+              return 100;
+            case 180:
+              return 64;
+            case 25:
+              return 20;
+            case 5:
+              return 16;
+            case 6:
+              return 6;
+            case 73:
+              return 4;
+            case 84: {
+              if (typeof navigator === "object")
+                return navigator["hardwareConcurrency"] || 1;
+              return 1;
+            }
+          }
+          setErrNo(28);
+          return -1;
+        }
+        var asmLibraryArg = {"a": _abort, "d": _emscripten_memcpy_big, "e": _emscripten_resize_heap, "f": _fd_close, "c": _fd_seek, "b": _fd_write, "g": _pthread_create, "h": _sysconf};
+        var asm = createWasm();
+        var ___wasm_call_ctors = Module["___wasm_call_ctors"] = function() {
+          return (___wasm_call_ctors = Module["___wasm_call_ctors"] = Module["asm"]["j"]).apply(null, arguments);
+        };
+        var _init = Module["_init"] = function() {
+          return (_init = Module["_init"] = Module["asm"]["k"]).apply(null, arguments);
+        };
+        var _register_tensor = Module["_register_tensor"] = function() {
+          return (_register_tensor = Module["_register_tensor"] = Module["asm"]["l"]).apply(null, arguments);
+        };
+        var _dispose_data = Module["_dispose_data"] = function() {
+          return (_dispose_data = Module["_dispose_data"] = Module["asm"]["m"]).apply(null, arguments);
+        };
+        var _dispose = Module["_dispose"] = function() {
+          return (_dispose = Module["_dispose"] = Module["asm"]["n"]).apply(null, arguments);
+        };
+        var _Abs = Module["_Abs"] = function() {
+          return (_Abs = Module["_Abs"] = Module["asm"]["p"]).apply(null, arguments);
+        };
+        var _Add = Module["_Add"] = function() {
+          return (_Add = Module["_Add"] = Module["asm"]["q"]).apply(null, arguments);
+        };
+        var _AddN = Module["_AddN"] = function() {
+          return (_AddN = Module["_AddN"] = Module["asm"]["r"]).apply(null, arguments);
+        };
+        var _All = Module["_All"] = function() {
+          return (_All = Module["_All"] = Module["asm"]["s"]).apply(null, arguments);
+        };
+        var _Any = Module["_Any"] = function() {
+          return (_Any = Module["_Any"] = Module["asm"]["t"]).apply(null, arguments);
+        };
+        var _ArgMax = Module["_ArgMax"] = function() {
+          return (_ArgMax = Module["_ArgMax"] = Module["asm"]["u"]).apply(null, arguments);
+        };
+        var _AvgPool = Module["_AvgPool"] = function() {
+          return (_AvgPool = Module["_AvgPool"] = Module["asm"]["v"]).apply(null, arguments);
+        };
+        var _BatchMatMul = Module["_BatchMatMul"] = function() {
+          return (_BatchMatMul = Module["_BatchMatMul"] = Module["asm"]["w"]).apply(null, arguments);
+        };
+        var _Ceil = Module["_Ceil"] = function() {
+          return (_Ceil = Module["_Ceil"] = Module["asm"]["x"]).apply(null, arguments);
+        };
+        var _ClipByValue = Module["_ClipByValue"] = function() {
+          return (_ClipByValue = Module["_ClipByValue"] = Module["asm"]["y"]).apply(null, arguments);
+        };
+        var _Conv2D = Module["_Conv2D"] = function() {
+          return (_Conv2D = Module["_Conv2D"] = Module["asm"]["z"]).apply(null, arguments);
+        };
+        var _Conv2DBackpropInput = Module["_Conv2DBackpropInput"] = function() {
+          return (_Conv2DBackpropInput = Module["_Conv2DBackpropInput"] = Module["asm"]["A"]).apply(null, arguments);
+        };
+        var _Cos = Module["_Cos"] = function() {
+          return (_Cos = Module["_Cos"] = Module["asm"]["B"]).apply(null, arguments);
+        };
+        var _CropAndResize = Module["_CropAndResize"] = function() {
+          return (_CropAndResize = Module["_CropAndResize"] = Module["asm"]["C"]).apply(null, arguments);
+        };
+        var _Cumsum = Module["_Cumsum"] = function() {
+          return (_Cumsum = Module["_Cumsum"] = Module["asm"]["D"]).apply(null, arguments);
+        };
+        var _DepthToSpace = Module["_DepthToSpace"] = function() {
+          return (_DepthToSpace = Module["_DepthToSpace"] = Module["asm"]["E"]).apply(null, arguments);
+        };
+        var _DepthwiseConv2dNative = Module["_DepthwiseConv2dNative"] = function() {
+          return (_DepthwiseConv2dNative = Module["_DepthwiseConv2dNative"] = Module["asm"]["F"]).apply(null, arguments);
+        };
+        var _Equal = Module["_Equal"] = function() {
+          return (_Equal = Module["_Equal"] = Module["asm"]["G"]).apply(null, arguments);
+        };
+        var _Exp = Module["_Exp"] = function() {
+          return (_Exp = Module["_Exp"] = Module["asm"]["H"]).apply(null, arguments);
+        };
+        var _FlipLeftRight = Module["_FlipLeftRight"] = function() {
+          return (_FlipLeftRight = Module["_FlipLeftRight"] = Module["asm"]["I"]).apply(null, arguments);
+        };
+        var _Floor = Module["_Floor"] = function() {
+          return (_Floor = Module["_Floor"] = Module["asm"]["J"]).apply(null, arguments);
+        };
+        var _FloorDiv = Module["_FloorDiv"] = function() {
+          return (_FloorDiv = Module["_FloorDiv"] = Module["asm"]["K"]).apply(null, arguments);
+        };
+        var _FusedBatchNorm = Module["_FusedBatchNorm"] = function() {
+          return (_FusedBatchNorm = Module["_FusedBatchNorm"] = Module["asm"]["L"]).apply(null, arguments);
+        };
+        var _FusedConv2D = Module["_FusedConv2D"] = function() {
+          return (_FusedConv2D = Module["_FusedConv2D"] = Module["asm"]["M"]).apply(null, arguments);
+        };
+        var _FusedDepthwiseConv2D = Module["_FusedDepthwiseConv2D"] = function() {
+          return (_FusedDepthwiseConv2D = Module["_FusedDepthwiseConv2D"] = Module["asm"]["N"]).apply(null, arguments);
+        };
+        var _Gather = Module["_Gather"] = function() {
+          return (_Gather = Module["_Gather"] = Module["asm"]["O"]).apply(null, arguments);
+        };
+        var _GatherNd = Module["_GatherNd"] = function() {
+          return (_GatherNd = Module["_GatherNd"] = Module["asm"]["P"]).apply(null, arguments);
+        };
+        var _Greater = Module["_Greater"] = function() {
+          return (_Greater = Module["_Greater"] = Module["asm"]["Q"]).apply(null, arguments);
+        };
+        var _GreaterEqual = Module["_GreaterEqual"] = function() {
+          return (_GreaterEqual = Module["_GreaterEqual"] = Module["asm"]["R"]).apply(null, arguments);
+        };
+        var _LeakyRelu = Module["_LeakyRelu"] = function() {
+          return (_LeakyRelu = Module["_LeakyRelu"] = Module["asm"]["S"]).apply(null, arguments);
+        };
+        var _Less = Module["_Less"] = function() {
+          return (_Less = Module["_Less"] = Module["asm"]["T"]).apply(null, arguments);
+        };
+        var _LessEqual = Module["_LessEqual"] = function() {
+          return (_LessEqual = Module["_LessEqual"] = Module["asm"]["U"]).apply(null, arguments);
+        };
+        var _Log = Module["_Log"] = function() {
+          return (_Log = Module["_Log"] = Module["asm"]["V"]).apply(null, arguments);
+        };
+        var _LogicalAnd = Module["_LogicalAnd"] = function() {
+          return (_LogicalAnd = Module["_LogicalAnd"] = Module["asm"]["W"]).apply(null, arguments);
+        };
+        var _Max = Module["_Max"] = function() {
+          return (_Max = Module["_Max"] = Module["asm"]["X"]).apply(null, arguments);
+        };
+        var _MaxPool = Module["_MaxPool"] = function() {
+          return (_MaxPool = Module["_MaxPool"] = Module["asm"]["Y"]).apply(null, arguments);
+        };
+        var _Maximum = Module["_Maximum"] = function() {
+          return (_Maximum = Module["_Maximum"] = Module["asm"]["Z"]).apply(null, arguments);
+        };
+        var _Mean = Module["_Mean"] = function() {
+          return (_Mean = Module["_Mean"] = Module["asm"]["_"]).apply(null, arguments);
+        };
+        var _Min = Module["_Min"] = function() {
+          return (_Min = Module["_Min"] = Module["asm"]["$"]).apply(null, arguments);
+        };
+        var _Minimum = Module["_Minimum"] = function() {
+          return (_Minimum = Module["_Minimum"] = Module["asm"]["aa"]).apply(null, arguments);
+        };
+        var _MirrorPad = Module["_MirrorPad"] = function() {
+          return (_MirrorPad = Module["_MirrorPad"] = Module["asm"]["ba"]).apply(null, arguments);
+        };
+        var _Multiply = Module["_Multiply"] = function() {
+          return (_Multiply = Module["_Multiply"] = Module["asm"]["ca"]).apply(null, arguments);
+        };
+        var _Neg = Module["_Neg"] = function() {
+          return (_Neg = Module["_Neg"] = Module["asm"]["da"]).apply(null, arguments);
+        };
+        var _NonMaxSuppressionV3 = Module["_NonMaxSuppressionV3"] = function() {
+          return (_NonMaxSuppressionV3 = Module["_NonMaxSuppressionV3"] = Module["asm"]["ea"]).apply(null, arguments);
+        };
+        var _NonMaxSuppressionV4 = Module["_NonMaxSuppressionV4"] = function() {
+          return (_NonMaxSuppressionV4 = Module["_NonMaxSuppressionV4"] = Module["asm"]["fa"]).apply(null, arguments);
+        };
+        var _NonMaxSuppressionV5 = Module["_NonMaxSuppressionV5"] = function() {
+          return (_NonMaxSuppressionV5 = Module["_NonMaxSuppressionV5"] = Module["asm"]["ga"]).apply(null, arguments);
+        };
+        var _NotEqual = Module["_NotEqual"] = function() {
+          return (_NotEqual = Module["_NotEqual"] = Module["asm"]["ha"]).apply(null, arguments);
+        };
+        var _OneHot = Module["_OneHot"] = function() {
+          return (_OneHot = Module["_OneHot"] = Module["asm"]["ia"]).apply(null, arguments);
+        };
+        var _PadV2 = Module["_PadV2"] = function() {
+          return (_PadV2 = Module["_PadV2"] = Module["asm"]["ja"]).apply(null, arguments);
+        };
+        var _Pow = Module["_Pow"] = function() {
+          return (_Pow = Module["_Pow"] = Module["asm"]["ka"]).apply(null, arguments);
+        };
+        var _Prelu = Module["_Prelu"] = function() {
+          return (_Prelu = Module["_Prelu"] = Module["asm"]["la"]).apply(null, arguments);
+        };
+        var _Prod = Module["_Prod"] = function() {
+          return (_Prod = Module["_Prod"] = Module["asm"]["ma"]).apply(null, arguments);
+        };
+        var _RealDiv = Module["_RealDiv"] = function() {
+          return (_RealDiv = Module["_RealDiv"] = Module["asm"]["na"]).apply(null, arguments);
+        };
+        var _Relu = Module["_Relu"] = function() {
+          return (_Relu = Module["_Relu"] = Module["asm"]["oa"]).apply(null, arguments);
+        };
+        var _Relu6 = Module["_Relu6"] = function() {
+          return (_Relu6 = Module["_Relu6"] = Module["asm"]["pa"]).apply(null, arguments);
+        };
+        var _ResizeBilinear = Module["_ResizeBilinear"] = function() {
+          return (_ResizeBilinear = Module["_ResizeBilinear"] = Module["asm"]["qa"]).apply(null, arguments);
+        };
+        var _Reverse = Module["_Reverse"] = function() {
+          return (_Reverse = Module["_Reverse"] = Module["asm"]["ra"]).apply(null, arguments);
+        };
+        var _RotateWithOffset = Module["_RotateWithOffset"] = function() {
+          return (_RotateWithOffset = Module["_RotateWithOffset"] = Module["asm"]["sa"]).apply(null, arguments);
+        };
+        var _Round = Module["_Round"] = function() {
+          return (_Round = Module["_Round"] = Module["asm"]["ta"]).apply(null, arguments);
+        };
+        var _Rsqrt = Module["_Rsqrt"] = function() {
+          return (_Rsqrt = Module["_Rsqrt"] = Module["asm"]["ua"]).apply(null, arguments);
+        };
+        var _ScatterNd = Module["_ScatterNd"] = function() {
+          return (_ScatterNd = Module["_ScatterNd"] = Module["asm"]["va"]).apply(null, arguments);
+        };
+        var _SelectV2 = Module["_SelectV2"] = function() {
+          return (_SelectV2 = Module["_SelectV2"] = Module["asm"]["wa"]).apply(null, arguments);
+        };
+        var _Sigmoid = Module["_Sigmoid"] = function() {
+          return (_Sigmoid = Module["_Sigmoid"] = Module["asm"]["xa"]).apply(null, arguments);
+        };
+        var _Sin = Module["_Sin"] = function() {
+          return (_Sin = Module["_Sin"] = Module["asm"]["ya"]).apply(null, arguments);
+        };
+        var _Softmax = Module["_Softmax"] = function() {
+          return (_Softmax = Module["_Softmax"] = Module["asm"]["za"]).apply(null, arguments);
+        };
+        var _Sqrt = Module["_Sqrt"] = function() {
+          return (_Sqrt = Module["_Sqrt"] = Module["asm"]["Aa"]).apply(null, arguments);
+        };
+        var _Square = Module["_Square"] = function() {
+          return (_Square = Module["_Square"] = Module["asm"]["Ba"]).apply(null, arguments);
+        };
+        var _SquaredDifference = Module["_SquaredDifference"] = function() {
+          return (_SquaredDifference = Module["_SquaredDifference"] = Module["asm"]["Ca"]).apply(null, arguments);
+        };
+        var _Step = Module["_Step"] = function() {
+          return (_Step = Module["_Step"] = Module["asm"]["Da"]).apply(null, arguments);
+        };
+        var _StridedSlice = Module["_StridedSlice"] = function() {
+          return (_StridedSlice = Module["_StridedSlice"] = Module["asm"]["Ea"]).apply(null, arguments);
+        };
+        var _Sub = Module["_Sub"] = function() {
+          return (_Sub = Module["_Sub"] = Module["asm"]["Fa"]).apply(null, arguments);
+        };
+        var _Sum = Module["_Sum"] = function() {
+          return (_Sum = Module["_Sum"] = Module["asm"]["Ga"]).apply(null, arguments);
+        };
+        var _Tan = Module["_Tan"] = function() {
+          return (_Tan = Module["_Tan"] = Module["asm"]["Ha"]).apply(null, arguments);
+        };
+        var _Tanh = Module["_Tanh"] = function() {
+          return (_Tanh = Module["_Tanh"] = Module["asm"]["Ia"]).apply(null, arguments);
+        };
+        var _Tile = Module["_Tile"] = function() {
+          return (_Tile = Module["_Tile"] = Module["asm"]["Ja"]).apply(null, arguments);
+        };
+        var _TopK = Module["_TopK"] = function() {
+          return (_TopK = Module["_TopK"] = Module["asm"]["Ka"]).apply(null, arguments);
+        };
+        var _Transform = Module["_Transform"] = function() {
+          return (_Transform = Module["_Transform"] = Module["asm"]["La"]).apply(null, arguments);
+        };
+        var _Transpose = Module["_Transpose"] = function() {
+          return (_Transpose = Module["_Transpose"] = Module["asm"]["Ma"]).apply(null, arguments);
+        };
+        var __FusedMatMul = Module["__FusedMatMul"] = function() {
+          return (__FusedMatMul = Module["__FusedMatMul"] = Module["asm"]["Na"]).apply(null, arguments);
+        };
+        var _malloc = Module["_malloc"] = function() {
+          return (_malloc = Module["_malloc"] = Module["asm"]["Oa"]).apply(null, arguments);
+        };
+        var _free = Module["_free"] = function() {
+          return (_free = Module["_free"] = Module["asm"]["Pa"]).apply(null, arguments);
+        };
+        var ___errno_location = Module["___errno_location"] = function() {
+          return (___errno_location = Module["___errno_location"] = Module["asm"]["Qa"]).apply(null, arguments);
+        };
+        var stackSave = Module["stackSave"] = function() {
+          return (stackSave = Module["stackSave"] = Module["asm"]["Ra"]).apply(null, arguments);
+        };
+        var stackRestore = Module["stackRestore"] = function() {
+          return (stackRestore = Module["stackRestore"] = Module["asm"]["Sa"]).apply(null, arguments);
+        };
+        var stackAlloc = Module["stackAlloc"] = function() {
+          return (stackAlloc = Module["stackAlloc"] = Module["asm"]["Ta"]).apply(null, arguments);
+        };
+        Module["cwrap"] = cwrap;
+        var calledRun;
+        function ExitStatus(status) {
+          this.name = "ExitStatus";
+          this.message = "Program terminated with exit(" + status + ")";
+          this.status = status;
+        }
+        dependenciesFulfilled = function runCaller() {
+          if (!calledRun)
+            run();
+          if (!calledRun)
+            dependenciesFulfilled = runCaller;
+        };
+        function run(args) {
+          args = args || arguments_;
+          if (runDependencies > 0) {
+            return;
+          }
+          preRun();
+          if (runDependencies > 0) {
+            return;
+          }
+          function doRun() {
+            if (calledRun)
+              return;
+            calledRun = true;
+            Module["calledRun"] = true;
+            if (ABORT)
+              return;
+            initRuntime();
+            preMain();
+            readyPromiseResolve(Module);
+            if (Module["onRuntimeInitialized"])
+              Module["onRuntimeInitialized"]();
+            postRun();
+          }
+          if (Module["setStatus"]) {
+            Module["setStatus"]("Running...");
+            setTimeout(function() {
+              setTimeout(function() {
+                Module["setStatus"]("");
+              }, 1);
+              doRun();
+            }, 1);
+          } else {
+            doRun();
+          }
+        }
+        Module["run"] = run;
+        if (Module["preInit"]) {
+          if (typeof Module["preInit"] == "function")
+            Module["preInit"] = [Module["preInit"]];
+          while (Module["preInit"].length > 0) {
+            Module["preInit"].pop()();
+          }
+        }
+        run();
+        return WasmBackendModule2.ready;
+      };
+    }();
+    if (typeof exports === "object" && typeof module === "object")
+      module.exports = WasmBackendModule;
+    else if (typeof define === "function" && define["amd"])
+      define([], function() {
+        return WasmBackendModule;
+      });
+    else if (typeof exports === "object")
+      exports["WasmBackendModule"] = WasmBackendModule;
+  }
 });
 
 // node_modules/.pnpm/@tensorflow+tfjs-core@3.6.0/node_modules/@tensorflow/tfjs-core/dist/backends/backend.js
@@ -6275,10 +6330,10 @@ var UpcastComplex64AndMap;
   UpcastComplex64AndMap2["complex64"] = "complex64";
 })(UpcastComplex64AndMap || (UpcastComplex64AndMap = {}));
 var upcastTypeMap = {
-  float32: UpcastFloat32AndMap,
-  int32: UpcastInt32AndMap,
-  bool: UpcastBoolAndMap,
-  complex64: UpcastComplex64AndMap
+  "float32": UpcastFloat32AndMap,
+  "int32": UpcastInt32AndMap,
+  "bool": UpcastBoolAndMap,
+  "complex64": UpcastComplex64AndMap
 };
 function upcastType(typeA, typeB) {
   if (typeA === "string" || typeB === "string") {
@@ -7271,13 +7326,13 @@ function tensor(values, shape, dtype) {
 
 // node_modules/.pnpm/@tensorflow+tfjs-core@3.6.0/node_modules/@tensorflow/tfjs-core/dist/io/types.js
 var DTYPE_VALUE_SIZE_MAP = {
-  float32: 4,
-  float16: 2,
-  int32: 4,
-  uint16: 2,
-  uint8: 1,
-  bool: 1,
-  complex64: 8
+  "float32": 4,
+  "float16": 2,
+  "int32": 4,
+  "uint16": 2,
+  "uint8": 1,
+  "bool": 1,
+  "complex64": 8
 };
 
 // node_modules/.pnpm/@tensorflow+tfjs-core@3.6.0/node_modules/@tensorflow/tfjs-core/dist/io/io_utils.js
@@ -8113,7 +8168,7 @@ var getNodeFetch = {
 var systemFetch;
 var PlatformNode = class {
   constructor() {
-    this.util = require("util");
+    this.util = __require("util");
     this.textEncoder = new this.util.TextEncoder();
   }
   fetch(path, requestInits) {
@@ -14347,9 +14402,9 @@ var AdadeltaOptimizer = class extends Optimizer {
   }
   getConfig() {
     return {
-      learningRate: this.learningRate,
-      rho: this.rho,
-      epsilon: this.epsilon
+      "learningRate": this.learningRate,
+      "rho": this.rho,
+      "epsilon": this.epsilon
     };
   }
   static fromConfig(cls, config) {
@@ -14407,8 +14462,8 @@ var AdagradOptimizer = class extends Optimizer {
   }
   getConfig() {
     return {
-      learningRate: this.learningRate,
-      initialAccumulatorValue: this.initialAccumulatorValue
+      "learningRate": this.learningRate,
+      "initialAccumulatorValue": this.initialAccumulatorValue
     };
   }
   static fromConfig(cls, config) {
@@ -14509,10 +14564,10 @@ var AdamOptimizer = class extends Optimizer {
   }
   getConfig() {
     return {
-      learningRate: this.learningRate,
-      beta1: this.beta1,
-      beta2: this.beta2,
-      epsilon: this.epsilon
+      "learningRate": this.learningRate,
+      "beta1": this.beta1,
+      "beta2": this.beta2,
+      "epsilon": this.epsilon
     };
   }
   static fromConfig(cls, config) {
@@ -14599,11 +14654,11 @@ var AdamaxOptimizer = class extends Optimizer {
   }
   getConfig() {
     return {
-      learningRate: this.learningRate,
-      beta1: this.beta1,
-      beta2: this.beta2,
-      epsilon: this.epsilon,
-      decay: this.decay
+      "learningRate": this.learningRate,
+      "beta1": this.beta1,
+      "beta2": this.beta2,
+      "epsilon": this.epsilon,
+      "decay": this.decay
     };
   }
   static fromConfig(cls, config) {
@@ -14655,7 +14710,7 @@ var SGDOptimizer = class extends Optimizer {
     }
   }
   getConfig() {
-    return {learningRate: this.learningRate};
+    return {"learningRate": this.learningRate};
   }
   static fromConfig(cls, config) {
     return new cls(config["learningRate"]);
@@ -14723,9 +14778,9 @@ var MomentumOptimizer = class extends SGDOptimizer {
   }
   getConfig() {
     return {
-      learningRate: this.learningRate,
-      momentum: this.momentum,
-      useNesterov: this.useNesterov
+      "learningRate": this.learningRate,
+      "momentum": this.momentum,
+      "useNesterov": this.useNesterov
     };
   }
   static fromConfig(cls, config) {
@@ -14846,11 +14901,11 @@ var RMSPropOptimizer = class extends Optimizer {
   }
   getConfig() {
     return {
-      learningRate: this.learningRate,
-      decay: this.decay,
-      momentum: this.momentum,
-      epsilon: this.epsilon,
-      centered: this.centered
+      "learningRate": this.learningRate,
+      "decay": this.decay,
+      "momentum": this.momentum,
+      "epsilon": this.epsilon,
+      "centered": this.centered
     };
   }
   static fromConfig(cls, config) {
@@ -18398,10 +18453,10 @@ var MinMaxNorm = class extends Constraint {
 MinMaxNorm.className = "MinMaxNorm";
 serialization_exports.registerClass(MinMaxNorm);
 var CONSTRAINT_IDENTIFIER_REGISTRY_SYMBOL_MAP = {
-  maxNorm: "MaxNorm",
-  minMaxNorm: "MinMaxNorm",
-  nonNeg: "NonNeg",
-  unitNorm: "UnitNorm"
+  "maxNorm": "MaxNorm",
+  "minMaxNorm": "MinMaxNorm",
+  "nonNeg": "NonNeg",
+  "unitNorm": "UnitNorm"
 };
 function serializeConstraint(constraint) {
   return serializeKerasObject(constraint);
@@ -19214,21 +19269,21 @@ var Orthogonal = class extends Initializer {
 Orthogonal.className = "Orthogonal";
 serialization_exports.registerClass(Orthogonal);
 var INITIALIZER_IDENTIFIER_REGISTRY_SYMBOL_MAP = {
-  constant: "Constant",
-  glorotNormal: "GlorotNormal",
-  glorotUniform: "GlorotUniform",
-  heNormal: "HeNormal",
-  heUniform: "HeUniform",
-  identity: "Identity",
-  leCunNormal: "LeCunNormal",
-  leCunUniform: "LeCunUniform",
-  ones: "Ones",
-  orthogonal: "Orthogonal",
-  randomNormal: "RandomNormal",
-  randomUniform: "RandomUniform",
-  truncatedNormal: "TruncatedNormal",
-  varianceScaling: "VarianceScaling",
-  zeros: "Zeros"
+  "constant": "Constant",
+  "glorotNormal": "GlorotNormal",
+  "glorotUniform": "GlorotUniform",
+  "heNormal": "HeNormal",
+  "heUniform": "HeUniform",
+  "identity": "Identity",
+  "leCunNormal": "LeCunNormal",
+  "leCunUniform": "LeCunUniform",
+  "ones": "Ones",
+  "orthogonal": "Orthogonal",
+  "randomNormal": "RandomNormal",
+  "randomUniform": "RandomUniform",
+  "truncatedNormal": "TruncatedNormal",
+  "varianceScaling": "VarianceScaling",
+  "zeros": "Zeros"
 };
 function deserializeInitializer(config, customObjects = {}) {
   return deserializeKerasObject(config, serialization_exports.SerializationMap.getMap().classNameMap, customObjects, "initializer");
@@ -20871,12 +20926,12 @@ function getLossOrMetricName(fn) {
 // node_modules/.pnpm/@tensorflow+tfjs-layers@3.6.0_@tensorflow+tfjs-core@3.6.0/node_modules/@tensorflow/tfjs-layers/dist/optimizers.js
 function getOptimizer(identifier) {
   const optimizerMap = {
-    Adagrad: () => train.adagrad(0.01),
-    Adadelta: () => train.adadelta(1, 0.95, epsilon()),
-    Adam: () => train.adam(1e-3, 0.9, 0.999, epsilon()),
-    Adamax: () => train.adamax(2e-3, 0.9, 0.999, epsilon(), 0),
-    RMSProp: () => train.rmsprop(1e-3, 0.9, 0, epsilon()),
-    SGD: () => train.sgd(0.01)
+    "Adagrad": () => train.adagrad(0.01),
+    "Adadelta": () => train.adadelta(1, 0.95, epsilon()),
+    "Adam": () => train.adam(1e-3, 0.9, 0.999, epsilon()),
+    "Adamax": () => train.adamax(2e-3, 0.9, 0.999, epsilon(), 0),
+    "RMSProp": () => train.rmsprop(1e-3, 0.9, 0, epsilon()),
+    "SGD": () => train.sgd(0.01)
   };
   optimizerMap["adagrad"] = optimizerMap["Adagrad"];
   optimizerMap["adadelta"] = optimizerMap["Adadelta"];
@@ -23327,7 +23382,7 @@ var LayersModel = class extends Container {
           feeds.push({key: this.inputs[i], value: inputs[i]});
         }
         const feedDict = new FeedDict(feeds);
-        const outputs = execute(this.outputs, feedDict, {training: true});
+        const outputs = execute(this.outputs, feedDict, {"training": true});
         let totalLoss;
         for (let i = 0; i < this.lossFunctions.length; ++i) {
           const lossFunction = this.lossFunctions[i];
@@ -24117,7 +24172,7 @@ var L1L2 = class extends Regularizer {
     });
   }
   getConfig() {
-    return {l1: this.l1, l2: this.l2};
+    return {"l1": this.l1, "l2": this.l2};
   }
   static fromConfig(cls, config) {
     return new cls({l1: config["l1"], l2: config["l2"]});
@@ -24134,7 +24189,7 @@ function l2(args) {
   return new L1L2({l2: args != null ? args.l2 : null, l1: 0});
 }
 var REGULARIZER_IDENTIFIER_REGISTRY_SYMBOL_MAP = {
-  l1l2: "L1L2"
+  "l1l2": "L1L2"
 };
 function serializeRegularizer(constraint) {
   return serializeKerasObject(constraint);
@@ -25614,8 +25669,8 @@ var RNN = class extends Layer {
     const cellConfig = this.cell.getConfig();
     if (this.getClassName() === RNN.className) {
       config["cell"] = {
-        className: this.cell.getClassName(),
-        config: cellConfig
+        "className": this.cell.getClassName(),
+        "config": cellConfig
       };
     }
     return Object.assign({}, cellConfig, baseConfig, config);
@@ -26170,12 +26225,12 @@ var StackedRNNCells = class extends RNNCell {
     const baseConfig = super.getConfig();
     const getCellConfig = (cell) => {
       return {
-        className: cell.getClassName(),
-        config: cell.getConfig()
+        "className": cell.getClassName(),
+        "config": cell.getConfig()
       };
     };
     const cellConfigs = this.cells.map(getCellConfig);
-    const config = {cells: cellConfigs};
+    const config = {"cells": cellConfigs};
     return Object.assign({}, baseConfig, config);
   }
   static fromConfig(cls, config, customObjects = {}) {
@@ -26487,7 +26542,7 @@ var ConvLSTM2DCell = class extends LSTMCell {
     });
   }
   getConfig() {
-    const _a = super.getConfig(), {units: _} = _a, baseConfig = __rest(_a, ["units"]);
+    const _a = super.getConfig(), {"units": _} = _a, baseConfig = __rest(_a, ["units"]);
     const config = {
       filters: this.filters,
       kernelSize: this.kernelSize,
@@ -27379,7 +27434,7 @@ var Concatenate = class extends Merge {
   }
   getConfig() {
     const config = {
-      axis: this.axis
+      "axis": this.axis
     };
     const baseConfig = super.getConfig();
     Object.assign(config, baseConfig);
@@ -27537,8 +27592,8 @@ var Dot = class extends Merge {
   }
   getConfig() {
     const config = {
-      axes: this.axes,
-      normalize: this.normalize
+      "axes": this.axes,
+      "normalize": this.normalize
     };
     const baseConfig = super.getConfig();
     Object.assign(config, baseConfig);
@@ -28473,9 +28528,9 @@ var Wrapper = class extends Layer {
   }
   getConfig() {
     const config = {
-      layer: {
-        className: this.layer.getClassName(),
-        config: this.layer.getConfig()
+      "layer": {
+        "className": this.layer.getClassName(),
+        "config": this.layer.getConfig()
       }
     };
     const baseConfig = super.getConfig();
@@ -28781,7 +28836,7 @@ var Bidirectional = class extends Wrapper {
   }
   getConfig() {
     const config = {
-      mergeMode: this.mergeMode
+      "mergeMode": this.mergeMode
     };
     const baseConfig = super.getConfig();
     Object.assign(config, baseConfig);
@@ -29336,182 +29391,182 @@ __export(arithmetic_exports, {
 });
 var json = [
   {
-    tfOpName: "Add",
-    category: "arithmetic",
-    inputs: [
-      {start: 0, name: "a", type: "tensor"},
-      {start: 1, name: "b", type: "tensor"}
+    "tfOpName": "Add",
+    "category": "arithmetic",
+    "inputs": [
+      {"start": 0, "name": "a", "type": "tensor"},
+      {"start": 1, "name": "b", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "AddV2",
-    category: "arithmetic",
-    inputs: [
-      {start: 0, name: "a", type: "tensor"},
-      {start: 1, name: "b", type: "tensor"}
+    "tfOpName": "AddV2",
+    "category": "arithmetic",
+    "inputs": [
+      {"start": 0, "name": "a", "type": "tensor"},
+      {"start": 1, "name": "b", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "AddN",
-    category: "arithmetic",
-    inputs: [{start: 0, end: 0, name: "tensors", type: "tensors"}]
+    "tfOpName": "AddN",
+    "category": "arithmetic",
+    "inputs": [{"start": 0, "end": 0, "name": "tensors", "type": "tensors"}]
   },
   {
-    tfOpName: "BiasAdd",
-    category: "arithmetic",
-    inputs: [
-      {start: 0, name: "a", type: "tensor"},
-      {start: 1, name: "b", type: "tensor"}
+    "tfOpName": "BiasAdd",
+    "category": "arithmetic",
+    "inputs": [
+      {"start": 0, "name": "a", "type": "tensor"},
+      {"start": 1, "name": "b", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true},
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true},
       {
-        tfName: "data_format",
-        name: "dataFormat",
-        type: "string",
-        notSupported: true
+        "tfName": "data_format",
+        "name": "dataFormat",
+        "type": "string",
+        "notSupported": true
       }
     ]
   },
   {
-    tfOpName: "Sub",
-    category: "arithmetic",
-    inputs: [
-      {start: 0, name: "a", type: "tensor"},
-      {start: 1, name: "b", type: "tensor"}
+    "tfOpName": "Sub",
+    "category": "arithmetic",
+    "inputs": [
+      {"start": 0, "name": "a", "type": "tensor"},
+      {"start": 1, "name": "b", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "RealDiv",
-    category: "arithmetic",
-    inputs: [
-      {start: 0, name: "a", type: "tensor"},
-      {start: 1, name: "b", type: "tensor"}
+    "tfOpName": "RealDiv",
+    "category": "arithmetic",
+    "inputs": [
+      {"start": 0, "name": "a", "type": "tensor"},
+      {"start": 1, "name": "b", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "Div",
-    category: "arithmetic",
-    inputs: [
-      {start: 0, name: "a", type: "tensor"},
-      {start: 1, name: "b", type: "tensor"}
+    "tfOpName": "Div",
+    "category": "arithmetic",
+    "inputs": [
+      {"start": 0, "name": "a", "type": "tensor"},
+      {"start": 1, "name": "b", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "DivNoNan",
-    category: "arithmetic",
-    inputs: [
-      {start: 0, name: "a", type: "tensor"},
-      {start: 1, name: "b", type: "tensor"}
+    "tfOpName": "DivNoNan",
+    "category": "arithmetic",
+    "inputs": [
+      {"start": 0, "name": "a", "type": "tensor"},
+      {"start": 1, "name": "b", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "FloorDiv",
-    category: "arithmetic",
-    inputs: [
-      {start: 0, name: "a", type: "tensor"},
-      {start: 1, name: "b", type: "tensor"}
+    "tfOpName": "FloorDiv",
+    "category": "arithmetic",
+    "inputs": [
+      {"start": 0, "name": "a", "type": "tensor"},
+      {"start": 1, "name": "b", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "Mul",
-    category: "arithmetic",
-    inputs: [
-      {start: 0, name: "a", type: "tensor"},
-      {start: 1, name: "b", type: "tensor"}
+    "tfOpName": "Mul",
+    "category": "arithmetic",
+    "inputs": [
+      {"start": 0, "name": "a", "type": "tensor"},
+      {"start": 1, "name": "b", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "Maximum",
-    category: "arithmetic",
-    inputs: [
-      {start: 0, name: "a", type: "tensor"},
-      {start: 1, name: "b", type: "tensor"}
+    "tfOpName": "Maximum",
+    "category": "arithmetic",
+    "inputs": [
+      {"start": 0, "name": "a", "type": "tensor"},
+      {"start": 1, "name": "b", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "Minimum",
-    category: "arithmetic",
-    inputs: [
-      {start: 0, name: "a", type: "tensor"},
-      {start: 1, name: "b", type: "tensor"}
+    "tfOpName": "Minimum",
+    "category": "arithmetic",
+    "inputs": [
+      {"start": 0, "name": "a", "type": "tensor"},
+      {"start": 1, "name": "b", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "Pow",
-    category: "arithmetic",
-    inputs: [
-      {start: 0, name: "a", type: "tensor"},
-      {start: 1, name: "b", type: "tensor"}
+    "tfOpName": "Pow",
+    "category": "arithmetic",
+    "inputs": [
+      {"start": 0, "name": "a", "type": "tensor"},
+      {"start": 1, "name": "b", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "SquaredDifference",
-    category: "arithmetic",
-    inputs: [
-      {start: 0, name: "a", type: "tensor"},
-      {start: 1, name: "b", type: "tensor"}
+    "tfOpName": "SquaredDifference",
+    "category": "arithmetic",
+    "inputs": [
+      {"start": 0, "name": "a", "type": "tensor"},
+      {"start": 1, "name": "b", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "Mod",
-    category: "arithmetic",
-    inputs: [
-      {start: 0, name: "a", type: "tensor"},
-      {start: 1, name: "b", type: "tensor"}
+    "tfOpName": "Mod",
+    "category": "arithmetic",
+    "inputs": [
+      {"start": 0, "name": "a", "type": "tensor"},
+      {"start": 1, "name": "b", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "FloorMod",
-    category: "arithmetic",
-    inputs: [
-      {start: 0, name: "a", type: "tensor"},
-      {start: 1, name: "b", type: "tensor"}
+    "tfOpName": "FloorMod",
+    "category": "arithmetic",
+    "inputs": [
+      {"start": 0, "name": "a", "type": "tensor"},
+      {"start": 1, "name": "b", "type": "tensor"}
     ],
-    attrs: [{
-      tfName: "T",
-      name: "dtype",
-      type: "dtype",
-      notSupported: true
+    "attrs": [{
+      "tfName": "T",
+      "name": "dtype",
+      "type": "dtype",
+      "notSupported": true
     }]
   }
 ];
@@ -29523,466 +29578,466 @@ __export(basic_math_exports, {
 });
 var json2 = [
   {
-    tfOpName: "Abs",
-    category: "basic_math",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"}
+    "tfOpName": "Abs",
+    "category": "basic_math",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "Acos",
-    category: "basic_math",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"}
+    "tfOpName": "Acos",
+    "category": "basic_math",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "Asin",
-    category: "basic_math",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"}
+    "tfOpName": "Asin",
+    "category": "basic_math",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "Atan",
-    category: "basic_math",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"}
+    "tfOpName": "Atan",
+    "category": "basic_math",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "Atan2",
-    category: "basic_math",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"},
-      {start: 1, name: "y", type: "tensor"}
+    "tfOpName": "Atan2",
+    "category": "basic_math",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"},
+      {"start": 1, "name": "y", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "Ceil",
-    category: "basic_math",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"}
+    "tfOpName": "Ceil",
+    "category": "basic_math",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "ClipByValue",
-    category: "basic_math",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"},
-      {start: 1, name: "clipValueMin", type: "number"},
-      {start: 2, name: "clipValueMax", type: "number"}
+    "tfOpName": "ClipByValue",
+    "category": "basic_math",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"},
+      {"start": 1, "name": "clipValueMin", "type": "number"},
+      {"start": 2, "name": "clipValueMax", "type": "number"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "Complex",
-    category: "basic_math",
-    inputs: [
-      {start: 0, name: "real", type: "tensor"},
-      {start: 1, name: "imag", type: "tensor"}
+    "tfOpName": "Complex",
+    "category": "basic_math",
+    "inputs": [
+      {"start": 0, "name": "real", "type": "tensor"},
+      {"start": 1, "name": "imag", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "ComplexAbs",
-    category: "basic_math",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"}
+    "tfOpName": "ComplexAbs",
+    "category": "basic_math",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "Cos",
-    category: "basic_math",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"}
+    "tfOpName": "Cos",
+    "category": "basic_math",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "Cosh",
-    category: "basic_math",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"}
+    "tfOpName": "Cosh",
+    "category": "basic_math",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "Elu",
-    category: "basic_math",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"}
+    "tfOpName": "Elu",
+    "category": "basic_math",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "Exp",
-    category: "basic_math",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"}
+    "tfOpName": "Exp",
+    "category": "basic_math",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "Floor",
-    category: "basic_math",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"}
+    "tfOpName": "Floor",
+    "category": "basic_math",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "Log",
-    category: "basic_math",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"}
+    "tfOpName": "Log",
+    "category": "basic_math",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "Imag",
-    category: "basic_math",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"}
+    "tfOpName": "Imag",
+    "category": "basic_math",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true},
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true},
       {
-        tfName: "Tout",
-        name: "outputType",
-        type: "dtype",
-        notSupported: true
+        "tfName": "Tout",
+        "name": "outputType",
+        "type": "dtype",
+        "notSupported": true
       }
     ]
   },
   {
-    tfOpName: "Neg",
-    category: "basic_math",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"}
+    "tfOpName": "Neg",
+    "category": "basic_math",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "Real",
-    category: "basic_math",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"}
+    "tfOpName": "Real",
+    "category": "basic_math",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true},
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true},
       {
-        tfName: "Tout",
-        name: "outputType",
-        type: "dtype",
-        notSupported: true
+        "tfName": "Tout",
+        "name": "outputType",
+        "type": "dtype",
+        "notSupported": true
       }
     ]
   },
   {
-    tfOpName: "Prelu",
-    category: "basic_math",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"},
-      {start: 1, name: "alpha", type: "tensor"}
+    "tfOpName": "Prelu",
+    "category": "basic_math",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"},
+      {"start": 1, "name": "alpha", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "Relu",
-    category: "basic_math",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"}
+    "tfOpName": "Relu",
+    "category": "basic_math",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "Relu6",
-    category: "basic_math",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"}
+    "tfOpName": "Relu6",
+    "category": "basic_math",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "Selu",
-    category: "basic_math",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"}
+    "tfOpName": "Selu",
+    "category": "basic_math",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "Sigmoid",
-    category: "basic_math",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"}
+    "tfOpName": "Sigmoid",
+    "category": "basic_math",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "Sin",
-    category: "basic_math",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"}
+    "tfOpName": "Sin",
+    "category": "basic_math",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "Sinh",
-    category: "basic_math",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"}
+    "tfOpName": "Sinh",
+    "category": "basic_math",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "Sqrt",
-    category: "basic_math",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"}
+    "tfOpName": "Sqrt",
+    "category": "basic_math",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "Rsqrt",
-    category: "basic_math",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"}
+    "tfOpName": "Rsqrt",
+    "category": "basic_math",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "Square",
-    category: "basic_math",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"}
+    "tfOpName": "Square",
+    "category": "basic_math",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "Tan",
-    category: "basic_math",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"}
+    "tfOpName": "Tan",
+    "category": "basic_math",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "Tanh",
-    category: "basic_math",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"}
+    "tfOpName": "Tanh",
+    "category": "basic_math",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "Sign",
-    category: "basic_math",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"}
+    "tfOpName": "Sign",
+    "category": "basic_math",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "Round",
-    category: "basic_math",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"}
+    "tfOpName": "Round",
+    "category": "basic_math",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "Expm1",
-    category: "basic_math",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"}
+    "tfOpName": "Expm1",
+    "category": "basic_math",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "Log1p",
-    category: "basic_math",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"}
+    "tfOpName": "Log1p",
+    "category": "basic_math",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "Reciprocal",
-    category: "basic_math",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"}
+    "tfOpName": "Reciprocal",
+    "category": "basic_math",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "Softplus",
-    category: "basic_math",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"}
+    "tfOpName": "Softplus",
+    "category": "basic_math",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "Asinh",
-    category: "basic_math",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"}
+    "tfOpName": "Asinh",
+    "category": "basic_math",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "Acosh",
-    category: "basic_math",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"}
+    "tfOpName": "Acosh",
+    "category": "basic_math",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "Atanh",
-    category: "basic_math",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"}
+    "tfOpName": "Atanh",
+    "category": "basic_math",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "Erf",
-    category: "basic_math",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"}
+    "tfOpName": "Erf",
+    "category": "basic_math",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "Prod",
-    category: "basic_math",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"},
-      {start: 1, name: "axes", type: "number[]"}
+    "tfOpName": "Prod",
+    "category": "basic_math",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"},
+      {"start": 1, "name": "axes", "type": "number[]"}
     ],
-    attrs: [
+    "attrs": [
       {
-        tfName: "keep_dims",
-        name: "keepDims",
-        type: "bool",
-        notSupported: true
+        "tfName": "keep_dims",
+        "name": "keepDims",
+        "type": "bool",
+        "notSupported": true
       },
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "LeakyRelu",
-    category: "basic_math",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"}
+    "tfOpName": "LeakyRelu",
+    "category": "basic_math",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"}
     ],
-    attrs: [
+    "attrs": [
       {
-        tfName: "alpha",
-        name: "alpha",
-        type: "number",
-        defaultValue: 0.2
+        "tfName": "alpha",
+        "name": "alpha",
+        "type": "number",
+        "defaultValue": 0.2
       },
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "IsNan",
-    category: "basic_math",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"}
+    "tfOpName": "IsNan",
+    "category": "basic_math",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"}
     ],
-    attrs: [{
-      tfName: "T",
-      name: "dtype",
-      type: "dtype",
-      notSupported: true
+    "attrs": [{
+      "tfName": "T",
+      "name": "dtype",
+      "type": "dtype",
+      "notSupported": true
     }]
   }
 ];
@@ -29994,342 +30049,342 @@ __export(control_exports, {
 });
 var json3 = [
   {
-    tfOpName: "EmptyTensorList",
-    category: "control",
-    inputs: [
-      {start: 0, name: "elementShape", type: "shape"},
-      {start: 1, name: "maxNumElements", type: "number"}
+    "tfOpName": "EmptyTensorList",
+    "category": "control",
+    "inputs": [
+      {"start": 0, "name": "elementShape", "type": "shape"},
+      {"start": 1, "name": "maxNumElements", "type": "number"}
     ],
-    attrs: [{tfName: "element_dtype", name: "elementDType", type: "dtype"}]
+    "attrs": [{"tfName": "element_dtype", "name": "elementDType", "type": "dtype"}]
   },
   {
-    tfOpName: "LoopCond",
-    category: "control",
-    inputs: [{start: 0, name: "pred", type: "tensor"}]
+    "tfOpName": "LoopCond",
+    "category": "control",
+    "inputs": [{"start": 0, "name": "pred", "type": "tensor"}]
   },
   {
-    tfOpName: "Switch",
-    category: "control",
-    inputs: [
-      {start: 0, name: "data", type: "tensor"},
-      {start: 1, name: "pred", type: "tensor"}
+    "tfOpName": "Switch",
+    "category": "control",
+    "inputs": [
+      {"start": 0, "name": "data", "type": "tensor"},
+      {"start": 1, "name": "pred", "type": "tensor"}
     ]
   },
   {
-    tfOpName: "Merge",
-    category: "control",
-    inputs: [{start: 0, end: 0, name: "tensors", type: "tensors"}]
+    "tfOpName": "Merge",
+    "category": "control",
+    "inputs": [{"start": 0, "end": 0, "name": "tensors", "type": "tensors"}]
   },
   {
-    tfOpName: "Enter",
-    category: "control",
-    inputs: [
-      {start: 0, name: "tensor", type: "tensor"}
+    "tfOpName": "Enter",
+    "category": "control",
+    "inputs": [
+      {"start": 0, "name": "tensor", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true},
-      {tfName: "frame_name", name: "frameName", type: "string"},
-      {tfName: "is_constant", name: "isConstant", type: "bool"}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true},
+      {"tfName": "frame_name", "name": "frameName", "type": "string"},
+      {"tfName": "is_constant", "name": "isConstant", "type": "bool"}
     ]
   },
   {
-    tfOpName: "Exit",
-    category: "control",
-    inputs: [
-      {start: 0, name: "tensor", type: "tensor"}
+    "tfOpName": "Exit",
+    "category": "control",
+    "inputs": [
+      {"start": 0, "name": "tensor", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "NextIteration",
-    category: "control",
-    inputs: [
-      {start: 0, name: "tensor", type: "tensor"}
+    "tfOpName": "NextIteration",
+    "category": "control",
+    "inputs": [
+      {"start": 0, "name": "tensor", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "TensorArrayV3",
-    category: "control",
-    inputs: [
-      {start: 0, name: "size", type: "number"}
+    "tfOpName": "TensorArrayV3",
+    "category": "control",
+    "inputs": [
+      {"start": 0, "name": "size", "type": "number"}
     ],
-    attrs: [
-      {tfName: "dtype", name: "dtype", type: "dtype"},
-      {tfName: "element_shape", name: "elementShape", type: "shape"},
-      {tfName: "dynamic_size", name: "dynamicSize", type: "bool"},
-      {tfName: "clear_after_read", name: "clearAfterRead", type: "bool"},
+    "attrs": [
+      {"tfName": "dtype", "name": "dtype", "type": "dtype"},
+      {"tfName": "element_shape", "name": "elementShape", "type": "shape"},
+      {"tfName": "dynamic_size", "name": "dynamicSize", "type": "bool"},
+      {"tfName": "clear_after_read", "name": "clearAfterRead", "type": "bool"},
       {
-        tfName: "identical_element_shapes",
-        name: "identicalElementShapes",
-        type: "bool"
+        "tfName": "identical_element_shapes",
+        "name": "identicalElementShapes",
+        "type": "bool"
       },
-      {tfName: "tensor_array_name", name: "name", type: "string"}
+      {"tfName": "tensor_array_name", "name": "name", "type": "string"}
     ]
   },
   {
-    tfOpName: "TensorArrayWriteV3",
-    category: "control",
-    inputs: [
-      {start: 0, name: "tensorArrayId", type: "tensor"},
-      {start: 1, name: "index", type: "number"},
-      {start: 2, name: "tensor", type: "tensor"},
-      {start: 3, name: "flowIn", type: "number"}
+    "tfOpName": "TensorArrayWriteV3",
+    "category": "control",
+    "inputs": [
+      {"start": 0, "name": "tensorArrayId", "type": "tensor"},
+      {"start": 1, "name": "index", "type": "number"},
+      {"start": 2, "name": "tensor", "type": "tensor"},
+      {"start": 3, "name": "flowIn", "type": "number"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "TensorArrayReadV3",
-    category: "control",
-    inputs: [
-      {start: 0, name: "tensorArrayId", type: "tensor"},
-      {start: 1, name: "index", type: "number"},
-      {start: 2, name: "flowIn", type: "number"}
+    "tfOpName": "TensorArrayReadV3",
+    "category": "control",
+    "inputs": [
+      {"start": 0, "name": "tensorArrayId", "type": "tensor"},
+      {"start": 1, "name": "index", "type": "number"},
+      {"start": 2, "name": "flowIn", "type": "number"}
     ],
-    attrs: [{
-      tfName: "dtype",
-      name: "dtype",
-      type: "dtype",
-      notSupported: true
+    "attrs": [{
+      "tfName": "dtype",
+      "name": "dtype",
+      "type": "dtype",
+      "notSupported": true
     }]
   },
   {
-    tfOpName: "TensorArrayGatherV3",
-    category: "control",
-    inputs: [
-      {start: 0, name: "tensorArrayId", type: "tensor"},
-      {start: 1, name: "indices", type: "number[]"},
-      {start: 2, name: "flowIn", type: "number"}
+    "tfOpName": "TensorArrayGatherV3",
+    "category": "control",
+    "inputs": [
+      {"start": 0, "name": "tensorArrayId", "type": "tensor"},
+      {"start": 1, "name": "indices", "type": "number[]"},
+      {"start": 2, "name": "flowIn", "type": "number"}
     ],
-    attrs: [
-      {tfName: "dtype", name: "dtype", type: "dtype"},
-      {tfName: "element_shape", name: "elementShape", type: "shape"}
+    "attrs": [
+      {"tfName": "dtype", "name": "dtype", "type": "dtype"},
+      {"tfName": "element_shape", "name": "elementShape", "type": "shape"}
     ]
   },
   {
-    tfOpName: "TensorArrayScatterV3",
-    category: "control",
-    inputs: [
-      {start: 0, name: "tensorArrayId", type: "tensor"},
-      {start: 1, name: "indices", type: "number[]"},
-      {start: 2, name: "tensor", type: "tensor"},
-      {start: 3, name: "flowIn", type: "number"}
+    "tfOpName": "TensorArrayScatterV3",
+    "category": "control",
+    "inputs": [
+      {"start": 0, "name": "tensorArrayId", "type": "tensor"},
+      {"start": 1, "name": "indices", "type": "number[]"},
+      {"start": 2, "name": "tensor", "type": "tensor"},
+      {"start": 3, "name": "flowIn", "type": "number"}
     ],
-    attrs: [{tfName: "T", name: "dtype", type: "dtype"}]
+    "attrs": [{"tfName": "T", "name": "dtype", "type": "dtype"}]
   },
   {
-    tfOpName: "TensorArrayConcatV3",
-    category: "control",
-    inputs: [
-      {start: 0, name: "tensorArrayId", type: "tensor"},
-      {start: 1, name: "flowIn", type: "number"}
+    "tfOpName": "TensorArrayConcatV3",
+    "category": "control",
+    "inputs": [
+      {"start": 0, "name": "tensorArrayId", "type": "tensor"},
+      {"start": 1, "name": "flowIn", "type": "number"}
     ],
-    attrs: [
-      {tfName: "dtype", name: "dtype", type: "dtype"},
+    "attrs": [
+      {"tfName": "dtype", "name": "dtype", "type": "dtype"},
       {
-        tfName: "element_shape_except0",
-        name: "elementShapeExcept0",
-        type: "shape",
-        notSupported: true
+        "tfName": "element_shape_except0",
+        "name": "elementShapeExcept0",
+        "type": "shape",
+        "notSupported": true
       }
     ]
   },
   {
-    tfOpName: "TensorArraySplitV3",
-    category: "control",
-    inputs: [
-      {start: 0, name: "tensorArrayId", type: "tensor"},
-      {start: 1, name: "tensor", type: "tensor"},
-      {start: 2, name: "lengths", type: "number[]"},
-      {start: 3, name: "flowIn", type: "number"}
+    "tfOpName": "TensorArraySplitV3",
+    "category": "control",
+    "inputs": [
+      {"start": 0, "name": "tensorArrayId", "type": "tensor"},
+      {"start": 1, "name": "tensor", "type": "tensor"},
+      {"start": 2, "name": "lengths", "type": "number[]"},
+      {"start": 3, "name": "flowIn", "type": "number"}
     ],
-    attrs: [{tfName: "T", name: "dtype", type: "dtype"}]
+    "attrs": [{"tfName": "T", "name": "dtype", "type": "dtype"}]
   },
   {
-    tfOpName: "TensorArraySizeV3",
-    category: "control",
-    inputs: [
-      {start: 0, name: "tensorArrayId", type: "tensor"},
-      {start: 1, name: "flowIn", type: "number"}
+    "tfOpName": "TensorArraySizeV3",
+    "category": "control",
+    "inputs": [
+      {"start": 0, "name": "tensorArrayId", "type": "tensor"},
+      {"start": 1, "name": "flowIn", "type": "number"}
     ]
   },
   {
-    tfOpName: "TensorArrayCloseV3",
-    category: "control",
-    inputs: [{start: 0, name: "tensorArrayId", type: "tensor"}]
+    "tfOpName": "TensorArrayCloseV3",
+    "category": "control",
+    "inputs": [{"start": 0, "name": "tensorArrayId", "type": "tensor"}]
   },
   {
-    tfOpName: "StatelessIf",
-    category: "control",
-    inputs: [
-      {start: 0, name: "cond", type: "tensor"},
-      {start: 1, end: 0, name: "args", type: "tensors"}
+    "tfOpName": "StatelessIf",
+    "category": "control",
+    "inputs": [
+      {"start": 0, "name": "cond", "type": "tensor"},
+      {"start": 1, "end": 0, "name": "args", "type": "tensors"}
     ],
-    attrs: [
-      {tfName: "then_branch", name: "thenBranch", type: "func"},
-      {tfName: "else_branch", name: "elseBranch", type: "func"}
+    "attrs": [
+      {"tfName": "then_branch", "name": "thenBranch", "type": "func"},
+      {"tfName": "else_branch", "name": "elseBranch", "type": "func"}
     ]
   },
   {
-    tfOpName: "If",
-    category: "control",
-    inputs: [
-      {start: 0, name: "cond", type: "tensor"},
-      {start: 1, end: 0, name: "args", type: "tensors"}
+    "tfOpName": "If",
+    "category": "control",
+    "inputs": [
+      {"start": 0, "name": "cond", "type": "tensor"},
+      {"start": 1, "end": 0, "name": "args", "type": "tensors"}
     ],
-    attrs: [
-      {tfName: "then_branch", name: "thenBranch", type: "func"},
-      {tfName: "else_branch", name: "elseBranch", type: "func"}
+    "attrs": [
+      {"tfName": "then_branch", "name": "thenBranch", "type": "func"},
+      {"tfName": "else_branch", "name": "elseBranch", "type": "func"}
     ]
   },
   {
-    tfOpName: "StatelessWhile",
-    category: "control",
-    inputs: [
-      {start: 0, end: 0, name: "args", type: "tensors"}
+    "tfOpName": "StatelessWhile",
+    "category": "control",
+    "inputs": [
+      {"start": 0, "end": 0, "name": "args", "type": "tensors"}
     ],
-    attrs: [
-      {tfName: "cond", name: "cond", type: "func"},
-      {tfName: "body", name: "body", type: "func"}
+    "attrs": [
+      {"tfName": "cond", "name": "cond", "type": "func"},
+      {"tfName": "body", "name": "body", "type": "func"}
     ]
   },
   {
-    tfOpName: "While",
-    category: "control",
-    inputs: [
-      {start: 0, end: 0, name: "args", type: "tensors"}
+    "tfOpName": "While",
+    "category": "control",
+    "inputs": [
+      {"start": 0, "end": 0, "name": "args", "type": "tensors"}
     ],
-    attrs: [
-      {tfName: "cond", name: "cond", type: "func"},
-      {tfName: "body", name: "body", type: "func"}
+    "attrs": [
+      {"tfName": "cond", "name": "cond", "type": "func"},
+      {"tfName": "body", "name": "body", "type": "func"}
     ]
   },
   {
-    tfOpName: "TensorListScatter",
-    category: "control",
-    inputs: [
-      {start: 0, name: "tensor", type: "tensor"},
-      {start: 1, name: "indices", type: "number[]"},
-      {start: 2, name: "elementShape", type: "shape"}
+    "tfOpName": "TensorListScatter",
+    "category": "control",
+    "inputs": [
+      {"start": 0, "name": "tensor", "type": "tensor"},
+      {"start": 1, "name": "indices", "type": "number[]"},
+      {"start": 2, "name": "elementShape", "type": "shape"}
     ],
-    attrs: [{tfName: "element_dtype", name: "elementDType", type: "dtype"}]
+    "attrs": [{"tfName": "element_dtype", "name": "elementDType", "type": "dtype"}]
   },
   {
-    tfOpName: "TensorListScatterV2",
-    category: "control",
-    inputs: [
-      {start: 0, name: "tensor", type: "tensor"},
-      {start: 1, name: "indices", type: "number[]"},
-      {start: 2, name: "elementShape", type: "shape"},
-      {start: 3, name: "numElements", type: "number"}
+    "tfOpName": "TensorListScatterV2",
+    "category": "control",
+    "inputs": [
+      {"start": 0, "name": "tensor", "type": "tensor"},
+      {"start": 1, "name": "indices", "type": "number[]"},
+      {"start": 2, "name": "elementShape", "type": "shape"},
+      {"start": 3, "name": "numElements", "type": "number"}
     ],
-    attrs: [{tfName: "element_dtype", name: "elementDType", type: "dtype"}]
+    "attrs": [{"tfName": "element_dtype", "name": "elementDType", "type": "dtype"}]
   },
   {
-    tfOpName: "TensorListGather",
-    category: "control",
-    inputs: [
-      {start: 0, name: "tensorListId", type: "tensor"},
-      {start: 1, name: "indices", type: "number[]"},
-      {start: 2, name: "elementShape", type: "shape"}
+    "tfOpName": "TensorListGather",
+    "category": "control",
+    "inputs": [
+      {"start": 0, "name": "tensorListId", "type": "tensor"},
+      {"start": 1, "name": "indices", "type": "number[]"},
+      {"start": 2, "name": "elementShape", "type": "shape"}
     ],
-    attrs: [{tfName: "element_dtype", name: "elementDType", type: "dtype"}]
+    "attrs": [{"tfName": "element_dtype", "name": "elementDType", "type": "dtype"}]
   },
   {
-    tfOpName: "TensorListGetItem",
-    category: "control",
-    inputs: [
-      {start: 0, name: "tensorListId", type: "tensor"},
-      {start: 1, name: "index", type: "number"},
-      {start: 2, name: "elementShape", type: "shape"}
+    "tfOpName": "TensorListGetItem",
+    "category": "control",
+    "inputs": [
+      {"start": 0, "name": "tensorListId", "type": "tensor"},
+      {"start": 1, "name": "index", "type": "number"},
+      {"start": 2, "name": "elementShape", "type": "shape"}
     ],
-    attrs: [{tfName: "element_dtype", name: "elementDType", type: "dtype"}]
+    "attrs": [{"tfName": "element_dtype", "name": "elementDType", "type": "dtype"}]
   },
   {
-    tfOpName: "TensorListSetItem",
-    category: "control",
-    inputs: [
-      {start: 0, name: "tensorListId", type: "tensor"},
-      {start: 1, name: "index", type: "number"},
-      {start: 2, name: "tensor", type: "tensor"}
+    "tfOpName": "TensorListSetItem",
+    "category": "control",
+    "inputs": [
+      {"start": 0, "name": "tensorListId", "type": "tensor"},
+      {"start": 1, "name": "index", "type": "number"},
+      {"start": 2, "name": "tensor", "type": "tensor"}
     ],
-    attrs: [{tfName: "element_dtype", name: "elementDType", type: "dtype"}]
+    "attrs": [{"tfName": "element_dtype", "name": "elementDType", "type": "dtype"}]
   },
   {
-    tfOpName: "TensorListReserve",
-    category: "control",
-    inputs: [
-      {start: 0, name: "elementShape", type: "shape"},
-      {start: 1, name: "numElements", type: "number"}
+    "tfOpName": "TensorListReserve",
+    "category": "control",
+    "inputs": [
+      {"start": 0, "name": "elementShape", "type": "shape"},
+      {"start": 1, "name": "numElements", "type": "number"}
     ],
-    attrs: [{tfName: "element_dtype", name: "elementDType", type: "dtype"}]
+    "attrs": [{"tfName": "element_dtype", "name": "elementDType", "type": "dtype"}]
   },
   {
-    tfOpName: "TensorListFromTensor",
-    category: "control",
-    inputs: [
-      {start: 0, name: "tensor", type: "tensor"},
-      {start: 1, name: "elementShape", type: "shape"}
+    "tfOpName": "TensorListFromTensor",
+    "category": "control",
+    "inputs": [
+      {"start": 0, "name": "tensor", "type": "tensor"},
+      {"start": 1, "name": "elementShape", "type": "shape"}
     ],
-    attrs: [{tfName: "element_dtype", name: "elementDType", type: "dtype"}]
+    "attrs": [{"tfName": "element_dtype", "name": "elementDType", "type": "dtype"}]
   },
   {
-    tfOpName: "TensorListStack",
-    category: "control",
-    inputs: [
-      {start: 0, name: "tensorListId", type: "tensor"},
-      {start: 1, name: "elementShape", type: "shape"}
+    "tfOpName": "TensorListStack",
+    "category": "control",
+    "inputs": [
+      {"start": 0, "name": "tensorListId", "type": "tensor"},
+      {"start": 1, "name": "elementShape", "type": "shape"}
     ],
-    attrs: [
-      {tfName: "element_dtype", name: "elementDType", type: "dtype"},
-      {tfName: "num_elements", name: "numElements", type: "dtype"}
+    "attrs": [
+      {"tfName": "element_dtype", "name": "elementDType", "type": "dtype"},
+      {"tfName": "num_elements", "name": "numElements", "type": "dtype"}
     ]
   },
   {
-    tfOpName: "TensorListSplit",
-    category: "control",
-    inputs: [
-      {start: 0, name: "tensor", type: "tensor"},
-      {start: 1, name: "elementShape", type: "shape"},
-      {start: 2, name: "lengths", type: "number[]"}
+    "tfOpName": "TensorListSplit",
+    "category": "control",
+    "inputs": [
+      {"start": 0, "name": "tensor", "type": "tensor"},
+      {"start": 1, "name": "elementShape", "type": "shape"},
+      {"start": 2, "name": "lengths", "type": "number[]"}
     ],
-    attrs: [{tfName: "element_dtype", name: "elementDType", type: "dtype"}]
+    "attrs": [{"tfName": "element_dtype", "name": "elementDType", "type": "dtype"}]
   },
   {
-    tfOpName: "TensorListConcat",
-    category: "control",
-    inputs: [
-      {start: 0, name: "tensorListId", type: "tensor"}
+    "tfOpName": "TensorListConcat",
+    "category": "control",
+    "inputs": [
+      {"start": 0, "name": "tensorListId", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "element_shape", name: "elementShape", type: "shape"},
-      {tfName: "element_dtype", name: "elementDType", type: "dtype"}
+    "attrs": [
+      {"tfName": "element_shape", "name": "elementShape", "type": "shape"},
+      {"tfName": "element_dtype", "name": "elementDType", "type": "dtype"}
     ]
   },
   {
-    tfOpName: "TensorListPopBack",
-    category: "control",
-    inputs: [
-      {start: 0, name: "tensorListId", type: "tensor"},
-      {start: 1, name: "elementShape", type: "shape"}
+    "tfOpName": "TensorListPopBack",
+    "category": "control",
+    "inputs": [
+      {"start": 0, "name": "tensorListId", "type": "tensor"},
+      {"start": 1, "name": "elementShape", "type": "shape"}
     ],
-    attrs: [{tfName: "element_dtype", name: "elementDType", type: "dtype"}]
+    "attrs": [{"tfName": "element_dtype", "name": "elementDType", "type": "dtype"}]
   },
   {
-    tfOpName: "TensorListPushBack",
-    category: "control",
-    inputs: [
-      {start: 0, name: "tensorListId", type: "tensor"},
-      {start: 1, name: "tensor", type: "tensor"}
+    "tfOpName": "TensorListPushBack",
+    "category": "control",
+    "inputs": [
+      {"start": 0, "name": "tensorListId", "type": "tensor"},
+      {"start": 1, "name": "tensor", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "element_dtype", name: "elementDType", type: "dtype"}
+    "attrs": [
+      {"tfName": "element_dtype", "name": "elementDType", "type": "dtype"}
     ]
   }
 ];
@@ -30341,364 +30396,364 @@ __export(convolution_exports, {
 });
 var json4 = [
   {
-    tfOpName: "AvgPool",
-    category: "convolution",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"}
+    "tfOpName": "AvgPool",
+    "category": "convolution",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "strides", name: "strides", type: "number[]"},
-      {tfName: "padding", name: "pad", type: "string"},
+    "attrs": [
+      {"tfName": "strides", "name": "strides", "type": "number[]"},
+      {"tfName": "padding", "name": "pad", "type": "string"},
       {
-        tfName: "data_format",
-        name: "dataFormat",
-        type: "string",
-        notSupported: true
+        "tfName": "data_format",
+        "name": "dataFormat",
+        "type": "string",
+        "notSupported": true
       },
-      {tfName: "ksize", name: "kernelSize", type: "number[]"},
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+      {"tfName": "ksize", "name": "kernelSize", "type": "number[]"},
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "MaxPool",
-    category: "convolution",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"}
+    "tfOpName": "MaxPool",
+    "category": "convolution",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "strides", name: "strides", type: "number[]"},
-      {tfName: "padding", name: "pad", type: "string"},
+    "attrs": [
+      {"tfName": "strides", "name": "strides", "type": "number[]"},
+      {"tfName": "padding", "name": "pad", "type": "string"},
       {
-        tfName: "data_format",
-        name: "dataFormat",
-        type: "string",
-        notSupported: true
+        "tfName": "data_format",
+        "name": "dataFormat",
+        "type": "string",
+        "notSupported": true
       },
-      {tfName: "ksize", name: "kernelSize", type: "number[]"},
+      {"tfName": "ksize", "name": "kernelSize", "type": "number[]"},
       {
-        tfName: "explicit_paddings",
-        name: "explicitPaddings",
-        type: "number[]",
-        defaultValue: [],
-        notSupported: true
+        "tfName": "explicit_paddings",
+        "name": "explicitPaddings",
+        "type": "number[]",
+        "defaultValue": [],
+        "notSupported": true
       },
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "MaxPoolWithArgmax",
-    category: "convolution",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"}
+    "tfOpName": "MaxPoolWithArgmax",
+    "category": "convolution",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "strides", name: "strides", type: "number[]"},
-      {tfName: "padding", name: "pad", type: "string"},
-      {tfName: "ksize", name: "kernelSize", type: "number[]"},
+    "attrs": [
+      {"tfName": "strides", "name": "strides", "type": "number[]"},
+      {"tfName": "padding", "name": "pad", "type": "string"},
+      {"tfName": "ksize", "name": "kernelSize", "type": "number[]"},
       {
-        tfName: "include_batch_in_index",
-        name: "includeBatchInIndex",
-        type: "bool"
+        "tfName": "include_batch_in_index",
+        "name": "includeBatchInIndex",
+        "type": "bool"
       },
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "AvgPool3D",
-    category: "convolution",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"}
+    "tfOpName": "AvgPool3D",
+    "category": "convolution",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "strides", name: "strides", type: "number[]"},
-      {tfName: "padding", name: "pad", type: "string"},
+    "attrs": [
+      {"tfName": "strides", "name": "strides", "type": "number[]"},
+      {"tfName": "padding", "name": "pad", "type": "string"},
       {
-        tfName: "data_format",
-        name: "dataFormat",
-        type: "string",
-        notSupported: true
+        "tfName": "data_format",
+        "name": "dataFormat",
+        "type": "string",
+        "notSupported": true
       },
-      {tfName: "ksize", name: "kernelSize", type: "number[]"},
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+      {"tfName": "ksize", "name": "kernelSize", "type": "number[]"},
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "MaxPool3D",
-    category: "convolution",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"}
+    "tfOpName": "MaxPool3D",
+    "category": "convolution",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "strides", name: "strides", type: "number[]"},
-      {tfName: "padding", name: "pad", type: "string"},
+    "attrs": [
+      {"tfName": "strides", "name": "strides", "type": "number[]"},
+      {"tfName": "padding", "name": "pad", "type": "string"},
       {
-        tfName: "data_format",
-        name: "dataFormat",
-        type: "string",
-        notSupported: true
+        "tfName": "data_format",
+        "name": "dataFormat",
+        "type": "string",
+        "notSupported": true
       },
-      {tfName: "ksize", name: "kernelSize", type: "number[]"},
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+      {"tfName": "ksize", "name": "kernelSize", "type": "number[]"},
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "Conv1D",
-    category: "convolution",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"},
-      {start: 1, name: "filter", type: "tensor"}
+    "tfOpName": "Conv1D",
+    "category": "convolution",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"},
+      {"start": 1, "name": "filter", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "stride", name: "stride", type: "number"},
-      {tfName: "padding", name: "pad", type: "string"},
+    "attrs": [
+      {"tfName": "stride", "name": "stride", "type": "number"},
+      {"tfName": "padding", "name": "pad", "type": "string"},
       {
-        tfName: "data_format",
-        name: "dataFormat",
-        type: "string",
-        defaultValue: "NWC"
+        "tfName": "data_format",
+        "name": "dataFormat",
+        "type": "string",
+        "defaultValue": "NWC"
       },
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true},
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true},
       {
-        tfName: "dilation",
-        name: "dilation",
-        type: "number",
-        defaultValue: 1
+        "tfName": "dilation",
+        "name": "dilation",
+        "type": "number",
+        "defaultValue": 1
       }
     ]
   },
   {
-    tfOpName: "Conv2D",
-    category: "convolution",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"},
-      {start: 1, name: "filter", type: "tensor"}
+    "tfOpName": "Conv2D",
+    "category": "convolution",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"},
+      {"start": 1, "name": "filter", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true},
-      {tfName: "strides", name: "strides", type: "number[]"},
-      {tfName: "padding", name: "pad", type: "string"},
-      {tfName: "useCudnnOnGpu", name: "useCudnnOnGpu", type: "bool"},
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true},
+      {"tfName": "strides", "name": "strides", "type": "number[]"},
+      {"tfName": "padding", "name": "pad", "type": "string"},
+      {"tfName": "useCudnnOnGpu", "name": "useCudnnOnGpu", "type": "bool"},
       {
-        tfName: "data_format",
-        name: "dataFormat",
-        type: "string",
-        defaultValue: "NHWC"
+        "tfName": "data_format",
+        "name": "dataFormat",
+        "type": "string",
+        "defaultValue": "NHWC"
       },
       {
-        tfName: "explicit_paddings",
-        name: "explicitPaddings",
-        type: "number[]",
-        defaultValue: []
+        "tfName": "explicit_paddings",
+        "name": "explicitPaddings",
+        "type": "number[]",
+        "defaultValue": []
       },
-      {tfName: "dilations", name: "dilations", type: "number[]"}
+      {"tfName": "dilations", "name": "dilations", "type": "number[]"}
     ]
   },
   {
-    tfOpName: "_FusedConv2D",
-    category: "convolution",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"},
-      {start: 1, name: "filter", type: "tensor"},
-      {start: 2, end: 0, name: "args", type: "tensors"}
+    "tfOpName": "_FusedConv2D",
+    "category": "convolution",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"},
+      {"start": 1, "name": "filter", "type": "tensor"},
+      {"start": 2, end: 0, "name": "args", "type": "tensors"}
     ],
-    attrs: [
-      {tfName: "num_args", name: "numArgs", type: "number"},
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true},
-      {tfName: "strides", name: "strides", type: "number[]"},
-      {tfName: "padding", name: "pad", type: "string"},
+    "attrs": [
+      {"tfName": "num_args", "name": "numArgs", "type": "number"},
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true},
+      {"tfName": "strides", "name": "strides", "type": "number[]"},
+      {"tfName": "padding", "name": "pad", "type": "string"},
       {
-        tfName: "explicit_paddings",
-        name: "explicitPaddings",
-        type: "number[]",
-        defaultValue: []
+        "tfName": "explicit_paddings",
+        "name": "explicitPaddings",
+        "type": "number[]",
+        "defaultValue": []
       },
       {
-        tfName: "use_cudnn_on_gpu",
-        name: "useCudnnOnGpu",
-        type: "bool",
-        defaultValue: true
+        "tfName": "use_cudnn_on_gpu",
+        "name": "useCudnnOnGpu",
+        "type": "bool",
+        "defaultValue": true
       },
       {
-        tfName: "data_format",
-        name: "dataFormat",
-        type: "string",
-        defaultValue: "NHWC"
+        "tfName": "data_format",
+        "name": "dataFormat",
+        "type": "string",
+        "defaultValue": "NHWC"
       },
       {
-        tfName: "dilations",
-        name: "dilations",
-        type: "number[]",
-        defaultValue: [1, 1, 1, 1]
+        "tfName": "dilations",
+        "name": "dilations",
+        "type": "number[]",
+        "defaultValue": [1, 1, 1, 1]
       },
       {
-        tfName: "fused_ops",
-        name: "fusedOps",
-        type: "string[]",
-        defaultValue: []
+        "tfName": "fused_ops",
+        "name": "fusedOps",
+        "type": "string[]",
+        "defaultValue": []
       },
       {
-        tfName: "epsilon",
-        name: "epsilon",
-        type: "number",
-        defaultValue: 1e-4
+        "tfName": "epsilon",
+        "name": "epsilon",
+        "type": "number",
+        "defaultValue": 1e-4
       },
       {
-        tfName: "leakyrelu_alpha",
-        name: "leakyreluAlpha",
-        type: "number"
+        "tfName": "leakyrelu_alpha",
+        "name": "leakyreluAlpha",
+        "type": "number"
       }
     ]
   },
   {
-    tfOpName: "Conv2DBackpropInput",
-    category: "convolution",
-    inputs: [
-      {start: 2, name: "x", type: "tensor"},
-      {start: 1, name: "filter", type: "tensor"},
-      {start: 0, name: "outputShape", type: "number[]"}
+    "tfOpName": "Conv2DBackpropInput",
+    "category": "convolution",
+    "inputs": [
+      {"start": 2, "name": "x", "type": "tensor"},
+      {"start": 1, "name": "filter", "type": "tensor"},
+      {"start": 0, "name": "outputShape", "type": "number[]"}
     ],
-    attrs: [
-      {tfName: "strides", name: "strides", type: "number[]"},
-      {tfName: "padding", name: "pad", type: "string"},
+    "attrs": [
+      {"tfName": "strides", "name": "strides", "type": "number[]"},
+      {"tfName": "padding", "name": "pad", "type": "string"},
       {
-        tfName: "data_format",
-        name: "dataFormat",
-        type: "string",
-        notSupported: true
+        "tfName": "data_format",
+        "name": "dataFormat",
+        "type": "string",
+        "notSupported": true
       },
       {
-        tfName: "explicit_paddings",
-        name: "explicitPaddings",
-        type: "number[]",
-        defaultValue: []
+        "tfName": "explicit_paddings",
+        "name": "explicitPaddings",
+        "type": "number[]",
+        "defaultValue": []
       },
       {
-        tfName: "dilations",
-        name: "dilations",
-        type: "number[]",
-        notSupported: true
+        "tfName": "dilations",
+        "name": "dilations",
+        "type": "number[]",
+        "notSupported": true
       }
     ]
   },
   {
-    tfOpName: "DepthwiseConv2d",
-    category: "convolution",
-    inputs: [
-      {start: 0, name: "input", type: "tensor"},
-      {start: 1, name: "filter", type: "tensor"}
+    "tfOpName": "DepthwiseConv2d",
+    "category": "convolution",
+    "inputs": [
+      {"start": 0, "name": "input", "type": "tensor"},
+      {"start": 1, "name": "filter", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "strides", name: "strides", type: "number[]"},
-      {tfName: "padding", name: "pad", type: "string"},
+    "attrs": [
+      {"tfName": "strides", "name": "strides", "type": "number[]"},
+      {"tfName": "padding", "name": "pad", "type": "string"},
       {
-        tfName: "data_format",
-        name: "dataFormat",
-        type: "string",
-        defaultValue: "NHWC"
+        "tfName": "data_format",
+        "name": "dataFormat",
+        "type": "string",
+        "defaultValue": "NHWC"
       },
       {
-        tfName: "explicit_paddings",
-        name: "explicitPaddings",
-        type: "number[]",
-        defaultValue: []
+        "tfName": "explicit_paddings",
+        "name": "explicitPaddings",
+        "type": "number[]",
+        "defaultValue": []
       },
-      {tfName: "dilations", name: "dilations", type: "number[]"}
+      {"tfName": "dilations", "name": "dilations", "type": "number[]"}
     ]
   },
   {
-    tfOpName: "DepthwiseConv2dNative",
-    category: "convolution",
-    inputs: [
-      {start: 0, name: "input", type: "tensor"},
-      {start: 1, name: "filter", type: "tensor"}
+    "tfOpName": "DepthwiseConv2dNative",
+    "category": "convolution",
+    "inputs": [
+      {"start": 0, "name": "input", "type": "tensor"},
+      {"start": 1, "name": "filter", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "strides", name: "strides", type: "number[]"},
-      {tfName: "padding", name: "pad", type: "string"},
+    "attrs": [
+      {"tfName": "strides", "name": "strides", "type": "number[]"},
+      {"tfName": "padding", "name": "pad", "type": "string"},
       {
-        tfName: "data_format",
-        name: "dataFormat",
-        type: "string",
-        defaultValue: "NHWC"
+        "tfName": "data_format",
+        "name": "dataFormat",
+        "type": "string",
+        "defaultValue": "NHWC"
       },
       {
-        tfName: "explicit_paddings",
-        name: "explicitPaddings",
-        type: "number[]",
-        defaultValue: []
+        "tfName": "explicit_paddings",
+        "name": "explicitPaddings",
+        "type": "number[]",
+        "defaultValue": []
       },
-      {tfName: "dilations", name: "dilations", type: "number[]"}
+      {"tfName": "dilations", "name": "dilations", "type": "number[]"}
     ]
   },
   {
-    tfOpName: "FusedDepthwiseConv2dNative",
-    category: "convolution",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"},
-      {start: 1, name: "filter", type: "tensor"},
-      {start: 2, end: 0, name: "args", type: "tensors"}
+    "tfOpName": "FusedDepthwiseConv2dNative",
+    "category": "convolution",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"},
+      {"start": 1, "name": "filter", "type": "tensor"},
+      {"start": 2, end: 0, "name": "args", "type": "tensors"}
     ],
-    attrs: [
-      {tfName: "num_args", name: "numArgs", type: "number"},
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true},
-      {tfName: "strides", name: "strides", type: "number[]"},
-      {tfName: "padding", name: "pad", type: "string"},
+    "attrs": [
+      {"tfName": "num_args", "name": "numArgs", "type": "number"},
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true},
+      {"tfName": "strides", "name": "strides", "type": "number[]"},
+      {"tfName": "padding", "name": "pad", "type": "string"},
       {
-        tfName: "data_format",
-        name: "dataFormat",
-        type: "string",
-        defaultValue: "NHWC"
+        "tfName": "data_format",
+        "name": "dataFormat",
+        "type": "string",
+        "defaultValue": "NHWC"
       },
       {
-        tfName: "dilations",
-        name: "dilations",
-        type: "number[]",
-        defaultValue: [1, 1, 1, 1]
+        "tfName": "dilations",
+        "name": "dilations",
+        "type": "number[]",
+        "defaultValue": [1, 1, 1, 1]
       },
       {
-        tfName: "fused_ops",
-        name: "fusedOps",
-        type: "string[]",
-        defaultValue: []
+        "tfName": "fused_ops",
+        "name": "fusedOps",
+        "type": "string[]",
+        "defaultValue": []
       },
       {
-        tfName: "explicit_paddings",
-        name: "explicitPaddings",
-        type: "number[]",
-        defaultValue: []
+        "tfName": "explicit_paddings",
+        "name": "explicitPaddings",
+        "type": "number[]",
+        "defaultValue": []
       }
     ]
   },
   {
-    tfOpName: "Conv3D",
-    category: "convolution",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"},
-      {start: 1, name: "filter", type: "tensor"}
+    "tfOpName": "Conv3D",
+    "category": "convolution",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"},
+      {"start": 1, "name": "filter", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "strides", name: "strides", type: "number[]"},
-      {tfName: "padding", name: "pad", type: "string"},
+    "attrs": [
+      {"tfName": "strides", "name": "strides", "type": "number[]"},
+      {"tfName": "padding", "name": "pad", "type": "string"},
       {
-        tfName: "data_format",
-        name: "dataFormat",
-        type: "string",
-        defaultValue: "NHWC"
+        "tfName": "data_format",
+        "name": "dataFormat",
+        "type": "string",
+        "defaultValue": "NHWC"
       },
-      {tfName: "dilations", name: "dilations", type: "number[]"}
+      {"tfName": "dilations", "name": "dilations", "type": "number[]"}
     ]
   },
   {
-    tfOpName: "Dilation2D",
-    category: "convolution",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"},
-      {start: 1, name: "filter", type: "tensor"}
+    "tfOpName": "Dilation2D",
+    "category": "convolution",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"},
+      {"start": 1, "name": "filter", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "strides", name: "strides", type: "number[]"},
-      {tfName: "rates", name: "dilations", type: "number[]"},
-      {tfName: "padding", name: "pad", type: "string"}
+    "attrs": [
+      {"tfName": "strides", "name": "strides", "type": "number[]"},
+      {"tfName": "rates", "name": "dilations", "type": "number[]"},
+      {"tfName": "padding", "name": "pad", "type": "string"}
     ]
   }
 ];
@@ -30710,161 +30765,161 @@ __export(creation_exports, {
 });
 var json5 = [
   {
-    tfOpName: "Fill",
-    category: "creation",
-    inputs: [
-      {start: 0, name: "shape", type: "number[]"},
-      {start: 1, name: "value", type: "number"}
+    "tfOpName": "Fill",
+    "category": "creation",
+    "inputs": [
+      {"start": 0, "name": "shape", "type": "number[]"},
+      {"start": 1, "name": "value", "type": "number"}
     ],
-    attrs: [{tfName: "T", name: "dtype", type: "dtype"}]
+    "attrs": [{"tfName": "T", "name": "dtype", "type": "dtype"}]
   },
   {
-    tfOpName: "LinSpace",
-    category: "creation",
-    inputs: [
-      {start: 0, name: "start", type: "number"},
-      {start: 1, name: "stop", type: "number"},
-      {start: 2, name: "num", type: "number"}
+    "tfOpName": "LinSpace",
+    "category": "creation",
+    "inputs": [
+      {"start": 0, "name": "start", "type": "number"},
+      {"start": 1, "name": "stop", "type": "number"},
+      {"start": 2, "name": "num", "type": "number"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "OneHot",
-    category: "creation",
-    inputs: [
-      {start: 0, name: "indices", type: "tensor"},
-      {start: 1, name: "depth", type: "number"},
-      {start: 2, name: "onValue", type: "number", defaultValue: 1},
-      {start: 3, name: "offValue", type: "number", defaultValue: 0}
+    "tfOpName": "OneHot",
+    "category": "creation",
+    "inputs": [
+      {"start": 0, "name": "indices", "type": "tensor"},
+      {"start": 1, "name": "depth", "type": "number"},
+      {"start": 2, "name": "onValue", "type": "number", "defaultValue": 1},
+      {"start": 3, "name": "offValue", "type": "number", "defaultValue": 0}
     ],
-    attrs: [
+    "attrs": [
       {
-        tfName: "axis",
-        name: "axis",
-        type: "number",
-        notSupported: true
+        "tfName": "axis",
+        "name": "axis",
+        "type": "number",
+        "notSupported": true
       },
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "Ones",
-    category: "creation",
-    inputs: [
-      {start: 0, name: "shape", type: "number[]"}
+    "tfOpName": "Ones",
+    "category": "creation",
+    "inputs": [
+      {"start": 0, "name": "shape", "type": "number[]"}
     ],
-    attrs: [{tfName: "T", name: "dtype", type: "dtype"}]
+    "attrs": [{"tfName": "T", "name": "dtype", "type": "dtype"}]
   },
   {
-    tfOpName: "OnesLike",
-    category: "creation",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"}
+    "tfOpName": "OnesLike",
+    "category": "creation",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"}
     ],
-    attrs: [{tfName: "dtype", name: "dtype", type: "dtype"}]
+    "attrs": [{"tfName": "dtype", "name": "dtype", "type": "dtype"}]
   },
   {
-    tfOpName: "RandomUniform",
-    category: "creation",
-    inputs: [
-      {start: 0, name: "shape", type: "number[]"}
+    "tfOpName": "RandomUniform",
+    "category": "creation",
+    "inputs": [
+      {"start": 0, "name": "shape", "type": "number[]"}
     ],
-    attrs: [
+    "attrs": [
       {
-        tfName: "minval",
-        name: "minval",
-        type: "number",
-        defaultValue: 0
+        "tfName": "minval",
+        "name": "minval",
+        "type": "number",
+        "defaultValue": 0
       },
       {
-        tfName: "maxval",
-        name: "maxval",
-        type: "number",
-        defaultValue: 1
+        "tfName": "maxval",
+        "name": "maxval",
+        "type": "number",
+        "defaultValue": 1
       },
-      {tfName: "dtype", name: "dtype", type: "dtype"},
-      {tfName: "seed", name: "seed", type: "number", defaultValue: 0},
+      {"tfName": "dtype", "name": "dtype", "type": "dtype"},
+      {"tfName": "seed", "name": "seed", "type": "number", "defaultValue": 0},
       {
-        tfName: "seed2",
-        name: "seed2",
-        type: "number",
-        defaultValue: 0,
-        notSupported: true
+        "tfName": "seed2",
+        "name": "seed2",
+        "type": "number",
+        "defaultValue": 0,
+        "notSupported": true
       },
-      {tfName: "T", name: "T", type: "number", notSupported: true}
+      {"tfName": "T", "name": "T", "type": "number", "notSupported": true}
     ]
   },
   {
-    tfOpName: "Range",
-    category: "creation",
-    inputs: [
-      {start: 0, name: "start", type: "number"},
-      {start: 1, name: "stop", type: "number"},
-      {start: 2, name: "step", type: "number", defaultValue: 0}
+    "tfOpName": "Range",
+    "category": "creation",
+    "inputs": [
+      {"start": 0, "name": "start", "type": "number"},
+      {"start": 1, "name": "stop", "type": "number"},
+      {"start": 2, "name": "step", "type": "number", "defaultValue": 0}
     ],
-    attrs: [{tfName: "Tidx", name: "dtype", type: "dtype"}]
+    "attrs": [{"tfName": "Tidx", "name": "dtype", "type": "dtype"}]
   },
   {
-    tfOpName: "TruncatedNormal",
-    category: "creation",
-    inputs: [
-      {start: 0, name: "shape", type: "number[]"}
+    "tfOpName": "TruncatedNormal",
+    "category": "creation",
+    "inputs": [
+      {"start": 0, "name": "shape", "type": "number[]"}
     ],
-    attrs: [
+    "attrs": [
       {
-        tfName: "means",
-        name: "mean",
-        type: "number",
-        defaultValue: 0
+        "tfName": "means",
+        "name": "mean",
+        "type": "number",
+        "defaultValue": 0
       },
       {
-        tfName: "stddev",
-        name: "stdDev",
-        type: "number",
-        defaultValue: 1
+        "tfName": "stddev",
+        "name": "stdDev",
+        "type": "number",
+        "defaultValue": 1
       },
-      {tfName: "seed", name: "seed", type: "number"},
+      {"tfName": "seed", "name": "seed", "type": "number"},
       {
-        tfName: "seed2",
-        name: "seed2",
-        type: "number",
-        defaultValue: 0,
-        notSupported: true
+        "tfName": "seed2",
+        "name": "seed2",
+        "type": "number",
+        "defaultValue": 0,
+        "notSupported": true
       },
-      {tfName: "dtype", name: "dtype", type: "dtype"},
-      {tfName: "T", name: "T", type: "number", notSupported: true}
+      {"tfName": "dtype", "name": "dtype", "type": "dtype"},
+      {"tfName": "T", "name": "T", "type": "number", "notSupported": true}
     ]
   },
   {
-    tfOpName: "Zeros",
-    category: "creation",
-    inputs: [
-      {start: 0, name: "shape", type: "number[]"}
+    "tfOpName": "Zeros",
+    "category": "creation",
+    "inputs": [
+      {"start": 0, "name": "shape", "type": "number[]"}
     ],
-    attrs: [{tfName: "T", name: "dtype", type: "dtype"}]
+    "attrs": [{"tfName": "T", "name": "dtype", "type": "dtype"}]
   },
   {
-    tfOpName: "ZerosLike",
-    category: "creation",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"}
+    "tfOpName": "ZerosLike",
+    "category": "creation",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"}
     ],
-    attrs: [{tfName: "T", name: "dtype", type: "dtype"}]
+    "attrs": [{"tfName": "T", "name": "dtype", "type": "dtype"}]
   },
   {
-    tfOpName: "Multinomial",
-    category: "creation",
-    inputs: [
-      {start: 0, name: "logits", type: "tensor"},
-      {start: 1, name: "numSamples", type: "number"}
+    "tfOpName": "Multinomial",
+    "category": "creation",
+    "inputs": [
+      {"start": 0, "name": "logits", "type": "tensor"},
+      {"start": 1, "name": "numSamples", "type": "number"}
     ],
-    attrs: [
-      {tfName: "seed", name: "seed", type: "number"},
-      {tfName: "seed2", name: "seed2", type: "number"},
-      {tfName: "T", name: "dtype", type: "dtype"},
-      {tfName: "output_dtype", name: "output_dtype", type: "dtype"}
+    "attrs": [
+      {"tfName": "seed", "name": "seed", "type": "number"},
+      {"tfName": "seed2", "name": "seed2", "type": "number"},
+      {"tfName": "T", "name": "dtype", "type": "dtype"},
+      {"tfName": "output_dtype", "name": "output_dtype", "type": "dtype"}
     ]
   }
 ];
@@ -30876,85 +30931,85 @@ __export(dynamic_exports, {
 });
 var json6 = [
   {
-    tfOpName: "NonMaxSuppressionV2",
-    category: "dynamic",
-    inputs: [
-      {start: 0, name: "boxes", type: "tensor"},
-      {start: 1, name: "scores", type: "tensor"},
-      {start: 2, name: "maxOutputSize", type: "number"},
-      {start: 3, name: "iouThreshold", type: "number"}
+    "tfOpName": "NonMaxSuppressionV2",
+    "category": "dynamic",
+    "inputs": [
+      {"start": 0, "name": "boxes", "type": "tensor"},
+      {"start": 1, "name": "scores", "type": "tensor"},
+      {"start": 2, "name": "maxOutputSize", "type": "number"},
+      {"start": 3, "name": "iouThreshold", "type": "number"}
     ]
   },
   {
-    tfOpName: "NonMaxSuppressionV3",
-    category: "dynamic",
-    inputs: [
-      {start: 0, name: "boxes", type: "tensor"},
-      {start: 1, name: "scores", type: "tensor"},
-      {start: 2, name: "maxOutputSize", type: "number"},
-      {start: 3, name: "iouThreshold", type: "number"},
-      {start: 4, name: "scoreThreshold", type: "number"}
+    "tfOpName": "NonMaxSuppressionV3",
+    "category": "dynamic",
+    "inputs": [
+      {"start": 0, "name": "boxes", "type": "tensor"},
+      {"start": 1, "name": "scores", "type": "tensor"},
+      {"start": 2, "name": "maxOutputSize", "type": "number"},
+      {"start": 3, "name": "iouThreshold", "type": "number"},
+      {"start": 4, "name": "scoreThreshold", "type": "number"}
     ]
   },
   {
-    tfOpName: "NonMaxSuppressionV4",
-    category: "dynamic",
-    inputs: [
-      {start: 0, name: "boxes", type: "tensor"},
-      {start: 1, name: "scores", type: "tensor"},
-      {start: 2, name: "maxOutputSize", type: "number"},
-      {start: 3, name: "iouThreshold", type: "number"},
-      {start: 4, name: "scoreThreshold", type: "number"}
+    "tfOpName": "NonMaxSuppressionV4",
+    "category": "dynamic",
+    "inputs": [
+      {"start": 0, "name": "boxes", "type": "tensor"},
+      {"start": 1, "name": "scores", "type": "tensor"},
+      {"start": 2, "name": "maxOutputSize", "type": "number"},
+      {"start": 3, "name": "iouThreshold", "type": "number"},
+      {"start": 4, "name": "scoreThreshold", "type": "number"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true},
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true},
       {
-        tfName: "T_threshold",
-        name: "threshold",
-        type: "dtype",
-        notSupported: true
+        "tfName": "T_threshold",
+        "name": "threshold",
+        "type": "dtype",
+        "notSupported": true
       },
       {
-        tfName: "pad_to_max_output_size",
-        name: "padToMaxOutputSize",
-        type: "bool"
+        "tfName": "pad_to_max_output_size",
+        "name": "padToMaxOutputSize",
+        "type": "bool"
       }
     ]
   },
   {
-    tfOpName: "NonMaxSuppressionV5",
-    category: "dynamic",
-    inputs: [
-      {start: 0, name: "boxes", type: "tensor"},
-      {start: 1, name: "scores", type: "tensor"},
-      {start: 2, name: "maxOutputSize", type: "number"},
-      {start: 3, name: "iouThreshold", type: "number"},
-      {start: 4, name: "scoreThreshold", type: "number"},
-      {start: 5, name: "softNmsSigma", type: "number"}
+    "tfOpName": "NonMaxSuppressionV5",
+    "category": "dynamic",
+    "inputs": [
+      {"start": 0, "name": "boxes", "type": "tensor"},
+      {"start": 1, "name": "scores", "type": "tensor"},
+      {"start": 2, "name": "maxOutputSize", "type": "number"},
+      {"start": 3, "name": "iouThreshold", "type": "number"},
+      {"start": 4, "name": "scoreThreshold", "type": "number"},
+      {"start": 5, "name": "softNmsSigma", "type": "number"}
     ]
   },
   {
-    tfOpName: "Where",
-    category: "dynamic",
-    inputs: [
-      {start: 0, name: "condition", type: "tensor"}
+    "tfOpName": "Where",
+    "category": "dynamic",
+    "inputs": [
+      {"start": 0, "name": "condition", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "ListDiff",
-    category: "dynamic",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"},
-      {start: 1, name: "y", type: "tensor"}
+    "tfOpName": "ListDiff",
+    "category": "dynamic",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"},
+      {"start": 1, "name": "y", "type": "tensor"}
     ],
-    attrs: [{
-      tfName: "T",
-      name: "dtype",
-      type: "dtype",
-      notSupported: true
+    "attrs": [{
+      "tfName": "T",
+      "name": "dtype",
+      "type": "dtype",
+      "notSupported": true
     }]
   }
 ];
@@ -30966,27 +31021,27 @@ __export(evaluation_exports, {
 });
 var json7 = [
   {
-    tfOpName: "TopKV2",
-    category: "evaluation",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"},
-      {start: 1, name: "k", type: "number"}
+    "tfOpName": "TopKV2",
+    "category": "evaluation",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"},
+      {"start": 1, "name": "k", "type": "number"}
     ],
-    attrs: [{tfName: "sorted", name: "sorted", type: "bool"}]
+    "attrs": [{"tfName": "sorted", "name": "sorted", "type": "bool"}]
   },
   {
-    tfOpName: "Unique",
-    category: "evaluation",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"}
+    "tfOpName": "Unique",
+    "category": "evaluation",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"}
     ]
   },
   {
-    tfOpName: "UniqueV2",
-    category: "evaluation",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"},
-      {start: 1, name: "axis", type: "number"}
+    "tfOpName": "UniqueV2",
+    "category": "evaluation",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"},
+      {"start": 1, "name": "axis", "type": "number"}
     ]
   }
 ];
@@ -30998,98 +31053,98 @@ __export(graph_exports, {
 });
 var json8 = [
   {
-    tfOpName: "PlaceholderWithDefault",
-    category: "graph",
-    inputs: [
-      {start: 0, name: "default", type: "tensor"}
+    "tfOpName": "PlaceholderWithDefault",
+    "category": "graph",
+    "inputs": [
+      {"start": 0, "name": "default", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "shape", name: "shape", type: "shape"},
-      {tfName: "dtype", name: "dtype", type: "dtype"}
+    "attrs": [
+      {"tfName": "shape", "name": "shape", "type": "shape"},
+      {"tfName": "dtype", "name": "dtype", "type": "dtype"}
     ]
   },
   {
-    tfOpName: "Placeholder",
-    category: "graph",
-    attrs: [
-      {tfName: "shape", name: "shape", type: "shape"},
-      {tfName: "dtype", name: "dtype", type: "dtype"}
+    "tfOpName": "Placeholder",
+    "category": "graph",
+    "attrs": [
+      {"tfName": "shape", "name": "shape", "type": "shape"},
+      {"tfName": "dtype", "name": "dtype", "type": "dtype"}
     ]
   },
-  {tfOpName: "Const", category: "graph"},
+  {"tfOpName": "Const", "category": "graph"},
   {
-    tfOpName: "Identity",
-    category: "graph",
-    inputs: [{start: 0, name: "x", type: "tensor"}]
+    "tfOpName": "Identity",
+    "category": "graph",
+    "inputs": [{"start": 0, "name": "x", "type": "tensor"}]
   },
   {
-    tfOpName: "IdentityN",
-    category: "graph",
-    inputs: [{start: 0, end: 0, name: "x", type: "tensors"}]
+    "tfOpName": "IdentityN",
+    "category": "graph",
+    "inputs": [{"start": 0, "end": 0, "name": "x", "type": "tensors"}]
   },
   {
-    tfOpName: "Snapshot",
-    category: "graph",
-    inputs: [{start: 0, name: "x", type: "tensor"}]
+    "tfOpName": "Snapshot",
+    "category": "graph",
+    "inputs": [{"start": 0, "name": "x", "type": "tensor"}]
   },
   {
-    tfOpName: "Rank",
-    category: "graph",
-    inputs: [{start: 0, name: "x", type: "tensor"}]
+    "tfOpName": "Rank",
+    "category": "graph",
+    "inputs": [{"start": 0, "name": "x", "type": "tensor"}]
   },
   {
-    tfOpName: "Size",
-    category: "graph",
-    inputs: [{start: 0, name: "x", type: "tensor"}]
+    "tfOpName": "Size",
+    "category": "graph",
+    "inputs": [{"start": 0, "name": "x", "type": "tensor"}]
   },
   {
-    tfOpName: "Shape",
-    category: "graph",
-    inputs: [{start: 0, name: "x", type: "tensor"}]
+    "tfOpName": "Shape",
+    "category": "graph",
+    "inputs": [{"start": 0, "name": "x", "type": "tensor"}]
   },
   {
-    tfOpName: "ShapeN",
-    category: "graph",
-    inputs: [{start: 0, end: 0, name: "x", type: "tensors"}]
+    "tfOpName": "ShapeN",
+    "category": "graph",
+    "inputs": [{"start": 0, "end": 0, "name": "x", "type": "tensors"}]
   },
   {
-    tfOpName: "Print",
-    category: "graph",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"},
-      {start: 1, name: "data", type: "tensors"}
+    "tfOpName": "Print",
+    "category": "graph",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"},
+      {"start": 1, "name": "data", "type": "tensors"}
     ],
-    attrs: [
-      {tfName: "message", name: "message", type: "string"},
+    "attrs": [
+      {"tfName": "message", "name": "message", "type": "string"},
       {
-        tfName: "first_n",
-        name: "firstN",
-        type: "number",
-        notSupported: true
+        "tfName": "first_n",
+        "name": "firstN",
+        "type": "number",
+        "notSupported": true
       },
       {
-        tfName: "summarize",
-        name: "summarize",
-        type: "number",
-        defaultValue: 3
+        "tfName": "summarize",
+        "name": "summarize",
+        "type": "number",
+        "defaultValue": 3
       }
     ]
   },
-  {tfOpName: "NoOp", category: "graph", inputs: []},
+  {"tfOpName": "NoOp", "category": "graph", "inputs": []},
   {
-    tfOpName: "StopGradient",
-    category: "graph",
-    inputs: [{start: 0, name: "x", type: "tensor"}]
+    "tfOpName": "StopGradient",
+    "category": "graph",
+    "inputs": [{"start": 0, "name": "x", "type": "tensor"}]
   },
   {
-    tfOpName: "FakeQuantWithMinMaxVars",
-    category: "graph",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"}
+    "tfOpName": "FakeQuantWithMinMaxVars",
+    "category": "graph",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "min", name: "min", type: "number"},
-      {tfName: "max", name: "max", type: "number"}
+    "attrs": [
+      {"tfName": "min", "name": "min", "type": "number"},
+      {"tfName": "max", "name": "max", "type": "number"}
     ]
   }
 ];
@@ -31101,119 +31156,119 @@ __export(hash_table_exports, {
 });
 var json9 = [
   {
-    tfOpName: "HashTable",
-    category: "hash_table",
-    inputs: [],
-    attrs: [
-      {tfName: "shared_name", name: "sharedName", type: "string"},
+    "tfOpName": "HashTable",
+    "category": "hash_table",
+    "inputs": [],
+    "attrs": [
+      {"tfName": "shared_name", "name": "sharedName", "type": "string"},
       {
-        tfName: "use_node_name_sharing",
-        name: "useNodeNameSharing",
-        type: "bool"
+        "tfName": "use_node_name_sharing",
+        "name": "useNodeNameSharing",
+        "type": "bool"
       },
-      {tfName: "key_dtype", name: "keyDType", type: "dtype"},
-      {tfName: "value_dtype", name: "valueDType", type: "dtype"}
+      {"tfName": "key_dtype", "name": "keyDType", "type": "dtype"},
+      {"tfName": "value_dtype", "name": "valueDType", "type": "dtype"}
     ]
   },
   {
-    tfOpName: "HashTableV2",
-    category: "hash_table",
-    inputs: [],
-    attrs: [
-      {tfName: "shared_name", name: "sharedName", type: "string"},
+    "tfOpName": "HashTableV2",
+    "category": "hash_table",
+    "inputs": [],
+    "attrs": [
+      {"tfName": "shared_name", "name": "sharedName", "type": "string"},
       {
-        tfName: "use_node_name_sharing",
-        name: "useNodeNameSharing",
-        type: "bool"
+        "tfName": "use_node_name_sharing",
+        "name": "useNodeNameSharing",
+        "type": "bool"
       },
-      {tfName: "key_dtype", name: "keyDType", type: "dtype"},
-      {tfName: "value_dtype", name: "valueDType", type: "dtype"}
+      {"tfName": "key_dtype", "name": "keyDType", "type": "dtype"},
+      {"tfName": "value_dtype", "name": "valueDType", "type": "dtype"}
     ]
   },
   {
-    tfOpName: "LookupTableImport",
-    category: "hash_table",
-    inputs: [
-      {start: 0, name: "tableHandle", type: "tensor"},
-      {start: 1, name: "keys", type: "tensor"},
-      {start: 2, name: "values", type: "tensor"}
+    "tfOpName": "LookupTableImport",
+    "category": "hash_table",
+    "inputs": [
+      {"start": 0, "name": "tableHandle", "type": "tensor"},
+      {"start": 1, "name": "keys", "type": "tensor"},
+      {"start": 2, "name": "values", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "Tin", name: "tIn", type: "dtype", notSupported: true},
+    "attrs": [
+      {"tfName": "Tin", "name": "tIn", "type": "dtype", "notSupported": true},
       {
-        tfName: "Tout",
-        name: "tOut",
-        type: "dtype",
-        notSupported: true
+        "tfName": "Tout",
+        "name": "tOut",
+        "type": "dtype",
+        "notSupported": true
       }
     ]
   },
   {
-    tfOpName: "LookupTableImportV2",
-    category: "hash_table",
-    inputs: [
-      {start: 0, name: "tableHandle", type: "tensor"},
-      {start: 1, name: "keys", type: "tensor"},
-      {start: 2, name: "values", type: "tensor"}
+    "tfOpName": "LookupTableImportV2",
+    "category": "hash_table",
+    "inputs": [
+      {"start": 0, "name": "tableHandle", "type": "tensor"},
+      {"start": 1, "name": "keys", "type": "tensor"},
+      {"start": 2, "name": "values", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "Tin", name: "tIn", type: "dtype", notSupported: true},
+    "attrs": [
+      {"tfName": "Tin", "name": "tIn", "type": "dtype", "notSupported": true},
       {
-        tfName: "Tout",
-        name: "tOut",
-        type: "dtype",
-        notSupported: true
+        "tfName": "Tout",
+        "name": "tOut",
+        "type": "dtype",
+        "notSupported": true
       }
     ]
   },
   {
-    tfOpName: "LookupTableFind",
-    category: "hash_table",
-    inputs: [
-      {start: 0, name: "tableHandle", type: "tensor"},
-      {start: 1, name: "keys", type: "tensor"},
-      {start: 2, name: "defaultValue", type: "tensor"}
+    "tfOpName": "LookupTableFind",
+    "category": "hash_table",
+    "inputs": [
+      {"start": 0, "name": "tableHandle", "type": "tensor"},
+      {"start": 1, "name": "keys", "type": "tensor"},
+      {"start": 2, "name": "defaultValue", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "Tin", name: "tIn", type: "dtype", notSupported: true},
+    "attrs": [
+      {"tfName": "Tin", "name": "tIn", "type": "dtype", "notSupported": true},
       {
-        tfName: "Tout",
-        name: "tOut",
-        type: "dtype",
-        notSupported: true
+        "tfName": "Tout",
+        "name": "tOut",
+        "type": "dtype",
+        "notSupported": true
       }
     ]
   },
   {
-    tfOpName: "LookupTableFindV2",
-    category: "hash_table",
-    inputs: [
-      {start: 0, name: "tableHandle", type: "tensor"},
-      {start: 1, name: "keys", type: "tensor"},
-      {start: 2, name: "defaultValue", type: "tensor"}
+    "tfOpName": "LookupTableFindV2",
+    "category": "hash_table",
+    "inputs": [
+      {"start": 0, "name": "tableHandle", "type": "tensor"},
+      {"start": 1, "name": "keys", "type": "tensor"},
+      {"start": 2, "name": "defaultValue", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "Tin", name: "tIn", type: "dtype", notSupported: true},
+    "attrs": [
+      {"tfName": "Tin", "name": "tIn", "type": "dtype", "notSupported": true},
       {
-        tfName: "Tout",
-        name: "tOut",
-        type: "dtype",
-        notSupported: true
+        "tfName": "Tout",
+        "name": "tOut",
+        "type": "dtype",
+        "notSupported": true
       }
     ]
   },
   {
-    tfOpName: "LookupTableSize",
-    category: "hash_table",
-    inputs: [
-      {start: 0, name: "tableHandle", type: "tensor"}
+    "tfOpName": "LookupTableSize",
+    "category": "hash_table",
+    "inputs": [
+      {"start": 0, "name": "tableHandle", "type": "tensor"}
     ]
   },
   {
-    tfOpName: "LookupTableSizeV2",
-    category: "hash_table",
-    inputs: [
-      {start: 0, name: "tableHandle", type: "tensor"}
+    "tfOpName": "LookupTableSizeV2",
+    "category": "hash_table",
+    "inputs": [
+      {"start": 0, "name": "tableHandle", "type": "tensor"}
     ]
   }
 ];
@@ -31225,54 +31280,54 @@ __export(image_exports, {
 });
 var json10 = [
   {
-    tfOpName: "ResizeBilinear",
-    category: "image",
-    inputs: [
-      {start: 0, name: "images", type: "tensor"},
-      {start: 1, name: "size", type: "number[]"}
+    "tfOpName": "ResizeBilinear",
+    "category": "image",
+    "inputs": [
+      {"start": 0, "name": "images", "type": "tensor"},
+      {"start": 1, "name": "size", "type": "number[]"}
     ],
-    attrs: [
-      {tfName: "align_corners", name: "alignCorners", type: "bool"},
+    "attrs": [
+      {"tfName": "align_corners", "name": "alignCorners", "type": "bool"},
       {
-        tfName: "half_pixel_centers",
-        name: "halfPixelCenters",
-        type: "bool"
+        "tfName": "half_pixel_centers",
+        "name": "halfPixelCenters",
+        "type": "bool"
       },
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "ResizeNearestNeighbor",
-    category: "image",
-    inputs: [
-      {start: 0, name: "images", type: "tensor"},
-      {start: 1, name: "size", type: "number[]"}
+    "tfOpName": "ResizeNearestNeighbor",
+    "category": "image",
+    "inputs": [
+      {"start": 0, "name": "images", "type": "tensor"},
+      {"start": 1, "name": "size", "type": "number[]"}
     ],
-    attrs: [
-      {tfName: "align_corners", name: "alignCorners", type: "bool"},
+    "attrs": [
+      {"tfName": "align_corners", "name": "alignCorners", "type": "bool"},
       {
-        tfName: "half_pixel_centers",
-        name: "halfPixelCenters",
-        type: "bool"
+        "tfName": "half_pixel_centers",
+        "name": "halfPixelCenters",
+        "type": "bool"
       },
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "CropAndResize",
-    category: "image",
-    inputs: [
-      {start: 0, name: "image", type: "tensor"},
-      {start: 1, name: "boxes", type: "tensor"},
-      {start: 2, name: "boxInd", type: "tensor"},
-      {start: 3, name: "cropSize", type: "number[]"}
+    "tfOpName": "CropAndResize",
+    "category": "image",
+    "inputs": [
+      {"start": 0, "name": "image", "type": "tensor"},
+      {"start": 1, "name": "boxes", "type": "tensor"},
+      {"start": 2, "name": "boxInd", "type": "tensor"},
+      {"start": 3, "name": "cropSize", "type": "number[]"}
     ],
-    attrs: [
-      {tfName: "method", name: "method", type: "string"},
+    "attrs": [
+      {"tfName": "method", "name": "method", "type": "string"},
       {
-        tfName: "extrapolation_value",
-        name: "extrapolationValue",
-        type: "number"
+        "tfName": "extrapolation_value",
+        "name": "extrapolationValue",
+        "type": "number"
       }
     ]
   }
@@ -31285,128 +31340,128 @@ __export(logical_exports, {
 });
 var json11 = [
   {
-    tfOpName: "Equal",
-    category: "logical",
-    inputs: [
-      {start: 0, name: "a", type: "tensor"},
-      {start: 1, name: "b", type: "tensor"}
+    "tfOpName": "Equal",
+    "category": "logical",
+    "inputs": [
+      {"start": 0, "name": "a", "type": "tensor"},
+      {"start": 1, "name": "b", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "NotEqual",
-    category: "logical",
-    inputs: [
-      {start: 0, name: "a", type: "tensor"},
-      {start: 1, name: "b", type: "tensor"}
+    "tfOpName": "NotEqual",
+    "category": "logical",
+    "inputs": [
+      {"start": 0, "name": "a", "type": "tensor"},
+      {"start": 1, "name": "b", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "Greater",
-    category: "logical",
-    inputs: [
-      {start: 0, name: "a", type: "tensor"},
-      {start: 1, name: "b", type: "tensor"}
+    "tfOpName": "Greater",
+    "category": "logical",
+    "inputs": [
+      {"start": 0, "name": "a", "type": "tensor"},
+      {"start": 1, "name": "b", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "GreaterEqual",
-    category: "logical",
-    inputs: [
-      {start: 0, name: "a", type: "tensor"},
-      {start: 1, name: "b", type: "tensor"}
+    "tfOpName": "GreaterEqual",
+    "category": "logical",
+    "inputs": [
+      {"start": 0, "name": "a", "type": "tensor"},
+      {"start": 1, "name": "b", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "Less",
-    category: "logical",
-    inputs: [
-      {start: 0, name: "a", type: "tensor"},
-      {start: 1, name: "b", type: "tensor"}
+    "tfOpName": "Less",
+    "category": "logical",
+    "inputs": [
+      {"start": 0, "name": "a", "type": "tensor"},
+      {"start": 1, "name": "b", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "LessEqual",
-    category: "logical",
-    inputs: [
-      {start: 0, name: "a", type: "tensor"},
-      {start: 1, name: "b", type: "tensor"}
+    "tfOpName": "LessEqual",
+    "category": "logical",
+    "inputs": [
+      {"start": 0, "name": "a", "type": "tensor"},
+      {"start": 1, "name": "b", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "LogicalAnd",
-    category: "logical",
-    inputs: [
-      {start: 0, name: "a", type: "tensor"},
-      {start: 1, name: "b", type: "tensor"}
+    "tfOpName": "LogicalAnd",
+    "category": "logical",
+    "inputs": [
+      {"start": 0, "name": "a", "type": "tensor"},
+      {"start": 1, "name": "b", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "LogicalNot",
-    category: "logical",
-    inputs: [
-      {start: 0, name: "a", type: "tensor"}
+    "tfOpName": "LogicalNot",
+    "category": "logical",
+    "inputs": [
+      {"start": 0, "name": "a", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "LogicalOr",
-    category: "logical",
-    inputs: [
-      {start: 0, name: "a", type: "tensor"},
-      {start: 1, name: "b", type: "tensor"}
+    "tfOpName": "LogicalOr",
+    "category": "logical",
+    "inputs": [
+      {"start": 0, "name": "a", "type": "tensor"},
+      {"start": 1, "name": "b", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "Select",
-    category: "logical",
-    inputs: [
-      {start: 0, name: "condition", type: "tensor"},
-      {start: 1, name: "a", type: "tensor"},
-      {start: 2, name: "b", type: "tensor"}
+    "tfOpName": "Select",
+    "category": "logical",
+    "inputs": [
+      {"start": 0, "name": "condition", "type": "tensor"},
+      {"start": 1, "name": "a", "type": "tensor"},
+      {"start": 2, "name": "b", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "SelectV2",
-    category: "logical",
-    inputs: [
-      {start: 0, name: "condition", type: "tensor"},
-      {start: 1, name: "a", type: "tensor"},
-      {start: 2, name: "b", type: "tensor"}
+    "tfOpName": "SelectV2",
+    "category": "logical",
+    "inputs": [
+      {"start": 0, "name": "condition", "type": "tensor"},
+      {"start": 1, "name": "a", "type": "tensor"},
+      {"start": 2, "name": "b", "type": "tensor"}
     ],
-    attrs: [{
-      tfName: "T",
-      name: "dtype",
-      type: "dtype",
-      notSupported: true
+    "attrs": [{
+      "tfName": "T",
+      "name": "dtype",
+      "type": "dtype",
+      "notSupported": true
     }]
   }
 ];
@@ -31418,130 +31473,130 @@ __export(matrices_exports, {
 });
 var json12 = [
   {
-    tfOpName: "_FusedMatMul",
-    category: "matrices",
-    inputs: [
-      {start: 0, name: "a", type: "tensor"},
-      {start: 1, name: "b", type: "tensor"},
-      {start: 2, end: 0, name: "args", type: "tensors"}
+    "tfOpName": "_FusedMatMul",
+    "category": "matrices",
+    "inputs": [
+      {"start": 0, "name": "a", "type": "tensor"},
+      {"start": 1, "name": "b", "type": "tensor"},
+      {"start": 2, end: 0, "name": "args", "type": "tensors"}
     ],
-    attrs: [
-      {tfName: "num_args", name: "numArgs", type: "number"},
+    "attrs": [
+      {"tfName": "num_args", "name": "numArgs", "type": "number"},
       {
-        tfName: "fused_ops",
-        name: "fusedOps",
-        type: "string[]",
-        defaultValue: []
+        "tfName": "fused_ops",
+        "name": "fusedOps",
+        "type": "string[]",
+        "defaultValue": []
       },
       {
-        tfName: "epsilon",
-        name: "epsilon",
-        type: "number",
-        defaultValue: 1e-4
+        "tfName": "epsilon",
+        "name": "epsilon",
+        "type": "number",
+        "defaultValue": 1e-4
       },
       {
-        tfName: "transpose_a",
-        name: "transposeA",
-        type: "bool",
-        defaultValue: false
+        "tfName": "transpose_a",
+        "name": "transposeA",
+        "type": "bool",
+        "defaultValue": false
       },
       {
-        tfName: "transpose_b",
-        name: "transposeB",
-        type: "bool",
-        defaultValue: false
+        "tfName": "transpose_b",
+        "name": "transposeB",
+        "type": "bool",
+        "defaultValue": false
       },
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "MatMul",
-    category: "matrices",
-    inputs: [
-      {start: 0, name: "a", type: "tensor"},
-      {start: 1, name: "b", type: "tensor"}
+    "tfOpName": "MatMul",
+    "category": "matrices",
+    "inputs": [
+      {"start": 0, "name": "a", "type": "tensor"},
+      {"start": 1, "name": "b", "type": "tensor"}
     ],
-    attrs: [
+    "attrs": [
       {
-        tfName: "transpose_a",
-        name: "transposeA",
-        type: "bool",
-        defaultValue: false
+        "tfName": "transpose_a",
+        "name": "transposeA",
+        "type": "bool",
+        "defaultValue": false
       },
       {
-        tfName: "transpose_b",
-        name: "transposeB",
-        type: "bool",
-        defaultValue: false
+        "tfName": "transpose_b",
+        "name": "transposeB",
+        "type": "bool",
+        "defaultValue": false
       },
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "BatchMatMul",
-    category: "matrices",
-    inputs: [
-      {start: 0, name: "a", type: "tensor"},
-      {start: 1, name: "b", type: "tensor"}
+    "tfOpName": "BatchMatMul",
+    "category": "matrices",
+    "inputs": [
+      {"start": 0, "name": "a", "type": "tensor"},
+      {"start": 1, "name": "b", "type": "tensor"}
     ],
-    attrs: [
+    "attrs": [
       {
-        tfName: "adj_x",
-        name: "transposeA",
-        type: "bool",
-        defaultValue: false
+        "tfName": "adj_x",
+        "name": "transposeA",
+        "type": "bool",
+        "defaultValue": false
       },
       {
-        tfName: "adj_y",
-        name: "transposeB",
-        type: "bool",
-        defaultValue: false
+        "tfName": "adj_y",
+        "name": "transposeB",
+        "type": "bool",
+        "defaultValue": false
       },
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "BatchMatMulV2",
-    category: "matrices",
-    inputs: [
-      {start: 0, name: "a", type: "tensor"},
-      {start: 1, name: "b", type: "tensor"}
+    "tfOpName": "BatchMatMulV2",
+    "category": "matrices",
+    "inputs": [
+      {"start": 0, "name": "a", "type": "tensor"},
+      {"start": 1, "name": "b", "type": "tensor"}
     ],
-    attrs: [
+    "attrs": [
       {
-        tfName: "adj_x",
-        name: "transposeA",
-        type: "bool",
-        defaultValue: false
+        "tfName": "adj_x",
+        "name": "transposeA",
+        "type": "bool",
+        "defaultValue": false
       },
       {
-        tfName: "adj_y",
-        name: "transposeB",
-        type: "bool",
-        defaultValue: false
+        "tfName": "adj_y",
+        "name": "transposeB",
+        "type": "bool",
+        "defaultValue": false
       },
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "Transpose",
-    category: "matrices",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"},
-      {start: 1, name: "perm", type: "number[]"}
+    "tfOpName": "Transpose",
+    "category": "matrices",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"},
+      {"start": 1, "name": "perm", "type": "number[]"}
     ],
-    attrs: [
-      {tfName: "T", name: "dtype", type: "dtype", notSupported: true}
+    "attrs": [
+      {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
     ]
   },
   {
-    tfOpName: "Einsum",
-    category: "matrices",
-    inputs: [{start: 0, end: 0, name: "tensors", type: "tensors"}],
-    attrs: [
-      {tfName: "equation", name: "equation", type: "string"},
-      {tfName: "N", name: "n", type: "number", defaultValue: 2},
-      {tfName: "T", name: "dtype", type: "dtype"}
+    "tfOpName": "Einsum",
+    "category": "matrices",
+    "inputs": [{"start": 0, "end": 0, "name": "tensors", "type": "tensors"}],
+    "attrs": [
+      {"tfName": "equation", "name": "equation", "type": "string"},
+      {"tfName": "N", "name": "n", "type": "number", "defaultValue": 2},
+      {"tfName": "T", "name": "dtype", "type": "dtype"}
     ]
   }
 ];
@@ -31553,133 +31608,133 @@ __export(normalization_exports, {
 });
 var json13 = [
   {
-    tfOpName: "FusedBatchNorm",
-    category: "normalization",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"},
-      {start: 1, name: "scale", type: "tensor"},
-      {start: 2, name: "offset", type: "tensor"},
-      {start: 3, name: "mean", type: "tensor"},
-      {start: 4, name: "variance", type: "tensor"}
+    "tfOpName": "FusedBatchNorm",
+    "category": "normalization",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"},
+      {"start": 1, "name": "scale", "type": "tensor"},
+      {"start": 2, "name": "offset", "type": "tensor"},
+      {"start": 3, "name": "mean", "type": "tensor"},
+      {"start": 4, "name": "variance", "type": "tensor"}
     ],
-    attrs: [
+    "attrs": [
       {
-        tfName: "epsilon",
-        name: "epsilon",
-        type: "number",
-        defaultValue: 1e-3
+        "tfName": "epsilon",
+        "name": "epsilon",
+        "type": "number",
+        "defaultValue": 1e-3
       },
       {
-        tfName: "data_format",
-        name: "dataFormat",
-        type: "string",
-        notSupported: true
+        "tfName": "data_format",
+        "name": "dataFormat",
+        "type": "string",
+        "notSupported": true
       }
     ]
   },
   {
-    tfOpName: "FusedBatchNormV2",
-    category: "normalization",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"},
-      {start: 1, name: "scale", type: "tensor"},
-      {start: 2, name: "offset", type: "tensor"},
-      {start: 3, name: "mean", type: "tensor"},
-      {start: 4, name: "variance", type: "tensor"}
+    "tfOpName": "FusedBatchNormV2",
+    "category": "normalization",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"},
+      {"start": 1, "name": "scale", "type": "tensor"},
+      {"start": 2, "name": "offset", "type": "tensor"},
+      {"start": 3, "name": "mean", "type": "tensor"},
+      {"start": 4, "name": "variance", "type": "tensor"}
     ],
-    attrs: [
+    "attrs": [
       {
-        tfName: "epsilon",
-        name: "epsilon",
-        type: "number",
-        defaultValue: 1e-3
+        "tfName": "epsilon",
+        "name": "epsilon",
+        "type": "number",
+        "defaultValue": 1e-3
       },
       {
-        tfName: "data_format",
-        name: "dataFormat",
-        type: "string",
-        notSupported: true
+        "tfName": "data_format",
+        "name": "dataFormat",
+        "type": "string",
+        "notSupported": true
       }
     ]
   },
   {
-    tfOpName: "FusedBatchNormV3",
-    category: "normalization",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"},
-      {start: 1, name: "scale", type: "tensor"},
-      {start: 2, name: "offset", type: "tensor"},
-      {start: 3, name: "mean", type: "tensor"},
-      {start: 4, name: "variance", type: "tensor"}
+    "tfOpName": "FusedBatchNormV3",
+    "category": "normalization",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"},
+      {"start": 1, "name": "scale", "type": "tensor"},
+      {"start": 2, "name": "offset", "type": "tensor"},
+      {"start": 3, "name": "mean", "type": "tensor"},
+      {"start": 4, "name": "variance", "type": "tensor"}
     ],
-    attrs: [
+    "attrs": [
       {
-        tfName: "epsilon",
-        name: "epsilon",
-        type: "number",
-        defaultValue: 1e-3
+        "tfName": "epsilon",
+        "name": "epsilon",
+        "type": "number",
+        "defaultValue": 1e-3
       },
       {
-        tfName: "data_format",
-        name: "dataFormat",
-        type: "string",
-        notSupported: true
+        "tfName": "data_format",
+        "name": "dataFormat",
+        "type": "string",
+        "notSupported": true
       }
     ]
   },
   {
-    tfOpName: "LRN",
-    category: "normalization",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"}
+    "tfOpName": "LRN",
+    "category": "normalization",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"}
     ],
-    attrs: [
+    "attrs": [
       {
-        tfName: "depth_radius",
-        name: "radius",
-        type: "number",
-        defaultValue: 5
+        "tfName": "depth_radius",
+        "name": "radius",
+        "type": "number",
+        "defaultValue": 5
       },
-      {tfName: "bias", name: "bias", type: "number", defaultValue: 1},
+      {"tfName": "bias", "name": "bias", "type": "number", "defaultValue": 1},
       {
-        tfName: "alpha",
-        name: "alpha",
-        type: "number",
-        defaultValue: 1
+        "tfName": "alpha",
+        "name": "alpha",
+        "type": "number",
+        "defaultValue": 1
       },
       {
-        tfName: "beta",
-        name: "beta",
-        type: "number",
-        defaultValue: 0.5
+        "tfName": "beta",
+        "name": "beta",
+        "type": "number",
+        "defaultValue": 0.5
       }
     ]
   },
   {
-    tfOpName: "Softmax",
-    category: "normalization",
-    inputs: [{start: 0, name: "x", type: "tensor"}]
+    "tfOpName": "Softmax",
+    "category": "normalization",
+    "inputs": [{"start": 0, "name": "x", "type": "tensor"}]
   },
   {
-    tfOpName: "LogSoftmax",
-    category: "normalization",
-    inputs: [{start: 0, name: "x", type: "tensor"}]
+    "tfOpName": "LogSoftmax",
+    "category": "normalization",
+    "inputs": [{"start": 0, "name": "x", "type": "tensor"}]
   },
   {
-    tfOpName: "SparseToDense",
-    category: "normalization",
-    inputs: [
-      {start: 0, name: "sparseIndices", type: "tensor"},
-      {start: 1, name: "outputShape", type: "number[]"},
-      {start: 2, name: "sparseValues", type: "tensor"},
-      {start: 3, name: "defaultValue", type: "tensor"}
+    "tfOpName": "SparseToDense",
+    "category": "normalization",
+    "inputs": [
+      {"start": 0, "name": "sparseIndices", "type": "tensor"},
+      {"start": 1, "name": "outputShape", "type": "number[]"},
+      {"start": 2, "name": "sparseValues", "type": "tensor"},
+      {"start": 3, "name": "defaultValue", "type": "tensor"}
     ],
-    attrs: [{
-      tfName: "validate_indices",
-      name: "validateIndices",
-      type: "bool",
-      defaultValue: true,
-      notSupported: true
+    "attrs": [{
+      "tfName": "validate_indices",
+      "name": "validateIndices",
+      "type": "bool",
+      "defaultValue": true,
+      "notSupported": true
     }]
   }
 ];
@@ -31691,113 +31746,113 @@ __export(reduction_exports, {
 });
 var json14 = [
   {
-    tfOpName: "Bincount",
-    category: "reduction",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"},
-      {start: 1, name: "size", type: "number"},
-      {start: 2, name: "weights", type: "tensor"}
+    "tfOpName": "Bincount",
+    "category": "reduction",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"},
+      {"start": 1, "name": "size", "type": "number"},
+      {"start": 2, "name": "weights", "type": "tensor"}
     ]
   },
   {
-    tfOpName: "DenseBincount",
-    category: "reduction",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"},
-      {start: 1, name: "size", type: "number"},
-      {start: 2, name: "weights", type: "tensor"}
+    "tfOpName": "DenseBincount",
+    "category": "reduction",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"},
+      {"start": 1, "name": "size", "type": "number"},
+      {"start": 2, "name": "weights", "type": "tensor"}
     ],
-    attrs: [{tfName: "binary_output", name: "binaryOutput", type: "bool"}]
+    "attrs": [{"tfName": "binary_output", "name": "binaryOutput", "type": "bool"}]
   },
   {
-    tfOpName: "Max",
-    category: "reduction",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"},
-      {start: 1, name: "axis", type: "number[]"}
+    "tfOpName": "Max",
+    "category": "reduction",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"},
+      {"start": 1, "name": "axis", "type": "number[]"}
     ],
-    attrs: [{tfName: "keep_dims", name: "keepDims", type: "bool"}]
+    "attrs": [{"tfName": "keep_dims", "name": "keepDims", "type": "bool"}]
   },
   {
-    tfOpName: "Mean",
-    category: "reduction",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"},
-      {start: 1, name: "axis", type: "number[]"}
+    "tfOpName": "Mean",
+    "category": "reduction",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"},
+      {"start": 1, "name": "axis", "type": "number[]"}
     ],
-    attrs: [{tfName: "keep_dims", name: "keepDims", type: "bool"}]
+    "attrs": [{"tfName": "keep_dims", "name": "keepDims", "type": "bool"}]
   },
   {
-    tfOpName: "Min",
-    category: "reduction",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"},
-      {start: 1, name: "axis", type: "number[]"}
+    "tfOpName": "Min",
+    "category": "reduction",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"},
+      {"start": 1, "name": "axis", "type": "number[]"}
     ],
-    attrs: [{tfName: "keep_dims", name: "keepDims", type: "bool"}]
+    "attrs": [{"tfName": "keep_dims", "name": "keepDims", "type": "bool"}]
   },
   {
-    tfOpName: "Sum",
-    category: "reduction",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"},
-      {start: 1, name: "axis", type: "number[]"}
+    "tfOpName": "Sum",
+    "category": "reduction",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"},
+      {"start": 1, "name": "axis", "type": "number[]"}
     ],
-    attrs: [{tfName: "keep_dims", name: "keepDims", type: "bool"}]
+    "attrs": [{"tfName": "keep_dims", "name": "keepDims", "type": "bool"}]
   },
   {
-    tfOpName: "All",
-    category: "reduction",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"},
-      {start: 1, name: "axis", type: "number[]"}
+    "tfOpName": "All",
+    "category": "reduction",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"},
+      {"start": 1, "name": "axis", "type": "number[]"}
     ],
-    attrs: [{tfName: "keep_dims", name: "keepDims", type: "bool"}]
+    "attrs": [{"tfName": "keep_dims", "name": "keepDims", "type": "bool"}]
   },
   {
-    tfOpName: "Any",
-    category: "reduction",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"},
-      {start: 1, name: "axis", type: "number[]"}
+    "tfOpName": "Any",
+    "category": "reduction",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"},
+      {"start": 1, "name": "axis", "type": "number[]"}
     ],
-    attrs: [{tfName: "keep_dims", name: "keepDims", type: "bool"}]
+    "attrs": [{"tfName": "keep_dims", "name": "keepDims", "type": "bool"}]
   },
   {
-    tfOpName: "ArgMax",
-    category: "reduction",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"},
-      {start: 1, name: "axis", type: "number"}
+    "tfOpName": "ArgMax",
+    "category": "reduction",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"},
+      {"start": 1, "name": "axis", "type": "number"}
     ]
   },
   {
-    tfOpName: "ArgMin",
-    category: "reduction",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"},
-      {start: 1, name: "axis", type: "number"}
+    "tfOpName": "ArgMin",
+    "category": "reduction",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"},
+      {"start": 1, "name": "axis", "type": "number"}
     ]
   },
   {
-    tfOpName: "Prod",
-    category: "reduction",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"},
-      {start: 1, name: "axis", type: "number[]"}
+    "tfOpName": "Prod",
+    "category": "reduction",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"},
+      {"start": 1, "name": "axis", "type": "number[]"}
     ],
-    attrs: [{tfName: "keep_dims", name: "keepDims", type: "bool"}]
+    "attrs": [{"tfName": "keep_dims", "name": "keepDims", "type": "bool"}]
   },
   {
-    tfOpName: "Cumsum",
-    category: "reduction",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"},
-      {start: 1, name: "axis", type: "number"}
+    "tfOpName": "Cumsum",
+    "category": "reduction",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"},
+      {"start": 1, "name": "axis", "type": "number"}
     ],
-    attrs: [
-      {tfName: "exclusive", name: "exclusive", type: "bool"},
-      {tfName: "reverse", name: "reverse", type: "bool"}
+    "attrs": [
+      {"tfName": "exclusive", "name": "exclusive", "type": "bool"},
+      {"tfName": "reverse", "name": "reverse", "type": "bool"}
     ]
   }
 ];
@@ -31809,209 +31864,209 @@ __export(slice_join_exports, {
 });
 var json15 = [
   {
-    tfOpName: "ConcatV2",
-    category: "slice_join",
-    inputs: [
-      {start: 0, end: -1, name: "tensors", type: "tensors"},
-      {start: -1, name: "axis", type: "number"}
+    "tfOpName": "ConcatV2",
+    "category": "slice_join",
+    "inputs": [
+      {"start": 0, "end": -1, "name": "tensors", "type": "tensors"},
+      {"start": -1, "name": "axis", "type": "number"}
     ],
-    attrs: [{tfName: "N", name: "n", type: "number", defaultValue: 2}]
+    "attrs": [{"tfName": "N", "name": "n", "type": "number", "defaultValue": 2}]
   },
   {
-    tfOpName: "Concat",
-    category: "slice_join",
-    inputs: [
-      {start: 1, end: 0, name: "tensors", type: "tensors"},
-      {start: 0, name: "axis", type: "number"}
+    "tfOpName": "Concat",
+    "category": "slice_join",
+    "inputs": [
+      {"start": 1, "end": 0, "name": "tensors", "type": "tensors"},
+      {"start": 0, "name": "axis", "type": "number"}
     ],
-    attrs: [{tfName: "N", name: "n", type: "number", defaultValue: 2}]
+    "attrs": [{"tfName": "N", "name": "n", "type": "number", "defaultValue": 2}]
   },
   {
-    tfOpName: "GatherV2",
-    category: "slice_join",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"},
-      {start: 1, name: "indices", type: "tensor"},
-      {start: 2, name: "axis", type: "number", defaultValue: 0}
+    "tfOpName": "GatherV2",
+    "category": "slice_join",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"},
+      {"start": 1, "name": "indices", "type": "tensor"},
+      {"start": 2, "name": "axis", "type": "number", "defaultValue": 0}
     ],
-    attrs: [{
-      tfName: "batch_dims",
-      name: "batchDims",
-      type: "number",
-      defaultValue: 0
+    "attrs": [{
+      "tfName": "batch_dims",
+      "name": "batchDims",
+      "type": "number",
+      "defaultValue": 0
     }]
   },
   {
-    tfOpName: "Gather",
-    category: "slice_join",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"},
-      {start: 1, name: "indices", type: "tensor"}
+    "tfOpName": "Gather",
+    "category": "slice_join",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"},
+      {"start": 1, "name": "indices", "type": "tensor"}
     ],
-    attrs: [{
-      tfName: "validate_indices",
-      name: "validateIndices",
-      type: "bool",
-      notSupported: true
+    "attrs": [{
+      "tfName": "validate_indices",
+      "name": "validateIndices",
+      "type": "bool",
+      "notSupported": true
     }]
   },
   {
-    tfOpName: "Reverse",
-    category: "slice_join",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"},
-      {start: 1, name: "dims", type: "bool[]"}
+    "tfOpName": "Reverse",
+    "category": "slice_join",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"},
+      {"start": 1, "name": "dims", "type": "bool[]"}
     ]
   },
   {
-    tfOpName: "ReverseV2",
-    category: "slice_join",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"},
-      {start: 1, name: "axis", type: "number[]"}
+    "tfOpName": "ReverseV2",
+    "category": "slice_join",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"},
+      {"start": 1, "name": "axis", "type": "number[]"}
     ]
   },
   {
-    tfOpName: "Slice",
-    category: "slice_join",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"},
-      {start: 1, name: "begin", type: "number[]"},
-      {start: 2, name: "size", type: "number[]"}
+    "tfOpName": "Slice",
+    "category": "slice_join",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"},
+      {"start": 1, "name": "begin", "type": "number[]"},
+      {"start": 2, "name": "size", "type": "number[]"}
     ]
   },
   {
-    tfOpName: "StridedSlice",
-    category: "slice_join",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"},
-      {start: 1, name: "begin", type: "number[]"},
-      {start: 2, name: "end", type: "number[]"},
-      {start: 3, name: "strides", type: "number[]"}
+    "tfOpName": "StridedSlice",
+    "category": "slice_join",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"},
+      {"start": 1, "name": "begin", "type": "number[]"},
+      {"start": 2, "name": "end", "type": "number[]"},
+      {"start": 3, "name": "strides", "type": "number[]"}
     ],
-    attrs: [
+    "attrs": [
       {
-        tfName: "begin_mask",
-        name: "beginMask",
-        type: "number",
-        defaultValue: 0
+        "tfName": "begin_mask",
+        "name": "beginMask",
+        "type": "number",
+        "defaultValue": 0
       },
       {
-        tfName: "end_mask",
-        name: "endMask",
-        type: "number",
-        defaultValue: 0
+        "tfName": "end_mask",
+        "name": "endMask",
+        "type": "number",
+        "defaultValue": 0
       },
       {
-        tfName: "new_axis_mask",
-        name: "newAxisMask",
-        type: "number",
-        defaultValue: 0
+        "tfName": "new_axis_mask",
+        "name": "newAxisMask",
+        "type": "number",
+        "defaultValue": 0
       },
       {
-        tfName: "ellipsis_mask",
-        name: "ellipsisMask",
-        type: "number",
-        defaultValue: 0
+        "tfName": "ellipsis_mask",
+        "name": "ellipsisMask",
+        "type": "number",
+        "defaultValue": 0
       },
       {
-        tfName: "shrink_axis_mask",
-        name: "shrinkAxisMask",
-        type: "number",
-        defaultValue: 0
+        "tfName": "shrink_axis_mask",
+        "name": "shrinkAxisMask",
+        "type": "number",
+        "defaultValue": 0
       }
     ]
   },
   {
-    tfOpName: "Pack",
-    category: "slice_join",
-    inputs: [
-      {start: 0, end: 0, name: "tensors", type: "tensors"}
+    "tfOpName": "Pack",
+    "category": "slice_join",
+    "inputs": [
+      {"start": 0, "end": 0, "name": "tensors", "type": "tensors"}
     ],
-    attrs: [
-      {tfName: "axis", name: "axis", type: "number", defaultValue: 0}
+    "attrs": [
+      {"tfName": "axis", "name": "axis", "type": "number", "defaultValue": 0}
     ]
   },
   {
-    tfOpName: "Unpack",
-    category: "slice_join",
-    inputs: [
-      {start: 0, name: "tensor", type: "tensor"}
+    "tfOpName": "Unpack",
+    "category": "slice_join",
+    "inputs": [
+      {"start": 0, "name": "tensor", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "axis", name: "axis", type: "number", defaultValue: 0},
+    "attrs": [
+      {"tfName": "axis", "name": "axis", "type": "number", "defaultValue": 0},
       {
-        tfName: "num",
-        name: "num",
-        type: "number",
-        defaultValue: 0,
-        notSupported: true
+        "tfName": "num",
+        "name": "num",
+        "type": "number",
+        "defaultValue": 0,
+        "notSupported": true
       }
     ]
   },
   {
-    tfOpName: "Tile",
-    category: "slice_join",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"},
-      {start: 1, name: "reps", type: "number[]"}
+    "tfOpName": "Tile",
+    "category": "slice_join",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"},
+      {"start": 1, "name": "reps", "type": "number[]"}
     ]
   },
   {
-    tfOpName: "Split",
-    category: "slice_join",
-    inputs: [
-      {start: 0, name: "axis", type: "number", defaultValue: 0},
-      {start: 1, name: "x", type: "tensor"}
+    "tfOpName": "Split",
+    "category": "slice_join",
+    "inputs": [
+      {"start": 0, "name": "axis", "type": "number", "defaultValue": 0},
+      {"start": 1, "name": "x", "type": "tensor"}
     ],
-    attrs: [{
-      tfName: "num_split",
-      name: "numOrSizeSplits",
-      type: "number",
-      defaultValue: 1
+    "attrs": [{
+      "tfName": "num_split",
+      "name": "numOrSizeSplits",
+      "type": "number",
+      "defaultValue": 1
     }]
   },
   {
-    tfOpName: "SplitV",
-    category: "slice_join",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"},
-      {start: 1, name: "numOrSizeSplits", type: "number[]"},
-      {start: 2, name: "axis", type: "number", defaultValue: 0}
+    "tfOpName": "SplitV",
+    "category": "slice_join",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"},
+      {"start": 1, "name": "numOrSizeSplits", "type": "number[]"},
+      {"start": 2, "name": "axis", "type": "number", "defaultValue": 0}
     ]
   },
   {
-    tfOpName: "ScatterNd",
-    category: "slice_join",
-    inputs: [
-      {start: 0, name: "indices", type: "tensor"},
-      {start: 1, name: "values", type: "tensor"},
-      {start: 2, name: "shape", type: "number[]"}
+    "tfOpName": "ScatterNd",
+    "category": "slice_join",
+    "inputs": [
+      {"start": 0, "name": "indices", "type": "tensor"},
+      {"start": 1, "name": "values", "type": "tensor"},
+      {"start": 2, "name": "shape", "type": "number[]"}
     ]
   },
   {
-    tfOpName: "GatherNd",
-    category: "slice_join",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"},
-      {start: 1, name: "indices", type: "tensor"}
+    "tfOpName": "GatherNd",
+    "category": "slice_join",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"},
+      {"start": 1, "name": "indices", "type": "tensor"}
     ]
   },
   {
-    tfOpName: "SparseToDense",
-    category: "slice_join",
-    inputs: [
-      {start: 0, name: "sparseIndices", type: "tensor"},
-      {start: 1, name: "outputShape", type: "number[]"},
-      {start: 2, name: "sparseValues", type: "tensor"},
-      {start: 3, name: "defaultValue", type: "tensor"}
+    "tfOpName": "SparseToDense",
+    "category": "slice_join",
+    "inputs": [
+      {"start": 0, "name": "sparseIndices", "type": "tensor"},
+      {"start": 1, "name": "outputShape", "type": "number[]"},
+      {"start": 2, "name": "sparseValues", "type": "tensor"},
+      {"start": 3, "name": "defaultValue", "type": "tensor"}
     ],
-    attrs: [{
-      tfName: "validate_indices",
-      name: "validateIndices",
-      type: "bool",
-      defaultValue: false,
-      notSupported: true
+    "attrs": [{
+      "tfName": "validate_indices",
+      "name": "validateIndices",
+      "type": "bool",
+      "defaultValue": false,
+      "notSupported": true
     }]
   }
 ];
@@ -32023,38 +32078,38 @@ __export(spectral_exports, {
 });
 var json16 = [
   {
-    tfOpName: "FFT",
-    category: "spectral",
-    inputs: [{start: 0, name: "x", type: "tensor"}]
+    "tfOpName": "FFT",
+    "category": "spectral",
+    "inputs": [{"start": 0, "name": "x", "type": "tensor"}]
   },
   {
-    tfOpName: "IFFT",
-    category: "spectral",
-    inputs: [{start: 0, name: "x", type: "tensor"}]
+    "tfOpName": "IFFT",
+    "category": "spectral",
+    "inputs": [{"start": 0, "name": "x", "type": "tensor"}]
   },
   {
-    tfOpName: "RFFT",
-    category: "spectral",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"},
+    "tfOpName": "RFFT",
+    "category": "spectral",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"},
       {
-        start: 1,
-        name: "fft_length",
-        type: "number",
-        notSupported: true
+        "start": 1,
+        "name": "fft_length",
+        "type": "number",
+        "notSupported": true
       }
     ]
   },
   {
-    tfOpName: "IRFFT",
-    category: "spectral",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"},
+    "tfOpName": "IRFFT",
+    "category": "spectral",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"},
       {
-        start: 1,
-        name: "fft_length",
-        type: "number",
-        notSupported: true
+        "start": 1,
+        "name": "fft_length",
+        "type": "number",
+        "notSupported": true
       }
     ]
   }
@@ -32067,124 +32122,124 @@ __export(transformation_exports, {
 });
 var json17 = [
   {
-    tfOpName: "Cast",
-    category: "transformation",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"}
+    "tfOpName": "Cast",
+    "category": "transformation",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"}
     ],
-    attrs: [
+    "attrs": [
       {
-        tfName: "SrcT",
-        name: "sdtype",
-        type: "dtype",
-        notSupported: true
+        "tfName": "SrcT",
+        "name": "sdtype",
+        "type": "dtype",
+        "notSupported": true
       },
-      {tfName: "DstT", name: "dtype", type: "dtype"}
+      {"tfName": "DstT", "name": "dtype", "type": "dtype"}
     ]
   },
   {
-    tfOpName: "ExpandDims",
-    category: "transformation",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"},
-      {start: 1, name: "axis", type: "number"}
+    "tfOpName": "ExpandDims",
+    "category": "transformation",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"},
+      {"start": 1, "name": "axis", "type": "number"}
     ]
   },
   {
-    tfOpName: "MirrorPad",
-    category: "transformation",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"},
-      {start: 1, name: "padding", type: "number[]"}
+    "tfOpName": "MirrorPad",
+    "category": "transformation",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"},
+      {"start": 1, "name": "padding", "type": "number[]"}
     ],
-    attrs: [{tfName: "mode", name: "mode", type: "string"}]
+    "attrs": [{"tfName": "mode", "name": "mode", "type": "string"}]
   },
   {
-    tfOpName: "Pad",
-    category: "transformation",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"},
-      {start: 1, name: "padding", type: "number[]"}
+    "tfOpName": "Pad",
+    "category": "transformation",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"},
+      {"start": 1, "name": "padding", "type": "number[]"}
     ],
-    attrs: [{
-      tfName: "constant_value",
-      name: "constantValue",
-      type: "number",
-      defaultValue: 0
+    "attrs": [{
+      "tfName": "constant_value",
+      "name": "constantValue",
+      "type": "number",
+      "defaultValue": 0
     }]
   },
   {
-    tfOpName: "PadV2",
-    category: "transformation",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"},
-      {start: 1, name: "padding", type: "number[]"},
+    "tfOpName": "PadV2",
+    "category": "transformation",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"},
+      {"start": 1, "name": "padding", "type": "number[]"},
       {
-        start: 2,
-        name: "constantValue",
-        type: "number",
-        defaultValue: 0
+        "start": 2,
+        "name": "constantValue",
+        "type": "number",
+        "defaultValue": 0
       }
     ]
   },
   {
-    tfOpName: "Reshape",
-    category: "transformation",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"},
-      {start: 1, name: "shape", type: "number[]"}
+    "tfOpName": "Reshape",
+    "category": "transformation",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"},
+      {"start": 1, "name": "shape", "type": "number[]"}
     ]
   },
   {
-    tfOpName: "Squeeze",
-    category: "transformation",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"}
+    "tfOpName": "Squeeze",
+    "category": "transformation",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"}
     ],
-    attrs: [{
-      tfName: "axis",
-      tfDeprecatedName: "squeeze_dims",
-      name: "axis",
-      type: "number[]"
+    "attrs": [{
+      "tfName": "axis",
+      "tfDeprecatedName": "squeeze_dims",
+      "name": "axis",
+      "type": "number[]"
     }]
   },
   {
-    tfOpName: "SpaceToBatchND",
-    category: "transformation",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"},
-      {start: 1, name: "blockShape", type: "number[]"},
-      {start: 2, name: "paddings", type: "number[]"}
+    "tfOpName": "SpaceToBatchND",
+    "category": "transformation",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"},
+      {"start": 1, "name": "blockShape", "type": "number[]"},
+      {"start": 2, "name": "paddings", "type": "number[]"}
     ]
   },
   {
-    tfOpName: "BatchToSpaceND",
-    category: "transformation",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"},
-      {start: 1, name: "blockShape", type: "number[]"},
-      {start: 2, name: "crops", type: "number[]"}
+    "tfOpName": "BatchToSpaceND",
+    "category": "transformation",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"},
+      {"start": 1, "name": "blockShape", "type": "number[]"},
+      {"start": 2, "name": "crops", "type": "number[]"}
     ]
   },
   {
-    tfOpName: "DepthToSpace",
-    category: "transformation",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"}
+    "tfOpName": "DepthToSpace",
+    "category": "transformation",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"}
     ],
-    attrs: [
-      {tfName: "block_size", name: "blockSize", type: "number"},
-      {tfName: "data_format", name: "dataFormat", type: "string"}
+    "attrs": [
+      {"tfName": "block_size", "name": "blockSize", "type": "number"},
+      {"tfName": "data_format", "name": "dataFormat", "type": "string"}
     ]
   },
   {
-    tfOpName: "BroadcastTo",
-    category: "transformation",
-    inputs: [
-      {start: 0, name: "x", type: "tensor"},
-      {start: 1, name: "shape", type: "number[]"}
+    "tfOpName": "BroadcastTo",
+    "category": "transformation",
+    "inputs": [
+      {"start": 0, "name": "x", "type": "tensor"},
+      {"start": 1, "name": "shape", "type": "number[]"}
     ],
-    attrs: []
+    "attrs": []
   }
 ];
 
@@ -36492,7 +36547,7 @@ var MicrophoneIterator = class extends LazyIterator {
       waveformTensor = this.getTensorFromAudioDataArray(timeData, [this.numFrames * this.fftSize, 1]);
     }
     return {
-      value: {spectrogram: spectrogramTensor, waveform: waveformTensor},
+      value: {"spectrogram": spectrogramTensor, "waveform": waveformTensor},
       done: false
     };
   }
@@ -36886,7 +36941,7 @@ var FileDataSource = class extends DataSource {
   }
   async iterator() {
     if (isLocalPath(this.input) && env().get("IS_NODE")) {
-      const fs = require("fs");
+      const fs = __require("fs");
       this.input = fs.readFileSync(this.input.substr(7));
     }
     return new FileChunkIterator(this.input, this.options);
@@ -56051,7 +56106,7 @@ var version8 = {
   "tfjs-data": version4,
   "tfjs-layers": version2,
   "tfjs-converter": version3,
-  tfjs: version7
+  "tfjs": version7
 };
 
 // node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.6.0/node_modules/@tensorflow/tfjs-backend-wasm/dist/kernels/types.js

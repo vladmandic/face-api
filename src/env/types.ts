@@ -11,6 +11,7 @@ export type Environment = FileSystem & {
   Video: typeof HTMLVideoElement
   createCanvasElement: () => HTMLCanvasElement
   createImageElement: () => HTMLImageElement
+  createVideoElement: () => HTMLVideoElement
   // eslint-disable-next-line no-undef, no-unused-vars
   fetch: (url: string, init?: RequestInit) => Promise<Response>
 }

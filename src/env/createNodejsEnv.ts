@@ -6,6 +6,8 @@ export function createNodejsEnv(): Environment {
   // eslint-disable-next-line dot-notation
   const Canvas = global['Canvas'] || global.HTMLCanvasElement;
   const Image = global.Image || global.HTMLImageElement;
+  // eslint-disable-next-line dot-notation
+  const Video = global['Video'] || global.HTMLVideoElement;
 
   const createCanvasElement = () => {
     if (Canvas) return new Canvas();
@@ -15,6 +17,11 @@ export function createNodejsEnv(): Environment {
   const createImageElement = () => {
     if (Image) return new Image();
     throw new Error('createImageElement - missing Image implementation for nodejs environment');
+  };
+
+  const createVideoElement = () => {
+    if (Video) return new Video();
+    throw new Error('createVideoElement - missing Video implementation for nodejs environment');
   };
 
   const fetch = global.fetch;
@@ -30,6 +37,7 @@ export function createNodejsEnv(): Environment {
     Video: global.HTMLVideoElement || class {},
     createCanvasElement,
     createImageElement,
+    createVideoElement,
     fetch,
     ...fileSystem,
   };

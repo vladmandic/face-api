@@ -7,6 +7,7 @@ export * from './fetchImage';
 export * from './fetchJson';
 export * from './fetchNetWeights';
 export * from './fetchOrThrow';
+export * from './fetchVideo';
 export * from './getContext2dOrThrow';
 export * from './getMediaDimensions';
 export * from './imageTensorToCanvas';

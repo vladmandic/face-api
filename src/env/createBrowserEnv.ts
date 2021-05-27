@@ -16,6 +16,7 @@ export function createBrowserEnv(): Environment {
     Video: HTMLVideoElement,
     createCanvasElement: () => document.createElement('canvas'),
     createImageElement: () => document.createElement('img'),
+    createVideoElement: () => document.createElement('video'),
     fetch,
     readFile,
   };

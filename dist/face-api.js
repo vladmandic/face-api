@@ -14,7 +14,7 @@ var faceapi = (() => {
   };
   var __export = (target, all5) => {
     for (var name in all5)
-      __defProp(target, name, {get: all5[name], enumerable: true});
+      __defProp(target, name, { get: all5[name], enumerable: true });
   };
 
   // src/index.ts
@@ -96,6 +96,7 @@ var faceapi = (() => {
     fetchJson: () => fetchJson,
     fetchNetWeights: () => fetchNetWeights,
     fetchOrThrow: () => fetchOrThrow,
+    fetchVideo: () => fetchVideo,
     getContext2dOrThrow: () => getContext2dOrThrow,
     getMediaDimensions: () => getMediaDimensions,
     imageTensorToCanvas: () => imageTensorToCanvas,
@@ -621,29 +622,29 @@ var faceapi = (() => {
   var __getOwnPropNames = Object.getOwnPropertyNames;
   var __getProtoOf = Object.getPrototypeOf;
   var __hasOwnProp = Object.prototype.hasOwnProperty;
-  var __markAsModule = (target) => __defProp2(target, "__esModule", {value: true});
+  var __markAsModule = (target) => __defProp2(target, "__esModule", { value: true });
   var __require2 = (x) => {
     if (typeof __require !== "undefined")
       return __require(x);
     throw new Error('Dynamic require of "' + x + '" is not supported');
   };
   var __commonJS = (cb, mod4) => function __require22() {
-    return mod4 || (0, cb[Object.keys(cb)[0]])((mod4 = {exports: {}}).exports, mod4), mod4.exports;
+    return mod4 || (0, cb[Object.keys(cb)[0]])((mod4 = { exports: {} }).exports, mod4), mod4.exports;
   };
   var __export2 = (target, all5) => {
     for (var name in all5)
-      __defProp2(target, name, {get: all5[name], enumerable: true});
+      __defProp2(target, name, { get: all5[name], enumerable: true });
   };
   var __reExport = (target, module2, desc) => {
     if (module2 && typeof module2 === "object" || typeof module2 === "function") {
       for (let key of __getOwnPropNames(module2))
         if (!__hasOwnProp.call(target, key) && key !== "default")
-          __defProp2(target, key, {get: () => module2[key], enumerable: !(desc = __getOwnPropDesc(module2, key)) || desc.enumerable});
+          __defProp2(target, key, { get: () => module2[key], enumerable: !(desc = __getOwnPropDesc(module2, key)) || desc.enumerable });
     }
     return target;
   };
   var __toModule = (module2) => {
-    return __reExport(__markAsModule(__defProp2(module2 != null ? __create(__getProtoOf(module2)) : {}, "default", module2 && module2.__esModule && "default" in module2 ? {get: () => module2.default, enumerable: true} : {value: module2, enumerable: true})), module2);
+    return __reExport(__markAsModule(__defProp2(module2 != null ? __create(__getProtoOf(module2)) : {}, "default", module2 && module2.__esModule && "default" in module2 ? { get: () => module2.default, enumerable: true } : { value: module2, enumerable: true })), module2);
   };
   var require_browser = __commonJS({
     "(disabled):node_modules/.pnpm/node-fetch@2.6.1/node_modules/node-fetch/browser.js"() {
@@ -1147,7 +1148,7 @@ var faceapi = (() => {
         var global2 = this, width = 256, chunks = 6, digits = 52, rngname = "random", startdenom = math.pow(width, chunks), significance = math.pow(2, digits), overflow = significance * 2, mask = width - 1, nodecrypto;
         function seedrandom5(seed, options, callback) {
           var key = [];
-          options = options == true ? {entropy: true} : options || {};
+          options = options == true ? { entropy: true } : options || {};
           var shortseed = mixkey(flatten4(options.entropy ? [seed, tostring(pool3)] : seed == null ? autoseed() : seed, 3), key);
           var arc4 = new ARC4(key);
           var prng = function() {
@@ -1783,7 +1784,7 @@ var faceapi = (() => {
         var width = 256, chunks = 6, digits = 52, rngname = "random", startdenom = math.pow(width, chunks), significance = math.pow(2, digits), overflow = significance * 2, mask = width - 1, nodecrypto;
         function seedrandom5(seed, options, callback) {
           var key = [];
-          options = options == true ? {entropy: true} : options || {};
+          options = options == true ? { entropy: true } : options || {};
           var shortseed = mixkey(flatten4(options.entropy ? [seed, tostring(pool3)] : seed == null ? autoseed() : seed, 3), key);
           var arc4 = new ARC4(key);
           var prng = function() {
@@ -2208,7 +2209,7 @@ var faceapi = (() => {
             return func2;
           }
           function ccall(ident, returnType, argTypes, args, opts) {
-            var toC = {"string": function(str) {
+            var toC = { "string": function(str) {
               var ret2 = 0;
               if (str !== null && str !== void 0 && str !== 0) {
                 var len = (str.length << 2) + 1;
@@ -2220,7 +2221,7 @@ var faceapi = (() => {
               var ret2 = stackAlloc(arr.length);
               writeArrayToMemory(arr, ret2);
               return ret2;
-            }};
+            } };
             function convertReturnValue(ret2) {
               if (returnType === "string")
                 return UTF8ToString(ret2);
@@ -2383,7 +2384,7 @@ var faceapi = (() => {
             if (Module["wasmMemory"]) {
               wasmMemory = Module["wasmMemory"];
             } else {
-              wasmMemory = new WebAssembly.Memory({"initial": INITIAL_MEMORY / 65536, "maximum": 2147483648 / 65536, "shared": true});
+              wasmMemory = new WebAssembly.Memory({ "initial": INITIAL_MEMORY / 65536, "maximum": 2147483648 / 65536, "shared": true });
               if (!(wasmMemory.buffer instanceof SharedArrayBuffer)) {
                 err("requested a shared WebAssembly.Memory but the returned buffer is not a SharedArrayBuffer, indicating that while the browser has SharedArrayBuffer it does not have WebAssembly threads support - you may need to set a flag");
                 if (ENVIRONMENT_IS_NODE) {
@@ -2407,9 +2408,9 @@ var faceapi = (() => {
           var runtimeInitialized = false;
           var runtimeExited = false;
           if (!ENVIRONMENT_IS_PTHREAD)
-            __ATINIT__.push({func: function() {
+            __ATINIT__.push({ func: function() {
               ___wasm_call_ctors();
-            }});
+            } });
           function preRun() {
             if (ENVIRONMENT_IS_PTHREAD)
               return;
@@ -2532,7 +2533,7 @@ var faceapi = (() => {
           function getBinaryPromise() {
             if (!wasmBinary && (ENVIRONMENT_IS_WEB || ENVIRONMENT_IS_WORKER)) {
               if (typeof fetch === "function" && !isFileURI(wasmBinaryFile)) {
-                return fetch(wasmBinaryFile, {credentials: "same-origin"}).then(function(response) {
+                return fetch(wasmBinaryFile, { credentials: "same-origin" }).then(function(response) {
                   if (!response["ok"]) {
                     throw "failed to load wasm binary file at '" + wasmBinaryFile + "'";
                   }
@@ -2555,7 +2556,7 @@ var faceapi = (() => {
             });
           }
           function createWasm() {
-            var info = {"a": asmLibraryArg};
+            var info = { "a": asmLibraryArg };
             function receiveInstance(instance, module22) {
               var exports3 = instance.exports;
               Module["asm"] = exports3;
@@ -2587,7 +2588,7 @@ var faceapi = (() => {
             }
             function instantiateAsync() {
               if (!wasmBinary && typeof WebAssembly.instantiateStreaming === "function" && !isDataURI(wasmBinaryFile) && !isFileURI(wasmBinaryFile) && typeof fetch === "function") {
-                return fetch(wasmBinaryFile, {credentials: "same-origin"}).then(function(response) {
+                return fetch(wasmBinaryFile, { credentials: "same-origin" }).then(function(response) {
                   var result = WebAssembly.instantiateStreaming(response, info);
                   return result.then(receiveInstantiatedSource, function(reason) {
                     err("wasm streaming compile failed: " + reason);
@@ -2611,13 +2612,13 @@ var faceapi = (() => {
             instantiateAsync().catch(readyPromiseReject);
             return {};
           }
-          var ASM_CONSTS = {9816: function() {
+          var ASM_CONSTS = { 9816: function() {
             throw "Canceled!";
           }, 9834: function($0, $1) {
             setTimeout(function() {
               __emscripten_do_dispatch_to_thread($0, $1);
             }, 0);
-          }};
+          } };
           function initPthreadsJS() {
             PThread.initRuntime();
           }
@@ -2682,7 +2683,7 @@ var faceapi = (() => {
             if (!pthread_ptr)
               throw "Internal Error! Null pthread_ptr in cancelThread!";
             var pthread = PThread.pthreads[pthread_ptr];
-            pthread.worker.postMessage({"cmd": "cancel"});
+            pthread.worker.postMessage({ "cmd": "cancel" });
           }
           function cleanupThread(pthread_ptr) {
             if (ENVIRONMENT_IS_PTHREAD)
@@ -2696,7 +2697,7 @@ var faceapi = (() => {
               PThread.returnWorkerToPool(worker);
             }
           }
-          var PThread = {unusedWorkers: [], runningWorkers: [], initMainThreadBlock: function() {
+          var PThread = { unusedWorkers: [], runningWorkers: [], initMainThreadBlock: function() {
             var pthreadPoolSize = Math.min(4, Math.max(1, (navigator.hardwareConcurrency || 1) / 2));
             for (var i = 0; i < pthreadPoolSize; ++i) {
               PThread.allocateUnusedWorker();
@@ -2736,12 +2737,12 @@ var faceapi = (() => {
             if (tb) {
               PThread.runExitHandlersAndDeinitThread(tb, exitCode);
               if (ENVIRONMENT_IS_PTHREAD) {
-                postMessage({"cmd": "exit"});
+                postMessage({ "cmd": "exit" });
               }
             }
           }, threadCancel: function() {
             PThread.runExitHandlersAndDeinitThread(_pthread_self(), -1);
-            postMessage({"cmd": "cancelDone"});
+            postMessage({ "cmd": "cancelDone" });
           }, terminateAllThreads: function() {
             for (var t in PThread.pthreads) {
               var pthread = PThread.pthreads[t];
@@ -2862,7 +2863,7 @@ var faceapi = (() => {
             };
             if (ENVIRONMENT_IS_NODE) {
               worker.on("message", function(data) {
-                worker.onmessage({data});
+                worker.onmessage({ data });
               });
               worker.on("error", function(data) {
                 worker.onerror(data);
@@ -2870,7 +2871,7 @@ var faceapi = (() => {
               worker.on("exit", function(data) {
               });
             }
-            worker.postMessage({"cmd": "load", "urlOrBlob": Module["mainScriptUrlOrBlob"] || _scriptDir, "wasmMemory": wasmMemory, "wasmModule": wasmModule});
+            worker.postMessage({ "cmd": "load", "urlOrBlob": Module["mainScriptUrlOrBlob"] || _scriptDir, "wasmMemory": wasmMemory, "wasmModule": wasmModule });
           }, allocateUnusedWorker: function() {
             var pthreadMainJs = locateFile("tfjs-backend-wasm-threaded-simd.worker.js");
             PThread.unusedWorkers.push(new Worker(pthreadMainJs));
@@ -2887,7 +2888,7 @@ var faceapi = (() => {
             var t = performance.now() + msecs;
             while (performance.now() < t) {
             }
-          }};
+          } };
           function establishStackSpace(stackTop, stackMax) {
             _emscripten_stack_set_limits(stackTop, stackMax);
             stackRestore(stackTop);
@@ -2933,16 +2934,16 @@ var faceapi = (() => {
           }
           function __emscripten_notify_thread_queue(targetThreadId, mainThreadId) {
             if (targetThreadId == mainThreadId) {
-              postMessage({"cmd": "processQueuedMainThreadWork"});
+              postMessage({ "cmd": "processQueuedMainThreadWork" });
             } else if (ENVIRONMENT_IS_PTHREAD) {
-              postMessage({"targetThread": targetThreadId, "cmd": "processThreadQueue"});
+              postMessage({ "targetThread": targetThreadId, "cmd": "processThreadQueue" });
             } else {
               var pthread = PThread.pthreads[targetThreadId];
               var worker = pthread && pthread.worker;
               if (!worker) {
                 return;
               }
-              worker.postMessage({"cmd": "processThreadQueue"});
+              worker.postMessage({ "cmd": "processThreadQueue" });
             }
             return 1;
           }
@@ -3071,7 +3072,7 @@ var faceapi = (() => {
             }
             return false;
           }
-          var JSEvents = {inEventHandler: 0, removeAllEventListeners: function() {
+          var JSEvents = { inEventHandler: 0, removeAllEventListeners: function() {
             for (var i = JSEvents.eventHandlers.length - 1; i >= 0; --i) {
               JSEvents._removeHandler(i);
             }
@@ -3098,7 +3099,7 @@ var faceapi = (() => {
                 return;
               }
             }
-            JSEvents.deferredCalls.push({targetFunction, precedence, argsList});
+            JSEvents.deferredCalls.push({ targetFunction, precedence, argsList });
             JSEvents.deferredCalls.sort(function(x, y) {
               return x.precedence < y.precedence;
             });
@@ -3179,7 +3180,7 @@ var faceapi = (() => {
             return target && target.nodeName ? target.nodeName : "";
           }, fullscreenEnabled: function() {
             return document.fullscreenEnabled || document.webkitFullscreenEnabled;
-          }};
+          } };
           function stringToNewUTF8(jsString) {
             var length = lengthBytesUTF8(jsString) + 1;
             var cString = _malloc(length);
@@ -3307,7 +3308,7 @@ var faceapi = (() => {
           function __webgl_enable_WEBGL_multi_draw(ctx) {
             return !!(ctx.multiDrawWebgl = ctx.getExtension("WEBGL_multi_draw"));
           }
-          var GL = {counter: 1, buffers: [], programs: [], framebuffers: [], renderbuffers: [], textures: [], uniforms: [], shaders: [], vaos: [], contexts: {}, offscreenCanvases: {}, timerQueriesEXT: [], programInfos: {}, stringCache: {}, unpackAlignment: 4, recordError: function recordError(errorCode) {
+          var GL = { counter: 1, buffers: [], programs: [], framebuffers: [], renderbuffers: [], textures: [], uniforms: [], shaders: [], vaos: [], contexts: {}, offscreenCanvases: {}, timerQueriesEXT: [], programInfos: {}, stringCache: {}, unpackAlignment: 4, recordError: function recordError(errorCode) {
             if (!GL.lastError) {
               GL.lastError = errorCode;
             }
@@ -3333,7 +3334,7 @@ var faceapi = (() => {
           }, registerContext: function(ctx, webGLContextAttributes) {
             var handle = _malloc(8);
             GROWABLE_HEAP_I32()[handle + 4 >> 2] = _pthread_self();
-            var context = {handle, attributes: webGLContextAttributes, version: webGLContextAttributes.majorVersion, GLctx: ctx};
+            var context = { handle, attributes: webGLContextAttributes, version: webGLContextAttributes.majorVersion, GLctx: ctx };
             if (ctx.canvas)
               ctx.canvas.GLctxObject = context;
             GL.contexts[handle] = context;
@@ -3376,7 +3377,7 @@ var faceapi = (() => {
             });
           }, populateUniformTable: function(program) {
             var p2 = GL.programs[program];
-            var ptable = GL.programInfos[program] = {uniforms: {}, maxUniformLength: 0, maxAttributeLength: -1, maxUniformBlockNameLength: -1};
+            var ptable = GL.programInfos[program] = { uniforms: {}, maxUniformLength: 0, maxAttributeLength: -1, maxUniformBlockNameLength: -1 };
             var utable = ptable.uniforms;
             var numUniforms = GLctx.getProgramParameter(p2, 35718);
             for (var i = 0; i < numUniforms; ++i) {
@@ -3399,12 +3400,12 @@ var faceapi = (() => {
                 }
               }
             }
-          }};
+          } };
           var __emscripten_webgl_power_preferences = ["default", "low-power", "high-performance"];
           function _emscripten_webgl_do_create_context(target, attributes) {
             var a = attributes >> 2;
             var powerPreference = GROWABLE_HEAP_I32()[a + (24 >> 2)];
-            var contextAttributes = {"alpha": !!GROWABLE_HEAP_I32()[a + (0 >> 2)], "depth": !!GROWABLE_HEAP_I32()[a + (4 >> 2)], "stencil": !!GROWABLE_HEAP_I32()[a + (8 >> 2)], "antialias": !!GROWABLE_HEAP_I32()[a + (12 >> 2)], "premultipliedAlpha": !!GROWABLE_HEAP_I32()[a + (16 >> 2)], "preserveDrawingBuffer": !!GROWABLE_HEAP_I32()[a + (20 >> 2)], "powerPreference": __emscripten_webgl_power_preferences[powerPreference], "failIfMajorPerformanceCaveat": !!GROWABLE_HEAP_I32()[a + (28 >> 2)], majorVersion: GROWABLE_HEAP_I32()[a + (32 >> 2)], minorVersion: GROWABLE_HEAP_I32()[a + (36 >> 2)], enableExtensionsByDefault: GROWABLE_HEAP_I32()[a + (40 >> 2)], explicitSwapControl: GROWABLE_HEAP_I32()[a + (44 >> 2)], proxyContextToMainThread: GROWABLE_HEAP_I32()[a + (48 >> 2)], renderViaOffscreenBackBuffer: GROWABLE_HEAP_I32()[a + (52 >> 2)]};
+            var contextAttributes = { "alpha": !!GROWABLE_HEAP_I32()[a + (0 >> 2)], "depth": !!GROWABLE_HEAP_I32()[a + (4 >> 2)], "stencil": !!GROWABLE_HEAP_I32()[a + (8 >> 2)], "antialias": !!GROWABLE_HEAP_I32()[a + (12 >> 2)], "premultipliedAlpha": !!GROWABLE_HEAP_I32()[a + (16 >> 2)], "preserveDrawingBuffer": !!GROWABLE_HEAP_I32()[a + (20 >> 2)], "powerPreference": __emscripten_webgl_power_preferences[powerPreference], "failIfMajorPerformanceCaveat": !!GROWABLE_HEAP_I32()[a + (28 >> 2)], majorVersion: GROWABLE_HEAP_I32()[a + (32 >> 2)], minorVersion: GROWABLE_HEAP_I32()[a + (36 >> 2)], enableExtensionsByDefault: GROWABLE_HEAP_I32()[a + (40 >> 2)], explicitSwapControl: GROWABLE_HEAP_I32()[a + (44 >> 2)], proxyContextToMainThread: GROWABLE_HEAP_I32()[a + (48 >> 2)], renderViaOffscreenBackBuffer: GROWABLE_HEAP_I32()[a + (52 >> 2)] };
             var canvas = findCanvasEventTarget(target);
             if (!canvas) {
               return 0;
@@ -3418,7 +3419,7 @@ var faceapi = (() => {
           function _emscripten_webgl_create_context(a0, a12) {
             return _emscripten_webgl_do_create_context(a0, a12);
           }
-          var SYSCALLS = {mappings: {}, buffers: [null, [], []], printChar: function(stream, curr) {
+          var SYSCALLS = { mappings: {}, buffers: [null, [], []], printChar: function(stream, curr) {
             var buffer3 = SYSCALLS.buffers[stream];
             if (curr === 0 || curr === 10) {
               (stream === 1 ? out : err)(UTF8ArrayToString(buffer3, 0));
@@ -3435,7 +3436,7 @@ var faceapi = (() => {
             return ret;
           }, get64: function(low, high) {
             return low;
-          }};
+          } };
           function _fd_close(fd) {
             if (ENVIRONMENT_IS_PTHREAD)
               return _emscripten_proxy_to_main_thread_js(3, 1, fd);
@@ -3484,7 +3485,7 @@ var faceapi = (() => {
               GROWABLE_HEAP_I32()[tlsMemory + i * 4 >> 2] = 0;
             }
             var stackHigh = threadParams.stackBase + threadParams.stackSize;
-            var pthread = PThread.pthreads[threadParams.pthread_ptr] = {worker, stackBase: threadParams.stackBase, stackSize: threadParams.stackSize, allocatedOwnStack: threadParams.allocatedOwnStack, threadInfoStruct: threadParams.pthread_ptr};
+            var pthread = PThread.pthreads[threadParams.pthread_ptr] = { worker, stackBase: threadParams.stackBase, stackSize: threadParams.stackSize, allocatedOwnStack: threadParams.allocatedOwnStack, threadInfoStruct: threadParams.pthread_ptr };
             var tis = pthread.threadInfoStruct >> 2;
             Atomics.store(GROWABLE_HEAP_U32(), tis + (64 >> 2), threadParams.detached);
             Atomics.store(GROWABLE_HEAP_U32(), tis + (100 >> 2), tlsMemory);
@@ -3498,7 +3499,7 @@ var faceapi = (() => {
             var global_locale = global_libc + 40;
             Atomics.store(GROWABLE_HEAP_U32(), tis + (172 >> 2), global_locale);
             worker.pthread = pthread;
-            var msg = {"cmd": "run", "start_routine": threadParams.startRoutine, "arg": threadParams.arg, "threadInfoStruct": threadParams.pthread_ptr, "stackBase": threadParams.stackBase, "stackSize": threadParams.stackSize};
+            var msg = { "cmd": "run", "start_routine": threadParams.startRoutine, "arg": threadParams.arg, "threadInfoStruct": threadParams.pthread_ptr, "stackBase": threadParams.stackBase, "stackSize": threadParams.stackSize };
             worker.runPthread = function() {
               msg.time = performance.now();
               worker.postMessage(msg, threadParams.transferList);
@@ -3549,7 +3550,7 @@ var faceapi = (() => {
             GROWABLE_HEAP_I32()[threadInfoStruct + 12 >> 2] = threadInfoStruct;
             var headPtr = threadInfoStruct + 152;
             GROWABLE_HEAP_I32()[headPtr >> 2] = headPtr;
-            var threadParams = {stackBase, stackSize, allocatedOwnStack, detached, startRoutine: start_routine, pthread_ptr: threadInfoStruct, arg, transferList};
+            var threadParams = { stackBase, stackSize, allocatedOwnStack, detached, startRoutine: start_routine, pthread_ptr: threadInfoStruct, arg, transferList };
             if (ENVIRONMENT_IS_PTHREAD) {
               threadParams.cmd = "spawnThread";
               postMessage(threadParams, transferList);
@@ -3724,7 +3725,7 @@ var faceapi = (() => {
             PThread.initMainThreadBlock();
           var GLctx;
           var proxiedFunctionTable = [null, _atexit, _emscripten_set_canvas_element_size_main_thread, _fd_close, _fd_seek, _fd_write, _sysconf];
-          var asmLibraryArg = {"e": ___assert_fail, "r": ___call_main, "x": __emscripten_notify_thread_queue, "b": _abort, "y": _emscripten_asm_const_int, "j": _emscripten_conditional_set_current_thread_status, "c": _emscripten_futex_wait, "d": _emscripten_futex_wake, "f": _emscripten_get_now, "p": _emscripten_memcpy_big, "z": _emscripten_num_logical_cores, "u": _emscripten_receive_on_main_thread_js, "q": _emscripten_resize_heap, "v": _emscripten_set_canvas_element_size, "i": _emscripten_set_current_thread_status, "t": _emscripten_set_thread_name, "w": _emscripten_webgl_create_context, "m": _fd_close, "n": _fd_seek, "g": _fd_write, "o": initPthreadsJS, "a": wasmMemory || Module["wasmMemory"], "k": _pthread_cleanup_pop, "l": _pthread_cleanup_push, "h": _pthread_create, "s": _sysconf};
+          var asmLibraryArg = { "e": ___assert_fail, "r": ___call_main, "x": __emscripten_notify_thread_queue, "b": _abort, "y": _emscripten_asm_const_int, "j": _emscripten_conditional_set_current_thread_status, "c": _emscripten_futex_wait, "d": _emscripten_futex_wake, "f": _emscripten_get_now, "p": _emscripten_memcpy_big, "z": _emscripten_num_logical_cores, "u": _emscripten_receive_on_main_thread_js, "q": _emscripten_resize_heap, "v": _emscripten_set_canvas_element_size, "i": _emscripten_set_current_thread_status, "t": _emscripten_set_thread_name, "w": _emscripten_webgl_create_context, "m": _fd_close, "n": _fd_seek, "g": _fd_write, "o": initPthreadsJS, "a": wasmMemory || Module["wasmMemory"], "k": _pthread_cleanup_pop, "l": _pthread_cleanup_push, "h": _pthread_create, "s": _sysconf };
           var asm = createWasm();
           var ___wasm_call_ctors = Module["___wasm_call_ctors"] = function() {
             return (___wasm_call_ctors = Module["___wasm_call_ctors"] = Module["asm"]["A"]).apply(null, arguments);
@@ -4065,7 +4066,7 @@ var faceapi = (() => {
             if (ENVIRONMENT_IS_PTHREAD) {
               readyPromiseResolve(Module);
               initRuntime();
-              postMessage({"cmd": "loaded"});
+              postMessage({ "cmd": "loaded" });
               return;
             }
             preRun();
@@ -4105,7 +4106,7 @@ var faceapi = (() => {
             }
             if (!implicit) {
               if (ENVIRONMENT_IS_PTHREAD) {
-                postMessage({"cmd": "exitProcess", "returnCode": status});
+                postMessage({ "cmd": "exitProcess", "returnCode": status });
                 throw new ExitStatus(status);
               } else {
               }
@@ -4344,7 +4345,7 @@ var faceapi = (() => {
             return func2;
           }
           function ccall(ident, returnType, argTypes, args, opts) {
-            var toC = {"string": function(str) {
+            var toC = { "string": function(str) {
               var ret2 = 0;
               if (str !== null && str !== void 0 && str !== 0) {
                 var len = (str.length << 2) + 1;
@@ -4356,7 +4357,7 @@ var faceapi = (() => {
               var ret2 = stackAlloc(arr.length);
               writeArrayToMemory(arr, ret2);
               return ret2;
-            }};
+            } };
             function convertReturnValue(ret2) {
               if (returnType === "string")
                 return UTF8ToString(ret2);
@@ -4507,9 +4508,9 @@ var faceapi = (() => {
           var __ATMAIN__ = [];
           var __ATPOSTRUN__ = [];
           var runtimeInitialized = false;
-          __ATINIT__.push({func: function() {
+          __ATINIT__.push({ func: function() {
             ___wasm_call_ctors();
-          }});
+          } });
           function preRun() {
             if (Module["preRun"]) {
               if (typeof Module["preRun"] == "function")
@@ -4616,7 +4617,7 @@ var faceapi = (() => {
           function getBinaryPromise() {
             if (!wasmBinary && (ENVIRONMENT_IS_WEB || ENVIRONMENT_IS_WORKER)) {
               if (typeof fetch === "function" && !isFileURI(wasmBinaryFile)) {
-                return fetch(wasmBinaryFile, {credentials: "same-origin"}).then(function(response) {
+                return fetch(wasmBinaryFile, { credentials: "same-origin" }).then(function(response) {
                   if (!response["ok"]) {
                     throw "failed to load wasm binary file at '" + wasmBinaryFile + "'";
                   }
@@ -4639,7 +4640,7 @@ var faceapi = (() => {
             });
           }
           function createWasm() {
-            var info = {"a": asmLibraryArg};
+            var info = { "a": asmLibraryArg };
             function receiveInstance(instance, module22) {
               var exports3 = instance.exports;
               Module["asm"] = exports3;
@@ -4662,7 +4663,7 @@ var faceapi = (() => {
             }
             function instantiateAsync() {
               if (!wasmBinary && typeof WebAssembly.instantiateStreaming === "function" && !isDataURI(wasmBinaryFile) && !isFileURI(wasmBinaryFile) && typeof fetch === "function") {
-                return fetch(wasmBinaryFile, {credentials: "same-origin"}).then(function(response) {
+                return fetch(wasmBinaryFile, { credentials: "same-origin" }).then(function(response) {
                   var result = WebAssembly.instantiateStreaming(response, info);
                   return result.then(receiveInstantiatedSource, function(reason) {
                     err("wasm streaming compile failed: " + reason);
@@ -4739,7 +4740,7 @@ var faceapi = (() => {
             }
             return false;
           }
-          var SYSCALLS = {mappings: {}, buffers: [null, [], []], printChar: function(stream, curr) {
+          var SYSCALLS = { mappings: {}, buffers: [null, [], []], printChar: function(stream, curr) {
             var buffer3 = SYSCALLS.buffers[stream];
             if (curr === 0 || curr === 10) {
               (stream === 1 ? out : err)(UTF8ArrayToString(buffer3, 0));
@@ -4756,7 +4757,7 @@ var faceapi = (() => {
             return ret;
           }, get64: function(low, high) {
             return low;
-          }};
+          } };
           function _fd_close(fd) {
             return 0;
           }
@@ -4942,7 +4943,7 @@ var faceapi = (() => {
             setErrNo(28);
             return -1;
           }
-          var asmLibraryArg = {"a": _abort, "d": _emscripten_memcpy_big, "e": _emscripten_resize_heap, "f": _fd_close, "c": _fd_seek, "b": _fd_write, "g": _pthread_create, "h": _sysconf};
+          var asmLibraryArg = { "a": _abort, "d": _emscripten_memcpy_big, "e": _emscripten_resize_heap, "f": _fd_close, "c": _fd_seek, "b": _fd_write, "g": _pthread_create, "h": _sysconf };
           var asm = createWasm();
           var ___wasm_call_ctors = Module["___wasm_call_ctors"] = function() {
             return (___wasm_call_ctors = Module["___wasm_call_ctors"] = Module["asm"]["j"]).apply(null, arguments);
@@ -5585,7 +5586,7 @@ var faceapi = (() => {
         keptDims.push(i);
       }
     }
-    return {newShape, keptDims};
+    return { newShape, keptDims };
   }
   function getTypedArrayFromDType(dtype, size) {
     let values = null;
@@ -5824,7 +5825,7 @@ var faceapi = (() => {
       this.platform = platform;
     }
     registerFlag(flagName, evaluationFn, setHook) {
-      this.flagRegistry[flagName] = {evaluationFn, setHook};
+      this.flagRegistry[flagName] = { evaluationFn, setHook };
       if (this.urlFlags[flagName] != null) {
         const flagValue = this.urlFlags[flagName];
         console.warn(`Setting feature override from URL ${flagName}: ${flagValue}.`);
@@ -6135,7 +6136,7 @@ var faceapi = (() => {
     const it = kernelRegistry.entries();
     const result = [];
     while (true) {
-      const {done, value} = it.next();
+      const { done, value } = it.next();
       if (done) {
         break;
       }
@@ -6148,7 +6149,7 @@ var faceapi = (() => {
     return result;
   }
   function registerKernel(config) {
-    const {kernelName, backendName} = config;
+    const { kernelName, backendName } = config;
     const key = makeKey(kernelName, backendName);
     if (kernelRegistry.has(key)) {
       console.warn(`The kernel '${kernelName}' for backend '${backendName}' is already registered`);
@@ -6156,7 +6157,7 @@ var faceapi = (() => {
     kernelRegistry.set(key, config);
   }
   function registerGradient(config) {
-    const {kernelName} = config;
+    const { kernelName } = config;
     if (gradRegistry.has(kernelName)) {
       if (env().getBool("DEBUG")) {
         console.warn(`Overriding the gradient for '${kernelName}'`);
@@ -6180,7 +6181,7 @@ var faceapi = (() => {
   function copyRegisteredKernels(registeredBackendName, newBackendName) {
     const kernels = getKernelsForBackend(registeredBackendName);
     kernels.forEach((kernelConfig) => {
-      const newKernelConfig = Object.assign({}, kernelConfig, {backendName: newBackendName});
+      const newKernelConfig = Object.assign({}, kernelConfig, { backendName: newBackendName });
       registerKernel(newKernelConfig);
     });
   }
@@ -6316,7 +6317,7 @@ var faceapi = (() => {
         for (const output of outputs) {
           output.dataSync();
         }
-        timer = Promise.resolve({kernelMs: now() - start});
+        timer = Promise.resolve({ kernelMs: now() - start });
       }
       if (env().getBool("CHECK_COMPUTATION_FOR_ERRORS")) {
         for (let i = 0; i < outputs.length; i++) {
@@ -6336,7 +6337,7 @@ var faceapi = (() => {
       return kernelProfile;
     }
     logKernelProfile(kernelProfile) {
-      const {kernelName, outputs, timeMs, inputs, extraInfo} = kernelProfile;
+      const { kernelName, outputs, timeMs, inputs, extraInfo } = kernelProfile;
       outputs.forEach((result) => {
         Promise.all([result.data(), timeMs, extraInfo]).then((valueContainer) => {
           this.logger.logKernelProfile(kernelName, result, valueContainer[0], valueContainer[1], inputs, valueContainer[2]);
@@ -6992,7 +6993,7 @@ var faceapi = (() => {
         throw new Error(`Backend '${this.backendName}' has not yet been initialized. Make sure to await tf.ready() or await tf.setBackend() before calling other methods`);
       }
       if (this.backendInstance == null) {
-        const {name, asyncInit} = this.initializeBackendsAndReturnBest();
+        const { name, asyncInit } = this.initializeBackendsAndReturnBest();
         if (asyncInit) {
           throw new Error(`The highest priority backend '${name}' has not yet been initialized. Make sure to await tf.ready() or await tf.setBackend() before calling other methods`);
         }
@@ -7006,7 +7007,7 @@ var faceapi = (() => {
     findBackend(backendName) {
       if (!(backendName in this.registry)) {
         if (backendName in this.registryFactory) {
-          const {asyncInit} = this.initializeBackend(backendName);
+          const { asyncInit } = this.initializeBackend(backendName);
           if (asyncInit) {
             return null;
           }
@@ -7027,7 +7028,7 @@ var faceapi = (() => {
         console.warn(`${backendName} backend was already registered. Reusing existing backend factory.`);
         return false;
       }
-      this.registryFactory[backendName] = {factory, priority};
+      this.registryFactory[backendName] = { factory, priority };
       return true;
     }
     async setBackend(backendName) {
@@ -7037,7 +7038,7 @@ var faceapi = (() => {
       this.backendName = backendName;
       if (this.registry[backendName] == null) {
         this.backendInstance = null;
-        const {success, asyncInit} = this.initializeBackend(backendName);
+        const { success, asyncInit } = this.initializeBackend(backendName);
         const result = asyncInit ? await success : success;
         if (!result) {
           return false;
@@ -7090,15 +7091,15 @@ var faceapi = (() => {
             return false;
           });
           this.pendingBackendInit = success;
-          return {success, asyncInit: true};
+          return { success, asyncInit: true };
         } else {
           this.registry[backendName] = backend2;
-          return {success: true, asyncInit: false};
+          return { success: true, asyncInit: false };
         }
       } catch (err) {
         console.warn(`Initialization of backend ${backendName} failed`);
         console.warn(err.stack || err.message);
-        return {success: false, asyncInit: false};
+        return { success: false, asyncInit: false };
       }
     }
     removeBackend(backendName) {
@@ -7132,9 +7133,9 @@ var faceapi = (() => {
       const sortedBackends = this.getSortedBackends();
       for (let i = 0; i < sortedBackends.length; i++) {
         const backendName = sortedBackends[i];
-        const {success, asyncInit} = this.initializeBackend(backendName);
+        const { success, asyncInit } = this.initializeBackend(backendName);
         if (asyncInit || success) {
-          return {name: backendName, asyncInit};
+          return { name: backendName, asyncInit };
         }
       }
       throw new Error(`Could not initialize any backends, all backend initializations failed.`);
@@ -7194,13 +7195,13 @@ var faceapi = (() => {
       return Engine.nextVariableId++;
     }
     clone(x) {
-      const y = ENGINE.runKernel(Identity, {x});
-      const inputs = {x};
+      const y = ENGINE.runKernel(Identity, { x });
+      const inputs = { x };
       const grad2 = (dy) => ({
         x: () => {
           const dtype = "float32";
-          const gradInputs = {x: dy};
-          const attrs = {dtype};
+          const gradInputs = { x: dy };
+          const attrs = { dtype };
           return ENGINE.runKernel(Cast, gradInputs, attrs);
         }
       });
@@ -7213,7 +7214,7 @@ var faceapi = (() => {
       if (!hasKernel) {
         throw new Error(`Kernel '${kernelName}' not registered for backend '${this.backendName}'`);
       }
-      return this.runKernelFunc({kernelName, inputs, attrs});
+      return this.runKernelFunc({ kernelName, inputs, attrs });
     }
     shouldCheckForMemLeaks() {
       return this.ENV.getBool("IS_TEST");
@@ -7246,7 +7247,7 @@ var faceapi = (() => {
       let out;
       const kernelOrScopeName = isRegisteredKernelInvocation(kernelParams) ? kernelParams.kernelName : this.state.activeScope != null ? this.state.activeScope.name : "";
       if (isRegisteredKernelInvocation(kernelParams)) {
-        const {kernelName, inputs: inputs2, attrs: attrs2} = kernelParams;
+        const { kernelName, inputs: inputs2, attrs: attrs2 } = kernelParams;
         if (this.backendName == null) {
           this.backend;
         }
@@ -7254,7 +7255,7 @@ var faceapi = (() => {
         assert(kernel != null, () => `Cannot find registered kernel '${kernelName}' for backend '${this.backendName}'`);
         kernelFunc3 = () => {
           const numDataIdsBefore = this.backend.numDataIds();
-          out = kernel.kernelFunc({inputs: inputs2, attrs: attrs2, backend: this.backend});
+          out = kernel.kernelFunc({ inputs: inputs2, attrs: attrs2, backend: this.backend });
           const outInfos = Array.isArray(out) ? out : [out];
           if (this.shouldCheckForMemLeaks()) {
             this.checkKernelForMemLeak(kernelName, numDataIdsBefore, outInfos);
@@ -7263,7 +7264,7 @@ var faceapi = (() => {
             if (outInfo.rank != null) {
               return outInfo;
             }
-            const {dataId, shape, dtype} = outInfo;
+            const { dataId, shape, dtype } = outInfo;
             return this.makeTensorFromDataId(dataId, shape, dtype);
           });
           if (isTapeOn) {
@@ -7273,7 +7274,7 @@ var faceapi = (() => {
           return outTensors;
         };
       } else {
-        const {forwardFunc} = kernelParams;
+        const { forwardFunc } = kernelParams;
         const saveFunc = (tensors) => {
           if (!isTapeOn) {
             return;
@@ -7290,7 +7291,7 @@ var faceapi = (() => {
           return outs;
         };
       }
-      const {inputs, attrs} = kernelParams;
+      const { inputs, attrs } = kernelParams;
       const backwardsFunc = isRegisteredKernelInvocation(kernelParams) ? null : kernelParams.backwardsFunc;
       let kernelProfile;
       this.scopedRun(() => this.state.kernelDepth++, () => this.state.kernelDepth--, () => {
@@ -7480,7 +7481,7 @@ var faceapi = (() => {
       return this.state.gradientDepth > 0 && this.state.kernelDepth === 0;
     }
     addTapeNode(kernelName, inputs, outputs, gradientsFunc, saved, attrs) {
-      const tapeNode = {id: this.state.nextTapeNodeId++, kernelName, inputs, outputs, saved};
+      const tapeNode = { id: this.state.nextTapeNodeId++, kernelName, inputs, outputs, saved };
       const gradConfig = getGradient(kernelName);
       if (gradConfig != null) {
         gradientsFunc = gradConfig.gradFunc;
@@ -7566,7 +7567,7 @@ var faceapi = (() => {
           });
           this.state.activeTape = null;
         }
-        return {value: y, grads: grads2};
+        return { value: y, grads: grads2 };
       });
     }
     customGrad(f) {
@@ -7659,7 +7660,7 @@ var faceapi = (() => {
   }
   var ENGINE = getOrMakeEngine();
   function add(a, b) {
-    const inputs = {a, b};
+    const inputs = { a, b };
     return ENGINE.runKernel(Add, inputs);
   }
   var device_util_exports = {};
@@ -7798,17 +7799,17 @@ var faceapi = (() => {
         throw ex;
       }
     };
-    Object.defineProperty(f2, "name", {value: opName, configurable: true});
+    Object.defineProperty(f2, "name", { value: opName, configurable: true });
     return f2;
   }
   function complex_(real4, imag4) {
     const $real = convertToTensor(real4, "real", "complex");
     const $imag = convertToTensor(imag4, "imag", "complex");
     assertShapesMatch($real.shape, $imag.shape, `real and imag shapes, ${$real.shape} and ${$imag.shape}, must match in call to tf.complex().`);
-    const inputs = {real: $real, imag: $imag};
+    const inputs = { real: $real, imag: $imag };
     return ENGINE.runKernel(Complex, inputs);
   }
-  var complex = op({complex_});
+  var complex = op({ complex_ });
   function makeTensor(values, shape, inferredShape, dtype) {
     if (dtype == null) {
       dtype = inferDtype(values);
@@ -7861,7 +7862,7 @@ var faceapi = (() => {
       if (t.dtype !== "float32" && t.dtype !== "int32" && t.dtype !== "bool" && t.dtype !== "string" && t.dtype !== "complex64") {
         throw new Error(`Unsupported dtype in weight '${name}': ${t.dtype}`);
       }
-      const spec = {name, shape: t.shape, dtype: t.dtype};
+      const spec = { name, shape: t.shape, dtype: t.dtype };
       if (t.dtype === "string") {
         const utf8bytes = new Promise(async (resolve) => {
           const vals = await t.bytes();
@@ -7888,7 +7889,7 @@ var faceapi = (() => {
       specs.push(spec);
     }
     const tensorValues = await Promise.all(dataPromises);
-    return {data: concatenateTypedArrays(tensorValues), specs};
+    return { data: concatenateTypedArrays(tensorValues), specs };
   }
   function decodeWeights(buffer2, specs) {
     const out = {};
@@ -8190,8 +8191,8 @@ var faceapi = (() => {
   }
   function setUpDatabase(openRequest) {
     const db = openRequest.result;
-    db.createObjectStore(MODEL_STORE_NAME, {keyPath: "modelPath"});
-    db.createObjectStore(INFO_STORE_NAME, {keyPath: "modelPath"});
+    db.createObjectStore(MODEL_STORE_NAME, { keyPath: "modelPath" });
+    db.createObjectStore(INFO_STORE_NAME, { keyPath: "modelPath" });
   }
   var BrowserIndexedDB = class {
     constructor(modelPath) {
@@ -8237,7 +8238,7 @@ var faceapi = (() => {
             const modelArtifactsInfo = getModelArtifactsInfoForJSON(modelArtifacts);
             const infoTx = db.transaction(INFO_STORE_NAME, "readwrite");
             let infoStore = infoTx.objectStore(INFO_STORE_NAME);
-            const putInfoRequest = infoStore.put({modelPath: this.modelPath, modelArtifactsInfo});
+            const putInfoRequest = infoStore.put({ modelPath: this.modelPath, modelArtifactsInfo });
             let modelTx;
             putInfoRequest.onsuccess = () => {
               modelTx = db.transaction(MODEL_STORE_NAME, "readwrite");
@@ -8247,7 +8248,7 @@ var faceapi = (() => {
                 modelArtifacts,
                 modelArtifactsInfo
               });
-              putModelRequest.onsuccess = () => resolve({modelArtifactsInfo});
+              putModelRequest.onsuccess = () => resolve({ modelArtifactsInfo });
               putModelRequest.onerror = (error) => {
                 infoStore = infoTx.objectStore(INFO_STORE_NAME);
                 const deleteInfoRequest = infoStore.delete(this.modelPath);
@@ -8440,7 +8441,7 @@ var faceapi = (() => {
             result.modelInitializer = modelArtifacts.modelInitializer;
           }
           this.LS.setItem(this.keys.modelMetadata, JSON.stringify(result));
-          return {modelArtifactsInfo};
+          return { modelArtifactsInfo };
         } catch (err) {
           this.LS.removeItem(this.keys.info);
           this.LS.removeItem(this.keys.topology);
@@ -8715,17 +8716,17 @@ var faceapi = (() => {
     if (dtype === "string" && $x.dtype !== "string" || dtype !== "string" && $x.dtype === "string") {
       throw new Error("Only strings can be casted to strings");
     }
-    const inputs = {x: $x};
-    const attrs = {dtype};
+    const inputs = { x: $x };
+    const attrs = { dtype };
     return ENGINE.runKernel(Cast, inputs, attrs);
   }
-  var cast = op({cast_});
+  var cast = op({ cast_ });
   function clone_(x) {
     const $x = convertToTensor(x, "x", "clone", "string_or_numeric");
-    const inputs = {x: $x};
+    const inputs = { x: $x };
     return ENGINE.runKernel(Identity, inputs);
   }
-  var clone = op({clone_});
+  var clone = op({ clone_ });
   function print2(x, verbose = false) {
     console.log(x.toString(verbose));
   }
@@ -8784,7 +8785,7 @@ var faceapi = (() => {
       if (typeof document === "undefined") {
         throw new Error("Browser downloads are not supported in this environment since `document` is not present");
       }
-      const weightsURL = window.URL.createObjectURL(new Blob([modelArtifacts.weightData], {type: "application/octet-stream"}));
+      const weightsURL = window.URL.createObjectURL(new Blob([modelArtifacts.weightData], { type: "application/octet-stream" }));
       if (modelArtifacts.modelTopology instanceof ArrayBuffer) {
         throw new Error("BrowserDownloads.save() does not support saving model topology in binary formats yet.");
       } else {
@@ -8808,7 +8809,7 @@ var faceapi = (() => {
         if (modelArtifacts.modelInitializer != null) {
           modelTopologyAndWeightManifest.modelInitializer = modelArtifacts.modelInitializer;
         }
-        const modelTopologyAndWeightManifestURL = window.URL.createObjectURL(new Blob([JSON.stringify(modelTopologyAndWeightManifest)], {type: "application/json"}));
+        const modelTopologyAndWeightManifestURL = window.URL.createObjectURL(new Blob([JSON.stringify(modelTopologyAndWeightManifest)], { type: "application/json" }));
         const jsonAnchor = this.jsonAnchor == null ? document.createElement("a") : this.jsonAnchor;
         jsonAnchor.download = this.modelTopologyFileName;
         jsonAnchor.href = modelTopologyAndWeightManifestURL;
@@ -8819,7 +8820,7 @@ var faceapi = (() => {
           weightDataAnchor.href = weightsURL;
           await defer(() => weightDataAnchor.dispatchEvent(new MouseEvent("click")));
         }
-        return {modelArtifactsInfo: getModelArtifactsInfoForJSON(modelArtifacts)};
+        return { modelArtifactsInfo: getModelArtifactsInfoForJSON(modelArtifacts) };
       }
     }
   };
@@ -8844,7 +8845,7 @@ var faceapi = (() => {
             return;
           }
           if (weightFiles.length === 0) {
-            resolve({modelTopology});
+            resolve({ modelTopology });
           }
           const weightsManifest = modelJSON.weightsManifest;
           if (weightsManifest == null) {
@@ -8976,7 +8977,7 @@ var faceapi = (() => {
       loadOptions = {};
     }
     const fetchFunc = loadOptions.fetchFunc == null ? env().platform.fetch : loadOptions.fetchFunc;
-    const requests = fetchURLs.map((fetchURL) => fetchFunc(fetchURL, loadOptions.requestInit, {isBinary: true}));
+    const requests = fetchURLs.map((fetchURL) => fetchFunc(fetchURL, loadOptions.requestInit, { isBinary: true }));
     const fetchStartFraction = 0;
     const fetchEndFraction = 0.5;
     const responses = loadOptions.onProgress == null ? await Promise.all(requests) : await monitorPromisesProgress(requests, loadOptions.onProgress, fetchStartFraction, fetchEndFraction);
@@ -8987,7 +8988,7 @@ var faceapi = (() => {
     return buffers;
   }
   async function loadWeights(manifest, filePathPrefix = "", weightNames, requestInit) {
-    const fetchWeights = (fetchUrls) => loadWeightsAsArrayBuffer(fetchUrls, {requestInit});
+    const fetchWeights = (fetchUrls) => loadWeightsAsArrayBuffer(fetchUrls, { requestInit });
     const loadWeights2 = weightsLoaderFactory(fetchWeights);
     return loadWeights2(manifest, filePathPrefix, weightNames);
   }
@@ -9106,7 +9107,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
       if (modelArtifacts.modelTopology instanceof ArrayBuffer) {
         throw new Error("BrowserHTTPRequest.save() does not support saving model topology in binary formats yet.");
       }
-      const init2 = Object.assign({method: this.DEFAULT_METHOD}, this.requestInit);
+      const init2 = Object.assign({ method: this.DEFAULT_METHOD }, this.requestInit);
       init2.body = new FormData();
       const weightsManifest = [{
         paths: ["./model.weights.bin"],
@@ -9128,9 +9129,9 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
       if (modelArtifacts.modelInitializer != null) {
         modelTopologyAndWeightManifest.modelInitializer = modelArtifacts.modelInitializer;
       }
-      init2.body.append("model.json", new Blob([JSON.stringify(modelTopologyAndWeightManifest)], {type: JSON_TYPE}), "model.json");
+      init2.body.append("model.json", new Blob([JSON.stringify(modelTopologyAndWeightManifest)], { type: JSON_TYPE }), "model.json");
       if (modelArtifacts.weightData != null) {
-        init2.body.append("model.weights.bin", new Blob([modelArtifacts.weightData], {type: OCTET_STREAM_MIME_TYPE}), "model.weights.bin");
+        init2.body.append("model.weights.bin", new Blob([modelArtifacts.weightData], { type: OCTET_STREAM_MIME_TYPE }), "model.weights.bin");
       }
       const response = await this.fetch(this.path, init2);
       if (response.ok) {
@@ -9283,7 +9284,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
         return new PassthroughLoader(modelArtifacts);
       } else {
         console.warn("Please call tf.io.fromMemory() with only one argument. The argument should be of type ModelArtifacts. The multi-argument signature of tf.io.fromMemory() has been deprecated and will be removed in a future release.");
-        return new PassthroughLoader({modelTopology: modelArtifacts});
+        return new PassthroughLoader({ modelTopology: modelArtifacts });
       }
     } else {
       console.warn("Please call tf.io.fromMemory() with only one argument. The argument should be of type ModelArtifacts. The multi-argument signature of tf.io.fromMemory() has been deprecated and will be removed in a future release.");
@@ -9306,21 +9307,21 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     let $a = convertToTensor(a, "a", "matMul");
     let $b = convertToTensor(b, "b", "matMul");
     [$a, $b] = makeTypesMatch($a, $b);
-    const inputs = {a: $a, b: $b};
-    const attrs = {transposeA, transposeB};
+    const inputs = { a: $a, b: $b };
+    const attrs = { transposeA, transposeB };
     return ENGINE.runKernel(BatchMatMul, inputs, attrs);
   }
-  var matMul = op({matMul_});
+  var matMul = op({ matMul_ });
   function oneHot_(indices, depth, onValue = 1, offValue = 0) {
     if (depth < 2) {
       throw new Error(`Error in oneHot: depth must be >=2, but it is ${depth}`);
     }
     const $indices = convertToTensor(indices, "indices", "oneHot", "int32");
-    const inputs = {indices: $indices};
-    const attrs = {depth, onValue, offValue};
+    const inputs = { indices: $indices };
+    const attrs = { depth, onValue, offValue };
     return ENGINE.runKernel(OneHot, inputs, attrs);
   }
-  var oneHot = op({oneHot_});
+  var oneHot = op({ oneHot_ });
   function transpose_(x, perm) {
     const $x = convertToTensor(x, "x", "transpose");
     if (perm == null) {
@@ -9333,11 +9334,11 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     if ($x.rank <= 1) {
       return $x.clone();
     }
-    const inputs = {x: $x};
-    const attrs = {perm};
+    const inputs = { x: $x };
+    const attrs = { perm };
     return ENGINE.runKernel(Transpose, inputs, attrs);
   }
-  var transpose = op({transpose_});
+  var transpose = op({ transpose_ });
   function confusionMatrix_(labels, predictions, numClasses) {
     const $labels = convertToTensor(labels, "labels", "confusionMatrix");
     const $predictions = convertToTensor(predictions, "predictions", "confusionMatrix");
@@ -9352,7 +9353,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     const product = matMul(oneHotLabelsT, oneHotPredictions);
     return cast(product, "int32");
   }
-  var confusionMatrix = op({confusionMatrix_});
+  var confusionMatrix = op({ confusionMatrix_ });
   var browser_exports = {};
   __export2(browser_exports, {
     fromPixels: () => fromPixels,
@@ -9410,8 +9411,8 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     }
     const kernel = getKernel(FromPixels, ENGINE.backendName);
     if (kernel != null) {
-      const inputs = {pixels};
-      const attrs = {numChannels};
+      const inputs = { pixels };
+      const attrs = { numChannels };
       return ENGINE.runKernel(FromPixels, inputs, attrs);
     }
     const [width, height] = isVideo ? [
@@ -9464,7 +9465,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     if (env().getBool("WRAP_TO_IMAGEBITMAP") && canWrapPixelsToImageBitmap(pixels)) {
       let imageBitmap;
       try {
-        imageBitmap = await createImageBitmap(pixels, {premultiplyAlpha: "none"});
+        imageBitmap = await createImageBitmap(pixels, { premultiplyAlpha: "none" });
       } catch (e) {
         imageBitmap = null;
       }
@@ -9538,7 +9539,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     }
     return bytes;
   }
-  var fromPixels = op({fromPixels_});
+  var fromPixels = op({ fromPixels_ });
   var gather_nd_util_exports = {};
   __export2(gather_nd_util_exports, {
     prepareAndValidate: () => prepareAndValidate
@@ -9646,7 +9647,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     const numUpdates = sizeFromShape(indices.shape) / safeSliceDim;
     const strides = [...computeStrides(shape.slice(0, sliceRank)), 1];
     const outputSize = sizeFromShape(shape);
-    return {sliceRank, numUpdates, sliceSize, strides, outputSize};
+    return { sliceRank, numUpdates, sliceSize, strides, outputSize };
   }
   var slice_util_exports = {};
   __export2(slice_util_exports, {
@@ -9908,7 +9909,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
       $end[axis] = 1;
       newShape.splice(axis, 0, 1);
     });
-    const {begin: normalizedBegin, end: normalizedEnd, strides: normalizedStrides} = getNormalizedAxes(newShape, ellipsisAxes, numInterpolatedAxes, $begin, $end, $strides, beginMask, endMask, ellipsisMask);
+    const { begin: normalizedBegin, end: normalizedEnd, strides: normalizedStrides } = getNormalizedAxes(newShape, ellipsisAxes, numInterpolatedAxes, $begin, $end, $strides, beginMask, endMask, ellipsisMask);
     $begin = normalizedBegin;
     $end = normalizedEnd;
     $strides = normalizedStrides;
@@ -9920,7 +9921,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
     const size = computeOutShape($begin, $end, $strides);
     const outShape = size.filter((_, axis) => shrinkAxes.indexOf(axis) === -1);
     const nonStrided = $strides.every((v) => v === 1);
-    return {nonStrided, $begin, $end, $strides, size, newShape, outShape};
+    return { nonStrided, $begin, $end, $strides, size, newShape, outShape };
   }
   var serialization_exports = {};
   __export2(serialization_exports, {
@@ -10139,18 +10140,18 @@ Expected: ${expectedFlat}.`);
     let $a = convertToTensor(a, "a", "add");
     let $b = convertToTensor(b, "b", "add");
     [$a, $b] = makeTypesMatch($a, $b);
-    const inputs = {a: $a, b: $b};
+    const inputs = { a: $a, b: $b };
     return ENGINE.runKernel(Add, inputs);
   }
-  var add2 = op({add_});
+  var add2 = op({ add_ });
   function floorDiv_(a, b) {
     let $a = convertToTensor(a, "a", "floorDiv");
     let $b = convertToTensor(b, "b", "floorDiv");
     [$a, $b] = makeTypesMatch($a, $b);
-    const inputs = {a: $a, b: $b};
+    const inputs = { a: $a, b: $b };
     return ENGINE.runKernel(FloorDiv, inputs);
   }
-  var floorDiv = op({floorDiv_});
+  var floorDiv = op({ floorDiv_ });
   function div_(a, b) {
     let $a = convertToTensor(a, "a", "div");
     let $b = convertToTensor(b, "b", "div");
@@ -10158,42 +10159,42 @@ Expected: ${expectedFlat}.`);
     if ($a.dtype === "int32" && $b.dtype === "int32") {
       return floorDiv($a, $b);
     }
-    const inputs = {a: $a, b: $b};
+    const inputs = { a: $a, b: $b };
     const attrs = {};
     return ENGINE.runKernel(RealDiv, inputs, attrs);
   }
-  var div = op({div_});
+  var div = op({ div_ });
   function mul_(a, b) {
     let $a = convertToTensor(a, "a", "mul");
     let $b = convertToTensor(b, "b", "mul");
     [$a, $b] = makeTypesMatch($a, $b);
-    const inputs = {a: $a, b: $b};
+    const inputs = { a: $a, b: $b };
     return ENGINE.runKernel(Multiply, inputs);
   }
-  var mul = op({mul_});
+  var mul = op({ mul_ });
   function abs_(x) {
     const $x = convertToTensor(x, "x", "abs");
     if ($x.dtype === "complex64") {
-      const inputs = {x: $x};
+      const inputs = { x: $x };
       return ENGINE.runKernel(ComplexAbs, inputs);
     } else {
-      const inputs = {x: $x};
+      const inputs = { x: $x };
       return ENGINE.runKernel(Abs, inputs);
     }
   }
-  var abs = op({abs_});
+  var abs = op({ abs_ });
   function acos_(x) {
     const $x = convertToTensor(x, "x", "acos");
-    const inputs = {x: $x};
+    const inputs = { x: $x };
     return ENGINE.runKernel(Acos, inputs);
   }
-  var acos = op({acos_});
+  var acos = op({ acos_ });
   function acosh_(x) {
     const $x = convertToTensor(x, "x", "acosh");
-    const inputs = {x: $x};
+    const inputs = { x: $x };
     return ENGINE.runKernel(Acosh, inputs);
   }
-  var acosh = op({acosh_});
+  var acosh = op({ acosh_ });
   function addN_(tensors) {
     assert(Array.isArray(tensors), () => "The argument passed to tf.addN() must be a list of tensors");
     assert(tensors.length >= 1, () => `Must pass at least one tensor to tf.addN(), but got ${tensors.length}`);
@@ -10212,67 +10213,67 @@ Expected: ${expectedFlat}.`);
     const inputs = $tensors;
     return ENGINE.runKernel(AddN, inputs);
   }
-  var addN = op({addN_});
+  var addN = op({ addN_ });
   function all_(x, axis = null, keepDims = false) {
     const $x = convertToTensor(x, "x", "all", "bool");
-    const inputs = {x: $x};
-    const attrs = {axis, keepDims};
+    const inputs = { x: $x };
+    const attrs = { axis, keepDims };
     return ENGINE.runKernel(All, inputs, attrs);
   }
-  var all = op({all_});
+  var all = op({ all_ });
   function any_(x, axis = null, keepDims = false) {
     const $x = convertToTensor(x, "x", "any", "bool");
-    const inputs = {x: $x};
-    const attrs = {axis, keepDims};
+    const inputs = { x: $x };
+    const attrs = { axis, keepDims };
     return ENGINE.runKernel(Any, inputs, attrs);
   }
-  var any = op({any_});
+  var any = op({ any_ });
   function argMax_(x, axis = 0) {
     const $x = convertToTensor(x, "x", "argMax");
-    const inputs = {x: $x};
-    const attrs = {axis};
+    const inputs = { x: $x };
+    const attrs = { axis };
     return ENGINE.runKernel(ArgMax, inputs, attrs);
   }
-  var argMax = op({argMax_});
+  var argMax = op({ argMax_ });
   function argMin_(x, axis = 0) {
     const $x = convertToTensor(x, "x", "argMin");
-    const inputs = {x: $x};
-    const attrs = {axis};
+    const inputs = { x: $x };
+    const attrs = { axis };
     return ENGINE.runKernel(ArgMin, inputs, attrs);
   }
-  var argMin = op({argMin_});
+  var argMin = op({ argMin_ });
   function asin_(x) {
     const $x = convertToTensor(x, "x", "asin");
-    const inputs = {x: $x};
+    const inputs = { x: $x };
     return ENGINE.runKernel(Asin, inputs);
   }
-  var asin = op({asin_});
+  var asin = op({ asin_ });
   function asinh_(x) {
     const $x = convertToTensor(x, "x", "asinh");
-    const inputs = {x: $x};
+    const inputs = { x: $x };
     return ENGINE.runKernel(Asinh, inputs);
   }
-  var asinh = op({asinh_});
+  var asinh = op({ asinh_ });
   function atan_(x) {
     const $x = convertToTensor(x, "x", "atan");
-    const inputs = {x: $x};
+    const inputs = { x: $x };
     return ENGINE.runKernel(Atan, inputs);
   }
-  var atan = op({atan_});
+  var atan = op({ atan_ });
   function atan2_(a, b) {
     let $a = convertToTensor(a, "a", "atan2");
     let $b = convertToTensor(b, "b", "atan2");
     [$a, $b] = makeTypesMatch($a, $b);
-    const inputs = {a: $a, b: $b};
+    const inputs = { a: $a, b: $b };
     return ENGINE.runKernel(Atan2, inputs);
   }
-  var atan2 = op({atan2_});
+  var atan2 = op({ atan2_ });
   function atanh_(x) {
     const $x = convertToTensor(x, "x", "atanh");
-    const inputs = {x: $x};
+    const inputs = { x: $x };
     return ENGINE.runKernel(Atanh, inputs);
   }
-  var atanh = op({atanh_});
+  var atanh = op({ atanh_ });
   function computeDilation2DInfo(inputShape, filterShape, strides, pad3, dataFormat = "NHWC", dilations) {
     const inputChannels = inputShape[3];
     const $filterShape = [...filterShape, inputChannels];
@@ -10320,7 +10321,7 @@ Expected: ${expectedFlat}.`);
     const [dilationHeight, dilationWidth] = parseTupleParam(dilations);
     const effectiveFilterHeight = getEffectiveFilterSize(filterHeight, dilationHeight);
     const effectiveFilterWidth = getEffectiveFilterSize(filterWidth, dilationWidth);
-    const {padInfo, outHeight, outWidth} = getPadAndOutInfo(pad3, inHeight, inWidth, strideHeight, strideWidth, effectiveFilterHeight, effectiveFilterWidth, roundingMode, dataFormat);
+    const { padInfo, outHeight, outWidth } = getPadAndOutInfo(pad3, inHeight, inWidth, strideHeight, strideWidth, effectiveFilterHeight, effectiveFilterWidth, roundingMode, dataFormat);
     const outChannels = depthwise ? filterChannels * inChannels : filterChannels;
     let outShape;
     if (dataFormat === "channelsFirst") {
@@ -10366,7 +10367,7 @@ Expected: ${expectedFlat}.`);
     const effectiveFilterDepth = getEffectiveFilterSize(filterDepth, dilationDepth);
     const effectiveFilterHeight = getEffectiveFilterSize(filterHeight, dilationHeight);
     const effectiveFilterWidth = getEffectiveFilterSize(filterWidth, dilationWidth);
-    const {padInfo, outDepth, outHeight, outWidth} = get3DPadAndOutInfo(pad3, inDepth, inHeight, inWidth, strideDepth, strideHeight, strideWidth, effectiveFilterDepth, effectiveFilterHeight, effectiveFilterWidth, roundingMode);
+    const { padInfo, outDepth, outHeight, outWidth } = get3DPadAndOutInfo(pad3, inDepth, inHeight, inWidth, strideDepth, strideHeight, strideWidth, effectiveFilterDepth, effectiveFilterHeight, effectiveFilterWidth, roundingMode);
     const outChannels = depthwise ? filterChannels * inChannels : filterChannels;
     let outShape;
     if (dataFormat === "channelsFirst") {
@@ -10453,7 +10454,7 @@ Expected: ${expectedFlat}.`);
     let outWidth;
     if (typeof pad3 === "number") {
       const padType = pad3 === 0 ? "VALID" : "NUMBER";
-      padInfo = {top: pad3, bottom: pad3, left: pad3, right: pad3, type: padType};
+      padInfo = { top: pad3, bottom: pad3, left: pad3, right: pad3, type: padType };
       const outShape = computeOutputShape2D([inHeight, inWidth], filterHeight, strideHeight, pad3, roundingMode);
       outHeight = outShape[0];
       outWidth = outShape[1];
@@ -10466,9 +10467,9 @@ Expected: ${expectedFlat}.`);
       const bottom = padAlongHeight - top;
       const left = Math.floor(padAlongWidth / 2);
       const right = padAlongWidth - left;
-      padInfo = {top, bottom, left, right, type: "SAME"};
+      padInfo = { top, bottom, left, right, type: "SAME" };
     } else if (pad3 === "valid") {
-      padInfo = {top: 0, bottom: 0, left: 0, right: 0, type: "VALID"};
+      padInfo = { top: 0, bottom: 0, left: 0, right: 0, type: "VALID" };
       outHeight = Math.ceil((inHeight - filterHeight + 1) / strideHeight);
       outWidth = Math.ceil((inWidth - filterWidth + 1) / strideWidth);
     } else if (typeof pad3 === "object") {
@@ -10477,13 +10478,13 @@ Expected: ${expectedFlat}.`);
       const left = dataFormat === "channelsLast" ? pad3[2][0] : pad3[3][0];
       const right = dataFormat === "channelsLast" ? pad3[2][1] : pad3[3][1];
       const padType = top === 0 && bottom === 0 && left === 0 && right === 0 ? "VALID" : "EXPLICIT";
-      padInfo = {top, bottom, left, right, type: padType};
+      padInfo = { top, bottom, left, right, type: padType };
       outHeight = round((inHeight - filterHeight + top + bottom) / strideHeight + 1, roundingMode);
       outWidth = round((inWidth - filterWidth + left + right) / strideWidth + 1, roundingMode);
     } else {
       throw Error(`Unknown padding parameter: ${pad3}`);
     }
-    return {padInfo, outHeight, outWidth};
+    return { padInfo, outHeight, outWidth };
   }
   function get3DPadAndOutInfo(pad3, inDepth, inHeight, inWidth, strideDepth, strideHeight, strideWidth, filterDepth, filterHeight, filterWidth, roundingMode) {
     let padInfo;
@@ -10518,7 +10519,7 @@ Expected: ${expectedFlat}.`);
       const bottom = padAlongHeight - top;
       const left = Math.floor(padAlongWidth / 2);
       const right = padAlongWidth - left;
-      padInfo = {top, bottom, left, right, front, back, type: "SAME"};
+      padInfo = { top, bottom, left, right, front, back, type: "SAME" };
     } else if (pad3 === "valid") {
       padInfo = {
         top: 0,
@@ -10535,7 +10536,7 @@ Expected: ${expectedFlat}.`);
     } else {
       throw Error(`Unknown padding parameter: ${pad3}`);
     }
-    return {padInfo, outDepth, outHeight, outWidth};
+    return { padInfo, outDepth, outHeight, outWidth };
   }
   function round(value, roundingMode) {
     if (!roundingMode) {
@@ -10570,11 +10571,11 @@ Expected: ${expectedFlat}.`);
   }
   function reshape_(x, shape) {
     const $x = convertToTensor(x, "x", "reshape", "string_or_numeric");
-    const inputs = {x: $x};
-    const attrs = {shape};
+    const inputs = { x: $x };
+    const attrs = { shape };
     return ENGINE.runKernel(Reshape, inputs, attrs);
   }
-  var reshape = op({reshape_});
+  var reshape = op({ reshape_ });
   function avgPool_(x, filterSize, strides, pad3, dimRoundingMode) {
     const $x = convertToTensor(x, "x", "avgPool", "float32");
     const dilations = 1;
@@ -10589,8 +10590,8 @@ Expected: ${expectedFlat}.`);
     if (dimRoundingMode != null) {
       assert(isInt(pad3), () => `Error in avgPool: pad must be an integer when using, dimRoundingMode ${dimRoundingMode} but got pad ${pad3}.`);
     }
-    const inputs = {x: x4D};
-    const attrs = {filterSize, strides, pad: pad3, dimRoundingMode};
+    const inputs = { x: x4D };
+    const attrs = { filterSize, strides, pad: pad3, dimRoundingMode };
     let res = ENGINE.runKernel(AvgPool, inputs, attrs);
     res = cast(res, $x.dtype);
     if (reshapedTo4D) {
@@ -10598,7 +10599,7 @@ Expected: ${expectedFlat}.`);
     }
     return res;
   }
-  var avgPool = op({avgPool_});
+  var avgPool = op({ avgPool_ });
   function avgPool3d_(x, filterSize, strides, pad3, dimRoundingMode, dataFormat = "NDHWC") {
     const $x = convertToTensor(x, "x", "avgPool3d", "float32");
     let x5D = $x;
@@ -10612,8 +10613,8 @@ Expected: ${expectedFlat}.`);
     if (dimRoundingMode != null) {
       assert(isInt(pad3), () => `Error in avgPool3d: pad must be an integer when using, dimRoundingMode ${dimRoundingMode} but got pad ${pad3}.`);
     }
-    const inputs = {x: x5D};
-    const attrs = {filterSize, strides, pad: pad3, dimRoundingMode, dataFormat};
+    const inputs = { x: x5D };
+    const attrs = { filterSize, strides, pad: pad3, dimRoundingMode, dataFormat };
     let res = ENGINE.runKernel(AvgPool3D, inputs, attrs);
     res = cast(res, x5D.dtype);
     if (reshapedTo5D) {
@@ -10621,7 +10622,7 @@ Expected: ${expectedFlat}.`);
     }
     return res;
   }
-  var avgPool3d = op({avgPool3d_});
+  var avgPool3d = op({ avgPool3d_ });
   function concat_(tensors, axis = 0) {
     assert(tensors.length >= 1, () => "Pass at least one tensor to concat");
     const $tensors = convertToTensorArray(tensors, "tensors", "concat", "string_or_numeric");
@@ -10637,32 +10638,32 @@ Expected: ${expectedFlat}.`);
       return clone($tensors[0]);
     }
     const inputs = $tensors;
-    const attr = {axis};
+    const attr = { axis };
     return ENGINE.runKernel(Concat, inputs, attr);
   }
-  var concat = op({concat_});
+  var concat = op({ concat_ });
   function sigmoid_(x) {
     const $x = convertToTensor(x, "x", "sigmoid");
-    const inputs = {x: $x};
+    const inputs = { x: $x };
     return ENGINE.runKernel(Sigmoid, inputs);
   }
-  var sigmoid = op({sigmoid_});
+  var sigmoid = op({ sigmoid_ });
   function slice_(x, begin, size) {
     const $x = convertToTensor(x, "x", "slice", "string_or_numeric");
     if ($x.rank === 0) {
       throw new Error("Slicing scalar is not possible");
     }
-    const inputs = {x: $x};
-    const attrs = {begin, size};
+    const inputs = { x: $x };
+    const attrs = { begin, size };
     return ENGINE.runKernel(Slice, inputs, attrs);
   }
-  var slice = op({slice_});
+  var slice = op({ slice_ });
   function tanh_(x) {
     const $x = convertToTensor(x, "x", "tanh");
-    const inputs = {x: $x};
+    const inputs = { x: $x };
     return ENGINE.runKernel(Tanh, inputs);
   }
-  var tanh2 = op({tanh_});
+  var tanh2 = op({ tanh_ });
   function basicLSTMCell_(forgetBias, lstmKernel, lstmBias, data, c, h) {
     const $forgetBias = convertToTensor(forgetBias, "forgetBias", "basicLSTMCell");
     const $lstmKernel = convertToTensor(lstmKernel, "lstmKernel", "basicLSTMCell");
@@ -10684,18 +10685,18 @@ Expected: ${expectedFlat}.`);
     const newH = mul(tanh2(newC), sigmoid(o));
     return [newC, newH];
   }
-  var basicLSTMCell = op({basicLSTMCell_});
+  var basicLSTMCell = op({ basicLSTMCell_ });
   function batchToSpaceND_(x, blockShape, crops) {
     const $x = convertToTensor(x, "x", "batchToSpaceND");
     const prod5 = blockShape.reduce((a, b) => a * b);
     assert($x.rank >= 1 + blockShape.length, () => `input rank is ${$x.rank} but should be > than blockShape.length ${blockShape.length}`);
     assert(crops.length === blockShape.length, () => `crops.length is ${crops.length} but should be equal to blockShape.length  ${blockShape.length}`);
     assert($x.shape[0] % prod5 === 0, () => `input tensor batch is ${$x.shape[0]} but is not divisible by the product of the elements of blockShape ${blockShape.join(" * ")} === ${prod5}`);
-    const inputs = {x: $x};
-    const attrs = {blockShape, crops};
+    const inputs = { x: $x };
+    const attrs = { blockShape, crops };
     return ENGINE.runKernel(BatchToSpaceND, inputs, attrs);
   }
-  var batchToSpaceND = op({batchToSpaceND_});
+  var batchToSpaceND = op({ batchToSpaceND_ });
   function xAs4D(x) {
     let x4D;
     if (x.rank === 0 || x.rank === 1) {
@@ -10735,11 +10736,11 @@ Expected: ${expectedFlat}.`);
       mean: $mean,
       variance: $variance
     };
-    const attrs = {varianceEpsilon};
+    const attrs = { varianceEpsilon };
     const res = ENGINE.runKernel(FusedBatchNorm, inputs, attrs);
     return reshape(res, $x.shape);
   }
-  var batchNorm = op({batchNorm_});
+  var batchNorm = op({ batchNorm_ });
   function batchNorm2d_(x, mean4, variance, offset, scale22, varianceEpsilon) {
     const $x = convertToTensor(x, "x", "batchNorm");
     const $mean = convertToTensor(mean4, "mean", "batchNorm");
@@ -10763,7 +10764,7 @@ Expected: ${expectedFlat}.`);
     }
     return batchNorm($x, $mean, $variance, $offset, $scale, varianceEpsilon);
   }
-  var batchNorm2d = op({batchNorm2d_});
+  var batchNorm2d = op({ batchNorm2d_ });
   function batchNorm3d_(x, mean4, variance, offset, scale22, varianceEpsilon) {
     const $x = convertToTensor(x, "x", "batchNorm");
     const $mean = convertToTensor(mean4, "mean", "batchNorm");
@@ -10787,7 +10788,7 @@ Expected: ${expectedFlat}.`);
     }
     return batchNorm($x, $mean, $variance, $offset, $scale, varianceEpsilon);
   }
-  var batchNorm3d = op({batchNorm3d_});
+  var batchNorm3d = op({ batchNorm3d_ });
   function batchNorm4d_(x, mean4, variance, offset, scale22, varianceEpsilon) {
     const $x = convertToTensor(x, "x", "batchNorm");
     const $mean = convertToTensor(mean4, "mean", "batchNorm");
@@ -10811,18 +10812,18 @@ Expected: ${expectedFlat}.`);
     }
     return batchNorm($x, $mean, $variance, $offset, $scale, varianceEpsilon);
   }
-  var batchNorm4d = op({batchNorm4d_});
+  var batchNorm4d = op({ batchNorm4d_ });
   function bincount_(x, weights, size) {
     const $x = convertToTensor(x, "x", "bincount");
     const $weights = convertToTensor(weights, "weights", "bincount");
     assert($x.dtype === "int32", () => `Error in bincount: input dtype must be int32, but got ${$x.dtype}`);
     assert(size >= 0, () => `size must be non-negative, but got ${size}.`);
     assert($weights.size === $x.size || $weights.size === 0, () => `Error in bincount: weights must have the same size as input or0-length, but got input shape: ${$x.shape}, weights shape: ${$weights.shape}.`);
-    const inputs = {x: $x, weights: $weights};
-    const attrs = {size};
+    const inputs = { x: $x, weights: $weights };
+    const attrs = { size };
     return ENGINE.runKernel(Bincount, inputs, attrs);
   }
-  var bincount = op({bincount_});
+  var bincount = op({ bincount_ });
   function broadcastTo_(x, shape) {
     let input2 = convertToTensor(x, "broadcastTo", "x");
     const xShape = input2.shape;
@@ -10852,41 +10853,41 @@ Expected: ${expectedFlat}.`);
     if (axes.length === 0) {
       return clone(input2);
     }
-    const inputs = {x: input2};
-    const attrs = {reps};
+    const inputs = { x: input2 };
+    const attrs = { reps };
     return ENGINE.runKernel(Tile, inputs, attrs);
   }
-  var broadcastTo = op({broadcastTo_});
+  var broadcastTo = op({ broadcastTo_ });
   function ceil_(x) {
     const $x = convertToTensor(x, "x", "ceil");
-    const inputs = {x: $x};
+    const inputs = { x: $x };
     return ENGINE.runKernel(Ceil, inputs);
   }
-  var ceil = op({ceil_});
+  var ceil = op({ ceil_ });
   function clipByValue_(x, clipValueMin, clipValueMax) {
     const $x = convertToTensor(x, "x", "clipByValue");
     assert(clipValueMin <= clipValueMax, () => `Error in clip: min (${clipValueMin}) must be less than or equal to max (${clipValueMax}).`);
-    const inputs = {x: $x};
-    const attrs = {clipValueMin, clipValueMax};
+    const inputs = { x: $x };
+    const attrs = { clipValueMin, clipValueMax };
     return ENGINE.runKernel(ClipByValue, inputs, attrs);
   }
-  var clipByValue = op({clipByValue_});
+  var clipByValue = op({ clipByValue_ });
   function concat1d_(tensors) {
     return concat(tensors, 0);
   }
-  var concat1d = op({concat1d_});
+  var concat1d = op({ concat1d_ });
   function concat2d_(tensors, axis) {
     return concat(tensors, axis);
   }
-  var concat2d = op({concat2d_});
+  var concat2d = op({ concat2d_ });
   function concat3d_(tensors, axis) {
     return concat(tensors, axis);
   }
-  var concat3d = op({concat3d_});
+  var concat3d = op({ concat3d_ });
   function concat4d_(tensors, axis) {
     return concat(tensors, axis);
   }
-  var concat4d = op({concat4d_});
+  var concat4d = op({ concat4d_ });
   function conv2d_(x, filter, strides, pad3, dataFormat = "NHWC", dilations = [1, 1], dimRoundingMode) {
     const $x = convertToTensor(x, "x", "conv2d");
     const $filter = convertToTensor(filter, "filter", "conv2d");
@@ -10904,15 +10905,15 @@ Expected: ${expectedFlat}.`);
     const inDepth = dataFormat === "NHWC" ? x4D.shape[3] : x4D.shape[1];
     assert(inDepth === $filter.shape[2], () => `Error in conv2d: depth of input (${inDepth}) must match input depth for filter ${$filter.shape[2]}.`);
     assert(eitherStridesOrDilationsAreOne(strides, dilations), () => `Error in conv2D: Either strides or dilations must be 1. Got strides ${strides} and dilations '${dilations}'`);
-    const inputs = {x: x4D, filter: $filter};
-    const attrs = {strides, pad: pad3, dataFormat, dilations, dimRoundingMode};
+    const inputs = { x: x4D, filter: $filter };
+    const attrs = { strides, pad: pad3, dataFormat, dilations, dimRoundingMode };
     const res = ENGINE.runKernel(Conv2D, inputs, attrs);
     if (reshapedTo4D) {
       return reshape(res, [res.shape[1], res.shape[2], res.shape[3]]);
     }
     return res;
   }
-  var conv2d = op({conv2d_});
+  var conv2d = op({ conv2d_ });
   function conv1d_(x, filter, stride, pad3, dataFormat = "NWC", dilation = 1, dimRoundingMode) {
     const $x = convertToTensor(x, "x", "conv1d");
     const $filter = convertToTensor(filter, "filter", "conv1d");
@@ -10941,7 +10942,7 @@ Expected: ${expectedFlat}.`);
     }
     return reshape(res, [res.shape[0], res.shape[2], res.shape[3]]);
   }
-  var conv1d = op({conv1d_});
+  var conv1d = op({ conv1d_ });
   function conv2DBackpropInput_(xShape, dy, filter, strides, pad3, dataFormat = "NHWC", dimRoundingMode) {
     assert(xShape.length === dy.rank, () => `Length of inShape (${xShape.length}) and rank of dy (${dy.rank}) must match`);
     let xShape4D = xShape;
@@ -10962,21 +10963,21 @@ Expected: ${expectedFlat}.`);
     if (dimRoundingMode != null) {
       assert(isInt(pad3), () => `Error in conv2dDerInput: pad must be an integer when using, dimRoundingMode ${dimRoundingMode} but got pad ${pad3}.`);
     }
-    const inputs = {dy: dy4D, filter};
-    const attrs = {strides, pad: pad3, dataFormat, dimRoundingMode, inputShape: xShape4D};
+    const inputs = { dy: dy4D, filter };
+    const attrs = { strides, pad: pad3, dataFormat, dimRoundingMode, inputShape: xShape4D };
     const res = ENGINE.runKernel(Conv2DBackpropInput, inputs, attrs);
     if (reshapedTo4D) {
       return reshape(res, [res.shape[1], res.shape[2], res.shape[3]]);
     }
     return res;
   }
-  var conv2DBackpropInput = op({conv2DBackpropInput_});
+  var conv2DBackpropInput = op({ conv2DBackpropInput_ });
   function conv2dTranspose_(x, filter, outputShape, strides, pad3, dimRoundingMode) {
     const $x = convertToTensor(x, "x", "conv2dTranspose");
     const $filter = convertToTensor(filter, "filter", "conv2dTranspose");
     return conv2DBackpropInput(outputShape, $x, $filter, strides, pad3, "NHWC", dimRoundingMode);
   }
-  var conv2dTranspose = op({conv2dTranspose_});
+  var conv2dTranspose = op({ conv2dTranspose_ });
   function conv3d_(x, filter, strides, pad3, dataFormat = "NDHWC", dilations = [1, 1, 1]) {
     const $x = convertToTensor(x, "x", "conv3d");
     const $filter = convertToTensor(filter, "filter", "conv3d");
@@ -10991,15 +10992,15 @@ Expected: ${expectedFlat}.`);
     assert(x5D.shape[4] === $filter.shape[3], () => `Error in conv3d: depth of input (${x5D.shape[4]}) must match input depth for filter ${$filter.shape[3]}.`);
     assert(eitherStridesOrDilationsAreOne(strides, dilations), () => `Error in conv3D: Either strides or dilations must be 1. Got strides ${strides} and dilations '${dilations}'`);
     assert(dataFormat === "NDHWC", () => `Error in conv3d: got dataFormat of ${dataFormat} but only NDHWC is currently supported.`);
-    const inputs = {x: x5D, filter: $filter};
-    const attrs = {strides, pad: pad3, dataFormat, dilations};
+    const inputs = { x: x5D, filter: $filter };
+    const attrs = { strides, pad: pad3, dataFormat, dilations };
     const res = ENGINE.runKernel(Conv3D, inputs, attrs);
     if (reshapedTo5D) {
       return reshape(res, [res.shape[1], res.shape[2], res.shape[3], res.shape[4]]);
     }
     return res;
   }
-  var conv3d = op({conv3d_});
+  var conv3d = op({ conv3d_ });
   function conv3DBackpropInput_(xShape, dy, filter, strides, pad3) {
     assert(xShape.length === dy.rank, () => `Length of inShape (${xShape.length}) and rank of dy (${dy.rank}) must match`);
     let xShape5D = xShape;
@@ -11017,40 +11018,40 @@ Expected: ${expectedFlat}.`);
     assert(filter.rank === 5, () => `Error in conv3dDerInput: filter must be rank 5, but got rank ${filter.rank}`);
     assert(inDepth === filter.shape[3], () => `Error in conv3dDerInput: depth of input (${inDepth}) must match input depth for filter ${filter.shape[3]}.`);
     assert(outDepth === filter.shape[4], () => `Error in conv3dDerInput: depth of output (${outDepth}) must match output depth for filter ${filter.shape[4]}.`);
-    const inputs = {dy: dy5D, filter};
-    const attrs = {pad: pad3, strides, inputShape: xShape5D};
+    const inputs = { dy: dy5D, filter };
+    const attrs = { pad: pad3, strides, inputShape: xShape5D };
     const res = ENGINE.runKernel(Conv3DBackpropInputV2, inputs, attrs);
     if (reshapedTo5D) {
       return reshape(res, [res.shape[1], res.shape[2], res.shape[3], res.shape[4]]);
     }
     return res;
   }
-  var conv3DBackpropInput = op({conv3DBackpropInput_});
+  var conv3DBackpropInput = op({ conv3DBackpropInput_ });
   function conv3dTranspose_(x, filter, outputShape, strides, pad3) {
     const $x = convertToTensor(x, "x", "conv3dTranspose");
     const $filter = convertToTensor(filter, "filter", "conv3dTranspose");
     return conv3DBackpropInput(outputShape, $x, $filter, strides, pad3);
   }
-  var conv3dTranspose = op({conv3dTranspose_});
+  var conv3dTranspose = op({ conv3dTranspose_ });
   function cos_(x) {
     const $x = convertToTensor(x, "x", "cos");
-    const inputs = {x: $x};
+    const inputs = { x: $x };
     return ENGINE.runKernel(Cos, inputs);
   }
-  var cos = op({cos_});
+  var cos = op({ cos_ });
   function cosh_(x) {
     const $x = convertToTensor(x, "x", "cosh");
-    const inputs = {x: $x};
+    const inputs = { x: $x };
     return ENGINE.runKernel(Cosh, inputs);
   }
-  var cosh = op({cosh_});
+  var cosh = op({ cosh_ });
   function cumsum_(x, axis = 0, exclusive = false, reverse5 = false) {
     const $x = convertToTensor(x, "x", "cumsum");
-    const inputs = {x: $x};
-    const attrs = {axis, exclusive, reverse: reverse5};
+    const inputs = { x: $x };
+    const attrs = { axis, exclusive, reverse: reverse5 };
     return ENGINE.runKernel(Cumsum, inputs, attrs);
   }
-  var cumsum = op({cumsum_});
+  var cumsum = op({ cumsum_ });
   function denseBincount_(x, weights, size, binaryOutput = false) {
     const $x = convertToTensor(x, "x", "denseBincount");
     const $weights = convertToTensor(weights, "weights", "denseBincount");
@@ -11058,11 +11059,11 @@ Expected: ${expectedFlat}.`);
     assert($x.rank <= 2, () => `Error in denseBincount: input must be at most rank 2, but got rank ${$x.rank}.`);
     assert(size >= 0, () => `size must be non-negative, but got ${size}.`);
     assert($weights.size === $x.size || $weights.size === 0, () => `Error in denseBincount: weights must have the same shape as x or 0-length, but got x shape: ${$x.shape}, weights shape: ${$weights.shape}.`);
-    const inputs = {x: $x, weights: $weights};
-    const attrs = {size, binaryOutput};
+    const inputs = { x: $x, weights: $weights };
+    const attrs = { size, binaryOutput };
     return ENGINE.runKernel(DenseBincount, inputs, attrs);
   }
-  var denseBincount = op({denseBincount_});
+  var denseBincount = op({ denseBincount_ });
   function depthToSpace_(x, blockSize, dataFormat = "NHWC") {
     const $x = convertToTensor(x, "x", "depthToSpace");
     const inputHeight = dataFormat === "NHWC" ? $x.shape[1] : $x.shape[2];
@@ -11075,11 +11076,11 @@ Expected: ${expectedFlat}.`);
     ${inputWidth} and ${blockSize} for depthToSpace with input shape
         ${$x.shape}`);
     assert(inputDepth % (blockSize * blockSize) === 0, () => `Dimension size must be evenly divisible by ${blockSize * blockSize} but is ${inputDepth} for depthToSpace with input shape ${$x.shape}`);
-    const inputs = {x: $x};
-    const attrs = {blockSize, dataFormat};
+    const inputs = { x: $x };
+    const attrs = { blockSize, dataFormat };
     return ENGINE.runKernel(DepthToSpace, inputs, attrs);
   }
-  var depthToSpace = op({depthToSpace_});
+  var depthToSpace = op({ depthToSpace_ });
   function depthwiseConv2d_(x, filter, strides, pad3, dataFormat = "NHWC", dilations = [1, 1], dimRoundingMode) {
     const $x = convertToTensor(x, "x", "depthwiseConv2d");
     const $filter = convertToTensor(filter, "filter", "depthwiseConv2d");
@@ -11095,21 +11096,21 @@ Expected: ${expectedFlat}.`);
     if (dimRoundingMode != null) {
       assert(isInt(pad3), () => `Error in depthwiseConv2d: pad must be an integer when using, dimRoundingMode ${dimRoundingMode} but got pad ${pad3}.`);
     }
-    const inputs = {x: x4D, filter: $filter};
-    const attrs = {strides, pad: pad3, dataFormat, dilations, dimRoundingMode};
+    const inputs = { x: x4D, filter: $filter };
+    const attrs = { strides, pad: pad3, dataFormat, dilations, dimRoundingMode };
     const res = ENGINE.runKernel(DepthwiseConv2dNative, inputs, attrs);
     if (reshapedTo4D) {
       return reshape(res, [res.shape[1], res.shape[2], res.shape[3]]);
     }
     return res;
   }
-  var depthwiseConv2d = op({depthwiseConv2d_});
+  var depthwiseConv2d = op({ depthwiseConv2d_ });
   function diag_(x) {
     const $x = convertToTensor(x, "x", "diag");
-    const inputs = {x: $x};
+    const inputs = { x: $x };
     return ENGINE.runKernel(Diag, inputs);
   }
-  var diag = op({diag_});
+  var diag = op({ diag_ });
   function dilation2d_(x, filter, strides, pad3, dilations = [1, 1], dataFormat = "NHWC") {
     const $x = convertToTensor(x, "x", "dilation2d");
     const $filter = convertToTensor(filter, "filter", "dilation2d");
@@ -11122,15 +11123,15 @@ Expected: ${expectedFlat}.`);
       x4D = reshape($x, [1, $x.shape[0], $x.shape[1], $x.shape[2]]);
       reshapedTo4D = true;
     }
-    const inputs = {x: x4D, filter: $filter};
-    const attrs = {strides, pad: pad3, dilations};
+    const inputs = { x: x4D, filter: $filter };
+    const attrs = { strides, pad: pad3, dilations };
     const res = ENGINE.runKernel(Dilation2D, inputs, attrs);
     if (reshapedTo4D) {
       return reshape(res, [res.shape[1], res.shape[2], res.shape[3]]);
     }
     return res;
   }
-  var dilation2d = op({dilation2d_});
+  var dilation2d = op({ dilation2d_ });
   function getBroadcastDims(inShape, outShape) {
     const inRank = inShape.length;
     const dims = [];
@@ -11186,10 +11187,10 @@ Expected: ${expectedFlat}.`);
     let $b = convertToTensor(b, "b", "equal");
     [$a, $b] = makeTypesMatch($a, $b);
     assertAndGetBroadcastShape($a.shape, $b.shape);
-    const inputs = {a: $a, b: $b};
+    const inputs = { a: $a, b: $b };
     return ENGINE.runKernel(Equal, inputs);
   }
-  var equal = op({equal_});
+  var equal = op({ equal_ });
   function where_(condition, a, b) {
     const $a = convertToTensor(a, "a", "where");
     const $b = convertToTensor(b, "b", "where");
@@ -11205,13 +11206,13 @@ Expected: ${expectedFlat}.`);
     };
     return ENGINE.runKernel(Select, inputs);
   }
-  var where = op({where_});
+  var where = op({ where_ });
   function zerosLike_(x) {
     const $x = convertToTensor(x, "x", "zerosLike");
-    const inputs = {x: $x};
+    const inputs = { x: $x };
     return ENGINE.runKernel(ZerosLike, inputs);
   }
-  var zerosLike = op({zerosLike_});
+  var zerosLike = op({ zerosLike_ });
   function divNoNan_(a, b) {
     let $a = convertToTensor(a, "a", "div");
     let $b = convertToTensor(b, "b", "div");
@@ -11221,7 +11222,7 @@ Expected: ${expectedFlat}.`);
     const bEqualsZero = equal($b, zeros4);
     return where(bEqualsZero, zeros4, divResult);
   }
-  var divNoNan = op({divNoNan_});
+  var divNoNan = op({ divNoNan_ });
   function dot_(t1, t2) {
     const $t1 = convertToTensor(t1, "t1", "dot");
     const $t2 = convertToTensor(t2, "t2", "dot");
@@ -11249,57 +11250,57 @@ Expected: ${expectedFlat}.`);
       return t1t2;
     }
   }
-  var dot = op({dot_});
+  var dot = op({ dot_ });
   function einsum_(equation, ...tensors) {
     const $tensors = tensors.map((t, i) => convertToTensor(t, `tensors${i}`, "einsum"));
-    const attrs = {equation};
+    const attrs = { equation };
     return ENGINE.runKernel(Einsum, $tensors, attrs);
   }
-  var einsum = op({einsum_});
+  var einsum = op({ einsum_ });
   function elu_(x) {
     const $x = convertToTensor(x, "x", "elu");
-    const inputs = {x: $x};
+    const inputs = { x: $x };
     return ENGINE.runKernel(Elu, inputs);
   }
-  var elu = op({elu_});
+  var elu = op({ elu_ });
   function erf_(x) {
     let $x = convertToTensor(x, "x", "erf");
     assert($x.dtype === "int32" || $x.dtype === "float32", () => "Input dtype must be `int32` or `float32`.");
     if ($x.dtype === "int32") {
       $x = cast($x, "float32");
     }
-    const inputs = {x: $x};
+    const inputs = { x: $x };
     return ENGINE.runKernel(Erf, inputs);
   }
-  var erf = op({erf_});
+  var erf = op({ erf_ });
   function exp_(x) {
     const $x = convertToTensor(x, "x", "exp");
-    const inputs = {x: $x};
+    const inputs = { x: $x };
     return ENGINE.runKernel(Exp, inputs);
   }
-  var exp = op({exp_});
+  var exp = op({ exp_ });
   function expandDims_(x, axis = 0) {
     const $x = convertToTensor(x, "x", "expandDims", "string_or_numeric");
     assert(axis <= $x.rank, () => "Axis must be <= rank of the tensor");
-    const inputs = {input: $x};
-    const attrs = {dim: axis};
+    const inputs = { input: $x };
+    const attrs = { dim: axis };
     return ENGINE.runKernel(ExpandDims, inputs, attrs);
   }
-  var expandDims = op({expandDims_});
+  var expandDims = op({ expandDims_ });
   function expm1_(x) {
     const $x = convertToTensor(x, "x", "expm1");
-    const inputs = {x: $x};
+    const inputs = { x: $x };
     return ENGINE.runKernel(Expm1, inputs);
   }
-  var expm1 = op({expm1_});
+  var expm1 = op({ expm1_ });
   function tile_(x, reps) {
     const $x = convertToTensor(x, "x", "tile", "string_or_numeric");
     assert($x.rank === reps.length, () => `Error in transpose: rank of input ${$x.rank} must match length of reps ${reps}.`);
-    const inputs = {x: $x};
-    const attrs = {reps};
+    const inputs = { x: $x };
+    const attrs = { reps };
     return ENGINE.runKernel(Tile, inputs, attrs);
   }
-  var tile = op({tile_});
+  var tile = op({ tile_ });
   function eye_(numRows, numColumns, batchShape, dtype = "float32") {
     if (numColumns == null) {
       numColumns = numRows;
@@ -11330,97 +11331,97 @@ Expected: ${expectedFlat}.`);
       }
     }
   }
-  var eye = op({eye_});
+  var eye = op({ eye_ });
   function fill(shape, value, dtype) {
-    const attrs = {shape, value, dtype};
+    const attrs = { shape, value, dtype };
     return ENGINE.runKernel(Fill, {}, attrs);
   }
   function floor_(x) {
     const $x = convertToTensor(x, "x", "floor");
-    const inputs = {x: $x};
+    const inputs = { x: $x };
     return ENGINE.runKernel(Floor, inputs);
   }
-  var floor = op({floor_});
+  var floor = op({ floor_ });
   function gather_(x, indices, axis = 0, batchDims = 0) {
     const $x = convertToTensor(x, "x", "gather");
     const $indices = convertToTensor(indices, "indices", "gather", "int32");
-    const inputs = {x: $x, indices: $indices};
-    const attrs = {axis, batchDims};
+    const inputs = { x: $x, indices: $indices };
+    const attrs = { axis, batchDims };
     return ENGINE.runKernel(GatherV2, inputs, attrs);
   }
-  var gather = op({gather_});
+  var gather = op({ gather_ });
   function greater_(a, b) {
     let $a = convertToTensor(a, "a", "greater");
     let $b = convertToTensor(b, "b", "greater");
     [$a, $b] = makeTypesMatch($a, $b);
     assertAndGetBroadcastShape($a.shape, $b.shape);
-    const inputs = {a: $a, b: $b};
+    const inputs = { a: $a, b: $b };
     return ENGINE.runKernel(Greater, inputs);
   }
-  var greater = op({greater_});
+  var greater = op({ greater_ });
   function greaterEqual_(a, b) {
     let $a = convertToTensor(a, "a", "greaterEqual");
     let $b = convertToTensor(b, "b", "greaterEqual");
     [$a, $b] = makeTypesMatch($a, $b);
     assertAndGetBroadcastShape($a.shape, $b.shape);
-    const inputs = {a: $a, b: $b};
+    const inputs = { a: $a, b: $b };
     return ENGINE.runKernel(GreaterEqual, inputs);
   }
-  var greaterEqual = op({greaterEqual_});
+  var greaterEqual = op({ greaterEqual_ });
   function imag_(input2) {
     const $input = convertToTensor(input2, "input", "imag");
-    const inputs = {input: $input};
+    const inputs = { input: $input };
     return ENGINE.runKernel(Imag, inputs);
   }
-  var imag = op({imag_});
+  var imag = op({ imag_ });
   function isFinite_(x) {
     const $x = convertToTensor(x, "x", "isFinite");
-    const inputs = {x: $x};
+    const inputs = { x: $x };
     return ENGINE.runKernel(IsFinite, inputs);
   }
-  var isFinite2 = op({isFinite_});
+  var isFinite2 = op({ isFinite_ });
   function isInf_(x) {
     const $x = convertToTensor(x, "x", "isInf");
-    const inputs = {x: $x};
+    const inputs = { x: $x };
     return ENGINE.runKernel(IsInf, inputs);
   }
-  var isInf = op({isInf_});
+  var isInf = op({ isInf_ });
   function isNaN_(x) {
     const $x = convertToTensor(x, "x", "isNaN");
-    const inputs = {x: $x};
+    const inputs = { x: $x };
     return ENGINE.runKernel(IsNan, inputs);
   }
-  var isNaN2 = op({isNaN_});
+  var isNaN2 = op({ isNaN_ });
   function leakyRelu_(x, alpha = 0.2) {
     const $x = convertToTensor(x, "x", "leakyRelu");
-    const inputs = {x: $x};
-    const attrs = {alpha};
+    const inputs = { x: $x };
+    const attrs = { alpha };
     return ENGINE.runKernel(LeakyRelu, inputs, attrs);
   }
-  var leakyRelu = op({leakyRelu_});
+  var leakyRelu = op({ leakyRelu_ });
   function less_(a, b) {
     let $a = convertToTensor(a, "a", "less");
     let $b = convertToTensor(b, "b", "less");
     [$a, $b] = makeTypesMatch($a, $b);
     assertAndGetBroadcastShape($a.shape, $b.shape);
-    const inputs = {a: $a, b: $b};
+    const inputs = { a: $a, b: $b };
     return ENGINE.runKernel(Less, inputs);
   }
-  var less = op({less_});
+  var less = op({ less_ });
   function lessEqual_(a, b) {
     let $a = convertToTensor(a, "a", "lessEqual");
     let $b = convertToTensor(b, "b", "lessEqual");
     [$a, $b] = makeTypesMatch($a, $b);
     assertAndGetBroadcastShape($a.shape, $b.shape);
-    const inputs = {a: $a, b: $b};
+    const inputs = { a: $a, b: $b };
     return ENGINE.runKernel(LessEqual, inputs);
   }
-  var lessEqual = op({lessEqual_});
+  var lessEqual = op({ lessEqual_ });
   function linspace(start, stop, num) {
     if (num <= 0) {
       throw new Error("The number of values should be positive.");
     }
-    const attrs = {start, stop, num};
+    const attrs = { start, stop, num };
     return ENGINE.runKernel(LinSpace, {}, attrs);
   }
   function localResponseNormalization_(x, depthRadius = 5, bias = 1, alpha = 1, beta = 0.5) {
@@ -11434,8 +11435,8 @@ Expected: ${expectedFlat}.`);
       reshapedTo4D = true;
       x4D = reshape($x, [1, $x.shape[0], $x.shape[1], $x.shape[2]]);
     }
-    const inputs = {x: x4D};
-    const attrs = {depthRadius, bias, alpha, beta};
+    const inputs = { x: x4D };
+    const attrs = { depthRadius, bias, alpha, beta };
     const res = ENGINE.runKernel(LRN, inputs, attrs);
     if (reshapedTo4D) {
       return reshape(res, [res.shape[1], res.shape[2], res.shape[3]]);
@@ -11443,26 +11444,26 @@ Expected: ${expectedFlat}.`);
       return res;
     }
   }
-  var localResponseNormalization = op({localResponseNormalization_});
+  var localResponseNormalization = op({ localResponseNormalization_ });
   function log_(x) {
     const $x = convertToTensor(x, "x", "log");
-    const inputs = {x: $x};
+    const inputs = { x: $x };
     return ENGINE.runKernel(Log, inputs);
   }
-  var log = op({log_});
+  var log = op({ log_ });
   function log1p_(x) {
     const $x = convertToTensor(x, "x", "log1p");
-    const inputs = {x: $x};
+    const inputs = { x: $x };
     return ENGINE.runKernel(Log1p, inputs);
   }
-  var log1p = op({log1p_});
+  var log1p = op({ log1p_ });
   function grad(f) {
     assert(isFunction(f), () => "The f passed in grad(f) must be a function");
     return (x, dy) => {
       const $x = convertToTensor(x, "x", "tf.grad", "string_or_numeric");
       const $dy = dy != null ? convertToTensor(dy, "dy", "tf.grad") : null;
       return ENGINE.tidy(() => {
-        const {value, grads: grads2} = ENGINE.gradients(() => f($x), [$x], $dy);
+        const { value, grads: grads2 } = ENGINE.gradients(() => f($x), [$x], $dy);
         if ($dy != null) {
           assertShapesMatch(value.shape, $dy.shape, "The shape of dy passed in grad(f)(x, dy) must match the shape returned by f(x)");
         }
@@ -11478,7 +11479,7 @@ Expected: ${expectedFlat}.`);
       const $args = convertToTensorArray(args, "args", "tf.grads", "string_or_numeric");
       const $dy = dy != null ? convertToTensor(dy, "dy", "tf.grads") : null;
       return ENGINE.tidy(() => {
-        const {value, grads: grads2} = ENGINE.gradients(() => f(...$args), $args, $dy);
+        const { value, grads: grads2 } = ENGINE.gradients(() => f(...$args), $args, $dy);
         if ($dy != null) {
           assertShapesMatch(value.shape, $dy.shape, "The shape of dy passed in grads(f)([x1,...], dy) must match the shape returned by f([x1,...])");
         }
@@ -11492,9 +11493,9 @@ Expected: ${expectedFlat}.`);
     return (x, dy) => {
       assert(x instanceof Tensor, () => "The x passed in valueAndGrad(f)(x) must be a tensor");
       assert(dy == null || dy instanceof Tensor, () => "The dy passed in valueAndGrad(f)(x, dy) must be a tensor");
-      const {grads: grads2, value} = ENGINE.gradients(() => f(x), [x], dy);
+      const { grads: grads2, value } = ENGINE.gradients(() => f(x), [x], dy);
       checkGrads(grads2);
-      return {grad: grads2[0], value};
+      return { grad: grads2[0], value };
     };
   }
   function valueAndGrads(f) {
@@ -11525,7 +11526,7 @@ Expected: ${expectedFlat}.`);
     varList = varList.filter((variable2) => variable2.trainable);
     assert(varList.length > 0, () => `variableGrads() expects at least one of the input variables to be trainable, but none of the ${originalVarCount} variables is trainable.`);
     const allowNoGradients = true;
-    const {value, grads: grads2} = ENGINE.gradients(f, varList, null, allowNoGradients);
+    const { value, grads: grads2 } = ENGINE.gradients(f, varList, null, allowNoGradients);
     assert(grads2.some((g) => g != null), () => "Cannot find a connection between any variable and the result of the loss function y=f(x). Please make sure the operations that use variables are inside the function f passed to minimize().");
     assert(value.rank === 0, () => `The f passed in variableGrads(f) must return a scalar, but it returned a rank-${value.rank} tensor`);
     const namedGrads = {};
@@ -11537,7 +11538,7 @@ Expected: ${expectedFlat}.`);
     if (specifiedNonTrainable != null) {
       specifiedNonTrainable.forEach((v) => namedGrads[v.name] = null);
     }
-    return {value, grads: namedGrads};
+    return { value, grads: namedGrads };
   }
   function customGrad(f) {
     return ENGINE.customGrad(f);
@@ -11551,16 +11552,16 @@ Expected: ${expectedFlat}.`);
   }
   function neg_(x) {
     const $x = convertToTensor(x, "x", "neg");
-    const inputs = {x: $x};
+    const inputs = { x: $x };
     return ENGINE.runKernel(Neg, inputs);
   }
-  var neg = op({neg_});
+  var neg = op({ neg_ });
   function softplus_(x) {
     const $x = convertToTensor(x, "x", "softplus");
-    const inputs = {x: $x};
+    const inputs = { x: $x };
     return ENGINE.runKernel(Softplus, inputs);
   }
-  var softplus = op({softplus_});
+  var softplus = op({ softplus_ });
   function logSigmoid_(x) {
     const $x = convertToTensor(x, "x", "logSigmoid");
     const customOp = customGrad((x2) => {
@@ -11569,36 +11570,36 @@ Expected: ${expectedFlat}.`);
         const derX = mul(dy, sigmoid(neg(x2)));
         return derX;
       };
-      return {value, gradFunc};
+      return { value, gradFunc };
     });
     return customOp($x);
   }
-  var logSigmoid = op({logSigmoid_});
+  var logSigmoid = op({ logSigmoid_ });
   function max_(x, axis = null, keepDims = false) {
     const $x = convertToTensor(x, "x", "max");
-    const inputs = {x: $x};
-    const attrs = {reductionIndices: axis, keepDims};
+    const inputs = { x: $x };
+    const attrs = { reductionIndices: axis, keepDims };
     return ENGINE.runKernel(Max, inputs, attrs);
   }
-  var max = op({max_});
+  var max = op({ max_ });
   function sub_(a, b) {
     let $a = convertToTensor(a, "a", "sub");
     let $b = convertToTensor(b, "b", "sub");
     [$a, $b] = makeTypesMatch($a, $b);
-    const inputs = {a: $a, b: $b};
+    const inputs = { a: $a, b: $b };
     return ENGINE.runKernel(Sub, inputs);
   }
-  var sub = op({sub_});
+  var sub = op({ sub_ });
   function sum_(x, axis = null, keepDims = false) {
     let $x = convertToTensor(x, "x", "sum");
     if ($x.dtype === "bool") {
       $x = cast($x, "int32");
     }
-    const inputs = {x: $x};
-    const attrs = {axis, keepDims};
+    const inputs = { x: $x };
+    const attrs = { axis, keepDims };
     return ENGINE.runKernel(Sum, inputs, attrs);
   }
-  var sum2 = op({sum_});
+  var sum2 = op({ sum_ });
   function logSoftmax_(logits, axis = -1) {
     const $logits = convertToTensor(logits, "logits", "logSoftmax");
     if (axis === -1) {
@@ -11619,11 +11620,11 @@ Expected: ${expectedFlat}.`);
         const softmax6 = exp(value2);
         return sub(dy, mul(sum2(dy, axis, keepDims2), softmax6));
       };
-      return {value, gradFunc};
+      return { value, gradFunc };
     });
     return customOp($logits);
   }
-  var logSoftmax = op({logSoftmax_});
+  var logSoftmax = op({ logSoftmax_ });
   function axesAreInnerMostDims(axes, rank) {
     for (let i = 0; i < axes.length; ++i) {
       if (axes[axes.length - i - 1] !== rank - 1 - i) {
@@ -11702,36 +11703,36 @@ Expected: ${expectedFlat}.`);
     }
     return res;
   }
-  var logSumExp = op({logSumExp_});
+  var logSumExp = op({ logSumExp_ });
   function logicalAnd_(a, b) {
     const $a = convertToTensor(a, "a", "logicalAnd", "bool");
     const $b = convertToTensor(b, "b", "logicalAnd", "bool");
     assertAndGetBroadcastShape($a.shape, $b.shape);
-    const inputs = {a: $a, b: $b};
+    const inputs = { a: $a, b: $b };
     return ENGINE.runKernel(LogicalAnd, inputs);
   }
-  var logicalAnd = op({logicalAnd_});
+  var logicalAnd = op({ logicalAnd_ });
   function logicalNot_(x) {
     const $x = convertToTensor(x, "x", "logicalNot", "bool");
-    const inputs = {x: $x};
+    const inputs = { x: $x };
     return ENGINE.runKernel(LogicalNot, inputs);
   }
-  var logicalNot = op({logicalNot_});
+  var logicalNot = op({ logicalNot_ });
   function logicalOr_(a, b) {
     const $a = convertToTensor(a, "a", "logicalOr", "bool");
     const $b = convertToTensor(b, "b", "logicalOr", "bool");
     assertAndGetBroadcastShape($a.shape, $b.shape);
-    const inputs = {a: $a, b: $b};
+    const inputs = { a: $a, b: $b };
     return ENGINE.runKernel(LogicalOr, inputs);
   }
-  var logicalOr = op({logicalOr_});
+  var logicalOr = op({ logicalOr_ });
   function logicalXor_(a, b) {
     const $a = convertToTensor(a, "a", "logicalXor", "bool");
     const $b = convertToTensor(b, "b", "logicalXor", "bool");
     assertAndGetBroadcastShape($a.shape, $b.shape);
     return logicalAnd(logicalOr(a, b), logicalNot(logicalAnd(a, b)));
   }
-  var logicalXor = op({logicalXor_});
+  var logicalXor = op({ logicalXor_ });
   function maxPool_(x, filterSize, strides, pad3, dimRoundingMode) {
     const $x = convertToTensor(x, "x", "maxPool");
     const dilations = 1;
@@ -11746,15 +11747,15 @@ Expected: ${expectedFlat}.`);
     if (dimRoundingMode != null) {
       assert(isInt(pad3), () => `Error in maxPool: pad must be an integer when using, dimRoundingMode ${dimRoundingMode} but got pad ${pad3}.`);
     }
-    const inputs = {x: x4D};
-    const attrs = {filterSize, strides, pad: pad3, dimRoundingMode};
+    const inputs = { x: x4D };
+    const attrs = { filterSize, strides, pad: pad3, dimRoundingMode };
     const res = ENGINE.runKernel(MaxPool, inputs, attrs);
     if (reshapedTo4D) {
       return reshape(res, [res.shape[1], res.shape[2], res.shape[3]]);
     }
     return res;
   }
-  var maxPool = op({maxPool_});
+  var maxPool = op({ maxPool_ });
   function maxPool3d_(x, filterSize = [1, 1, 1], strides, pad3, dimRoundingMode, dataFormat = "NDHWC") {
     const $x = convertToTensor(x, "x", "maxPool3d");
     let x5D = $x;
@@ -11768,23 +11769,23 @@ Expected: ${expectedFlat}.`);
     if (dimRoundingMode != null) {
       assert(isInt(pad3), () => `Error in maxPool3d: pad must be an integer when using, dimRoundingMode ${dimRoundingMode} but got pad ${pad3}.`);
     }
-    const inputs = {x: x5D};
-    const attrs = {filterSize, strides, pad: pad3, dimRoundingMode, dataFormat};
+    const inputs = { x: x5D };
+    const attrs = { filterSize, strides, pad: pad3, dimRoundingMode, dataFormat };
     const res = ENGINE.runKernel(MaxPool3D, inputs, attrs);
     if (reshapedTo5D) {
       return reshape(res, [res.shape[1], res.shape[2], res.shape[3], res.shape[4]]);
     }
     return res;
   }
-  var maxPool3d = op({maxPool3d_});
+  var maxPool3d = op({ maxPool3d_ });
   function maxPoolWithArgmax_(x, filterSize, strides, pad3, includeBatchInIndex = false) {
     const $x = convertToTensor(x, "x", "maxPoolWithArgmax");
-    const inputs = {x: $x};
-    const attrs = {filterSize, strides, pad: pad3, includeBatchInIndex};
+    const inputs = { x: $x };
+    const attrs = { filterSize, strides, pad: pad3, includeBatchInIndex };
     const result = ENGINE.runKernel(MaxPoolWithArgmax, inputs, attrs);
-    return {result: result[0], indexes: result[1]};
+    return { result: result[0], indexes: result[1] };
   }
-  var maxPoolWithArgmax = op({maxPoolWithArgmax_});
+  var maxPoolWithArgmax = op({ maxPoolWithArgmax_ });
   function maximum_(a, b) {
     let $a = convertToTensor(a, "a", "maximum");
     let $b = convertToTensor(b, "b", "maximum");
@@ -11794,17 +11795,17 @@ Expected: ${expectedFlat}.`);
       $b = cast($b, "int32");
     }
     assertAndGetBroadcastShape($a.shape, $b.shape);
-    const inputs = {a: $a, b: $b};
+    const inputs = { a: $a, b: $b };
     return ENGINE.runKernel(Maximum, inputs);
   }
-  var maximum = op({maximum_});
+  var maximum = op({ maximum_ });
   function mean_(x, axis = null, keepDims = false) {
     const $x = convertToTensor(x, "x", "mean");
-    const inputs = {x: $x};
-    const attrs = {axis, keepDims};
+    const inputs = { x: $x };
+    const attrs = { axis, keepDims };
     return ENGINE.runKernel(Mean, inputs, attrs);
   }
-  var mean = op({mean_});
+  var mean = op({ mean_ });
   function zeros(shape, dtype = "float32") {
     if (dtype === "complex64") {
       const real4 = zeros(shape, "float32");
@@ -11823,7 +11824,7 @@ Expected: ${expectedFlat}.`);
     const values = makeOnesTypedArray(sizeFromShape(shape), dtype);
     return ENGINE.makeTensor(values, shape, dtype);
   }
-  function meshgrid(x, y, {indexing = "xy"} = {}) {
+  function meshgrid(x, y, { indexing = "xy" } = {}) {
     if (indexing !== "xy" && indexing !== "ij") {
       throw new TypeError(`${indexing} is not a valid third argument to meshgrid`);
     }
@@ -11854,11 +11855,11 @@ Expected: ${expectedFlat}.`);
   }
   function min_(x, axis = null, keepDims = false) {
     const $x = convertToTensor(x, "x", "min");
-    const inputs = {x: $x};
-    const attrs = {axis, keepDims};
+    const inputs = { x: $x };
+    const attrs = { axis, keepDims };
     return ENGINE.runKernel(Min, inputs, attrs);
   }
-  var min = op({min_});
+  var min = op({ min_ });
   function minimum_(a, b) {
     let $a = convertToTensor(a, "a", "minimum");
     let $b = convertToTensor(b, "b", "minimum");
@@ -11868,10 +11869,10 @@ Expected: ${expectedFlat}.`);
       $b = cast($b, "int32");
     }
     assertAndGetBroadcastShape($a.shape, $b.shape);
-    const inputs = {a: $a, b: $b};
+    const inputs = { a: $a, b: $b };
     return ENGINE.runKernel(Minimum, inputs);
   }
-  var minimum = op({minimum_});
+  var minimum = op({ minimum_ });
   function mirrorPad_(x, paddings, mode) {
     assert(mode === "reflect" || mode === "symmetric", () => `Invalid mode. Mode must be either reflect or symmetric. Got ${mode}.`);
     const $x = convertToTensor(x, "x", "mirrorPad");
@@ -11884,25 +11885,25 @@ Expected: ${expectedFlat}.`);
       assert(paddings[i].length === 2, () => `Invalid number of paddings. Must be length of 2 each.`);
       assert(paddings[i][0] >= 0 && paddings[i][0] <= $x.shape[i] - shapeOffset && paddings[i][1] >= 0 && paddings[i][1] <= $x.shape[i] - shapeOffset, () => `Padding in dimension ${i} cannot be greater than or equal to ${$x.shape[i] - shapeOffset} or less than 0 for input of shape ${$x.shape}`);
     }
-    const attrs = {paddings, mode};
-    const inputs = {x: $x};
+    const attrs = { paddings, mode };
+    const inputs = { x: $x };
     return ENGINE.runKernel(MirrorPad, inputs, attrs);
   }
-  var mirrorPad = op({mirrorPad_});
+  var mirrorPad = op({ mirrorPad_ });
   function mod_(a, b) {
     let $a = convertToTensor(a, "a", "mod");
     let $b = convertToTensor(b, "b", "mod");
     [$a, $b] = makeTypesMatch($a, $b);
-    const inputs = {a: $a, b: $b};
+    const inputs = { a: $a, b: $b };
     return ENGINE.runKernel(Mod, inputs);
   }
-  var mod = op({mod_});
+  var mod = op({ mod_ });
   function square_(x) {
     const $x = convertToTensor(x, "x", "square");
     const attrs = {};
-    return ENGINE.runKernel("Square", {x: $x}, attrs);
+    return ENGINE.runKernel("Square", { x: $x }, attrs);
   }
-  var square = op({square_});
+  var square = op({ square_ });
   function moments_(x, axis = null, keepDims = false) {
     x = convertToTensor(x, "x", "moments");
     const axes = parseAxisParam(axis, x.shape);
@@ -11913,9 +11914,9 @@ Expected: ${expectedFlat}.`);
     }
     const devSquared = square(sub(cast(x, "float32"), reshape(xMean, keepDimsShape)));
     const variance = mean(devSquared, axes, keepDims);
-    return {mean: xMean, variance};
+    return { mean: xMean, variance };
   }
-  var moments = op({moments_});
+  var moments = op({ moments_ });
   function multiRNNCell_(lstmCells, data, c, h) {
     const $data = convertToTensor(data, "data", "multiRNNCell");
     const $c = convertToTensorArray(c, "c", "multiRNNCell");
@@ -11936,7 +11937,7 @@ Expected: ${expectedFlat}.`);
     }
     return [newC, newH];
   }
-  var multiRNNCell = op({multiRNNCell_});
+  var multiRNNCell = op({ multiRNNCell_ });
   function multinomial_(logits, numSamples, seed, normalized = false) {
     const $logits = convertToTensor(logits, "logits", "multinomial");
     const numOutcomes = $logits.size;
@@ -11949,27 +11950,27 @@ Expected: ${expectedFlat}.`);
     }
     seed = seed || Math.random();
     const logits2D = origRank === 1 ? reshape($logits, [1, -1]) : $logits;
-    const inputs = {logits: logits2D};
-    const attrs = {numSamples, seed, normalized};
+    const inputs = { logits: logits2D };
+    const attrs = { numSamples, seed, normalized };
     const res = ENGINE.runKernel(Multinomial, inputs, attrs);
     return origRank === 1 ? reshape(res, [res.size]) : res;
   }
-  var multinomial = op({multinomial_});
+  var multinomial = op({ multinomial_ });
   function notEqual_(a, b) {
     let $a = convertToTensor(a, "a", "notEqual");
     let $b = convertToTensor(b, "b", "notEqual");
     [$a, $b] = makeTypesMatch($a, $b);
     assertAndGetBroadcastShape($a.shape, $b.shape);
-    const inputs = {a: $a, b: $b};
+    const inputs = { a: $a, b: $b };
     return ENGINE.runKernel(NotEqual, inputs);
   }
-  var notEqual = op({notEqual_});
+  var notEqual = op({ notEqual_ });
   function onesLike_(x) {
     const $x = convertToTensor(x, "x", "onesLike");
-    const inputs = {x: $x};
+    const inputs = { x: $x };
     return ENGINE.runKernel(OnesLike, inputs);
   }
-  var onesLike = op({onesLike_});
+  var onesLike = op({ onesLike_ });
   function outerProduct_(v1, v2) {
     const $v1 = convertToTensor(v1, "v1", "outerProduct");
     const $v2 = convertToTensor(v2, "v2", "outerProduct");
@@ -11978,37 +11979,37 @@ Expected: ${expectedFlat}.`);
     const v22D = reshape($v2, [1, -1]);
     return matMul(v12D, v22D);
   }
-  var outerProduct = op({outerProduct_});
+  var outerProduct = op({ outerProduct_ });
   function pad_(x, paddings, constantValue = 0) {
     const $x = convertToTensor(x, "x", "pad");
     if ($x.rank === 0) {
       throw new Error("pad(scalar) is not defined. Pass non-scalar to pad");
     }
-    const attrs = {paddings, constantValue};
-    const inputs = {x: $x};
+    const attrs = { paddings, constantValue };
+    const inputs = { x: $x };
     return ENGINE.runKernel(PadV2, inputs, attrs);
   }
-  var pad = op({pad_});
+  var pad = op({ pad_ });
   function pad1d_(x, paddings, constantValue = 0) {
     assert(paddings.length === 2, () => "Invalid number of paddings. Must be length of 2.");
     return pad(x, [paddings], constantValue);
   }
-  var pad1d = op({pad1d_});
+  var pad1d = op({ pad1d_ });
   function pad2d_(x, paddings, constantValue = 0) {
     assert(paddings.length === 2 && paddings[0].length === 2 && paddings[1].length === 2, () => "Invalid number of paddings. Must be length of 2 each.");
     return pad(x, paddings, constantValue);
   }
-  var pad2d = op({pad2d_});
+  var pad2d = op({ pad2d_ });
   function pad3d_(x, paddings, constantValue = 0) {
     assert(paddings.length === 3 && paddings[0].length === 2 && paddings[1].length === 2 && paddings[2].length === 2, () => "Invalid number of paddings. Must be length of 2 each.");
     return pad(x, paddings, constantValue);
   }
-  var pad3d = op({pad3d_});
+  var pad3d = op({ pad3d_ });
   function pad4d_(x, paddings, constantValue = 0) {
     assert(paddings.length === 4 && paddings[0].length === 2 && paddings[1].length === 2 && paddings[2].length === 2 && paddings[3].length === 2, () => "Invalid number of paddings. Must be length of 2 each.");
     return pad(x, paddings, constantValue);
   }
-  var pad4d = op({pad4d_});
+  var pad4d = op({ pad4d_ });
   function spaceToBatchND_(x, blockShape, paddings) {
     const $x = convertToTensor(x, "x", "spaceToBatchND");
     assert($x.rank >= 1 + blockShape.length, () => `input rank ${$x.rank} should be > than [blockShape] ${blockShape.length}`);
@@ -12019,11 +12020,11 @@ Expected: ${expectedFlat}.`);
       }
       return a;
     }, true), () => `input spatial dimensions ${$x.shape.slice(1)} with paddings ${paddings.toString()} must be divisible by blockShapes ${blockShape.toString()}`);
-    const inputs = {x: $x};
-    const attrs = {blockShape, paddings};
+    const inputs = { x: $x };
+    const attrs = { blockShape, paddings };
     return ENGINE.runKernel(SpaceToBatchND, inputs, attrs);
   }
-  var spaceToBatchND = op({spaceToBatchND_});
+  var spaceToBatchND = op({ spaceToBatchND_ });
   function pool_(input2, windowShape, poolingType, pad3, dilations, strides) {
     if (dilations == null) {
       dilations = [1, 1];
@@ -12083,32 +12084,32 @@ Expected: ${expectedFlat}.`);
       return [padExtraStart[i], padExtraEnd[i]];
     });
   }
-  var pool = op({pool_});
+  var pool = op({ pool_ });
   function pow_(base2, exp4) {
     let $base = convertToTensor(base2, "base", "pow");
     let $exp = convertToTensor(exp4, "exp", "pow");
     [$base, $exp] = makeTypesMatch($base, $exp);
-    const inputs = {a: $base, b: $exp};
+    const inputs = { a: $base, b: $exp };
     return ENGINE.runKernel(Pow, inputs);
   }
-  var pow = op({pow_});
+  var pow = op({ pow_ });
   function prelu_(x, alpha) {
     const $x = convertToTensor(x, "x", "prelu");
     const $alpha = convertToTensor(alpha, "alpha", "prelu");
-    const inputs = {x: $x, alpha: $alpha};
+    const inputs = { x: $x, alpha: $alpha };
     return ENGINE.runKernel(Prelu, inputs);
   }
-  var prelu = op({prelu_});
+  var prelu = op({ prelu_ });
   function prod_(x, axis = null, keepDims = false) {
     let $x = convertToTensor(x, "x", "prod");
     if ($x.dtype === "bool") {
       $x = cast($x, "int32");
     }
-    const inputs = {x: $x};
-    const attrs = {axis, keepDims};
+    const inputs = { x: $x };
+    const attrs = { axis, keepDims };
     return ENGINE.runKernel(Prod, inputs, attrs);
   }
-  var prod = op({prod_});
+  var prod = op({ prod_ });
   function rand_(shape, randFunction, dtype) {
     const size = sizeFromShape(shape);
     let values = null;
@@ -12126,7 +12127,7 @@ Expected: ${expectedFlat}.`);
     }
     return ENGINE.makeTensor(values, shape, dtype);
   }
-  var rand = op({rand_});
+  var rand = op({ rand_ });
   var seedrandom = __toModule(require_seedrandom2());
   var MPRandGauss = class {
     constructor(mean4, stdDeviation, dtype, truncated, seed) {
@@ -12267,7 +12268,7 @@ Expected: ${expectedFlat}.`);
     }
     return res.toTensor();
   }
-  var randomGamma = op({randomGamma_});
+  var randomGamma = op({ randomGamma_ });
   function randomNormal_(shape, mean4 = 0, stdDev = 1, dtype, seed) {
     if (dtype != null && dtype === "bool") {
       throw new Error(`Unsupported data type ${dtype}`);
@@ -12279,7 +12280,7 @@ Expected: ${expectedFlat}.`);
     }
     return res.toTensor();
   }
-  var randomNormal = op({randomNormal_});
+  var randomNormal = op({ randomNormal_ });
   function randomUniform_(shape, minval = 0, maxval = 1, dtype = "float32", seed) {
     const res = buffer(shape, dtype);
     const random = new UniformRandom(minval, maxval, null, seed);
@@ -12288,81 +12289,81 @@ Expected: ${expectedFlat}.`);
     }
     return res.toTensor();
   }
-  var randomUniform = op({randomUniform_});
+  var randomUniform = op({ randomUniform_ });
   function range(start, stop, step5 = 1, dtype = "float32") {
     if (step5 === 0) {
       throw new Error("Cannot have a step of zero");
     }
-    const attrs = {start, stop, step: step5, dtype};
+    const attrs = { start, stop, step: step5, dtype };
     return ENGINE.runKernel(Range, {}, attrs);
   }
   function real_(input2) {
     const $input = convertToTensor(input2, "input", "real");
-    const inputs = {input: $input};
+    const inputs = { input: $input };
     return ENGINE.runKernel(Real, inputs);
   }
-  var real = op({real_});
+  var real = op({ real_ });
   function reciprocal_(x) {
     const $x = convertToTensor(x, "x", "reciprocal");
-    const inputs = {x: $x};
+    const inputs = { x: $x };
     return ENGINE.runKernel(Reciprocal, inputs);
   }
-  var reciprocal = op({reciprocal_});
+  var reciprocal = op({ reciprocal_ });
   function relu_(x) {
     const $x = convertToTensor(x, "x", "relu");
-    const inputs = {x: $x};
+    const inputs = { x: $x };
     return ENGINE.runKernel(Relu, inputs);
   }
-  var relu = op({relu_});
+  var relu = op({ relu_ });
   function relu6_(x) {
     const $x = convertToTensor(x, "x", "relu6");
-    const inputs = {x: $x};
+    const inputs = { x: $x };
     return ENGINE.runKernel(Relu6, inputs);
   }
-  var relu6 = op({relu6_});
+  var relu6 = op({ relu6_ });
   function reverse_(x, axis) {
     const $x = convertToTensor(x, "x", "reverse");
-    const inputs = {x: $x};
-    const attrs = {dims: axis};
+    const inputs = { x: $x };
+    const attrs = { dims: axis };
     return ENGINE.runKernel(Reverse, inputs, attrs);
   }
-  var reverse = op({reverse_});
+  var reverse = op({ reverse_ });
   function reverse1d_(x) {
     const $x = convertToTensor(x, "x", "reverse");
     assert($x.rank === 1, () => `Error in reverse1D: x must be rank 1 but got rank ${$x.rank}.`);
     return reverse($x, 0);
   }
-  var reverse1d = op({reverse1d_});
+  var reverse1d = op({ reverse1d_ });
   function reverse2d_(x, axis) {
     const $x = convertToTensor(x, "x", "reverse");
     assert($x.rank === 2, () => `Error in reverse2D: x must be rank 2 but got rank ${$x.rank}.`);
     return reverse($x, axis);
   }
-  var reverse2d = op({reverse2d_});
+  var reverse2d = op({ reverse2d_ });
   function reverse3d_(x, axis) {
     const $x = convertToTensor(x, "x", "reverse");
     assert($x.rank === 3, () => `Error in reverse3D: x must be rank 3 but got rank ${$x.rank}.`);
     return reverse($x, axis);
   }
-  var reverse3d = op({reverse3d_});
+  var reverse3d = op({ reverse3d_ });
   function reverse4d_(x, axis) {
     const $x = convertToTensor(x, "x", "reverse");
     assert($x.rank === 4, () => `Error in reverse4D: x must be rank 4 but got rank ${$x.rank}.`);
     return reverse($x, axis);
   }
-  var reverse4d = op({reverse4d_});
+  var reverse4d = op({ reverse4d_ });
   function round_(x) {
     const $x = convertToTensor(x, "x", "round");
-    const inputs = {x: $x};
+    const inputs = { x: $x };
     return ENGINE.runKernel(Round, inputs);
   }
-  var round2 = op({round_});
+  var round2 = op({ round_ });
   function rsqrt_(x) {
     const $x = convertToTensor(x, "x", "rsqrt");
-    const inputs = {x: $x};
+    const inputs = { x: $x };
     return ENGINE.runKernel(Rsqrt, inputs);
   }
-  var rsqrt = op({rsqrt_});
+  var rsqrt = op({ rsqrt_ });
   function scalar(value, dtype) {
     if ((isTypedArray(value) && dtype !== "string" || Array.isArray(value)) && dtype !== "complex64") {
       throw new Error("Error creating a new Scalar: value must be a primitive (number|boolean|string)");
@@ -12376,10 +12377,10 @@ Expected: ${expectedFlat}.`);
   }
   function selu_(x) {
     const $x = convertToTensor(x, "x", "selu");
-    const inputs = {x: $x};
+    const inputs = { x: $x };
     return ENGINE.runKernel(Selu, inputs);
   }
-  var selu = op({selu_});
+  var selu = op({ selu_ });
   function separableConv2d_(x, depthwiseFilter, pointwiseFilter, strides, pad3, dilation = [1, 1], dataFormat = "NHWC") {
     const $x = convertToTensor(x, "x", "separableConv2d");
     const $depthwiseFilter = convertToTensor(depthwiseFilter, "depthwiseFilter", "separableConv2d");
@@ -12409,7 +12410,7 @@ Expected: ${expectedFlat}.`);
     }
     return res;
   }
-  var separableConv2d = op({separableConv2d_});
+  var separableConv2d = op({ separableConv2d_ });
   async function setdiff1dAsync_(x, y) {
     const $x = convertToTensor(x, "x", "setdiff1d");
     const $y = convertToTensor(y, "y", "setdiff1d");
@@ -12439,46 +12440,46 @@ Expected: ${expectedFlat}.`);
   var setdiff1dAsync = setdiff1dAsync_;
   function sign_(x) {
     const $x = convertToTensor(x, "x", "sign");
-    const inputs = {x: $x};
+    const inputs = { x: $x };
     return ENGINE.runKernel(Sign, inputs);
   }
-  var sign = op({sign_});
+  var sign = op({ sign_ });
   function sin_(x) {
     const $x = convertToTensor(x, "x", "sin");
-    const inputs = {x: $x};
+    const inputs = { x: $x };
     return ENGINE.runKernel(Sin, inputs);
   }
-  var sin = op({sin_});
+  var sin = op({ sin_ });
   function sinh_(x) {
     const $x = convertToTensor(x, "x", "sinh");
-    const inputs = {x: $x};
+    const inputs = { x: $x };
     return ENGINE.runKernel(Sinh, inputs);
   }
-  var sinh = op({sinh_});
+  var sinh = op({ sinh_ });
   function slice1d_(x, begin, size) {
     const $x = convertToTensor(x, "x", "slice1d");
     assert($x.rank === 1, () => `slice1d expects a rank-1 tensor, but got a rank-${$x.rank} tensor`);
     return slice($x, [begin], [size]);
   }
-  var slice1d = op({slice1d_});
+  var slice1d = op({ slice1d_ });
   function slice2d_(x, begin, size) {
     const $x = convertToTensor(x, "x", "slice2d");
     assert($x.rank === 2, () => `slice2d expects a rank-2 tensor, but got a rank-${$x.rank} tensor`);
     return slice($x, begin, size);
   }
-  var slice2d = op({slice2d_});
+  var slice2d = op({ slice2d_ });
   function slice3d_(x, begin, size) {
     const $x = convertToTensor(x, "x", "slice3d");
     assert($x.rank === 3, () => `slice3d expects a rank-3 tensor, but got a rank-${$x.rank} tensor`);
     return slice($x, begin, size);
   }
-  var slice3d = op({slice3d_});
+  var slice3d = op({ slice3d_ });
   function slice4d_(x, begin, size) {
     const $x = convertToTensor(x, "x", "slice4d");
     assert($x.rank === 4, () => `slice4d expects a rank-4 tensor, but got a rank-${$x.rank} tensor`);
     return slice($x, begin, size);
   }
-  var slice4d = op({slice4d_});
+  var slice4d = op({ slice4d_ });
   function softmax_(logits, dim = -1) {
     const $logits = convertToTensor(logits, "logits", "softmax", "float32");
     if (dim === -1) {
@@ -12487,23 +12488,23 @@ Expected: ${expectedFlat}.`);
     if (dim !== $logits.rank - 1) {
       throw Error(`Softmax along a non-last dimension is not yet supported. Logits was rank ${$logits.rank} and dim was ${dim}`);
     }
-    const inputs = {logits: $logits};
-    const attrs = {dim};
+    const inputs = { logits: $logits };
+    const attrs = { dim };
     return ENGINE.runKernel(Softmax, inputs, attrs);
   }
-  var softmax = op({softmax_});
+  var softmax = op({ softmax_ });
   function fft_(input2) {
     assert(input2.dtype === "complex64", () => `The dtype for tf.spectral.fft() must be complex64 but got ${input2.dtype}.`);
-    const inputs = {input: input2};
+    const inputs = { input: input2 };
     return ENGINE.runKernel(FFT, inputs);
   }
-  var fft = op({fft_});
+  var fft = op({ fft_ });
   function ifft_(input2) {
     assert(input2.dtype === "complex64", () => `The dtype for tf.spectral.ifft() must be complex64 but got ${input2.dtype}.`);
-    const inputs = {input: input2};
+    const inputs = { input: input2 };
     return ENGINE.runKernel(IFFT, inputs);
   }
-  var ifft = op({ifft_});
+  var ifft = op({ ifft_ });
   function irfft_(input2) {
     const innerDimensionSize = input2.shape[input2.shape.length - 1];
     const batch = input2.size / innerDimensionSize;
@@ -12531,14 +12532,14 @@ Expected: ${expectedFlat}.`);
     }
     return ret;
   }
-  var irfft = op({irfft_});
+  var irfft = op({ irfft_ });
   function split_(x, numOrSizeSplits, axis = 0) {
     const $x = convertToTensor(x, "x", "split");
-    const inputs = {x: $x};
-    const attr = {numOrSizeSplits, axis};
+    const inputs = { x: $x };
+    const attr = { numOrSizeSplits, axis };
     return ENGINE.runKernel(SplitV, inputs, attr);
   }
-  var split = op({split_});
+  var split = op({ split_ });
   function rfft_(input2, fftLength) {
     assert(input2.dtype === "float32", () => `The dtype for rfft() must be real value but got ${input2.dtype}`);
     let innerDimensionSize = input2.shape[input2.shape.length - 1];
@@ -12570,28 +12571,28 @@ Expected: ${expectedFlat}.`);
     outputShape[adjustedInput.shape.length - 1] = half;
     return reshape(complex(realComplexConjugate[0], imagComplexConjugate[0]), outputShape);
   }
-  var rfft = op({rfft_});
+  var rfft = op({ rfft_ });
   function sqrt_(x) {
     const $x = convertToTensor(x, "x", "sqrt");
-    const inputs = {x: $x};
+    const inputs = { x: $x };
     return ENGINE.runKernel(Sqrt, inputs);
   }
-  var sqrt = op({sqrt_});
+  var sqrt = op({ sqrt_ });
   function squaredDifference_(a, b) {
     let $a = convertToTensor(a, "a", "squaredDifference");
     let $b = convertToTensor(b, "b", "squaredDifference");
     [$a, $b] = makeTypesMatch($a, $b);
     assertAndGetBroadcastShape($a.shape, $b.shape);
-    const inputs = {a: $a, b: $b};
+    const inputs = { a: $a, b: $b };
     const attrs = {};
     return ENGINE.runKernel(SquaredDifference, inputs, attrs);
   }
-  var squaredDifference = op({squaredDifference_});
+  var squaredDifference = op({ squaredDifference_ });
   function squeeze_(x, axis) {
     const $x = convertToTensor(x, "x", "squeeze");
     return reshape($x, squeezeShape($x.shape, axis).newShape);
   }
-  var squeeze = op({squeeze_});
+  var squeeze = op({ squeeze_ });
   function stack_(tensors, axis = 0) {
     const $tensors = convertToTensorArray(tensors, "tensors", "stack", "string_or_numeric");
     assert($tensors.length >= 1, () => "Pass at least one tensor to tf.stack");
@@ -12599,20 +12600,20 @@ Expected: ${expectedFlat}.`);
       assert(axis <= $tensors[0].rank, () => "Axis must be <= rank of the tensor");
     }
     const inputs = $tensors;
-    const attrs = {axis};
+    const attrs = { axis };
     return ENGINE.runKernel(Pack, inputs, attrs);
   }
-  var stack = op({stack_});
+  var stack = op({ stack_ });
   function step_(x, alpha = 0) {
     const $x = convertToTensor(x, "x", "step");
-    const inputs = {x: $x};
-    const attrs = {alpha};
+    const inputs = { x: $x };
+    const attrs = { alpha };
     return ENGINE.runKernel(Step, inputs, attrs);
   }
-  var step = op({step_});
+  var step = op({ step_ });
   function stridedSlice_(x, begin, end, strides, beginMask = 0, endMask = 0, ellipsisMask = 0, newAxisMask = 0, shrinkAxisMask = 0) {
     const $x = convertToTensor(x, "x", "stridedSlice");
-    const inputs = {x: $x};
+    const inputs = { x: $x };
     const attrs = {
       begin,
       end,
@@ -12625,13 +12626,13 @@ Expected: ${expectedFlat}.`);
     };
     return ENGINE.runKernel(StridedSlice, inputs, attrs);
   }
-  var stridedSlice = op({stridedSlice_});
+  var stridedSlice = op({ stridedSlice_ });
   function tan_(x) {
     const $x = convertToTensor(x, "x", "tan");
-    const inputs = {x: $x};
+    const inputs = { x: $x };
     return ENGINE.runKernel(Tan, inputs);
   }
-  var tan = op({tan_});
+  var tan = op({ tan_ });
   function tensor1d(values, dtype) {
     assertNonNull(values);
     const inferredShape = inferShape(values, dtype);
@@ -12707,12 +12708,12 @@ Expected: ${expectedFlat}.`);
     if (k > lastDim) {
       throw new Error(`'k' passed to topk() must be <= the last dimension (${lastDim}) but got ${k}`);
     }
-    const inputs = {x: $x};
-    const attrs = {k, sorted};
+    const inputs = { x: $x };
+    const attrs = { k, sorted };
     const [values, indices] = ENGINE.runKernel(TopK, inputs, attrs);
-    return {values, indices};
+    return { values, indices };
   }
-  var topk = op({topk_});
+  var topk = op({ topk_ });
   function truncatedNormal_(shape, mean4 = 0, stdDev = 1, dtype, seed) {
     if (dtype != null && dtype === "bool") {
       throw new Error(`Unsupported data type $ { dtype }`);
@@ -12724,33 +12725,33 @@ Expected: ${expectedFlat}.`);
     }
     return res.toTensor();
   }
-  var truncatedNormal = op({truncatedNormal_});
+  var truncatedNormal = op({ truncatedNormal_ });
   function unique_(x, axis = 0) {
     const $x = convertToTensor(x, "x", "unique", "string_or_numeric");
     assert($x.rank > 0, () => "The input tensor must be at least 1D");
-    const inputs = {x: $x};
-    const attrs = {axis};
+    const inputs = { x: $x };
+    const attrs = { axis };
     const [values, indices] = ENGINE.runKernel(Unique, inputs, attrs);
-    return {values, indices};
+    return { values, indices };
   }
-  var unique = op({unique_});
+  var unique = op({ unique_ });
   function unsortedSegmentSum_(x, segmentIds, numSegments) {
     const $x = convertToTensor(x, "x", "unsortedSegmentSum");
     const $segmentIds = convertToTensor(segmentIds, "segmentIds", "unsortedSegmentSum", "int32");
     assert(isInt(numSegments), () => "numSegments must be of dtype int");
-    const inputs = {x: $x, segmentIds: $segmentIds};
-    const attrs = {numSegments};
+    const inputs = { x: $x, segmentIds: $segmentIds };
+    const attrs = { numSegments };
     return ENGINE.runKernel(UnsortedSegmentSum, inputs, attrs);
   }
-  var unsortedSegmentSum = op({unsortedSegmentSum_});
+  var unsortedSegmentSum = op({ unsortedSegmentSum_ });
   function unstack_(x, axis = 0) {
     const $x = convertToTensor(x, "x", "unstack", "string_or_numeric");
     assert(axis >= -$x.shape.length && axis < $x.shape.length, () => `Axis = ${axis} is not in [-${$x.shape.length}, ${$x.shape.length})`);
-    const inputs = {value: $x};
-    const attrs = {axis};
+    const inputs = { value: $x };
+    const attrs = { axis };
     return ENGINE.runKernel(Unpack, inputs, attrs);
   }
-  var unstack = op({unstack_});
+  var unstack = op({ unstack_ });
   function variable(initialValue, trainable = true, name, dtype) {
     return ENGINE.makeVariable(initialValue, trainable, name, dtype);
   }
@@ -12860,7 +12861,7 @@ Expected: ${expectedFlat}.`);
     }
     throw new Error(`Error in norm: invalid axis: ${axis}`);
   }
-  var norm = op({norm_});
+  var norm = op({ norm_ });
   function movingAverage_(v, x, decay, step5, zeroDebias = true) {
     const $v = convertToTensor(v, "v", "movingAverage");
     const $x = convertToTensor(x, "x", "movingAverage");
@@ -12877,16 +12878,16 @@ Expected: ${expectedFlat}.`);
     }
     return add2($v, update);
   }
-  var movingAverage = op({movingAverage_});
+  var movingAverage = op({ movingAverage_ });
   function scatterND_(indices, updates, shape) {
     const $indices = convertToTensor(indices, "indices", "scatterND", "int32");
     const $updates = convertToTensor(updates, "updates", "scatterND");
     validateInput($updates, $indices, shape);
-    const inputs = {indices: $indices, updates: $updates};
-    const attrs = {shape};
+    const inputs = { indices: $indices, updates: $updates };
+    const attrs = { shape };
     return ENGINE.runKernel(ScatterNd, inputs, attrs);
   }
-  var scatterND = op({scatterND_});
+  var scatterND = op({ scatterND_ });
   function validateInput2(sparseIndices, sparseValues, outputShape, defaultValues) {
     if (sparseIndices.dtype !== "int32") {
       throw new Error(`tf.sparseToDense() expects the indices to be int32 type, but the dtype was ${sparseIndices.dtype}.`);
@@ -12917,17 +12918,17 @@ Expected: ${expectedFlat}.`);
       sparseValues: $sparseValues,
       defaultValue: $defaultValue
     };
-    const attrs = {outputShape};
+    const attrs = { outputShape };
     return ENGINE.runKernel(SparseToDense, inputs, attrs);
   }
-  var sparseToDense = op({sparseToDense_});
+  var sparseToDense = op({ sparseToDense_ });
   function gatherND_(x, indices) {
     const $indices = convertToTensor(indices, "indices", "gatherND", "int32");
     const $x = convertToTensor(x, "x", "gatherND");
-    const inputs = {params: $x, indices: $indices};
+    const inputs = { params: $x, indices: $indices };
     return ENGINE.runKernel(GatherNd, inputs);
   }
-  var gatherND = op({gatherND_});
+  var gatherND = op({ gatherND_ });
   function getNoiseShape(x, noiseShape) {
     if (noiseShape == null) {
       return x.shape.slice();
@@ -12960,7 +12961,7 @@ Expected: ${expectedFlat}.`);
     const multiplier = div(floor(add2(randomUniform($noiseShape, 0, 1, "float32", seed), keepProb)), keepProb);
     return mul($x, multiplier);
   }
-  var dropout = op({dropout_});
+  var dropout = op({ dropout_ });
   function enclosingPowerOfTwo(value) {
     return Math.floor(Math.pow(2, Math.ceil(Math.log(value) / Math.log(2))));
   }
@@ -12990,7 +12991,7 @@ Expected: ${expectedFlat}.`);
       const vals = predictionsVals.subarray(offset, offset + size);
       const valAndInd = [];
       for (let i = 0; i < vals.length; i++) {
-        valAndInd.push({value: vals[i], index: i});
+        valAndInd.push({ value: vals[i], index: i });
       }
       valAndInd.sort((a, b2) => b2.value - a.value);
       precision3[b] = 0;
@@ -13035,11 +13036,11 @@ Expected: ${expectedFlat}.`);
     if (dimRoundingMode != null) {
       assert(isInt(pad3), () => `Error in conv2dDerFilter: pad must be an integer when using, dimRoundingMode ${dimRoundingMode} but got pad ${pad3}.`);
     }
-    const inputs = {x: x4D, dy: dy4D};
-    const attrs = {strides, pad: pad3, dataFormat, dimRoundingMode, filterShape};
+    const inputs = { x: x4D, dy: dy4D };
+    const attrs = { strides, pad: pad3, dataFormat, dimRoundingMode, filterShape };
     return ENGINE.runKernel(Conv2DBackpropFilter, inputs, attrs);
   }
-  var conv2DBackpropFilter = op({conv2DBackpropFilter_});
+  var conv2DBackpropFilter = op({ conv2DBackpropFilter_ });
   function getFusedDyActivation(dy, y, activation2) {
     if (activation2 == null || activation2 === "linear") {
       return dy;
@@ -13079,7 +13080,7 @@ Expected: ${expectedFlat}.`);
     const gradientMode = gradientDepth > 0;
     return !gradientMode || activation2 === "linear";
   };
-  function fusedConv2d_({x, filter, strides, pad: pad3, dataFormat = "NHWC", dilations = [1, 1], dimRoundingMode, bias, activation: activation2 = "linear", preluActivationWeights, leakyreluAlpha}) {
+  function fusedConv2d_({ x, filter, strides, pad: pad3, dataFormat = "NHWC", dilations = [1, 1], dimRoundingMode, bias, activation: activation2 = "linear", preluActivationWeights, leakyreluAlpha }) {
     activation2 = activation2 || "linear";
     if (shouldFuse(ENGINE.state.gradientDepth, activation2) === false) {
       let result = conv2d(x, filter, strides, pad3, dataFormat, dilations, dimRoundingMode);
@@ -13150,7 +13151,7 @@ Expected: ${expectedFlat}.`);
         if (reshapedTo4D) {
           res = reshape(res, [res.shape[1], res.shape[2], res.shape[3]]);
         }
-        return {value: res, gradFunc: grad2};
+        return { value: res, gradFunc: grad2 };
       });
       return customOp(x4D, $filter);
     } else {
@@ -13160,12 +13161,12 @@ Expected: ${expectedFlat}.`);
         if (reshapedTo4D) {
           res = reshape(res, [res.shape[1], res.shape[2], res.shape[3]]);
         }
-        return {value: res, gradFunc: grad2};
+        return { value: res, gradFunc: grad2 };
       });
       return customOpWithBias(x4D, $filter, $bias);
     }
   }
-  var conv2d2 = op({fusedConv2d_});
+  var conv2d2 = op({ fusedConv2d_ });
   function depthwiseConv2dNativeBackpropFilter_(x, dy, filterShape, strides, pad3, dilations = [1, 1], dimRoundingMode) {
     let x4D = x;
     if (x.rank === 3) {
@@ -13175,11 +13176,11 @@ Expected: ${expectedFlat}.`);
     if (dy4D.rank === 3) {
       dy4D = reshape(dy, [1, dy.shape[0], dy.shape[1], dy.shape[2]]);
     }
-    const inputs = {x: x4D, dy: dy4D};
-    const attrs = {strides, pad: pad3, dimRoundingMode, dilations, filterShape};
+    const inputs = { x: x4D, dy: dy4D };
+    const attrs = { strides, pad: pad3, dimRoundingMode, dilations, filterShape };
     return ENGINE.runKernel(DepthwiseConv2dNativeBackpropFilter, inputs, attrs);
   }
-  var depthwiseConv2dNativeBackpropFilter = op({depthwiseConv2dNativeBackpropFilter_});
+  var depthwiseConv2dNativeBackpropFilter = op({ depthwiseConv2dNativeBackpropFilter_ });
   function depthwiseConv2dNativeBackpropInput_(xShape, dy, filter, strides, pad3, dilations = [1, 1], dimRoundingMode) {
     let dy4D = dy;
     let reshapedTo4D = false;
@@ -13187,16 +13188,16 @@ Expected: ${expectedFlat}.`);
       reshapedTo4D = true;
       dy4D = reshape(dy, [1, dy.shape[0], dy.shape[1], dy.shape[2]]);
     }
-    const inputs = {dy: dy4D, filter};
-    const attrs = {strides, pad: pad3, dimRoundingMode, dilations, inputShape: xShape};
+    const inputs = { dy: dy4D, filter };
+    const attrs = { strides, pad: pad3, dimRoundingMode, dilations, inputShape: xShape };
     const res = ENGINE.runKernel(DepthwiseConv2dNativeBackpropInput, inputs, attrs);
     if (reshapedTo4D) {
       return reshape(res, [res.shape[1], res.shape[2], res.shape[3]]);
     }
     return res;
   }
-  var depthwiseConv2dNativeBackpropInput = op({depthwiseConv2dNativeBackpropInput_});
-  function fusedDepthwiseConv2d_({x, filter, strides, pad: pad3, dataFormat = "NHWC", dilations = [1, 1], dimRoundingMode, bias, activation: activation2 = "linear", preluActivationWeights, leakyreluAlpha}) {
+  var depthwiseConv2dNativeBackpropInput = op({ depthwiseConv2dNativeBackpropInput_ });
+  function fusedDepthwiseConv2d_({ x, filter, strides, pad: pad3, dataFormat = "NHWC", dilations = [1, 1], dimRoundingMode, bias, activation: activation2 = "linear", preluActivationWeights, leakyreluAlpha }) {
     if (shouldFuse(ENGINE.state.gradientDepth, activation2) === false) {
       let result = depthwiseConv2d(x, filter, strides, pad3, dataFormat, dilations, dimRoundingMode);
       if (bias != null) {
@@ -13267,7 +13268,7 @@ Expected: ${expectedFlat}.`);
         if (reshapedTo4D) {
           res = reshape(res, [res.shape[1], res.shape[2], res.shape[3]]);
         }
-        return {value: res, gradFunc: grad2};
+        return { value: res, gradFunc: grad2 };
       });
       return customOp(x4D, $filter);
     } else {
@@ -13277,13 +13278,13 @@ Expected: ${expectedFlat}.`);
         if (reshapedTo4D) {
           res = reshape(res, [res.shape[1], res.shape[2], res.shape[3]]);
         }
-        return {value: res, gradFunc: grad2};
+        return { value: res, gradFunc: grad2 };
       });
       return customOpWithBias(x4D, $filter, $bias);
     }
   }
-  var depthwiseConv2d2 = op({fusedDepthwiseConv2d_});
-  function fusedMatMul_({a, b, transposeA = false, transposeB = false, bias, activation: activation2 = "linear", preluActivationWeights, leakyreluAlpha}) {
+  var depthwiseConv2d2 = op({ fusedDepthwiseConv2d_ });
+  function fusedMatMul_({ a, b, transposeA = false, transposeB = false, bias, activation: activation2 = "linear", preluActivationWeights, leakyreluAlpha }) {
     if (shouldFuse(ENGINE.state.gradientDepth, activation2) === false) {
       let result = matMul(a, b, transposeA, transposeB);
       if (bias != null) {
@@ -13349,32 +13350,32 @@ Expected: ${expectedFlat}.`);
       bias: $bias,
       preluActivationWeights: $preluActivationWeights
     };
-    const attrs = {transposeA, transposeB, activation: activation2, leakyreluAlpha};
+    const attrs = { transposeA, transposeB, activation: activation2, leakyreluAlpha };
     if (bias == null) {
       const customOp = customGrad((a3D2, b3D2, save) => {
         const res = ENGINE.runKernel(_FusedMatMul, inputs, attrs);
         save([a3D2, b3D2, res]);
-        return {value: reshape(res, outShape), gradFunc: grad2};
+        return { value: reshape(res, outShape), gradFunc: grad2 };
       });
       return customOp(a3D, b3D);
     } else {
       const customOpWithBias = customGrad((a3D2, b3D2, $bias2, save) => {
         const res = ENGINE.runKernel(_FusedMatMul, inputs, attrs);
         save([a3D2, b3D2, res, $bias2]);
-        return {value: reshape(res, outShape), gradFunc: grad2};
+        return { value: reshape(res, outShape), gradFunc: grad2 };
       });
       return customOpWithBias(a3D, b3D, $bias);
     }
   }
-  var matMul2 = op({fusedMatMul_});
+  var matMul2 = op({ fusedMatMul_ });
   function hammingWindow_(windowLength) {
     return cosineWindow(windowLength, 0.54, 0.46);
   }
-  var hammingWindow = op({hammingWindow_});
+  var hammingWindow = op({ hammingWindow_ });
   function hannWindow_(windowLength) {
     return cosineWindow(windowLength, 0.5, 0.5);
   }
-  var hannWindow = op({hannWindow_});
+  var hannWindow = op({ hannWindow_ });
   function frame_(signal2, frameLength, frameStep, padEnd = false, padValue = 0) {
     let start = 0;
     const output = [];
@@ -13398,7 +13399,7 @@ Expected: ${expectedFlat}.`);
     }
     return reshape(concat(output), [output.length, frameLength]);
   }
-  var frame = op({frame_});
+  var frame = op({ frame_ });
   function stft_(signal2, frameLength, frameStep, fftLength, windowFn = hannWindow) {
     if (fftLength == null) {
       fftLength = enclosingPowerOfTwo(frameLength);
@@ -13407,7 +13408,7 @@ Expected: ${expectedFlat}.`);
     const windowedSignal = mul(framedSignal, windowFn(frameLength));
     return rfft(windowedSignal, fftLength);
   }
-  var stft = op({stft_});
+  var stft = op({ stft_ });
   function cropAndResize_(image3, boxes, boxInd, cropSize, method = "bilinear", extrapolationValue = 0) {
     const $image = convertToTensor(image3, "image", "cropAndResize");
     const $boxes = convertToTensor(boxes, "boxes", "cropAndResize", "float32");
@@ -13419,29 +13420,29 @@ Expected: ${expectedFlat}.`);
     assert(cropSize.length === 2, () => `Error in cropAndResize: cropSize must be of length 2, but got length ${cropSize.length}.`);
     assert(cropSize[0] >= 1 && cropSize[1] >= 1, () => `cropSize must be atleast [1,1], but was ${cropSize}`);
     assert(method === "bilinear" || method === "nearest", () => `method must be bilinear or nearest, but was ${method}`);
-    const inputs = {image: $image, boxes: $boxes, boxInd: $boxInd};
-    const attrs = {method, extrapolationValue, cropSize};
+    const inputs = { image: $image, boxes: $boxes, boxInd: $boxInd };
+    const attrs = { method, extrapolationValue, cropSize };
     const res = ENGINE.runKernel(CropAndResize, inputs, attrs);
     return res;
   }
-  var cropAndResize = op({cropAndResize_});
+  var cropAndResize = op({ cropAndResize_ });
   function flipLeftRight_(image3) {
     const $image = convertToTensor(image3, "image", "flipLeftRight", "float32");
     assert($image.rank === 4, () => `Error in flipLeftRight: image must be rank 4,but got rank ${$image.rank}.`);
-    const inputs = {image: $image};
+    const inputs = { image: $image };
     const res = ENGINE.runKernel(FlipLeftRight, inputs, {});
     return res;
   }
-  var flipLeftRight = op({flipLeftRight_});
+  var flipLeftRight = op({ flipLeftRight_ });
   function rotateWithOffset_(image3, radians, fillValue = 0, center = 0.5) {
     const $image = convertToTensor(image3, "image", "rotateWithOffset", "float32");
     assert($image.rank === 4, () => `Error in rotateWithOffset: image must be rank 4,but got rank ${$image.rank}.`);
-    const inputs = {image: $image};
-    const attrs = {radians, fillValue, center};
+    const inputs = { image: $image };
+    const attrs = { radians, fillValue, center };
     const res = ENGINE.runKernel(RotateWithOffset, inputs, attrs);
     return res;
   }
-  var rotateWithOffset = op({rotateWithOffset_});
+  var rotateWithOffset = op({ rotateWithOffset_ });
   function nonMaxSuppSanityCheck(boxes, scores, maxOutputSize, iouThreshold, scoreThreshold, softNmsSigma) {
     if (iouThreshold == null) {
       iouThreshold = 0.5;
@@ -13460,7 +13461,7 @@ Expected: ${expectedFlat}.`);
     assert(scores.rank === 1, () => "scores must be a 1D tensor");
     assert(scores.shape[0] === numBoxes, () => `scores has incompatible shape with boxes. Expected ${numBoxes}, but was ${scores.shape[0]}`);
     assert(0 <= softNmsSigma && softNmsSigma <= 1, () => `softNmsSigma must be in [0, 1], but was '${softNmsSigma}'`);
-    return {maxOutputSize, iouThreshold, scoreThreshold, softNmsSigma};
+    return { maxOutputSize, iouThreshold, scoreThreshold, softNmsSigma };
   }
   function nonMaxSuppression_(boxes, scores, maxOutputSize, iouThreshold = 0.5, scoreThreshold = Number.NEGATIVE_INFINITY) {
     const $boxes = convertToTensor(boxes, "boxes", "nonMaxSuppression");
@@ -13469,10 +13470,10 @@ Expected: ${expectedFlat}.`);
     maxOutputSize = inputs.maxOutputSize;
     iouThreshold = inputs.iouThreshold;
     scoreThreshold = inputs.scoreThreshold;
-    const attrs = {maxOutputSize, iouThreshold, scoreThreshold};
-    return ENGINE.runKernel(NonMaxSuppressionV3, {boxes: $boxes, scores: $scores}, attrs);
+    const attrs = { maxOutputSize, iouThreshold, scoreThreshold };
+    return ENGINE.runKernel(NonMaxSuppressionV3, { boxes: $boxes, scores: $scores }, attrs);
   }
-  var nonMaxSuppression = op({nonMaxSuppression_});
+  var nonMaxSuppression = op({ nonMaxSuppression_ });
   function binaryInsert(arr, element, comparator) {
     const index = binarySearch(arr, element, comparator);
     const insertionPoint = index < 0 ? -(index + 1) : index;
@@ -13514,7 +13515,7 @@ Expected: ${expectedFlat}.`);
     const candidates = [];
     for (let i = 0; i < scores.length; i++) {
       if (scores[i] > scoreThreshold) {
-        candidates.push({score: scores[i], boxIndex: i, suppressBeginIndex: 0});
+        candidates.push({ score: scores[i], boxIndex: i, suppressBeginIndex: 0 });
       }
     }
     candidates.sort(ascendingComparator);
@@ -13523,7 +13524,7 @@ Expected: ${expectedFlat}.`);
     const selectedScores = [];
     while (selectedIndices.length < maxOutputSize && candidates.length > 0) {
       const candidate = candidates.pop();
-      const {score: originalScore, boxIndex, suppressBeginIndex} = candidate;
+      const { score: originalScore, boxIndex, suppressBeginIndex } = candidate;
       if (originalScore < scoreThreshold) {
         break;
       }
@@ -13555,7 +13556,7 @@ Expected: ${expectedFlat}.`);
       selectedIndices.push(...new Array(elemsToPad).fill(0));
       selectedScores.push(...new Array(elemsToPad).fill(0));
     }
-    const result = {selectedIndices};
+    const result = { selectedIndices };
     if (returnScoresTensor) {
       result["selectedScores"] = selectedScores;
     }
@@ -13604,7 +13605,7 @@ Expected: ${expectedFlat}.`);
     const boxesAndScores = await Promise.all([$boxes.data(), $scores.data()]);
     const boxesVals = boxesAndScores[0];
     const scoresVals = boxesAndScores[1];
-    const {selectedIndices} = nonMaxSuppressionV3Impl(boxesVals, scoresVals, maxOutputSize, iouThreshold, scoreThreshold);
+    const { selectedIndices } = nonMaxSuppressionV3Impl(boxesVals, scoresVals, maxOutputSize, iouThreshold, scoreThreshold);
     if ($boxes !== boxes) {
       $boxes.dispose();
     }
@@ -13622,12 +13623,12 @@ Expected: ${expectedFlat}.`);
     iouThreshold = params.iouThreshold;
     scoreThreshold = params.scoreThreshold;
     softNmsSigma = params.softNmsSigma;
-    const inputs = {boxes: $boxes, scores: $scores};
-    const attrs = {maxOutputSize, iouThreshold, scoreThreshold, softNmsSigma};
+    const inputs = { boxes: $boxes, scores: $scores };
+    const attrs = { maxOutputSize, iouThreshold, scoreThreshold, softNmsSigma };
     const result = ENGINE.runKernel(NonMaxSuppressionV5, inputs, attrs);
-    return {selectedIndices: result[0], selectedScores: result[1]};
+    return { selectedIndices: result[0], selectedScores: result[1] };
   }
-  var nonMaxSuppressionWithScore = op({nonMaxSuppressionWithScore_});
+  var nonMaxSuppressionWithScore = op({ nonMaxSuppressionWithScore_ });
   async function nonMaxSuppressionWithScoreAsync_(boxes, scores, maxOutputSize, iouThreshold = 0.5, scoreThreshold = Number.NEGATIVE_INFINITY, softNmsSigma = 0) {
     const $boxes = convertToTensor(boxes, "boxes", "nonMaxSuppressionAsync");
     const $scores = convertToTensor(scores, "scores", "nonMaxSuppressionAsync");
@@ -13639,7 +13640,7 @@ Expected: ${expectedFlat}.`);
     const boxesAndScores = await Promise.all([$boxes.data(), $scores.data()]);
     const boxesVals = boxesAndScores[0];
     const scoresVals = boxesAndScores[1];
-    const {selectedIndices, selectedScores} = nonMaxSuppressionV5Impl(boxesVals, scoresVals, maxOutputSize, iouThreshold, scoreThreshold, softNmsSigma);
+    const { selectedIndices, selectedScores } = nonMaxSuppressionV5Impl(boxesVals, scoresVals, maxOutputSize, iouThreshold, scoreThreshold, softNmsSigma);
     if ($boxes !== boxes) {
       $boxes.dispose();
     }
@@ -13659,7 +13660,7 @@ Expected: ${expectedFlat}.`);
     const $maxOutputSize = params.maxOutputSize;
     const $iouThreshold = params.iouThreshold;
     const $scoreThreshold = params.scoreThreshold;
-    const inputs = {boxes: $boxes, scores: $scores};
+    const inputs = { boxes: $boxes, scores: $scores };
     const attrs = {
       maxOutputSize: $maxOutputSize,
       iouThreshold: $iouThreshold,
@@ -13667,9 +13668,9 @@ Expected: ${expectedFlat}.`);
       padToMaxOutputSize
     };
     const result = ENGINE.runKernel(NonMaxSuppressionV4, inputs, attrs);
-    return {selectedIndices: result[0], validOutputs: result[1]};
+    return { selectedIndices: result[0], validOutputs: result[1] };
   }
-  var nonMaxSuppressionPadded = op({nonMaxSuppressionPadded_});
+  var nonMaxSuppressionPadded = op({ nonMaxSuppressionPadded_ });
   async function nonMaxSuppressionPaddedAsync_(boxes, scores, maxOutputSize, iouThreshold = 0.5, scoreThreshold = Number.NEGATIVE_INFINITY, padToMaxOutputSize = false) {
     const $boxes = convertToTensor(boxes, "boxes", "nonMaxSuppressionAsync");
     const $scores = convertToTensor(scores, "scores", "nonMaxSuppressionAsync");
@@ -13678,7 +13679,7 @@ Expected: ${expectedFlat}.`);
     const $iouThreshold = params.iouThreshold;
     const $scoreThreshold = params.scoreThreshold;
     const [boxesVals, scoresVals] = await Promise.all([$boxes.data(), $scores.data()]);
-    const {selectedIndices, validOutputs} = nonMaxSuppressionV4Impl(boxesVals, scoresVals, $maxOutputSize, $iouThreshold, $scoreThreshold, padToMaxOutputSize);
+    const { selectedIndices, validOutputs } = nonMaxSuppressionV4Impl(boxesVals, scoresVals, $maxOutputSize, $iouThreshold, $scoreThreshold, padToMaxOutputSize);
     if ($boxes !== boxes) {
       $boxes.dispose();
     }
@@ -13703,15 +13704,15 @@ Expected: ${expectedFlat}.`);
       batchImages = reshape($images, [1, $images.shape[0], $images.shape[1], $images.shape[2]]);
     }
     const [] = size;
-    const inputs = {images: batchImages};
-    const attrs = {alignCorners, halfPixelCenters, size};
+    const inputs = { images: batchImages };
+    const attrs = { alignCorners, halfPixelCenters, size };
     const res = ENGINE.runKernel(ResizeBilinear, inputs, attrs);
     if (reshapedTo4D) {
       return reshape(res, [res.shape[1], res.shape[2], res.shape[3]]);
     }
     return res;
   }
-  var resizeBilinear = op({resizeBilinear_});
+  var resizeBilinear = op({ resizeBilinear_ });
   function resizeNearestNeighbor_(images, size, alignCorners = false, halfPixelCenters = false) {
     const $images = convertToTensor(images, "images", "resizeNearestNeighbor");
     assert($images.rank === 3 || $images.rank === 4, () => `Error in resizeNearestNeighbor: x must be rank 3 or 4, but got rank ${$images.rank}.`);
@@ -13725,15 +13726,15 @@ Expected: ${expectedFlat}.`);
       batchImages = reshape($images, [1, $images.shape[0], $images.shape[1], $images.shape[2]]);
     }
     const [] = size;
-    const inputs = {images: batchImages};
-    const attrs = {alignCorners, halfPixelCenters, size};
+    const inputs = { images: batchImages };
+    const attrs = { alignCorners, halfPixelCenters, size };
     const res = ENGINE.runKernel(ResizeNearestNeighbor, inputs, attrs);
     if (reshapedTo4D) {
       return reshape(res, [res.shape[1], res.shape[2], res.shape[3]]);
     }
     return res;
   }
-  var resizeNearestNeighbor = op({resizeNearestNeighbor_});
+  var resizeNearestNeighbor = op({ resizeNearestNeighbor_ });
   function threshold_(image3, method = "binary", inverted = false, threshValue = 0.5) {
     const $image = convertToTensor(image3, "image", "threshold");
     const RED_INTENCITY_COEF = 0.2989;
@@ -13789,18 +13790,18 @@ Expected: ${expectedFlat}.`);
     }
     return bestThresh;
   }
-  var threshold = op({threshold_});
+  var threshold = op({ threshold_ });
   function transform_(image3, transforms, interpolation = "nearest", fillMode = "constant", fillValue = 0, outputShape) {
     const $image = convertToTensor(image3, "image", "transform", "float32");
     const $transforms = convertToTensor(transforms, "transforms", "transform", "float32");
     assert($image.rank === 4, () => `Error in transform: image must be rank 4,but got rank ${$image.rank}.`);
     assert($transforms.rank === 2 && ($transforms.shape[0] === $image.shape[0] || $transforms.shape[0] === 1) && $transforms.shape[1] === 8, () => `Error in transform: Input transform should be batch x 8 or 1 x 8`);
     assert(outputShape == null || outputShape.length === 2, () => `Error in transform: outputShape must be [height, width] or null, but got ${outputShape}.`);
-    const inputs = {image: $image, transforms: $transforms};
-    const attrs = {interpolation, fillMode, fillValue, outputShape};
+    const inputs = { image: $image, transforms: $transforms };
+    const attrs = { interpolation, fillMode, fillValue, outputShape };
     return ENGINE.runKernel(Transform, inputs, attrs);
   }
-  var transform = op({transform_});
+  var transform = op({ transform_ });
   function bandPart_(a, numLower, numUpper) {
     assert(numLower % 1 === 0, () => `bandPart(): numLower must be an integer, got ${numLower}.`);
     assert(numUpper % 1 === 0, () => `bandPart(): numUpper must be an integer, got ${numUpper}.`);
@@ -13827,7 +13828,7 @@ Expected: ${expectedFlat}.`);
     const zero = zeros([M, N], $a.dtype);
     return reshape(stack(unstack(reshape($a, [-1, M, N])).map((mat) => where(inBand, mat, zero))), shape);
   }
-  var bandPart = op({bandPart_});
+  var bandPart = op({ bandPart_ });
   function gramSchmidt_(xs) {
     let inputIsTensor2D;
     if (Array.isArray(xs)) {
@@ -13862,7 +13863,7 @@ Expected: ${expectedFlat}.`);
       return ys;
     }
   }
-  var gramSchmidt = op({gramSchmidt_});
+  var gramSchmidt = op({ gramSchmidt_ });
   function qr_(x, fullMatrices = false) {
     assert(x.rank >= 2, () => `qr() requires input tensor to have a rank >= 2, but got rank ${x.rank}`);
     if (x.rank === 2) {
@@ -13944,7 +13945,7 @@ Expected: ${expectedFlat}.`);
       return [q, r];
     });
   }
-  var qr = op({qr_});
+  var qr = op({ qr_ });
   var Reduction;
   (function(Reduction2) {
     Reduction2[Reduction2["NONE"] = 0] = "NONE";
@@ -13985,7 +13986,7 @@ Expected: ${expectedFlat}.`);
     }
     throw Error(`Unknown reduction: ${reduction2}`);
   }
-  var computeWeightedLoss = op({computeWeightedLoss_});
+  var computeWeightedLoss = op({ computeWeightedLoss_ });
   function absoluteDifference_(labels, predictions, weights, reduction2 = Reduction.SUM_BY_NONZERO_WEIGHTS) {
     const $labels = convertToTensor(labels, "labels", "absoluteDifference");
     const $predictions = convertToTensor(predictions, "predictions", "absoluteDifference");
@@ -13997,7 +13998,7 @@ Expected: ${expectedFlat}.`);
     const losses4 = abs(sub($labels, $predictions));
     return computeWeightedLoss(losses4, $weights, reduction2);
   }
-  var absoluteDifference = op({absoluteDifference_});
+  var absoluteDifference = op({ absoluteDifference_ });
   function cosineDistance_(labels, predictions, axis, weights, reduction2 = Reduction.SUM_BY_NONZERO_WEIGHTS) {
     const $labels = convertToTensor(labels, "labels", "cosineDistance");
     const $predictions = convertToTensor(predictions, "predictions", "cosineDistance");
@@ -14010,7 +14011,7 @@ Expected: ${expectedFlat}.`);
     const losses4 = sub(one, sum2(mul($labels, $predictions), axis, true));
     return computeWeightedLoss(losses4, $weights, reduction2);
   }
-  var cosineDistance = op({cosineDistance_});
+  var cosineDistance = op({ cosineDistance_ });
   function hingeLoss_(labels, predictions, weights, reduction2 = Reduction.SUM_BY_NONZERO_WEIGHTS) {
     let $labels = convertToTensor(labels, "labels", "hingeLoss");
     const $predictions = convertToTensor(predictions, "predictions", "hingeLoss");
@@ -14024,7 +14025,7 @@ Expected: ${expectedFlat}.`);
     const losses4 = relu(sub(one, mul($labels, $predictions)));
     return computeWeightedLoss(losses4, $weights, reduction2);
   }
-  var hingeLoss = op({hingeLoss_});
+  var hingeLoss = op({ hingeLoss_ });
   function huberLoss_(labels, predictions, weights, delta = 1, reduction2 = Reduction.SUM_BY_NONZERO_WEIGHTS) {
     const $labels = convertToTensor(labels, "labels", "huberLoss");
     const $predictions = convertToTensor(predictions, "predictions", "huberLoss");
@@ -14040,7 +14041,7 @@ Expected: ${expectedFlat}.`);
     const losses4 = add2(mul(scalar(0.5), square(quadratic)), mul(deltaScalar, linear));
     return computeWeightedLoss(losses4, $weights, reduction2);
   }
-  var huberLoss = op({huberLoss_});
+  var huberLoss = op({ huberLoss_ });
   function logLoss_(labels, predictions, weights, epsilon32 = 1e-7, reduction2 = Reduction.SUM_BY_NONZERO_WEIGHTS) {
     const $labels = convertToTensor(labels, "labels", "logLoss");
     const $predictions = convertToTensor(predictions, "predictions", "logLoss");
@@ -14056,7 +14057,7 @@ Expected: ${expectedFlat}.`);
     const losses4 = sub(l13, l23);
     return computeWeightedLoss(losses4, $weights, reduction2);
   }
-  var logLoss = op({logLoss_});
+  var logLoss = op({ logLoss_ });
   function meanSquaredError_(labels, predictions, weights, reduction2 = Reduction.SUM_BY_NONZERO_WEIGHTS) {
     const $labels = convertToTensor(labels, "labels", "meanSquaredError");
     const $predictions = convertToTensor(predictions, "predictions", "meanSquaredError");
@@ -14068,7 +14069,7 @@ Expected: ${expectedFlat}.`);
     const losses4 = squaredDifference($labels, $predictions);
     return computeWeightedLoss(losses4, $weights, reduction2);
   }
-  var meanSquaredError = op({meanSquaredError_});
+  var meanSquaredError = op({ meanSquaredError_ });
   function sigmoidCrossEntropyWithLogits_(labels, logits) {
     const $labels = convertToTensor(labels, "labels", "sigmoidCrossEntropyWithLogits");
     const $logits = convertToTensor(logits, "logits", "sigmoidCrossEntropyWithLogits");
@@ -14095,7 +14096,7 @@ Expected: ${expectedFlat}.`);
     const losses4 = sigmoidCrossEntropyWithLogits_($multiClassLabels, $logits);
     return computeWeightedLoss(losses4, $weights, reduction2);
   }
-  var sigmoidCrossEntropy = op({sigmoidCrossEntropy_});
+  var sigmoidCrossEntropy = op({ sigmoidCrossEntropy_ });
   function softmaxCrossEntropyWithLogits_(labels, logits, dim = -1) {
     if (dim === -1) {
       dim = logits.rank - 1;
@@ -14118,7 +14119,7 @@ Expected: ${expectedFlat}.`);
           mul(reshape(dy, dyShape), sub(exp(logResult2), cast(labels3, "float32")))
         ];
       };
-      return {value, gradFunc};
+      return { value, gradFunc };
     });
     return customOp(labels, logits);
   }
@@ -14139,7 +14140,7 @@ Expected: ${expectedFlat}.`);
     const losses4 = softmaxCrossEntropyWithLogits_($onehotLabels, $logits);
     return computeWeightedLoss(losses4, $weights, reduction2);
   }
-  var softmaxCrossEntropy = op({softmaxCrossEntropy_});
+  var softmaxCrossEntropy = op({ softmaxCrossEntropy_ });
   function sparseFillEmptyRows_(indices, values, denseShape, defaultValue) {
     const $indices = convertToTensor(indices, "indices", "sparseFillEmptyRows");
     const $values = convertToTensor(values, "values", "sparseFillEmptyRows");
@@ -14172,7 +14173,7 @@ Expected: ${expectedFlat}.`);
       reverseIndexMap: result[3]
     };
   }
-  var sparseFillEmptyRows = op({sparseFillEmptyRows_});
+  var sparseFillEmptyRows = op({ sparseFillEmptyRows_ });
   function sparseReshape_(inputIndices, inputShape, newShape) {
     const $inputIndices = convertToTensor(inputIndices, "inputIndices", "sparseReshape");
     const $inputShape = convertToTensor(inputShape, "inputShape", "sparseReshape");
@@ -14193,9 +14194,9 @@ Expected: ${expectedFlat}.`);
       newShape: $newShape
     };
     const result = ENGINE.runKernel(SparseReshape, inputs);
-    return {outputIndices: result[0], outputShape: result[1]};
+    return { outputIndices: result[0], outputShape: result[1] };
   }
-  var sparseReshape = op({sparseReshape_});
+  var sparseReshape = op({ sparseReshape_ });
   var spectral = {
     fft,
     ifft,
@@ -14245,9 +14246,9 @@ Expected: ${expectedFlat}.`);
   };
   var Optimizer = class extends Serializable {
     minimize(f, returnCost = false, varList) {
-      const {value, grads: grads2} = this.computeGradients(f, varList);
+      const { value, grads: grads2 } = this.computeGradients(f, varList);
       if (varList != null) {
-        const gradArray = varList.map((v) => ({name: v.name, tensor: grads2[v.name]}));
+        const gradArray = varList.map((v) => ({ name: v.name, tensor: grads2[v.name] }));
         this.applyGradients(gradArray);
       } else {
         this.applyGradients(grads2);
@@ -14357,7 +14358,7 @@ Expected: ${expectedFlat}.`);
     }
     async getWeights() {
       const variables = [...this.accumulatedGrads, ...this.accumulatedUpdates];
-      return [await this.saveIterations()].concat(variables.map((v) => ({name: v.originalName, tensor: v.variable})));
+      return [await this.saveIterations()].concat(variables.map((v) => ({ name: v.originalName, tensor: v.variable })));
     }
     async setWeights(weightValues) {
       weightValues = await this.extractIterations(weightValues);
@@ -14423,12 +14424,12 @@ Expected: ${expectedFlat}.`);
       }
     }
     async getWeights() {
-      return [await this.saveIterations()].concat(this.accumulatedGrads.map((v) => ({name: v.originalName, tensor: v.variable})));
+      return [await this.saveIterations()].concat(this.accumulatedGrads.map((v) => ({ name: v.originalName, tensor: v.variable })));
     }
     async setWeights(weightValues) {
       weightValues = await this.extractIterations(weightValues);
       const trainable = false;
-      this.accumulatedGrads = weightValues.map((v) => ({originalName: v.name, variable: v.tensor.variable(trainable)}));
+      this.accumulatedGrads = weightValues.map((v) => ({ originalName: v.name, variable: v.tensor.variable(trainable) }));
     }
     getConfig() {
       return {
@@ -14511,7 +14512,7 @@ Expected: ${expectedFlat}.`);
     }
     async getWeights() {
       const variables = [...this.accumulatedFirstMoment, ...this.accumulatedSecondMoment];
-      return [await this.saveIterations()].concat(variables.map((v) => ({name: v.originalName, tensor: v.variable})));
+      return [await this.saveIterations()].concat(variables.map((v) => ({ name: v.originalName, tensor: v.variable })));
     }
     async setWeights(weightValues) {
       weightValues = await this.extractIterations(weightValues);
@@ -14674,7 +14675,7 @@ Expected: ${expectedFlat}.`);
       }
     }
     getConfig() {
-      return {"learningRate": this.learningRate};
+      return { "learningRate": this.learningRate };
     }
     static fromConfig(cls, config) {
       return new cls(config["learningRate"]);
@@ -14731,12 +14732,12 @@ Expected: ${expectedFlat}.`);
       this.momentum = momentum;
     }
     async getWeights() {
-      return [await this.saveIterations()].concat(this.accumulations.map((v) => ({name: v.originalName, tensor: v.variable})));
+      return [await this.saveIterations()].concat(this.accumulations.map((v) => ({ name: v.originalName, tensor: v.variable })));
     }
     async setWeights(weightValues) {
       weightValues = await this.extractIterations(weightValues);
       const trainable = false;
-      this.accumulations = weightValues.map((v) => ({originalName: v.name, variable: v.tensor.variable(trainable)}));
+      this.accumulations = weightValues.map((v) => ({ originalName: v.name, variable: v.tensor.variable(trainable) }));
     }
     getConfig() {
       return {
@@ -14838,7 +14839,7 @@ Expected: ${expectedFlat}.`);
       if (this.centered) {
         variables.push(...this.accumulatedMeanGrads);
       }
-      return [await this.saveIterations()].concat(variables.map((v) => ({name: v.originalName, tensor: v.variable})));
+      return [await this.saveIterations()].concat(variables.map((v) => ({ name: v.originalName, tensor: v.variable })));
     }
     async setWeights(weightValues) {
       weightValues = await this.extractIterations(weightValues);
@@ -15133,7 +15134,7 @@ Expected: ${expectedFlat}.`);
       real4[i / 2] = complex4[i];
       imag4[i / 2] = complex4[i + 1];
     }
-    return {real: real4, imag: imag4};
+    return { real: real4, imag: imag4 };
   }
   function complexWithEvenIndex(complex4) {
     const len = Math.ceil(complex4.length / 4);
@@ -15143,7 +15144,7 @@ Expected: ${expectedFlat}.`);
       real4[Math.floor(i / 4)] = complex4[i];
       imag4[Math.floor(i / 4)] = complex4[i + 1];
     }
-    return {real: real4, imag: imag4};
+    return { real: real4, imag: imag4 };
   }
   function complexWithOddIndex(complex4) {
     const len = Math.floor(complex4.length / 4);
@@ -15153,12 +15154,12 @@ Expected: ${expectedFlat}.`);
       real4[Math.floor(i / 4)] = complex4[i];
       imag4[Math.floor(i / 4)] = complex4[i + 1];
     }
-    return {real: real4, imag: imag4};
+    return { real: real4, imag: imag4 };
   }
   function getComplexWithIndex(complex4, index) {
     const real4 = complex4[index * 2];
     const imag4 = complex4[index * 2 + 1];
-    return {real: real4, imag: imag4};
+    return { real: real4, imag: imag4 };
   }
   function assignToTypedArray(data, real4, imag4, index) {
     data[index * 2] = real4;
@@ -15172,13 +15173,13 @@ Expected: ${expectedFlat}.`);
       real4[i] = Math.cos(x);
       imag4[i] = Math.sin(x);
     }
-    return {real: real4, imag: imag4};
+    return { real: real4, imag: imag4 };
   }
   function exponent(k, n, inverse) {
     const x = (inverse ? 2 : -2) * Math.PI * (k / n);
     const real4 = Math.cos(x);
     const imag4 = Math.sin(x);
-    return {real: real4, imag: imag4};
+    return { real: real4, imag: imag4 };
   }
   var ARROW = "->";
   var ARROW_REGEX = /->/g;
@@ -15234,7 +15235,7 @@ Expected: ${expectedFlat}.`);
     for (let i = numOutDims; i < numDims; ++i) {
       summedDims.push(i);
     }
-    return {allDims, summedDims, idDims};
+    return { allDims, summedDims, idDims };
   }
   function getEinsumPermutation(nDims, idDims) {
     let permutationIndices = new Array(nDims);
@@ -15249,7 +15250,7 @@ Expected: ${expectedFlat}.`);
       }
     }
     permutationIndices = permutationIndices.filter((d) => d !== -1);
-    return {permutationIndices, expandDims: expandDims6};
+    return { permutationIndices, expandDims: expandDims6 };
   }
   function checkEinsumDimSizes(nDims, idDims, tensors) {
     const dimSizes = new Array(nDims);
@@ -15286,7 +15287,7 @@ Expected: ${expectedFlat}.`);
         }
       }
     }
-    return {path, steps};
+    return { path, steps };
   }
   function isIdentityPermutation(perm) {
     return perm.every((dim, index) => dim === index);
@@ -15402,7 +15403,7 @@ Expected: ${expectedFlat}.`);
       outputShape.push(x.shape[i]);
       sliceSize *= x.shape[i];
     }
-    return {batchSize, sliceSize, outerSize, dimSize, outputShape};
+    return { batchSize, sliceSize, outerSize, dimSize, outputShape };
   }
   function fromUint8ToStringArray(vals) {
     try {
@@ -15426,7 +15427,7 @@ Expected: ${expectedFlat}.`);
     inputsToSave: ["x"],
     gradFunc: (dy, saved) => {
       const [x] = saved;
-      return {x: () => mul(dy, step(cast(x, "float32"), -1))};
+      return { x: () => mul(dy, step(cast(x, "float32"), -1)) };
     }
   };
   var acosGradConfig = {
@@ -15478,7 +15479,7 @@ Expected: ${expectedFlat}.`);
         }
         return reshape(res, b.shape);
       };
-      return {a: derA, b: derB};
+      return { a: derA, b: derB };
     }
   };
   var addNGradConfig = {
@@ -15497,7 +15498,7 @@ Expected: ${expectedFlat}.`);
     inputsToSave: ["x"],
     gradFunc: (dy, saved) => {
       const [x] = saved;
-      return {x: () => zerosLike(x)};
+      return { x: () => zerosLike(x) };
     }
   };
   var argMinGradConfig = {
@@ -15505,7 +15506,7 @@ Expected: ${expectedFlat}.`);
     inputsToSave: ["x"],
     gradFunc: (dy, saved) => {
       const [x] = saved;
-      return {x: () => zerosLike(x)};
+      return { x: () => zerosLike(x) };
     }
   };
   var asinGradConfig = {
@@ -15513,7 +15514,7 @@ Expected: ${expectedFlat}.`);
     inputsToSave: ["x"],
     gradFunc: (dy, saved) => {
       const [x] = saved;
-      return {x: () => div(dy, sqrt(sub(scalar(1), square(cast(x, "float32")))))};
+      return { x: () => div(dy, sqrt(sub(scalar(1), square(cast(x, "float32"))))) };
     }
   };
   var asinhGradConfig = {
@@ -15553,7 +15554,7 @@ Expected: ${expectedFlat}.`);
         }
         return reshape(res, b.shape);
       };
-      return {a: derA, b: derB};
+      return { a: derA, b: derB };
     }
   };
   var atanGradConfig = {
@@ -15561,7 +15562,7 @@ Expected: ${expectedFlat}.`);
     inputsToSave: ["x"],
     gradFunc: (dy, saved) => {
       const [x] = saved;
-      return {x: () => div(dy, add2(square(cast(x, "float32")), 1))};
+      return { x: () => div(dy, add2(square(cast(x, "float32")), 1)) };
     }
   };
   var atanhGradConfig = {
@@ -15569,7 +15570,7 @@ Expected: ${expectedFlat}.`);
     inputsToSave: ["x"],
     gradFunc: (dy, saved) => {
       const [x] = saved;
-      return {x: () => div(dy, sub(scalar(1), square(cast(x, "float32"))))};
+      return { x: () => div(dy, sub(scalar(1), square(cast(x, "float32")))) };
     }
   };
   function avgPool3dGrad_(dy, input2, filterSize, strides, pad3, dimRoundingMode) {
@@ -15594,21 +15595,21 @@ Expected: ${expectedFlat}.`);
     if (dimRoundingMode != null) {
       assert(isInt(pad3), () => `Error in avgPool3dGrad: pad must be an integer when using, dimRoundingMode ${dimRoundingMode} but got pad ${pad3}.`);
     }
-    const inputs = {dy: dy5D, input: input5D};
-    const attrs = {filterSize, strides, pad: pad3, dimRoundingMode};
+    const inputs = { dy: dy5D, input: input5D };
+    const attrs = { filterSize, strides, pad: pad3, dimRoundingMode };
     const res = ENGINE.runKernel(AvgPool3DGrad, inputs, attrs);
     if (reshapedTo5D) {
       return reshape(res, [res.shape[1], res.shape[2], res.shape[3], res.shape[4]]);
     }
     return res;
   }
-  var avgPool3dGrad = op({avgPool3dGrad_});
+  var avgPool3dGrad = op({ avgPool3dGrad_ });
   var avgPool3DGradConfig = {
     kernelName: AvgPool3D,
     inputsToSave: ["x"],
     gradFunc: (dy, saved, attrs) => {
       const [x] = saved;
-      const {filterSize, strides, pad: pad3, dimRoundingMode} = attrs;
+      const { filterSize, strides, pad: pad3, dimRoundingMode } = attrs;
       return {
         x: () => avgPool3dGrad(dy, x, filterSize, strides, pad3, dimRoundingMode)
       };
@@ -15628,22 +15629,22 @@ Expected: ${expectedFlat}.`);
     }
     assert(dy4D.rank === 4, () => `Error in avgPoolGrad: dy must be rank 4 but got rank ${dy4D.rank}.`);
     assert(input4D.rank === 4, () => `Error in avgPoolGrad: input must be rank 4 but got rank ${input4D.rank}.`);
-    const inputs = {dy: dy4D, input: input4D};
-    const attrs = {filterSize, strides, pad: pad3};
+    const inputs = { dy: dy4D, input: input4D };
+    const attrs = { filterSize, strides, pad: pad3 };
     const res = ENGINE.runKernel(AvgPoolGrad, inputs, attrs);
     if (reshapedTo4D) {
       return reshape(res, [res.shape[1], res.shape[2], res.shape[3]]);
     }
     return res;
   }
-  var avgPoolGrad = op({avgPoolGrad_});
+  var avgPoolGrad = op({ avgPoolGrad_ });
   var avgPoolGradConfig = {
     kernelName: AvgPool,
     inputsToSave: ["x"],
     gradFunc: (dy, saved, attrs) => {
       const [x] = saved;
-      const {filterSize, strides, pad: pad3} = attrs;
-      return {x: () => avgPoolGrad(dy, x, filterSize, strides, pad3)};
+      const { filterSize, strides, pad: pad3 } = attrs;
+      return { x: () => avgPoolGrad(dy, x, filterSize, strides, pad3) };
     }
   };
   var batchMatMulGradConfig = {
@@ -15651,7 +15652,7 @@ Expected: ${expectedFlat}.`);
     inputsToSave: ["a", "b"],
     gradFunc: (dy, saved, attrs) => {
       const [a, b] = saved;
-      const {transposeA, transposeB} = attrs;
+      const { transposeA, transposeB } = attrs;
       if (!transposeA && !transposeB) {
         return {
           a: () => matMul(dy, b, false, true),
@@ -15678,8 +15679,8 @@ Expected: ${expectedFlat}.`);
   var batchToSpaceNDGradConfig = {
     kernelName: BatchToSpaceND,
     gradFunc: (dy, saved, attrs) => {
-      const {blockShape, crops} = attrs;
-      return {x: () => spaceToBatchND(dy, blockShape, crops)};
+      const { blockShape, crops } = attrs;
+      return { x: () => spaceToBatchND(dy, blockShape, crops) };
     }
   };
   var broadcastToGradConfig = {
@@ -15702,19 +15703,19 @@ Expected: ${expectedFlat}.`);
           axes.push(i);
         }
       }
-      return {x: () => sum2(dy, axes, true)};
+      return { x: () => sum2(dy, axes, true) };
     }
   };
   var castGradConfig = {
     kernelName: Cast,
     gradFunc: (dy) => {
-      return {x: () => dy.clone()};
+      return { x: () => dy.clone() };
     }
   };
   var ceilGradConfig = {
     kernelName: Ceil,
     gradFunc: (dy) => {
-      return {x: () => zerosLike(dy)};
+      return { x: () => zerosLike(dy) };
     }
   };
   var clipByValueGradConfig = {
@@ -15722,7 +15723,7 @@ Expected: ${expectedFlat}.`);
     inputsToSave: ["x"],
     gradFunc: (dy, saved, attrs) => {
       const [x] = saved;
-      const {clipValueMin, clipValueMax} = attrs;
+      const { clipValueMin, clipValueMax } = attrs;
       return {
         x: () => where(logicalAnd(greaterEqual(x, clipValueMin), lessEqual(x, clipValueMax)), dy, zerosLike(dy))
       };
@@ -15738,7 +15739,7 @@ Expected: ${expectedFlat}.`);
     saveAllInputs: true,
     gradFunc: (dy, saved, attrs) => {
       const shapes = saved.map((t) => t.shape);
-      const {axis} = attrs;
+      const { axis } = attrs;
       const $axis = parseAxisParam(axis, saved[0].shape)[0];
       const sizeSplits = shapes.map((s) => s[$axis]);
       const derTensors = split(dy, sizeSplits, $axis);
@@ -15750,7 +15751,7 @@ Expected: ${expectedFlat}.`);
     inputsToSave: ["x", "filter"],
     gradFunc: (dy, saved, attrs) => {
       const [x4D, $filter] = saved;
-      const {dilations, strides, pad: pad3, dataFormat} = attrs;
+      const { dilations, strides, pad: pad3, dataFormat } = attrs;
       assert(tupleValuesAreOne(dilations), () => `Error in gradient of conv2D: dilation rates greater than 1 are not yet supported in gradients. Got dilations '${dilations}'`);
       return {
         x: () => conv2DBackpropInput(x4D.shape, dy, $filter, strides, pad3, dataFormat),
@@ -15763,7 +15764,7 @@ Expected: ${expectedFlat}.`);
     inputsToSave: ["dy", "filter"],
     gradFunc: (ddx, saved, attrs) => {
       const [dy, filter] = saved;
-      const {strides, pad: pad3, dataFormat, dimRoundingMode} = attrs;
+      const { strides, pad: pad3, dataFormat, dimRoundingMode } = attrs;
       return {
         dy: () => conv2d(ddx, filter, strides, pad3, dataFormat, 1, dimRoundingMode),
         filter: () => conv2DBackpropFilter(ddx, dy, filter.shape, strides, pad3, dataFormat, dimRoundingMode)
@@ -15784,16 +15785,16 @@ Expected: ${expectedFlat}.`);
     assert(filterShape.length === 5, () => `Error in conv3dDerFilter: filterShape must be length 5, but got ${filterShape}.`);
     assert(x5D.shape[4] === filterShape[3], () => `Error in conv3dDerFilter: depth of input ${x5D.shape[4]}) must match input depth in filter (${filterShape[3]}.`);
     assert(dy5D.shape[4] === filterShape[4], () => `Error in conv3dDerFilter: depth of dy (${dy5D.shape[4]}) must match output depth for filter (${filterShape[4]}).`);
-    const inputs = {x: x5D, dy: dy5D};
-    const attrs = {strides, pad: pad3, filterShape};
+    const inputs = { x: x5D, dy: dy5D };
+    const attrs = { strides, pad: pad3, filterShape };
     return ENGINE.runKernel(Conv3DBackpropFilterV2, inputs, attrs);
   }
-  var conv3DBackpropFilter = op({conv3DBackpropFilter_});
+  var conv3DBackpropFilter = op({ conv3DBackpropFilter_ });
   var conv3DGradConfig = {
     kernelName: Conv3D,
     inputsToSave: ["x", "filter"],
     gradFunc: (dy, saved, attrs) => {
-      const {dilations, strides, pad: pad3} = attrs;
+      const { dilations, strides, pad: pad3 } = attrs;
       assert(tupleValuesAreOne(dilations), () => `Error in gradient of conv3D: dilation rates greater than 1 are not yet supported in gradients. Got dilations '${dilations}'`);
       const [x5D, $filter] = saved;
       return {
@@ -15807,7 +15808,7 @@ Expected: ${expectedFlat}.`);
     inputsToSave: ["x"],
     gradFunc: (dy, saved) => {
       const [x] = saved;
-      return {x: () => mul(neg(sin(cast(x, "float32"))), dy)};
+      return { x: () => mul(neg(sin(cast(x, "float32"))), dy) };
     }
   };
   var coshGradConfig = {
@@ -15815,7 +15816,7 @@ Expected: ${expectedFlat}.`);
     inputsToSave: ["x"],
     gradFunc: (dy, saved) => {
       const [x] = saved;
-      return {x: () => mul(sinh(cast(x, "float32")), dy)};
+      return { x: () => mul(sinh(cast(x, "float32")), dy) };
     }
   };
   var cumsumGradConfig = {
@@ -15823,7 +15824,7 @@ Expected: ${expectedFlat}.`);
     inputsToSave: ["x"],
     gradFunc: (dy, saved, attrs) => {
       const [x] = saved;
-      const {axis, exclusive, reverse: reverse5} = attrs;
+      const { axis, exclusive, reverse: reverse5 } = attrs;
       return {
         x: () => {
           const permutation = getAxesPermutation([axis], x.rank);
@@ -15840,7 +15841,7 @@ Expected: ${expectedFlat}.`);
     kernelName: DepthwiseConv2dNative,
     inputsToSave: ["x", "filter"],
     gradFunc: (dy, saved, attrs) => {
-      const {dilations, strides, pad: pad3, dimRoundingMode} = attrs;
+      const { dilations, strides, pad: pad3, dimRoundingMode } = attrs;
       const $dilations = dilations == null ? [1, 1] : dilations;
       assert(tupleValuesAreOne($dilations), () => `Error in gradient of depthwiseConv2dNative: dilation rates greater than 1 are not yet supported. Got dilations '${$dilations}'`);
       const [x, filter] = saved;
@@ -15862,8 +15863,8 @@ Expected: ${expectedFlat}.`);
     inputsToSave: ["x", "filter"],
     gradFunc: (dy, saved, attrs) => {
       const [x, filter] = saved;
-      const inputInputs = {x, filter, dy};
-      const filterInputs = {x, filter, dy};
+      const inputInputs = { x, filter, dy };
+      const filterInputs = { x, filter, dy };
       return {
         x: () => ENGINE.runKernel(Dilation2DBackpropInput, inputInputs, attrs),
         filter: () => ENGINE.runKernel(Dilation2DBackpropFilter, filterInputs, attrs)
@@ -15875,8 +15876,8 @@ Expected: ${expectedFlat}.`);
     outputsToSave: [true],
     gradFunc: (dy, saved) => {
       const [y] = saved;
-      const inputs = {dy, y};
-      return {x: () => ENGINE.runKernel(EluGrad, inputs)};
+      const inputs = { dy, y };
+      return { x: () => ENGINE.runKernel(EluGrad, inputs) };
     }
   };
   var erfGradConfig = {
@@ -15885,7 +15886,7 @@ Expected: ${expectedFlat}.`);
     gradFunc: (dy, saved) => {
       const [x] = saved;
       const a = mul(exp(neg(square(x))), 2 / Math.sqrt(Math.PI));
-      return {x: () => mul(dy, a)};
+      return { x: () => mul(dy, a) };
     }
   };
   var expGradConfig = {
@@ -15893,7 +15894,7 @@ Expected: ${expectedFlat}.`);
     outputsToSave: [true],
     gradFunc: (dy, saved) => {
       const [y] = saved;
-      return {x: () => mul(dy, y)};
+      return { x: () => mul(dy, y) };
     }
   };
   var expandDimsGradConfig = {
@@ -15901,7 +15902,7 @@ Expected: ${expectedFlat}.`);
     inputsToSave: ["input"],
     gradFunc: (dy, saved) => {
       const [input2] = saved;
-      return {input: () => reshape(dy, input2.shape)};
+      return { input: () => reshape(dy, input2.shape) };
     }
   };
   var expm1GradConfig = {
@@ -15909,13 +15910,13 @@ Expected: ${expectedFlat}.`);
     inputsToSave: ["x"],
     gradFunc: (dy, saved) => {
       const [x] = saved;
-      return {x: () => mul(dy, exp(x))};
+      return { x: () => mul(dy, exp(x)) };
     }
   };
   var floorGradConfig = {
     kernelName: Floor,
     gradFunc: (dy) => {
-      return {x: () => zerosLike(dy)};
+      return { x: () => zerosLike(dy) };
     }
   };
   var floorDivGradConfig = {
@@ -15941,14 +15942,14 @@ Expected: ${expectedFlat}.`);
         const tmp = square(b);
         return neg(div(res, cast(tmp, "float32")));
       };
-      return {a: derA, b: derB};
+      return { a: derA, b: derB };
     }
   };
   var fusedBatchNormGradConfig = {
     kernelName: FusedBatchNorm,
     inputsToSave: ["x", "mean", "variance", "scale"],
     gradFunc: (dy, saved, attrs) => {
-      const {varianceEpsilon} = attrs;
+      const { varianceEpsilon } = attrs;
       const [x, mean4, variance, scale22] = saved;
       const scaleValue = scale22 == null ? scalar(1) : scale22;
       const reductionAxes = getReductionAxes(mean4.shape, x.shape);
@@ -16013,7 +16014,7 @@ Expected: ${expectedFlat}.`);
     inputsToSave: ["x", "indices"],
     gradFunc: (dy, saved, attrs) => {
       const [x, indices] = saved;
-      const {axis} = attrs;
+      const { axis } = attrs;
       const parsedAxis = parseAxisParam(axis, x.shape)[0];
       const derX = () => {
         const paramsShape = x.shape;
@@ -16034,7 +16035,7 @@ Expected: ${expectedFlat}.`);
         paramsGrad = transpose(paramsGrad, invertTransposeDims);
         return paramsGrad;
       };
-      return {x: derX, indices: () => indices};
+      return { x: derX, indices: () => indices };
     }
   };
   function arrayRange(start, stop) {
@@ -16058,31 +16059,31 @@ Expected: ${expectedFlat}.`);
     inputsToSave: ["a", "b"],
     gradFunc: (dy, saved) => {
       const [a, b] = saved;
-      return {a: () => zerosLike(a), b: () => zerosLike(b)};
+      return { a: () => zerosLike(a), b: () => zerosLike(b) };
     }
   };
   var identityGradConfig = {
     kernelName: Identity,
     gradFunc: (dy) => {
-      return {x: () => cast(dy, "float32")};
+      return { x: () => cast(dy, "float32") };
     }
   };
   var isFiniteGradConfig = {
     kernelName: IsFinite,
     gradFunc: (dy) => {
-      return {x: () => zerosLike(dy)};
+      return { x: () => zerosLike(dy) };
     }
   };
   var isInfGradConfig = {
     kernelName: IsInf,
     gradFunc: (dy) => {
-      return {x: () => zerosLike(dy)};
+      return { x: () => zerosLike(dy) };
     }
   };
   var isNanGradConfig = {
     kernelName: IsNan,
     gradFunc: (dy) => {
-      return {x: () => zerosLike(dy)};
+      return { x: () => zerosLike(dy) };
     }
   };
   var leakyReluGradConfig = {
@@ -16090,9 +16091,9 @@ Expected: ${expectedFlat}.`);
     inputsToSave: ["x"],
     gradFunc: (dy, saved, attrs) => {
       const [x] = saved;
-      const {alpha} = attrs;
+      const { alpha } = attrs;
       const mask = greater(x, 0);
-      return {x: () => where(mask, dy, mul(dy, alpha))};
+      return { x: () => where(mask, dy, mul(dy, alpha)) };
     }
   };
   var log1pGradConfig = {
@@ -16100,7 +16101,7 @@ Expected: ${expectedFlat}.`);
     inputsToSave: ["x"],
     gradFunc: (dy, saved) => {
       const [x] = saved;
-      return {x: () => div(dy, add2(x, 1))};
+      return { x: () => div(dy, add2(x, 1)) };
     }
   };
   var logGradConfig = {
@@ -16108,7 +16109,7 @@ Expected: ${expectedFlat}.`);
     inputsToSave: ["x"],
     gradFunc: (dy, saved) => {
       const [x] = saved;
-      return {x: () => div(dy, cast(x, "float32"))};
+      return { x: () => div(dy, cast(x, "float32")) };
     }
   };
   var logSoftmaxGradConfig = {
@@ -16117,7 +16118,7 @@ Expected: ${expectedFlat}.`);
     outputsToSave: [true],
     gradFunc: (dy, saved, attrs) => {
       const [value] = saved;
-      const {axis} = attrs;
+      const { axis } = attrs;
       return {
         logits: () => {
           const keepDims = true;
@@ -16128,18 +16129,18 @@ Expected: ${expectedFlat}.`);
     }
   };
   function localResponseNormalizationBackprop_(x, y, dy, depthRadius = 5, bias = 1, alpha = 1, beta = 0.5) {
-    const inputs = {x, y, dy};
-    const attrs = {depthRadius, bias, alpha, beta};
+    const inputs = { x, y, dy };
+    const attrs = { depthRadius, bias, alpha, beta };
     return ENGINE.runKernel(LRNGrad, inputs, attrs);
   }
-  var localResponseNormalizationBackprop = op({localResponseNormalizationBackprop_});
+  var localResponseNormalizationBackprop = op({ localResponseNormalizationBackprop_ });
   var lrnGradConfig = {
     kernelName: LRN,
     inputsToSave: ["x"],
     outputsToSave: [true],
     gradFunc: (dy, saved, attrs) => {
       const [x, y] = saved;
-      const {depthRadius, bias, alpha, beta} = attrs;
+      const { depthRadius, bias, alpha, beta } = attrs;
       return {
         x: () => localResponseNormalizationBackprop(x, y, dy, depthRadius, bias, alpha, beta)
       };
@@ -16165,7 +16166,7 @@ Expected: ${expectedFlat}.`);
     outputsToSave: [true],
     gradFunc: (dy, saved, attrs) => {
       const maxAttrs = attrs;
-      const {reductionIndices} = maxAttrs;
+      const { reductionIndices } = maxAttrs;
       const x = saved[0];
       const y = saved[1];
       const origAxes = parseAxisParam(reductionIndices, x.shape);
@@ -16184,7 +16185,7 @@ Expected: ${expectedFlat}.`);
       const [a, b] = saved;
       const derA = () => mul(dy, cast(greaterEqual(a, b), "float32"));
       const derB = () => mul(dy, cast(less(a, b), "float32"));
-      return {a: derA, b: derB};
+      return { a: derA, b: derB };
     }
   };
   function maxPool3dGrad_(dy, input2, output, filterSize, strides, pad3, dimRoundingMode) {
@@ -16219,22 +16220,22 @@ Expected: ${expectedFlat}.`);
     if (dimRoundingMode != null) {
       assert(isInt(pad3), () => `Error in maxPool3dGrad: pad must be an integer when using, dimRoundingMode ${dimRoundingMode} but got pad ${pad3}.`);
     }
-    const inputs = {dy: dy5D, input: input5D, output: output5D};
-    const attrs = {filterSize, strides, pad: pad3, dimRoundingMode};
+    const inputs = { dy: dy5D, input: input5D, output: output5D };
+    const attrs = { filterSize, strides, pad: pad3, dimRoundingMode };
     const res = ENGINE.runKernel(MaxPool3DGrad, inputs, attrs);
     if (reshapedTo5D) {
       return reshape(res, [res.shape[1], res.shape[2], res.shape[3], res.shape[4]]);
     }
     return res;
   }
-  var maxPool3dGrad = op({maxPool3dGrad_});
+  var maxPool3dGrad = op({ maxPool3dGrad_ });
   var maxPool3DGradConfig = {
     kernelName: MaxPool3D,
     inputsToSave: ["x"],
     outputsToSave: [true],
     gradFunc: (dy, saved, attrs) => {
       const [x, y] = saved;
-      const {filterSize, strides, pad: pad3, dimRoundingMode} = attrs;
+      const { filterSize, strides, pad: pad3, dimRoundingMode } = attrs;
       return {
         x: () => maxPool3dGrad(dy, x, y, filterSize, strides, pad3, dimRoundingMode)
       };
@@ -16250,18 +16251,18 @@ Expected: ${expectedFlat}.`);
     if (dimRoundingMode != null) {
       assert(isInt(pad3), () => `Error in maxPoolGrad: pad must be an integer when using, dimRoundingMode ${dimRoundingMode} but got pad ${pad3}.`);
     }
-    const inputs = {dy: $dy, input: $input, output: $output};
-    const attrs = {filterSize, strides, pad: pad3, dimRoundingMode};
+    const inputs = { dy: $dy, input: $input, output: $output };
+    const attrs = { filterSize, strides, pad: pad3, dimRoundingMode };
     return ENGINE.runKernel(MaxPoolGrad, inputs, attrs);
   }
-  var maxPoolGrad = op({maxPoolGrad_});
+  var maxPoolGrad = op({ maxPoolGrad_ });
   var maxPoolGradConfig = {
     kernelName: MaxPool,
     inputsToSave: ["x"],
     outputsToSave: [true],
     gradFunc: (dy, saved, attrs) => {
       const [x, y] = saved;
-      const {filterSize, strides, pad: pad3} = attrs;
+      const { filterSize, strides, pad: pad3 } = attrs;
       return {
         x: () => maxPoolGrad(dy, x, y, filterSize, strides, pad3)
       };
@@ -16272,7 +16273,7 @@ Expected: ${expectedFlat}.`);
     inputsToSave: ["x"],
     gradFunc: (dy, saved, attrs) => {
       const [x] = saved;
-      const {axis} = attrs;
+      const { axis } = attrs;
       const axes = parseAxisParam(axis, x.shape);
       const shapes = computeOutAndReduceShapes(x.shape, axes);
       const reduceShape = shapes[1];
@@ -16286,7 +16287,7 @@ Expected: ${expectedFlat}.`);
         const res = div(mul(expandedDy, ones2(x.shape, "float32")), reduceSize);
         return res;
       };
-      return {x: derX};
+      return { x: derX };
     }
   };
   var minGradConfig = {
@@ -16295,7 +16296,7 @@ Expected: ${expectedFlat}.`);
     outputsToSave: [true],
     gradFunc: (dy, saved, attrs) => {
       const minAttrs = attrs;
-      const {axis} = minAttrs;
+      const { axis } = minAttrs;
       const [x, y] = saved;
       const origAxes = parseAxisParam(axis, x.shape);
       const minGrad = gradForMinAndMax(dy, y, x, origAxes);
@@ -16313,7 +16314,7 @@ Expected: ${expectedFlat}.`);
       const [a, b] = saved;
       const derA = () => mul(dy, cast(lessEqual(a, b), "float32"));
       const derB = () => mul(dy, cast(greater(a, b), "float32"));
-      return {a: derA, b: derB};
+      return { a: derA, b: derB };
     }
   };
   var mirrorPadGradConfig = {
@@ -16321,9 +16322,9 @@ Expected: ${expectedFlat}.`);
     inputsToSave: ["x"],
     gradFunc: (dy, saved, attrs) => {
       const x = saved[0];
-      const {paddings} = attrs;
+      const { paddings } = attrs;
       const begin = paddings.map((p2) => p2[0]);
-      return {x: () => slice(dy, begin, x.shape)};
+      return { x: () => slice(dy, begin, x.shape) };
     }
   };
   var modGradConfig = {
@@ -16347,7 +16348,7 @@ Expected: ${expectedFlat}.`);
         }
         return res;
       };
-      return {a: derA, b: derB};
+      return { a: derA, b: derB };
     }
   };
   var multiplyGradConfig = {
@@ -16372,13 +16373,13 @@ Expected: ${expectedFlat}.`);
         }
         return res;
       };
-      return {a: derA, b: derB};
+      return { a: derA, b: derB };
     }
   };
   var negGradConfig = {
     kernelName: Neg,
     gradFunc: (dy) => {
-      return {x: () => neg(dy)};
+      return { x: () => neg(dy) };
     }
   };
   var oneHotGradConfig = {
@@ -16386,20 +16387,20 @@ Expected: ${expectedFlat}.`);
     inputsToSave: ["indices"],
     gradFunc: (dy, saved) => {
       const indices = saved[0];
-      return {indices: () => zeros(indices.shape, "float32")};
+      return { indices: () => zeros(indices.shape, "float32") };
     }
   };
   var onesLikeGradConfig = {
     kernelName: OnesLike,
     gradFunc: (dy) => {
-      return {x: () => zerosLike(dy)};
+      return { x: () => zerosLike(dy) };
     }
   };
   var packGradConfig = {
     kernelName: Pack,
     saveAllInputs: true,
     gradFunc: (dy, saved, attrs) => {
-      const {axis} = attrs;
+      const { axis } = attrs;
       const derTensors = unstack(dy, axis);
       return derTensors.map((t) => () => t);
     }
@@ -16409,9 +16410,9 @@ Expected: ${expectedFlat}.`);
     inputsToSave: ["x"],
     gradFunc: (dy, saved, attrs) => {
       const x = saved[0];
-      const {paddings} = attrs;
+      const { paddings } = attrs;
       const begin = paddings.map((p2) => p2[0]);
-      return {x: () => slice(dy, begin, x.shape)};
+      return { x: () => slice(dy, begin, x.shape) };
     }
   };
   var powGradConfig = {
@@ -16442,7 +16443,7 @@ Expected: ${expectedFlat}.`);
         }
         return reshape(res, exp4.shape);
       };
-      return {a: derBase, b: derExp};
+      return { a: derBase, b: derExp };
     }
   };
   var preluGradConfig = {
@@ -16487,7 +16488,7 @@ Expected: ${expectedFlat}.`);
         const tmp = square(b);
         return neg(div(res, cast(tmp, "float32")));
       };
-      return {a: derA, b: derB};
+      return { a: derA, b: derB };
     }
   };
   var reciprocalGradConfig = {
@@ -16495,7 +16496,7 @@ Expected: ${expectedFlat}.`);
     inputsToSave: ["x"],
     gradFunc: (dy, saved) => {
       const [x] = saved;
-      return {x: () => div(dy, neg(square(x)))};
+      return { x: () => div(dy, neg(square(x))) };
     }
   };
   var relu6GradConfig = {
@@ -16504,7 +16505,7 @@ Expected: ${expectedFlat}.`);
     gradFunc: (dy, saved) => {
       const [x] = saved;
       const mask = mul(lessEqual(x, 6), step(x));
-      return {x: () => mul(dy, cast(mask, "float32"))};
+      return { x: () => mul(dy, cast(mask, "float32")) };
     }
   };
   var reluGradConfig = {
@@ -16512,7 +16513,7 @@ Expected: ${expectedFlat}.`);
     inputsToSave: ["x"],
     gradFunc: (dy, saved) => {
       const [x] = saved;
-      return {x: () => mul(dy, cast(step(x), "float32"))};
+      return { x: () => mul(dy, cast(step(x), "float32")) };
     }
   };
   var reshapeGradConfig = {
@@ -16520,7 +16521,7 @@ Expected: ${expectedFlat}.`);
     inputsToSave: ["x"],
     gradFunc: (dy, saved) => {
       const [x] = saved;
-      return {x: () => reshape(dy, x.shape)};
+      return { x: () => reshape(dy, x.shape) };
     }
   };
   var resizeBilinearGradConfig = {
@@ -16528,9 +16529,9 @@ Expected: ${expectedFlat}.`);
     inputsToSave: ["images"],
     gradFunc: (dy, saved, attrs) => {
       const [images] = saved;
-      const inputs = {dy, images};
+      const inputs = { dy, images };
       const imagesDer = () => ENGINE.runKernel(ResizeBilinearGrad, inputs, attrs);
-      return {images: imagesDer};
+      return { images: imagesDer };
     }
   };
   var resizeNearestNeighborGradConfig = {
@@ -16538,23 +16539,23 @@ Expected: ${expectedFlat}.`);
     inputsToSave: ["images"],
     gradFunc: (dy, saved, attrs) => {
       const [images] = saved;
-      const inputs = {dy, images};
+      const inputs = { dy, images };
       const imagesDer = () => ENGINE.runKernel(ResizeNearestNeighborGrad, inputs, attrs);
-      return {images: imagesDer};
+      return { images: imagesDer };
     }
   };
   var reverseGradConfig = {
     kernelName: Reverse,
     gradFunc: (dy, saved, attrs) => {
-      const {dims} = attrs;
+      const { dims } = attrs;
       const axes = parseAxisParam(dims, dy.shape);
-      return {x: () => reverse(dy, axes)};
+      return { x: () => reverse(dy, axes) };
     }
   };
   var roundGradConfig = {
     kernelName: Round,
     gradFunc: (dy) => {
-      return {x: () => zerosLike(dy)};
+      return { x: () => zerosLike(dy) };
     }
   };
   var rsqrtGradConfig = {
@@ -16562,7 +16563,7 @@ Expected: ${expectedFlat}.`);
     inputsToSave: ["x"],
     gradFunc: (dy, saved) => {
       const [x] = saved;
-      return {x: () => neg(div(dy, mul(pow(x, 1.5), 2)))};
+      return { x: () => neg(div(dy, mul(pow(x, 1.5), 2))) };
     }
   };
   var selectGradConfig = {
@@ -16599,13 +16600,13 @@ Expected: ${expectedFlat}.`);
     outputsToSave: [true],
     gradFunc: (dy, saved) => {
       const [y] = saved;
-      return {x: () => mul(dy, mul(y, sub(scalar(1), y)))};
+      return { x: () => mul(dy, mul(y, sub(scalar(1), y))) };
     }
   };
   var signGradConfig = {
     kernelName: Sign,
     gradFunc: (dy) => {
-      return {x: () => zerosLike(dy)};
+      return { x: () => zerosLike(dy) };
     }
   };
   var sinGradConfig = {
@@ -16613,7 +16614,7 @@ Expected: ${expectedFlat}.`);
     inputsToSave: ["x"],
     gradFunc: (dy, saved) => {
       const [x] = saved;
-      return {x: () => mul(cos(cast(x, "float32")), dy)};
+      return { x: () => mul(cos(cast(x, "float32")), dy) };
     }
   };
   var sinhGradConfig = {
@@ -16621,7 +16622,7 @@ Expected: ${expectedFlat}.`);
     inputsToSave: ["x"],
     gradFunc: (dy, saved) => {
       const [x] = saved;
-      return {x: () => mul(cosh(cast(x, "float32")), dy)};
+      return { x: () => mul(cosh(cast(x, "float32")), dy) };
     }
   };
   var sliceGradConfig = {
@@ -16629,14 +16630,14 @@ Expected: ${expectedFlat}.`);
     inputsToSave: ["x"],
     gradFunc: (dy, saved, attrs) => {
       const [x] = saved;
-      const {begin, size} = attrs;
+      const { begin, size } = attrs;
       const inputShape = x.shape;
       const [begin_, size_] = parseSliceParams(x, begin, size);
       const paddings = [];
       for (let i = 0; i < dy.rank; i++) {
         paddings.push([begin_[i], inputShape[i] - begin_[i] - size_[i]]);
       }
-      return {x: () => pad(dy, paddings)};
+      return { x: () => pad(dy, paddings) };
     }
   };
   var softmaxGradConfig = {
@@ -16644,7 +16645,7 @@ Expected: ${expectedFlat}.`);
     outputsToSave: [true],
     gradFunc: (dy, saved, attrs) => {
       const [y] = saved;
-      const {dim} = attrs;
+      const { dim } = attrs;
       const keepDims = true;
       const dyTimesY = mul(dy, y);
       return {
@@ -16657,21 +16658,21 @@ Expected: ${expectedFlat}.`);
     inputsToSave: ["x"],
     gradFunc: (dy, saved) => {
       const [x] = saved;
-      return {x: () => mul(dy, sigmoid(x))};
+      return { x: () => mul(dy, sigmoid(x)) };
     }
   };
   var spaceToBatchNDGradConfig = {
     kernelName: SpaceToBatchND,
     gradFunc: (dy, saved, attrs) => {
-      const {blockShape, paddings} = attrs;
-      return {x: () => batchToSpaceND(dy, blockShape, paddings)};
+      const { blockShape, paddings } = attrs;
+      return { x: () => batchToSpaceND(dy, blockShape, paddings) };
     }
   };
   var splitVGradConfig = {
     kernelName: SplitV,
     gradFunc: (dy, saved, attrs) => {
-      const {axis} = attrs;
-      return {x: () => concat(dy, axis)};
+      const { axis } = attrs;
+      return { x: () => concat(dy, axis) };
     }
   };
   var sqrtGradConfig = {
@@ -16679,7 +16680,7 @@ Expected: ${expectedFlat}.`);
     inputsToSave: ["x"],
     gradFunc: (dy, saved) => {
       const [x] = saved;
-      return {x: () => div(dy, mul(sqrt(cast(x, "float32")), 2))};
+      return { x: () => div(dy, mul(sqrt(cast(x, "float32")), 2)) };
     }
   };
   var squareGradConfig = {
@@ -16687,7 +16688,7 @@ Expected: ${expectedFlat}.`);
     inputsToSave: ["x"],
     gradFunc: (dy, saved) => {
       const [x] = saved;
-      return {x: () => mul(dy, mul(cast(x, "float32"), 2))};
+      return { x: () => mul(dy, mul(cast(x, "float32"), 2)) };
     }
   };
   var squaredDifferenceGradConfig = {
@@ -16698,13 +16699,13 @@ Expected: ${expectedFlat}.`);
       const two = scalar(2);
       const derA = () => mul(dy, mul(two, sub(a, b)));
       const derB = () => mul(dy, mul(two, sub(b, a)));
-      return {a: derA, b: derB};
+      return { a: derA, b: derB };
     }
   };
   var stepGradConfig = {
     kernelName: Step,
     gradFunc: (dy) => {
-      return {x: () => zerosLike(dy)};
+      return { x: () => zerosLike(dy) };
     }
   };
   var subGradConfig = {
@@ -16729,7 +16730,7 @@ Expected: ${expectedFlat}.`);
         }
         return reshape(neg(res), b.shape);
       };
-      return {a: derA, b: derB};
+      return { a: derA, b: derB };
     }
   };
   var sumGradConfig = {
@@ -16738,14 +16739,14 @@ Expected: ${expectedFlat}.`);
     gradFunc: (dy, saved, attrs) => {
       const [x] = saved;
       const expandedDyShape = x.shape.slice();
-      const {axis} = attrs;
+      const { axis } = attrs;
       const axes = parseAxisParam(axis, x.shape);
       axes.forEach((axis2) => {
         expandedDyShape[axis2] = 1;
       });
       const expandedDy = reshape(dy, expandedDyShape);
       const derX = mul(expandedDy, ones2(x.shape, "float32"));
-      return {x: () => derX};
+      return { x: () => derX };
     }
   };
   var tanGradConfig = {
@@ -16753,7 +16754,7 @@ Expected: ${expectedFlat}.`);
     inputsToSave: ["x"],
     gradFunc: (dy, saved) => {
       const [x] = saved;
-      return {x: () => div(dy, square(cos(x)))};
+      return { x: () => div(dy, square(cos(x))) };
     }
   };
   var tanhGradConfig = {
@@ -16761,7 +16762,7 @@ Expected: ${expectedFlat}.`);
     outputsToSave: [true],
     gradFunc: (dy, saved) => {
       const [y] = saved;
-      return {x: () => mul(sub(scalar(1), square(y)), dy)};
+      return { x: () => mul(sub(scalar(1), square(y)), dy) };
     }
   };
   var tileGradConfig = {
@@ -16769,7 +16770,7 @@ Expected: ${expectedFlat}.`);
     inputsToSave: ["x"],
     gradFunc: (dy, saved, attrs) => {
       const [x] = saved;
-      const {reps} = attrs;
+      const { reps } = attrs;
       const derX = () => {
         let xGrad = zerosLike(x);
         if (x.rank === 1) {
@@ -16813,24 +16814,24 @@ Expected: ${expectedFlat}.`);
         }
         return xGrad;
       };
-      return {x: derX};
+      return { x: derX };
     }
   };
   var transposeGradConfig = {
     kernelName: Transpose,
     gradFunc: (dy, saved, attrs) => {
       const transposeAttrs = attrs;
-      const {perm} = transposeAttrs;
+      const { perm } = transposeAttrs;
       const undoPerm = getUndoAxesPermutation(perm);
-      return {x: () => transpose(dy, undoPerm)};
+      return { x: () => transpose(dy, undoPerm) };
     }
   };
   var unpackGradConfig = {
     kernelName: Unpack,
     gradFunc: (dy, saved, attrs) => {
       const unpackAttrs = attrs;
-      const {axis} = unpackAttrs;
-      return {value: () => stack(dy, axis)};
+      const { axis } = unpackAttrs;
+      return { value: () => stack(dy, axis) };
     }
   };
   var unsortedSegmentSumGradConfig = {
@@ -16841,7 +16842,7 @@ Expected: ${expectedFlat}.`);
       const derX = () => {
         return gatherDropNegatives(dy, segmentIds);
       };
-      return {x: derX};
+      return { x: derX };
     }
   };
   function gatherDropNegatives(x, indices) {
@@ -16859,7 +16860,7 @@ Expected: ${expectedFlat}.`);
   var zerosLikeGradConfig = {
     kernelName: ZerosLike,
     gradFunc: (dy) => {
-      return {x: () => zerosLike(dy)};
+      return { x: () => zerosLike(dy) };
     }
   };
   var gradConfigs = [
@@ -17825,7 +17826,7 @@ Expected: ${expectedFlat}.`);
       });
     }
     getConfig() {
-      return {maxValue: this.maxValue, axis: this.axis};
+      return { maxValue: this.maxValue, axis: this.axis };
     }
   };
   MaxNorm.className = "MaxNorm";
@@ -17840,7 +17841,7 @@ Expected: ${expectedFlat}.`);
       return tidy(() => div(w, add2(epsilon(), calcL2Norms(w, this.axis))));
     }
     getConfig() {
-      return {axis: this.axis};
+      return { axis: this.axis };
     }
   };
   UnitNorm.className = "UnitNorm";
@@ -17900,7 +17901,7 @@ Expected: ${expectedFlat}.`);
     }
     if (typeof identifier === "string") {
       const className = identifier in CONSTRAINT_IDENTIFIER_REGISTRY_SYMBOL_MAP ? CONSTRAINT_IDENTIFIER_REGISTRY_SYMBOL_MAP[identifier] : identifier;
-      const config = {className, config: {}};
+      const config = { className, config: {} };
       return deserializeConstraint(config);
     } else if (identifier instanceof Constraint) {
       return identifier;
@@ -18233,7 +18234,7 @@ Expected: ${expectedFlat}.`);
       const bLastDim = bShape.pop();
       const ySecondLastDim = bShape.pop();
       const yOtherDims = [...bShape, bLastDim];
-      const perm = Array.from({length: b.rank}, (_, i) => {
+      const perm = Array.from({ length: b.rank }, (_, i) => {
         if (i === 0) {
           return b.rank - 2;
         } else if (i <= b.rank - 2) {
@@ -18415,7 +18416,7 @@ Expected: ${expectedFlat}.`);
       return randomUniform(shape, this.minval, this.maxval, dtype);
     }
     getConfig() {
-      return {minval: this.minval, maxval: this.maxval, seed: this.seed};
+      return { minval: this.minval, maxval: this.maxval, seed: this.seed };
     }
   };
   RandomUniform.className = "RandomUniform";
@@ -18437,7 +18438,7 @@ Expected: ${expectedFlat}.`);
       return randomNormal2(shape, this.mean, this.stddev, dtype, this.seed);
     }
     getConfig() {
-      return {mean: this.mean, stddev: this.stddev, seed: this.seed};
+      return { mean: this.mean, stddev: this.stddev, seed: this.seed };
     }
   };
   RandomNormal.className = "RandomNormal";
@@ -18459,7 +18460,7 @@ Expected: ${expectedFlat}.`);
       return truncatedNormal(shape, this.mean, this.stddev, dtype, this.seed);
     }
     getConfig() {
-      return {mean: this.mean, stddev: this.stddev, seed: this.seed};
+      return { mean: this.mean, stddev: this.stddev, seed: this.seed };
     }
   };
   TruncatedNormal.className = "TruncatedNormal";
@@ -18479,7 +18480,7 @@ Expected: ${expectedFlat}.`);
       });
     }
     getConfig() {
-      return {gain: this.gain};
+      return { gain: this.gain };
     }
   };
   Identity2.className = "Identity";
@@ -19498,7 +19499,7 @@ Expected: ${expectedFlat}.`);
       }
     }
     getConfig() {
-      const config = {name: this.name, trainable: this.trainable};
+      const config = { name: this.name, trainable: this.trainable };
       if (this.batchInputShape != null) {
         config["batchInputShape"] = this.batchInputShape;
       }
@@ -19528,7 +19529,7 @@ Expected: ${expectedFlat}.`);
       if (--this._refCount === 0) {
         numDisposedVariables = this.disposeWeights();
       }
-      return {refCountAfterDispose: this._refCount, numDisposedVariables};
+      return { refCountAfterDispose: this._refCount, numDisposedVariables };
     }
   };
   function collectInputShape(inputTensors) {
@@ -19603,7 +19604,7 @@ Expected: ${expectedFlat}.`);
       const dtype = args.dtype || "float32";
       this.batchInputShape = batchInputShape;
       this.dtype = dtype;
-      this.inputSpec = [{shape: batchInputShape}];
+      this.inputSpec = [{ shape: batchInputShape }];
       const inputTensor = new SymbolicTensor(this.dtype, this.batchInputShape, this, [], {}, this.name);
       inputTensor.nodeIndex = 0;
       inputTensor.tensorIndex = 0;
@@ -19624,7 +19625,7 @@ Expected: ${expectedFlat}.`);
       throw new ValueError(`Cannot pass any input to an InputLayer's apply() method. InputLayer name: ${this.name}`);
     }
     dispose() {
-      return {refCountAfterDispose: this._refCount, numDisposedVariables: 0};
+      return { refCountAfterDispose: this._refCount, numDisposedVariables: 0 };
     }
     getConfig() {
       return {
@@ -20041,7 +20042,7 @@ Expected: ${expectedFlat}.`);
       doValidation,
       metrics: callbackMetrics
     });
-    return {callbackList, history};
+    return { callbackList, history };
   }
   function deserialize(config, customObjects = {}, fastWeightInit = false) {
     return deserializeKerasObject(config, serialization_exports.SerializationMap.getMap().classNameMap, customObjects, "layer", fastWeightInit);
@@ -20781,7 +20782,7 @@ Expected: ${expectedFlat}.`);
     } else {
       const visited = new Set();
       for (const fetch3 of fetches) {
-        const {sorted, recipientMap} = getTopologicalSortAndRecipientCountsForOneFetch(fetch3, feedDict);
+        const { sorted, recipientMap } = getTopologicalSortAndRecipientCountsForOneFetch(fetch3, feedDict);
         for (const symbolicTensor of sorted) {
           if (!visited.has(symbolicTensor.name)) {
             finalSorted.push(symbolicTensor);
@@ -20846,7 +20847,7 @@ Expected: ${expectedFlat}.`);
         }
       }
     }
-    return {sorted, recipientMap};
+    return { sorted, recipientMap };
   }
   function getNodeOutputs(fetch3) {
     let layerOutputs;
@@ -21094,7 +21095,7 @@ Expected: ${expectedFlat}.`);
     }
     dispose() {
       this.assertNotDisposed();
-      const result = {refCountAfterDispose: null, numDisposedVariables: 0};
+      const result = { refCountAfterDispose: null, numDisposedVariables: 0 };
       if (--this._refCount === 0) {
         for (const layer of this.layers) {
           result.numDisposedVariables += layer.dispose().numDisposedVariables;
@@ -21398,7 +21399,7 @@ Expected: ${expectedFlat}.`);
       });
     }
     getConfig() {
-      const config = {name: this.name};
+      const config = { name: this.name };
       const nodeConversionMap = this.buildNodeConversionMap(this.layers);
       const layerConfigs = [];
       for (const layer of this.layers) {
@@ -21564,7 +21565,7 @@ Expected: ${expectedFlat}.`);
         const layerOutputTensors = layer.inboundNodes[nodeIndex].outputTensors;
         outputTensors.push(layerOutputTensors[tensorIndex]);
       }
-      return new cls({inputs: inputTensors, outputs: outputTensors, name});
+      return new cls({ inputs: inputTensors, outputs: outputTensors, name });
     }
     get stateful() {
       if (this._stateful) {
@@ -21681,7 +21682,7 @@ Expected: ${expectedFlat}.`);
     for (let yIndex = 0; yIndex < flattenedYs.length; yIndex++) {
       util_exports.assert(flattenedYs[yIndex].shape[0] === batchSize, () => `Batch size mismatch: output ${model2.outputNames[yIndex]} has ${flattenedYs[yIndex].shape[0]}; expected  ${batchSize} based on input ${model2.inputNames[0]}.`);
     }
-    return {xs: flattenedXs, ys: flattenedYs};
+    return { xs: flattenedXs, ys: flattenedYs };
   }
   function flattenTensorOrArrayOrMap(inputOrOutput, names, values) {
     if (values instanceof Tensor) {
@@ -21704,7 +21705,7 @@ Expected: ${expectedFlat}.`);
     if (data.length === 3) {
       throw new NotImplementedError("Validation with sample weights is not implemented yet.");
     }
-    return {xs: data[0], ys: data[1]};
+    return { xs: data[0], ys: data[1] };
   }
   async function fitDataset(model2, dataset, args) {
     const hasBatchesPerEpoch = args.batchesPerEpoch != null;
@@ -21740,7 +21741,7 @@ Expected: ${expectedFlat}.`);
       }
       const callbacks2 = standardizeCallbacks(args.callbacks, args.yieldEvery);
       const verbose = args.verbose == null ? 1 : args.verbose;
-      const {callbackList, history} = configureCallbacks(callbacks2, verbose, args.epochs, null, null, getStepsPerEpoch(dataset, args), null, doValidation, callbackMetrics);
+      const { callbackList, history } = configureCallbacks(callbacks2, verbose, args.epochs, null, null, getStepsPerEpoch(dataset, args), null, doValidation, callbackMetrics);
       callbackList.setModel(model2);
       model2.history = history;
       await callbackList.onTrainBegin();
@@ -21762,7 +21763,7 @@ Expected: ${expectedFlat}.`);
             break;
           }
           if (iteratorOut.value != null) {
-            const {xs, ys} = standardizeDataIteratorOutput(model2, iteratorOut.value);
+            const { xs, ys } = standardizeDataIteratorOutput(model2, iteratorOut.value);
             const batchLogs = {};
             batchLogs["batch"] = batchIndex;
             batchLogs["size"] = xs[0].shape[0];
@@ -21792,7 +21793,7 @@ Expected: ${expectedFlat}.`);
             if (doValidation) {
               let valOuts;
               if (isDatasetObject(args.validationData)) {
-                valOuts = toList(await model2.evaluateDataset(args.validationData, {batches: args.validationBatches}));
+                valOuts = toList(await model2.evaluateDataset(args.validationData, { batches: args.validationBatches }));
               } else {
                 valOuts = toList(model2.evaluate(valXs, valYs, {
                   batchSize: args.validationBatchSize == null ? DEFAULT_VALIDATION_BATCH_SIZE : args.validationBatchSize,
@@ -21853,7 +21854,7 @@ Expected: ${expectedFlat}.`);
       const iteratorOut = await dataIterator.next();
       outs = tidy(() => {
         if (iteratorOut.value) {
-          const {xs, ys} = standardizeDataIteratorOutput(model2, iteratorOut.value);
+          const { xs, ys } = standardizeDataIteratorOutput(model2, iteratorOut.value);
           const xsAndYs = xs.concat(ys);
           const batchOuts = tidy(() => f(xsAndYs));
           dispose(xsAndYs);
@@ -21959,7 +21960,7 @@ Expected: ${expectedFlat}.`);
     if (verbose == null) {
       verbose = 1;
     }
-    const {callbackList, history} = configureCallbacks(callbacks2, verbose, epochs, initialEpoch, numTrainSamples, stepsPerEpoch, batchSize, doValidation, callbackMetrics);
+    const { callbackList, history } = configureCallbacks(callbacks2, verbose, epochs, initialEpoch, numTrainSamples, stepsPerEpoch, batchSize, doValidation, callbackMetrics);
     callbackList.setModel(model2);
     model2.history = history;
     await callbackList.onTrainBegin();
@@ -22617,10 +22618,10 @@ Expected: ${expectedFlat}.`);
             const feeds = [];
             if (Array.isArray(insBatch)) {
               for (let i = 0; i < insBatch.length; ++i) {
-                feeds.push({key: this.inputs[i], value: insBatch[i]});
+                feeds.push({ key: this.inputs[i], value: insBatch[i] });
               }
             } else {
-              feeds.push({key: this.inputs[0], value: insBatch});
+              feeds.push({ key: this.inputs[0], value: insBatch });
             }
             const feedDict = new FeedDict(feeds);
             return execute(this.outputs, feedDict);
@@ -22745,10 +22746,10 @@ Expected: ${expectedFlat}.`);
         const totalLossFunction = () => {
           const feeds = [];
           for (let i = 0; i < this.inputs.length; ++i) {
-            feeds.push({key: this.inputs[i], value: inputs[i]});
+            feeds.push({ key: this.inputs[i], value: inputs[i] });
           }
           const feedDict = new FeedDict(feeds);
-          const outputs = execute(this.outputs, feedDict, {"training": true});
+          const outputs = execute(this.outputs, feedDict, { "training": true });
           let totalLoss;
           for (let i = 0; i < this.lossFunctions.length; ++i) {
             const lossFunction = this.lossFunctions[i];
@@ -22797,7 +22798,7 @@ Expected: ${expectedFlat}.`);
           const targets = data.slice(this.inputs.length, this.inputs.length + this.outputs.length);
           const feeds = [];
           for (let i = 0; i < this.inputs.length; ++i) {
-            feeds.push({key: this.inputs[i], value: inputs[i]});
+            feeds.push({ key: this.inputs[i], value: inputs[i] });
           }
           const feedDict = new FeedDict(feeds);
           const outputs = execute(this.outputs, feedDict);
@@ -22850,7 +22851,7 @@ Expected: ${expectedFlat}.`);
         if (trainableOnly && !weights[i].trainable) {
           continue;
         }
-        namedWeights.push({name: weights[i].originalName, tensor: weightValues[i]});
+        namedWeights.push({ name: weights[i].originalName, tensor: weightValues[i] });
       }
       return namedWeights;
     }
@@ -22958,7 +22959,7 @@ Expected: ${expectedFlat}.`);
           metrics2[key] = toCamelCase(trainingConfig.metrics[key]);
         }
       }
-      this.compile({loss, metrics: metrics2, optimizer});
+      this.compile({ loss, metrics: metrics2, optimizer });
     }
     async save(handlerOrURL, config) {
       if (typeof handlerOrURL === "string") {
@@ -22987,7 +22988,7 @@ Expected: ${expectedFlat}.`);
       if (includeOptimizer && this.optimizer != null) {
         modelArtifacts.trainingConfig = this.getTrainingConfig();
         const weightType = "optimizer";
-        const {data: optimizerWeightData, specs: optimizerWeightSpecs} = await io_exports.encodeWeights(await this.optimizer.getWeights(), weightType);
+        const { data: optimizerWeightData, specs: optimizerWeightSpecs } = await io_exports.encodeWeights(await this.optimizer.getWeights(), weightType);
         weightDataAndSpecs.specs.push(...optimizerWeightSpecs);
         weightDataAndSpecs.data = io_exports.concatenateArrayBuffers([weightDataAndSpecs.data, optimizerWeightData]);
       }
@@ -23016,7 +23017,7 @@ Expected: ${expectedFlat}.`);
   serialization_exports.registerClass(Functional);
   async function modelFromJSON(modelAndWeightsConfig, customObjects) {
     if (!("modelTopology" in modelAndWeightsConfig)) {
-      modelAndWeightsConfig = {modelTopology: modelAndWeightsConfig};
+      modelAndWeightsConfig = { modelTopology: modelAndWeightsConfig };
     }
     modelAndWeightsConfig = modelAndWeightsConfig;
     let modelTopology = modelAndWeightsConfig.modelTopology;
@@ -23077,7 +23078,7 @@ Expected: ${expectedFlat}.`);
       if (artifacts.weightSpecs == null) {
         throw new ValueError("LayersModel artifacts contains weight data, but not weight specs. Therefore loading of weights cannot proceed.");
       }
-      const {modelWeights, optimizerWeights} = decodeModelAndOptimizerWeights(artifacts.weightData, artifacts.weightSpecs);
+      const { modelWeights, optimizerWeights } = decodeModelAndOptimizerWeights(artifacts.weightData, artifacts.weightSpecs);
       model2.loadWeights(modelWeights, strict);
       if (model2.optimizer != null && optimizerWeights.length > 0) {
         await model2.optimizer.setWeights(optimizerWeights);
@@ -23093,16 +23094,16 @@ Expected: ${expectedFlat}.`);
     const optimizerWeights = [];
     specs.forEach((spec) => {
       if (spec.group === "optimizer") {
-        optimizerWeights.push({name: spec.name, tensor: name2Tensor[spec.name]});
+        optimizerWeights.push({ name: spec.name, tensor: name2Tensor[spec.name] });
       } else {
         modelWeights[spec.name] = name2Tensor[spec.name];
       }
     });
-    return {modelWeights, optimizerWeights};
+    return { modelWeights, optimizerWeights };
   }
   var Sequential = class extends LayersModel {
     constructor(args) {
-      super({inputs: [], outputs: []});
+      super({ inputs: [], outputs: [] });
       args = args || {};
       this.trainable = true;
       this.built = false;
@@ -23351,7 +23352,7 @@ Expected: ${expectedFlat}.`);
         dict["config"] = layer.getConfig();
         layers.push(dict);
       }
-      return {name: this.name, layers};
+      return { name: this.name, layers };
     }
   };
   Sequential.className = "Sequential";
@@ -23530,21 +23531,21 @@ Expected: ${expectedFlat}.`);
       });
     }
     getConfig() {
-      return {"l1": this.l1, "l2": this.l2};
+      return { "l1": this.l1, "l2": this.l2 };
     }
     static fromConfig(cls, config) {
-      return new cls({l1: config["l1"], l2: config["l2"]});
+      return new cls({ l1: config["l1"], l2: config["l2"] });
     }
   };
   L1L2.className = "L1L2";
   serialization_exports.registerClass(L1L2);
   function l1(args) {
     assertObjectArgs(args);
-    return new L1L2({l1: args != null ? args.l1 : null, l2: 0});
+    return new L1L2({ l1: args != null ? args.l1 : null, l2: 0 });
   }
   function l2(args) {
     assertObjectArgs(args);
-    return new L1L2({l2: args != null ? args.l2 : null, l1: 0});
+    return new L1L2({ l2: args != null ? args.l2 : null, l1: 0 });
   }
   var REGULARIZER_IDENTIFIER_REGISTRY_SYMBOL_MAP = {
     "l1l2": "L1L2"
@@ -23561,7 +23562,7 @@ Expected: ${expectedFlat}.`);
     }
     if (typeof identifier === "string") {
       const className = identifier in REGULARIZER_IDENTIFIER_REGISTRY_SYMBOL_MAP ? REGULARIZER_IDENTIFIER_REGISTRY_SYMBOL_MAP[identifier] : identifier;
-      const config = {className, config: {}};
+      const config = { className, config: {} };
       return deserializeRegularizer(config);
     } else if (identifier instanceof Regularizer) {
       return identifier;
@@ -23589,7 +23590,7 @@ Expected: ${expectedFlat}.`);
       return inputShape;
     }
     getConfig() {
-      const config = {maxValue: this.maxValue};
+      const config = { maxValue: this.maxValue };
       const baseConfig = super.getConfig();
       Object.assign(config, baseConfig);
       return config;
@@ -23614,7 +23615,7 @@ Expected: ${expectedFlat}.`);
       return inputShape;
     }
     getConfig() {
-      const config = {alpha: this.alpha};
+      const config = { alpha: this.alpha };
       const baseConfig = super.getConfig();
       Object.assign(config, baseConfig);
       return config;
@@ -23702,7 +23703,7 @@ Expected: ${expectedFlat}.`);
       return inputShape;
     }
     getConfig() {
-      const config = {alpha: this.alpha};
+      const config = { alpha: this.alpha };
       const baseConfig = super.getConfig();
       Object.assign(config, baseConfig);
       return config;
@@ -23727,7 +23728,7 @@ Expected: ${expectedFlat}.`);
       return inputShape;
     }
     getConfig() {
-      const config = {theta: this.theta};
+      const config = { theta: this.theta };
       const baseConfig = super.getConfig();
       Object.assign(config, baseConfig);
       return config;
@@ -23753,7 +23754,7 @@ Expected: ${expectedFlat}.`);
       return inputShape;
     }
     getConfig() {
-      const config = {axis: this.axis};
+      const config = { axis: this.axis };
       const baseConfig = super.getConfig();
       Object.assign(config, baseConfig);
       return config;
@@ -23998,7 +23999,7 @@ Expected: ${expectedFlat}.`);
       if (this.useBias) {
         this.bias = this.addWeight("bias", [this.filters], null, this.biasInitializer, this.biasRegularizer, true, this.biasConstraint);
       }
-      this.inputSpec = [{ndim: this.rank + 2, axes: {[channelAxis]: inputDim}}];
+      this.inputSpec = [{ ndim: this.rank + 2, axes: { [channelAxis]: inputDim } }];
       this.built = true;
     }
     call(inputs, kwargs) {
@@ -24102,7 +24103,7 @@ Expected: ${expectedFlat}.`);
   var Conv2DTranspose = class extends Conv2D2 {
     constructor(args) {
       super(args);
-      this.inputSpec = [new InputSpec({ndim: 4})];
+      this.inputSpec = [new InputSpec({ ndim: 4 })];
       if (this.padding !== "same" && this.padding !== "valid") {
         throw new ValueError(`Conv2DTranspose currently supports only padding modes 'same' and 'valid', but received padding mode ${this.padding}`);
       }
@@ -24122,7 +24123,7 @@ Expected: ${expectedFlat}.`);
       if (this.useBias) {
         this.bias = this.addWeight("bias", [this.filters], "float32", this.biasInitializer, this.biasRegularizer, true, this.biasConstraint);
       }
-      this.inputSpec = [new InputSpec({ndim: 4, axes: {[channelAxis]: inputDim}})];
+      this.inputSpec = [new InputSpec({ ndim: 4, axes: { [channelAxis]: inputDim } })];
       this.built = true;
     }
     call(inputs, kwargs) {
@@ -24202,7 +24203,7 @@ Expected: ${expectedFlat}.`);
   var Conv3DTranspose = class extends Conv3D2 {
     constructor(args) {
       super(args);
-      this.inputSpec = [new InputSpec({ndim: 5})];
+      this.inputSpec = [new InputSpec({ ndim: 5 })];
       if (this.padding !== "same" && this.padding !== "valid") {
         throw new ValueError(`Conv3DTranspose currently supports only padding modes 'same' and 'valid', but received padding mode ${this.padding}`);
       }
@@ -24222,7 +24223,7 @@ Expected: ${expectedFlat}.`);
       if (this.useBias) {
         this.bias = this.addWeight("bias", [this.filters], "float32", this.biasInitializer, this.biasRegularizer, true, this.biasConstraint);
       }
-      this.inputSpec = [new InputSpec({ndim: 5, axes: {[channelAxis]: inputDim}})];
+      this.inputSpec = [new InputSpec({ ndim: 5, axes: { [channelAxis]: inputDim } })];
       this.built = true;
     }
     call(inputs, kwargs) {
@@ -24360,7 +24361,7 @@ Expected: ${expectedFlat}.`);
       } else {
         this.bias = null;
       }
-      this.inputSpec = [new InputSpec({ndim: this.rank + 2, axes: {[channelAxis]: inputDim}})];
+      this.inputSpec = [new InputSpec({ ndim: this.rank + 2, axes: { [channelAxis]: inputDim } })];
       this.built = true;
     }
     call(inputs, kwargs) {
@@ -24414,7 +24415,7 @@ Expected: ${expectedFlat}.`);
     constructor(args) {
       super(1, args);
       Conv1D.verifyArgs(args);
-      this.inputSpec = [{ndim: 3}];
+      this.inputSpec = [{ ndim: 3 }];
     }
     getConfig() {
       const config = super.getConfig();
@@ -24444,7 +24445,7 @@ Expected: ${expectedFlat}.`);
         this.cropping = args.cropping;
       }
       this.dataFormat = args.dataFormat === void 0 ? "channelsLast" : args.dataFormat;
-      this.inputSpec = [{ndim: 4}];
+      this.inputSpec = [{ ndim: 4 }];
     }
     computeOutputShape(inputShape) {
       if (this.dataFormat === "channelsFirst") {
@@ -24476,7 +24477,7 @@ Expected: ${expectedFlat}.`);
       });
     }
     getConfig() {
-      const config = {cropping: this.cropping, dataFormat: this.dataFormat};
+      const config = { cropping: this.cropping, dataFormat: this.dataFormat };
       const baseConfig = super.getConfig();
       Object.assign(config, baseConfig);
       return config;
@@ -24488,7 +24489,7 @@ Expected: ${expectedFlat}.`);
     constructor(args) {
       super(args);
       this.DEFAULT_SIZE = [2, 2];
-      this.inputSpec = [{ndim: 4}];
+      this.inputSpec = [{ ndim: 4 }];
       this.size = args.size == null ? this.DEFAULT_SIZE : args.size;
       this.dataFormat = args.dataFormat == null ? "channelsLast" : args.dataFormat;
       checkDataFormat(this.dataFormat);
@@ -24524,7 +24525,7 @@ Expected: ${expectedFlat}.`);
       });
     }
     getConfig() {
-      const config = {size: this.size, dataFormat: this.dataFormat};
+      const config = { size: this.size, dataFormat: this.dataFormat };
       const baseConfig = super.getConfig();
       Object.assign(config, baseConfig);
       return config;
@@ -24645,7 +24646,7 @@ Expected: ${expectedFlat}.`);
     }
     initialState = toListOrNull(initialState);
     constants = toListOrNull(constants);
-    return {inputs, initialState, constants};
+    return { inputs, initialState, constants };
   }
   function rnn(stepFunction, inputs, initialStates, goBackwards = false, mask, constants, unroll = false, needPerStepOutputs = false) {
     return tidy(() => {
@@ -24697,7 +24698,7 @@ Expected: ${expectedFlat}.`);
             const newStates = states.map((state, i) => {
               return stepOutputs[1][i].mul(stepMask).add(state.mul(negStepMask));
             });
-            return {output, newStates};
+            return { output, newStates };
           });
           lastOutput = maskedOutputs.output;
           states = maskedOutputs.newStates;
@@ -24721,7 +24722,7 @@ Expected: ${expectedFlat}.`);
       if (args.cell == null) {
         throw new ValueError("cell property is missing for the constructor of RNN.");
       } else if (Array.isArray(args.cell)) {
-        cell = new StackedRNNCells({cells: args.cell});
+        cell = new StackedRNNCells({ cells: args.cell });
       } else {
         cell = args.cell;
       }
@@ -24735,7 +24736,7 @@ Expected: ${expectedFlat}.`);
       this._stateful = args.stateful == null ? false : args.stateful;
       this.unroll = args.unroll == null ? false : args.unroll;
       this.supportsMasking = true;
-      this.inputSpec = [new InputSpec({ndim: 3})];
+      this.inputSpec = [new InputSpec({ ndim: 3 })];
       this.stateSpec = null;
       this.states_ = null;
       this.numConstants = null;
@@ -24818,7 +24819,7 @@ Expected: ${expectedFlat}.`);
       inputShape = inputShape;
       const batchSize = this.stateful ? inputShape[0] : null;
       const inputDim = inputShape.slice(2);
-      this.inputSpec[0] = new InputSpec({shape: [batchSize, null, ...inputDim]});
+      this.inputSpec[0] = new InputSpec({ shape: [batchSize, null, ...inputDim] });
       const stepInputShape = [inputShape[0]].concat(inputShape.slice(2));
       if (constantShape != null) {
         throw new NotImplementedError("Constants support is not implemented in RNN yet.");
@@ -24836,7 +24837,7 @@ Expected: ${expectedFlat}.`);
           throw new ValueError(`An initialState was passed that is not compatible with cell.stateSize. Received stateSpec=${this.stateSpec}; However cell.stateSize is ${this.cell.stateSize}`);
         }
       } else {
-        this.stateSpec = stateSize.map((dim) => new InputSpec({shape: [null, dim]}));
+        this.stateSpec = stateSize.map((dim) => new InputSpec({ shape: [null, dim] }));
       }
       if (this.stateful) {
         this.resetStates();
@@ -24910,7 +24911,7 @@ Expected: ${expectedFlat}.`);
         additionalInputs = additionalInputs.concat(initialState);
         this.stateSpec = [];
         for (const state of initialState) {
-          this.stateSpec.push(new InputSpec({shape: state.shape}));
+          this.stateSpec.push(new InputSpec({ shape: state.shape }));
         }
         additionalSpecs = additionalSpecs.concat(this.stateSpec);
       }
@@ -24952,7 +24953,7 @@ Expected: ${expectedFlat}.`);
         if (this.unroll) {
           console.warn("Ignoring unroll = true for RNN layer, due to imperative backend.");
         }
-        const cellCallKwargs = {training};
+        const cellCallKwargs = { training };
         const step5 = (inputs2, states2) => {
           const outputs2 = this.cell.call([inputs2].concat(states2), cellCallKwargs);
           return [outputs2[0], outputs2.slice(1)];
@@ -25026,7 +25027,7 @@ Expected: ${expectedFlat}.`);
     static fromConfig(cls, config, customObjects = {}) {
       const cellConfig = config["cell"];
       const cell = deserialize(cellConfig, customObjects);
-      return new cls(Object.assign(config, {cell}));
+      return new cls(Object.assign(config, { cell }));
     }
   };
   RNN.className = "RNN";
@@ -25159,7 +25160,7 @@ Expected: ${expectedFlat}.`);
         const mask = kwargs == null ? null : kwargs["mask"];
         const training = kwargs == null ? null : kwargs["training"];
         const initialState = kwargs == null ? null : kwargs["initialState"];
-        return super.call(inputs, {mask, training, initialState});
+        return super.call(inputs, { mask, training, initialState });
       });
     }
     static fromConfig(cls, config) {
@@ -25316,7 +25317,7 @@ Expected: ${expectedFlat}.`);
         const mask = kwargs == null ? null : kwargs["mask"];
         const training = kwargs == null ? null : kwargs["training"];
         const initialState = kwargs == null ? null : kwargs["initialState"];
-        return super.call(inputs, {mask, training, initialState});
+        return super.call(inputs, { mask, training, initialState });
       });
     }
     static fromConfig(cls, config) {
@@ -25489,7 +25490,7 @@ Expected: ${expectedFlat}.`);
         const mask = kwargs == null ? null : kwargs["mask"];
         const training = kwargs == null ? null : kwargs["training"];
         const initialState = kwargs == null ? null : kwargs["initialState"];
-        return super.call(inputs, {mask, training, initialState});
+        return super.call(inputs, { mask, training, initialState });
       });
     }
     static fromConfig(cls, config) {
@@ -25578,7 +25579,7 @@ Expected: ${expectedFlat}.`);
         };
       };
       const cellConfigs = this.cells.map(getCellConfig);
-      const config = {"cells": cellConfigs};
+      const config = { "cells": cellConfigs };
       return Object.assign({}, baseConfig, config);
     }
     static fromConfig(cls, config, customObjects = {}) {
@@ -25586,7 +25587,7 @@ Expected: ${expectedFlat}.`);
       for (const cellConfig of config["cells"]) {
         cells.push(deserialize(cellConfig, customObjects));
       }
-      return new cls({cells});
+      return new cls({ cells });
     }
     get trainableWeights() {
       if (!this.trainable) {
@@ -25634,7 +25635,7 @@ Expected: ${expectedFlat}.`);
   StackedRNNCells.className = "StackedRNNCells";
   serialization_exports.registerClass(StackedRNNCells);
   function generateDropoutMask(args) {
-    const {ones: ones4, rate, training = false, count: count2 = 1} = args;
+    const { ones: ones4, rate, training = false, count: count2 = 1 } = args;
     const droppedInputs = () => dropout2(ones4(), rate);
     const createMask = () => inTrainPhase(droppedInputs, ones4, training);
     if (!count2 || count2 <= 1) {
@@ -25664,7 +25665,7 @@ Expected: ${expectedFlat}.`);
         throw new NotImplementedError("It is not possible at the moment to stack convolutional cells.");
       }
       super(args);
-      this.inputSpec = [new InputSpec({ndim: 5})];
+      this.inputSpec = [new InputSpec({ ndim: 5 })];
     }
     call(inputs, kwargs) {
       return tidy(() => {
@@ -25682,7 +25683,7 @@ Expected: ${expectedFlat}.`);
         const mask = kwargs == null ? null : kwargs["mask"];
         const training = kwargs == null ? null : kwargs["training"];
         const initialState = kwargs == null ? null : kwargs["initialState"];
-        return super.call(inputs, {mask, training, initialState});
+        return super.call(inputs, { mask, training, initialState });
       });
     }
     computeOutputShape(inputShape) {
@@ -25697,7 +25698,7 @@ Expected: ${expectedFlat}.`);
     }
     getInitialState(inputs) {
       return tidy(() => {
-        const {stateSize} = this.cell;
+        const { stateSize } = this.cell;
         const inputShape = inputs.shape;
         const outputShape = this.computeSingleOutputShape(inputShape);
         const stateShape = [outputShape[0], ...outputShape.slice(2)];
@@ -25762,7 +25763,7 @@ Expected: ${expectedFlat}.`);
       });
     }
     computeSingleOutputShape(inputShape) {
-      const {dataFormat, filters, kernelSize, padding, strides, dilationRate} = this.cell;
+      const { dataFormat, filters, kernelSize, padding, strides, dilationRate } = this.cell;
       const isChannelsFirst = dataFormat === "channelsFirst";
       const h = inputShape[isChannelsFirst ? 3 : 2];
       const w = inputShape[isChannelsFirst ? 4 : 3];
@@ -25778,8 +25779,8 @@ Expected: ${expectedFlat}.`);
   ConvRNN2D.className = "ConvRNN2D";
   var ConvLSTM2DCell = class extends LSTMCell {
     constructor(args) {
-      const {filters, kernelSize, strides, padding, dataFormat, dilationRate} = args;
-      super(Object.assign({}, args, {units: filters}));
+      const { filters, kernelSize, strides, padding, dataFormat, dilationRate } = args;
+      super(Object.assign({}, args, { units: filters }));
       this.filters = filters;
       assertPositiveInteger(this.filters, "filters");
       this.kernelSize = normalizeArray(kernelSize, 2, "kernelSize");
@@ -25888,7 +25889,7 @@ Expected: ${expectedFlat}.`);
       });
     }
     getConfig() {
-      const _a = super.getConfig(), {"units": _} = _a, baseConfig = __rest(_a, ["units"]);
+      const _a = super.getConfig(), { "units": _ } = _a, baseConfig = __rest(_a, ["units"]);
       const config = {
         filters: this.filters,
         kernelSize: this.kernelSize,
@@ -25916,7 +25917,7 @@ Expected: ${expectedFlat}.`);
   var ConvLSTM2D = class extends ConvRNN2D {
     constructor(args) {
       const cell = new ConvLSTM2DCell(args);
-      super(Object.assign({}, args, {cell}));
+      super(Object.assign({}, args, { cell }));
     }
     static fromConfig(cls, config) {
       return new cls(config);
@@ -25975,7 +25976,7 @@ Expected: ${expectedFlat}.`);
   var SpatialDropout1D = class extends Dropout {
     constructor(args) {
       super(args);
-      this.inputSpec = [{ndim: 3}];
+      this.inputSpec = [{ ndim: 3 }];
     }
     getNoiseShape(input2) {
       const inputShape = input2.shape;
@@ -26014,7 +26015,7 @@ Expected: ${expectedFlat}.`);
       this.biasRegularizer = getRegularizer(args.biasRegularizer);
       this.activityRegularizer = getRegularizer(args.activityRegularizer);
       this.supportsMasking = true;
-      this.inputSpec = [{minNDim: 2}];
+      this.inputSpec = [{ minNDim: 2 }];
     }
     build(inputShape) {
       inputShape = getExactlyOneShape(inputShape);
@@ -26025,7 +26026,7 @@ Expected: ${expectedFlat}.`);
           this.bias = this.addWeight("bias", [this.units], null, this.biasInitializer, this.biasRegularizer, true, this.biasConstraint);
         }
       }
-      this.inputSpec = [{minNDim: 2, axes: {[-1]: inputLastDim}}];
+      this.inputSpec = [{ minNDim: 2, axes: { [-1]: inputLastDim } }];
       this.built = true;
     }
     computeOutputShape(inputShape) {
@@ -26078,7 +26079,7 @@ Expected: ${expectedFlat}.`);
     constructor(args) {
       args = args || {};
       super(args);
-      this.inputSpec = [{minNDim: 3}];
+      this.inputSpec = [{ minNDim: 3 }];
       this.dataFormat = args.dataFormat;
     }
     computeOutputShape(inputShape) {
@@ -26131,7 +26132,7 @@ Expected: ${expectedFlat}.`);
       });
     }
     getConfig() {
-      const config = {activation: serializeActivation(this.activation)};
+      const config = { activation: serializeActivation(this.activation) };
       const baseConfig = super.getConfig();
       Object.assign(config, baseConfig);
       return config;
@@ -26143,7 +26144,7 @@ Expected: ${expectedFlat}.`);
     constructor(args) {
       super(args);
       this.n = args.n;
-      this.inputSpec = [{ndim: 2}];
+      this.inputSpec = [{ ndim: 2 }];
     }
     computeOutputShape(inputShape) {
       return [inputShape[0], this.n, inputShape[1]];
@@ -26255,7 +26256,7 @@ Expected: ${expectedFlat}.`);
       }
       this.dims = args.dims;
       this.dimsIncludingBatch = [0].concat(this.dims);
-      this.inputSpec = [new InputSpec({ndim: this.dims.length + 1})];
+      this.inputSpec = [new InputSpec({ ndim: this.dims.length + 1 })];
     }
     computeOutputShape(inputShape) {
       inputShape = getExactlyOneShape(inputShape);
@@ -26294,7 +26295,7 @@ Expected: ${expectedFlat}.`);
     }
     getConfig() {
       const baseConfig = super.getConfig();
-      const config = {maskValue: this.maskValue};
+      const config = { maskValue: this.maskValue };
       Object.assign(config, baseConfig);
       return config;
     }
@@ -26953,7 +26954,7 @@ Expected: ${expectedFlat}.`);
     }
     getConfig() {
       const baseConfig = super.getConfig();
-      const config = {stddev: this.stddev};
+      const config = { stddev: this.stddev };
       Object.assign(config, baseConfig);
       return config;
     }
@@ -26980,7 +26981,7 @@ Expected: ${expectedFlat}.`);
     }
     getConfig() {
       const baseConfig = super.getConfig();
-      const config = {rate: this.rate};
+      const config = { rate: this.rate };
       Object.assign(config, baseConfig);
       return config;
     }
@@ -27016,7 +27017,7 @@ Expected: ${expectedFlat}.`);
     }
     getConfig() {
       const baseConfig = super.getConfig();
-      const config = {rate: this.rate};
+      const config = { rate: this.rate };
       Object.assign(config, baseConfig);
       return config;
     }
@@ -27122,7 +27123,7 @@ Expected: ${expectedFlat}.`);
       if (dim == null) {
         throw new ValueError(`Axis ${axis} of input tensor should have a defined dimension but the layer received an input with shape ${JSON.stringify(inputShape)}.`);
       }
-      this.inputSpec = [new InputSpec({ndim: inputShape.length, axes: {[axis]: dim}})];
+      this.inputSpec = [new InputSpec({ ndim: inputShape.length, axes: { [axis]: dim } })];
       const shape = [dim];
       if (this.scale) {
         this.gamma = this.addWeight("gamma", shape, null, this.gammaInitializer, this.gammaRegularizer, true, this.gammaConstraint);
@@ -27270,7 +27271,7 @@ Expected: ${expectedFlat}.`);
       const nDims = inputShape.length;
       return tidy(() => {
         const keepDims = true;
-        let {mean: mean4, variance} = moments(input2, this.axis, keepDims);
+        let { mean: mean4, variance } = moments(input2, this.axis, keepDims);
         const broadcastShape = pyListRepeat(1, nDims);
         for (const dim of this.axis) {
           broadcastShape[dim] = inputShape[dim];
@@ -27380,7 +27381,7 @@ Expected: ${expectedFlat}.`);
         }
         this.padding = [heightPadding, widthPadding];
       }
-      this.inputSpec = [new InputSpec({ndim: 4})];
+      this.inputSpec = [new InputSpec({ ndim: 4 })];
     }
     computeOutputShape(inputShape) {
       inputShape = getExactlyOneShape(inputShape);
@@ -27517,7 +27518,7 @@ Expected: ${expectedFlat}.`);
       assertPositiveInteger(this.strides, "strides");
       this.padding = args.padding == null ? "valid" : args.padding;
       checkPaddingMode(this.padding);
-      this.inputSpec = [new InputSpec({ndim: 3})];
+      this.inputSpec = [new InputSpec({ ndim: 3 })];
     }
     computeOutputShape(inputShape) {
       inputShape = getExactlyOneShape(inputShape);
@@ -27590,7 +27591,7 @@ Expected: ${expectedFlat}.`);
       this.dataFormat = args.dataFormat == null ? "channelsLast" : args.dataFormat;
       checkDataFormat(this.dataFormat);
       checkPaddingMode(this.padding);
-      this.inputSpec = [new InputSpec({ndim: 4})];
+      this.inputSpec = [new InputSpec({ ndim: 4 })];
     }
     computeOutputShape(inputShape) {
       inputShape = getExactlyOneShape(inputShape);
@@ -27669,7 +27670,7 @@ Expected: ${expectedFlat}.`);
       this.dataFormat = args.dataFormat == null ? "channelsLast" : args.dataFormat;
       checkDataFormat(this.dataFormat);
       checkPaddingMode(this.padding);
-      this.inputSpec = [new InputSpec({ndim: 5})];
+      this.inputSpec = [new InputSpec({ ndim: 5 })];
     }
     computeOutputShape(inputShape) {
       inputShape = getExactlyOneShape(inputShape);
@@ -27730,7 +27731,7 @@ Expected: ${expectedFlat}.`);
   var GlobalPooling1D = class extends Layer {
     constructor(args) {
       super(args);
-      this.inputSpec = [new InputSpec({ndim: 3})];
+      this.inputSpec = [new InputSpec({ ndim: 3 })];
     }
     computeOutputShape(inputShape) {
       return [inputShape[0], inputShape[2]];
@@ -27770,7 +27771,7 @@ Expected: ${expectedFlat}.`);
       super(args);
       this.dataFormat = args.dataFormat == null ? "channelsLast" : args.dataFormat;
       checkDataFormat(this.dataFormat);
-      this.inputSpec = [new InputSpec({ndim: 4})];
+      this.inputSpec = [new InputSpec({ ndim: 4 })];
     }
     computeOutputShape(inputShape) {
       inputShape = inputShape;
@@ -27784,7 +27785,7 @@ Expected: ${expectedFlat}.`);
       throw new NotImplementedError();
     }
     getConfig() {
-      const config = {dataFormat: this.dataFormat};
+      const config = { dataFormat: this.dataFormat };
       const baseConfig = super.getConfig();
       Object.assign(config, baseConfig);
       return config;
@@ -27877,7 +27878,7 @@ Expected: ${expectedFlat}.`);
       const layerConfig = config["layer"];
       const layer = deserialize(layerConfig, customObjects);
       delete config["layer"];
-      const newConfig = {layer};
+      const newConfig = { layer };
       Object.assign(newConfig, config);
       return new cls(newConfig);
     }
@@ -27892,7 +27893,7 @@ Expected: ${expectedFlat}.`);
       if (inputShape.length < 3) {
         throw new ValueError(`TimeDistributed layer expects an input shape >= 3D, but received input shape ${JSON.stringify(inputShape)}`);
       }
-      this.inputSpec = [{shape: inputShape}];
+      this.inputSpec = [{ shape: inputShape }];
       const childInputShape = [inputShape[0]].concat(inputShape.slice(2));
       if (!this.layer.built) {
         this.layer.build(childInputShape);
@@ -28033,7 +28034,7 @@ Expected: ${expectedFlat}.`);
         }
         kwargs["initialState"] = initialState;
         additionalInputs.push(...initialState);
-        const stateSpecs = initialState.map((state) => new InputSpec({shape: state.shape}));
+        const stateSpecs = initialState.map((state) => new InputSpec({ shape: state.shape }));
         this.forwardLayer.stateSpec = stateSpecs.slice(0, numStates / 2);
         this.backwardLayer.stateSpec = stateSpecs.slice(numStates / 2);
         additionalSpecs.push(...stateSpecs);
@@ -28070,8 +28071,8 @@ Expected: ${expectedFlat}.`);
         } else {
           const forwardState = initialState.slice(0, initialState.length / 2);
           const backwardState = initialState.slice(initialState.length / 2);
-          y = this.forwardLayer.call(inputs, Object.assign(kwargs, {initialState: forwardState}));
-          yRev = this.backwardLayer.call(inputs, Object.assign(kwargs, {initialState: backwardState}));
+          y = this.forwardLayer.call(inputs, Object.assign(kwargs, { initialState: forwardState }));
+          yRev = this.backwardLayer.call(inputs, Object.assign(kwargs, { initialState: backwardState }));
         }
         let states;
         if (this.returnState) {
@@ -28569,7 +28570,7 @@ Expected: ${expectedFlat}.`);
   function earlyStopping(args) {
     return new EarlyStopping(args);
   }
-  var callbacks = {earlyStopping};
+  var callbacks = { earlyStopping };
   var DataType;
   (function(DataType2) {
     DataType2[DataType2["DT_INVALID"] = 0] = "DT_INVALID";
@@ -28706,38 +28707,38 @@ Expected: ${expectedFlat}.`);
       "tfOpName": "Add",
       "category": "arithmetic",
       "inputs": [
-        {"start": 0, "name": "a", "type": "tensor"},
-        {"start": 1, "name": "b", "type": "tensor"}
+        { "start": 0, "name": "a", "type": "tensor" },
+        { "start": 1, "name": "b", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "AddV2",
       "category": "arithmetic",
       "inputs": [
-        {"start": 0, "name": "a", "type": "tensor"},
-        {"start": 1, "name": "b", "type": "tensor"}
+        { "start": 0, "name": "a", "type": "tensor" },
+        { "start": 1, "name": "b", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "AddN",
       "category": "arithmetic",
-      "inputs": [{"start": 0, "end": 0, "name": "tensors", "type": "tensors"}]
+      "inputs": [{ "start": 0, "end": 0, "name": "tensors", "type": "tensors" }]
     },
     {
       "tfOpName": "BiasAdd",
       "category": "arithmetic",
       "inputs": [
-        {"start": 0, "name": "a", "type": "tensor"},
-        {"start": 1, "name": "b", "type": "tensor"}
+        { "start": 0, "name": "a", "type": "tensor" },
+        { "start": 1, "name": "b", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true},
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true },
         {
           "tfName": "data_format",
           "name": "dataFormat",
@@ -28750,129 +28751,129 @@ Expected: ${expectedFlat}.`);
       "tfOpName": "Sub",
       "category": "arithmetic",
       "inputs": [
-        {"start": 0, "name": "a", "type": "tensor"},
-        {"start": 1, "name": "b", "type": "tensor"}
+        { "start": 0, "name": "a", "type": "tensor" },
+        { "start": 1, "name": "b", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "RealDiv",
       "category": "arithmetic",
       "inputs": [
-        {"start": 0, "name": "a", "type": "tensor"},
-        {"start": 1, "name": "b", "type": "tensor"}
+        { "start": 0, "name": "a", "type": "tensor" },
+        { "start": 1, "name": "b", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "Div",
       "category": "arithmetic",
       "inputs": [
-        {"start": 0, "name": "a", "type": "tensor"},
-        {"start": 1, "name": "b", "type": "tensor"}
+        { "start": 0, "name": "a", "type": "tensor" },
+        { "start": 1, "name": "b", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "DivNoNan",
       "category": "arithmetic",
       "inputs": [
-        {"start": 0, "name": "a", "type": "tensor"},
-        {"start": 1, "name": "b", "type": "tensor"}
+        { "start": 0, "name": "a", "type": "tensor" },
+        { "start": 1, "name": "b", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "FloorDiv",
       "category": "arithmetic",
       "inputs": [
-        {"start": 0, "name": "a", "type": "tensor"},
-        {"start": 1, "name": "b", "type": "tensor"}
+        { "start": 0, "name": "a", "type": "tensor" },
+        { "start": 1, "name": "b", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "Mul",
       "category": "arithmetic",
       "inputs": [
-        {"start": 0, "name": "a", "type": "tensor"},
-        {"start": 1, "name": "b", "type": "tensor"}
+        { "start": 0, "name": "a", "type": "tensor" },
+        { "start": 1, "name": "b", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "Maximum",
       "category": "arithmetic",
       "inputs": [
-        {"start": 0, "name": "a", "type": "tensor"},
-        {"start": 1, "name": "b", "type": "tensor"}
+        { "start": 0, "name": "a", "type": "tensor" },
+        { "start": 1, "name": "b", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "Minimum",
       "category": "arithmetic",
       "inputs": [
-        {"start": 0, "name": "a", "type": "tensor"},
-        {"start": 1, "name": "b", "type": "tensor"}
+        { "start": 0, "name": "a", "type": "tensor" },
+        { "start": 1, "name": "b", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "Pow",
       "category": "arithmetic",
       "inputs": [
-        {"start": 0, "name": "a", "type": "tensor"},
-        {"start": 1, "name": "b", "type": "tensor"}
+        { "start": 0, "name": "a", "type": "tensor" },
+        { "start": 1, "name": "b", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "SquaredDifference",
       "category": "arithmetic",
       "inputs": [
-        {"start": 0, "name": "a", "type": "tensor"},
-        {"start": 1, "name": "b", "type": "tensor"}
+        { "start": 0, "name": "a", "type": "tensor" },
+        { "start": 1, "name": "b", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "Mod",
       "category": "arithmetic",
       "inputs": [
-        {"start": 0, "name": "a", "type": "tensor"},
-        {"start": 1, "name": "b", "type": "tensor"}
+        { "start": 0, "name": "a", "type": "tensor" },
+        { "start": 1, "name": "b", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "FloorMod",
       "category": "arithmetic",
       "inputs": [
-        {"start": 0, "name": "a", "type": "tensor"},
-        {"start": 1, "name": "b", "type": "tensor"}
+        { "start": 0, "name": "a", "type": "tensor" },
+        { "start": 1, "name": "b", "type": "tensor" }
       ],
       "attrs": [{
         "tfName": "T",
@@ -28891,164 +28892,164 @@ Expected: ${expectedFlat}.`);
       "tfOpName": "Abs",
       "category": "basic_math",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "Acos",
       "category": "basic_math",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "Asin",
       "category": "basic_math",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "Atan",
       "category": "basic_math",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "Atan2",
       "category": "basic_math",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"},
-        {"start": 1, "name": "y", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" },
+        { "start": 1, "name": "y", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "Ceil",
       "category": "basic_math",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "ClipByValue",
       "category": "basic_math",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"},
-        {"start": 1, "name": "clipValueMin", "type": "number"},
-        {"start": 2, "name": "clipValueMax", "type": "number"}
+        { "start": 0, "name": "x", "type": "tensor" },
+        { "start": 1, "name": "clipValueMin", "type": "number" },
+        { "start": 2, "name": "clipValueMax", "type": "number" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "Complex",
       "category": "basic_math",
       "inputs": [
-        {"start": 0, "name": "real", "type": "tensor"},
-        {"start": 1, "name": "imag", "type": "tensor"}
+        { "start": 0, "name": "real", "type": "tensor" },
+        { "start": 1, "name": "imag", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "ComplexAbs",
       "category": "basic_math",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "Cos",
       "category": "basic_math",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "Cosh",
       "category": "basic_math",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "Elu",
       "category": "basic_math",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "Exp",
       "category": "basic_math",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "Floor",
       "category": "basic_math",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "Log",
       "category": "basic_math",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "Imag",
       "category": "basic_math",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true},
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true },
         {
           "tfName": "Tout",
           "name": "outputType",
@@ -29061,20 +29062,20 @@ Expected: ${expectedFlat}.`);
       "tfOpName": "Neg",
       "category": "basic_math",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "Real",
       "category": "basic_math",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true},
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true },
         {
           "tfName": "Tout",
           "name": "outputType",
@@ -29087,229 +29088,229 @@ Expected: ${expectedFlat}.`);
       "tfOpName": "Prelu",
       "category": "basic_math",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"},
-        {"start": 1, "name": "alpha", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" },
+        { "start": 1, "name": "alpha", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "Relu",
       "category": "basic_math",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "Relu6",
       "category": "basic_math",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "Selu",
       "category": "basic_math",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "Sigmoid",
       "category": "basic_math",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "Sin",
       "category": "basic_math",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "Sinh",
       "category": "basic_math",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "Sqrt",
       "category": "basic_math",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "Rsqrt",
       "category": "basic_math",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "Square",
       "category": "basic_math",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "Tan",
       "category": "basic_math",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "Tanh",
       "category": "basic_math",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "Sign",
       "category": "basic_math",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "Round",
       "category": "basic_math",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "Expm1",
       "category": "basic_math",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "Log1p",
       "category": "basic_math",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "Reciprocal",
       "category": "basic_math",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "Softplus",
       "category": "basic_math",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "Asinh",
       "category": "basic_math",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "Acosh",
       "category": "basic_math",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "Atanh",
       "category": "basic_math",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "Erf",
       "category": "basic_math",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "Prod",
       "category": "basic_math",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"},
-        {"start": 1, "name": "axes", "type": "number[]"}
+        { "start": 0, "name": "x", "type": "tensor" },
+        { "start": 1, "name": "axes", "type": "number[]" }
       ],
       "attrs": [
         {
@@ -29318,14 +29319,14 @@ Expected: ${expectedFlat}.`);
           "type": "bool",
           "notSupported": true
         },
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "LeakyRelu",
       "category": "basic_math",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" }
       ],
       "attrs": [
         {
@@ -29334,14 +29335,14 @@ Expected: ${expectedFlat}.`);
           "type": "number",
           "defaultValue": 0.2
         },
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "IsNan",
       "category": "basic_math",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" }
       ],
       "attrs": [{
         "tfName": "T",
@@ -29360,100 +29361,100 @@ Expected: ${expectedFlat}.`);
       "tfOpName": "EmptyTensorList",
       "category": "control",
       "inputs": [
-        {"start": 0, "name": "elementShape", "type": "shape"},
-        {"start": 1, "name": "maxNumElements", "type": "number"}
+        { "start": 0, "name": "elementShape", "type": "shape" },
+        { "start": 1, "name": "maxNumElements", "type": "number" }
       ],
-      "attrs": [{"tfName": "element_dtype", "name": "elementDType", "type": "dtype"}]
+      "attrs": [{ "tfName": "element_dtype", "name": "elementDType", "type": "dtype" }]
     },
     {
       "tfOpName": "LoopCond",
       "category": "control",
-      "inputs": [{"start": 0, "name": "pred", "type": "tensor"}]
+      "inputs": [{ "start": 0, "name": "pred", "type": "tensor" }]
     },
     {
       "tfOpName": "Switch",
       "category": "control",
       "inputs": [
-        {"start": 0, "name": "data", "type": "tensor"},
-        {"start": 1, "name": "pred", "type": "tensor"}
+        { "start": 0, "name": "data", "type": "tensor" },
+        { "start": 1, "name": "pred", "type": "tensor" }
       ]
     },
     {
       "tfOpName": "Merge",
       "category": "control",
-      "inputs": [{"start": 0, "end": 0, "name": "tensors", "type": "tensors"}]
+      "inputs": [{ "start": 0, "end": 0, "name": "tensors", "type": "tensors" }]
     },
     {
       "tfOpName": "Enter",
       "category": "control",
       "inputs": [
-        {"start": 0, "name": "tensor", "type": "tensor"}
+        { "start": 0, "name": "tensor", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true},
-        {"tfName": "frame_name", "name": "frameName", "type": "string"},
-        {"tfName": "is_constant", "name": "isConstant", "type": "bool"}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true },
+        { "tfName": "frame_name", "name": "frameName", "type": "string" },
+        { "tfName": "is_constant", "name": "isConstant", "type": "bool" }
       ]
     },
     {
       "tfOpName": "Exit",
       "category": "control",
       "inputs": [
-        {"start": 0, "name": "tensor", "type": "tensor"}
+        { "start": 0, "name": "tensor", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "NextIteration",
       "category": "control",
       "inputs": [
-        {"start": 0, "name": "tensor", "type": "tensor"}
+        { "start": 0, "name": "tensor", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "TensorArrayV3",
       "category": "control",
       "inputs": [
-        {"start": 0, "name": "size", "type": "number"}
+        { "start": 0, "name": "size", "type": "number" }
       ],
       "attrs": [
-        {"tfName": "dtype", "name": "dtype", "type": "dtype"},
-        {"tfName": "element_shape", "name": "elementShape", "type": "shape"},
-        {"tfName": "dynamic_size", "name": "dynamicSize", "type": "bool"},
-        {"tfName": "clear_after_read", "name": "clearAfterRead", "type": "bool"},
+        { "tfName": "dtype", "name": "dtype", "type": "dtype" },
+        { "tfName": "element_shape", "name": "elementShape", "type": "shape" },
+        { "tfName": "dynamic_size", "name": "dynamicSize", "type": "bool" },
+        { "tfName": "clear_after_read", "name": "clearAfterRead", "type": "bool" },
         {
           "tfName": "identical_element_shapes",
           "name": "identicalElementShapes",
           "type": "bool"
         },
-        {"tfName": "tensor_array_name", "name": "name", "type": "string"}
+        { "tfName": "tensor_array_name", "name": "name", "type": "string" }
       ]
     },
     {
       "tfOpName": "TensorArrayWriteV3",
       "category": "control",
       "inputs": [
-        {"start": 0, "name": "tensorArrayId", "type": "tensor"},
-        {"start": 1, "name": "index", "type": "number"},
-        {"start": 2, "name": "tensor", "type": "tensor"},
-        {"start": 3, "name": "flowIn", "type": "number"}
+        { "start": 0, "name": "tensorArrayId", "type": "tensor" },
+        { "start": 1, "name": "index", "type": "number" },
+        { "start": 2, "name": "tensor", "type": "tensor" },
+        { "start": 3, "name": "flowIn", "type": "number" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "TensorArrayReadV3",
       "category": "control",
       "inputs": [
-        {"start": 0, "name": "tensorArrayId", "type": "tensor"},
-        {"start": 1, "name": "index", "type": "number"},
-        {"start": 2, "name": "flowIn", "type": "number"}
+        { "start": 0, "name": "tensorArrayId", "type": "tensor" },
+        { "start": 1, "name": "index", "type": "number" },
+        { "start": 2, "name": "flowIn", "type": "number" }
       ],
       "attrs": [{
         "tfName": "dtype",
@@ -29466,35 +29467,35 @@ Expected: ${expectedFlat}.`);
       "tfOpName": "TensorArrayGatherV3",
       "category": "control",
       "inputs": [
-        {"start": 0, "name": "tensorArrayId", "type": "tensor"},
-        {"start": 1, "name": "indices", "type": "number[]"},
-        {"start": 2, "name": "flowIn", "type": "number"}
+        { "start": 0, "name": "tensorArrayId", "type": "tensor" },
+        { "start": 1, "name": "indices", "type": "number[]" },
+        { "start": 2, "name": "flowIn", "type": "number" }
       ],
       "attrs": [
-        {"tfName": "dtype", "name": "dtype", "type": "dtype"},
-        {"tfName": "element_shape", "name": "elementShape", "type": "shape"}
+        { "tfName": "dtype", "name": "dtype", "type": "dtype" },
+        { "tfName": "element_shape", "name": "elementShape", "type": "shape" }
       ]
     },
     {
       "tfOpName": "TensorArrayScatterV3",
       "category": "control",
       "inputs": [
-        {"start": 0, "name": "tensorArrayId", "type": "tensor"},
-        {"start": 1, "name": "indices", "type": "number[]"},
-        {"start": 2, "name": "tensor", "type": "tensor"},
-        {"start": 3, "name": "flowIn", "type": "number"}
+        { "start": 0, "name": "tensorArrayId", "type": "tensor" },
+        { "start": 1, "name": "indices", "type": "number[]" },
+        { "start": 2, "name": "tensor", "type": "tensor" },
+        { "start": 3, "name": "flowIn", "type": "number" }
       ],
-      "attrs": [{"tfName": "T", "name": "dtype", "type": "dtype"}]
+      "attrs": [{ "tfName": "T", "name": "dtype", "type": "dtype" }]
     },
     {
       "tfOpName": "TensorArrayConcatV3",
       "category": "control",
       "inputs": [
-        {"start": 0, "name": "tensorArrayId", "type": "tensor"},
-        {"start": 1, "name": "flowIn", "type": "number"}
+        { "start": 0, "name": "tensorArrayId", "type": "tensor" },
+        { "start": 1, "name": "flowIn", "type": "number" }
       ],
       "attrs": [
-        {"tfName": "dtype", "name": "dtype", "type": "dtype"},
+        { "tfName": "dtype", "name": "dtype", "type": "dtype" },
         {
           "tfName": "element_shape_except0",
           "name": "elementShapeExcept0",
@@ -29507,192 +29508,192 @@ Expected: ${expectedFlat}.`);
       "tfOpName": "TensorArraySplitV3",
       "category": "control",
       "inputs": [
-        {"start": 0, "name": "tensorArrayId", "type": "tensor"},
-        {"start": 1, "name": "tensor", "type": "tensor"},
-        {"start": 2, "name": "lengths", "type": "number[]"},
-        {"start": 3, "name": "flowIn", "type": "number"}
+        { "start": 0, "name": "tensorArrayId", "type": "tensor" },
+        { "start": 1, "name": "tensor", "type": "tensor" },
+        { "start": 2, "name": "lengths", "type": "number[]" },
+        { "start": 3, "name": "flowIn", "type": "number" }
       ],
-      "attrs": [{"tfName": "T", "name": "dtype", "type": "dtype"}]
+      "attrs": [{ "tfName": "T", "name": "dtype", "type": "dtype" }]
     },
     {
       "tfOpName": "TensorArraySizeV3",
       "category": "control",
       "inputs": [
-        {"start": 0, "name": "tensorArrayId", "type": "tensor"},
-        {"start": 1, "name": "flowIn", "type": "number"}
+        { "start": 0, "name": "tensorArrayId", "type": "tensor" },
+        { "start": 1, "name": "flowIn", "type": "number" }
       ]
     },
     {
       "tfOpName": "TensorArrayCloseV3",
       "category": "control",
-      "inputs": [{"start": 0, "name": "tensorArrayId", "type": "tensor"}]
+      "inputs": [{ "start": 0, "name": "tensorArrayId", "type": "tensor" }]
     },
     {
       "tfOpName": "StatelessIf",
       "category": "control",
       "inputs": [
-        {"start": 0, "name": "cond", "type": "tensor"},
-        {"start": 1, "end": 0, "name": "args", "type": "tensors"}
+        { "start": 0, "name": "cond", "type": "tensor" },
+        { "start": 1, "end": 0, "name": "args", "type": "tensors" }
       ],
       "attrs": [
-        {"tfName": "then_branch", "name": "thenBranch", "type": "func"},
-        {"tfName": "else_branch", "name": "elseBranch", "type": "func"}
+        { "tfName": "then_branch", "name": "thenBranch", "type": "func" },
+        { "tfName": "else_branch", "name": "elseBranch", "type": "func" }
       ]
     },
     {
       "tfOpName": "If",
       "category": "control",
       "inputs": [
-        {"start": 0, "name": "cond", "type": "tensor"},
-        {"start": 1, "end": 0, "name": "args", "type": "tensors"}
+        { "start": 0, "name": "cond", "type": "tensor" },
+        { "start": 1, "end": 0, "name": "args", "type": "tensors" }
       ],
       "attrs": [
-        {"tfName": "then_branch", "name": "thenBranch", "type": "func"},
-        {"tfName": "else_branch", "name": "elseBranch", "type": "func"}
+        { "tfName": "then_branch", "name": "thenBranch", "type": "func" },
+        { "tfName": "else_branch", "name": "elseBranch", "type": "func" }
       ]
     },
     {
       "tfOpName": "StatelessWhile",
       "category": "control",
       "inputs": [
-        {"start": 0, "end": 0, "name": "args", "type": "tensors"}
+        { "start": 0, "end": 0, "name": "args", "type": "tensors" }
       ],
       "attrs": [
-        {"tfName": "cond", "name": "cond", "type": "func"},
-        {"tfName": "body", "name": "body", "type": "func"}
+        { "tfName": "cond", "name": "cond", "type": "func" },
+        { "tfName": "body", "name": "body", "type": "func" }
       ]
     },
     {
       "tfOpName": "While",
       "category": "control",
       "inputs": [
-        {"start": 0, "end": 0, "name": "args", "type": "tensors"}
+        { "start": 0, "end": 0, "name": "args", "type": "tensors" }
       ],
       "attrs": [
-        {"tfName": "cond", "name": "cond", "type": "func"},
-        {"tfName": "body", "name": "body", "type": "func"}
+        { "tfName": "cond", "name": "cond", "type": "func" },
+        { "tfName": "body", "name": "body", "type": "func" }
       ]
     },
     {
       "tfOpName": "TensorListScatter",
       "category": "control",
       "inputs": [
-        {"start": 0, "name": "tensor", "type": "tensor"},
-        {"start": 1, "name": "indices", "type": "number[]"},
-        {"start": 2, "name": "elementShape", "type": "shape"}
+        { "start": 0, "name": "tensor", "type": "tensor" },
+        { "start": 1, "name": "indices", "type": "number[]" },
+        { "start": 2, "name": "elementShape", "type": "shape" }
       ],
-      "attrs": [{"tfName": "element_dtype", "name": "elementDType", "type": "dtype"}]
+      "attrs": [{ "tfName": "element_dtype", "name": "elementDType", "type": "dtype" }]
     },
     {
       "tfOpName": "TensorListScatterV2",
       "category": "control",
       "inputs": [
-        {"start": 0, "name": "tensor", "type": "tensor"},
-        {"start": 1, "name": "indices", "type": "number[]"},
-        {"start": 2, "name": "elementShape", "type": "shape"},
-        {"start": 3, "name": "numElements", "type": "number"}
+        { "start": 0, "name": "tensor", "type": "tensor" },
+        { "start": 1, "name": "indices", "type": "number[]" },
+        { "start": 2, "name": "elementShape", "type": "shape" },
+        { "start": 3, "name": "numElements", "type": "number" }
       ],
-      "attrs": [{"tfName": "element_dtype", "name": "elementDType", "type": "dtype"}]
+      "attrs": [{ "tfName": "element_dtype", "name": "elementDType", "type": "dtype" }]
     },
     {
       "tfOpName": "TensorListGather",
       "category": "control",
       "inputs": [
-        {"start": 0, "name": "tensorListId", "type": "tensor"},
-        {"start": 1, "name": "indices", "type": "number[]"},
-        {"start": 2, "name": "elementShape", "type": "shape"}
+        { "start": 0, "name": "tensorListId", "type": "tensor" },
+        { "start": 1, "name": "indices", "type": "number[]" },
+        { "start": 2, "name": "elementShape", "type": "shape" }
       ],
-      "attrs": [{"tfName": "element_dtype", "name": "elementDType", "type": "dtype"}]
+      "attrs": [{ "tfName": "element_dtype", "name": "elementDType", "type": "dtype" }]
     },
     {
       "tfOpName": "TensorListGetItem",
       "category": "control",
       "inputs": [
-        {"start": 0, "name": "tensorListId", "type": "tensor"},
-        {"start": 1, "name": "index", "type": "number"},
-        {"start": 2, "name": "elementShape", "type": "shape"}
+        { "start": 0, "name": "tensorListId", "type": "tensor" },
+        { "start": 1, "name": "index", "type": "number" },
+        { "start": 2, "name": "elementShape", "type": "shape" }
       ],
-      "attrs": [{"tfName": "element_dtype", "name": "elementDType", "type": "dtype"}]
+      "attrs": [{ "tfName": "element_dtype", "name": "elementDType", "type": "dtype" }]
     },
     {
       "tfOpName": "TensorListSetItem",
       "category": "control",
       "inputs": [
-        {"start": 0, "name": "tensorListId", "type": "tensor"},
-        {"start": 1, "name": "index", "type": "number"},
-        {"start": 2, "name": "tensor", "type": "tensor"}
+        { "start": 0, "name": "tensorListId", "type": "tensor" },
+        { "start": 1, "name": "index", "type": "number" },
+        { "start": 2, "name": "tensor", "type": "tensor" }
       ],
-      "attrs": [{"tfName": "element_dtype", "name": "elementDType", "type": "dtype"}]
+      "attrs": [{ "tfName": "element_dtype", "name": "elementDType", "type": "dtype" }]
     },
     {
       "tfOpName": "TensorListReserve",
       "category": "control",
       "inputs": [
-        {"start": 0, "name": "elementShape", "type": "shape"},
-        {"start": 1, "name": "numElements", "type": "number"}
+        { "start": 0, "name": "elementShape", "type": "shape" },
+        { "start": 1, "name": "numElements", "type": "number" }
       ],
-      "attrs": [{"tfName": "element_dtype", "name": "elementDType", "type": "dtype"}]
+      "attrs": [{ "tfName": "element_dtype", "name": "elementDType", "type": "dtype" }]
     },
     {
       "tfOpName": "TensorListFromTensor",
       "category": "control",
       "inputs": [
-        {"start": 0, "name": "tensor", "type": "tensor"},
-        {"start": 1, "name": "elementShape", "type": "shape"}
+        { "start": 0, "name": "tensor", "type": "tensor" },
+        { "start": 1, "name": "elementShape", "type": "shape" }
       ],
-      "attrs": [{"tfName": "element_dtype", "name": "elementDType", "type": "dtype"}]
+      "attrs": [{ "tfName": "element_dtype", "name": "elementDType", "type": "dtype" }]
     },
     {
       "tfOpName": "TensorListStack",
       "category": "control",
       "inputs": [
-        {"start": 0, "name": "tensorListId", "type": "tensor"},
-        {"start": 1, "name": "elementShape", "type": "shape"}
+        { "start": 0, "name": "tensorListId", "type": "tensor" },
+        { "start": 1, "name": "elementShape", "type": "shape" }
       ],
       "attrs": [
-        {"tfName": "element_dtype", "name": "elementDType", "type": "dtype"},
-        {"tfName": "num_elements", "name": "numElements", "type": "dtype"}
+        { "tfName": "element_dtype", "name": "elementDType", "type": "dtype" },
+        { "tfName": "num_elements", "name": "numElements", "type": "dtype" }
       ]
     },
     {
       "tfOpName": "TensorListSplit",
       "category": "control",
       "inputs": [
-        {"start": 0, "name": "tensor", "type": "tensor"},
-        {"start": 1, "name": "elementShape", "type": "shape"},
-        {"start": 2, "name": "lengths", "type": "number[]"}
+        { "start": 0, "name": "tensor", "type": "tensor" },
+        { "start": 1, "name": "elementShape", "type": "shape" },
+        { "start": 2, "name": "lengths", "type": "number[]" }
       ],
-      "attrs": [{"tfName": "element_dtype", "name": "elementDType", "type": "dtype"}]
+      "attrs": [{ "tfName": "element_dtype", "name": "elementDType", "type": "dtype" }]
     },
     {
       "tfOpName": "TensorListConcat",
       "category": "control",
       "inputs": [
-        {"start": 0, "name": "tensorListId", "type": "tensor"}
+        { "start": 0, "name": "tensorListId", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "element_shape", "name": "elementShape", "type": "shape"},
-        {"tfName": "element_dtype", "name": "elementDType", "type": "dtype"}
+        { "tfName": "element_shape", "name": "elementShape", "type": "shape" },
+        { "tfName": "element_dtype", "name": "elementDType", "type": "dtype" }
       ]
     },
     {
       "tfOpName": "TensorListPopBack",
       "category": "control",
       "inputs": [
-        {"start": 0, "name": "tensorListId", "type": "tensor"},
-        {"start": 1, "name": "elementShape", "type": "shape"}
+        { "start": 0, "name": "tensorListId", "type": "tensor" },
+        { "start": 1, "name": "elementShape", "type": "shape" }
       ],
-      "attrs": [{"tfName": "element_dtype", "name": "elementDType", "type": "dtype"}]
+      "attrs": [{ "tfName": "element_dtype", "name": "elementDType", "type": "dtype" }]
     },
     {
       "tfOpName": "TensorListPushBack",
       "category": "control",
       "inputs": [
-        {"start": 0, "name": "tensorListId", "type": "tensor"},
-        {"start": 1, "name": "tensor", "type": "tensor"}
+        { "start": 0, "name": "tensorListId", "type": "tensor" },
+        { "start": 1, "name": "tensor", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "element_dtype", "name": "elementDType", "type": "dtype"}
+        { "tfName": "element_dtype", "name": "elementDType", "type": "dtype" }
       ]
     }
   ];
@@ -29705,37 +29706,37 @@ Expected: ${expectedFlat}.`);
       "tfOpName": "AvgPool",
       "category": "convolution",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "strides", "name": "strides", "type": "number[]"},
-        {"tfName": "padding", "name": "pad", "type": "string"},
+        { "tfName": "strides", "name": "strides", "type": "number[]" },
+        { "tfName": "padding", "name": "pad", "type": "string" },
         {
           "tfName": "data_format",
           "name": "dataFormat",
           "type": "string",
           "notSupported": true
         },
-        {"tfName": "ksize", "name": "kernelSize", "type": "number[]"},
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "ksize", "name": "kernelSize", "type": "number[]" },
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "MaxPool",
       "category": "convolution",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "strides", "name": "strides", "type": "number[]"},
-        {"tfName": "padding", "name": "pad", "type": "string"},
+        { "tfName": "strides", "name": "strides", "type": "number[]" },
+        { "tfName": "padding", "name": "pad", "type": "string" },
         {
           "tfName": "data_format",
           "name": "dataFormat",
           "type": "string",
           "notSupported": true
         },
-        {"tfName": "ksize", "name": "kernelSize", "type": "number[]"},
+        { "tfName": "ksize", "name": "kernelSize", "type": "number[]" },
         {
           "tfName": "explicit_paddings",
           "name": "explicitPaddings",
@@ -29743,82 +29744,82 @@ Expected: ${expectedFlat}.`);
           "defaultValue": [],
           "notSupported": true
         },
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "MaxPoolWithArgmax",
       "category": "convolution",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "strides", "name": "strides", "type": "number[]"},
-        {"tfName": "padding", "name": "pad", "type": "string"},
-        {"tfName": "ksize", "name": "kernelSize", "type": "number[]"},
+        { "tfName": "strides", "name": "strides", "type": "number[]" },
+        { "tfName": "padding", "name": "pad", "type": "string" },
+        { "tfName": "ksize", "name": "kernelSize", "type": "number[]" },
         {
           "tfName": "include_batch_in_index",
           "name": "includeBatchInIndex",
           "type": "bool"
         },
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "AvgPool3D",
       "category": "convolution",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "strides", "name": "strides", "type": "number[]"},
-        {"tfName": "padding", "name": "pad", "type": "string"},
+        { "tfName": "strides", "name": "strides", "type": "number[]" },
+        { "tfName": "padding", "name": "pad", "type": "string" },
         {
           "tfName": "data_format",
           "name": "dataFormat",
           "type": "string",
           "notSupported": true
         },
-        {"tfName": "ksize", "name": "kernelSize", "type": "number[]"},
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "ksize", "name": "kernelSize", "type": "number[]" },
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "MaxPool3D",
       "category": "convolution",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "strides", "name": "strides", "type": "number[]"},
-        {"tfName": "padding", "name": "pad", "type": "string"},
+        { "tfName": "strides", "name": "strides", "type": "number[]" },
+        { "tfName": "padding", "name": "pad", "type": "string" },
         {
           "tfName": "data_format",
           "name": "dataFormat",
           "type": "string",
           "notSupported": true
         },
-        {"tfName": "ksize", "name": "kernelSize", "type": "number[]"},
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "ksize", "name": "kernelSize", "type": "number[]" },
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "Conv1D",
       "category": "convolution",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"},
-        {"start": 1, "name": "filter", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" },
+        { "start": 1, "name": "filter", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "stride", "name": "stride", "type": "number"},
-        {"tfName": "padding", "name": "pad", "type": "string"},
+        { "tfName": "stride", "name": "stride", "type": "number" },
+        { "tfName": "padding", "name": "pad", "type": "string" },
         {
           "tfName": "data_format",
           "name": "dataFormat",
           "type": "string",
           "defaultValue": "NWC"
         },
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true},
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true },
         {
           "tfName": "dilation",
           "name": "dilation",
@@ -29831,14 +29832,14 @@ Expected: ${expectedFlat}.`);
       "tfOpName": "Conv2D",
       "category": "convolution",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"},
-        {"start": 1, "name": "filter", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" },
+        { "start": 1, "name": "filter", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true},
-        {"tfName": "strides", "name": "strides", "type": "number[]"},
-        {"tfName": "padding", "name": "pad", "type": "string"},
-        {"tfName": "useCudnnOnGpu", "name": "useCudnnOnGpu", "type": "bool"},
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true },
+        { "tfName": "strides", "name": "strides", "type": "number[]" },
+        { "tfName": "padding", "name": "pad", "type": "string" },
+        { "tfName": "useCudnnOnGpu", "name": "useCudnnOnGpu", "type": "bool" },
         {
           "tfName": "data_format",
           "name": "dataFormat",
@@ -29851,22 +29852,22 @@ Expected: ${expectedFlat}.`);
           "type": "number[]",
           "defaultValue": []
         },
-        {"tfName": "dilations", "name": "dilations", "type": "number[]"}
+        { "tfName": "dilations", "name": "dilations", "type": "number[]" }
       ]
     },
     {
       "tfOpName": "_FusedConv2D",
       "category": "convolution",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"},
-        {"start": 1, "name": "filter", "type": "tensor"},
-        {"start": 2, end: 0, "name": "args", "type": "tensors"}
+        { "start": 0, "name": "x", "type": "tensor" },
+        { "start": 1, "name": "filter", "type": "tensor" },
+        { "start": 2, end: 0, "name": "args", "type": "tensors" }
       ],
       "attrs": [
-        {"tfName": "num_args", "name": "numArgs", "type": "number"},
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true},
-        {"tfName": "strides", "name": "strides", "type": "number[]"},
-        {"tfName": "padding", "name": "pad", "type": "string"},
+        { "tfName": "num_args", "name": "numArgs", "type": "number" },
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true },
+        { "tfName": "strides", "name": "strides", "type": "number[]" },
+        { "tfName": "padding", "name": "pad", "type": "string" },
         {
           "tfName": "explicit_paddings",
           "name": "explicitPaddings",
@@ -29914,13 +29915,13 @@ Expected: ${expectedFlat}.`);
       "tfOpName": "Conv2DBackpropInput",
       "category": "convolution",
       "inputs": [
-        {"start": 2, "name": "x", "type": "tensor"},
-        {"start": 1, "name": "filter", "type": "tensor"},
-        {"start": 0, "name": "outputShape", "type": "number[]"}
+        { "start": 2, "name": "x", "type": "tensor" },
+        { "start": 1, "name": "filter", "type": "tensor" },
+        { "start": 0, "name": "outputShape", "type": "number[]" }
       ],
       "attrs": [
-        {"tfName": "strides", "name": "strides", "type": "number[]"},
-        {"tfName": "padding", "name": "pad", "type": "string"},
+        { "tfName": "strides", "name": "strides", "type": "number[]" },
+        { "tfName": "padding", "name": "pad", "type": "string" },
         {
           "tfName": "data_format",
           "name": "dataFormat",
@@ -29945,12 +29946,12 @@ Expected: ${expectedFlat}.`);
       "tfOpName": "DepthwiseConv2d",
       "category": "convolution",
       "inputs": [
-        {"start": 0, "name": "input", "type": "tensor"},
-        {"start": 1, "name": "filter", "type": "tensor"}
+        { "start": 0, "name": "input", "type": "tensor" },
+        { "start": 1, "name": "filter", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "strides", "name": "strides", "type": "number[]"},
-        {"tfName": "padding", "name": "pad", "type": "string"},
+        { "tfName": "strides", "name": "strides", "type": "number[]" },
+        { "tfName": "padding", "name": "pad", "type": "string" },
         {
           "tfName": "data_format",
           "name": "dataFormat",
@@ -29963,19 +29964,19 @@ Expected: ${expectedFlat}.`);
           "type": "number[]",
           "defaultValue": []
         },
-        {"tfName": "dilations", "name": "dilations", "type": "number[]"}
+        { "tfName": "dilations", "name": "dilations", "type": "number[]" }
       ]
     },
     {
       "tfOpName": "DepthwiseConv2dNative",
       "category": "convolution",
       "inputs": [
-        {"start": 0, "name": "input", "type": "tensor"},
-        {"start": 1, "name": "filter", "type": "tensor"}
+        { "start": 0, "name": "input", "type": "tensor" },
+        { "start": 1, "name": "filter", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "strides", "name": "strides", "type": "number[]"},
-        {"tfName": "padding", "name": "pad", "type": "string"},
+        { "tfName": "strides", "name": "strides", "type": "number[]" },
+        { "tfName": "padding", "name": "pad", "type": "string" },
         {
           "tfName": "data_format",
           "name": "dataFormat",
@@ -29988,22 +29989,22 @@ Expected: ${expectedFlat}.`);
           "type": "number[]",
           "defaultValue": []
         },
-        {"tfName": "dilations", "name": "dilations", "type": "number[]"}
+        { "tfName": "dilations", "name": "dilations", "type": "number[]" }
       ]
     },
     {
       "tfOpName": "FusedDepthwiseConv2dNative",
       "category": "convolution",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"},
-        {"start": 1, "name": "filter", "type": "tensor"},
-        {"start": 2, end: 0, "name": "args", "type": "tensors"}
+        { "start": 0, "name": "x", "type": "tensor" },
+        { "start": 1, "name": "filter", "type": "tensor" },
+        { "start": 2, end: 0, "name": "args", "type": "tensors" }
       ],
       "attrs": [
-        {"tfName": "num_args", "name": "numArgs", "type": "number"},
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true},
-        {"tfName": "strides", "name": "strides", "type": "number[]"},
-        {"tfName": "padding", "name": "pad", "type": "string"},
+        { "tfName": "num_args", "name": "numArgs", "type": "number" },
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true },
+        { "tfName": "strides", "name": "strides", "type": "number[]" },
+        { "tfName": "padding", "name": "pad", "type": "string" },
         {
           "tfName": "data_format",
           "name": "dataFormat",
@@ -30034,32 +30035,32 @@ Expected: ${expectedFlat}.`);
       "tfOpName": "Conv3D",
       "category": "convolution",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"},
-        {"start": 1, "name": "filter", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" },
+        { "start": 1, "name": "filter", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "strides", "name": "strides", "type": "number[]"},
-        {"tfName": "padding", "name": "pad", "type": "string"},
+        { "tfName": "strides", "name": "strides", "type": "number[]" },
+        { "tfName": "padding", "name": "pad", "type": "string" },
         {
           "tfName": "data_format",
           "name": "dataFormat",
           "type": "string",
           "defaultValue": "NHWC"
         },
-        {"tfName": "dilations", "name": "dilations", "type": "number[]"}
+        { "tfName": "dilations", "name": "dilations", "type": "number[]" }
       ]
     },
     {
       "tfOpName": "Dilation2D",
       "category": "convolution",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"},
-        {"start": 1, "name": "filter", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" },
+        { "start": 1, "name": "filter", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "strides", "name": "strides", "type": "number[]"},
-        {"tfName": "rates", "name": "dilations", "type": "number[]"},
-        {"tfName": "padding", "name": "pad", "type": "string"}
+        { "tfName": "strides", "name": "strides", "type": "number[]" },
+        { "tfName": "rates", "name": "dilations", "type": "number[]" },
+        { "tfName": "padding", "name": "pad", "type": "string" }
       ]
     }
   ];
@@ -30072,31 +30073,31 @@ Expected: ${expectedFlat}.`);
       "tfOpName": "Fill",
       "category": "creation",
       "inputs": [
-        {"start": 0, "name": "shape", "type": "number[]"},
-        {"start": 1, "name": "value", "type": "number"}
+        { "start": 0, "name": "shape", "type": "number[]" },
+        { "start": 1, "name": "value", "type": "number" }
       ],
-      "attrs": [{"tfName": "T", "name": "dtype", "type": "dtype"}]
+      "attrs": [{ "tfName": "T", "name": "dtype", "type": "dtype" }]
     },
     {
       "tfOpName": "LinSpace",
       "category": "creation",
       "inputs": [
-        {"start": 0, "name": "start", "type": "number"},
-        {"start": 1, "name": "stop", "type": "number"},
-        {"start": 2, "name": "num", "type": "number"}
+        { "start": 0, "name": "start", "type": "number" },
+        { "start": 1, "name": "stop", "type": "number" },
+        { "start": 2, "name": "num", "type": "number" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "OneHot",
       "category": "creation",
       "inputs": [
-        {"start": 0, "name": "indices", "type": "tensor"},
-        {"start": 1, "name": "depth", "type": "number"},
-        {"start": 2, "name": "onValue", "type": "number", "defaultValue": 1},
-        {"start": 3, "name": "offValue", "type": "number", "defaultValue": 0}
+        { "start": 0, "name": "indices", "type": "tensor" },
+        { "start": 1, "name": "depth", "type": "number" },
+        { "start": 2, "name": "onValue", "type": "number", "defaultValue": 1 },
+        { "start": 3, "name": "offValue", "type": "number", "defaultValue": 0 }
       ],
       "attrs": [
         {
@@ -30105,30 +30106,30 @@ Expected: ${expectedFlat}.`);
           "type": "number",
           "notSupported": true
         },
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "Ones",
       "category": "creation",
       "inputs": [
-        {"start": 0, "name": "shape", "type": "number[]"}
+        { "start": 0, "name": "shape", "type": "number[]" }
       ],
-      "attrs": [{"tfName": "T", "name": "dtype", "type": "dtype"}]
+      "attrs": [{ "tfName": "T", "name": "dtype", "type": "dtype" }]
     },
     {
       "tfOpName": "OnesLike",
       "category": "creation",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" }
       ],
-      "attrs": [{"tfName": "dtype", "name": "dtype", "type": "dtype"}]
+      "attrs": [{ "tfName": "dtype", "name": "dtype", "type": "dtype" }]
     },
     {
       "tfOpName": "RandomUniform",
       "category": "creation",
       "inputs": [
-        {"start": 0, "name": "shape", "type": "number[]"}
+        { "start": 0, "name": "shape", "type": "number[]" }
       ],
       "attrs": [
         {
@@ -30143,8 +30144,8 @@ Expected: ${expectedFlat}.`);
           "type": "number",
           "defaultValue": 1
         },
-        {"tfName": "dtype", "name": "dtype", "type": "dtype"},
-        {"tfName": "seed", "name": "seed", "type": "number", "defaultValue": 0},
+        { "tfName": "dtype", "name": "dtype", "type": "dtype" },
+        { "tfName": "seed", "name": "seed", "type": "number", "defaultValue": 0 },
         {
           "tfName": "seed2",
           "name": "seed2",
@@ -30152,24 +30153,24 @@ Expected: ${expectedFlat}.`);
           "defaultValue": 0,
           "notSupported": true
         },
-        {"tfName": "T", "name": "T", "type": "number", "notSupported": true}
+        { "tfName": "T", "name": "T", "type": "number", "notSupported": true }
       ]
     },
     {
       "tfOpName": "Range",
       "category": "creation",
       "inputs": [
-        {"start": 0, "name": "start", "type": "number"},
-        {"start": 1, "name": "stop", "type": "number"},
-        {"start": 2, "name": "step", "type": "number", "defaultValue": 0}
+        { "start": 0, "name": "start", "type": "number" },
+        { "start": 1, "name": "stop", "type": "number" },
+        { "start": 2, "name": "step", "type": "number", "defaultValue": 0 }
       ],
-      "attrs": [{"tfName": "Tidx", "name": "dtype", "type": "dtype"}]
+      "attrs": [{ "tfName": "Tidx", "name": "dtype", "type": "dtype" }]
     },
     {
       "tfOpName": "TruncatedNormal",
       "category": "creation",
       "inputs": [
-        {"start": 0, "name": "shape", "type": "number[]"}
+        { "start": 0, "name": "shape", "type": "number[]" }
       ],
       "attrs": [
         {
@@ -30184,7 +30185,7 @@ Expected: ${expectedFlat}.`);
           "type": "number",
           "defaultValue": 1
         },
-        {"tfName": "seed", "name": "seed", "type": "number"},
+        { "tfName": "seed", "name": "seed", "type": "number" },
         {
           "tfName": "seed2",
           "name": "seed2",
@@ -30192,38 +30193,38 @@ Expected: ${expectedFlat}.`);
           "defaultValue": 0,
           "notSupported": true
         },
-        {"tfName": "dtype", "name": "dtype", "type": "dtype"},
-        {"tfName": "T", "name": "T", "type": "number", "notSupported": true}
+        { "tfName": "dtype", "name": "dtype", "type": "dtype" },
+        { "tfName": "T", "name": "T", "type": "number", "notSupported": true }
       ]
     },
     {
       "tfOpName": "Zeros",
       "category": "creation",
       "inputs": [
-        {"start": 0, "name": "shape", "type": "number[]"}
+        { "start": 0, "name": "shape", "type": "number[]" }
       ],
-      "attrs": [{"tfName": "T", "name": "dtype", "type": "dtype"}]
+      "attrs": [{ "tfName": "T", "name": "dtype", "type": "dtype" }]
     },
     {
       "tfOpName": "ZerosLike",
       "category": "creation",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" }
       ],
-      "attrs": [{"tfName": "T", "name": "dtype", "type": "dtype"}]
+      "attrs": [{ "tfName": "T", "name": "dtype", "type": "dtype" }]
     },
     {
       "tfOpName": "Multinomial",
       "category": "creation",
       "inputs": [
-        {"start": 0, "name": "logits", "type": "tensor"},
-        {"start": 1, "name": "numSamples", "type": "number"}
+        { "start": 0, "name": "logits", "type": "tensor" },
+        { "start": 1, "name": "numSamples", "type": "number" }
       ],
       "attrs": [
-        {"tfName": "seed", "name": "seed", "type": "number"},
-        {"tfName": "seed2", "name": "seed2", "type": "number"},
-        {"tfName": "T", "name": "dtype", "type": "dtype"},
-        {"tfName": "output_dtype", "name": "output_dtype", "type": "dtype"}
+        { "tfName": "seed", "name": "seed", "type": "number" },
+        { "tfName": "seed2", "name": "seed2", "type": "number" },
+        { "tfName": "T", "name": "dtype", "type": "dtype" },
+        { "tfName": "output_dtype", "name": "output_dtype", "type": "dtype" }
       ]
     }
   ];
@@ -30236,35 +30237,35 @@ Expected: ${expectedFlat}.`);
       "tfOpName": "NonMaxSuppressionV2",
       "category": "dynamic",
       "inputs": [
-        {"start": 0, "name": "boxes", "type": "tensor"},
-        {"start": 1, "name": "scores", "type": "tensor"},
-        {"start": 2, "name": "maxOutputSize", "type": "number"},
-        {"start": 3, "name": "iouThreshold", "type": "number"}
+        { "start": 0, "name": "boxes", "type": "tensor" },
+        { "start": 1, "name": "scores", "type": "tensor" },
+        { "start": 2, "name": "maxOutputSize", "type": "number" },
+        { "start": 3, "name": "iouThreshold", "type": "number" }
       ]
     },
     {
       "tfOpName": "NonMaxSuppressionV3",
       "category": "dynamic",
       "inputs": [
-        {"start": 0, "name": "boxes", "type": "tensor"},
-        {"start": 1, "name": "scores", "type": "tensor"},
-        {"start": 2, "name": "maxOutputSize", "type": "number"},
-        {"start": 3, "name": "iouThreshold", "type": "number"},
-        {"start": 4, "name": "scoreThreshold", "type": "number"}
+        { "start": 0, "name": "boxes", "type": "tensor" },
+        { "start": 1, "name": "scores", "type": "tensor" },
+        { "start": 2, "name": "maxOutputSize", "type": "number" },
+        { "start": 3, "name": "iouThreshold", "type": "number" },
+        { "start": 4, "name": "scoreThreshold", "type": "number" }
       ]
     },
     {
       "tfOpName": "NonMaxSuppressionV4",
       "category": "dynamic",
       "inputs": [
-        {"start": 0, "name": "boxes", "type": "tensor"},
-        {"start": 1, "name": "scores", "type": "tensor"},
-        {"start": 2, "name": "maxOutputSize", "type": "number"},
-        {"start": 3, "name": "iouThreshold", "type": "number"},
-        {"start": 4, "name": "scoreThreshold", "type": "number"}
+        { "start": 0, "name": "boxes", "type": "tensor" },
+        { "start": 1, "name": "scores", "type": "tensor" },
+        { "start": 2, "name": "maxOutputSize", "type": "number" },
+        { "start": 3, "name": "iouThreshold", "type": "number" },
+        { "start": 4, "name": "scoreThreshold", "type": "number" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true},
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true },
         {
           "tfName": "T_threshold",
           "name": "threshold",
@@ -30282,30 +30283,30 @@ Expected: ${expectedFlat}.`);
       "tfOpName": "NonMaxSuppressionV5",
       "category": "dynamic",
       "inputs": [
-        {"start": 0, "name": "boxes", "type": "tensor"},
-        {"start": 1, "name": "scores", "type": "tensor"},
-        {"start": 2, "name": "maxOutputSize", "type": "number"},
-        {"start": 3, "name": "iouThreshold", "type": "number"},
-        {"start": 4, "name": "scoreThreshold", "type": "number"},
-        {"start": 5, "name": "softNmsSigma", "type": "number"}
+        { "start": 0, "name": "boxes", "type": "tensor" },
+        { "start": 1, "name": "scores", "type": "tensor" },
+        { "start": 2, "name": "maxOutputSize", "type": "number" },
+        { "start": 3, "name": "iouThreshold", "type": "number" },
+        { "start": 4, "name": "scoreThreshold", "type": "number" },
+        { "start": 5, "name": "softNmsSigma", "type": "number" }
       ]
     },
     {
       "tfOpName": "Where",
       "category": "dynamic",
       "inputs": [
-        {"start": 0, "name": "condition", "type": "tensor"}
+        { "start": 0, "name": "condition", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "ListDiff",
       "category": "dynamic",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"},
-        {"start": 1, "name": "y", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" },
+        { "start": 1, "name": "y", "type": "tensor" }
       ],
       "attrs": [{
         "tfName": "T",
@@ -30324,24 +30325,24 @@ Expected: ${expectedFlat}.`);
       "tfOpName": "TopKV2",
       "category": "evaluation",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"},
-        {"start": 1, "name": "k", "type": "number"}
+        { "start": 0, "name": "x", "type": "tensor" },
+        { "start": 1, "name": "k", "type": "number" }
       ],
-      "attrs": [{"tfName": "sorted", "name": "sorted", "type": "bool"}]
+      "attrs": [{ "tfName": "sorted", "name": "sorted", "type": "bool" }]
     },
     {
       "tfOpName": "Unique",
       "category": "evaluation",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" }
       ]
     },
     {
       "tfOpName": "UniqueV2",
       "category": "evaluation",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"},
-        {"start": 1, "name": "axis", "type": "number"}
+        { "start": 0, "name": "x", "type": "tensor" },
+        { "start": 1, "name": "axis", "type": "number" }
       ]
     }
   ];
@@ -30354,66 +30355,66 @@ Expected: ${expectedFlat}.`);
       "tfOpName": "PlaceholderWithDefault",
       "category": "graph",
       "inputs": [
-        {"start": 0, "name": "default", "type": "tensor"}
+        { "start": 0, "name": "default", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "shape", "name": "shape", "type": "shape"},
-        {"tfName": "dtype", "name": "dtype", "type": "dtype"}
+        { "tfName": "shape", "name": "shape", "type": "shape" },
+        { "tfName": "dtype", "name": "dtype", "type": "dtype" }
       ]
     },
     {
       "tfOpName": "Placeholder",
       "category": "graph",
       "attrs": [
-        {"tfName": "shape", "name": "shape", "type": "shape"},
-        {"tfName": "dtype", "name": "dtype", "type": "dtype"}
+        { "tfName": "shape", "name": "shape", "type": "shape" },
+        { "tfName": "dtype", "name": "dtype", "type": "dtype" }
       ]
     },
-    {"tfOpName": "Const", "category": "graph"},
+    { "tfOpName": "Const", "category": "graph" },
     {
       "tfOpName": "Identity",
       "category": "graph",
-      "inputs": [{"start": 0, "name": "x", "type": "tensor"}]
+      "inputs": [{ "start": 0, "name": "x", "type": "tensor" }]
     },
     {
       "tfOpName": "IdentityN",
       "category": "graph",
-      "inputs": [{"start": 0, "end": 0, "name": "x", "type": "tensors"}]
+      "inputs": [{ "start": 0, "end": 0, "name": "x", "type": "tensors" }]
     },
     {
       "tfOpName": "Snapshot",
       "category": "graph",
-      "inputs": [{"start": 0, "name": "x", "type": "tensor"}]
+      "inputs": [{ "start": 0, "name": "x", "type": "tensor" }]
     },
     {
       "tfOpName": "Rank",
       "category": "graph",
-      "inputs": [{"start": 0, "name": "x", "type": "tensor"}]
+      "inputs": [{ "start": 0, "name": "x", "type": "tensor" }]
     },
     {
       "tfOpName": "Size",
       "category": "graph",
-      "inputs": [{"start": 0, "name": "x", "type": "tensor"}]
+      "inputs": [{ "start": 0, "name": "x", "type": "tensor" }]
     },
     {
       "tfOpName": "Shape",
       "category": "graph",
-      "inputs": [{"start": 0, "name": "x", "type": "tensor"}]
+      "inputs": [{ "start": 0, "name": "x", "type": "tensor" }]
     },
     {
       "tfOpName": "ShapeN",
       "category": "graph",
-      "inputs": [{"start": 0, "end": 0, "name": "x", "type": "tensors"}]
+      "inputs": [{ "start": 0, "end": 0, "name": "x", "type": "tensors" }]
     },
     {
       "tfOpName": "Print",
       "category": "graph",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"},
-        {"start": 1, "name": "data", "type": "tensors"}
+        { "start": 0, "name": "x", "type": "tensor" },
+        { "start": 1, "name": "data", "type": "tensors" }
       ],
       "attrs": [
-        {"tfName": "message", "name": "message", "type": "string"},
+        { "tfName": "message", "name": "message", "type": "string" },
         {
           "tfName": "first_n",
           "name": "firstN",
@@ -30428,21 +30429,21 @@ Expected: ${expectedFlat}.`);
         }
       ]
     },
-    {"tfOpName": "NoOp", "category": "graph", "inputs": []},
+    { "tfOpName": "NoOp", "category": "graph", "inputs": [] },
     {
       "tfOpName": "StopGradient",
       "category": "graph",
-      "inputs": [{"start": 0, "name": "x", "type": "tensor"}]
+      "inputs": [{ "start": 0, "name": "x", "type": "tensor" }]
     },
     {
       "tfOpName": "FakeQuantWithMinMaxVars",
       "category": "graph",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "min", "name": "min", "type": "number"},
-        {"tfName": "max", "name": "max", "type": "number"}
+        { "tfName": "min", "name": "min", "type": "number" },
+        { "tfName": "max", "name": "max", "type": "number" }
       ]
     }
   ];
@@ -30456,14 +30457,14 @@ Expected: ${expectedFlat}.`);
       "category": "hash_table",
       "inputs": [],
       "attrs": [
-        {"tfName": "shared_name", "name": "sharedName", "type": "string"},
+        { "tfName": "shared_name", "name": "sharedName", "type": "string" },
         {
           "tfName": "use_node_name_sharing",
           "name": "useNodeNameSharing",
           "type": "bool"
         },
-        {"tfName": "key_dtype", "name": "keyDType", "type": "dtype"},
-        {"tfName": "value_dtype", "name": "valueDType", "type": "dtype"}
+        { "tfName": "key_dtype", "name": "keyDType", "type": "dtype" },
+        { "tfName": "value_dtype", "name": "valueDType", "type": "dtype" }
       ]
     },
     {
@@ -30471,26 +30472,26 @@ Expected: ${expectedFlat}.`);
       "category": "hash_table",
       "inputs": [],
       "attrs": [
-        {"tfName": "shared_name", "name": "sharedName", "type": "string"},
+        { "tfName": "shared_name", "name": "sharedName", "type": "string" },
         {
           "tfName": "use_node_name_sharing",
           "name": "useNodeNameSharing",
           "type": "bool"
         },
-        {"tfName": "key_dtype", "name": "keyDType", "type": "dtype"},
-        {"tfName": "value_dtype", "name": "valueDType", "type": "dtype"}
+        { "tfName": "key_dtype", "name": "keyDType", "type": "dtype" },
+        { "tfName": "value_dtype", "name": "valueDType", "type": "dtype" }
       ]
     },
     {
       "tfOpName": "LookupTableImport",
       "category": "hash_table",
       "inputs": [
-        {"start": 0, "name": "tableHandle", "type": "tensor"},
-        {"start": 1, "name": "keys", "type": "tensor"},
-        {"start": 2, "name": "values", "type": "tensor"}
+        { "start": 0, "name": "tableHandle", "type": "tensor" },
+        { "start": 1, "name": "keys", "type": "tensor" },
+        { "start": 2, "name": "values", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "Tin", "name": "tIn", "type": "dtype", "notSupported": true},
+        { "tfName": "Tin", "name": "tIn", "type": "dtype", "notSupported": true },
         {
           "tfName": "Tout",
           "name": "tOut",
@@ -30503,12 +30504,12 @@ Expected: ${expectedFlat}.`);
       "tfOpName": "LookupTableImportV2",
       "category": "hash_table",
       "inputs": [
-        {"start": 0, "name": "tableHandle", "type": "tensor"},
-        {"start": 1, "name": "keys", "type": "tensor"},
-        {"start": 2, "name": "values", "type": "tensor"}
+        { "start": 0, "name": "tableHandle", "type": "tensor" },
+        { "start": 1, "name": "keys", "type": "tensor" },
+        { "start": 2, "name": "values", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "Tin", "name": "tIn", "type": "dtype", "notSupported": true},
+        { "tfName": "Tin", "name": "tIn", "type": "dtype", "notSupported": true },
         {
           "tfName": "Tout",
           "name": "tOut",
@@ -30521,12 +30522,12 @@ Expected: ${expectedFlat}.`);
       "tfOpName": "LookupTableFind",
       "category": "hash_table",
       "inputs": [
-        {"start": 0, "name": "tableHandle", "type": "tensor"},
-        {"start": 1, "name": "keys", "type": "tensor"},
-        {"start": 2, "name": "defaultValue", "type": "tensor"}
+        { "start": 0, "name": "tableHandle", "type": "tensor" },
+        { "start": 1, "name": "keys", "type": "tensor" },
+        { "start": 2, "name": "defaultValue", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "Tin", "name": "tIn", "type": "dtype", "notSupported": true},
+        { "tfName": "Tin", "name": "tIn", "type": "dtype", "notSupported": true },
         {
           "tfName": "Tout",
           "name": "tOut",
@@ -30539,12 +30540,12 @@ Expected: ${expectedFlat}.`);
       "tfOpName": "LookupTableFindV2",
       "category": "hash_table",
       "inputs": [
-        {"start": 0, "name": "tableHandle", "type": "tensor"},
-        {"start": 1, "name": "keys", "type": "tensor"},
-        {"start": 2, "name": "defaultValue", "type": "tensor"}
+        { "start": 0, "name": "tableHandle", "type": "tensor" },
+        { "start": 1, "name": "keys", "type": "tensor" },
+        { "start": 2, "name": "defaultValue", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "Tin", "name": "tIn", "type": "dtype", "notSupported": true},
+        { "tfName": "Tin", "name": "tIn", "type": "dtype", "notSupported": true },
         {
           "tfName": "Tout",
           "name": "tOut",
@@ -30557,14 +30558,14 @@ Expected: ${expectedFlat}.`);
       "tfOpName": "LookupTableSize",
       "category": "hash_table",
       "inputs": [
-        {"start": 0, "name": "tableHandle", "type": "tensor"}
+        { "start": 0, "name": "tableHandle", "type": "tensor" }
       ]
     },
     {
       "tfOpName": "LookupTableSizeV2",
       "category": "hash_table",
       "inputs": [
-        {"start": 0, "name": "tableHandle", "type": "tensor"}
+        { "start": 0, "name": "tableHandle", "type": "tensor" }
       ]
     }
   ];
@@ -30577,47 +30578,47 @@ Expected: ${expectedFlat}.`);
       "tfOpName": "ResizeBilinear",
       "category": "image",
       "inputs": [
-        {"start": 0, "name": "images", "type": "tensor"},
-        {"start": 1, "name": "size", "type": "number[]"}
+        { "start": 0, "name": "images", "type": "tensor" },
+        { "start": 1, "name": "size", "type": "number[]" }
       ],
       "attrs": [
-        {"tfName": "align_corners", "name": "alignCorners", "type": "bool"},
+        { "tfName": "align_corners", "name": "alignCorners", "type": "bool" },
         {
           "tfName": "half_pixel_centers",
           "name": "halfPixelCenters",
           "type": "bool"
         },
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "ResizeNearestNeighbor",
       "category": "image",
       "inputs": [
-        {"start": 0, "name": "images", "type": "tensor"},
-        {"start": 1, "name": "size", "type": "number[]"}
+        { "start": 0, "name": "images", "type": "tensor" },
+        { "start": 1, "name": "size", "type": "number[]" }
       ],
       "attrs": [
-        {"tfName": "align_corners", "name": "alignCorners", "type": "bool"},
+        { "tfName": "align_corners", "name": "alignCorners", "type": "bool" },
         {
           "tfName": "half_pixel_centers",
           "name": "halfPixelCenters",
           "type": "bool"
         },
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "CropAndResize",
       "category": "image",
       "inputs": [
-        {"start": 0, "name": "image", "type": "tensor"},
-        {"start": 1, "name": "boxes", "type": "tensor"},
-        {"start": 2, "name": "boxInd", "type": "tensor"},
-        {"start": 3, "name": "cropSize", "type": "number[]"}
+        { "start": 0, "name": "image", "type": "tensor" },
+        { "start": 1, "name": "boxes", "type": "tensor" },
+        { "start": 2, "name": "boxInd", "type": "tensor" },
+        { "start": 3, "name": "cropSize", "type": "number[]" }
       ],
       "attrs": [
-        {"tfName": "method", "name": "method", "type": "string"},
+        { "tfName": "method", "name": "method", "type": "string" },
         {
           "tfName": "extrapolation_value",
           "name": "extrapolationValue",
@@ -30635,119 +30636,119 @@ Expected: ${expectedFlat}.`);
       "tfOpName": "Equal",
       "category": "logical",
       "inputs": [
-        {"start": 0, "name": "a", "type": "tensor"},
-        {"start": 1, "name": "b", "type": "tensor"}
+        { "start": 0, "name": "a", "type": "tensor" },
+        { "start": 1, "name": "b", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "NotEqual",
       "category": "logical",
       "inputs": [
-        {"start": 0, "name": "a", "type": "tensor"},
-        {"start": 1, "name": "b", "type": "tensor"}
+        { "start": 0, "name": "a", "type": "tensor" },
+        { "start": 1, "name": "b", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "Greater",
       "category": "logical",
       "inputs": [
-        {"start": 0, "name": "a", "type": "tensor"},
-        {"start": 1, "name": "b", "type": "tensor"}
+        { "start": 0, "name": "a", "type": "tensor" },
+        { "start": 1, "name": "b", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "GreaterEqual",
       "category": "logical",
       "inputs": [
-        {"start": 0, "name": "a", "type": "tensor"},
-        {"start": 1, "name": "b", "type": "tensor"}
+        { "start": 0, "name": "a", "type": "tensor" },
+        { "start": 1, "name": "b", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "Less",
       "category": "logical",
       "inputs": [
-        {"start": 0, "name": "a", "type": "tensor"},
-        {"start": 1, "name": "b", "type": "tensor"}
+        { "start": 0, "name": "a", "type": "tensor" },
+        { "start": 1, "name": "b", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "LessEqual",
       "category": "logical",
       "inputs": [
-        {"start": 0, "name": "a", "type": "tensor"},
-        {"start": 1, "name": "b", "type": "tensor"}
+        { "start": 0, "name": "a", "type": "tensor" },
+        { "start": 1, "name": "b", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "LogicalAnd",
       "category": "logical",
       "inputs": [
-        {"start": 0, "name": "a", "type": "tensor"},
-        {"start": 1, "name": "b", "type": "tensor"}
+        { "start": 0, "name": "a", "type": "tensor" },
+        { "start": 1, "name": "b", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "LogicalNot",
       "category": "logical",
       "inputs": [
-        {"start": 0, "name": "a", "type": "tensor"}
+        { "start": 0, "name": "a", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "LogicalOr",
       "category": "logical",
       "inputs": [
-        {"start": 0, "name": "a", "type": "tensor"},
-        {"start": 1, "name": "b", "type": "tensor"}
+        { "start": 0, "name": "a", "type": "tensor" },
+        { "start": 1, "name": "b", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "Select",
       "category": "logical",
       "inputs": [
-        {"start": 0, "name": "condition", "type": "tensor"},
-        {"start": 1, "name": "a", "type": "tensor"},
-        {"start": 2, "name": "b", "type": "tensor"}
+        { "start": 0, "name": "condition", "type": "tensor" },
+        { "start": 1, "name": "a", "type": "tensor" },
+        { "start": 2, "name": "b", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "SelectV2",
       "category": "logical",
       "inputs": [
-        {"start": 0, "name": "condition", "type": "tensor"},
-        {"start": 1, "name": "a", "type": "tensor"},
-        {"start": 2, "name": "b", "type": "tensor"}
+        { "start": 0, "name": "condition", "type": "tensor" },
+        { "start": 1, "name": "a", "type": "tensor" },
+        { "start": 2, "name": "b", "type": "tensor" }
       ],
       "attrs": [{
         "tfName": "T",
@@ -30766,12 +30767,12 @@ Expected: ${expectedFlat}.`);
       "tfOpName": "_FusedMatMul",
       "category": "matrices",
       "inputs": [
-        {"start": 0, "name": "a", "type": "tensor"},
-        {"start": 1, "name": "b", "type": "tensor"},
-        {"start": 2, end: 0, "name": "args", "type": "tensors"}
+        { "start": 0, "name": "a", "type": "tensor" },
+        { "start": 1, "name": "b", "type": "tensor" },
+        { "start": 2, end: 0, "name": "args", "type": "tensors" }
       ],
       "attrs": [
-        {"tfName": "num_args", "name": "numArgs", "type": "number"},
+        { "tfName": "num_args", "name": "numArgs", "type": "number" },
         {
           "tfName": "fused_ops",
           "name": "fusedOps",
@@ -30796,15 +30797,15 @@ Expected: ${expectedFlat}.`);
           "type": "bool",
           "defaultValue": false
         },
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "MatMul",
       "category": "matrices",
       "inputs": [
-        {"start": 0, "name": "a", "type": "tensor"},
-        {"start": 1, "name": "b", "type": "tensor"}
+        { "start": 0, "name": "a", "type": "tensor" },
+        { "start": 1, "name": "b", "type": "tensor" }
       ],
       "attrs": [
         {
@@ -30819,15 +30820,15 @@ Expected: ${expectedFlat}.`);
           "type": "bool",
           "defaultValue": false
         },
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "BatchMatMul",
       "category": "matrices",
       "inputs": [
-        {"start": 0, "name": "a", "type": "tensor"},
-        {"start": 1, "name": "b", "type": "tensor"}
+        { "start": 0, "name": "a", "type": "tensor" },
+        { "start": 1, "name": "b", "type": "tensor" }
       ],
       "attrs": [
         {
@@ -30842,15 +30843,15 @@ Expected: ${expectedFlat}.`);
           "type": "bool",
           "defaultValue": false
         },
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "BatchMatMulV2",
       "category": "matrices",
       "inputs": [
-        {"start": 0, "name": "a", "type": "tensor"},
-        {"start": 1, "name": "b", "type": "tensor"}
+        { "start": 0, "name": "a", "type": "tensor" },
+        { "start": 1, "name": "b", "type": "tensor" }
       ],
       "attrs": [
         {
@@ -30865,28 +30866,28 @@ Expected: ${expectedFlat}.`);
           "type": "bool",
           "defaultValue": false
         },
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "Transpose",
       "category": "matrices",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"},
-        {"start": 1, "name": "perm", "type": "number[]"}
+        { "start": 0, "name": "x", "type": "tensor" },
+        { "start": 1, "name": "perm", "type": "number[]" }
       ],
       "attrs": [
-        {"tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true}
+        { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
       ]
     },
     {
       "tfOpName": "Einsum",
       "category": "matrices",
-      "inputs": [{"start": 0, "end": 0, "name": "tensors", "type": "tensors"}],
+      "inputs": [{ "start": 0, "end": 0, "name": "tensors", "type": "tensors" }],
       "attrs": [
-        {"tfName": "equation", "name": "equation", "type": "string"},
-        {"tfName": "N", "name": "n", "type": "number", "defaultValue": 2},
-        {"tfName": "T", "name": "dtype", "type": "dtype"}
+        { "tfName": "equation", "name": "equation", "type": "string" },
+        { "tfName": "N", "name": "n", "type": "number", "defaultValue": 2 },
+        { "tfName": "T", "name": "dtype", "type": "dtype" }
       ]
     }
   ];
@@ -30899,11 +30900,11 @@ Expected: ${expectedFlat}.`);
       "tfOpName": "FusedBatchNorm",
       "category": "normalization",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"},
-        {"start": 1, "name": "scale", "type": "tensor"},
-        {"start": 2, "name": "offset", "type": "tensor"},
-        {"start": 3, "name": "mean", "type": "tensor"},
-        {"start": 4, "name": "variance", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" },
+        { "start": 1, "name": "scale", "type": "tensor" },
+        { "start": 2, "name": "offset", "type": "tensor" },
+        { "start": 3, "name": "mean", "type": "tensor" },
+        { "start": 4, "name": "variance", "type": "tensor" }
       ],
       "attrs": [
         {
@@ -30924,11 +30925,11 @@ Expected: ${expectedFlat}.`);
       "tfOpName": "FusedBatchNormV2",
       "category": "normalization",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"},
-        {"start": 1, "name": "scale", "type": "tensor"},
-        {"start": 2, "name": "offset", "type": "tensor"},
-        {"start": 3, "name": "mean", "type": "tensor"},
-        {"start": 4, "name": "variance", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" },
+        { "start": 1, "name": "scale", "type": "tensor" },
+        { "start": 2, "name": "offset", "type": "tensor" },
+        { "start": 3, "name": "mean", "type": "tensor" },
+        { "start": 4, "name": "variance", "type": "tensor" }
       ],
       "attrs": [
         {
@@ -30949,11 +30950,11 @@ Expected: ${expectedFlat}.`);
       "tfOpName": "FusedBatchNormV3",
       "category": "normalization",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"},
-        {"start": 1, "name": "scale", "type": "tensor"},
-        {"start": 2, "name": "offset", "type": "tensor"},
-        {"start": 3, "name": "mean", "type": "tensor"},
-        {"start": 4, "name": "variance", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" },
+        { "start": 1, "name": "scale", "type": "tensor" },
+        { "start": 2, "name": "offset", "type": "tensor" },
+        { "start": 3, "name": "mean", "type": "tensor" },
+        { "start": 4, "name": "variance", "type": "tensor" }
       ],
       "attrs": [
         {
@@ -30974,7 +30975,7 @@ Expected: ${expectedFlat}.`);
       "tfOpName": "LRN",
       "category": "normalization",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" }
       ],
       "attrs": [
         {
@@ -30983,7 +30984,7 @@ Expected: ${expectedFlat}.`);
           "type": "number",
           "defaultValue": 5
         },
-        {"tfName": "bias", "name": "bias", "type": "number", "defaultValue": 1},
+        { "tfName": "bias", "name": "bias", "type": "number", "defaultValue": 1 },
         {
           "tfName": "alpha",
           "name": "alpha",
@@ -31001,21 +31002,21 @@ Expected: ${expectedFlat}.`);
     {
       "tfOpName": "Softmax",
       "category": "normalization",
-      "inputs": [{"start": 0, "name": "x", "type": "tensor"}]
+      "inputs": [{ "start": 0, "name": "x", "type": "tensor" }]
     },
     {
       "tfOpName": "LogSoftmax",
       "category": "normalization",
-      "inputs": [{"start": 0, "name": "x", "type": "tensor"}]
+      "inputs": [{ "start": 0, "name": "x", "type": "tensor" }]
     },
     {
       "tfOpName": "SparseToDense",
       "category": "normalization",
       "inputs": [
-        {"start": 0, "name": "sparseIndices", "type": "tensor"},
-        {"start": 1, "name": "outputShape", "type": "number[]"},
-        {"start": 2, "name": "sparseValues", "type": "tensor"},
-        {"start": 3, "name": "defaultValue", "type": "tensor"}
+        { "start": 0, "name": "sparseIndices", "type": "tensor" },
+        { "start": 1, "name": "outputShape", "type": "number[]" },
+        { "start": 2, "name": "sparseValues", "type": "tensor" },
+        { "start": 3, "name": "defaultValue", "type": "tensor" }
       ],
       "attrs": [{
         "tfName": "validate_indices",
@@ -31035,110 +31036,110 @@ Expected: ${expectedFlat}.`);
       "tfOpName": "Bincount",
       "category": "reduction",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"},
-        {"start": 1, "name": "size", "type": "number"},
-        {"start": 2, "name": "weights", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" },
+        { "start": 1, "name": "size", "type": "number" },
+        { "start": 2, "name": "weights", "type": "tensor" }
       ]
     },
     {
       "tfOpName": "DenseBincount",
       "category": "reduction",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"},
-        {"start": 1, "name": "size", "type": "number"},
-        {"start": 2, "name": "weights", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" },
+        { "start": 1, "name": "size", "type": "number" },
+        { "start": 2, "name": "weights", "type": "tensor" }
       ],
-      "attrs": [{"tfName": "binary_output", "name": "binaryOutput", "type": "bool"}]
+      "attrs": [{ "tfName": "binary_output", "name": "binaryOutput", "type": "bool" }]
     },
     {
       "tfOpName": "Max",
       "category": "reduction",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"},
-        {"start": 1, "name": "axis", "type": "number[]"}
+        { "start": 0, "name": "x", "type": "tensor" },
+        { "start": 1, "name": "axis", "type": "number[]" }
       ],
-      "attrs": [{"tfName": "keep_dims", "name": "keepDims", "type": "bool"}]
+      "attrs": [{ "tfName": "keep_dims", "name": "keepDims", "type": "bool" }]
     },
     {
       "tfOpName": "Mean",
       "category": "reduction",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"},
-        {"start": 1, "name": "axis", "type": "number[]"}
+        { "start": 0, "name": "x", "type": "tensor" },
+        { "start": 1, "name": "axis", "type": "number[]" }
       ],
-      "attrs": [{"tfName": "keep_dims", "name": "keepDims", "type": "bool"}]
+      "attrs": [{ "tfName": "keep_dims", "name": "keepDims", "type": "bool" }]
     },
     {
       "tfOpName": "Min",
       "category": "reduction",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"},
-        {"start": 1, "name": "axis", "type": "number[]"}
+        { "start": 0, "name": "x", "type": "tensor" },
+        { "start": 1, "name": "axis", "type": "number[]" }
       ],
-      "attrs": [{"tfName": "keep_dims", "name": "keepDims", "type": "bool"}]
+      "attrs": [{ "tfName": "keep_dims", "name": "keepDims", "type": "bool" }]
     },
     {
       "tfOpName": "Sum",
       "category": "reduction",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"},
-        {"start": 1, "name": "axis", "type": "number[]"}
+        { "start": 0, "name": "x", "type": "tensor" },
+        { "start": 1, "name": "axis", "type": "number[]" }
       ],
-      "attrs": [{"tfName": "keep_dims", "name": "keepDims", "type": "bool"}]
+      "attrs": [{ "tfName": "keep_dims", "name": "keepDims", "type": "bool" }]
     },
     {
       "tfOpName": "All",
       "category": "reduction",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"},
-        {"start": 1, "name": "axis", "type": "number[]"}
+        { "start": 0, "name": "x", "type": "tensor" },
+        { "start": 1, "name": "axis", "type": "number[]" }
       ],
-      "attrs": [{"tfName": "keep_dims", "name": "keepDims", "type": "bool"}]
+      "attrs": [{ "tfName": "keep_dims", "name": "keepDims", "type": "bool" }]
     },
     {
       "tfOpName": "Any",
       "category": "reduction",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"},
-        {"start": 1, "name": "axis", "type": "number[]"}
+        { "start": 0, "name": "x", "type": "tensor" },
+        { "start": 1, "name": "axis", "type": "number[]" }
       ],
-      "attrs": [{"tfName": "keep_dims", "name": "keepDims", "type": "bool"}]
+      "attrs": [{ "tfName": "keep_dims", "name": "keepDims", "type": "bool" }]
     },
     {
       "tfOpName": "ArgMax",
       "category": "reduction",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"},
-        {"start": 1, "name": "axis", "type": "number"}
+        { "start": 0, "name": "x", "type": "tensor" },
+        { "start": 1, "name": "axis", "type": "number" }
       ]
     },
     {
       "tfOpName": "ArgMin",
       "category": "reduction",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"},
-        {"start": 1, "name": "axis", "type": "number"}
+        { "start": 0, "name": "x", "type": "tensor" },
+        { "start": 1, "name": "axis", "type": "number" }
       ]
     },
     {
       "tfOpName": "Prod",
       "category": "reduction",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"},
-        {"start": 1, "name": "axis", "type": "number[]"}
+        { "start": 0, "name": "x", "type": "tensor" },
+        { "start": 1, "name": "axis", "type": "number[]" }
       ],
-      "attrs": [{"tfName": "keep_dims", "name": "keepDims", "type": "bool"}]
+      "attrs": [{ "tfName": "keep_dims", "name": "keepDims", "type": "bool" }]
     },
     {
       "tfOpName": "Cumsum",
       "category": "reduction",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"},
-        {"start": 1, "name": "axis", "type": "number"}
+        { "start": 0, "name": "x", "type": "tensor" },
+        { "start": 1, "name": "axis", "type": "number" }
       ],
       "attrs": [
-        {"tfName": "exclusive", "name": "exclusive", "type": "bool"},
-        {"tfName": "reverse", "name": "reverse", "type": "bool"}
+        { "tfName": "exclusive", "name": "exclusive", "type": "bool" },
+        { "tfName": "reverse", "name": "reverse", "type": "bool" }
       ]
     }
   ];
@@ -31151,27 +31152,27 @@ Expected: ${expectedFlat}.`);
       "tfOpName": "ConcatV2",
       "category": "slice_join",
       "inputs": [
-        {"start": 0, "end": -1, "name": "tensors", "type": "tensors"},
-        {"start": -1, "name": "axis", "type": "number"}
+        { "start": 0, "end": -1, "name": "tensors", "type": "tensors" },
+        { "start": -1, "name": "axis", "type": "number" }
       ],
-      "attrs": [{"tfName": "N", "name": "n", "type": "number", "defaultValue": 2}]
+      "attrs": [{ "tfName": "N", "name": "n", "type": "number", "defaultValue": 2 }]
     },
     {
       "tfOpName": "Concat",
       "category": "slice_join",
       "inputs": [
-        {"start": 1, "end": 0, "name": "tensors", "type": "tensors"},
-        {"start": 0, "name": "axis", "type": "number"}
+        { "start": 1, "end": 0, "name": "tensors", "type": "tensors" },
+        { "start": 0, "name": "axis", "type": "number" }
       ],
-      "attrs": [{"tfName": "N", "name": "n", "type": "number", "defaultValue": 2}]
+      "attrs": [{ "tfName": "N", "name": "n", "type": "number", "defaultValue": 2 }]
     },
     {
       "tfOpName": "GatherV2",
       "category": "slice_join",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"},
-        {"start": 1, "name": "indices", "type": "tensor"},
-        {"start": 2, "name": "axis", "type": "number", "defaultValue": 0}
+        { "start": 0, "name": "x", "type": "tensor" },
+        { "start": 1, "name": "indices", "type": "tensor" },
+        { "start": 2, "name": "axis", "type": "number", "defaultValue": 0 }
       ],
       "attrs": [{
         "tfName": "batch_dims",
@@ -31184,8 +31185,8 @@ Expected: ${expectedFlat}.`);
       "tfOpName": "Gather",
       "category": "slice_join",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"},
-        {"start": 1, "name": "indices", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" },
+        { "start": 1, "name": "indices", "type": "tensor" }
       ],
       "attrs": [{
         "tfName": "validate_indices",
@@ -31198,35 +31199,35 @@ Expected: ${expectedFlat}.`);
       "tfOpName": "Reverse",
       "category": "slice_join",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"},
-        {"start": 1, "name": "dims", "type": "bool[]"}
+        { "start": 0, "name": "x", "type": "tensor" },
+        { "start": 1, "name": "dims", "type": "bool[]" }
       ]
     },
     {
       "tfOpName": "ReverseV2",
       "category": "slice_join",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"},
-        {"start": 1, "name": "axis", "type": "number[]"}
+        { "start": 0, "name": "x", "type": "tensor" },
+        { "start": 1, "name": "axis", "type": "number[]" }
       ]
     },
     {
       "tfOpName": "Slice",
       "category": "slice_join",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"},
-        {"start": 1, "name": "begin", "type": "number[]"},
-        {"start": 2, "name": "size", "type": "number[]"}
+        { "start": 0, "name": "x", "type": "tensor" },
+        { "start": 1, "name": "begin", "type": "number[]" },
+        { "start": 2, "name": "size", "type": "number[]" }
       ]
     },
     {
       "tfOpName": "StridedSlice",
       "category": "slice_join",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"},
-        {"start": 1, "name": "begin", "type": "number[]"},
-        {"start": 2, "name": "end", "type": "number[]"},
-        {"start": 3, "name": "strides", "type": "number[]"}
+        { "start": 0, "name": "x", "type": "tensor" },
+        { "start": 1, "name": "begin", "type": "number[]" },
+        { "start": 2, "name": "end", "type": "number[]" },
+        { "start": 3, "name": "strides", "type": "number[]" }
       ],
       "attrs": [
         {
@@ -31265,20 +31266,20 @@ Expected: ${expectedFlat}.`);
       "tfOpName": "Pack",
       "category": "slice_join",
       "inputs": [
-        {"start": 0, "end": 0, "name": "tensors", "type": "tensors"}
+        { "start": 0, "end": 0, "name": "tensors", "type": "tensors" }
       ],
       "attrs": [
-        {"tfName": "axis", "name": "axis", "type": "number", "defaultValue": 0}
+        { "tfName": "axis", "name": "axis", "type": "number", "defaultValue": 0 }
       ]
     },
     {
       "tfOpName": "Unpack",
       "category": "slice_join",
       "inputs": [
-        {"start": 0, "name": "tensor", "type": "tensor"}
+        { "start": 0, "name": "tensor", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "axis", "name": "axis", "type": "number", "defaultValue": 0},
+        { "tfName": "axis", "name": "axis", "type": "number", "defaultValue": 0 },
         {
           "tfName": "num",
           "name": "num",
@@ -31292,16 +31293,16 @@ Expected: ${expectedFlat}.`);
       "tfOpName": "Tile",
       "category": "slice_join",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"},
-        {"start": 1, "name": "reps", "type": "number[]"}
+        { "start": 0, "name": "x", "type": "tensor" },
+        { "start": 1, "name": "reps", "type": "number[]" }
       ]
     },
     {
       "tfOpName": "Split",
       "category": "slice_join",
       "inputs": [
-        {"start": 0, "name": "axis", "type": "number", "defaultValue": 0},
-        {"start": 1, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "axis", "type": "number", "defaultValue": 0 },
+        { "start": 1, "name": "x", "type": "tensor" }
       ],
       "attrs": [{
         "tfName": "num_split",
@@ -31314,36 +31315,36 @@ Expected: ${expectedFlat}.`);
       "tfOpName": "SplitV",
       "category": "slice_join",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"},
-        {"start": 1, "name": "numOrSizeSplits", "type": "number[]"},
-        {"start": 2, "name": "axis", "type": "number", "defaultValue": 0}
+        { "start": 0, "name": "x", "type": "tensor" },
+        { "start": 1, "name": "numOrSizeSplits", "type": "number[]" },
+        { "start": 2, "name": "axis", "type": "number", "defaultValue": 0 }
       ]
     },
     {
       "tfOpName": "ScatterNd",
       "category": "slice_join",
       "inputs": [
-        {"start": 0, "name": "indices", "type": "tensor"},
-        {"start": 1, "name": "values", "type": "tensor"},
-        {"start": 2, "name": "shape", "type": "number[]"}
+        { "start": 0, "name": "indices", "type": "tensor" },
+        { "start": 1, "name": "values", "type": "tensor" },
+        { "start": 2, "name": "shape", "type": "number[]" }
       ]
     },
     {
       "tfOpName": "GatherNd",
       "category": "slice_join",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"},
-        {"start": 1, "name": "indices", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" },
+        { "start": 1, "name": "indices", "type": "tensor" }
       ]
     },
     {
       "tfOpName": "SparseToDense",
       "category": "slice_join",
       "inputs": [
-        {"start": 0, "name": "sparseIndices", "type": "tensor"},
-        {"start": 1, "name": "outputShape", "type": "number[]"},
-        {"start": 2, "name": "sparseValues", "type": "tensor"},
-        {"start": 3, "name": "defaultValue", "type": "tensor"}
+        { "start": 0, "name": "sparseIndices", "type": "tensor" },
+        { "start": 1, "name": "outputShape", "type": "number[]" },
+        { "start": 2, "name": "sparseValues", "type": "tensor" },
+        { "start": 3, "name": "defaultValue", "type": "tensor" }
       ],
       "attrs": [{
         "tfName": "validate_indices",
@@ -31362,18 +31363,18 @@ Expected: ${expectedFlat}.`);
     {
       "tfOpName": "FFT",
       "category": "spectral",
-      "inputs": [{"start": 0, "name": "x", "type": "tensor"}]
+      "inputs": [{ "start": 0, "name": "x", "type": "tensor" }]
     },
     {
       "tfOpName": "IFFT",
       "category": "spectral",
-      "inputs": [{"start": 0, "name": "x", "type": "tensor"}]
+      "inputs": [{ "start": 0, "name": "x", "type": "tensor" }]
     },
     {
       "tfOpName": "RFFT",
       "category": "spectral",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"},
+        { "start": 0, "name": "x", "type": "tensor" },
         {
           "start": 1,
           "name": "fft_length",
@@ -31386,7 +31387,7 @@ Expected: ${expectedFlat}.`);
       "tfOpName": "IRFFT",
       "category": "spectral",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"},
+        { "start": 0, "name": "x", "type": "tensor" },
         {
           "start": 1,
           "name": "fft_length",
@@ -31405,7 +31406,7 @@ Expected: ${expectedFlat}.`);
       "tfOpName": "Cast",
       "category": "transformation",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" }
       ],
       "attrs": [
         {
@@ -31414,32 +31415,32 @@ Expected: ${expectedFlat}.`);
           "type": "dtype",
           "notSupported": true
         },
-        {"tfName": "DstT", "name": "dtype", "type": "dtype"}
+        { "tfName": "DstT", "name": "dtype", "type": "dtype" }
       ]
     },
     {
       "tfOpName": "ExpandDims",
       "category": "transformation",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"},
-        {"start": 1, "name": "axis", "type": "number"}
+        { "start": 0, "name": "x", "type": "tensor" },
+        { "start": 1, "name": "axis", "type": "number" }
       ]
     },
     {
       "tfOpName": "MirrorPad",
       "category": "transformation",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"},
-        {"start": 1, "name": "padding", "type": "number[]"}
+        { "start": 0, "name": "x", "type": "tensor" },
+        { "start": 1, "name": "padding", "type": "number[]" }
       ],
-      "attrs": [{"tfName": "mode", "name": "mode", "type": "string"}]
+      "attrs": [{ "tfName": "mode", "name": "mode", "type": "string" }]
     },
     {
       "tfOpName": "Pad",
       "category": "transformation",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"},
-        {"start": 1, "name": "padding", "type": "number[]"}
+        { "start": 0, "name": "x", "type": "tensor" },
+        { "start": 1, "name": "padding", "type": "number[]" }
       ],
       "attrs": [{
         "tfName": "constant_value",
@@ -31452,8 +31453,8 @@ Expected: ${expectedFlat}.`);
       "tfOpName": "PadV2",
       "category": "transformation",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"},
-        {"start": 1, "name": "padding", "type": "number[]"},
+        { "start": 0, "name": "x", "type": "tensor" },
+        { "start": 1, "name": "padding", "type": "number[]" },
         {
           "start": 2,
           "name": "constantValue",
@@ -31466,15 +31467,15 @@ Expected: ${expectedFlat}.`);
       "tfOpName": "Reshape",
       "category": "transformation",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"},
-        {"start": 1, "name": "shape", "type": "number[]"}
+        { "start": 0, "name": "x", "type": "tensor" },
+        { "start": 1, "name": "shape", "type": "number[]" }
       ]
     },
     {
       "tfOpName": "Squeeze",
       "category": "transformation",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" }
       ],
       "attrs": [{
         "tfName": "axis",
@@ -31487,37 +31488,37 @@ Expected: ${expectedFlat}.`);
       "tfOpName": "SpaceToBatchND",
       "category": "transformation",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"},
-        {"start": 1, "name": "blockShape", "type": "number[]"},
-        {"start": 2, "name": "paddings", "type": "number[]"}
+        { "start": 0, "name": "x", "type": "tensor" },
+        { "start": 1, "name": "blockShape", "type": "number[]" },
+        { "start": 2, "name": "paddings", "type": "number[]" }
       ]
     },
     {
       "tfOpName": "BatchToSpaceND",
       "category": "transformation",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"},
-        {"start": 1, "name": "blockShape", "type": "number[]"},
-        {"start": 2, "name": "crops", "type": "number[]"}
+        { "start": 0, "name": "x", "type": "tensor" },
+        { "start": 1, "name": "blockShape", "type": "number[]" },
+        { "start": 2, "name": "crops", "type": "number[]" }
       ]
     },
     {
       "tfOpName": "DepthToSpace",
       "category": "transformation",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"}
+        { "start": 0, "name": "x", "type": "tensor" }
       ],
       "attrs": [
-        {"tfName": "block_size", "name": "blockSize", "type": "number"},
-        {"tfName": "data_format", "name": "dataFormat", "type": "string"}
+        { "tfName": "block_size", "name": "blockSize", "type": "number" },
+        { "tfName": "data_format", "name": "dataFormat", "type": "string" }
       ]
     },
     {
       "tfOpName": "BroadcastTo",
       "category": "transformation",
       "inputs": [
-        {"start": 0, "name": "x", "type": "tensor"},
-        {"start": 1, "name": "shape", "type": "number[]"}
+        { "start": 0, "name": "x", "type": "tensor" },
+        { "start": 1, "name": "shape", "type": "number[]" }
       ],
       "attrs": []
     }
@@ -31621,7 +31622,7 @@ Expected: ${expectedFlat}.`);
           return functions2;
         }, {});
       }
-      const result = {nodes, inputs, outputs, weights, placeholders, signature, functions};
+      const result = { nodes, inputs, outputs, weights, placeholders, signature, functions };
       if (initNodes.length > 0) {
         result.initNodes = initNodes;
       }
@@ -31736,7 +31737,7 @@ Expected: ${expectedFlat}.`);
             default:
               throw new Error(`Unsupported param type: ${param.type} for op: ${node2.op}`);
           }
-          map[param.name] = {value, type};
+          map[param.name] = { value, type };
           return map;
         }, {});
       }
@@ -31767,7 +31768,7 @@ Expected: ${expectedFlat}.`);
           inputNames: [],
           category: "graph",
           inputParams: {},
-          attrParams: {dtype: {value: parseDtypeParam(arg.type), type: "dtype"}},
+          attrParams: { dtype: { value: parseDtypeParam(arg.type), type: "dtype" } },
           children: []
         };
         node2.signatureKey = arg.name;
@@ -31793,7 +31794,7 @@ Expected: ${expectedFlat}.`);
         }
       });
       const signature = this.mapArgsToSignature(functionDef);
-      return {nodes, inputs, outputs, weights, placeholders, signature};
+      return { nodes, inputs, outputs, weights, placeholders, signature };
     }
     mapArgsToSignature(functionDef) {
       return {
@@ -31813,7 +31814,7 @@ Expected: ${expectedFlat}.`);
       if (nameMap2 != null) {
         name = nameMap2[name];
       }
-      return {name, dtype: arg.type};
+      return { name, dtype: arg.type };
     }
   };
   function decodeBase64(text) {
@@ -32862,7 +32863,7 @@ Expected: ${expectedFlat}.`);
         return [conv2d(getParamValue("x", node2, tensorMap, context), getParamValue("filter", node2, tensorMap, context), [stride[1], stride[2]], pad3, dataFormat, [dilations[1], dilations[2]])];
       }
       case "_FusedConv2D": {
-        const {stride, pad: pad3, dataFormat, dilations, biasArg, preluArg, activationFunc, leakyreluAlpha} = fusedConvAndDepthWiseParams(node2, tensorMap, context);
+        const { stride, pad: pad3, dataFormat, dilations, biasArg, preluArg, activationFunc, leakyreluAlpha } = fusedConvAndDepthWiseParams(node2, tensorMap, context);
         return [fused_ops_exports.conv2d({
           x: getParamValue("x", node2, tensorMap, context),
           filter: getParamValue("filter", node2, tensorMap, context),
@@ -32877,7 +32878,7 @@ Expected: ${expectedFlat}.`);
         })];
       }
       case "FusedDepthwiseConv2dNative": {
-        const {stride, pad: pad3, dataFormat, dilations, biasArg, preluArg, activationFunc, leakyreluAlpha} = fusedConvAndDepthWiseParams(node2, tensorMap, context);
+        const { stride, pad: pad3, dataFormat, dilations, biasArg, preluArg, activationFunc, leakyreluAlpha } = fusedConvAndDepthWiseParams(node2, tensorMap, context);
         return [fused_ops_exports.depthwiseConv2d({
           x: getParamValue("x", node2, tensorMap, context),
           filter: getParamValue("filter", node2, tensorMap, context),
@@ -32930,7 +32931,7 @@ Expected: ${expectedFlat}.`);
         const pad3 = getParamValue("pad", node2, tensorMap, context);
         const kernelSize = getParamValue("kernelSize", node2, tensorMap, context);
         const includeBatchInIndex = getParamValue("includeBatchInIndex", node2, tensorMap, context);
-        const {result, indexes} = maxPoolWithArgmax(getParamValue("x", node2, tensorMap, context), [kernelSize[1], kernelSize[2]], [stride[1], stride[2]], pad3, includeBatchInIndex);
+        const { result, indexes } = maxPoolWithArgmax(getParamValue("x", node2, tensorMap, context), [kernelSize[1], kernelSize[2]], [stride[1], stride[2]], pad3, includeBatchInIndex);
         return [result, indexes];
       }
       case "AvgPool3D": {
@@ -33037,19 +33038,19 @@ Expected: ${expectedFlat}.`);
   var executeOp6 = async (node2, tensorMap, context) => {
     switch (node2.op) {
       case "NonMaxSuppressionV5": {
-        const {boxes, scores, maxOutputSize, iouThreshold, scoreThreshold, softNmsSigma} = nmsParams(node2, tensorMap, context);
+        const { boxes, scores, maxOutputSize, iouThreshold, scoreThreshold, softNmsSigma } = nmsParams(node2, tensorMap, context);
         const result = await image.nonMaxSuppressionWithScoreAsync(boxes, scores, maxOutputSize, iouThreshold, scoreThreshold, softNmsSigma);
         return [result.selectedIndices, result.selectedScores];
       }
       case "NonMaxSuppressionV4": {
-        const {boxes, scores, maxOutputSize, iouThreshold, scoreThreshold} = nmsParams(node2, tensorMap, context);
+        const { boxes, scores, maxOutputSize, iouThreshold, scoreThreshold } = nmsParams(node2, tensorMap, context);
         const padToMaxOutputSize = getParamValue("padToMaxOutputSize", node2, tensorMap, context);
         const result = await image.nonMaxSuppressionPaddedAsync(boxes, scores, maxOutputSize, iouThreshold, scoreThreshold, padToMaxOutputSize);
         return [result.selectedIndices, result.validOutputs];
       }
       case "NonMaxSuppressionV3":
       case "NonMaxSuppressionV2": {
-        const {boxes, scores, maxOutputSize, iouThreshold, scoreThreshold} = nmsParams(node2, tensorMap, context);
+        const { boxes, scores, maxOutputSize, iouThreshold, scoreThreshold } = nmsParams(node2, tensorMap, context);
         return [await image.nonMaxSuppressionAsync(boxes, scores, maxOutputSize, iouThreshold, scoreThreshold)];
       }
       case "Where": {
@@ -33547,7 +33548,7 @@ Expected: ${expectedFlat}.`);
   var executeOp16 = (node2, tensorMap, context) => {
     switch (node2.op) {
       case "SparseReshape": {
-        const {outputIndices, outputShape} = sparse.sparseReshape(getParamValue("inputIndices", node2, tensorMap, context), getParamValue("inputShape", node2, tensorMap, context), getParamValue("newShape", node2, tensorMap, context));
+        const { outputIndices, outputShape } = sparse.sparseReshape(getParamValue("inputIndices", node2, tensorMap, context), getParamValue("inputShape", node2, tensorMap, context), getParamValue("newShape", node2, tensorMap, context));
         return [outputIndices, outputShape];
       }
       default:
@@ -33678,13 +33679,13 @@ Expected: ${expectedFlat}.`);
       this.tensorArrayMap = tensorArrayMap;
       this.tensorListMap = tensorListMap;
       this.functionMap = functionMap;
-      this.rootContext = {id: 0, frameName: "", iterationId: 0};
+      this.rootContext = { id: 0, frameName: "", iterationId: 0 };
       this.contexts = [this.rootContext];
       this.lastId = 0;
       this.generateCurrentContextIds();
     }
     newFrame(id, frameName) {
-      return {id, frameName, iterationId: 0};
+      return { id, frameName, iterationId: 0 };
     }
     set currentContext(contexts2) {
       if (this.contexts !== contexts2) {
@@ -33809,10 +33810,10 @@ Expected: ${expectedFlat}.`);
         frontier.push(input2);
       });
     }
-    return {inputs, outputs, usedNodes, missingInputs, dynamicNode, syncInputs};
+    return { inputs, outputs, usedNodes, missingInputs, dynamicNode, syncInputs };
   }
   function getNodesInTopologicalOrder(graph2, weightMap, executionInfo) {
-    const {usedNodes, inputs} = executionInfo;
+    const { usedNodes, inputs } = executionInfo;
     const frontier = [];
     const inputNodes = Object.keys(inputs).map((name) => parseNodeName(name)[0]).map((name) => graph2.nodes[name]);
     const initNodes = graph2.initNodes;
@@ -33962,7 +33963,7 @@ Expected: ${expectedFlat}.`);
     }
     compile(inputs, outputs) {
       const executionInfo = getExecutionSubgraph(inputs, outputs, this.weightMap, this._initNodes);
-      const {missingInputs, dynamicNode, syncInputs} = executionInfo;
+      const { missingInputs, dynamicNode, syncInputs } = executionInfo;
       if (dynamicNode != null) {
         throw new Error(`This execution contains the node '${dynamicNode.name}', which has the dynamic op '${dynamicNode.op}'. Please use model.executeAsync() instead. Alternatively, to avoid the dynamic ops, specify the inputs [${syncInputs}]`);
       }
@@ -34099,13 +34100,13 @@ Expected: ${expectedFlat}.`);
       if (outputNodes.length === 0) {
         outputNodes = this._outputs;
       }
-      const {usedNodes, missingInputs, dynamicNode, syncInputs} = getExecutionSubgraph(inputs, outputNodes, this.weightMap, this._initNodes);
+      const { usedNodes, missingInputs, dynamicNode, syncInputs } = getExecutionSubgraph(inputs, outputNodes, this.weightMap, this._initNodes);
       const stack2 = [
         ...inputNodes,
         ...this.graph.weights,
         ...this._initNodes || []
       ].map((node2) => {
-        return {node: node2, contexts: context.currentContext};
+        return { node: node2, contexts: context.currentContext };
       });
       const tensorsMap = Object.assign({}, this.weightMap);
       Object.keys(inputs).forEach((name) => {
@@ -34179,13 +34180,13 @@ Expected: ${expectedFlat}.`);
             return !!getTensor(name, tensorMap, context);
           })) {
             added[nodeName] = true;
-            stack2.push({contexts: context.currentContext, node: childNode});
+            stack2.push({ contexts: context.currentContext, node: childNode });
           }
         } else if (childNode.inputNames.every((name) => {
           return !!getTensor(name, tensorMap, context);
         })) {
           added[nodeName] = true;
-          stack2.push({contexts: context.currentContext, node: childNode});
+          stack2.push({ contexts: context.currentContext, node: childNode });
         }
       });
     }
@@ -34522,9 +34523,9 @@ Expected: ${expectedFlat}.`);
       return null;
     }
     if (isIterable2(x[0])) {
-      return {value: null, recurse: true};
+      return { value: null, recurse: true };
     } else {
-      return {value: x, recurse: false};
+      return { value: x, recurse: false };
     }
   }
   async function deepMapAndAwaitAll(input2, mapFn) {
@@ -34554,11 +34555,11 @@ Expected: ${expectedFlat}.`);
   }
   function cloneIfTensor(item) {
     if (item instanceof Tensor) {
-      return {value: item.clone(), recurse: false};
+      return { value: item.clone(), recurse: false };
     } else if (isIterable2(item)) {
-      return {value: null, recurse: true};
+      return { value: null, recurse: true };
     } else {
-      return {value: item, recurse: false};
+      return { value: item, recurse: false };
     }
   }
   var RingBuffer = class {
@@ -34800,11 +34801,11 @@ Expected: ${expectedFlat}.`);
     }
     async next() {
       if (this.trav >= this.items.length) {
-        return {value: null, done: true};
+        return { value: null, done: true };
       }
       const item = this.items[this.trav];
       this.trav++;
-      return {value: deepClone(item), done: false};
+      return { value: deepClone(item), done: false };
     }
   };
   var FunctionCallIterator = class extends LazyIterator {
@@ -34828,7 +34829,7 @@ Expected: ${expectedFlat}.`);
     constructor(upstream) {
       super();
       this.upstream = upstream;
-      this.lastRead = Promise.resolve({value: null, done: false});
+      this.lastRead = Promise.resolve({ value: null, done: false });
     }
     summary() {
       return `${this.upstream.summary()} -> Serial`;
@@ -34847,7 +34848,7 @@ Expected: ${expectedFlat}.`);
       this.upstream = upstream;
       this.maxCount = maxCount;
       this.count = 0;
-      this.lastRead = Promise.resolve({value: null, done: false});
+      this.lastRead = Promise.resolve({ value: null, done: false });
     }
     summary() {
       return `${this.upstream.summary()} -> Skip`;
@@ -34879,7 +34880,7 @@ Expected: ${expectedFlat}.`);
     }
     async next() {
       if (this.count++ >= this.maxCount) {
-        return {value: null, done: true};
+        return { value: null, done: true };
       }
       return this.upstream.next();
     }
@@ -34890,7 +34891,7 @@ Expected: ${expectedFlat}.`);
       this.upstream = upstream;
       this.batchSize = batchSize;
       this.enableSmallLastBatch = enableSmallLastBatch;
-      this.lastRead = Promise.resolve({value: null, done: false});
+      this.lastRead = Promise.resolve({ value: null, done: false });
     }
     summary() {
       return `${this.upstream.summary()} -> RowMajorBatch`;
@@ -34905,13 +34906,13 @@ Expected: ${expectedFlat}.`);
         const item = await this.upstream.next();
         if (item.done) {
           if (this.enableSmallLastBatch && batch.length > 0) {
-            return {value: batch, done: false};
+            return { value: batch, done: false };
           }
-          return {value: null, done: true};
+          return { value: null, done: true };
         }
         batch.push(item.value);
       }
-      return {value: batch, done: false};
+      return { value: batch, done: false };
     }
   };
   var FilterIterator = class extends LazyIterator {
@@ -34919,7 +34920,7 @@ Expected: ${expectedFlat}.`);
       super();
       this.upstream = upstream;
       this.predicate = predicate;
-      this.lastRead = Promise.resolve({value: null, done: false});
+      this.lastRead = Promise.resolve({ value: null, done: false });
     }
     summary() {
       return `${this.upstream.summary()} -> Filter`;
@@ -34950,7 +34951,7 @@ Expected: ${expectedFlat}.`);
     async next() {
       const item = await this.upstream.next();
       if (item.done) {
-        return {value: null, done: true};
+        return { value: null, done: true };
       }
       const inputTensors = tensor_util_exports.getTensorsInContainer(item.value);
       const mapped = this.transform(item.value);
@@ -34960,7 +34961,7 @@ Expected: ${expectedFlat}.`);
           t.dispose();
         }
       }
-      return {value: mapped, done: false};
+      return { value: mapped, done: false };
     }
   };
   var ErrorHandlingLazyIterator = class extends LazyIterator {
@@ -34969,7 +34970,7 @@ Expected: ${expectedFlat}.`);
       this.upstream = upstream;
       this.handler = handler;
       this.count = 0;
-      this.lastRead = Promise.resolve({value: null, done: false});
+      this.lastRead = Promise.resolve({ value: null, done: false });
     }
     summary() {
       return `${this.upstream.summary()} -> handleErrors`;
@@ -34984,7 +34985,7 @@ Expected: ${expectedFlat}.`);
           return await this.upstream.next();
         } catch (e) {
           if (!this.handler(e)) {
-            return {value: null, done: true};
+            return { value: null, done: true };
           }
         }
       }
@@ -35002,7 +35003,7 @@ Expected: ${expectedFlat}.`);
     async next() {
       const item = await this.upstream.next();
       if (item.done) {
-        return {value: null, done: true};
+        return { value: null, done: true };
       }
       const inputTensors = tensor_util_exports.getTensorsInContainer(item.value);
       const mapped = await this.transform(item.value);
@@ -35012,14 +35013,14 @@ Expected: ${expectedFlat}.`);
           t.dispose();
         }
       }
-      return {value: mapped, done: false};
+      return { value: mapped, done: false };
     }
   };
   var OneToManyIterator = class extends LazyIterator {
     constructor() {
       super();
       this.outputQueue = new GrowingRingBuffer();
-      this.lastRead = Promise.resolve({value: null, done: false});
+      this.lastRead = Promise.resolve({ value: null, done: false });
     }
     async next() {
       this.lastRead = this.lastRead.then(() => this.serialNext());
@@ -35028,10 +35029,10 @@ Expected: ${expectedFlat}.`);
     async serialNext() {
       while (this.outputQueue.length() === 0) {
         if (!await this.pump()) {
-          return {value: null, done: true};
+          return { value: null, done: true };
         }
       }
-      return {value: this.outputQueue.shift(), done: false};
+      return { value: this.outputQueue.shift(), done: false };
     }
   };
   var FlatmapIterator = class extends OneToManyIterator {
@@ -35081,7 +35082,7 @@ Expected: ${expectedFlat}.`);
       if (this.iterator == null) {
         const iteratorResult = await this.moreIterators.next();
         if (iteratorResult.done) {
-          return {value: null, done: true};
+          return { value: null, done: true };
         }
         this.iterator = iteratorResult.value;
         if (this.baseErrorHandler != null) {
@@ -35132,25 +35133,25 @@ Expected: ${expectedFlat}.`);
             recurse: false
           };
         } else {
-          return {value: null, recurse: true};
+          return { value: null, recurse: true };
         }
       }
       const mapped = await deepMapAndAwaitAll(this.iterators, getNext);
       if (numIterators === iteratorsDone) {
-        return {value: null, done: true};
+        return { value: null, done: true };
       }
       if (iteratorsDone > 0) {
         switch (this.mismatchMode) {
           case ZipMismatchMode.FAIL:
             throw new Error(`Zipped streams should have the same length. Mismatched at element ${this.count}.`);
           case ZipMismatchMode.SHORTEST:
-            return {value: null, done: true};
+            return { value: null, done: true };
           case ZipMismatchMode.LONGEST:
           default:
         }
       }
       this.count++;
-      return {value: mapped, done: false};
+      return { value: mapped, done: false };
     }
     async next() {
       this.currentPromise = this.nextState(this.currentPromise);
@@ -35185,7 +35186,7 @@ Expected: ${expectedFlat}.`);
       this.windowSize = windowSize;
       this.upstreamExhausted = false;
       this.random = seedrandom2.alea(seed || util_exports.now().toString());
-      this.lastRead = Promise.resolve({value: null, done: false});
+      this.lastRead = Promise.resolve({ value: null, done: false });
     }
     async next() {
       this.lastRead = this.lastRead.then(() => this.serialNext());
@@ -35211,7 +35212,7 @@ Expected: ${expectedFlat}.`);
           return result;
         }
       }
-      return {value: null, done: true};
+      return { value: null, done: true };
     }
   };
   var Dataset = class {
@@ -35293,7 +35294,7 @@ Expected: ${expectedFlat}.`);
         size = null;
       }
       return datasetFromIteratorFn(async () => {
-        const iteratorIterator = iteratorFromFunction(async () => ({value: await base2.iterator(), done: false}));
+        const iteratorIterator = iteratorFromFunction(async () => ({ value: await base2.iterator(), done: false }));
         return iteratorFromConcatenated(iteratorIterator.take(count2));
       }, size);
     }
@@ -35384,9 +35385,9 @@ Expected: ${expectedFlat}.`);
     return datasetFromIteratorFn(async () => {
       const streams = await deepMapAndAwaitAll(datasets, (d) => {
         if (d instanceof Dataset) {
-          return {value: d.iterator(), recurse: false};
+          return { value: d.iterator(), recurse: false };
         } else if (isIterable2(d)) {
-          return {value: null, recurse: true};
+          return { value: null, recurse: true };
         } else {
           throw new Error("Leaves of the structure passed to zip() must be Datasets, not primitives.");
         }
@@ -35401,9 +35402,9 @@ Expected: ${expectedFlat}.`);
     const exampleRow = rows[0];
     if (canTensorify(exampleRow)) {
       const value = batchConcat(rows);
-      return {value, recurse: false};
+      return { value, recurse: false };
     }
-    return {value: null, recurse: true};
+    return { value: null, recurse: true };
   }
   function batchConcat(arrays) {
     if (arrays.length === 0) {
@@ -35573,7 +35574,7 @@ Expected: ${expectedFlat}.`);
       if (Object.keys(labels).length === 0) {
         return features;
       } else {
-        return {xs: features, ys: labels};
+        return { xs: features, ys: labels };
       }
     }
     getBoolean(value) {
@@ -35727,7 +35728,7 @@ Expected: ${expectedFlat}.`);
     }
     async next() {
       if (this.isClosed) {
-        return {value: null, done: true};
+        return { value: null, done: true };
       }
       let spectrogramTensor;
       let waveformTensor;
@@ -35741,7 +35742,7 @@ Expected: ${expectedFlat}.`);
         waveformTensor = this.getTensorFromAudioDataArray(timeData, [this.numFrames * this.fftSize, 1]);
       }
       return {
-        value: {"spectrogram": spectrogramTensor, "waveform": waveformTensor},
+        value: { "spectrogram": spectrogramTensor, "waveform": waveformTensor },
         done: false
       };
     }
@@ -35757,7 +35758,7 @@ Expected: ${expectedFlat}.`);
           if (this.includeSpectrogram) {
             this.analyser.getFloatFrequencyData(this.freqData);
             if (this.freqData[0] === -Infinity) {
-              resolve({freqDataQueue, timeDataQueue});
+              resolve({ freqDataQueue, timeDataQueue });
             }
             freqDataQueue.push(this.freqData.slice(0, this.columnTruncateLength));
           }
@@ -35767,7 +35768,7 @@ Expected: ${expectedFlat}.`);
           }
           if (++currentFrames === this.numFrames) {
             clearInterval(intervalID);
-            resolve({freqDataQueue, timeDataQueue});
+            resolve({ freqDataQueue, timeDataQueue });
           }
         }, this.fftSize / this.sampleRateHz * 1e3);
       });
@@ -35879,7 +35880,7 @@ Expected: ${expectedFlat}.`);
     }
     async next() {
       if (this.isClosed) {
-        return {value: null, done: true};
+        return { value: null, done: true };
       }
       let img;
       try {
@@ -35889,14 +35890,14 @@ Expected: ${expectedFlat}.`);
       }
       if (this.resize) {
         try {
-          return {value: this.cropAndResizeFrame(img), done: false};
+          return { value: this.cropAndResizeFrame(img), done: false };
         } catch (e) {
           throw new Error(`Error thrown cropping the video: ${e.message}`);
         } finally {
           img.dispose();
         }
       } else {
-        return {value: img, done: false};
+        return { value: img, done: false };
       }
     }
     needToResize() {
@@ -36006,7 +36007,7 @@ Expected: ${expectedFlat}.`);
       if (env().get("IS_BROWSER")) {
         this.decoder = new TextDecoder("utf-8");
       } else {
-        const {StringDecoder} = require_string_decoder();
+        const { StringDecoder } = require_string_decoder();
         this.decoder = new StringDecoder("utf8");
       }
     }
@@ -36023,7 +36024,7 @@ Expected: ${expectedFlat}.`);
       }
       let text;
       if (env().get("IS_BROWSER")) {
-        text = this.decoder.decode(chunk, {stream: true});
+        text = this.decoder.decode(chunk, { stream: true });
       } else {
         text = this.decoder.write(Buffer.from(chunk.buffer));
       }
@@ -36045,7 +36046,7 @@ Expected: ${expectedFlat}.`);
     }
     async next() {
       if (this.offset >= (this.file instanceof Uint8Array ? this.file.byteLength : this.file.size)) {
-        return {value: null, done: true};
+        return { value: null, done: true };
       }
       const chunk = new Promise((resolve, reject) => {
         const end = this.offset + this.chunkSize;
@@ -36074,7 +36075,7 @@ Expected: ${expectedFlat}.`);
         }
         this.offset = end;
       });
-      return {value: await chunk, done: false};
+      return { value: await chunk, done: false };
     }
   };
   async function urlChunkIterator(url, options = {}) {
@@ -36187,8 +36188,8 @@ Expected: ${expectedFlat}.`);
           backend_util_exports.warn("\n============================\nHi there \u{1F44B}. Looks like you are running TensorFlow.js in Node.js. To speed things up dramatically, install our node backend, which binds to TensorFlow C++, by running npm i @tensorflow/tfjs-node, or npm i @tensorflow/tfjs-node-gpu if you have CUDA. Then call require('@tensorflow/tfjs-node'); (-gpu suffix for CUDA) at the start of your program. Visit https://github.com/tensorflow/tfjs-node for more details.\n============================");
         }
       }
-      const dataId = {id: this.nextDataId()};
-      this.data.set(dataId, {values, dtype, refCount: 1});
+      const dataId = { id: this.nextDataId() };
+      this.data.set(dataId, { values, dtype, refCount: 1 });
       return dataId;
     }
     makeTensorInfo(shape, dtype, values) {
@@ -36199,7 +36200,7 @@ Expected: ${expectedFlat}.`);
       } else {
         outId = this.write(values, shape, dtype);
       }
-      return {dataId: outId, shape, dtype};
+      return { dataId: outId, shape, dtype };
     }
     refCount(dataId) {
       if (this.data.has(dataId)) {
@@ -36219,7 +36220,7 @@ Expected: ${expectedFlat}.`);
       }
     }
     move(dataId, values, shape, dtype, refCount) {
-      this.data.set(dataId, {values, dtype, refCount});
+      this.data.set(dataId, { values, dtype, refCount });
     }
     numDataIds() {
       return this.data.numDataIds();
@@ -36228,7 +36229,7 @@ Expected: ${expectedFlat}.`);
       return this.readSync(dataId);
     }
     readSync(dataId) {
-      const {dtype, complexTensorInfos} = this.data.get(dataId);
+      const { dtype, complexTensorInfos } = this.data.get(dataId);
       if (dtype === "complex64") {
         const realValues = this.readSync(complexTensorInfos.real.dataId);
         const imagValues = this.readSync(complexTensorInfos.imag.dataId);
@@ -36258,7 +36259,7 @@ Expected: ${expectedFlat}.`);
         if (!force && this.data.get(dataId).refCount > 0) {
           return false;
         }
-        const {complexTensorInfos} = this.data.get(dataId);
+        const { complexTensorInfos } = this.data.get(dataId);
         if (complexTensorInfos != null) {
           this.disposeData(complexTensorInfos.real.dataId, true);
           this.disposeData(complexTensorInfos.imag.dataId, true);
@@ -36274,7 +36275,7 @@ Expected: ${expectedFlat}.`);
       const start = util_exports.now();
       f();
       const kernelMs = util_exports.now() - start;
-      return {kernelMs};
+      return { kernelMs };
     }
     memory() {
       return {
@@ -36341,7 +36342,7 @@ Expected: ${expectedFlat}.`);
     return resultValues;
   }
   var abs2 = (args) => {
-    const {x} = args.inputs;
+    const { x } = args.inputs;
     const cpuBackend = args.backend;
     assertNotComplex(x, "abs");
     let resultValues = new Float32Array(util_exports.sizeFromShape(x.shape));
@@ -36387,8 +36388,8 @@ Expected: ${expectedFlat}.`);
     };
   }
   function complex2(args) {
-    const {inputs, backend: backend2} = args;
-    const {real: real4, imag: imag4} = inputs;
+    const { inputs, backend: backend2 } = args;
+    const { real: real4, imag: imag4 } = inputs;
     const realVals = backend2.data.get(real4.dataId).values;
     const imagVals = backend2.data.get(imag4.dataId).values;
     const complexInfo = backend2.makeTensorInfo(real4.shape, "complex64");
@@ -36408,16 +36409,16 @@ Expected: ${expectedFlat}.`);
     if (dtype === "complex64") {
       const real4 = zeros3(backend2, shape, "float32");
       const imag4 = zeros3(backend2, shape, "float32");
-      return complex2({inputs: {real: real4, imag: imag4}, backend: backend2});
+      return complex2({ inputs: { real: real4, imag: imag4 }, backend: backend2 });
     }
     const values = util_exports.makeZerosTypedArray(util_exports.sizeFromShape(shape), dtype);
     return backend2.makeTensorInfo(shape, dtype, values);
   }
   function identity2(args) {
-    const {inputs, backend: backend2} = args;
-    const {x} = inputs;
+    const { inputs, backend: backend2 } = args;
+    const { x } = inputs;
     backend2.incRef(x.dataId);
-    return {dataId: x.dataId, shape: x.shape, dtype: x.dtype};
+    return { dataId: x.dataId, shape: x.shape, dtype: x.dtype };
   }
   var identityConfig = {
     kernelName: Identity,
@@ -36425,8 +36426,8 @@ Expected: ${expectedFlat}.`);
     kernelFunc: identity2
   };
   function real2(args) {
-    const {inputs, backend: backend2} = args;
-    const {input: input2} = inputs;
+    const { inputs, backend: backend2 } = args;
+    const { input: input2 } = inputs;
     const real4 = backend2.data.get(input2.dataId).complexTensorInfos.real;
     const realVal = backend2.data.get(real4.dataId).values;
     return backend2.makeTensorInfo(real4.shape, real4.dtype, realVal);
@@ -36437,29 +36438,29 @@ Expected: ${expectedFlat}.`);
     kernelFunc: real2
   };
   function cast3(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {dtype} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { dtype } = attrs;
     if (dtype === "complex64") {
       if (x.dtype === "complex64") {
-        return identity2({inputs: {x}, backend: backend2});
+        return identity2({ inputs: { x }, backend: backend2 });
       }
       const zerosTensorInfo = zeros3(backend2, x.shape, x.dtype);
-      const floatX = cast3({inputs: {x}, backend: backend2, attrs: {dtype: "float32"}});
-      const result = complex2({inputs: {real: floatX, imag: zerosTensorInfo}, backend: backend2});
+      const floatX = cast3({ inputs: { x }, backend: backend2, attrs: { dtype: "float32" } });
+      const result = complex2({ inputs: { real: floatX, imag: zerosTensorInfo }, backend: backend2 });
       backend2.disposeIntermediateTensorInfo(zerosTensorInfo);
       backend2.disposeIntermediateTensorInfo(floatX);
       return result;
     }
     if (x.dtype === "complex64") {
-      const realPart = real2({inputs: {input: x}, backend: backend2});
-      const result = cast3({inputs: {x: realPart}, backend: backend2, attrs: {dtype}});
+      const realPart = real2({ inputs: { input: x }, backend: backend2 });
+      const result = cast3({ inputs: { x: realPart }, backend: backend2, attrs: { dtype } });
       backend2.disposeIntermediateTensorInfo(realPart);
       return result;
     }
     if (!util_exports.hasEncodingLoss(x.dtype, dtype)) {
-      const result = identity2({inputs: {x}, backend: backend2});
-      return {dataId: result.dataId, shape: result.shape, dtype};
+      const result = identity2({ inputs: { x }, backend: backend2 });
+      return { dataId: result.dataId, shape: result.shape, dtype };
     }
     if (dtype === "int32") {
       const values = backend2.data.get(x.dataId).values;
@@ -36481,8 +36482,8 @@ Expected: ${expectedFlat}.`);
   };
   function binaryKernelFunc(name, simpleImpl, complexImpl, dtype) {
     if (complexImpl == null) {
-      return ({inputs, backend: backend2}) => {
-        const {a, b} = inputs;
+      return ({ inputs, backend: backend2 }) => {
+        const { a, b } = inputs;
         const cpuBackend = backend2;
         assertNotComplex([a, b], name);
         const aVals = cpuBackend.data.get(a.dataId).values;
@@ -36492,17 +36493,17 @@ Expected: ${expectedFlat}.`);
         return cpuBackend.makeTensorInfo(resultShape, $dtype, resultData);
       };
     }
-    return ({inputs, backend: backend2}) => {
-      const {a, b} = inputs;
+    return ({ inputs, backend: backend2 }) => {
+      const { a, b } = inputs;
       const cpuBackend = backend2;
       if (a.dtype === "complex64" || b.dtype === "complex64") {
-        const $aComplex = cast3({inputs: {x: a}, backend: cpuBackend, attrs: {dtype: "complex64"}});
+        const $aComplex = cast3({ inputs: { x: a }, backend: cpuBackend, attrs: { dtype: "complex64" } });
         const $aComplexVals = cpuBackend.data.get($aComplex.dataId);
         const aReal = $aComplexVals.complexTensorInfos.real;
         const aImag = $aComplexVals.complexTensorInfos.imag;
         const aRealVals = cpuBackend.data.get(aReal.dataId).values;
         const aImagVals = cpuBackend.data.get(aImag.dataId).values;
-        const $bComplex = cast3({inputs: {x: b}, backend: cpuBackend, attrs: {dtype: "complex64"}});
+        const $bComplex = cast3({ inputs: { x: b }, backend: cpuBackend, attrs: { dtype: "complex64" } });
         const $bComplexVals = cpuBackend.data.get($bComplex.dataId);
         const bReal = $bComplexVals.complexTensorInfos.real;
         const bImag = $bComplexVals.complexTensorInfos.imag;
@@ -36511,7 +36512,7 @@ Expected: ${expectedFlat}.`);
         const [resultRealData, resultImagData, resultShape] = complexImpl(a.shape, b.shape, aRealVals, aImagVals, bRealVals, bImagVals);
         const resultReal = cpuBackend.makeTensorInfo(resultShape, "float32", resultRealData);
         const resultImag = cpuBackend.makeTensorInfo(resultShape, "float32", resultImagData);
-        const result = complex2({inputs: {real: resultReal, imag: resultImag}, backend: cpuBackend});
+        const result = complex2({ inputs: { real: resultReal, imag: resultImag }, backend: cpuBackend });
         cpuBackend.disposeIntermediateTensorInfo($aComplex);
         cpuBackend.disposeIntermediateTensorInfo($bComplex);
         cpuBackend.disposeIntermediateTensorInfo(resultReal);
@@ -36569,7 +36570,7 @@ Expected: ${expectedFlat}.`);
   }
   var addImpl = createSimpleBinaryKernelImpl((a, b) => a + b);
   var addComplexImpl = createComplexBinaryKernelImpl((aReal, aImag, bReal, bImag) => {
-    return {real: aReal + bReal, imag: aImag + bImag};
+    return { real: aReal + bReal, imag: aImag + bImag };
   });
   var add4 = binaryKernelFunc(Add, addImpl, addComplexImpl);
   var addConfig = {
@@ -36632,8 +36633,8 @@ Expected: ${expectedFlat}.`);
     };
   }
   function unaryKernelFunc(name, op2, dtype) {
-    return ({inputs, attrs, backend: backend2}) => {
-      const {x} = inputs;
+    return ({ inputs, attrs, backend: backend2 }) => {
+      const { x } = inputs;
       assertNotComplex(x, name);
       if (x.dtype === "string" || dtype === "string") {
         throw new Error("unaryKernelFunc does not support string input/output");
@@ -36650,8 +36651,8 @@ Expected: ${expectedFlat}.`);
     };
   }
   function unaryKernelFuncFromImpl(name, unaryImpl, dtype) {
-    return ({inputs, attrs, backend: backend2}) => {
-      const {x} = inputs;
+    return ({ inputs, attrs, backend: backend2 }) => {
+      const { x } = inputs;
       assertNotComplex(x, name);
       if (x.dtype === "string" || dtype === "string") {
         throw new Error("unaryKernelFunc does not support string input/output");
@@ -36807,8 +36808,8 @@ Expected: ${expectedFlat}.`);
     return multiplyImpl([], xShape, minusOne, xVals, xDtype);
   }
   function neg2(args) {
-    const {inputs, backend: backend2} = args;
-    const {x} = inputs;
+    const { inputs, backend: backend2 } = args;
+    const { x } = inputs;
     assertNotComplex(x, "neg");
     const xVals = backend2.data.get(x.dataId).values;
     const [res, newShape] = negImpl(xVals, x.shape, x.dtype);
@@ -36844,9 +36845,9 @@ Expected: ${expectedFlat}.`);
     return result;
   }
   function transpose2(args) {
-    const {inputs, attrs, backend: backend2} = args;
-    const {x} = inputs;
-    const {perm} = attrs;
+    const { inputs, attrs, backend: backend2 } = args;
+    const { x } = inputs;
+    const { perm } = attrs;
     assertNotComplex(x, "transpose");
     const xRank = x.shape.length;
     const newShape = new Array(xRank);
@@ -36856,7 +36857,7 @@ Expected: ${expectedFlat}.`);
     const values = backend2.data.get(x.dataId).values;
     const result = transposeImpl(values, x.shape, x.dtype, perm, newShape);
     const dataId = backend2.write(result, newShape, x.dtype);
-    return {dataId, shape: newShape, dtype: x.dtype};
+    return { dataId, shape: newShape, dtype: x.dtype };
   }
   var transposeConfig = {
     kernelName: Transpose,
@@ -36876,12 +36877,12 @@ Expected: ${expectedFlat}.`);
       }
       outVals[i] = prod5;
     }
-    return {outVals, outShape, outDtype};
+    return { outVals, outShape, outDtype };
   }
   function prod2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {axis, keepDims} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { axis, keepDims } = attrs;
     assertNotComplex(x, "prod");
     const xRank = x.shape.length;
     const axes = util_exports.parseAxisParam(axis, x.shape);
@@ -36890,12 +36891,12 @@ Expected: ${expectedFlat}.`);
     let permutedX = x;
     const intermediateTensorInfos = [];
     if (permutation != null) {
-      permutedX = transpose2({inputs: {x}, backend: backend2, attrs: {perm: permutation}});
+      permutedX = transpose2({ inputs: { x }, backend: backend2, attrs: { perm: permutation } });
       intermediateTensorInfos.push(permutedX);
       reductionAxes = backend_util_exports.getInnerMostAxes(reductionAxes.length, xRank);
     }
     const xVals = backend2.data.get(permutedX.dataId).values;
-    const {outVals, outShape, outDtype} = prodImpl(permutedX.shape, permutedX.dtype, xVals, reductionAxes);
+    const { outVals, outShape, outDtype } = prodImpl(permutedX.shape, permutedX.dtype, xVals, reductionAxes);
     let resultShape = outShape;
     if (keepDims) {
       resultShape = backend_util_exports.expandShapeToKeepDim(outShape, axes);
@@ -36958,9 +36959,9 @@ Expected: ${expectedFlat}.`);
     return outBuf.values;
   }
   function slice2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {begin, size} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { begin, size } = attrs;
     assertNotComplex(x, "slice");
     const [$begin, $size] = slice_util_exports.parseSliceParams(x, begin, size);
     slice_util_exports.assertParamsValid(x, $begin, $size);
@@ -37158,7 +37159,7 @@ Expected: ${expectedFlat}.`);
   }
   var subImpl = createSimpleBinaryKernelImpl((aValue, bValue) => aValue - bValue);
   var subComplexImpl = createComplexBinaryKernelImpl((aReal, aImag, bReal, bImag) => {
-    return {real: aReal - bReal, imag: aImag - bImag};
+    return { real: aReal - bReal, imag: aImag - bImag };
   });
   var sub2 = binaryKernelFunc(Sub, subImpl, subComplexImpl);
   var subConfig = {
@@ -37193,7 +37194,7 @@ Expected: ${expectedFlat}.`);
       const vals = x.subarray(offset, offset + size);
       const valAndInd = [];
       for (let i = 0; i < vals.length; i++) {
-        valAndInd.push({value: vals[i], index: i});
+        valAndInd.push({ value: vals[i], index: i });
       }
       valAndInd.sort((a, b2) => b2.value - a.value);
       const outOffset = b * k;
@@ -37275,9 +37276,9 @@ Expected: ${expectedFlat}.`);
     kernelFunc: elu4
   };
   function leakyRelu2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {alpha} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { alpha } = attrs;
     assertNotComplex([x], "leakyRelu");
     const xSize = util_exports.sizeFromShape(x.shape);
     const xVals = backend2.data.get(x.dataId).values;
@@ -37294,8 +37295,8 @@ Expected: ${expectedFlat}.`);
   };
   var preluImpl = createSimpleBinaryKernelImpl((xValue, aValue) => xValue < 0 ? aValue * xValue : xValue);
   function prelu3(args) {
-    const {inputs, backend: backend2} = args;
-    const {x, alpha} = inputs;
+    const { inputs, backend: backend2 } = args;
+    const { x, alpha } = inputs;
     assertNotComplex([x, alpha], "prelu");
     const aVals = backend2.data.get(x.dataId).values;
     const bVals = backend2.data.get(alpha.dataId).values;
@@ -37327,26 +37328,26 @@ Expected: ${expectedFlat}.`);
   };
   function applyActivation2(backend2, x, activation2, preluActivationWeights, leakyreluAlpha) {
     if (activation2 === "linear") {
-      return identity2({inputs: {x}, backend: backend2});
+      return identity2({ inputs: { x }, backend: backend2 });
     } else if (activation2 === "relu") {
-      return relu2({inputs: {x}, backend: backend2});
+      return relu2({ inputs: { x }, backend: backend2 });
     } else if (activation2 === "elu") {
-      return elu4({inputs: {x}, backend: backend2});
+      return elu4({ inputs: { x }, backend: backend2 });
     } else if (activation2 === "relu6") {
-      return relu62({inputs: {x}, backend: backend2});
+      return relu62({ inputs: { x }, backend: backend2 });
     } else if (activation2 === "prelu") {
-      return prelu3({inputs: {x, alpha: preluActivationWeights}, backend: backend2});
+      return prelu3({ inputs: { x, alpha: preluActivationWeights }, backend: backend2 });
     } else if (activation2 === "leakyrelu") {
-      return leakyRelu2({inputs: {x}, backend: backend2, attrs: {alpha: leakyreluAlpha}});
+      return leakyRelu2({ inputs: { x }, backend: backend2, attrs: { alpha: leakyreluAlpha } });
     } else if (activation2 === "sigmoid") {
-      return sigmoid2({inputs: {x}, backend: backend2});
+      return sigmoid2({ inputs: { x }, backend: backend2 });
     }
     throw new Error(`Activation ${activation2} has not been implemented for the CPU backend.`);
   }
   function reshape3(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {shape} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { shape } = attrs;
     const xSize = util_exports.sizeFromShape(x.shape);
     const $shape = util_exports.inferFromImplicitShape(shape, xSize);
     const $xSize = util_exports.sizeFromShape($shape);
@@ -37359,7 +37360,7 @@ Expected: ${expectedFlat}.`);
       real4.shape = $shape;
       imag4.shape = $shape;
     }
-    return {dataId: x.dataId, shape: $shape, dtype: x.dtype};
+    return { dataId: x.dataId, shape: $shape, dtype: x.dtype };
   }
   var reshapeConfig = {
     kernelName: Reshape,
@@ -37367,9 +37368,9 @@ Expected: ${expectedFlat}.`);
     kernelFunc: reshape3
   };
   function batchMatMul(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {a, b} = inputs;
-    const {transposeA, transposeB} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { a, b } = inputs;
+    const { transposeA, transposeB } = attrs;
     assertNotComplex([a, b], "matMul");
     const aRank = a.shape.length;
     const bRank = b.shape.length;
@@ -37388,8 +37389,8 @@ Expected: ${expectedFlat}.`);
     util_exports.assert(innerShapeA === innerShapeB, () => `Error in matMul: inner shapes (${innerShapeA}) and (${innerShapeB}) of Tensors with shapes ${a.shape} and ${b.shape} and transposeA=${transposeA} and transposeB=${transposeB} must match.`);
     const a3dShape = transposeA ? [batchDimA, innerShapeA, outerShapeA] : [batchDimA, outerShapeA, innerShapeA];
     const b3dShape = transposeB ? [batchDimB, outerShapeB, innerShapeB] : [batchDimB, innerShapeB, outerShapeB];
-    const a3d = reshape3({inputs: {x: a}, backend: backend2, attrs: {shape: a3dShape}});
-    const b3d = reshape3({inputs: {x: b}, backend: backend2, attrs: {shape: b3dShape}});
+    const a3d = reshape3({ inputs: { x: a }, backend: backend2, attrs: { shape: a3dShape } });
+    const b3d = reshape3({ inputs: { x: b }, backend: backend2, attrs: { shape: b3dShape } });
     const sharedDim = transposeA ? a3d.shape[1] : a3d.shape[2];
     const leftDim = transposeA ? a3d.shape[2] : a3d.shape[1];
     const rightDim = transposeB ? b3d.shape[1] : b3d.shape[2];
@@ -37438,17 +37439,17 @@ Expected: ${expectedFlat}.`);
     kernelFunc: batchMatMul
   };
   function _fusedMatMul(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {a, b, bias, preluActivationWeights} = inputs;
-    const {transposeA, transposeB, activation: activation2, leakyreluAlpha} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { a, b, bias, preluActivationWeights } = inputs;
+    const { transposeA, transposeB, activation: activation2, leakyreluAlpha } = attrs;
     let current;
     let addRes;
     let activationRes;
     const intermediates = [];
-    const matMulRes = batchMatMul({inputs: {a, b}, attrs: {transposeA, transposeB}, backend: backend2});
+    const matMulRes = batchMatMul({ inputs: { a, b }, attrs: { transposeA, transposeB }, backend: backend2 });
     current = matMulRes;
     if (bias) {
-      addRes = add4({inputs: {a: current, b: bias}, backend: backend2});
+      addRes = add4({ inputs: { a: current, b: bias }, backend: backend2 });
       intermediates.push(current);
       current = addRes;
     }
@@ -37480,7 +37481,7 @@ Expected: ${expectedFlat}.`);
     kernelFunc: acosh2
   };
   function addN2(args) {
-    const {inputs, backend: backend2} = args;
+    const { inputs, backend: backend2 } = args;
     const tensors = inputs;
     assertNotComplex(inputs, "addN");
     const vals = tensors.map((t) => backend2.data.get(t.dataId).values);
@@ -37500,16 +37501,16 @@ Expected: ${expectedFlat}.`);
     kernelFunc: addN2
   };
   function all2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {axis, keepDims} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { axis, keepDims } = attrs;
     assertNotComplex(x, "all");
     const origAxes = util_exports.parseAxisParam(axis, x.shape);
     let axes = origAxes;
     const permutedAxes = backend_util_exports.getAxesPermutation(axes, x.shape.length);
     let $x = x;
     if (permutedAxes != null) {
-      $x = transpose2({inputs: {x}, backend: backend2, attrs: {perm: permutedAxes}});
+      $x = transpose2({ inputs: { x }, backend: backend2, attrs: { perm: permutedAxes } });
       axes = backend_util_exports.getInnerMostAxes(axes.length, x.shape.length);
     }
     backend_util_exports.assertAxesAreInnerMostDims("all", axes, $x.shape.length);
@@ -37532,7 +37533,7 @@ Expected: ${expectedFlat}.`);
     const result = backend2.makeTensorInfo(outShape, $x.dtype, vals);
     if (keepDims) {
       const expandedShape = backend_util_exports.expandShapeToKeepDim(outShape, origAxes);
-      const reshapedResult = reshape3({inputs: {x: result}, backend: backend2, attrs: {shape: expandedShape}});
+      const reshapedResult = reshape3({ inputs: { x: result }, backend: backend2, attrs: { shape: expandedShape } });
       backend2.disposeIntermediateTensorInfo(result);
       return reshapedResult;
     }
@@ -37544,16 +37545,16 @@ Expected: ${expectedFlat}.`);
     kernelFunc: all2
   };
   function any2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {axis, keepDims} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { axis, keepDims } = attrs;
     assertNotComplex(x, "any");
     const origAxes = util_exports.parseAxisParam(axis, x.shape);
     let axes = origAxes;
     const permutedAxes = backend_util_exports.getAxesPermutation(axes, x.shape.length);
     let $x = x;
     if (permutedAxes != null) {
-      $x = transpose2({inputs: {x}, backend: backend2, attrs: {perm: permutedAxes}});
+      $x = transpose2({ inputs: { x }, backend: backend2, attrs: { perm: permutedAxes } });
       axes = backend_util_exports.getInnerMostAxes(axes.length, x.shape.length);
     }
     backend_util_exports.assertAxesAreInnerMostDims("any", axes, $x.shape.length);
@@ -37576,7 +37577,7 @@ Expected: ${expectedFlat}.`);
     const result = backend2.makeTensorInfo(outShape, $x.dtype, vals);
     if (keepDims) {
       const expandedShape = backend_util_exports.expandShapeToKeepDim(outShape, origAxes);
-      const reshapedResult = reshape3({inputs: {x: result}, backend: backend2, attrs: {shape: expandedShape}});
+      const reshapedResult = reshape3({ inputs: { x: result }, backend: backend2, attrs: { shape: expandedShape } });
       backend2.disposeIntermediateTensorInfo(result);
       return reshapedResult;
     }
@@ -37588,16 +37589,16 @@ Expected: ${expectedFlat}.`);
     kernelFunc: any2
   };
   function argMax2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {axis} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { axis } = attrs;
     assertNotComplex(x, "argMax");
     let axes = util_exports.parseAxisParam(axis, x.shape);
     const permutedAxes = backend_util_exports.getAxesPermutation(axes, x.shape.length);
     let $x = x;
     const intermediateTensorInfos = [];
     if (permutedAxes != null) {
-      $x = transpose2({inputs: {x}, backend: backend2, attrs: {perm: permutedAxes}});
+      $x = transpose2({ inputs: { x }, backend: backend2, attrs: { perm: permutedAxes } });
       intermediateTensorInfos.push($x);
       axes = backend_util_exports.getInnerMostAxes(axes.length, $x.shape.length);
     }
@@ -37630,16 +37631,16 @@ Expected: ${expectedFlat}.`);
     kernelFunc: argMax2
   };
   function argMin2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {axis} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { axis } = attrs;
     assertNotComplex(x, "argMin");
     let axes = util_exports.parseAxisParam(axis, x.shape);
     const permutedAxes = backend_util_exports.getAxesPermutation(axes, x.shape.length);
     let $x = x;
     const intermediateTensorInfos = [];
     if (permutedAxes != null) {
-      $x = transpose2({inputs: {x}, backend: backend2, attrs: {perm: permutedAxes}});
+      $x = transpose2({ inputs: { x }, backend: backend2, attrs: { perm: permutedAxes } });
       intermediateTensorInfos.push($x);
       axes = backend_util_exports.getInnerMostAxes(axes.length, $x.shape.length);
     }
@@ -37955,16 +37956,16 @@ Expected: ${expectedFlat}.`);
     return maxPositions;
   }
   function avgPool2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
     assertNotComplex(x, "avgPool");
-    const {filterSize, strides, pad: pad3, dimRoundingMode} = attrs;
+    const { filterSize, strides, pad: pad3, dimRoundingMode } = attrs;
     const dilations = 1;
     util_exports.assert(backend_util_exports.eitherStridesOrDilationsAreOne(strides, dilations), () => `Error in avgPool: Either strides or dilations must be 1. Got strides ${strides} and dilations '${dilations}'`);
     const convInfo = backend_util_exports.computePool2DInfo(x.shape, filterSize, strides, dilations, pad3, dimRoundingMode);
     let res;
     if (convInfo.filterWidth === 1 && convInfo.filterHeight === 1 && util_exports.arraysEqual(convInfo.inShape, convInfo.outShape)) {
-      res = identity2({inputs: {x}, backend: backend2});
+      res = identity2({ inputs: { x }, backend: backend2 });
     } else {
       const xValues = backend2.data.get(x.dataId).values;
       const strides2 = util_exports.computeStrides(x.shape);
@@ -37979,9 +37980,9 @@ Expected: ${expectedFlat}.`);
     kernelFunc: avgPool2
   };
   function avgPool3D(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {filterSize, strides, pad: pad3, dimRoundingMode, dataFormat} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { filterSize, strides, pad: pad3, dimRoundingMode, dataFormat } = attrs;
     assertNotComplex(x, "avgPool3d");
     const convInfo = backend_util_exports.computePool3DInfo(x.shape, filterSize, strides, 1, pad3, dimRoundingMode, dataFormat);
     const xValues = backend2.data.get(x.dataId).values;
@@ -37994,9 +37995,9 @@ Expected: ${expectedFlat}.`);
     kernelFunc: avgPool3D
   };
   function avgPool3DGrad(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {dy, input: input2} = inputs;
-    const {filterSize, strides, pad: pad3, dimRoundingMode} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { dy, input: input2 } = inputs;
+    const { filterSize, strides, pad: pad3, dimRoundingMode } = attrs;
     assertNotComplex([dy, input2], "avgPool3DGrad");
     const convInfo = backend_util_exports.computePool3DInfo(input2.shape, filterSize, strides, 1, pad3, dimRoundingMode);
     const strideDepth = convInfo.strideDepth;
@@ -38060,11 +38061,11 @@ Expected: ${expectedFlat}.`);
     kernelFunc: avgPool3DGrad
   };
   function avgPoolGrad2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {dy, input: input2} = inputs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { dy, input: input2 } = inputs;
     const x = input2;
     assertNotComplex([dy, input2], "avgPoolGrad");
-    const {filterSize, strides, pad: pad3} = attrs;
+    const { filterSize, strides, pad: pad3 } = attrs;
     const convInfo = backend_util_exports.computePool2DInfo(x.shape, filterSize, strides, 1, pad3);
     const strideHeight = convInfo.strideHeight;
     const strideWidth = convInfo.strideWidth;
@@ -38114,13 +38115,13 @@ Expected: ${expectedFlat}.`);
     kernelFunc: avgPoolGrad2
   };
   function batchNorm2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x, scale: scale22, offset, mean: mean4, variance} = inputs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x, scale: scale22, offset, mean: mean4, variance } = inputs;
     util_exports.assert(mean4.shape.length === variance.shape.length, () => "Batch normalization gradient requires mean and variance to have equal ranks.");
     util_exports.assert(offset == null || mean4.shape.length === offset.shape.length, () => "Batch normalization gradient requires mean and offset to have equal ranks.");
     util_exports.assert(scale22 == null || mean4.shape.length === scale22.shape.length, () => "Batch normalization gradient requires mean and scale to have equal ranks.");
     assertNotComplex([x, mean4, variance, scale22, offset], "batchNorm");
-    let {varianceEpsilon} = attrs;
+    let { varianceEpsilon } = attrs;
     if (varianceEpsilon == null) {
       varianceEpsilon = 1e-3;
     }
@@ -38161,9 +38162,9 @@ Expected: ${expectedFlat}.`);
     kernelFunc: batchNorm2
   };
   function batchToSpaceND2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {blockShape, crops} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { blockShape, crops } = attrs;
     assertNotComplex([x], "batchToSpaceND");
     const prod5 = blockShape.reduce((a, b) => a * b);
     const reshaped = backend_util_exports.getReshaped(x.shape, blockShape, prod5);
@@ -38171,13 +38172,13 @@ Expected: ${expectedFlat}.`);
     const reshapedPermuted = backend_util_exports.getReshapedPermuted(x.shape, blockShape, prod5);
     const sliceBeginCoords = backend_util_exports.getSliceBeginCoords(crops, blockShape.length);
     const sliceSize = backend_util_exports.getSliceSize(reshapedPermuted, crops, blockShape.length);
-    const xReshaped = reshape3({inputs: {x}, backend: backend2, attrs: {shape: reshaped}});
-    const xTransposed = transpose2({inputs: {x: xReshaped}, backend: backend2, attrs: {perm: permuted}});
-    const xTransposedReshaped = reshape3({inputs: {x: xTransposed}, backend: backend2, attrs: {shape: reshapedPermuted}});
+    const xReshaped = reshape3({ inputs: { x }, backend: backend2, attrs: { shape: reshaped } });
+    const xTransposed = transpose2({ inputs: { x: xReshaped }, backend: backend2, attrs: { perm: permuted } });
+    const xTransposedReshaped = reshape3({ inputs: { x: xTransposed }, backend: backend2, attrs: { shape: reshapedPermuted } });
     const result = slice2({
-      inputs: {x: xTransposedReshaped},
+      inputs: { x: xTransposedReshaped },
       backend: backend2,
-      attrs: {begin: sliceBeginCoords, size: sliceSize}
+      attrs: { begin: sliceBeginCoords, size: sliceSize }
     });
     backend2.disposeIntermediateTensorInfo(xReshaped);
     backend2.disposeIntermediateTensorInfo(xTransposed);
@@ -38190,9 +38191,9 @@ Expected: ${expectedFlat}.`);
     kernelFunc: batchToSpaceND2
   };
   function bincount2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x, weights} = inputs;
-    const {size} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x, weights } = inputs;
+    const { size } = attrs;
     const xVals = backend2.data.get(x.dataId).values;
     const weightsVals = backend2.data.get(weights.dataId).values;
     const outVals = bincountImpl(xVals, weightsVals, weights.dtype, weights.shape, size);
@@ -38216,7 +38217,7 @@ Expected: ${expectedFlat}.`);
     kernelFunc: clip
   };
   var complexAbs = (args) => {
-    const {x} = args.inputs;
+    const { x } = args.inputs;
     const cpuBackend = args.backend;
     const resultValues = new Float32Array(util_exports.sizeFromShape(x.shape));
     const complexVals = cpuBackend.data.get(x.dataId);
@@ -38237,8 +38238,8 @@ Expected: ${expectedFlat}.`);
     kernelFunc: complexAbs
   };
   function imag2(args) {
-    const {inputs, backend: backend2} = args;
-    const {input: input2} = inputs;
+    const { inputs, backend: backend2 } = args;
+    const { input: input2 } = inputs;
     const imag4 = backend2.data.get(input2.dataId).complexTensorInfos.imag;
     const imagVal = backend2.data.get(imag4.dataId).values;
     return backend2.makeTensorInfo(imag4.shape, imag4.dtype, imagVal);
@@ -38249,8 +38250,8 @@ Expected: ${expectedFlat}.`);
     kernelFunc: imag2
   };
   function concat2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {axis} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { axis } = attrs;
     const $axis = util_exports.parseAxisParam(axis, inputs[0].shape)[0];
     let outShape = backend_util_exports.computeOutShape(inputs.map((t) => t.shape), $axis);
     if (util_exports.sizeFromShape(outShape) === 0) {
@@ -38258,16 +38259,16 @@ Expected: ${expectedFlat}.`);
     }
     const $inputs = inputs.filter((t) => util_exports.sizeFromShape(t.shape) > 0);
     if ($inputs.length === 1) {
-      return identity2({inputs: {x: $inputs[0]}, backend: backend2});
+      return identity2({ inputs: { x: $inputs[0] }, backend: backend2 });
     }
     const shapes = $inputs.map((t) => t.shape);
     backend_util_exports.assertParamsConsistent(shapes, $axis);
     if ($inputs[0].dtype === "complex64") {
-      const reals = $inputs.map((t) => real2({inputs: {input: t}, backend: backend2}));
-      const imags = $inputs.map((t) => imag2({inputs: {input: t}, backend: backend2}));
-      const realConcated = concat2({inputs: reals, backend: backend2, attrs: {axis: $axis}});
-      const imagConcated = concat2({inputs: imags, backend: backend2, attrs: {axis: $axis}});
-      const result = complex2({inputs: {real: realConcated, imag: imagConcated}, backend: backend2});
+      const reals = $inputs.map((t) => real2({ inputs: { input: t }, backend: backend2 }));
+      const imags = $inputs.map((t) => imag2({ inputs: { input: t }, backend: backend2 }));
+      const realConcated = concat2({ inputs: reals, backend: backend2, attrs: { axis: $axis } });
+      const imagConcated = concat2({ inputs: imags, backend: backend2, attrs: { axis: $axis } });
+      const result = complex2({ inputs: { real: realConcated, imag: imagConcated }, backend: backend2 });
       reals.forEach((r) => backend2.disposeIntermediateTensorInfo(r));
       imags.forEach((i) => backend2.disposeIntermediateTensorInfo(i));
       backend2.disposeIntermediateTensorInfo(realConcated);
@@ -38277,10 +38278,10 @@ Expected: ${expectedFlat}.`);
     const inputs2D = $inputs.map((t) => {
       const innerSize = util_exports.sizeFromShape(t.shape.slice($axis));
       const shape = [-1, innerSize];
-      return reshape3({inputs: {x: t}, backend: backend2, attrs: {shape}});
+      return reshape3({ inputs: { x: t }, backend: backend2, attrs: { shape } });
     });
     const inputsValShapes = inputs2D.map((t) => {
-      return {vals: backend2.data.get(t.dataId).values, shape: t.shape};
+      return { vals: backend2.data.get(t.dataId).values, shape: t.shape };
     });
     outShape = backend_util_exports.computeOutShape(inputs2D.map((t) => t.shape), 1);
     const simplyConcat = inputs2D[0].shape[0] === 1;
@@ -38296,9 +38297,9 @@ Expected: ${expectedFlat}.`);
     kernelFunc: concat2
   };
   function conv2D(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x, filter} = inputs;
-    const {strides, pad: pad3, dataFormat, dilations, dimRoundingMode} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x, filter } = inputs;
+    const { strides, pad: pad3, dataFormat, dilations, dimRoundingMode } = attrs;
     assertNotComplex([x, filter], "conv2d");
     const $dataFormat = backend_util_exports.convertConv2DDataFormat(dataFormat);
     const convInfo = backend_util_exports.computeConv2DInfo(x.shape, filter.shape, strides, dilations, pad3, dimRoundingMode, false, $dataFormat);
@@ -38367,13 +38368,13 @@ Expected: ${expectedFlat}.`);
     kernelFunc: conv2D
   };
   function conv2DBackpropFilter2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x, dy} = inputs;
-    const {strides, pad: pad3, dataFormat, dimRoundingMode, filterShape} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x, dy } = inputs;
+    const { strides, pad: pad3, dataFormat, dimRoundingMode, filterShape } = attrs;
     assertNotComplex([x, dy], "conv2dBackpropFilter");
     const $dataFormat = backend_util_exports.convertConv2DDataFormat(dataFormat);
     const convInfo = backend_util_exports.computeConv2DInfo(x.shape, filterShape, strides, 1, pad3, dimRoundingMode, false, $dataFormat);
-    const {strideHeight, strideWidth, filterHeight, filterWidth} = convInfo;
+    const { strideHeight, strideWidth, filterHeight, filterWidth } = convInfo;
     const isChannelsLast = convInfo.dataFormat === "channelsLast";
     const dW = new TensorBuffer(convInfo.filterShape, "float32");
     const leftPad = convInfo.padInfo.left;
@@ -38417,9 +38418,9 @@ Expected: ${expectedFlat}.`);
     kernelFunc: conv2DBackpropFilter2
   };
   function conv2DBackpropInput2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {dy, filter} = inputs;
-    const {inputShape, strides, pad: pad3, dataFormat, dimRoundingMode} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { dy, filter } = inputs;
+    const { inputShape, strides, pad: pad3, dataFormat, dimRoundingMode } = attrs;
     assertNotComplex([dy, filter], "conv2dBackpropInput");
     const filterStrides = util_exports.computeStrides(filter.shape);
     const dyStrides = util_exports.computeStrides(dy.shape);
@@ -38430,7 +38431,7 @@ Expected: ${expectedFlat}.`);
     const dyValues = backend2.data.get(dy.dataId).values;
     const fltValues = backend2.data.get(filter.dataId).values;
     const [fltS0, fltS1, fltS2] = filterStrides;
-    const {batchSize, filterHeight, filterWidth, inChannels, inHeight, inWidth, outChannels, outHeight, outWidth, strideHeight, strideWidth} = convInfo;
+    const { batchSize, filterHeight, filterWidth, inChannels, inHeight, inWidth, outChannels, outHeight, outWidth, strideHeight, strideWidth } = convInfo;
     $dataFormat = convInfo.dataFormat;
     const topPad = filterHeight - 1 - convInfo.padInfo.top;
     const leftPad = filterWidth - 1 - convInfo.padInfo.left;
@@ -38481,12 +38482,12 @@ Expected: ${expectedFlat}.`);
     kernelFunc: conv2DBackpropInput2
   };
   function conv3D(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x, filter} = inputs;
-    const {strides, pad: pad3, dilations} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x, filter } = inputs;
+    const { strides, pad: pad3, dilations } = attrs;
     assertNotComplex([x, filter], "conv3d");
     const convInfo = backend_util_exports.computeConv3DInfo(x.shape, filter.shape, strides, dilations, pad3);
-    const {filterDepth, filterHeight, filterWidth, dilationDepth, dilationHeight, dilationWidth, padInfo} = convInfo;
+    const { filterDepth, filterHeight, filterWidth, dilationDepth, dilationHeight, dilationWidth, padInfo } = convInfo;
     const padFront = padInfo.front;
     const padLeft = padInfo.left;
     const padTop = padInfo.top;
@@ -38552,9 +38553,9 @@ Expected: ${expectedFlat}.`);
     kernelFunc: conv3D
   };
   function conv3DBackpropFilterV2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x, dy} = inputs;
-    const {strides, pad: pad3, filterShape} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x, dy } = inputs;
+    const { strides, pad: pad3, filterShape } = attrs;
     assertNotComplex([x, dy], "conv3dBackpropFilterV2");
     const xStrides = util_exports.computeStrides(x.shape);
     const dyStrides = util_exports.computeStrides(dy.shape);
@@ -38625,9 +38626,9 @@ Expected: ${expectedFlat}.`);
     kernelFunc: conv3DBackpropFilterV2
   };
   function conv3DBackpropInputV2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {dy, filter} = inputs;
-    const {pad: pad3, strides, inputShape} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { dy, filter } = inputs;
+    const { pad: pad3, strides, inputShape } = attrs;
     assertNotComplex([dy], "conv3dBackpropInputV2");
     const dyStrides = util_exports.computeStrides(dy.shape);
     const filterStrides = util_exports.computeStrides(filter.shape);
@@ -38639,7 +38640,7 @@ Expected: ${expectedFlat}.`);
     const [dyS0, dyS1, dyS2, dyS3] = dyStrides;
     const fltValues = backend2.data.get(filter.dataId).values;
     const [fltS0, fltS1, fltS2, fltS3] = filterStrides;
-    const {batchSize, filterDepth, filterHeight, filterWidth, inChannels, inDepth, inHeight, inWidth, outChannels, outDepth, outHeight, outWidth, strideDepth, strideHeight, strideWidth} = convInfo;
+    const { batchSize, filterDepth, filterHeight, filterWidth, inChannels, inDepth, inHeight, inWidth, outChannels, outDepth, outHeight, outWidth, strideDepth, strideHeight, strideWidth } = convInfo;
     const frontPad = filterDepth - 1 - convInfo.padInfo.front;
     const topPad = filterHeight - 1 - convInfo.padInfo.top;
     const leftPad = filterWidth - 1 - convInfo.padInfo.left;
@@ -38700,9 +38701,9 @@ Expected: ${expectedFlat}.`);
     kernelFunc: cosh2
   };
   function cropAndResize2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {image: image3, boxes, boxInd} = inputs;
-    const {cropSize, method, extrapolationValue} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { image: image3, boxes, boxInd } = inputs;
+    const { cropSize, method, extrapolationValue } = attrs;
     const [batch, imageHeight, imageWidth, numChannels] = image3.shape;
     const numBoxes = boxes.shape[0];
     const [cropHeight, cropWidth] = cropSize;
@@ -38795,14 +38796,14 @@ Expected: ${expectedFlat}.`);
     kernelFunc: cropAndResize2
   };
   function cumsum2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {axis, exclusive, reverse: reverse5} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { axis, exclusive, reverse: reverse5 } = attrs;
     assertNotComplex(x, "cumsum");
     const permutation = backend_util_exports.getAxesPermutation([axis], x.shape.length);
     let $x = x;
     if (permutation != null) {
-      $x = transpose2({inputs: {x}, backend: backend2, attrs: {perm: permutation}});
+      $x = transpose2({ inputs: { x }, backend: backend2, attrs: { perm: permutation } });
     }
     const permutedAxis = backend_util_exports.getInnerMostAxes(1, x.shape.length)[0];
     if (permutedAxis !== $x.shape.length - 1) {
@@ -38827,7 +38828,7 @@ Expected: ${expectedFlat}.`);
     const result = backend2.makeTensorInfo($x.shape, resultDtype, vals);
     if (permutation != null) {
       const reversePermutation = backend_util_exports.getUndoAxesPermutation(permutation);
-      const reverseTransposedResult = transpose2({inputs: {x: result}, backend: backend2, attrs: {perm: reversePermutation}});
+      const reverseTransposedResult = transpose2({ inputs: { x: result }, backend: backend2, attrs: { perm: reversePermutation } });
       backend2.disposeIntermediateTensorInfo(result);
       backend2.disposeIntermediateTensorInfo($x);
       return reverseTransposedResult;
@@ -38840,9 +38841,9 @@ Expected: ${expectedFlat}.`);
     kernelFunc: cumsum2
   };
   function denseBincount2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x, weights} = inputs;
-    const {size, binaryOutput} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x, weights } = inputs;
+    const { size, binaryOutput } = attrs;
     if (x.shape.length === 1) {
       const xVals = backend2.data.get(x.dataId).values;
       const weightsVals = backend2.data.get(weights.dataId).values;
@@ -38862,9 +38863,9 @@ Expected: ${expectedFlat}.`);
     kernelFunc: denseBincount2
   };
   function depthToSpace2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {blockSize, dataFormat} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { blockSize, dataFormat } = attrs;
     util_exports.assert(dataFormat === "NHWC", () => `Only NHWC dataFormat supported on CPU for depthToSpace. Got ${dataFormat}`);
     util_exports.assert(blockSize > 1, () => `blockSize should be > 1 for depthToSpace, but was: ${blockSize}`);
     const batchSize = x.shape[0];
@@ -38901,9 +38902,9 @@ Expected: ${expectedFlat}.`);
     kernelFunc: depthToSpace2
   };
   function depthwiseConv2dNative(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x, filter} = inputs;
-    const {strides, pad: pad3, dilations, dimRoundingMode} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x, filter } = inputs;
+    const { strides, pad: pad3, dilations, dimRoundingMode } = attrs;
     assertNotComplex([x, filter], "depthwiseConv2DNative");
     const xStrides = util_exports.computeStrides(x.shape);
     const filterStrides = util_exports.computeStrides(filter.shape);
@@ -38913,7 +38914,7 @@ Expected: ${expectedFlat}.`);
     }
     util_exports.assert(backend_util_exports.eitherStridesOrDilationsAreOne(strides, $dilations), () => `Error in depthwiseConv2d: Either strides or dilations must be 1. Got strides ${strides} and dilations '${$dilations}'`);
     const convInfo = backend_util_exports.computeConv2DInfo(x.shape, filter.shape, strides, $dilations, pad3, dimRoundingMode, true);
-    const {filterHeight, filterWidth, dilationHeight, dilationWidth, padInfo} = convInfo;
+    const { filterHeight, filterWidth, dilationHeight, dilationWidth, padInfo } = convInfo;
     const padLeft = padInfo.left;
     const padTop = padInfo.top;
     const chMul = convInfo.outChannels / convInfo.inChannels;
@@ -38967,12 +38968,12 @@ Expected: ${expectedFlat}.`);
     kernelFunc: depthwiseConv2dNative
   };
   function depthwiseConv2dNativeBackpropFilter2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x, dy} = inputs;
-    const {strides, dilations, pad: pad3, dimRoundingMode, filterShape} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x, dy } = inputs;
+    const { strides, dilations, pad: pad3, dimRoundingMode, filterShape } = attrs;
     assertNotComplex([x, dy], "depthwiseConv2dNativeBackpropFilter");
     const convInfo = backend_util_exports.computeConv2DInfo(x.shape, filterShape, strides, dilations, pad3, dimRoundingMode, true);
-    const {strideHeight, strideWidth, filterHeight, filterWidth} = convInfo;
+    const { strideHeight, strideWidth, filterHeight, filterWidth } = convInfo;
     const dW = new TensorBuffer(convInfo.filterShape, "float32");
     const leftPad = convInfo.padInfo.left;
     const topPad = convInfo.padInfo.top;
@@ -39012,9 +39013,9 @@ Expected: ${expectedFlat}.`);
     kernelFunc: depthwiseConv2dNativeBackpropFilter2
   };
   function depthwiseConv2dNativeBackpropInput2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {dy, filter} = inputs;
-    const {strides, dilations, pad: pad3, dimRoundingMode, inputShape} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { dy, filter } = inputs;
+    const { strides, dilations, pad: pad3, dimRoundingMode, inputShape } = attrs;
     assertNotComplex([dy, filter], "depthwiseConv2DNativeBackpropInput");
     const dyStrides = util_exports.computeStrides(dy.shape);
     const filterStrides = util_exports.computeStrides(filter.shape);
@@ -39026,7 +39027,7 @@ Expected: ${expectedFlat}.`);
     const [dyS0, dyS1, dyS2] = dyStrides;
     const fltValues = backend2.data.get(filter.dataId).values;
     const [fltS0, fltS1, fltS2] = filterStrides;
-    const {batchSize, filterHeight, filterWidth, inChannels, inHeight, inWidth, outChannels, outHeight, outWidth, strideHeight, strideWidth} = convInfo;
+    const { batchSize, filterHeight, filterWidth, inChannels, inHeight, inWidth, outChannels, outHeight, outWidth, strideHeight, strideWidth } = convInfo;
     const topPad = filterHeight - 1 - convInfo.padInfo.top;
     const leftPad = filterWidth - 1 - convInfo.padInfo.left;
     const chMul = outChannels / inChannels;
@@ -39068,8 +39069,8 @@ Expected: ${expectedFlat}.`);
     kernelFunc: depthwiseConv2dNativeBackpropInput2
   };
   function diag2(args) {
-    const {inputs, backend: backend2} = args;
-    const {x} = inputs;
+    const { inputs, backend: backend2 } = args;
+    const { x } = inputs;
     const xSize = util_exports.sizeFromShape(x.shape);
     const xVals = backend2.data.get(x.dataId).values;
     const outBuf = buffer([xSize, xSize], x.dtype);
@@ -39088,15 +39089,15 @@ Expected: ${expectedFlat}.`);
   var dilation2dConfig = {
     kernelName: Dilation2D,
     backendName: "cpu",
-    kernelFunc: ({inputs, backend: backend2, attrs}) => {
-      const {x, filter} = inputs;
-      const {strides, pad: pad3, dilations} = attrs;
+    kernelFunc: ({ inputs, backend: backend2, attrs }) => {
+      const { x, filter } = inputs;
+      const { strides, pad: pad3, dilations } = attrs;
       const cpuBackend = backend2;
       const xVals = cpuBackend.data.get(x.dataId).values;
       const xRank = x.shape.length;
       const filterVals = cpuBackend.data.get(filter.dataId).values;
       const filterRank = filter.shape.length;
-      const {batchSize, inHeight, inWidth, inChannels, outHeight, outWidth, padInfo, strideHeight, strideWidth, filterHeight, filterWidth, dilationHeight, dilationWidth, outShape} = backend_util_exports.computeDilation2DInfo(x.shape, filter.shape, strides, pad3, "NHWC", dilations);
+      const { batchSize, inHeight, inWidth, inChannels, outHeight, outWidth, padInfo, strideHeight, strideWidth, filterHeight, filterWidth, dilationHeight, dilationWidth, outShape } = backend_util_exports.computeDilation2DInfo(x.shape, filter.shape, strides, pad3, "NHWC", dilations);
       const outSize = util_exports.sizeFromShape(outShape);
       const outRank = outShape.length;
       const outputVals = util_exports.getArrayFromDType(x.dtype, outSize);
@@ -39130,19 +39131,19 @@ Expected: ${expectedFlat}.`);
         }
       }
       const dataId = cpuBackend.write(util_exports.toTypedArray(outputVals, x.dtype), outShape, x.dtype);
-      return {dataId, shape: outShape, dtype: x.dtype};
+      return { dataId, shape: outShape, dtype: x.dtype };
     }
   };
   var dilation2dBackpropFilterConfig = {
     kernelName: Dilation2DBackpropFilter,
     backendName: "cpu",
-    kernelFunc: ({inputs, backend: backend2, attrs}) => {
-      const {x, filter, dy} = inputs;
-      const {strides, pad: pad3, dilations} = attrs;
+    kernelFunc: ({ inputs, backend: backend2, attrs }) => {
+      const { x, filter, dy } = inputs;
+      const { strides, pad: pad3, dilations } = attrs;
       const cpuBackend = backend2;
       const $x = util_exports.toNestedArray(x.shape, cpuBackend.data.get(x.dataId).values);
       const $filter = util_exports.toNestedArray(filter.shape, cpuBackend.data.get(filter.dataId).values);
-      const {batchSize, inHeight, inWidth, inChannels, outHeight, outWidth, padInfo, strideHeight, strideWidth, filterHeight, filterWidth, dilationHeight, dilationWidth, outShape} = backend_util_exports.computeDilation2DInfo(x.shape, filter.shape, strides, pad3, "NHWC", dilations);
+      const { batchSize, inHeight, inWidth, inChannels, outHeight, outWidth, padInfo, strideHeight, strideWidth, filterHeight, filterWidth, dilationHeight, dilationWidth, outShape } = backend_util_exports.computeDilation2DInfo(x.shape, filter.shape, strides, pad3, "NHWC", dilations);
       util_exports.assert(dy.rank === outShape.length, () => `Error in ${Dilation2DBackpropFilter}, dy must have the same rank as output ${outShape.length}, but got ${dy.rank}`);
       const $dy = util_exports.toNestedArray(outShape, cpuBackend.data.get(dy.dataId).values);
       const gradients = util_exports.makeZerosNestedTypedArray(filter.shape, filter.dtype);
@@ -39177,19 +39178,19 @@ Expected: ${expectedFlat}.`);
         }
       }
       const dataId = cpuBackend.write(util_exports.toTypedArray(gradients, x.dtype), filter.shape, filter.dtype);
-      return {dataId, shape: filter.shape, dtype: filter.dtype};
+      return { dataId, shape: filter.shape, dtype: filter.dtype };
     }
   };
   var dilation2dBackpropInputConfig = {
     kernelName: Dilation2DBackpropInput,
     backendName: "cpu",
-    kernelFunc: ({inputs, backend: backend2, attrs}) => {
-      const {x, filter, dy} = inputs;
-      const {strides, pad: pad3, dilations} = attrs;
+    kernelFunc: ({ inputs, backend: backend2, attrs }) => {
+      const { x, filter, dy } = inputs;
+      const { strides, pad: pad3, dilations } = attrs;
       const cpuBackend = backend2;
       const $x = util_exports.toNestedArray(x.shape, cpuBackend.data.get(x.dataId).values);
       const $filter = util_exports.toNestedArray(filter.shape, cpuBackend.data.get(filter.dataId).values);
-      const {batchSize, inHeight, inWidth, inChannels, outHeight, outWidth, padInfo, strideHeight, strideWidth, filterHeight, filterWidth, dilationHeight, dilationWidth, outShape} = backend_util_exports.computeDilation2DInfo(x.shape, filter.shape, strides, pad3, "NHWC", dilations);
+      const { batchSize, inHeight, inWidth, inChannels, outHeight, outWidth, padInfo, strideHeight, strideWidth, filterHeight, filterWidth, dilationHeight, dilationWidth, outShape } = backend_util_exports.computeDilation2DInfo(x.shape, filter.shape, strides, pad3, "NHWC", dilations);
       util_exports.assert(dy.rank === outShape.length, () => `Error in ${Dilation2DBackpropInput}, dy must have the same rank as output ${outShape.length}, but got ${dy.rank}`);
       const $dy = util_exports.toNestedArray(outShape, cpuBackend.data.get(dy.dataId).values);
       const gradients = util_exports.makeZerosNestedTypedArray(x.shape, x.dtype);
@@ -39224,19 +39225,19 @@ Expected: ${expectedFlat}.`);
         }
       }
       const dataId = cpuBackend.write(util_exports.toTypedArray(gradients, x.dtype), x.shape, x.dtype);
-      return {dataId, shape: x.shape, dtype: x.dtype};
+      return { dataId, shape: x.shape, dtype: x.dtype };
     }
   };
   function sum3(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {axis, keepDims} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { axis, keepDims } = attrs;
     assertNotComplex(x, "sum");
     let $x;
     if (x.dtype === "bool") {
-      $x = cast3({inputs: {x}, backend: backend2, attrs: {dtype: "int32"}});
+      $x = cast3({ inputs: { x }, backend: backend2, attrs: { dtype: "int32" } });
     } else {
-      $x = identity2({inputs: {x}, backend: backend2});
+      $x = identity2({ inputs: { x }, backend: backend2 });
     }
     const xRank = $x.shape.length;
     const axes = util_exports.parseAxisParam(axis, $x.shape);
@@ -39244,7 +39245,7 @@ Expected: ${expectedFlat}.`);
     let reductionAxes = axes;
     let permutedX = $x;
     if (permutation != null) {
-      permutedX = transpose2({inputs: {x: $x}, backend: backend2, attrs: {perm: permutation}});
+      permutedX = transpose2({ inputs: { x: $x }, backend: backend2, attrs: { perm: permutation } });
       reductionAxes = backend_util_exports.getInnerMostAxes(reductionAxes.length, xRank);
     }
     backend_util_exports.assertAxesAreInnerMostDims("sum", reductionAxes, permutedX.shape.length);
@@ -39265,7 +39266,7 @@ Expected: ${expectedFlat}.`);
     if (keepDims) {
       const newShape = backend_util_exports.expandShapeToKeepDim(result.shape, axes);
       const oldResult = result;
-      result = reshape3({inputs: {x: result}, backend: backend2, attrs: {shape: newShape}});
+      result = reshape3({ inputs: { x: result }, backend: backend2, attrs: { shape: newShape } });
       backend2.disposeIntermediateTensorInfo(oldResult);
     }
     backend2.disposeIntermediateTensorInfo($x);
@@ -39280,24 +39281,24 @@ Expected: ${expectedFlat}.`);
     kernelFunc: sum3
   };
   function einsum2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {equation} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { equation } = attrs;
     const tensors = inputs;
-    const {allDims, summedDims, idDims} = backend_util_exports.decodeEinsumEquation(equation, tensors.length);
+    const { allDims, summedDims, idDims } = backend_util_exports.decodeEinsumEquation(equation, tensors.length);
     backend_util_exports.checkEinsumDimSizes(allDims.length, idDims, tensors);
-    const {path, steps} = backend_util_exports.getEinsumComputePath(summedDims, idDims);
+    const { path, steps } = backend_util_exports.getEinsumComputePath(summedDims, idDims);
     const nSteps = steps.length;
     let out = null;
     let numDimsRemaining = allDims.length;
     const tensorsToDispose = [];
     for (let i = 0; i < nSteps; ++i) {
       for (const idTerm of steps[i]) {
-        const {permutationIndices: perm, expandDims: dimsToExpand} = backend_util_exports.getEinsumPermutation(numDimsRemaining, idDims[idTerm]);
+        const { permutationIndices: perm, expandDims: dimsToExpand } = backend_util_exports.getEinsumPermutation(numDimsRemaining, idDims[idTerm]);
         let x;
         if (backend_util_exports.isIdentityPermutation(perm)) {
           x = tensors[idTerm];
         } else {
-          x = transpose2({inputs: {x: tensors[idTerm]}, backend: backend2, attrs: {perm}});
+          x = transpose2({ inputs: { x: tensors[idTerm] }, backend: backend2, attrs: { perm } });
           tensorsToDispose.push(x);
         }
         const targetShape = x.shape.slice();
@@ -39305,20 +39306,20 @@ Expected: ${expectedFlat}.`);
           targetShape.splice(dimsToExpand[k], 0, 1);
         }
         if (!util_exports.arraysEqual(x.shape, targetShape)) {
-          x = reshape3({inputs: {x}, backend: backend2, attrs: {shape: targetShape}});
+          x = reshape3({ inputs: { x }, backend: backend2, attrs: { shape: targetShape } });
           tensorsToDispose.push(x);
         }
         if (out === null) {
           out = x;
         } else {
-          out = multiply2({inputs: {a: x, b: out}, backend: backend2});
+          out = multiply2({ inputs: { a: x, b: out }, backend: backend2 });
           tensorsToDispose.push(out);
         }
       }
       if (i < nSteps - 1) {
         if (path[i] >= 0) {
           out = sum3({
-            inputs: {x: out},
+            inputs: { x: out },
             backend: backend2,
             attrs: {
               axis: path[i] - (allDims.length - numDimsRemaining),
@@ -39344,8 +39345,8 @@ Expected: ${expectedFlat}.`);
     kernelFunc: einsum2
   };
   function eluGrad(args) {
-    const {inputs, backend: backend2} = args;
-    const {dy, y} = inputs;
+    const { inputs, backend: backend2 } = args;
+    const { dy, y } = inputs;
     assertNotComplex([dy, y], "eluGrad");
     const resultValues = new Float32Array(util_exports.sizeFromShape(y.shape));
     const values = backend2.data.get(y.dataId).values;
@@ -39390,9 +39391,9 @@ Expected: ${expectedFlat}.`);
     kernelFunc: erf2
   };
   function expandDims3(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {input: input2} = inputs;
-    const {dim} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { input: input2 } = inputs;
+    const { dim } = attrs;
     const inputRank = input2.shape.length;
     const newShape = input2.shape.slice();
     let $dim = dim;
@@ -39401,7 +39402,7 @@ Expected: ${expectedFlat}.`);
       $dim = inputRank + dim + 1;
     }
     newShape.splice($dim, 0, 1);
-    return reshape3({inputs: {x: input2}, backend: backend2, attrs: {shape: newShape}});
+    return reshape3({ inputs: { x: input2 }, backend: backend2, attrs: { shape: newShape } });
   }
   var expandDimsConfig = {
     kernelName: ExpandDims,
@@ -39428,17 +39429,17 @@ Expected: ${expectedFlat}.`);
     const resultImag = util_exports.getTypedArrayFromDType("float32", resultSize);
     for (let b = 0; b < batch; b++) {
       const r = slice2({
-        inputs: {x: real2D},
+        inputs: { x: real2D },
         backend: cpuBackend,
-        attrs: {begin: [b, 0], size: [1, innerDim]}
+        attrs: { begin: [b, 0], size: [1, innerDim] }
       });
       const i = slice2({
-        inputs: {x: imag2D},
+        inputs: { x: imag2D },
         backend: cpuBackend,
-        attrs: {begin: [b, 0], size: [1, innerDim]}
+        attrs: { begin: [b, 0], size: [1, innerDim] }
       });
-      const input3 = complex2({inputs: {real: r, imag: i}, backend: cpuBackend});
-      const {real: real4, imag: imag4} = fftImpl(input3, inverse, cpuBackend);
+      const input3 = complex2({ inputs: { real: r, imag: i }, backend: cpuBackend });
+      const { real: real4, imag: imag4 } = fftImpl(input3, inverse, cpuBackend);
       const res = backend_util_exports.mergeRealAndImagArrays(real4, imag4);
       for (let d = 0; d < innerDim; d++) {
         const c = backend_util_exports.getComplexWithIndex(res, d);
@@ -39451,7 +39452,7 @@ Expected: ${expectedFlat}.`);
     }
     const $realInfo = cpuBackend.makeTensorInfo(resultShape, "float32", resultReal);
     const $imagInfo = cpuBackend.makeTensorInfo(resultShape, "float32", resultImag);
-    const result = complex2({inputs: {real: $realInfo, imag: $imagInfo}, backend: cpuBackend});
+    const result = complex2({ inputs: { real: $realInfo, imag: $imagInfo }, backend: cpuBackend });
     cpuBackend.disposeIntermediateTensorInfo($realInfo);
     cpuBackend.disposeIntermediateTensorInfo($imagInfo);
     return result;
@@ -39468,9 +39469,9 @@ Expected: ${expectedFlat}.`);
         const realInfo = cpuBackend.makeTensorInfo(resultShape, "float32", result.real);
         const imagInfo = cpuBackend.makeTensorInfo(resultShape, "float32", result.imag);
         const sizeInfo = cpuBackend.makeTensorInfo([], "float32", util_exports.createScalarValue(inputSize, "float32"));
-        const sizeInfoCopy = identity2({inputs: {x: sizeInfo}, backend: cpuBackend});
-        const divRealInfo = realDivConfig.kernelFunc({inputs: {a: realInfo, b: sizeInfo}, backend: cpuBackend});
-        const divImagInfo = realDivConfig.kernelFunc({inputs: {a: imagInfo, b: sizeInfoCopy}, backend: cpuBackend});
+        const sizeInfoCopy = identity2({ inputs: { x: sizeInfo }, backend: cpuBackend });
+        const divRealInfo = realDivConfig.kernelFunc({ inputs: { a: realInfo, b: sizeInfo }, backend: cpuBackend });
+        const divImagInfo = realDivConfig.kernelFunc({ inputs: { a: imagInfo, b: sizeInfoCopy }, backend: cpuBackend });
         const divRealVals = cpuBackend.data.get(divRealInfo.dataId).values;
         const divImagVals = cpuBackend.data.get(divImagInfo.dataId).values;
         cpuBackend.disposeIntermediateTensorInfo(realInfo);
@@ -39479,7 +39480,7 @@ Expected: ${expectedFlat}.`);
         cpuBackend.disposeIntermediateTensorInfo(sizeInfoCopy);
         cpuBackend.disposeIntermediateTensorInfo(divRealInfo);
         cpuBackend.disposeIntermediateTensorInfo(divImagInfo);
-        return {real: divRealVals, imag: divImagVals};
+        return { real: divRealVals, imag: divImagVals };
       }
       return result;
     } else {
@@ -39493,7 +39494,7 @@ Expected: ${expectedFlat}.`);
   }
   function fftRadix2(realVals, imagVals, size, inverse, cpuBackend) {
     if (size === 1) {
-      return {real: realVals, imag: imagVals};
+      return { real: realVals, imag: imagVals };
     }
     const data = backend_util_exports.mergeRealAndImagArrays(realVals, imagVals);
     const half = size / 2;
@@ -39503,14 +39504,14 @@ Expected: ${expectedFlat}.`);
     const evenShape = [evenRealVals.length];
     const evenRealInfo = cpuBackend.makeTensorInfo(evenShape, "float32", evenRealVals);
     const evenImagInfo = cpuBackend.makeTensorInfo(evenShape, "float32", evenImagVals);
-    const evenTensorInfo = complex2({inputs: {real: evenRealInfo, imag: evenImagInfo}, backend: cpuBackend});
+    const evenTensorInfo = complex2({ inputs: { real: evenRealInfo, imag: evenImagInfo }, backend: cpuBackend });
     const oddComplex = backend_util_exports.complexWithOddIndex(data);
     const oddRealVals = oddComplex.real;
     const oddImagVals = oddComplex.imag;
     const oddShape = [oddRealVals.length];
     const oddRealInfo = cpuBackend.makeTensorInfo(oddShape, "float32", oddRealVals);
     const oddImagInfo = cpuBackend.makeTensorInfo(oddShape, "float32", oddImagVals);
-    const oddTensorInfo = complex2({inputs: {real: oddRealInfo, imag: oddImagInfo}, backend: cpuBackend});
+    const oddTensorInfo = complex2({ inputs: { real: oddRealInfo, imag: oddImagInfo }, backend: cpuBackend });
     const $evenComplex = fftRadix2(evenRealVals, evenImagVals, half, inverse, cpuBackend);
     const $evenRealVals = $evenComplex.real;
     const $evenImagVals = $evenComplex.imag;
@@ -39518,7 +39519,7 @@ Expected: ${expectedFlat}.`);
     const $evenRealInfo = cpuBackend.makeTensorInfo($evenShape, "float32", $evenRealVals);
     const $evenImagInfo = cpuBackend.makeTensorInfo($evenShape, "float32", $evenImagVals);
     const $evenTensorInfo = complex2({
-      inputs: {real: $evenRealInfo, imag: $evenImagInfo},
+      inputs: { real: $evenRealInfo, imag: $evenImagInfo },
       backend: cpuBackend
     });
     const $oddComplex = fftRadix2(oddRealVals, oddImagVals, half, inverse, cpuBackend);
@@ -39527,34 +39528,34 @@ Expected: ${expectedFlat}.`);
     const $oddShape = [$oddRealVals.length];
     const $oddRealInfo = cpuBackend.makeTensorInfo($oddShape, "float32", $oddRealVals);
     const $oddImagInfo = cpuBackend.makeTensorInfo($oddShape, "float32", $oddImagVals);
-    const $oddTensorInfo = complex2({inputs: {real: $oddRealInfo, imag: $oddImagInfo}, backend: cpuBackend});
+    const $oddTensorInfo = complex2({ inputs: { real: $oddRealInfo, imag: $oddImagInfo }, backend: cpuBackend });
     const e = backend_util_exports.exponents(size, inverse);
     const eShape = [e.real.length];
     const eRealInfo = cpuBackend.makeTensorInfo(eShape, "float32", e.real);
     const eImagInfo = cpuBackend.makeTensorInfo(eShape, "float32", e.imag);
-    const complexInfo = complex2({inputs: {real: eRealInfo, imag: eImagInfo}, backend: cpuBackend});
-    const exponentInfo = multiply2({inputs: {a: complexInfo, b: $oddTensorInfo}, backend: cpuBackend});
+    const complexInfo = complex2({ inputs: { real: eRealInfo, imag: eImagInfo }, backend: cpuBackend });
+    const exponentInfo = multiply2({ inputs: { a: complexInfo, b: $oddTensorInfo }, backend: cpuBackend });
     const addPart = add4({
-      inputs: {a: $evenTensorInfo, b: exponentInfo},
+      inputs: { a: $evenTensorInfo, b: exponentInfo },
       backend: cpuBackend
     });
     const subPart = sub2({
-      inputs: {a: $evenTensorInfo, b: exponentInfo},
+      inputs: { a: $evenTensorInfo, b: exponentInfo },
       backend: cpuBackend
     });
-    const addPartReal = real2({inputs: {input: addPart}, backend: cpuBackend});
-    const subPartReal = real2({inputs: {input: subPart}, backend: cpuBackend});
-    const addPartImag = imag2({inputs: {input: addPart}, backend: cpuBackend});
-    const subPartImag = imag2({inputs: {input: subPart}, backend: cpuBackend});
+    const addPartReal = real2({ inputs: { input: addPart }, backend: cpuBackend });
+    const subPartReal = real2({ inputs: { input: subPart }, backend: cpuBackend });
+    const addPartImag = imag2({ inputs: { input: addPart }, backend: cpuBackend });
+    const subPartImag = imag2({ inputs: { input: subPart }, backend: cpuBackend });
     const $real = concat2({
       inputs: [addPartReal, subPartReal],
       backend: cpuBackend,
-      attrs: {axis: 0}
+      attrs: { axis: 0 }
     });
     const $imag = concat2({
       inputs: [addPartImag, subPartImag],
       backend: cpuBackend,
-      attrs: {axis: 0}
+      attrs: { axis: 0 }
     });
     const $realVals = cpuBackend.data.get($real.dataId).values;
     const $imagVals = cpuBackend.data.get($imag.dataId).values;
@@ -39582,7 +39583,7 @@ Expected: ${expectedFlat}.`);
     cpuBackend.disposeIntermediateTensorInfo(subPartImag);
     cpuBackend.disposeIntermediateTensorInfo($real);
     cpuBackend.disposeIntermediateTensorInfo($imag);
-    return {real: $realVals, imag: $imagVals};
+    return { real: $realVals, imag: $imagVals };
   }
   function fourierTransformByMatmul(data, size, inverse) {
     const ret = new Float32Array(size * 2);
@@ -39604,18 +39605,18 @@ Expected: ${expectedFlat}.`);
     return ret;
   }
   function fft2(args) {
-    const {inputs, backend: backend2} = args;
-    const {input: input2} = inputs;
+    const { inputs, backend: backend2 } = args;
+    const { input: input2 } = inputs;
     const inputSize = util_exports.sizeFromShape(input2.shape);
     const innerDimensionSize = input2.shape[input2.shape.length - 1];
     const batch = inputSize / innerDimensionSize;
     const input2D = reshape3({
-      inputs: {x: input2},
+      inputs: { x: input2 },
       backend: backend2,
-      attrs: {shape: [batch, innerDimensionSize]}
+      attrs: { shape: [batch, innerDimensionSize] }
     });
     const result = fftBatch(input2D, false, backend2);
-    const resultReshaped = reshape3({inputs: {x: result}, backend: backend2, attrs: {shape: input2.shape}});
+    const resultReshaped = reshape3({ inputs: { x: result }, backend: backend2, attrs: { shape: input2.shape } });
     backend2.disposeIntermediateTensorInfo(input2D);
     backend2.disposeIntermediateTensorInfo(result);
     return resultReshaped;
@@ -39626,8 +39627,8 @@ Expected: ${expectedFlat}.`);
     kernelFunc: fft2
   };
   function fill2(args) {
-    const {backend: backend2, attrs} = args;
-    const {shape, value, dtype} = attrs;
+    const { backend: backend2, attrs } = args;
+    const { shape, value, dtype } = attrs;
     const $dtype = dtype || util_exports.inferDtype(value);
     const values = util_exports.getArrayFromDType($dtype, util_exports.sizeFromShape(shape));
     fillValues(values, value, $dtype);
@@ -39648,8 +39649,8 @@ Expected: ${expectedFlat}.`);
   var flipLeftRightConfig = {
     kernelName: FlipLeftRight,
     backendName: "cpu",
-    kernelFunc: ({inputs, attrs, backend: backend2}) => {
-      const {image: image3} = inputs;
+    kernelFunc: ({ inputs, attrs, backend: backend2 }) => {
+      const { image: image3 } = inputs;
       const cpuBackend = backend2;
       const output = util_exports.getTypedArrayFromDType(image3.dtype, util_exports.sizeFromShape(image3.shape));
       const [batch, imageHeight, imageWidth, numChannels] = image3.shape;
@@ -39677,7 +39678,7 @@ Expected: ${expectedFlat}.`);
         }
       }
       const dataId = cpuBackend.write(output, image3.shape, image3.dtype);
-      return {dataId, shape: image3.shape, dtype: image3.dtype};
+      return { dataId, shape: image3.shape, dtype: image3.dtype };
     }
   };
   var floorDivImpl = createSimpleBinaryKernelImpl((a, b) => Math.floor(a / b));
@@ -39688,17 +39689,17 @@ Expected: ${expectedFlat}.`);
     kernelFunc: floorDiv2
   };
   function fusedConv2D(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x, filter, bias, preluActivationWeights} = inputs;
-    const {strides, pad: pad3, dataFormat, dilations, dimRoundingMode, activation: activation2, leakyreluAlpha} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x, filter, bias, preluActivationWeights } = inputs;
+    const { strides, pad: pad3, dataFormat, dilations, dimRoundingMode, activation: activation2, leakyreluAlpha } = attrs;
     let result = conv2D({
-      inputs: {x, filter},
+      inputs: { x, filter },
       backend: backend2,
-      attrs: {strides, pad: pad3, dataFormat, dilations, dimRoundingMode}
+      attrs: { strides, pad: pad3, dataFormat, dilations, dimRoundingMode }
     });
     if (bias) {
       const resultOld = result;
-      result = add4({inputs: {a: result, b: bias}, backend: backend2});
+      result = add4({ inputs: { a: result, b: bias }, backend: backend2 });
       backend2.disposeIntermediateTensorInfo(resultOld);
     }
     if (activation2) {
@@ -39714,17 +39715,17 @@ Expected: ${expectedFlat}.`);
     kernelFunc: fusedConv2D
   };
   function fusedDepthwiseConv2D(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x, filter, bias, preluActivationWeights} = inputs;
-    const {strides, pad: pad3, dataFormat, dilations, dimRoundingMode, activation: activation2, leakyreluAlpha} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x, filter, bias, preluActivationWeights } = inputs;
+    const { strides, pad: pad3, dataFormat, dilations, dimRoundingMode, activation: activation2, leakyreluAlpha } = attrs;
     let result = depthwiseConv2dNative({
-      inputs: {x, filter},
+      inputs: { x, filter },
       backend: backend2,
-      attrs: {strides, pad: pad3, dataFormat, dilations, dimRoundingMode}
+      attrs: { strides, pad: pad3, dataFormat, dilations, dimRoundingMode }
     });
     if (bias) {
       const oldResult = result;
-      result = add4({inputs: {a: result, b: bias}, backend: backend2});
+      result = add4({ inputs: { a: result, b: bias }, backend: backend2 });
       backend2.disposeIntermediateTensorInfo(oldResult);
     }
     if (activation2) {
@@ -39740,8 +39741,8 @@ Expected: ${expectedFlat}.`);
     kernelFunc: fusedDepthwiseConv2D
   };
   function gatherNd(args) {
-    const {inputs, backend: backend2} = args;
-    const {params, indices} = inputs;
+    const { inputs, backend: backend2 } = args;
+    const { params, indices } = inputs;
     const paramsSize = util_exports.sizeFromShape(params.shape);
     const indicesShape = indices.shape;
     const sliceRank = indicesShape[indicesShape.length - 1];
@@ -39775,9 +39776,9 @@ Expected: ${expectedFlat}.`);
     kernelFunc: gatherNd
   };
   function gatherV2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x, indices} = inputs;
-    const {axis, batchDims} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x, indices } = inputs;
+    const { axis, batchDims } = attrs;
     assertNotComplex([x, indices], "gatherV2");
     let $batchDims = batchDims;
     if (batchDims == null) {
@@ -39787,7 +39788,7 @@ Expected: ${expectedFlat}.`);
     const parsedAxis = util_exports.parseAxisParam(axis, x.shape)[0];
     const shapeInfo = backend_util_exports.segment_util.collectGatherOpShapeInfo(x, indices, parsedAxis, $batchDims);
     const flattenX = reshape3({
-      inputs: {x},
+      inputs: { x },
       backend: backend2,
       attrs: {
         shape: [
@@ -39799,9 +39800,9 @@ Expected: ${expectedFlat}.`);
       }
     });
     const flattenIndex = reshape3({
-      inputs: {x: indices},
+      inputs: { x: indices },
       backend: backend2,
-      attrs: {shape: [shapeInfo.batchSize, indicesSize / shapeInfo.batchSize]}
+      attrs: { shape: [shapeInfo.batchSize, indicesSize / shapeInfo.batchSize] }
     });
     const flattenOutputShape = [
       shapeInfo.batchSize,
@@ -39829,18 +39830,18 @@ Expected: ${expectedFlat}.`);
     kernelFunc: greaterEqual2
   };
   function ifft2(args) {
-    const {inputs, backend: backend2} = args;
-    const {input: input2} = inputs;
+    const { inputs, backend: backend2 } = args;
+    const { input: input2 } = inputs;
     const inputSize = util_exports.sizeFromShape(input2.shape);
     const innerDimensionSize = input2.shape[input2.shape.length - 1];
     const batch = inputSize / innerDimensionSize;
     const input2D = reshape3({
-      inputs: {x: input2},
+      inputs: { x: input2 },
       backend: backend2,
-      attrs: {shape: [batch, innerDimensionSize]}
+      attrs: { shape: [batch, innerDimensionSize] }
     });
     const result = fftBatch(input2D, true, backend2);
-    const resultReshaped = reshape3({inputs: {x: result}, backend: backend2, attrs: {shape: input2.shape}});
+    const resultReshaped = reshape3({ inputs: { x: result }, backend: backend2, attrs: { shape: input2.shape } });
     backend2.disposeIntermediateTensorInfo(input2D);
     backend2.disposeIntermediateTensorInfo(result);
     return resultReshaped;
@@ -39876,8 +39877,8 @@ Expected: ${expectedFlat}.`);
     kernelFunc: lessEqual2
   };
   function linSpace(args) {
-    const {backend: backend2, attrs} = args;
-    const {start, stop, num} = attrs;
+    const { backend: backend2, attrs } = args;
+    const { start, stop, num } = attrs;
     const outVals = linSpaceImpl(start, stop, num);
     return backend2.makeTensorInfo([outVals.length], "float32", outVals);
   }
@@ -39913,9 +39914,9 @@ Expected: ${expectedFlat}.`);
     kernelFunc: logicalOr2
   };
   function lRN(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {depthRadius, bias, alpha, beta} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { depthRadius, bias, alpha, beta } = attrs;
     assertNotComplex(x, "LRN");
     const channels = x.shape[3];
     const maxD = channels - 1;
@@ -39946,9 +39947,9 @@ Expected: ${expectedFlat}.`);
     kernelFunc: lRN
   };
   function lRNGrad(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x, y, dy} = inputs;
-    const {depthRadius, bias, alpha, beta} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x, y, dy } = inputs;
+    const { depthRadius, bias, alpha, beta } = attrs;
     assertNotComplex(dy, "LRNGrad");
     const dySize = util_exports.sizeFromShape(dy.shape);
     const channels = dy.shape[3];
@@ -39983,9 +39984,9 @@ Expected: ${expectedFlat}.`);
     kernelFunc: lRNGrad
   };
   function max3(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {reductionIndices, keepDims} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { reductionIndices, keepDims } = attrs;
     const cpuBackend = backend2;
     let xShape = x.shape;
     const xRank = xShape.length;
@@ -40013,7 +40014,7 @@ Expected: ${expectedFlat}.`);
       const newShape = backend_util_exports.expandShapeToKeepDim(maxOutShape, origAxes);
       outShape = newShape;
     }
-    return {dataId, shape: outShape, dtype: x.dtype};
+    return { dataId, shape: outShape, dtype: x.dtype };
   }
   var maxConfig = {
     kernelName: Max,
@@ -40021,16 +40022,16 @@ Expected: ${expectedFlat}.`);
     kernelFunc: max3
   };
   function maxPool2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
     assertNotComplex(x, "maxPool");
-    const {filterSize, strides, pad: pad3, dimRoundingMode} = attrs;
+    const { filterSize, strides, pad: pad3, dimRoundingMode } = attrs;
     const dilations = 1;
     util_exports.assert(backend_util_exports.eitherStridesOrDilationsAreOne(strides, dilations), () => `Error in maxPool: Either strides or dilations must be 1. Got strides ${strides} and dilations '${dilations}'`);
     const convInfo = backend_util_exports.computePool2DInfo(x.shape, filterSize, strides, dilations, pad3, dimRoundingMode);
     let res;
     if (convInfo.filterWidth === 1 && convInfo.filterHeight === 1 && util_exports.arraysEqual(convInfo.inShape, convInfo.outShape)) {
-      res = identity2({inputs: {x}, backend: backend2});
+      res = identity2({ inputs: { x }, backend: backend2 });
     } else {
       const xValues = backend2.data.get(x.dataId).values;
       const strides2 = util_exports.computeStrides(x.shape);
@@ -40045,9 +40046,9 @@ Expected: ${expectedFlat}.`);
     kernelFunc: maxPool2
   };
   function maxPool3D(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {filterSize, strides, pad: pad3, dimRoundingMode, dataFormat} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { filterSize, strides, pad: pad3, dimRoundingMode, dataFormat } = attrs;
     assertNotComplex(x, "maxPool3d");
     const convInfo = backend_util_exports.computePool3DInfo(x.shape, filterSize, strides, 1, pad3, dimRoundingMode, dataFormat);
     const xValues = backend2.data.get(x.dataId).values;
@@ -40060,9 +40061,9 @@ Expected: ${expectedFlat}.`);
     kernelFunc: maxPool3D
   };
   function maxPool3DGrad(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {dy, input: input2} = inputs;
-    const {filterSize, strides, pad: pad3, dimRoundingMode} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { dy, input: input2 } = inputs;
+    const { filterSize, strides, pad: pad3, dimRoundingMode } = attrs;
     assertNotComplex([dy, input2], "maxPool3DGrad");
     const convInfo = backend_util_exports.computePool3DInfo(input2.shape, filterSize, strides, 1, pad3, dimRoundingMode);
     const inputBuf = backend2.bufferSync(input2);
@@ -40130,11 +40131,11 @@ Expected: ${expectedFlat}.`);
     kernelFunc: maxPool3DGrad
   };
   function maxPoolGrad2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {dy, input: input2, output} = inputs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { dy, input: input2, output } = inputs;
     const x = input2;
     assertNotComplex([input2, output], "maxPoolGrad");
-    const {filterSize, strides, pad: pad3, dimRoundingMode} = attrs;
+    const { filterSize, strides, pad: pad3, dimRoundingMode } = attrs;
     const convInfo = backend_util_exports.computePool2DInfo(x.shape, filterSize, strides, 1, pad3, dimRoundingMode);
     const xValues = backend2.data.get(x.dataId).values;
     const maxPosBuf = buffer(convInfo.outShape, x.dtype, maxPoolPositions(xValues, x.shape, x.dtype, convInfo).values);
@@ -40197,9 +40198,9 @@ Expected: ${expectedFlat}.`);
   var maxPoolWithArgmaxConfig = {
     kernelName: MaxPoolWithArgmax,
     backendName: "cpu",
-    kernelFunc: ({inputs, attrs, backend: backend2}) => {
-      const {x} = inputs;
-      const {filterSize, strides, pad: pad3, includeBatchInIndex} = attrs;
+    kernelFunc: ({ inputs, attrs, backend: backend2 }) => {
+      const { x } = inputs;
+      const { filterSize, strides, pad: pad3, includeBatchInIndex } = attrs;
       const cpuBackend = backend2;
       assertNotComplex(x, "MaxPoolWithArgmax");
       const values = cpuBackend.data.get(x.dataId).values;
@@ -40208,15 +40209,15 @@ Expected: ${expectedFlat}.`);
       const pooledDataId = cpuBackend.write(pooled, convInfo.outShape, x.dtype);
       const indexesDataId = cpuBackend.write(indexes, convInfo.outShape, x.dtype);
       return [
-        {dataId: pooledDataId, shape: convInfo.outShape, dtype: x.dtype},
-        {dataId: indexesDataId, shape: convInfo.outShape, dtype: "int32"}
+        { dataId: pooledDataId, shape: convInfo.outShape, dtype: x.dtype },
+        { dataId: indexesDataId, shape: convInfo.outShape, dtype: "int32" }
       ];
     }
   };
   function mean2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {axis, keepDims} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { axis, keepDims } = attrs;
     const axes = util_exports.parseAxisParam(axis, x.shape);
     const shapes = backend_util_exports.computeOutAndReduceShapes(x.shape, axes);
     const reduceShape = shapes[1];
@@ -40224,11 +40225,11 @@ Expected: ${expectedFlat}.`);
     const toDispose = [];
     const reduceSizeScalar = backend2.makeTensorInfo([], "float32", new Float32Array([reduceSize]));
     toDispose.push(reduceSizeScalar);
-    const $x = cast3({inputs: {x}, backend: backend2, attrs: {dtype: "float32"}});
+    const $x = cast3({ inputs: { x }, backend: backend2, attrs: { dtype: "float32" } });
     toDispose.push($x);
-    const res = div2({inputs: {a: $x, b: reduceSizeScalar}, backend: backend2});
+    const res = div2({ inputs: { a: $x, b: reduceSizeScalar }, backend: backend2 });
     toDispose.push(res);
-    const result = sum3({inputs: {x: res}, backend: backend2, attrs: {axis, keepDims}});
+    const result = sum3({ inputs: { x: res }, backend: backend2, attrs: { axis, keepDims } });
     toDispose.forEach((t) => backend2.disposeIntermediateTensorInfo(t));
     return result;
   }
@@ -40238,16 +40239,16 @@ Expected: ${expectedFlat}.`);
     kernelFunc: mean2
   };
   function min3(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {axis, keepDims} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { axis, keepDims } = attrs;
     assertNotComplex(x, "min");
     const origAxes = util_exports.parseAxisParam(axis, x.shape);
     let axes = origAxes;
     const permutedAxes = backend_util_exports.getAxesPermutation(axes, x.shape.length);
     let $x = x;
     if (permutedAxes != null) {
-      $x = transpose2({inputs: {x}, backend: backend2, attrs: {perm: permutedAxes}});
+      $x = transpose2({ inputs: { x }, backend: backend2, attrs: { perm: permutedAxes } });
       axes = backend_util_exports.getInnerMostAxes(axes.length, x.shape.length);
     }
     backend_util_exports.assertAxesAreInnerMostDims("min", axes, $x.shape.length);
@@ -40272,7 +40273,7 @@ Expected: ${expectedFlat}.`);
     const result = backend2.makeTensorInfo(outShape, $x.dtype, vals);
     if (keepDims) {
       const expandedShape = backend_util_exports.expandShapeToKeepDim(outShape, origAxes);
-      const reshapedResult = reshape3({inputs: {x: result}, backend: backend2, attrs: {shape: expandedShape}});
+      const reshapedResult = reshape3({ inputs: { x: result }, backend: backend2, attrs: { shape: expandedShape } });
       backend2.disposeIntermediateTensorInfo(result);
       return reshapedResult;
     }
@@ -40284,9 +40285,9 @@ Expected: ${expectedFlat}.`);
     kernelFunc: min3
   };
   function mirrorPad2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {paddings, mode} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { paddings, mode } = attrs;
     assertNotComplex(x, "mirrorPad");
     const outShape = paddings.map((p2, i) => p2[0] + x.shape[i] + p2[1]);
     const start = paddings.map((p2) => p2[0]);
@@ -40313,7 +40314,7 @@ Expected: ${expectedFlat}.`);
       resVals[i] = xVals[inIndex];
     }
     const outId = backend2.write(resVals, outShape, x.dtype);
-    return {dataId: outId, shape: outShape, dtype: x.dtype};
+    return { dataId: outId, shape: outShape, dtype: x.dtype };
   }
   var mirrorPadConfig = {
     kernelName: MirrorPad,
@@ -40336,9 +40337,9 @@ Expected: ${expectedFlat}.`);
   };
   var seedrandom4 = __toModule(require_seedrandom2());
   function softmax3(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {logits} = inputs;
-    const {dim} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { logits } = inputs;
+    const { dim } = attrs;
     const logitsRank = logits.shape.length;
     let $dim = dim;
     if ($dim === -1) {
@@ -40349,17 +40350,17 @@ Expected: ${expectedFlat}.`);
     }
     const axes = util_exports.parseAxisParam([$dim], logits.shape);
     const maxLogit = max3({
-      inputs: {x: logits},
+      inputs: { x: logits },
       backend: backend2,
-      attrs: {reductionIndices: axes, keepDims: false}
+      attrs: { reductionIndices: axes, keepDims: false }
     });
     const expandedShape = backend_util_exports.expandShapeToKeepDim(maxLogit.shape, axes);
-    const maxLogitReshaped = reshape3({inputs: {x: maxLogit}, backend: backend2, attrs: {shape: expandedShape}});
-    const a = sub2({inputs: {a: logits, b: maxLogitReshaped}, backend: backend2});
-    const b = exp2({inputs: {x: a}, backend: backend2});
-    const sumExp = sum3({inputs: {x: b}, backend: backend2, attrs: {axis: axes, keepDims: false}});
-    const sumReshaped = reshape3({inputs: {x: sumExp}, backend: backend2, attrs: {shape: expandedShape}});
-    const result = div2({inputs: {a: b, b: sumReshaped}, backend: backend2});
+    const maxLogitReshaped = reshape3({ inputs: { x: maxLogit }, backend: backend2, attrs: { shape: expandedShape } });
+    const a = sub2({ inputs: { a: logits, b: maxLogitReshaped }, backend: backend2 });
+    const b = exp2({ inputs: { x: a }, backend: backend2 });
+    const sumExp = sum3({ inputs: { x: b }, backend: backend2, attrs: { axis: axes, keepDims: false } });
+    const sumReshaped = reshape3({ inputs: { x: sumExp }, backend: backend2, attrs: { shape: expandedShape } });
+    const result = div2({ inputs: { a: b, b: sumReshaped }, backend: backend2 });
     backend2.disposeIntermediateTensorInfo(maxLogit);
     backend2.disposeIntermediateTensorInfo(maxLogitReshaped);
     backend2.disposeIntermediateTensorInfo(a);
@@ -40374,11 +40375,11 @@ Expected: ${expectedFlat}.`);
     kernelFunc: softmax3
   };
   function multinomial2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {logits} = inputs;
-    const {numSamples, seed, normalized} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { logits } = inputs;
+    const { numSamples, seed, normalized } = attrs;
     assertNotComplex(logits, "multinomial");
-    const probabilities = normalized ? logits : softmax3({inputs: {logits}, backend: backend2, attrs: {dim: -1}});
+    const probabilities = normalized ? logits : softmax3({ inputs: { logits }, backend: backend2, attrs: { dim: -1 } });
     const batchSize = probabilities.shape[0];
     const numEvents = probabilities.shape[1];
     const probVals = backend2.data.get(probabilities.dataId).values;
@@ -40416,13 +40417,13 @@ Expected: ${expectedFlat}.`);
   };
   var nonMaxSuppressionV3Impl2 = kernel_impls_exports.nonMaxSuppressionV3Impl;
   function nonMaxSuppressionV3(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {boxes, scores} = inputs;
-    const {maxOutputSize, iouThreshold, scoreThreshold} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { boxes, scores } = inputs;
+    const { maxOutputSize, iouThreshold, scoreThreshold } = attrs;
     assertNotComplex(boxes, "NonMaxSuppression");
     const boxesVals = backend2.data.get(boxes.dataId).values;
     const scoresVals = backend2.data.get(scores.dataId).values;
-    const {selectedIndices} = nonMaxSuppressionV3Impl2(boxesVals, scoresVals, maxOutputSize, iouThreshold, scoreThreshold);
+    const { selectedIndices } = nonMaxSuppressionV3Impl2(boxesVals, scoresVals, maxOutputSize, iouThreshold, scoreThreshold);
     return backend2.makeTensorInfo([selectedIndices.length], "int32", new Int32Array(selectedIndices));
   }
   var nonMaxSuppressionV3Config = {
@@ -40432,13 +40433,13 @@ Expected: ${expectedFlat}.`);
   };
   var nonMaxSuppressionV4Impl2 = kernel_impls_exports.nonMaxSuppressionV4Impl;
   function nonMaxSuppressionV4(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {boxes, scores} = inputs;
-    const {maxOutputSize, iouThreshold, scoreThreshold, padToMaxOutputSize} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { boxes, scores } = inputs;
+    const { maxOutputSize, iouThreshold, scoreThreshold, padToMaxOutputSize } = attrs;
     assertNotComplex(boxes, "NonMaxSuppressionPadded");
     const boxesVals = backend2.data.get(boxes.dataId).values;
     const scoresVals = backend2.data.get(scores.dataId).values;
-    const {selectedIndices, validOutputs} = nonMaxSuppressionV4Impl2(boxesVals, scoresVals, maxOutputSize, iouThreshold, scoreThreshold, padToMaxOutputSize);
+    const { selectedIndices, validOutputs } = nonMaxSuppressionV4Impl2(boxesVals, scoresVals, maxOutputSize, iouThreshold, scoreThreshold, padToMaxOutputSize);
     return [
       backend2.makeTensorInfo([selectedIndices.length], "int32", new Int32Array(selectedIndices)),
       backend2.makeTensorInfo([], "int32", new Int32Array([validOutputs]))
@@ -40451,9 +40452,9 @@ Expected: ${expectedFlat}.`);
   };
   var nonMaxSuppressionV5Impl2 = kernel_impls_exports.nonMaxSuppressionV5Impl;
   function nonMaxSuppressionV5(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {boxes, scores} = inputs;
-    const {maxOutputSize, iouThreshold, scoreThreshold, softNmsSigma} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { boxes, scores } = inputs;
+    const { maxOutputSize, iouThreshold, scoreThreshold, softNmsSigma } = attrs;
     assertNotComplex(boxes, "NonMaxSuppressionWithScore");
     const boxesVals = backend2.data.get(boxes.dataId).values;
     const scoresVals = backend2.data.get(scores.dataId).values;
@@ -40461,7 +40462,7 @@ Expected: ${expectedFlat}.`);
     const iouThresholdVal = iouThreshold;
     const scoreThresholdVal = scoreThreshold;
     const softNmsSigmaVal = softNmsSigma;
-    const {selectedIndices, selectedScores} = nonMaxSuppressionV5Impl2(boxesVals, scoresVals, maxOutputSizeVal, iouThresholdVal, scoreThresholdVal, softNmsSigmaVal);
+    const { selectedIndices, selectedScores } = nonMaxSuppressionV5Impl2(boxesVals, scoresVals, maxOutputSizeVal, iouThresholdVal, scoreThresholdVal, softNmsSigmaVal);
     return [
       backend2.makeTensorInfo([selectedIndices.length], "int32", new Int32Array(selectedIndices)),
       backend2.makeTensorInfo([selectedScores.length], "float32", new Float32Array(selectedScores))
@@ -40473,9 +40474,9 @@ Expected: ${expectedFlat}.`);
     kernelFunc: nonMaxSuppressionV5
   };
   function oneHot2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {indices} = inputs;
-    const {depth, onValue, offValue} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { indices } = inputs;
+    const { depth, onValue, offValue } = attrs;
     assertNotComplex(indices, "oneHot");
     const indicesSize = util_exports.sizeFromShape(indices.shape);
     const res = new Float32Array(indicesSize * depth);
@@ -40494,23 +40495,23 @@ Expected: ${expectedFlat}.`);
     kernelFunc: oneHot2
   };
   function zerosLike2(args) {
-    const {inputs, backend: backend2} = args;
-    const {x} = inputs;
+    const { inputs, backend: backend2 } = args;
+    const { x } = inputs;
     if (x.dtype === "string") {
       throw new Error("zerosLike is not supported for string tensors");
     } else if (x.dtype === "complex64") {
-      const realPart = real2({inputs: {input: x}, backend: backend2});
-      const r = zerosLike2({inputs: {x: realPart}, backend: backend2});
-      const imagPart = imag2({inputs: {input: x}, backend: backend2});
-      const i = zerosLike2({inputs: {x: imagPart}, backend: backend2});
-      const result = complex2({inputs: {real: r, imag: i}, backend: backend2});
+      const realPart = real2({ inputs: { input: x }, backend: backend2 });
+      const r = zerosLike2({ inputs: { x: realPart }, backend: backend2 });
+      const imagPart = imag2({ inputs: { input: x }, backend: backend2 });
+      const i = zerosLike2({ inputs: { x: imagPart }, backend: backend2 });
+      const result = complex2({ inputs: { real: r, imag: i }, backend: backend2 });
       backend2.disposeIntermediateTensorInfo(realPart);
       backend2.disposeIntermediateTensorInfo(r);
       backend2.disposeIntermediateTensorInfo(imagPart);
       backend2.disposeIntermediateTensorInfo(i);
       return result;
     } else {
-      return fill2({backend: backend2, attrs: {shape: x.shape, value: 0, dtype: x.dtype}});
+      return fill2({ backend: backend2, attrs: { shape: x.shape, value: 0, dtype: x.dtype } });
     }
   }
   var zerosLikeConfig = {
@@ -40519,23 +40520,23 @@ Expected: ${expectedFlat}.`);
     kernelFunc: zerosLike2
   };
   function onesLike2(args) {
-    const {inputs, backend: backend2} = args;
-    const {x} = inputs;
+    const { inputs, backend: backend2 } = args;
+    const { x } = inputs;
     if (x.dtype === "string") {
       throw new Error("onesLike is not supported for string tensors");
     } else if (x.dtype === "complex64") {
-      const realPart = real2({inputs: {input: x}, backend: backend2});
-      const r = onesLike2({inputs: {x: realPart}, backend: backend2});
-      const imagPart = imag2({inputs: {input: x}, backend: backend2});
-      const i = zerosLike2({inputs: {x: imagPart}, backend: backend2});
-      const result = complex2({inputs: {real: r, imag: i}, backend: backend2});
+      const realPart = real2({ inputs: { input: x }, backend: backend2 });
+      const r = onesLike2({ inputs: { x: realPart }, backend: backend2 });
+      const imagPart = imag2({ inputs: { input: x }, backend: backend2 });
+      const i = zerosLike2({ inputs: { x: imagPart }, backend: backend2 });
+      const result = complex2({ inputs: { real: r, imag: i }, backend: backend2 });
       backend2.disposeIntermediateTensorInfo(realPart);
       backend2.disposeIntermediateTensorInfo(r);
       backend2.disposeIntermediateTensorInfo(imagPart);
       backend2.disposeIntermediateTensorInfo(i);
       return result;
     } else {
-      return fill2({backend: backend2, attrs: {shape: x.shape, value: 1, dtype: x.dtype}});
+      return fill2({ backend: backend2, attrs: { shape: x.shape, value: 1, dtype: x.dtype } });
     }
   }
   var onesLikeConfig = {
@@ -40544,10 +40545,10 @@ Expected: ${expectedFlat}.`);
     kernelFunc: onesLike2
   };
   function pack(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {axis} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { axis } = attrs;
     if (inputs.length === 1) {
-      return expandDims3({inputs: {input: inputs[0]}, backend: backend2, attrs: {dim: axis}});
+      return expandDims3({ inputs: { input: inputs[0] }, backend: backend2, attrs: { dim: axis } });
     }
     const shape = inputs[0].shape;
     const dtype = inputs[0].dtype;
@@ -40557,11 +40558,11 @@ Expected: ${expectedFlat}.`);
     });
     const intermediateTensorInfos = [];
     const expandedTensors = inputs.map((t) => {
-      const expandedT = expandDims3({inputs: {input: t}, backend: backend2, attrs: {dim: axis}});
+      const expandedT = expandDims3({ inputs: { input: t }, backend: backend2, attrs: { dim: axis } });
       intermediateTensorInfos.push(expandedT);
       return expandedT;
     });
-    const result = concat2({inputs: expandedTensors, backend: backend2, attrs: {axis}});
+    const result = concat2({ inputs: expandedTensors, backend: backend2, attrs: { axis } });
     intermediateTensorInfos.forEach((t) => backend2.disposeIntermediateTensorInfo(t));
     return result;
   }
@@ -40571,9 +40572,9 @@ Expected: ${expectedFlat}.`);
     kernelFunc: pack
   };
   function padV2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {paddings, constantValue} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { paddings, constantValue } = attrs;
     assertNotComplex(x, "pad");
     const outShape = paddings.map((p2, i) => p2[0] + x.shape[i] + p2[1]);
     const start = paddings.map((p2) => p2[0]);
@@ -40595,7 +40596,7 @@ Expected: ${expectedFlat}.`);
       resVals[outIndex] = xVals[i];
     }
     const outId = backend2.write(resVals, outShape, x.dtype);
-    return {dataId: outId, shape: outShape, dtype: x.dtype};
+    return { dataId: outId, shape: outShape, dtype: x.dtype };
   }
   var padV2Config = {
     kernelName: PadV2,
@@ -40610,8 +40611,8 @@ Expected: ${expectedFlat}.`);
     kernelFunc: pow2
   };
   function range3(args) {
-    const {backend: backend2, attrs} = args;
-    const {start, stop, dtype, step: step5} = attrs;
+    const { backend: backend2, attrs } = args;
+    const { start, stop, dtype, step: step5 } = attrs;
     const values = rangeImpl(start, stop, step5, dtype);
     return backend2.makeTensorInfo([values.length], dtype, values);
   }
@@ -40627,9 +40628,9 @@ Expected: ${expectedFlat}.`);
     kernelFunc: reciprocal2
   };
   function resizeBilinear2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {images} = inputs;
-    const {alignCorners, halfPixelCenters, size} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { images } = inputs;
+    const { alignCorners, halfPixelCenters, size } = attrs;
     assertNotComplex(images, "resizeBilinear");
     const imagesStrides = util_exports.computeStrides(images.shape);
     const [newHeight, newWidth] = size;
@@ -40695,9 +40696,9 @@ Expected: ${expectedFlat}.`);
     kernelFunc: resizeBilinear2
   };
   function resizeBilinearGrad(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {images, dy} = inputs;
-    const {alignCorners} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { images, dy } = inputs;
+    const { alignCorners } = attrs;
     assertNotComplex([dy, images], "resizeBilinearGrad");
     const imagesStrides = util_exports.computeStrides(images.shape);
     const [batch, xHeight, xWidth, depth] = images.shape;
@@ -40757,9 +40758,9 @@ Expected: ${expectedFlat}.`);
     kernelFunc: resizeBilinearGrad
   };
   function resizeNearestNeighbor2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {images} = inputs;
-    const {alignCorners, halfPixelCenters, size} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { images } = inputs;
+    const { alignCorners, halfPixelCenters, size } = attrs;
     assertNotComplex(images, "resizeNearestNeighbor");
     const imagesStrides = util_exports.computeStrides(images.shape);
     const [newHeight, newWidth] = size;
@@ -40808,9 +40809,9 @@ Expected: ${expectedFlat}.`);
     kernelFunc: resizeNearestNeighbor2
   };
   function resizeNearestNeighborGrad(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {images, dy} = inputs;
-    const {alignCorners} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { images, dy } = inputs;
+    const { alignCorners } = attrs;
     assertNotComplex([dy, images], "resizeNearestNeighborGrad");
     const imagesStrides = util_exports.computeStrides(images.shape);
     const dyStrides = util_exports.computeStrides(dy.shape);
@@ -40881,14 +40882,14 @@ Expected: ${expectedFlat}.`);
     kernelFunc: resizeNearestNeighborGrad
   };
   function reverse2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {dims} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { dims } = attrs;
     assertNotComplex(x, "reverse");
     const xRank = x.shape.length;
     const $dims = util_exports.parseAxisParam(dims, x.shape);
     if (xRank === 0) {
-      return identity2({inputs: {x}, backend: backend2});
+      return identity2({ inputs: { x }, backend: backend2 });
     }
     const outBuf = new TensorBuffer(x.shape, x.dtype);
     const xBuf = backend2.bufferSync(x);
@@ -40908,9 +40909,9 @@ Expected: ${expectedFlat}.`);
   var rotateWithOffsetConfig = {
     kernelName: RotateWithOffset,
     backendName: "cpu",
-    kernelFunc: ({inputs, attrs, backend: backend2}) => {
-      const {image: image3} = inputs;
-      const {radians, fillValue, center} = attrs;
+    kernelFunc: ({ inputs, attrs, backend: backend2 }) => {
+      const { image: image3 } = inputs;
+      const { radians, fillValue, center } = attrs;
       const cpuBackend = backend2;
       const output = util_exports.getTypedArrayFromDType(image3.dtype, util_exports.sizeFromShape(image3.shape));
       const [batch, imageHeight, imageWidth, numChannels] = image3.shape;
@@ -40954,7 +40955,7 @@ Expected: ${expectedFlat}.`);
         }
       }
       const dataId = cpuBackend.write(output, image3.shape, image3.dtype);
-      return {dataId, shape: image3.shape, dtype: image3.dtype};
+      return { dataId, shape: image3.shape, dtype: image3.dtype };
     }
   };
   var round3 = unaryKernelFunc(Round, (xi) => {
@@ -41007,10 +41008,10 @@ Expected: ${expectedFlat}.`);
     return outBuf;
   }
   function scatterNd(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {indices, updates} = inputs;
-    const {shape} = attrs;
-    const {sliceRank, numUpdates, sliceSize, strides, outputSize} = backend_util_exports.calculateShapes(updates, indices, shape);
+    const { inputs, backend: backend2, attrs } = args;
+    const { indices, updates } = inputs;
+    const { shape } = attrs;
+    const { sliceRank, numUpdates, sliceSize, strides, outputSize } = backend_util_exports.calculateShapes(updates, indices, shape);
     const sumDupeIndices = true;
     const indicesBuf = backend2.bufferSync(indices);
     const updatesBuf = backend2.bufferSync(updates);
@@ -41023,8 +41024,8 @@ Expected: ${expectedFlat}.`);
     kernelFunc: scatterNd
   };
   function select(args) {
-    const {inputs, backend: backend2} = args;
-    const {condition, t, e} = inputs;
+    const { inputs, backend: backend2 } = args;
+    const { condition, t, e } = inputs;
     assertNotComplex([condition, t, e], "select");
     const conditionRank = condition.shape.length;
     const values = backend2.data.get(condition.dataId).values;
@@ -41112,9 +41113,9 @@ Expected: ${expectedFlat}.`);
     kernelFunc: softplus2
   };
   function spaceToBatchND2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {blockShape, paddings} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { blockShape, paddings } = attrs;
     assertNotComplex([x], "spaceToBatchND");
     const prod5 = util_exports.sizeFromShape(blockShape);
     const completePaddings = [[0, 0]];
@@ -41123,22 +41124,22 @@ Expected: ${expectedFlat}.`);
       completePaddings.push([0, 0]);
     }
     const paddedX = padV2Config.kernelFunc({
-      inputs: {x},
+      inputs: { x },
       backend: backend2,
-      attrs: {paddings: completePaddings, constantValue: 0}
+      attrs: { paddings: completePaddings, constantValue: 0 }
     });
     const reshapedPaddedShape = backend_util_exports.getReshaped(paddedX.shape, blockShape, prod5, false);
     const permutedReshapedPaddedPermutation = backend_util_exports.getPermuted(reshapedPaddedShape.length, blockShape.length, false);
     const flattenShape = backend_util_exports.getReshapedPermuted(paddedX.shape, blockShape, prod5, false);
-    const reshapeInputs = {x: paddedX};
-    const reshapeAttrs = {shape: reshapedPaddedShape};
-    const paddedXReshaped = reshape3({inputs: reshapeInputs, backend: backend2, attrs: reshapeAttrs});
-    const transposeInputs = {x: paddedXReshaped};
-    const transposeAttrs = {perm: permutedReshapedPaddedPermutation};
-    const paddedXT = transpose2({inputs: transposeInputs, backend: backend2, attrs: transposeAttrs});
-    const resultReshapeInputs = {x: paddedXT};
-    const resultReshapeAttrs = {shape: flattenShape};
-    const result = reshape3({inputs: resultReshapeInputs, backend: backend2, attrs: resultReshapeAttrs});
+    const reshapeInputs = { x: paddedX };
+    const reshapeAttrs = { shape: reshapedPaddedShape };
+    const paddedXReshaped = reshape3({ inputs: reshapeInputs, backend: backend2, attrs: reshapeAttrs });
+    const transposeInputs = { x: paddedXReshaped };
+    const transposeAttrs = { perm: permutedReshapedPaddedPermutation };
+    const paddedXT = transpose2({ inputs: transposeInputs, backend: backend2, attrs: transposeAttrs });
+    const resultReshapeInputs = { x: paddedXT };
+    const resultReshapeAttrs = { shape: flattenShape };
+    const result = reshape3({ inputs: resultReshapeInputs, backend: backend2, attrs: resultReshapeAttrs });
     backend2.disposeIntermediateTensorInfo(paddedX);
     backend2.disposeIntermediateTensorInfo(paddedXReshaped);
     backend2.disposeIntermediateTensorInfo(paddedXT);
@@ -41150,8 +41151,8 @@ Expected: ${expectedFlat}.`);
     kernelFunc: spaceToBatchND2
   };
   function sparseFillEmptyRows2(args) {
-    const {inputs, backend: backend2} = args;
-    const {indices, values, denseShape, defaultValue} = inputs;
+    const { inputs, backend: backend2 } = args;
+    const { indices, values, denseShape, defaultValue } = inputs;
     if (denseShape.shape.length !== 1) {
       throw new Error(`Dense shape must be a vector, saw:
         ${denseShape.shape}`);
@@ -41186,8 +41187,8 @@ Expected: ${expectedFlat}.`);
     kernelFunc: sparseFillEmptyRows2
   };
   function sparseReshape2(args) {
-    const {inputs, backend: backend2} = args;
-    const {inputIndices, inputShape, newShape} = inputs;
+    const { inputs, backend: backend2 } = args;
+    const { inputIndices, inputShape, newShape } = inputs;
     if (inputIndices.shape.length !== 2) {
       throw new Error(`Input indices should be a matrix but received shape
         ${inputIndices.shape}`);
@@ -41214,10 +41215,10 @@ Expected: ${expectedFlat}.`);
     kernelFunc: sparseReshape2
   };
   function sparseToDense2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {sparseIndices, sparseValues, defaultValue} = inputs;
-    const {outputShape} = attrs;
-    const {sliceRank, numUpdates, sliceSize, strides, outputSize} = backend_util_exports.calculateShapes(sparseValues, sparseIndices, outputShape);
+    const { inputs, backend: backend2, attrs } = args;
+    const { sparseIndices, sparseValues, defaultValue } = inputs;
+    const { outputShape } = attrs;
+    const { sliceRank, numUpdates, sliceSize, strides, outputSize } = backend_util_exports.calculateShapes(sparseValues, sparseIndices, outputShape);
     const sumDupeIndices = false;
     const indicesBuf = backend2.bufferSync(sparseIndices);
     const updatesBuf = backend2.bufferSync(sparseValues);
@@ -41231,9 +41232,9 @@ Expected: ${expectedFlat}.`);
     kernelFunc: sparseToDense2
   };
   function splitV(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {numOrSizeSplits, axis} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { numOrSizeSplits, axis } = attrs;
     const $axis = util_exports.parseAxisParam(axis, x.shape)[0];
     const splitSizes = backend_util_exports.prepareSplitSize(x, numOrSizeSplits, $axis);
     const begin = new Array(x.shape.length).fill(0);
@@ -41241,7 +41242,7 @@ Expected: ${expectedFlat}.`);
     return splitSizes.map((s) => {
       const sliceSize = [...size];
       sliceSize[$axis] = s;
-      const sliceT = slice2({inputs: {x}, backend: backend2, attrs: {begin, size: sliceSize}});
+      const sliceT = slice2({ inputs: { x }, backend: backend2, attrs: { begin, size: sliceSize } });
       begin[$axis] += s;
       return sliceT;
     });
@@ -41260,8 +41261,8 @@ Expected: ${expectedFlat}.`);
   var squareConfig = {
     kernelName: Square,
     backendName: "cpu",
-    kernelFunc: ({inputs, backend: backend2}) => {
-      const {x} = inputs;
+    kernelFunc: ({ inputs, backend: backend2 }) => {
+      const { x } = inputs;
       const cpuBackend = backend2;
       assertNotComplex(x, "square");
       const values = cpuBackend.data.get(x.dataId).values;
@@ -41271,7 +41272,7 @@ Expected: ${expectedFlat}.`);
         newValues[i] = value * value;
       }
       const dataId = cpuBackend.write(newValues, x.shape, x.dtype);
-      return {dataId, shape: x.shape, dtype: x.dtype};
+      return { dataId, shape: x.shape, dtype: x.dtype };
     }
   };
   var step2 = unaryKernelFunc(Step, (xi, attrs) => {
@@ -41288,16 +41289,16 @@ Expected: ${expectedFlat}.`);
     kernelFunc: step2
   };
   function stridedSlice2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {begin, end, strides, beginMask, endMask, ellipsisMask, newAxisMask, shrinkAxisMask} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { begin, end, strides, beginMask, endMask, ellipsisMask, newAxisMask, shrinkAxisMask } = attrs;
     assertNotComplex(x, "stridedSlice");
-    const {nonStrided, $begin, $strides, size, newShape, outShape} = slice_util_exports.sliceInfo(x.shape, begin, end, strides, beginMask, endMask, ellipsisMask, newAxisMask, shrinkAxisMask);
-    const $x = reshape3({inputs: {x}, backend: backend2, attrs: {shape: newShape}});
+    const { nonStrided, $begin, $strides, size, newShape, outShape } = slice_util_exports.sliceInfo(x.shape, begin, end, strides, beginMask, endMask, ellipsisMask, newAxisMask, shrinkAxisMask);
+    const $x = reshape3({ inputs: { x }, backend: backend2, attrs: { shape: newShape } });
     let result;
     if (nonStrided) {
-      const sliced = slice2({inputs: {x: $x}, backend: backend2, attrs: {begin: $begin, size}});
-      result = reshape3({inputs: {x: sliced}, backend: backend2, attrs: {shape: outShape}});
+      const sliced = slice2({ inputs: { x: $x }, backend: backend2, attrs: { begin: $begin, size } });
+      result = reshape3({ inputs: { x: sliced }, backend: backend2, attrs: { shape: outShape } });
       backend2.disposeIntermediateTensorInfo(sliced);
     } else if (outShape.some((axis) => axis === 0)) {
       result = backend2.makeTensorInfo(outShape, x.dtype, []);
@@ -41306,7 +41307,7 @@ Expected: ${expectedFlat}.`);
       const outBuf = stridedSliceImpl(outShape, xBuf, $strides, $begin);
       result = backend2.makeTensorInfo(outBuf.shape, outBuf.dtype, outBuf.values);
     }
-    const resultReshaped = reshape3({inputs: {x: result}, backend: backend2, attrs: {shape: outShape}});
+    const resultReshaped = reshape3({ inputs: { x: result }, backend: backend2, attrs: { shape: outShape } });
     backend2.disposeIntermediateTensorInfo($x);
     backend2.disposeIntermediateTensorInfo(result);
     return resultReshaped;
@@ -41329,9 +41330,9 @@ Expected: ${expectedFlat}.`);
     kernelFunc: tanh3
   };
   function tile3(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {reps} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { reps } = attrs;
     assertNotComplex(x, "tile");
     const outBuf = tileImpl(backend2.bufferSync(x), reps);
     return backend2.makeTensorInfo(outBuf.shape, outBuf.dtype, outBuf.values);
@@ -41342,9 +41343,9 @@ Expected: ${expectedFlat}.`);
     kernelFunc: tile3
   };
   function topK(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {k, sorted} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { k, sorted } = attrs;
     assertNotComplex(x, "topk");
     const xVals = backend2.data.get(x.dataId).values;
     const [allTopKVals, allTopKIndices] = topKImpl(xVals, x.shape, x.dtype, k, sorted);
@@ -41359,9 +41360,9 @@ Expected: ${expectedFlat}.`);
     kernelFunc: topK
   };
   function transform2(args) {
-    const {inputs, attrs, backend: backend2} = args;
-    const {image: image3, transforms} = inputs;
-    const {interpolation, fillMode, fillValue, outputShape} = attrs;
+    const { inputs, attrs, backend: backend2 } = args;
+    const { image: image3, transforms } = inputs;
+    const { interpolation, fillMode, fillValue, outputShape } = attrs;
     const [batch, imageHeight, imageWidth, numChannels] = image3.shape;
     const [outHeight, outWidth] = outputShape != null ? outputShape : [imageHeight, imageWidth];
     const outShape = [batch, outHeight, outWidth, numChannels];
@@ -41405,7 +41406,7 @@ Expected: ${expectedFlat}.`);
       return backend2.makeTensorInfo(outShape, image3.dtype, outVals);
     }
     const dataId = backend2.write(outVals, outShape, image3.dtype);
-    return {dataId, shape: image3.shape, dtype: image3.dtype};
+    return { dataId, shape: image3.shape, dtype: image3.dtype };
   }
   var transformConfig = {
     kernelName: Transform,
@@ -41498,12 +41499,12 @@ Expected: ${expectedFlat}.`);
     return (yCeil - y) * valueYFloor + (y - yFloor) * valueYCeil;
   }
   function unique3(args) {
-    const {inputs, attrs, backend: backend2} = args;
-    const {axis} = attrs;
-    const {x} = inputs;
+    const { inputs, attrs, backend: backend2 } = args;
+    const { axis } = attrs;
+    const { x } = inputs;
     assertNotComplex(x, "unique");
     const values = backend2.data.get(x.dataId).values;
-    const {outputValues, outputShape, indices} = uniqueImpl(values, axis, x.shape, x.dtype);
+    const { outputValues, outputShape, indices } = uniqueImpl(values, axis, x.shape, x.dtype);
     return [
       backend2.makeTensorInfo(outputShape, x.dtype, outputValues),
       backend2.makeTensorInfo([indices.length], "int32", indices)
@@ -41515,9 +41516,9 @@ Expected: ${expectedFlat}.`);
     kernelFunc: unique3
   };
   function unpack(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {value} = inputs;
-    let {axis} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { value } = inputs;
+    let { axis } = attrs;
     if (axis < 0) {
       axis += value.shape.length;
     }
@@ -41536,8 +41537,8 @@ Expected: ${expectedFlat}.`);
     const res = new Array(num);
     for (let i = 0; i < res.length; i++) {
       begin[axis] = i;
-      const tempRes = slice2({inputs: {x: value}, backend: backend2, attrs: {begin, size}});
-      res[i] = reshape3({inputs: {x: tempRes}, backend: backend2, attrs: {shape: outShape}});
+      const tempRes = slice2({ inputs: { x: value }, backend: backend2, attrs: { begin, size } });
+      res[i] = reshape3({ inputs: { x: tempRes }, backend: backend2, attrs: { shape: outShape } });
       backend2.disposeIntermediateTensorInfo(tempRes);
     }
     return res;
@@ -41548,9 +41549,9 @@ Expected: ${expectedFlat}.`);
     kernelFunc: unpack
   };
   function unsortedSegmentSum2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x, segmentIds} = inputs;
-    const {numSegments} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x, segmentIds } = inputs;
+    const { numSegments } = attrs;
     assertNotComplex(x, "unsortedSegmentSum");
     const xRank = x.shape.length;
     const segmentIdsRank = segmentIds.shape.length;
@@ -41559,17 +41560,17 @@ Expected: ${expectedFlat}.`);
     const numIters = xRank - segmentIdsRank;
     let $segmentIds = segmentIds;
     for (let i = 0; i < numIters; ++i) {
-      const expanded = expandDims3({inputs: {input: $segmentIds}, backend: backend2, attrs: {dim: i + 1}});
+      const expanded = expandDims3({ inputs: { input: $segmentIds }, backend: backend2, attrs: { dim: i + 1 } });
       $segmentIds = expanded;
       intermediates.push(expanded);
     }
     for (let i = 0; i < numSegments; ++i) {
       const scalarValue = util_exports.createScalarValue(i, "int32");
       const segmentId = backend2.makeTensorInfo([], "int32", scalarValue);
-      const mask = equal2({inputs: {a: segmentId, b: $segmentIds}, backend: backend2});
-      const maskCasted = cast3({inputs: {x: mask}, backend: backend2, attrs: {dtype: "float32"}});
-      const mul2 = multiply2({inputs: {a: maskCasted, b: x}, backend: backend2});
-      const sumTensorInfo = sum3({inputs: {x: mul2}, backend: backend2, attrs: {axis: 0, keepDims: false}});
+      const mask = equal2({ inputs: { a: segmentId, b: $segmentIds }, backend: backend2 });
+      const maskCasted = cast3({ inputs: { x: mask }, backend: backend2, attrs: { dtype: "float32" } });
+      const mul2 = multiply2({ inputs: { a: maskCasted, b: x }, backend: backend2 });
+      const sumTensorInfo = sum3({ inputs: { x: mul2 }, backend: backend2, attrs: { axis: 0, keepDims: false } });
       res.push(sumTensorInfo);
       intermediates.push(segmentId);
       intermediates.push(mask);
@@ -41577,7 +41578,7 @@ Expected: ${expectedFlat}.`);
       intermediates.push(mul2);
       intermediates.push(sumTensorInfo);
     }
-    const result = pack({inputs: res, backend: backend2, attrs: {axis: 0}});
+    const result = pack({ inputs: res, backend: backend2, attrs: { axis: 0 } });
     intermediates.forEach((t) => backend2.disposeIntermediateTensorInfo(t));
     return result;
   }
@@ -43030,7 +43031,7 @@ Expected: ${expectedFlat}.`);
       } else {
         isFencePassed = () => true;
       }
-      return {query, isFencePassed};
+      return { query, isFencePassed };
     }
     downloadMatrixFromPackedTexture(texture, physicalRows, physicalCols) {
       return this.downloadMatrixDriver(texture, () => downloadMatrixFromPackedOutputTexture(this.gl, physicalRows, physicalCols));
@@ -43208,13 +43209,13 @@ Expected: ${expectedFlat}.`);
     pollItems() {
       const index = linearSearchLastTrue(this.itemsToPoll.map((x) => x.isDoneFn));
       for (let i = 0; i <= index; ++i) {
-        const {resolveFn} = this.itemsToPoll[i];
+        const { resolveFn } = this.itemsToPoll[i];
         resolveFn();
       }
       this.itemsToPoll = this.itemsToPoll.slice(index + 1);
     }
     addItemToPoll(isDoneFn, resolveFn) {
-      this.itemsToPoll.push({isDoneFn, resolveFn});
+      this.itemsToPoll.push({ isDoneFn, resolveFn });
       if (this.itemsToPoll.length > 1) {
         return;
       }
@@ -43282,7 +43283,7 @@ Expected: ${expectedFlat}.`);
     }
     return i - 1;
   }
-  var {getBroadcastDims: getBroadcastDims2} = backend_util_exports;
+  var { getBroadcastDims: getBroadcastDims2 } = backend_util_exports;
   function makeShader(inputsInfo, outputShape, userCode, usesPackedTextures) {
     const prefixSnippets = [];
     inputsInfo.forEach((x) => {
@@ -43897,7 +43898,7 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     }
   `;
     }
-    const {newShape, keptDims} = util_exports.squeezeShape(shape);
+    const { newShape, keptDims } = util_exports.squeezeShape(shape);
     const squeezedShape = newShape;
     if (squeezedShape.length < shape.length) {
       const newInputInfo = squeezeInputInfo(inputInfo, squeezedShape);
@@ -43984,7 +43985,7 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     const funcName = "get" + texName.charAt(0).toUpperCase() + texName.slice(1);
     const stride0 = shape[1] * shape[2];
     const stride1 = shape[2];
-    const {newShape, keptDims} = util_exports.squeezeShape(shape);
+    const { newShape, keptDims } = util_exports.squeezeShape(shape);
     const squeezedShape = newShape;
     if (squeezedShape.length < shape.length) {
       const newInputInfo = squeezeInputInfo(inputInfo, squeezedShape);
@@ -44076,7 +44077,7 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     const stride2 = shape[3];
     const stride1 = shape[2] * stride2;
     const stride0 = shape[1] * stride1;
-    const {newShape, keptDims} = util_exports.squeezeShape(shape);
+    const { newShape, keptDims } = util_exports.squeezeShape(shape);
     if (newShape.length < shape.length) {
       const newInputInfo = squeezeInputInfo(inputInfo, newShape);
       const params = ["row", "col", "depth", "depth2"];
@@ -44144,7 +44145,7 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     const stride2 = shape[3] * stride3;
     const stride1 = shape[2] * stride2;
     const stride0 = shape[1] * stride1;
-    const {newShape, keptDims} = util_exports.squeezeShape(shape);
+    const { newShape, keptDims } = util_exports.squeezeShape(shape);
     if (newShape.length < shape.length) {
       const newInputInfo = squeezeInputInfo(inputInfo, newShape);
       const params = ["row", "col", "depth", "depth2", "depth3"];
@@ -44211,7 +44212,7 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     const shape = inputInfo.shapeInfo.logicalShape;
     const texName = inputInfo.name;
     const funcName = "get" + texName.charAt(0).toUpperCase() + texName.slice(1);
-    const {newShape, keptDims} = util_exports.squeezeShape(shape);
+    const { newShape, keptDims } = util_exports.squeezeShape(shape);
     if (newShape.length < shape.length) {
       const newInputInfo = squeezeInputInfo(inputInfo, newShape);
       const params = ["row", "col", "depth", "depth2", "depth3", "depth4"];
@@ -44444,7 +44445,7 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
       if (input2.texData != null && input2.texData.slice != null && input2.texData.slice.flatOffset > 0) {
         shapeInfo.flatOffset = input2.texData.slice.flatOffset;
       }
-      return {name: program.variableNames[i], shapeInfo};
+      return { name: program.variableNames[i], shapeInfo };
     });
     const inShapeInfos = inputInfos.map((x) => x.shapeInfo);
     const outShapeInfo = {
@@ -44560,7 +44561,7 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     key += "_" + keyInputs + "_" + keyUserCode;
     return key;
   }
-  var {addImpl: addImplCPU, bincountImpl: bincountImplCPU, bincountReduceImpl: bincountReduceImplCPU, ceilImpl: ceilImplCPU, concatImpl: concatImplCPU, expImpl: expImplCPU, expm1Impl: expm1ImplCPU, floorImpl: floorImplCPU, gatherV2Impl: gatherV2ImplCPU, greaterImpl: greaterImplCPU, lessImpl: lessImplCPU, linSpaceImpl: linSpaceImplCPU, logImpl: logImplCPU, maxImpl: maxImplCPU, maximumImpl: maximumImplCPU, minimumImpl: minimumImplCPU, multiplyImpl: multiplyImplCPU, negImpl: negImplCPU, prodImpl: prodImplCPU, rangeImpl: rangeImplCPU, rsqrtImpl: rsqrtImplCPU, simpleAbsImpl: simpleAbsImplCPU, sliceImpl: sliceImplCPU, sparseFillEmptyRowsImpl: sparseFillEmptyRowsImplCPU, sparseReshapeImpl: sparseReshapeImplCPU, stridedSliceImpl: stridedSliceImplCPU, subImpl: subImplCPU, tileImpl: tileImplCPU, topKImpl: topKImplCPU, transposeImpl: transposeImplCPU, uniqueImpl: uniqueImplCPU} = shared_exports;
+  var { addImpl: addImplCPU, bincountImpl: bincountImplCPU, bincountReduceImpl: bincountReduceImplCPU, ceilImpl: ceilImplCPU, concatImpl: concatImplCPU, expImpl: expImplCPU, expm1Impl: expm1ImplCPU, floorImpl: floorImplCPU, gatherV2Impl: gatherV2ImplCPU, greaterImpl: greaterImplCPU, lessImpl: lessImplCPU, linSpaceImpl: linSpaceImplCPU, logImpl: logImplCPU, maxImpl: maxImplCPU, maximumImpl: maximumImplCPU, minimumImpl: minimumImplCPU, multiplyImpl: multiplyImplCPU, negImpl: negImplCPU, prodImpl: prodImplCPU, rangeImpl: rangeImplCPU, rsqrtImpl: rsqrtImplCPU, simpleAbsImpl: simpleAbsImplCPU, sliceImpl: sliceImplCPU, sparseFillEmptyRowsImpl: sparseFillEmptyRowsImplCPU, sparseReshapeImpl: sparseReshapeImplCPU, stridedSliceImpl: stridedSliceImplCPU, subImpl: subImplCPU, tileImpl: tileImplCPU, topKImpl: topKImplCPU, transposeImpl: transposeImplCPU, uniqueImpl: uniqueImplCPU } = shared_exports;
   function getVecChannels(name, rank) {
     return ["x", "y", "z", "w", "u", "v"].slice(0, rank).map((d) => `${name}.${d}`);
   }
@@ -45088,8 +45089,8 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
       if (dtype === "complex64" && values != null) {
         throw new Error(`Cannot write to a complex64 dtype. Please use tf.complex(real, imag).`);
       }
-      const dataId = {id: this.nextDataId()};
-      this.texData.set(dataId, {shape, dtype, values, usage: TextureUsage.UPLOAD, refCount: 1});
+      const dataId = { id: this.nextDataId() };
+      this.texData.set(dataId, { shape, dtype, values, usage: TextureUsage.UPLOAD, refCount: 1 });
       return dataId;
     }
     refCount(dataId) {
@@ -45116,14 +45117,14 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
       if (dtype === "complex64") {
         throw new Error(`Cannot write to a complex64 dtype. Please use tf.complex(real, imag).`);
       }
-      this.texData.set(dataId, {shape, dtype, values, usage: TextureUsage.UPLOAD, refCount});
+      this.texData.set(dataId, { shape, dtype, values, usage: TextureUsage.UPLOAD, refCount });
     }
     disposeIntermediateTensorInfo(tensorInfo) {
       this.disposeData(tensorInfo.dataId);
     }
     readSync(dataId) {
       const texData = this.texData.get(dataId);
-      const {values, dtype, complexTensorInfos, slice: slice5, shape, isPacked} = texData;
+      const { values, dtype, complexTensorInfos, slice: slice5, shape, isPacked } = texData;
       if (slice5 != null) {
         let program;
         if (isPacked) {
@@ -45131,7 +45132,7 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
         } else {
           program = new UnaryOpProgram(shape, CLONE);
         }
-        const res = this.runWebGLProgram(program, [{dataId, shape, dtype}], dtype);
+        const res = this.runWebGLProgram(program, [{ dataId, shape, dtype }], dtype);
         const data = this.readSync(res.dataId);
         this.disposeIntermediateTensorInfo(res);
         return data;
@@ -45166,7 +45167,7 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
         return new Promise((resolve) => subscribers2.push(resolve));
       }
       const texData = this.texData.get(dataId);
-      const {values, shape, slice: slice5, dtype, complexTensorInfos, isPacked} = texData;
+      const { values, shape, slice: slice5, dtype, complexTensorInfos, isPacked } = texData;
       if (slice5 != null) {
         let program;
         if (isPacked) {
@@ -45174,7 +45175,7 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
         } else {
           program = new UnaryOpProgram(shape, CLONE);
         }
-        const res = this.runWebGLProgram(program, [{dataId, shape, dtype}], dtype);
+        const res = this.runWebGLProgram(program, [{ dataId, shape, dtype }], dtype);
         const data = this.read(res.dataId);
         this.disposeIntermediateTensorInfo(res);
         return data;
@@ -45254,7 +45255,7 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
       }
     }
     getValuesFromTexture(dataId) {
-      const {shape, dtype, isPacked} = this.texData.get(dataId);
+      const { shape, dtype, isPacked } = this.texData.get(dataId);
       const size = util_exports.sizeFromShape(shape);
       if (env().getBool("WEBGL_DOWNLOAD_FLOAT_ENABLED")) {
         const tmpTarget = this.decode(dataId);
@@ -45266,7 +45267,7 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
       const shouldUsePackedProgram = env().getBool("WEBGL_PACK") && isPacked === true;
       const outputShape = shouldUsePackedProgram ? getShapeAs3D(shape) : shape;
       const program = shouldUsePackedProgram ? new EncodeFloatPackedProgram(outputShape) : new EncodeFloatProgram(outputShape);
-      const output = this.runWebGLProgram(program, [{shape: outputShape, dtype, dataId}], "float32");
+      const output = this.runWebGLProgram(program, [{ shape: outputShape, dtype, dataId }], "float32");
       const tmpData = this.texData.get(output.dataId);
       const vals = this.gpgpu.downloadByteEncodedFloatMatrixFromOutputTexture(tmpData.texture, tmpData.texShape[0], tmpData.texShape[1]).subarray(0, size);
       this.disposeIntermediateTensorInfo(output);
@@ -45302,7 +45303,7 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
       if (env().getNumber("WEBGL_DISJOINT_QUERY_TIMER_EXTENSION_RELIABLE") > 0) {
         const kernelMs = await Promise.all(flattenedActiveTimerQueries);
         res["kernelMs"] = util_exports.sum(kernelMs);
-        res["getExtraProfileInfo"] = () => kernelMs.map((d, i) => ({name: flattenedActiveTimerNames[i], ms: d})).map((d) => `${d.name}: ${d.ms}`).join(", ");
+        res["getExtraProfileInfo"] = () => kernelMs.map((d, i) => ({ name: flattenedActiveTimerNames[i], ms: d })).map((d) => `${d.name}: ${d.ms}`).join(", ");
       } else {
         res["kernelMs"] = {
           error: "WebGL query timers are not supported in this environment."
@@ -45324,7 +45325,7 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
       if (env().getNumber("WEBGL_DISJOINT_QUERY_TIMER_EXTENSION_RELIABLE") > 0) {
         return this.gpgpu.beginQuery();
       }
-      return {startMs: util_exports.now(), endMs: null};
+      return { startMs: util_exports.now(), endMs: null };
     }
     endTimer(query) {
       if (env().getNumber("WEBGL_DISJOINT_QUERY_TIMER_EXTENSION_RELIABLE") > 0) {
@@ -45362,7 +45363,7 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
         return false;
       }
       this.releaseGPUData(dataId);
-      const {complexTensorInfos} = this.texData.get(dataId);
+      const { complexTensorInfos } = this.texData.get(dataId);
       if (complexTensorInfos != null) {
         this.disposeData(complexTensorInfos.real.dataId, force);
         this.disposeData(complexTensorInfos.imag.dataId, force);
@@ -45371,7 +45372,7 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
       return true;
     }
     releaseGPUData(dataId) {
-      const {texture, dtype, texShape, usage, isPacked, slice: slice5} = this.texData.get(dataId);
+      const { texture, dtype, texShape, usage, isPacked, slice: slice5 } = this.texData.get(dataId);
       const key = slice5 && slice5.origDataId || dataId;
       const refCount = this.dataRefCount.get(key);
       if (refCount > 1) {
@@ -45433,10 +45434,10 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
         dataId = this.write(values, shape, dtype);
       }
       this.texData.get(dataId).usage = null;
-      return {dataId, shape, dtype};
+      return { dataId, shape, dtype };
     }
     makeOutput(shape, dtype, values) {
-      const {dataId} = this.makeTensorInfo(shape, dtype, values);
+      const { dataId } = this.makeTensorInfo(shape, dtype, values);
       return engine().makeTensorFromDataId(dataId, shape, dtype, this);
     }
     unpackTensor(input2) {
@@ -45465,11 +45466,11 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
       const program = new ReshapePackedProgram(afterShapeAs3D, input3DShape);
       const preventEagerUnpackingOfOutput = true;
       const output = this.runWebGLProgram(program, [input3D], input2.dtype, null, preventEagerUnpackingOfOutput);
-      return {dataId: output.dataId, shape: afterShape, dtype: output.dtype};
+      return { dataId: output.dataId, shape: afterShape, dtype: output.dtype };
     }
     decode(dataId) {
       const texData = this.texData.get(dataId);
-      const {isPacked, shape, dtype} = texData;
+      const { isPacked, shape, dtype } = texData;
       const shapeAs3D = getShapeAs3D(shape);
       let program;
       if (isPacked) {
@@ -45478,8 +45479,8 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
         program = new DecodeMatrixProgram(shapeAs3D);
       }
       const preventEagerUnpackingOfOutput = true;
-      const out = this.runWebGLProgram(program, [{shape: shapeAs3D, dtype, dataId}], dtype, null, preventEagerUnpackingOfOutput);
-      return {dtype, shape, dataId: out.dataId};
+      const out = this.runWebGLProgram(program, [{ shape: shapeAs3D, dtype, dataId }], dtype, null, preventEagerUnpackingOfOutput);
+      return { dtype, shape, dataId: out.dataId };
     }
     runWebGLProgram(program, inputs, outputDtype, customSetup, preventEagerUnpackingOfOutput = false) {
       const output = this.makeTensorInfo(program.outputShape, outputDtype);
@@ -45531,10 +45532,10 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
           savedInput.shape = targetShape;
         }
         this.uploadToGPU(input2.dataId);
-        return {shape: input2.shape, texData, isUniform: false};
+        return { shape: input2.shape, texData, isUniform: false };
       });
       this.uploadToGPU(output.dataId);
-      const outputData = {shape: output.shape, texData: outData, isUniform: false};
+      const outputData = { shape: output.shape, texData: outData, isUniform: false };
       const key = makeShaderKey(program, inputsData, outputData);
       const binary = this.getAndSaveBinary(key, () => {
         return compileProgram(this.gpgpu, program, inputsData, outputData);
@@ -45548,7 +45549,7 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
       dataToDispose.forEach((info) => this.disposeIntermediateTensorInfo(info));
       if (shouldTimeProgram) {
         query = this.endTimer(query);
-        this.activeTimers.push({name: program.constructor.name, query: this.getQueryTime(query)});
+        this.activeTimers.push({ name: program.constructor.name, query: this.getQueryTime(query) });
       }
       const glFlushThreshold = env().get("WEBGL_FLUSH_THRESHOLD");
       if (glFlushThreshold > 0) {
@@ -45624,7 +45625,7 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     }
     uploadToGPU(dataId) {
       const texData = this.texData.get(dataId);
-      const {shape, dtype, values, texture, usage, isPacked} = texData;
+      const { shape, dtype, values, texture, usage, isPacked } = texData;
       if (texture != null) {
         return;
       }
@@ -45676,7 +45677,7 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     }
     convertAndCacheOnCPU(dataId, float32Values) {
       const texData = this.texData.get(dataId);
-      const {dtype} = texData;
+      const { dtype } = texData;
       this.releaseGPUData(dataId);
       if (float32Values != null) {
         texData.values = float32ToTypedArray(float32Values, dtype);
@@ -45800,10 +45801,10 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     }
   };
   function identity3(args) {
-    const {inputs, backend: backend2} = args;
-    const {x} = inputs;
+    const { inputs, backend: backend2 } = args;
+    const { x } = inputs;
     backend2.incRef(x.dataId);
-    return {dataId: x.dataId, shape: x.shape, dtype: x.dtype};
+    return { dataId: x.dataId, shape: x.shape, dtype: x.dtype };
   }
   var identityConfig2 = {
     kernelName: Identity,
@@ -45811,13 +45812,13 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     kernelFunc: identity3
   };
   function complex3(args) {
-    const {inputs, backend: backend2} = args;
-    const {real: real4, imag: imag4} = inputs;
+    const { inputs, backend: backend2 } = args;
+    const { real: real4, imag: imag4 } = inputs;
     const complexInfo = backend2.makeTensorInfo(real4.shape, "complex64");
     const complex4 = backend2.texData.get(complexInfo.dataId);
-    const realTensorInfo = identity3({inputs: {x: real4}, backend: backend2});
-    const imagTensorInfo = identity3({inputs: {x: imag4}, backend: backend2});
-    complex4.complexTensorInfos = {real: realTensorInfo, imag: imagTensorInfo};
+    const realTensorInfo = identity3({ inputs: { x: real4 }, backend: backend2 });
+    const imagTensorInfo = identity3({ inputs: { x: imag4 }, backend: backend2 });
+    complex4.complexTensorInfos = { real: realTensorInfo, imag: imagTensorInfo };
     return complexInfo;
   }
   var complexConfig2 = {
@@ -45831,9 +45832,9 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
   return (aLessThanZero * (b * a)) + ((vec4(1.0) - aLessThanZero) * a);
 `;
   function leakyRelu3(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {alpha} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { alpha } = attrs;
     const $alpha = backend2.makeTensorInfo([], "float32", util_exports.createScalarValue(alpha, "float32"));
     const program = env().getBool("WEBGL_PACK_BINARY_OPERATIONS") ? new BinaryOpPackedProgram(LEAKYRELU_PACKED, x.shape, $alpha.shape) : new BinaryOpProgram(LEAKYRELU, x.shape, $alpha.shape);
     const result = backend2.runWebGLProgram(program, [x, $alpha], x.dtype);
@@ -45851,8 +45852,8 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
   return (aLessThanZero * (b * a)) + ((vec4(1.0) - aLessThanZero) * a);
 `;
   function prelu4(args) {
-    const {inputs, backend: backend2} = args;
-    const {x, alpha} = inputs;
+    const { inputs, backend: backend2 } = args;
+    const { x, alpha } = inputs;
     const program = env().getBool("WEBGL_PACK_BINARY_OPERATIONS") ? new BinaryOpPackedProgram(PRELU_PACKED, x.shape, alpha.shape) : new BinaryOpProgram(PRELU, x.shape, alpha.shape);
     return backend2.runWebGLProgram(program, [x, alpha], x.dtype);
   }
@@ -45872,9 +45873,9 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
   result.b = isNaN.b > 0. ? NAN : result.b;
   result.a = isNaN.a > 0. ? NAN : result.a;
 `;
-  function unaryKernelFunc2({opSnippet, packedOpSnippet, cpuKernelImpl, dtype}) {
-    return ({inputs, backend: backend2}) => {
-      const {x} = inputs;
+  function unaryKernelFunc2({ opSnippet, packedOpSnippet, cpuKernelImpl, dtype }) {
+    return ({ inputs, backend: backend2 }) => {
+      const { x } = inputs;
       const webglBackend = backend2;
       const $dtype = dtype || x.dtype;
       if (webglBackend.shouldExecuteOnCPU([x]) && cpuKernelImpl != null) {
@@ -45892,9 +45893,9 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
       return webglBackend.runWebGLProgram(program, [x], $dtype);
     };
   }
-  function binaryKernelFunc2({opSnippet, packedOpSnippet, checkOutOfBounds = false, supportsComplex = false, cpuKernelImpl, dtype}) {
-    return ({inputs, backend: backend2}) => {
-      const {a, b} = inputs;
+  function binaryKernelFunc2({ opSnippet, packedOpSnippet, checkOutOfBounds = false, supportsComplex = false, cpuKernelImpl, dtype }) {
+    return ({ inputs, backend: backend2 }) => {
+      const { a, b } = inputs;
       const webglBackend = backend2;
       if (supportsComplex && a.dtype === "complex64") {
         const aData = webglBackend.texData.get(a.dataId);
@@ -45917,7 +45918,7 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
           const program2 = new BinaryOpProgram(opSnippet, a.shape, b.shape);
           return webglBackend.runWebGLProgram(program2, [aHandle, bHandle], upcastType(aPart.dtype, bPart.dtype));
         });
-        const complexOutput = complex3({inputs: {real: real4, imag: imag4}, backend: webglBackend});
+        const complexOutput = complex3({ inputs: { real: real4, imag: imag4 }, backend: webglBackend });
         webglBackend.disposeIntermediateTensorInfo(real4);
         webglBackend.disposeIntermediateTensorInfo(imag4);
         return complexOutput;
@@ -46089,8 +46090,8 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
   };
   var MUL = "return a * b;";
   function multiply3(args) {
-    const {inputs, backend: backend2} = args;
-    const {a, b} = inputs;
+    const { inputs, backend: backend2 } = args;
+    const { a, b } = inputs;
     const dtype = backend_util_exports.upcastType(a.dtype, b.dtype);
     if (a.dtype === "complex64") {
       const aData = backend2.texData.get(a.dataId);
@@ -46121,7 +46122,7 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
       ];
       const realPart = backend2.runWebGLProgram(realProgram, inputs2, "float32");
       const imagPart = backend2.runWebGLProgram(imagProgram, inputs2, "float32");
-      const complexOutput = complex3({inputs: {real: realPart, imag: imagPart}, backend: backend2});
+      const complexOutput = complex3({ inputs: { real: realPart, imag: imagPart }, backend: backend2 });
       backend2.disposeIntermediateTensorInfo(realPart);
       backend2.disposeIntermediateTensorInfo(imagPart);
       return complexOutput;
@@ -46165,12 +46166,12 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     const program = new ReshapePackedProgram(afterShapeAs3D, input3DShape);
     const preventEagerUnpackingOfOutput = true;
     const output = backend2.runWebGLProgram(program, [input3D], input2.dtype, null, preventEagerUnpackingOfOutput);
-    return {dataId: output.dataId, shape: afterShape, dtype: output.dtype};
+    return { dataId: output.dataId, shape: afterShape, dtype: output.dtype };
   }
   function reshape4(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {shape} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { shape } = attrs;
     const webglBackend = backend2;
     const xSize = util_exports.sizeFromShape(x.shape);
     const $shape = util_exports.inferFromImplicitShape(shape, xSize);
@@ -46181,7 +46182,7 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
       return packedReshape(x, $shape, webglBackend);
     }
     webglBackend.incRef(x.dataId);
-    return {dataId: x.dataId, shape: $shape, dtype: x.dtype};
+    return { dataId: x.dataId, shape: $shape, dtype: x.dtype };
   }
   var reshapeConfig2 = {
     kernelName: Reshape,
@@ -46191,7 +46192,7 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
   var MeanProgram = class {
     constructor(reduceInfo, divisor) {
       this.variableNames = ["x"];
-      const {windowSize, batchSize, inSize, outSize} = reduceInfo;
+      const { windowSize, batchSize, inSize, outSize } = reduceInfo;
       this.outputShape = [batchSize, outSize];
       const windowSizeNearestVec4 = Math.floor(windowSize / 4) * 4;
       const windowSizeVec4Remainder = windowSize % 4;
@@ -46263,7 +46264,7 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
   var ReduceProgram = class {
     constructor(reduceInfo, reduceType) {
       this.variableNames = ["x"];
-      const {windowSize, batchSize, inSize, outSize} = reduceInfo;
+      const { windowSize, batchSize, inSize, outSize } = reduceInfo;
       this.outputShape = [batchSize, outSize];
       let initializationValue = "0.0";
       let compareOp = ``;
@@ -46408,13 +46409,13 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     const reductionStages = getReductionStages(x.shape);
     let result = x;
     for (let i = 0; i < reductionStages.length; i++) {
-      const {inSize, windowSize, outSize} = reductionStages[i];
+      const { inSize, windowSize, outSize } = reductionStages[i];
       let program;
       let previousResult;
       if (reductionType === "mean") {
-        program = i === 0 ? new MeanProgram({windowSize, inSize, batchSize: x.shape[0], outSize}, inSize) : new MeanProgram({windowSize, inSize, batchSize: x.shape[0], outSize});
+        program = i === 0 ? new MeanProgram({ windowSize, inSize, batchSize: x.shape[0], outSize }, inSize) : new MeanProgram({ windowSize, inSize, batchSize: x.shape[0], outSize });
       } else {
-        program = new ReduceProgram({windowSize, inSize, batchSize: x.shape[0], outSize}, reductionType);
+        program = new ReduceProgram({ windowSize, inSize, batchSize: x.shape[0], outSize }, reductionType);
       }
       previousResult = result;
       result = backend2.runWebGLProgram(program, [result], dtype);
@@ -46523,10 +46524,10 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     const inSize = util_exports.sizeFromShape(reduceShape);
     const xSize = util_exports.sizeFromShape(x.shape);
     const batchSize = xSize / inSize;
-    const reshapedInput = reshape4({inputs: {x: sumInput}, attrs: {shape: [batchSize, inSize]}, backend: backend2});
+    const reshapedInput = reshape4({ inputs: { x: sumInput }, attrs: { shape: [batchSize, inSize] }, backend: backend2 });
     const outType = sumOutType(x.dtype);
     const reduced = reduce(reshapedInput, outType, "sum", backend2);
-    const out = reshape4({inputs: {x: reduced}, attrs: {shape: outShape}, backend: backend2});
+    const out = reshape4({ inputs: { x: reduced }, attrs: { shape: outShape }, backend: backend2 });
     backend2.disposeIntermediateTensorInfo(reshapedInput);
     backend2.disposeIntermediateTensorInfo(reduced);
     if (sumInputIsTransposed) {
@@ -46535,9 +46536,9 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     return out;
   }
   function sum4(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {axis, keepDims} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { axis, keepDims } = attrs;
     return sumImpl(x, axis, keepDims, backend2);
   }
   var sumConfig2 = {
@@ -46546,9 +46547,9 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     kernelFunc: sum4
   };
   function transpose3(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {perm} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { perm } = attrs;
     const webglBackend = backend2;
     const xRank = x.shape.length;
     const newShape = new Array(xRank);
@@ -46574,7 +46575,7 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     kernelFunc: transpose3
   };
   var MATMUL_SHARED_DIM_THRESHOLD = 1e3;
-  function batchMatMulImpl({a, b, transposeA, transposeB, backend: backend2, bias = null, preluActivationWeights = null, leakyreluAlpha = 0, activation: activation2 = null}) {
+  function batchMatMulImpl({ a, b, transposeA, transposeB, backend: backend2, bias = null, preluActivationWeights = null, leakyreluAlpha = 0, activation: activation2 = null }) {
     const aRank = a.shape.length;
     const bRank = b.shape.length;
     const innerShapeA = transposeA ? a.shape[aRank - 2] : a.shape[aRank - 1];
@@ -46592,8 +46593,8 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     util_exports.assert(innerShapeA === innerShapeB, () => `Error in matMul: inner shapes (${innerShapeA}) and (${innerShapeB}) of Tensors with shapes ${a.shape} and ${b.shape} and transposeA=${transposeA} and transposeB=${transposeB} must match.`);
     const a3dShape = transposeA ? [batchDimA, innerShapeA, outerShapeA] : [batchDimA, outerShapeA, innerShapeA];
     const b3dShape = transposeB ? [batchDimB, outerShapeB, innerShapeB] : [batchDimB, innerShapeB, outerShapeB];
-    const a3d = reshape4({inputs: {x: a}, backend: backend2, attrs: {shape: a3dShape}});
-    const b3d = reshape4({inputs: {x: b}, backend: backend2, attrs: {shape: b3dShape}});
+    const a3d = reshape4({ inputs: { x: a }, backend: backend2, attrs: { shape: a3dShape } });
+    const b3d = reshape4({ inputs: { x: b }, backend: backend2, attrs: { shape: b3dShape } });
     const intermediates = [a3d, b3d];
     const batchDim = Math.max(batchDimA, batchDimB);
     const sharedDim = transposeA ? a3d.shape[1] : a3d.shape[2];
@@ -46607,11 +46608,11 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
       let aVec = a3d;
       let bVec = b3d;
       if (transposeA) {
-        aVec = transpose3({inputs: {x: a3d}, backend: backend2, attrs: {perm: [0, 2, 1]}});
+        aVec = transpose3({ inputs: { x: a3d }, backend: backend2, attrs: { perm: [0, 2, 1] } });
         intermediates.push(aVec);
       }
       if (transposeB) {
-        bVec = transpose3({inputs: {x: b3d}, backend: backend2, attrs: {perm: [0, 2, 1]}});
+        bVec = transpose3({ inputs: { x: b3d }, backend: backend2, attrs: { perm: [0, 2, 1] } });
         intermediates.push(bVec);
       }
       const shouldReshapeA = outerShapeB !== 1;
@@ -46619,9 +46620,9 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
       let aVec3d = aVec;
       if (shouldReshapeA) {
         aVec3d = reshape4({
-          inputs: {x: aVec},
+          inputs: { x: aVec },
           backend: backend2,
-          attrs: {shape: [batchDim, sharedDim, 1]}
+          attrs: { shape: [batchDim, sharedDim, 1] }
         });
         intermediates.push(aVec3d);
       }
@@ -46629,14 +46630,14 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
       let bVec3d = bVec;
       if (shouldReshapeB) {
         bVec3d = reshape4({
-          inputs: {x: bVec},
+          inputs: { x: bVec },
           backend: backend2,
-          attrs: {shape: [batchDim, 1, sharedDim]}
+          attrs: { shape: [batchDim, 1, sharedDim] }
         });
         intermediates.push(bVec3d);
       }
-      const product = multiply3({inputs: {a: aVec3d, b: bVec3d}, backend: backend2});
-      out = sum4({inputs: {x: product}, backend: backend2, attrs: {axis, keepDims: true}});
+      const product = multiply3({ inputs: { a: aVec3d, b: bVec3d }, backend: backend2 });
+      out = sum4({ inputs: { x: product }, backend: backend2, attrs: { axis, keepDims: true } });
       intermediates.push(product);
     } else {
       const dtype = upcastType(a.dtype, b.dtype);
@@ -46655,7 +46656,7 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
       }
       out = backend2.runWebGLProgram(program, inputs, dtype);
     }
-    const outReshaped = reshape4({inputs: {x: out}, backend: backend2, attrs: {shape: outShape}});
+    const outReshaped = reshape4({ inputs: { x: out }, backend: backend2, attrs: { shape: outShape } });
     intermediates.push(out);
     for (const i of intermediates) {
       backend2.disposeIntermediateTensorInfo(i);
@@ -46663,9 +46664,9 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     return outReshaped;
   }
   function _fusedMatMul2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {a, b, bias, preluActivationWeights} = inputs;
-    const {transposeA, transposeB, activation: activation2, leakyreluAlpha} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { a, b, bias, preluActivationWeights } = inputs;
+    const { transposeA, transposeB, activation: activation2, leakyreluAlpha } = attrs;
     return batchMatMulImpl({
       a,
       b,
@@ -46685,8 +46686,8 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
   };
   var ABS2 = `return abs(x);`;
   function abs3(args) {
-    const {inputs, backend: backend2} = args;
-    const {x} = inputs;
+    const { inputs, backend: backend2 } = args;
+    const { x } = inputs;
     if (backend2.shouldExecuteOnCPU([x]) && x.dtype !== "complex64") {
       const xData = backend2.texData.get(x.dataId);
       const outValues = simpleAbsImplCPU(xData.values);
@@ -46711,7 +46712,7 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
   }
   return acos(x);
 `;
-  var acos3 = unaryKernelFunc2({opSnippet: ACOS});
+  var acos3 = unaryKernelFunc2({ opSnippet: ACOS });
   var acosConfig2 = {
     kernelName: Acos,
     backendName: "webgl",
@@ -46720,7 +46721,7 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
   var ACOSH = CHECK_NAN_SNIPPET + `
   if (x < 1.0) return NAN;
 return log(x + sqrt(x * x - 1.0));`;
-  var acosh3 = unaryKernelFunc2({opSnippet: ACOSH});
+  var acosh3 = unaryKernelFunc2({ opSnippet: ACOSH });
   var acoshConfig2 = {
     kernelName: Acosh,
     backendName: "webgl",
@@ -46785,16 +46786,16 @@ return log(x + sqrt(x * x - 1.0));`;
     }
   };
   function addN3(args) {
-    const {inputs, backend: backend2} = args;
+    const { inputs, backend: backend2 } = args;
     const tensors = inputs;
     if (tensors.length === 1) {
-      return identity3({inputs: {x: tensors[0]}, backend: backend2});
+      return identity3({ inputs: { x: tensors[0] }, backend: backend2 });
     }
     if (tensors.length > env().get("WEBGL_MAX_TEXTURES_IN_SHADER")) {
       const midIndex = Math.floor(tensors.length / 2);
-      const leftSide = addN3({inputs: tensors.slice(0, midIndex), backend: backend2});
-      const rightSide = addN3({inputs: tensors.slice(midIndex), backend: backend2});
-      return addN3({inputs: [leftSide, rightSide], backend: backend2});
+      const leftSide = addN3({ inputs: tensors.slice(0, midIndex), backend: backend2 });
+      const rightSide = addN3({ inputs: tensors.slice(midIndex), backend: backend2 });
+      return addN3({ inputs: [leftSide, rightSide], backend: backend2 });
     }
     const dtype = tensors.map((t) => t.dtype).reduce((d1, d2) => upcastType(d1, d2));
     const shapes = tensors.map((t) => t.shape);
@@ -46808,29 +46809,29 @@ return log(x + sqrt(x * x - 1.0));`;
     kernelFunc: addN3
   };
   function all3(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {axis, keepDims} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { axis, keepDims } = attrs;
     const xRank = x.shape.length;
     const origAxes = util_exports.parseAxisParam(axis, x.shape);
     let axes = origAxes;
     const permutedAxes = backend_util_exports.getAxesPermutation(axes, xRank);
     let permutedX = x;
     if (permutedAxes != null) {
-      permutedX = transpose3({inputs: {x}, backend: backend2, attrs: {perm: permutedAxes}});
+      permutedX = transpose3({ inputs: { x }, backend: backend2, attrs: { perm: permutedAxes } });
       axes = backend_util_exports.getInnerMostAxes(axes.length, xRank);
     }
     backend_util_exports.assertAxesAreInnerMostDims("all", axes, xRank);
     const [outShape, reduceShape] = backend_util_exports.computeOutAndReduceShapes(permutedX.shape, axes);
     const inSize = util_exports.sizeFromShape(reduceShape);
-    const a2D = reshape4({inputs: {x: permutedX}, backend: backend2, attrs: {shape: [-1, inSize]}});
+    const a2D = reshape4({ inputs: { x: permutedX }, backend: backend2, attrs: { shape: [-1, inSize] } });
     const reduced = reduce(a2D, a2D.dtype, "all", backend2);
     let res;
     if (keepDims) {
       const newShape = backend_util_exports.expandShapeToKeepDim(outShape, origAxes);
-      res = reshape4({inputs: {x: reduced}, backend: backend2, attrs: {shape: newShape}});
+      res = reshape4({ inputs: { x: reduced }, backend: backend2, attrs: { shape: newShape } });
     } else {
-      res = reshape4({inputs: {x: reduced}, backend: backend2, attrs: {shape: outShape}});
+      res = reshape4({ inputs: { x: reduced }, backend: backend2, attrs: { shape: outShape } });
     }
     backend2.disposeIntermediateTensorInfo(a2D);
     backend2.disposeIntermediateTensorInfo(reduced);
@@ -46845,29 +46846,29 @@ return log(x + sqrt(x * x - 1.0));`;
     kernelFunc: all3
   };
   function any3(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {axis, keepDims} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { axis, keepDims } = attrs;
     const xRank = x.shape.length;
     const origAxes = util_exports.parseAxisParam(axis, x.shape);
     let axes = origAxes;
     const permutedAxes = backend_util_exports.getAxesPermutation(axes, xRank);
     let permutedX = x;
     if (permutedAxes != null) {
-      permutedX = transpose3({inputs: {x}, backend: backend2, attrs: {perm: permutedAxes}});
+      permutedX = transpose3({ inputs: { x }, backend: backend2, attrs: { perm: permutedAxes } });
       axes = backend_util_exports.getInnerMostAxes(axes.length, xRank);
     }
     backend_util_exports.assertAxesAreInnerMostDims("any", axes, xRank);
     const [outShape, reduceShape] = backend_util_exports.computeOutAndReduceShapes(permutedX.shape, axes);
     const inSize = util_exports.sizeFromShape(reduceShape);
-    const a2D = reshape4({inputs: {x: permutedX}, backend: backend2, attrs: {shape: [-1, inSize]}});
+    const a2D = reshape4({ inputs: { x: permutedX }, backend: backend2, attrs: { shape: [-1, inSize] } });
     const reduced = reduce(a2D, a2D.dtype, "any", backend2);
     let res;
     if (keepDims) {
       const newShape = backend_util_exports.expandShapeToKeepDim(outShape, origAxes);
-      res = reshape4({inputs: {x: reduced}, backend: backend2, attrs: {shape: newShape}});
+      res = reshape4({ inputs: { x: reduced }, backend: backend2, attrs: { shape: newShape } });
     } else {
-      res = reshape4({inputs: {x: reduced}, backend: backend2, attrs: {shape: outShape}});
+      res = reshape4({ inputs: { x: reduced }, backend: backend2, attrs: { shape: outShape } });
     }
     backend2.disposeIntermediateTensorInfo(a2D);
     backend2.disposeIntermediateTensorInfo(reduced);
@@ -46884,7 +46885,7 @@ return log(x + sqrt(x * x - 1.0));`;
   var ArgMinMaxProgram = class {
     constructor(reduceInfo, op2, firstPass) {
       this.variableNames = ["A"];
-      const {windowSize, batchSize, outSize} = reduceInfo;
+      const { windowSize, batchSize, outSize } = reduceInfo;
       if (!firstPass) {
         this.variableNames.push("bestIndicesA");
       }
@@ -47027,7 +47028,7 @@ return log(x + sqrt(x * x - 1.0));`;
       inSize = bestIndicesA.shape[1];
     }
     const windowSize = backend_util_exports.computeOptimalWindowSize(inSize);
-    const reduceInfo = {windowSize, inSize, batchSize, outSize: Math.ceil(inSize / windowSize)};
+    const reduceInfo = { windowSize, inSize, batchSize, outSize: Math.ceil(inSize / windowSize) };
     const program = new ArgMinMaxProgram(reduceInfo, reduceType, bestIndicesA == null);
     const inputs = [x];
     if (bestIndicesA != null) {
@@ -47062,26 +47063,26 @@ return log(x + sqrt(x * x - 1.0));`;
       const intermediateTensorInfos = [];
       const [outShape, reduceShape] = backend_util_exports.computeOutAndReduceShapes(x.shape, axes);
       const inSize = util_exports.sizeFromShape(reduceShape);
-      const a2D = reshape4({inputs: {x}, backend: backend2, attrs: {shape: [-1, inSize]}});
+      const a2D = reshape4({ inputs: { x }, backend: backend2, attrs: { shape: [-1, inSize] } });
       intermediateTensorInfos.push(a2D);
       const reduced = argReduce(backend2, a2D, reduceType);
       intermediateTensorInfos.push(reduced);
-      const reshaped = reshape4({inputs: {x: reduced}, backend: backend2, attrs: {shape: outShape}});
+      const reshaped = reshape4({ inputs: { x: reduced }, backend: backend2, attrs: { shape: outShape } });
       intermediateTensorInfos.forEach((t) => backend2.disposeIntermediateTensorInfo(t));
       return reshaped;
     }
     return argReducePacked(backend2, x, reduceType);
   }
   function argMax3(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {axis} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { axis } = attrs;
     let axes = util_exports.parseAxisParam(axis, x.shape);
     const permutedAxes = backend_util_exports.getAxesPermutation(axes, x.shape.length);
     let $x = x;
     const intermediateTensorInfos = [];
     if (permutedAxes != null) {
-      $x = transpose3({inputs: {x}, backend: backend2, attrs: {perm: permutedAxes}});
+      $x = transpose3({ inputs: { x }, backend: backend2, attrs: { perm: permutedAxes } });
       intermediateTensorInfos.push($x);
       axes = backend_util_exports.getInnerMostAxes(axes.length, $x.shape.length);
     }
@@ -47096,15 +47097,15 @@ return log(x + sqrt(x * x - 1.0));`;
     kernelFunc: argMax3
   };
   function argMin3(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {axis} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { axis } = attrs;
     let axes = util_exports.parseAxisParam(axis, x.shape);
     const permutedAxes = backend_util_exports.getAxesPermutation(axes, x.shape.length);
     let $x = x;
     const intermediateTensorInfos = [];
     if (permutedAxes != null) {
-      $x = transpose3({inputs: {x}, backend: backend2, attrs: {perm: permutedAxes}});
+      $x = transpose3({ inputs: { x }, backend: backend2, attrs: { perm: permutedAxes } });
       intermediateTensorInfos.push($x);
       axes = backend_util_exports.getInnerMostAxes(axes.length, $x.shape.length);
     }
@@ -47124,14 +47125,14 @@ return log(x + sqrt(x * x - 1.0));`;
   }
   return asin(x);
 `;
-  var asin3 = unaryKernelFunc2({opSnippet: ASIN});
+  var asin3 = unaryKernelFunc2({ opSnippet: ASIN });
   var asinConfig2 = {
     kernelName: Asin,
     backendName: "webgl",
     kernelFunc: asin3
   };
   var ASINH = CHECK_NAN_SNIPPET + `return log(x + sqrt(x * x + 1.0));`;
-  var asinh3 = unaryKernelFunc2({opSnippet: ASINH});
+  var asinh3 = unaryKernelFunc2({ opSnippet: ASINH });
   var asinhConfig2 = {
     kernelName: Asinh,
     backendName: "webgl",
@@ -47140,7 +47141,7 @@ return log(x + sqrt(x * x - 1.0));`;
   var ATAN = CHECK_NAN_SNIPPET + `
   return atan(x);
 `;
-  var atan4 = unaryKernelFunc2({opSnippet: ATAN});
+  var atan4 = unaryKernelFunc2({ opSnippet: ATAN });
   var atanConfig2 = {
     kernelName: Atan,
     backendName: "webgl",
@@ -47155,7 +47156,7 @@ return log(x + sqrt(x * x - 1.0));`;
   ` + CHECK_NAN_SNIPPET_BINARY_PACKED + `
   return result;
 `;
-  var atan23 = binaryKernelFunc2({opSnippet: ATAN2, packedOpSnippet: ATAN2_PACKED});
+  var atan23 = binaryKernelFunc2({ opSnippet: ATAN2, packedOpSnippet: ATAN2_PACKED });
   var atan2Config2 = {
     kernelName: Atan2,
     backendName: "webgl",
@@ -47164,7 +47165,7 @@ return log(x + sqrt(x * x - 1.0));`;
   var ATANH = CHECK_NAN_SNIPPET + `
   if ((x < -1.0) || (x > 1.0)) return NAN;
 return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
-  var atanh3 = unaryKernelFunc2({opSnippet: ATANH});
+  var atanh3 = unaryKernelFunc2({ opSnippet: ATANH });
   var atanhConfig2 = {
     kernelName: Atanh,
     backendName: "webgl",
@@ -47555,15 +47556,15 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     }
   };
   function avgPool3(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
     assertNotComplex2(x, "avgPool");
-    const {filterSize, strides, pad: pad3, dimRoundingMode} = attrs;
+    const { filterSize, strides, pad: pad3, dimRoundingMode } = attrs;
     const dilations = 1;
     util_exports.assert(backend_util_exports.eitherStridesOrDilationsAreOne(strides, dilations), () => `Error in avgPool: Either strides or dilations must be 1. Got strides ${strides} and dilations '${dilations}'`);
     const convInfo = backend_util_exports.computePool2DInfo(x.shape, filterSize, strides, dilations, pad3, dimRoundingMode);
     if (convInfo.filterWidth === 1 && convInfo.filterHeight === 1 && util_exports.arraysEqual(convInfo.inShape, convInfo.outShape)) {
-      return identity3({inputs: {x}, backend: backend2});
+      return identity3({ inputs: { x }, backend: backend2 });
     }
     const avgPoolProgram = new Pool2DProgram(convInfo, "avg", false);
     return backend2.runWebGLProgram(avgPoolProgram, [x], "float32");
@@ -47574,9 +47575,9 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     kernelFunc: avgPool3
   };
   function avgPool3D2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {filterSize, strides, pad: pad3, dimRoundingMode, dataFormat} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { filterSize, strides, pad: pad3, dimRoundingMode, dataFormat } = attrs;
     const dilations = [1, 1, 1];
     const convInfo = backend_util_exports.computePool3DInfo(x.shape, filterSize, strides, dilations, pad3, dimRoundingMode, dataFormat);
     const avgPoolProgram = new Pool3DProgram(convInfo, "avg", false);
@@ -47727,10 +47728,10 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     }
   };
   function avgPool3DGrad2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {dy, input: input2} = inputs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { dy, input: input2 } = inputs;
     const x = input2;
-    const {filterSize, strides, pad: pad3, dimRoundingMode} = attrs;
+    const { filterSize, strides, pad: pad3, dimRoundingMode } = attrs;
     const dilations = [1, 1, 1];
     const convInfo = backend_util_exports.computePool3DInfo(x.shape, filterSize, strides, dilations, pad3, dimRoundingMode);
     const avgPoolBackpropProgram = new AvgPool3DBackpropProgram(convInfo);
@@ -47742,11 +47743,11 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     kernelFunc: avgPool3DGrad2
   };
   function avgPoolGrad3(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {dy, input: input2} = inputs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { dy, input: input2 } = inputs;
     const x = input2;
     assertNotComplex2([dy, input2], "avgPoolGrad");
-    const {filterSize, strides, pad: pad3} = attrs;
+    const { filterSize, strides, pad: pad3 } = attrs;
     const convInfo = backend_util_exports.computePool2DInfo(x.shape, filterSize, strides, 1, pad3);
     const avgPoolBackpropProgram = new AvgPool2DBackpropProgram(convInfo);
     return backend2.runWebGLProgram(avgPoolBackpropProgram, [dy], x.dtype);
@@ -47757,10 +47758,10 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     kernelFunc: avgPoolGrad3
   };
   function batchMatMul2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {a, b} = inputs;
-    const {transposeA, transposeB} = attrs;
-    return batchMatMulImpl({a, b, transposeA, transposeB, backend: backend2});
+    const { inputs, backend: backend2, attrs } = args;
+    const { a, b } = inputs;
+    const { transposeA, transposeB } = attrs;
+    return batchMatMulImpl({ a, b, transposeA, transposeB, backend: backend2 });
   }
   var batchMatMulConfig2 = {
     kernelName: BatchMatMul,
@@ -47835,12 +47836,12 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     `;
     }
   };
-  var batchNorm3 = ({inputs, backend: backend2, attrs}) => {
-    const {x, mean: mean4, variance, offset, scale: scale22} = inputs;
+  var batchNorm3 = ({ inputs, backend: backend2, attrs }) => {
+    const { x, mean: mean4, variance, offset, scale: scale22 } = inputs;
     util_exports.assert(mean4.shape.length === variance.shape.length, () => "Batch normalization gradient requires mean and variance to have equal ranks.");
     util_exports.assert(offset == null || mean4.shape.length === offset.shape.length, () => "Batch normalization gradient requires mean and offset to have equal ranks.");
     util_exports.assert(scale22 == null || mean4.shape.length === scale22.shape.length, () => "Batch normalization gradient requires mean and scale to have equal ranks.");
-    let {varianceEpsilon} = attrs;
+    let { varianceEpsilon } = attrs;
     if (varianceEpsilon == null) {
       varianceEpsilon = 1e-3;
     }
@@ -47996,9 +47997,9 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     return t;
   }
   function slice3(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {begin, size} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { begin, size } = attrs;
     const [$begin, $size] = slice_util_exports.parseSliceParams(x, begin, size);
     slice_util_exports.assertParamsValid(x, $begin, $size);
     if (util_exports.sizeFromShape($size) === 0) {
@@ -48009,7 +48010,7 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
       const outValues = sliceImplCPU(xTexData.values, $begin, $size, x.shape, x.dtype);
       return backend2.makeTensorInfo($size, x.dtype, outValues);
     }
-    const {isPacked} = backend2.texData.get(x.dataId);
+    const { isPacked } = backend2.texData.get(x.dataId);
     const isContinous = slice_util_exports.isSliceContinous(x.shape, $begin, $size);
     if (isPacked || !isContinous) {
       const program = env().getBool("WEBGL_PACK_ARRAY_OPERATIONS") ? new SlicePackedProgram($size) : new SliceProgram($size);
@@ -48025,9 +48026,9 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     kernelFunc: slice3
   };
   var batchToSpaceND3 = (args) => {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {blockShape, crops} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { blockShape, crops } = attrs;
     util_exports.assert(x.shape.length <= 4, () => "batchToSpaceND for rank > 4 with a WebGL backend not implemented yet");
     const prod5 = blockShape.reduce((a, b) => a * b);
     const reshaped = backend_util_exports.getReshaped(x.shape, blockShape, prod5);
@@ -48036,17 +48037,17 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     const sliceBeginCoords = backend_util_exports.getSliceBeginCoords(crops, blockShape.length);
     const sliceSize = backend_util_exports.getSliceSize(reshapedPermuted, crops, blockShape.length);
     const toDispose = [];
-    const reshapedIntermediate = reshape4({inputs: {x}, backend: backend2, attrs: {shape: reshaped}});
-    const transposedIntermediate = transpose3({inputs: {x: reshapedIntermediate}, backend: backend2, attrs: {perm: permuted}});
+    const reshapedIntermediate = reshape4({ inputs: { x }, backend: backend2, attrs: { shape: reshaped } });
+    const transposedIntermediate = transpose3({ inputs: { x: reshapedIntermediate }, backend: backend2, attrs: { perm: permuted } });
     const reshapedIntermediate2 = reshape4({
-      inputs: {x: transposedIntermediate},
+      inputs: { x: transposedIntermediate },
       backend: backend2,
-      attrs: {shape: reshapedPermuted}
+      attrs: { shape: reshapedPermuted }
     });
     const sliced = slice3({
-      inputs: {x: reshapedIntermediate2},
+      inputs: { x: reshapedIntermediate2 },
       backend: backend2,
-      attrs: {begin: sliceBeginCoords, size: sliceSize}
+      attrs: { begin: sliceBeginCoords, size: sliceSize }
     });
     toDispose.push(reshapedIntermediate);
     toDispose.push(transposedIntermediate);
@@ -48060,9 +48061,9 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     kernelFunc: batchToSpaceND3
   };
   function bincount3(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x, weights} = inputs;
-    const {size} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x, weights } = inputs;
+    const { size } = attrs;
     const xVals = backend2.readSync(x.dataId);
     const weightsVals = backend2.readSync(weights.dataId);
     const outVals = bincountImplCPU(xVals, weightsVals, weights.dtype, weights.shape, size);
@@ -48074,17 +48075,17 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     kernelFunc: bincount3
   };
   var NOT_EQUAL = `return float(a != b);`;
-  var notEqual3 = binaryKernelFunc2({opSnippet: NOT_EQUAL, dtype: "bool"});
+  var notEqual3 = binaryKernelFunc2({ opSnippet: NOT_EQUAL, dtype: "bool" });
   var notEqualConfig2 = {
     kernelName: NotEqual,
     backendName: "webgl",
     kernelFunc: notEqual3
   };
   function real3(args) {
-    const {inputs, backend: backend2} = args;
-    const {input: input2} = inputs;
+    const { inputs, backend: backend2 } = args;
+    const { input: input2 } = inputs;
     const inputData = backend2.texData.get(input2.dataId);
-    return identity3({inputs: {x: inputData.complexTensorInfos.real}, backend: backend2});
+    return identity3({ inputs: { x: inputData.complexTensorInfos.real }, backend: backend2 });
   }
   var realConfig2 = {
     kernelName: Real,
@@ -48095,40 +48096,40 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
   function int(input2, backend2) {
     const program = new UnaryOpProgram(input2.shape, TO_INT);
     const output = backend2.runWebGLProgram(program, [input2], "int32");
-    return {dataId: output.dataId, shape: output.shape, dtype: output.dtype};
+    return { dataId: output.dataId, shape: output.shape, dtype: output.dtype };
   }
   function cast4(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {dtype} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { dtype } = attrs;
     if (dtype === "complex64") {
       if (x.dtype === "complex64") {
-        return identity3({inputs: {x}, backend: backend2});
+        return identity3({ inputs: { x }, backend: backend2 });
       }
       const zerosTensor = zeros(x.shape);
-      const floatX = cast4({inputs: {x}, backend: backend2, attrs: {dtype: "float32"}});
-      const result = complex3({inputs: {real: floatX, imag: zerosTensor}, backend: backend2});
+      const floatX = cast4({ inputs: { x }, backend: backend2, attrs: { dtype: "float32" } });
+      const result = complex3({ inputs: { real: floatX, imag: zerosTensor }, backend: backend2 });
       zerosTensor.dispose();
       backend2.disposeIntermediateTensorInfo(floatX);
       return result;
     }
     if (x.dtype === "complex64") {
-      const realPart = real3({inputs: {input: x}, backend: backend2});
-      const result = cast4({inputs: {x: realPart}, backend: backend2, attrs: {dtype}});
+      const realPart = real3({ inputs: { input: x }, backend: backend2 });
+      const result = cast4({ inputs: { x: realPart }, backend: backend2, attrs: { dtype } });
       backend2.disposeIntermediateTensorInfo(realPart);
       return result;
     }
     if (!util_exports.hasEncodingLoss(x.dtype, dtype)) {
-      const result = identity3({inputs: {x}, backend: backend2});
-      return {dataId: result.dataId, shape: result.shape, dtype};
+      const result = identity3({ inputs: { x }, backend: backend2 });
+      return { dataId: result.dataId, shape: result.shape, dtype };
     }
     if (dtype === "int32") {
       return int(x, backend2);
     }
     if (dtype === "bool") {
       const zerosTensorInfo = backend2.makeTensorInfo([], "bool", util_exports.getTypedArrayFromDType("bool", 1));
-      const binaryInputs = {a: x, b: zerosTensorInfo};
-      const result = notEqual3({inputs: binaryInputs, backend: backend2});
+      const binaryInputs = { a: x, b: zerosTensorInfo };
+      const result = notEqual3({ inputs: binaryInputs, backend: backend2 });
       backend2.disposeIntermediateTensorInfo(zerosTensorInfo);
       return result;
     }
@@ -48140,7 +48141,7 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     kernelFunc: cast4
   };
   var CEIL = `return ceil(x);`;
-  var ceil3 = unaryKernelFunc2({opSnippet: CEIL, packedOpSnippet: CEIL, cpuKernelImpl: ceilImplCPU});
+  var ceil3 = unaryKernelFunc2({ opSnippet: CEIL, packedOpSnippet: CEIL, cpuKernelImpl: ceilImplCPU });
   var ceilConfig2 = {
     kernelName: Ceil,
     backendName: "webgl",
@@ -48210,9 +48211,9 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     }
   };
   function clipByValue2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {clipValueMin, clipValueMax} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { clipValueMin, clipValueMax } = attrs;
     let program;
     if (env().getBool("WEBGL_PACK_CLIP")) {
       program = new ClipPackedProgram(x.shape);
@@ -48255,8 +48256,8 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     };
   }
   function complexAbs2(args) {
-    const {inputs, backend: backend2} = args;
-    const {x} = inputs;
+    const { inputs, backend: backend2 } = args;
+    const { x } = inputs;
     const xData = backend2.texData.get(x.dataId);
     const program = new ComplexAbsProgram(x.shape);
     const programInputs = [
@@ -48379,10 +48380,10 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     return res.join();
   }
   function imag3(args) {
-    const {inputs, backend: backend2} = args;
-    const {input: input2} = inputs;
+    const { inputs, backend: backend2 } = args;
+    const { input: input2 } = inputs;
     const inputData = backend2.texData.get(input2.dataId);
-    return identity3({inputs: {x: inputData.complexTensorInfos.imag}, backend: backend2});
+    return identity3({ inputs: { x: inputData.complexTensorInfos.imag }, backend: backend2 });
   }
   var imagConfig2 = {
     kernelName: Imag,
@@ -48392,11 +48393,11 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
   function concatImpl2(inputs, axis, backend2) {
     const dtype = inputs[0].dtype;
     if (dtype === "complex64") {
-      const reals = inputs.map((t) => real3({inputs: {input: t}, backend: backend2}));
-      const imags = inputs.map((t) => imag3({inputs: {input: t}, backend: backend2}));
+      const reals = inputs.map((t) => real3({ inputs: { input: t }, backend: backend2 }));
+      const imags = inputs.map((t) => imag3({ inputs: { input: t }, backend: backend2 }));
       const realConcated = concatImpl2(reals, axis, backend2);
       const imagConcated = concatImpl2(imags, axis, backend2);
-      const result2 = complex3({inputs: {real: realConcated, imag: imagConcated}, backend: backend2});
+      const result2 = complex3({ inputs: { real: realConcated, imag: imagConcated }, backend: backend2 });
       reals.forEach((r) => backend2.disposeIntermediateTensorInfo(r));
       imags.forEach((i) => backend2.disposeIntermediateTensorInfo(i));
       backend2.disposeIntermediateTensorInfo(realConcated);
@@ -48411,10 +48412,10 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
       const tensors2D2 = inputs.map((t) => {
         const innerSize = util_exports.sizeFromShape(t.shape.slice(axis));
         const shape = [-1, innerSize];
-        return reshape4({inputs: {x: t}, backend: backend2, attrs: {shape}});
+        return reshape4({ inputs: { x: t }, backend: backend2, attrs: { shape } });
       });
       const inputsValShapes = tensors2D2.map((t) => {
-        return {vals: backend2.readSync(t.dataId), shape: t.shape};
+        return { vals: backend2.readSync(t.dataId), shape: t.shape };
       });
       const outShape2 = backend_util_exports.computeOutShape(tensors2D2.map((t) => t.shape), 1);
       const simplyConcat = tensors2D2[0].shape[0] === 1;
@@ -48437,26 +48438,26 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
       const program2 = new ConcatPackedProgram(inputs.map((t) => t.shape), axis);
       return backend2.runWebGLProgram(program2, inputs, dtype);
     }
-    const {tensors2D, outShape} = computeTensors2D(inputs, axis, backend2);
+    const { tensors2D, outShape } = computeTensors2D(inputs, axis, backend2);
     const program = new ConcatProgram(tensors2D.map((t) => t.shape));
     const result = backend2.runWebGLProgram(program, tensors2D, dtype);
     tensors2D.forEach((r) => backend2.disposeIntermediateTensorInfo(r));
-    const reshapedResult = reshape4({inputs: {x: result}, attrs: {shape: outShape}, backend: backend2});
+    const reshapedResult = reshape4({ inputs: { x: result }, attrs: { shape: outShape }, backend: backend2 });
     backend2.disposeIntermediateTensorInfo(result);
     return reshapedResult;
   }
   function computeTensors2D(inputs, axis, backend2) {
     const outShape = backend_util_exports.computeOutShape(inputs.map((t) => t.shape), axis);
     const tensors2D = inputs.map((x) => reshape4({
-      inputs: {x},
-      attrs: {shape: [-1, util_exports.sizeFromShape(x.shape.slice(axis))]},
+      inputs: { x },
+      attrs: { shape: [-1, util_exports.sizeFromShape(x.shape.slice(axis))] },
       backend: backend2
     }));
-    return {tensors2D, outShape};
+    return { tensors2D, outShape };
   }
   function concat3(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {axis} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { axis } = attrs;
     const $axis = util_exports.parseAxisParam(axis, inputs[0].shape)[0];
     const outShape = backend_util_exports.computeOutShape(inputs.map((t) => t.shape), $axis);
     if (util_exports.sizeFromShape(outShape) === 0) {
@@ -48464,7 +48465,7 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     }
     const $inputs = inputs.filter((t) => util_exports.sizeFromShape(t.shape) > 0);
     if ($inputs.length === 1) {
-      return identity3({inputs: {x: $inputs[0]}, backend: backend2});
+      return identity3({ inputs: { x: $inputs[0] }, backend: backend2 });
     }
     const shapes = $inputs.map((t) => t.shape);
     backend_util_exports.assertParamsConsistent(shapes, $axis);
@@ -48766,8 +48767,8 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
       this.packedInputs = true;
       this.packedOutput = true;
       this.outputShape = outputShape;
-      const {filterWidth, inChannels, strideWidth, strideHeight, padInfo, outWidth, dilationWidth, dilationHeight, dataFormat} = convInfo;
-      const {left, top} = padInfo;
+      const { filterWidth, inChannels, strideWidth, strideHeight, padInfo, outWidth, dilationWidth, dilationHeight, dataFormat } = convInfo;
+      const { left, top } = padInfo;
       const itemsPerBlockRow = inChannels * filterWidth;
       const glsl = getGlslDifferences();
       const isChannelsLast = dataFormat === "channelsLast";
@@ -48826,7 +48827,7 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     `;
     }
   };
-  function conv2dByMatMul({x, filter, convInfo, backend: backend2, bias = null, preluActivationWeights = null, leakyreluAlpha = 0, activation: activation2 = null}) {
+  function conv2dByMatMul({ x, filter, convInfo, backend: backend2, bias = null, preluActivationWeights = null, leakyreluAlpha = 0, activation: activation2 = null }) {
     const xShape = x.shape;
     const xTexData = backend2.texData.get(x.dataId);
     const sharedMatMulDim = convInfo.inChannels;
@@ -48842,14 +48843,14 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     if (batchMatMulWillBeUnpacked || !env().getBool("WEBGL_LAZILY_UNPACK") || !env().getBool("WEBGL_PACK_BINARY_OPERATIONS") || !reshapeWillBeExpensive) {
       const targetShape = isChannelsLast ? xShape[0] * xShape[1] * xShape[2] : xShape[0] * xShape[2] * xShape[3];
       const xReshaped = reshape4({
-        inputs: {x},
+        inputs: { x },
         backend: backend2,
-        attrs: {shape: [1, targetShape, convInfo.inChannels]}
+        attrs: { shape: [1, targetShape, convInfo.inChannels] }
       });
       const filterReshaped = reshape4({
-        inputs: {x: filter},
+        inputs: { x: filter },
         backend: backend2,
-        attrs: {shape: [1, convInfo.inChannels, convInfo.outChannels]}
+        attrs: { shape: [1, convInfo.inChannels, convInfo.outChannels] }
       });
       const result = batchMatMulImpl({
         a: xReshaped,
@@ -48862,7 +48863,7 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
         preluActivationWeights,
         leakyreluAlpha
       });
-      out = reshape4({inputs: {x: result}, backend: backend2, attrs: {shape: convInfo.outShape}});
+      out = reshape4({ inputs: { x: result }, backend: backend2, attrs: { shape: convInfo.outShape } });
       intermediates.push(xReshaped);
       intermediates.push(filterReshaped);
       intermediates.push(result);
@@ -48878,9 +48879,9 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
       xTexData.shape[xTexData.shape.length - 2]++;
       util_exports.assert(isReshapeFree(xTexData.shape, xReshaped.shape), () => `packed reshape ${xTexData.shape} to ${xReshaped.shape} isn't free`);
       const filterReshaped = reshape4({
-        inputs: {x: filter},
+        inputs: { x: filter },
         backend: backend2,
-        attrs: {shape: [1, convInfo.inChannels, convInfo.outChannels]}
+        attrs: { shape: [1, convInfo.inChannels, convInfo.outChannels] }
       });
       intermediates.push(filterReshaped);
       const pointwiseConv = batchMatMulImpl({
@@ -48898,7 +48899,7 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
       util_exports.assert(pointwiseConvTexData.isPacked, () => "batchMatMul result is expected to be packed");
       xTexData.shape = originalXTexDataShape;
       pointwiseConvTexData.shape = convInfo.outShape;
-      out = identity3({inputs: {x: pointwiseConv}, backend: backend2});
+      out = identity3({ inputs: { x: pointwiseConv }, backend: backend2 });
       out.shape = convInfo.outShape;
       intermediates.push(pointwiseConv);
     }
@@ -48907,8 +48908,8 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     }
     return out;
   }
-  function conv2dWithIm2Row({x, filter, convInfo, backend: backend2, bias = null, preluActivationWeights = null, leakyreluAlpha = 0, activation: activation2 = null}) {
-    const {filterWidth, filterHeight, inChannels, outWidth, outHeight, dataFormat} = convInfo;
+  function conv2dWithIm2Row({ x, filter, convInfo, backend: backend2, bias = null, preluActivationWeights = null, leakyreluAlpha = 0, activation: activation2 = null }) {
+    const { filterWidth, filterHeight, inChannels, outWidth, outHeight, dataFormat } = convInfo;
     const isChannelsLast = dataFormat === "channelsLast";
     const sharedDim = filterWidth * filterHeight * inChannels;
     const numCols = outHeight * outWidth;
@@ -48916,20 +48917,20 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     const transposeA = true;
     const transposeB = false;
     const intermediates = [];
-    const xSqueezed = reshape4({inputs: {x}, backend: backend2, attrs: {shape: x.shape.slice(1)}});
+    const xSqueezed = reshape4({ inputs: { x }, backend: backend2, attrs: { shape: x.shape.slice(1) } });
     const w2Row = reshape4({
-      inputs: {x: filter},
+      inputs: { x: filter },
       backend: backend2,
-      attrs: {shape: [1, sharedDim, util_exports.sizeFromShape(filter.shape) / sharedDim]}
+      attrs: { shape: [1, sharedDim, util_exports.sizeFromShape(filter.shape) / sharedDim] }
     });
     intermediates.push(xSqueezed);
     intermediates.push(w2Row);
     const im2ColProgram = new Im2ColPackedProgram(x2ColShape, xSqueezed.shape, convInfo);
     const im2Col = backend2.runWebGLProgram(im2ColProgram, [xSqueezed], "float32");
     const im2ColReshaped = reshape4({
-      inputs: {x: im2Col},
+      inputs: { x: im2Col },
       backend: backend2,
-      attrs: {shape: [1, x2ColShape[0], x2ColShape[1]]}
+      attrs: { shape: [1, x2ColShape[0], x2ColShape[1]] }
     });
     intermediates.push(im2Col);
     intermediates.push(im2ColReshaped);
@@ -48952,7 +48953,7 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     }
     const product = backend2.runWebGLProgram(matmulProgram, inputs, "float32");
     const outShape = isChannelsLast ? [1, outHeight, outWidth, convInfo.outChannels] : [1, convInfo.outChannels, outHeight, outWidth];
-    const out = reshape4({inputs: {x: product}, backend: backend2, attrs: {shape: outShape}});
+    const out = reshape4({ inputs: { x: product }, backend: backend2, attrs: { shape: outShape } });
     intermediates.push(product);
     for (const i of intermediates) {
       backend2.disposeIntermediateTensorInfo(i);
@@ -48960,21 +48961,21 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     return out;
   }
   function conv2d4(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x, filter} = inputs;
-    const {strides, pad: pad3, dataFormat, dilations, dimRoundingMode} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x, filter } = inputs;
+    const { strides, pad: pad3, dataFormat, dilations, dimRoundingMode } = attrs;
     const $dataFormat = backend_util_exports.convertConv2DDataFormat(dataFormat);
     const convInfo = backend_util_exports.computeConv2DInfo(x.shape, filter.shape, strides, dilations, pad3, dimRoundingMode, false, $dataFormat);
     let out;
     if (convInfo.filterHeight === 1 && convInfo.filterWidth === 1 && convInfo.dilationHeight === 1 && convInfo.dilationWidth === 1 && convInfo.strideHeight === 1 && convInfo.strideWidth === 1 && (convInfo.padInfo.type === "SAME" || convInfo.padInfo.type === "VALID")) {
-      out = conv2dByMatMul({x, filter, convInfo, backend: backend2});
+      out = conv2dByMatMul({ x, filter, convInfo, backend: backend2 });
     } else if (env().getBool("WEBGL_CONV_IM2COL") && x.shape[0] === 1) {
-      out = conv2dWithIm2Row({x, filter, convInfo, backend: backend2});
+      out = conv2dWithIm2Row({ x, filter, convInfo, backend: backend2 });
     } else {
       const program = new Conv2DProgram(convInfo);
       out = backend2.runWebGLProgram(program, [x, filter], "float32");
     }
-    const outReshaped = reshape4({inputs: {x: out}, backend: backend2, attrs: {shape: convInfo.outShape}});
+    const outReshaped = reshape4({ inputs: { x: out }, backend: backend2, attrs: { shape: convInfo.outShape } });
     backend2.disposeIntermediateTensorInfo(out);
     return outReshaped;
   }
@@ -49236,9 +49237,9 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     }
   };
   function conv2DBackpropFilter3(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x, dy} = inputs;
-    const {strides, pad: pad3, dataFormat, dimRoundingMode, filterShape} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x, dy } = inputs;
+    const { strides, pad: pad3, dataFormat, dimRoundingMode, filterShape } = attrs;
     const $dataFormat = backend_util_exports.convertConv2DDataFormat(dataFormat);
     const convInfo = backend_util_exports.computeConv2DInfo(x.shape, filterShape, strides, 1, pad3, dimRoundingMode, false, $dataFormat);
     const program = new Conv2DDerFilterProgram(convInfo);
@@ -49250,9 +49251,9 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     kernelFunc: conv2DBackpropFilter3
   };
   function conv2DBackpropInput3(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {dy, filter} = inputs;
-    const {inputShape, strides, pad: pad3, dataFormat, dimRoundingMode} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { dy, filter } = inputs;
+    const { inputShape, strides, pad: pad3, dataFormat, dimRoundingMode } = attrs;
     const $dataFormat = backend_util_exports.convertConv2DDataFormat(dataFormat);
     const convInfo = backend_util_exports.computeConv2DInfo(inputShape, filter.shape, strides, 1, pad3, dimRoundingMode, false, $dataFormat);
     const program = new Conv2DDerInputProgram(convInfo);
@@ -49264,9 +49265,9 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     kernelFunc: conv2DBackpropInput3
   };
   function conv3D2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x, filter} = inputs;
-    const {strides, pad: pad3, dilations} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x, filter } = inputs;
+    const { strides, pad: pad3, dilations } = attrs;
     const convInfo = backend_util_exports.computeConv3DInfo(x.shape, filter.shape, strides, dilations, pad3);
     const program = new Conv3DProgram(convInfo);
     return backend2.runWebGLProgram(program, [x, filter], "float32");
@@ -49277,9 +49278,9 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     kernelFunc: conv3D2
   };
   function conv3DBackpropFilterV22(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x, dy} = inputs;
-    const {strides, pad: pad3, filterShape} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x, dy } = inputs;
+    const { strides, pad: pad3, filterShape } = attrs;
     const convInfo = backend_util_exports.computeConv3DInfo(x.shape, filterShape, strides, 1, pad3);
     const program = new Conv3DDerFilterProgram(convInfo);
     return backend2.runWebGLProgram(program, [x, dy], "float32");
@@ -49290,9 +49291,9 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     kernelFunc: conv3DBackpropFilterV22
   };
   function conv3DBackpropInput2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {dy, filter} = inputs;
-    const {pad: pad3, strides, inputShape} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { dy, filter } = inputs;
+    const { pad: pad3, strides, inputShape } = attrs;
     const convInfo = backend_util_exports.computeConv3DInfo(inputShape, filter.shape, strides, 1, pad3);
     const program = new Conv3DDerInputProgram(convInfo);
     return backend2.runWebGLProgram(program, [dy, filter], "float32");
@@ -49305,7 +49306,7 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
   var COS = CHECK_NAN_SNIPPET_UNARY + `
   return cos(x);
 `;
-  var cos3 = unaryKernelFunc2({opSnippet: COS});
+  var cos3 = unaryKernelFunc2({ opSnippet: COS });
   var cosConfig2 = {
     kernelName: Cos,
     backendName: "webgl",
@@ -49315,7 +49316,7 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
   float e2x = exp(-x);
   return (e2x + 1.0 / e2x) / 2.0;
 `;
-  var cosh3 = unaryKernelFunc2({opSnippet: COSH});
+  var cosh3 = unaryKernelFunc2({ opSnippet: COSH });
   var coshConfig2 = {
     kernelName: Cosh,
     backendName: "webgl",
@@ -49414,9 +49415,9 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     }
   };
   var cropAndResize3 = (args) => {
-    const {inputs, backend: backend2, attrs} = args;
-    const {image: image3, boxes, boxInd} = inputs;
-    const {cropSize, method, extrapolationValue} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { image: image3, boxes, boxInd } = inputs;
+    const { cropSize, method, extrapolationValue } = attrs;
     const program = new CropAndResizeProgram(image3.shape, boxes.shape, cropSize, method, extrapolationValue);
     return backend2.runWebGLProgram(program, [image3, boxes, boxInd], "float32");
   };
@@ -49493,21 +49494,21 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     }
   }
   function cumsum3(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {axis, exclusive, reverse: reverse5} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { axis, exclusive, reverse: reverse5 } = attrs;
     const xRank = x.shape.length;
     const permutation = backend_util_exports.getAxesPermutation([axis], xRank);
     let permutedX = x;
     if (permutation != null) {
-      permutedX = transpose3({inputs: {x}, backend: backend2, attrs: {perm: permutation}});
+      permutedX = transpose3({ inputs: { x }, backend: backend2, attrs: { perm: permutation } });
     }
     const permutedAxis = backend_util_exports.getInnerMostAxes(1, xRank)[0];
     if (permutedAxis !== xRank - 1) {
       throw new Error(`WebGL cumsum shader expects an inner-most axis=${x.shape.length - 1} but got axis=${axis}`);
     }
     const size = permutedX.shape[permutedAxis];
-    let result = identity3({inputs: {x: permutedX}, backend: backend2});
+    let result = identity3({ inputs: { x: permutedX }, backend: backend2 });
     for (let i = 0; i <= Math.ceil(Math.log2(size)) - 1; i++) {
       const program = new CumSumProgram(permutedX.shape, false, reverse5);
       const customSetup = program.getCustomSetupFunc(i);
@@ -49523,7 +49524,7 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     }
     if (permutation != null) {
       const reversePermutation = backend_util_exports.getUndoAxesPermutation(permutation);
-      const reverseTransposedResult = transpose3({inputs: {x: result}, backend: backend2, attrs: {perm: reversePermutation}});
+      const reverseTransposedResult = transpose3({ inputs: { x: result }, backend: backend2, attrs: { perm: reversePermutation } });
       backend2.disposeIntermediateTensorInfo(result);
       backend2.disposeIntermediateTensorInfo(permutedX);
       return reverseTransposedResult;
@@ -49536,9 +49537,9 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     kernelFunc: cumsum3
   };
   function denseBincount3(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x, weights} = inputs;
-    const {size, binaryOutput} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x, weights } = inputs;
+    const { size, binaryOutput } = attrs;
     if (x.shape.length === 1) {
       const xVals = backend2.readSync(x.dataId);
       const weightsVals = backend2.readSync(weights.dataId);
@@ -49622,9 +49623,9 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     }
   };
   function depthToSpace3(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {blockSize, dataFormat} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { blockSize, dataFormat } = attrs;
     util_exports.assert(blockSize > 1, () => `blockSize should be > 1 for depthToSpace, but was: ${blockSize}`);
     const batchSize = x.shape[0];
     const inputHeight = dataFormat === "NHWC" ? x.shape[1] : x.shape[2];
@@ -50029,9 +50030,9 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     }
   };
   function depthwiseConv2dNative2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x, filter} = inputs;
-    const {strides, pad: pad3, dilations, dimRoundingMode} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x, filter } = inputs;
+    const { strides, pad: pad3, dilations, dimRoundingMode } = attrs;
     let $dilations = dilations;
     if ($dilations == null) {
       $dilations = [1, 1];
@@ -50158,9 +50159,9 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     }
   };
   function depthwiseConv2dNativeBackpropFilter3(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x, dy} = inputs;
-    const {strides, dilations, pad: pad3, dimRoundingMode, filterShape} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x, dy } = inputs;
+    const { strides, dilations, pad: pad3, dimRoundingMode, filterShape } = attrs;
     const convInfo = backend_util_exports.computeConv2DInfo(x.shape, filterShape, strides, dilations, pad3, dimRoundingMode, true);
     const program = new DepthwiseConv2DDerFilterProgram(convInfo);
     return backend2.runWebGLProgram(program, [x, dy], "float32");
@@ -50171,9 +50172,9 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     kernelFunc: depthwiseConv2dNativeBackpropFilter3
   };
   function depthwiseConv2dNativeBackpropInput3(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {dy, filter} = inputs;
-    const {strides, dilations, pad: pad3, dimRoundingMode, inputShape} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { dy, filter } = inputs;
+    const { strides, dilations, pad: pad3, dimRoundingMode, inputShape } = attrs;
     const convInfo = backend_util_exports.computeConv2DInfo(inputShape, filter.shape, strides, dilations, pad3, dimRoundingMode, true);
     const program = new DepthwiseConv2DDerInputProgram(convInfo);
     return backend2.runWebGLProgram(program, [dy, filter], "float32");
@@ -50197,14 +50198,14 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     }
   };
   function diag3(args) {
-    const {inputs, backend: backend2} = args;
-    const {x} = inputs;
+    const { inputs, backend: backend2 } = args;
+    const { x } = inputs;
     const outShape = [...x.shape, ...x.shape];
     const xSize = util_exports.sizeFromShape(x.shape);
-    const flat = reshape4({inputs: {x}, backend: backend2, attrs: {shape: [xSize]}});
+    const flat = reshape4({ inputs: { x }, backend: backend2, attrs: { shape: [xSize] } });
     const program = new DiagProgram(xSize);
     const res = backend2.runWebGLProgram(program, [flat], flat.dtype);
-    const out = reshape4({inputs: {x: res}, backend: backend2, attrs: {shape: outShape}});
+    const out = reshape4({ inputs: { x: res }, backend: backend2, attrs: { shape: outShape } });
     backend2.disposeIntermediateTensorInfo(flat);
     backend2.disposeIntermediateTensorInfo(res);
     return out;
@@ -50218,8 +50219,8 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     constructor(convInfo) {
       this.variableNames = ["x", "W"];
       this.outputShape = convInfo.outShape;
-      const {inHeight, inWidth, padInfo, strideHeight, strideWidth, filterHeight, filterWidth, dilationHeight, dilationWidth} = convInfo;
-      const {top: padTop, left: padLeft} = padInfo;
+      const { inHeight, inWidth, padInfo, strideHeight, strideWidth, filterHeight, filterWidth, dilationHeight, dilationWidth } = convInfo;
+      const { top: padTop, left: padLeft } = padInfo;
       this.userCode = `
       const ivec2 strides = ivec2(${strideHeight}, ${strideWidth});
       const ivec2 pads = ivec2(${padTop}, ${padLeft});
@@ -50262,14 +50263,14 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     }
   };
   function dilation2D(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x, filter} = inputs;
-    const {strides, pad: pad3, dilations} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x, filter } = inputs;
+    const { strides, pad: pad3, dilations } = attrs;
     const convInfo = backend_util_exports.computeDilation2DInfo(x.shape, filter.shape, strides, pad3, "NHWC", dilations);
     let out;
     const program = new Dilation2DProgram(convInfo);
     out = backend2.runWebGLProgram(program, [x, filter], "float32");
-    const outReshaped = reshape4({inputs: {x: out}, backend: backend2, attrs: {shape: convInfo.outShape}});
+    const outReshaped = reshape4({ inputs: { x: out }, backend: backend2, attrs: { shape: convInfo.outShape } });
     backend2.disposeIntermediateTensorInfo(out);
     return outReshaped;
   }
@@ -50279,24 +50280,24 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     kernelFunc: dilation2D
   };
   function einsum3(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {equation} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { equation } = attrs;
     const tensors = inputs;
-    const {allDims, summedDims, idDims} = backend_util_exports.decodeEinsumEquation(equation, tensors.length);
+    const { allDims, summedDims, idDims } = backend_util_exports.decodeEinsumEquation(equation, tensors.length);
     backend_util_exports.checkEinsumDimSizes(allDims.length, idDims, tensors);
-    const {path, steps} = backend_util_exports.getEinsumComputePath(summedDims, idDims);
+    const { path, steps } = backend_util_exports.getEinsumComputePath(summedDims, idDims);
     const nSteps = steps.length;
     let out = null;
     let numDimsRemaining = allDims.length;
     const tensorsToDispose = [];
     for (let i = 0; i < nSteps; ++i) {
       for (const idTerm of steps[i]) {
-        const {permutationIndices: perm, expandDims: dimsToExpand} = backend_util_exports.getEinsumPermutation(numDimsRemaining, idDims[idTerm]);
+        const { permutationIndices: perm, expandDims: dimsToExpand } = backend_util_exports.getEinsumPermutation(numDimsRemaining, idDims[idTerm]);
         let x;
         if (backend_util_exports.isIdentityPermutation(perm)) {
           x = tensors[idTerm];
         } else {
-          x = transpose3({inputs: {x: tensors[idTerm]}, backend: backend2, attrs: {perm}});
+          x = transpose3({ inputs: { x: tensors[idTerm] }, backend: backend2, attrs: { perm } });
           tensorsToDispose.push(x);
         }
         const targetShape = x.shape.slice();
@@ -50304,20 +50305,20 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
           targetShape.splice(dimsToExpand[k], 0, 1);
         }
         if (!util_exports.arraysEqual(x.shape, targetShape)) {
-          x = reshape4({inputs: {x}, backend: backend2, attrs: {shape: targetShape}});
+          x = reshape4({ inputs: { x }, backend: backend2, attrs: { shape: targetShape } });
           tensorsToDispose.push(x);
         }
         if (out === null) {
           out = x;
         } else {
-          out = multiply3({inputs: {a: x, b: out}, backend: backend2});
+          out = multiply3({ inputs: { a: x, b: out }, backend: backend2 });
           tensorsToDispose.push(out);
         }
       }
       if (i < nSteps - 1) {
         if (path[i] >= 0) {
           out = sum4({
-            inputs: {x: out},
+            inputs: { x: out },
             backend: backend2,
             attrs: {
               axis: path[i] - (allDims.length - numDimsRemaining),
@@ -50353,7 +50354,7 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
 
   return result;
 `;
-  var elu5 = unaryKernelFunc2({opSnippet: ELU4, packedOpSnippet: ELU_PACKED});
+  var elu5 = unaryKernelFunc2({ opSnippet: ELU4, packedOpSnippet: ELU_PACKED });
   var eluConfig2 = {
     kernelName: Elu,
     backendName: "webgl",
@@ -50365,8 +50366,8 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
   return (bGTEZero * a) + ((vec4(1.0) - bGTEZero) * (a * (b + vec4(1.0))));
 `;
   var eluGrad2 = (args) => {
-    const {inputs, backend: backend2} = args;
-    const {dy, y} = inputs;
+    const { inputs, backend: backend2 } = args;
+    const { dy, y } = inputs;
     const program = env().getBool("WEBGL_PACK_BINARY_OPERATIONS") ? new BinaryOpPackedProgram(ELU_DER_PACKED, dy.shape, y.shape) : new BinaryOpProgram(ELU_DER, dy.shape, y.shape);
     return backend2.runWebGLProgram(program, [dy, y], dy.dtype);
   };
@@ -50379,7 +50380,7 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
   return vec4(equal(a, b));
 `;
   var EQUAL = `return float(a == b);`;
-  var equal3 = binaryKernelFunc2({opSnippet: EQUAL, packedOpSnippet: PACKED_EQUAL, dtype: "bool"});
+  var equal3 = binaryKernelFunc2({ opSnippet: EQUAL, packedOpSnippet: PACKED_EQUAL, dtype: "bool" });
   var equalConfig2 = {
     kernelName: Equal,
     backendName: "webgl",
@@ -50401,23 +50402,23 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
   float t = 1.0 / (1.0 + p * x);
   return sign * (1.0 - (((((a5*t + a4)*t) + a3)*t + a2)*t + a1)*t*exp(-x*x));
 `;
-  var erf3 = unaryKernelFunc2({opSnippet: ERF});
+  var erf3 = unaryKernelFunc2({ opSnippet: ERF });
   var erfConfig2 = {
     kernelName: Erf,
     backendName: "webgl",
     kernelFunc: erf3
   };
   var EXP = `return exp(x);`;
-  var exp3 = unaryKernelFunc2({opSnippet: EXP, packedOpSnippet: EXP, cpuKernelImpl: expImplCPU});
+  var exp3 = unaryKernelFunc2({ opSnippet: EXP, packedOpSnippet: EXP, cpuKernelImpl: expImplCPU });
   var expConfig2 = {
     kernelName: Exp,
     backendName: "webgl",
     kernelFunc: exp3
   };
   function expandDims4(args) {
-    const {inputs, attrs, backend: backend2} = args;
-    const {dim} = attrs;
-    const {input: input2} = inputs;
+    const { inputs, attrs, backend: backend2 } = args;
+    const { dim } = attrs;
+    const { input: input2 } = inputs;
     const inputRank = input2.shape.length;
     const newShape = input2.shape.slice();
     let $dim = dim;
@@ -50426,7 +50427,7 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
       $dim = inputRank + dim + 1;
     }
     newShape.splice($dim, 0, 1);
-    return reshape4({inputs: {x: input2}, backend: backend2, attrs: {shape: newShape}});
+    return reshape4({ inputs: { x: input2 }, backend: backend2, attrs: { shape: newShape } });
   }
   var expandDimsConfig2 = {
     kernelName: ExpandDims,
@@ -50434,7 +50435,7 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     kernelFunc: expandDims4
   };
   var EXPM1 = `return exp(x) - 1.0;`;
-  var expm13 = unaryKernelFunc2({opSnippet: EXPM1, packedOpSnippet: EXPM1, cpuKernelImpl: expm1ImplCPU});
+  var expm13 = unaryKernelFunc2({ opSnippet: EXPM1, packedOpSnippet: EXPM1, cpuKernelImpl: expm1ImplCPU });
   var expm1Config2 = {
     kernelName: Expm1,
     backendName: "webgl",
@@ -50496,7 +50497,7 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     const inputSize = util_exports.sizeFromShape(x.shape);
     const innerDimensionSize = x.shape[x.shape.length - 1];
     const batch = inputSize / innerDimensionSize;
-    const input2D = reshape4({inputs: {x}, backend: backend2, attrs: {shape: [batch, innerDimensionSize]}});
+    const input2D = reshape4({ inputs: { x }, backend: backend2, attrs: { shape: [batch, innerDimensionSize] } });
     const xShape = input2D.shape;
     const realProgram = new FFTProgram("real", xShape, inverse);
     const imagProgram = new FFTProgram("imag", xShape, inverse);
@@ -50514,17 +50515,17 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     ];
     const realPart = backend2.runWebGLProgram(realProgram, inputs, "float32");
     const imagPart = backend2.runWebGLProgram(imagProgram, inputs, "float32");
-    const complexOutput = complex3({inputs: {real: realPart, imag: imagPart}, backend: backend2});
+    const complexOutput = complex3({ inputs: { real: realPart, imag: imagPart }, backend: backend2 });
     backend2.disposeIntermediateTensorInfo(realPart);
     backend2.disposeIntermediateTensorInfo(imagPart);
-    const complexOutputReshaped = reshape4({inputs: {x: complexOutput}, backend: backend2, attrs: {shape: x.shape}});
+    const complexOutputReshaped = reshape4({ inputs: { x: complexOutput }, backend: backend2, attrs: { shape: x.shape } });
     backend2.disposeIntermediateTensorInfo(input2D);
     backend2.disposeIntermediateTensorInfo(complexOutput);
     return complexOutputReshaped;
   }
   function fft3(args) {
-    const {inputs, backend: backend2} = args;
-    const {input: input2} = inputs;
+    const { inputs, backend: backend2 } = args;
+    const { input: input2 } = inputs;
     return fftImpl2(input2, false, backend2);
   }
   var fftConfig2 = {
@@ -50555,9 +50556,9 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     }
   };
   function fill3(args) {
-    const {backend: backend2, attrs} = args;
-    const {shape, value} = attrs;
-    let {dtype} = attrs;
+    const { backend: backend2, attrs } = args;
+    const { shape, value } = attrs;
+    let { dtype } = attrs;
     dtype = dtype || util_exports.inferDtype(value);
     if (dtype === "string") {
       const values = util_exports.getArrayFromDType(dtype, util_exports.sizeFromShape(shape));
@@ -50600,8 +50601,8 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
   var flipLeftRightConfig2 = {
     kernelName: FlipLeftRight,
     backendName: "webgl",
-    kernelFunc: ({inputs, backend: backend2}) => {
-      const {image: image3} = inputs;
+    kernelFunc: ({ inputs, backend: backend2 }) => {
+      const { image: image3 } = inputs;
       const webglBackend = backend2;
       const program = new FlipLeftRightProgram(image3.shape);
       const output = webglBackend.runWebGLProgram(program, [image3], image3.dtype);
@@ -50609,7 +50610,7 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     }
   };
   var FLOOR = `return floor(x);`;
-  var floor3 = unaryKernelFunc2({opSnippet: FLOOR, packedOpSnippet: FLOOR, cpuKernelImpl: floorImplCPU});
+  var floor3 = unaryKernelFunc2({ opSnippet: FLOOR, packedOpSnippet: FLOOR, cpuKernelImpl: floorImplCPU });
   var floorConfig2 = {
     kernelName: Floor,
     backendName: "webgl",
@@ -50648,7 +50649,7 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
   }
   return vec4(result);
 `;
-  var floorDiv3 = binaryKernelFunc2({opSnippet: INT_DIV, packedOpSnippet: INT_DIV_PACKED, dtype: "int32"});
+  var floorDiv3 = binaryKernelFunc2({ opSnippet: INT_DIV, packedOpSnippet: INT_DIV_PACKED, dtype: "int32" });
   var floorDivConfig2 = {
     kernelName: FloorDiv,
     backendName: "webgl",
@@ -50737,9 +50738,9 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
   };
   var fromPixels2DContext2;
   function fromPixels2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    let {pixels} = inputs;
-    const {numChannels} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    let { pixels } = inputs;
+    const { numChannels } = attrs;
     const isVideo = typeof HTMLVideoElement !== "undefined" && pixels instanceof HTMLVideoElement;
     const isImage = typeof HTMLImageElement !== "undefined" && pixels instanceof HTMLImageElement;
     const [width, height] = isVideo ? [
@@ -50766,9 +50767,9 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     return res;
   }
   function fusedConv2d(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x, filter, bias, preluActivationWeights} = inputs;
-    const {strides, pad: pad3, dataFormat, dilations, dimRoundingMode, activation: activation2, leakyreluAlpha} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x, filter, bias, preluActivationWeights } = inputs;
+    const { strides, pad: pad3, dataFormat, dilations, dimRoundingMode, activation: activation2, leakyreluAlpha } = attrs;
     const $dataFormat = backend_util_exports.convertConv2DDataFormat(dataFormat);
     const convInfo = backend_util_exports.computeConv2DInfo(x.shape, filter.shape, strides, dilations, pad3, dimRoundingMode, false, $dataFormat);
     let out;
@@ -50815,7 +50816,7 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
       }
       out = backend2.runWebGLProgram(program, inputs2, "float32");
     }
-    const outReshaped = reshape4({inputs: {x: out}, backend: backend2, attrs: {shape: convInfo.outShape}});
+    const outReshaped = reshape4({ inputs: { x: out }, backend: backend2, attrs: { shape: convInfo.outShape } });
     intermediates.push(out);
     intermediates.forEach((t) => backend2.disposeIntermediateTensorInfo(t));
     return outReshaped;
@@ -50826,9 +50827,9 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     kernelFunc: fusedConv2d
   };
   function fusedDepthwiseConv2D2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x, filter, bias, preluActivationWeights} = inputs;
-    const {strides, pad: pad3, dilations, dimRoundingMode, activation: activation2, leakyreluAlpha} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x, filter, bias, preluActivationWeights } = inputs;
+    const { strides, pad: pad3, dilations, dimRoundingMode, activation: activation2, leakyreluAlpha } = attrs;
     const intermediates = [];
     let $dilations = dilations;
     if ($dilations == null) {
@@ -50892,20 +50893,20 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     }
   };
   function gatherNd2(args) {
-    const {inputs, backend: backend2} = args;
-    const {params, indices} = inputs;
+    const { inputs, backend: backend2 } = args;
+    const { params, indices } = inputs;
     const indicesShape = indices.shape;
     const sliceRank = indicesShape[indicesShape.length - 1];
     const [resultShape, numSlices, sliceSize, strides] = backend_util_exports.prepareAndValidate(params, indices);
-    const flattenIndices = reshape4({inputs: {x: indices}, backend: backend2, attrs: {shape: [numSlices, sliceRank]}});
+    const flattenIndices = reshape4({ inputs: { x: indices }, backend: backend2, attrs: { shape: [numSlices, sliceRank] } });
     const flattenX = reshape4({
-      inputs: {x: params},
+      inputs: { x: params },
       backend: backend2,
-      attrs: {shape: [util_exports.sizeFromShape(params.shape) / sliceSize, sliceSize]}
+      attrs: { shape: [util_exports.sizeFromShape(params.shape) / sliceSize, sliceSize] }
     });
     const program = new GatherNDProgram(sliceRank, strides, [numSlices, sliceSize]);
     const res = backend2.runWebGLProgram(program, [flattenX, flattenIndices], flattenX.dtype);
-    const reshaped = reshape4({inputs: {x: res}, backend: backend2, attrs: {shape: resultShape}});
+    const reshaped = reshape4({ inputs: { x: res }, backend: backend2, attrs: { shape: resultShape } });
     backend2.disposeIntermediateTensorInfo(flattenIndices);
     backend2.disposeIntermediateTensorInfo(flattenX);
     backend2.disposeIntermediateTensorInfo(res);
@@ -50944,15 +50945,15 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     return sourceCoords.join();
   }
   function gatherV22(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x, indices} = inputs;
-    const {axis, batchDims} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x, indices } = inputs;
+    const { axis, batchDims } = attrs;
     const parsedAxis = util_exports.parseAxisParam(axis, x.shape)[0];
     const shapeInfo = backend_util_exports.segment_util.collectGatherOpShapeInfo(x, indices, parsedAxis, batchDims);
     const indicesSize = util_exports.sizeFromShape(indices.shape);
     const toDispose = [];
     const flattenX = reshape4({
-      inputs: {x},
+      inputs: { x },
       backend: backend2,
       attrs: {
         shape: [
@@ -50964,9 +50965,9 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
       }
     });
     const flattenIndex = reshape4({
-      inputs: {x: indices},
+      inputs: { x: indices },
       backend: backend2,
-      attrs: {shape: [shapeInfo.batchSize, indicesSize / shapeInfo.batchSize]}
+      attrs: { shape: [shapeInfo.batchSize, indicesSize / shapeInfo.batchSize] }
     });
     toDispose.push(flattenX);
     toDispose.push(flattenIndex);
@@ -50986,7 +50987,7 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     const program = new GatherProgram(flattenX.shape, flattenOutputShape);
     const res = backend2.runWebGLProgram(program, [flattenX, flattenIndex], flattenX.dtype);
     toDispose.push(res);
-    const reshaped = reshape4({inputs: {x: res}, backend: backend2, attrs: {shape: shapeInfo.outputShape}});
+    const reshaped = reshape4({ inputs: { x: res }, backend: backend2, attrs: { shape: shapeInfo.outputShape } });
     toDispose.forEach((t) => backend2.disposeIntermediateTensorInfo(t));
     return reshaped;
   }
@@ -51025,8 +51026,8 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     kernelFunc: greaterEqual3
   };
   function ifft3(args) {
-    const {inputs, backend: backend2} = args;
-    const {input: input2} = inputs;
+    const { inputs, backend: backend2 } = args;
+    const { input: input2 } = inputs;
     return fftImpl2(input2, true, backend2);
   }
   var ifftConfig2 = {
@@ -51035,21 +51036,21 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     kernelFunc: ifft3
   };
   var IS_FINITE = `return float(!isnan(x) && !isinf(x));`;
-  var isFinite4 = unaryKernelFunc2({opSnippet: IS_FINITE, dtype: "bool"});
+  var isFinite4 = unaryKernelFunc2({ opSnippet: IS_FINITE, dtype: "bool" });
   var isFiniteConfig2 = {
     kernelName: IsFinite,
     backendName: "webgl",
     kernelFunc: isFinite4
   };
   var IS_INF = `return float(isinf(x));`;
-  var isInf3 = unaryKernelFunc2({opSnippet: IS_INF, dtype: "bool"});
+  var isInf3 = unaryKernelFunc2({ opSnippet: IS_INF, dtype: "bool" });
   var isInfConfig2 = {
     kernelName: IsInf,
     backendName: "webgl",
     kernelFunc: isInf3
   };
   var IS_NAN = `return float(isnan(x));`;
-  var isNaN4 = unaryKernelFunc2({opSnippet: IS_NAN, dtype: "bool"});
+  var isNaN4 = unaryKernelFunc2({ opSnippet: IS_NAN, dtype: "bool" });
   var isNaNConfig2 = {
     kernelName: IsNan,
     backendName: "webgl",
@@ -51074,15 +51075,15 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
   var LESS_EQUAL_PACKED = `
   return vec4(lessThanEqual(a, b));
 `;
-  var lessEqual3 = binaryKernelFunc2({opSnippet: LESS_EQUAL, packedOpSnippet: LESS_EQUAL_PACKED, dtype: "bool"});
+  var lessEqual3 = binaryKernelFunc2({ opSnippet: LESS_EQUAL, packedOpSnippet: LESS_EQUAL_PACKED, dtype: "bool" });
   var lessEqualConfig2 = {
     kernelName: LessEqual,
     backendName: "webgl",
     kernelFunc: lessEqual3
   };
   function linSpace2(args) {
-    const {backend: backend2, attrs} = args;
-    const {start, stop, num} = attrs;
+    const { backend: backend2, attrs } = args;
+    const { start, stop, num } = attrs;
     const outVals = linSpaceImplCPU(start, stop, num);
     return backend2.makeTensorInfo([outVals.length], "float32", outVals);
   }
@@ -51103,14 +51104,14 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
 
   return result;
 `;
-  var log4 = unaryKernelFunc2({opSnippet: LOG, packedOpSnippet: LOG_PACKED, cpuKernelImpl: logImplCPU});
+  var log4 = unaryKernelFunc2({ opSnippet: LOG, packedOpSnippet: LOG_PACKED, cpuKernelImpl: logImplCPU });
   var logConfig2 = {
     kernelName: Log,
     backendName: "webgl",
     kernelFunc: log4
   };
   var LOG1P = `return log(1.0 + x);`;
-  var log1p3 = unaryKernelFunc2({opSnippet: LOG1P});
+  var log1p3 = unaryKernelFunc2({ opSnippet: LOG1P });
   var log1pConfig2 = {
     kernelName: Log1p,
     backendName: "webgl",
@@ -51133,7 +51134,7 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     kernelFunc: logicalAnd3
   };
   var LOGICAL_NOT = `return float(!(x >= 1.0));`;
-  var logicalNot3 = unaryKernelFunc2({opSnippet: LOGICAL_NOT});
+  var logicalNot3 = unaryKernelFunc2({ opSnippet: LOGICAL_NOT });
   var logicalNotConfig2 = {
     kernelName: LogicalNot,
     backendName: "webgl",
@@ -51146,7 +51147,7 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     vec4(greaterThanEqual(b, vec4(1.0))),
     vec4(1.0));
 `;
-  var logicalOr3 = binaryKernelFunc2({opSnippet: LOGICAL_OR, packedOpSnippet: LOGICAL_OR_PACKED, dtype: "bool"});
+  var logicalOr3 = binaryKernelFunc2({ opSnippet: LOGICAL_OR, packedOpSnippet: LOGICAL_OR_PACKED, dtype: "bool" });
   var logicalOrConfig2 = {
     kernelName: LogicalOr,
     backendName: "webgl",
@@ -51274,9 +51275,9 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     }
   };
   var lrn = (args) => {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {depthRadius, bias, alpha, beta} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { depthRadius, bias, alpha, beta } = attrs;
     const program = env().getBool("WEBGL_PACK_NORMALIZATION") ? new LRNPackedProgram(x.shape, depthRadius, bias, alpha, beta) : new LRNProgram(x.shape, depthRadius, bias, alpha, beta);
     return backend2.runWebGLProgram(program, [x], x.dtype);
   };
@@ -51354,9 +51355,9 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     }
   };
   var lrnGrad = (args) => {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x, y, dy} = inputs;
-    const {depthRadius, bias, alpha, beta} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x, y, dy } = inputs;
+    const { depthRadius, bias, alpha, beta } = attrs;
     const program = new LRNGradProgram(x.shape, depthRadius, bias, alpha, beta);
     return backend2.runWebGLProgram(program, [x, y, dy], x.dtype);
   };
@@ -51369,17 +51370,17 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     const inSize = util_exports.sizeFromShape(reduceShape);
     const xSize = util_exports.sizeFromShape(x.shape);
     const batchSize = xSize / inSize;
-    const reshapedInput = reshape4({inputs: {x}, attrs: {shape: [batchSize, inSize]}, backend: backend2});
+    const reshapedInput = reshape4({ inputs: { x }, attrs: { shape: [batchSize, inSize] }, backend: backend2 });
     const reduced = reduce(reshapedInput, x.dtype, "max", backend2);
-    const reshapedOutput = reshape4({inputs: {x: reduced}, attrs: {shape: outShape}, backend: backend2});
+    const reshapedOutput = reshape4({ inputs: { x: reduced }, attrs: { shape: outShape }, backend: backend2 });
     backend2.disposeIntermediateTensorInfo(reshapedInput);
     backend2.disposeIntermediateTensorInfo(reduced);
     return reshapedOutput;
   }
   function max4(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {reductionIndices, keepDims} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { reductionIndices, keepDims } = attrs;
     const xRank = x.shape.length;
     const origAxes = util_exports.parseAxisParam(reductionIndices, x.shape);
     let axes = origAxes;
@@ -51451,15 +51452,15 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     kernelFunc: maximum4
   };
   function maxPool3(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
     assertNotComplex2(x, "maxPool");
-    const {filterSize, strides, pad: pad3, dimRoundingMode} = attrs;
+    const { filterSize, strides, pad: pad3, dimRoundingMode } = attrs;
     const dilations = 1;
     util_exports.assert(backend_util_exports.eitherStridesOrDilationsAreOne(strides, dilations), () => `Error in maxPool: Either strides or dilations must be 1. Got strides ${strides} and dilations '${dilations}'`);
     const convInfo = backend_util_exports.computePool2DInfo(x.shape, filterSize, strides, dilations, pad3, dimRoundingMode);
     if (convInfo.filterWidth === 1 && convInfo.filterHeight === 1 && util_exports.arraysEqual(convInfo.inShape, convInfo.outShape)) {
-      return identity3({inputs: {x}, backend: backend2});
+      return identity3({ inputs: { x }, backend: backend2 });
     }
     const maxPoolProgram = new Pool2DProgram(convInfo, "max", false);
     return backend2.runWebGLProgram(maxPoolProgram, [x], x.dtype);
@@ -51470,9 +51471,9 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     kernelFunc: maxPool3
   };
   function maxPool3d2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {filterSize, strides, pad: pad3, dataFormat, dimRoundingMode} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { filterSize, strides, pad: pad3, dataFormat, dimRoundingMode } = attrs;
     const dilations = [1, 1, 1];
     const convInfo = backend_util_exports.computePool3DInfo(x.shape, filterSize, strides, dilations, pad3, dimRoundingMode, dataFormat);
     const maxPoolProgram = new Pool3DProgram(convInfo, "max", false);
@@ -51629,10 +51630,10 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     }
   };
   function maxPool3DGrad2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {dy, input: input2} = inputs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { dy, input: input2 } = inputs;
     const x = input2;
-    const {filterSize, strides, pad: pad3, dimRoundingMode} = attrs;
+    const { filterSize, strides, pad: pad3, dimRoundingMode } = attrs;
     const dilations = [1, 1, 1];
     const convInfo = backend_util_exports.computePool3DInfo(x.shape, filterSize, strides, dilations, pad3, dimRoundingMode);
     const maxPool3dPositionsProgram = new Pool3DProgram(convInfo, "max", true);
@@ -51648,11 +51649,11 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     kernelFunc: maxPool3DGrad2
   };
   function maxPoolGrad3(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {dy, input: input2, output} = inputs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { dy, input: input2, output } = inputs;
     const x = input2;
     assertNotComplex2([input2, output], "maxPoolGrad");
-    const {filterSize, strides, pad: pad3, dimRoundingMode} = attrs;
+    const { filterSize, strides, pad: pad3, dimRoundingMode } = attrs;
     const convInfo = backend_util_exports.computePool2DInfo(x.shape, filterSize, strides, 1, pad3, dimRoundingMode);
     const getPositions = true;
     const maxPoolPositionsProgram = new Pool2DProgram(convInfo, "max", getPositions);
@@ -51677,9 +51678,9 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
   var maxPoolWithArgmaxConfig2 = {
     kernelName: MaxPoolWithArgmax,
     backendName: "webgl",
-    kernelFunc: ({inputs, attrs, backend: backend2}) => {
-      const {x} = inputs;
-      const {filterSize, strides, pad: pad3, includeBatchInIndex} = attrs;
+    kernelFunc: ({ inputs, attrs, backend: backend2 }) => {
+      const { x } = inputs;
+      const { filterSize, strides, pad: pad3, includeBatchInIndex } = attrs;
       const webglBackend = backend2;
       util_exports.assert(x.shape.length === 4, () => `Error in maxPool: input must be rank 4 but got rank ${x.shape.length}.`);
       const dilations = [1, 1];
@@ -51693,9 +51694,9 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     const inSize = util_exports.sizeFromShape(reduceShape);
     const xSize = util_exports.sizeFromShape(x.shape);
     const batchSize = xSize / inSize;
-    const reshapedInput = reshape4({inputs: {x}, attrs: {shape: [batchSize, inSize]}, backend: backend2});
+    const reshapedInput = reshape4({ inputs: { x }, attrs: { shape: [batchSize, inSize] }, backend: backend2 });
     const reduced = reduce(reshapedInput, "float32", "mean", backend2);
-    const reshapedOutput = reshape4({inputs: {x: reduced}, attrs: {shape: outShape}, backend: backend2});
+    const reshapedOutput = reshape4({ inputs: { x: reduced }, attrs: { shape: outShape }, backend: backend2 });
     backend2.disposeIntermediateTensorInfo(reshapedInput);
     backend2.disposeIntermediateTensorInfo(reduced);
     return reshapedOutput;
@@ -51703,9 +51704,9 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
   var meanConfig2 = {
     kernelName: Mean,
     backendName: "webgl",
-    kernelFunc: ({inputs, attrs, backend: backend2}) => {
-      const {x} = inputs;
-      const {keepDims, axis} = attrs;
+    kernelFunc: ({ inputs, attrs, backend: backend2 }) => {
+      const { x } = inputs;
+      const { keepDims, axis } = attrs;
       const webglBackend = backend2;
       const xRank = x.shape.length;
       const origAxes = util_exports.parseAxisParam(axis, x.shape);
@@ -51747,29 +51748,29 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     }
   };
   function min4(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {axis, keepDims} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { axis, keepDims } = attrs;
     const xRank = x.shape.length;
     const origAxes = util_exports.parseAxisParam(axis, x.shape);
     let axes = origAxes;
     const permutedAxes = backend_util_exports.getAxesPermutation(axes, xRank);
     let permutedX = x;
     if (permutedAxes != null) {
-      permutedX = transpose3({inputs: {x}, backend: backend2, attrs: {perm: permutedAxes}});
+      permutedX = transpose3({ inputs: { x }, backend: backend2, attrs: { perm: permutedAxes } });
       axes = backend_util_exports.getInnerMostAxes(axes.length, x.shape.length);
     }
     backend_util_exports.assertAxesAreInnerMostDims("min", axes, xRank);
     const [outShape, reduceShape] = backend_util_exports.computeOutAndReduceShapes(permutedX.shape, axes);
     const inSize = util_exports.sizeFromShape(reduceShape);
-    const a2D = reshape4({inputs: {x: permutedX}, backend: backend2, attrs: {shape: [-1, inSize]}});
+    const a2D = reshape4({ inputs: { x: permutedX }, backend: backend2, attrs: { shape: [-1, inSize] } });
     const reduced = reduce(a2D, a2D.dtype, "min", backend2);
     let res;
     if (keepDims) {
       const newShape = backend_util_exports.expandShapeToKeepDim(outShape, origAxes);
-      res = reshape4({inputs: {x: reduced}, backend: backend2, attrs: {shape: newShape}});
+      res = reshape4({ inputs: { x: reduced }, backend: backend2, attrs: { shape: newShape } });
     } else {
-      res = reshape4({inputs: {x: reduced}, backend: backend2, attrs: {shape: outShape}});
+      res = reshape4({ inputs: { x: reduced }, backend: backend2, attrs: { shape: outShape } });
     }
     backend2.disposeIntermediateTensorInfo(a2D);
     backend2.disposeIntermediateTensorInfo(reduced);
@@ -51930,9 +51931,9 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     `;
     }
   };
-  var mirrorPadKernelFunc = ({inputs, backend: backend2, attrs}) => {
-    const {x} = inputs;
-    const {paddings, mode} = attrs;
+  var mirrorPadKernelFunc = ({ inputs, backend: backend2, attrs }) => {
+    const { x } = inputs;
+    const { paddings, mode } = attrs;
     const program = env().getBool("WEBGL_PACK_ARRAY_OPERATIONS") ? new MirrorPadPackedProgram(x.shape, paddings, mode) : new MirrorPadProgram(x.shape, paddings, mode);
     const output = backend2.runWebGLProgram(program, [x], x.dtype);
     return output;
@@ -52020,7 +52021,7 @@ return a / b;`;
 
   return result;
 `;
-  var realDiv = binaryKernelFunc2({opSnippet: DIV, packedOpSnippet: DIV_PACKED, checkOutOfBounds: true});
+  var realDiv = binaryKernelFunc2({ opSnippet: DIV, packedOpSnippet: DIV_PACKED, checkOutOfBounds: true });
   var realDivConfig2 = {
     kernelName: RealDiv,
     backendName: "webgl",
@@ -52039,22 +52040,22 @@ return a / b;`;
     kernelFunc: sub3
   };
   function softmax4(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {logits} = inputs;
-    const {dim} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { logits } = inputs;
+    const { dim } = attrs;
     const axes = util_exports.parseAxisParam([dim], logits.shape);
     const maxLogit = max4({
-      inputs: {x: logits},
+      inputs: { x: logits },
       backend: backend2,
-      attrs: {reductionIndices: axes, keepDims: false}
+      attrs: { reductionIndices: axes, keepDims: false }
     });
     const expandedShape = backend_util_exports.expandShapeToKeepDim(maxLogit.shape, axes);
-    const maxLogitsReshaped = reshape4({inputs: {x: maxLogit}, backend: backend2, attrs: {shape: expandedShape}});
-    const a = sub3({inputs: {a: logits, b: maxLogitsReshaped}, backend: backend2});
-    const b = exp3({inputs: {x: a}, backend: backend2});
-    const sumExp = sum4({inputs: {x: b}, backend: backend2, attrs: {axis: axes, keepDims: false}});
-    const sumExpReshaped = reshape4({inputs: {x: sumExp}, backend: backend2, attrs: {shape: expandedShape}});
-    const res = realDiv({inputs: {a: b, b: sumExpReshaped}, backend: backend2});
+    const maxLogitsReshaped = reshape4({ inputs: { x: maxLogit }, backend: backend2, attrs: { shape: expandedShape } });
+    const a = sub3({ inputs: { a: logits, b: maxLogitsReshaped }, backend: backend2 });
+    const b = exp3({ inputs: { x: a }, backend: backend2 });
+    const sumExp = sum4({ inputs: { x: b }, backend: backend2, attrs: { axis: axes, keepDims: false } });
+    const sumExpReshaped = reshape4({ inputs: { x: sumExp }, backend: backend2, attrs: { shape: expandedShape } });
+    const res = realDiv({ inputs: { a: b, b: sumExpReshaped }, backend: backend2 });
     backend2.disposeIntermediateTensorInfo(maxLogit);
     backend2.disposeIntermediateTensorInfo(maxLogitsReshaped);
     backend2.disposeIntermediateTensorInfo(a);
@@ -52069,10 +52070,10 @@ return a / b;`;
     kernelFunc: softmax4
   };
   function multinomial3(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {logits} = inputs;
-    const {numSamples, seed, normalized} = attrs;
-    const probs = normalized ? logits : softmax4({inputs: {logits}, backend: backend2, attrs: {dim: logits.shape.length - 1}});
+    const { inputs, backend: backend2, attrs } = args;
+    const { logits } = inputs;
+    const { numSamples, seed, normalized } = attrs;
+    const probs = normalized ? logits : softmax4({ inputs: { logits }, backend: backend2, attrs: { dim: logits.shape.length - 1 } });
     const batchSize = probs.shape[0];
     const numOutcomes = probs.shape[1];
     const program = new MultinomialProgram(batchSize, numOutcomes, numSamples);
@@ -52090,8 +52091,8 @@ return a / b;`;
   };
   var NEG = `return -x;`;
   function neg3(args) {
-    const {inputs, backend: backend2} = args;
-    const {x} = inputs;
+    const { inputs, backend: backend2 } = args;
+    const { x } = inputs;
     if (backend2.shouldExecuteOnCPU([x])) {
       const xData = backend2.texData.get(x.dataId);
       const [outValues, newShape] = negImplCPU(xData.values, x.shape, x.dtype);
@@ -52113,12 +52114,12 @@ return a / b;`;
   var nonMaxSuppressionV3Impl3 = kernel_impls_exports.nonMaxSuppressionV3Impl;
   function nonMaxSuppressionV32(args) {
     backend_util_exports.warn("tf.nonMaxSuppression() in webgl locks the UI thread. Call tf.nonMaxSuppressionAsync() instead");
-    const {inputs, backend: backend2, attrs} = args;
-    const {boxes, scores} = inputs;
-    const {maxOutputSize, iouThreshold, scoreThreshold} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { boxes, scores } = inputs;
+    const { maxOutputSize, iouThreshold, scoreThreshold } = attrs;
     const boxesVals = backend2.readSync(boxes.dataId);
     const scoresVals = backend2.readSync(scores.dataId);
-    const {selectedIndices} = nonMaxSuppressionV3Impl3(boxesVals, scoresVals, maxOutputSize, iouThreshold, scoreThreshold);
+    const { selectedIndices } = nonMaxSuppressionV3Impl3(boxesVals, scoresVals, maxOutputSize, iouThreshold, scoreThreshold);
     return backend2.makeTensorInfo([selectedIndices.length], "int32", new Int32Array(selectedIndices));
   }
   var nonMaxSuppressionV3Config2 = {
@@ -52129,12 +52130,12 @@ return a / b;`;
   var nonMaxSuppressionV4Impl3 = kernel_impls_exports.nonMaxSuppressionV4Impl;
   function nonMaxSuppressionV42(args) {
     backend_util_exports.warn("tf.nonMaxSuppression() in webgl locks the UI thread. Call tf.nonMaxSuppressionAsync() instead");
-    const {inputs, backend: backend2, attrs} = args;
-    const {boxes, scores} = inputs;
-    const {maxOutputSize, iouThreshold, scoreThreshold, padToMaxOutputSize} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { boxes, scores } = inputs;
+    const { maxOutputSize, iouThreshold, scoreThreshold, padToMaxOutputSize } = attrs;
     const boxesVals = backend2.readSync(boxes.dataId);
     const scoresVals = backend2.readSync(scores.dataId);
-    const {selectedIndices, validOutputs} = nonMaxSuppressionV4Impl3(boxesVals, scoresVals, maxOutputSize, iouThreshold, scoreThreshold, padToMaxOutputSize);
+    const { selectedIndices, validOutputs } = nonMaxSuppressionV4Impl3(boxesVals, scoresVals, maxOutputSize, iouThreshold, scoreThreshold, padToMaxOutputSize);
     return [
       backend2.makeTensorInfo([selectedIndices.length], "int32", new Int32Array(selectedIndices)),
       backend2.makeTensorInfo([], "int32", new Int32Array([validOutputs]))
@@ -52148,16 +52149,16 @@ return a / b;`;
   var nonMaxSuppressionV5Impl3 = kernel_impls_exports.nonMaxSuppressionV5Impl;
   function nonMaxSuppressionV52(args) {
     backend_util_exports.warn("tf.nonMaxSuppression() in webgl locks the UI thread. Call tf.nonMaxSuppressionAsync() instead");
-    const {inputs, backend: backend2, attrs} = args;
-    const {boxes, scores} = inputs;
-    const {maxOutputSize, iouThreshold, scoreThreshold, softNmsSigma} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { boxes, scores } = inputs;
+    const { maxOutputSize, iouThreshold, scoreThreshold, softNmsSigma } = attrs;
     const boxesVals = backend2.readSync(boxes.dataId);
     const scoresVals = backend2.readSync(scores.dataId);
     const maxOutputSizeVal = maxOutputSize;
     const iouThresholdVal = iouThreshold;
     const scoreThresholdVal = scoreThreshold;
     const softNmsSigmaVal = softNmsSigma;
-    const {selectedIndices, selectedScores} = nonMaxSuppressionV5Impl3(boxesVals, scoresVals, maxOutputSizeVal, iouThresholdVal, scoreThresholdVal, softNmsSigmaVal);
+    const { selectedIndices, selectedScores } = nonMaxSuppressionV5Impl3(boxesVals, scoresVals, maxOutputSizeVal, iouThresholdVal, scoreThresholdVal, softNmsSigmaVal);
     return [
       backend2.makeTensorInfo([selectedIndices.length], "int32", new Int32Array(selectedIndices)),
       backend2.makeTensorInfo([selectedScores.length], "float32", new Float32Array(selectedScores))
@@ -52183,16 +52184,16 @@ return a / b;`;
     }
   };
   var oneHot3 = (args) => {
-    const {inputs, backend: backend2, attrs} = args;
-    const {indices} = inputs;
-    const {depth, onValue, offValue} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { indices } = inputs;
+    const { depth, onValue, offValue } = attrs;
     const indicesSize = util_exports.sizeFromShape(indices.shape);
     const program = new OneHotProgram(indicesSize, depth, onValue, offValue);
-    const reshaped = reshape4({inputs: {x: indices}, backend: backend2, attrs: {shape: [indicesSize]}});
+    const reshaped = reshape4({ inputs: { x: indices }, backend: backend2, attrs: { shape: [indicesSize] } });
     const result = backend2.runWebGLProgram(program, [reshaped], indices.dtype);
     backend2.disposeIntermediateTensorInfo(reshaped);
     const outShape = [...indices.shape, depth];
-    const out = reshape4({inputs: {x: result}, backend: backend2, attrs: {shape: outShape}});
+    const out = reshape4({ inputs: { x: result }, backend: backend2, attrs: { shape: outShape } });
     backend2.disposeIntermediateTensorInfo(result);
     return out;
   };
@@ -52202,14 +52203,14 @@ return a / b;`;
     kernelFunc: oneHot3
   };
   function zerosLike3(args) {
-    const {inputs, backend: backend2} = args;
-    const {x} = inputs;
+    const { inputs, backend: backend2 } = args;
+    const { x } = inputs;
     if (x.dtype === "complex64") {
-      const realPart = real3({inputs: {input: x}, backend: backend2});
-      const r = zerosLike3({inputs: {x: realPart}, backend: backend2});
-      const imagPart = imag3({inputs: {input: x}, backend: backend2});
-      const i = zerosLike3({inputs: {x: imagPart}, backend: backend2});
-      const result = complex3({inputs: {real: r, imag: i}, backend: backend2});
+      const realPart = real3({ inputs: { input: x }, backend: backend2 });
+      const r = zerosLike3({ inputs: { x: realPart }, backend: backend2 });
+      const imagPart = imag3({ inputs: { input: x }, backend: backend2 });
+      const i = zerosLike3({ inputs: { x: imagPart }, backend: backend2 });
+      const result = complex3({ inputs: { real: r, imag: i }, backend: backend2 });
       backend2.disposeIntermediateTensorInfo(realPart);
       backend2.disposeIntermediateTensorInfo(r);
       backend2.disposeIntermediateTensorInfo(imagPart);
@@ -52232,23 +52233,23 @@ return a / b;`;
     kernelFunc: zerosLike3
   };
   function onesLike3(args) {
-    const {inputs, backend: backend2} = args;
-    const {x} = inputs;
+    const { inputs, backend: backend2 } = args;
+    const { x } = inputs;
     if (x.dtype === "string") {
       throw new Error("onesLike is not supported under string dtype");
     } else if (x.dtype === "complex64") {
-      const realPart = real3({inputs: {input: x}, backend: backend2});
-      const r = onesLike3({inputs: {x: realPart}, backend: backend2});
-      const imagPart = imag3({inputs: {input: x}, backend: backend2});
-      const i = zerosLike3({inputs: {x: imagPart}, backend: backend2});
-      const result = complex3({inputs: {real: r, imag: i}, backend: backend2});
+      const realPart = real3({ inputs: { input: x }, backend: backend2 });
+      const r = onesLike3({ inputs: { x: realPart }, backend: backend2 });
+      const imagPart = imag3({ inputs: { input: x }, backend: backend2 });
+      const i = zerosLike3({ inputs: { x: imagPart }, backend: backend2 });
+      const result = complex3({ inputs: { real: r, imag: i }, backend: backend2 });
       backend2.disposeIntermediateTensorInfo(realPart);
       backend2.disposeIntermediateTensorInfo(r);
       backend2.disposeIntermediateTensorInfo(imagPart);
       backend2.disposeIntermediateTensorInfo(i);
       return result;
     } else {
-      return fill3({attrs: {shape: x.shape, dtype: x.dtype, value: 1}, backend: backend2});
+      return fill3({ attrs: { shape: x.shape, dtype: x.dtype, value: 1 }, backend: backend2 });
     }
   }
   var onesLikeConfig2 = {
@@ -52257,10 +52258,10 @@ return a / b;`;
     kernelFunc: onesLike3
   };
   function pack2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {axis} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { axis } = attrs;
     if (inputs.length === 1) {
-      return expandDims4({inputs: {input: inputs[0]}, backend: backend2, attrs: {dim: axis}});
+      return expandDims4({ inputs: { input: inputs[0] }, backend: backend2, attrs: { dim: axis } });
     }
     const shape = inputs[0].shape;
     const dtype = inputs[0].dtype;
@@ -52270,11 +52271,11 @@ return a / b;`;
     });
     const intermediateTensorInfos = [];
     const expandedTensors = inputs.map((t) => {
-      const expandedT = expandDims4({inputs: {input: t}, backend: backend2, attrs: {dim: axis}});
+      const expandedT = expandDims4({ inputs: { input: t }, backend: backend2, attrs: { dim: axis } });
       intermediateTensorInfos.push(expandedT);
       return expandedT;
     });
-    const result = concat3({inputs: expandedTensors, backend: backend2, attrs: {axis}});
+    const result = concat3({ inputs: expandedTensors, backend: backend2, attrs: { axis } });
     intermediateTensorInfos.forEach((t) => backend2.disposeIntermediateTensorInfo(t));
     return result;
   }
@@ -52397,9 +52398,9 @@ return a / b;`;
     }
   };
   var padV22 = (args) => {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {paddings, constantValue} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { paddings, constantValue } = attrs;
     const program = env().getBool("WEBGL_PACK_ARRAY_OPERATIONS") ? new PadPackedProgram(x.shape, paddings, constantValue) : new PadProgram(x.shape, paddings, constantValue);
     const customSetup = program.getCustomSetupFunc(constantValue);
     return backend2.runWebGLProgram(program, [x], x.dtype, customSetup);
@@ -52436,16 +52437,16 @@ return a / b;`;
   ` + CHECK_NAN_SNIPPET3 + `
   return result;
 `;
-  var pow3 = binaryKernelFunc2({opSnippet: POW, packedOpSnippet: POW_PACKED});
+  var pow3 = binaryKernelFunc2({ opSnippet: POW, packedOpSnippet: POW_PACKED });
   var powConfig2 = {
     kernelName: Pow,
     backendName: "webgl",
     kernelFunc: pow3
   };
   function prod3(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {axis, keepDims} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { axis, keepDims } = attrs;
     const xRank = x.shape.length;
     const toDispose = [];
     const origAxes = util_exports.parseAxisParam(axis, x.shape);
@@ -52453,7 +52454,7 @@ return a / b;`;
     const permutedAxes = backend_util_exports.getAxesPermutation(axes, xRank);
     let permutedX = x;
     if (permutedAxes != null) {
-      permutedX = transpose3({inputs: {x}, backend: backend2, attrs: {perm: permutedAxes}});
+      permutedX = transpose3({ inputs: { x }, backend: backend2, attrs: { perm: permutedAxes } });
       axes = backend_util_exports.getInnerMostAxes(axes.length, xRank);
       toDispose.push(permutedX);
     }
@@ -52461,22 +52462,22 @@ return a / b;`;
     let res;
     if (backend2.shouldExecuteOnCPU([permutedX])) {
       const xVals = backend2.texData.get(permutedX.dataId).values;
-      const {outVals, outShape, outDtype} = prodImplCPU(permutedX.shape, permutedX.dtype, xVals, axes);
+      const { outVals, outShape, outDtype } = prodImplCPU(permutedX.shape, permutedX.dtype, xVals, axes);
       res = backend2.makeTensorInfo(outShape, outDtype, outVals);
     } else {
       const [outShape, reduceShape] = backend_util_exports.computeOutAndReduceShapes(permutedX.shape, axes);
       const inSize = util_exports.sizeFromShape(reduceShape);
-      const a2D = reshape4({inputs: {x: permutedX}, backend: backend2, attrs: {shape: [-1, inSize]}});
+      const a2D = reshape4({ inputs: { x: permutedX }, backend: backend2, attrs: { shape: [-1, inSize] } });
       const outputDType = sumOutType(x.dtype);
       const reduced = reduce(a2D, outputDType, "prod", backend2);
-      res = reshape4({inputs: {x: reduced}, backend: backend2, attrs: {shape: outShape}});
+      res = reshape4({ inputs: { x: reduced }, backend: backend2, attrs: { shape: outShape } });
       toDispose.push(a2D);
       toDispose.push(reduced);
     }
     if (keepDims) {
       toDispose.push(res);
       const newShape = backend_util_exports.expandShapeToKeepDim(res.shape, origAxes);
-      res = reshape4({inputs: {x: res}, backend: backend2, attrs: {shape: newShape}});
+      res = reshape4({ inputs: { x: res }, backend: backend2, attrs: { shape: newShape } });
     }
     toDispose.forEach((t) => backend2.disposeIntermediateTensorInfo(t));
     return res;
@@ -52487,8 +52488,8 @@ return a / b;`;
     kernelFunc: prod3
   };
   var range4 = (args) => {
-    const {backend: backend2, attrs} = args;
-    const {start, stop, step: step5, dtype} = attrs;
+    const { backend: backend2, attrs } = args;
+    const { start, stop, step: step5, dtype } = attrs;
     const values = rangeImplCPU(start, stop, step5, dtype);
     return backend2.makeTensorInfo([values.length], dtype, values);
   };
@@ -52498,7 +52499,7 @@ return a / b;`;
     kernelFunc: range4
   };
   var RECIPROCAL = `return 1.0 / x;`;
-  var reciprocal3 = unaryKernelFunc2({opSnippet: RECIPROCAL});
+  var reciprocal3 = unaryKernelFunc2({ opSnippet: RECIPROCAL });
   var reciprocalConfig2 = {
     kernelName: Reciprocal,
     backendName: "webgl",
@@ -52518,7 +52519,7 @@ return a / b;`;
 
   return result;
 `;
-  var relu3 = unaryKernelFunc2({opSnippet: RELU3, packedOpSnippet: RELU_PACKED});
+  var relu3 = unaryKernelFunc2({ opSnippet: RELU3, packedOpSnippet: RELU_PACKED });
   var reluConfig2 = {
     kernelName: Relu,
     backendName: "webgl",
@@ -52538,7 +52539,7 @@ return a / b;`;
 
   return result;
 `;
-  var relu63 = unaryKernelFunc2({opSnippet: RELU63, packedOpSnippet: RELU6_PACKED});
+  var relu63 = unaryKernelFunc2({ opSnippet: RELU63, packedOpSnippet: RELU6_PACKED });
   var relu6Config2 = {
     kernelName: Relu6,
     backendName: "webgl",
@@ -52703,9 +52704,9 @@ return a / b;`;
     }
   };
   function resizeBilinear3(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {images} = inputs;
-    const {alignCorners, halfPixelCenters, size} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { images } = inputs;
+    const { alignCorners, halfPixelCenters, size } = attrs;
     const [newHeight, newWidth] = size;
     const program = env().getBool("WEBGL_PACK_IMAGE_OPERATIONS") ? new ResizeBilinearPackedProgram(images.shape, newHeight, newWidth, alignCorners, halfPixelCenters) : new ResizeBilinearProgram(images.shape, newHeight, newWidth, alignCorners, halfPixelCenters);
     return backend2.runWebGLProgram(program, [images], "float32");
@@ -52821,9 +52822,9 @@ return a / b;`;
     }
   };
   function resizeBilinearGrad2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {images, dy} = inputs;
-    const {alignCorners} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { images, dy } = inputs;
+    const { alignCorners } = attrs;
     const program = new ResizeBilinearBackpropProgram(dy.shape, images.shape, alignCorners);
     return backend2.runWebGLProgram(program, [dy], dy.dtype);
   }
@@ -52946,9 +52947,9 @@ return a / b;`;
     }
   };
   function resizeNearestNeighbor3(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {images} = inputs;
-    const {alignCorners, halfPixelCenters, size} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { images } = inputs;
+    const { alignCorners, halfPixelCenters, size } = attrs;
     const [newHeight, newWidth] = size;
     const program = env().getBool("WEBGL_PACK_IMAGE_OPERATIONS") ? new ResizeNearestNeighborPackedProgram(images.shape, newHeight, newWidth, alignCorners, halfPixelCenters) : new ResizeNearestNeighborProgram(images.shape, newHeight, newWidth, alignCorners, halfPixelCenters);
     return backend2.runWebGLProgram(program, [images], images.dtype);
@@ -53053,9 +53054,9 @@ return a / b;`;
     }
   };
   function resizeNearestNeighborGrad2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {images, dy} = inputs;
-    const {alignCorners} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { images, dy } = inputs;
+    const { alignCorners } = attrs;
     const program = new ResizeNearestNeigborBackpropProgram(dy.shape, images.shape, alignCorners);
     return backend2.runWebGLProgram(program, [dy], dy.dtype);
   }
@@ -53176,13 +53177,13 @@ return a / b;`;
     }
   };
   function reverse3(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {dims} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { dims } = attrs;
     const xRank = x.shape.length;
     const $dims = util_exports.parseAxisParam(dims, x.shape);
     if (xRank === 0) {
-      return identity3({inputs: {x}, backend: backend2});
+      return identity3({ inputs: { x }, backend: backend2 });
     }
     const program = env().getBool("WEBGL_PACK_ARRAY_OPERATIONS") ? new ReversePackedProgram(x.shape, $dims) : new ReverseProgram(x.shape, $dims);
     return backend2.runWebGLProgram(program, [x], x.dtype);
@@ -53239,9 +53240,9 @@ return a / b;`;
   var rotateWithOffsetConfig2 = {
     kernelName: RotateWithOffset,
     backendName: "webgl",
-    kernelFunc: ({inputs, attrs, backend: backend2}) => {
-      const {image: image3} = inputs;
-      const {radians, fillValue, center} = attrs;
+    kernelFunc: ({ inputs, attrs, backend: backend2 }) => {
+      const { image: image3 } = inputs;
+      const { radians, fillValue, center } = attrs;
       const webglBackend = backend2;
       const program = new RotateProgram(image3.shape, fillValue);
       const [centerX, centerY] = backend_util_exports.getImageCenter(center, image3.shape[1], image3.shape[2]);
@@ -53266,14 +53267,14 @@ return a / b;`;
     }
   }
 `;
-  var round4 = unaryKernelFunc2({opSnippet: ROUND});
+  var round4 = unaryKernelFunc2({ opSnippet: ROUND });
   var roundConfig2 = {
     kernelName: Round,
     backendName: "webgl",
     kernelFunc: round4
   };
   var RSQRT = `return inversesqrt(x);`;
-  var rsqrt3 = unaryKernelFunc2({opSnippet: RSQRT, cpuKernelImpl: rsqrtImplCPU});
+  var rsqrt3 = unaryKernelFunc2({ opSnippet: RSQRT, cpuKernelImpl: rsqrtImplCPU });
   var rsqrtConfig2 = {
     kernelName: Rsqrt,
     backendName: "webgl",
@@ -53324,20 +53325,20 @@ return a / b;`;
     }
   };
   function scatterNd2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {indices, updates} = inputs;
-    const {shape} = attrs;
-    const {sliceRank, numUpdates, sliceSize, strides, outputSize} = backend_util_exports.calculateShapes(updates, indices, shape);
+    const { inputs, backend: backend2, attrs } = args;
+    const { indices, updates } = inputs;
+    const { shape } = attrs;
+    const { sliceRank, numUpdates, sliceSize, strides, outputSize } = backend_util_exports.calculateShapes(updates, indices, shape);
     const flattenShape = [outputSize / sliceSize, sliceSize];
     if (outputSize === 0) {
       return backend2.makeTensorInfo(shape, indices.dtype);
     }
-    const flattenIndices = reshape4({inputs: {x: indices}, backend: backend2, attrs: {shape: [numUpdates, sliceRank]}});
-    const flattenX = reshape4({inputs: {x: updates}, backend: backend2, attrs: {shape: [numUpdates, sliceSize]}});
+    const flattenIndices = reshape4({ inputs: { x: indices }, backend: backend2, attrs: { shape: [numUpdates, sliceRank] } });
+    const flattenX = reshape4({ inputs: { x: updates }, backend: backend2, attrs: { shape: [numUpdates, sliceSize] } });
     const defaultValue = backend2.makeTensorInfo([], "float32", new Float32Array([0]));
     const program = new ScatterProgram(numUpdates, sliceRank, flattenIndices.shape.length, flattenX.shape.length, strides, flattenShape);
     const res = backend2.runWebGLProgram(program, [flattenX, flattenIndices, defaultValue], flattenX.dtype);
-    const reshaped = reshape4({inputs: {x: res}, backend: backend2, attrs: {shape}});
+    const reshaped = reshape4({ inputs: { x: res }, backend: backend2, attrs: { shape } });
     backend2.disposeIntermediateTensorInfo(flattenIndices);
     backend2.disposeIntermediateTensorInfo(flattenX);
     backend2.disposeIntermediateTensorInfo(res);
@@ -53389,8 +53390,8 @@ return a / b;`;
     }
   };
   function select2(args) {
-    const {inputs, backend: backend2} = args;
-    const {condition, t, e} = inputs;
+    const { inputs, backend: backend2 } = args;
+    const { condition, t, e } = inputs;
     const program = new SelectProgram(condition.shape.length, t.shape, t.shape.length);
     return backend2.runWebGLProgram(program, [condition, t, e], upcastType(t.dtype, e.dtype));
   }
@@ -53406,14 +53407,14 @@ return a / b;`;
   float scale = ${backend_util_exports.SELU_SCALE};
   return (x >= 0.0) ? scale * x : scaleAlpha * (exp(x) - 1.0);
 `;
-  var selu3 = unaryKernelFunc2({opSnippet: SELU});
+  var selu3 = unaryKernelFunc2({ opSnippet: SELU });
   var seluConfig2 = {
     kernelName: Selu,
     backendName: "webgl",
     kernelFunc: selu3
   };
   var SIGMOID3 = `return 1.0 / (1.0 + exp(-1.0 * x));`;
-  var sigmoid3 = unaryKernelFunc2({opSnippet: SIGMOID3});
+  var sigmoid3 = unaryKernelFunc2({ opSnippet: SIGMOID3 });
   var sigmoidConfig2 = {
     kernelName: Sigmoid,
     backendName: "webgl",
@@ -53423,7 +53424,7 @@ return a / b;`;
   if (isnan(x)) { return 0.0; }
   return sign(x);
 `;
-  var sign3 = unaryKernelFunc2({opSnippet: SIGN});
+  var sign3 = unaryKernelFunc2({ opSnippet: SIGN });
   var signConfig2 = {
     kernelName: Sign,
     backendName: "webgl",
@@ -53432,7 +53433,7 @@ return a / b;`;
   var SIN = CHECK_NAN_SNIPPET_UNARY + `
   return sin(x);
 `;
-  var sin3 = unaryKernelFunc2({opSnippet: SIN});
+  var sin3 = unaryKernelFunc2({ opSnippet: SIN });
   var sinConfig2 = {
     kernelName: Sin,
     backendName: "webgl",
@@ -53442,7 +53443,7 @@ return a / b;`;
   float e2x = exp(x);
   return (e2x - 1.0 / e2x) / 2.0;
 `;
-  var sinh3 = unaryKernelFunc2({opSnippet: SINH});
+  var sinh3 = unaryKernelFunc2({ opSnippet: SINH });
   var sinhConfig2 = {
     kernelName: Sinh,
     backendName: "webgl",
@@ -53469,16 +53470,16 @@ return a / b;`;
   }
   return result;
 `;
-  var softplus3 = unaryKernelFunc2({opSnippet: SOFTPLUS});
+  var softplus3 = unaryKernelFunc2({ opSnippet: SOFTPLUS });
   var softplusConfig2 = {
     kernelName: Softplus,
     backendName: "webgl",
     kernelFunc: softplus3
   };
   var spaceToBatchND3 = (args) => {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {blockShape, paddings} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { blockShape, paddings } = attrs;
     util_exports.assert(x.shape.length <= 4, () => "spaceToBatchND for rank > 4 with a WebGL backend not implemented yet");
     const prod5 = blockShape.reduce((a, b) => a * b);
     const completePaddings = [[0, 0]];
@@ -53488,20 +53489,20 @@ return a / b;`;
     }
     const toDispose = [];
     const paddedX = padV22({
-      inputs: {x},
+      inputs: { x },
       backend: backend2,
-      attrs: {paddings: completePaddings, constantValue: 0}
+      attrs: { paddings: completePaddings, constantValue: 0 }
     });
     const reshapedPaddedShape = backend_util_exports.getReshaped(paddedX.shape, blockShape, prod5, false);
     const permutedReshapedPaddedPermutation = backend_util_exports.getPermuted(reshapedPaddedShape.length, blockShape.length, false);
     const flattenShape = backend_util_exports.getReshapedPermuted(paddedX.shape, blockShape, prod5, false);
-    const reshapedPaddedX = reshape4({inputs: {x: paddedX}, backend: backend2, attrs: {shape: reshapedPaddedShape}});
+    const reshapedPaddedX = reshape4({ inputs: { x: paddedX }, backend: backend2, attrs: { shape: reshapedPaddedShape } });
     const paddedXT = transpose3({
-      inputs: {x: reshapedPaddedX},
+      inputs: { x: reshapedPaddedX },
       backend: backend2,
-      attrs: {perm: permutedReshapedPaddedPermutation}
+      attrs: { perm: permutedReshapedPaddedPermutation }
     });
-    const result = reshape4({inputs: {x: paddedXT}, backend: backend2, attrs: {shape: flattenShape}});
+    const result = reshape4({ inputs: { x: paddedXT }, backend: backend2, attrs: { shape: flattenShape } });
     toDispose.push(paddedX);
     toDispose.push(reshapedPaddedX);
     toDispose.push(paddedXT);
@@ -53514,8 +53515,8 @@ return a / b;`;
     kernelFunc: spaceToBatchND3
   };
   function sparseFillEmptyRows3(args) {
-    const {inputs, backend: backend2} = args;
-    const {indices, values, denseShape, defaultValue} = inputs;
+    const { inputs, backend: backend2 } = args;
+    const { indices, values, denseShape, defaultValue } = inputs;
     if (denseShape.shape.length !== 1) {
       throw new Error(`Dense shape must be a vector, saw:
          ${denseShape.shape}`);
@@ -53550,8 +53551,8 @@ return a / b;`;
     kernelFunc: sparseFillEmptyRows3
   };
   function sparseReshape3(args) {
-    const {inputs, backend: backend2} = args;
-    const {inputIndices, inputShape, newShape} = inputs;
+    const { inputs, backend: backend2 } = args;
+    const { inputIndices, inputShape, newShape } = inputs;
     if (inputIndices.shape.length !== 2) {
       throw new Error(`Input indices should be a matrix but received shape ${inputIndices.shape}`);
     }
@@ -53576,14 +53577,14 @@ return a / b;`;
     kernelFunc: sparseReshape3
   };
   function sparseToDense3(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {sparseIndices, sparseValues, defaultValue} = inputs;
-    const {outputShape} = attrs;
-    const {sliceRank, numUpdates, strides, outputSize} = backend_util_exports.calculateShapes(sparseValues, sparseIndices, outputShape);
+    const { inputs, backend: backend2, attrs } = args;
+    const { sparseIndices, sparseValues, defaultValue } = inputs;
+    const { outputShape } = attrs;
+    const { sliceRank, numUpdates, strides, outputSize } = backend_util_exports.calculateShapes(sparseValues, sparseIndices, outputShape);
     const sumDupeIndices = false;
     const program = new ScatterProgram(numUpdates, sliceRank, sparseIndices.shape.length, sparseValues.shape.length, strides, [outputSize, 1], sumDupeIndices);
     const res = backend2.runWebGLProgram(program, [sparseValues, sparseIndices, defaultValue], sparseValues.dtype);
-    const reshaped = reshape4({inputs: {x: res}, backend: backend2, attrs: {shape: outputShape}});
+    const reshaped = reshape4({ inputs: { x: res }, backend: backend2, attrs: { shape: outputShape } });
     backend2.disposeIntermediateTensorInfo(res);
     return reshaped;
   }
@@ -53593,9 +53594,9 @@ return a / b;`;
     kernelFunc: sparseToDense3
   };
   function splitV2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {numOrSizeSplits, axis} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { numOrSizeSplits, axis } = attrs;
     const $axis = util_exports.parseAxisParam(axis, x.shape)[0];
     const splitSizes = backend_util_exports.prepareSplitSize(x, numOrSizeSplits, $axis);
     const xRank = x.shape.length;
@@ -53604,7 +53605,7 @@ return a / b;`;
     return splitSizes.map((s) => {
       const sliceSize = [...size];
       sliceSize[$axis] = s;
-      const sliceT = slice3({inputs: {x}, backend: backend2, attrs: {begin, size: sliceSize}});
+      const sliceT = slice3({ inputs: { x }, backend: backend2, attrs: { begin, size: sliceSize } });
       begin[$axis] += s;
       return sliceT;
     });
@@ -53615,28 +53616,28 @@ return a / b;`;
     kernelFunc: splitV2
   };
   var SQRT = `return sqrt(x);`;
-  var sqrt3 = unaryKernelFunc2({opSnippet: SQRT});
+  var sqrt3 = unaryKernelFunc2({ opSnippet: SQRT });
   var sqrtConfig2 = {
     kernelName: Sqrt,
     backendName: "webgl",
     kernelFunc: sqrt3
   };
   var SQUARE = `return x * x;`;
-  var square3 = unaryKernelFunc2({opSnippet: SQUARE});
+  var square3 = unaryKernelFunc2({ opSnippet: SQUARE });
   var squareConfig2 = {
     kernelName: Square,
     backendName: "webgl",
     kernelFunc: square3
   };
   var SQUARED_DIFFERENCE = "return (a - b) * (a - b);";
-  var squaredDifference3 = binaryKernelFunc2({opSnippet: SQUARED_DIFFERENCE, packedOpSnippet: SQUARED_DIFFERENCE});
+  var squaredDifference3 = binaryKernelFunc2({ opSnippet: SQUARED_DIFFERENCE, packedOpSnippet: SQUARED_DIFFERENCE });
   var squaredDifferenceConfig2 = {
     kernelName: SquaredDifference,
     backendName: "webgl",
     kernelFunc: squaredDifference3
   };
-  function step3({inputs, attrs, backend: backend2}) {
-    const {x} = inputs;
+  function step3({ inputs, attrs, backend: backend2 }) {
+    const { x } = inputs;
     const opSnippet = CHECK_NAN_SNIPPET + `
     return x > 0.0 ? 1.0 : float(${attrs.alpha});
   `;
@@ -53677,15 +53678,15 @@ return a / b;`;
     }
   };
   function stridedSlice3(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {begin, end, strides, beginMask, endMask, ellipsisMask, newAxisMask, shrinkAxisMask} = attrs;
-    const {nonStrided, $begin, $strides, size, newShape, outShape} = slice_util_exports.sliceInfo(x.shape, begin, end, strides, beginMask, endMask, ellipsisMask, newAxisMask, shrinkAxisMask);
-    const $x = reshape4({inputs: {x}, backend: backend2, attrs: {shape: newShape}});
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { begin, end, strides, beginMask, endMask, ellipsisMask, newAxisMask, shrinkAxisMask } = attrs;
+    const { nonStrided, $begin, $strides, size, newShape, outShape } = slice_util_exports.sliceInfo(x.shape, begin, end, strides, beginMask, endMask, ellipsisMask, newAxisMask, shrinkAxisMask);
+    const $x = reshape4({ inputs: { x }, backend: backend2, attrs: { shape: newShape } });
     let result;
     if (nonStrided) {
-      const sliced = slice3({inputs: {x: $x}, backend: backend2, attrs: {begin: $begin, size}});
-      result = reshape4({inputs: {x: sliced}, backend: backend2, attrs: {shape: outShape}});
+      const sliced = slice3({ inputs: { x: $x }, backend: backend2, attrs: { begin: $begin, size } });
+      result = reshape4({ inputs: { x: sliced }, backend: backend2, attrs: { shape: outShape } });
       backend2.disposeIntermediateTensorInfo(sliced);
     } else if (outShape.some((axis) => axis === 0)) {
       result = backend2.makeTensorInfo(outShape, x.dtype, []);
@@ -53702,7 +53703,7 @@ return a / b;`;
         result = backend2.runWebGLProgram(program, [$x], $x.dtype);
       }
     }
-    const resultReshaped = reshape4({inputs: {x: result}, backend: backend2, attrs: {shape: outShape}});
+    const resultReshaped = reshape4({ inputs: { x: result }, backend: backend2, attrs: { shape: outShape } });
     backend2.disposeIntermediateTensorInfo($x);
     backend2.disposeIntermediateTensorInfo(result);
     return resultReshaped;
@@ -53713,7 +53714,7 @@ return a / b;`;
     kernelFunc: stridedSlice3
   };
   var TAN = `return tan(x);`;
-  var tan3 = unaryKernelFunc2({opSnippet: TAN});
+  var tan3 = unaryKernelFunc2({ opSnippet: TAN });
   var tanConfig2 = {
     kernelName: Tan,
     backendName: "webgl",
@@ -53723,7 +53724,7 @@ return a / b;`;
   float e2x = exp(-2.0 * abs(x));
   return sign(x) * (1.0 - e2x) / (1.0 + e2x);
 `;
-  var tanh4 = unaryKernelFunc2({opSnippet: TANH});
+  var tanh4 = unaryKernelFunc2({ opSnippet: TANH });
   var tanhConfig2 = {
     kernelName: Tanh,
     backendName: "webgl",
@@ -53764,9 +53765,9 @@ return a / b;`;
     return sourceCoords.join();
   }
   function tile4(params) {
-    const {inputs, backend: backend2, attrs} = params;
-    const {x} = inputs;
-    const {reps} = attrs;
+    const { inputs, backend: backend2, attrs } = params;
+    const { x } = inputs;
+    const { reps } = attrs;
     if (x.dtype === "string" || x.shape.length > 5) {
       const data = backend2.readSync(x.dataId);
       const value = x.dtype === "string" ? data.map((d) => util_exports.decodeString(d)) : data;
@@ -53784,9 +53785,9 @@ return a / b;`;
     kernelFunc: tile4
   };
   function topK2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {k, sorted} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { k, sorted } = attrs;
     const xVals = backend2.readSync(x.dataId);
     const [allTopKVals, allTopKIndices] = topKImplCPU(xVals, x.shape, x.dtype, k, sorted);
     return [
@@ -53938,9 +53939,9 @@ return a / b;`;
     }
   };
   function transform3(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {image: image3, transforms} = inputs;
-    const {interpolation, fillMode, fillValue, outputShape} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { image: image3, transforms } = inputs;
+    const { interpolation, fillMode, fillValue, outputShape } = attrs;
     const [batch, imageHeight, imageWidth, numChannels] = image3.shape;
     const [outHeight, outWidth] = outputShape != null ? outputShape : [imageHeight, imageWidth];
     const outShape = [
@@ -53958,13 +53959,13 @@ return a / b;`;
     kernelFunc: transform3
   };
   function unique4(args) {
-    const {inputs, attrs, backend: backend2} = args;
-    const {axis} = attrs;
-    const {x} = inputs;
+    const { inputs, attrs, backend: backend2 } = args;
+    const { axis } = attrs;
+    const { x } = inputs;
     assertNotComplex2(x, "unique");
     console.warn("WARNING: ", "UI might be locked temporarily as data is being downloaded");
     const values = backend2.readSync(x.dataId);
-    const {outputValues, outputShape, indices} = uniqueImplCPU(values, axis, x.shape, x.dtype);
+    const { outputValues, outputShape, indices } = uniqueImplCPU(values, axis, x.shape, x.dtype);
     return [
       backend2.makeTensorInfo(outputShape, x.dtype, outputValues),
       backend2.makeTensorInfo([indices.length], "int32", indices)
@@ -53976,9 +53977,9 @@ return a / b;`;
     kernelFunc: unique4
   };
   function unpack2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {value} = inputs;
-    let {axis} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { value } = inputs;
+    let { axis } = attrs;
     if (axis < 0) {
       axis += value.shape.length;
     }
@@ -53999,8 +54000,8 @@ return a / b;`;
     const res = new Array(num);
     for (let i = 0; i < res.length; i++) {
       begin[axis] = i;
-      const sliced = slice3({inputs: {x}, backend: backend2, attrs: {begin, size}});
-      const reshaped = reshape4({inputs: {x: sliced}, backend: backend2, attrs: {shape: outShape}});
+      const sliced = slice3({ inputs: { x }, backend: backend2, attrs: { begin, size } });
+      const reshaped = reshape4({ inputs: { x: sliced }, backend: backend2, attrs: { shape: outShape } });
       res[i] = reshaped;
       toDispose.push(sliced);
     }
@@ -54144,29 +54145,29 @@ return a / b;`;
     }
   };
   function unsortedSegmentSum3(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x, segmentIds} = inputs;
-    const {numSegments} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x, segmentIds } = inputs;
+    const { numSegments } = attrs;
     const xRank = x.shape.length;
     const toDispose = [];
     let axis = 0;
     const permutation = backend_util_exports.getAxesPermutation([axis], xRank);
     let permutedX = x;
     if (permutation != null) {
-      permutedX = transpose3({inputs: {x}, backend: backend2, attrs: {perm: permutation}});
+      permutedX = transpose3({ inputs: { x }, backend: backend2, attrs: { perm: permutation } });
       toDispose.push(permutedX);
       axis = backend_util_exports.getInnerMostAxes(1, xRank)[0];
     }
     const outShape = backend_util_exports.segment_util.computeOutShape(permutedX.shape, axis, numSegments);
     const inSize = util_exports.sizeFromShape([permutedX.shape[axis]]);
-    const a2D = reshape4({inputs: {x: permutedX}, backend: backend2, attrs: {shape: [-1, inSize]}});
+    const a2D = reshape4({ inputs: { x: permutedX }, backend: backend2, attrs: { shape: [-1, inSize] } });
     toDispose.push(a2D);
     const outputDType = sumOutType(x.dtype);
     const segOpCompute = (x2, segOpType, segmentIds2, dtype, numSegments2) => {
       const batchSize = x2.shape[0];
       const inSize2 = x2.shape[1];
       const windowSize = backend_util_exports.segment_util.segOpComputeOptimalWindowSize(inSize2, numSegments2);
-      const segOpInfo = {windowSize, inSize: inSize2, batchSize, numSegments: numSegments2};
+      const segOpInfo = { windowSize, inSize: inSize2, batchSize, numSegments: numSegments2 };
       const program = new SegmentOpProgram(segOpInfo, segOpType);
       const output = backend2.compileAndRun(program, [x2, segmentIds2], dtype);
       toDispose.push(output);
@@ -54175,12 +54176,12 @@ return a / b;`;
       }
       const rangeInfo = range4({
         backend: backend2,
-        attrs: {start: 0, stop: numSegments2, step: 1, dtype: "float32"}
+        attrs: { start: 0, stop: numSegments2, step: 1, dtype: "float32" }
       });
       const tileInfo = tile4({
-        inputs: {x: rangeInfo},
+        inputs: { x: rangeInfo },
         backend: backend2,
-        attrs: {reps: [inSize2 / windowSize]}
+        attrs: { reps: [inSize2 / windowSize] }
       });
       toDispose.push(rangeInfo);
       toDispose.push(tileInfo);
@@ -54188,12 +54189,12 @@ return a / b;`;
       return result2;
     };
     const segOpResult = segOpCompute(a2D, "unsortedSegmentSum", segmentIds, outputDType, numSegments);
-    const reshaped = reshape4({inputs: {x: segOpResult}, backend: backend2, attrs: {shape: outShape}});
+    const reshaped = reshape4({ inputs: { x: segOpResult }, backend: backend2, attrs: { shape: outShape } });
     let result = reshaped;
     if (permutation != null) {
       toDispose.push(reshaped);
       const perm = backend_util_exports.getUndoAxesPermutation(permutation);
-      result = transpose3({inputs: {x: result}, backend: backend2, attrs: {perm}});
+      result = transpose3({ inputs: { x: result }, backend: backend2, attrs: { perm } });
     }
     toDispose.forEach((t) => backend2.disposeIntermediateTensorInfo(t));
     return result;
@@ -54410,12 +54411,12 @@ return a / b;`;
     ]);
   }
   function fusedBatchMatMul(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {a, b, bias, preluActivationWeights} = inputs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { a, b, bias, preluActivationWeights } = inputs;
     if (a.dtype !== "float32" || b.dtype !== "float32") {
       throw new Error(`_FusedMatMul for non non-float32 tensors not yet supported.`);
     }
-    const {transposeA, transposeB, activation: activation2, leakyreluAlpha} = attrs;
+    const { transposeA, transposeB, activation: activation2, leakyreluAlpha } = attrs;
     const aId = backend2.dataIdMap.get(a.dataId).id;
     const bId = backend2.dataIdMap.get(b.dataId).id;
     let biasId = 0;
@@ -54453,7 +54454,7 @@ return a / b;`;
       wasmFunc9 = backend2.wasm.cwrap(kernelName, null, ["number", "number"]);
     }
     function kernelFunc3(args) {
-      const {backend: backend2, inputs: {x}} = args;
+      const { backend: backend2, inputs: { x } } = args;
       const xId = backend2.dataIdMap.get(x.dataId).id;
       const out = backend2.makeOutput(x.shape, x.dtype);
       const outId = backend2.dataIdMap.get(out.dataId).id;
@@ -54463,7 +54464,7 @@ return a / b;`;
       wasmFunc9(xId, outId);
       return out;
     }
-    return {kernelName, backendName: "wasm", setupFunc: setupFunc3, kernelFunc: kernelFunc3};
+    return { kernelName, backendName: "wasm", setupFunc: setupFunc3, kernelFunc: kernelFunc3 };
   }
   var absConfig3 = createUnaryKernelConfig(Abs);
   function createBinaryKernelConfig(kernelName, supportsFullBroadcast17, dtype) {
@@ -54481,8 +54482,8 @@ return a / b;`;
       ]);
     }
     function kernelFunc3(args) {
-      const {backend: backend2, inputs} = args;
-      const {a, b} = inputs;
+      const { backend: backend2, inputs } = args;
+      const { a, b } = inputs;
       const aId = backend2.dataIdMap.get(a.dataId).id;
       const bId = backend2.dataIdMap.get(b.dataId).id;
       const outputType = dtype != null ? dtype : a.dtype;
@@ -54510,7 +54511,7 @@ return a / b;`;
         throw new Error(`Broadcasting along outer dims is not yet supported for ${a.dtype} ${kernelName}.`);
       }
     }
-    return {kernelName, backendName: "wasm", setupFunc: setupFunc3, kernelFunc: kernelFunc3};
+    return { kernelName, backendName: "wasm", setupFunc: setupFunc3, kernelFunc: kernelFunc3 };
   }
   var supportsFullBroadcast = true;
   var addConfig3 = createBinaryKernelConfig(Add, supportsFullBroadcast);
@@ -54524,7 +54525,7 @@ return a / b;`;
     ]);
   }
   function addn(args) {
-    const {inputs, backend: backend2} = args;
+    const { inputs, backend: backend2 } = args;
     const out = backend2.makeOutput(inputs[0].shape, inputs[0].dtype);
     if (util_exports.sizeFromShape(out.shape) === 0) {
       return out;
@@ -54542,7 +54543,7 @@ return a / b;`;
     kernelFunc: addn
   };
   function identity4(args) {
-    const {inputs: {x}, backend: backend2} = args;
+    const { inputs: { x }, backend: backend2 } = args;
     const out = backend2.makeOutput(x.shape, x.dtype);
     const inVals = backend2.typedArrayFromHeap(x);
     const outVals = backend2.typedArrayFromHeap(out);
@@ -54567,7 +54568,7 @@ return a / b;`;
     ]);
   }
   function transpose4(args) {
-    const {inputs, backend: backend2, attrs} = args;
+    const { inputs, backend: backend2, attrs } = args;
     const [reducedShape, perm] = removeOneSizeDims(inputs.x.shape, attrs.perm);
     let permIsNoOp = true;
     for (let i = 0; i < perm.length; i++) {
@@ -54582,7 +54583,7 @@ return a / b;`;
       dtype: inputs.x.dtype
     };
     if (permIsNoOp) {
-      const cloned = identity4({inputs, backend: backend2});
+      const cloned = identity4({ inputs, backend: backend2 });
       cloned.shape = outShape;
       return cloned;
     }
@@ -54643,27 +54644,27 @@ return a / b;`;
         newShape[i] = xShape[permutedAxes[i]];
       }
       axes = backend_util_exports.getInnerMostAxes(axes.length, xRank);
-      xTransposed = transpose4({inputs: {x}, attrs: {perm: permutedAxes}, backend: backend2});
+      xTransposed = transpose4({ inputs: { x }, attrs: { perm: permutedAxes }, backend: backend2 });
       const xId = backend2.dataIdMap.get(x.dataId).id;
       const transposedId = backend2.dataIdMap.get(xTransposed.dataId).id;
       if (transposedId !== xId) {
         inputWasTransposed = true;
       }
     }
-    return {transposed: xTransposed, originalAxes, axes, inputWasTransposed};
+    return { transposed: xTransposed, originalAxes, axes, inputWasTransposed };
   }
   var wasmAll;
   function setup3(backend2) {
     wasmAll = backend2.wasm.cwrap(All, null, ["number, number, number"]);
   }
   function all4(args) {
-    const {backend: backend2, inputs, attrs} = args;
-    const {axis, keepDims} = attrs;
-    const {x} = inputs;
+    const { backend: backend2, inputs, attrs } = args;
+    const { axis, keepDims } = attrs;
+    const { x } = inputs;
     const xId = backend2.dataIdMap.get(x.dataId).id;
     let inputId = xId;
     let input2 = x;
-    const {transposed, axes, originalAxes, inputWasTransposed} = permuteAxesAndTranspose(x, axis, backend2);
+    const { transposed, axes, originalAxes, inputWasTransposed } = permuteAxesAndTranspose(x, axis, backend2);
     if (inputWasTransposed) {
       const transposedId = backend2.dataIdMap.get(transposed.dataId).id;
       input2 = transposed;
@@ -54698,13 +54699,13 @@ return a / b;`;
     wasmAny = backend2.wasm.cwrap(Any, null, ["number, number, number"]);
   }
   function any4(args) {
-    const {backend: backend2, inputs, attrs} = args;
-    const {axis, keepDims} = attrs;
-    const {x} = inputs;
+    const { backend: backend2, inputs, attrs } = args;
+    const { axis, keepDims } = attrs;
+    const { x } = inputs;
     const xId = backend2.dataIdMap.get(x.dataId).id;
     let inputId = xId;
     let input2 = x;
-    const {transposed, axes, originalAxes, inputWasTransposed} = permuteAxesAndTranspose(x, axis, backend2);
+    const { transposed, axes, originalAxes, inputWasTransposed } = permuteAxesAndTranspose(x, axis, backend2);
     if (inputWasTransposed) {
       const transposedId = backend2.dataIdMap.get(transposed.dataId).id;
       input2 = transposed;
@@ -54745,13 +54746,13 @@ return a / b;`;
     ]);
   }
   function argmax(args) {
-    const {backend: backend2, inputs, attrs} = args;
-    const {axis} = attrs;
-    const {x} = inputs;
+    const { backend: backend2, inputs, attrs } = args;
+    const { axis } = attrs;
+    const { x } = inputs;
     const xId = backend2.dataIdMap.get(x.dataId).id;
     let inputId = xId;
     let input2 = x;
-    const {transposed, axes, inputWasTransposed} = permuteAxesAndTranspose(x, axis, backend2);
+    const { transposed, axes, inputWasTransposed } = permuteAxesAndTranspose(x, axis, backend2);
     if (inputWasTransposed) {
       const transposedId = backend2.dataIdMap.get(transposed.dataId).id;
       if (transposedId !== xId) {
@@ -54796,10 +54797,10 @@ return a / b;`;
     ]);
   }
   function avgPool4(args) {
-    const {inputs, attrs, backend: backend2} = args;
+    const { inputs, attrs, backend: backend2 } = args;
     const x = inputs.x;
     const xId = backend2.dataIdMap.get(x.dataId).id;
-    const {filterSize, strides, pad: pad3, dimRoundingMode} = attrs;
+    const { filterSize, strides, pad: pad3, dimRoundingMode } = attrs;
     const convInfo = backend_util_exports.computePool2DInfo(x.shape, filterSize, strides, 1, pad3, dimRoundingMode);
     const filterHeight = convInfo.filterHeight;
     const filterWidth = convInfo.filterWidth;
@@ -54828,14 +54829,14 @@ return a / b;`;
     kernelFunc: avgPool4
   };
   function reshape5(args) {
-    const {inputs, attrs} = args;
-    const {x} = inputs;
-    const {shape} = attrs;
+    const { inputs, attrs } = args;
+    const { x } = inputs;
+    const { shape } = attrs;
     const xSize = util_exports.sizeFromShape(x.shape);
     const $shape = util_exports.inferFromImplicitShape(shape, xSize);
     util_exports.assert(xSize === util_exports.sizeFromShape($shape), () => `new shape: ${$shape}, old shape: ${x.shape}. New shape and old shape must have the same number of elements.`);
     args.backend.incRef(x.dataId);
-    return {dataId: x.dataId, shape: $shape, dtype: x.dtype};
+    return { dataId: x.dataId, shape: $shape, dtype: x.dtype };
   }
   var reshapeConfig3 = {
     kernelName: Reshape,
@@ -54857,9 +54858,9 @@ return a / b;`;
     ]);
   }
   function batchMatMul3(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {a, b} = inputs;
-    const {transposeA, transposeB} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { a, b } = inputs;
+    const { transposeA, transposeB } = attrs;
     if (a.dtype !== "float32" || b.dtype !== "float32") {
       throw new Error(`BatchMatMul for non non-float32 tensors not yet supported.`);
     }
@@ -54880,8 +54881,8 @@ return a / b;`;
     util_exports.assert(innerShapeA === innerShapeB, () => `Error in matMul: inner shapes (${innerShapeA}) and (${innerShapeB}) of Tensors with shapes ${a.shape} and ${b.shape} and transposeA=${transposeA} and transposeB=${transposeB} must match.`);
     const a3dShape = transposeA ? [batchDimA, innerShapeA, outerShapeA] : [batchDimA, outerShapeA, innerShapeA];
     const b3dShape = transposeB ? [batchDimB, outerShapeB, innerShapeB] : [batchDimB, innerShapeB, outerShapeB];
-    const a3d = reshape5({inputs: {x: a}, backend: backend2, attrs: {shape: a3dShape}});
-    const b3d = reshape5({inputs: {x: b}, backend: backend2, attrs: {shape: b3dShape}});
+    const a3d = reshape5({ inputs: { x: a }, backend: backend2, attrs: { shape: a3dShape } });
+    const b3d = reshape5({ inputs: { x: b }, backend: backend2, attrs: { shape: b3dShape } });
     const a3dId = backend2.dataIdMap.get(a3d.dataId).id;
     const b3dId = backend2.dataIdMap.get(b3d.dataId).id;
     const leftDim = transposeA ? a3d.shape[2] : a3d.shape[1];
@@ -54904,7 +54905,7 @@ return a / b;`;
     kernelFunc: batchMatMul3
   };
   function cast5(args) {
-    const {inputs: {x}, attrs: {dtype}, backend: backend2} = args;
+    const { inputs: { x }, attrs: { dtype }, backend: backend2 } = args;
     const out = backend2.makeOutput(x.shape, dtype);
     const inVals = backend2.typedArrayFromHeap(x);
     const outVals = backend2.typedArrayFromHeap(out);
@@ -54927,9 +54928,9 @@ return a / b;`;
     ]);
   }
   function clip2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {clipValueMin, clipValueMax} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { clipValueMin, clipValueMax } = attrs;
     const xId = backend2.dataIdMap.get(x.dataId).id;
     const out = backend2.makeOutput(x.shape, x.dtype);
     const outId = backend2.dataIdMap.get(out.dataId).id;
@@ -55010,12 +55011,12 @@ return a / b;`;
     return outBuf.values;
   }
   function concat4(args) {
-    const {inputs, backend: backend2} = args;
+    const { inputs, backend: backend2 } = args;
     const axis = util_exports.parseAxisParam(args.attrs.axis, inputs[0].shape)[0];
     let outShape = backend_util_exports.computeOutShape(inputs.map((t) => t.shape), axis);
     const $inputs = inputs.filter((t) => util_exports.sizeFromShape(t.shape) > 0);
     if ($inputs.length === 1) {
-      return identity4({inputs: {x: $inputs[0]}, backend: backend2});
+      return identity4({ inputs: { x: $inputs[0] }, backend: backend2 });
     }
     const out = backend2.makeOutput(outShape, inputs[0].dtype);
     if (util_exports.sizeFromShape(outShape) === 0) {
@@ -55027,10 +55028,10 @@ return a / b;`;
       const inputs2D = $inputs.map((t) => {
         const innerSize = util_exports.sizeFromShape(t.shape.slice(axis));
         const shape = [-1, innerSize];
-        return reshape5({inputs: {x: t}, backend: backend2, attrs: {shape}});
+        return reshape5({ inputs: { x: t }, backend: backend2, attrs: { shape } });
       });
       const inputsValShapes = inputs2D.map((t) => {
-        return {vals: backend2.readSync(t.dataId), shape: t.shape};
+        return { vals: backend2.readSync(t.dataId), shape: t.shape };
       });
       outShape = backend_util_exports.computeOutShape(inputs2D.map((t) => t.shape), 1);
       const simplyConcat = inputs2D[0].shape[0] === 1;
@@ -55093,11 +55094,11 @@ return a / b;`;
     ]);
   }
   function conv2d5(args) {
-    const {inputs, attrs, backend: backend2} = args;
-    const {x, filter} = inputs;
+    const { inputs, attrs, backend: backend2 } = args;
+    const { x, filter } = inputs;
     const xId = backend2.dataIdMap.get(x.dataId).id;
     const filterId = backend2.dataIdMap.get(filter.dataId).id;
-    const {strides, dilations, pad: pad3, dimRoundingMode, dataFormat} = attrs;
+    const { strides, dilations, pad: pad3, dimRoundingMode, dataFormat } = attrs;
     const $dataFormat = backend_util_exports.convertConv2DDataFormat(dataFormat);
     const convInfo = backend_util_exports.computeConv2DInfo(x.shape, filter.shape, strides, dilations, pad3, dimRoundingMode, false, $dataFormat);
     const filterHeight = convInfo.filterHeight;
@@ -55160,13 +55161,13 @@ return a / b;`;
     ]);
   }
   function conv2DBackpropInput4(args) {
-    const {backend: backend2, inputs, attrs} = args;
-    const {dy, filter} = inputs;
-    const {strides, pad: pad3, dataFormat, dimRoundingMode, inputShape} = attrs;
+    const { backend: backend2, inputs, attrs } = args;
+    const { dy, filter } = inputs;
+    const { strides, pad: pad3, dataFormat, dimRoundingMode, inputShape } = attrs;
     const dilations = 1;
     const $dataFormat = backend_util_exports.convertConv2DDataFormat(dataFormat);
     const convInfo = backend_util_exports.computeConv2DInfo(inputShape, filter.shape, strides, dilations, pad3, dimRoundingMode, false, $dataFormat);
-    const {batchSize, filterHeight, filterWidth, inChannels, inHeight, inWidth, outChannels, outHeight, outWidth, strideHeight, strideWidth} = convInfo;
+    const { batchSize, filterHeight, filterWidth, inChannels, inHeight, inWidth, outChannels, outHeight, outWidth, strideHeight, strideWidth } = convInfo;
     const topPad = filterHeight - 1 - convInfo.padInfo.top;
     const leftPad = filterWidth - 1 - convInfo.padInfo.left;
     const isChannelsLast = convInfo.dataFormat === "channelsLast";
@@ -55216,16 +55217,16 @@ return a / b;`;
     ]);
   }
   function cropAndResize4(args) {
-    const {backend: backend2, inputs, attrs} = args;
-    const {method, extrapolationValue, cropSize} = attrs;
-    const {image: image3, boxes, boxInd} = inputs;
+    const { backend: backend2, inputs, attrs } = args;
+    const { method, extrapolationValue, cropSize } = attrs;
+    const { image: image3, boxes, boxInd } = inputs;
     const numBoxes = boxes.shape[0];
     const [cropHeight, cropWidth] = cropSize;
     const outShape = [numBoxes, cropHeight, cropWidth, image3.shape[3]];
     let imagesData = backend2.dataIdMap.get(image3.dataId);
     let castedData;
     if (image3.dtype !== "float32") {
-      castedData = cast5({backend: backend2, inputs: {x: image3}, attrs: {dtype: "float32"}});
+      castedData = cast5({ backend: backend2, inputs: { x: image3 }, attrs: { dtype: "float32" } });
       imagesData = backend2.dataIdMap.get(castedData.dataId);
     }
     const imagesId = imagesData.id;
@@ -55258,15 +55259,15 @@ return a / b;`;
     ]);
   }
   function cumsum4(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {axis, exclusive, reverse: reverse5} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { axis, exclusive, reverse: reverse5 } = attrs;
     const xRank = x.shape.length;
     util_exports.assert(x.dtype === "float32" || x.dtype === "int32", () => `cumsum does not support ${x.dtype} tensors in the WASM backend`);
     const permutation = backend_util_exports.getAxesPermutation([axis], xRank);
     let permutedX = x;
     if (permutation !== null) {
-      permutedX = transpose4({inputs: {x}, attrs: {perm: permutation}, backend: backend2});
+      permutedX = transpose4({ inputs: { x }, attrs: { perm: permutation }, backend: backend2 });
     }
     const permutedAxis = backend_util_exports.getInnerMostAxes(1, xRank)[0];
     backend_util_exports.assertAxesAreInnerMostDims("cumsum", [permutedAxis], xRank);
@@ -55278,7 +55279,7 @@ return a / b;`;
     let out = permutedOut;
     if (permutation !== null) {
       const undoPermutation = backend_util_exports.getUndoAxesPermutation(permutation);
-      out = transpose4({inputs: {x: permutedOut}, attrs: {perm: undoPermutation}, backend: backend2});
+      out = transpose4({ inputs: { x: permutedOut }, attrs: { perm: undoPermutation }, backend: backend2 });
       backend2.disposeData(permutedX.dataId);
       backend2.disposeData(permutedOut.dataId);
     }
@@ -55305,9 +55306,9 @@ return a / b;`;
     ]);
   }
   function depthToSpace4(args) {
-    const {backend: backend2, inputs, attrs} = args;
-    const {x} = inputs;
-    const {blockSize, dataFormat} = attrs;
+    const { backend: backend2, inputs, attrs } = args;
+    const { x } = inputs;
+    const { blockSize, dataFormat } = attrs;
     util_exports.assert(blockSize > 1, () => `blockSize should be > 1 for depthToSpace, but was: ${blockSize}`);
     const batchSize = x.shape[0];
     const inputHeight = dataFormat === "NHWC" ? x.shape[1] : x.shape[2];
@@ -55359,11 +55360,11 @@ return a / b;`;
     ]);
   }
   function depthwiseConv2d5(args) {
-    const {inputs, attrs, backend: backend2} = args;
-    const {x, filter} = inputs;
+    const { inputs, attrs, backend: backend2 } = args;
+    const { x, filter } = inputs;
     const xId = backend2.dataIdMap.get(x.dataId).id;
     const filterId = backend2.dataIdMap.get(filter.dataId).id;
-    const {strides, dilations, pad: pad3, dimRoundingMode} = attrs;
+    const { strides, dilations, pad: pad3, dimRoundingMode } = attrs;
     const $dilations = dilations == null ? [1, 1] : dilations;
     const convInfo = backend_util_exports.computeConv2DInfo(x.shape, filter.shape, strides, $dilations, pad3, dimRoundingMode, true);
     const filterHeight = convInfo.filterHeight;
@@ -55397,9 +55398,9 @@ return a / b;`;
   var equalConfig3 = createBinaryKernelConfig(Equal, supportsFullBroadcast2, "bool");
   var expConfig3 = createUnaryKernelConfig(Exp);
   function expandDims5(args) {
-    const {inputs, attrs, backend: backend2} = args;
-    const {input: input2} = inputs;
-    const {dim} = attrs;
+    const { inputs, attrs, backend: backend2 } = args;
+    const { input: input2 } = inputs;
+    const { dim } = attrs;
     const inputRank = input2.shape.length;
     const newShape = input2.shape.slice();
     let $dim = dim;
@@ -55408,7 +55409,7 @@ return a / b;`;
       $dim = inputRank + dim + 1;
     }
     newShape.splice($dim, 0, 1);
-    return reshape5({inputs: {x: input2}, backend: backend2, attrs: {shape: newShape}});
+    return reshape5({ inputs: { x: input2 }, backend: backend2, attrs: { shape: newShape } });
   }
   var expandDimsConfig3 = {
     kernelName: ExpandDims,
@@ -55416,7 +55417,7 @@ return a / b;`;
     kernelFunc: expandDims5
   };
   function fill4(args) {
-    const {attrs: {shape, value, dtype}, backend: backend2} = args;
+    const { attrs: { shape, value, dtype }, backend: backend2 } = args;
     const out = backend2.makeOutput(shape, dtype);
     const outVals = backend2.typedArrayFromHeap(out);
     outVals.fill(value);
@@ -55439,8 +55440,8 @@ return a / b;`;
     ]);
   }
   function flipLeftRight2(args) {
-    const {inputs, backend: backend2} = args;
-    const {image: image3} = inputs;
+    const { inputs, backend: backend2 } = args;
+    const { image: image3 } = inputs;
     const out = backend2.makeOutput(image3.shape, image3.dtype);
     const imageId = backend2.dataIdMap.get(image3.dataId).id;
     const outId = backend2.dataIdMap.get(out.dataId).id;
@@ -55462,9 +55463,9 @@ return a / b;`;
     wasmBatchNorm = backend2.wasm.cwrap(FusedBatchNorm, null, ["number", "number", "number", "number", "number", "number", "number"]);
   }
   function fusedBatchNorm(args) {
-    const {backend: backend2, inputs, attrs} = args;
-    const {varianceEpsilon} = attrs;
-    const {x, mean: mean4, variance, offset, scale: scale22} = inputs;
+    const { backend: backend2, inputs, attrs } = args;
+    const { varianceEpsilon } = attrs;
+    const { x, mean: mean4, variance, offset, scale: scale22 } = inputs;
     const xId = backend2.dataIdMap.get(x.dataId).id;
     const meanId = backend2.dataIdMap.get(mean4.dataId).id;
     const varianceId = backend2.dataIdMap.get(variance.dataId).id;
@@ -55513,9 +55514,9 @@ return a / b;`;
     ]);
   }
   function fusedConv2d2(args) {
-    const {inputs, attrs, backend: backend2} = args;
-    const {x, filter, bias, preluActivationWeights} = inputs;
-    const {strides, pad: pad3, dilations, dataFormat, dimRoundingMode, activation: activation2, leakyreluAlpha} = attrs;
+    const { inputs, attrs, backend: backend2 } = args;
+    const { x, filter, bias, preluActivationWeights } = inputs;
+    const { strides, pad: pad3, dilations, dataFormat, dimRoundingMode, activation: activation2, leakyreluAlpha } = attrs;
     const convInfo = backend_util_exports.computeConv2DInfo(x.shape, filter.shape, strides, dilations, pad3, dimRoundingMode);
     const fusedActivation = FusableActivation[activation2];
     if (fusedActivation == null) {
@@ -55594,9 +55595,9 @@ return a / b;`;
     ]);
   }
   function fusedDepthwiseConv2d(args) {
-    const {inputs, attrs, backend: backend2} = args;
-    const {x, filter, bias, preluActivationWeights} = inputs;
-    const {strides, pad: pad3, dilations, dataFormat, dimRoundingMode, activation: activation2, leakyreluAlpha} = attrs;
+    const { inputs, attrs, backend: backend2 } = args;
+    const { x, filter, bias, preluActivationWeights } = inputs;
+    const { strides, pad: pad3, dilations, dataFormat, dimRoundingMode, activation: activation2, leakyreluAlpha } = attrs;
     const convInfo = backend_util_exports.computeConv2DInfo(x.shape, filter.shape, strides, dilations, pad3, dimRoundingMode, true);
     const fusedActivation = FusableActivation[activation2];
     if (fusedActivation == null) {
@@ -55660,8 +55661,8 @@ return a / b;`;
     ]);
   }
   function gatherNd3(args) {
-    const {backend: backend2, inputs} = args;
-    const {params, indices} = inputs;
+    const { backend: backend2, inputs } = args;
+    const { params, indices } = inputs;
     const [resultShape, numSlices, sliceSize, strides] = gather_nd_util_exports.prepareAndValidate(params, indices);
     const out = backend2.makeOutput(resultShape, params.dtype);
     if (numSlices === 0) {
@@ -55698,13 +55699,13 @@ return a / b;`;
     ]);
   }
   function gatherV23(args) {
-    const {backend: backend2, inputs, attrs} = args;
-    const {x, indices} = inputs;
-    const {axis, batchDims} = attrs;
+    const { backend: backend2, inputs, attrs } = args;
+    const { x, indices } = inputs;
+    const { axis, batchDims } = attrs;
     const parsedAxis = util_exports.parseAxisParam(axis, x.shape)[0];
     const shapeInfo = backend_util_exports.segment_util.collectGatherOpShapeInfo(x, indices, parsedAxis, batchDims);
     const flattenX = reshape5({
-      inputs: {x},
+      inputs: { x },
       attrs: {
         shape: [
           shapeInfo.batchSize,
@@ -55717,8 +55718,8 @@ return a / b;`;
     });
     const indicesSize = util_exports.sizeFromShape(indices.shape);
     const flattenIndex = reshape5({
-      inputs: {x: indices},
-      attrs: {shape: [shapeInfo.batchSize, indicesSize / shapeInfo.batchSize]},
+      inputs: { x: indices },
+      attrs: { shape: [shapeInfo.batchSize, indicesSize / shapeInfo.batchSize] },
       backend: backend2
     });
     const flattenOutputShape = [
@@ -55764,7 +55765,7 @@ return a / b;`;
     ]);
   }
   function leakyRelu4(args) {
-    const {inputs: {x}, attrs: {alpha}, backend: backend2} = args;
+    const { inputs: { x }, attrs: { alpha }, backend: backend2 } = args;
     const xId = backend2.dataIdMap.get(x.dataId).id;
     const out = backend2.makeOutput(x.shape, x.dtype);
     if (util_exports.sizeFromShape(x.shape) !== 0) {
@@ -55791,13 +55792,13 @@ return a / b;`;
     wasmMax = backend2.wasm.cwrap(Max, null, ["number, number, number"]);
   }
   function max5(args) {
-    const {backend: backend2, inputs, attrs} = args;
-    const {reductionIndices: axis, keepDims} = attrs;
-    const {x} = inputs;
+    const { backend: backend2, inputs, attrs } = args;
+    const { reductionIndices: axis, keepDims } = attrs;
+    const { x } = inputs;
     const xId = backend2.dataIdMap.get(x.dataId).id;
     let inputId = xId;
     let input2 = x;
-    const {transposed, axes, originalAxes, inputWasTransposed} = permuteAxesAndTranspose(x, axis, backend2);
+    const { transposed, axes, originalAxes, inputWasTransposed } = permuteAxesAndTranspose(x, axis, backend2);
     if (inputWasTransposed) {
       const transposedId = backend2.dataIdMap.get(transposed.dataId).id;
       input2 = transposed;
@@ -55852,10 +55853,10 @@ return a / b;`;
     ]);
   }
   function maxPool4(args) {
-    const {inputs, attrs, backend: backend2} = args;
+    const { inputs, attrs, backend: backend2 } = args;
     const x = inputs.x;
     const xId = backend2.dataIdMap.get(x.dataId).id;
-    const {filterSize, strides, pad: pad3, dimRoundingMode} = attrs;
+    const { filterSize, strides, pad: pad3, dimRoundingMode } = attrs;
     const convInfo = backend_util_exports.computePool2DInfo(x.shape, filterSize, strides, 1, pad3, dimRoundingMode);
     const filterHeight = convInfo.filterHeight;
     const filterWidth = convInfo.filterWidth;
@@ -55888,13 +55889,13 @@ return a / b;`;
     wasmMean = backend2.wasm.cwrap(Mean, null, ["number, number, number"]);
   }
   function mean3(args) {
-    const {backend: backend2, inputs, attrs} = args;
-    const {axis, keepDims} = attrs;
-    const {x} = inputs;
+    const { backend: backend2, inputs, attrs } = args;
+    const { axis, keepDims } = attrs;
+    const { x } = inputs;
     const xId = backend2.dataIdMap.get(x.dataId).id;
     let inputId = xId;
     let input2 = x;
-    const {transposed, axes, originalAxes, inputWasTransposed} = permuteAxesAndTranspose(x, axis, backend2);
+    const { transposed, axes, originalAxes, inputWasTransposed } = permuteAxesAndTranspose(x, axis, backend2);
     let reductionAxes = axes;
     if (inputWasTransposed) {
       const transposedId = backend2.dataIdMap.get(transposed.dataId).id;
@@ -55909,7 +55910,7 @@ return a / b;`;
     const reduceSize = util_exports.sizeFromShape(reduceShape);
     let castedInput = input2;
     if (input2.dtype !== "float32") {
-      castedInput = cast5({backend: backend2, inputs: {x: input2}, attrs: {dtype: "float32"}});
+      castedInput = cast5({ backend: backend2, inputs: { x: input2 }, attrs: { dtype: "float32" } });
       inputId = backend2.dataIdMap.get(castedInput.dataId).id;
     }
     const out = backend2.makeOutput(outShape, "float32");
@@ -55940,13 +55941,13 @@ return a / b;`;
     wasmMin = backend2.wasm.cwrap(Min, null, ["number, number, number"]);
   }
   function min5(args) {
-    const {backend: backend2, inputs, attrs} = args;
-    const {axis, keepDims} = attrs;
-    const {x} = inputs;
+    const { backend: backend2, inputs, attrs } = args;
+    const { axis, keepDims } = attrs;
+    const { x } = inputs;
     const xId = backend2.dataIdMap.get(x.dataId).id;
     let inputId = xId;
     let input2 = x;
-    const {transposed, axes, originalAxes, inputWasTransposed} = permuteAxesAndTranspose(x, axis, backend2);
+    const { transposed, axes, originalAxes, inputWasTransposed } = permuteAxesAndTranspose(x, axis, backend2);
     if (inputWasTransposed) {
       const transposedId = backend2.dataIdMap.get(transposed.dataId).id;
       if (transposedId !== xId) {
@@ -55999,7 +56000,7 @@ return a / b;`;
     ]);
   }
   function mirrorPad3(args) {
-    const {inputs: {x}, backend: backend2, attrs: {paddings, mode}} = args;
+    const { inputs: { x }, backend: backend2, attrs: { paddings, mode } } = args;
     const outShape = paddings.map((p2, i) => p2[0] + x.shape[i] + p2[1]);
     const xId = backend2.dataIdMap.get(x.dataId).id;
     const out = backend2.makeOutput(outShape, x.dtype);
@@ -56028,7 +56029,7 @@ return a / b;`;
     const pSelectedScores = result[2];
     const pValidOutputs = result[3];
     backend2.wasm._free(resOffset);
-    return {pSelectedIndices, selectedSize, pSelectedScores, pValidOutputs};
+    return { pSelectedIndices, selectedSize, pSelectedScores, pValidOutputs };
   }
   var wasmFunc4;
   function setup26(backend2) {
@@ -56041,13 +56042,13 @@ return a / b;`;
     ]);
   }
   function kernelFunc(args) {
-    const {backend: backend2, inputs, attrs} = args;
-    const {iouThreshold, maxOutputSize, scoreThreshold} = attrs;
-    const {boxes, scores} = inputs;
+    const { backend: backend2, inputs, attrs } = args;
+    const { iouThreshold, maxOutputSize, scoreThreshold } = attrs;
+    const { boxes, scores } = inputs;
     const boxesId = backend2.dataIdMap.get(boxes.dataId).id;
     const scoresId = backend2.dataIdMap.get(scores.dataId).id;
     const resOffset = wasmFunc4(boxesId, scoresId, maxOutputSize, iouThreshold, scoreThreshold);
-    const {pSelectedIndices, selectedSize, pSelectedScores, pValidOutputs} = parseResultStruct(backend2, resOffset);
+    const { pSelectedIndices, selectedSize, pSelectedScores, pValidOutputs } = parseResultStruct(backend2, resOffset);
     backend2.wasm._free(pSelectedScores);
     backend2.wasm._free(pValidOutputs);
     const selectedIndicesTensor = backend2.makeOutput([selectedSize], "int32", pSelectedIndices);
@@ -56071,13 +56072,13 @@ return a / b;`;
     ]);
   }
   function nonMaxSuppressionV43(args) {
-    const {backend: backend2, inputs, attrs} = args;
-    const {iouThreshold, maxOutputSize, scoreThreshold, padToMaxOutputSize} = attrs;
-    const {boxes, scores} = inputs;
+    const { backend: backend2, inputs, attrs } = args;
+    const { iouThreshold, maxOutputSize, scoreThreshold, padToMaxOutputSize } = attrs;
+    const { boxes, scores } = inputs;
     const boxesId = backend2.dataIdMap.get(boxes.dataId).id;
     const scoresId = backend2.dataIdMap.get(scores.dataId).id;
     const resOffset = wasmFunc5(boxesId, scoresId, maxOutputSize, iouThreshold, scoreThreshold, padToMaxOutputSize);
-    const {pSelectedIndices, selectedSize, pSelectedScores, pValidOutputs} = parseResultStruct(backend2, resOffset);
+    const { pSelectedIndices, selectedSize, pSelectedScores, pValidOutputs } = parseResultStruct(backend2, resOffset);
     backend2.wasm._free(pSelectedScores);
     const selectedIndicesTensor = backend2.makeOutput([selectedSize], "int32", pSelectedIndices);
     const validOutputsTensor = backend2.makeOutput([], "int32", pValidOutputs);
@@ -56101,13 +56102,13 @@ return a / b;`;
     ]);
   }
   function kernelFunc2(args) {
-    const {backend: backend2, inputs, attrs} = args;
-    const {iouThreshold, maxOutputSize, scoreThreshold, softNmsSigma} = attrs;
-    const {boxes, scores} = inputs;
+    const { backend: backend2, inputs, attrs } = args;
+    const { iouThreshold, maxOutputSize, scoreThreshold, softNmsSigma } = attrs;
+    const { boxes, scores } = inputs;
     const boxesId = backend2.dataIdMap.get(boxes.dataId).id;
     const scoresId = backend2.dataIdMap.get(scores.dataId).id;
     const resOffset = wasmFunc6(boxesId, scoresId, maxOutputSize, iouThreshold, scoreThreshold, softNmsSigma);
-    const {pSelectedIndices, selectedSize, pSelectedScores, pValidOutputs} = parseResultStruct(backend2, resOffset);
+    const { pSelectedIndices, selectedSize, pSelectedScores, pValidOutputs } = parseResultStruct(backend2, resOffset);
     backend2.wasm._free(pValidOutputs);
     const selectedIndicesTensor = backend2.makeOutput([selectedSize], "int32", pSelectedIndices);
     const selectedScoresTensor = backend2.makeOutput([selectedSize], "float32", pSelectedScores);
@@ -56132,9 +56133,9 @@ return a / b;`;
     ]);
   }
   function oneHot4(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {indices} = inputs;
-    const {depth, onValue, offValue} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { indices } = inputs;
+    const { depth, onValue, offValue } = attrs;
     const out = backend2.makeOutput([...indices.shape, depth], "int32");
     const outId = backend2.dataIdMap.get(out.dataId).id;
     const indicesData = backend2.dataIdMap.get(indices.dataId);
@@ -56149,7 +56150,7 @@ return a / b;`;
     kernelFunc: oneHot4
   };
   function onesLike4(args) {
-    const {inputs: {x}, backend: backend2} = args;
+    const { inputs: { x }, backend: backend2 } = args;
     const out = backend2.makeOutput(x.shape, x.dtype);
     const outVals = backend2.typedArrayFromHeap(out);
     outVals.fill(1);
@@ -56161,10 +56162,10 @@ return a / b;`;
     kernelFunc: onesLike4
   };
   function pack3(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {axis} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { axis } = attrs;
     if (inputs.length === 1) {
-      return expandDims5({inputs: {input: inputs[0]}, backend: backend2, attrs: {dim: axis}});
+      return expandDims5({ inputs: { input: inputs[0] }, backend: backend2, attrs: { dim: axis } });
     }
     const shape = inputs[0].shape;
     const dtype = inputs[0].dtype;
@@ -56174,11 +56175,11 @@ return a / b;`;
     });
     const intermediateTensorInfos = [];
     const expandedTensors = inputs.map((t) => {
-      const expandedT = expandDims5({inputs: {input: t}, backend: backend2, attrs: {dim: axis}});
+      const expandedT = expandDims5({ inputs: { input: t }, backend: backend2, attrs: { dim: axis } });
       intermediateTensorInfos.push(expandedT);
       return expandedT;
     });
-    const result = concat4({inputs: expandedTensors, backend: backend2, attrs: {axis}});
+    const result = concat4({ inputs: expandedTensors, backend: backend2, attrs: { axis } });
     intermediateTensorInfos.forEach((t) => backend2.disposeData(t.dataId));
     return result;
   }
@@ -56201,7 +56202,7 @@ return a / b;`;
     ]);
   }
   function pad2(args) {
-    const {inputs: {x}, backend: backend2, attrs: {paddings, constantValue}} = args;
+    const { inputs: { x }, backend: backend2, attrs: { paddings, constantValue } } = args;
     const outShape = paddings.map((p2, i) => p2[0] + x.shape[i] + p2[1]);
     const xId = backend2.dataIdMap.get(x.dataId).id;
     const out = backend2.makeOutput(outShape, x.dtype);
@@ -56231,8 +56232,8 @@ return a / b;`;
     ]);
   }
   function prelu5(args) {
-    const {inputs, backend: backend2} = args;
-    const {x, alpha} = inputs;
+    const { inputs, backend: backend2 } = args;
+    const { x, alpha } = inputs;
     const xId = backend2.dataIdMap.get(x.dataId).id;
     const weightsId = backend2.dataIdMap.get(alpha.dataId).id;
     const out = backend2.makeOutput(x.shape, "float32");
@@ -56256,13 +56257,13 @@ return a / b;`;
     ]);
   }
   function prod4(args) {
-    const {backend: backend2, inputs, attrs} = args;
-    const {axis, keepDims} = attrs;
-    const {x} = inputs;
+    const { backend: backend2, inputs, attrs } = args;
+    const { axis, keepDims } = attrs;
+    const { x } = inputs;
     const xId = backend2.dataIdMap.get(x.dataId).id;
     let inputId = xId;
     let input2 = x;
-    const {transposed, axes, originalAxes, inputWasTransposed} = permuteAxesAndTranspose(x, axis, backend2);
+    const { transposed, axes, originalAxes, inputWasTransposed } = permuteAxesAndTranspose(x, axis, backend2);
     let reductionAxes = axes;
     if (inputWasTransposed) {
       const transposedId = backend2.dataIdMap.get(transposed.dataId).id;
@@ -56296,8 +56297,8 @@ return a / b;`;
     kernelFunc: prod4
   };
   var range5 = (args) => {
-    const {backend: backend2, attrs} = args;
-    const {start, stop, step: step5, dtype} = attrs;
+    const { backend: backend2, attrs } = args;
+    const { start, stop, step: step5, dtype } = attrs;
     const values = rangeImpl2(start, stop, step5, dtype);
     const out = backend2.makeOutput([values.length], dtype);
     const outVals = backend2.typedArrayFromHeap(out);
@@ -56329,16 +56330,16 @@ return a / b;`;
     ]);
   }
   function resizeBilinear4(args) {
-    const {backend: backend2, inputs, attrs} = args;
-    const {images} = inputs;
-    const {alignCorners, halfPixelCenters, size} = attrs;
+    const { backend: backend2, inputs, attrs } = args;
+    const { images } = inputs;
+    const { alignCorners, halfPixelCenters, size } = attrs;
     const [newHeight, newWidth] = size;
     const [batch, oldHeight, oldWidth, numChannels] = images.shape;
     const outShape = [batch, newHeight, newWidth, numChannels];
     let xData = backend2.dataIdMap.get(images.dataId);
     let castedData;
     if (xData.dtype !== "float32") {
-      castedData = cast5({backend: backend2, inputs: {x: images}, attrs: {dtype: "float32"}});
+      castedData = cast5({ backend: backend2, inputs: { x: images }, attrs: { dtype: "float32" } });
       xData = backend2.dataIdMap.get(castedData.dataId);
     }
     const xId = xData.id;
@@ -56371,12 +56372,12 @@ return a / b;`;
     ]);
   }
   function reverse4(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
-    const {dims} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { dims } = attrs;
     const axes = util_exports.parseAxisParam(dims, x.shape);
     if (x.shape.length === 0) {
-      return identity4({inputs: {x}, backend: backend2});
+      return identity4({ inputs: { x }, backend: backend2 });
     }
     const out = backend2.makeOutput(x.shape, x.dtype);
     const xId = backend2.dataIdMap.get(x.dataId).id;
@@ -56384,7 +56385,7 @@ return a / b;`;
     const axesBytes = new Uint8Array(new Int32Array(axes).buffer);
     const outShapeBytes = new Uint8Array(new Int32Array(x.shape).buffer);
     wasmReverse(xId, axesBytes, axes.length, outShapeBytes, x.shape.length, outId);
-    const reshaped = reshape5({inputs: {x: out}, attrs: {shape: x.shape}, backend: backend2});
+    const reshaped = reshape5({ inputs: { x: out }, attrs: { shape: x.shape }, backend: backend2 });
     backend2.disposeData(out.dataId);
     return reshaped;
   }
@@ -56411,9 +56412,9 @@ return a / b;`;
     ]);
   }
   function rotateWithOffset2(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {image: image3} = inputs;
-    const {radians, fillValue, center} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { image: image3 } = inputs;
+    const { radians, fillValue, center } = attrs;
     const out = backend2.makeOutput(image3.shape, image3.dtype);
     const imageId = backend2.dataIdMap.get(image3.dataId).id;
     const outId = backend2.dataIdMap.get(out.dataId).id;
@@ -56449,14 +56450,14 @@ return a / b;`;
     ]);
   }
   function scatterNd3(args) {
-    const {backend: backend2, inputs, attrs} = args;
-    const {indices, updates} = inputs;
-    const {shape} = attrs;
+    const { backend: backend2, inputs, attrs } = args;
+    const { indices, updates } = inputs;
+    const { shape } = attrs;
     const out = backend2.makeOutput(shape, updates.dtype);
     if (util_exports.sizeFromShape(shape) === 0) {
       return out;
     }
-    const {sliceRank, numUpdates, sliceSize, strides, outputSize} = scatter_nd_util_exports.calculateShapes(updates, indices, shape);
+    const { sliceRank, numUpdates, sliceSize, strides, outputSize } = scatter_nd_util_exports.calculateShapes(updates, indices, shape);
     const indicesData = backend2.dataIdMap.get(indices.dataId);
     const indicesId = indicesData.id;
     const updatesData = backend2.dataIdMap.get(updates.dataId);
@@ -56483,8 +56484,8 @@ return a / b;`;
     ]);
   }
   function select3(args) {
-    const {inputs, backend: backend2} = args;
-    const {condition, t, e} = inputs;
+    const { inputs, backend: backend2 } = args;
+    const { condition, t, e } = inputs;
     const conditionId = backend2.dataIdMap.get(condition.dataId).id;
     const tId = backend2.dataIdMap.get(t.dataId).id;
     const eId = backend2.dataIdMap.get(e.dataId).id;
@@ -56507,7 +56508,7 @@ return a / b;`;
     wasmFunc7 = backend2.wasm.cwrap(Sigmoid, null, ["number", "number"]);
   }
   function sigmoid4(args) {
-    const {backend: backend2, inputs: {x}} = args;
+    const { backend: backend2, inputs: { x } } = args;
     const xId = backend2.dataIdMap.get(x.dataId).id;
     const out = backend2.makeOutput(x.shape, x.dtype);
     const outId = backend2.dataIdMap.get(out.dataId).id;
@@ -56525,7 +56526,7 @@ return a / b;`;
   };
   var sinConfig3 = createUnaryKernelConfig(Sin);
   function slice4(args) {
-    const {inputs: {x}, attrs: {begin, size}, backend: backend2} = args;
+    const { inputs: { x }, attrs: { begin, size }, backend: backend2 } = args;
     const [begin_, size_] = slice_util_exports.parseSliceParams(x, begin, size);
     const isContinous = slice_util_exports.isSliceContinous(x.shape, begin_, size_);
     const xVals = backend2.readSync(x.dataId);
@@ -56621,7 +56622,7 @@ return a / b;`;
     ]);
   }
   function softmax5(args) {
-    const {backend: backend2, inputs: {logits}, attrs: {dim}} = args;
+    const { backend: backend2, inputs: { logits }, attrs: { dim } } = args;
     const xId = backend2.dataIdMap.get(logits.dataId).id;
     const out = backend2.makeOutput(logits.shape, logits.dtype);
     const outId = backend2.dataIdMap.get(out.dataId).id;
@@ -56640,9 +56641,9 @@ return a / b;`;
     kernelFunc: softmax5
   };
   function splitV3(args) {
-    const {inputs, attrs, backend: backend2} = args;
-    const {x} = inputs;
-    const {numOrSizeSplits, axis} = attrs;
+    const { inputs, attrs, backend: backend2 } = args;
+    const { x } = inputs;
+    const { numOrSizeSplits, axis } = attrs;
     const $axis = util_exports.parseAxisParam(axis, x.shape)[0];
     const splitSizes = backend_util_exports.prepareSplitSize(x, numOrSizeSplits, $axis);
     const begin = new Array(x.shape.length).fill(0);
@@ -56650,7 +56651,7 @@ return a / b;`;
     return splitSizes.map((s) => {
       const xSliceSize = [...size];
       xSliceSize[$axis] = s;
-      const xSlice = slice4({inputs: {x}, attrs: {begin, size: xSliceSize}, backend: backend2});
+      const xSlice = slice4({ inputs: { x }, attrs: { begin, size: xSliceSize }, backend: backend2 });
       begin[$axis] += s;
       return xSlice;
     });
@@ -56673,9 +56674,9 @@ return a / b;`;
     ]);
   }
   function step4(args) {
-    const {backend: backend2, inputs, attrs} = args;
-    const {alpha} = attrs;
-    const {x} = inputs;
+    const { backend: backend2, inputs, attrs } = args;
+    const { alpha } = attrs;
+    const { x } = inputs;
     const xId = backend2.dataIdMap.get(x.dataId).id;
     const out = backend2.makeOutput(x.shape, x.dtype);
     const outId = backend2.dataIdMap.get(out.dataId).id;
@@ -56704,13 +56705,13 @@ return a / b;`;
     ]);
   }
   function stridedSlice4(args) {
-    const {backend: backend2, inputs, attrs} = args;
-    const {x} = inputs;
-    let {begin, end, strides} = attrs;
+    const { backend: backend2, inputs, attrs } = args;
+    const { x } = inputs;
+    let { begin, end, strides } = attrs;
     if (strides == null) {
       strides = new Array(begin.length);
     }
-    const {beginMask, endMask, ellipsisMask, newAxisMask, shrinkAxisMask} = attrs;
+    const { beginMask, endMask, ellipsisMask, newAxisMask, shrinkAxisMask } = attrs;
     const ellipsisAxes = backend_util_exports.slice_util.maskToAxes(ellipsisMask);
     if (ellipsisAxes.length > 1) {
       throw new Error("Multiple ellipses in slice is not allowed.");
@@ -56729,8 +56730,8 @@ return a / b;`;
       end[axis] = 1;
       newShape.splice(axis, 0, 1);
     });
-    const xReshaped = reshape5({inputs: {x}, attrs: {shape: newShape}, backend: backend2});
-    const {begin: normalizedBegin, end: normalizedEnd, strides: normalizedStrides} = backend_util_exports.slice_util.getNormalizedAxes(xReshaped.shape, ellipsisAxes, numInterpolatedAxes, begin, end, strides, beginMask, endMask, ellipsisMask);
+    const xReshaped = reshape5({ inputs: { x }, attrs: { shape: newShape }, backend: backend2 });
+    const { begin: normalizedBegin, end: normalizedEnd, strides: normalizedStrides } = backend_util_exports.slice_util.getNormalizedAxes(xReshaped.shape, ellipsisAxes, numInterpolatedAxes, begin, end, strides, beginMask, endMask, ellipsisMask);
     begin = normalizedBegin;
     end = normalizedEnd;
     strides = normalizedStrides;
@@ -56743,9 +56744,9 @@ return a / b;`;
     const outShape = size.filter((_, axis) => shrinkAxes.indexOf(axis) === -1);
     const nonStrided = strides.every((v) => v === 1);
     if (nonStrided) {
-      const xSliced = slice4({inputs: {x: xReshaped}, attrs: {begin, size}, backend: backend2});
+      const xSliced = slice4({ inputs: { x: xReshaped }, attrs: { begin, size }, backend: backend2 });
       backend2.disposeData(xReshaped.dataId);
-      const reshaped2 = reshape5({inputs: {x: xSliced}, attrs: {shape: outShape}, backend: backend2});
+      const reshaped2 = reshape5({ inputs: { x: xSliced }, attrs: { shape: outShape }, backend: backend2 });
       backend2.disposeData(xSliced.dataId);
       return reshaped2;
     }
@@ -56762,7 +56763,7 @@ return a / b;`;
       wasmStridedSlice(xId, xStridesBytes, xReshaped.shape.length, beginBytes, endBytes, stridesBytes, outputShapeBytes, outStridesBytes, outShape.length, outId);
     }
     backend2.disposeData(xReshaped.dataId);
-    const reshaped = reshape5({inputs: {x: out}, attrs: {shape: outShape}, backend: backend2});
+    const reshaped = reshape5({ inputs: { x: out }, attrs: { shape: outShape }, backend: backend2 });
     backend2.disposeData(out.dataId);
     return reshaped;
   }
@@ -56779,13 +56780,13 @@ return a / b;`;
     wasmSum = backend2.wasm.cwrap(Sum, null, ["number, number, number"]);
   }
   function sum5(args) {
-    const {backend: backend2, inputs, attrs} = args;
-    const {axis, keepDims} = attrs;
-    const {x} = inputs;
+    const { backend: backend2, inputs, attrs } = args;
+    const { axis, keepDims } = attrs;
+    const { x } = inputs;
     const xId = backend2.dataIdMap.get(x.dataId).id;
     let inputId = xId;
     let input2 = x;
-    const {transposed, axes, originalAxes, inputWasTransposed} = permuteAxesAndTranspose(x, axis, backend2);
+    const { transposed, axes, originalAxes, inputWasTransposed } = permuteAxesAndTranspose(x, axis, backend2);
     let reductionAxes = axes;
     if (inputWasTransposed) {
       const transposedId = backend2.dataIdMap.get(transposed.dataId).id;
@@ -56832,10 +56833,10 @@ return a / b;`;
     ]);
   }
   function tile5(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {x} = inputs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
     const xId = backend2.dataIdMap.get(x.dataId).id;
-    const {reps} = attrs;
+    const { reps } = attrs;
     const newShape = new Array(x.shape.length);
     for (let i = 0; i < newShape.length; i++) {
       newShape[i] = x.shape[i] * reps[i];
@@ -56866,9 +56867,9 @@ return a / b;`;
       "number"
     ]);
   }
-  var topk2 = ({inputs, backend: backend2, attrs}) => {
-    const {x} = inputs;
-    const {k, sorted} = attrs;
+  var topk2 = ({ inputs, backend: backend2, attrs }) => {
+    const { x } = inputs;
+    const { k, sorted } = attrs;
     const xId = backend2.dataIdMap.get(x.dataId).id;
     const xShapeBytes = new Uint8Array(new Int32Array(x.shape).buffer);
     const outputShape = x.shape.slice();
@@ -56907,9 +56908,9 @@ return a / b;`;
     ]);
   }
   function transform4(args) {
-    const {backend: backend2, inputs, attrs} = args;
-    const {image: image3, transforms} = inputs;
-    const {interpolation, fillMode, fillValue, outputShape} = attrs;
+    const { backend: backend2, inputs, attrs } = args;
+    const { image: image3, transforms } = inputs;
+    const { interpolation, fillMode, fillValue, outputShape } = attrs;
     const [batch, imageHeight, imageWidth, numChannels] = image3.shape;
     const [outHeight, outWidth] = outputShape != null ? outputShape : [imageHeight, imageWidth];
     const outShape = [
@@ -56954,9 +56955,9 @@ return a / b;`;
     kernelFunc: transform4
   };
   function unpack3(args) {
-    const {inputs, backend: backend2, attrs} = args;
-    const {value} = inputs;
-    let {axis} = attrs;
+    const { inputs, backend: backend2, attrs } = args;
+    const { value } = inputs;
+    let { axis } = attrs;
     if (axis < 0) {
       axis += value.shape.length;
     }
@@ -56975,9 +56976,9 @@ return a / b;`;
     size[axis] = 1;
     for (let i = 0; i < outs.length; i++) {
       begin[axis] = i;
-      outs[i] = slice4({inputs: {x: value}, attrs: {begin, size}, backend: backend2});
+      outs[i] = slice4({ inputs: { x: value }, attrs: { begin, size }, backend: backend2 });
     }
-    return outs.map(({dataId, dtype}) => ({dataId, dtype, shape: outShape}));
+    return outs.map(({ dataId, dtype }) => ({ dataId, dtype, shape: outShape }));
   }
   var unpackConfig3 = {
     kernelName: Unpack,
@@ -56985,7 +56986,7 @@ return a / b;`;
     kernelFunc: unpack3
   };
   function zerosLike4(args) {
-    const {inputs: {x}, backend: backend2} = args;
+    const { inputs: { x }, backend: backend2 } = args;
     const out = backend2.makeOutput(x.shape, x.dtype);
     const outVals = backend2.typedArrayFromHeap(out);
     outVals.fill(0);
@@ -57186,7 +57187,7 @@ return a / b;`;
       this.dataIdMap = new DataStorage(this, engine());
     }
     write(values, shape, dtype) {
-      const dataId = {id: this.dataIdNextNumber++};
+      const dataId = { id: this.dataIdNextNumber++ };
       this.move(dataId, values, shape, dtype, 1);
       return dataId;
     }
@@ -57197,19 +57198,19 @@ return a / b;`;
       const start = util_exports.now();
       f();
       const kernelMs = util_exports.now() - start;
-      return {kernelMs};
+      return { kernelMs };
     }
     move(dataId, values, shape, dtype, refCount) {
       const id = this.dataIdNextNumber++;
       if (dtype === "string") {
         const stringBytes = values;
-        this.dataIdMap.set(dataId, {id, stringBytes, shape, dtype, memoryOffset: null, refCount});
+        this.dataIdMap.set(dataId, { id, stringBytes, shape, dtype, memoryOffset: null, refCount });
         return;
       }
       const size = util_exports.sizeFromShape(shape);
       const numBytes = size * util_exports.bytesPerElement(dtype);
       const memoryOffset = this.wasm._malloc(numBytes);
-      this.dataIdMap.set(dataId, {id, memoryOffset, shape, dtype, refCount});
+      this.dataIdMap.set(dataId, { id, memoryOffset, shape, dtype, refCount });
       this.wasm.tfjs.registerTensor(id, size, memoryOffset);
       if (values != null) {
         this.wasm.HEAPU8.set(new Uint8Array(values.buffer, values.byteOffset, numBytes), memoryOffset);
@@ -57219,7 +57220,7 @@ return a / b;`;
       return this.readSync(dataId);
     }
     readSync(dataId) {
-      const {memoryOffset, dtype, shape, stringBytes} = this.dataIdMap.get(dataId);
+      const { memoryOffset, dtype, shape, stringBytes } = this.dataIdMap.get(dataId);
       if (dtype === "string") {
         return stringBytes;
       }
@@ -57266,7 +57267,7 @@ return a / b;`;
       this.wasm = null;
     }
     memory() {
-      return {unreliable: false};
+      return { unreliable: false };
     }
     makeOutput(shape, dtype, memoryOffset) {
       let dataId;
@@ -57274,16 +57275,16 @@ return a / b;`;
         dataId = this.write(null, shape, dtype);
       } else {
         const id = this.dataIdNextNumber++;
-        dataId = {id};
-        this.dataIdMap.set(dataId, {id, memoryOffset, shape, dtype, refCount: 1});
+        dataId = { id };
+        this.dataIdMap.set(dataId, { id, memoryOffset, shape, dtype, refCount: 1 });
         const size = util_exports.sizeFromShape(shape);
         this.wasm.tfjs.registerTensor(id, size, memoryOffset);
       }
-      return {dataId, shape, dtype};
+      return { dataId, shape, dtype };
     }
-    typedArrayFromHeap({shape, dtype, dataId}) {
+    typedArrayFromHeap({ shape, dtype, dataId }) {
       const buffer2 = this.wasm.HEAPU8.buffer;
-      const {memoryOffset} = this.dataIdMap.get(dataId);
+      const { memoryOffset } = this.dataIdMap.get(dataId);
       const size = util_exports.sizeFromShape(shape);
       switch (dtype) {
         case "float32":
@@ -57299,7 +57300,7 @@ return a / b;`;
   };
   function createInstantiateWasmFunc(path) {
     return (imports, callback) => {
-      util_exports.fetch(path, {credentials: "same-origin"}).then((response) => {
+      util_exports.fetch(path, { credentials: "same-origin" }).then((response) => {
         if (!response["ok"]) {
           imports.env.a(`failed to load wasm binary file at '${path}'`);
         }
@@ -57339,7 +57340,7 @@ return a / b;`;
       factoryConfig.locateFile = (path, prefix) => {
         if (path.endsWith(".worker.js")) {
           const response = wasmWorkerContents;
-          const blob = new Blob([response], {type: "application/javascript"});
+          const blob = new Blob([response], { type: "application/javascript" });
           return URL.createObjectURL(blob);
         }
         if (path.endsWith(".wasm")) {
@@ -57360,11 +57361,11 @@ return a / b;`;
         }
         initAborted = true;
         const rejectMsg = "Make sure the server can serve the `.wasm` file relative to the bundled js file. For more details see https://github.com/tensorflow/tfjs/blob/master/tfjs-backend-wasm/README.md#using-bundlers";
-        reject({message: rejectMsg});
+        reject({ message: rejectMsg });
       };
       let wasm;
       if (threadsSupported && simdSupported && wasmPath == null) {
-        factoryConfig.mainScriptUrlOrBlob = new Blob([`var WasmBackendModuleThreadedSimd = ` + import_tfjs_backend_wasm_threaded_simd.default.toString()], {type: "text/javascript"});
+        factoryConfig.mainScriptUrlOrBlob = new Blob([`var WasmBackendModuleThreadedSimd = ` + import_tfjs_backend_wasm_threaded_simd.default.toString()], { type: "text/javascript" });
         wasm = (0, import_tfjs_backend_wasm_threaded_simd.default)(factoryConfig);
       } else {
         wasm = (0, import_tfjs_backend_wasm.default)(factoryConfig);
@@ -57383,7 +57384,7 @@ return a / b;`;
           disposeData: module2.cwrap("dispose_data", voidReturnType, ["number"]),
           dispose: module2.cwrap("dispose", voidReturnType, [])
         };
-        resolve({wasm: module2});
+        resolve({ wasm: module2 });
       });
     });
   }
@@ -57435,7 +57436,7 @@ return a / b;`;
   var version9 = "3.6.0";
   var WASM_PRIORITY = 2;
   registerBackend("wasm", async () => {
-    const {wasm} = await init();
+    const { wasm } = await init();
     return new BackendWasm(wasm);
   }, WASM_PRIORITY);
 
@@ -57458,7 +57459,7 @@ return a / b;`;
   // src/draw/drawContour.ts
   function drawContour(ctx, points, isClosed = false) {
     ctx.beginPath();
-    points.slice(1).forEach(({x, y}, prevIdx) => {
+    points.slice(1).forEach(({ x, y }, prevIdx) => {
       const from = points[prevIdx];
       ctx.moveTo(from.x, from.y);
       ctx.lineTo(x, y);
@@ -57498,7 +57499,7 @@ return a / b;`;
   var Dimensions = class {
     constructor(width, height) {
       if (!isValidNumber(width) || !isValidNumber(height)) {
-        throw new Error(`Dimensions.constructor - expected width and height to be valid numbers, instead have ${JSON.stringify({width, height})}`);
+        throw new Error(`Dimensions.constructor - expected width and height to be valid numbers, instead have ${JSON.stringify({ width, height })}`);
       }
       this._width = width;
       this._height = height;
@@ -57543,7 +57544,7 @@ return a / b;`;
   function isDimensions(obj) {
     return obj && obj.width && obj.height;
   }
-  function computeReshapedDimensions({width, height}, inputSize) {
+  function computeReshapedDimensions({ width, height }, inputSize) {
     const scale3 = inputSize / Math.max(height, width);
     return new Dimensions(Math.round(width * scale3), Math.round(height * scale3));
   }
@@ -57700,7 +57701,7 @@ return a / b;`;
         y -= diff / 2;
         height += diff;
       }
-      return new Box({x, y, width, height});
+      return new Box({ x, y, width, height });
     }
     rescale(s) {
       const scaleX = isDimensions(s) ? s.width : s;
@@ -57727,7 +57728,7 @@ return a / b;`;
       });
     }
     clipAtImageBorders(imgWidth, imgHeight) {
-      const {x, y, right, bottom} = this;
+      const { x, y, right, bottom } = this;
       const clippedX = Math.max(x, 0);
       const clippedY = Math.max(y, 0);
       const newWidth = right - clippedX;
@@ -57742,7 +57743,7 @@ return a / b;`;
       }).floor();
     }
     shift(sx, sy) {
-      const {width, height} = this;
+      const { width, height } = this;
       const x = this.x + sx;
       const y = this.y + sy;
       return new Box({
@@ -57848,7 +57849,7 @@ return a / b;`;
       return new Box(this._box).rescale(this.imageDims.reverse());
     }
     forSize(width, height) {
-      return new ObjectDetection(this.score, this.classScore, this.className, this.relativeBox, {width, height});
+      return new ObjectDetection(this.score, this.classScore, this.className, this.relativeBox, { width, height });
     }
   };
 
@@ -57858,7 +57859,7 @@ return a / b;`;
       super(score, score, "", relativeBox, imageDims);
     }
     forSize(width, height) {
-      const {score, relativeBox, imageDims} = super.forSize(width, height);
+      const { score, relativeBox, imageDims } = super.forSize(width, height);
       return new FaceDetection(score, relativeBox, imageDims);
     }
   };
@@ -57884,7 +57885,7 @@ return a / b;`;
 
   // src/ops/nonMaxSuppression.ts
   function nonMaxSuppression2(boxes, scores, iouThreshold, isIOU = true) {
-    let indicesSortedByScore = scores.map((score, boxIndex) => ({score, boxIndex})).sort((c1, c2) => c1.score - c2.score).map((c) => c.boxIndex);
+    let indicesSortedByScore = scores.map((score, boxIndex) => ({ score, boxIndex })).sort((c1, c2) => c1.score - c2.score).map((c) => c.boxIndex);
     const pick = [];
     while (indicesSortedByScore.length > 0) {
       const curr = indicesSortedByScore.pop();
@@ -57979,7 +57980,7 @@ return a / b;`;
   var relScale = 0.45;
   var FaceLandmarks = class {
     constructor(relativeFaceLandmarkPositions, imgDims, shift = new Point(0, 0)) {
-      const {width, height} = imgDims;
+      const { width, height } = imgDims;
       this._imgDims = new Dimensions(width, height);
       this._shift = shift;
       this._positions = relativeFaceLandmarkPositions.map((pt) => pt.mul(new Point(width, height)).add(shift));
@@ -58000,7 +58001,7 @@ return a / b;`;
       return this._positions.map((pt) => pt.sub(this._shift).div(new Point(this.imageWidth, this.imageHeight)));
     }
     forSize(width, height) {
-      return new this.constructor(this.relativePositions, {width, height});
+      return new this.constructor(this.relativePositions, { width, height });
     }
     shiftBy(x, y) {
       return new this.constructor(this.relativePositions, this._imgDims, new Point(x, y));
@@ -58013,7 +58014,7 @@ return a / b;`;
         const box = detection instanceof FaceDetection ? detection.box.floor() : new Box(detection);
         return this.shiftBy(box.x, box.y).align(null, options);
       }
-      const {useDlibAlignment, minBoxPadding} = {useDlibAlignment: false, minBoxPadding: 0.2, ...options};
+      const { useDlibAlignment, minBoxPadding } = { useDlibAlignment: false, minBoxPadding: 0.2, ...options };
       if (useDlibAlignment) {
         return this.alignDlib();
       }
@@ -58173,8 +58174,8 @@ return a / b;`;
     return obj.detection instanceof FaceDetection;
   }
   function extendWithFaceDetection(sourceObj, detection) {
-    const extension = {detection};
-    return {...sourceObj, ...extension};
+    const extension = { detection };
+    return { ...sourceObj, ...extension };
   }
 
   // src/env/createBrowserEnv.ts
@@ -58193,6 +58194,7 @@ return a / b;`;
       Video: HTMLVideoElement,
       createCanvasElement: () => document.createElement("canvas"),
       createImageElement: () => document.createElement("img"),
+      createVideoElement: () => document.createElement("video"),
       fetch: fetch3,
       readFile
     };
@@ -58222,6 +58224,7 @@ return a / b;`;
   function createNodejsEnv() {
     const Canvas = global["Canvas"] || global.HTMLCanvasElement;
     const Image = global.Image || global.HTMLImageElement;
+    const Video = global["Video"] || global.HTMLVideoElement;
     const createCanvasElement = () => {
       if (Canvas)
         return new Canvas();
@@ -58231,6 +58234,11 @@ return a / b;`;
       if (Image)
         return new Image();
       throw new Error("createImageElement - missing Image implementation for nodejs environment");
+    };
+    const createVideoElement = () => {
+      if (Video)
+        return new Video();
+      throw new Error("createVideoElement - missing Video implementation for nodejs environment");
     };
     const fetch3 = global.fetch;
     const fileSystem = createFileSystem();
@@ -58247,6 +58255,7 @@ return a / b;`;
       },
       createCanvasElement,
       createImageElement,
+      createVideoElement,
       fetch: fetch3,
       ...fileSystem
     };
@@ -58287,7 +58296,7 @@ return a / b;`;
     if (!environment) {
       throw new Error("monkeyPatch - environment is not defined, check isNodejs() and isBrowser()");
     }
-    const {Canvas = environment.Canvas, Image = environment.Image} = env3;
+    const { Canvas = environment.Canvas, Image = environment.Image } = env3;
     environment.Canvas = Canvas;
     environment.Image = Image;
     environment.createCanvasElement = env3.createCanvasElement || (() => new Canvas());
@@ -58320,7 +58329,7 @@ return a / b;`;
 
   // src/dom/getContext2dOrThrow.ts
   function getContext2dOrThrow(canvasArg) {
-    const {Canvas, CanvasRenderingContext2D: CanvasRenderingContext2D2} = env2.getEnv();
+    const { Canvas, CanvasRenderingContext2D: CanvasRenderingContext2D2 } = env2.getEnv();
     if (canvasArg instanceof CanvasRenderingContext2D2) {
       return canvasArg;
     }
@@ -58368,15 +58377,15 @@ return a / b;`;
       this.options = new DrawTextFieldOptions(options);
     }
     measureWidth(ctx) {
-      const {padding} = this.options;
+      const { padding } = this.options;
       return this.text.map((l) => ctx.measureText(l).width).reduce((w0, w1) => w0 < w1 ? w1 : w0, 0) + 2 * padding;
     }
     measureHeight() {
-      const {fontSize, padding} = this.options;
+      const { fontSize, padding } = this.options;
       return this.text.length * fontSize + 2 * padding;
     }
     getUpperLeft(ctx, canvasDims) {
-      const {anchorPosition} = this.options;
+      const { anchorPosition } = this.options;
       const isShiftLeft = anchorPosition === AnchorPosition.BOTTOM_RIGHT || anchorPosition === AnchorPosition.TOP_RIGHT;
       const isShiftTop = anchorPosition === AnchorPosition.BOTTOM_LEFT || anchorPosition === AnchorPosition.BOTTOM_RIGHT;
       const textFieldWidth = this.measureWidth(ctx);
@@ -58384,12 +58393,12 @@ return a / b;`;
       const x = isShiftLeft ? this.anchor.x - textFieldWidth : this.anchor.x;
       const y = isShiftTop ? this.anchor.y - textFieldHeight : this.anchor.y;
       if (canvasDims) {
-        const {width, height} = canvasDims;
+        const { width, height } = canvasDims;
         const newX = Math.max(Math.min(x, width - textFieldWidth), 0);
         const newY = Math.max(Math.min(y, height - textFieldHeight), 0);
-        return {x: newX, y: newY};
+        return { x: newX, y: newY };
       }
-      return {x, y};
+      return { x, y };
     }
     draw(canvasArg) {
       const canvas = resolveInput(canvasArg);
@@ -58432,7 +58441,7 @@ return a / b;`;
         anchorPosition: AnchorPosition.BOTTOM_LEFT,
         backgroundColor: this.boxColor
       };
-      this.drawLabelOptions = new DrawTextFieldOptions({...defaultDrawLabelOptions, ...drawLabelOptions});
+      this.drawLabelOptions = new DrawTextFieldOptions({ ...defaultDrawLabelOptions, ...drawLabelOptions });
     }
   };
   var DrawBox = class {
@@ -58442,7 +58451,7 @@ return a / b;`;
     }
     draw(canvasArg) {
       const ctx = getContext2dOrThrow(canvasArg);
-      const {boxColor, lineWidth} = this.options;
+      const { boxColor, lineWidth } = this.options;
       const {
         x,
         y,
@@ -58452,9 +58461,9 @@ return a / b;`;
       ctx.strokeStyle = boxColor;
       ctx.lineWidth = lineWidth;
       ctx.strokeRect(x, y, width, height);
-      const {label} = this.options;
+      const { label } = this.options;
       if (label) {
-        new DrawTextField([label], {x: x - lineWidth / 2, y}, this.options.drawLabelOptions).draw(canvasArg);
+        new DrawTextField([label], { x: x - lineWidth / 2, y }, this.options.drawLabelOptions).draw(canvasArg);
       }
     }
   };
@@ -58466,13 +58475,13 @@ return a / b;`;
       const score = det instanceof FaceDetection ? det.score : isWithFaceDetection(det) ? det.detection.score : void 0;
       const box = det instanceof FaceDetection ? det.box : isWithFaceDetection(det) ? det.detection.box : new Box(det);
       const label = score ? `${round5(score)}` : void 0;
-      new DrawBox(box, {label}).draw(canvasArg);
+      new DrawBox(box, { label }).draw(canvasArg);
     });
   }
 
   // src/dom/isMediaLoaded.ts
   function isMediaLoaded(media) {
-    const {Image, Video} = env2.getEnv();
+    const { Image, Video } = env2.getEnv();
     return media instanceof Image && media.complete || media instanceof Video && media.readyState >= 3;
   }
 
@@ -58521,7 +58530,7 @@ return a / b;`;
 
   // src/dom/getMediaDimensions.ts
   function getMediaDimensions(input2) {
-    const {Image, Video} = env2.getEnv();
+    const { Image, Video } = env2.getEnv();
     if (input2 instanceof Image) {
       return new Dimensions(input2.naturalWidth, input2.naturalHeight);
     }
@@ -58532,20 +58541,20 @@ return a / b;`;
   }
 
   // src/dom/createCanvas.ts
-  function createCanvas2({width, height}) {
-    const {createCanvasElement} = env2.getEnv();
+  function createCanvas2({ width, height }) {
+    const { createCanvasElement } = env2.getEnv();
     const canvas = createCanvasElement();
     canvas.width = width;
     canvas.height = height;
     return canvas;
   }
   function createCanvasFromMedia(media, dims) {
-    const {ImageData: ImageData2} = env2.getEnv();
+    const { ImageData: ImageData2 } = env2.getEnv();
     if (!(media instanceof ImageData2) && !isMediaLoaded(media)) {
       throw new Error("createCanvasFromMedia - media has not finished loading yet");
     }
-    const {width, height} = dims || getMediaDimensions(media);
-    const canvas = createCanvas2({width, height});
+    const { width, height } = dims || getMediaDimensions(media);
+    const canvas = createCanvas2({ width, height });
     if (media instanceof ImageData2) {
       getContext2dOrThrow(canvas).putImageData(media, 0, 0);
     } else {
@@ -58566,23 +58575,23 @@ return a / b;`;
 
   // src/dom/isMediaElement.ts
   function isMediaElement(input2) {
-    const {Image, Canvas, Video} = env2.getEnv();
+    const { Image, Canvas, Video } = env2.getEnv();
     return input2 instanceof Image || input2 instanceof Canvas || input2 instanceof Video;
   }
 
   // src/dom/imageToSquare.ts
   function imageToSquare(input2, inputSize, centerImage = false) {
-    const {Image, Canvas} = env2.getEnv();
+    const { Image, Canvas } = env2.getEnv();
     if (!(input2 instanceof Image || input2 instanceof Canvas)) {
       throw new Error("imageToSquare - expected arg0 to be HTMLImageElement | HTMLCanvasElement");
     }
     if (inputSize <= 0)
-      return createCanvas2({width: 1, height: 1});
+      return createCanvas2({ width: 1, height: 1 });
     const dims = getMediaDimensions(input2);
     const scale3 = inputSize / Math.max(dims.height, dims.width);
     const width = scale3 * dims.width;
     const height = scale3 * dims.height;
-    const targetCanvas = createCanvas2({width: inputSize, height: inputSize});
+    const targetCanvas = createCanvas2({ width: inputSize, height: inputSize });
     const inputCanvas = input2 instanceof Canvas ? input2 : createCanvasFromMedia(input2);
     const offset = Math.abs(width - height) / 2;
     const dx = centerImage && width < height ? offset : 0;
@@ -58663,7 +58672,7 @@ return a / b;`;
       }
       const width = this.getInputWidth(batchIdx);
       const height = this.getInputHeight(batchIdx);
-      return computeReshapedDimensions({width, height}, this.inputSize);
+      return computeReshapedDimensions({ width, height }, this.inputSize);
     }
     toBatchTensor(inputSize, isCenterInputs = true) {
       this._inputSize = inputSize;
@@ -58716,7 +58725,7 @@ return a / b;`;
 
   // src/dom/extractFaces.ts
   async function extractFaces(input2, detections) {
-    const {Canvas} = env2.getEnv();
+    const { Canvas } = env2.getEnv();
     let canvas = input2;
     if (!(input2 instanceof Canvas)) {
       const netInput = await toNetInput(input2);
@@ -58727,8 +58736,8 @@ return a / b;`;
     }
     const ctx = getContext2dOrThrow(canvas);
     const boxes = detections.map((det) => det instanceof FaceDetection ? det.forSize(canvas.width, canvas.height).box.floor() : det).map((box) => box.clipAtImageBorders(canvas.width, canvas.height));
-    return boxes.map(({x, y, width, height}) => {
-      const faceImg = createCanvas2({width, height});
+    return boxes.map(({ x, y, width, height }) => {
+      const faceImg = createCanvas2({ width, height });
       if (width > 0 && height > 0)
         getContext2dOrThrow(faceImg).putImageData(ctx.getImageData(x, y, width, height), 0, 0);
       return faceImg;
@@ -58758,7 +58767,7 @@ return a / b;`;
 
   // src/dom/fetchOrThrow.ts
   async function fetchOrThrow(url, init2) {
-    const {fetch: fetch3} = env2.getEnv();
+    const { fetch: fetch3 } = env2.getEnv();
     const res = await fetch3(url, init2);
     if (!(res.status < 400)) {
       throw new Error(`failed to fetch: (${res.status}) ${res.statusText}, from url: ${res.url}`);
@@ -58784,6 +58793,31 @@ return a / b;`;
   // src/dom/fetchNetWeights.ts
   async function fetchNetWeights(uri) {
     return new Float32Array(await (await fetchOrThrow(uri)).arrayBuffer());
+  }
+
+  // src/dom/bufferToVideo.ts
+  function bufferToVideo(buf) {
+    return new Promise((resolve, reject) => {
+      if (!(buf instanceof Blob))
+        reject(new Error("bufferToVideo - expected buf to be of type: Blob"));
+      const video = env2.getEnv().createVideoElement();
+      video.oncanplay = () => resolve(video);
+      video.onerror = reject;
+      video.playsInline = true;
+      video.autoplay = true;
+      video.muted = true;
+      video.src = URL.createObjectURL(buf);
+    });
+  }
+
+  // src/dom/fetchVideo.ts
+  async function fetchVideo(uri) {
+    const res = await fetchOrThrow(uri);
+    const blob = await res.blob();
+    if (!blob.type.startsWith("video/")) {
+      throw new Error(`fetchVideo - expected blob type to be of type video/*, instead have: ${blob.type}, for url: ${res.url}`);
+    }
+    return bufferToVideo(blob);
   }
 
   // src/common/getModelUris.ts
@@ -58815,17 +58849,17 @@ return a / b;`;
 
   // src/dom/loadWeightMap.ts
   async function loadWeightMap(uri, defaultModelName) {
-    const {manifestUri, modelBaseUri} = getModelUris(uri, defaultModelName);
+    const { manifestUri, modelBaseUri } = getModelUris(uri, defaultModelName);
     const manifest = await fetchJson(manifestUri);
     return io_exports.loadWeights(manifest, modelBaseUri);
   }
 
   // src/dom/matchDimensions.ts
   function matchDimensions(input2, reference, useMediaDimensions = false) {
-    const {width, height} = useMediaDimensions ? getMediaDimensions(reference) : reference;
+    const { width, height } = useMediaDimensions ? getMediaDimensions(reference) : reference;
     input2.width = width;
     input2.height = height;
-    return {width, height};
+    return { width, height };
   }
 
   // src/NeuralNetwork.ts
@@ -58845,16 +58879,16 @@ return a / b;`;
       return !!this.params;
     }
     getParamFromPath(paramPath) {
-      const {obj, objProp} = this.traversePropertyPath(paramPath);
+      const { obj, objProp } = this.traversePropertyPath(paramPath);
       return obj[objProp];
     }
     reassignParamFromPath(paramPath, tensor2) {
-      const {obj, objProp} = this.traversePropertyPath(paramPath);
+      const { obj, objProp } = this.traversePropertyPath(paramPath);
       obj[objProp].dispose();
       obj[objProp] = tensor2;
     }
     getParamList() {
-      return this._paramMappings.map(({paramPath}) => ({
+      return this._paramMappings.map(({ paramPath }) => ({
         path: paramPath,
         tensor: this.getParamFromPath(paramPath)
       }));
@@ -58866,12 +58900,12 @@ return a / b;`;
       return this.getParamList().filter((param) => !(param.tensor instanceof Variable));
     }
     variable() {
-      this.getFrozenParams().forEach(({path, tensor: tensor2}) => {
+      this.getFrozenParams().forEach(({ path, tensor: tensor2 }) => {
         this.reassignParamFromPath(path, tensor2.variable());
       });
     }
     freeze() {
-      this.getTrainableParams().forEach(({path, tensor: variable2}) => {
+      this.getTrainableParams().forEach(({ path, tensor: variable2 }) => {
         const tensor2 = tensor(variable2.dataSync());
         variable2.dispose();
         this.reassignParamFromPath(path, tensor2);
@@ -58887,7 +58921,7 @@ return a / b;`;
       this._params = void 0;
     }
     serializeParams() {
-      return new Float32Array(this.getParamList().map(({tensor: tensor2}) => Array.from(tensor2.dataSync())).reduce((flat, arr) => flat.concat(arr)));
+      return new Float32Array(this.getParamList().map(({ tensor: tensor2 }) => Array.from(tensor2.dataSync())).reduce((flat, arr) => flat.concat(arr)));
     }
     async load(weightsOrUrl) {
       if (weightsOrUrl instanceof Float32Array) {
@@ -58907,8 +58941,8 @@ return a / b;`;
       if (filePath && typeof filePath !== "string") {
         throw new Error(`${this._name}.loadFromDisk - expected model file path`);
       }
-      const {readFile} = env2.getEnv();
-      const {manifestUri, modelBaseUri} = getModelUris(filePath, this.getDefaultModelName());
+      const { readFile } = env2.getEnv();
+      const { manifestUri, modelBaseUri } = getModelUris(filePath, this.getDefaultModelName());
       const fetchWeightsFromDisk = (filePaths) => Promise.all(filePaths.map((fp) => readFile(fp).then((buf) => buf.buffer)));
       const loadWeights2 = io_exports.weightsLoaderFactory(fetchWeightsFromDisk);
       const manifest = JSON.parse((await readFile(manifestUri)).toString());
@@ -58916,12 +58950,12 @@ return a / b;`;
       this.loadFromWeightMap(weightMap);
     }
     loadFromWeightMap(weightMap) {
-      const {paramMappings, params} = this.extractParamsFromWeightMap(weightMap);
+      const { paramMappings, params } = this.extractParamsFromWeightMap(weightMap);
       this._paramMappings = paramMappings;
       this._params = params;
     }
     extractWeights(weights) {
-      const {paramMappings, params} = this.extractParams(weights);
+      const { paramMappings, params } = this.extractParams(weights);
       this._paramMappings = paramMappings;
       this._params = params;
     }
@@ -58933,13 +58967,13 @@ return a / b;`;
         if (!res.nextObj.hasOwnProperty(objProp2)) {
           throw new Error(`traversePropertyPath - object does not have property ${objProp2}, for path ${paramPath}`);
         }
-        return {obj: res.nextObj, objProp: objProp2, nextObj: res.nextObj[objProp2]};
-      }, {nextObj: this.params});
-      const {obj, objProp} = result;
+        return { obj: res.nextObj, objProp: objProp2, nextObj: res.nextObj[objProp2] };
+      }, { nextObj: this.params });
+      const { obj, objProp } = result;
       if (!obj || !objProp || !(obj[objProp] instanceof Tensor)) {
         throw new Error(`traversePropertyPath - parameter is not a tensor, for path ${paramPath}`);
       }
-      return {obj, objProp};
+      return { obj, objProp };
     }
   };
 
@@ -58996,8 +59030,8 @@ return a / b;`;
     return (channelsIn, channelsOut, filterSize, mappedPrefix) => {
       const filters = tensor4d(extractWeights(channelsIn * channelsOut * filterSize * filterSize), [filterSize, filterSize, channelsIn, channelsOut]);
       const bias = tensor1d(extractWeights(channelsOut));
-      paramMappings.push({paramPath: `${mappedPrefix}/filters`}, {paramPath: `${mappedPrefix}/bias`});
-      return {filters, bias};
+      paramMappings.push({ paramPath: `${mappedPrefix}/filters` }, { paramPath: `${mappedPrefix}/bias` });
+      return { filters, bias };
     };
   }
 
@@ -59006,7 +59040,7 @@ return a / b;`;
     return (channelsIn, channelsOut, mappedPrefix) => {
       const fc_weights = tensor2d(extractWeights(channelsIn * channelsOut), [channelsIn, channelsOut]);
       const fc_bias = tensor1d(extractWeights(channelsOut));
-      paramMappings.push({paramPath: `${mappedPrefix}/weights`}, {paramPath: `${mappedPrefix}/bias`});
+      paramMappings.push({ paramPath: `${mappedPrefix}/weights` }, { paramPath: `${mappedPrefix}/bias` });
       return {
         weights: fc_weights,
         bias: fc_bias
@@ -59029,7 +59063,7 @@ return a / b;`;
       const depthwise_filter = tensor4d(extractWeights(3 * 3 * channelsIn), [3, 3, channelsIn, 1]);
       const pointwise_filter = tensor4d(extractWeights(channelsIn * channelsOut), [1, 1, channelsIn, channelsOut]);
       const bias = tensor1d(extractWeights(channelsOut));
-      paramMappings.push({paramPath: `${mappedPrefix}/depthwise_filter`}, {paramPath: `${mappedPrefix}/pointwise_filter`}, {paramPath: `${mappedPrefix}/bias`});
+      paramMappings.push({ paramPath: `${mappedPrefix}/depthwise_filter` }, { paramPath: `${mappedPrefix}/pointwise_filter` }, { paramPath: `${mappedPrefix}/bias` });
       return new SeparableConvParams(depthwise_filter, pointwise_filter, bias);
     };
   }
@@ -59049,7 +59083,7 @@ return a / b;`;
       if (!isTensor(tensor2, paramRank)) {
         throw new Error(`expected weightMap[${originalPath}] to be a Tensor${paramRank}D, instead have ${tensor2}`);
       }
-      paramMappings.push({originalPath, paramPath: mappedPath || originalPath});
+      paramMappings.push({ originalPath, paramPath: mappedPath || originalPath });
       return tensor2;
     };
   }
@@ -59079,10 +59113,10 @@ return a / b;`;
       const conv0 = isFirstLayer ? extractConvParams(channelsIn, channelsOut, 3, `${mappedPrefix}/conv0`) : extractSeparableConvParams(channelsIn, channelsOut, `${mappedPrefix}/conv0`);
       const conv1 = extractSeparableConvParams(channelsOut, channelsOut, `${mappedPrefix}/conv1`);
       const conv22 = extractSeparableConvParams(channelsOut, channelsOut, `${mappedPrefix}/conv2`);
-      return {conv0, conv1, conv2: conv22};
+      return { conv0, conv1, conv2: conv22 };
     }
     function extractDenseBlock4Params(channelsIn, channelsOut, mappedPrefix, isFirstLayer = false) {
-      const {conv0, conv1, conv2: conv22} = extractDenseBlock3Params(channelsIn, channelsOut, mappedPrefix, isFirstLayer);
+      const { conv0, conv1, conv2: conv22 } = extractDenseBlock3Params(channelsIn, channelsOut, mappedPrefix, isFirstLayer);
       const conv3 = extractSeparableConvParams(channelsOut, channelsOut, `${mappedPrefix}/conv3`);
       return {
         conv0,
@@ -59130,7 +59164,7 @@ return a / b;`;
     return (prefix) => {
       const filters = extractWeightEntry(`${prefix}/filters`, 4);
       const bias = extractWeightEntry(`${prefix}/bias`, 1);
-      return {filters, bias};
+      return { filters, bias };
     };
   }
 
@@ -59143,7 +59177,7 @@ return a / b;`;
       const conv0 = isFirstLayer ? extractConvParams(`${prefix}/conv0`) : extractSeparableConvParams(`${prefix}/conv0`);
       const conv1 = extractSeparableConvParams(`${prefix}/conv1`);
       const conv22 = extractSeparableConvParams(`${prefix}/conv2`);
-      return {conv0, conv1, conv2: conv22};
+      return { conv0, conv1, conv2: conv22 };
     }
     function extractDenseBlock4Params(prefix, isFirstLayer = false) {
       const conv0 = isFirstLayer ? extractConvParams(`${prefix}/conv0`) : extractSeparableConvParams(`${prefix}/conv0`);
@@ -59176,7 +59210,7 @@ return a / b;`;
       dense3: extractDenseBlock4Params("dense3")
     };
     disposeUnusedWeightTensors(weightMap, paramMappings);
-    return {params, paramMappings};
+    return { params, paramMappings };
   }
 
   // src/faceFeatureExtractor/FaceFeatureExtractor.ts
@@ -59185,7 +59219,7 @@ return a / b;`;
       super("FaceFeatureExtractor");
     }
     forwardInput(input2) {
-      const {params} = this;
+      const { params } = this;
       if (!params) {
         throw new Error("FaceFeatureExtractor - load model before inference");
       }
@@ -59234,7 +59268,7 @@ return a / b;`;
     }
     return {
       paramMappings,
-      params: {fc}
+      params: { fc }
     };
   }
 
@@ -59245,13 +59279,13 @@ return a / b;`;
     function extractFcParams(prefix) {
       const weights = extractWeightEntry(`${prefix}/weights`, 2);
       const bias = extractWeightEntry(`${prefix}/bias`, 1);
-      return {weights, bias};
+      return { weights, bias };
     }
     const params = {
       fc: extractFcParams("fc")
     };
     disposeUnusedWeightTensors(weightMap, paramMappings);
-    return {params, paramMappings};
+    return { params, paramMappings };
   }
 
   // src/faceProcessor/util.ts
@@ -59262,7 +59296,7 @@ return a / b;`;
       const map = key.startsWith("fc") ? classifierMap : featureExtractorMap;
       map[key] = weightMap[key];
     });
-    return {featureExtractorMap, classifierMap};
+    return { featureExtractorMap, classifierMap };
   }
 
   // src/faceProcessor/FaceProcessor.ts
@@ -59275,7 +59309,7 @@ return a / b;`;
       return this._faceFeatureExtractor;
     }
     runNet(input2) {
-      const {params} = this;
+      const { params } = this;
       if (!params) {
         throw new Error(`${this._name} - load model before inference`);
       }
@@ -59289,7 +59323,7 @@ return a / b;`;
       super.dispose(throwOnRedispose);
     }
     loadClassifierParams(weights) {
-      const {params, paramMappings} = this.extractClassifierParams(weights);
+      const { params, paramMappings } = this.extractClassifierParams(weights);
       this._params = params;
       this._paramMappings = paramMappings;
     }
@@ -59297,7 +59331,7 @@ return a / b;`;
       return extractParams2(weights, this.getClassifierChannelsIn(), this.getClassifierChannelsOut());
     }
     extractParamsFromWeightMap(weightMap) {
-      const {featureExtractorMap, classifierMap} = seperateWeightMaps(weightMap);
+      const { featureExtractorMap, classifierMap } = seperateWeightMaps(weightMap);
       this.faceFeatureExtractor.loadFromWeightMap(featureExtractorMap);
       return extractParamsFromWeightMap2(classifierMap);
     }
@@ -59324,7 +59358,7 @@ return a / b;`;
       });
     }
     asSortedArray() {
-      return FACE_EXPRESSION_LABELS.map((expression) => ({expression, probability: this[expression]})).sort((e0, e1) => e1.probability - e0.probability);
+      return FACE_EXPRESSION_LABELS.map((expression) => ({ expression, probability: this[expression] })).sort((e0, e1) => e1.probability - e0.probability);
     }
   };
 
@@ -59367,8 +59401,8 @@ return a / b;`;
     return obj.expressions instanceof FaceExpressions;
   }
   function extendWithFaceExpressions(sourceObj, expressions) {
-    const extension = {expressions};
-    return {...sourceObj, ...extension};
+    const extension = { expressions };
+    return { ...sourceObj, ...extension };
   }
 
   // src/draw/drawFaceExpressions.ts
@@ -59394,7 +59428,7 @@ return a / b;`;
   function calculateFaceAngle(mesh) {
     const radians = (a12, a22, b1, b2) => Math.atan2(b2 - a22, b1 - a12) % Math.PI;
     const degrees = (theta) => theta * 180 / Math.PI;
-    const angle = {roll: void 0, pitch: void 0, yaw: void 0};
+    const angle = { roll: void 0, pitch: void 0, yaw: void 0 };
     if (!mesh || !mesh._positions || mesh._positions.length !== 68)
       return angle;
     const pt = mesh._positions;
@@ -59406,10 +59440,10 @@ return a / b;`;
     return angle;
   }
   function extendWithFaceLandmarks(sourceObj, unshiftedLandmarks) {
-    const {box: shift} = sourceObj.detection;
+    const { box: shift } = sourceObj.detection;
     const landmarks = unshiftedLandmarks.shiftBy(shift.x, shift.y);
     const rect = landmarks.align();
-    const {imageDims} = sourceObj.detection;
+    const { imageDims } = sourceObj.detection;
     const alignedRect = new FaceDetection(sourceObj.detection.score, rect.rescale(imageDims.reverse()), imageDims);
     const angle = calculateFaceAngle(unshiftedLandmarks);
     const extension = {
@@ -59418,7 +59452,7 @@ return a / b;`;
       alignedRect,
       angle
     };
-    return {...sourceObj, ...extension};
+    return { ...sourceObj, ...extension };
   }
 
   // src/draw/DrawFaceLandmarks.ts
@@ -59490,7 +59524,7 @@ return a / b;`;
   }
 
   // package.json
-  var version10 = "1.2.4";
+  var version10 = "1.2.5";
 
   // src/xception/extractParams.ts
   function extractorsFactory2(extractWeights, paramMappings) {
@@ -59500,13 +59534,13 @@ return a / b;`;
       const separable_conv0 = extractSeparableConvParams(channelsIn, channelsOut, `${mappedPrefix}/separable_conv0`);
       const separable_conv1 = extractSeparableConvParams(channelsOut, channelsOut, `${mappedPrefix}/separable_conv1`);
       const expansion_conv = extractConvParams(channelsIn, channelsOut, 1, `${mappedPrefix}/expansion_conv`);
-      return {separable_conv0, separable_conv1, expansion_conv};
+      return { separable_conv0, separable_conv1, expansion_conv };
     }
     function extractMainBlockParams(channels, mappedPrefix) {
       const separable_conv0 = extractSeparableConvParams(channels, channels, `${mappedPrefix}/separable_conv0`);
       const separable_conv1 = extractSeparableConvParams(channels, channels, `${mappedPrefix}/separable_conv1`);
       const separable_conv2 = extractSeparableConvParams(channels, channels, `${mappedPrefix}/separable_conv2`);
-      return {separable_conv0, separable_conv1, separable_conv2};
+      return { separable_conv0, separable_conv1, separable_conv2 };
     }
     return {
       extractConvParams,
@@ -59550,7 +59584,7 @@ return a / b;`;
     }
     return {
       paramMappings,
-      params: {entry_flow, middle_flow, exit_flow}
+      params: { entry_flow, middle_flow, exit_flow }
     };
   }
 
@@ -59563,13 +59597,13 @@ return a / b;`;
       const separable_conv0 = extractSeparableConvParams(`${mappedPrefix}/separable_conv0`);
       const separable_conv1 = extractSeparableConvParams(`${mappedPrefix}/separable_conv1`);
       const expansion_conv = extractConvParams(`${mappedPrefix}/expansion_conv`);
-      return {separable_conv0, separable_conv1, expansion_conv};
+      return { separable_conv0, separable_conv1, expansion_conv };
     }
     function extractMainBlockParams(mappedPrefix) {
       const separable_conv0 = extractSeparableConvParams(`${mappedPrefix}/separable_conv0`);
       const separable_conv1 = extractSeparableConvParams(`${mappedPrefix}/separable_conv1`);
       const separable_conv2 = extractSeparableConvParams(`${mappedPrefix}/separable_conv2`);
-      return {separable_conv0, separable_conv1, separable_conv2};
+      return { separable_conv0, separable_conv1, separable_conv2 };
     }
     return {
       extractConvParams,
@@ -59605,7 +59639,7 @@ return a / b;`;
       separable_conv: exit_flow_separable_conv
     };
     disposeUnusedWeightTensors(weightMap, paramMappings);
-    return {params: {entry_flow, middle_flow, exit_flow}, paramMappings};
+    return { params: { entry_flow, middle_flow, exit_flow }, paramMappings };
   }
 
   // src/xception/TinyXception.ts
@@ -59633,7 +59667,7 @@ return a / b;`;
       this._numMainBlocks = numMainBlocks;
     }
     forwardInput(input2) {
-      const {params} = this;
+      const { params } = this;
       if (!params) {
         throw new Error("TinyXception - load model before inference");
       }
@@ -59681,7 +59715,7 @@ return a / b;`;
     }
     return {
       paramMappings,
-      params: {fc: {age, gender}}
+      params: { fc: { age, gender } }
     };
   }
 
@@ -59692,7 +59726,7 @@ return a / b;`;
     function extractFcParams(prefix) {
       const weights = extractWeightEntry(`${prefix}/weights`, 2);
       const bias = extractWeightEntry(`${prefix}/bias`, 1);
-      return {weights, bias};
+      return { weights, bias };
     }
     const params = {
       fc: {
@@ -59701,7 +59735,7 @@ return a / b;`;
       }
     };
     disposeUnusedWeightTensors(weightMap, paramMappings);
-    return {params, paramMappings};
+    return { params, paramMappings };
   }
 
   // src/ageGenderNet/types.ts
@@ -59721,7 +59755,7 @@ return a / b;`;
       return this._faceFeatureExtractor;
     }
     runNet(input2) {
-      const {params} = this;
+      const { params } = this;
       if (!params) {
         throw new Error(`${this._name} - load model before inference`);
       }
@@ -59730,13 +59764,13 @@ return a / b;`;
         const pooled = avgPool(bottleneckFeatures, [7, 7], [2, 2], "valid").as2D(bottleneckFeatures.shape[0], -1);
         const age = fullyConnectedLayer(pooled, params.fc.age).as1D();
         const gender = fullyConnectedLayer(pooled, params.fc.gender);
-        return {age, gender};
+        return { age, gender };
       });
     }
     forwardInput(input2) {
       return tidy(() => {
-        const {age, gender} = this.runNet(input2);
-        return {age, gender: softmax(gender)};
+        const { age, gender } = this.runNet(input2);
+        return { age, gender: softmax(gender) };
       });
     }
     async forward(input2) {
@@ -59751,7 +59785,7 @@ return a / b;`;
         ageTensor,
         genderTensor: genders[i]
       }));
-      const predictionsByBatch = await Promise.all(ageAndGenderTensors.map(async ({ageTensor, genderTensor}) => {
+      const predictionsByBatch = await Promise.all(ageAndGenderTensors.map(async ({ ageTensor, genderTensor }) => {
         const age = ageTensor.dataSync()[0];
         const probMale = genderTensor.dataSync()[0];
         const isMale = probMale > 0.5;
@@ -59759,7 +59793,7 @@ return a / b;`;
         const genderProbability = isMale ? probMale : 1 - probMale;
         ageTensor.dispose();
         genderTensor.dispose();
-        return {age, gender, genderProbability};
+        return { age, gender, genderProbability };
       }));
       out.age.dispose();
       out.gender.dispose();
@@ -59773,7 +59807,7 @@ return a / b;`;
       super.dispose(throwOnRedispose);
     }
     loadClassifierParams(weights) {
-      const {params, paramMappings} = this.extractClassifierParams(weights);
+      const { params, paramMappings } = this.extractClassifierParams(weights);
       this._params = params;
       this._paramMappings = paramMappings;
     }
@@ -59781,7 +59815,7 @@ return a / b;`;
       return extractParams4(weights);
     }
     extractParamsFromWeightMap(weightMap) {
-      const {featureExtractorMap, classifierMap} = seperateWeightMaps(weightMap);
+      const { featureExtractorMap, classifierMap } = seperateWeightMaps(weightMap);
       this.faceFeatureExtractor.loadFromWeightMap(featureExtractorMap);
       return extractParamsFromWeightMap4(classifierMap);
     }
@@ -59797,7 +59831,7 @@ return a / b;`;
   // src/faceLandmarkNet/FaceLandmark68NetBase.ts
   var FaceLandmark68NetBase = class extends FaceProcessor {
     postProcess(output, inputSize, originalDimensions) {
-      const inputDimensions = originalDimensions.map(({width, height}) => {
+      const inputDimensions = originalDimensions.map(({ width, height }) => {
         const scale3 = inputSize / Math.max(height, width);
         return {
           width: width * scale3,
@@ -59808,7 +59842,7 @@ return a / b;`;
       return tidy(() => {
         const createInterleavedTensor = (fillX, fillY) => stack([fill([68], fillX, "float32"), fill([68], fillY, "float32")], 1).as2D(1, 136).as1D();
         const getPadding2 = (batchIdx, cond) => {
-          const {width, height} = inputDimensions[batchIdx];
+          const { width, height } = inputDimensions[batchIdx];
           return cond(width, height) ? Math.abs(width - height) / 2 : 0;
         };
         const getPaddingX = (batchIdx) => getPadding2(batchIdx, (w, h) => w < h);
@@ -59820,7 +59854,7 @@ return a / b;`;
     forwardInput(input2) {
       return tidy(() => {
         const out = this.runNet(input2);
-        return this.postProcess(out, input2.inputSize, input2.inputDimensions.map(([height, width]) => ({height, width})));
+        return this.postProcess(out, input2.inputSize, input2.inputDimensions.map(([height, width]) => ({ height, width })));
       });
     }
     async forward(input2) {
@@ -59871,7 +59905,7 @@ return a / b;`;
       dense2: extractDenseBlock3Params("dense2")
     };
     disposeUnusedWeightTensors(weightMap, paramMappings);
-    return {params, paramMappings};
+    return { params, paramMappings };
   }
 
   // src/faceFeatureExtractor/extractParamsTiny.ts
@@ -59892,7 +59926,7 @@ return a / b;`;
     }
     return {
       paramMappings,
-      params: {dense0, dense1, dense2}
+      params: { dense0, dense1, dense2 }
     };
   }
 
@@ -59902,7 +59936,7 @@ return a / b;`;
       super("TinyFaceFeatureExtractor");
     }
     forwardInput(input2) {
-      const {params} = this;
+      const { params } = this;
       if (!params) {
         throw new Error("TinyFaceFeatureExtractor - load model before inference");
       }
@@ -59955,7 +59989,7 @@ return a / b;`;
 
   // src/faceRecognitionNet/convLayer.ts
   function convLayer2(x, params, strides, withRelu, padding = "same") {
-    const {filters, bias} = params.conv;
+    const { filters, bias } = params.conv;
     let out = conv2d(x, filters, strides, padding);
     out = add2(out, bias);
     out = scale2(out, params.scale);
@@ -59984,13 +60018,13 @@ return a / b;`;
     function extractConvParams(numFilterValues, numFilters, filterSize, mappedPrefix) {
       const filters = extractFilterValues(numFilterValues, numFilters, filterSize);
       const bias = tensor1d(extractWeights(numFilters));
-      paramMappings.push({paramPath: `${mappedPrefix}/filters`}, {paramPath: `${mappedPrefix}/bias`});
-      return {filters, bias};
+      paramMappings.push({ paramPath: `${mappedPrefix}/filters` }, { paramPath: `${mappedPrefix}/bias` });
+      return { filters, bias };
     }
     function extractScaleLayerParams(numWeights, mappedPrefix) {
       const weights = tensor1d(extractWeights(numWeights));
       const biases = tensor1d(extractWeights(numWeights));
-      paramMappings.push({paramPath: `${mappedPrefix}/weights`}, {paramPath: `${mappedPrefix}/biases`});
+      paramMappings.push({ paramPath: `${mappedPrefix}/weights` }, { paramPath: `${mappedPrefix}/biases` });
       return {
         weights,
         biases
@@ -59999,12 +60033,12 @@ return a / b;`;
     function extractConvLayerParams(numFilterValues, numFilters, filterSize, mappedPrefix) {
       const conv3 = extractConvParams(numFilterValues, numFilters, filterSize, `${mappedPrefix}/conv`);
       const scale3 = extractScaleLayerParams(numFilters, `${mappedPrefix}/scale`);
-      return {conv: conv3, scale: scale3};
+      return { conv: conv3, scale: scale3 };
     }
     function extractResidualLayerParams(numFilterValues, numFilters, filterSize, mappedPrefix, isDown = false) {
       const conv1 = extractConvLayerParams((isDown ? 0.5 : 1) * numFilterValues, numFilters, filterSize, `${mappedPrefix}/conv1`);
       const conv22 = extractConvLayerParams(numFilterValues, numFilters, filterSize, `${mappedPrefix}/conv2`);
-      return {conv1, conv2: conv22};
+      return { conv1, conv2: conv22 };
     }
     return {
       extractConvLayerParams,
@@ -60037,7 +60071,7 @@ return a / b;`;
     const conv256_2 = extractResidualLayerParams(589824, 256, 3, "conv256_2");
     const conv256_down_out = extractResidualLayerParams(589824, 256, 3, "conv256_down_out");
     const fc = tidy(() => transpose(tensor2d(extractWeights(256 * 128), [128, 256]), [1, 0]));
-    paramMappings.push({paramPath: "fc"});
+    paramMappings.push({ paramPath: "fc" });
     if (getRemainingWeights().length !== 0) {
       throw new Error(`weights remaing after extract: ${getRemainingWeights().length}`);
     }
@@ -60059,7 +60093,7 @@ return a / b;`;
       conv256_down_out,
       fc
     };
-    return {params, paramMappings};
+    return { params, paramMappings };
   }
 
   // src/faceRecognitionNet/extractParamsFromWeightMap.ts
@@ -60068,13 +60102,13 @@ return a / b;`;
     function extractScaleLayerParams(prefix) {
       const weights = extractWeightEntry(`${prefix}/scale/weights`, 1);
       const biases = extractWeightEntry(`${prefix}/scale/biases`, 1);
-      return {weights, biases};
+      return { weights, biases };
     }
     function extractConvLayerParams(prefix) {
       const filters = extractWeightEntry(`${prefix}/conv/filters`, 4);
       const bias = extractWeightEntry(`${prefix}/conv/bias`, 1);
       const scale3 = extractScaleLayerParams(prefix);
-      return {conv: {filters, bias}, scale: scale3};
+      return { conv: { filters, bias }, scale: scale3 };
     }
     function extractResidualLayerParams(prefix) {
       return {
@@ -60108,8 +60142,8 @@ return a / b;`;
     const conv256_1 = extractResidualLayerParams("conv256_1");
     const conv256_2 = extractResidualLayerParams("conv256_2");
     const conv256_down_out = extractResidualLayerParams("conv256_down_out");
-    const {fc} = weightMap;
-    paramMappings.push({originalPath: "fc", paramPath: "fc"});
+    const { fc } = weightMap;
+    paramMappings.push({ originalPath: "fc", paramPath: "fc" });
     if (!isTensor2D(fc)) {
       throw new Error(`expected weightMap[fc] to be a Tensor2D, instead have ${fc}`);
     }
@@ -60132,7 +60166,7 @@ return a / b;`;
       fc
     };
     disposeUnusedWeightTensors(weightMap, paramMappings);
-    return {params, paramMappings};
+    return { params, paramMappings };
   }
 
   // src/faceRecognitionNet/residualLayer.ts
@@ -60172,7 +60206,7 @@ return a / b;`;
       super("FaceRecognitionNet");
     }
     forwardInput(input2) {
-      const {params} = this;
+      const { params } = this;
       if (!params) {
         throw new Error("FaceRecognitionNet - load model before inference");
       }
@@ -60234,8 +60268,8 @@ return a / b;`;
 
   // src/factories/WithFaceDescriptor.ts
   function extendWithFaceDescriptor(sourceObj, descriptor) {
-    const extension = {descriptor};
-    return {...sourceObj, ...extension};
+    const extension = { descriptor };
+    return { ...sourceObj, ...extension };
   }
 
   // src/factories/WithAge.ts
@@ -60243,8 +60277,8 @@ return a / b;`;
     return typeof obj.age === "number";
   }
   function extendWithAge(sourceObj, age) {
-    const extension = {age};
-    return {...sourceObj, ...extension};
+    const extension = { age };
+    return { ...sourceObj, ...extension };
   }
 
   // src/factories/WithGender.ts
@@ -60252,8 +60286,8 @@ return a / b;`;
     return (obj.gender === Gender.MALE || obj.gender === Gender.FEMALE) && isValidProbablitiy(obj.genderProbability);
   }
   function extendWithGender(sourceObj, gender, genderProbability) {
-    const extension = {gender, genderProbability};
-    return {...sourceObj, ...extension};
+    const extension = { gender, genderProbability };
+    return { ...sourceObj, ...extension };
   }
 
   // src/ssdMobilenetv1/extractParams.ts
@@ -60264,7 +60298,7 @@ return a / b;`;
       const batch_norm_offset = tensor1d(extractWeights(numChannels));
       const batch_norm_mean = tensor1d(extractWeights(numChannels));
       const batch_norm_variance = tensor1d(extractWeights(numChannels));
-      paramMappings.push({paramPath: `${mappedPrefix}/filters`}, {paramPath: `${mappedPrefix}/batch_norm_scale`}, {paramPath: `${mappedPrefix}/batch_norm_offset`}, {paramPath: `${mappedPrefix}/batch_norm_mean`}, {paramPath: `${mappedPrefix}/batch_norm_variance`});
+      paramMappings.push({ paramPath: `${mappedPrefix}/filters` }, { paramPath: `${mappedPrefix}/batch_norm_scale` }, { paramPath: `${mappedPrefix}/batch_norm_offset` }, { paramPath: `${mappedPrefix}/batch_norm_mean` }, { paramPath: `${mappedPrefix}/batch_norm_variance` });
       return {
         filters,
         batch_norm_scale,
@@ -60276,8 +60310,8 @@ return a / b;`;
     function extractConvParams(channelsIn, channelsOut, filterSize, mappedPrefix, isPointwiseConv) {
       const filters = tensor4d(extractWeights(channelsIn * channelsOut * filterSize * filterSize), [filterSize, filterSize, channelsIn, channelsOut]);
       const bias = tensor1d(extractWeights(channelsOut));
-      paramMappings.push({paramPath: `${mappedPrefix}/filters`}, {paramPath: `${mappedPrefix}/${isPointwiseConv ? "batch_norm_offset" : "bias"}`});
-      return {filters, bias};
+      paramMappings.push({ paramPath: `${mappedPrefix}/filters` }, { paramPath: `${mappedPrefix}/${isPointwiseConv ? "batch_norm_offset" : "bias"}` });
+      return { filters, bias };
     }
     function extractPointwiseConvParams(channelsIn, channelsOut, filterSize, mappedPrefix) {
       const {
@@ -60292,7 +60326,7 @@ return a / b;`;
     function extractConvPairParams(channelsIn, channelsOut, mappedPrefix) {
       const depthwise_conv = extractDepthwiseConvParams(channelsIn, `${mappedPrefix}/depthwise_conv`);
       const pointwise_conv = extractPointwiseConvParams(channelsIn, channelsOut, 1, `${mappedPrefix}/pointwise_conv`);
-      return {depthwise_conv, pointwise_conv};
+      return { depthwise_conv, pointwise_conv };
     }
     function extractMobilenetV1Params() {
       const conv_0 = extractPointwiseConvParams(3, 32, 3, "mobilenetv1/conv_0");
@@ -60409,7 +60443,7 @@ return a / b;`;
     const output_layer = {
       extra_dim
     };
-    paramMappings.push({paramPath: "output_layer/extra_dim"});
+    paramMappings.push({ paramPath: "output_layer/extra_dim" });
     if (getRemainingWeights().length !== 0) {
       throw new Error(`weights remaing after extract: ${getRemainingWeights().length}`);
     }
@@ -60429,7 +60463,7 @@ return a / b;`;
     function extractPointwiseConvParams(prefix, idx, mappedPrefix) {
       const filters = extractWeightEntry(`${prefix}/Conv2d_${idx}_pointwise/weights`, 4, `${mappedPrefix}/filters`);
       const batch_norm_offset = extractWeightEntry(`${prefix}/Conv2d_${idx}_pointwise/convolution_bn_offset`, 1, `${mappedPrefix}/batch_norm_offset`);
-      return {filters, batch_norm_offset};
+      return { filters, batch_norm_offset };
     }
     function extractConvPairParams(idx) {
       const mappedPrefix = `mobilenetv1/conv_${idx}`;
@@ -60473,12 +60507,12 @@ return a / b;`;
     function extractConvParams(prefix, mappedPrefix) {
       const filters = extractWeightEntry(`${prefix}/weights`, 4, `${mappedPrefix}/filters`);
       const bias = extractWeightEntry(`${prefix}/biases`, 1, `${mappedPrefix}/bias`);
-      return {filters, bias};
+      return { filters, bias };
     }
     function extractBoxPredictorParams(idx) {
       const box_encoding_predictor = extractConvParams(`Prediction/BoxPredictor_${idx}/BoxEncodingPredictor`, `prediction_layer/box_predictor_${idx}/box_encoding_predictor`);
       const class_predictor = extractConvParams(`Prediction/BoxPredictor_${idx}/ClassPredictor`, `prediction_layer/box_predictor_${idx}/class_predictor`);
-      return {box_encoding_predictor, class_predictor};
+      return { box_encoding_predictor, class_predictor };
     }
     function extractPredictionLayerParams() {
       return {
@@ -60510,7 +60544,7 @@ return a / b;`;
       extractPredictionLayerParams
     } = extractorsFactory6(weightMap, paramMappings);
     const extra_dim = weightMap["Output/extra_dim"];
-    paramMappings.push({originalPath: "Output/extra_dim", paramPath: "output_layer/extra_dim"});
+    paramMappings.push({ originalPath: "Output/extra_dim", paramPath: "output_layer/extra_dim" });
     if (!isTensor3D(extra_dim)) {
       throw new Error(`expected weightMap['Output/extra_dim'] to be a Tensor3D, instead have ${extra_dim}`);
     }
@@ -60522,7 +60556,7 @@ return a / b;`;
       }
     };
     disposeUnusedWeightTensors(weightMap, paramMappings);
-    return {params, paramMappings};
+    return { params, paramMappings };
   }
 
   // src/ssdMobilenetv1/pointwiseConvLayer.ts
@@ -60608,7 +60642,7 @@ return a / b;`;
   function nonMaxSuppression3(boxes, scores, maxOutputSize, iouThreshold, scoreThreshold) {
     const numBoxes = boxes.shape[0];
     const outputSize = Math.min(maxOutputSize, numBoxes);
-    const candidates = scores.map((score, boxIndex) => ({score, boxIndex})).filter((c) => c.score > scoreThreshold).sort((c1, c2) => c2.score - c1.score);
+    const candidates = scores.map((score, boxIndex) => ({ score, boxIndex })).filter((c) => c.score > scoreThreshold).sort((c1, c2) => c2.score - c1.score);
     const suppressFunc = (x) => x <= iouThreshold ? 1 : 0;
     const selected = [];
     candidates.forEach((c) => {
@@ -60641,10 +60675,10 @@ return a / b;`;
       add2(vec[0], div(sizes[0], 2)),
       add2(vec[1], div(sizes[1], 2))
     ];
-    return {sizes, centers};
+    return { sizes, centers };
   }
   function decodeBoxesLayer(x0, x1) {
-    const {sizes, centers} = getCenterCoordinatesAndSizesLayer(x0);
+    const { sizes, centers } = getCenterCoordinatesAndSizesLayer(x0);
     const vec = unstack(transpose(x1, [1, 0]));
     const div0_out = div(mul(exp(div(vec[2], 5)), sizes[0]), 2);
     const add0_out = add2(mul(div(vec[0], 10), sizes[0]), centers[0]);
@@ -60667,7 +60701,7 @@ return a / b;`;
       scores = reshape(scores, [batchSize, scores.shape[1]]);
       const boxesByBatch = unstack(boxes);
       const scoresByBatch = unstack(scores);
-      return {boxes: boxesByBatch, scores: scoresByBatch};
+      return { boxes: boxesByBatch, scores: scoresByBatch };
     });
   }
 
@@ -60677,7 +60711,7 @@ return a / b;`;
       const batchSize = x.shape[0];
       const boxPredictionEncoding = reshape(convLayer(x, params.box_encoding_predictor), [batchSize, -1, 1, 4]);
       const classPrediction = reshape(convLayer(x, params.class_predictor), [batchSize, -1, 3]);
-      return {boxPredictionEncoding, classPrediction};
+      return { boxPredictionEncoding, classPrediction };
     });
   }
 
@@ -60723,7 +60757,7 @@ return a / b;`;
 
   // src/ssdMobilenetv1/SsdMobilenetv1Options.ts
   var SsdMobilenetv1Options = class {
-    constructor({minConfidence, maxResults} = {}) {
+    constructor({ minConfidence, maxResults } = {}) {
       this._name = "SsdMobilenetv1Options";
       this._minConfidence = minConfidence || 0.5;
       this._maxResults = maxResults || 100;
@@ -60748,14 +60782,14 @@ return a / b;`;
       super("SsdMobilenetv1");
     }
     forwardInput(input2) {
-      const {params} = this;
+      const { params } = this;
       if (!params)
         throw new Error("SsdMobilenetv1 - load model before inference");
       return tidy(() => {
         const batchTensor = cast(input2.toBatchTensor(512, false), "float32");
         const x = sub(div(batchTensor, 127.5), 1);
         const features = mobileNetV1(x, params.mobilenetv1);
-        const {boxPredictions, classPredictions} = predictionLayer(features.out, features.conv11, params.prediction_layer);
+        const { boxPredictions, classPredictions } = predictionLayer(features.out, features.conv11, params.prediction_layer);
         return outputLayer(boxPredictions, classPredictions, params.output_layer);
       });
     }
@@ -60763,9 +60797,9 @@ return a / b;`;
       return this.forwardInput(await toNetInput(input2));
     }
     async locateFaces(input2, options = {}) {
-      const {maxResults, minConfidence} = new SsdMobilenetv1Options(options);
+      const { maxResults, minConfidence } = new SsdMobilenetv1Options(options);
       const netInput = await toNetInput(input2);
-      const {boxes: _boxes, scores: _scores} = this.forwardInput(netInput);
+      const { boxes: _boxes, scores: _scores } = this.forwardInput(netInput);
       const boxes = _boxes[0];
       const scores = _scores[0];
       for (let i = 1; i < _boxes.length; i++) {
@@ -60789,7 +60823,7 @@ return a / b;`;
           Math.max(0, boxesData[idx][1]),
           Math.min(1, boxesData[idx][3])
         ].map((val) => val * padX);
-        return new FaceDetection(scoresData[idx], new Rect(left, top, right - left, bottom - top), {height: netInput.getInputHeight(0), width: netInput.getInputWidth(0)});
+        return new FaceDetection(scoresData[idx], new Rect(left, top, right - left, bottom - top), { height: netInput.getInputHeight(0), width: netInput.getInputWidth(0) });
       });
       boxes.dispose();
       scores.dispose();
@@ -60897,13 +60931,13 @@ return a / b;`;
     function extractBatchNormParams(size, mappedPrefix) {
       const sub4 = tensor1d(extractWeights(size));
       const truediv = tensor1d(extractWeights(size));
-      paramMappings.push({paramPath: `${mappedPrefix}/sub`}, {paramPath: `${mappedPrefix}/truediv`});
-      return {sub: sub4, truediv};
+      paramMappings.push({ paramPath: `${mappedPrefix}/sub` }, { paramPath: `${mappedPrefix}/truediv` });
+      return { sub: sub4, truediv };
     }
     function extractConvWithBatchNormParams(channelsIn, channelsOut, mappedPrefix) {
       const conv3 = extractConvParams(channelsIn, channelsOut, 3, `${mappedPrefix}/conv`);
       const bn = extractBatchNormParams(channelsOut, `${mappedPrefix}/bn`);
-      return {conv: conv3, bn};
+      return { conv: conv3, bn };
     }
     const extractSeparableConvParams = extractSeparableConvParamsFactory(extractWeights, paramMappings);
     return {
@@ -60972,7 +61006,7 @@ return a / b;`;
     if (getRemainingWeights().length !== 0) {
       throw new Error(`weights remaing after extract: ${getRemainingWeights().length}`);
     }
-    return {params, paramMappings};
+    return { params, paramMappings };
   }
 
   // src/tinyYolov2/extractParamsFromWeightMap.ts
@@ -60981,17 +61015,17 @@ return a / b;`;
     function extractBatchNormParams(prefix) {
       const sub4 = extractWeightEntry(`${prefix}/sub`, 1);
       const truediv = extractWeightEntry(`${prefix}/truediv`, 1);
-      return {sub: sub4, truediv};
+      return { sub: sub4, truediv };
     }
     function extractConvParams(prefix) {
       const filters = extractWeightEntry(`${prefix}/filters`, 4);
       const bias = extractWeightEntry(`${prefix}/bias`, 1);
-      return {filters, bias};
+      return { filters, bias };
     }
     function extractConvWithBatchNormParams(prefix) {
       const conv3 = extractConvParams(`${prefix}/conv`);
       const bn = extractBatchNormParams(`${prefix}/bn`);
-      return {conv: conv3, bn};
+      return { conv: conv3, bn };
     }
     const extractSeparableConvParams = loadSeparableConvParamsFactory(extractWeightEntry);
     return {
@@ -61035,12 +61069,12 @@ return a / b;`;
       };
     }
     disposeUnusedWeightTensors(weightMap, paramMappings);
-    return {params, paramMappings};
+    return { params, paramMappings };
   }
 
   // src/tinyYolov2/TinyYolov2Options.ts
   var TinyYolov2Options = class {
-    constructor({inputSize, scoreThreshold} = {}) {
+    constructor({ inputSize, scoreThreshold } = {}) {
       this._name = "TinyYolov2Options";
       this._inputSize = inputSize || 416;
       this._scoreThreshold = scoreThreshold || 0.5;
@@ -61110,7 +61144,7 @@ return a / b;`;
       return convLayer(out, params.conv8, "valid", false);
     }
     forwardInput(input2, inputSize) {
-      const {params} = this;
+      const { params } = this;
       if (!params) {
         throw new Error("TinyYolov2 - load model before inference");
       }
@@ -61125,7 +61159,7 @@ return a / b;`;
       return this.forwardInput(await toNetInput(input2), inputSize);
     }
     async detect(input2, forwardParams = {}) {
-      const {inputSize, scoreThreshold} = new TinyYolov2Options(forwardParams);
+      const { inputSize, scoreThreshold } = new TinyYolov2Options(forwardParams);
       const netInput = await toNetInput(input2);
       const out = await this.forwardInput(netInput, inputSize);
       const out0 = tidy(() => unstack(out)[0].expandDims());
@@ -61159,7 +61193,7 @@ return a / b;`;
       return extractParams7(weights, this.config, this.boxEncodingSize, filterSizes);
     }
     async extractBoxes(outputTensor, inputBlobDimensions, scoreThreshold) {
-      const {width, height} = inputBlobDimensions;
+      const { width, height } = inputBlobDimensions;
       const inputSize = Math.max(width, height);
       const correctionFactorX = inputSize / width;
       const correctionFactorY = inputSize / height;
@@ -61186,8 +61220,8 @@ return a / b;`;
               const heightLocal = Math.exp(boxesData[row][col][anchor][3]) * this.config.anchors[anchor].y / numCells * correctionFactorY;
               const x = ctX - widthLocal / 2;
               const y = ctY - heightLocal / 2;
-              const pos = {row, col, anchor};
-              const {classScore, label} = this.withClassScores ? await this.extractPredictedClass(classScoresTensor, pos) : {classScore: 1, label: 0};
+              const pos = { row, col, anchor };
+              const { classScore, label } = this.withClassScores ? await this.extractPredictedClass(classScoresTensor, pos) : { classScore: 1, label: 0 };
               results.push({
                 box: new BoundingBox(x, y, x + widthLocal, y + heightLocal),
                 score,
@@ -61205,7 +61239,7 @@ return a / b;`;
       return results;
     }
     async extractPredictedClass(classesTensor, pos) {
-      const {row, col, anchor} = pos;
+      const { row, col, anchor } = pos;
       const classesData = await classesTensor.array();
       return Array(this.config.classes.length).fill(0).map((_, i) => classesData[row][col][anchor][i]).map((classScore, label) => ({
         classScore,
@@ -61241,7 +61275,7 @@ return a / b;`;
     }
     async locateFaces(input2, forwardParams) {
       const objectDetections = await this.detect(input2, forwardParams);
-      return objectDetections.map((det) => new FaceDetection(det.score, det.relativeBox, {width: det.imageWidth, height: det.imageHeight}));
+      return objectDetections.map((det) => new FaceDetection(det.score, det.relativeBox, { width: det.imageWidth, height: det.imageHeight }));
     }
     getDefaultModelName() {
       return this.withSeparableConvs ? DEFAULT_MODEL_NAME_SEPARABLE_CONV : DEFAULT_MODEL_NAME2;
@@ -61277,7 +61311,7 @@ return a / b;`;
   };
 
   // src/globalApi/extractFacesAndComputeResults.ts
-  async function extractAllFacesAndComputeResults(parentResults, input2, computeResults, extractedFaces, getRectForAlignment = ({alignedRect}) => alignedRect) {
+  async function extractAllFacesAndComputeResults(parentResults, input2, computeResults, extractedFaces, getRectForAlignment = ({ alignedRect }) => alignedRect) {
     const faceBoxes = parentResults.map((parentResult) => isWithFaceLandmarks(parentResult) ? getRectForAlignment(parentResult) : parentResult.detection);
     const faces = extractedFaces || (input2 instanceof Tensor ? await extractFaceTensors(input2, faceBoxes) : await extractFaces(input2, faceBoxes));
     const results = await computeResults(faces);
@@ -61318,7 +61352,7 @@ return a / b;`;
     }
     async locateFaces(input2, forwardParams) {
       const objectDetections = await this.detect(input2, forwardParams);
-      return objectDetections.map((det) => new FaceDetection(det.score, det.relativeBox, {width: det.imageWidth, height: det.imageHeight}));
+      return objectDetections.map((det) => new FaceDetection(det.score, det.relativeBox, { width: det.imageWidth, height: det.imageHeight }));
     }
     getDefaultModelName() {
       return "tiny_face_detector_model";
@@ -61422,7 +61456,7 @@ return a / b;`;
       const parentResults = await this.parentTask;
       const ageAndGenderByFace = await extractAllFacesAndComputeResults(parentResults, this.input, async (faces) => Promise.all(faces.map((face) => nets.ageGenderNet.predictAgeAndGender(face))), this.extractedFaces);
       return parentResults.map((parentResult, i) => {
-        const {age, gender, genderProbability} = ageAndGenderByFace[i];
+        const { age, gender, genderProbability } = ageAndGenderByFace[i];
         return extendWithAge(extendWithGender(parentResult, gender, genderProbability), age);
       });
     }
@@ -61435,7 +61469,7 @@ return a / b;`;
       const parentResult = await this.parentTask;
       if (!parentResult)
         return void 0;
-      const {age, gender, genderProbability} = await extractSingleFaceAndComputeResult(parentResult, this.input, (face) => nets.ageGenderNet.predictAgeAndGender(face), this.extractedFaces);
+      const { age, gender, genderProbability } = await extractSingleFaceAndComputeResult(parentResult, this.input, (face) => nets.ageGenderNet.predictAgeAndGender(face), this.extractedFaces);
       return extendWithAge(extendWithGender(parentResult, gender, genderProbability), age);
     }
     withFaceExpressions() {
@@ -61470,7 +61504,7 @@ return a / b;`;
   var ComputeAllFaceDescriptorsTask = class extends ComputeFaceDescriptorsTaskBase {
     async run() {
       const parentResults = await this.parentTask;
-      const descriptors = await extractAllFacesAndComputeResults(parentResults, this.input, (faces) => Promise.all(faces.map((face) => nets.faceRecognitionNet.computeFaceDescriptor(face))), null, (parentResult) => parentResult.landmarks.align(null, {useDlibAlignment: true}));
+      const descriptors = await extractAllFacesAndComputeResults(parentResults, this.input, (faces) => Promise.all(faces.map((face) => nets.faceRecognitionNet.computeFaceDescriptor(face))), null, (parentResult) => parentResult.landmarks.align(null, { useDlibAlignment: true }));
       return descriptors.map((descriptor, i) => extendWithFaceDescriptor(parentResults[i], descriptor));
     }
     withFaceExpressions() {
@@ -61486,7 +61520,7 @@ return a / b;`;
       if (!parentResult) {
         return void 0;
       }
-      const descriptor = await extractSingleFaceAndComputeResult(parentResult, this.input, (face) => nets.faceRecognitionNet.computeFaceDescriptor(face), null, (parentResult2) => parentResult2.landmarks.align(null, {useDlibAlignment: true}));
+      const descriptor = await extractSingleFaceAndComputeResult(parentResult, this.input, (face) => nets.faceRecognitionNet.computeFaceDescriptor(face), null, (parentResult2) => parentResult2.landmarks.align(null, { useDlibAlignment: true }));
       return extendWithFaceDescriptor(parentResult, descriptor);
     }
     withFaceExpressions() {
@@ -61534,7 +61568,7 @@ return a / b;`;
       if (!parentResult) {
         return void 0;
       }
-      const {detection} = parentResult;
+      const { detection } = parentResult;
       const faces = this.input instanceof Tensor ? await extractFaceTensors(this.input, [detection]) : await extractFaces(this.input, [detection]);
       const landmarks = await this.landmarkNet.detectLandmarks(faces[0]);
       faces.forEach((f) => f instanceof Tensor && f.dispose());
@@ -61561,7 +61595,7 @@ return a / b;`;
   };
   var DetectAllFacesTask = class extends DetectFacesTaskBase {
     async run() {
-      const {input: input2, options} = this;
+      const { input: input2, options } = this;
       let result;
       if (options instanceof TinyFaceDetectorOptions)
         result = nets.tinyFaceDetector.locateFaces(input2, options);
@@ -61625,7 +61659,7 @@ return a / b;`;
 
   // src/globalApi/allFaces.ts
   async function allFacesSsdMobilenetv1(input2, minConfidence) {
-    return detectAllFaces(input2, new SsdMobilenetv1Options(minConfidence ? {minConfidence} : {})).withFaceLandmarks().withFaceDescriptors();
+    return detectAllFaces(input2, new SsdMobilenetv1Options(minConfidence ? { minConfidence } : {})).withFaceLandmarks().withFaceDescriptors();
   }
   async function allFacesTinyYolov2(input2, forwardParams = {}) {
     return detectAllFaces(input2, new TinyYolov2Options(forwardParams)).withFaceLandmarks().withFaceDescriptors();
@@ -61674,7 +61708,7 @@ return a / b;`;
       return descriptors.map((d) => euclideanDistance(d, queryDescriptor)).reduce((d1, d2) => d1 + d2, 0) / (descriptors.length || 1);
     }
     matchDescriptor(queryDescriptor) {
-      return this.labeledDescriptors.map(({descriptors, label}) => new FaceMatch(label, this.computeMeanDistance(queryDescriptor, descriptors))).reduce((best, curr) => best.distance < curr.distance ? best : curr);
+      return this.labeledDescriptors.map(({ descriptors, label }) => new FaceMatch(label, this.computeMeanDistance(queryDescriptor, descriptors))).reduce((best, curr) => best.distance < curr.distance ? best : curr);
     }
     findBestMatch(queryDescriptor) {
       const bestMatch = this.matchDescriptor(queryDescriptor);
@@ -61701,12 +61735,12 @@ return a / b;`;
 
   // src/resizeResults.ts
   function resizeResults(results, dimensions) {
-    const {width, height} = new Dimensions(dimensions.width, dimensions.height);
+    const { width, height } = new Dimensions(dimensions.width, dimensions.height);
     if (width <= 0 || height <= 0) {
-      throw new Error(`resizeResults - invalid dimensions: ${JSON.stringify({width, height})}`);
+      throw new Error(`resizeResults - invalid dimensions: ${JSON.stringify({ width, height })}`);
     }
     if (Array.isArray(results)) {
-      return results.map((obj) => resizeResults(obj, {width, height}));
+      return results.map((obj) => resizeResults(obj, { width, height }));
     }
     if (isWithFaceLandmarks(results)) {
       const resizedDetection = results.detection.forSize(width, height);
@@ -61725,7 +61759,7 @@ return a / b;`;
   // src/index.ts
   var node = typeof process !== "undefined";
   var browser = typeof navigator !== "undefined" && typeof navigator.userAgent !== "undefined";
-  var version11 = {faceapi: version10, node, browser};
+  var version11 = { faceapi: version10, node, browser };
   return src_exports;
 })();
 /**

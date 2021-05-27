@@ -204,6 +204,7 @@
 								<li class="tsd-kind-function tsd-has-type-parameter"><a href="index.html#fetchjson" class="tsd-kind-icon">fetch<wbr>Json</a></li>
 								<li class="tsd-kind-function"><a href="index.html#fetchnetweights" class="tsd-kind-icon">fetch<wbr>Net<wbr>Weights</a></li>
 								<li class="tsd-kind-function"><a href="index.html#fetchorthrow" class="tsd-kind-icon">fetch<wbr>OrThrow</a></li>
+								<li class="tsd-kind-function"><a href="index.html#fetchvideo" class="tsd-kind-icon">fetch<wbr>Video</a></li>
 								<li class="tsd-kind-function"><a href="index.html#getcontext2dorthrow" class="tsd-kind-icon">get<wbr>Context2d<wbr>OrThrow</a></li>
 								<li class="tsd-kind-function"><a href="index.html#getmediadimensions" class="tsd-kind-icon">get<wbr>Media<wbr>Dimensions</a></li>
 								<li class="tsd-kind-function"><a href="index.html#imagetensortocanvas" class="tsd-kind-icon">image<wbr>Tensor<wbr>ToCanvas</a></li>
@@ -363,7 +364,7 @@
 				<section class="tsd-panel tsd-member tsd-kind-type-alias">
 					<a name="environment" class="tsd-anchor"></a>
 					<h3>Environment</h3>
-					<div class="tsd-signature tsd-kind-icon">Environment<span class="tsd-signature-symbol">:</span> <a href="index.html#filesystem" class="tsd-signature-type" data-tsd-kind="Type alias">FileSystem</a><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-symbol">{ </span>Canvas<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">typeof </span><span class="tsd-signature-type">HTMLCanvasElement</span><span class="tsd-signature-symbol">; </span>CanvasRenderingContext2D<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">typeof </span><span class="tsd-signature-type">CanvasRenderingContext2D</span><span class="tsd-signature-symbol">; </span>Image<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">typeof </span><span class="tsd-signature-type">HTMLImageElement</span><span class="tsd-signature-symbol">; </span>ImageData<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">typeof </span><span class="tsd-signature-type">ImageData</span><span class="tsd-signature-symbol">; </span>Video<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">typeof </span><span class="tsd-signature-type">HTMLVideoElement</span><span class="tsd-signature-symbol">; </span>createCanvasElement<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">HTMLCanvasElement</span><span class="tsd-signature-symbol">; </span>createImageElement<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">HTMLImageElement</span><span class="tsd-signature-symbol">; </span>fetch<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>url<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, init<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">RequestInit</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Response</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> }</span></div>
+					<div class="tsd-signature tsd-kind-icon">Environment<span class="tsd-signature-symbol">:</span> <a href="index.html#filesystem" class="tsd-signature-type" data-tsd-kind="Type alias">FileSystem</a><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-symbol">{ </span>Canvas<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">typeof </span><span class="tsd-signature-type">HTMLCanvasElement</span><span class="tsd-signature-symbol">; </span>CanvasRenderingContext2D<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">typeof </span><span class="tsd-signature-type">CanvasRenderingContext2D</span><span class="tsd-signature-symbol">; </span>Image<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">typeof </span><span class="tsd-signature-type">HTMLImageElement</span><span class="tsd-signature-symbol">; </span>ImageData<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">typeof </span><span class="tsd-signature-type">ImageData</span><span class="tsd-signature-symbol">; </span>Video<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">typeof </span><span class="tsd-signature-type">HTMLVideoElement</span><span class="tsd-signature-symbol">; </span>createCanvasElement<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">HTMLCanvasElement</span><span class="tsd-signature-symbol">; </span>createImageElement<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">HTMLImageElement</span><span class="tsd-signature-symbol">; </span>createVideoElement<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">HTMLVideoElement</span><span class="tsd-signature-symbol">; </span>fetch<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>url<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, init<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">RequestInit</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Response</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 						<ul>
 							<li>Defined in <a href="https://github.com/vladmandic/face-api/blob/main/src/env/types.ts#L6">env/types.ts:6</a></li>
@@ -1834,6 +1835,29 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="fetchvideo" class="tsd-anchor"></a>
+					<h3>fetch<wbr>Video</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">fetch<wbr>Video<span class="tsd-signature-symbol">(</span>uri<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">HTMLVideoElement</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vladmandic/face-api/blob/main/src/dom/fetchVideo.ts#L4">dom/fetchVideo.ts:4</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>uri: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">HTMLVideoElement</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
 					<a name="getcontext2dorthrow" class="tsd-anchor"></a>
 					<h3>get<wbr>Context2d<wbr>OrThrow</h3>
 					<ul class="tsd-signatures tsd-kind-function">
@@ -3243,6 +3267,9 @@
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="index.html#fetchorthrow" class="tsd-kind-icon">fetch<wbr>OrThrow</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="index.html#fetchvideo" class="tsd-kind-icon">fetch<wbr>Video</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="index.html#getcontext2dorthrow" class="tsd-kind-icon">get<wbr>Context2d<wbr>OrThrow</a>

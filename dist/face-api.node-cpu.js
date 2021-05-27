@@ -11,24 +11,24 @@ var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
 var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __markAsModule = (target) => __defProp(target, "__esModule", {value: true});
+var __markAsModule = (target) => __defProp(target, "__esModule", { value: true });
 var __commonJS = (cb, mod) => function __require() {
-  return mod || (0, cb[Object.keys(cb)[0]])((mod = {exports: {}}).exports, mod), mod.exports;
+  return mod || (0, cb[Object.keys(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
 };
 var __export = (target, all) => {
   for (var name in all)
-    __defProp(target, name, {get: all[name], enumerable: true});
+    __defProp(target, name, { get: all[name], enumerable: true });
 };
 var __reExport = (target, module2, desc) => {
   if (module2 && typeof module2 === "object" || typeof module2 === "function") {
     for (let key of __getOwnPropNames(module2))
       if (!__hasOwnProp.call(target, key) && key !== "default")
-        __defProp(target, key, {get: () => module2[key], enumerable: !(desc = __getOwnPropDesc(module2, key)) || desc.enumerable});
+        __defProp(target, key, { get: () => module2[key], enumerable: !(desc = __getOwnPropDesc(module2, key)) || desc.enumerable });
   }
   return target;
 };
 var __toModule = (module2) => {
-  return __reExport(__markAsModule(__defProp(module2 != null ? __create(__getProtoOf(module2)) : {}, "default", module2 && module2.__esModule && "default" in module2 ? {get: () => module2.default, enumerable: true} : {value: module2, enumerable: true})), module2);
+  return __reExport(__markAsModule(__defProp(module2 != null ? __create(__getProtoOf(module2)) : {}, "default", module2 && module2.__esModule && "default" in module2 ? { get: () => module2.default, enumerable: true } : { value: module2, enumerable: true })), module2);
 };
 
 // dist/tfjs.esm.js
@@ -40,17 +40,17 @@ var require_tfjs_esm = __commonJS({
     var __getOwnPropNames2 = Object.getOwnPropertyNames;
     var __getProtoOf2 = Object.getPrototypeOf;
     var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-    var __markAsModule2 = (target) => __defProp2(target, "__esModule", {value: true});
+    var __markAsModule2 = (target) => __defProp2(target, "__esModule", { value: true });
     var __reExport2 = (target, module22, desc) => {
       if (module22 && typeof module22 === "object" || typeof module22 === "function") {
         for (let key of __getOwnPropNames2(module22))
           if (!__hasOwnProp2.call(target, key) && key !== "default")
-            __defProp2(target, key, {get: () => module22[key], enumerable: !(desc = __getOwnPropDesc2(module22, key)) || desc.enumerable});
+            __defProp2(target, key, { get: () => module22[key], enumerable: !(desc = __getOwnPropDesc2(module22, key)) || desc.enumerable });
       }
       return target;
     };
     var __toModule2 = (module22) => {
-      return __reExport2(__markAsModule2(__defProp2(module22 != null ? __create2(__getProtoOf2(module22)) : {}, "default", module22 && module22.__esModule && "default" in module22 ? {get: () => module22.default, enumerable: true} : {value: module22, enumerable: true})), module22);
+      return __reExport2(__markAsModule2(__defProp2(module22 != null ? __create2(__getProtoOf2(module22)) : {}, "default", module22 && module22.__esModule && "default" in module22 ? { get: () => module22.default, enumerable: true } : { value: module22, enumerable: true })), module22);
     };
     __markAsModule2(exports);
     __reExport2(exports, __toModule2(require("@tensorflow/tfjs")));
@@ -136,6 +136,7 @@ __export(exports, {
   fetchJson: () => fetchJson,
   fetchNetWeights: () => fetchNetWeights,
   fetchOrThrow: () => fetchOrThrow,
+  fetchVideo: () => fetchVideo,
   getContext2dOrThrow: () => getContext2dOrThrow,
   getMediaDimensions: () => getMediaDimensions,
   imageTensorToCanvas: () => imageTensorToCanvas,
@@ -202,7 +203,7 @@ __export(draw_exports, {
 // src/draw/drawContour.ts
 function drawContour(ctx, points, isClosed = false) {
   ctx.beginPath();
-  points.slice(1).forEach(({x, y}, prevIdx) => {
+  points.slice(1).forEach(({ x, y }, prevIdx) => {
     const from = points[prevIdx];
     ctx.moveTo(from.x, from.y);
     ctx.lineTo(x, y);
@@ -243,7 +244,7 @@ var tf = __toModule(require_tfjs_esm());
 var Dimensions = class {
   constructor(width, height) {
     if (!isValidNumber(width) || !isValidNumber(height)) {
-      throw new Error(`Dimensions.constructor - expected width and height to be valid numbers, instead have ${JSON.stringify({width, height})}`);
+      throw new Error(`Dimensions.constructor - expected width and height to be valid numbers, instead have ${JSON.stringify({ width, height })}`);
     }
     this._width = width;
     this._height = height;
@@ -288,7 +289,7 @@ function round(num, prec = 2) {
 function isDimensions(obj) {
   return obj && obj.width && obj.height;
 }
-function computeReshapedDimensions({width, height}, inputSize) {
+function computeReshapedDimensions({ width, height }, inputSize) {
   const scale2 = inputSize / Math.max(height, width);
   return new Dimensions(Math.round(width * scale2), Math.round(height * scale2));
 }
@@ -445,7 +446,7 @@ var Box = class {
       y -= diff / 2;
       height += diff;
     }
-    return new Box({x, y, width, height});
+    return new Box({ x, y, width, height });
   }
   rescale(s) {
     const scaleX = isDimensions(s) ? s.width : s;
@@ -472,7 +473,7 @@ var Box = class {
     });
   }
   clipAtImageBorders(imgWidth, imgHeight) {
-    const {x, y, right, bottom} = this;
+    const { x, y, right, bottom } = this;
     const clippedX = Math.max(x, 0);
     const clippedY = Math.max(y, 0);
     const newWidth = right - clippedX;
@@ -487,7 +488,7 @@ var Box = class {
     }).floor();
   }
   shift(sx, sy) {
-    const {width, height} = this;
+    const { width, height } = this;
     const x = this.x + sx;
     const y = this.y + sy;
     return new Box({
@@ -593,7 +594,7 @@ var ObjectDetection = class {
     return new Box(this._box).rescale(this.imageDims.reverse());
   }
   forSize(width, height) {
-    return new ObjectDetection(this.score, this.classScore, this.className, this.relativeBox, {width, height});
+    return new ObjectDetection(this.score, this.classScore, this.className, this.relativeBox, { width, height });
   }
 };
 
@@ -603,7 +604,7 @@ var FaceDetection = class extends ObjectDetection {
     super(score, score, "", relativeBox, imageDims);
   }
   forSize(width, height) {
-    const {score, relativeBox, imageDims} = super.forSize(width, height);
+    const { score, relativeBox, imageDims } = super.forSize(width, height);
     return new FaceDetection(score, relativeBox, imageDims);
   }
 };
@@ -629,7 +630,7 @@ function minBbox(pts) {
 
 // src/ops/nonMaxSuppression.ts
 function nonMaxSuppression(boxes, scores, iouThreshold, isIOU = true) {
-  let indicesSortedByScore = scores.map((score, boxIndex) => ({score, boxIndex})).sort((c1, c2) => c1.score - c2.score).map((c) => c.boxIndex);
+  let indicesSortedByScore = scores.map((score, boxIndex) => ({ score, boxIndex })).sort((c1, c2) => c1.score - c2.score).map((c) => c.boxIndex);
   const pick = [];
   while (indicesSortedByScore.length > 0) {
     const curr = indicesSortedByScore.pop();
@@ -726,7 +727,7 @@ var relY = 0.43;
 var relScale = 0.45;
 var FaceLandmarks = class {
   constructor(relativeFaceLandmarkPositions, imgDims, shift = new Point(0, 0)) {
-    const {width, height} = imgDims;
+    const { width, height } = imgDims;
     this._imgDims = new Dimensions(width, height);
     this._shift = shift;
     this._positions = relativeFaceLandmarkPositions.map((pt) => pt.mul(new Point(width, height)).add(shift));
@@ -747,7 +748,7 @@ var FaceLandmarks = class {
     return this._positions.map((pt) => pt.sub(this._shift).div(new Point(this.imageWidth, this.imageHeight)));
   }
   forSize(width, height) {
-    return new this.constructor(this.relativePositions, {width, height});
+    return new this.constructor(this.relativePositions, { width, height });
   }
   shiftBy(x, y) {
     return new this.constructor(this.relativePositions, this._imgDims, new Point(x, y));
@@ -760,7 +761,7 @@ var FaceLandmarks = class {
       const box = detection instanceof FaceDetection ? detection.box.floor() : new Box(detection);
       return this.shiftBy(box.x, box.y).align(null, options);
     }
-    const {useDlibAlignment, minBoxPadding} = {useDlibAlignment: false, minBoxPadding: 0.2, ...options};
+    const { useDlibAlignment, minBoxPadding } = { useDlibAlignment: false, minBoxPadding: 0.2, ...options };
     if (useDlibAlignment) {
       return this.alignDlib();
     }
@@ -920,8 +921,8 @@ function isWithFaceDetection(obj) {
   return obj.detection instanceof FaceDetection;
 }
 function extendWithFaceDetection(sourceObj, detection) {
-  const extension = {detection};
-  return {...sourceObj, ...extension};
+  const extension = { detection };
+  return { ...sourceObj, ...extension };
 }
 
 // src/env/createBrowserEnv.ts
@@ -940,6 +941,7 @@ function createBrowserEnv() {
     Video: HTMLVideoElement,
     createCanvasElement: () => document.createElement("canvas"),
     createImageElement: () => document.createElement("img"),
+    createVideoElement: () => document.createElement("video"),
     fetch,
     readFile
   };
@@ -969,6 +971,7 @@ function createFileSystem(fs) {
 function createNodejsEnv() {
   const Canvas = global["Canvas"] || global.HTMLCanvasElement;
   const Image = global.Image || global.HTMLImageElement;
+  const Video = global["Video"] || global.HTMLVideoElement;
   const createCanvasElement = () => {
     if (Canvas)
       return new Canvas();
@@ -978,6 +981,11 @@ function createNodejsEnv() {
     if (Image)
       return new Image();
     throw new Error("createImageElement - missing Image implementation for nodejs environment");
+  };
+  const createVideoElement = () => {
+    if (Video)
+      return new Video();
+    throw new Error("createVideoElement - missing Video implementation for nodejs environment");
   };
   const fetch = global.fetch;
   const fileSystem = createFileSystem();
@@ -994,6 +1002,7 @@ function createNodejsEnv() {
     },
     createCanvasElement,
     createImageElement,
+    createVideoElement,
     fetch,
     ...fileSystem
   };
@@ -1034,7 +1043,7 @@ function monkeyPatch(env2) {
   if (!environment) {
     throw new Error("monkeyPatch - environment is not defined, check isNodejs() and isBrowser()");
   }
-  const {Canvas = environment.Canvas, Image = environment.Image} = env2;
+  const { Canvas = environment.Canvas, Image = environment.Image } = env2;
   environment.Canvas = Canvas;
   environment.Image = Image;
   environment.createCanvasElement = env2.createCanvasElement || (() => new Canvas());
@@ -1067,7 +1076,7 @@ function resolveInput(arg) {
 
 // src/dom/getContext2dOrThrow.ts
 function getContext2dOrThrow(canvasArg) {
-  const {Canvas, CanvasRenderingContext2D: CanvasRenderingContext2D2} = env.getEnv();
+  const { Canvas, CanvasRenderingContext2D: CanvasRenderingContext2D2 } = env.getEnv();
   if (canvasArg instanceof CanvasRenderingContext2D2) {
     return canvasArg;
   }
@@ -1115,15 +1124,15 @@ var DrawTextField = class {
     this.options = new DrawTextFieldOptions(options);
   }
   measureWidth(ctx) {
-    const {padding} = this.options;
+    const { padding } = this.options;
     return this.text.map((l) => ctx.measureText(l).width).reduce((w0, w1) => w0 < w1 ? w1 : w0, 0) + 2 * padding;
   }
   measureHeight() {
-    const {fontSize, padding} = this.options;
+    const { fontSize, padding } = this.options;
     return this.text.length * fontSize + 2 * padding;
   }
   getUpperLeft(ctx, canvasDims) {
-    const {anchorPosition} = this.options;
+    const { anchorPosition } = this.options;
     const isShiftLeft = anchorPosition === AnchorPosition.BOTTOM_RIGHT || anchorPosition === AnchorPosition.TOP_RIGHT;
     const isShiftTop = anchorPosition === AnchorPosition.BOTTOM_LEFT || anchorPosition === AnchorPosition.BOTTOM_RIGHT;
     const textFieldWidth = this.measureWidth(ctx);
@@ -1131,12 +1140,12 @@ var DrawTextField = class {
     const x = isShiftLeft ? this.anchor.x - textFieldWidth : this.anchor.x;
     const y = isShiftTop ? this.anchor.y - textFieldHeight : this.anchor.y;
     if (canvasDims) {
-      const {width, height} = canvasDims;
+      const { width, height } = canvasDims;
       const newX = Math.max(Math.min(x, width - textFieldWidth), 0);
       const newY = Math.max(Math.min(y, height - textFieldHeight), 0);
-      return {x: newX, y: newY};
+      return { x: newX, y: newY };
     }
-    return {x, y};
+    return { x, y };
   }
   draw(canvasArg) {
     const canvas = resolveInput(canvasArg);
@@ -1179,7 +1188,7 @@ var DrawBoxOptions = class {
       anchorPosition: AnchorPosition.BOTTOM_LEFT,
       backgroundColor: this.boxColor
     };
-    this.drawLabelOptions = new DrawTextFieldOptions({...defaultDrawLabelOptions, ...drawLabelOptions});
+    this.drawLabelOptions = new DrawTextFieldOptions({ ...defaultDrawLabelOptions, ...drawLabelOptions });
   }
 };
 var DrawBox = class {
@@ -1189,7 +1198,7 @@ var DrawBox = class {
   }
   draw(canvasArg) {
     const ctx = getContext2dOrThrow(canvasArg);
-    const {boxColor, lineWidth} = this.options;
+    const { boxColor, lineWidth } = this.options;
     const {
       x,
       y,
@@ -1199,9 +1208,9 @@ var DrawBox = class {
     ctx.strokeStyle = boxColor;
     ctx.lineWidth = lineWidth;
     ctx.strokeRect(x, y, width, height);
-    const {label} = this.options;
+    const { label } = this.options;
     if (label) {
-      new DrawTextField([label], {x: x - lineWidth / 2, y}, this.options.drawLabelOptions).draw(canvasArg);
+      new DrawTextField([label], { x: x - lineWidth / 2, y }, this.options.drawLabelOptions).draw(canvasArg);
     }
   }
 };
@@ -1213,7 +1222,7 @@ function drawDetections(canvasArg, detections) {
     const score = det instanceof FaceDetection ? det.score : isWithFaceDetection(det) ? det.detection.score : void 0;
     const box = det instanceof FaceDetection ? det.box : isWithFaceDetection(det) ? det.detection.box : new Box(det);
     const label = score ? `${round(score)}` : void 0;
-    new DrawBox(box, {label}).draw(canvasArg);
+    new DrawBox(box, { label }).draw(canvasArg);
   });
 }
 
@@ -1222,7 +1231,7 @@ var tf18 = __toModule(require_tfjs_esm());
 
 // src/dom/isMediaLoaded.ts
 function isMediaLoaded(media) {
-  const {Image, Video} = env.getEnv();
+  const { Image, Video } = env.getEnv();
   return media instanceof Image && media.complete || media instanceof Video && media.readyState >= 3;
 }
 
@@ -1271,7 +1280,7 @@ function bufferToImage(buf) {
 
 // src/dom/getMediaDimensions.ts
 function getMediaDimensions(input) {
-  const {Image, Video} = env.getEnv();
+  const { Image, Video } = env.getEnv();
   if (input instanceof Image) {
     return new Dimensions(input.naturalWidth, input.naturalHeight);
   }
@@ -1282,20 +1291,20 @@ function getMediaDimensions(input) {
 }
 
 // src/dom/createCanvas.ts
-function createCanvas({width, height}) {
-  const {createCanvasElement} = env.getEnv();
+function createCanvas({ width, height }) {
+  const { createCanvasElement } = env.getEnv();
   const canvas = createCanvasElement();
   canvas.width = width;
   canvas.height = height;
   return canvas;
 }
 function createCanvasFromMedia(media, dims) {
-  const {ImageData: ImageData2} = env.getEnv();
+  const { ImageData: ImageData2 } = env.getEnv();
   if (!(media instanceof ImageData2) && !isMediaLoaded(media)) {
     throw new Error("createCanvasFromMedia - media has not finished loading yet");
   }
-  const {width, height} = dims || getMediaDimensions(media);
-  const canvas = createCanvas({width, height});
+  const { width, height } = dims || getMediaDimensions(media);
+  const canvas = createCanvas({ width, height });
   if (media instanceof ImageData2) {
     getContext2dOrThrow(canvas).putImageData(media, 0, 0);
   } else {
@@ -1317,7 +1326,7 @@ async function imageTensorToCanvas(imgTensor, canvas) {
 
 // src/dom/isMediaElement.ts
 function isMediaElement(input) {
-  const {Image, Canvas, Video} = env.getEnv();
+  const { Image, Canvas, Video } = env.getEnv();
   return input instanceof Image || input instanceof Canvas || input instanceof Video;
 }
 
@@ -1326,17 +1335,17 @@ var tf5 = __toModule(require_tfjs_esm());
 
 // src/dom/imageToSquare.ts
 function imageToSquare(input, inputSize, centerImage = false) {
-  const {Image, Canvas} = env.getEnv();
+  const { Image, Canvas } = env.getEnv();
   if (!(input instanceof Image || input instanceof Canvas)) {
     throw new Error("imageToSquare - expected arg0 to be HTMLImageElement | HTMLCanvasElement");
   }
   if (inputSize <= 0)
-    return createCanvas({width: 1, height: 1});
+    return createCanvas({ width: 1, height: 1 });
   const dims = getMediaDimensions(input);
   const scale2 = inputSize / Math.max(dims.height, dims.width);
   const width = scale2 * dims.width;
   const height = scale2 * dims.height;
-  const targetCanvas = createCanvas({width: inputSize, height: inputSize});
+  const targetCanvas = createCanvas({ width: inputSize, height: inputSize });
   const inputCanvas = input instanceof Canvas ? input : createCanvasFromMedia(input);
   const offset = Math.abs(width - height) / 2;
   const dx = centerImage && width < height ? offset : 0;
@@ -1417,7 +1426,7 @@ var NetInput = class {
     }
     const width = this.getInputWidth(batchIdx);
     const height = this.getInputHeight(batchIdx);
-    return computeReshapedDimensions({width, height}, this.inputSize);
+    return computeReshapedDimensions({ width, height }, this.inputSize);
   }
   toBatchTensor(inputSize, isCenterInputs = true) {
     this._inputSize = inputSize;
@@ -1470,7 +1479,7 @@ async function toNetInput(inputs) {
 
 // src/dom/extractFaces.ts
 async function extractFaces(input, detections) {
-  const {Canvas} = env.getEnv();
+  const { Canvas } = env.getEnv();
   let canvas = input;
   if (!(input instanceof Canvas)) {
     const netInput = await toNetInput(input);
@@ -1481,8 +1490,8 @@ async function extractFaces(input, detections) {
   }
   const ctx = getContext2dOrThrow(canvas);
   const boxes = detections.map((det) => det instanceof FaceDetection ? det.forSize(canvas.width, canvas.height).box.floor() : det).map((box) => box.clipAtImageBorders(canvas.width, canvas.height));
-  return boxes.map(({x, y, width, height}) => {
-    const faceImg = createCanvas({width, height});
+  return boxes.map(({ x, y, width, height }) => {
+    const faceImg = createCanvas({ width, height });
     if (width > 0 && height > 0)
       getContext2dOrThrow(faceImg).putImageData(ctx.getImageData(x, y, width, height), 0, 0);
     return faceImg;
@@ -1513,7 +1522,7 @@ async function extractFaceTensors(imageTensor, detections) {
 
 // src/dom/fetchOrThrow.ts
 async function fetchOrThrow(url, init) {
-  const {fetch} = env.getEnv();
+  const { fetch } = env.getEnv();
   const res = await fetch(url, init);
   if (!(res.status < 400)) {
     throw new Error(`failed to fetch: (${res.status}) ${res.statusText}, from url: ${res.url}`);
@@ -1539,6 +1548,31 @@ async function fetchJson(uri) {
 // src/dom/fetchNetWeights.ts
 async function fetchNetWeights(uri) {
   return new Float32Array(await (await fetchOrThrow(uri)).arrayBuffer());
+}
+
+// src/dom/bufferToVideo.ts
+function bufferToVideo(buf) {
+  return new Promise((resolve, reject) => {
+    if (!(buf instanceof Blob))
+      reject(new Error("bufferToVideo - expected buf to be of type: Blob"));
+    const video = env.getEnv().createVideoElement();
+    video.oncanplay = () => resolve(video);
+    video.onerror = reject;
+    video.playsInline = true;
+    video.autoplay = true;
+    video.muted = true;
+    video.src = URL.createObjectURL(buf);
+  });
+}
+
+// src/dom/fetchVideo.ts
+async function fetchVideo(uri) {
+  const res = await fetchOrThrow(uri);
+  const blob = await res.blob();
+  if (!blob.type.startsWith("video/")) {
+    throw new Error(`fetchVideo - expected blob type to be of type video/*, instead have: ${blob.type}, for url: ${res.url}`);
+  }
+  return bufferToVideo(blob);
 }
 
 // src/dom/loadWeightMap.ts
@@ -1573,17 +1607,17 @@ function getModelUris(uri, defaultModelName) {
 
 // src/dom/loadWeightMap.ts
 async function loadWeightMap(uri, defaultModelName) {
-  const {manifestUri, modelBaseUri} = getModelUris(uri, defaultModelName);
+  const { manifestUri, modelBaseUri } = getModelUris(uri, defaultModelName);
   const manifest = await fetchJson(manifestUri);
   return tf7.io.loadWeights(manifest, modelBaseUri);
 }
 
 // src/dom/matchDimensions.ts
 function matchDimensions(input, reference, useMediaDimensions = false) {
-  const {width, height} = useMediaDimensions ? getMediaDimensions(reference) : reference;
+  const { width, height } = useMediaDimensions ? getMediaDimensions(reference) : reference;
   input.width = width;
   input.height = height;
-  return {width, height};
+  return { width, height };
 }
 
 // src/faceFeatureExtractor/FaceFeatureExtractor.ts
@@ -1607,16 +1641,16 @@ var NeuralNetwork = class {
     return !!this.params;
   }
   getParamFromPath(paramPath) {
-    const {obj, objProp} = this.traversePropertyPath(paramPath);
+    const { obj, objProp } = this.traversePropertyPath(paramPath);
     return obj[objProp];
   }
   reassignParamFromPath(paramPath, tensor2) {
-    const {obj, objProp} = this.traversePropertyPath(paramPath);
+    const { obj, objProp } = this.traversePropertyPath(paramPath);
     obj[objProp].dispose();
     obj[objProp] = tensor2;
   }
   getParamList() {
-    return this._paramMappings.map(({paramPath}) => ({
+    return this._paramMappings.map(({ paramPath }) => ({
       path: paramPath,
       tensor: this.getParamFromPath(paramPath)
     }));
@@ -1628,12 +1662,12 @@ var NeuralNetwork = class {
     return this.getParamList().filter((param) => !(param.tensor instanceof tf8.Variable));
   }
   variable() {
-    this.getFrozenParams().forEach(({path, tensor: tensor2}) => {
+    this.getFrozenParams().forEach(({ path, tensor: tensor2 }) => {
       this.reassignParamFromPath(path, tensor2.variable());
     });
   }
   freeze() {
-    this.getTrainableParams().forEach(({path, tensor: variable}) => {
+    this.getTrainableParams().forEach(({ path, tensor: variable }) => {
       const tensor2 = tf8.tensor(variable.dataSync());
       variable.dispose();
       this.reassignParamFromPath(path, tensor2);
@@ -1649,7 +1683,7 @@ var NeuralNetwork = class {
     this._params = void 0;
   }
   serializeParams() {
-    return new Float32Array(this.getParamList().map(({tensor: tensor2}) => Array.from(tensor2.dataSync())).reduce((flat, arr) => flat.concat(arr)));
+    return new Float32Array(this.getParamList().map(({ tensor: tensor2 }) => Array.from(tensor2.dataSync())).reduce((flat, arr) => flat.concat(arr)));
   }
   async load(weightsOrUrl) {
     if (weightsOrUrl instanceof Float32Array) {
@@ -1669,8 +1703,8 @@ var NeuralNetwork = class {
     if (filePath && typeof filePath !== "string") {
       throw new Error(`${this._name}.loadFromDisk - expected model file path`);
     }
-    const {readFile} = env.getEnv();
-    const {manifestUri, modelBaseUri} = getModelUris(filePath, this.getDefaultModelName());
+    const { readFile } = env.getEnv();
+    const { manifestUri, modelBaseUri } = getModelUris(filePath, this.getDefaultModelName());
     const fetchWeightsFromDisk = (filePaths) => Promise.all(filePaths.map((fp) => readFile(fp).then((buf) => buf.buffer)));
     const loadWeights = tf8.io.weightsLoaderFactory(fetchWeightsFromDisk);
     const manifest = JSON.parse((await readFile(manifestUri)).toString());
@@ -1678,12 +1712,12 @@ var NeuralNetwork = class {
     this.loadFromWeightMap(weightMap);
   }
   loadFromWeightMap(weightMap) {
-    const {paramMappings, params} = this.extractParamsFromWeightMap(weightMap);
+    const { paramMappings, params } = this.extractParamsFromWeightMap(weightMap);
     this._paramMappings = paramMappings;
     this._params = params;
   }
   extractWeights(weights) {
-    const {paramMappings, params} = this.extractParams(weights);
+    const { paramMappings, params } = this.extractParams(weights);
     this._paramMappings = paramMappings;
     this._params = params;
   }
@@ -1695,13 +1729,13 @@ var NeuralNetwork = class {
       if (!res.nextObj.hasOwnProperty(objProp2)) {
         throw new Error(`traversePropertyPath - object does not have property ${objProp2}, for path ${paramPath}`);
       }
-      return {obj: res.nextObj, objProp: objProp2, nextObj: res.nextObj[objProp2]};
-    }, {nextObj: this.params});
-    const {obj, objProp} = result;
+      return { obj: res.nextObj, objProp: objProp2, nextObj: res.nextObj[objProp2] };
+    }, { nextObj: this.params });
+    const { obj, objProp } = result;
     if (!obj || !objProp || !(obj[objProp] instanceof tf8.Tensor)) {
       throw new Error(`traversePropertyPath - parameter is not a tensor, for path ${paramPath}`);
     }
-    return {obj, objProp};
+    return { obj, objProp };
   }
 };
 
@@ -1764,8 +1798,8 @@ function extractConvParamsFactory(extractWeights, paramMappings) {
   return (channelsIn, channelsOut, filterSize, mappedPrefix) => {
     const filters = tf12.tensor4d(extractWeights(channelsIn * channelsOut * filterSize * filterSize), [filterSize, filterSize, channelsIn, channelsOut]);
     const bias = tf12.tensor1d(extractWeights(channelsOut));
-    paramMappings.push({paramPath: `${mappedPrefix}/filters`}, {paramPath: `${mappedPrefix}/bias`});
-    return {filters, bias};
+    paramMappings.push({ paramPath: `${mappedPrefix}/filters` }, { paramPath: `${mappedPrefix}/bias` });
+    return { filters, bias };
   };
 }
 
@@ -1775,7 +1809,7 @@ function extractFCParamsFactory(extractWeights, paramMappings) {
   return (channelsIn, channelsOut, mappedPrefix) => {
     const fc_weights = tf13.tensor2d(extractWeights(channelsIn * channelsOut), [channelsIn, channelsOut]);
     const fc_bias = tf13.tensor1d(extractWeights(channelsOut));
-    paramMappings.push({paramPath: `${mappedPrefix}/weights`}, {paramPath: `${mappedPrefix}/bias`});
+    paramMappings.push({ paramPath: `${mappedPrefix}/weights` }, { paramPath: `${mappedPrefix}/bias` });
     return {
       weights: fc_weights,
       bias: fc_bias
@@ -1801,7 +1835,7 @@ function extractSeparableConvParamsFactory(extractWeights, paramMappings) {
     const depthwise_filter = tf14.tensor4d(extractWeights(3 * 3 * channelsIn), [3, 3, channelsIn, 1]);
     const pointwise_filter = tf14.tensor4d(extractWeights(channelsIn * channelsOut), [1, 1, channelsIn, channelsOut]);
     const bias = tf14.tensor1d(extractWeights(channelsOut));
-    paramMappings.push({paramPath: `${mappedPrefix}/depthwise_filter`}, {paramPath: `${mappedPrefix}/pointwise_filter`}, {paramPath: `${mappedPrefix}/bias`});
+    paramMappings.push({ paramPath: `${mappedPrefix}/depthwise_filter` }, { paramPath: `${mappedPrefix}/pointwise_filter` }, { paramPath: `${mappedPrefix}/bias` });
     return new SeparableConvParams(depthwise_filter, pointwise_filter, bias);
   };
 }
@@ -1821,7 +1855,7 @@ function extractWeightEntryFactory(weightMap, paramMappings) {
     if (!isTensor(tensor2, paramRank)) {
       throw new Error(`expected weightMap[${originalPath}] to be a Tensor${paramRank}D, instead have ${tensor2}`);
     }
-    paramMappings.push({originalPath, paramPath: mappedPath || originalPath});
+    paramMappings.push({ originalPath, paramPath: mappedPath || originalPath });
     return tensor2;
   };
 }
@@ -1851,10 +1885,10 @@ function extractorsFactory(extractWeights, paramMappings) {
     const conv0 = isFirstLayer ? extractConvParams(channelsIn, channelsOut, 3, `${mappedPrefix}/conv0`) : extractSeparableConvParams(channelsIn, channelsOut, `${mappedPrefix}/conv0`);
     const conv1 = extractSeparableConvParams(channelsOut, channelsOut, `${mappedPrefix}/conv1`);
     const conv22 = extractSeparableConvParams(channelsOut, channelsOut, `${mappedPrefix}/conv2`);
-    return {conv0, conv1, conv2: conv22};
+    return { conv0, conv1, conv2: conv22 };
   }
   function extractDenseBlock4Params(channelsIn, channelsOut, mappedPrefix, isFirstLayer = false) {
-    const {conv0, conv1, conv2: conv22} = extractDenseBlock3Params(channelsIn, channelsOut, mappedPrefix, isFirstLayer);
+    const { conv0, conv1, conv2: conv22 } = extractDenseBlock3Params(channelsIn, channelsOut, mappedPrefix, isFirstLayer);
     const conv3 = extractSeparableConvParams(channelsOut, channelsOut, `${mappedPrefix}/conv3`);
     return {
       conv0,
@@ -1902,7 +1936,7 @@ function loadConvParamsFactory(extractWeightEntry) {
   return (prefix) => {
     const filters = extractWeightEntry(`${prefix}/filters`, 4);
     const bias = extractWeightEntry(`${prefix}/bias`, 1);
-    return {filters, bias};
+    return { filters, bias };
   };
 }
 
@@ -1915,7 +1949,7 @@ function loadParamsFactory(weightMap, paramMappings) {
     const conv0 = isFirstLayer ? extractConvParams(`${prefix}/conv0`) : extractSeparableConvParams(`${prefix}/conv0`);
     const conv1 = extractSeparableConvParams(`${prefix}/conv1`);
     const conv22 = extractSeparableConvParams(`${prefix}/conv2`);
-    return {conv0, conv1, conv2: conv22};
+    return { conv0, conv1, conv2: conv22 };
   }
   function extractDenseBlock4Params(prefix, isFirstLayer = false) {
     const conv0 = isFirstLayer ? extractConvParams(`${prefix}/conv0`) : extractSeparableConvParams(`${prefix}/conv0`);
@@ -1948,7 +1982,7 @@ function extractParamsFromWeightMap(weightMap) {
     dense3: extractDenseBlock4Params("dense3")
   };
   disposeUnusedWeightTensors(weightMap, paramMappings);
-  return {params, paramMappings};
+  return { params, paramMappings };
 }
 
 // src/faceFeatureExtractor/FaceFeatureExtractor.ts
@@ -1957,7 +1991,7 @@ var FaceFeatureExtractor = class extends NeuralNetwork {
     super("FaceFeatureExtractor");
   }
   forwardInput(input) {
-    const {params} = this;
+    const { params } = this;
     if (!params) {
       throw new Error("FaceFeatureExtractor - load model before inference");
     }
@@ -2010,7 +2044,7 @@ function extractParams2(weights, channelsIn, channelsOut) {
   }
   return {
     paramMappings,
-    params: {fc}
+    params: { fc }
   };
 }
 
@@ -2021,13 +2055,13 @@ function extractParamsFromWeightMap2(weightMap) {
   function extractFcParams(prefix) {
     const weights = extractWeightEntry(`${prefix}/weights`, 2);
     const bias = extractWeightEntry(`${prefix}/bias`, 1);
-    return {weights, bias};
+    return { weights, bias };
   }
   const params = {
     fc: extractFcParams("fc")
   };
   disposeUnusedWeightTensors(weightMap, paramMappings);
-  return {params, paramMappings};
+  return { params, paramMappings };
 }
 
 // src/faceProcessor/util.ts
@@ -2038,7 +2072,7 @@ function seperateWeightMaps(weightMap) {
     const map = key.startsWith("fc") ? classifierMap : featureExtractorMap;
     map[key] = weightMap[key];
   });
-  return {featureExtractorMap, classifierMap};
+  return { featureExtractorMap, classifierMap };
 }
 
 // src/faceProcessor/FaceProcessor.ts
@@ -2051,7 +2085,7 @@ var FaceProcessor = class extends NeuralNetwork {
     return this._faceFeatureExtractor;
   }
   runNet(input) {
-    const {params} = this;
+    const { params } = this;
     if (!params) {
       throw new Error(`${this._name} - load model before inference`);
     }
@@ -2065,7 +2099,7 @@ var FaceProcessor = class extends NeuralNetwork {
     super.dispose(throwOnRedispose);
   }
   loadClassifierParams(weights) {
-    const {params, paramMappings} = this.extractClassifierParams(weights);
+    const { params, paramMappings } = this.extractClassifierParams(weights);
     this._params = params;
     this._paramMappings = paramMappings;
   }
@@ -2073,7 +2107,7 @@ var FaceProcessor = class extends NeuralNetwork {
     return extractParams2(weights, this.getClassifierChannelsIn(), this.getClassifierChannelsOut());
   }
   extractParamsFromWeightMap(weightMap) {
-    const {featureExtractorMap, classifierMap} = seperateWeightMaps(weightMap);
+    const { featureExtractorMap, classifierMap } = seperateWeightMaps(weightMap);
     this.faceFeatureExtractor.loadFromWeightMap(featureExtractorMap);
     return extractParamsFromWeightMap2(classifierMap);
   }
@@ -2100,7 +2134,7 @@ var FaceExpressions = class {
     });
   }
   asSortedArray() {
-    return FACE_EXPRESSION_LABELS.map((expression) => ({expression, probability: this[expression]})).sort((e0, e1) => e1.probability - e0.probability);
+    return FACE_EXPRESSION_LABELS.map((expression) => ({ expression, probability: this[expression] })).sort((e0, e1) => e1.probability - e0.probability);
   }
 };
 
@@ -2143,8 +2177,8 @@ function isWithFaceExpressions(obj) {
   return obj.expressions instanceof FaceExpressions;
 }
 function extendWithFaceExpressions(sourceObj, expressions) {
-  const extension = {expressions};
-  return {...sourceObj, ...extension};
+  const extension = { expressions };
+  return { ...sourceObj, ...extension };
 }
 
 // src/draw/drawFaceExpressions.ts
@@ -2170,7 +2204,7 @@ function isWithFaceLandmarks(obj) {
 function calculateFaceAngle(mesh) {
   const radians = (a1, a2, b1, b2) => Math.atan2(b2 - a2, b1 - a1) % Math.PI;
   const degrees = (theta) => theta * 180 / Math.PI;
-  const angle = {roll: void 0, pitch: void 0, yaw: void 0};
+  const angle = { roll: void 0, pitch: void 0, yaw: void 0 };
   if (!mesh || !mesh._positions || mesh._positions.length !== 68)
     return angle;
   const pt = mesh._positions;
@@ -2182,10 +2216,10 @@ function calculateFaceAngle(mesh) {
   return angle;
 }
 function extendWithFaceLandmarks(sourceObj, unshiftedLandmarks) {
-  const {box: shift} = sourceObj.detection;
+  const { box: shift } = sourceObj.detection;
   const landmarks = unshiftedLandmarks.shiftBy(shift.x, shift.y);
   const rect = landmarks.align();
-  const {imageDims} = sourceObj.detection;
+  const { imageDims } = sourceObj.detection;
   const alignedRect = new FaceDetection(sourceObj.detection.score, rect.rescale(imageDims.reverse()), imageDims);
   const angle = calculateFaceAngle(unshiftedLandmarks);
   const extension = {
@@ -2194,7 +2228,7 @@ function extendWithFaceLandmarks(sourceObj, unshiftedLandmarks) {
     alignedRect,
     angle
   };
-  return {...sourceObj, ...extension};
+  return { ...sourceObj, ...extension };
 }
 
 // src/draw/DrawFaceLandmarks.ts
@@ -2266,7 +2300,7 @@ function drawFaceLandmarks(canvasArg, faceLandmarks) {
 }
 
 // package.json
-var version = "1.2.4";
+var version = "1.2.5";
 
 // src/ageGenderNet/AgeGenderNet.ts
 var tf20 = __toModule(require_tfjs_esm());
@@ -2282,13 +2316,13 @@ function extractorsFactory2(extractWeights, paramMappings) {
     const separable_conv0 = extractSeparableConvParams(channelsIn, channelsOut, `${mappedPrefix}/separable_conv0`);
     const separable_conv1 = extractSeparableConvParams(channelsOut, channelsOut, `${mappedPrefix}/separable_conv1`);
     const expansion_conv = extractConvParams(channelsIn, channelsOut, 1, `${mappedPrefix}/expansion_conv`);
-    return {separable_conv0, separable_conv1, expansion_conv};
+    return { separable_conv0, separable_conv1, expansion_conv };
   }
   function extractMainBlockParams(channels, mappedPrefix) {
     const separable_conv0 = extractSeparableConvParams(channels, channels, `${mappedPrefix}/separable_conv0`);
     const separable_conv1 = extractSeparableConvParams(channels, channels, `${mappedPrefix}/separable_conv1`);
     const separable_conv2 = extractSeparableConvParams(channels, channels, `${mappedPrefix}/separable_conv2`);
-    return {separable_conv0, separable_conv1, separable_conv2};
+    return { separable_conv0, separable_conv1, separable_conv2 };
   }
   return {
     extractConvParams,
@@ -2332,7 +2366,7 @@ function extractParams3(weights, numMainBlocks) {
   }
   return {
     paramMappings,
-    params: {entry_flow, middle_flow, exit_flow}
+    params: { entry_flow, middle_flow, exit_flow }
   };
 }
 
@@ -2345,13 +2379,13 @@ function loadParamsFactory2(weightMap, paramMappings) {
     const separable_conv0 = extractSeparableConvParams(`${mappedPrefix}/separable_conv0`);
     const separable_conv1 = extractSeparableConvParams(`${mappedPrefix}/separable_conv1`);
     const expansion_conv = extractConvParams(`${mappedPrefix}/expansion_conv`);
-    return {separable_conv0, separable_conv1, expansion_conv};
+    return { separable_conv0, separable_conv1, expansion_conv };
   }
   function extractMainBlockParams(mappedPrefix) {
     const separable_conv0 = extractSeparableConvParams(`${mappedPrefix}/separable_conv0`);
     const separable_conv1 = extractSeparableConvParams(`${mappedPrefix}/separable_conv1`);
     const separable_conv2 = extractSeparableConvParams(`${mappedPrefix}/separable_conv2`);
-    return {separable_conv0, separable_conv1, separable_conv2};
+    return { separable_conv0, separable_conv1, separable_conv2 };
   }
   return {
     extractConvParams,
@@ -2387,7 +2421,7 @@ function extractParamsFromWeightMap3(weightMap, numMainBlocks) {
     separable_conv: exit_flow_separable_conv
   };
   disposeUnusedWeightTensors(weightMap, paramMappings);
-  return {params: {entry_flow, middle_flow, exit_flow}, paramMappings};
+  return { params: { entry_flow, middle_flow, exit_flow }, paramMappings };
 }
 
 // src/xception/TinyXception.ts
@@ -2415,7 +2449,7 @@ var TinyXception = class extends NeuralNetwork {
     this._numMainBlocks = numMainBlocks;
   }
   forwardInput(input) {
-    const {params} = this;
+    const { params } = this;
     if (!params) {
       throw new Error("TinyXception - load model before inference");
     }
@@ -2463,7 +2497,7 @@ function extractParams4(weights) {
   }
   return {
     paramMappings,
-    params: {fc: {age, gender}}
+    params: { fc: { age, gender } }
   };
 }
 
@@ -2474,7 +2508,7 @@ function extractParamsFromWeightMap4(weightMap) {
   function extractFcParams(prefix) {
     const weights = extractWeightEntry(`${prefix}/weights`, 2);
     const bias = extractWeightEntry(`${prefix}/bias`, 1);
-    return {weights, bias};
+    return { weights, bias };
   }
   const params = {
     fc: {
@@ -2483,7 +2517,7 @@ function extractParamsFromWeightMap4(weightMap) {
     }
   };
   disposeUnusedWeightTensors(weightMap, paramMappings);
-  return {params, paramMappings};
+  return { params, paramMappings };
 }
 
 // src/ageGenderNet/types.ts
@@ -2503,7 +2537,7 @@ var AgeGenderNet = class extends NeuralNetwork {
     return this._faceFeatureExtractor;
   }
   runNet(input) {
-    const {params} = this;
+    const { params } = this;
     if (!params) {
       throw new Error(`${this._name} - load model before inference`);
     }
@@ -2512,13 +2546,13 @@ var AgeGenderNet = class extends NeuralNetwork {
       const pooled = tf20.avgPool(bottleneckFeatures, [7, 7], [2, 2], "valid").as2D(bottleneckFeatures.shape[0], -1);
       const age = fullyConnectedLayer(pooled, params.fc.age).as1D();
       const gender = fullyConnectedLayer(pooled, params.fc.gender);
-      return {age, gender};
+      return { age, gender };
     });
   }
   forwardInput(input) {
     return tf20.tidy(() => {
-      const {age, gender} = this.runNet(input);
-      return {age, gender: tf20.softmax(gender)};
+      const { age, gender } = this.runNet(input);
+      return { age, gender: tf20.softmax(gender) };
     });
   }
   async forward(input) {
@@ -2533,7 +2567,7 @@ var AgeGenderNet = class extends NeuralNetwork {
       ageTensor,
       genderTensor: genders[i]
     }));
-    const predictionsByBatch = await Promise.all(ageAndGenderTensors.map(async ({ageTensor, genderTensor}) => {
+    const predictionsByBatch = await Promise.all(ageAndGenderTensors.map(async ({ ageTensor, genderTensor }) => {
       const age = ageTensor.dataSync()[0];
       const probMale = genderTensor.dataSync()[0];
       const isMale = probMale > 0.5;
@@ -2541,7 +2575,7 @@ var AgeGenderNet = class extends NeuralNetwork {
       const genderProbability = isMale ? probMale : 1 - probMale;
       ageTensor.dispose();
       genderTensor.dispose();
-      return {age, gender, genderProbability};
+      return { age, gender, genderProbability };
     }));
     out.age.dispose();
     out.gender.dispose();
@@ -2555,7 +2589,7 @@ var AgeGenderNet = class extends NeuralNetwork {
     super.dispose(throwOnRedispose);
   }
   loadClassifierParams(weights) {
-    const {params, paramMappings} = this.extractClassifierParams(weights);
+    const { params, paramMappings } = this.extractClassifierParams(weights);
     this._params = params;
     this._paramMappings = paramMappings;
   }
@@ -2563,7 +2597,7 @@ var AgeGenderNet = class extends NeuralNetwork {
     return extractParams4(weights);
   }
   extractParamsFromWeightMap(weightMap) {
-    const {featureExtractorMap, classifierMap} = seperateWeightMaps(weightMap);
+    const { featureExtractorMap, classifierMap } = seperateWeightMaps(weightMap);
     this.faceFeatureExtractor.loadFromWeightMap(featureExtractorMap);
     return extractParamsFromWeightMap4(classifierMap);
   }
@@ -2580,7 +2614,7 @@ var AgeGenderNet = class extends NeuralNetwork {
 var tf21 = __toModule(require_tfjs_esm());
 var FaceLandmark68NetBase = class extends FaceProcessor {
   postProcess(output, inputSize, originalDimensions) {
-    const inputDimensions = originalDimensions.map(({width, height}) => {
+    const inputDimensions = originalDimensions.map(({ width, height }) => {
       const scale2 = inputSize / Math.max(height, width);
       return {
         width: width * scale2,
@@ -2591,7 +2625,7 @@ var FaceLandmark68NetBase = class extends FaceProcessor {
     return tf21.tidy(() => {
       const createInterleavedTensor = (fillX, fillY) => tf21.stack([tf21.fill([68], fillX, "float32"), tf21.fill([68], fillY, "float32")], 1).as2D(1, 136).as1D();
       const getPadding = (batchIdx, cond) => {
-        const {width, height} = inputDimensions[batchIdx];
+        const { width, height } = inputDimensions[batchIdx];
         return cond(width, height) ? Math.abs(width - height) / 2 : 0;
       };
       const getPaddingX = (batchIdx) => getPadding(batchIdx, (w, h) => w < h);
@@ -2603,7 +2637,7 @@ var FaceLandmark68NetBase = class extends FaceProcessor {
   forwardInput(input) {
     return tf21.tidy(() => {
       const out = this.runNet(input);
-      return this.postProcess(out, input.inputSize, input.inputDimensions.map(([height, width]) => ({height, width})));
+      return this.postProcess(out, input.inputSize, input.inputDimensions.map(([height, width]) => ({ height, width })));
     });
   }
   async forward(input) {
@@ -2657,7 +2691,7 @@ function extractParamsFromWeightMapTiny(weightMap) {
     dense2: extractDenseBlock3Params("dense2")
   };
   disposeUnusedWeightTensors(weightMap, paramMappings);
-  return {params, paramMappings};
+  return { params, paramMappings };
 }
 
 // src/faceFeatureExtractor/extractParamsTiny.ts
@@ -2678,7 +2712,7 @@ function extractParamsTiny(weights) {
   }
   return {
     paramMappings,
-    params: {dense0, dense1, dense2}
+    params: { dense0, dense1, dense2 }
   };
 }
 
@@ -2688,7 +2722,7 @@ var TinyFaceFeatureExtractor = class extends NeuralNetwork {
     super("TinyFaceFeatureExtractor");
   }
   forwardInput(input) {
-    const {params} = this;
+    const { params } = this;
     if (!params) {
       throw new Error("TinyFaceFeatureExtractor - load model before inference");
     }
@@ -2748,7 +2782,7 @@ function scale(x, params) {
 
 // src/faceRecognitionNet/convLayer.ts
 function convLayer2(x, params, strides, withRelu, padding = "same") {
-  const {filters, bias} = params.conv;
+  const { filters, bias } = params.conv;
   let out = tf24.conv2d(x, filters, strides, padding);
   out = tf24.add(out, bias);
   out = scale(out, params.scale);
@@ -2778,13 +2812,13 @@ function extractorsFactory3(extractWeights, paramMappings) {
   function extractConvParams(numFilterValues, numFilters, filterSize, mappedPrefix) {
     const filters = extractFilterValues(numFilterValues, numFilters, filterSize);
     const bias = tf25.tensor1d(extractWeights(numFilters));
-    paramMappings.push({paramPath: `${mappedPrefix}/filters`}, {paramPath: `${mappedPrefix}/bias`});
-    return {filters, bias};
+    paramMappings.push({ paramPath: `${mappedPrefix}/filters` }, { paramPath: `${mappedPrefix}/bias` });
+    return { filters, bias };
   }
   function extractScaleLayerParams(numWeights, mappedPrefix) {
     const weights = tf25.tensor1d(extractWeights(numWeights));
     const biases = tf25.tensor1d(extractWeights(numWeights));
-    paramMappings.push({paramPath: `${mappedPrefix}/weights`}, {paramPath: `${mappedPrefix}/biases`});
+    paramMappings.push({ paramPath: `${mappedPrefix}/weights` }, { paramPath: `${mappedPrefix}/biases` });
     return {
       weights,
       biases
@@ -2793,12 +2827,12 @@ function extractorsFactory3(extractWeights, paramMappings) {
   function extractConvLayerParams(numFilterValues, numFilters, filterSize, mappedPrefix) {
     const conv3 = extractConvParams(numFilterValues, numFilters, filterSize, `${mappedPrefix}/conv`);
     const scale2 = extractScaleLayerParams(numFilters, `${mappedPrefix}/scale`);
-    return {conv: conv3, scale: scale2};
+    return { conv: conv3, scale: scale2 };
   }
   function extractResidualLayerParams(numFilterValues, numFilters, filterSize, mappedPrefix, isDown = false) {
     const conv1 = extractConvLayerParams((isDown ? 0.5 : 1) * numFilterValues, numFilters, filterSize, `${mappedPrefix}/conv1`);
     const conv22 = extractConvLayerParams(numFilterValues, numFilters, filterSize, `${mappedPrefix}/conv2`);
-    return {conv1, conv2: conv22};
+    return { conv1, conv2: conv22 };
   }
   return {
     extractConvLayerParams,
@@ -2831,7 +2865,7 @@ function extractParams5(weights) {
   const conv256_2 = extractResidualLayerParams(589824, 256, 3, "conv256_2");
   const conv256_down_out = extractResidualLayerParams(589824, 256, 3, "conv256_down_out");
   const fc = tf25.tidy(() => tf25.transpose(tf25.tensor2d(extractWeights(256 * 128), [128, 256]), [1, 0]));
-  paramMappings.push({paramPath: "fc"});
+  paramMappings.push({ paramPath: "fc" });
   if (getRemainingWeights().length !== 0) {
     throw new Error(`weights remaing after extract: ${getRemainingWeights().length}`);
   }
@@ -2853,7 +2887,7 @@ function extractParams5(weights) {
     conv256_down_out,
     fc
   };
-  return {params, paramMappings};
+  return { params, paramMappings };
 }
 
 // src/faceRecognitionNet/extractParamsFromWeightMap.ts
@@ -2862,13 +2896,13 @@ function extractorsFactory4(weightMap, paramMappings) {
   function extractScaleLayerParams(prefix) {
     const weights = extractWeightEntry(`${prefix}/scale/weights`, 1);
     const biases = extractWeightEntry(`${prefix}/scale/biases`, 1);
-    return {weights, biases};
+    return { weights, biases };
   }
   function extractConvLayerParams(prefix) {
     const filters = extractWeightEntry(`${prefix}/conv/filters`, 4);
     const bias = extractWeightEntry(`${prefix}/conv/bias`, 1);
     const scale2 = extractScaleLayerParams(prefix);
-    return {conv: {filters, bias}, scale: scale2};
+    return { conv: { filters, bias }, scale: scale2 };
   }
   function extractResidualLayerParams(prefix) {
     return {
@@ -2902,8 +2936,8 @@ function extractParamsFromWeightMap5(weightMap) {
   const conv256_1 = extractResidualLayerParams("conv256_1");
   const conv256_2 = extractResidualLayerParams("conv256_2");
   const conv256_down_out = extractResidualLayerParams("conv256_down_out");
-  const {fc} = weightMap;
-  paramMappings.push({originalPath: "fc", paramPath: "fc"});
+  const { fc } = weightMap;
+  paramMappings.push({ originalPath: "fc", paramPath: "fc" });
   if (!isTensor2D(fc)) {
     throw new Error(`expected weightMap[fc] to be a Tensor2D, instead have ${fc}`);
   }
@@ -2926,7 +2960,7 @@ function extractParamsFromWeightMap5(weightMap) {
     fc
   };
   disposeUnusedWeightTensors(weightMap, paramMappings);
-  return {params, paramMappings};
+  return { params, paramMappings };
 }
 
 // src/faceRecognitionNet/residualLayer.ts
@@ -2967,7 +3001,7 @@ var FaceRecognitionNet = class extends NeuralNetwork {
     super("FaceRecognitionNet");
   }
   forwardInput(input) {
-    const {params} = this;
+    const { params } = this;
     if (!params) {
       throw new Error("FaceRecognitionNet - load model before inference");
     }
@@ -3029,8 +3063,8 @@ function createFaceRecognitionNet(weights) {
 
 // src/factories/WithFaceDescriptor.ts
 function extendWithFaceDescriptor(sourceObj, descriptor) {
-  const extension = {descriptor};
-  return {...sourceObj, ...extension};
+  const extension = { descriptor };
+  return { ...sourceObj, ...extension };
 }
 
 // src/factories/WithAge.ts
@@ -3038,8 +3072,8 @@ function isWithAge(obj) {
   return typeof obj.age === "number";
 }
 function extendWithAge(sourceObj, age) {
-  const extension = {age};
-  return {...sourceObj, ...extension};
+  const extension = { age };
+  return { ...sourceObj, ...extension };
 }
 
 // src/factories/WithGender.ts
@@ -3047,8 +3081,8 @@ function isWithGender(obj) {
   return (obj.gender === Gender.MALE || obj.gender === Gender.FEMALE) && isValidProbablitiy(obj.genderProbability);
 }
 function extendWithGender(sourceObj, gender, genderProbability) {
-  const extension = {gender, genderProbability};
-  return {...sourceObj, ...extension};
+  const extension = { gender, genderProbability };
+  return { ...sourceObj, ...extension };
 }
 
 // src/ssdMobilenetv1/SsdMobilenetv1.ts
@@ -3063,7 +3097,7 @@ function extractorsFactory5(extractWeights, paramMappings) {
     const batch_norm_offset = tf28.tensor1d(extractWeights(numChannels));
     const batch_norm_mean = tf28.tensor1d(extractWeights(numChannels));
     const batch_norm_variance = tf28.tensor1d(extractWeights(numChannels));
-    paramMappings.push({paramPath: `${mappedPrefix}/filters`}, {paramPath: `${mappedPrefix}/batch_norm_scale`}, {paramPath: `${mappedPrefix}/batch_norm_offset`}, {paramPath: `${mappedPrefix}/batch_norm_mean`}, {paramPath: `${mappedPrefix}/batch_norm_variance`});
+    paramMappings.push({ paramPath: `${mappedPrefix}/filters` }, { paramPath: `${mappedPrefix}/batch_norm_scale` }, { paramPath: `${mappedPrefix}/batch_norm_offset` }, { paramPath: `${mappedPrefix}/batch_norm_mean` }, { paramPath: `${mappedPrefix}/batch_norm_variance` });
     return {
       filters,
       batch_norm_scale,
@@ -3075,8 +3109,8 @@ function extractorsFactory5(extractWeights, paramMappings) {
   function extractConvParams(channelsIn, channelsOut, filterSize, mappedPrefix, isPointwiseConv) {
     const filters = tf28.tensor4d(extractWeights(channelsIn * channelsOut * filterSize * filterSize), [filterSize, filterSize, channelsIn, channelsOut]);
     const bias = tf28.tensor1d(extractWeights(channelsOut));
-    paramMappings.push({paramPath: `${mappedPrefix}/filters`}, {paramPath: `${mappedPrefix}/${isPointwiseConv ? "batch_norm_offset" : "bias"}`});
-    return {filters, bias};
+    paramMappings.push({ paramPath: `${mappedPrefix}/filters` }, { paramPath: `${mappedPrefix}/${isPointwiseConv ? "batch_norm_offset" : "bias"}` });
+    return { filters, bias };
   }
   function extractPointwiseConvParams(channelsIn, channelsOut, filterSize, mappedPrefix) {
     const {
@@ -3091,7 +3125,7 @@ function extractorsFactory5(extractWeights, paramMappings) {
   function extractConvPairParams(channelsIn, channelsOut, mappedPrefix) {
     const depthwise_conv = extractDepthwiseConvParams(channelsIn, `${mappedPrefix}/depthwise_conv`);
     const pointwise_conv = extractPointwiseConvParams(channelsIn, channelsOut, 1, `${mappedPrefix}/pointwise_conv`);
-    return {depthwise_conv, pointwise_conv};
+    return { depthwise_conv, pointwise_conv };
   }
   function extractMobilenetV1Params() {
     const conv_0 = extractPointwiseConvParams(3, 32, 3, "mobilenetv1/conv_0");
@@ -3208,7 +3242,7 @@ function extractParams6(weights) {
   const output_layer = {
     extra_dim
   };
-  paramMappings.push({paramPath: "output_layer/extra_dim"});
+  paramMappings.push({ paramPath: "output_layer/extra_dim" });
   if (getRemainingWeights().length !== 0) {
     throw new Error(`weights remaing after extract: ${getRemainingWeights().length}`);
   }
@@ -3228,7 +3262,7 @@ function extractorsFactory6(weightMap, paramMappings) {
   function extractPointwiseConvParams(prefix, idx, mappedPrefix) {
     const filters = extractWeightEntry(`${prefix}/Conv2d_${idx}_pointwise/weights`, 4, `${mappedPrefix}/filters`);
     const batch_norm_offset = extractWeightEntry(`${prefix}/Conv2d_${idx}_pointwise/convolution_bn_offset`, 1, `${mappedPrefix}/batch_norm_offset`);
-    return {filters, batch_norm_offset};
+    return { filters, batch_norm_offset };
   }
   function extractConvPairParams(idx) {
     const mappedPrefix = `mobilenetv1/conv_${idx}`;
@@ -3272,12 +3306,12 @@ function extractorsFactory6(weightMap, paramMappings) {
   function extractConvParams(prefix, mappedPrefix) {
     const filters = extractWeightEntry(`${prefix}/weights`, 4, `${mappedPrefix}/filters`);
     const bias = extractWeightEntry(`${prefix}/biases`, 1, `${mappedPrefix}/bias`);
-    return {filters, bias};
+    return { filters, bias };
   }
   function extractBoxPredictorParams(idx) {
     const box_encoding_predictor = extractConvParams(`Prediction/BoxPredictor_${idx}/BoxEncodingPredictor`, `prediction_layer/box_predictor_${idx}/box_encoding_predictor`);
     const class_predictor = extractConvParams(`Prediction/BoxPredictor_${idx}/ClassPredictor`, `prediction_layer/box_predictor_${idx}/class_predictor`);
-    return {box_encoding_predictor, class_predictor};
+    return { box_encoding_predictor, class_predictor };
   }
   function extractPredictionLayerParams() {
     return {
@@ -3309,7 +3343,7 @@ function extractParamsFromWeightMap6(weightMap) {
     extractPredictionLayerParams
   } = extractorsFactory6(weightMap, paramMappings);
   const extra_dim = weightMap["Output/extra_dim"];
-  paramMappings.push({originalPath: "Output/extra_dim", paramPath: "output_layer/extra_dim"});
+  paramMappings.push({ originalPath: "Output/extra_dim", paramPath: "output_layer/extra_dim" });
   if (!isTensor3D(extra_dim)) {
     throw new Error(`expected weightMap['Output/extra_dim'] to be a Tensor3D, instead have ${extra_dim}`);
   }
@@ -3321,7 +3355,7 @@ function extractParamsFromWeightMap6(weightMap) {
     }
   };
   disposeUnusedWeightTensors(weightMap, paramMappings);
-  return {params, paramMappings};
+  return { params, paramMappings };
 }
 
 // src/ssdMobilenetv1/mobileNetV1.ts
@@ -3411,7 +3445,7 @@ function IOU(boxes, i, j) {
 function nonMaxSuppression2(boxes, scores, maxOutputSize, iouThreshold, scoreThreshold) {
   const numBoxes = boxes.shape[0];
   const outputSize = Math.min(maxOutputSize, numBoxes);
-  const candidates = scores.map((score, boxIndex) => ({score, boxIndex})).filter((c) => c.score > scoreThreshold).sort((c1, c2) => c2.score - c1.score);
+  const candidates = scores.map((score, boxIndex) => ({ score, boxIndex })).filter((c) => c.score > scoreThreshold).sort((c1, c2) => c2.score - c1.score);
   const suppressFunc = (x) => x <= iouThreshold ? 1 : 0;
   const selected = [];
   candidates.forEach((c) => {
@@ -3445,10 +3479,10 @@ function getCenterCoordinatesAndSizesLayer(x) {
     tf31.add(vec[0], tf31.div(sizes[0], 2)),
     tf31.add(vec[1], tf31.div(sizes[1], 2))
   ];
-  return {sizes, centers};
+  return { sizes, centers };
 }
 function decodeBoxesLayer(x0, x1) {
-  const {sizes, centers} = getCenterCoordinatesAndSizesLayer(x0);
+  const { sizes, centers } = getCenterCoordinatesAndSizesLayer(x0);
   const vec = tf31.unstack(tf31.transpose(x1, [1, 0]));
   const div0_out = tf31.div(tf31.mul(tf31.exp(tf31.div(vec[2], 5)), sizes[0]), 2);
   const add0_out = tf31.add(tf31.mul(tf31.div(vec[0], 10), sizes[0]), centers[0]);
@@ -3471,7 +3505,7 @@ function outputLayer(boxPredictions, classPredictions, params) {
     scores = tf31.reshape(scores, [batchSize, scores.shape[1]]);
     const boxesByBatch = tf31.unstack(boxes);
     const scoresByBatch = tf31.unstack(scores);
-    return {boxes: boxesByBatch, scores: scoresByBatch};
+    return { boxes: boxesByBatch, scores: scoresByBatch };
   });
 }
 
@@ -3485,7 +3519,7 @@ function boxPredictionLayer(x, params) {
     const batchSize = x.shape[0];
     const boxPredictionEncoding = tf32.reshape(convLayer(x, params.box_encoding_predictor), [batchSize, -1, 1, 4]);
     const classPrediction = tf32.reshape(convLayer(x, params.class_predictor), [batchSize, -1, 3]);
-    return {boxPredictionEncoding, classPrediction};
+    return { boxPredictionEncoding, classPrediction };
   });
 }
 
@@ -3531,7 +3565,7 @@ function predictionLayer(x, conv11, params) {
 
 // src/ssdMobilenetv1/SsdMobilenetv1Options.ts
 var SsdMobilenetv1Options = class {
-  constructor({minConfidence, maxResults} = {}) {
+  constructor({ minConfidence, maxResults } = {}) {
     this._name = "SsdMobilenetv1Options";
     this._minConfidence = minConfidence || 0.5;
     this._maxResults = maxResults || 100;
@@ -3556,14 +3590,14 @@ var SsdMobilenetv1 = class extends NeuralNetwork {
     super("SsdMobilenetv1");
   }
   forwardInput(input) {
-    const {params} = this;
+    const { params } = this;
     if (!params)
       throw new Error("SsdMobilenetv1 - load model before inference");
     return tf34.tidy(() => {
       const batchTensor = tf34.cast(input.toBatchTensor(512, false), "float32");
       const x = tf34.sub(tf34.div(batchTensor, 127.5), 1);
       const features = mobileNetV1(x, params.mobilenetv1);
-      const {boxPredictions, classPredictions} = predictionLayer(features.out, features.conv11, params.prediction_layer);
+      const { boxPredictions, classPredictions } = predictionLayer(features.out, features.conv11, params.prediction_layer);
       return outputLayer(boxPredictions, classPredictions, params.output_layer);
     });
   }
@@ -3571,9 +3605,9 @@ var SsdMobilenetv1 = class extends NeuralNetwork {
     return this.forwardInput(await toNetInput(input));
   }
   async locateFaces(input, options = {}) {
-    const {maxResults, minConfidence} = new SsdMobilenetv1Options(options);
+    const { maxResults, minConfidence } = new SsdMobilenetv1Options(options);
     const netInput = await toNetInput(input);
-    const {boxes: _boxes, scores: _scores} = this.forwardInput(netInput);
+    const { boxes: _boxes, scores: _scores } = this.forwardInput(netInput);
     const boxes = _boxes[0];
     const scores = _scores[0];
     for (let i = 1; i < _boxes.length; i++) {
@@ -3597,7 +3631,7 @@ var SsdMobilenetv1 = class extends NeuralNetwork {
         Math.max(0, boxesData[idx][1]),
         Math.min(1, boxesData[idx][3])
       ].map((val) => val * padX);
-      return new FaceDetection(scoresData[idx], new Rect(left, top, right - left, bottom - top), {height: netInput.getInputHeight(0), width: netInput.getInputWidth(0)});
+      return new FaceDetection(scoresData[idx], new Rect(left, top, right - left, bottom - top), { height: netInput.getInputHeight(0), width: netInput.getInputWidth(0) });
     });
     boxes.dispose();
     scores.dispose();
@@ -3714,13 +3748,13 @@ function extractorsFactory7(extractWeights, paramMappings) {
   function extractBatchNormParams(size, mappedPrefix) {
     const sub6 = tf38.tensor1d(extractWeights(size));
     const truediv = tf38.tensor1d(extractWeights(size));
-    paramMappings.push({paramPath: `${mappedPrefix}/sub`}, {paramPath: `${mappedPrefix}/truediv`});
-    return {sub: sub6, truediv};
+    paramMappings.push({ paramPath: `${mappedPrefix}/sub` }, { paramPath: `${mappedPrefix}/truediv` });
+    return { sub: sub6, truediv };
   }
   function extractConvWithBatchNormParams(channelsIn, channelsOut, mappedPrefix) {
     const conv3 = extractConvParams(channelsIn, channelsOut, 3, `${mappedPrefix}/conv`);
     const bn = extractBatchNormParams(channelsOut, `${mappedPrefix}/bn`);
-    return {conv: conv3, bn};
+    return { conv: conv3, bn };
   }
   const extractSeparableConvParams = extractSeparableConvParamsFactory(extractWeights, paramMappings);
   return {
@@ -3789,7 +3823,7 @@ function extractParams7(weights, config, boxEncodingSize, filterSizes) {
   if (getRemainingWeights().length !== 0) {
     throw new Error(`weights remaing after extract: ${getRemainingWeights().length}`);
   }
-  return {params, paramMappings};
+  return { params, paramMappings };
 }
 
 // src/tinyYolov2/extractParamsFromWeightMap.ts
@@ -3798,17 +3832,17 @@ function extractorsFactory8(weightMap, paramMappings) {
   function extractBatchNormParams(prefix) {
     const sub6 = extractWeightEntry(`${prefix}/sub`, 1);
     const truediv = extractWeightEntry(`${prefix}/truediv`, 1);
-    return {sub: sub6, truediv};
+    return { sub: sub6, truediv };
   }
   function extractConvParams(prefix) {
     const filters = extractWeightEntry(`${prefix}/filters`, 4);
     const bias = extractWeightEntry(`${prefix}/bias`, 1);
-    return {filters, bias};
+    return { filters, bias };
   }
   function extractConvWithBatchNormParams(prefix) {
     const conv3 = extractConvParams(`${prefix}/conv`);
     const bn = extractBatchNormParams(`${prefix}/bn`);
-    return {conv: conv3, bn};
+    return { conv: conv3, bn };
   }
   const extractSeparableConvParams = loadSeparableConvParamsFactory(extractWeightEntry);
   return {
@@ -3852,12 +3886,12 @@ function extractParamsFromWeightMap7(weightMap, config) {
     };
   }
   disposeUnusedWeightTensors(weightMap, paramMappings);
-  return {params, paramMappings};
+  return { params, paramMappings };
 }
 
 // src/tinyYolov2/TinyYolov2Options.ts
 var TinyYolov2Options = class {
-  constructor({inputSize, scoreThreshold} = {}) {
+  constructor({ inputSize, scoreThreshold } = {}) {
     this._name = "TinyYolov2Options";
     this._inputSize = inputSize || 416;
     this._scoreThreshold = scoreThreshold || 0.5;
@@ -3927,7 +3961,7 @@ var _TinyYolov2Base = class extends NeuralNetwork {
     return convLayer(out, params.conv8, "valid", false);
   }
   forwardInput(input, inputSize) {
-    const {params} = this;
+    const { params } = this;
     if (!params) {
       throw new Error("TinyYolov2 - load model before inference");
     }
@@ -3942,7 +3976,7 @@ var _TinyYolov2Base = class extends NeuralNetwork {
     return this.forwardInput(await toNetInput(input), inputSize);
   }
   async detect(input, forwardParams = {}) {
-    const {inputSize, scoreThreshold} = new TinyYolov2Options(forwardParams);
+    const { inputSize, scoreThreshold } = new TinyYolov2Options(forwardParams);
     const netInput = await toNetInput(input);
     const out = await this.forwardInput(netInput, inputSize);
     const out0 = tf39.tidy(() => tf39.unstack(out)[0].expandDims());
@@ -3976,7 +4010,7 @@ var _TinyYolov2Base = class extends NeuralNetwork {
     return extractParams7(weights, this.config, this.boxEncodingSize, filterSizes);
   }
   async extractBoxes(outputTensor, inputBlobDimensions, scoreThreshold) {
-    const {width, height} = inputBlobDimensions;
+    const { width, height } = inputBlobDimensions;
     const inputSize = Math.max(width, height);
     const correctionFactorX = inputSize / width;
     const correctionFactorY = inputSize / height;
@@ -4003,8 +4037,8 @@ var _TinyYolov2Base = class extends NeuralNetwork {
             const heightLocal = Math.exp(boxesData[row][col][anchor][3]) * this.config.anchors[anchor].y / numCells * correctionFactorY;
             const x = ctX - widthLocal / 2;
             const y = ctY - heightLocal / 2;
-            const pos = {row, col, anchor};
-            const {classScore, label} = this.withClassScores ? await this.extractPredictedClass(classScoresTensor, pos) : {classScore: 1, label: 0};
+            const pos = { row, col, anchor };
+            const { classScore, label } = this.withClassScores ? await this.extractPredictedClass(classScoresTensor, pos) : { classScore: 1, label: 0 };
             results.push({
               box: new BoundingBox(x, y, x + widthLocal, y + heightLocal),
               score,
@@ -4022,7 +4056,7 @@ var _TinyYolov2Base = class extends NeuralNetwork {
     return results;
   }
   async extractPredictedClass(classesTensor, pos) {
-    const {row, col, anchor} = pos;
+    const { row, col, anchor } = pos;
     const classesData = await classesTensor.array();
     return Array(this.config.classes.length).fill(0).map((_, i) => classesData[row][col][anchor][i]).map((classScore, label) => ({
       classScore,
@@ -4058,7 +4092,7 @@ var TinyYolov2 = class extends TinyYolov2Base {
   }
   async locateFaces(input, forwardParams) {
     const objectDetections = await this.detect(input, forwardParams);
-    return objectDetections.map((det) => new FaceDetection(det.score, det.relativeBox, {width: det.imageWidth, height: det.imageHeight}));
+    return objectDetections.map((det) => new FaceDetection(det.score, det.relativeBox, { width: det.imageWidth, height: det.imageHeight }));
   }
   getDefaultModelName() {
     return this.withSeparableConvs ? DEFAULT_MODEL_NAME_SEPARABLE_CONV : DEFAULT_MODEL_NAME;
@@ -4098,7 +4132,7 @@ var tf41 = __toModule(require_tfjs_esm());
 
 // src/globalApi/extractFacesAndComputeResults.ts
 var tf40 = __toModule(require_tfjs_esm());
-async function extractAllFacesAndComputeResults(parentResults, input, computeResults, extractedFaces, getRectForAlignment = ({alignedRect}) => alignedRect) {
+async function extractAllFacesAndComputeResults(parentResults, input, computeResults, extractedFaces, getRectForAlignment = ({ alignedRect }) => alignedRect) {
   const faceBoxes = parentResults.map((parentResult) => isWithFaceLandmarks(parentResult) ? getRectForAlignment(parentResult) : parentResult.detection);
   const faces = extractedFaces || (input instanceof tf40.Tensor ? await extractFaceTensors(input, faceBoxes) : await extractFaces(input, faceBoxes));
   const results = await computeResults(faces);
@@ -4139,7 +4173,7 @@ var TinyFaceDetector = class extends TinyYolov2Base {
   }
   async locateFaces(input, forwardParams) {
     const objectDetections = await this.detect(input, forwardParams);
-    return objectDetections.map((det) => new FaceDetection(det.score, det.relativeBox, {width: det.imageWidth, height: det.imageHeight}));
+    return objectDetections.map((det) => new FaceDetection(det.score, det.relativeBox, { width: det.imageWidth, height: det.imageHeight }));
   }
   getDefaultModelName() {
     return "tiny_face_detector_model";
@@ -4243,7 +4277,7 @@ var PredictAllAgeAndGenderTask = class extends PredictAgeAndGenderTaskBase {
     const parentResults = await this.parentTask;
     const ageAndGenderByFace = await extractAllFacesAndComputeResults(parentResults, this.input, async (faces) => Promise.all(faces.map((face) => nets.ageGenderNet.predictAgeAndGender(face))), this.extractedFaces);
     return parentResults.map((parentResult, i) => {
-      const {age, gender, genderProbability} = ageAndGenderByFace[i];
+      const { age, gender, genderProbability } = ageAndGenderByFace[i];
       return extendWithAge(extendWithGender(parentResult, gender, genderProbability), age);
     });
   }
@@ -4256,7 +4290,7 @@ var PredictSingleAgeAndGenderTask = class extends PredictAgeAndGenderTaskBase {
     const parentResult = await this.parentTask;
     if (!parentResult)
       return void 0;
-    const {age, gender, genderProbability} = await extractSingleFaceAndComputeResult(parentResult, this.input, (face) => nets.ageGenderNet.predictAgeAndGender(face), this.extractedFaces);
+    const { age, gender, genderProbability } = await extractSingleFaceAndComputeResult(parentResult, this.input, (face) => nets.ageGenderNet.predictAgeAndGender(face), this.extractedFaces);
     return extendWithAge(extendWithGender(parentResult, gender, genderProbability), age);
   }
   withFaceExpressions() {
@@ -4291,7 +4325,7 @@ var ComputeFaceDescriptorsTaskBase = class extends ComposableTask {
 var ComputeAllFaceDescriptorsTask = class extends ComputeFaceDescriptorsTaskBase {
   async run() {
     const parentResults = await this.parentTask;
-    const descriptors = await extractAllFacesAndComputeResults(parentResults, this.input, (faces) => Promise.all(faces.map((face) => nets.faceRecognitionNet.computeFaceDescriptor(face))), null, (parentResult) => parentResult.landmarks.align(null, {useDlibAlignment: true}));
+    const descriptors = await extractAllFacesAndComputeResults(parentResults, this.input, (faces) => Promise.all(faces.map((face) => nets.faceRecognitionNet.computeFaceDescriptor(face))), null, (parentResult) => parentResult.landmarks.align(null, { useDlibAlignment: true }));
     return descriptors.map((descriptor, i) => extendWithFaceDescriptor(parentResults[i], descriptor));
   }
   withFaceExpressions() {
@@ -4307,7 +4341,7 @@ var ComputeSingleFaceDescriptorTask = class extends ComputeFaceDescriptorsTaskBa
     if (!parentResult) {
       return void 0;
     }
-    const descriptor = await extractSingleFaceAndComputeResult(parentResult, this.input, (face) => nets.faceRecognitionNet.computeFaceDescriptor(face), null, (parentResult2) => parentResult2.landmarks.align(null, {useDlibAlignment: true}));
+    const descriptor = await extractSingleFaceAndComputeResult(parentResult, this.input, (face) => nets.faceRecognitionNet.computeFaceDescriptor(face), null, (parentResult2) => parentResult2.landmarks.align(null, { useDlibAlignment: true }));
     return extendWithFaceDescriptor(parentResult, descriptor);
   }
   withFaceExpressions() {
@@ -4355,7 +4389,7 @@ var DetectSingleFaceLandmarksTask = class extends DetectFaceLandmarksTaskBase {
     if (!parentResult) {
       return void 0;
     }
-    const {detection} = parentResult;
+    const { detection } = parentResult;
     const faces = this.input instanceof tf41.Tensor ? await extractFaceTensors(this.input, [detection]) : await extractFaces(this.input, [detection]);
     const landmarks = await this.landmarkNet.detectLandmarks(faces[0]);
     faces.forEach((f) => f instanceof tf41.Tensor && f.dispose());
@@ -4382,7 +4416,7 @@ var DetectFacesTaskBase = class extends ComposableTask {
 };
 var DetectAllFacesTask = class extends DetectFacesTaskBase {
   async run() {
-    const {input, options} = this;
+    const { input, options } = this;
     let result;
     if (options instanceof TinyFaceDetectorOptions)
       result = nets.tinyFaceDetector.locateFaces(input, options);
@@ -4446,7 +4480,7 @@ function detectAllFaces(input, options = new SsdMobilenetv1Options()) {
 
 // src/globalApi/allFaces.ts
 async function allFacesSsdMobilenetv1(input, minConfidence) {
-  return detectAllFaces(input, new SsdMobilenetv1Options(minConfidence ? {minConfidence} : {})).withFaceLandmarks().withFaceDescriptors();
+  return detectAllFaces(input, new SsdMobilenetv1Options(minConfidence ? { minConfidence } : {})).withFaceLandmarks().withFaceDescriptors();
 }
 async function allFacesTinyYolov2(input, forwardParams = {}) {
   return detectAllFaces(input, new TinyYolov2Options(forwardParams)).withFaceLandmarks().withFaceDescriptors();
@@ -4495,7 +4529,7 @@ var FaceMatcher = class {
     return descriptors.map((d) => euclideanDistance(d, queryDescriptor)).reduce((d1, d2) => d1 + d2, 0) / (descriptors.length || 1);
   }
   matchDescriptor(queryDescriptor) {
-    return this.labeledDescriptors.map(({descriptors, label}) => new FaceMatch(label, this.computeMeanDistance(queryDescriptor, descriptors))).reduce((best, curr) => best.distance < curr.distance ? best : curr);
+    return this.labeledDescriptors.map(({ descriptors, label }) => new FaceMatch(label, this.computeMeanDistance(queryDescriptor, descriptors))).reduce((best, curr) => best.distance < curr.distance ? best : curr);
   }
   findBestMatch(queryDescriptor) {
     const bestMatch = this.matchDescriptor(queryDescriptor);
@@ -4522,12 +4556,12 @@ function createTinyFaceDetector(weights) {
 
 // src/resizeResults.ts
 function resizeResults(results, dimensions) {
-  const {width, height} = new Dimensions(dimensions.width, dimensions.height);
+  const { width, height } = new Dimensions(dimensions.width, dimensions.height);
   if (width <= 0 || height <= 0) {
-    throw new Error(`resizeResults - invalid dimensions: ${JSON.stringify({width, height})}`);
+    throw new Error(`resizeResults - invalid dimensions: ${JSON.stringify({ width, height })}`);
   }
   if (Array.isArray(results)) {
-    return results.map((obj) => resizeResults(obj, {width, height}));
+    return results.map((obj) => resizeResults(obj, { width, height }));
   }
   if (isWithFaceLandmarks(results)) {
     const resizedDetection = results.detection.forSize(width, height);
@@ -4546,7 +4580,7 @@ function resizeResults(results, dimensions) {
 // src/index.ts
 var node = typeof process !== "undefined";
 var browser3 = typeof navigator !== "undefined" && typeof navigator.userAgent !== "undefined";
-var version2 = {faceapi: version, node, browser: browser3};
+var version2 = { faceapi: version, node, browser: browser3 };
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   AgeGenderNet,
@@ -4625,6 +4659,7 @@ var version2 = {faceapi: version, node, browser: browser3};
   fetchJson,
   fetchNetWeights,
   fetchOrThrow,
+  fetchVideo,
   getContext2dOrThrow,
   getMediaDimensions,
   imageTensorToCanvas,

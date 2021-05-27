@@ -10,5 +10,6 @@ export declare type Environment = FileSystem & {
     Video: typeof HTMLVideoElement;
     createCanvasElement: () => HTMLCanvasElement;
     createImageElement: () => HTMLImageElement;
+    createVideoElement: () => HTMLVideoElement;
     fetch: (url: string, init?: RequestInit) => Promise<Response>;
 };

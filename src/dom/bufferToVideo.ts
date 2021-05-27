@@ -7,7 +7,6 @@ export function bufferToVideo(buf: Blob): Promise<HTMLVideoElement> {
     const video = env.getEnv().createVideoElement();
     video.oncanplay = () => resolve(video);
     video.onerror = reject;
-    video.type = buf.type;
     video.playsInline = true;
     video.autoplay = true;
     video.muted = true;

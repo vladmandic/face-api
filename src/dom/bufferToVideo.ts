@@ -5,9 +5,7 @@ export function bufferToVideo(buf: Blob): Promise<HTMLVideoElement> {
     if (!(buf instanceof Blob)) reject(new Error('bufferToVideo - expected buf to be of type: Blob'));
 
     const video = env.getEnv().createVideoElement();
-    video.onloadstart = () => {
-      setTimeout(() => resolve(video), 100);
-    };
+    video.oncanplay = () => resolve(video);
     video.onerror = reject;
     video.type = buf.type;
     video.playsInline = true;

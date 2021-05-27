@@ -9,11 +9,16 @@ Repository: **<git+https://github.com/vladmandic/face-api.git>**
 
 ## Changelog
 
+### **HEAD -> master** 2021/05/27 mandic00@live.com
+
+
+### **origin/master** 2021/05/27 hello@bettysteger.com
+
+- force typescript 4.2 due to typedoc incompatibility with ts 4.3
+
 ### **1.2.5** 2021/05/27 mandic00@live.com
 
-
-### **origin/master** 2021/05/27 admin@bettysteger.com
-
+- add buffertovideo and fetchvideo (#54)
 
 ### **1.2.4** 2021/05/18 mandic00@live.com
 

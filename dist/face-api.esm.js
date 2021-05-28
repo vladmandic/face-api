@@ -58677,9 +58677,9 @@ function bufferToVideo(buf) {
     video.oncanplay = () => resolve(video);
     video.onerror = reject;
     video.playsInline = true;
-    video.autoplay = true;
     video.muted = true;
     video.src = URL.createObjectURL(buf);
+    video.play();
   });
 }
 

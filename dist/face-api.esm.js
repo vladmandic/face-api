@@ -187,6 +187,8 @@ __export(tfjs_esm_exports, {
   SpaceToBatchND: () => SpaceToBatchND,
   SparseFillEmptyRows: () => SparseFillEmptyRows,
   SparseReshape: () => SparseReshape,
+  SparseSegmentMean: () => SparseSegmentMean,
+  SparseSegmentSum: () => SparseSegmentSum,
   SparseToDense: () => SparseToDense,
   SplitV: () => SplitV,
   Sqrt: () => Sqrt,
@@ -194,6 +196,9 @@ __export(tfjs_esm_exports, {
   SquaredDifference: () => SquaredDifference,
   Step: () => Step,
   StridedSlice: () => StridedSlice,
+  StringNGrams: () => StringNGrams,
+  StringSplit: () => StringSplit,
+  StringToHashBucketFast: () => StringToHashBucketFast,
   Sub: () => Sub,
   Sum: () => Sum,
   SymbolicTensor: () => SymbolicTensor,
@@ -447,6 +452,7 @@ __export(tfjs_esm_exports, {
   stack: () => stack,
   step: () => step,
   stridedSlice: () => stridedSlice,
+  string: () => string,
   sub: () => sub,
   sum: () => sum2,
   sumOutType: () => sumOutType,
@@ -519,6 +525,829 @@ var __reExport = (target, module2, desc) => {
 var __toModule = (module2) => {
   return __reExport(__markAsModule(__defProp2(module2 != null ? __create(__getProtoOf(module2)) : {}, "default", module2 && module2.__esModule && "default" in module2 ? { get: () => module2.default, enumerable: true } : { value: module2, enumerable: true })), module2);
 };
+var require_long = __commonJS({
+  "node_modules/.pnpm/long@4.0.0/node_modules/long/src/long.js"(exports, module2) {
+    module2.exports = Long2;
+    var wasm = null;
+    try {
+      wasm = new WebAssembly.Instance(new WebAssembly.Module(new Uint8Array([
+        0,
+        97,
+        115,
+        109,
+        1,
+        0,
+        0,
+        0,
+        1,
+        13,
+        2,
+        96,
+        0,
+        1,
+        127,
+        96,
+        4,
+        127,
+        127,
+        127,
+        127,
+        1,
+        127,
+        3,
+        7,
+        6,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        6,
+        6,
+        1,
+        127,
+        1,
+        65,
+        0,
+        11,
+        7,
+        50,
+        6,
+        3,
+        109,
+        117,
+        108,
+        0,
+        1,
+        5,
+        100,
+        105,
+        118,
+        95,
+        115,
+        0,
+        2,
+        5,
+        100,
+        105,
+        118,
+        95,
+        117,
+        0,
+        3,
+        5,
+        114,
+        101,
+        109,
+        95,
+        115,
+        0,
+        4,
+        5,
+        114,
+        101,
+        109,
+        95,
+        117,
+        0,
+        5,
+        8,
+        103,
+        101,
+        116,
+        95,
+        104,
+        105,
+        103,
+        104,
+        0,
+        0,
+        10,
+        191,
+        1,
+        6,
+        4,
+        0,
+        35,
+        0,
+        11,
+        36,
+        1,
+        1,
+        126,
+        32,
+        0,
+        173,
+        32,
+        1,
+        173,
+        66,
+        32,
+        134,
+        132,
+        32,
+        2,
+        173,
+        32,
+        3,
+        173,
+        66,
+        32,
+        134,
+        132,
+        126,
+        34,
+        4,
+        66,
+        32,
+        135,
+        167,
+        36,
+        0,
+        32,
+        4,
+        167,
+        11,
+        36,
+        1,
+        1,
+        126,
+        32,
+        0,
+        173,
+        32,
+        1,
+        173,
+        66,
+        32,
+        134,
+        132,
+        32,
+        2,
+        173,
+        32,
+        3,
+        173,
+        66,
+        32,
+        134,
+        132,
+        127,
+        34,
+        4,
+        66,
+        32,
+        135,
+        167,
+        36,
+        0,
+        32,
+        4,
+        167,
+        11,
+        36,
+        1,
+        1,
+        126,
+        32,
+        0,
+        173,
+        32,
+        1,
+        173,
+        66,
+        32,
+        134,
+        132,
+        32,
+        2,
+        173,
+        32,
+        3,
+        173,
+        66,
+        32,
+        134,
+        132,
+        128,
+        34,
+        4,
+        66,
+        32,
+        135,
+        167,
+        36,
+        0,
+        32,
+        4,
+        167,
+        11,
+        36,
+        1,
+        1,
+        126,
+        32,
+        0,
+        173,
+        32,
+        1,
+        173,
+        66,
+        32,
+        134,
+        132,
+        32,
+        2,
+        173,
+        32,
+        3,
+        173,
+        66,
+        32,
+        134,
+        132,
+        129,
+        34,
+        4,
+        66,
+        32,
+        135,
+        167,
+        36,
+        0,
+        32,
+        4,
+        167,
+        11,
+        36,
+        1,
+        1,
+        126,
+        32,
+        0,
+        173,
+        32,
+        1,
+        173,
+        66,
+        32,
+        134,
+        132,
+        32,
+        2,
+        173,
+        32,
+        3,
+        173,
+        66,
+        32,
+        134,
+        132,
+        130,
+        34,
+        4,
+        66,
+        32,
+        135,
+        167,
+        36,
+        0,
+        32,
+        4,
+        167,
+        11
+      ])), {}).exports;
+    } catch (e) {
+    }
+    function Long2(low, high, unsigned) {
+      this.low = low | 0;
+      this.high = high | 0;
+      this.unsigned = !!unsigned;
+    }
+    Long2.prototype.__isLong__;
+    Object.defineProperty(Long2.prototype, "__isLong__", { value: true });
+    function isLong(obj) {
+      return (obj && obj["__isLong__"]) === true;
+    }
+    Long2.isLong = isLong;
+    var INT_CACHE = {};
+    var UINT_CACHE = {};
+    function fromInt(value, unsigned) {
+      var obj, cachedObj, cache;
+      if (unsigned) {
+        value >>>= 0;
+        if (cache = 0 <= value && value < 256) {
+          cachedObj = UINT_CACHE[value];
+          if (cachedObj)
+            return cachedObj;
+        }
+        obj = fromBits(value, (value | 0) < 0 ? -1 : 0, true);
+        if (cache)
+          UINT_CACHE[value] = obj;
+        return obj;
+      } else {
+        value |= 0;
+        if (cache = -128 <= value && value < 128) {
+          cachedObj = INT_CACHE[value];
+          if (cachedObj)
+            return cachedObj;
+        }
+        obj = fromBits(value, value < 0 ? -1 : 0, false);
+        if (cache)
+          INT_CACHE[value] = obj;
+        return obj;
+      }
+    }
+    Long2.fromInt = fromInt;
+    function fromNumber(value, unsigned) {
+      if (isNaN(value))
+        return unsigned ? UZERO : ZERO;
+      if (unsigned) {
+        if (value < 0)
+          return UZERO;
+        if (value >= TWO_PWR_64_DBL)
+          return MAX_UNSIGNED_VALUE;
+      } else {
+        if (value <= -TWO_PWR_63_DBL)
+          return MIN_VALUE;
+        if (value + 1 >= TWO_PWR_63_DBL)
+          return MAX_VALUE;
+      }
+      if (value < 0)
+        return fromNumber(-value, unsigned).neg();
+      return fromBits(value % TWO_PWR_32_DBL | 0, value / TWO_PWR_32_DBL | 0, unsigned);
+    }
+    Long2.fromNumber = fromNumber;
+    function fromBits(lowBits, highBits, unsigned) {
+      return new Long2(lowBits, highBits, unsigned);
+    }
+    Long2.fromBits = fromBits;
+    var pow_dbl = Math.pow;
+    function fromString(str, unsigned, radix) {
+      if (str.length === 0)
+        throw Error("empty string");
+      if (str === "NaN" || str === "Infinity" || str === "+Infinity" || str === "-Infinity")
+        return ZERO;
+      if (typeof unsigned === "number") {
+        radix = unsigned, unsigned = false;
+      } else {
+        unsigned = !!unsigned;
+      }
+      radix = radix || 10;
+      if (radix < 2 || 36 < radix)
+        throw RangeError("radix");
+      var p2;
+      if ((p2 = str.indexOf("-")) > 0)
+        throw Error("interior hyphen");
+      else if (p2 === 0) {
+        return fromString(str.substring(1), unsigned, radix).neg();
+      }
+      var radixToPower = fromNumber(pow_dbl(radix, 8));
+      var result = ZERO;
+      for (var i = 0; i < str.length; i += 8) {
+        var size = Math.min(8, str.length - i), value = parseInt(str.substring(i, i + size), radix);
+        if (size < 8) {
+          var power = fromNumber(pow_dbl(radix, size));
+          result = result.mul(power).add(fromNumber(value));
+        } else {
+          result = result.mul(radixToPower);
+          result = result.add(fromNumber(value));
+        }
+      }
+      result.unsigned = unsigned;
+      return result;
+    }
+    Long2.fromString = fromString;
+    function fromValue(val, unsigned) {
+      if (typeof val === "number")
+        return fromNumber(val, unsigned);
+      if (typeof val === "string")
+        return fromString(val, unsigned);
+      return fromBits(val.low, val.high, typeof unsigned === "boolean" ? unsigned : val.unsigned);
+    }
+    Long2.fromValue = fromValue;
+    var TWO_PWR_16_DBL = 1 << 16;
+    var TWO_PWR_24_DBL = 1 << 24;
+    var TWO_PWR_32_DBL = TWO_PWR_16_DBL * TWO_PWR_16_DBL;
+    var TWO_PWR_64_DBL = TWO_PWR_32_DBL * TWO_PWR_32_DBL;
+    var TWO_PWR_63_DBL = TWO_PWR_64_DBL / 2;
+    var TWO_PWR_24 = fromInt(TWO_PWR_24_DBL);
+    var ZERO = fromInt(0);
+    Long2.ZERO = ZERO;
+    var UZERO = fromInt(0, true);
+    Long2.UZERO = UZERO;
+    var ONE = fromInt(1);
+    Long2.ONE = ONE;
+    var UONE = fromInt(1, true);
+    Long2.UONE = UONE;
+    var NEG_ONE = fromInt(-1);
+    Long2.NEG_ONE = NEG_ONE;
+    var MAX_VALUE = fromBits(4294967295 | 0, 2147483647 | 0, false);
+    Long2.MAX_VALUE = MAX_VALUE;
+    var MAX_UNSIGNED_VALUE = fromBits(4294967295 | 0, 4294967295 | 0, true);
+    Long2.MAX_UNSIGNED_VALUE = MAX_UNSIGNED_VALUE;
+    var MIN_VALUE = fromBits(0, 2147483648 | 0, false);
+    Long2.MIN_VALUE = MIN_VALUE;
+    var LongPrototype = Long2.prototype;
+    LongPrototype.toInt = function toInt() {
+      return this.unsigned ? this.low >>> 0 : this.low;
+    };
+    LongPrototype.toNumber = function toNumber() {
+      if (this.unsigned)
+        return (this.high >>> 0) * TWO_PWR_32_DBL + (this.low >>> 0);
+      return this.high * TWO_PWR_32_DBL + (this.low >>> 0);
+    };
+    LongPrototype.toString = function toString(radix) {
+      radix = radix || 10;
+      if (radix < 2 || 36 < radix)
+        throw RangeError("radix");
+      if (this.isZero())
+        return "0";
+      if (this.isNegative()) {
+        if (this.eq(MIN_VALUE)) {
+          var radixLong = fromNumber(radix), div3 = this.div(radixLong), rem1 = div3.mul(radixLong).sub(this);
+          return div3.toString(radix) + rem1.toInt().toString(radix);
+        } else
+          return "-" + this.neg().toString(radix);
+      }
+      var radixToPower = fromNumber(pow_dbl(radix, 6), this.unsigned), rem = this;
+      var result = "";
+      while (true) {
+        var remDiv = rem.div(radixToPower), intval = rem.sub(remDiv.mul(radixToPower)).toInt() >>> 0, digits = intval.toString(radix);
+        rem = remDiv;
+        if (rem.isZero())
+          return digits + result;
+        else {
+          while (digits.length < 6)
+            digits = "0" + digits;
+          result = "" + digits + result;
+        }
+      }
+    };
+    LongPrototype.getHighBits = function getHighBits() {
+      return this.high;
+    };
+    LongPrototype.getHighBitsUnsigned = function getHighBitsUnsigned() {
+      return this.high >>> 0;
+    };
+    LongPrototype.getLowBits = function getLowBits() {
+      return this.low;
+    };
+    LongPrototype.getLowBitsUnsigned = function getLowBitsUnsigned() {
+      return this.low >>> 0;
+    };
+    LongPrototype.getNumBitsAbs = function getNumBitsAbs() {
+      if (this.isNegative())
+        return this.eq(MIN_VALUE) ? 64 : this.neg().getNumBitsAbs();
+      var val = this.high != 0 ? this.high : this.low;
+      for (var bit = 31; bit > 0; bit--)
+        if ((val & 1 << bit) != 0)
+          break;
+      return this.high != 0 ? bit + 33 : bit + 1;
+    };
+    LongPrototype.isZero = function isZero() {
+      return this.high === 0 && this.low === 0;
+    };
+    LongPrototype.eqz = LongPrototype.isZero;
+    LongPrototype.isNegative = function isNegative() {
+      return !this.unsigned && this.high < 0;
+    };
+    LongPrototype.isPositive = function isPositive() {
+      return this.unsigned || this.high >= 0;
+    };
+    LongPrototype.isOdd = function isOdd() {
+      return (this.low & 1) === 1;
+    };
+    LongPrototype.isEven = function isEven22() {
+      return (this.low & 1) === 0;
+    };
+    LongPrototype.equals = function equals(other) {
+      if (!isLong(other))
+        other = fromValue(other);
+      if (this.unsigned !== other.unsigned && this.high >>> 31 === 1 && other.high >>> 31 === 1)
+        return false;
+      return this.high === other.high && this.low === other.low;
+    };
+    LongPrototype.eq = LongPrototype.equals;
+    LongPrototype.notEquals = function notEquals(other) {
+      return !this.eq(other);
+    };
+    LongPrototype.neq = LongPrototype.notEquals;
+    LongPrototype.ne = LongPrototype.notEquals;
+    LongPrototype.lessThan = function lessThan(other) {
+      return this.comp(other) < 0;
+    };
+    LongPrototype.lt = LongPrototype.lessThan;
+    LongPrototype.lessThanOrEqual = function lessThanOrEqual(other) {
+      return this.comp(other) <= 0;
+    };
+    LongPrototype.lte = LongPrototype.lessThanOrEqual;
+    LongPrototype.le = LongPrototype.lessThanOrEqual;
+    LongPrototype.greaterThan = function greaterThan(other) {
+      return this.comp(other) > 0;
+    };
+    LongPrototype.gt = LongPrototype.greaterThan;
+    LongPrototype.greaterThanOrEqual = function greaterThanOrEqual(other) {
+      return this.comp(other) >= 0;
+    };
+    LongPrototype.gte = LongPrototype.greaterThanOrEqual;
+    LongPrototype.ge = LongPrototype.greaterThanOrEqual;
+    LongPrototype.compare = function compare(other) {
+      if (!isLong(other))
+        other = fromValue(other);
+      if (this.eq(other))
+        return 0;
+      var thisNeg = this.isNegative(), otherNeg = other.isNegative();
+      if (thisNeg && !otherNeg)
+        return -1;
+      if (!thisNeg && otherNeg)
+        return 1;
+      if (!this.unsigned)
+        return this.sub(other).isNegative() ? -1 : 1;
+      return other.high >>> 0 > this.high >>> 0 || other.high === this.high && other.low >>> 0 > this.low >>> 0 ? -1 : 1;
+    };
+    LongPrototype.comp = LongPrototype.compare;
+    LongPrototype.negate = function negate() {
+      if (!this.unsigned && this.eq(MIN_VALUE))
+        return MIN_VALUE;
+      return this.not().add(ONE);
+    };
+    LongPrototype.neg = LongPrototype.negate;
+    LongPrototype.add = function add5(addend) {
+      if (!isLong(addend))
+        addend = fromValue(addend);
+      var a48 = this.high >>> 16;
+      var a32 = this.high & 65535;
+      var a16 = this.low >>> 16;
+      var a00 = this.low & 65535;
+      var b48 = addend.high >>> 16;
+      var b32 = addend.high & 65535;
+      var b16 = addend.low >>> 16;
+      var b00 = addend.low & 65535;
+      var c48 = 0, c32 = 0, c16 = 0, c00 = 0;
+      c00 += a00 + b00;
+      c16 += c00 >>> 16;
+      c00 &= 65535;
+      c16 += a16 + b16;
+      c32 += c16 >>> 16;
+      c16 &= 65535;
+      c32 += a32 + b32;
+      c48 += c32 >>> 16;
+      c32 &= 65535;
+      c48 += a48 + b48;
+      c48 &= 65535;
+      return fromBits(c16 << 16 | c00, c48 << 16 | c32, this.unsigned);
+    };
+    LongPrototype.subtract = function subtract(subtrahend) {
+      if (!isLong(subtrahend))
+        subtrahend = fromValue(subtrahend);
+      return this.add(subtrahend.neg());
+    };
+    LongPrototype.sub = LongPrototype.subtract;
+    LongPrototype.multiply = function multiply4(multiplier) {
+      if (this.isZero())
+        return ZERO;
+      if (!isLong(multiplier))
+        multiplier = fromValue(multiplier);
+      if (wasm) {
+        var low = wasm.mul(this.low, this.high, multiplier.low, multiplier.high);
+        return fromBits(low, wasm.get_high(), this.unsigned);
+      }
+      if (multiplier.isZero())
+        return ZERO;
+      if (this.eq(MIN_VALUE))
+        return multiplier.isOdd() ? MIN_VALUE : ZERO;
+      if (multiplier.eq(MIN_VALUE))
+        return this.isOdd() ? MIN_VALUE : ZERO;
+      if (this.isNegative()) {
+        if (multiplier.isNegative())
+          return this.neg().mul(multiplier.neg());
+        else
+          return this.neg().mul(multiplier).neg();
+      } else if (multiplier.isNegative())
+        return this.mul(multiplier.neg()).neg();
+      if (this.lt(TWO_PWR_24) && multiplier.lt(TWO_PWR_24))
+        return fromNumber(this.toNumber() * multiplier.toNumber(), this.unsigned);
+      var a48 = this.high >>> 16;
+      var a32 = this.high & 65535;
+      var a16 = this.low >>> 16;
+      var a00 = this.low & 65535;
+      var b48 = multiplier.high >>> 16;
+      var b32 = multiplier.high & 65535;
+      var b16 = multiplier.low >>> 16;
+      var b00 = multiplier.low & 65535;
+      var c48 = 0, c32 = 0, c16 = 0, c00 = 0;
+      c00 += a00 * b00;
+      c16 += c00 >>> 16;
+      c00 &= 65535;
+      c16 += a16 * b00;
+      c32 += c16 >>> 16;
+      c16 &= 65535;
+      c16 += a00 * b16;
+      c32 += c16 >>> 16;
+      c16 &= 65535;
+      c32 += a32 * b00;
+      c48 += c32 >>> 16;
+      c32 &= 65535;
+      c32 += a16 * b16;
+      c48 += c32 >>> 16;
+      c32 &= 65535;
+      c32 += a00 * b32;
+      c48 += c32 >>> 16;
+      c32 &= 65535;
+      c48 += a48 * b00 + a32 * b16 + a16 * b32 + a00 * b48;
+      c48 &= 65535;
+      return fromBits(c16 << 16 | c00, c48 << 16 | c32, this.unsigned);
+    };
+    LongPrototype.mul = LongPrototype.multiply;
+    LongPrototype.divide = function divide(divisor) {
+      if (!isLong(divisor))
+        divisor = fromValue(divisor);
+      if (divisor.isZero())
+        throw Error("division by zero");
+      if (wasm) {
+        if (!this.unsigned && this.high === -2147483648 && divisor.low === -1 && divisor.high === -1) {
+          return this;
+        }
+        var low = (this.unsigned ? wasm.div_u : wasm.div_s)(this.low, this.high, divisor.low, divisor.high);
+        return fromBits(low, wasm.get_high(), this.unsigned);
+      }
+      if (this.isZero())
+        return this.unsigned ? UZERO : ZERO;
+      var approx, rem, res;
+      if (!this.unsigned) {
+        if (this.eq(MIN_VALUE)) {
+          if (divisor.eq(ONE) || divisor.eq(NEG_ONE))
+            return MIN_VALUE;
+          else if (divisor.eq(MIN_VALUE))
+            return ONE;
+          else {
+            var halfThis = this.shr(1);
+            approx = halfThis.div(divisor).shl(1);
+            if (approx.eq(ZERO)) {
+              return divisor.isNegative() ? ONE : NEG_ONE;
+            } else {
+              rem = this.sub(divisor.mul(approx));
+              res = approx.add(rem.div(divisor));
+              return res;
+            }
+          }
+        } else if (divisor.eq(MIN_VALUE))
+          return this.unsigned ? UZERO : ZERO;
+        if (this.isNegative()) {
+          if (divisor.isNegative())
+            return this.neg().div(divisor.neg());
+          return this.neg().div(divisor).neg();
+        } else if (divisor.isNegative())
+          return this.div(divisor.neg()).neg();
+        res = ZERO;
+      } else {
+        if (!divisor.unsigned)
+          divisor = divisor.toUnsigned();
+        if (divisor.gt(this))
+          return UZERO;
+        if (divisor.gt(this.shru(1)))
+          return UONE;
+        res = UZERO;
+      }
+      rem = this;
+      while (rem.gte(divisor)) {
+        approx = Math.max(1, Math.floor(rem.toNumber() / divisor.toNumber()));
+        var log22 = Math.ceil(Math.log(approx) / Math.LN2), delta = log22 <= 48 ? 1 : pow_dbl(2, log22 - 48), approxRes = fromNumber(approx), approxRem = approxRes.mul(divisor);
+        while (approxRem.isNegative() || approxRem.gt(rem)) {
+          approx -= delta;
+          approxRes = fromNumber(approx, this.unsigned);
+          approxRem = approxRes.mul(divisor);
+        }
+        if (approxRes.isZero())
+          approxRes = ONE;
+        res = res.add(approxRes);
+        rem = rem.sub(approxRem);
+      }
+      return res;
+    };
+    LongPrototype.div = LongPrototype.divide;
+    LongPrototype.modulo = function modulo(divisor) {
+      if (!isLong(divisor))
+        divisor = fromValue(divisor);
+      if (wasm) {
+        var low = (this.unsigned ? wasm.rem_u : wasm.rem_s)(this.low, this.high, divisor.low, divisor.high);
+        return fromBits(low, wasm.get_high(), this.unsigned);
+      }
+      return this.sub(this.div(divisor).mul(divisor));
+    };
+    LongPrototype.mod = LongPrototype.modulo;
+    LongPrototype.rem = LongPrototype.modulo;
+    LongPrototype.not = function not() {
+      return fromBits(~this.low, ~this.high, this.unsigned);
+    };
+    LongPrototype.and = function and(other) {
+      if (!isLong(other))
+        other = fromValue(other);
+      return fromBits(this.low & other.low, this.high & other.high, this.unsigned);
+    };
+    LongPrototype.or = function or(other) {
+      if (!isLong(other))
+        other = fromValue(other);
+      return fromBits(this.low | other.low, this.high | other.high, this.unsigned);
+    };
+    LongPrototype.xor = function xor(other) {
+      if (!isLong(other))
+        other = fromValue(other);
+      return fromBits(this.low ^ other.low, this.high ^ other.high, this.unsigned);
+    };
+    LongPrototype.shiftLeft = function shiftLeft(numBits) {
+      if (isLong(numBits))
+        numBits = numBits.toInt();
+      if ((numBits &= 63) === 0)
+        return this;
+      else if (numBits < 32)
+        return fromBits(this.low << numBits, this.high << numBits | this.low >>> 32 - numBits, this.unsigned);
+      else
+        return fromBits(0, this.low << numBits - 32, this.unsigned);
+    };
+    LongPrototype.shl = LongPrototype.shiftLeft;
+    LongPrototype.shiftRight = function shiftRight(numBits) {
+      if (isLong(numBits))
+        numBits = numBits.toInt();
+      if ((numBits &= 63) === 0)
+        return this;
+      else if (numBits < 32)
+        return fromBits(this.low >>> numBits | this.high << 32 - numBits, this.high >> numBits, this.unsigned);
+      else
+        return fromBits(this.high >> numBits - 32, this.high >= 0 ? 0 : -1, this.unsigned);
+    };
+    LongPrototype.shr = LongPrototype.shiftRight;
+    LongPrototype.shiftRightUnsigned = function shiftRightUnsigned(numBits) {
+      if (isLong(numBits))
+        numBits = numBits.toInt();
+      numBits &= 63;
+      if (numBits === 0)
+        return this;
+      else {
+        var high = this.high;
+        if (numBits < 32) {
+          var low = this.low;
+          return fromBits(low >>> numBits | high << 32 - numBits, high >>> numBits, this.unsigned);
+        } else if (numBits === 32)
+          return fromBits(high, 0, this.unsigned);
+        else
+          return fromBits(high >>> numBits - 32, 0, this.unsigned);
+      }
+    };
+    LongPrototype.shru = LongPrototype.shiftRightUnsigned;
+    LongPrototype.shr_u = LongPrototype.shiftRightUnsigned;
+    LongPrototype.toSigned = function toSigned() {
+      if (!this.unsigned)
+        return this;
+      return fromBits(this.low, this.high, false);
+    };
+    LongPrototype.toUnsigned = function toUnsigned() {
+      if (this.unsigned)
+        return this;
+      return fromBits(this.low, this.high, true);
+    };
+    LongPrototype.toBytes = function toBytes(le) {
+      return le ? this.toBytesLE() : this.toBytesBE();
+    };
+    LongPrototype.toBytesLE = function toBytesLE() {
+      var hi = this.high, lo = this.low;
+      return [
+        lo & 255,
+        lo >>> 8 & 255,
+        lo >>> 16 & 255,
+        lo >>> 24,
+        hi & 255,
+        hi >>> 8 & 255,
+        hi >>> 16 & 255,
+        hi >>> 24
+      ];
+    };
+    LongPrototype.toBytesBE = function toBytesBE() {
+      var hi = this.high, lo = this.low;
+      return [
+        hi >>> 24,
+        hi >>> 16 & 255,
+        hi >>> 8 & 255,
+        hi & 255,
+        lo >>> 24,
+        lo >>> 16 & 255,
+        lo >>> 8 & 255,
+        lo & 255
+      ];
+    };
+    Long2.fromBytes = function fromBytes(bytes, unsigned, le) {
+      return le ? Long2.fromBytesLE(bytes, unsigned) : Long2.fromBytesBE(bytes, unsigned);
+    };
+    Long2.fromBytesLE = function fromBytesLE(bytes, unsigned) {
+      return new Long2(bytes[0] | bytes[1] << 8 | bytes[2] << 16 | bytes[3] << 24, bytes[4] | bytes[5] << 8 | bytes[6] << 16 | bytes[7] << 24, unsigned);
+    };
+    Long2.fromBytesBE = function fromBytesBE(bytes, unsigned) {
+      return new Long2(bytes[4] << 24 | bytes[5] << 16 | bytes[6] << 8 | bytes[7], bytes[0] << 24 | bytes[1] << 16 | bytes[2] << 8 | bytes[3], unsigned);
+    };
+  }
+});
 var require_browser = __commonJS({
   "(disabled):node_modules/.pnpm/node-fetch@2.6.1/node_modules/node-fetch/browser.js"() {
   }
@@ -1817,7 +2646,7 @@ var require_perf_hooks = __commonJS({
   }
 });
 var require_tfjs_backend_wasm_threaded_simd = __commonJS({
-  "node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.6.0/node_modules/@tensorflow/tfjs-backend-wasm/wasm-out/tfjs-backend-wasm-threaded-simd.js"(exports, module2) {
+  "node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.7.0/node_modules/@tensorflow/tfjs-backend-wasm/wasm-out/tfjs-backend-wasm-threaded-simd.js"(exports, module2) {
     var WasmBackendModuleThreadedSimd = function() {
       var _scriptDir = typeof document !== "undefined" && document.currentScript ? document.currentScript.src : void 0;
       if (typeof __filename !== "undefined")
@@ -3191,11 +4020,11 @@ var require_tfjs_backend_wasm_threaded_simd = __commonJS({
             table[i] = null;
           }
           return ret;
-        }, getSource: function(shader, count2, string, length) {
+        }, getSource: function(shader, count2, string3, length) {
           var source = "";
           for (var i = 0; i < count2; ++i) {
             var len = length ? GROWABLE_HEAP_I32()[length + i * 4 >> 2] : -1;
-            source += UTF8ToString(GROWABLE_HEAP_I32()[string + i * 4 >> 2], len < 0 ? void 0 : len);
+            source += UTF8ToString(GROWABLE_HEAP_I32()[string3 + i * 4 >> 2], len < 0 ? void 0 : len);
           }
           return source;
         }, createContext: function(canvas, webGLContextAttributes) {
@@ -4021,7 +4850,7 @@ var require_tfjs_backend_wasm_threaded_simd = __commonJS({
   }
 });
 var require_tfjs_backend_wasm = __commonJS({
-  "node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.6.0/node_modules/@tensorflow/tfjs-backend-wasm/wasm-out/tfjs-backend-wasm.js"(exports, module2) {
+  "node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.7.0/node_modules/@tensorflow/tfjs-backend-wasm/wasm-out/tfjs-backend-wasm.js"(exports, module2) {
     var WasmBackendModule = function() {
       var _scriptDir = typeof document !== "undefined" && document.currentScript ? document.currentScript.src : void 0;
       if (typeof __filename !== "undefined")
@@ -5975,10 +6804,15 @@ var SplitV = "SplitV";
 var Softmax = "Softmax";
 var SparseFillEmptyRows = "SparseFillEmptyRows";
 var SparseReshape = "SparseReshape";
+var SparseSegmentMean = "SparseSegmentMean";
+var SparseSegmentSum = "SparseSegmentSum";
 var SparseToDense = "SparseToDense";
 var SquaredDifference = "SquaredDifference";
 var Square = "Square";
 var StridedSlice = "StridedSlice";
+var StringNGrams = "StringNGrams";
+var StringSplit = "StringSplit";
+var StringToHashBucketFast = "StringToHashBucketFast";
 var Sub = "Sub";
 var Tan = "Tan";
 var Tanh = "Tanh";
@@ -6078,11 +6912,13 @@ __export2(util_exports, {
   decodeString: () => decodeString,
   distSquared: () => distSquared,
   encodeString: () => encodeString,
-  fetch: () => fetch2,
+  fetch: () => fetch3,
+  fingerPrint64: () => fingerPrint64,
   flatten: () => flatten,
   getArrayFromDType: () => getArrayFromDType,
   getTypedArrayFromDType: () => getTypedArrayFromDType,
   hasEncodingLoss: () => hasEncodingLoss,
+  hexToLong: () => hexToLong,
   indexToLoc: () => indexToLoc,
   inferDtype: () => inferDtype,
   inferFromImplicitShape: () => inferFromImplicitShape,
@@ -6116,6 +6952,142 @@ __export2(util_exports, {
   toNestedArray: () => toNestedArray,
   toTypedArray: () => toTypedArray
 });
+var LongExports = __toModule(require_long());
+var Long = LongExports.default || LongExports;
+function hexToLong(hex) {
+  return Long.fromString(hex, true, 16);
+}
+var k0 = hexToLong("c3a5c85c97cb3127");
+var k1 = hexToLong("b492b66fbe98f273");
+var k2 = hexToLong("9ae16a3b2f90404f");
+function shiftMix(val) {
+  return val.xor(val.shru(47));
+}
+function fetch2(s, offset, numBytes) {
+  const bytes = s.slice(offset, offset + numBytes);
+  return Long.fromBytes(Array.from(bytes), true, true);
+}
+function fetch64(s, offset) {
+  return fetch2(s, offset, 8);
+}
+function fetch32(s, offset) {
+  return fetch2(s, offset, 4);
+}
+function rotate64(val, shift) {
+  return shift === 0 ? val : val.shru(shift).or(val.shl(64 - shift));
+}
+function hashLen16(u, v, mul2 = hexToLong("9ddfea08eb382d69")) {
+  let a = u.xor(v).mul(mul2);
+  a = a.xor(a.shru(47));
+  let b = v.xor(a).mul(mul2);
+  b = b.xor(b.shru(47));
+  b = b.mul(mul2);
+  return b;
+}
+function weakHashLen32WithSeeds(w, x, y, z, a, b) {
+  a = a.add(w);
+  b = rotate64(b.add(a).add(z), 21);
+  const c = a;
+  a = a.add(x);
+  a = a.add(y);
+  b = b.add(rotate64(a, 44));
+  return [a.add(z), b.add(c)];
+}
+function weakHashLen32WithSeedsStr(s, offset, a, b) {
+  return weakHashLen32WithSeeds(fetch64(s, offset), fetch64(s, offset + 8), fetch64(s, offset + 16), fetch64(s, offset + 24), a, b);
+}
+function hashLen0to16(s, len = s.length) {
+  if (len >= 8) {
+    const mul2 = k2.add(len * 2);
+    const a = fetch64(s, 0).add(k2);
+    const b = fetch64(s, len - 8);
+    const c = rotate64(b, 37).mul(mul2).add(a);
+    const d = rotate64(a, 25).add(b).mul(mul2);
+    return hashLen16(c, d, mul2);
+  }
+  if (len >= 4) {
+    const mul2 = k2.add(len * 2);
+    const a = fetch32(s, 0);
+    return hashLen16(a.shl(3).add(len), fetch32(s, len - 4), mul2);
+  }
+  if (len > 0) {
+    const a = s[0];
+    const b = s[len >> 1];
+    const c = s[len - 1];
+    const y = a + (b << 8);
+    const z = len + (c << 2);
+    return shiftMix(k2.mul(y).xor(k0.mul(z))).mul(k2);
+  }
+  return k2;
+}
+function hashLen17to32(s, len = s.length) {
+  const mul2 = k2.add(len * 2);
+  const a = fetch64(s, 0).mul(k1);
+  const b = fetch64(s, 8);
+  const c = fetch64(s, len - 8).mul(mul2);
+  const d = fetch64(s, len - 16).mul(k2);
+  return hashLen16(rotate64(a.add(b), 43).add(rotate64(c, 30)).add(d), a.add(rotate64(b.add(k2), 18)).add(c), mul2);
+}
+function hashLen33to64(s, len = s.length) {
+  const mul2 = k2.add(len * 2);
+  const a = fetch64(s, 0).mul(k2);
+  const b = fetch64(s, 8);
+  const c = fetch64(s, len - 8).mul(mul2);
+  const d = fetch64(s, len - 16).mul(k2);
+  const y = rotate64(a.add(b), 43).add(rotate64(c, 30)).add(d);
+  const z = hashLen16(y, a.add(rotate64(b.add(k2), 18)).add(c), mul2);
+  const e = fetch64(s, 16).mul(mul2);
+  const f = fetch64(s, 24);
+  const g = y.add(fetch64(s, len - 32)).mul(mul2);
+  const h = z.add(fetch64(s, len - 24)).mul(mul2);
+  return hashLen16(rotate64(e.add(f), 43).add(rotate64(g, 30)).add(h), e.add(rotate64(f.add(a), 18)).add(g), mul2);
+}
+function fingerPrint64(s, len = s.length) {
+  const seed = Long.fromNumber(81, true);
+  if (len <= 32) {
+    if (len <= 16) {
+      return hashLen0to16(s, len);
+    } else {
+      return hashLen17to32(s, len);
+    }
+  } else if (len <= 64) {
+    return hashLen33to64(s, len);
+  }
+  let x = seed;
+  let y = seed.mul(k1).add(113);
+  let z = shiftMix(y.mul(k2).add(113)).mul(k2);
+  let v = [Long.UZERO, Long.UZERO];
+  let w = [Long.UZERO, Long.UZERO];
+  x = x.mul(k2).add(fetch64(s, 0));
+  let offset = 0;
+  const end = (len - 1 >> 6) * 64;
+  const last64 = end + (len - 1 & 63) - 63;
+  do {
+    x = rotate64(x.add(y).add(v[0]).add(fetch64(s, offset + 8)), 37).mul(k1);
+    y = rotate64(y.add(v[1]).add(fetch64(s, offset + 48)), 42).mul(k1);
+    x = x.xor(w[1]);
+    y = y.add(v[0]).add(fetch64(s, offset + 40));
+    z = rotate64(z.add(w[0]), 33).mul(k1);
+    v = weakHashLen32WithSeedsStr(s, offset, v[1].mul(k1), x.add(w[0]));
+    w = weakHashLen32WithSeedsStr(s, offset + 32, z.add(w[1]), y.add(fetch64(s, offset + 16)));
+    [z, x] = [x, z];
+    offset += 64;
+  } while (offset !== end);
+  const mul2 = k1.add(z.and(255).shl(1));
+  offset = last64;
+  w[0] = w[0].add(len - 1 & 63);
+  v[0] = v[0].add(w[0]);
+  w[0] = w[0].add(v[0]);
+  x = rotate64(x.add(y).add(v[0]).add(fetch64(s, offset + 8)), 37).mul(mul2);
+  y = rotate64(y.add(v[1]).add(fetch64(s, offset + 48)), 42).mul(mul2);
+  x = x.xor(w[1].mul(9));
+  y = y.add(v[0].mul(9).add(fetch64(s, offset + 40)));
+  z = rotate64(z.add(w[0]), 33).mul(mul2);
+  v = weakHashLen32WithSeedsStr(s, offset, v[1].mul(mul2), x.add(w[0]));
+  w = weakHashLen32WithSeedsStr(s, offset + 32, z.add(w[1]), y.add(fetch64(s, offset + 16)));
+  [z, x] = [x, z];
+  return hashLen16(hashLen16(v[0], w[0], mul2).add(shiftMix(y).mul(k0)).add(z), hashLen16(v[1], w[1], mul2).add(x), mul2);
+}
 function createScalarValue(value, dtype) {
   if (dtype === "string") {
     return encodeString(value);
@@ -6157,7 +7129,7 @@ function toTypedArray(a, dtype) {
 function now() {
   return env().platform.now();
 }
-function fetch2(path, requestInits) {
+function fetch3(path, requestInits) {
   return env().platform.fetch(path, requestInits);
 }
 function encodeString(s, encoding = "utf-8") {
@@ -9940,7 +10912,7 @@ function encodeStrings(a) {
   }
   return a;
 }
-var version = "3.6.0";
+var version = "3.7.0";
 function enableProdMode() {
   env().set("PROD", true);
 }
@@ -11056,8 +12028,8 @@ function assertAndGetBroadcastShape(shapeA, shapeB) {
   return result;
 }
 function equal_(a, b) {
-  let $a = convertToTensor(a, "a", "equal");
-  let $b = convertToTensor(b, "b", "equal");
+  let $a = convertToTensor(a, "a", "equal", "string_or_numeric");
+  let $b = convertToTensor(b, "b", "equal", "string_or_numeric");
   [$a, $b] = makeTypesMatch($a, $b);
   assertAndGetBroadcastShape($a.shape, $b.shape);
   const inputs = { a: $a, b: $b };
@@ -11224,8 +12196,8 @@ function gather_(x, indices, axis = 0, batchDims = 0) {
 }
 var gather = op({ gather_ });
 function greater_(a, b) {
-  let $a = convertToTensor(a, "a", "greater");
-  let $b = convertToTensor(b, "b", "greater");
+  let $a = convertToTensor(a, "a", "greater", "string_or_numeric");
+  let $b = convertToTensor(b, "b", "greater", "string_or_numeric");
   [$a, $b] = makeTypesMatch($a, $b);
   assertAndGetBroadcastShape($a.shape, $b.shape);
   const inputs = { a: $a, b: $b };
@@ -11233,8 +12205,8 @@ function greater_(a, b) {
 }
 var greater = op({ greater_ });
 function greaterEqual_(a, b) {
-  let $a = convertToTensor(a, "a", "greaterEqual");
-  let $b = convertToTensor(b, "b", "greaterEqual");
+  let $a = convertToTensor(a, "a", "greaterEqual", "string_or_numeric");
+  let $b = convertToTensor(b, "b", "greaterEqual", "string_or_numeric");
   [$a, $b] = makeTypesMatch($a, $b);
   assertAndGetBroadcastShape($a.shape, $b.shape);
   const inputs = { a: $a, b: $b };
@@ -11273,8 +12245,8 @@ function leakyRelu_(x, alpha = 0.2) {
 }
 var leakyRelu = op({ leakyRelu_ });
 function less_(a, b) {
-  let $a = convertToTensor(a, "a", "less");
-  let $b = convertToTensor(b, "b", "less");
+  let $a = convertToTensor(a, "a", "less", "string_or_numeric");
+  let $b = convertToTensor(b, "b", "less", "string_or_numeric");
   [$a, $b] = makeTypesMatch($a, $b);
   assertAndGetBroadcastShape($a.shape, $b.shape);
   const inputs = { a: $a, b: $b };
@@ -11282,8 +12254,8 @@ function less_(a, b) {
 }
 var less = op({ less_ });
 function lessEqual_(a, b) {
-  let $a = convertToTensor(a, "a", "lessEqual");
-  let $b = convertToTensor(b, "b", "lessEqual");
+  let $a = convertToTensor(a, "a", "lessEqual", "string_or_numeric");
+  let $b = convertToTensor(b, "b", "lessEqual", "string_or_numeric");
   [$a, $b] = makeTypesMatch($a, $b);
   assertAndGetBroadcastShape($a.shape, $b.shape);
   const inputs = { a: $a, b: $b };
@@ -11830,8 +12802,8 @@ function multinomial_(logits, numSamples, seed, normalized = false) {
 }
 var multinomial = op({ multinomial_ });
 function notEqual_(a, b) {
-  let $a = convertToTensor(a, "a", "notEqual");
-  let $b = convertToTensor(b, "b", "notEqual");
+  let $a = convertToTensor(a, "a", "notEqual", "string_or_numeric");
+  let $b = convertToTensor(b, "b", "notEqual", "string_or_numeric");
   [$a, $b] = makeTypesMatch($a, $b);
   assertAndGetBroadcastShape($a.shape, $b.shape);
   const inputs = { a: $a, b: $b };
@@ -12485,7 +13457,7 @@ function step_(x, alpha = 0) {
 }
 var step = op({ step_ });
 function stridedSlice_(x, begin, end, strides, beginMask = 0, endMask = 0, ellipsisMask = 0, newAxisMask = 0, shrinkAxisMask = 0) {
-  const $x = convertToTensor(x, "x", "stridedSlice");
+  const $x = convertToTensor(x, "x", "stridedSlice", "string_or_numeric");
   const inputs = { x: $x };
   const attrs = {
     begin,
@@ -12797,7 +13769,7 @@ function sparseToDense_(sparseIndices, sparseValues, outputShape, defaultValue =
 var sparseToDense = op({ sparseToDense_ });
 function gatherND_(x, indices) {
   const $indices = convertToTensor(indices, "indices", "gatherND", "int32");
-  const $x = convertToTensor(x, "x", "gatherND");
+  const $x = convertToTensor(x, "x", "gatherND", "string_or_numeric");
   const inputs = { params: $x, indices: $indices };
   return ENGINE.runKernel(GatherNd, inputs);
 }
@@ -14070,6 +15042,102 @@ function sparseReshape_(inputIndices, inputShape, newShape) {
   return { outputIndices: result[0], outputShape: result[1] };
 }
 var sparseReshape = op({ sparseReshape_ });
+function sparseSegmentMean_(data, indices, segmentIds) {
+  const $data = convertToTensor(data, "data", "sparseSegmentMean");
+  const $indices = convertToTensor(indices, "indices", "sparseSegmentMean");
+  const $segmentIds = convertToTensor(segmentIds, "segmentIds", "sparseSegmentMean");
+  if ($data.rank < 1) {
+    throw new Error(`Data should be at least 1 dimensional but received scalar`);
+  }
+  if ($indices.rank !== 1) {
+    throw new Error(`Indices should be Tensor1D but received shape
+          ${$indices.shape}`);
+  }
+  if ($segmentIds.rank !== 1) {
+    throw new Error(`Segment ids should be Tensor1D but received shape
+          ${$segmentIds.shape}`);
+  }
+  const inputs = {
+    data: $data,
+    indices: $indices,
+    segmentIds: $segmentIds
+  };
+  return ENGINE.runKernel(SparseSegmentMean, inputs);
+}
+var sparseSegmentMean = op({ sparseSegmentMean_ });
+function sparseSegmentSum_(data, indices, segmentIds) {
+  const $data = convertToTensor(data, "data", "sparseSegmentSum");
+  const $indices = convertToTensor(indices, "indices", "sparseSegmentSum");
+  const $segmentIds = convertToTensor(segmentIds, "segmentIds", "sparseSegmentSum");
+  if ($data.rank < 1) {
+    throw new Error(`Data should be at least 1 dimensional but received scalar`);
+  }
+  if ($indices.rank !== 1) {
+    throw new Error(`Indices should be Tensor1D but received shape
+         ${$indices.shape}`);
+  }
+  if ($segmentIds.rank !== 1) {
+    throw new Error(`Segment ids should be Tensor1D but received shape
+         ${$segmentIds.shape}`);
+  }
+  const inputs = {
+    data: $data,
+    indices: $indices,
+    segmentIds: $segmentIds
+  };
+  return ENGINE.runKernel(SparseSegmentSum, inputs);
+}
+var sparseSegmentSum = op({ sparseSegmentSum_ });
+function stringNGrams_(data, dataSplits, separator, nGramWidths, leftPad, rightPad2, padWidth, preserveShortSequences) {
+  const $data = convertToTensor(data, "data", "stringNGrams", "string");
+  if ($data.dtype !== "string") {
+    throw new Error("Data must be of datatype string");
+  }
+  if ($data.shape.length !== 1) {
+    throw new Error(`Data must be a vector, saw: ${$data.shape}`);
+  }
+  const $dataSplits = convertToTensor(dataSplits, "dataSplits", "stringNGrams");
+  if ($dataSplits.dtype !== "int32") {
+    throw new Error("Data splits must be of datatype int32");
+  }
+  const attrs = {
+    separator,
+    nGramWidths,
+    leftPad,
+    rightPad: rightPad2,
+    padWidth,
+    preserveShortSequences
+  };
+  const inputs = { data: $data, dataSplits: $dataSplits };
+  const result = ENGINE.runKernel(StringNGrams, inputs, attrs);
+  return { nGrams: result[0], nGramsSplits: result[1] };
+}
+var stringNGrams = op({ stringNGrams_ });
+function stringSplit_(input2, delimiter, skipEmpty = true) {
+  const $input = convertToTensor(input2, "input", "stringSplit", "string");
+  const $delimiter = convertToTensor(delimiter, "delimiter", "stringSplit", "string");
+  if ($input.rank !== 1) {
+    throw new Error(`Input should be Tensor1D but received shape ${$input.shape}`);
+  }
+  if ($delimiter.rank !== 0) {
+    throw new Error(`Delimiter should be a scalar but received shape ${$delimiter.shape}`);
+  }
+  const attrs = { skipEmpty };
+  const inputs = { input: $input, delimiter: $delimiter };
+  const result = ENGINE.runKernel(StringSplit, inputs, attrs);
+  return { indices: result[0], values: result[1], shape: result[2] };
+}
+var stringSplit = op({ stringSplit_ });
+function stringToHashBucketFast_(input2, numBuckets) {
+  const $input = convertToTensor(input2, "input", "stringToHashBucketFast", "string");
+  const attrs = { numBuckets };
+  if (numBuckets <= 0) {
+    throw new Error(`Number of buckets must be at least 1`);
+  }
+  const inputs = { input: $input };
+  return ENGINE.runKernel(StringToHashBucketFast, inputs, attrs);
+}
+var stringToHashBucketFast = op({ stringToHashBucketFast_ });
 var spectral = {
   fft,
   ifft,
@@ -14115,7 +15183,14 @@ var losses = {
 };
 var sparse = {
   sparseFillEmptyRows,
-  sparseReshape
+  sparseReshape,
+  sparseSegmentMean,
+  sparseSegmentSum
+};
+var string = {
+  stringNGrams,
+  stringSplit,
+  stringToHashBucketFast
 };
 var Optimizer = class extends Serializable {
   minimize(f, returnCost = false, varList) {
@@ -17893,15 +18968,31 @@ function arrayProd(array2, begin, end) {
   }
   return prod5;
 }
-function toArray1D(array2) {
-  array2 = Array.isArray(array2) ? new Float32Array(array2) : array2;
-  return tensor1d(array2);
-}
 function min2(array2) {
-  return min(toArray1D(array2)).dataSync()[0];
+  if (array2.length === 0) {
+    return Number.NaN;
+  }
+  let min6 = Number.POSITIVE_INFINITY;
+  for (let i = 0; i < array2.length; i++) {
+    const value = array2[i];
+    if (value < min6) {
+      min6 = value;
+    }
+  }
+  return min6;
 }
 function max2(array2) {
-  return max(toArray1D(array2)).dataSync()[0];
+  if (array2.length === 0) {
+    return Number.NaN;
+  }
+  let max6 = Number.NEGATIVE_INFINITY;
+  for (let i = 0; i < array2.length; i++) {
+    const value = array2[i];
+    if (value > max6) {
+      max6 = value;
+    }
+  }
+  return max6;
 }
 function range2(begin, end) {
   if (end < begin) {
@@ -20458,7 +21549,7 @@ function convertTsToPythonic(tsConfig, key) {
     return pyDict;
   }
 }
-var version2 = "3.6.0";
+var version2 = "3.7.0";
 function assertFeedCompatibility(key, val) {
   if (key.dtype == null || key.dtype === val.dtype) {
     return val;
@@ -20654,8 +21745,8 @@ function getTopologicalSortAndRecipientCounts(fetches, feedDict) {
     finalRecipientMap = out.recipientMap;
   } else {
     const visited = new Set();
-    for (const fetch3 of fetches) {
-      const { sorted, recipientMap } = getTopologicalSortAndRecipientCountsForOneFetch(fetch3, feedDict);
+    for (const fetch4 of fetches) {
+      const { sorted, recipientMap } = getTopologicalSortAndRecipientCountsForOneFetch(fetch4, feedDict);
       for (const symbolicTensor of sorted) {
         if (!visited.has(symbolicTensor.name)) {
           finalSorted.push(symbolicTensor);
@@ -20682,7 +21773,7 @@ function recipientMap2Counts(recipientMap) {
   }
   return recipientCounts;
 }
-function getTopologicalSortAndRecipientCountsForOneFetch(fetch3, feedDict) {
+function getTopologicalSortAndRecipientCountsForOneFetch(fetch4, feedDict) {
   const visited = new Set();
   const sorted = [];
   const recipientMap = {};
@@ -20691,7 +21782,7 @@ function getTopologicalSortAndRecipientCountsForOneFetch(fetch3, feedDict) {
   }
   const stack2 = [];
   const marks = [];
-  stack2.push(fetch3);
+  stack2.push(fetch4);
   while (stack2.length > 0) {
     const top = stack2[stack2.length - 1];
     if (visited.has(top.name)) {
@@ -20722,21 +21813,21 @@ function getTopologicalSortAndRecipientCountsForOneFetch(fetch3, feedDict) {
   }
   return { sorted, recipientMap };
 }
-function getNodeOutputs(fetch3) {
+function getNodeOutputs(fetch4) {
   let layerOutputs;
-  if (fetch3.sourceLayer.inboundNodes.length === 1) {
-    layerOutputs = fetch3.sourceLayer.output;
+  if (fetch4.sourceLayer.inboundNodes.length === 1) {
+    layerOutputs = fetch4.sourceLayer.output;
   } else {
     let nodeIndex = null;
-    for (let i = 0; i < fetch3.sourceLayer.inboundNodes.length; ++i) {
-      for (const outputTensor of fetch3.sourceLayer.inboundNodes[i].outputTensors) {
-        if (outputTensor.id === fetch3.id) {
+    for (let i = 0; i < fetch4.sourceLayer.inboundNodes.length; ++i) {
+      for (const outputTensor of fetch4.sourceLayer.inboundNodes[i].outputTensors) {
+        if (outputTensor.id === fetch4.id) {
           nodeIndex = i;
           break;
         }
       }
     }
-    layerOutputs = fetch3.sourceLayer.getOutputAt(nodeIndex);
+    layerOutputs = fetch4.sourceLayer.getOutputAt(nodeIndex);
   }
   return layerOutputs;
 }
@@ -28538,10 +29629,11 @@ function getTensorsForCurrentContenxt(name, tensorsMap, context) {
   return tensorsMap[getNodeNameWithContextId(name, context.currentContextId)];
 }
 function getNodeNameAndIndex(inputName, context) {
-  const [nodeName, index] = parseNodeName(inputName);
+  const [nodeName, index, outputName] = parseNodeName(inputName);
   return [
     getNodeNameWithContextId(nodeName, context && context.currentContextId),
-    index
+    index,
+    outputName
   ];
 }
 function getNodeNameWithContextId(name, contextId) {
@@ -28550,10 +29642,12 @@ function getNodeNameWithContextId(name, contextId) {
 function parseNodeName(name) {
   const parts = name.split(":");
   if (parts.length === 1) {
-    return [name, 0];
+    return [name, 0, void 0];
   }
   const nodeName = parts[0];
-  return [nodeName, Number(parts[parts.length - 1])];
+  const outputName = parts.length === 3 ? parts[1] : void 0;
+  const index = Number(parts[parts.length - 1]);
+  return [nodeName, index, outputName];
 }
 function getPadding(node2, tensorMap, context) {
   let pad3 = getParamValue("pad", node2, tensorMap, context);
@@ -31228,11 +32322,57 @@ var json15 = [
     }]
   }
 ];
-var spectral_exports = {};
-__export2(spectral_exports, {
+var sparse_exports = {};
+__export2(sparse_exports, {
   json: () => json16
 });
 var json16 = [
+  {
+    "tfOpName": "SparseFillEmptyRows",
+    "category": "sparse",
+    "inputs": [
+      { "start": 0, "name": "indices", "type": "tensor" },
+      { "start": 1, "name": "values", "type": "tensor" },
+      { "start": 2, "name": "denseShape", "type": "tensor" },
+      { "start": 3, "name": "defaultValue", "type": "tensor" }
+    ]
+  },
+  {
+    "tfOpName": "SparseReshape",
+    "category": "sparse",
+    "inputs": [
+      { "start": 0, "name": "inputIndices", "type": "tensor" },
+      { "start": 1, "name": "inputShape", "type": "tensor" },
+      { "start": 2, "name": "newShape", "type": "tensor" }
+    ],
+    "attrs": [
+      { "tfName": "T", "name": "dtype", "type": "dtype", "notSupported": true }
+    ]
+  },
+  {
+    "tfOpName": "SparseSegmentMean",
+    "category": "sparse",
+    "inputs": [
+      { "start": 0, "name": "data", "type": "tensor" },
+      { "start": 1, "name": "indices", "type": "tensor" },
+      { "start": 2, "name": "segmentIds", "type": "tensor" }
+    ]
+  },
+  {
+    "tfOpName": "SparseSegmentSum",
+    "category": "sparse",
+    "inputs": [
+      { "start": 0, "name": "data", "type": "tensor" },
+      { "start": 1, "name": "indices", "type": "tensor" },
+      { "start": 2, "name": "segmentIds", "type": "tensor" }
+    ]
+  }
+];
+var spectral_exports = {};
+__export2(spectral_exports, {
+  json: () => json17
+});
+var json17 = [
   {
     "tfOpName": "FFT",
     "category": "spectral",
@@ -31270,11 +32410,56 @@ var json16 = [
     ]
   }
 ];
+var string_exports = {};
+__export2(string_exports, {
+  json: () => json18
+});
+var json18 = [
+  {
+    "tfOpName": "StringNGrams",
+    "category": "string",
+    "inputs": [
+      { "start": 0, "name": "data", "type": "tensor" },
+      { "start": 1, "name": "dataSplits", "type": "tensor" }
+    ],
+    "attrs": [
+      { "tfName": "separator", "name": "separator", "type": "string" },
+      { "tfName": "ngram_widths", "name": "nGramWidths", "type": "number[]" },
+      { "tfName": "left_pad", "name": "leftPad", "type": "string" },
+      { "tfName": "right_pad", "name": "rightPad", "type": "string" },
+      { "tfName": "pad_width", "name": "padWidth", "type": "number" },
+      {
+        "tfName": "preserve_short_sequences",
+        "name": "preserveShortSequences",
+        "type": "bool"
+      }
+    ],
+    "outputs": ["ngrams", "ngrams_splits"]
+  },
+  {
+    "tfOpName": "StringSplit",
+    "category": "string",
+    "inputs": [
+      { "start": 0, "name": "input", "type": "tensor" },
+      { "start": 1, "name": "delimiter", "type": "tensor" }
+    ],
+    "attrs": [{ "tfName": "skip_empty", "name": "skipEmpty", "type": "bool" }],
+    "outputs": ["indices", "values", "shape"]
+  },
+  {
+    "tfOpName": "StringToHashBucketFast",
+    "category": "string",
+    "inputs": [
+      { "start": 0, "name": "input", "type": "tensor" }
+    ],
+    "attrs": [{ "tfName": "num_buckets", "name": "numBuckets", "type": "number" }]
+  }
+];
 var transformation_exports = {};
 __export2(transformation_exports, {
-  json: () => json17
+  json: () => json19
 });
-var json17 = [
+var json19 = [
   {
     "tfOpName": "Cast",
     "category": "transformation",
@@ -31409,16 +32594,18 @@ var OperationMapper = class {
       creation_exports,
       dynamic_exports,
       evaluation_exports,
-      logical_exports,
-      image_exports,
       graph_exports,
+      hash_table_exports,
+      image_exports,
+      logical_exports,
       matrices_exports,
       normalization_exports,
       reduction_exports,
       slice_join_exports,
+      sparse_exports,
       spectral_exports,
-      transformation_exports,
-      hash_table_exports
+      string_exports,
+      transformation_exports
     ];
     const mappersJson = [].concat(...ops.map((op2) => op2.json));
     this.opMappers = mappersJson.reduce((map, mapper) => {
@@ -31453,10 +32640,18 @@ var OperationMapper = class {
     const allNodes = Object.keys(nodes);
     allNodes.forEach((key) => {
       const node2 = nodes[key];
-      node2.inputNames.forEach((name) => {
-        const [nodeName] = getNodeNameAndIndex(name);
-        node2.inputs.push(nodes[nodeName]);
-        nodes[nodeName].children.push(node2);
+      node2.inputNames.forEach((name, index) => {
+        const [nodeName, , outputName] = getNodeNameAndIndex(name);
+        const inputNode = nodes[nodeName];
+        if (inputNode.outputs != null) {
+          const outputIndex = inputNode.outputs.indexOf(outputName);
+          if (outputIndex !== -1) {
+            const inputName = `${nodeName}:${outputIndex}`;
+            node2.inputNames[index] = inputName;
+          }
+        }
+        node2.inputs.push(inputNode);
+        inputNode.children.push(node2);
       });
     });
     if (Object.keys(outputNodeNameToKey).length === 0) {
@@ -31521,7 +32716,8 @@ var OperationMapper = class {
       children: [],
       inputParams: {},
       attrParams: {},
-      rawAttrs: node2.attr
+      rawAttrs: node2.attr,
+      outputs: mapper.outputs
     };
     if (mapper.inputs != null) {
       newNode.inputParams = mapper.inputs.reduce((map, param) => {
@@ -31651,10 +32847,18 @@ var OperationMapper = class {
     const allNodes = Object.keys(nodes);
     allNodes.forEach((key) => {
       const node2 = nodes[key];
-      node2.inputNames.forEach((name) => {
-        const [nodeName] = getNodeNameAndIndex(name);
-        node2.inputs.push(nodes[nodeName]);
-        nodes[nodeName].children.push(node2);
+      node2.inputNames.forEach((name, index) => {
+        const [nodeName, , outputName] = getNodeNameAndIndex(name);
+        const inputNode = nodes[nodeName];
+        if (inputNode.outputs != null) {
+          const outputIndex = inputNode.outputs.indexOf(outputName);
+          if (outputIndex !== -1) {
+            const inputName = `${nodeName}:${outputIndex}`;
+            node2.inputNames[index] = inputName;
+          }
+        }
+        node2.inputs.push(inputNode);
+        inputNode.children.push(node2);
       });
     });
     const returnNodeMap = functionDef.ret;
@@ -32688,6 +33892,7 @@ var executeOp3 = async (node2, tensorMap, context) => {
 function fusedConvAndDepthWiseParams(node2, tensorMap, context) {
   const [extraOp, activationFunc] = getParamValue("fusedOps", node2, tensorMap, context);
   const isBiasAdd = extraOp === "biasadd";
+  const noBiasAdd = !isBiasAdd;
   const isPrelu = activationFunc === "prelu";
   const isBatchNorm = extraOp === "fusedbatchnorm";
   const numArgs = getParamValue("numArgs", node2, tensorMap, context);
@@ -32695,7 +33900,7 @@ function fusedConvAndDepthWiseParams(node2, tensorMap, context) {
     if (isPrelu && numArgs !== 2) {
       throw new Error("FusedConv2d and DepthwiseConv2d with BiasAdd and Prelu must have two extra arguments: bias and alpha.");
     }
-    if (!isPrelu && numArgs !== 1) {
+    if (!isPrelu && isBiasAdd && numArgs !== 1) {
       throw new Error("FusedConv2d and DepthwiseConv2d with BiasAdd must have one extra argument: bias.");
     }
   }
@@ -32706,7 +33911,11 @@ function fusedConvAndDepthWiseParams(node2, tensorMap, context) {
   const pad3 = getPadding(node2, tensorMap, context);
   const dataFormat = getParamValue("dataFormat", node2, tensorMap, context).toUpperCase();
   const dilations = getParamValue("dilations", node2, tensorMap, context);
-  const [biasArg, preluArg] = getParamValue("args", node2, tensorMap, context);
+  let [biasArg, preluArg] = getParamValue("args", node2, tensorMap, context);
+  if (noBiasAdd) {
+    preluArg = biasArg;
+    biasArg = void 0;
+  }
   const leakyreluAlpha = getParamValue("leakyreluAlpha", node2, tensorMap, context);
   return {
     stride,
@@ -33420,9 +34629,26 @@ var executeOp15 = (node2, tensorMap, context) => {
 };
 var executeOp16 = (node2, tensorMap, context) => {
   switch (node2.op) {
+    case "SparseFillEmptyRows": {
+      const { outputIndices, outputValues, emptyRowIndicator, reverseIndexMap } = sparse.sparseFillEmptyRows(getParamValue("indices", node2, tensorMap, context), getParamValue("values", node2, tensorMap, context), getParamValue("denseShape", node2, tensorMap, context), getParamValue("defaultValue", node2, tensorMap, context));
+      return [
+        outputIndices,
+        outputValues,
+        emptyRowIndicator,
+        reverseIndexMap
+      ];
+    }
     case "SparseReshape": {
       const { outputIndices, outputShape } = sparse.sparseReshape(getParamValue("inputIndices", node2, tensorMap, context), getParamValue("inputShape", node2, tensorMap, context), getParamValue("newShape", node2, tensorMap, context));
       return [outputIndices, outputShape];
+    }
+    case "SparseSegmentMean": {
+      const outputData = sparse.sparseSegmentMean(getParamValue("data", node2, tensorMap, context), getParamValue("indices", node2, tensorMap, context), getParamValue("segmentIds", node2, tensorMap, context));
+      return [outputData];
+    }
+    case "SparseSegmentSum": {
+      const outputData = sparse.sparseSegmentSum(getParamValue("data", node2, tensorMap, context), getParamValue("indices", node2, tensorMap, context), getParamValue("segmentIds", node2, tensorMap, context));
+      return [outputData];
     }
     default:
       throw TypeError(`Node type ${node2.op} is not implemented`);
@@ -33447,6 +34673,24 @@ var executeOp17 = (node2, tensorMap, context) => {
   }
 };
 var executeOp18 = (node2, tensorMap, context) => {
+  switch (node2.op) {
+    case "StringNGrams": {
+      const { nGrams, nGramsSplits } = string.stringNGrams(getParamValue("data", node2, tensorMap, context), getParamValue("dataSplits", node2, tensorMap, context), getParamValue("separator", node2, tensorMap, context), getParamValue("nGramWidths", node2, tensorMap, context), getParamValue("leftPad", node2, tensorMap, context), getParamValue("rightPad", node2, tensorMap, context), getParamValue("padWidth", node2, tensorMap, context), getParamValue("preserveShortSequences", node2, tensorMap, context));
+      return [nGrams, nGramsSplits];
+    }
+    case "StringSplit": {
+      const { indices, values, shape } = string.stringSplit(getParamValue("input", node2, tensorMap, context), getParamValue("delimiter", node2, tensorMap, context), getParamValue("skipEmpty", node2, tensorMap, context));
+      return [indices, values, shape];
+    }
+    case "StringToHashBucketFast": {
+      const output = string.stringToHashBucketFast(getParamValue("input", node2, tensorMap, context), getParamValue("numBuckets", node2, tensorMap, context));
+      return [output];
+    }
+    default:
+      throw TypeError(`Node type ${node2.op} is not implemented`);
+  }
+};
+var executeOp19 = (node2, tensorMap, context) => {
   switch (node2.op) {
     case "Cast": {
       return [cast(getParamValue("x", node2, tensorMap, context), getParamValue("dtype", node2, tensorMap, context))];
@@ -33491,7 +34735,7 @@ var executeOp18 = (node2, tensorMap, context) => {
       throw TypeError(`Node type ${node2.op} is not implemented`);
   }
 };
-function executeOp19(node2, tensorMap, context, resourceManager) {
+function executeOp20(node2, tensorMap, context, resourceManager) {
   const value = ((node22, tensorMap2, context2) => {
     switch (node22.category) {
       case "arithmetic":
@@ -33526,8 +34770,10 @@ function executeOp19(node2, tensorMap, context, resourceManager) {
         return tidy(() => executeOp16(node22, tensorMap2, context2));
       case "spectral":
         return tidy(() => executeOp17(node22, tensorMap2, context2));
-      case "transformation":
+      case "string":
         return tidy(() => executeOp18(node22, tensorMap2, context2));
+      case "transformation":
+        return tidy(() => executeOp19(node22, tensorMap2, context2));
       case "hash_table":
         return executeOp9(node22, tensorMap2, context2, resourceManager);
       case "custom":
@@ -33882,7 +35128,7 @@ var GraphExecutor = class {
       for (let i = 0; i < orderedNodes.length; i++) {
         const node2 = orderedNodes[i];
         if (!tensorsMap[node2.name]) {
-          const tensors = executeOp19(node2, tensorsMap, context, this._resourceManager);
+          const tensors = executeOp20(node2, tensorsMap, context, this._resourceManager);
           if (util_exports.isPromise(tensors)) {
             throw new Error(`The execution of the op '${node2.op}' returned a promise. Please use model.executeAsync() instead.`);
           }
@@ -34018,7 +35264,7 @@ var GraphExecutor = class {
         [nodeName] = getNodeNameAndIndex(item.node.name, context);
       }
       if (tensorMap[item.node.name] == null) {
-        const tensors = executeOp19(item.node, tensorMap, context, this._resourceManager);
+        const tensors = executeOp20(item.node, tensorMap, context, this._resourceManager);
         if (!nodeName) {
           [nodeName] = getNodeNameAndIndex(item.node.name, context);
         }
@@ -34310,7 +35556,7 @@ async function loadGraphModel(modelUrl, options = {}) {
   await model2.load();
   return model2;
 }
-var version3 = "3.6.0";
+var version3 = "3.7.0";
 var dist_exports = {};
 __export2(dist_exports, {
   CSVDataset: () => CSVDataset,
@@ -36032,7 +37278,7 @@ async function webcam(webcamVideoElement, webcamConfig) {
 async function microphone(microphoneConfig) {
   return MicrophoneIterator.create(microphoneConfig);
 }
-var version4 = "3.6.0";
+var version4 = "3.7.0";
 function assertNotComplex(tensor2, opName) {
   if (!Array.isArray(tensor2)) {
     tensor2 = [tensor2];
@@ -36178,11 +37424,15 @@ __export2(shared_exports, {
   bincountReduceImpl: () => bincountReduceImpl,
   ceilImpl: () => ceilImpl,
   concatImpl: () => concatImpl,
+  equalImpl: () => equalImpl,
   expImpl: () => expImpl,
   expm1Impl: () => expm1Impl,
   floorImpl: () => floorImpl,
+  gatherNdImpl: () => gatherNdImpl,
   gatherV2Impl: () => gatherV2Impl,
+  greaterEqualImpl: () => greaterEqualImpl,
   greaterImpl: () => greaterImpl,
+  lessEqualImpl: () => lessEqualImpl,
   lessImpl: () => lessImpl,
   linSpaceImpl: () => linSpaceImpl,
   logImpl: () => logImpl,
@@ -36199,8 +37449,12 @@ __export2(shared_exports, {
   sliceImpl: () => sliceImpl,
   sparseFillEmptyRowsImpl: () => sparseFillEmptyRowsImpl,
   sparseReshapeImpl: () => sparseReshapeImpl,
+  sparseSegmentReductionImpl: () => sparseSegmentReductionImpl,
   squaredDifferenceImpl: () => squaredDifferenceImpl,
   stridedSliceImpl: () => stridedSliceImpl,
+  stringNGramsImpl: () => stringNGramsImpl,
+  stringSplitImpl: () => stringSplitImpl,
+  stringToHashBucketFastImpl: () => stringToHashBucketFastImpl,
   subImpl: () => subImpl,
   tileImpl: () => tileImpl,
   topKImpl: () => topKImpl,
@@ -36361,8 +37615,10 @@ function binaryKernelFunc(name, simpleImpl, complexImpl, dtype) {
       assertNotComplex([a, b], name);
       const aVals = cpuBackend.data.get(a.dataId).values;
       const bVals = cpuBackend.data.get(b.dataId).values;
+      const decodedAVals = a.dtype === "string" ? backend_util_exports.fromUint8ToStringArray(aVals) : aVals;
+      const decodedBVals = a.dtype === "string" ? backend_util_exports.fromUint8ToStringArray(bVals) : bVals;
       const $dtype = dtype || a.dtype;
-      const [resultData, resultShape] = simpleImpl(a.shape, b.shape, aVals, bVals, $dtype);
+      const [resultData, resultShape] = simpleImpl(a.shape, b.shape, decodedAVals, decodedBVals, $dtype);
       return cpuBackend.makeTensorInfo(resultShape, $dtype, resultData);
     };
   }
@@ -36569,6 +37825,13 @@ function concatImpl(inputs, outShape, dtype, simplyConcat) {
   }
   return outVals;
 }
+var equalImpl = createSimpleBinaryKernelImpl((a, b) => a === b ? 1 : 0);
+var equal2 = binaryKernelFunc(Equal, equalImpl, null, "bool");
+var equalConfig = {
+  kernelName: Equal,
+  backendName: "cpu",
+  kernelFunc: equal2
+};
 var expImpl = createSimpleUnaryImpl((xi) => Math.exp(xi));
 var exp2 = unaryKernelFuncFromImpl(Exp, expImpl);
 var expConfig = {
@@ -36590,6 +37853,25 @@ var floorConfig = {
   backendName: "cpu",
   kernelFunc: floor2
 };
+function gatherNdImpl(indicesData, paramsBuf, dtype, numSlices, sliceRank, sliceSize, strides, paramsShape, paramsSize) {
+  const outBuf = buffer([numSlices, sliceSize], dtype);
+  for (let i = 0; i < numSlices; i++) {
+    const index = [];
+    let flattenIndex = 0;
+    for (let j = 0; j < sliceRank; j++) {
+      const dim = indicesData[i * sliceRank + j];
+      flattenIndex += dim * strides[j];
+      index.push(dim);
+    }
+    if (flattenIndex < 0 || flattenIndex >= paramsSize / sliceSize) {
+      throw new Error(`Invalid indices: ${index} does not index into ${paramsShape}`);
+    }
+    for (let k = 0; k < sliceSize; k++) {
+      outBuf.values[i * sliceSize + k] = paramsBuf.get(...paramsBuf.indexToLoc(flattenIndex * sliceSize + k));
+    }
+  }
+  return outBuf;
+}
 function gatherV2Impl(xBuf, indicesBuf, flattenOutputShape) {
   const outBuf = buffer(flattenOutputShape, xBuf.dtype);
   for (let i = 0; i < outBuf.size; ++i) {
@@ -36611,12 +37893,26 @@ var greaterConfig = {
   backendName: "cpu",
   kernelFunc: greater3
 };
+var greaterEqualImpl = createSimpleBinaryKernelImpl((a, b) => a >= b ? 1 : 0);
+var greaterEqual2 = binaryKernelFunc(GreaterEqual, greaterEqualImpl, null, "bool");
+var greaterEqualConfig = {
+  kernelName: GreaterEqual,
+  backendName: "cpu",
+  kernelFunc: greaterEqual2
+};
 var lessImpl = createSimpleBinaryKernelImpl((a, b) => a < b ? 1 : 0);
 var less3 = binaryKernelFunc(Less, lessImpl, null, "bool");
 var lessConfig = {
   kernelName: Less,
   backendName: "cpu",
   kernelFunc: less3
+};
+var lessEqualImpl = createSimpleBinaryKernelImpl((a, b) => a <= b ? 1 : 0);
+var lessEqual2 = binaryKernelFunc(LessEqual, lessEqualImpl, null, "bool");
+var lessEqualConfig = {
+  kernelName: LessEqual,
+  backendName: "cpu",
+  kernelFunc: lessEqual2
 };
 function linSpaceImpl(start, stop, num) {
   const step5 = (stop - start) / (num - 1);
@@ -36641,7 +37937,7 @@ function maxImpl(aVals, reduceSize, outShape, dtype) {
     let max6 = aVals[offset];
     for (let j = 0; j < reduceSize; ++j) {
       const value = aVals[offset + j];
-      if (value > max6) {
+      if (Number.isNaN(value) || value > max6) {
         max6 = value;
       }
     }
@@ -36935,7 +38231,7 @@ function sparseFillEmptyRowsImpl(indices, indicesShape, indicesDType, values, va
     }
     return [
       outputIndices,
-      [indicesCount, rank],
+      [fullIndicesCount, rank],
       outputValues,
       emptyRowIndicator,
       reverseIndexMap
@@ -37008,6 +38304,79 @@ function sparseReshapeImpl(inputIndices, inputIndicesShape, inputDType, inputSha
   }
   return [newIndices, [nnz, outputRank], outputShape];
 }
+function sparseSegmentReductionImpl(input2, inputShape, inputDType, indices, segmentIds, isMean = false, defaultValue = 0) {
+  const numIndices = indices.length;
+  if (numIndices !== segmentIds.length) {
+    throw new Error(`segmentIds and indices should have same size.`);
+  }
+  const inputFlat = [inputShape[0], input2.length / inputShape[0]];
+  const numCol = inputFlat[1];
+  const lastSegmentIdPlusOne = numIndices > 0 ? segmentIds[numIndices - 1] + 1 : 0;
+  const outputRows = lastSegmentIdPlusOne;
+  if (outputRows < 0) {
+    throw new Error(`segment ids must be >= 0`);
+  }
+  const outputShape = inputShape.slice();
+  outputShape[0] = outputRows;
+  const outputLength = outputShape.reduce((product, value) => product * value, 1);
+  const output = util_exports.getArrayFromDType(inputDType, outputLength);
+  if (numIndices === 0) {
+    if (outputRows > 0) {
+      output.fill(defaultValue);
+    }
+    return [output, outputShape];
+  }
+  if (outputRows <= 0) {
+    throw new Error(`segment ids must be >= 0`);
+  }
+  let start = 0, end = 1;
+  let uninitializedIndex = 0;
+  let outIndex = segmentIds[start];
+  while (true) {
+    let nextIndex = 0;
+    if (end < numIndices) {
+      nextIndex = segmentIds[end];
+      if (outIndex === nextIndex) {
+        ++end;
+        continue;
+      }
+      if (outIndex >= nextIndex) {
+        throw new Error(`segment ids are not increasing`);
+      }
+    }
+    if (outIndex < 0 || outIndex >= outputRows) {
+      throw new Error(`Segment id ${outIndex} out of range [0, ${outputRows}), possibly because segmentIds input is not sorted.`);
+    }
+    if (outIndex > uninitializedIndex) {
+      output.fill(defaultValue, uninitializedIndex * numCol, outIndex * numCol);
+    }
+    for (let i = start; i < end; ++i) {
+      const index = indices[i];
+      if (index < 0 || index >= inputFlat[0]) {
+        throw new Error(`Bad: indices[${i}] == ${indices[i]} out of range [0, ${inputFlat[0]})`);
+      }
+      for (let j = 0; j < numCol; j++) {
+        output[outIndex * numCol + j] += input2[index * numCol + j];
+      }
+    }
+    if (isMean) {
+      for (let j = 0; j < numCol; j++) {
+        output[outIndex * numCol + j] /= end - start;
+      }
+    }
+    start = end;
+    ++end;
+    uninitializedIndex = outIndex + 1;
+    outIndex = nextIndex;
+    if (end > numIndices) {
+      break;
+    }
+  }
+  if (uninitializedIndex < outputRows) {
+    output.fill(defaultValue, uninitializedIndex * numCol, outputRows * numCol);
+  }
+  return [output, outputShape];
+}
 var squaredDifferenceImpl = createSimpleBinaryKernelImpl((a, b) => {
   const diff = a - b;
   return diff * diff;
@@ -37029,6 +38398,207 @@ function stridedSliceImpl(outShape, xBuf, strides, begin) {
     outBuf.set(xBuf.get(...newLoc), ...loc);
   }
   return outBuf;
+}
+var StringNGramsOp = class {
+  constructor(separator, nGramWidths, leftPad, rightPad2, padWidth, preserveShortSequences) {
+    this.separator = util_exports.encodeString(separator);
+    this.nGramWidths = nGramWidths;
+    this.leftPad = util_exports.encodeString(leftPad);
+    this.rightPad = util_exports.encodeString(rightPad2);
+    this.padWidth = padWidth;
+    this.preserveShort = preserveShortSequences;
+  }
+  getPadWidth(nGramWidth) {
+    return Math.min(this.padWidth < 0 ? nGramWidth - 1 : this.padWidth, nGramWidth - 1);
+  }
+  getNumNGrams(length, nGramWidth) {
+    const padWidth = this.getPadWidth(nGramWidth);
+    return Math.max(0, length + 2 * padWidth - nGramWidth + 1);
+  }
+  createNGrams(data, splitIndex, output, outputStartIndex, numNGrams, nGramWidth) {
+    for (let nGramIndex = 0; nGramIndex < numNGrams; ++nGramIndex) {
+      const padWidth = this.getPadWidth(nGramWidth);
+      const leftPadding = Math.max(0, padWidth - nGramIndex);
+      const rightPadding = Math.max(0, padWidth - (numNGrams - (nGramIndex + 1)));
+      const numTokens = nGramWidth - (leftPadding + rightPadding);
+      const dataStartIndex = splitIndex + (leftPadding > 0 ? 0 : nGramIndex - padWidth);
+      let nGramSize = 0;
+      nGramSize += leftPadding * this.leftPad.length;
+      for (let n = 0; n < numTokens; ++n) {
+        nGramSize += data[dataStartIndex + n].length;
+      }
+      nGramSize += rightPadding * this.rightPad.length;
+      const numSeparators = leftPadding + rightPadding + numTokens - 1;
+      nGramSize += numSeparators * this.separator.length;
+      output[outputStartIndex + nGramIndex] = new Uint8Array(nGramSize);
+      const nGram = output[outputStartIndex + nGramIndex];
+      let nextNGramIndex = 0;
+      const appendToNGram = (str) => str.forEach((value) => nGram[nextNGramIndex++] = value);
+      for (let n = 0; n < leftPadding; ++n) {
+        appendToNGram(this.leftPad);
+        appendToNGram(this.separator);
+      }
+      for (let n = 0; n < numTokens - 1; ++n) {
+        appendToNGram(data[dataStartIndex + n]);
+        appendToNGram(this.separator);
+      }
+      if (numTokens > 0) {
+        appendToNGram(data[dataStartIndex + numTokens - 1]);
+        for (let n = 0; n < rightPadding; ++n) {
+          appendToNGram(this.separator);
+          appendToNGram(this.rightPad);
+        }
+      } else {
+        for (let n = 0; n < rightPadding - 1; ++n) {
+          appendToNGram(this.rightPad);
+          appendToNGram(this.separator);
+        }
+        appendToNGram(this.rightPad);
+      }
+    }
+  }
+  compute(data, splits) {
+    const inputDataSize = data.length;
+    const splitsSize = splits.length;
+    if (splitsSize > 0) {
+      let prevSplit = splits[0];
+      if (prevSplit !== 0) {
+        throw new Error(`First split value must be 0, got ${prevSplit}`);
+      }
+      for (let i = 1; i < splitsSize; ++i) {
+        let validSplits = splits[i] >= prevSplit;
+        validSplits = validSplits && splits[i] <= inputDataSize;
+        if (!validSplits) {
+          throw new Error(`Invalid split value ${splits[i]}, must be in [${prevSplit}, ${inputDataSize}]`);
+        }
+        prevSplit = splits[i];
+      }
+      if (prevSplit !== inputDataSize) {
+        throw new Error(`Last split value must be data size. Expected ${inputDataSize}, got ${prevSplit}`);
+      }
+    }
+    const numBatchItems = splitsSize - 1;
+    const nGramsSplits = util_exports.getArrayFromDType("int32", splitsSize);
+    if (inputDataSize === 0 || splitsSize === 0) {
+      const empty = new Array(inputDataSize);
+      for (let i = 0; i <= numBatchItems; ++i) {
+        nGramsSplits[i] = 0;
+      }
+      return [empty, nGramsSplits];
+    }
+    nGramsSplits[0] = 0;
+    for (let i = 1; i <= numBatchItems; ++i) {
+      const length = splits[i] - splits[i - 1];
+      let numNGrams = 0;
+      this.nGramWidths.forEach((nGramWidth) => {
+        numNGrams += this.getNumNGrams(length, nGramWidth);
+      });
+      if (this.preserveShort && length > 0 && numNGrams === 0) {
+        numNGrams = 1;
+      }
+      nGramsSplits[i] = nGramsSplits[i - 1] + numNGrams;
+    }
+    const nGrams = new Array(nGramsSplits[numBatchItems]);
+    for (let i = 0; i < numBatchItems; ++i) {
+      const splitIndex = splits[i];
+      let outputStartIdx = nGramsSplits[i];
+      this.nGramWidths.forEach((nGramWidth) => {
+        const length = splits[i + 1] - splits[i];
+        const numNGrams = this.getNumNGrams(length, nGramWidth);
+        this.createNGrams(data, splitIndex, nGrams, outputStartIdx, numNGrams, nGramWidth);
+        outputStartIdx += numNGrams;
+      });
+      if (this.preserveShort && outputStartIdx === nGramsSplits[i]) {
+        const dataLength = splits[i + 1] - splits[i];
+        if (dataLength === 0) {
+          continue;
+        }
+        const nGramWidth = dataLength + 2 * this.padWidth;
+        const numNGrams = 1;
+        this.createNGrams(data, splitIndex, nGrams, outputStartIdx, numNGrams, nGramWidth);
+      }
+    }
+    return [nGrams, nGramsSplits];
+  }
+};
+function stringNGramsImpl(data, dataSplits, separator, nGramWidths, leftPad, rightPad2, padWidth, preserveShortSequences) {
+  return new StringNGramsOp(separator, nGramWidths, leftPad, rightPad2, padWidth, preserveShortSequences).compute(data, dataSplits);
+}
+function split3(str, delimiters, skipEmpty) {
+  if (!str.length) {
+    return [];
+  }
+  if (delimiters.length === 0) {
+    const result2 = new Array(str.length);
+    for (let i = 0; i < str.length; ++i) {
+      result2[i] = str.subarray(i, i + 1);
+    }
+    return result2;
+  }
+  if (delimiters.length === 1) {
+    const delimiter = delimiters[0];
+    const result2 = [];
+    let f = str.indexOf(delimiter);
+    while (f !== -1) {
+      const token = str.subarray(0, f);
+      if (!skipEmpty || token.length !== 0) {
+        result2.push(token);
+      }
+      str = str.subarray(f + 1);
+      f = str.indexOf(delimiter);
+    }
+    if (!skipEmpty || str.length !== 0) {
+      result2.push(str);
+    }
+    return result2;
+  }
+  const result = [];
+  let tokenStart = 0;
+  for (let i = 0; i < str.length + 1; i++) {
+    if (i === str.length || delimiters.indexOf(str[i]) !== -1) {
+      const token = str.subarray(tokenStart, i);
+      if (!skipEmpty || token.length !== 0) {
+        result.push(token);
+      }
+      tokenStart = i + 1;
+    }
+  }
+  return result;
+}
+function stringSplitImpl(input2, delimiter, skipEmpty) {
+  const batchSize = input2.length;
+  const tokens = [];
+  let outputSize = 0;
+  let maxNumEntries = 0;
+  const numIndices = new Array(batchSize);
+  for (let i = 0; i < batchSize; ++i) {
+    const parts = split3(input2[i], delimiter, skipEmpty);
+    const nEntries = parts.length;
+    numIndices[i] = nEntries;
+    outputSize += nEntries;
+    maxNumEntries = Math.max(maxNumEntries, nEntries);
+    tokens.push(...parts);
+  }
+  const indices = util_exports.getArrayFromDType("int32", outputSize * 2);
+  const values = new Array(outputSize);
+  const shape = [batchSize, maxNumEntries];
+  let c = 0;
+  for (let i = 0; i < batchSize; ++i) {
+    for (let j = 0; j < numIndices[i]; ++j) {
+      indices[c * 2] = i;
+      indices[c * 2 + 1] = j;
+      values[c] = tokens[c];
+      ++c;
+    }
+  }
+  return [indices, values, shape];
+}
+function stringToHashBucketFastImpl(input2, numBuckets) {
+  const output = util_exports.getArrayFromDType("int32", input2.length);
+  for (let i = 0; i < input2.length; ++i) {
+    output[i] = util_exports.fingerPrint64(input2[i]).modulo(numBuckets).getLowBitsUnsigned();
+  }
+  return output;
 }
 var subImpl = createSimpleBinaryKernelImpl((aValue, bValue) => aValue - bValue);
 var subComplexImpl = createComplexBinaryKernelImpl((aReal, aImag, bReal, bImag) => {
@@ -37140,7 +38710,7 @@ function uniqueImpl(values, axis, shape, dtype) {
     indices
   };
 }
-var version5 = "3.6.0";
+var version5 = "3.7.0";
 registerBackend("cpu", () => new MathBackendCPU(), 1);
 var elu4 = unaryKernelFunc(Elu, (xi) => xi >= 0 ? xi : Math.exp(xi) - 1);
 var eluConfig = {
@@ -37281,14 +38851,14 @@ function batchMatMul(args) {
   for (let bi = 0; bi < batchDim; bi++) {
     for (let i0 = 0; i0 < leftDim; i0 += blockSize) {
       for (let j0 = 0; j0 < rightDim; j0 += blockSize) {
-        for (let k0 = 0; k0 < sharedDim; k0 += blockSize) {
+        for (let k02 = 0; k02 < sharedDim; k02 += blockSize) {
           const iBlock = Math.min(i0 + blockSize, leftDim);
           const jBlock = Math.min(j0 + blockSize, rightDim);
-          const kBlock = Math.min(k0 + blockSize, sharedDim);
+          const kBlock = Math.min(k02 + blockSize, sharedDim);
           for (let i = i0; i < iBlock; i++) {
             for (let j = j0; j < jBlock; j++) {
               let sum6 = 0;
-              for (let k = k0; k < kBlock; k++) {
+              for (let k = k02; k < kBlock; k++) {
                 const batchOffsetA = Math.min(bi, batchDimA - 1) * aBatch;
                 const batchOffsetB = Math.min(bi, batchDimB - 1) * bBatch;
                 const aVal = a3dValues[batchOffsetA + i * aOuterStep + k * aInnerStep];
@@ -39239,13 +40809,6 @@ var eluGradConfig2 = {
   backendName: "cpu",
   kernelFunc: eluGrad
 };
-var equalImpl = createSimpleBinaryKernelImpl((a, b) => a === b ? 1 : 0);
-var equal2 = binaryKernelFunc(Equal, equalImpl, null, "bool");
-var equalConfig = {
-  kernelName: Equal,
-  backendName: "cpu",
-  kernelFunc: equal2
-};
 var p = backend_util_exports.ERF_P;
 var a1 = backend_util_exports.ERF_A1;
 var a2 = backend_util_exports.ERF_A2;
@@ -39623,25 +41186,10 @@ function gatherNd(args) {
   if (numSlices === 0) {
     return backend2.makeTensorInfo(resultShape, params.dtype, []);
   }
-  const outBuf = buffer([numSlices, sliceSize], params.dtype);
   const indicesData = backend2.data.get(indices.dataId).values;
-  const paramsData = backend2.data.get(params.dataId).values;
-  for (let i = 0; i < numSlices; i++) {
-    const index = [];
-    let flattenIndex = 0;
-    for (let j = 0; j < sliceRank; j++) {
-      const dim = indicesData[i * sliceRank + j];
-      flattenIndex += dim * strides[j];
-      index.push(dim);
-    }
-    if (flattenIndex < 0 || flattenIndex >= paramsSize / sliceSize) {
-      throw new Error(`Invalid indices: ${index} does not index into ${params.shape}`);
-    }
-    for (let k = 0; k < sliceSize; k++) {
-      outBuf.values[i * sliceSize + k] = paramsData[flattenIndex * sliceSize + k];
-    }
-  }
-  return backend2.makeTensorInfo(resultShape, outBuf.dtype, outBuf.values);
+  const paramsBuf = backend2.bufferSync(params);
+  const outBuf = gatherNdImpl(indicesData, paramsBuf, params.dtype, numSlices, sliceRank, sliceSize, strides, params.shape, paramsSize);
+  return backend2.makeTensorInfo(resultShape, params.dtype, outBuf.values);
 }
 var gatherNdConfig = {
   kernelName: GatherNd,
@@ -39695,13 +41243,6 @@ var gatherV2Config = {
   backendName: "cpu",
   kernelFunc: gatherV2
 };
-var greaterEqualImpl = createSimpleBinaryKernelImpl((a, b) => a >= b ? 1 : 0);
-var greaterEqual2 = binaryKernelFunc(GreaterEqual, greaterEqualImpl, null, "bool");
-var greaterEqualConfig = {
-  kernelName: GreaterEqual,
-  backendName: "cpu",
-  kernelFunc: greaterEqual2
-};
 function ifft2(args) {
   const { inputs, backend: backend2 } = args;
   const { input: input2 } = inputs;
@@ -39741,13 +41282,6 @@ var isNaNConfig = {
   kernelName: IsNan,
   backendName: "cpu",
   kernelFunc: isNaN3
-};
-var lessEqualImpl = createSimpleBinaryKernelImpl((a, b) => a <= b ? 1 : 0);
-var lessEqual2 = binaryKernelFunc(LessEqual, lessEqualImpl, null, "bool");
-var lessEqualConfig = {
-  kernelName: LessEqual,
-  backendName: "cpu",
-  kernelFunc: lessEqual2
 };
 function linSpace(args) {
   const { backend: backend2, attrs } = args;
@@ -40134,7 +41668,7 @@ function min3(args) {
     let min6 = aVals[offset];
     for (let j = 0; j < reduceSize; ++j) {
       const value = aVals[offset + j];
-      if (value < min6) {
+      if (Number.isNaN(value) || value < min6) {
         min6 = value;
       }
     }
@@ -41087,6 +42621,56 @@ var sparseReshapeConfig = {
   backendName: "cpu",
   kernelFunc: sparseReshape2
 };
+function sparseSegmentMean2(args) {
+  const { inputs, backend: backend2 } = args;
+  const { data, indices, segmentIds } = inputs;
+  if (data.shape.length < 1) {
+    throw new Error(`Data should be at least 1 dimensional but received scalar`);
+  }
+  if (indices.shape.length !== 1) {
+    throw new Error(`Indices should be a vector but received shape
+          ${indices.shape}`);
+  }
+  if (segmentIds.shape.length !== 1) {
+    throw new Error(`Segment ids should be a vector but received shape
+          ${segmentIds.shape}`);
+  }
+  const $data = backend2.data.get(data.dataId).values;
+  const $indices = backend2.data.get(indices.dataId).values;
+  const $segmentIds = backend2.data.get(segmentIds.dataId).values;
+  const [outputData, outputDataShape] = sparseSegmentReductionImpl($data, data.shape, data.dtype, $indices, $segmentIds, true);
+  return backend2.makeTensorInfo(outputDataShape, data.dtype, outputData);
+}
+var sparseSegmentMeanConfig = {
+  kernelName: SparseSegmentMean,
+  backendName: "cpu",
+  kernelFunc: sparseSegmentMean2
+};
+function sparseSegmentSum2(args) {
+  const { inputs, backend: backend2 } = args;
+  const { data, indices, segmentIds } = inputs;
+  if (data.shape.length < 1) {
+    throw new Error(`Data should be at least 1 dimensional but received scalar`);
+  }
+  if (indices.shape.length !== 1) {
+    throw new Error(`Indices should be a vector but received shape
+         ${indices.shape}`);
+  }
+  if (segmentIds.shape.length !== 1) {
+    throw new Error(`Segment ids should be a vector but received shape
+         ${segmentIds.shape}`);
+  }
+  const $data = backend2.data.get(data.dataId).values;
+  const $indices = backend2.data.get(indices.dataId).values;
+  const $segmentIds = backend2.data.get(segmentIds.dataId).values;
+  const [outputData, outputDataShape] = sparseSegmentReductionImpl($data, data.shape, data.dtype, $indices, $segmentIds);
+  return backend2.makeTensorInfo(outputDataShape, data.dtype, outputData);
+}
+var sparseSegmentSumConfig = {
+  kernelName: SparseSegmentSum,
+  backendName: "cpu",
+  kernelFunc: sparseSegmentSum2
+};
 function sparseToDense2(args) {
   const { inputs, backend: backend2, attrs } = args;
   const { sparseIndices, sparseValues, defaultValue } = inputs;
@@ -41189,6 +42773,70 @@ var stridedSliceConfig = {
   kernelName: StridedSlice,
   backendName: "cpu",
   kernelFunc: stridedSlice2
+};
+function stringNGrams2(args) {
+  const { inputs, backend: backend2, attrs } = args;
+  const { separator, nGramWidths, leftPad, rightPad: rightPad2, padWidth, preserveShortSequences } = attrs;
+  const { data, dataSplits } = inputs;
+  const $data = backend2.data.get(data.dataId).values;
+  const $dataSplits = backend2.data.get(dataSplits.dataId).values;
+  const [nGrams, nGramsSplits] = stringNGramsImpl($data, $dataSplits, separator, nGramWidths, leftPad, rightPad2, padWidth, preserveShortSequences);
+  return [
+    backend2.makeTensorInfo([nGrams.length], "string", nGrams),
+    backend2.makeTensorInfo(dataSplits.shape, "int32", nGramsSplits)
+  ];
+}
+var stringNGramsConfig = {
+  kernelName: StringNGrams,
+  backendName: "cpu",
+  kernelFunc: stringNGrams2
+};
+function stringSplit2(args) {
+  const { inputs, backend: backend2, attrs } = args;
+  const { skipEmpty } = attrs;
+  const { input: input2, delimiter } = inputs;
+  if (input2.dtype !== "string") {
+    throw new Error("Input must be of datatype string");
+  }
+  if (input2.shape.length !== 1) {
+    throw new Error(`Input must be a vector, got shape: ${input2.shape}`);
+  }
+  if (delimiter.shape.length !== 0) {
+    throw new Error(`Delimiter must be a scalar, got shape: ${delimiter.shape}`);
+  }
+  const $input = backend2.data.get(input2.dataId).values;
+  const $delimiter = backend2.data.get(delimiter.dataId).values[0];
+  const [indices, values, shape] = stringSplitImpl($input, $delimiter, skipEmpty);
+  const outputSize = values.length;
+  return [
+    backend2.makeTensorInfo([outputSize, 2], "int32", indices),
+    backend2.makeTensorInfo([outputSize], "string", values),
+    backend2.makeTensorInfo([2], "int32", new Int32Array(shape))
+  ];
+}
+var stringSplitConfig = {
+  kernelName: StringSplit,
+  backendName: "cpu",
+  kernelFunc: stringSplit2
+};
+function stringToHashBucketFast2(args) {
+  const { inputs, backend: backend2, attrs } = args;
+  const { numBuckets } = attrs;
+  const { input: input2 } = inputs;
+  if (input2.dtype !== "string") {
+    throw new Error("Input must be of datatype string");
+  }
+  if (numBuckets <= 0) {
+    throw new Error(`Number of buckets must be at least 1`);
+  }
+  const $input = backend2.data.get(input2.dataId).values;
+  const output = stringToHashBucketFastImpl($input, numBuckets);
+  return backend2.makeTensorInfo(input2.shape, "int32", output);
+}
+var stringToHashBucketFastConfig = {
+  kernelName: StringToHashBucketFast,
+  backendName: "cpu",
+  kernelFunc: stringToHashBucketFast2
 };
 var tan2 = unaryKernelFunc(Tan, (xi) => Math.tan(xi));
 var tanConfig = {
@@ -41599,6 +43247,8 @@ var kernelConfigs = [
   spaceToBatchNDConfig,
   sparseFillEmptyRowsConfig,
   sparseReshapeConfig,
+  sparseSegmentMeanConfig,
+  sparseSegmentSumConfig,
   sparseToDenseConfig,
   splitVConfig,
   sqrtConfig,
@@ -41606,6 +43256,9 @@ var kernelConfigs = [
   squaredDifferenceConfig,
   stepConfig,
   stridedSliceConfig,
+  stringNGramsConfig,
+  stringSplitConfig,
+  stringToHashBucketFastConfig,
   subConfig,
   sumConfig,
   tanConfig,
@@ -42262,6 +43915,7 @@ ENV3.registerFlag("WEBGL_FLUSH_THRESHOLD", () => {
     throw new Error(`WEBGL_FLUSH_THRESHOLD must be -1 (indicating never manual flush) or at least 0, but got ${threshold3}.`);
   }
 });
+ENV3.registerFlag("CPU_HANDOFF_SIZE_THRESHOLD", () => 128);
 function getGlslDifferences() {
   let version102;
   let attribute;
@@ -44434,7 +46088,7 @@ function makeShaderKey(program, inputs, output) {
   key += "_" + keyInputs + "_" + keyUserCode;
   return key;
 }
-var { addImpl: addImplCPU, bincountImpl: bincountImplCPU, bincountReduceImpl: bincountReduceImplCPU, ceilImpl: ceilImplCPU, concatImpl: concatImplCPU, expImpl: expImplCPU, expm1Impl: expm1ImplCPU, floorImpl: floorImplCPU, gatherV2Impl: gatherV2ImplCPU, greaterImpl: greaterImplCPU, lessImpl: lessImplCPU, linSpaceImpl: linSpaceImplCPU, logImpl: logImplCPU, maxImpl: maxImplCPU, maximumImpl: maximumImplCPU, minimumImpl: minimumImplCPU, multiplyImpl: multiplyImplCPU, negImpl: negImplCPU, prodImpl: prodImplCPU, rangeImpl: rangeImplCPU, rsqrtImpl: rsqrtImplCPU, simpleAbsImpl: simpleAbsImplCPU, sliceImpl: sliceImplCPU, sparseFillEmptyRowsImpl: sparseFillEmptyRowsImplCPU, sparseReshapeImpl: sparseReshapeImplCPU, stridedSliceImpl: stridedSliceImplCPU, subImpl: subImplCPU, tileImpl: tileImplCPU, topKImpl: topKImplCPU, transposeImpl: transposeImplCPU, uniqueImpl: uniqueImplCPU } = shared_exports;
+var { addImpl: addImplCPU, bincountImpl: bincountImplCPU, bincountReduceImpl: bincountReduceImplCPU, ceilImpl: ceilImplCPU, concatImpl: concatImplCPU, equalImpl: equalImplCPU, expImpl: expImplCPU, expm1Impl: expm1ImplCPU, floorImpl: floorImplCPU, gatherNdImpl: gatherNdImplCPU, gatherV2Impl: gatherV2ImplCPU, greaterImpl: greaterImplCPU, greaterEqualImpl: greaterEqualImplCPU, lessImpl: lessImplCPU, lessEqualImpl: lessEqualImplCPU, linSpaceImpl: linSpaceImplCPU, logImpl: logImplCPU, maxImpl: maxImplCPU, maximumImpl: maximumImplCPU, minimumImpl: minimumImplCPU, multiplyImpl: multiplyImplCPU, negImpl: negImplCPU, notEqualImpl: notEqualImplCPU, prodImpl: prodImplCPU, rangeImpl: rangeImplCPU, rsqrtImpl: rsqrtImplCPU, simpleAbsImpl: simpleAbsImplCPU, sliceImpl: sliceImplCPU, sparseFillEmptyRowsImpl: sparseFillEmptyRowsImplCPU, sparseReshapeImpl: sparseReshapeImplCPU, sparseSegmentReductionImpl: sparseSegmentReductionImplCPU, stridedSliceImpl: stridedSliceImplCPU, stringNGramsImpl: stringNGramsImplCPU, stringSplitImpl: stringSplitImplCPU, stringToHashBucketFastImpl: stringToHashBucketFastImplCPU, subImpl: subImplCPU, tileImpl: tileImplCPU, topKImpl: topKImplCPU, transposeImpl: transposeImplCPU, uniqueImpl: uniqueImplCPU } = shared_exports;
 function getVecChannels(name, rank) {
   return ["x", "y", "z", "w", "u", "v"].slice(0, rank).map((d) => `${name}.${d}`);
 }
@@ -44909,7 +46563,7 @@ function getBinaryCache(webGLVersion) {
   binaryCaches[webGLVersion] = {};
   return binaryCaches[webGLVersion];
 }
-var CPU_HANDOFF_SIZE_THRESHOLD = 128;
+var CPU_HANDOFF_SIZE_THRESHOLD = env().getNumber("CPU_HANDOFF_SIZE_THRESHOLD");
 var BEFORE_PAGING_CONSTANT = 600;
 function numMBBeforeWarning() {
   if (env().global.screen == null) {
@@ -45584,7 +47238,7 @@ function float32ToTypedArray(a, dtype) {
     throw new Error(`Unknown dtype ${dtype}`);
   }
 }
-var version6 = "3.6.0";
+var version6 = "3.7.0";
 if (device_util_exports.isBrowser()) {
   registerBackend("webgl", () => new MathBackendWebGL(), 2);
 }
@@ -45797,10 +47451,12 @@ function binaryKernelFunc2({ opSnippet, packedOpSnippet, checkOutOfBounds = fals
       return complexOutput;
     }
     const $dtype = dtype || upcastType(a.dtype, b.dtype);
-    if (webglBackend.shouldExecuteOnCPU([a, b]) && cpuKernelImpl != null) {
-      const aData = webglBackend.texData.get(a.dataId);
-      const bData = webglBackend.texData.get(b.dataId);
-      const [outValues, outShape] = cpuKernelImpl(a.shape, b.shape, aData.values, bData.values, $dtype);
+    if ((a.dtype === "string" || b.dtype === "string" || webglBackend.shouldExecuteOnCPU([a, b])) && cpuKernelImpl != null) {
+      const aVals = webglBackend.texData.get(a.dataId).values;
+      const bVals = webglBackend.texData.get(b.dataId).values;
+      const decodedAVals = a.dtype === "string" ? backend_util_exports.fromUint8ToStringArray(aVals) : aVals;
+      const decodedBVals = a.dtype === "string" ? backend_util_exports.fromUint8ToStringArray(bVals) : bVals;
+      const [outValues, outShape] = cpuKernelImpl(a.shape, b.shape, decodedAVals, decodedBVals, $dtype);
       const out = webglBackend.makeTensorInfo(outShape, $dtype);
       const outData = webglBackend.texData.get(out.dataId);
       outData.values = outValues;
@@ -46170,6 +47826,13 @@ var ReduceProgram = class {
         prodValue *= tmp[0] * tmp[1];
       } else {
         minMaxValue = ${compareOp}(values, minMaxValue);
+        if (${reduceType === "min"} || ${reduceType === "max"}) {
+          minMaxValue = ${compareOp}(values, minMaxValue);
+          bvec4 isNaN = isnan(values);
+          if (isNaN.r || isNaN.g || isNaN.b || isNaN.a) {
+            minMaxValue = vec4(NAN);
+          }
+        }
       }
     `;
     let vecType = `vec4`;
@@ -47948,7 +49611,7 @@ var bincountConfig2 = {
   kernelFunc: bincount3
 };
 var NOT_EQUAL = `return float(a != b);`;
-var notEqual3 = binaryKernelFunc2({ opSnippet: NOT_EQUAL, dtype: "bool" });
+var notEqual3 = binaryKernelFunc2({ opSnippet: NOT_EQUAL, cpuKernelImpl: notEqualImplCPU, dtype: "bool" });
 var notEqualConfig2 = {
   kernelName: NotEqual,
   backendName: "webgl",
@@ -50253,7 +51916,12 @@ var PACKED_EQUAL = `
   return vec4(equal(a, b));
 `;
 var EQUAL = `return float(a == b);`;
-var equal3 = binaryKernelFunc2({ opSnippet: EQUAL, packedOpSnippet: PACKED_EQUAL, dtype: "bool" });
+var equal3 = binaryKernelFunc2({
+  opSnippet: EQUAL,
+  packedOpSnippet: PACKED_EQUAL,
+  dtype: "bool",
+  cpuKernelImpl: equalImplCPU
+});
 var equalConfig2 = {
   kernelName: Equal,
   backendName: "webgl",
@@ -50770,6 +52438,7 @@ function gatherNd2(args) {
   const { params, indices } = inputs;
   const indicesShape = indices.shape;
   const sliceRank = indicesShape[indicesShape.length - 1];
+  const paramsSize = util_exports.sizeFromShape(params.shape);
   const [resultShape, numSlices, sliceSize, strides] = backend_util_exports.prepareAndValidate(params, indices);
   const flattenIndices = reshape4({ inputs: { x: indices }, backend: backend2, attrs: { shape: [numSlices, sliceRank] } });
   const flattenX = reshape4({
@@ -50777,6 +52446,12 @@ function gatherNd2(args) {
     backend: backend2,
     attrs: { shape: [util_exports.sizeFromShape(params.shape) / sliceSize, sliceSize] }
   });
+  if (backend2.shouldExecuteOnCPU([params, indices]) || params.dtype === "string") {
+    const indicesData = backend2.readSync(indices.dataId);
+    const paramsBuf = backend2.bufferSync(params);
+    const outValue = gatherNdImplCPU(indicesData, paramsBuf, params.dtype, numSlices, sliceRank, sliceSize, strides, params.shape, paramsSize);
+    return backend2.makeTensorInfo(resultShape, params.dtype, outValue.values);
+  }
   const program = new GatherNDProgram(sliceRank, strides, [numSlices, sliceSize]);
   const res = backend2.runWebGLProgram(program, [flattenX, flattenIndices], flattenX.dtype);
   const reshaped = reshape4({ inputs: { x: res }, backend: backend2, attrs: { shape: resultShape } });
@@ -50891,7 +52566,8 @@ var GREATER_EQUAL_PACKED = `
 var greaterEqual3 = binaryKernelFunc2({
   opSnippet: GREATER_EQUAL,
   packedOpSnippet: GREATER_EQUAL_PACKED,
-  dtype: "bool"
+  dtype: "bool",
+  cpuKernelImpl: greaterEqualImplCPU
 });
 var greaterEqualConfig2 = {
   kernelName: GreaterEqual,
@@ -50948,7 +52624,12 @@ var LESS_EQUAL = `return float(a <= b);`;
 var LESS_EQUAL_PACKED = `
   return vec4(lessThanEqual(a, b));
 `;
-var lessEqual3 = binaryKernelFunc2({ opSnippet: LESS_EQUAL, packedOpSnippet: LESS_EQUAL_PACKED, dtype: "bool" });
+var lessEqual3 = binaryKernelFunc2({
+  opSnippet: LESS_EQUAL,
+  packedOpSnippet: LESS_EQUAL_PACKED,
+  cpuKernelImpl: lessEqualImplCPU,
+  dtype: "bool"
+});
 var lessEqualConfig2 = {
   kernelName: LessEqual,
   backendName: "webgl",
@@ -53449,6 +55130,56 @@ var sparseReshapeConfig2 = {
   backendName: "webgl",
   kernelFunc: sparseReshape3
 };
+function sparseSegmentMean3(args) {
+  const { inputs, backend: backend2 } = args;
+  const { data, indices, segmentIds } = inputs;
+  if (data.shape.length < 1) {
+    throw new Error(`Data should be at least 1 dimensional but received scalar`);
+  }
+  if (indices.shape.length !== 1) {
+    throw new Error(`Indices should be a vector but received shape
+              ${indices.shape}`);
+  }
+  if (segmentIds.shape.length !== 1) {
+    throw new Error(`Segment ids should be a vector but received shape
+              ${segmentIds.shape}`);
+  }
+  const $data = backend2.readSync(data.dataId);
+  const $indices = backend2.readSync(indices.dataId);
+  const $segmentIds = backend2.readSync(segmentIds.dataId);
+  const [outputData, outputDataShape] = sparseSegmentReductionImplCPU($data, data.shape, data.dtype, $indices, $segmentIds, true);
+  return backend2.makeTensorInfo(outputDataShape, data.dtype, outputData);
+}
+var sparseSegmentMeanConfig2 = {
+  kernelName: SparseSegmentMean,
+  backendName: "webgl",
+  kernelFunc: sparseSegmentMean3
+};
+function sparseSegmentSum3(args) {
+  const { inputs, backend: backend2 } = args;
+  const { data, indices, segmentIds } = inputs;
+  if (data.shape.length < 1) {
+    throw new Error(`Data should be at least 1 dimensional but received scalar`);
+  }
+  if (indices.shape.length !== 1) {
+    throw new Error(`Indices should be a vector but received shape
+             ${indices.shape}`);
+  }
+  if (segmentIds.shape.length !== 1) {
+    throw new Error(`Segment ids should be a vector but received shape
+             ${segmentIds.shape}`);
+  }
+  const $data = backend2.readSync(data.dataId);
+  const $indices = backend2.readSync(indices.dataId);
+  const $segmentIds = backend2.readSync(segmentIds.dataId);
+  const [outputData, outputDataShape] = sparseSegmentReductionImplCPU($data, data.shape, data.dtype, $indices, $segmentIds);
+  return backend2.makeTensorInfo(outputDataShape, data.dtype, outputData);
+}
+var sparseSegmentSumConfig2 = {
+  kernelName: SparseSegmentSum,
+  backendName: "webgl",
+  kernelFunc: sparseSegmentSum3
+};
 function sparseToDense3(args) {
   const { inputs, backend: backend2, attrs } = args;
   const { sparseIndices, sparseValues, defaultValue } = inputs;
@@ -53585,6 +55316,70 @@ var stridedSliceConfig2 = {
   kernelName: StridedSlice,
   backendName: "webgl",
   kernelFunc: stridedSlice3
+};
+function stringNGrams3(args) {
+  const { inputs, backend: backend2, attrs } = args;
+  const { separator, nGramWidths, leftPad, rightPad: rightPad2, padWidth, preserveShortSequences } = attrs;
+  const { data, dataSplits } = inputs;
+  const $data = backend2.readSync(data.dataId);
+  const $dataSplits = backend2.readSync(dataSplits.dataId);
+  const [nGrams, nGramsSplits] = stringNGramsImplCPU($data, $dataSplits, separator, nGramWidths, leftPad, rightPad2, padWidth, preserveShortSequences);
+  return [
+    backend2.makeTensorInfo([nGrams.length], "string", nGrams),
+    backend2.makeTensorInfo(dataSplits.shape, "int32", nGramsSplits)
+  ];
+}
+var stringNGramsConfig2 = {
+  kernelName: StringNGrams,
+  backendName: "webgl",
+  kernelFunc: stringNGrams3
+};
+function stringSplit3(args) {
+  const { inputs, backend: backend2, attrs } = args;
+  const { skipEmpty } = attrs;
+  const { input: input2, delimiter } = inputs;
+  if (input2.dtype !== "string") {
+    throw new Error("Input must be of datatype string");
+  }
+  if (input2.shape.length !== 1) {
+    throw new Error(`Input must be a vector, got shape: ${input2.shape}`);
+  }
+  if (delimiter.shape.length !== 0) {
+    throw new Error(`Delimiter must be a scalar, got shape: ${delimiter.shape}`);
+  }
+  const $input = backend2.readSync(input2.dataId);
+  const $delimiter = backend2.readSync(delimiter.dataId)[0];
+  const [indices, values, shape] = stringSplitImplCPU($input, $delimiter, skipEmpty);
+  const outputSize = values.length;
+  return [
+    backend2.makeTensorInfo([outputSize, 2], "int32", indices),
+    backend2.makeTensorInfo([outputSize], "string", values),
+    backend2.makeTensorInfo([2], "int32", new Int32Array(shape))
+  ];
+}
+var stringSplitConfig2 = {
+  kernelName: StringSplit,
+  backendName: "webgl",
+  kernelFunc: stringSplit3
+};
+function stringToHashBucketFast3(args) {
+  const { inputs, backend: backend2, attrs } = args;
+  const { numBuckets } = attrs;
+  const { input: input2 } = inputs;
+  if (input2.dtype !== "string") {
+    throw new Error("Input must be of datatype string");
+  }
+  if (numBuckets <= 0) {
+    throw new Error(`Number of buckets must be at least 1`);
+  }
+  const $input = backend2.readSync(input2.dataId);
+  const output = stringToHashBucketFastImplCPU($input, numBuckets);
+  return backend2.makeTensorInfo(input2.shape, "int32", output);
+}
+var stringToHashBucketFastConfig2 = {
+  kernelName: StringToHashBucketFast,
+  backendName: "webgl",
+  kernelFunc: stringToHashBucketFast3
 };
 var TAN = `return tan(x);`;
 var tan3 = unaryKernelFunc2({ opSnippet: TAN });
@@ -54215,6 +56010,8 @@ var kernelConfigs2 = [
   spaceToBatchNDConfig2,
   sparseFillEmptyRowsConfig2,
   sparseReshapeConfig2,
+  sparseSegmentMeanConfig2,
+  sparseSegmentSumConfig2,
   sparseToDenseConfig2,
   splitVConfig2,
   sqrtConfig2,
@@ -54222,6 +56019,9 @@ var kernelConfigs2 = [
   squaredDifferenceConfig2,
   stepConfig2,
   stridedSliceConfig2,
+  stringNGramsConfig2,
+  stringSplitConfig2,
+  stringToHashBucketFastConfig2,
   subConfig2,
   sumConfig2,
   tanConfig2,
@@ -54238,7 +56038,7 @@ var kernelConfigs2 = [
 for (const kernelConfig of kernelConfigs2) {
   registerKernel(kernelConfig);
 }
-var version7 = "3.6.0";
+var version7 = "3.7.0";
 var version8 = {
   "tfjs-core": version,
   "tfjs-backend-cpu": version5,
@@ -57306,7 +59106,7 @@ function setWasmPaths(prefixOrFileMap, usePlatformFetch = false) {
   }
   customFetch = usePlatformFetch;
 }
-var version9 = "3.6.0";
+var version9 = "3.7.0";
 var WASM_PRIORITY = 2;
 registerBackend("wasm", async () => {
   const { wasm } = await init();
@@ -58015,9 +59815,9 @@ var LabeledFaceDescriptors = class {
       descriptors: this.descriptors.map((d) => Array.from(d))
     };
   }
-  static fromJSON(json18) {
-    const descriptors = json18.descriptors.map((d) => new Float32Array(d));
-    return new LabeledFaceDescriptors(json18.label, descriptors);
+  static fromJSON(json20) {
+    const descriptors = json20.descriptors.map((d) => new Float32Array(d));
+    return new LabeledFaceDescriptors(json20.label, descriptors);
   }
 };
 
@@ -58053,8 +59853,8 @@ function extendWithFaceDetection(sourceObj, detection) {
 
 // src/env/createBrowserEnv.ts
 function createBrowserEnv() {
-  const fetch3 = window.fetch;
-  if (!fetch3)
+  const fetch4 = window.fetch;
+  if (!fetch4)
     throw new Error("fetch - missing fetch implementation for browser environment");
   const readFile = () => {
     throw new Error("readFile - filesystem not available for browser environment");
@@ -58068,7 +59868,7 @@ function createBrowserEnv() {
     createCanvasElement: () => document.createElement("canvas"),
     createImageElement: () => document.createElement("img"),
     createVideoElement: () => document.createElement("video"),
-    fetch: fetch3,
+    fetch: fetch4,
     readFile
   };
 }
@@ -58113,7 +59913,7 @@ function createNodejsEnv() {
       return new Video();
     throw new Error("createVideoElement - missing Video implementation for nodejs environment");
   };
-  const fetch3 = global.fetch;
+  const fetch4 = global.fetch;
   const fileSystem = createFileSystem();
   return {
     Canvas: Canvas || class {
@@ -58129,7 +59929,7 @@ function createNodejsEnv() {
     createCanvasElement,
     createImageElement,
     createVideoElement,
-    fetch: fetch3,
+    fetch: fetch4,
     ...fileSystem
   };
 }
@@ -58640,8 +60440,8 @@ async function extractFaceTensors(imageTensor, detections) {
 
 // src/dom/fetchOrThrow.ts
 async function fetchOrThrow(url, init2) {
-  const { fetch: fetch3 } = env2.getEnv();
-  const res = await fetch3(url, init2);
+  const { fetch: fetch4 } = env2.getEnv();
+  const res = await fetch4(url, init2);
   if (!(res.status < 400)) {
     throw new Error(`failed to fetch: (${res.status}) ${res.statusText}, from url: ${res.url}`);
   }
@@ -59397,7 +61197,7 @@ function drawFaceLandmarks(canvasArg, faceLandmarks) {
 }
 
 // package.json
-var version10 = "1.2.5";
+var version10 = "1.3.0";
 
 // src/xception/extractParams.ts
 function extractorsFactory2(extractWeights, paramMappings) {
@@ -61593,9 +63393,9 @@ var FaceMatcher = class {
       labeledDescriptors: this.labeledDescriptors.map((ld) => ld.toJSON())
     };
   }
-  static fromJSON(json18) {
-    const labeledDescriptors = json18.labeledDescriptors.map((ld) => LabeledFaceDescriptors.fromJSON(ld));
-    return new FaceMatcher(labeledDescriptors, json18.distanceThreshold);
+  static fromJSON(json20) {
+    const labeledDescriptors = json20.labeledDescriptors.map((ld) => LabeledFaceDescriptors.fromJSON(ld));
+    return new FaceMatcher(labeledDescriptors, json20.distanceThreshold);
   }
 };
 

@@ -3,50 +3,71 @@
   "env": {
       "browser": true,
       "commonjs": true,
-      "es6": true,
       "node": true,
       "es2020": true
   },
   "parser": "@typescript-eslint/parser",
   "parserOptions": { "ecmaVersion": 2020 },
-  "plugins": ["@typescript-eslint"],
+  "plugins": [
+    "@typescript-eslint"
+  ],
   "extends": [
     "eslint:recommended",
     "plugin:import/errors",
     "plugin:import/warnings",
-    "plugin:import/typescript",
     "plugin:node/recommended",
     "plugin:promise/recommended",
     "plugin:json/recommended-with-comments",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
     "airbnb-base"
   ],
   "ignorePatterns": [ "node_modules", "types" ],
-  "settings": {
-    "import/resolver": {
-      "node": {
-        "extensions": [".js", ".ts"]
-      }
-    }
-  },
   "rules": {
-    "max-len": [1, 275, 3],
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/ban-types": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-var-requires": "off",
     "camelcase": "off",
     "class-methods-use-this": "off",
+    "dot-notation": "off",
+    "func-names": "off",
+    "guard-for-in": "off",
     "import/extensions": "off",
-    "import/no-cycle": "off",
+    "import/no-extraneous-dependencies": "off",
+    "import/no-named-as-default": "off",
+    "import/no-unresolved": "off",
     "import/prefer-default-export": "off",
+    "lines-between-class-members": "off",
+    "max-len": [1, 275, 3],
+    "newline-per-chained-call": "off",
+    "no-async-promise-executor": "off",
     "no-await-in-loop": "off",
+    "no-bitwise": "off",
+    "no-case-declarations":"off",
     "no-continue": "off",
+    "no-loop-func": "off",
     "no-mixed-operators": "off",
-    "no-param-reassign": "off",
+    "no-param-reassign":"off",
     "no-plusplus": "off",
+    "no-regex-spaces": "off",
+    "no-restricted-globals": "off",
     "no-restricted-syntax": "off",
     "no-return-assign": "off",
     "no-underscore-dangle": "off",
-    "node/no-missing-import": "off",
+    "node/no-missing-import": ["error", { "tryExtensions": [".js", ".json", ".ts"] }],
+    "node/no-unpublished-import": "off",
+    "node/no-unpublished-require": "off",
     "node/no-unsupported-features/es-syntax": "off",
+    "no-lonely-if": "off",
+    "node/shebang": "off",
+    "object-curly-newline": "off",
     "prefer-destructuring": "off",
-    "radix": "off",
-    "object-curly-newline": "off"
+    "prefer-template":"off",
+    "promise/always-return": "off",
+    "promise/catch-or-return": "off",
+    "promise/no-nesting": "off",
+    "radix": "off"
   }
 }

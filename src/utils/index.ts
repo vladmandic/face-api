@@ -31,7 +31,7 @@ export function isEven(num: number) {
   return num % 2 === 0;
 }
 
-export function round(num: number, prec: number = 2) {
+export function round(num: number, prec = 2) {
   const f = 10 ** prec;
   return Math.floor(num * f) / f;
 }

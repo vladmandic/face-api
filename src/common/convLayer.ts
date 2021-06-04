@@ -6,7 +6,7 @@ export function convLayer(
   x: tf.Tensor4D,
   params: ConvParams,
   padding: 'valid' | 'same' = 'same',
-  withRelu: boolean = false,
+  withRelu = false,
 ): tf.Tensor4D {
   return tf.tidy(() => {
     const out = tf.add(

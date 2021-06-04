@@ -9,7 +9,7 @@ export class Box<BoxType = any> implements IBoundingBox, IRect {
     return !!rect && [rect.x, rect.y, rect.width, rect.height].every(isValidNumber);
   }
 
-  public static assertIsValidBox(box: any, callee: string, allowNegativeDimensions: boolean = false) {
+  public static assertIsValidBox(box: any, callee: string, allowNegativeDimensions = false) {
     if (!Box.isRect(box)) {
       throw new Error(`${callee} - invalid box: ${JSON.stringify(box)}, expected object with properties x, y, width, height`);
     }
@@ -27,7 +27,7 @@ export class Box<BoxType = any> implements IBoundingBox, IRect {
 
   private _height: number
 
-  constructor(_box: IBoundingBox | IRect, allowNegativeDimensions: boolean = true) {
+  constructor(_box: IBoundingBox | IRect, allowNegativeDimensions = true) {
     const box = (_box || {}) as any;
 
     const isBbox = [box.left, box.top, box.right, box.bottom].every(isValidNumber);

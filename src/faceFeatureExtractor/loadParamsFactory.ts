@@ -8,7 +8,7 @@ export function loadParamsFactory(weightMap: any, paramMappings: ParamMapping[])
   const extractConvParams = loadConvParamsFactory(extractWeightEntry);
   const extractSeparableConvParams = loadSeparableConvParamsFactory(extractWeightEntry);
 
-  function extractDenseBlock3Params(prefix: string, isFirstLayer: boolean = false): DenseBlock3Params {
+  function extractDenseBlock3Params(prefix: string, isFirstLayer = false): DenseBlock3Params {
     const conv0 = isFirstLayer
       ? extractConvParams(`${prefix}/conv0`)
       : extractSeparableConvParams(`${prefix}/conv0`);
@@ -18,7 +18,7 @@ export function loadParamsFactory(weightMap: any, paramMappings: ParamMapping[])
     return { conv0, conv1, conv2 };
   }
 
-  function extractDenseBlock4Params(prefix: string, isFirstLayer: boolean = false): DenseBlock4Params {
+  function extractDenseBlock4Params(prefix: string, isFirstLayer = false): DenseBlock4Params {
     const conv0 = isFirstLayer
       ? extractConvParams(`${prefix}/conv0`)
       : extractSeparableConvParams(`${prefix}/conv0`);

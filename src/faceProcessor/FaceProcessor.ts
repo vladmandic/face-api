@@ -45,7 +45,7 @@ export abstract class FaceProcessor<
     });
   }
 
-  public dispose(throwOnRedispose: boolean = true) {
+  public dispose(throwOnRedispose = true) {
     this.faceFeatureExtractor.dispose(throwOnRedispose);
     super.dispose(throwOnRedispose);
   }

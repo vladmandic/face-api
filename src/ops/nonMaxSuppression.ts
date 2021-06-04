@@ -5,7 +5,7 @@ export function nonMaxSuppression(
   boxes: Box[],
   scores: number[],
   iouThreshold: number,
-  isIOU: boolean = true,
+  isIOU = true,
 ): number[] {
   let indicesSortedByScore = scores
     .map((score, boxIndex) => ({ score, boxIndex }))

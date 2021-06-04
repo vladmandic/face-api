@@ -25,7 +25,8 @@
     "dev": "node --trace-warnings server/serve.js",
     "build": "rimraf dist/* types/* typedoc/* && node server/build.js",
     "lint": "eslint src/**/* demo/*.js server/*.js",
-    "test": "node --trace-warnings test/test-node.js"
+    "test": "node --trace-warnings test/test-node.js",
+    "scan": "npx auditjs@latest ossi --dev --quiet"
   },
   "keywords": [
     "face-api",

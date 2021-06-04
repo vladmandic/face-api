@@ -5,7 +5,7 @@ export * from './config';
 export * from './types';
 export { TinyYolov2 };
 
-export function createTinyYolov2(weights: Float32Array, withSeparableConvs: boolean = true) {
+export function createTinyYolov2(weights: Float32Array, withSeparableConvs = true) {
   const net = new TinyYolov2(withSeparableConvs);
   net.extractWeights(weights);
   return net;

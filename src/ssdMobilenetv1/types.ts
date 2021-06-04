@@ -7,6 +7,7 @@ export type PointwiseConvParams = {
   batch_norm_offset: tf.Tensor1D
 }
 
+// eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace MobileNetV1 {
 
   export type DepthwiseConvParams = {

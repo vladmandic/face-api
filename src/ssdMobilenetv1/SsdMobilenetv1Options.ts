@@ -4,7 +4,7 @@ export interface ISsdMobilenetv1Options {
 }
 
 export class SsdMobilenetv1Options {
-  protected _name: string = 'SsdMobilenetv1Options'
+  protected _name = 'SsdMobilenetv1Options'
 
   private _minConfidence: number
 

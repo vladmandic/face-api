@@ -13,7 +13,7 @@ function conv(x: tf.Tensor4D, params: ConvParams, stride: [number, number]): tf.
   return tf.add(tf.conv2d(x, params.filters, stride, 'same'), params.bias);
 }
 
-function reductionBlock(x: tf.Tensor4D, params: ReductionBlockParams, isActivateInput: boolean = true): tf.Tensor4D {
+function reductionBlock(x: tf.Tensor4D, params: ReductionBlockParams, isActivateInput = true): tf.Tensor4D {
   let out = isActivateInput ? tf.relu(x) : x;
   out = depthwiseSeparableConv(out, params.separable_conv0, [1, 1]);
   out = depthwiseSeparableConv(tf.relu(out), params.separable_conv1, [1, 1]);

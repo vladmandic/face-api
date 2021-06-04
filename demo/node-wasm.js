@@ -5,7 +5,7 @@ const process = require('process');
 const path = require('path');
 // eslint-disable-next-line import/no-extraneous-dependencies, node/no-unpublished-require
 const log = require('@vladmandic/pilogger');
-// eslint-disable-next-line import/no-extraneous-dependencies, node/no-unpublished-require, no-unused-vars
+// eslint-disable-next-line import/no-extraneous-dependencies, node/no-unpublished-require, no-unused-vars, @typescript-eslint/no-unused-vars
 const tf = require('@tensorflow/tfjs');
 // eslint-disable-next-line import/no-extraneous-dependencies, node/no-unpublished-require
 require('@tensorflow/tfjs-backend-wasm');

@@ -62,7 +62,7 @@ export abstract class NeuralNetwork<TNetParams> {
     });
   }
 
-  public dispose(throwOnRedispose: boolean = true) {
+  public dispose(throwOnRedispose = true) {
     this.getParamList().forEach((param) => {
       if (throwOnRedispose && param.tensor.isDisposed) {
         throw new Error(`param tensor has already been disposed for path ${param.path}`);

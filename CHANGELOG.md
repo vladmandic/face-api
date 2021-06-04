@@ -9,7 +9,7 @@ Repository: **<git+https://github.com/vladmandic/face-api.git>**
 
 ## Changelog
 
-### **HEAD -> master** 2021/06/04 mandic00@live.com
+### **update for tfjs 3.7.0** 2021/06/04 mandic00@live.com
 
 
 ### **origin/master** 2021/05/28 mandic00@live.com

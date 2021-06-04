@@ -19,7 +19,7 @@ export class FaceMatch implements IFaceMatch {
 
   public get distance(): number { return this._distance; }
 
-  public toString(withDistance: boolean = true): string {
+  public toString(withDistance = true): string {
     return `${this.label}${withDistance ? ` (${round(this.distance)})` : ''}`;
   }
 }

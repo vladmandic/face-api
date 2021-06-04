@@ -4,7 +4,7 @@ export interface ITinyYolov2Options {
 }
 
 export class TinyYolov2Options {
-  protected _name: string = 'TinyYolov2Options'
+  protected _name = 'TinyYolov2Options'
 
   private _inputSize: number
 

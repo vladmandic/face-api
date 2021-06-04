@@ -10,7 +10,7 @@ import * as tf from '../../dist/tfjs.esm';
  */
 export function padToSquare(
   imgTensor: tf.Tensor4D,
-  isCenterImage: boolean = false,
+  isCenterImage = false,
 ): tf.Tensor4D {
   return tf.tidy(() => {
     const [height, width] = imgTensor.shape.slice(1);

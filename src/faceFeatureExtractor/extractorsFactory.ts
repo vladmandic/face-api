@@ -5,7 +5,7 @@ export function extractorsFactory(extractWeights: ExtractWeightsFunction, paramM
   const extractConvParams = extractConvParamsFactory(extractWeights, paramMappings);
   const extractSeparableConvParams = extractSeparableConvParamsFactory(extractWeights, paramMappings);
 
-  function extractDenseBlock3Params(channelsIn: number, channelsOut: number, mappedPrefix: string, isFirstLayer: boolean = false): DenseBlock3Params {
+  function extractDenseBlock3Params(channelsIn: number, channelsOut: number, mappedPrefix: string, isFirstLayer = false): DenseBlock3Params {
     const conv0 = isFirstLayer
       ? extractConvParams(channelsIn, channelsOut, 3, `${mappedPrefix}/conv0`)
       : extractSeparableConvParams(channelsIn, channelsOut, `${mappedPrefix}/conv0`);
@@ -15,7 +15,7 @@ export function extractorsFactory(extractWeights: ExtractWeightsFunction, paramM
     return { conv0, conv1, conv2 };
   }
 
-  function extractDenseBlock4Params(channelsIn: number, channelsOut: number, mappedPrefix: string, isFirstLayer: boolean = false): DenseBlock4Params {
+  function extractDenseBlock4Params(channelsIn: number, channelsOut: number, mappedPrefix: string, isFirstLayer = false): DenseBlock4Params {
     const { conv0, conv1, conv2 } = extractDenseBlock3Params(channelsIn, channelsOut, mappedPrefix, isFirstLayer);
     const conv3 = extractSeparableConvParams(channelsOut, channelsOut, `${mappedPrefix}/conv3`);
 

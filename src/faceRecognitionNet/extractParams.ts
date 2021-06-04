@@ -70,7 +70,7 @@ function extractorsFactory(extractWeights: ExtractWeightsFunction, paramMappings
     numFilters: number,
     filterSize: number,
     mappedPrefix: string,
-    isDown: boolean = false,
+    isDown = false,
   ): ResidualLayerParams {
     const conv1 = extractConvLayerParams((isDown ? 0.5 : 1) * numFilterValues, numFilters, filterSize, `${mappedPrefix}/conv1`);
     const conv2 = extractConvLayerParams(numFilterValues, numFilters, filterSize, `${mappedPrefix}/conv2`);

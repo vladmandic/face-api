@@ -5,6 +5,8 @@ const esbuild = require('esbuild');
 const ts = require('typescript');
 const log = require('@vladmandic/pilogger');
 const TypeDoc = require('typedoc');
+const { ESLint } = require('eslint');
+const tfjs = require('@tensorflow/tfjs/package.json');
 const changelog = require('./changelog');
 
 const banner = { js: `
@@ -16,6 +18,7 @@ const banner = { js: `
 ` };
 
 let td = null;
+let eslint = null;
 
 // tsc configuration
 const tsconfig = {
@@ -35,6 +38,9 @@ const tsconfig = {
     tslib: ['node_modules/tslib/tslib.d.ts'],
   },
 };
+
+// common configuration
+const lintLocations = ['server/', 'demo/', 'src/', 'test/'];
 
 // common configuration
 const common = {
@@ -165,7 +171,7 @@ async function getStats(json) {
   return stats;
 }
 
-function compile(fileNames, options) {
+function typings(fileNames, options) {
   log.info('Compile typings:', fileNames);
   const program = ts.createProgram(fileNames, options);
   const emit = program.emit();
@@ -183,6 +189,22 @@ function compile(fileNames, options) {
     } else {
       log.error('TSC:', msg);
     }
+  }
+}
+
+async function lint() {
+  log.info('Running Linter:', lintLocations);
+  if (!eslint) {
+    eslint = new ESLint();
+  }
+  const results = await eslint.lintFiles(lintLocations);
+  const errors = results.reduce((prev, curr) => prev += curr.errorCount, 0);
+  const warnings = results.reduce((prev, curr) => prev += curr.warningCount, 0);
+  log.info('Linter complete: files:', results.length, 'errors:', errors, 'warnings:', warnings);
+  if (errors > 0 || warnings > 0) {
+    const formatter = await eslint.loadFormatter('stylish');
+    const text = formatter.format(results);
+    log.warn(text);
   }
 }
 
@@ -219,11 +241,11 @@ async function build(f, msg, dev = false) {
     if (require.main === module) process.exit(1);
   }
 
-  if (!dev) {
-    // generate typings & typedoc only when run as explict build
-    await compile(targets.browserBundle.esm.entryPoints, tsconfig);
-    await changelog.update('../CHANGELOG.md');
-    await typedoc(targets.browserBundle.esm.entryPoints);
+  if (!dev) { // only for prod builds, skipped for dev build
+    await lint(); // run linter
+    await typings(targets.browserBundle.esm.entryPoints, tsconfig); // generate typings
+    await changelog.update('../CHANGELOG.md'); // generate changelog
+    await typedoc(targets.browserBundle.esm.entryPoints); // generate typedoc
   }
 
   if (require.main === module) process.exit(0);
@@ -231,6 +253,7 @@ async function build(f, msg, dev = false) {
 
 if (require.main === module) {
   log.header();
+  log.info(`Toolchain: tfjs: ${tfjs.version} esbuild ${esbuild.version}; typescript ${ts.version}; typedoc: ${TypeDoc.Application.VERSION} eslint: ${ESLint.version}`);
   build('all', 'startup');
 } else {
   exports.build = build;

@@ -7,7 +7,7 @@ import { DenseBlock3Params, DenseBlock4Params } from './types';
 export function denseBlock3(
   x: tf.Tensor4D,
   denseBlockParams: DenseBlock3Params,
-  isFirstLayer: boolean = false,
+  isFirstLayer = false,
 ): tf.Tensor4D {
   return tf.tidy(() => {
     const out1 = tf.relu(
@@ -30,8 +30,8 @@ export function denseBlock3(
 export function denseBlock4(
   x: tf.Tensor4D,
   denseBlockParams: DenseBlock4Params,
-  isFirstLayer: boolean = false,
-  isScaleDown: boolean = true,
+  isFirstLayer = false,
+  isScaleDown = true,
 ): tf.Tensor4D {
   return tf.tidy(() => {
     const out1 = tf.relu(

@@ -16,6 +16,7 @@ var __commonJS = (cb, mod) => function __require() {
   return mod || (0, cb[Object.keys(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
 };
 var __export = (target, all) => {
+  __markAsModule(target);
   for (var name in all)
     __defProp(target, name, { get: all[name], enumerable: true });
 };
@@ -58,7 +59,6 @@ var require_tfjs_esm = __commonJS({
 });
 
 // src/index.ts
-__markAsModule(exports);
 __export(exports, {
   AgeGenderNet: () => AgeGenderNet,
   BoundingBox: () => BoundingBox,
@@ -2300,7 +2300,7 @@ function drawFaceLandmarks(canvasArg, faceLandmarks) {
 }
 
 // package.json
-var version = "1.3.0";
+var version = "1.3.1";
 
 // src/ageGenderNet/AgeGenderNet.ts
 var tf20 = __toModule(require_tfjs_esm());

@@ -7,12 +7,14 @@
 
 var faceapi = (() => {
   var __defProp = Object.defineProperty;
+  var __markAsModule = (target) => __defProp(target, "__esModule", { value: true });
   var __require = (x) => {
     if (typeof require !== "undefined")
       return require(x);
     throw new Error('Dynamic require of "' + x + '" is not supported');
   };
   var __export = (target, all5) => {
+    __markAsModule(target);
     for (var name in all5)
       __defProp(target, name, { get: all5[name], enumerable: true });
   };
@@ -628,7 +630,7 @@ var faceapi = (() => {
   var __getOwnPropNames = Object.getOwnPropertyNames;
   var __getProtoOf = Object.getPrototypeOf;
   var __hasOwnProp = Object.prototype.hasOwnProperty;
-  var __markAsModule = (target) => __defProp2(target, "__esModule", { value: true });
+  var __markAsModule2 = (target) => __defProp2(target, "__esModule", { value: true });
   var __require2 = (x) => {
     if (typeof __require !== "undefined")
       return __require(x);
@@ -638,6 +640,7 @@ var faceapi = (() => {
     return mod4 || (0, cb[Object.keys(cb)[0]])((mod4 = { exports: {} }).exports, mod4), mod4.exports;
   };
   var __export2 = (target, all5) => {
+    __markAsModule2(target);
     for (var name in all5)
       __defProp2(target, name, { get: all5[name], enumerable: true });
   };
@@ -650,7 +653,7 @@ var faceapi = (() => {
     return target;
   };
   var __toModule = (module2) => {
-    return __reExport(__markAsModule(__defProp2(module2 != null ? __create(__getProtoOf(module2)) : {}, "default", module2 && module2.__esModule && "default" in module2 ? { get: () => module2.default, enumerable: true } : { value: module2, enumerable: true })), module2);
+    return __reExport(__markAsModule2(__defProp2(module2 != null ? __create(__getProtoOf(module2)) : {}, "default", module2 && module2.__esModule && "default" in module2 ? { get: () => module2.default, enumerable: true } : { value: module2, enumerable: true })), module2);
   };
   var require_long = __commonJS({
     "node_modules/.pnpm/long@4.0.0/node_modules/long/src/long.js"(exports, module2) {
@@ -61324,7 +61327,7 @@ return a / b;`;
   }
 
   // package.json
-  var version10 = "1.3.0";
+  var version10 = "1.3.1";
 
   // src/xception/extractParams.ts
   function extractorsFactory2(extractWeights, paramMappings) {

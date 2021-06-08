@@ -9,12 +9,14 @@ var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __markAsModule = (target) => __defProp(target, "__esModule", { value: true });
 var __require = (x) => {
   if (typeof require !== "undefined")
     return require(x);
   throw new Error('Dynamic require of "' + x + '" is not supported');
 };
 var __export = (target, all) => {
+  __markAsModule(target);
   for (var name in all)
     __defProp(target, name, { get: all[name], enumerable: true });
 };
@@ -29,6 +31,7 @@ var __reExport = (target, module2, desc) => {
 
 // dist/tfjs.esm.js
 var tfjs_esm_exports = {};
+__markAsModule(tfjs_esm_exports);
 __reExport(tfjs_esm_exports, dist_star);
 __reExport(tfjs_esm_exports, tfjs_backend_wasm_star);
 import * as dist_star from "@tensorflow/tfjs/dist/index.js";
@@ -2118,7 +2121,7 @@ function drawFaceLandmarks(canvasArg, faceLandmarks) {
 }
 
 // package.json
-var version = "1.3.0";
+var version = "1.3.1";
 
 // src/xception/extractParams.ts
 function extractorsFactory2(extractWeights, paramMappings) {

@@ -21,6 +21,7 @@ var __commonJS = (cb, mod4) => function __require2() {
   return mod4 || (0, cb[Object.keys(cb)[0]])((mod4 = { exports: {} }).exports, mod4), mod4.exports;
 };
 var __export = (target, all5) => {
+  __markAsModule(target);
   for (var name in all5)
     __defProp(target, name, { get: all5[name], enumerable: true });
 };

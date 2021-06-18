@@ -443,7 +443,7 @@ Compared to [face-api.js](https://github.com/justadudewhohacks/face-api.js) vers
 - Compatible with `TensorFlow/JS 2.0+ & 3.0+`
 - Compatible with `WebGL`, `CPU` and `WASM` TFJS Browser backends
 - Compatible with both `tfjs-node` and `tfjs-node-gpu` TFJS NodeJS backends
-- Updated all type castings for TypeScript type checking to `TypeScript 4.2`
+- Updated all type castings for TypeScript type checking to `TypeScript 4.3`
 - Switched bundling from `UMD` to `ESM` + `CommonJS` with fallback to `IIFE`
   Resulting code is optimized per-platform instead of being universal
   Fully tree shakable when imported as an `ESM` module

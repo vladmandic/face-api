@@ -9,10 +9,10 @@ Repository: **<git+https://github.com/vladmandic/face-api.git>**
 
 ## Changelog
 
+### **HEAD -> master** 2021/06/08 mandic00@live.com
+
+
 ### **1.3.1** 2021/06/08 mandic00@live.com
-
-
-### **origin/master** 2021/06/04 mandic00@live.com
 
 - fix face expression detection (#56)
 - add buffertovideo

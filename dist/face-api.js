@@ -2776,7 +2776,7 @@ var faceapi = (() => {
     }
   });
   var require_tfjs_backend_wasm_threaded_simd = __commonJS({
-    "node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.7.0/node_modules/@tensorflow/tfjs-backend-wasm/wasm-out/tfjs-backend-wasm-threaded-simd.js"(exports, module2) {
+    "node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.8.0/node_modules/@tensorflow/tfjs-backend-wasm/wasm-out/tfjs-backend-wasm-threaded-simd.js"(exports, module2) {
       var WasmBackendModuleThreadedSimd = function() {
         var _scriptDir = typeof document !== "undefined" && document.currentScript ? document.currentScript.src : void 0;
         if (typeof __filename !== "undefined")
@@ -3444,9 +3444,9 @@ var faceapi = (() => {
             instantiateAsync().catch(readyPromiseReject);
             return {};
           }
-          var ASM_CONSTS = { 9816: function() {
+          var ASM_CONSTS = { 9832: function() {
             throw "Canceled!";
-          }, 9834: function($0, $1) {
+          }, 9850: function($0, $1) {
             setTimeout(function() {
               __emscripten_do_dispatch_to_thread($0, $1);
             }, 0);
@@ -4613,266 +4613,269 @@ var faceapi = (() => {
           var _Cos = Module["_Cos"] = function() {
             return (_Cos = Module["_Cos"] = Module["asm"]["S"]).apply(null, arguments);
           };
+          var _Cosh = Module["_Cosh"] = function() {
+            return (_Cosh = Module["_Cosh"] = Module["asm"]["T"]).apply(null, arguments);
+          };
           var _CropAndResize = Module["_CropAndResize"] = function() {
-            return (_CropAndResize = Module["_CropAndResize"] = Module["asm"]["T"]).apply(null, arguments);
+            return (_CropAndResize = Module["_CropAndResize"] = Module["asm"]["U"]).apply(null, arguments);
           };
           var _Cumsum = Module["_Cumsum"] = function() {
-            return (_Cumsum = Module["_Cumsum"] = Module["asm"]["U"]).apply(null, arguments);
+            return (_Cumsum = Module["_Cumsum"] = Module["asm"]["V"]).apply(null, arguments);
           };
           var _DepthToSpace = Module["_DepthToSpace"] = function() {
-            return (_DepthToSpace = Module["_DepthToSpace"] = Module["asm"]["V"]).apply(null, arguments);
+            return (_DepthToSpace = Module["_DepthToSpace"] = Module["asm"]["W"]).apply(null, arguments);
           };
           var _DepthwiseConv2dNative = Module["_DepthwiseConv2dNative"] = function() {
-            return (_DepthwiseConv2dNative = Module["_DepthwiseConv2dNative"] = Module["asm"]["W"]).apply(null, arguments);
+            return (_DepthwiseConv2dNative = Module["_DepthwiseConv2dNative"] = Module["asm"]["X"]).apply(null, arguments);
           };
           var _Equal = Module["_Equal"] = function() {
-            return (_Equal = Module["_Equal"] = Module["asm"]["X"]).apply(null, arguments);
+            return (_Equal = Module["_Equal"] = Module["asm"]["Y"]).apply(null, arguments);
           };
           var _Exp = Module["_Exp"] = function() {
-            return (_Exp = Module["_Exp"] = Module["asm"]["Y"]).apply(null, arguments);
+            return (_Exp = Module["_Exp"] = Module["asm"]["Z"]).apply(null, arguments);
           };
           var _FlipLeftRight = Module["_FlipLeftRight"] = function() {
-            return (_FlipLeftRight = Module["_FlipLeftRight"] = Module["asm"]["Z"]).apply(null, arguments);
+            return (_FlipLeftRight = Module["_FlipLeftRight"] = Module["asm"]["_"]).apply(null, arguments);
           };
           var _Floor = Module["_Floor"] = function() {
-            return (_Floor = Module["_Floor"] = Module["asm"]["_"]).apply(null, arguments);
+            return (_Floor = Module["_Floor"] = Module["asm"]["$"]).apply(null, arguments);
           };
           var _FloorDiv = Module["_FloorDiv"] = function() {
-            return (_FloorDiv = Module["_FloorDiv"] = Module["asm"]["$"]).apply(null, arguments);
+            return (_FloorDiv = Module["_FloorDiv"] = Module["asm"]["aa"]).apply(null, arguments);
           };
           var _FusedBatchNorm = Module["_FusedBatchNorm"] = function() {
-            return (_FusedBatchNorm = Module["_FusedBatchNorm"] = Module["asm"]["aa"]).apply(null, arguments);
+            return (_FusedBatchNorm = Module["_FusedBatchNorm"] = Module["asm"]["ba"]).apply(null, arguments);
           };
           var _FusedConv2D = Module["_FusedConv2D"] = function() {
-            return (_FusedConv2D = Module["_FusedConv2D"] = Module["asm"]["ba"]).apply(null, arguments);
+            return (_FusedConv2D = Module["_FusedConv2D"] = Module["asm"]["ca"]).apply(null, arguments);
           };
           var _FusedDepthwiseConv2D = Module["_FusedDepthwiseConv2D"] = function() {
-            return (_FusedDepthwiseConv2D = Module["_FusedDepthwiseConv2D"] = Module["asm"]["ca"]).apply(null, arguments);
+            return (_FusedDepthwiseConv2D = Module["_FusedDepthwiseConv2D"] = Module["asm"]["da"]).apply(null, arguments);
           };
           var _Gather = Module["_Gather"] = function() {
-            return (_Gather = Module["_Gather"] = Module["asm"]["da"]).apply(null, arguments);
+            return (_Gather = Module["_Gather"] = Module["asm"]["ea"]).apply(null, arguments);
           };
           var _GatherNd = Module["_GatherNd"] = function() {
-            return (_GatherNd = Module["_GatherNd"] = Module["asm"]["ea"]).apply(null, arguments);
+            return (_GatherNd = Module["_GatherNd"] = Module["asm"]["fa"]).apply(null, arguments);
           };
           var _Greater = Module["_Greater"] = function() {
-            return (_Greater = Module["_Greater"] = Module["asm"]["fa"]).apply(null, arguments);
+            return (_Greater = Module["_Greater"] = Module["asm"]["ga"]).apply(null, arguments);
           };
           var _GreaterEqual = Module["_GreaterEqual"] = function() {
-            return (_GreaterEqual = Module["_GreaterEqual"] = Module["asm"]["ga"]).apply(null, arguments);
+            return (_GreaterEqual = Module["_GreaterEqual"] = Module["asm"]["ha"]).apply(null, arguments);
           };
           var _LeakyRelu = Module["_LeakyRelu"] = function() {
-            return (_LeakyRelu = Module["_LeakyRelu"] = Module["asm"]["ha"]).apply(null, arguments);
+            return (_LeakyRelu = Module["_LeakyRelu"] = Module["asm"]["ia"]).apply(null, arguments);
           };
           var _Less = Module["_Less"] = function() {
-            return (_Less = Module["_Less"] = Module["asm"]["ia"]).apply(null, arguments);
+            return (_Less = Module["_Less"] = Module["asm"]["ja"]).apply(null, arguments);
           };
           var _LessEqual = Module["_LessEqual"] = function() {
-            return (_LessEqual = Module["_LessEqual"] = Module["asm"]["ja"]).apply(null, arguments);
+            return (_LessEqual = Module["_LessEqual"] = Module["asm"]["ka"]).apply(null, arguments);
           };
           var _Log = Module["_Log"] = function() {
-            return (_Log = Module["_Log"] = Module["asm"]["ka"]).apply(null, arguments);
+            return (_Log = Module["_Log"] = Module["asm"]["la"]).apply(null, arguments);
           };
           var _LogicalAnd = Module["_LogicalAnd"] = function() {
-            return (_LogicalAnd = Module["_LogicalAnd"] = Module["asm"]["la"]).apply(null, arguments);
+            return (_LogicalAnd = Module["_LogicalAnd"] = Module["asm"]["ma"]).apply(null, arguments);
           };
           var _Max = Module["_Max"] = function() {
-            return (_Max = Module["_Max"] = Module["asm"]["ma"]).apply(null, arguments);
+            return (_Max = Module["_Max"] = Module["asm"]["na"]).apply(null, arguments);
           };
           var _MaxPool = Module["_MaxPool"] = function() {
-            return (_MaxPool = Module["_MaxPool"] = Module["asm"]["na"]).apply(null, arguments);
+            return (_MaxPool = Module["_MaxPool"] = Module["asm"]["oa"]).apply(null, arguments);
           };
           var _Maximum = Module["_Maximum"] = function() {
-            return (_Maximum = Module["_Maximum"] = Module["asm"]["oa"]).apply(null, arguments);
+            return (_Maximum = Module["_Maximum"] = Module["asm"]["pa"]).apply(null, arguments);
           };
           var _Mean = Module["_Mean"] = function() {
-            return (_Mean = Module["_Mean"] = Module["asm"]["pa"]).apply(null, arguments);
+            return (_Mean = Module["_Mean"] = Module["asm"]["qa"]).apply(null, arguments);
           };
           var _Min = Module["_Min"] = function() {
-            return (_Min = Module["_Min"] = Module["asm"]["qa"]).apply(null, arguments);
+            return (_Min = Module["_Min"] = Module["asm"]["ra"]).apply(null, arguments);
           };
           var _Minimum = Module["_Minimum"] = function() {
-            return (_Minimum = Module["_Minimum"] = Module["asm"]["ra"]).apply(null, arguments);
+            return (_Minimum = Module["_Minimum"] = Module["asm"]["sa"]).apply(null, arguments);
           };
           var _MirrorPad = Module["_MirrorPad"] = function() {
-            return (_MirrorPad = Module["_MirrorPad"] = Module["asm"]["sa"]).apply(null, arguments);
+            return (_MirrorPad = Module["_MirrorPad"] = Module["asm"]["ta"]).apply(null, arguments);
           };
           var _Multiply = Module["_Multiply"] = function() {
-            return (_Multiply = Module["_Multiply"] = Module["asm"]["ta"]).apply(null, arguments);
+            return (_Multiply = Module["_Multiply"] = Module["asm"]["ua"]).apply(null, arguments);
           };
           var _Neg = Module["_Neg"] = function() {
-            return (_Neg = Module["_Neg"] = Module["asm"]["ua"]).apply(null, arguments);
+            return (_Neg = Module["_Neg"] = Module["asm"]["va"]).apply(null, arguments);
           };
           var _NonMaxSuppressionV3 = Module["_NonMaxSuppressionV3"] = function() {
-            return (_NonMaxSuppressionV3 = Module["_NonMaxSuppressionV3"] = Module["asm"]["va"]).apply(null, arguments);
+            return (_NonMaxSuppressionV3 = Module["_NonMaxSuppressionV3"] = Module["asm"]["wa"]).apply(null, arguments);
           };
           var _NonMaxSuppressionV4 = Module["_NonMaxSuppressionV4"] = function() {
-            return (_NonMaxSuppressionV4 = Module["_NonMaxSuppressionV4"] = Module["asm"]["wa"]).apply(null, arguments);
+            return (_NonMaxSuppressionV4 = Module["_NonMaxSuppressionV4"] = Module["asm"]["xa"]).apply(null, arguments);
           };
           var _NonMaxSuppressionV5 = Module["_NonMaxSuppressionV5"] = function() {
-            return (_NonMaxSuppressionV5 = Module["_NonMaxSuppressionV5"] = Module["asm"]["xa"]).apply(null, arguments);
+            return (_NonMaxSuppressionV5 = Module["_NonMaxSuppressionV5"] = Module["asm"]["ya"]).apply(null, arguments);
           };
           var _NotEqual = Module["_NotEqual"] = function() {
-            return (_NotEqual = Module["_NotEqual"] = Module["asm"]["ya"]).apply(null, arguments);
+            return (_NotEqual = Module["_NotEqual"] = Module["asm"]["za"]).apply(null, arguments);
           };
           var _OneHot = Module["_OneHot"] = function() {
-            return (_OneHot = Module["_OneHot"] = Module["asm"]["za"]).apply(null, arguments);
+            return (_OneHot = Module["_OneHot"] = Module["asm"]["Aa"]).apply(null, arguments);
           };
           var _PadV2 = Module["_PadV2"] = function() {
-            return (_PadV2 = Module["_PadV2"] = Module["asm"]["Aa"]).apply(null, arguments);
+            return (_PadV2 = Module["_PadV2"] = Module["asm"]["Ba"]).apply(null, arguments);
           };
           var _Pow = Module["_Pow"] = function() {
-            return (_Pow = Module["_Pow"] = Module["asm"]["Ba"]).apply(null, arguments);
+            return (_Pow = Module["_Pow"] = Module["asm"]["Ca"]).apply(null, arguments);
           };
           var _Prelu = Module["_Prelu"] = function() {
-            return (_Prelu = Module["_Prelu"] = Module["asm"]["Ca"]).apply(null, arguments);
+            return (_Prelu = Module["_Prelu"] = Module["asm"]["Da"]).apply(null, arguments);
           };
           var _Prod = Module["_Prod"] = function() {
-            return (_Prod = Module["_Prod"] = Module["asm"]["Da"]).apply(null, arguments);
+            return (_Prod = Module["_Prod"] = Module["asm"]["Ea"]).apply(null, arguments);
           };
           var _RealDiv = Module["_RealDiv"] = function() {
-            return (_RealDiv = Module["_RealDiv"] = Module["asm"]["Ea"]).apply(null, arguments);
+            return (_RealDiv = Module["_RealDiv"] = Module["asm"]["Fa"]).apply(null, arguments);
           };
           var _Relu = Module["_Relu"] = function() {
-            return (_Relu = Module["_Relu"] = Module["asm"]["Fa"]).apply(null, arguments);
+            return (_Relu = Module["_Relu"] = Module["asm"]["Ga"]).apply(null, arguments);
           };
           var _Relu6 = Module["_Relu6"] = function() {
-            return (_Relu6 = Module["_Relu6"] = Module["asm"]["Ga"]).apply(null, arguments);
+            return (_Relu6 = Module["_Relu6"] = Module["asm"]["Ha"]).apply(null, arguments);
           };
           var _ResizeBilinear = Module["_ResizeBilinear"] = function() {
-            return (_ResizeBilinear = Module["_ResizeBilinear"] = Module["asm"]["Ha"]).apply(null, arguments);
+            return (_ResizeBilinear = Module["_ResizeBilinear"] = Module["asm"]["Ia"]).apply(null, arguments);
           };
           var _Reverse = Module["_Reverse"] = function() {
-            return (_Reverse = Module["_Reverse"] = Module["asm"]["Ia"]).apply(null, arguments);
+            return (_Reverse = Module["_Reverse"] = Module["asm"]["Ja"]).apply(null, arguments);
           };
           var _RotateWithOffset = Module["_RotateWithOffset"] = function() {
-            return (_RotateWithOffset = Module["_RotateWithOffset"] = Module["asm"]["Ja"]).apply(null, arguments);
+            return (_RotateWithOffset = Module["_RotateWithOffset"] = Module["asm"]["Ka"]).apply(null, arguments);
           };
           var _Round = Module["_Round"] = function() {
-            return (_Round = Module["_Round"] = Module["asm"]["Ka"]).apply(null, arguments);
+            return (_Round = Module["_Round"] = Module["asm"]["La"]).apply(null, arguments);
           };
           var _Rsqrt = Module["_Rsqrt"] = function() {
-            return (_Rsqrt = Module["_Rsqrt"] = Module["asm"]["La"]).apply(null, arguments);
+            return (_Rsqrt = Module["_Rsqrt"] = Module["asm"]["Ma"]).apply(null, arguments);
           };
           var _ScatterNd = Module["_ScatterNd"] = function() {
-            return (_ScatterNd = Module["_ScatterNd"] = Module["asm"]["Ma"]).apply(null, arguments);
+            return (_ScatterNd = Module["_ScatterNd"] = Module["asm"]["Na"]).apply(null, arguments);
           };
           var _SelectV2 = Module["_SelectV2"] = function() {
-            return (_SelectV2 = Module["_SelectV2"] = Module["asm"]["Na"]).apply(null, arguments);
+            return (_SelectV2 = Module["_SelectV2"] = Module["asm"]["Oa"]).apply(null, arguments);
           };
           var _Sigmoid = Module["_Sigmoid"] = function() {
-            return (_Sigmoid = Module["_Sigmoid"] = Module["asm"]["Oa"]).apply(null, arguments);
+            return (_Sigmoid = Module["_Sigmoid"] = Module["asm"]["Pa"]).apply(null, arguments);
           };
           var _Sin = Module["_Sin"] = function() {
-            return (_Sin = Module["_Sin"] = Module["asm"]["Pa"]).apply(null, arguments);
+            return (_Sin = Module["_Sin"] = Module["asm"]["Qa"]).apply(null, arguments);
           };
           var _Softmax = Module["_Softmax"] = function() {
-            return (_Softmax = Module["_Softmax"] = Module["asm"]["Qa"]).apply(null, arguments);
+            return (_Softmax = Module["_Softmax"] = Module["asm"]["Ra"]).apply(null, arguments);
           };
           var _Sqrt = Module["_Sqrt"] = function() {
-            return (_Sqrt = Module["_Sqrt"] = Module["asm"]["Ra"]).apply(null, arguments);
+            return (_Sqrt = Module["_Sqrt"] = Module["asm"]["Sa"]).apply(null, arguments);
           };
           var _Square = Module["_Square"] = function() {
-            return (_Square = Module["_Square"] = Module["asm"]["Sa"]).apply(null, arguments);
+            return (_Square = Module["_Square"] = Module["asm"]["Ta"]).apply(null, arguments);
           };
           var _SquaredDifference = Module["_SquaredDifference"] = function() {
-            return (_SquaredDifference = Module["_SquaredDifference"] = Module["asm"]["Ta"]).apply(null, arguments);
+            return (_SquaredDifference = Module["_SquaredDifference"] = Module["asm"]["Ua"]).apply(null, arguments);
           };
           var _Step = Module["_Step"] = function() {
-            return (_Step = Module["_Step"] = Module["asm"]["Ua"]).apply(null, arguments);
+            return (_Step = Module["_Step"] = Module["asm"]["Va"]).apply(null, arguments);
           };
           var _StridedSlice = Module["_StridedSlice"] = function() {
-            return (_StridedSlice = Module["_StridedSlice"] = Module["asm"]["Va"]).apply(null, arguments);
+            return (_StridedSlice = Module["_StridedSlice"] = Module["asm"]["Wa"]).apply(null, arguments);
           };
           var _Sub = Module["_Sub"] = function() {
-            return (_Sub = Module["_Sub"] = Module["asm"]["Wa"]).apply(null, arguments);
+            return (_Sub = Module["_Sub"] = Module["asm"]["Xa"]).apply(null, arguments);
           };
           var _Sum = Module["_Sum"] = function() {
-            return (_Sum = Module["_Sum"] = Module["asm"]["Xa"]).apply(null, arguments);
+            return (_Sum = Module["_Sum"] = Module["asm"]["Ya"]).apply(null, arguments);
           };
           var _Tan = Module["_Tan"] = function() {
-            return (_Tan = Module["_Tan"] = Module["asm"]["Ya"]).apply(null, arguments);
+            return (_Tan = Module["_Tan"] = Module["asm"]["Za"]).apply(null, arguments);
           };
           var _Tanh = Module["_Tanh"] = function() {
-            return (_Tanh = Module["_Tanh"] = Module["asm"]["Za"]).apply(null, arguments);
+            return (_Tanh = Module["_Tanh"] = Module["asm"]["_a"]).apply(null, arguments);
           };
           var _Tile = Module["_Tile"] = function() {
-            return (_Tile = Module["_Tile"] = Module["asm"]["_a"]).apply(null, arguments);
+            return (_Tile = Module["_Tile"] = Module["asm"]["$a"]).apply(null, arguments);
           };
           var _TopK = Module["_TopK"] = function() {
-            return (_TopK = Module["_TopK"] = Module["asm"]["$a"]).apply(null, arguments);
+            return (_TopK = Module["_TopK"] = Module["asm"]["ab"]).apply(null, arguments);
           };
           var _Transform = Module["_Transform"] = function() {
-            return (_Transform = Module["_Transform"] = Module["asm"]["ab"]).apply(null, arguments);
+            return (_Transform = Module["_Transform"] = Module["asm"]["bb"]).apply(null, arguments);
           };
           var _Transpose = Module["_Transpose"] = function() {
-            return (_Transpose = Module["_Transpose"] = Module["asm"]["bb"]).apply(null, arguments);
+            return (_Transpose = Module["_Transpose"] = Module["asm"]["cb"]).apply(null, arguments);
           };
           var __FusedMatMul = Module["__FusedMatMul"] = function() {
-            return (__FusedMatMul = Module["__FusedMatMul"] = Module["asm"]["cb"]).apply(null, arguments);
+            return (__FusedMatMul = Module["__FusedMatMul"] = Module["asm"]["db"]).apply(null, arguments);
           };
           var _malloc = Module["_malloc"] = function() {
-            return (_malloc = Module["_malloc"] = Module["asm"]["db"]).apply(null, arguments);
+            return (_malloc = Module["_malloc"] = Module["asm"]["eb"]).apply(null, arguments);
           };
           var _free = Module["_free"] = function() {
-            return (_free = Module["_free"] = Module["asm"]["eb"]).apply(null, arguments);
+            return (_free = Module["_free"] = Module["asm"]["fb"]).apply(null, arguments);
           };
           var ___errno_location = Module["___errno_location"] = function() {
-            return (___errno_location = Module["___errno_location"] = Module["asm"]["fb"]).apply(null, arguments);
+            return (___errno_location = Module["___errno_location"] = Module["asm"]["gb"]).apply(null, arguments);
           };
           var _emscripten_get_global_libc = Module["_emscripten_get_global_libc"] = function() {
-            return (_emscripten_get_global_libc = Module["_emscripten_get_global_libc"] = Module["asm"]["gb"]).apply(null, arguments);
+            return (_emscripten_get_global_libc = Module["_emscripten_get_global_libc"] = Module["asm"]["hb"]).apply(null, arguments);
           };
           var _pthread_self = Module["_pthread_self"] = function() {
-            return (_pthread_self = Module["_pthread_self"] = Module["asm"]["hb"]).apply(null, arguments);
+            return (_pthread_self = Module["_pthread_self"] = Module["asm"]["ib"]).apply(null, arguments);
           };
           var ___pthread_tsd_run_dtors = Module["___pthread_tsd_run_dtors"] = function() {
-            return (___pthread_tsd_run_dtors = Module["___pthread_tsd_run_dtors"] = Module["asm"]["ib"]).apply(null, arguments);
+            return (___pthread_tsd_run_dtors = Module["___pthread_tsd_run_dtors"] = Module["asm"]["jb"]).apply(null, arguments);
           };
           var _emscripten_main_thread_process_queued_calls = Module["_emscripten_main_thread_process_queued_calls"] = function() {
-            return (_emscripten_main_thread_process_queued_calls = Module["_emscripten_main_thread_process_queued_calls"] = Module["asm"]["jb"]).apply(null, arguments);
+            return (_emscripten_main_thread_process_queued_calls = Module["_emscripten_main_thread_process_queued_calls"] = Module["asm"]["kb"]).apply(null, arguments);
           };
           var _emscripten_current_thread_process_queued_calls = Module["_emscripten_current_thread_process_queued_calls"] = function() {
-            return (_emscripten_current_thread_process_queued_calls = Module["_emscripten_current_thread_process_queued_calls"] = Module["asm"]["kb"]).apply(null, arguments);
+            return (_emscripten_current_thread_process_queued_calls = Module["_emscripten_current_thread_process_queued_calls"] = Module["asm"]["lb"]).apply(null, arguments);
           };
           var _emscripten_register_main_browser_thread_id = Module["_emscripten_register_main_browser_thread_id"] = function() {
-            return (_emscripten_register_main_browser_thread_id = Module["_emscripten_register_main_browser_thread_id"] = Module["asm"]["lb"]).apply(null, arguments);
+            return (_emscripten_register_main_browser_thread_id = Module["_emscripten_register_main_browser_thread_id"] = Module["asm"]["mb"]).apply(null, arguments);
           };
           var __emscripten_do_dispatch_to_thread = Module["__emscripten_do_dispatch_to_thread"] = function() {
-            return (__emscripten_do_dispatch_to_thread = Module["__emscripten_do_dispatch_to_thread"] = Module["asm"]["mb"]).apply(null, arguments);
+            return (__emscripten_do_dispatch_to_thread = Module["__emscripten_do_dispatch_to_thread"] = Module["asm"]["nb"]).apply(null, arguments);
           };
           var _emscripten_sync_run_in_main_thread_4 = Module["_emscripten_sync_run_in_main_thread_4"] = function() {
-            return (_emscripten_sync_run_in_main_thread_4 = Module["_emscripten_sync_run_in_main_thread_4"] = Module["asm"]["nb"]).apply(null, arguments);
+            return (_emscripten_sync_run_in_main_thread_4 = Module["_emscripten_sync_run_in_main_thread_4"] = Module["asm"]["ob"]).apply(null, arguments);
           };
           var _emscripten_run_in_main_runtime_thread_js = Module["_emscripten_run_in_main_runtime_thread_js"] = function() {
-            return (_emscripten_run_in_main_runtime_thread_js = Module["_emscripten_run_in_main_runtime_thread_js"] = Module["asm"]["ob"]).apply(null, arguments);
+            return (_emscripten_run_in_main_runtime_thread_js = Module["_emscripten_run_in_main_runtime_thread_js"] = Module["asm"]["pb"]).apply(null, arguments);
           };
           var __emscripten_call_on_thread = Module["__emscripten_call_on_thread"] = function() {
-            return (__emscripten_call_on_thread = Module["__emscripten_call_on_thread"] = Module["asm"]["pb"]).apply(null, arguments);
+            return (__emscripten_call_on_thread = Module["__emscripten_call_on_thread"] = Module["asm"]["qb"]).apply(null, arguments);
           };
           var _emscripten_tls_init = Module["_emscripten_tls_init"] = function() {
-            return (_emscripten_tls_init = Module["_emscripten_tls_init"] = Module["asm"]["qb"]).apply(null, arguments);
+            return (_emscripten_tls_init = Module["_emscripten_tls_init"] = Module["asm"]["rb"]).apply(null, arguments);
           };
           var __emscripten_thread_init = Module["__emscripten_thread_init"] = function() {
-            return (__emscripten_thread_init = Module["__emscripten_thread_init"] = Module["asm"]["rb"]).apply(null, arguments);
+            return (__emscripten_thread_init = Module["__emscripten_thread_init"] = Module["asm"]["sb"]).apply(null, arguments);
           };
           var stackSave = Module["stackSave"] = function() {
-            return (stackSave = Module["stackSave"] = Module["asm"]["sb"]).apply(null, arguments);
+            return (stackSave = Module["stackSave"] = Module["asm"]["tb"]).apply(null, arguments);
           };
           var stackRestore = Module["stackRestore"] = function() {
-            return (stackRestore = Module["stackRestore"] = Module["asm"]["tb"]).apply(null, arguments);
+            return (stackRestore = Module["stackRestore"] = Module["asm"]["ub"]).apply(null, arguments);
           };
           var stackAlloc = Module["stackAlloc"] = function() {
-            return (stackAlloc = Module["stackAlloc"] = Module["asm"]["ub"]).apply(null, arguments);
+            return (stackAlloc = Module["stackAlloc"] = Module["asm"]["vb"]).apply(null, arguments);
           };
           var _emscripten_stack_set_limits = Module["_emscripten_stack_set_limits"] = function() {
-            return (_emscripten_stack_set_limits = Module["_emscripten_stack_set_limits"] = Module["asm"]["vb"]).apply(null, arguments);
+            return (_emscripten_stack_set_limits = Module["_emscripten_stack_set_limits"] = Module["asm"]["wb"]).apply(null, arguments);
           };
           var _memalign = Module["_memalign"] = function() {
-            return (_memalign = Module["_memalign"] = Module["asm"]["wb"]).apply(null, arguments);
+            return (_memalign = Module["_memalign"] = Module["asm"]["xb"]).apply(null, arguments);
           };
-          var __emscripten_allow_main_runtime_queued_calls = Module["__emscripten_allow_main_runtime_queued_calls"] = 9808;
-          var __emscripten_main_thread_futex = Module["__emscripten_main_thread_futex"] = 11432;
+          var __emscripten_allow_main_runtime_queued_calls = Module["__emscripten_allow_main_runtime_queued_calls"] = 9824;
+          var __emscripten_main_thread_futex = Module["__emscripten_main_thread_futex"] = 11448;
           Module["cwrap"] = cwrap;
           Module["PThread"] = PThread;
           Module["PThread"] = PThread;
@@ -4980,7 +4983,7 @@ var faceapi = (() => {
     }
   });
   var require_tfjs_backend_wasm = __commonJS({
-    "node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.7.0/node_modules/@tensorflow/tfjs-backend-wasm/wasm-out/tfjs-backend-wasm.js"(exports, module2) {
+    "node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.8.0/node_modules/@tensorflow/tfjs-backend-wasm/wasm-out/tfjs-backend-wasm.js"(exports, module2) {
       var WasmBackendModule = function() {
         var _scriptDir = typeof document !== "undefined" && document.currentScript ? document.currentScript.src : void 0;
         if (typeof __filename !== "undefined")
@@ -5831,221 +5834,224 @@ var faceapi = (() => {
           var _Cos = Module["_Cos"] = function() {
             return (_Cos = Module["_Cos"] = Module["asm"]["B"]).apply(null, arguments);
           };
+          var _Cosh = Module["_Cosh"] = function() {
+            return (_Cosh = Module["_Cosh"] = Module["asm"]["C"]).apply(null, arguments);
+          };
           var _CropAndResize = Module["_CropAndResize"] = function() {
-            return (_CropAndResize = Module["_CropAndResize"] = Module["asm"]["C"]).apply(null, arguments);
+            return (_CropAndResize = Module["_CropAndResize"] = Module["asm"]["D"]).apply(null, arguments);
           };
           var _Cumsum = Module["_Cumsum"] = function() {
-            return (_Cumsum = Module["_Cumsum"] = Module["asm"]["D"]).apply(null, arguments);
+            return (_Cumsum = Module["_Cumsum"] = Module["asm"]["E"]).apply(null, arguments);
           };
           var _DepthToSpace = Module["_DepthToSpace"] = function() {
-            return (_DepthToSpace = Module["_DepthToSpace"] = Module["asm"]["E"]).apply(null, arguments);
+            return (_DepthToSpace = Module["_DepthToSpace"] = Module["asm"]["F"]).apply(null, arguments);
           };
           var _DepthwiseConv2dNative = Module["_DepthwiseConv2dNative"] = function() {
-            return (_DepthwiseConv2dNative = Module["_DepthwiseConv2dNative"] = Module["asm"]["F"]).apply(null, arguments);
+            return (_DepthwiseConv2dNative = Module["_DepthwiseConv2dNative"] = Module["asm"]["G"]).apply(null, arguments);
           };
           var _Equal = Module["_Equal"] = function() {
-            return (_Equal = Module["_Equal"] = Module["asm"]["G"]).apply(null, arguments);
+            return (_Equal = Module["_Equal"] = Module["asm"]["H"]).apply(null, arguments);
           };
           var _Exp = Module["_Exp"] = function() {
-            return (_Exp = Module["_Exp"] = Module["asm"]["H"]).apply(null, arguments);
+            return (_Exp = Module["_Exp"] = Module["asm"]["I"]).apply(null, arguments);
           };
           var _FlipLeftRight = Module["_FlipLeftRight"] = function() {
-            return (_FlipLeftRight = Module["_FlipLeftRight"] = Module["asm"]["I"]).apply(null, arguments);
+            return (_FlipLeftRight = Module["_FlipLeftRight"] = Module["asm"]["J"]).apply(null, arguments);
           };
           var _Floor = Module["_Floor"] = function() {
-            return (_Floor = Module["_Floor"] = Module["asm"]["J"]).apply(null, arguments);
+            return (_Floor = Module["_Floor"] = Module["asm"]["K"]).apply(null, arguments);
           };
           var _FloorDiv = Module["_FloorDiv"] = function() {
-            return (_FloorDiv = Module["_FloorDiv"] = Module["asm"]["K"]).apply(null, arguments);
+            return (_FloorDiv = Module["_FloorDiv"] = Module["asm"]["L"]).apply(null, arguments);
           };
           var _FusedBatchNorm = Module["_FusedBatchNorm"] = function() {
-            return (_FusedBatchNorm = Module["_FusedBatchNorm"] = Module["asm"]["L"]).apply(null, arguments);
+            return (_FusedBatchNorm = Module["_FusedBatchNorm"] = Module["asm"]["M"]).apply(null, arguments);
           };
           var _FusedConv2D = Module["_FusedConv2D"] = function() {
-            return (_FusedConv2D = Module["_FusedConv2D"] = Module["asm"]["M"]).apply(null, arguments);
+            return (_FusedConv2D = Module["_FusedConv2D"] = Module["asm"]["N"]).apply(null, arguments);
           };
           var _FusedDepthwiseConv2D = Module["_FusedDepthwiseConv2D"] = function() {
-            return (_FusedDepthwiseConv2D = Module["_FusedDepthwiseConv2D"] = Module["asm"]["N"]).apply(null, arguments);
+            return (_FusedDepthwiseConv2D = Module["_FusedDepthwiseConv2D"] = Module["asm"]["O"]).apply(null, arguments);
           };
           var _Gather = Module["_Gather"] = function() {
-            return (_Gather = Module["_Gather"] = Module["asm"]["O"]).apply(null, arguments);
+            return (_Gather = Module["_Gather"] = Module["asm"]["P"]).apply(null, arguments);
           };
           var _GatherNd = Module["_GatherNd"] = function() {
-            return (_GatherNd = Module["_GatherNd"] = Module["asm"]["P"]).apply(null, arguments);
+            return (_GatherNd = Module["_GatherNd"] = Module["asm"]["Q"]).apply(null, arguments);
           };
           var _Greater = Module["_Greater"] = function() {
-            return (_Greater = Module["_Greater"] = Module["asm"]["Q"]).apply(null, arguments);
+            return (_Greater = Module["_Greater"] = Module["asm"]["R"]).apply(null, arguments);
           };
           var _GreaterEqual = Module["_GreaterEqual"] = function() {
-            return (_GreaterEqual = Module["_GreaterEqual"] = Module["asm"]["R"]).apply(null, arguments);
+            return (_GreaterEqual = Module["_GreaterEqual"] = Module["asm"]["S"]).apply(null, arguments);
           };
           var _LeakyRelu = Module["_LeakyRelu"] = function() {
-            return (_LeakyRelu = Module["_LeakyRelu"] = Module["asm"]["S"]).apply(null, arguments);
+            return (_LeakyRelu = Module["_LeakyRelu"] = Module["asm"]["T"]).apply(null, arguments);
           };
           var _Less = Module["_Less"] = function() {
-            return (_Less = Module["_Less"] = Module["asm"]["T"]).apply(null, arguments);
+            return (_Less = Module["_Less"] = Module["asm"]["U"]).apply(null, arguments);
           };
           var _LessEqual = Module["_LessEqual"] = function() {
-            return (_LessEqual = Module["_LessEqual"] = Module["asm"]["U"]).apply(null, arguments);
+            return (_LessEqual = Module["_LessEqual"] = Module["asm"]["V"]).apply(null, arguments);
           };
           var _Log = Module["_Log"] = function() {
-            return (_Log = Module["_Log"] = Module["asm"]["V"]).apply(null, arguments);
+            return (_Log = Module["_Log"] = Module["asm"]["W"]).apply(null, arguments);
           };
           var _LogicalAnd = Module["_LogicalAnd"] = function() {
-            return (_LogicalAnd = Module["_LogicalAnd"] = Module["asm"]["W"]).apply(null, arguments);
+            return (_LogicalAnd = Module["_LogicalAnd"] = Module["asm"]["X"]).apply(null, arguments);
           };
           var _Max = Module["_Max"] = function() {
-            return (_Max = Module["_Max"] = Module["asm"]["X"]).apply(null, arguments);
+            return (_Max = Module["_Max"] = Module["asm"]["Y"]).apply(null, arguments);
           };
           var _MaxPool = Module["_MaxPool"] = function() {
-            return (_MaxPool = Module["_MaxPool"] = Module["asm"]["Y"]).apply(null, arguments);
+            return (_MaxPool = Module["_MaxPool"] = Module["asm"]["Z"]).apply(null, arguments);
           };
           var _Maximum = Module["_Maximum"] = function() {
-            return (_Maximum = Module["_Maximum"] = Module["asm"]["Z"]).apply(null, arguments);
+            return (_Maximum = Module["_Maximum"] = Module["asm"]["_"]).apply(null, arguments);
           };
           var _Mean = Module["_Mean"] = function() {
-            return (_Mean = Module["_Mean"] = Module["asm"]["_"]).apply(null, arguments);
+            return (_Mean = Module["_Mean"] = Module["asm"]["$"]).apply(null, arguments);
           };
           var _Min = Module["_Min"] = function() {
-            return (_Min = Module["_Min"] = Module["asm"]["$"]).apply(null, arguments);
+            return (_Min = Module["_Min"] = Module["asm"]["aa"]).apply(null, arguments);
           };
           var _Minimum = Module["_Minimum"] = function() {
-            return (_Minimum = Module["_Minimum"] = Module["asm"]["aa"]).apply(null, arguments);
+            return (_Minimum = Module["_Minimum"] = Module["asm"]["ba"]).apply(null, arguments);
           };
           var _MirrorPad = Module["_MirrorPad"] = function() {
-            return (_MirrorPad = Module["_MirrorPad"] = Module["asm"]["ba"]).apply(null, arguments);
+            return (_MirrorPad = Module["_MirrorPad"] = Module["asm"]["ca"]).apply(null, arguments);
           };
           var _Multiply = Module["_Multiply"] = function() {
-            return (_Multiply = Module["_Multiply"] = Module["asm"]["ca"]).apply(null, arguments);
+            return (_Multiply = Module["_Multiply"] = Module["asm"]["da"]).apply(null, arguments);
           };
           var _Neg = Module["_Neg"] = function() {
-            return (_Neg = Module["_Neg"] = Module["asm"]["da"]).apply(null, arguments);
+            return (_Neg = Module["_Neg"] = Module["asm"]["ea"]).apply(null, arguments);
           };
           var _NonMaxSuppressionV3 = Module["_NonMaxSuppressionV3"] = function() {
-            return (_NonMaxSuppressionV3 = Module["_NonMaxSuppressionV3"] = Module["asm"]["ea"]).apply(null, arguments);
+            return (_NonMaxSuppressionV3 = Module["_NonMaxSuppressionV3"] = Module["asm"]["fa"]).apply(null, arguments);
           };
           var _NonMaxSuppressionV4 = Module["_NonMaxSuppressionV4"] = function() {
-            return (_NonMaxSuppressionV4 = Module["_NonMaxSuppressionV4"] = Module["asm"]["fa"]).apply(null, arguments);
+            return (_NonMaxSuppressionV4 = Module["_NonMaxSuppressionV4"] = Module["asm"]["ga"]).apply(null, arguments);
           };
           var _NonMaxSuppressionV5 = Module["_NonMaxSuppressionV5"] = function() {
-            return (_NonMaxSuppressionV5 = Module["_NonMaxSuppressionV5"] = Module["asm"]["ga"]).apply(null, arguments);
+            return (_NonMaxSuppressionV5 = Module["_NonMaxSuppressionV5"] = Module["asm"]["ha"]).apply(null, arguments);
           };
           var _NotEqual = Module["_NotEqual"] = function() {
-            return (_NotEqual = Module["_NotEqual"] = Module["asm"]["ha"]).apply(null, arguments);
+            return (_NotEqual = Module["_NotEqual"] = Module["asm"]["ia"]).apply(null, arguments);
           };
           var _OneHot = Module["_OneHot"] = function() {
-            return (_OneHot = Module["_OneHot"] = Module["asm"]["ia"]).apply(null, arguments);
+            return (_OneHot = Module["_OneHot"] = Module["asm"]["ja"]).apply(null, arguments);
           };
           var _PadV2 = Module["_PadV2"] = function() {
-            return (_PadV2 = Module["_PadV2"] = Module["asm"]["ja"]).apply(null, arguments);
+            return (_PadV2 = Module["_PadV2"] = Module["asm"]["ka"]).apply(null, arguments);
           };
           var _Pow = Module["_Pow"] = function() {
-            return (_Pow = Module["_Pow"] = Module["asm"]["ka"]).apply(null, arguments);
+            return (_Pow = Module["_Pow"] = Module["asm"]["la"]).apply(null, arguments);
           };
           var _Prelu = Module["_Prelu"] = function() {
-            return (_Prelu = Module["_Prelu"] = Module["asm"]["la"]).apply(null, arguments);
+            return (_Prelu = Module["_Prelu"] = Module["asm"]["ma"]).apply(null, arguments);
           };
           var _Prod = Module["_Prod"] = function() {
-            return (_Prod = Module["_Prod"] = Module["asm"]["ma"]).apply(null, arguments);
+            return (_Prod = Module["_Prod"] = Module["asm"]["na"]).apply(null, arguments);
           };
           var _RealDiv = Module["_RealDiv"] = function() {
-            return (_RealDiv = Module["_RealDiv"] = Module["asm"]["na"]).apply(null, arguments);
+            return (_RealDiv = Module["_RealDiv"] = Module["asm"]["oa"]).apply(null, arguments);
           };
           var _Relu = Module["_Relu"] = function() {
-            return (_Relu = Module["_Relu"] = Module["asm"]["oa"]).apply(null, arguments);
+            return (_Relu = Module["_Relu"] = Module["asm"]["pa"]).apply(null, arguments);
           };
           var _Relu6 = Module["_Relu6"] = function() {
-            return (_Relu6 = Module["_Relu6"] = Module["asm"]["pa"]).apply(null, arguments);
+            return (_Relu6 = Module["_Relu6"] = Module["asm"]["qa"]).apply(null, arguments);
           };
           var _ResizeBilinear = Module["_ResizeBilinear"] = function() {
-            return (_ResizeBilinear = Module["_ResizeBilinear"] = Module["asm"]["qa"]).apply(null, arguments);
+            return (_ResizeBilinear = Module["_ResizeBilinear"] = Module["asm"]["ra"]).apply(null, arguments);
           };
           var _Reverse = Module["_Reverse"] = function() {
-            return (_Reverse = Module["_Reverse"] = Module["asm"]["ra"]).apply(null, arguments);
+            return (_Reverse = Module["_Reverse"] = Module["asm"]["sa"]).apply(null, arguments);
           };
           var _RotateWithOffset = Module["_RotateWithOffset"] = function() {
-            return (_RotateWithOffset = Module["_RotateWithOffset"] = Module["asm"]["sa"]).apply(null, arguments);
+            return (_RotateWithOffset = Module["_RotateWithOffset"] = Module["asm"]["ta"]).apply(null, arguments);
           };
           var _Round = Module["_Round"] = function() {
-            return (_Round = Module["_Round"] = Module["asm"]["ta"]).apply(null, arguments);
+            return (_Round = Module["_Round"] = Module["asm"]["ua"]).apply(null, arguments);
           };
           var _Rsqrt = Module["_Rsqrt"] = function() {
-            return (_Rsqrt = Module["_Rsqrt"] = Module["asm"]["ua"]).apply(null, arguments);
+            return (_Rsqrt = Module["_Rsqrt"] = Module["asm"]["va"]).apply(null, arguments);
           };
           var _ScatterNd = Module["_ScatterNd"] = function() {
-            return (_ScatterNd = Module["_ScatterNd"] = Module["asm"]["va"]).apply(null, arguments);
+            return (_ScatterNd = Module["_ScatterNd"] = Module["asm"]["wa"]).apply(null, arguments);
           };
           var _SelectV2 = Module["_SelectV2"] = function() {
-            return (_SelectV2 = Module["_SelectV2"] = Module["asm"]["wa"]).apply(null, arguments);
+            return (_SelectV2 = Module["_SelectV2"] = Module["asm"]["xa"]).apply(null, arguments);
           };
           var _Sigmoid = Module["_Sigmoid"] = function() {
-            return (_Sigmoid = Module["_Sigmoid"] = Module["asm"]["xa"]).apply(null, arguments);
+            return (_Sigmoid = Module["_Sigmoid"] = Module["asm"]["ya"]).apply(null, arguments);
           };
           var _Sin = Module["_Sin"] = function() {
-            return (_Sin = Module["_Sin"] = Module["asm"]["ya"]).apply(null, arguments);
+            return (_Sin = Module["_Sin"] = Module["asm"]["za"]).apply(null, arguments);
           };
           var _Softmax = Module["_Softmax"] = function() {
-            return (_Softmax = Module["_Softmax"] = Module["asm"]["za"]).apply(null, arguments);
+            return (_Softmax = Module["_Softmax"] = Module["asm"]["Aa"]).apply(null, arguments);
           };
           var _Sqrt = Module["_Sqrt"] = function() {
-            return (_Sqrt = Module["_Sqrt"] = Module["asm"]["Aa"]).apply(null, arguments);
+            return (_Sqrt = Module["_Sqrt"] = Module["asm"]["Ba"]).apply(null, arguments);
           };
           var _Square = Module["_Square"] = function() {
-            return (_Square = Module["_Square"] = Module["asm"]["Ba"]).apply(null, arguments);
+            return (_Square = Module["_Square"] = Module["asm"]["Ca"]).apply(null, arguments);
           };
           var _SquaredDifference = Module["_SquaredDifference"] = function() {
-            return (_SquaredDifference = Module["_SquaredDifference"] = Module["asm"]["Ca"]).apply(null, arguments);
+            return (_SquaredDifference = Module["_SquaredDifference"] = Module["asm"]["Da"]).apply(null, arguments);
           };
           var _Step = Module["_Step"] = function() {
-            return (_Step = Module["_Step"] = Module["asm"]["Da"]).apply(null, arguments);
+            return (_Step = Module["_Step"] = Module["asm"]["Ea"]).apply(null, arguments);
           };
           var _StridedSlice = Module["_StridedSlice"] = function() {
-            return (_StridedSlice = Module["_StridedSlice"] = Module["asm"]["Ea"]).apply(null, arguments);
+            return (_StridedSlice = Module["_StridedSlice"] = Module["asm"]["Fa"]).apply(null, arguments);
           };
           var _Sub = Module["_Sub"] = function() {
-            return (_Sub = Module["_Sub"] = Module["asm"]["Fa"]).apply(null, arguments);
+            return (_Sub = Module["_Sub"] = Module["asm"]["Ga"]).apply(null, arguments);
           };
           var _Sum = Module["_Sum"] = function() {
-            return (_Sum = Module["_Sum"] = Module["asm"]["Ga"]).apply(null, arguments);
+            return (_Sum = Module["_Sum"] = Module["asm"]["Ha"]).apply(null, arguments);
           };
           var _Tan = Module["_Tan"] = function() {
-            return (_Tan = Module["_Tan"] = Module["asm"]["Ha"]).apply(null, arguments);
+            return (_Tan = Module["_Tan"] = Module["asm"]["Ia"]).apply(null, arguments);
           };
           var _Tanh = Module["_Tanh"] = function() {
-            return (_Tanh = Module["_Tanh"] = Module["asm"]["Ia"]).apply(null, arguments);
+            return (_Tanh = Module["_Tanh"] = Module["asm"]["Ja"]).apply(null, arguments);
           };
           var _Tile = Module["_Tile"] = function() {
-            return (_Tile = Module["_Tile"] = Module["asm"]["Ja"]).apply(null, arguments);
+            return (_Tile = Module["_Tile"] = Module["asm"]["Ka"]).apply(null, arguments);
           };
           var _TopK = Module["_TopK"] = function() {
-            return (_TopK = Module["_TopK"] = Module["asm"]["Ka"]).apply(null, arguments);
+            return (_TopK = Module["_TopK"] = Module["asm"]["La"]).apply(null, arguments);
           };
           var _Transform = Module["_Transform"] = function() {
-            return (_Transform = Module["_Transform"] = Module["asm"]["La"]).apply(null, arguments);
+            return (_Transform = Module["_Transform"] = Module["asm"]["Ma"]).apply(null, arguments);
           };
           var _Transpose = Module["_Transpose"] = function() {
-            return (_Transpose = Module["_Transpose"] = Module["asm"]["Ma"]).apply(null, arguments);
+            return (_Transpose = Module["_Transpose"] = Module["asm"]["Na"]).apply(null, arguments);
           };
           var __FusedMatMul = Module["__FusedMatMul"] = function() {
-            return (__FusedMatMul = Module["__FusedMatMul"] = Module["asm"]["Na"]).apply(null, arguments);
+            return (__FusedMatMul = Module["__FusedMatMul"] = Module["asm"]["Oa"]).apply(null, arguments);
           };
           var _malloc = Module["_malloc"] = function() {
-            return (_malloc = Module["_malloc"] = Module["asm"]["Oa"]).apply(null, arguments);
+            return (_malloc = Module["_malloc"] = Module["asm"]["Pa"]).apply(null, arguments);
           };
           var _free = Module["_free"] = function() {
-            return (_free = Module["_free"] = Module["asm"]["Pa"]).apply(null, arguments);
+            return (_free = Module["_free"] = Module["asm"]["Qa"]).apply(null, arguments);
           };
           var ___errno_location = Module["___errno_location"] = function() {
-            return (___errno_location = Module["___errno_location"] = Module["asm"]["Qa"]).apply(null, arguments);
+            return (___errno_location = Module["___errno_location"] = Module["asm"]["Ra"]).apply(null, arguments);
           };
           var stackSave = Module["stackSave"] = function() {
-            return (stackSave = Module["stackSave"] = Module["asm"]["Ra"]).apply(null, arguments);
+            return (stackSave = Module["stackSave"] = Module["asm"]["Sa"]).apply(null, arguments);
           };
           var stackRestore = Module["stackRestore"] = function() {
-            return (stackRestore = Module["stackRestore"] = Module["asm"]["Sa"]).apply(null, arguments);
+            return (stackRestore = Module["stackRestore"] = Module["asm"]["Ta"]).apply(null, arguments);
           };
           var stackAlloc = Module["stackAlloc"] = function() {
-            return (stackAlloc = Module["stackAlloc"] = Module["asm"]["Ta"]).apply(null, arguments);
+            return (stackAlloc = Module["stackAlloc"] = Module["asm"]["Ua"]).apply(null, arguments);
           };
           Module["cwrap"] = cwrap;
           var calledRun;
@@ -6196,14 +6202,11 @@ var faceapi = (() => {
   }
   function shuffle(array2) {
     let counter = array2.length;
-    let temp = 0;
     let index = 0;
     while (counter > 0) {
       index = Math.random() * counter | 0;
       counter--;
-      temp = array2[counter];
-      array2[counter] = array2[index];
-      array2[index] = temp;
+      swap(array2, counter, index);
     }
   }
   function shuffleCombo(array2, array22) {
@@ -6211,17 +6214,12 @@ var faceapi = (() => {
       throw new Error(`Array sizes must match to be shuffled together First array length was ${array2.length}Second array length was ${array22.length}`);
     }
     let counter = array2.length;
-    let temp, temp2;
     let index = 0;
     while (counter > 0) {
       index = Math.random() * counter | 0;
       counter--;
-      temp = array2[counter];
-      temp2 = array22[counter];
-      array2[counter] = array2[index];
-      array22[counter] = array22[index];
-      array2[index] = temp;
-      array22[index] = temp2;
+      swap(array2, counter, index);
+      swap(array22, counter, index);
     }
   }
   function clamp(min6, x, max6) {
@@ -6229,6 +6227,11 @@ var faceapi = (() => {
   }
   function nearestLargerEven(val) {
     return val % 2 === 0 ? val : val + 1;
+  }
+  function swap(object, left, right) {
+    const temp = object[left];
+    object[left] = object[right];
+    object[right] = temp;
   }
   function sum(arr) {
     let sum6 = 0;
@@ -7078,6 +7081,7 @@ var faceapi = (() => {
     sizeToSquarishShape: () => sizeToSquarishShape,
     squeezeShape: () => squeezeShape,
     sum: () => sum,
+    swap: () => swap,
     tanh: () => tanh,
     toNestedArray: () => toNestedArray,
     toTypedArray: () => toTypedArray
@@ -8185,6 +8189,9 @@ var faceapi = (() => {
       return y;
     }
     runKernel(kernelName, inputs, attrs) {
+      if (this.backendName == null) {
+        this.backend;
+      }
       const hasKernel = getKernel(kernelName, this.backendName) != null;
       if (!hasKernel) {
         throw new Error(`Kernel '${kernelName}' not registered for backend '${this.backendName}'`);
@@ -9039,6 +9046,54 @@ var faceapi = (() => {
     const items = path.split(SEPARATOR);
     return items[items.length - 1];
   }
+  function getModelJSONForModelArtifacts(artifacts, manifest) {
+    const result = {
+      modelTopology: artifacts.modelTopology,
+      format: artifacts.format,
+      generatedBy: artifacts.generatedBy,
+      convertedBy: artifacts.convertedBy,
+      weightsManifest: manifest
+    };
+    if (artifacts.signature != null) {
+      result.signature = artifacts.signature;
+    }
+    if (artifacts.userDefinedMetadata != null) {
+      result.userDefinedMetadata = artifacts.userDefinedMetadata;
+    }
+    if (artifacts.modelInitializer != null) {
+      result.modelInitializer = artifacts.modelInitializer;
+    }
+    if (artifacts.trainingConfig != null) {
+      result.trainingConfig = artifacts.trainingConfig;
+    }
+    return result;
+  }
+  async function getModelArtifactsForJSON(modelJSON, loadWeights2) {
+    const modelArtifacts = {
+      modelTopology: modelJSON.modelTopology,
+      format: modelJSON.format,
+      generatedBy: modelJSON.generatedBy,
+      convertedBy: modelJSON.convertedBy
+    };
+    if (modelJSON.trainingConfig != null) {
+      modelArtifacts.trainingConfig = modelJSON.trainingConfig;
+    }
+    if (modelJSON.weightsManifest != null) {
+      const [weightSpecs, weightData] = await loadWeights2(modelJSON.weightsManifest);
+      modelArtifacts.weightSpecs = weightSpecs;
+      modelArtifacts.weightData = weightData;
+    }
+    if (modelJSON.signature != null) {
+      modelArtifacts.signature = modelJSON.signature;
+    }
+    if (modelJSON.userDefinedMetadata != null) {
+      modelArtifacts.userDefinedMetadata = modelJSON.userDefinedMetadata;
+    }
+    if (modelJSON.modelInitializer != null) {
+      modelArtifacts.modelInitializer = modelJSON.modelInitializer;
+    }
+    return modelArtifacts;
+  }
   function getModelArtifactsInfoForJSON(modelArtifacts) {
     if (modelArtifacts.modelTopology instanceof ArrayBuffer) {
       throw new Error("Expected JSON model topology, received ArrayBuffer.");
@@ -9367,6 +9422,11 @@ var faceapi = (() => {
       modelMetadata: [PATH_PREFIX, path, MODEL_METADATA_SUFFIX].join(PATH_SEPARATOR)
     };
   }
+  function removeItems(keys) {
+    for (const key of Object.values(keys)) {
+      window.localStorage.removeItem(key);
+    }
+  }
   function getModelPathFromKey(key) {
     const items = key.split(PATH_SEPARATOR);
     if (items.length < 3) {
@@ -9401,28 +9461,19 @@ var faceapi = (() => {
           this.LS.setItem(this.keys.topology, topology);
           this.LS.setItem(this.keys.weightSpecs, weightSpecs);
           this.LS.setItem(this.keys.weightData, arrayBufferToBase64String(modelArtifacts.weightData));
-          const result = {
+          const metadata = {
             format: modelArtifacts.format,
             generatedBy: modelArtifacts.generatedBy,
-            convertedBy: modelArtifacts.convertedBy
+            convertedBy: modelArtifacts.convertedBy,
+            signature: modelArtifacts.signature != null ? modelArtifacts.signature : void 0,
+            userDefinedMetadata: modelArtifacts.userDefinedMetadata != null ? modelArtifacts.userDefinedMetadata : void 0,
+            modelInitializer: modelArtifacts.modelInitializer != null ? modelArtifacts.modelInitializer : void 0,
+            trainingConfig: modelArtifacts.trainingConfig != null ? modelArtifacts.trainingConfig : void 0
           };
-          if (modelArtifacts.signature != null) {
-            result.signature = modelArtifacts.signature;
-          }
-          if (modelArtifacts.userDefinedMetadata != null) {
-            result.userDefinedMetadata = modelArtifacts.userDefinedMetadata;
-          }
-          if (modelArtifacts.modelInitializer != null) {
-            result.modelInitializer = modelArtifacts.modelInitializer;
-          }
-          this.LS.setItem(this.keys.modelMetadata, JSON.stringify(result));
+          this.LS.setItem(this.keys.modelMetadata, JSON.stringify(metadata));
           return { modelArtifactsInfo };
         } catch (err) {
-          this.LS.removeItem(this.keys.info);
-          this.LS.removeItem(this.keys.topology);
-          this.LS.removeItem(this.keys.weightSpecs);
-          this.LS.removeItem(this.keys.weightData);
-          this.LS.removeItem(this.keys.modelMetadata);
+          removeItems(this.keys);
           throw new Error(`Failed to save model '${this.modelPath}' to local storage: size quota being exceeded is a possible cause of this failure: modelTopologyBytes=${modelArtifactsInfo.modelTopologyBytes}, weightSpecsBytes=${modelArtifactsInfo.weightSpecsBytes}, weightDataBytes=${modelArtifactsInfo.weightDataBytes}.`);
         }
       }
@@ -9449,17 +9500,20 @@ var faceapi = (() => {
       const metadataString = this.LS.getItem(this.keys.modelMetadata);
       if (metadataString != null) {
         const metadata = JSON.parse(metadataString);
-        out.format = metadata["format"];
-        out.generatedBy = metadata["generatedBy"];
-        out.convertedBy = metadata["convertedBy"];
-        if (metadata["signature"] != null) {
-          out.signature = metadata["signature"];
+        out.format = metadata.format;
+        out.generatedBy = metadata.generatedBy;
+        out.convertedBy = metadata.convertedBy;
+        if (metadata.signature != null) {
+          out.signature = metadata.signature;
         }
-        if (metadata["userDefinedMetadata"] != null) {
-          out.userDefinedMetadata = metadata["userDefinedMetadata"];
+        if (metadata.userDefinedMetadata != null) {
+          out.userDefinedMetadata = metadata.userDefinedMetadata;
         }
-        if (metadata["modelInitializer"] != null) {
-          out.modelInitializer = metadata["modelInitializer"];
+        if (metadata.modelInitializer != null) {
+          out.modelInitializer = metadata.modelInitializer;
+        }
+        if (metadata.trainingConfig != null) {
+          out.trainingConfig = metadata.trainingConfig;
         }
       }
       const weightDataBase64 = this.LS.getItem(this.keys.weightData);
@@ -9513,10 +9567,7 @@ var faceapi = (() => {
         throw new Error(`Cannot find model at path '${path}'`);
       }
       const info = JSON.parse(this.LS.getItem(keys.info));
-      this.LS.removeItem(keys.info);
-      this.LS.removeItem(keys.topology);
-      this.LS.removeItem(keys.weightSpecs);
-      this.LS.removeItem(keys.weightData);
+      removeItems(keys);
       return info;
     }
   };
@@ -9723,6 +9774,7 @@ var faceapi = (() => {
     encodeWeights: () => encodeWeights,
     fromMemory: () => fromMemory,
     getLoadHandlers: () => getLoadHandlers,
+    getModelArtifactsForJSON: () => getModelArtifactsForJSON,
     getModelArtifactsInfoForJSON: () => getModelArtifactsInfoForJSON,
     getSaveHandlers: () => getSaveHandlers,
     http: () => http,
@@ -9753,7 +9805,7 @@ var faceapi = (() => {
       if (fileNamePrefix == null || fileNamePrefix.length === 0) {
         fileNamePrefix = DEFAULT_FILE_NAME_PREFIX;
       }
-      this.modelTopologyFileName = fileNamePrefix + DEFAULT_JSON_EXTENSION_NAME;
+      this.modelJsonFileName = fileNamePrefix + DEFAULT_JSON_EXTENSION_NAME;
       this.weightDataFileName = fileNamePrefix + DEFAULT_WEIGHT_DATA_EXTENSION_NAME;
     }
     async save(modelArtifacts) {
@@ -9768,26 +9820,11 @@ var faceapi = (() => {
           paths: ["./" + this.weightDataFileName],
           weights: modelArtifacts.weightSpecs
         }];
-        const modelTopologyAndWeightManifest = {
-          modelTopology: modelArtifacts.modelTopology,
-          format: modelArtifacts.format,
-          generatedBy: modelArtifacts.generatedBy,
-          convertedBy: modelArtifacts.convertedBy,
-          weightsManifest
-        };
-        if (modelArtifacts.signature != null) {
-          modelTopologyAndWeightManifest.signature = modelArtifacts.signature;
-        }
-        if (modelArtifacts.userDefinedMetadata != null) {
-          modelTopologyAndWeightManifest.userDefinedMetadata = modelArtifacts.userDefinedMetadata;
-        }
-        if (modelArtifacts.modelInitializer != null) {
-          modelTopologyAndWeightManifest.modelInitializer = modelArtifacts.modelInitializer;
-        }
-        const modelTopologyAndWeightManifestURL = window.URL.createObjectURL(new Blob([JSON.stringify(modelTopologyAndWeightManifest)], { type: "application/json" }));
-        const jsonAnchor = this.jsonAnchor == null ? document.createElement("a") : this.jsonAnchor;
-        jsonAnchor.download = this.modelTopologyFileName;
-        jsonAnchor.href = modelTopologyAndWeightManifestURL;
+        const modelJSON = getModelJSONForModelArtifacts(modelArtifacts, weightsManifest);
+        const modelJsonURL = window.URL.createObjectURL(new Blob([JSON.stringify(modelJSON)], { type: "application/json" }));
+        const jsonAnchor = this.modelJsonAnchor == null ? document.createElement("a") : this.modelJsonAnchor;
+        jsonAnchor.download = this.modelJsonFileName;
+        jsonAnchor.href = modelJsonURL;
         await defer(() => jsonAnchor.dispatchEvent(new MouseEvent("click")));
         if (modelArtifacts.weightData != null) {
           const weightDataAnchor = this.weightDataAnchor == null ? document.createElement("a") : this.weightDataAnchor;
@@ -9805,85 +9842,60 @@ var faceapi = (() => {
       if (files == null || files.length < 1) {
         throw new Error(`When calling browserFiles, at least 1 file is required, but received ${files}`);
       }
-      this.files = files;
+      this.jsonFile = files[0];
+      this.weightsFiles = files.slice(1);
     }
     async load() {
-      const jsonFile = this.files[0];
-      const weightFiles = this.files.slice(1);
       return new Promise((resolve, reject) => {
         const jsonReader = new FileReader();
         jsonReader.onload = (event) => {
           const modelJSON = JSON.parse(event.target.result);
           const modelTopology = modelJSON.modelTopology;
           if (modelTopology == null) {
-            reject(new Error(`modelTopology field is missing from file ${jsonFile.name}`));
+            reject(new Error(`modelTopology field is missing from file ${this.jsonFile.name}`));
             return;
-          }
-          if (weightFiles.length === 0) {
-            resolve({ modelTopology });
           }
           const weightsManifest = modelJSON.weightsManifest;
           if (weightsManifest == null) {
-            reject(new Error(`weightManifest field is missing from file ${jsonFile.name}`));
+            reject(new Error(`weightManifest field is missing from file ${this.jsonFile.name}`));
             return;
           }
-          let pathToFile;
-          try {
-            pathToFile = this.checkManifestAndWeightFiles(weightsManifest, weightFiles);
-          } catch (err) {
-            reject(err);
+          if (this.weightsFiles.length === 0) {
+            resolve({ modelTopology });
             return;
           }
-          const weightSpecs = [];
-          const paths = [];
-          const perFileBuffers = [];
-          weightsManifest.forEach((weightsGroup) => {
-            weightsGroup.paths.forEach((path) => {
-              paths.push(path);
-              perFileBuffers.push(null);
-            });
-            weightSpecs.push(...weightsGroup.weights);
-          });
-          weightsManifest.forEach((weightsGroup) => {
-            weightsGroup.paths.forEach((path) => {
-              const weightFileReader = new FileReader();
-              weightFileReader.onload = (event2) => {
-                const weightData = event2.target.result;
-                const index = paths.indexOf(path);
-                perFileBuffers[index] = weightData;
-                if (perFileBuffers.indexOf(null) === -1) {
-                  const result = {
-                    modelTopology,
-                    weightSpecs,
-                    weightData: concatenateArrayBuffers(perFileBuffers),
-                    format: modelJSON.format,
-                    generatedBy: modelJSON.generatedBy,
-                    convertedBy: modelJSON.convertedBy
-                  };
-                  if (modelJSON.signature != null) {
-                    result.signature = modelJSON.signature;
-                  }
-                  if (modelJSON.userDefinedMetadata != null) {
-                    result.userDefinedMetadata = modelJSON.userDefinedMetadata;
-                  }
-                  if (modelJSON.modelInitializer != null) {
-                    result.modelInitializer = modelJSON.modelInitializer;
-                  }
-                  resolve(result);
-                }
-              };
-              weightFileReader.onerror = (error) => reject(`Failed to weights data from file of path '${path}'.`);
-              weightFileReader.readAsArrayBuffer(pathToFile[path]);
-            });
-          });
+          const modelArtifactsPromise = getModelArtifactsForJSON(modelJSON, (weightsManifest2) => this.loadWeights(weightsManifest2));
+          resolve(modelArtifactsPromise);
         };
-        jsonReader.onerror = (error) => reject(`Failed to read model topology and weights manifest JSON from file '${jsonFile.name}'. BrowserFiles supports loading Keras-style tf.Model artifacts only.`);
-        jsonReader.readAsText(jsonFile);
+        jsonReader.onerror = (error) => reject(`Failed to read model topology and weights manifest JSON from file '${this.jsonFile.name}'. BrowserFiles supports loading Keras-style tf.Model artifacts only.`);
+        jsonReader.readAsText(this.jsonFile);
       });
     }
-    checkManifestAndWeightFiles(manifest, files) {
+    loadWeights(weightsManifest) {
+      const weightSpecs = [];
+      const paths = [];
+      for (const entry of weightsManifest) {
+        weightSpecs.push(...entry.weights);
+        paths.push(...entry.paths);
+      }
+      const pathToFile = this.checkManifestAndWeightFiles(weightsManifest);
+      const promises = paths.map((path) => this.loadWeightsFile(path, pathToFile[path]));
+      return Promise.all(promises).then((buffers) => [weightSpecs, concatenateArrayBuffers(buffers)]);
+    }
+    loadWeightsFile(path, file) {
+      return new Promise((resolve, reject) => {
+        const weightFileReader = new FileReader();
+        weightFileReader.onload = (event) => {
+          const weightData = event.target.result;
+          resolve(weightData);
+        };
+        weightFileReader.onerror = (error) => reject(`Failed to weights data from file of path '${path}'.`);
+        weightFileReader.readAsArrayBuffer(file);
+      });
+    }
+    checkManifestAndWeightFiles(manifest) {
       const basenames = [];
-      const fileNames = files.map((file) => basename(file.name));
+      const fileNames = this.weightsFiles.map((file) => basename(file.name));
       const pathToFile = {};
       for (const group of manifest) {
         group.paths.forEach((path) => {
@@ -9895,12 +9907,12 @@ var faceapi = (() => {
           if (fileNames.indexOf(pathBasename) === -1) {
             throw new Error(`Weight file with basename '${pathBasename}' is not provided.`);
           } else {
-            pathToFile[path] = files[fileNames.indexOf(pathBasename)];
+            pathToFile[path] = this.weightsFiles[fileNames.indexOf(pathBasename)];
           }
         });
       }
-      if (basenames.length !== files.length) {
-        throw new Error(`Mismatch in the number of files in weights manifest (${basenames.length}) and the number of weight files provided (${files.length}).`);
+      if (basenames.length !== this.weightsFiles.length) {
+        throw new Error(`Mismatch in the number of files in weights manifest (${basenames.length}) and the number of weight files provided (${this.weightsFiles.length}).`);
       }
       return pathToFile;
     }
@@ -10088,22 +10100,7 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
         paths: ["./model.weights.bin"],
         weights: modelArtifacts.weightSpecs
       }];
-      const modelTopologyAndWeightManifest = {
-        modelTopology: modelArtifacts.modelTopology,
-        format: modelArtifacts.format,
-        generatedBy: modelArtifacts.generatedBy,
-        convertedBy: modelArtifacts.convertedBy,
-        weightsManifest
-      };
-      if (modelArtifacts.signature != null) {
-        modelTopologyAndWeightManifest.signature = modelArtifacts.signature;
-      }
-      if (modelArtifacts.userDefinedMetadata != null) {
-        modelTopologyAndWeightManifest.userDefinedMetadata = modelArtifacts.userDefinedMetadata;
-      }
-      if (modelArtifacts.modelInitializer != null) {
-        modelTopologyAndWeightManifest.modelInitializer = modelArtifacts.modelInitializer;
-      }
+      const modelTopologyAndWeightManifest = getModelJSONForModelArtifacts(modelArtifacts, weightsManifest);
       init2.body.append("model.json", new Blob([JSON.stringify(modelTopologyAndWeightManifest)], { type: JSON_TYPE }), "model.json");
       if (modelArtifacts.weightData != null) {
         init2.body.append("model.weights.bin", new Blob([modelArtifacts.weightData], { type: OCTET_STREAM_MIME_TYPE }), "model.weights.bin");
@@ -10123,9 +10120,9 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
       if (!modelConfigRequest.ok) {
         throw new Error(`Request to ${this.path} failed with status code ${modelConfigRequest.status}. Please verify this URL points to the model JSON of the model to load.`);
       }
-      let modelConfig;
+      let modelJSON;
       try {
-        modelConfig = await modelConfigRequest.json();
+        modelJSON = await modelConfigRequest.json();
       } catch (e) {
         let message = `Failed to parse model JSON of response from ${this.path}.`;
         if (this.path.endsWith(".pb")) {
@@ -10135,41 +10132,12 @@ Manifest JSON has weights with names: ${allManifestWeightNames.join(", ")}.`);
         }
         throw new Error(message);
       }
-      const modelTopology = modelConfig.modelTopology;
-      const weightsManifest = modelConfig.weightsManifest;
-      const generatedBy = modelConfig.generatedBy;
-      const convertedBy = modelConfig.convertedBy;
-      const format = modelConfig.format;
-      const signature = modelConfig.signature;
-      const userDefinedMetadata = modelConfig.userDefinedMetadata;
+      const modelTopology = modelJSON.modelTopology;
+      const weightsManifest = modelJSON.weightsManifest;
       if (modelTopology == null && weightsManifest == null) {
         throw new Error(`The JSON from HTTP path ${this.path} contains neither model topology or manifest for weights.`);
       }
-      let weightSpecs;
-      let weightData;
-      if (weightsManifest != null) {
-        const results = await this.loadWeights(weightsManifest);
-        [weightSpecs, weightData] = results;
-      }
-      const artifacts = {
-        modelTopology,
-        weightSpecs,
-        weightData,
-        generatedBy,
-        convertedBy,
-        format
-      };
-      if (signature != null) {
-        artifacts.signature = signature;
-      }
-      if (userDefinedMetadata != null) {
-        artifacts.userDefinedMetadata = userDefinedMetadata;
-      }
-      const initializer = modelConfig.modelInitializer;
-      if (initializer) {
-        artifacts.modelInitializer = initializer;
-      }
-      return artifacts;
+      return getModelArtifactsForJSON(modelJSON, (weightsManifest2) => this.loadWeights(weightsManifest2));
     }
     async loadWeights(weightsManifest) {
       const weightPath = Array.isArray(this.path) ? this.path[1] : this.path;
@@ -11042,7 +11010,7 @@ Expected: ${expectedFlat}.`);
     }
     return a;
   }
-  var version = "3.7.0";
+  var version = "3.8.0";
   function enableProdMode() {
     env().set("PROD", true);
   }
@@ -13680,6 +13648,9 @@ Expected: ${expectedFlat}.`);
       throw new Error("topk() expects the input to be of rank 1 or higher");
     }
     const lastDim = $x.shape[$x.shape.length - 1];
+    if (k < 0) {
+      throw new Error(`'k' passed to topk() must be >= 0 but got ${k}`);
+    }
     if (k > lastDim) {
       throw new Error(`'k' passed to topk() must be <= the last dimension (${lastDim}) but got ${k}`);
     }
@@ -19135,7 +19106,7 @@ Expected: ${expectedFlat}.`);
     return out;
   }
   function cast2(x, dtype) {
-    return x.asType(dtype);
+    return cast(x, dtype);
   }
   function expandDims2(x, axis = -1) {
     const outShape = x.shape.slice();
@@ -19143,7 +19114,7 @@ Expected: ${expectedFlat}.`);
       axis = outShape.length + axis + 1;
     }
     outShape.splice(axis, 0, 1);
-    return x.reshape(outShape);
+    return reshape(x, outShape);
   }
   function repeat(x, n) {
     return tidy(() => {
@@ -19156,14 +19127,14 @@ Expected: ${expectedFlat}.`);
   }
   function flatten2(x) {
     const newShape = [arrayProd(x.shape)];
-    return x.reshape(newShape);
+    return reshape(x, newShape);
   }
   function batchFlatten(x) {
     if (x.rank <= 1) {
       throw new ValueError(`batchFlatten requires a minimum rank of 2. Got rank: ${x.rank}.`);
     }
     const newShape = [x.shape[0], arrayProd(x.shape, 1)];
-    return x.reshape(newShape);
+    return reshape(x, newShape);
   }
   function sliceAlongFirstAxis(array2, start, size) {
     return tidy(() => {
@@ -19323,7 +19294,7 @@ Expected: ${expectedFlat}.`);
     } else {
       const aFirstDims = a.shape.slice();
       const aLastDim = aFirstDims.pop();
-      a = a.reshape([-1, aLastDim]);
+      a = reshape(a, [-1, aLastDim]);
       const bShape = b.shape.slice();
       const bLastDim = bShape.pop();
       const ySecondLastDim = bShape.pop();
@@ -19336,18 +19307,18 @@ Expected: ${expectedFlat}.`);
         }
         return i;
       });
-      b = b.transpose(perm).reshape([ySecondLastDim, -1]);
+      b = reshape(transpose(b, perm), [ySecondLastDim, -1]);
       const outputShape = [...aFirstDims, ...yOtherDims];
       const transposeA = false;
       const transposeB = false;
-      return fused_ops_exports.matMul({
+      return reshape(fused_ops_exports.matMul({
         a,
         b,
         transposeA,
         transposeB,
         bias: bias ? reshapeBias(a.rank, bias, imageDataFormat()) : null,
         activation: activation2
-      }).reshape(outputShape);
+      }), outputShape);
     }
   }
   function gather2(reference, indices, axis) {
@@ -19355,7 +19326,7 @@ Expected: ${expectedFlat}.`);
       if (Array.isArray(indices)) {
         indices = tensor1d(indices, "int32");
       } else {
-        indices = indices.toInt();
+        indices = cast(indices, "int32");
       }
       return gather(reference, indices, axis);
     });
@@ -19371,43 +19342,43 @@ Expected: ${expectedFlat}.`);
     if (xRank === 5) {
       if (dataFormat === "channelsFirst") {
         if (biasShape.length === 1) {
-          return bias.reshape([1, biasShape[0], 1, 1, 1]);
+          return reshape(bias, [1, biasShape[0], 1, 1, 1]);
         } else {
-          return bias.reshape([1, biasShape[3], biasShape[0], biasShape[1], biasShape[2]]);
+          return reshape(bias, [1, biasShape[3], biasShape[0], biasShape[1], biasShape[2]]);
         }
       } else if (dataFormat === "channelsLast") {
         if (biasShape.length === 1) {
-          return bias.reshape([1, 1, 1, 1, biasShape[0]]);
+          return reshape(bias, [1, 1, 1, 1, biasShape[0]]);
         } else {
-          return bias.reshape([1].concat(biasShape));
+          return reshape(bias, [1].concat(biasShape));
         }
       }
     } else if (xRank === 4) {
       if (dataFormat === "channelsFirst") {
         if (biasShape.length === 1) {
-          return bias.reshape([1, biasShape[0], 1, 1]);
+          return reshape(bias, [1, biasShape[0], 1, 1]);
         } else {
-          return bias.reshape([1, biasShape[2], biasShape[0], biasShape[1]]);
+          return reshape(bias, [1, biasShape[2], biasShape[0], biasShape[1]]);
         }
       } else if (dataFormat === "channelsLast") {
         if (biasShape.length === 1) {
-          return bias.reshape([1, 1, 1, biasShape[0]]);
+          return reshape(bias, [1, 1, 1, biasShape[0]]);
         } else {
-          return bias.reshape([1].concat(biasShape));
+          return reshape(bias, [1].concat(biasShape));
         }
       }
     } else if (xRank === 3) {
       if (dataFormat === "channelsFirst") {
         if (biasShape.length === 1) {
-          return bias.reshape([1, biasShape[0], 1]);
+          return reshape(bias, [1, biasShape[0], 1]);
         } else {
-          return bias.reshape([1, biasShape[1], biasShape[0]]);
+          return reshape(bias, [1, biasShape[1], biasShape[0]]);
         }
       } else if (dataFormat === "channelsLast") {
         if (biasShape.length === 1) {
-          return bias.reshape([1, 1, biasShape[0]]);
+          return reshape(bias, [1, 1, biasShape[0]]);
         } else {
-          return bias.reshape([1].concat(biasShape));
+          return reshape(bias, [1].concat(biasShape));
         }
       }
     } else if (xRank < 3) {
@@ -19421,7 +19392,7 @@ Expected: ${expectedFlat}.`);
         dataFormat = imageDataFormat();
       }
       checkDataFormat(dataFormat);
-      return x.add(reshapeBias(x.rank, bias, dataFormat));
+      return add2(x, reshapeBias(x.rank, bias, dataFormat));
     });
   }
   function elu2(x, alpha = 1) {
@@ -19431,7 +19402,7 @@ Expected: ${expectedFlat}.`);
     return elu(x);
   }
   function softsign(x) {
-    return tidy(() => div(x, abs(x).add(1)));
+    return tidy(() => div(x, add2(abs(x), 1)));
   }
   function dropout2(x, level, noiseShape, seed) {
     return tidy(() => dropout(x, level, noiseShape, seed));
@@ -19763,7 +19734,7 @@ Expected: ${expectedFlat}.`);
         const a = randomNormal2(normalizedShape, 0, 1, "float32");
         let q = linalg.gramSchmidt(a);
         if (shape[0] > shape[1]) {
-          q = q.transpose();
+          q = transpose(q);
         }
         return mul(this.gain, q);
       });
@@ -21144,7 +21115,7 @@ Expected: ${expectedFlat}.`);
   function l2Normalize(x, axis) {
     return tidy(() => {
       if (x.dtype !== "float32") {
-        x = x.asType("float32");
+        x = cast(x, "float32");
       }
       const squareSum = sum2(square2(x), axis, true);
       const epsilonTensor = fill(squareSum.shape, epsilon());
@@ -21211,15 +21182,15 @@ Expected: ${expectedFlat}.`);
         output = div(output, outputSum);
       }
       output = clipByValue(output, epsilon(), 1 - epsilon());
-      return neg(sum2(mul(target.toFloat(), log(output)), output.shape.length - 1));
+      return neg(sum2(mul(cast(target, "float32"), log(output)), output.shape.length - 1));
     });
   }
   function sparseCategoricalCrossentropy(target, output, fromLogits = false) {
     return tidy(() => {
-      const flatTarget = floor(flatten2(target)).toInt();
+      const flatTarget = cast(floor(flatten2(target)), "int32");
       output = clipByValue(output, epsilon(), 1 - epsilon());
       const outputShape = output.shape;
-      const oneHotTarget = oneHot(flatTarget, outputShape[outputShape.length - 1]).reshape(outputShape);
+      const oneHotTarget = reshape(oneHot(flatTarget, outputShape[outputShape.length - 1]), outputShape);
       return categoricalCrossentropy(oneHotTarget, output, fromLogits);
     });
   }
@@ -21228,9 +21199,9 @@ Expected: ${expectedFlat}.`);
       throw new ValueError(`logits and labels must have the same shape, but got shapes ${JSON.stringify(labels.shape)} and ${JSON.stringify(logits.shape)}`);
     }
     return tidy(() => {
-      const reluLogits = logits.relu();
-      const negAbsLogits = logits.abs().neg();
-      return reluLogits.sub(logits.mul(labels)).add(negAbsLogits.exp().log1p());
+      const reluLogits = relu(logits);
+      const negAbsLogits = neg(abs(logits));
+      return add2(sub(reluLogits, mul(logits, labels)), log1p(exp(negAbsLogits)));
     });
   }
   function binaryCrossentropy(yTrue, yPred) {
@@ -21304,33 +21275,33 @@ Expected: ${expectedFlat}.`);
   }
   function truePositives(yTrue, yPred) {
     return tidy(() => {
-      return logicalAnd(yTrue.equal(1), yPred.equal(1)).sum().cast("float32");
+      return cast(sum2(logicalAnd(equal(yTrue, 1), equal(yPred, 1))), "float32");
     });
   }
   function falseNegatives(yTrue, yPred) {
     return tidy(() => {
-      return logicalAnd(yTrue.equal(1), yPred.equal(0)).sum().cast("float32");
+      return cast(sum2(logicalAnd(equal(yTrue, 1), equal(yPred, 0))), "float32");
     });
   }
   function falsePositives(yTrue, yPred) {
     return tidy(() => {
-      return logicalAnd(yTrue.equal(0), yPred.equal(1)).sum().cast("float32");
+      return cast(sum2(logicalAnd(equal(yTrue, 0), equal(yPred, 1))), "float32");
     });
   }
   function precision(yTrue, yPred) {
     return tidy(() => {
       const tp = truePositives(yTrue, yPred);
       const fp = falsePositives(yTrue, yPred);
-      const denominator = tp.add(fp);
-      return where(greater(denominator, 0), tp.div(denominator), 0).cast("float32");
+      const denominator = add2(tp, fp);
+      return cast(where(greater(denominator, 0), div(tp, denominator), 0), "float32");
     });
   }
   function recall(yTrue, yPred) {
     return tidy(() => {
       const tp = truePositives(yTrue, yPred);
       const fn = falseNegatives(yTrue, yPred);
-      const denominator = tp.add(fn);
-      return where(greater(denominator, 0), tp.div(denominator), 0).cast("float32");
+      const denominator = add2(tp, fn);
+      return cast(where(greater(denominator, 0), div(tp, denominator), 0), "float32");
     });
   }
   function binaryCrossentropy2(yTrue, yPred) {
@@ -21338,13 +21309,13 @@ Expected: ${expectedFlat}.`);
   }
   function sparseCategoricalAccuracy(yTrue, yPred) {
     if (yTrue.rank === yPred.rank) {
-      yTrue = yTrue.squeeze([yTrue.rank - 1]);
+      yTrue = squeeze(yTrue, [yTrue.rank - 1]);
     }
-    yPred = yPred.argMax(-1);
+    yPred = argMax(yPred, -1);
     if (yPred.dtype !== yTrue.dtype) {
-      yPred = yPred.asType(yTrue.dtype);
+      yPred = cast(yPred, yTrue.dtype);
     }
-    return equal(yTrue, yPred).asType("float32");
+    return cast(equal(yTrue, yPred), "float32");
   }
   var mse = meanSquaredError2;
   var MSE = meanSquaredError2;
@@ -21679,7 +21650,7 @@ Expected: ${expectedFlat}.`);
       return pyDict;
     }
   }
-  var version2 = "3.7.0";
+  var version2 = "3.8.0";
   function assertFeedCompatibility(key, val) {
     if (key.dtype == null || key.dtype === val.dtype) {
       return val;
@@ -22725,13 +22696,13 @@ Expected: ${expectedFlat}.`);
     if (classWeight != null) {
       const yClasses = tidy(() => {
         if (y.shape.length === 1) {
-          return y.clone();
+          return clone(y);
         } else if (y.shape.length === 2) {
           if (y.shape[1] > 1) {
             const axis = 1;
-            return y.argMax(axis);
+            return argMax(y, axis);
           } else if (y.shape[1] === 1) {
-            return y.reshape([y.shape[0]]);
+            return reshape(y, [y.shape[0]]);
           } else {
             throw new Error(`Encountered unexpected last-dimension size (${y.shape[1]}) during handling of class weights. The size is expected to be >= 1.`);
           }
@@ -23005,7 +22976,7 @@ Expected: ${expectedFlat}.`);
       } else if (Array.isArray(arrays)) {
         return arrays.map((array2) => sliceArraysByIndices(array2, indices));
       } else {
-        return gather2(arrays, indices.dtype === "int32" ? indices : indices.toInt());
+        return gather2(arrays, indices.dtype === "int32" ? indices : cast(indices, "int32"));
       }
     });
   }
@@ -24560,7 +24531,7 @@ Expected: ${expectedFlat}.`);
   serialization_exports.registerClass(LogSoftmax2);
   var Swish = class extends Activation {
     apply(x, alpha = 1) {
-      return tidy(() => sigmoid(x.mul(alpha)).mul(x));
+      return tidy(() => mul(sigmoid(mul(x, alpha)), x));
     }
   };
   Swish.className = "swish";
@@ -24621,7 +24592,7 @@ Expected: ${expectedFlat}.`);
         if (this.hasL2) {
           regularization = add2(regularization, sum2(mul(this.l2, square2(x))));
         }
-        return regularization.asScalar();
+        return reshape(regularization, []);
       });
     }
     getConfig() {
@@ -24816,7 +24787,7 @@ Expected: ${expectedFlat}.`);
     }
     call(inputs, kwargs) {
       const x = getExactlyOneTensor(inputs);
-      return x.mul(cast2(x.greater(this.theta), "float32"));
+      return mul(x, cast(greater(x, this.theta), "float32"));
     }
     computeOutputShape(inputShape) {
       return inputShape;
@@ -25609,12 +25580,12 @@ Expected: ${expectedFlat}.`);
           input2 = transpose(input2, [0, 2, 3, 1]);
           const height = this.size[0] * inputShape[2];
           const width = this.size[1] * inputShape[3];
-          const resized = this.interpolation === "nearest" ? input2.resizeNearestNeighbor([height, width]) : input2.resizeBilinear([height, width]);
+          const resized = this.interpolation === "nearest" ? image.resizeNearestNeighbor(input2, [height, width]) : image.resizeBilinear(input2, [height, width]);
           return transpose(resized, [0, 3, 1, 2]);
         } else {
           const height = this.size[0] * inputShape[1];
           const width = this.size[1] * inputShape[2];
-          return this.interpolation === "nearest" ? input2.resizeNearestNeighbor([height, width]) : input2.resizeBilinear([height, width]);
+          return this.interpolation === "nearest" ? image.resizeNearestNeighbor(input2, [height, width]) : image.resizeBilinear(input2, [height, width]);
         }
       });
     }
@@ -25757,7 +25728,7 @@ Expected: ${expectedFlat}.`);
         console.warn("Backend rnn(): the unroll = true option is not applicable to the imperative deeplearn.js backend.");
       }
       if (mask != null) {
-        mask = mask.asType("bool").asType("float32");
+        mask = cast(cast(mask, "bool"), "float32");
         if (mask.rank === ndim - 1) {
           mask = expandDims(mask, -1);
         }
@@ -25787,10 +25758,10 @@ Expected: ${expectedFlat}.`);
         } else {
           const maskedOutputs = tidy(() => {
             const stepMask = perStepMasks[t];
-            const negStepMask = onesLike(stepMask).sub(stepMask);
-            const output = stepOutputs[0].mul(stepMask).add(states[0].mul(negStepMask));
+            const negStepMask = sub(onesLike(stepMask), stepMask);
+            const output = add2(mul(stepOutputs[0], stepMask), mul(states[0], negStepMask));
             const newStates = states.map((state, i) => {
-              return stepOutputs[1][i].mul(stepMask).add(state.mul(negStepMask));
+              return add2(mul(stepOutputs[1][i], stepMask), mul(state, negStepMask));
             });
             return { output, newStates };
           });
@@ -27195,7 +27166,7 @@ Expected: ${expectedFlat}.`);
             permutation.push(i);
           }
           permutation.push(1);
-          input2 = input2.transpose(permutation);
+          input2 = transpose(input2, permutation);
         }
         return batchFlatten(input2);
       });
@@ -27321,7 +27292,7 @@ Expected: ${expectedFlat}.`);
         const input2 = getExactlyOneTensor(inputs);
         const inputShape = input2.shape;
         const outputShape = inputShape.slice(0, 1).concat(this.fixUnknownDimension(inputShape.slice(1), this.targetShape));
-        return input2.reshape(outputShape);
+        return reshape(input2, outputShape);
       });
     }
     getConfig() {
@@ -27405,7 +27376,7 @@ Expected: ${expectedFlat}.`);
         const axis = -1;
         const keepDims = true;
         const booleanMask = any(notEqual(input2, this.maskValue), axis, keepDims);
-        const output = input2.mul(booleanMask.asType(input2.dtype));
+        const output = mul(input2, cast(booleanMask, input2.dtype));
         return output;
       });
     }
@@ -27486,8 +27457,8 @@ Expected: ${expectedFlat}.`);
         if (input2.dtype !== "int32") {
           input2 = cast2(input2, "int32");
         }
-        const output = gather2(this.embeddings.read(), input2.as1D());
-        return output.reshape(getExactlyOneShape(this.computeOutputShape(input2.shape)));
+        const output = gather2(this.embeddings.read(), reshape(input2, [input2.size]));
+        return reshape(output, getExactlyOneShape(this.computeOutputShape(input2.shape)));
       });
     }
     getConfig() {
@@ -27597,9 +27568,9 @@ Expected: ${expectedFlat}.`);
                 const xShape = x.shape;
                 const batchSize = xShape[0];
                 const newShape = xShape.slice(1).concat([batchSize]);
-                let xTransposed = x.reshape([batchSize].concat(arrayProd(xShape.slice(1))));
+                let xTransposed = reshape(x, [batchSize].concat(arrayProd(xShape.slice(1))));
                 xTransposed = transpose(xTransposed, [1, 0]);
-                xTransposed = xTransposed.reshape(newShape);
+                xTransposed = reshape(xTransposed, newShape);
                 reshapedInputs.push(xTransposed);
                 transposed = true;
               } else if (xNDim > 1) {
@@ -27618,7 +27589,7 @@ Expected: ${expectedFlat}.`);
                 const yNDim2 = yShape.length;
                 const batchSize = yShape[yNDim2 - 1];
                 const newShape = [batchSize].concat(yShape.slice(0, yShape.length - 1));
-                y = transpose(y.reshape([-1, batchSize]), [1, 0]).reshape(newShape);
+                y = reshape(transpose(reshape(y, [-1, batchSize]), [1, 0]), newShape);
               } else if (yNDim > 1) {
                 const dims = [yNDim - 1].concat(range2(0, yNDim - 1));
                 y = transpose(y, dims);
@@ -27856,7 +27827,7 @@ Expected: ${expectedFlat}.`);
         const outputMasks = [];
         for (let i = 0; i < inputs.length; ++i) {
           if (mask[i] == null) {
-            outputMasks.push(onesLike(inputs[i]).asType("bool"));
+            outputMasks.push(cast(onesLike(inputs[i]), "bool"));
           } else if (mask[i].rank < inputs[i].rank) {
             outputMasks.push(expandDims(mask[i], -1));
           } else {
@@ -27910,28 +27881,28 @@ Expected: ${expectedFlat}.`);
         for (let i = 0; i < diff; ++i) {
           diffShape.push(1);
         }
-        y = y.reshape(y.shape.concat(diffShape));
+        y = reshape(y, y.shape.concat(diffShape));
       } else if (yNDim > xNDim) {
         diff = yNDim - xNDim;
         const diffShape = [];
         for (let i = 0; i < diff; ++i) {
           diffShape.push(1);
         }
-        x = x.reshape(x.shape.concat(diffShape));
+        x = reshape(x, x.shape.concat(diffShape));
       } else {
         diff = 0;
       }
       let out;
       if (x.shape.length === 2 && y.shape.length === 2) {
         if (axesArray[0] === axesArray[1]) {
-          out = x.mul(y).sum(axesArray[0]);
+          out = sum2(mul(x, y), axesArray[0]);
         } else {
-          out = x.transpose([1, 0]).mul(y).sum(axesArray[1]);
+          out = sum2(mul(transpose(x, [1, 0]), y), axesArray[1]);
         }
       } else {
         const adjX = axesArray[0] !== x.shape.length - 1;
         const adjY = axesArray[1] === y.shape.length - 1;
-        out = x.matMul(y, adjX, adjY);
+        out = matMul(x, y, adjX, adjY);
       }
       if (diff > 0) {
         let idx;
@@ -27944,10 +27915,10 @@ Expected: ${expectedFlat}.`);
         for (let i = idx; i < idx + diff; ++i) {
           squeezeAxes.push(i);
         }
-        out = out.squeeze(squeezeAxes);
+        out = squeeze(out, squeezeAxes);
       }
       if (out.shape.length === 1) {
-        out = out.expandDims(1);
+        out = expandDims(out, 1);
       }
       return out;
     });
@@ -28056,7 +28027,7 @@ Expected: ${expectedFlat}.`);
       return tidy(() => {
         this.invokeCallHook(inputs, kwargs);
         const input2 = getExactlyOneTensor(inputs);
-        const noised = () => randomNormal2(input2.shape, 0, this.stddev).add(input2);
+        const noised = () => add2(randomNormal2(input2.shape, 0, this.stddev), input2);
         const output = inTrainPhase(noised, () => input2, kwargs["training"] || false);
         return output;
       });
@@ -28086,7 +28057,7 @@ Expected: ${expectedFlat}.`);
         if (this.rate > 0 && this.rate < 1) {
           const noised = () => {
             const stddev = Math.sqrt(this.rate / (1 - this.rate));
-            return input2.mul(randomNormal2(input2.shape, 1, stddev));
+            return mul(input2, randomNormal2(input2.shape, 1, stddev));
           };
           return inTrainPhase(noised, () => input2, kwargs["training"] || false);
         }
@@ -28128,8 +28099,8 @@ Expected: ${expectedFlat}.`);
             keptIdx = cast2(keptIdx, "float32");
             const a = ((1 - this.rate) * (1 + this.rate * alphaP ** 2)) ** -0.5;
             const b = -a * alphaP * this.rate;
-            const x = input2.mul(keptIdx).add(keptIdx.add(-1).mul(alphaP));
-            return x.mul(a).add(b);
+            const x = add2(mul(input2, keptIdx), mul(add2(keptIdx, -1), alphaP));
+            return add2(mul(x, a), b);
           };
           return inTrainPhase(droppedInputs, () => getExactlyOneTensor(inputs), kwargs["training"] || false);
         }
@@ -28174,10 +28145,10 @@ Expected: ${expectedFlat}.`);
           targetShape.push(x.shape[axis]);
         }
       }
-      const broadcastMean = mean4.reshape(targetShape);
-      const broadcastVariance = variance.reshape(targetShape);
-      const broadcastGamma = gamma == null ? null : gamma.reshape(targetShape);
-      const broadcastBeta = beta == null ? null : beta.reshape(targetShape);
+      const broadcastMean = reshape(mean4, targetShape);
+      const broadcastVariance = reshape(variance, targetShape);
+      const broadcastGamma = gamma == null ? null : reshape(gamma, targetShape);
+      const broadcastBeta = beta == null ? null : reshape(beta, targetShape);
       const normed = batchNormalization(x, broadcastMean, broadcastVariance, broadcastBeta, broadcastGamma, epsilon32);
       return [normed, mean4, variance];
     });
@@ -28245,10 +28216,10 @@ Expected: ${expectedFlat}.`);
         const needsBroadcasting = !util_exports.arraysEqual(sortedReductionAxes, range2(0, ndim).slice(0, ndim - 1));
         const normalizeInference = () => {
           if (needsBroadcasting) {
-            const broadcastMovingMean = this.movingMean.read().reshape(broadcastShape);
-            const broadcastMovingVariance = this.movingVariance.read().reshape(broadcastShape);
-            const broadcastBeta = this.center ? this.beta.read().reshape(broadcastShape) : null;
-            const broadcastGamma = this.scale ? this.gamma.read().reshape(broadcastShape) : null;
+            const broadcastMovingMean = reshape(this.movingMean.read(), broadcastShape);
+            const broadcastMovingVariance = reshape(this.movingVariance.read(), broadcastShape);
+            const broadcastBeta = this.center ? reshape(this.beta.read(), broadcastShape) : null;
+            const broadcastGamma = this.scale ? reshape(this.gamma.read(), broadcastShape) : null;
             return batchNormalization(input2, broadcastMovingMean, broadcastMovingVariance, broadcastBeta, broadcastGamma, this.epsilon);
           } else {
             return batchNormalization(input2, this.movingMean.read(), this.movingVariance.read(), this.beta == null ? null : this.beta.read(), this.gamma == null ? null : this.gamma.read(), this.epsilon);
@@ -28262,8 +28233,8 @@ Expected: ${expectedFlat}.`);
           tidy(() => {
             const decay = 1 - momentum;
             const origValue = variable2.read();
-            const updateDelta = origValue.sub(value).mul(decay);
-            variable2.write(origValue.sub(updateDelta));
+            const updateDelta = mul(sub(origValue, value), decay);
+            variable2.write(sub(origValue, updateDelta));
           });
         };
         const updateMovingMeanAndVariance = () => {
@@ -28372,7 +28343,7 @@ Expected: ${expectedFlat}.`);
         }
         const broadcast = (v) => {
           if (v != null && v.shape.length !== nDims && this.axis !== [nDims - 1]) {
-            return v.reshape(broadcastShape);
+            return reshape(v, broadcastShape);
           } else {
             return v;
           }
@@ -28390,10 +28361,10 @@ Expected: ${expectedFlat}.`);
             scaleOffsetTiling.push(inputShape[i]);
           }
         }
-        mean4 = mean4.tile(momentsTiling);
-        variance = variance.tile(momentsTiling);
-        scale22 = scale22.tile(scaleOffsetTiling);
-        offset = offset.tile(scaleOffsetTiling);
+        mean4 = tile(mean4, momentsTiling);
+        variance = tile(variance, momentsTiling);
+        scale22 = tile(scale22, scaleOffsetTiling);
+        offset = tile(offset, scaleOffsetTiling);
         return batchNormalization(input2, mean4, variance, offset, scale22, this.epsilon);
       });
     }
@@ -35686,7 +35657,7 @@ Expected: ${expectedFlat}.`);
     await model2.load();
     return model2;
   }
-  var version3 = "3.7.0";
+  var version3 = "3.8.0";
   var dist_exports = {};
   __export2(dist_exports, {
     CSVDataset: () => CSVDataset,
@@ -37408,7 +37379,7 @@ Expected: ${expectedFlat}.`);
   async function microphone(microphoneConfig) {
     return MicrophoneIterator.create(microphoneConfig);
   }
-  var version4 = "3.7.0";
+  var version4 = "3.8.0";
   function assertNotComplex(tensor2, opName) {
     if (!Array.isArray(tensor2)) {
       tensor2 = [tensor2];
@@ -38757,6 +38728,54 @@ Expected: ${expectedFlat}.`);
     }
     return result;
   }
+  var comparePair = (a, b) => {
+    const valueDiff = b.value - a.value;
+    return valueDiff === 0 ? a.index - b.index : valueDiff;
+  };
+  function select(array2, k, left = 0, right = array2.length - 1) {
+    while (right > left) {
+      if (right - left > 600) {
+        const n = right - left + 1;
+        const i2 = k - left + 1;
+        const z = Math.log(n);
+        const s = 0.5 * Math.exp(2 * z / 3);
+        const sd = 0.5 * Math.sqrt(z * s * (n - s) / n) * Math.sign(i2 - n / 2);
+        const newLeft = Math.max(left, Math.floor(k - i2 * s / n + sd));
+        const newRight = Math.min(right, Math.floor(k + (n - i2) * s / n + sd));
+        select(array2, k, newLeft, newRight);
+      }
+      const t = array2[k];
+      let i = left;
+      let j = right;
+      util_exports.swap(array2, left, k);
+      if (comparePair(array2[right], t) > 0) {
+        util_exports.swap(array2, left, right);
+      }
+      while (i < j) {
+        util_exports.swap(array2, i, j);
+        i++;
+        j--;
+        while (comparePair(array2[i], t) < 0) {
+          i = i + 1;
+        }
+        while (comparePair(array2[j], t) > 0) {
+          j = j - 1;
+        }
+      }
+      if (comparePair(array2[left], t) === 0) {
+        util_exports.swap(array2, left, j);
+      } else {
+        j = j + 1;
+        util_exports.swap(array2, j, right);
+      }
+      if (j <= k) {
+        left = j + 1;
+      }
+      if (k <= j) {
+        right = j - 1;
+      }
+    }
+  }
   function topKImpl(x, xShape, xDtype, k, sorted) {
     const lastDim = xShape[xShape.length - 1];
     const [batch, size] = [x.length / lastDim, lastDim];
@@ -38765,11 +38784,15 @@ Expected: ${expectedFlat}.`);
     for (let b = 0; b < batch; b++) {
       const offset = b * size;
       const vals = x.subarray(offset, offset + size);
-      const valAndInd = [];
-      for (let i = 0; i < vals.length; i++) {
-        valAndInd.push({ value: vals[i], index: i });
+      let valAndInd = new Array(vals.length);
+      vals.forEach((value, index) => valAndInd[index] = { value, index });
+      if (k < valAndInd.length) {
+        select(valAndInd, k);
+        valAndInd = valAndInd.slice(0, k);
       }
-      valAndInd.sort((a, b2) => b2.value - a.value);
+      if (sorted) {
+        valAndInd.sort(comparePair);
+      }
       const outOffset = b * k;
       const topKVals = allTopKVals.subarray(outOffset, outOffset + k);
       const topKIndices = allTopKIndices.subarray(outOffset, outOffset + k);
@@ -38840,7 +38863,7 @@ Expected: ${expectedFlat}.`);
       indices
     };
   }
-  var version5 = "3.7.0";
+  var version5 = "3.8.0";
   registerBackend("cpu", () => new MathBackendCPU(), 1);
   var elu4 = unaryKernelFunc(Elu, (xi) => xi >= 0 ? xi : Math.exp(xi) - 1);
   var eluConfig = {
@@ -41228,9 +41251,7 @@ Expected: ${expectedFlat}.`);
           for (let col = 0; col < imageWidth; col++) {
             const colOffset = col * numChannels;
             for (let channel = 0; channel < numChannels; channel++) {
-              const coords2 = [batch, row, col, channel];
-              const x = coords2[2];
-              const coordX = Math.round(imageWidth - x);
+              const coordX = Math.round(imageWidth - col - 1);
               const outIdx = batchOffset + rowOffset + colOffset + channel;
               let outputValue = imageVals[outIdx];
               if (coordX >= 0 && coordX < imageWidth) {
@@ -42560,7 +42581,7 @@ Expected: ${expectedFlat}.`);
     backendName: "cpu",
     kernelFunc: scatterNd
   };
-  function select(args) {
+  function select2(args) {
     const { inputs, backend: backend2 } = args;
     const { condition, t, e } = inputs;
     assertNotComplex([condition, t, e], "select");
@@ -42586,7 +42607,7 @@ Expected: ${expectedFlat}.`);
   var selectConfig = {
     kernelName: Select,
     backendName: "cpu",
-    kernelFunc: select
+    kernelFunc: select2
   };
   var scaleAlpha = backend_util_exports.SELU_SCALEALPHA;
   var scale = backend_util_exports.SELU_SCALE;
@@ -44046,6 +44067,9 @@ Expected: ${expectedFlat}.`);
     }
   });
   ENV3.registerFlag("CPU_HANDOFF_SIZE_THRESHOLD", () => 128);
+  ENV3.registerFlag("WEBGL_USE_SHAPES_UNIFORMS", () => false);
+  ENV3.registerFlag("TOPK_LAST_DIM_CPU_HANDOFF_SIZE_THRESHOLD", () => 1e5);
+  ENV3.registerFlag("TOPK_K_CPU_HANDOFF_THRESHOLD", () => 128);
   function getGlslDifferences() {
     let version102;
     let attribute;
@@ -44143,6 +44167,14 @@ Expected: ${expectedFlat}.`);
     return strides.map((stride, i) => {
       const line1 = `int ${coords2[i]} = ${index} / ${stride}`;
       const line2 = i === strides.length - 1 ? `int ${coords2[i + 1]} = ${index} - ${coords2[i]} * ${stride}` : `index -= ${coords2[i]} * ${stride}`;
+      return `${line1}; ${line2};`;
+    }).join("");
+  }
+  function getLogicalCoordinatesFromFlatIndexByUniform(coords2, shape, index = "index") {
+    const strides = util_exports.computeStrides(shape);
+    return strides.map((_, i) => {
+      const line1 = `int ${coords2[i]} = ${index} / outShapeStrides[${i}]`;
+      const line2 = i === strides.length - 1 ? `int ${coords2[i + 1]} = ${index} - ${coords2[i]} * outShapeStrides[${i}]` : `index -= ${coords2[i]} * outShapeStrides[${i}]`;
       return `${line1}; ${line2};`;
     }).join("");
   }
@@ -44941,7 +44973,7 @@ Expected: ${expectedFlat}.`);
     return i - 1;
   }
   var { getBroadcastDims: getBroadcastDims2 } = backend_util_exports;
-  function makeShader(inputsInfo, outputShape, userCode, usesPackedTextures) {
+  function makeShader(inputsInfo, outputShape, program) {
     const prefixSnippets = [];
     inputsInfo.forEach((x) => {
       const size = util_exports.sizeFromShape(x.shapeInfo.logicalShape);
@@ -44951,9 +44983,56 @@ Expected: ${expectedFlat}.`);
         prefixSnippets.push(`uniform sampler2D ${x.name};`);
         prefixSnippets.push(`uniform int offset${x.name};`);
       }
+      if (program.enableShapeUniforms) {
+        const { uniformShape } = getUniformInfoFromShape(program.packedInputs, x.shapeInfo.logicalShape, x.shapeInfo.texShape);
+        switch (uniformShape.length) {
+          case 1:
+            prefixSnippets.push(`uniform int ${x.name}Shape;`);
+            break;
+          case 2:
+            prefixSnippets.push(`uniform ivec2 ${x.name}Shape;`);
+            break;
+          case 3:
+            prefixSnippets.push(`uniform ivec3 ${x.name}Shape;`);
+            break;
+          case 4:
+            prefixSnippets.push(`uniform ivec4 ${x.name}Shape;`);
+            break;
+          default:
+            break;
+        }
+        prefixSnippets.push(`uniform ivec2 ${x.name}TexShape;`);
+      }
     });
+    if (program.enableShapeUniforms) {
+      switch (outputShape.logicalShape.length) {
+        case 1:
+          prefixSnippets.push(`uniform int outShape;`);
+          break;
+        case 2:
+          prefixSnippets.push(`uniform ivec2 outShape;`);
+          prefixSnippets.push(`uniform int outShapeStrides;`);
+          break;
+        case 3:
+          prefixSnippets.push(`uniform ivec3 outShape;`);
+          prefixSnippets.push(`uniform ivec2 outShapeStrides;`);
+          break;
+        case 4:
+          prefixSnippets.push(`uniform ivec4 outShape;`);
+          prefixSnippets.push(`uniform ivec3 outShapeStrides;`);
+          break;
+        default:
+          break;
+      }
+      prefixSnippets.push(`uniform ivec2 outTexShape;`);
+    }
+    if (program.customUniforms) {
+      program.customUniforms.forEach((d) => {
+        prefixSnippets.push(`uniform ${d.type} ${d.name}${d.arrayIndex ? `[${d.arrayIndex}]` : ""};`);
+      });
+    }
     const inputPrefixSnippet = prefixSnippets.join("\n");
-    const inputSamplingSnippet = inputsInfo.map((x) => getInputSamplingSnippet(x, outputShape, usesPackedTextures)).join("\n");
+    const inputSamplingSnippet = inputsInfo.map((x) => getInputSamplingSnippet(x, outputShape, program.packedInputs, program.enableShapeUniforms)).join("\n");
     const outTexShape = outputShape.texShape;
     const glsl = getGlslDifferences();
     const floatTextureSampleSnippet = getFloatTextureSampleSnippet(glsl);
@@ -44961,13 +45040,13 @@ Expected: ${expectedFlat}.`);
     let floatTextureSetOutputSnippet;
     let shaderPrefix = getShaderPrefix(glsl);
     if (outputShape.isPacked) {
-      outputSamplingSnippet = getPackedOutputSamplingSnippet(outputShape.logicalShape, outTexShape);
+      outputSamplingSnippet = getPackedOutputSamplingSnippet(outputShape.logicalShape, outTexShape, program.enableShapeUniforms);
       floatTextureSetOutputSnippet = getFloatTextureSetRGBASnippet(glsl);
     } else {
-      outputSamplingSnippet = getOutputSamplingSnippet(outputShape.logicalShape, outTexShape);
+      outputSamplingSnippet = getOutputSamplingSnippet(outputShape.logicalShape, outTexShape, program.enableShapeUniforms);
       floatTextureSetOutputSnippet = getFloatTextureSetRSnippet(glsl);
     }
-    if (usesPackedTextures) {
+    if (program.packedInputs) {
       shaderPrefix += SHADER_PACKED_PREFIX;
     }
     const source = [
@@ -44977,23 +45056,23 @@ Expected: ${expectedFlat}.`);
       inputPrefixSnippet,
       outputSamplingSnippet,
       inputSamplingSnippet,
-      userCode
+      program.userCode
     ].join("\n");
     return source;
   }
-  function getSamplerFromInInfo(inInfo) {
+  function getSamplerFromInInfo(inInfo, enableShapeUniforms = false) {
     const shape = inInfo.shapeInfo.logicalShape;
     switch (shape.length) {
       case 0:
-        return getSamplerScalar(inInfo);
+        return getSamplerScalar(inInfo, enableShapeUniforms);
       case 1:
-        return getSampler1D(inInfo);
+        return getSampler1D(inInfo, enableShapeUniforms);
       case 2:
-        return getSampler2D(inInfo);
+        return getSampler2D(inInfo, enableShapeUniforms);
       case 3:
-        return getSampler3D(inInfo);
+        return getSampler3D(inInfo, enableShapeUniforms);
       case 4:
-        return getSampler4D(inInfo);
+        return getSampler4D(inInfo, enableShapeUniforms);
       case 5:
         return getSampler5D(inInfo);
       case 6:
@@ -45002,27 +45081,27 @@ Expected: ${expectedFlat}.`);
         throw new Error(`${shape.length}-D input sampling is not yet supported`);
     }
   }
-  function getPackedSamplerFromInInfo(inInfo) {
+  function getPackedSamplerFromInInfo(inInfo, enableShapeUniforms) {
     const shape = inInfo.shapeInfo.logicalShape;
     switch (shape.length) {
       case 0:
         return getPackedSamplerScalar(inInfo);
       case 1:
-        return getPackedSampler1D(inInfo);
+        return getPackedSampler1D(inInfo, enableShapeUniforms);
       case 2:
-        return getPackedSampler2D(inInfo);
+        return getPackedSampler2D(inInfo, enableShapeUniforms);
       case 3:
-        return getPackedSampler3D(inInfo);
+        return getPackedSampler3D(inInfo, enableShapeUniforms);
       default:
-        return getPackedSamplerND(inInfo);
+        return getPackedSamplerND(inInfo, enableShapeUniforms);
     }
   }
-  function getInputSamplingSnippet(inInfo, outShapeInfo, usesPackedTextures = false) {
+  function getInputSamplingSnippet(inInfo, outShapeInfo, usesPackedTextures = false, enableShapeUniforms) {
     let res = "";
     if (usesPackedTextures) {
-      res += getPackedSamplerFromInInfo(inInfo);
+      res += getPackedSamplerFromInInfo(inInfo, enableShapeUniforms);
     } else {
-      res += getSamplerFromInInfo(inInfo);
+      res += getSamplerFromInInfo(inInfo, enableShapeUniforms);
     }
     const inShape = inInfo.shapeInfo.logicalShape;
     const outShape = outShapeInfo.logicalShape;
@@ -45035,32 +45114,32 @@ Expected: ${expectedFlat}.`);
     }
     return res;
   }
-  function getPackedOutputSamplingSnippet(outShape, outTexShape) {
+  function getPackedOutputSamplingSnippet(outShape, outTexShape, enableShapeUniforms) {
     switch (outShape.length) {
       case 0:
         return getOutputScalarCoords();
       case 1:
-        return getOutputPacked1DCoords(outShape, outTexShape);
+        return getOutputPacked1DCoords(outShape, outTexShape, enableShapeUniforms);
       case 2:
-        return getOutputPacked2DCoords(outShape, outTexShape);
+        return getOutputPacked2DCoords(outShape, outTexShape, enableShapeUniforms);
       case 3:
-        return getOutputPacked3DCoords(outShape, outTexShape);
+        return getOutputPacked3DCoords(outShape, outTexShape, enableShapeUniforms);
       default:
-        return getOutputPackedNDCoords(outShape, outTexShape);
+        return getOutputPackedNDCoords(outShape, outTexShape, enableShapeUniforms);
     }
   }
-  function getOutputSamplingSnippet(outShape, outTexShape) {
+  function getOutputSamplingSnippet(outShape, outTexShape, enableShapeUniforms) {
     switch (outShape.length) {
       case 0:
         return getOutputScalarCoords();
       case 1:
-        return getOutput1DCoords(outShape, outTexShape);
+        return getOutput1DCoords(outShape, outTexShape, enableShapeUniforms);
       case 2:
-        return getOutput2DCoords(outShape, outTexShape);
+        return getOutput2DCoords(outShape, outTexShape, enableShapeUniforms);
       case 3:
-        return getOutput3DCoords(outShape, outTexShape);
+        return getOutput3DCoords(outShape, outTexShape, enableShapeUniforms);
       case 4:
-        return getOutput4DCoords(outShape, outTexShape);
+        return getOutput4DCoords(outShape, outTexShape, enableShapeUniforms);
       case 5:
         return getOutput5DCoords(outShape, outTexShape);
       case 6:
@@ -45203,9 +45282,16 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     }
   `;
   }
-  function getOutputPacked1DCoords(shape, texShape) {
+  function getOutputPacked1DCoords(shape, texShape, enableShapeUniforms) {
     const packedTexShape = [Math.ceil(texShape[0] / 2), Math.ceil(texShape[1] / 2)];
     if (packedTexShape[0] === 1) {
+      if (enableShapeUniforms) {
+        return `
+      int getOutputCoords() {
+        return 2 * int(resultUV.x * ceil(float(outTexShape[1]) / 2.0));
+      }
+    `;
+      }
       return `
       int getOutputCoords() {
         return 2 * int(resultUV.x * ${packedTexShape[1]}.0);
@@ -45213,11 +45299,28 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     `;
     }
     if (packedTexShape[1] === 1) {
+      if (enableShapeUniforms) {
+        return `
+      int getOutputCoords() {
+        return 2 * int(resultUV.y * ceil(float(outTexShape[0]) / 2.0));
+      }
+    `;
+      }
       return `
       int getOutputCoords() {
         return 2 * int(resultUV.y * ${packedTexShape[0]}.0);
       }
     `;
+    }
+    if (enableShapeUniforms) {
+      return `
+    int getOutputCoords() {
+      ivec2 packedTexShape = ivec2(ceil(float(outTexShape[0]) / 2.0), ceil(float(outTexShape[1]) / 2.0));
+      ivec2 resTexRC = ivec2(resultUV.yx *
+                             vec2(packedTexShape[0], packedTexShape[1]));
+      return 2 * (resTexRC.x * packedTexShape[1] + resTexRC.y);
+    }
+  `;
     }
     return `
     int getOutputCoords() {
@@ -45227,8 +45330,15 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     }
   `;
   }
-  function getOutput1DCoords(shape, texShape) {
+  function getOutput1DCoords(shape, texShape, enableShapeUniforms) {
     if (texShape[0] === 1) {
+      if (enableShapeUniforms) {
+        return `
+      int getOutputCoords() {
+        return int(resultUV.x * float(outTexShape[1]));
+      }
+    `;
+      }
       return `
       int getOutputCoords() {
         return int(resultUV.x * ${texShape[1]}.0);
@@ -45236,11 +45346,27 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     `;
     }
     if (texShape[1] === 1) {
+      if (enableShapeUniforms) {
+        return `
+      int getOutputCoords() {
+        return int(resultUV.y * float(outTexShape[0]));
+      }
+    `;
+      }
       return `
       int getOutputCoords() {
         return int(resultUV.y * ${texShape[0]}.0);
       }
     `;
+    }
+    if (enableShapeUniforms) {
+      return `
+    int getOutputCoords() {
+      ivec2 resTexRC = ivec2(resultUV.yx *
+                             vec2(outTexShape[0], outTexShape[1]));
+      return resTexRC.x * outTexShape[1] + resTexRC.y;
+    }
+  `;
     }
     return `
     int getOutputCoords() {
@@ -45250,7 +45376,27 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     }
   `;
   }
-  function getOutputPacked3DCoords(shape, texShape) {
+  function getOutputPacked3DCoords(shape, texShape, enableShapeUniforms) {
+    if (enableShapeUniforms) {
+      return `
+    ivec3 getOutputCoords() {
+      ivec2 packedTexShape = ivec2(ceil(float(outTexShape[0]) / 2.0), ceil(float(outTexShape[1]) / 2.0));
+      int texelsInLogicalRow = int(ceil(float(outShape[2]) / 2.0));
+      int texelsInBatch = texelsInLogicalRow * int(ceil(float(outShape[1]) / 2.0));
+      ivec2 resTexRC = ivec2(resultUV.yx *
+                             vec2(packedTexShape[0], packedTexShape[1]));
+      int index = resTexRC.x * packedTexShape[1] + resTexRC.y;
+
+      int b = index / texelsInBatch;
+      index -= b * texelsInBatch;
+
+      int r = 2 * (index / texelsInLogicalRow);
+      int c = imod(index, texelsInLogicalRow) * 2;
+
+      return ivec3(b, r, c);
+    }
+  `;
+    }
     const packedTexShape = [Math.ceil(texShape[0] / 2), Math.ceil(texShape[1] / 2)];
     const texelsInLogicalRow = Math.ceil(shape[2] / 2);
     const texelsInBatch = texelsInLogicalRow * Math.ceil(shape[1] / 2);
@@ -45270,7 +45416,19 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     }
   `;
   }
-  function getOutput3DCoords(shape, texShape) {
+  function getOutput3DCoords(shape, texShape, enableShapeUniforms) {
+    if (enableShapeUniforms) {
+      const coordsFromIndexSnippet2 = getLogicalCoordinatesFromFlatIndexByUniform(["r", "c", "d"], shape);
+      return `
+  ivec3 getOutputCoords() {
+    ivec2 resTexRC = ivec2(resultUV.yx *
+                           vec2(outTexShape[0], outTexShape[1]));
+    int index = resTexRC.x * outTexShape[1] + resTexRC.y;
+    ${coordsFromIndexSnippet2}
+    return ivec3(r, c, d);
+  }
+`;
+    }
     const coordsFromIndexSnippet = getLogicalCoordinatesFromFlatIndex(["r", "c", "d"], shape);
     return `
     ivec3 getOutputCoords() {
@@ -45282,7 +45440,32 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     }
   `;
   }
-  function getOutputPackedNDCoords(shape, texShape) {
+  function getOutputPackedNDCoords(shape, texShape, enableShapeUniforms) {
+    if (enableShapeUniforms) {
+      return `
+    ivec4 getOutputCoords() {
+      ivec2 packedTexShape = ivec2(ceil(float(outTexShape[0]) / 2.0), ceil(float(outTexShape[1]) / 2.0));
+      ivec2 resTexRC = ivec2(resultUV.yx *
+                             vec2(packedTexShape[0], packedTexShape[1]));
+      int index = resTexRC.x * packedTexShape[1] + resTexRC.y;
+
+      int texelsInLogicalRow = int(ceil(float(outShape[3]) / 2.0));
+      int texelsInBatch = texelsInLogicalRow * int(ceil(float(outShape[2]) / 2.0));
+      int texelsInBatchN = texelsInBatch * outShape[1];
+
+      int b2 = index / texelsInBatchN;
+      index -= b2 * texelsInBatchN;
+
+      int b = index / texelsInBatch;
+      index -= b * texelsInBatch;
+
+      int r = 2 * (index / texelsInLogicalRow);
+      int c = imod(index, texelsInLogicalRow) * 2;
+
+      return ivec4(b2, b, r, c);
+    }
+  `;
+    }
     const packedTexShape = [Math.ceil(texShape[0] / 2), Math.ceil(texShape[1] / 2)];
     const texelsInLogicalRow = Math.ceil(shape[shape.length - 1] / 2);
     const texelsInBatch = texelsInLogicalRow * Math.ceil(shape[shape.length - 2] / 2);
@@ -45315,7 +45498,19 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     }
   `;
   }
-  function getOutput4DCoords(shape, texShape) {
+  function getOutput4DCoords(shape, texShape, enableShapeUniforms) {
+    if (enableShapeUniforms) {
+      const coordsFromIndexSnippet2 = getLogicalCoordinatesFromFlatIndexByUniform(["r", "c", "d", "d2"], shape);
+      return `
+    ivec4 getOutputCoords() {
+      ivec2 resTexRC = ivec2(resultUV.yx *
+        vec2(outTexShape[0], outTexShape[1]));
+      int index = resTexRC.x * outTexShape[1] + resTexRC.y;
+      ${coordsFromIndexSnippet2}
+      return ivec4(r, c, d, d2);
+    }
+  `;
+    }
     const coordsFromIndexSnippet = getLogicalCoordinatesFromFlatIndex(["r", "c", "d", "d2"], shape);
     return `
     ivec4 getOutputCoords() {
@@ -45358,9 +45553,17 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     }
   `;
   }
-  function getOutputPacked2DCoords(shape, texShape) {
+  function getOutputPacked2DCoords(shape, texShape, enableShapeUniforms) {
     const packedTexShape = [Math.ceil(texShape[0] / 2), Math.ceil(texShape[1] / 2)];
     if (util_exports.arraysEqual(shape, texShape)) {
+      if (enableShapeUniforms) {
+        return `
+      ivec2 getOutputCoords() {
+        ivec2 packedTexShape = ivec2(ceil(float(outTexShape[0]) / 2.0), ceil(float(outTexShape[1]) / 2.0));
+        return 2 * ivec2(resultUV.yx * vec2(packedTexShape[0], packedTexShape[1]));
+      }
+    `;
+      }
       return `
       ivec2 getOutputCoords() {
         return 2 * ivec2(resultUV.yx * vec2(${packedTexShape[0]}, ${packedTexShape[1]}));
@@ -45368,6 +45571,22 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     `;
     }
     const texelsInLogicalRow = Math.ceil(shape[1] / 2);
+    if (enableShapeUniforms) {
+      return `
+    ivec2 getOutputCoords() {
+      ivec2 packedTexShape = ivec2(ceil(float(outTexShape[0]) / 2.0), ceil(float(outTexShape[1]) / 2.0));
+      int texelsInLogicalRow = int(ceil(float(outShape[1]) / 2.0));
+      ivec2 resTexRC = ivec2(resultUV.yx *
+                             vec2(packedTexShape[0], packedTexShape[1]));
+
+      int index = resTexRC.x * packedTexShape[1] + resTexRC.y;
+      int r = 2 * (index / texelsInLogicalRow);
+      int c = imod(index, texelsInLogicalRow) * 2;
+
+      return ivec2(r, c);
+    }
+  `;
+    }
     return `
     ivec2 getOutputCoords() {
       ivec2 resTexRC = ivec2(resultUV.yx *
@@ -45381,8 +45600,15 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     }
   `;
   }
-  function getOutput2DCoords(shape, texShape) {
+  function getOutput2DCoords(shape, texShape, enableShapeUniforms) {
     if (util_exports.arraysEqual(shape, texShape)) {
+      if (enableShapeUniforms) {
+        return `
+      ivec2 getOutputCoords() {
+        return ivec2(resultUV.yx * vec2(outTexShape[0], outTexShape[1]));
+      }
+    `;
+      }
       return `
       ivec2 getOutputCoords() {
         return ivec2(resultUV.yx * vec2(${texShape[0]}, ${texShape[1]}));
@@ -45390,6 +45616,16 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     `;
     }
     if (shape[1] === 1) {
+      if (enableShapeUniforms) {
+        return `
+      ivec2 getOutputCoords() {
+        ivec2 resTexRC = ivec2(resultUV.yx *
+                               vec2(outTexShape[0], outTexShape[1]));
+        int index = resTexRC.x * outTexShape[1] + resTexRC.y;
+        return ivec2(index, 0);
+      }
+    `;
+      }
       return `
       ivec2 getOutputCoords() {
         ivec2 resTexRC = ivec2(resultUV.yx *
@@ -45400,6 +45636,16 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     `;
     }
     if (shape[0] === 1) {
+      if (enableShapeUniforms) {
+        return `
+      ivec2 getOutputCoords() {
+        ivec2 resTexRC = ivec2(resultUV.yx *
+                               vec2(outTexShape[0], outTexShape[1]));
+        int index = resTexRC.x * outTexShape[1] + resTexRC.y;
+        return ivec2(0, index);
+      }
+    `;
+      }
       return `
       ivec2 getOutputCoords() {
         ivec2 resTexRC = ivec2(resultUV.yx *
@@ -45408,6 +45654,18 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
         return ivec2(0, index);
       }
     `;
+    }
+    if (enableShapeUniforms) {
+      return `
+    ivec2 getOutputCoords() {
+      ivec2 resTexRC = ivec2(resultUV.yx *
+                             vec2(outTexShape[0], outTexShape[1]));
+      int index = resTexRC.x * outTexShape[1] + resTexRC.y;
+      int r = index / outShape[1];
+      int c = index - r * outShape[1];
+      return ivec2(r, c);
+    }
+  `;
     }
     return `
     ivec2 getOutputCoords() {
@@ -45433,7 +45691,7 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     }
   `;
   }
-  function getSamplerScalar(inputInfo) {
+  function getSamplerScalar(inputInfo, enableShapeUniforms) {
     const texName = inputInfo.name;
     const funcName = "get" + texName.charAt(0).toUpperCase() + texName.slice(1);
     if (inputInfo.shapeInfo.isUniform) {
@@ -45447,8 +45705,16 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
       }
     `;
     }
-    const [tNumR, tNumC] = inputInfo.shapeInfo.texShape;
     const offset = getFlatOffsetUniformName(texName);
+    if (enableShapeUniforms) {
+      return `
+    float ${funcName}() {
+      vec2 uv = uvFromFlat(${texName}TexShape[0], ${texName}TexShape[1], ${offset});
+      return sampleTexture(${texName}, uv);
+    }
+  `;
+    }
+    const [tNumR, tNumC] = inputInfo.shapeInfo.texShape;
     return `
     float ${funcName}() {
       vec2 uv = uvFromFlat(${tNumR}, ${tNumC}, ${offset});
@@ -45456,12 +45722,22 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     }
   `;
   }
-  function getPackedSampler1D(inputInfo) {
+  function getPackedSampler1D(inputInfo, enableShapeUniforms) {
     const texName = inputInfo.name;
     const funcName = "get" + texName.charAt(0).toUpperCase() + texName.slice(1);
     const texShape = inputInfo.shapeInfo.texShape;
-    const packedTexShape = [Math.ceil(texShape[0] / 2), Math.ceil(texShape[1] / 2)];
     const glsl = getGlslDifferences();
+    if (enableShapeUniforms) {
+      return `
+    vec4 ${funcName}(int index) {
+      ivec2 packedTexShape = ivec2(ceil(float(${texName}TexShape[0]) / 2.0), ceil(float(${texName}TexShape[1]) / 2.0));
+      vec2 uv = packedUVfrom1D(
+        packedTexShape[0], packedTexShape[1], index);
+      return ${glsl.texture2D}(${texName}, uv);
+    }
+  `;
+    }
+    const packedTexShape = [Math.ceil(texShape[0] / 2), Math.ceil(texShape[1] / 2)];
     return `
     vec4 ${funcName}(int index) {
       vec2 uv = packedUVfrom1D(
@@ -45470,7 +45746,7 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     }
   `;
   }
-  function getSampler1D(inputInfo) {
+  function getSampler1D(inputInfo, enableShapeUniforms) {
     const texName = inputInfo.name;
     const funcName = "get" + texName.charAt(0).toUpperCase() + texName.slice(1);
     if (inputInfo.shapeInfo.isUniform) {
@@ -45492,6 +45768,14 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     }
     const offset = getFlatOffsetUniformName(texName);
     if (tNumC === 1) {
+      if (enableShapeUniforms) {
+        return `
+      float ${funcName}(int index) {
+        vec2 uv = vec2(0.5, (float(index + ${offset}) + 0.5) / float(${texName}TexShape[0]));
+        return sampleTexture(${texName}, uv);
+      }
+    `;
+      }
       return `
       float ${funcName}(int index) {
         vec2 uv = vec2(0.5, (float(index + ${offset}) + 0.5) / ${tNumR}.0);
@@ -45500,12 +45784,28 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     `;
     }
     if (tNumR === 1) {
+      if (enableShapeUniforms) {
+        return `
+      float ${funcName}(int index) {
+        vec2 uv = vec2((float(index + ${offset}) + 0.5) / float(${texName}TexShape[1]), 0.5);
+        return sampleTexture(${texName}, uv);
+      }
+    `;
+      }
       return `
       float ${funcName}(int index) {
         vec2 uv = vec2((float(index + ${offset}) + 0.5) / ${tNumC}.0, 0.5);
         return sampleTexture(${texName}, uv);
       }
     `;
+    }
+    if (enableShapeUniforms) {
+      return `
+    float ${funcName}(int index) {
+      vec2 uv = uvFromFlat(${texName}TexShape[0], ${texName}TexShape[1], index + ${offset});
+      return sampleTexture(${texName}, uv);
+    }
+  `;
     }
     return `
     float ${funcName}(int index) {
@@ -45514,7 +45814,7 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     }
   `;
   }
-  function getPackedSampler2D(inputInfo) {
+  function getPackedSampler2D(inputInfo, enableShapeUniforms) {
     const shape = inputInfo.shapeInfo.logicalShape;
     const texName = inputInfo.name;
     const funcName = "get" + texName.charAt(0).toUpperCase() + texName.slice(1);
@@ -45523,6 +45823,15 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     const texNumC = texShape[1];
     const glsl = getGlslDifferences();
     if (texShape != null && util_exports.arraysEqual(shape, texShape)) {
+      if (enableShapeUniforms) {
+        return `
+      vec4 ${funcName}(int row, int col) {
+        vec2 uv = (vec2(col, row) + halfCR) / vec2(${texName}TexShape[1], ${texName}TexShape[0]);
+
+        return ${glsl.texture2D}(${texName}, uv);
+      }
+    `;
+      }
       return `
       vec4 ${funcName}(int row, int col) {
         vec2 uv = (vec2(col, row) + halfCR) / vec2(${texNumC}.0, ${texNumR}.0);
@@ -45530,6 +45839,16 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
         return ${glsl.texture2D}(${texName}, uv);
       }
     `;
+    }
+    if (enableShapeUniforms) {
+      return `
+    vec4 ${funcName}(int row, int col) {
+      ivec2 packedTexShape = ivec2(ceil(float(${texName}TexShape[0]) / 2.0), ceil(float(${texName}TexShape[1]) / 2.0));
+      int valuesPerRow = int(ceil(float(${texName}Shape[1]) / 2.0));
+      vec2 uv = packedUVfrom2D(valuesPerRow, packedTexShape[0], packedTexShape[1], row, col);
+      return ${glsl.texture2D}(${texName}, uv);
+    }
+  `;
     }
     const packedTexShape = [Math.ceil(texShape[0] / 2), Math.ceil(texShape[1] / 2)];
     const valuesPerRow = Math.ceil(shape[1] / 2);
@@ -45540,12 +45859,20 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     }
   `;
   }
-  function getSampler2D(inputInfo) {
+  function getSampler2D(inputInfo, enableShapeUniforms) {
     const shape = inputInfo.shapeInfo.logicalShape;
     const texName = inputInfo.name;
     const funcName = "get" + texName.charAt(0).toUpperCase() + texName.slice(1);
     const texShape = inputInfo.shapeInfo.texShape;
     if (texShape != null && util_exports.arraysEqual(shape, texShape)) {
+      if (enableShapeUniforms) {
+        return `
+      float ${funcName}(int row, int col) {
+        vec2 uv = (vec2(col, row) + halfCR) / vec2(${texName}TexShape[1], ${texName}TexShape[0]);
+        return sampleTexture(${texName}, uv);
+      }
+    `;
+      }
       const texNumR2 = texShape[0];
       const texNumC2 = texShape[1];
       return `
@@ -45561,7 +45888,7 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
       const newInputInfo = squeezeInputInfo(inputInfo, squeezedShape);
       const params = ["row", "col"];
       return `
-      ${getSamplerFromInInfo(newInputInfo)}
+      ${getSamplerFromInInfo(newInputInfo, enableShapeUniforms)}
       float ${funcName}(int row, int col) {
         return ${funcName}(${getSqueezedParams(params, keptDims)});
       }
@@ -45579,6 +45906,15 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     const texNumC = texShape[1];
     const offset = getFlatOffsetUniformName(texName);
     if (texNumC === 1) {
+      if (enableShapeUniforms) {
+        return `
+      float ${funcName}(int row, int col) {
+        float index = dot(vec3(row, col, ${offset}), vec3(${texName}Shape[1], 1, 1));
+        vec2 uv = vec2(0.5, (index + 0.5) / float(${texName}TexShape[0]));
+        return sampleTexture(${texName}, uv);
+      }
+    `;
+      }
       return `
     float ${funcName}(int row, int col) {
       float index = dot(vec3(row, col, ${offset}), vec3(${shape[1]}, 1, 1));
@@ -45588,6 +45924,15 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
   `;
     }
     if (texNumR === 1) {
+      if (enableShapeUniforms) {
+        return `
+      float ${funcName}(int row, int col) {
+        float index = dot(vec3(row, col, ${offset}), vec3(${texName}Shape[1], 1, 1));
+        vec2 uv = vec2((index + 0.5) / float(${texName}TexShape[1]), 0.5);
+        return sampleTexture(${texName}, uv);
+      }
+    `;
+      }
       return `
     float ${funcName}(int row, int col) {
       float index = dot(vec3(row, col, ${offset}), vec3(${shape[1]}, 1, 1));
@@ -45595,6 +45940,16 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
       return sampleTexture(${texName}, uv);
     }
   `;
+    }
+    if (enableShapeUniforms) {
+      return `
+      float ${funcName}(int row, int col) {
+        // Explicitly use integer operations as dot() only works on floats.
+        int index = row * ${texName}Shape[1] + col + ${offset};
+        vec2 uv = uvFromFlat(${texName}TexShape[0], ${texName}TexShape[1], index);
+        return sampleTexture(${texName}, uv);
+      }
+    `;
     }
     return `
   float ${funcName}(int row, int col) {
@@ -45605,7 +45960,7 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
   }
 `;
   }
-  function getPackedSampler3D(inputInfo) {
+  function getPackedSampler3D(inputInfo, enableShapeUniforms) {
     const shape = inputInfo.shapeInfo.logicalShape;
     const texName = inputInfo.name;
     const funcName = "get" + texName.charAt(0).toUpperCase() + texName.slice(1);
@@ -45617,17 +45972,29 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
       const newInputInfo = squeezeInputInfo(inputInfo, squeezedShape);
       const params = ["b", "row", "col"];
       return `
-        ${getPackedSamplerFromInInfo(newInputInfo)}
+        ${getPackedSamplerFromInInfo(newInputInfo, enableShapeUniforms)}
         vec4 ${funcName}(int b, int row, int col) {
           return ${funcName}(${getSqueezedParams(params, keptDims)});
         }
       `;
     }
+    const glsl = getGlslDifferences();
+    if (enableShapeUniforms) {
+      return `
+    vec4 ${funcName}(int b, int row, int col) {
+      ivec2 packedTexShape = ivec2(ceil(float(${texName}TexShape[0]) / 2.0), ceil(float(${texName}TexShape[1]) / 2.0));
+      int valuesPerRow = int(ceil(float(${texName}Shape[2]) / 2.0));
+      int texelsInBatch = valuesPerRow * int(ceil(float(${texName}Shape[1]) / 2.0));
+      vec2 uv = packedUVfrom3D(
+        packedTexShape[0], packedTexShape[1], texelsInBatch, valuesPerRow, b, row, col);
+      return ${glsl.texture2D}(${texName}, uv);
+    }
+  `;
+    }
     const texNumR = packedTexShape[0];
     const texNumC = packedTexShape[1];
     const valuesPerRow = Math.ceil(shape[2] / 2);
     const texelsInBatch = valuesPerRow * Math.ceil(shape[1] / 2);
-    const glsl = getGlslDifferences();
     return `
     vec4 ${funcName}(int b, int row, int col) {
       vec2 uv = packedUVfrom3D(
@@ -45636,7 +46003,7 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     }
   `;
   }
-  function getSampler3D(inputInfo) {
+  function getSampler3D(inputInfo, enableShapeUniforms) {
     const shape = inputInfo.shapeInfo.logicalShape;
     const texName = inputInfo.name;
     const funcName = "get" + texName.charAt(0).toUpperCase() + texName.slice(1);
@@ -45648,7 +46015,7 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
       const newInputInfo = squeezeInputInfo(inputInfo, squeezedShape);
       const params = ["row", "col", "depth"];
       return `
-        ${getSamplerFromInInfo(newInputInfo)}
+        ${getSamplerFromInInfo(newInputInfo, enableShapeUniforms)}
         float ${funcName}(int row, int col, int depth) {
           return ${funcName}(${getSqueezedParams(params, keptDims)});
         }
@@ -45668,6 +46035,18 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     const texNumC = texShape[1];
     const flatOffset = inputInfo.shapeInfo.flatOffset;
     if (texNumC === stride0 && flatOffset == null) {
+      if (enableShapeUniforms) {
+        return `
+      float ${funcName}(int row, int col, int depth) {
+        int stride1 = ${texName}Shape[2];
+        float texR = float(row);
+        float texC = dot(vec2(col, depth), vec2(stride1, 1));
+        vec2 uv = (vec2(texC, texR) + halfCR) /
+                   vec2(${texName}TexShape[1], ${texName}TexShape[0]);
+        return sampleTexture(${texName}, uv);
+      }
+    `;
+      }
       return `
         float ${funcName}(int row, int col, int depth) {
           float texR = float(row);
@@ -45679,6 +46058,16 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
       `;
     }
     if (texNumC === stride1 && flatOffset == null) {
+      if (enableShapeUniforms) {
+        return `
+      float ${funcName}(int row, int col, int depth) {
+        float texR = dot(vec2(row, col), vec2(${texName}Shape[1], 1));
+        float texC = float(depth);
+        vec2 uv = (vec2(texC, texR) + halfCR) / vec2(${texName}TexShape[1], ${texName}TexShape[0]);
+        return sampleTexture(${texName}, uv);
+      }
+    `;
+      }
       return `
     float ${funcName}(int row, int col, int depth) {
       float texR = dot(vec2(row, col), vec2(${shape[1]}, 1));
@@ -45689,6 +46078,18 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
   `;
     }
     const offset = getFlatOffsetUniformName(texName);
+    if (enableShapeUniforms) {
+      return `
+    float ${funcName}(int row, int col, int depth) {
+      // Explicitly use integer operations as dot() only works on floats.
+      int stride0 = ${texName}Shape[1] * ${texName}Shape[2];
+      int stride1 = ${texName}Shape[2];
+      int index = row * ${stride0} + col * ${stride1} + depth + ${offset};
+      vec2 uv = uvFromFlat(${texName}TexShape[0], ${texName}TexShape[1], index);
+      return sampleTexture(${texName}, uv);
+    }
+    `;
+    }
     return `
       float ${funcName}(int row, int col, int depth) {
         // Explicitly use integer operations as dot() only works on floats.
@@ -45698,11 +46099,27 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
       }
   `;
   }
-  function getPackedSamplerND(inputInfo) {
-    const shape = inputInfo.shapeInfo.logicalShape;
-    const rank = shape.length;
+  function getPackedSamplerND(inputInfo, enableShapeUniforms) {
     const texName = inputInfo.name;
     const funcName = "get" + texName.charAt(0).toUpperCase() + texName.slice(1);
+    const glsl = getGlslDifferences();
+    if (enableShapeUniforms) {
+      return `
+    vec4 ${funcName}(int b2, int b, int row, int col) {
+      int valuesPerRow = int(ceil(float(${texName}Shape[3]) / 2.0));
+      int texelsInBatch = valuesPerRow * int(ceil(float(${texName}Shape[2]) / 2.0));
+      int index = b * texelsInBatch + (row / 2) * valuesPerRow + (col / 2);
+      texelsInBatch *= ${texName}Shape[1];
+      index = b2 * texelsInBatch + index;
+      ivec2 packedTexShape = ivec2(ceil(float(${texName}TexShape[0]) / 2.0), ceil(float(${texName}TexShape[1]) / 2.0));
+      int texR = index / packedTexShape[1];
+      int texC = index - texR * packedTexShape[1];
+      vec2 uv = (vec2(texC, texR) + halfCR) / vec2(packedTexShape[1], packedTexShape[0]); return ${glsl.texture2D}(${texName}, uv);
+    }
+  `;
+    }
+    const shape = inputInfo.shapeInfo.logicalShape;
+    const rank = shape.length;
     const texShape = inputInfo.shapeInfo.texShape;
     const packedTexShape = [Math.ceil(texShape[0] / 2), Math.ceil(texShape[1] / 2)];
     const texNumR = packedTexShape[0];
@@ -45716,7 +46133,6 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
       texelsInBatch *= shape[rank - b - 1];
       index = `b${b} * ${texelsInBatch} + ` + index;
     }
-    const glsl = getGlslDifferences();
     return `
     vec4 ${funcName}(${params}) {
       int index = ${index};
@@ -45727,7 +46143,7 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     }
   `;
   }
-  function getSampler4D(inputInfo) {
+  function getSampler4D(inputInfo, enableShapeUniforms) {
     const shape = inputInfo.shapeInfo.logicalShape;
     const texName = inputInfo.name;
     const funcName = "get" + texName.charAt(0).toUpperCase() + texName.slice(1);
@@ -45739,7 +46155,7 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
       const newInputInfo = squeezeInputInfo(inputInfo, newShape);
       const params = ["row", "col", "depth", "depth2"];
       return `
-      ${getSamplerFromInInfo(newInputInfo)}
+      ${getSamplerFromInInfo(newInputInfo, enableShapeUniforms)}
       float ${funcName}(int row, int col, int depth, int depth2) {
         return ${funcName}(${getSqueezedParams(params, keptDims)});
       }
@@ -45758,7 +46174,25 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     const texShape = inputInfo.shapeInfo.texShape;
     const texNumR = texShape[0];
     const texNumC = texShape[1];
+    const stride2Str = `int stride2 = ${texName}Shape[3];`;
+    const stride1Str = `int stride1 = ${texName}Shape[2] * stride2;`;
+    const stride0Str = `int stride0 = ${texName}Shape[1] * stride1;`;
     if (texNumC === stride0 && flatOffset == null) {
+      if (enableShapeUniforms) {
+        return `
+      float ${funcName}(int row, int col, int depth, int depth2) {
+        ${stride2Str}
+        ${stride1Str}
+        float texR = float(row);
+        float texC =
+            dot(vec3(col, depth, depth2),
+                vec3(stride1, stride2, 1));
+        vec2 uv = (vec2(texC, texR) + halfCR) /
+                   vec2(${texName}TexShape[1], ${texName}TexShape[0]);
+        return sampleTexture(${texName}, uv);
+      }
+    `;
+      }
       return `
       float ${funcName}(int row, int col, int depth, int depth2) {
         float texR = float(row);
@@ -45772,6 +46206,18 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     `;
     }
     if (texNumC === stride2 && flatOffset == null) {
+      if (enableShapeUniforms) {
+        return `
+      float ${funcName}(int row, int col, int depth, int depth2) {
+        float texR = dot(vec3(row, col, depth),
+                         vec3(${texName}Shape[1] * ${texName}Shape[2], ${texName}Shape[2], 1));
+        float texC = float(depth2);
+        vec2 uv = (vec2(texC, texR) + halfCR) /
+                  vec2(${texName}TexShape[1], ${texName}TexShape[0]);
+        return sampleTexture(${texName}, uv);
+      }
+    `;
+      }
       return `
       float ${funcName}(int row, int col, int depth, int depth2) {
         float texR = dot(vec3(row, col, depth),
@@ -45784,6 +46230,20 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     `;
     }
     const offset = getFlatOffsetUniformName(texName);
+    if (enableShapeUniforms) {
+      return `
+    float ${funcName}(int row, int col, int depth, int depth2) {
+      // Explicitly use integer operations as dot() only works on floats.
+      ${stride2Str}
+      ${stride1Str}
+      ${stride0Str}
+      int index = row * stride0 + col * stride1 +
+          depth * stride2 + depth2;
+      vec2 uv = uvFromFlat(${texName}TexShape[0], ${texName}TexShape[1], index + ${offset});
+      return sampleTexture(${texName}, uv);
+    }
+  `;
+    }
     return `
     float ${funcName}(int row, int col, int depth, int depth2) {
       // Explicitly use integer operations as dot() only works on floats.
@@ -46081,6 +46541,15 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
       throw Error(`GPU for rank ${rank} is not yet supported`);
     }
   }
+  function getUniformInfoFromShape(isPacked, shape, texShape) {
+    const { newShape } = util_exports.squeezeShape(shape);
+    const rank = shape.length;
+    const useSqueezePackedShape = isPacked && rank === 3 && shape[0] === 1;
+    const squeezeShape2 = useSqueezePackedShape ? shape.slice(1) : newShape;
+    const useSqueezeShape = !isPacked && rank > 1 && !util_exports.arraysEqual(shape, texShape) && newShape.length < rank || useSqueezePackedShape;
+    const uniformShape = useSqueezeShape ? squeezeShape2 : shape;
+    return { useSqueezeShape, uniformShape };
+  }
   function squeezeInputInfo(inInfo, squeezedShape) {
     const newInputInfo = JSON.parse(JSON.stringify(inInfo));
     newInputInfo.shapeInfo.logicalShape = squeezedShape;
@@ -46090,7 +46559,6 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     return keptDims.map((d) => params[d]).join(", ");
   }
   function compileProgram(gpgpu, program, inputs, output) {
-    const userCode = program.userCode;
     const inputInfos = inputs.map((input2, i) => {
       const shapeInfo = {
         logicalShape: input2.shape,
@@ -46112,29 +46580,55 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
       isPacked: output.texData.isPacked,
       flatOffset: null
     };
-    const source = makeShader(inputInfos, outShapeInfo, userCode, program.packedInputs);
+    const source = makeShader(inputInfos, outShapeInfo, program);
     const webGLProgram = gpgpu.createProgram(source);
     let infLoc = null;
     const nanLoc = gpgpu.getUniformLocation(webGLProgram, "NAN", false);
     if (env().getNumber("WEBGL_VERSION") === 1) {
       infLoc = gpgpu.getUniformLocation(webGLProgram, "INFINITY", false);
     }
+    const shouldThrow = false;
     const uniformLocations = {};
+    const inShapesLocations = {};
+    const inTexShapesLocations = {};
     for (let i = 0; i < program.variableNames.length; i++) {
       const varName = program.variableNames[i];
-      const shouldThrow = false;
       uniformLocations[varName] = gpgpu.getUniformLocation(webGLProgram, varName, shouldThrow);
       uniformLocations[`offset${varName}`] = gpgpu.getUniformLocation(webGLProgram, `offset${varName}`, shouldThrow);
+      if (program.enableShapeUniforms) {
+        inShapesLocations[`${varName}Shape`] = gpgpu.getUniformLocation(webGLProgram, `${varName}Shape`, shouldThrow);
+        inTexShapesLocations[`${varName}TexShape`] = gpgpu.getUniformLocation(webGLProgram, `${varName}TexShape`, shouldThrow);
+      }
+    }
+    let outShapeLocation;
+    let outTexShapeLocation;
+    let outShapeStridesLocation;
+    if (program.enableShapeUniforms) {
+      outShapeLocation = gpgpu.getUniformLocation(webGLProgram, "outShape", shouldThrow);
+      outShapeStridesLocation = gpgpu.getUniformLocation(webGLProgram, "outShapeStrides", shouldThrow);
+      outTexShapeLocation = gpgpu.getUniformLocation(webGLProgram, "outTexShape", shouldThrow);
+    }
+    const customUniformLocations = [];
+    if (program.customUniforms) {
+      program.customUniforms.forEach((d, i) => {
+        customUniformLocations[i] = gpgpu.getUniformLocation(webGLProgram, d.name, shouldThrow);
+      });
     }
     return {
       program,
       source,
       webGLProgram,
       uniformLocations,
+      customUniformLocations,
       inShapeInfos,
       outShapeInfo,
       infLoc,
-      nanLoc
+      nanLoc,
+      inShapesLocations,
+      inTexShapesLocations,
+      outShapeLocation,
+      outShapeStridesLocation,
+      outTexShapeLocation
     };
   }
   function validateBinaryAndProgram(shapeInfos, inputs) {
@@ -46158,9 +46652,11 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
       }
     });
   }
-  function runProgram(gpgpu, binary, inputs, output, customSetup) {
-    validateBinaryAndProgram(binary.inShapeInfos, inputs);
-    validateBinaryAndProgram([binary.outShapeInfo], [output]);
+  function runProgram(gpgpu, binary, inputs, output, customUniformValues) {
+    if (!binary.program.enableShapeUniforms) {
+      validateBinaryAndProgram(binary.inShapeInfos, inputs);
+      validateBinaryAndProgram([binary.outShapeInfo], [output]);
+    }
     const outTex = output.texData.texture;
     const outTexShape = output.texData.texShape;
     if (output.texData.isPacked) {
@@ -46181,6 +46677,30 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
       const varName = binary.program.variableNames[i];
       const varLoc = binary.uniformLocations[varName];
       const varOffsetLoc = binary.uniformLocations[`offset${varName}`];
+      const varShapeLoc = binary.inShapesLocations[`${varName}Shape`];
+      const varTexShapeLoc = binary.inTexShapesLocations[`${varName}TexShape`];
+      if (varShapeLoc) {
+        const { uniformShape } = getUniformInfoFromShape(binary.program.packedInputs, input2.shape, input2.texData.texShape);
+        switch (uniformShape.length) {
+          case 1:
+            gpgpu.gl.uniform1iv(varShapeLoc, new Int32Array(uniformShape));
+            break;
+          case 2:
+            gpgpu.gl.uniform2iv(varShapeLoc, new Int32Array(uniformShape));
+            break;
+          case 3:
+            gpgpu.gl.uniform3iv(varShapeLoc, new Int32Array(uniformShape));
+            break;
+          case 4:
+            gpgpu.gl.uniform4iv(varShapeLoc, new Int32Array(uniformShape));
+            break;
+          default:
+            break;
+        }
+      }
+      if (varTexShapeLoc) {
+        gpgpu.gl.uniform2i(varTexShapeLoc, input2.texData.texShape[0], input2.texData.texShape[1]);
+      }
       if (varLoc == null) {
         return;
       }
@@ -46201,8 +46721,68 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
       }
       gpgpu.setInputMatrixTexture(input2.texData.texture, varLoc, i);
     });
-    if (customSetup != null) {
-      customSetup(gpgpu, binary.webGLProgram);
+    const outShapeLoc = binary.outShapeLocation;
+    if (outShapeLoc) {
+      switch (output.shape.length) {
+        case 1:
+          gpgpu.gl.uniform1iv(outShapeLoc, new Int32Array(output.shape));
+          break;
+        case 2:
+          gpgpu.gl.uniform2iv(outShapeLoc, new Int32Array(output.shape));
+          break;
+        case 3:
+          gpgpu.gl.uniform3iv(outShapeLoc, new Int32Array(output.shape));
+          break;
+        case 4:
+          gpgpu.gl.uniform4iv(outShapeLoc, new Int32Array(output.shape));
+          break;
+        default:
+          break;
+      }
+    }
+    if (binary.outShapeStridesLocation) {
+      const strides = util_exports.computeStrides(output.shape);
+      switch (output.shape.length) {
+        case 2:
+          gpgpu.gl.uniform1iv(binary.outShapeStridesLocation, new Int32Array(strides));
+          break;
+        case 3:
+          gpgpu.gl.uniform2iv(binary.outShapeStridesLocation, new Int32Array(strides));
+          break;
+        case 4:
+          gpgpu.gl.uniform3iv(binary.outShapeStridesLocation, new Int32Array(strides));
+          break;
+        default:
+          break;
+      }
+    }
+    if (binary.outTexShapeLocation) {
+      gpgpu.gl.uniform2i(binary.outTexShapeLocation, output.texData.texShape[0], output.texData.texShape[1]);
+    }
+    if (binary.program.customUniforms && customUniformValues) {
+      binary.program.customUniforms.forEach((d, i) => {
+        const customLoc = binary.customUniformLocations[i];
+        const customValue = customUniformValues[i];
+        if (d.type === "float") {
+          gpgpu.gl.uniform1fv(customLoc, customValue);
+        } else if (d.type === "vec2") {
+          gpgpu.gl.uniform2fv(customLoc, customValue);
+        } else if (d.type === "vec3") {
+          gpgpu.gl.uniform3fv(customLoc, customValue);
+        } else if (d.type === "vec4") {
+          gpgpu.gl.uniform4fv(customLoc, customValue);
+        } else if (d.type === "int") {
+          gpgpu.gl.uniform1iv(customLoc, customValue);
+        } else if (d.type === "ivec2") {
+          gpgpu.gl.uniform2iv(customLoc, customValue);
+        } else if (d.type === "ivec3") {
+          gpgpu.gl.uniform3iv(customLoc, customValue);
+        } else if (d.type === "ivec4") {
+          gpgpu.gl.uniform4iv(customLoc, customValue);
+        } else {
+          throw Error(`uniform type ${d.type} is not supported yet.`);
+        }
+      });
     }
     gpgpu.executeProgram();
   }
@@ -46210,13 +46790,38 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     let keyInputs = "";
     inputs.concat(output).forEach((x) => {
       const hasOffset = x.texData != null && x.texData.slice != null && x.texData.slice.flatOffset > 0;
-      const texShape = x.isUniform ? "uniform" : x.texData.texShape;
-      keyInputs += `${x.shape}_${texShape}_${hasOffset}`;
+      if (program.enableShapeUniforms && !x.isUniform) {
+        const xTexShape = x.texData.texShape;
+        const { useSqueezeShape, uniformShape } = getUniformInfoFromShape(program.packedInputs, x.shape, xTexShape);
+        let rank1 = "", rank2 = "", rank34 = "";
+        if (uniformShape.length === 1 && program.packedInputs) {
+          const packedTexShape = [Math.ceil(xTexShape[0] / 2), Math.ceil(xTexShape[1] / 2)];
+          rank1 = `${packedTexShape[0] > 1}_${packedTexShape[1] > 1}`;
+        } else if (uniformShape.length === 2 && !program.packedInputs) {
+          rank2 = `${uniformShape[0] > 1}_${uniformShape[1] > 1}`;
+        } else if (uniformShape.length > 2 && !program.packedInputs) {
+          const strides = util_exports.computeStrides(uniformShape);
+          rank34 = `${strides[0] === xTexShape[1]}_${strides[strides.length - 1] === xTexShape[1]}`;
+        }
+        const xRank = x.shape.length;
+        const isLogicalShapTexShapeEqual = xRank === 2 && util_exports.arraysEqual(x.shape, xTexShape);
+        const isScalar = util_exports.sizeFromShape(x.shape) === 1;
+        const broadcastDims = backend_util_exports.getBroadcastDims(x.shape, output.shape);
+        const isInOutTexShapeEqual = !program.packedInputs && xRank === output.shape.length && util_exports.arraysEqual(xTexShape, output.texData.texShape);
+        const isTexShapeGreaterThanOne = program.packedInputs || xRank > 2 ? "" : `${xTexShape[0] > 1}_${xTexShape[1] > 1}`;
+        keyInputs += `${xRank}_${isInOutTexShapeEqual}_${useSqueezeShape}_${uniformShape.length}_${isScalar}_${broadcastDims}_${isLogicalShapTexShapeEqual}_${rank1}_${rank2}_${rank34}_${isTexShapeGreaterThanOne}_${hasOffset}`;
+      } else {
+        const texShape = x.isUniform ? "uniform" : x.texData.texShape;
+        keyInputs += `${x.shape}_${texShape}_${hasOffset}`;
+      }
     });
     const keyUserCode = program.userCode;
     let key = program.constructor.name;
-    key += "_" + keyInputs + "_" + keyUserCode;
+    key += "_" + keyInputs + "_" + keyUserCode + `${env().getNumber("WEBGL_VERSION")}`;
     return key;
+  }
+  function useShapeUniforms(rank) {
+    return env().getBool("WEBGL_USE_SHAPES_UNIFORMS") && rank <= 4;
   }
   var { addImpl: addImplCPU, bincountImpl: bincountImplCPU, bincountReduceImpl: bincountReduceImplCPU, ceilImpl: ceilImplCPU, concatImpl: concatImplCPU, equalImpl: equalImplCPU, expImpl: expImplCPU, expm1Impl: expm1ImplCPU, floorImpl: floorImplCPU, gatherNdImpl: gatherNdImplCPU, gatherV2Impl: gatherV2ImplCPU, greaterImpl: greaterImplCPU, greaterEqualImpl: greaterEqualImplCPU, lessImpl: lessImplCPU, lessEqualImpl: lessEqualImplCPU, linSpaceImpl: linSpaceImplCPU, logImpl: logImplCPU, maxImpl: maxImplCPU, maximumImpl: maximumImplCPU, minimumImpl: minimumImplCPU, multiplyImpl: multiplyImplCPU, negImpl: negImplCPU, notEqualImpl: notEqualImplCPU, prodImpl: prodImplCPU, rangeImpl: rangeImplCPU, rsqrtImpl: rsqrtImplCPU, simpleAbsImpl: simpleAbsImplCPU, sliceImpl: sliceImplCPU, sparseFillEmptyRowsImpl: sparseFillEmptyRowsImplCPU, sparseReshapeImpl: sparseReshapeImplCPU, sparseSegmentReductionImpl: sparseSegmentReductionImplCPU, stridedSliceImpl: stridedSliceImplCPU, stringNGramsImpl: stringNGramsImplCPU, stringSplitImpl: stringSplitImplCPU, stringToHashBucketFastImpl: stringToHashBucketFastImplCPU, subImpl: subImplCPU, tileImpl: tileImplCPU, topKImpl: topKImplCPU, transposeImpl: transposeImplCPU, uniqueImpl: uniqueImplCPU } = shared_exports;
   function getVecChannels(name, rank) {
@@ -46580,6 +47185,7 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     constructor(aShape, opSnippet) {
       this.variableNames = ["A"];
       this.outputShape = aShape;
+      this.enableShapeUniforms = useShapeUniforms(this.outputShape.length);
       this.userCode = `
       float unaryOperation(float x) {
         ${opSnippet}
@@ -46646,6 +47252,7 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
       this.packedInputs = true;
       this.packedOutput = true;
       this.outputShape = aShape;
+      this.enableShapeUniforms = useShapeUniforms(this.outputShape.length);
       this.userCode = `
       vec4 unaryOperation(vec4 x) {
         ${opSnippet}
@@ -46871,6 +47478,10 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
       }
       if (tmpDownloadTarget != null) {
         this.disposeIntermediateTensorInfo(tmpDownloadTarget);
+      }
+      if (buffer2 != null) {
+        const gl = this.gpgpu.gl;
+        callAndCheck(gl, () => gl.deleteBuffer(buffer2));
       }
       const dTypeVals = this.convertAndCacheOnCPU(dataId, vals);
       const subscribers = this.pendingRead.get(dataId);
@@ -47139,7 +47750,7 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
       const out = this.runWebGLProgram(program, [{ shape: shapeAs3D, dtype, dataId }], dtype, null, preventEagerUnpackingOfOutput);
       return { dtype, shape, dataId: out.dataId };
     }
-    runWebGLProgram(program, inputs, outputDtype, customSetup, preventEagerUnpackingOfOutput = false) {
+    runWebGLProgram(program, inputs, outputDtype, customUniformValues, preventEagerUnpackingOfOutput = false) {
       const output = this.makeTensorInfo(program.outputShape, outputDtype);
       const outData = this.texData.get(output.dataId);
       if (program.packedOutput) {
@@ -47202,7 +47813,7 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
       if (shouldTimeProgram) {
         query = this.startTimer();
       }
-      runProgram(this.gpgpu, binary, inputsData, outputData, customSetup);
+      runProgram(this.gpgpu, binary, inputsData, outputData, customUniformValues);
       dataToDispose.forEach((info) => this.disposeIntermediateTensorInfo(info));
       if (shouldTimeProgram) {
         query = this.endTimer(query);
@@ -47223,9 +47834,9 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
       }
       return output;
     }
-    compileAndRun(program, inputs, outputDtype, customSetup, preventEagerUnpackingOfOutput = false) {
+    compileAndRun(program, inputs, outputDtype, customUniformValues, preventEagerUnpackingOfOutput = false) {
       outputDtype = outputDtype || inputs[0].dtype;
-      const outInfo = this.runWebGLProgram(program, inputs, outputDtype, customSetup, preventEagerUnpackingOfOutput);
+      const outInfo = this.runWebGLProgram(program, inputs, outputDtype, customUniformValues, preventEagerUnpackingOfOutput);
       return outInfo;
     }
     getAndSaveBinary(key, getBinary) {
@@ -47368,7 +47979,7 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
       throw new Error(`Unknown dtype ${dtype}`);
     }
   }
-  var version6 = "3.7.0";
+  var version6 = "3.8.0";
   if (device_util_exports.isBrowser()) {
     registerBackend("webgl", () => new MathBackendWebGL(), 2);
   }
@@ -47380,6 +47991,7 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     constructor(op2, aShape, bShape) {
       this.variableNames = ["A", "B"];
       this.outputShape = backend_util_exports.assertAndGetBroadcastShape(aShape, bShape);
+      this.enableShapeUniforms = useShapeUniforms(this.outputShape.length);
       this.userCode = `
       float binaryOperation(float a, float b) {
         ${op2}
@@ -47407,6 +48019,7 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
       this.packedOutput = true;
       this.outputShape = backend_util_exports.assertAndGetBroadcastShape(aShape, bShape);
       const rank = this.outputShape.length;
+      this.enableShapeUniforms = useShapeUniforms(rank);
       let checkOutOfBoundsString = "";
       if (checkOutOfBounds) {
         if (rank === 0 || util_exports.sizeFromShape(this.outputShape) === 1) {
@@ -47421,14 +48034,33 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
           ${dtype} coords = getOutputCoords();
         `;
           if (rank === 1) {
-            checkOutOfBoundsString += `
+            if (this.enableShapeUniforms) {
+              checkOutOfBoundsString += `
+            result.y = (coords + 1) >= outShape ? 0. : result.y;
+            result.z = 0.;
+            result.w = 0.;
+          `;
+            } else {
+              checkOutOfBoundsString += `
             result.y = (coords + 1) >= ${this.outputShape[0]} ? 0. : result.y;
             result.z = 0.;
             result.w = 0.;
           `;
+            }
           } else {
             const channels = getChannels("coords", rank);
-            checkOutOfBoundsString += `
+            if (this.enableShapeUniforms) {
+              checkOutOfBoundsString += `
+            bool nextRowOutOfBounds =
+              (${channels[rank - 2]} + 1) >= outShape[${rank} - 2];
+            bool nextColOutOfBounds =
+              (${channels[rank - 1]} + 1) >= outShape[${rank} - 1];
+            result.y = nextColOutOfBounds ? 0. : result.y;
+            result.z = nextRowOutOfBounds ? 0. : result.z;
+            result.w = nextColOutOfBounds || nextRowOutOfBounds ? 0. : result.w;
+          `;
+            } else {
+              checkOutOfBoundsString += `
             bool nextRowOutOfBounds =
               (${channels[rank - 2]} + 1) >= ${this.outputShape[rank - 2]};
             bool nextColOutOfBounds =
@@ -47437,6 +48069,7 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
             result.z = nextRowOutOfBounds ? 0. : result.z;
             result.w = nextColOutOfBounds || nextRowOutOfBounds ? 0. : result.w;
           `;
+            }
           }
         }
       }
@@ -49537,7 +50170,7 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
       this.outputShape = destSize;
       this.rank = destSize.length;
       const dtype = getCoordsDataType(this.rank);
-      const uniformPart = `uniform int start[${this.rank}];`;
+      this.customUniforms = [{ name: "start", arrayIndex: this.rank, type: "int" }];
       const sourceCoords = getCoords(this.rank);
       let body;
       const coordSum = destSize.map((_, i) => {
@@ -49549,26 +50182,11 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
         ${coordSum.join("\n")}
       `;
       this.userCode = `
-      ${uniformPart}
       void main() {
         ${body}
         setOutput(getSource(${sourceCoords}));
       }
     `;
-    }
-    getCustomSetupFunc(start) {
-      if (start.length !== this.rank) {
-        throw Error(`The rank (${this.rank}) of the program must match the length of start (${start.length})`);
-      }
-      return (gpgpu, webGLProgram) => {
-        if (this.startLoc == null) {
-          this.startLoc = gpgpu.getUniformLocationNoThrow(webGLProgram, "start");
-          if (this.startLoc == null) {
-            return;
-          }
-        }
-        gpgpu.gl.uniform1iv(this.startLoc, start);
-      };
     }
   };
   var coords = ["x", "y", "z", "w", "u", "v"];
@@ -49588,6 +50206,7 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
       this.packedOutput = true;
       this.outputShape = destSize;
       this.rank = destSize.length;
+      this.customUniforms = [{ name: "start", arrayIndex: this.rank, type: "int" }];
       const dtype = getCoordsDataType(this.rank);
       const coords2 = getChannels("coords", this.rank);
       const sourceLoc = getChannels("sourceLoc", this.rank);
@@ -49615,7 +50234,6 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
       const sourceLocSetup = this.rank <= 4 ? `sourceLoc = coords +
             ${dtype}(${destSize.map((_, i) => `start[${i}]`).join()});` : destSize.map((_, i) => `${sourceLoc[i]} = ${coords2[i]} + start[${i}];`).join("\n");
       this.userCode = `
-      uniform int start[${this.rank}];
       void main() {
         ${dtype} coords = getOutputCoords();
         ${dtype} sourceLoc;
@@ -49626,20 +50244,6 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
         setOutput(result);
       }
     `;
-    }
-    getCustomSetupFunc(start) {
-      if (start.length !== this.rank) {
-        throw Error(`The rank (${this.rank}) of the program must match the length of start (${start.length})`);
-      }
-      return (gpgpu, webGLProgram) => {
-        if (this.startLoc == null) {
-          this.startLoc = gpgpu.getUniformLocationNoThrow(webGLProgram, "start");
-          if (this.startLoc == null) {
-            return;
-          }
-        }
-        gpgpu.gl.uniform1iv(this.startLoc, start);
-      };
     }
   };
   function shallowSlice(x, begin, size, backend2) {
@@ -49680,8 +50284,8 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     const isContinous = slice_util_exports.isSliceContinous(x.shape, $begin, $size);
     if (isPacked || !isContinous) {
       const program = env().getBool("WEBGL_PACK_ARRAY_OPERATIONS") ? new SlicePackedProgram($size) : new SliceProgram($size);
-      const customSetup = program.getCustomSetupFunc($begin);
-      return backend2.runWebGLProgram(program, [x], x.dtype, customSetup);
+      const customValues = [$begin];
+      return backend2.runWebGLProgram(program, [x], x.dtype, customValues);
     }
     backend2.uploadToGPU(x.dataId);
     return shallowSlice(x, $begin, $size, backend2);
@@ -49816,10 +50420,12 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
   var ClipProgram = class {
     constructor(aShape) {
       this.variableNames = ["A"];
+      this.customUniforms = [
+        { name: "minVal", type: "float" },
+        { name: "maxVal", type: "float" }
+      ];
       this.outputShape = aShape;
       this.userCode = `
-      uniform float minVal;
-      uniform float maxVal;
 
       void main() {
         float value = getAAtOutCoords();
@@ -49832,27 +50438,18 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
       }
     `;
     }
-    getCustomSetupFunc(min6, max6) {
-      return (gpgpu, webGLProgram) => {
-        if (this.minLoc == null) {
-          this.minLoc = gpgpu.getUniformLocationNoThrow(webGLProgram, "minVal");
-          this.maxLoc = gpgpu.getUniformLocationNoThrow(webGLProgram, "maxVal");
-        }
-        gpgpu.gl.uniform1f(this.minLoc, min6);
-        gpgpu.gl.uniform1f(this.maxLoc, max6);
-      };
-    }
   };
   var ClipPackedProgram = class {
     constructor(aShape) {
       this.variableNames = ["A"];
       this.packedInputs = true;
       this.packedOutput = true;
+      this.customUniforms = [
+        { name: "minVal", type: "float" },
+        { name: "maxVal", type: "float" }
+      ];
       this.outputShape = aShape;
       this.userCode = `
-      uniform float minVal;
-      uniform float maxVal;
-
       void main() {
         vec4 value = getAAtOutCoords();
 
@@ -49865,16 +50462,6 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
       }
     `;
     }
-    getCustomSetupFunc(min6, max6) {
-      return (gpgpu, webGLProgram) => {
-        if (this.minLoc == null) {
-          this.minLoc = gpgpu.getUniformLocationNoThrow(webGLProgram, "minVal");
-          this.maxLoc = gpgpu.getUniformLocationNoThrow(webGLProgram, "maxVal");
-        }
-        gpgpu.gl.uniform1f(this.minLoc, min6);
-        gpgpu.gl.uniform1f(this.maxLoc, max6);
-      };
-    }
   };
   function clipByValue2(args) {
     const { inputs, backend: backend2, attrs } = args;
@@ -49886,8 +50473,8 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     } else {
       program = new ClipProgram(x.shape);
     }
-    const customSetup = program.getCustomSetupFunc(clipValueMin, clipValueMax);
-    return backend2.runWebGLProgram(program, [x], x.dtype, customSetup);
+    const customValues = [[clipValueMin], [clipValueMax]];
+    return backend2.runWebGLProgram(program, [x], x.dtype, customValues);
   }
   var clipByValueConfig = {
     kernelName: ClipByValue,
@@ -51095,6 +51682,7 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
   var CumSumProgram = class {
     constructor(shape, exclusive, reverse5) {
       this.variableNames = ["x"];
+      this.customUniforms = [{ name: "index", type: "float" }];
       this.outputShape = shape;
       const rank = shape.length;
       const val = exclusive ? "0.0" : `getX(${getCoords2(rank, "coords")})`;
@@ -51109,7 +51697,6 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
         idxString = reverse5 ? "end + pow2" : "end - pow2";
       }
       this.userCode = `
-      uniform float index;
       void main() {
         ${getCoordsDataType(rank)} coords = getOutputCoords();
         int end = ${getFinalCoord(rank, "coords")};
@@ -51123,14 +51710,6 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
         setOutput(val);
       }
     `;
-    }
-    getCustomSetupFunc(index) {
-      return (gpgpu, webGLProgram) => {
-        if (this.index == null) {
-          this.index = gpgpu.getUniformLocation(webGLProgram, "index");
-        }
-        gpgpu.gl.uniform1f(this.index, index);
-      };
     }
   };
   function getCoords2(rank, name) {
@@ -51177,9 +51756,9 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
     let result = identity3({ inputs: { x: permutedX }, backend: backend2 });
     for (let i = 0; i <= Math.ceil(Math.log2(size)) - 1; i++) {
       const program = new CumSumProgram(permutedX.shape, false, reverse5);
-      const customSetup = program.getCustomSetupFunc(i);
+      const customValues = [[i]];
       const prevResult = result;
-      result = backend2.runWebGLProgram(program, [result], result.dtype, customSetup);
+      result = backend2.runWebGLProgram(program, [result], result.dtype, customValues);
       backend2.disposeIntermediateTensorInfo(prevResult);
     }
     if (exclusive) {
@@ -51429,6 +52008,8 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
         mainLoop += `
           vec4 xTexelC${c * 2};
           int xTexelC${c * 2}Ready;
+          vec4 xTexelC${c * 2 + 1};
+          int xTexelC${c * 2 + 1}Ready;
           vec4 xC${c};`;
       }
       for (let r = 0; r < filterHeight; r++) {
@@ -51436,6 +52017,8 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
           mainLoop += `
           xTexelC${c * 2} = vec4(0.0);
           xTexelC${c * 2}Ready = 0;
+          xTexelC${c * 2 + 1} = vec4(0.0);
+          xTexelC${c * 2 + 1}Ready = 0;
           xC${c} = vec4(0.0);`;
         }
         mainLoop += `
@@ -51453,20 +52036,20 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
               if (padLeft % 2 === 1) {
                 mainLoop += `
                 xCOffset = xC + 1;
-                if (xCOffset >= 0 && xCOffset < ${xNumCols} && xTexelC${c}Ready == 0) {
-                  xTexelC${c} = getX(batch, xR, xCOffset, d1);
+                if (xCOffset >= 0 && xCOffset < ${xNumCols} && xTexelC${colIndex}Ready == 0) {
+                  xTexelC${colIndex} = getX(batch, xR, xCOffset, d1);
 
                   // Need to manually clear unused channels in case
                   // we're reading from recycled texture.
                   if (xCOffset + 1 >= ${xNumCols}) {
-                    xTexelC${c}.zw = vec2(0.0);
+                    xTexelC${colIndex}.zw = vec2(0.0);
                   }
-                  xTexelC${c}Ready = 1;
+                  xTexelC${colIndex}Ready = 1;
                 }
               `;
                 if (dilationWidth === 1 && c > 0) {
                   mainLoop += `
-                xC${colIndex} = vec4(xTexelC${c - 2}.zw, xTexelC${c}.xy);
+                xC${colIndex} = vec4(xTexelC${colIndex - 2}.zw, xTexelC${colIndex}.xy);
                 `;
                 } else {
                   mainLoop += `
@@ -51481,23 +52064,23 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
                       previous.zw = vec2(0.0);
                     }
 
-                    xC${colIndex} = vec4(previous.zw, xTexelC${c}.xy);
+                    xC${colIndex} = vec4(previous.zw, xTexelC${colIndex}.xy);
                   } else {
-                    xC${colIndex} = vec4(0.0, 0.0, xTexelC${c}.xy);
+                    xC${colIndex} = vec4(0.0, 0.0, xTexelC${colIndex}.xy);
                   }
                   `;
                 }
               } else {
                 mainLoop += `
-                if (xC >= 0 && xC < ${xNumCols} && xTexelC${c}Ready == 0) {
-                  xTexelC${c} = getX(batch, xR, xC, d1);
+                if (xC >= 0 && xC < ${xNumCols} && xTexelC${colIndex}Ready == 0) {
+                  xTexelC${colIndex} = getX(batch, xR, xC, d1);
                   if (xC + 1 >= ${xNumCols}) {
-                    xTexelC${c}.zw = vec2(0.0);
+                    xTexelC${colIndex}.zw = vec2(0.0);
                   }
-                  xTexelC${c}Ready = 1;
+                  xTexelC${colIndex}Ready = 1;
                 }
 
-                xC${colIndex} = xTexelC${c};
+                xC${colIndex} = xTexelC${colIndex};
                 `;
               }
               if (c + 1 < filterWidth) {
@@ -51506,47 +52089,47 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
                   mainLoop += `
                   xCOffset = xC + ${padLeft % 2} + ${nextTexelOffset};
 
-                  if (xCOffset >= 0 && xCOffset < ${xNumCols} && xTexelC${c + 2}Ready == 0) {
-                    xTexelC${c + 2} = getX(batch, xR, xCOffset, d1);
+                  if (xCOffset >= 0 && xCOffset < ${xNumCols} && xTexelC${colIndex + 1}Ready == 0) {
+                    xTexelC${colIndex + 1} = getX(batch, xR, xCOffset, d1);
 
                     // Need to manually clear unused channels in case
                     // we're reading from recycled texture.
                     if (xCOffset + 1 >= ${xNumCols}) {
-                      xTexelC${c + 2}.zw = vec2(0.0);
+                      xTexelC${colIndex + 1}.zw = vec2(0.0);
                     }
-                    xTexelC${c + 2}Ready = 1;
+                    xTexelC${colIndex + 1}Ready = 1;
                   }
                   `;
                   if (dilationWidth > 1) {
                     mainLoop += `
                     xCOffset -= 2;
-                    if (xCOffset >= 0 && xCOffset < ${xNumCols} && xTexelC${c}Ready == 0) {
-                      xTexelC${c} = getX(batch, xR, xCOffset, d1);
-                      xTexelC${c}Ready = 1;
+                    if (xCOffset >= 0 && xCOffset < ${xNumCols} && xTexelC${colIndex}Ready == 0) {
+                      xTexelC${colIndex} = getX(batch, xR, xCOffset, d1);
+                      xTexelC${colIndex}Ready = 1;
                     }
                     `;
                   }
                   mainLoop += `
-                  xC${colIndex + 1} = vec4(xTexelC${c}.zw, xTexelC${c + 2}.xy);
+                  xC${colIndex + 1} = vec4(xTexelC${colIndex}.zw, xTexelC${colIndex + 1}.xy);
                   `;
                 } else {
                   if (nextTexelOffset === 1) {
                     mainLoop += `
-                    xC${colIndex + 1} = xTexelC${c};
+                    xC${colIndex + 1} = xTexelC${colIndex};
                     `;
                   } else {
                     mainLoop += `
                     xCOffset = xC + ${nextTexelOffset};
 
-                    if (xCOffset >= 0 && xCOffset < ${xNumCols} && xTexelC${c + 2}Ready == 0) {
-                      xTexelC${c + 2} = getX(batch, xR, xCOffset, d1);
+                    if (xCOffset >= 0 && xCOffset < ${xNumCols} && xTexelC${colIndex + 1}Ready == 0) {
+                      xTexelC${colIndex + 1} = getX(batch, xR, xCOffset, d1);
                       if (xCOffset + 1 >= ${xNumCols}) {
-                        xTexelC${c + 2}.zw = vec2(0.0);
+                        xTexelC${colIndex + 1}.zw = vec2(0.0);
                       }
-                      xTexelC${c + 2}Ready = 1;
+                      xTexelC${colIndex + 1}Ready = 1;
                     }
 
-                    xC${colIndex + 1} = xTexelC${c + 2};
+                    xC${colIndex + 1} = xTexelC${colIndex + 1};
                     `;
                   }
                 }
@@ -51557,27 +52140,27 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
               if (padLeft % 2 === 1) {
                 mainLoop += `
                 xCOffset = xC + 1 - ${strideWidth};
-                if(xCOffset >= 0 && xCOffset < ${xNumCols} && xTexelC${c}Ready == 0) {
-                  xTexelC${c} = getX(batch, xR, xCOffset, d1);
+                if(xCOffset >= 0 && xCOffset < ${xNumCols} && xTexelC${colIndex}Ready == 0) {
+                  xTexelC${colIndex} = getX(batch, xR, xCOffset, d1);
                   // Need to manually clear unused channels in case
                   // we're reading from recycled texture.
                   if (xCOffset + 1 >= ${xNumCols}) {
-                    xTexelC${c}.zw = vec2(0.0);
+                    xTexelC${colIndex}.zw = vec2(0.0);
                   }
-                  xTexelC${c}Ready = 1;
+                  xTexelC${colIndex}Ready = 1;
                 }
 
-                if(xC + 1 >= 0 && xC + 1 < ${xNumCols} && xTexelC${c + 2}Ready == 0) {
-                  xTexelC${c + 2} = getX(batch, xR, xC + 1, d1);
+                if(xC + 1 >= 0 && xC + 1 < ${xNumCols} && xTexelC${colIndex + 1}Ready == 0) {
+                  xTexelC${colIndex + 1} = getX(batch, xR, xC + 1, d1);
                   // Need to manually clear unused channels in case
                   // we're reading from recycled texture.
                   if (xC + 2 >= ${xNumCols}) {
-                    xTexelC${c + 2}.zw = vec2(0.0);
+                    xTexelC${colIndex + 1}.zw = vec2(0.0);
                   }
-                  xTexelC${c + 2}Ready = 1;
+                  xTexelC${colIndex + 1}Ready = 1;
                 }
 
-                xC${colIndex} = vec4(xTexelC${c}.zw, xTexelC${c + 2}.zw);
+                xC${colIndex} = vec4(xTexelC${colIndex}.zw, xTexelC${colIndex + 1}.zw);
               `;
                 if (c + 1 < filterWidth) {
                   mainLoop += `
@@ -51586,34 +52169,34 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
                   if(xCOffset >= 0 && xCOffset < ${xNumCols}) {
                     final = getX(batch, xR, xCOffset, d1);
                   }
-                  xC${colIndex + 1} = vec4(xTexelC${c + 2}.xy, final.xy);
+                  xC${colIndex + 1} = vec4(xTexelC${colIndex + 1}.xy, final.xy);
                 `;
                 }
               } else {
                 mainLoop += `
-                if(xC >= 0 && xC < ${xNumCols} && xTexelC${c}Ready == 0) {
-                  xTexelC${c} = getX(batch, xR, xC, d1);
+                if(xC >= 0 && xC < ${xNumCols} && xTexelC${colIndex}Ready == 0) {
+                  xTexelC${colIndex} = getX(batch, xR, xC, d1);
                   if (xC + 1 >= ${xNumCols}) {
-                    xTexelC${c}.zw = vec2(0.0);
+                    xTexelC${colIndex}.zw = vec2(0.0);
                   }
-                  xTexelC${c}Ready = 1;
+                  xTexelC${colIndex}Ready = 1;
                 }
 
                 xCOffset = xC + ${strideWidth};
-                if(xCOffset >= 0 && xCOffset < ${xNumCols} && xTexelC${c + 2}Ready == 0) {
-                  xTexelC${c + 2} = getX(batch, xR, xCOffset, d1);
+                if(xCOffset >= 0 && xCOffset < ${xNumCols} && xTexelC${colIndex + 1}Ready == 0) {
+                  xTexelC${colIndex + 1} = getX(batch, xR, xCOffset, d1);
                   if (xCOffset + 1 >= ${xNumCols}) {
-                    xTexelC${c + 2}.zw = vec2(0.);
+                    xTexelC${colIndex + 1}.zw = vec2(0.);
                   }
-                  xTexelC${c + 2}Ready = 1;
+                  xTexelC${colIndex + 1}Ready = 1;
                 }
 
                 xC${colIndex} = vec4(
-                  xTexelC${c}.xy, xTexelC${c + 2}.xy);
+                  xTexelC${colIndex}.xy, xTexelC${colIndex + 1}.xy);
               `;
                 if (c + 1 < filterWidth) {
                   mainLoop += `
-                  xC${colIndex + 1} = vec4(xTexelC${c}.zw, xTexelC${c + 2}.zw);
+                  xC${colIndex + 1} = vec4(xTexelC${colIndex}.zw, xTexelC${colIndex + 1}.zw);
                 `;
                 }
               }
@@ -52207,23 +52790,15 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
   var FillProgram = class {
     constructor(shape, value) {
       this.outputShape = [];
+      this.customUniforms = [{ name: "value", type: "float" }];
       this.variableNames = ["x"];
       this.outputShape = shape;
       this.userCode = `
-      uniform float value;
       void main() {
         // Input can be obtained from uniform value.
         setOutput(value);
       }
     `;
-    }
-    getCustomSetupFunc(value) {
-      return (gpgpu, webGLProgram) => {
-        if (this.valueLoc == null) {
-          this.valueLoc = gpgpu.getUniformLocationNoThrow(webGLProgram, "value");
-        }
-        gpgpu.gl.uniform1f(this.valueLoc, value);
-      };
     }
   };
   function fill3(args) {
@@ -52237,8 +52812,8 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
       return backend2.makeTensorInfo(shape, dtype, values);
     } else {
       const program = new FillProgram(shape, value);
-      const customSetup = program.getCustomSetupFunc(value);
-      return backend2.runWebGLProgram(program, [], dtype, customSetup);
+      const customValues = [[value]];
+      return backend2.runWebGLProgram(program, [], dtype, customValues);
     }
   }
   var fillConfig2 = {
@@ -52257,7 +52832,7 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
           ivec4 coords = getOutputCoords();
           int x = coords[2];
 
-          int coordX = ${imageWidth} - x;
+          int coordX = ${imageWidth} - x - 1;
           float outputValue;
           if(coordX >= 0 && coordX < ${imageWidth}) {
             outputValue = getImage(coords[0], coords[1], coordX, coords[3]);
@@ -53647,10 +54222,9 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
   var MultinomialProgram = class {
     constructor(batchSize, numOutcomes, numSamples) {
       this.variableNames = ["probs"];
+      this.customUniforms = [{ name: "seed", type: "float" }];
       this.outputShape = [batchSize, numSamples];
       this.userCode = `
-      uniform float seed;
-
       void main() {
         ivec2 coords = getOutputCoords();
         int batch = coords[0];
@@ -53671,14 +54245,6 @@ return (log(1.0 + x) - log(1.0 - x)) / 2.0;`;
         setOutput(float(${numOutcomes - 1}));
       }
     `;
-    }
-    getCustomSetupFunc(seed) {
-      return (gpgpu, webGLProgram) => {
-        if (this.seedLoc == null) {
-          this.seedLoc = gpgpu.getUniformLocation(webGLProgram, "seed");
-        }
-        gpgpu.gl.uniform1f(this.seedLoc, seed);
-      };
     }
   };
   var DIV = `
@@ -53761,8 +54327,8 @@ return a / b;`;
     const batchSize = probs.shape[0];
     const numOutcomes = probs.shape[1];
     const program = new MultinomialProgram(batchSize, numOutcomes, numSamples);
-    const customSetup = program.getCustomSetupFunc(seed);
-    const res = backend2.runWebGLProgram(program, [probs], "int32", customSetup);
+    const customValues = [[seed]];
+    const res = backend2.runWebGLProgram(program, [probs], "int32", customValues);
     if (!normalized) {
       backend2.disposeIntermediateTensorInfo(probs);
     }
@@ -53971,6 +54537,7 @@ return a / b;`;
   var PadProgram = class {
     constructor(xShape, paddings, constantValue) {
       this.variableNames = ["x"];
+      this.customUniforms = [{ name: "value", type: "float" }];
       this.outputShape = paddings.map((p2, i) => p2[0] + xShape[i] + p2[1]);
       const rank = xShape.length;
       const type = getCoordsDataType(rank);
@@ -53981,7 +54548,6 @@ return a / b;`;
         this.userCode = `
         int start = ${start};
         int end = ${end};
-        uniform float value;
 
         void main() {
           int outC = getOutputCoords();
@@ -53997,7 +54563,6 @@ return a / b;`;
       this.userCode = `
       ${type} start = ${type}(${start});
       ${type} end = ${type}(${end});
-      uniform float value;
 
       void main() {
         ${type} outC = getOutputCoords();
@@ -54010,20 +54575,13 @@ return a / b;`;
       }
     `;
     }
-    getCustomSetupFunc(value) {
-      return (gpgpu, webGLProgram) => {
-        if (this.valueLoc == null) {
-          this.valueLoc = gpgpu.getUniformLocationNoThrow(webGLProgram, "value");
-        }
-        gpgpu.gl.uniform1f(this.valueLoc, value);
-      };
-    }
   };
   var PadPackedProgram = class {
     constructor(xShape, paddings, constantValue) {
       this.variableNames = ["x"];
       this.packedInputs = true;
       this.packedOutput = true;
+      this.customUniforms = [{ name: "value", type: "float" }];
       this.outputShape = paddings.map((p2, i) => p2[0] + xShape[i] + p2[1]);
       const rank = xShape.length;
       const dtype = getCoordsDataType(rank);
@@ -54062,7 +54620,6 @@ return a / b;`;
       this.userCode = `
       const ${dtype} start = ${dtype}(${start});
       const ${dtype} end = ${dtype}(${end});
-      uniform float value;
 
       void main() {
         ${dtype} outputLoc = getOutputCoords();
@@ -54072,22 +54629,14 @@ return a / b;`;
       }
     `;
     }
-    getCustomSetupFunc(value) {
-      return (gpgpu, webGLProgram) => {
-        if (this.valueLoc == null) {
-          this.valueLoc = gpgpu.getUniformLocationNoThrow(webGLProgram, "value");
-        }
-        gpgpu.gl.uniform1f(this.valueLoc, value);
-      };
-    }
   };
   var padV22 = (args) => {
     const { inputs, backend: backend2, attrs } = args;
     const { x } = inputs;
     const { paddings, constantValue } = attrs;
     const program = env().getBool("WEBGL_PACK_ARRAY_OPERATIONS") ? new PadPackedProgram(x.shape, paddings, constantValue) : new PadProgram(x.shape, paddings, constantValue);
-    const customSetup = program.getCustomSetupFunc(constantValue);
-    return backend2.runWebGLProgram(program, [x], x.dtype, customSetup);
+    const customValues = [[constantValue]];
+    return backend2.runWebGLProgram(program, [x], x.dtype, customValues);
   };
   var padV2Config2 = {
     kernelName: PadV2,
@@ -54881,6 +55430,7 @@ return a / b;`;
     constructor(imageShape, fillValue) {
       this.variableNames = ["Image"];
       this.outputShape = [];
+      this.customUniforms = [{ name: "params", type: "vec4" }];
       const imageHeight = imageShape[1];
       const imageWidth = imageShape[2];
       this.outputShape = imageShape;
@@ -54893,7 +55443,6 @@ return a / b;`;
         float outputValue = fill[coords[3]];`;
       }
       this.userCode = `
-        uniform vec4 params;
         void main() {
           ivec4 coords = getOutputCoords();
           int x = coords[2];
@@ -54912,14 +55461,6 @@ return a / b;`;
         }
     `;
     }
-    getCustomSetupFunc(centerX, centerY, sinFactor, cosFactor) {
-      return (gpgpu, webGLProgram) => {
-        if (this.paramsLoc == null) {
-          this.paramsLoc = gpgpu.getUniformLocationNoThrow(webGLProgram, "params");
-        }
-        gpgpu.gl.uniform4f(this.paramsLoc, centerX, centerY, sinFactor, cosFactor);
-      };
-    }
   };
   var rotateWithOffsetConfig2 = {
     kernelName: RotateWithOffset,
@@ -54930,8 +55471,8 @@ return a / b;`;
       const webglBackend = backend2;
       const program = new RotateProgram(image3.shape, fillValue);
       const [centerX, centerY] = backend_util_exports.getImageCenter(center, image3.shape[1], image3.shape[2]);
-      const customSetup = program.getCustomSetupFunc(centerX, centerY, Math.sin(radians), Math.cos(radians));
-      const output = webglBackend.runWebGLProgram(program, [image3], image3.dtype, customSetup);
+      const customValues = [[centerX, centerY, Math.sin(radians), Math.cos(radians)]];
+      const output = webglBackend.runWebGLProgram(program, [image3], image3.dtype, customValues);
       return output;
     }
   };
@@ -55073,7 +55614,7 @@ return a / b;`;
     `;
     }
   };
-  function select2(args) {
+  function select3(args) {
     const { inputs, backend: backend2 } = args;
     const { condition, t, e } = inputs;
     const program = new SelectProgram(condition.shape.length, t.shape, t.shape.length);
@@ -55082,7 +55623,7 @@ return a / b;`;
   var selectConfig2 = {
     kernelName: Select,
     backendName: "webgl",
-    kernelFunc: select2
+    kernelFunc: select3
   };
   var SELU = `
   // Stable and Attracting Fixed Point (0, 1) for Normalized Weights.
@@ -55582,16 +56123,203 @@ return a / b;`;
     backendName: "webgl",
     kernelFunc: tile4
   };
+  var SwapProgram = class {
+    constructor(shape) {
+      this.variableNames = ["x", "indices"];
+      this.customUniforms = [
+        { name: "n", type: "int" },
+        { name: "firstPass", type: "int" },
+        { name: "negativeInf", type: "float" },
+        { name: "dir", type: "int" },
+        { name: "inc", type: "int" }
+      ];
+      this.outputShape = shape;
+      this.userCode = `
+       void main() {
+         ivec2 coords = getOutputCoords();
+         int batch = coords[0];
+         int elemIdx = coords[1];
+
+         // We compare elements pair-wise within a group of size 2 * inc.
+         // The comparing rule for each group alternates between ascending
+         // and descending. Within each group, we compare each pair at
+         // positions i and i+inc. To decide whether an element at position i
+         // is x0 or x1, we mod it by 2 * inc, if the result is smaller than
+         // inc, it is in the first half of the group, we denote it as x0,
+         // otherwise we denote it as x1.
+         // For example, as shown in the Bitonic top K paper referenced above,
+         // Figure5(a) shows that element[1] is in the
+         // second half of the group when group size is 2, but it is in the
+         // first half of the group when group size is 4.
+
+         bool isFirstInPair = imod(elemIdx, 2 * inc) < inc;
+         int i = isFirstInPair ? elemIdx : elemIdx - inc;
+
+         int i0 = firstPass == 1 ? i : int(getIndices(batch, i));
+         int i1 = firstPass == 1 ? i + inc : int(getIndices(batch, i + inc));
+         float x0 = i0 < n ? getX(batch, i0) : negativeInf;
+         float x1 = i1 < n ? getX(batch, i1) : negativeInf;
+
+         // Denotes which direction indices are in (ascending or descending).
+         bool reverse = imod(elemIdx, 2 * dir) >= dir;
+         bool isGreater = x0 > x1 || (x0 == x1 && i1 > i0);
+         if (reverse == isGreater) { // Elements in opposite order of direction
+           int iTemp = i0;
+           i0 = i1;
+           i1 = iTemp;
+         }
+         if (isFirstInPair) {
+            setOutput(float(i0));
+         } else {
+            setOutput(float(i1));
+         }
+       }
+     `;
+    }
+  };
+  var MergeProgram = class {
+    constructor(shape) {
+      this.variableNames = ["x", "indices"];
+      this.customUniforms = [
+        { name: "n", type: "int" },
+        { name: "firstPass", type: "int" },
+        { name: "k", type: "int" }
+      ];
+      this.outputShape = shape;
+      this.userCode = `
+    void main() {
+         // Takes max of indices (0, k), (1, k + 1), (2, k + 2) ...
+         ivec2 coords = getOutputCoords();
+         int batch = coords[0];
+         int elemIdx = coords[1];
+
+         // The output size is half of the previous size.
+         // If the previous sequence is | | | | _ _ _ _  | | | |  _ _ _ _ (k=4),
+         // we only need to output the indices at positions |, the indices at
+         // positions _ can be thrown away, see Figure5(b) After Phase 2
+         // (Merge phase) in the Bitonic Top K paper referenced above.
+         // For example, the paper shows we only need to output the orange bars.
+         // The output sequence should look like this | | | | | | | |.
+         // Because the sequence is halved, to map the output index back
+         // to the previous sequence to find the corresponding value,
+         // we need to double the index. When we double the index,
+         // we basically interpolate a position, so 2i looks like
+         // | _ | _ | _ | _ | _ | _ | _. We move the | to the first k position
+         // of each 2k positions by - elemIdx % k. E.g. for output at
+         // index 4,5,6,7, we want to get the corresponding element at
+         // original index 8,9,10,11, for output at index 8,9,10,11,
+         // we want to get the corresponding element at original index
+         // 16,17,18,19, so on and so forth.
+
+         int i = elemIdx < k ? elemIdx : (elemIdx * 2 - imod(elemIdx, k));
+         int i0 = firstPass == 1 ? i : int(getIndices(batch, i));
+         int i1 = firstPass == 1 ? i + k : int(getIndices(batch, i + k));
+
+         float x0 = getX(batch, i0);
+         float x1 = i1 < n ? getX(batch, i1) : x0;
+
+         setOutput(x0 >= x1 ? float(i0) : float(i1));
+       }
+     `;
+    }
+  };
+  function disposeIntermediateTensorInfoOrNull(backend2, tensorInfo) {
+    if (tensorInfo !== null) {
+      backend2.disposeIntermediateTensorInfo(tensorInfo);
+    }
+  }
+  function roundUpToPow2(num) {
+    let pow22 = 1;
+    while (pow22 < num) {
+      pow22 *= 2;
+    }
+    return pow22;
+  }
   function topK2(args) {
     const { inputs, backend: backend2, attrs } = args;
     const { x } = inputs;
     const { k, sorted } = attrs;
-    const xVals = backend2.readSync(x.dataId);
-    const [allTopKVals, allTopKIndices] = topKImplCPU(xVals, x.shape, x.dtype, k, sorted);
-    return [
-      backend2.makeTensorInfo(allTopKVals.shape, allTopKVals.dtype, allTopKVals.values),
-      backend2.makeTensorInfo(allTopKIndices.shape, allTopKIndices.dtype, allTopKIndices.values)
-    ];
+    const TOPK_LAST_DIM_CPU_HANDOFF_SIZE_THRESHOLD = env().getNumber("TOPK_LAST_DIM_CPU_HANDOFF_SIZE_THRESHOLD");
+    const TOPK_K_CPU_HANDOFF_THRESHOLD = env().getNumber("TOPK_K_CPU_HANDOFF_THRESHOLD");
+    const xShape = x.shape;
+    const lastDim = xShape[xShape.length - 1];
+    if (backend2.shouldExecuteOnCPU([x]) || lastDim < TOPK_LAST_DIM_CPU_HANDOFF_SIZE_THRESHOLD || k > TOPK_K_CPU_HANDOFF_THRESHOLD) {
+      const xVals = backend2.readSync(x.dataId);
+      const [allTopKVals, allTopKIndices] = topKImplCPU(xVals, xShape, x.dtype, k, sorted);
+      return [
+        backend2.makeTensorInfo(allTopKVals.shape, allTopKVals.dtype, allTopKVals.values),
+        backend2.makeTensorInfo(allTopKIndices.shape, allTopKIndices.dtype, allTopKIndices.values)
+      ];
+    }
+    if (k === 0) {
+      xShape[xShape.length - 1] = 0;
+      return [
+        backend2.makeTensorInfo(xShape, x.dtype, []),
+        backend2.makeTensorInfo(xShape, "int32", [])
+      ];
+    }
+    if (lastDim === 1) {
+      return [
+        x,
+        fill3({ attrs: { shape: xShape, dtype: "int32", value: 0 }, backend: backend2 })
+      ];
+    }
+    const xtexData = backend2.texData.get(x.dataId);
+    const xIsPacked = xtexData !== null && xtexData.isPacked;
+    const xUnPacked = xIsPacked ? backend2.unpackTensor(x) : x;
+    const xSize = util_exports.sizeFromShape(xShape);
+    const batch = xSize / lastDim;
+    const x2D = reshape4({ inputs: { x: xUnPacked }, attrs: { shape: [batch, lastDim] }, backend: backend2 });
+    if (xIsPacked) {
+      disposeIntermediateTensorInfoOrNull(backend2, xUnPacked);
+    }
+    const kPow2 = roundUpToPow2(k);
+    const lastDimPow2 = roundUpToPow2(lastDim);
+    let indices = null;
+    const getInputs = () => indices === null ? [x2D, x2D] : [x2D, indices];
+    const runSwap = (dir, inc, shape) => {
+      const inputs2 = getInputs();
+      const program = new SwapProgram(shape);
+      const fistPass = indices === null ? 1 : 0;
+      const customValues = [[lastDim], [fistPass], [Number.NEGATIVE_INFINITY], [dir], [inc]];
+      const prevIndices2 = indices;
+      indices = backend2.runWebGLProgram(program, inputs2, "int32", customValues);
+      disposeIntermediateTensorInfoOrNull(backend2, prevIndices2);
+    };
+    for (let len = 1; len < kPow2; len *= 2) {
+      const dir = len * 2;
+      for (let inc = len; inc >= 1; inc /= 2) {
+        runSwap(dir, inc, [batch, lastDimPow2]);
+      }
+    }
+    for (let indicesSize = lastDimPow2; indicesSize > kPow2; indicesSize /= 2) {
+      const inputs2 = getInputs();
+      const mergeProgram = new MergeProgram([batch, indicesSize / 2]);
+      const firstPass = indices === null ? 1 : 0;
+      const customValues = [[lastDim], [firstPass], [kPow2]];
+      const prevIndices2 = indices;
+      indices = backend2.runWebGLProgram(mergeProgram, inputs2, "int32", customValues);
+      disposeIntermediateTensorInfoOrNull(backend2, prevIndices2);
+      const len = kPow2 / 2;
+      const dir = len * 2;
+      for (let inc = len; inc >= 1; inc /= 2) {
+        runSwap(dir, inc, indices.shape);
+      }
+    }
+    let prevIndices = indices;
+    indices = slice3({ inputs: { x: indices }, backend: backend2, attrs: { begin: 0, size: [batch, k] } });
+    disposeIntermediateTensorInfoOrNull(backend2, prevIndices);
+    let values = gatherV22({ inputs: { x: x2D, indices }, backend: backend2, attrs: { axis: 1, batchDims: 1 } });
+    disposeIntermediateTensorInfoOrNull(backend2, x2D);
+    const newShape = xShape.slice(0, -1);
+    newShape.push(k);
+    prevIndices = indices;
+    indices = reshape4({ inputs: { x: indices }, attrs: { shape: newShape }, backend: backend2 });
+    disposeIntermediateTensorInfoOrNull(backend2, prevIndices);
+    const prevValues = values;
+    values = reshape4({ inputs: { x: values }, attrs: { shape: newShape }, backend: backend2 });
+    disposeIntermediateTensorInfoOrNull(backend2, prevValues);
+    return [values, indices];
   }
   var topKConfig2 = {
     kernelName: TopK,
@@ -56168,7 +56896,7 @@ return a / b;`;
   for (const kernelConfig of kernelConfigs2) {
     registerKernel(kernelConfig);
   }
-  var version7 = "3.7.0";
+  var version7 = "3.8.0";
   var version8 = {
     "tfjs-core": version,
     "tfjs-backend-cpu": version5,
@@ -56707,45 +57435,6 @@ return a / b;`;
     setupFunc: setup7,
     kernelFunc: batchMatMul3
   };
-  function cast5(args) {
-    const { inputs: { x }, attrs: { dtype }, backend: backend2 } = args;
-    const out = backend2.makeOutput(x.shape, dtype);
-    const inVals = backend2.typedArrayFromHeap(x);
-    const outVals = backend2.typedArrayFromHeap(out);
-    outVals.set(inVals);
-    return out;
-  }
-  var castConfig3 = {
-    kernelName: Cast,
-    backendName: "wasm",
-    kernelFunc: cast5
-  };
-  var ceilConfig3 = createUnaryKernelConfig(Ceil);
-  var wasmClip;
-  function setup8(backend2) {
-    wasmClip = backend2.wasm.cwrap(ClipByValue, null, [
-      "number",
-      "number",
-      "number",
-      "number"
-    ]);
-  }
-  function clip2(args) {
-    const { inputs, backend: backend2, attrs } = args;
-    const { x } = inputs;
-    const { clipValueMin, clipValueMax } = attrs;
-    const xId = backend2.dataIdMap.get(x.dataId).id;
-    const out = backend2.makeOutput(x.shape, x.dtype);
-    const outId = backend2.dataIdMap.get(out.dataId).id;
-    wasmClip(xId, clipValueMin, clipValueMax, outId);
-    return out;
-  }
-  var clipByValueConfig2 = {
-    kernelName: ClipByValue,
-    backendName: "wasm",
-    setupFunc: setup8,
-    kernelFunc: clip2
-  };
   function concatImpl3(inputs, outShape, dtype, simplyConcat) {
     const outVals = util_exports.getArrayFromDType(dtype, util_exports.sizeFromShape(outShape));
     if (simplyConcat && dtype !== "string") {
@@ -56813,6 +57502,160 @@ return a / b;`;
     }
     return outBuf.values;
   }
+  function slice4(args) {
+    const { inputs: { x }, attrs: { begin, size }, backend: backend2 } = args;
+    const [begin_, size_] = slice_util_exports.parseSliceParams(x, begin, size);
+    const isContinous = slice_util_exports.isSliceContinous(x.shape, begin_, size_);
+    const xVals = backend2.readSync(x.dataId);
+    const out = backend2.makeOutput(size_, x.dtype);
+    const xStrides = util_exports.computeStrides(x.shape);
+    const outData = backend2.dataIdMap.get(out.dataId);
+    if (isContinous) {
+      const flatOffset = slice_util_exports.computeFlatOffset(begin_, xStrides);
+      if (x.dtype === "string") {
+        outData.stringBytes = xVals.slice(flatOffset, flatOffset + util_exports.sizeFromShape(size_));
+      } else {
+        const outVals2 = backend2.typedArrayFromHeap(out);
+        outVals2.set(xVals.subarray(flatOffset, flatOffset + util_exports.sizeFromShape(size_)));
+      }
+      return out;
+    }
+    if (x.dtype === "string") {
+      const res = sliceImpl2(xVals, begin_, size_, x.shape, x.dtype);
+      outData.stringBytes = res;
+      return out;
+    }
+    const outVals = backend2.typedArrayFromHeap(out);
+    const rank = x.shape.length;
+    if (rank === 2) {
+      slice2d2(xVals, xStrides[0], outVals, begin_, size_);
+    } else if (rank === 3) {
+      slice3d2(xVals, xStrides[0], xStrides[1], outVals, begin_, size_);
+    } else if (rank === 4) {
+      slice4d2(xVals, xStrides[0], xStrides[1], xStrides[2], outVals, begin_, size_);
+    } else {
+      const res = sliceImpl2(xVals, begin_, size_, x.shape, x.dtype);
+      outVals.set(res);
+    }
+    return out;
+  }
+  function slice2d2(xVals, xStride, outVals, begin, size) {
+    let outOffset = 0;
+    const beginI = begin[0];
+    const beginJ = begin[1];
+    const endI = beginI + size[0];
+    for (let i = beginI; i < endI; i++) {
+      const xOffset = i * xStride + beginJ;
+      outVals.set(xVals.subarray(xOffset, xOffset + size[1]), outOffset);
+      outOffset += size[1];
+    }
+  }
+  function slice3d2(xVals, xStride1, xStride2, outVals, begin, size) {
+    let outOffset = 0;
+    const beginI = begin[0];
+    const beginJ = begin[1];
+    const beginK = begin[2];
+    const endI = beginI + size[0];
+    const endJ = beginJ + size[1];
+    for (let i = beginI; i < endI; i++) {
+      for (let j = beginJ; j < endJ; j++) {
+        const xOffset = i * xStride1 + j * xStride2 + beginK;
+        outVals.set(xVals.subarray(xOffset, xOffset + size[2]), outOffset);
+        outOffset += size[2];
+      }
+    }
+  }
+  function slice4d2(xVals, xStride1, xStride2, xStride3, outVals, begin, size) {
+    let outOffset = 0;
+    const beginI = begin[0];
+    const beginJ = begin[1];
+    const beginK = begin[2];
+    const endI = beginI + size[0];
+    const endJ = beginJ + size[1];
+    const endK = beginK + size[2];
+    const beginL = begin[3];
+    for (let i = beginI; i < endI; i++) {
+      for (let j = beginJ; j < endJ; j++) {
+        for (let k = beginK; k < endK; k++) {
+          const xOffset = i * xStride1 + j * xStride2 + k * xStride3 + beginL;
+          outVals.set(xVals.subarray(xOffset, xOffset + size[3]), outOffset);
+          outOffset += size[3];
+        }
+      }
+    }
+  }
+  var sliceConfig3 = {
+    kernelName: Slice,
+    backendName: "wasm",
+    kernelFunc: slice4
+  };
+  function batchToSpaceND4(args) {
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { blockShape, crops } = attrs;
+    const prod5 = blockShape.reduce((a, b) => a * b);
+    const reshaped = backend_util_exports.getReshaped(x.shape, blockShape, prod5);
+    const permuted = backend_util_exports.getPermuted(reshaped.length, blockShape.length);
+    const reshapedPermuted = backend_util_exports.getReshapedPermuted(x.shape, blockShape, prod5);
+    const sliceBeginCoords = backend_util_exports.getSliceBeginCoords(crops, blockShape.length);
+    const sliceSize = backend_util_exports.getSliceSize(reshapedPermuted, crops, blockShape.length);
+    const xReshaped = reshape5({ inputs: { x }, backend: backend2, attrs: { shape: reshaped } });
+    const xTransposed = transpose4({ inputs: { x: xReshaped }, backend: backend2, attrs: { perm: permuted } });
+    const xTransposedReshaped = reshape5({ inputs: { x: xTransposed }, backend: backend2, attrs: { shape: reshapedPermuted } });
+    const result = slice4({
+      inputs: { x: xTransposedReshaped },
+      backend: backend2,
+      attrs: { begin: sliceBeginCoords, size: sliceSize }
+    });
+    backend2.disposeData(xReshaped.dataId);
+    backend2.disposeData(xTransposed.dataId);
+    backend2.disposeData(xReshaped.dataId);
+    return result;
+  }
+  var batchToSpaceNDConfig3 = {
+    kernelName: BatchToSpaceND,
+    backendName: "wasm",
+    kernelFunc: batchToSpaceND4
+  };
+  function cast5(args) {
+    const { inputs: { x }, attrs: { dtype }, backend: backend2 } = args;
+    const out = backend2.makeOutput(x.shape, dtype);
+    const inVals = backend2.typedArrayFromHeap(x);
+    const outVals = backend2.typedArrayFromHeap(out);
+    outVals.set(inVals);
+    return out;
+  }
+  var castConfig3 = {
+    kernelName: Cast,
+    backendName: "wasm",
+    kernelFunc: cast5
+  };
+  var ceilConfig3 = createUnaryKernelConfig(Ceil);
+  var wasmClip;
+  function setup8(backend2) {
+    wasmClip = backend2.wasm.cwrap(ClipByValue, null, [
+      "number",
+      "number",
+      "number",
+      "number"
+    ]);
+  }
+  function clip2(args) {
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { clipValueMin, clipValueMax } = attrs;
+    const xId = backend2.dataIdMap.get(x.dataId).id;
+    const out = backend2.makeOutput(x.shape, x.dtype);
+    const outId = backend2.dataIdMap.get(out.dataId).id;
+    wasmClip(xId, clipValueMin, clipValueMax, outId);
+    return out;
+  }
+  var clipByValueConfig2 = {
+    kernelName: ClipByValue,
+    backendName: "wasm",
+    setupFunc: setup8,
+    kernelFunc: clip2
+  };
   function concat4(args) {
     const { inputs, backend: backend2 } = args;
     const axis = util_exports.parseAxisParam(args.attrs.axis, inputs[0].shape)[0];
@@ -56999,6 +57842,7 @@ return a / b;`;
     kernelFunc: conv2DBackpropInput4
   };
   var cosConfig3 = createUnaryKernelConfig(Cos);
+  var coshConfig3 = createUnaryKernelConfig(Cosh);
   var InterpolationMethod;
   (function(InterpolationMethod2) {
     InterpolationMethod2[InterpolationMethod2["bilinear"] = 0] = "bilinear";
@@ -58286,7 +59130,7 @@ return a / b;`;
       "number"
     ]);
   }
-  function select3(args) {
+  function select4(args) {
     const { inputs, backend: backend2 } = args;
     const { condition, t, e } = inputs;
     const conditionId = backend2.dataIdMap.get(condition.dataId).id;
@@ -58303,7 +59147,7 @@ return a / b;`;
   var selectConfig3 = {
     kernelName: Select,
     backendName: "wasm",
-    kernelFunc: select3,
+    kernelFunc: select4,
     setupFunc: setup37
   };
   var wasmFunc7;
@@ -58328,93 +59172,6 @@ return a / b;`;
     kernelFunc: sigmoid4
   };
   var sinConfig3 = createUnaryKernelConfig(Sin);
-  function slice4(args) {
-    const { inputs: { x }, attrs: { begin, size }, backend: backend2 } = args;
-    const [begin_, size_] = slice_util_exports.parseSliceParams(x, begin, size);
-    const isContinous = slice_util_exports.isSliceContinous(x.shape, begin_, size_);
-    const xVals = backend2.readSync(x.dataId);
-    const out = backend2.makeOutput(size_, x.dtype);
-    const xStrides = util_exports.computeStrides(x.shape);
-    const outData = backend2.dataIdMap.get(out.dataId);
-    if (isContinous) {
-      const flatOffset = slice_util_exports.computeFlatOffset(begin_, xStrides);
-      if (x.dtype === "string") {
-        outData.stringBytes = xVals.slice(flatOffset, flatOffset + util_exports.sizeFromShape(size_));
-      } else {
-        const outVals2 = backend2.typedArrayFromHeap(out);
-        outVals2.set(xVals.subarray(flatOffset, flatOffset + util_exports.sizeFromShape(size_)));
-      }
-      return out;
-    }
-    if (x.dtype === "string") {
-      const res = sliceImpl2(xVals, begin_, size_, x.shape, x.dtype);
-      outData.stringBytes = res;
-      return out;
-    }
-    const outVals = backend2.typedArrayFromHeap(out);
-    const rank = x.shape.length;
-    if (rank === 2) {
-      slice2d2(xVals, xStrides[0], outVals, begin_, size_);
-    } else if (rank === 3) {
-      slice3d2(xVals, xStrides[0], xStrides[1], outVals, begin_, size_);
-    } else if (rank === 4) {
-      slice4d2(xVals, xStrides[0], xStrides[1], xStrides[2], outVals, begin_, size_);
-    } else {
-      const res = sliceImpl2(xVals, begin_, size_, x.shape, x.dtype);
-      outVals.set(res);
-    }
-    return out;
-  }
-  function slice2d2(xVals, xStride, outVals, begin, size) {
-    let outOffset = 0;
-    const beginI = begin[0];
-    const beginJ = begin[1];
-    const endI = beginI + size[0];
-    for (let i = beginI; i < endI; i++) {
-      const xOffset = i * xStride + beginJ;
-      outVals.set(xVals.subarray(xOffset, xOffset + size[1]), outOffset);
-      outOffset += size[1];
-    }
-  }
-  function slice3d2(xVals, xStride1, xStride2, outVals, begin, size) {
-    let outOffset = 0;
-    const beginI = begin[0];
-    const beginJ = begin[1];
-    const beginK = begin[2];
-    const endI = beginI + size[0];
-    const endJ = beginJ + size[1];
-    for (let i = beginI; i < endI; i++) {
-      for (let j = beginJ; j < endJ; j++) {
-        const xOffset = i * xStride1 + j * xStride2 + beginK;
-        outVals.set(xVals.subarray(xOffset, xOffset + size[2]), outOffset);
-        outOffset += size[2];
-      }
-    }
-  }
-  function slice4d2(xVals, xStride1, xStride2, xStride3, outVals, begin, size) {
-    let outOffset = 0;
-    const beginI = begin[0];
-    const beginJ = begin[1];
-    const beginK = begin[2];
-    const endI = beginI + size[0];
-    const endJ = beginJ + size[1];
-    const endK = beginK + size[2];
-    const beginL = begin[3];
-    for (let i = beginI; i < endI; i++) {
-      for (let j = beginJ; j < endJ; j++) {
-        for (let k = beginK; k < endK; k++) {
-          const xOffset = i * xStride1 + j * xStride2 + k * xStride3 + beginL;
-          outVals.set(xVals.subarray(xOffset, xOffset + size[3]), outOffset);
-          outOffset += size[3];
-        }
-      }
-    }
-  }
-  var sliceConfig3 = {
-    kernelName: Slice,
-    backendName: "wasm",
-    kernelFunc: slice4
-  };
   var wasmFunc8;
   function setup39(backend2) {
     wasmFunc8 = backend2.wasm.cwrap(Softmax, null, [
@@ -58442,6 +59199,43 @@ return a / b;`;
     backendName: "wasm",
     setupFunc: setup39,
     kernelFunc: softmax5
+  };
+  function spaceToBatchND4(args) {
+    const { inputs, backend: backend2, attrs } = args;
+    const { x } = inputs;
+    const { blockShape, paddings } = attrs;
+    const prod5 = util_exports.sizeFromShape(blockShape);
+    const completePaddings = [[0, 0]];
+    completePaddings.push(...paddings);
+    for (let i = 1 + blockShape.length; i < x.shape.length; ++i) {
+      completePaddings.push([0, 0]);
+    }
+    const paddedX = padV2Config3.kernelFunc({
+      inputs: { x },
+      backend: backend2,
+      attrs: { paddings: completePaddings, constantValue: 0 }
+    });
+    const reshapedPaddedShape = backend_util_exports.getReshaped(paddedX.shape, blockShape, prod5, false);
+    const permutedReshapedPaddedPermutation = backend_util_exports.getPermuted(reshapedPaddedShape.length, blockShape.length, false);
+    const flattenShape = backend_util_exports.getReshapedPermuted(paddedX.shape, blockShape, prod5, false);
+    const reshapeInputs = { x: paddedX };
+    const reshapeAttrs = { shape: reshapedPaddedShape };
+    const paddedXReshaped = reshape5({ inputs: reshapeInputs, backend: backend2, attrs: reshapeAttrs });
+    const transposeInputs = { x: paddedXReshaped };
+    const transposeAttrs = { perm: permutedReshapedPaddedPermutation };
+    const paddedXT = transpose4({ inputs: transposeInputs, backend: backend2, attrs: transposeAttrs });
+    const resultReshapeInputs = { x: paddedXT };
+    const resultReshapeAttrs = { shape: flattenShape };
+    const result = reshape5({ inputs: resultReshapeInputs, backend: backend2, attrs: resultReshapeAttrs });
+    backend2.disposeData(paddedX.dataId);
+    backend2.disposeData(paddedXReshaped.dataId);
+    backend2.disposeData(paddedXT.dataId);
+    return result;
+  }
+  var spaceToBatchNDConfig3 = {
+    kernelName: SpaceToBatchND,
+    backendName: "wasm",
+    kernelFunc: spaceToBatchND4
   };
   function splitV3(args) {
     const { inputs, attrs, backend: backend2 } = args;
@@ -58809,6 +59603,7 @@ return a / b;`;
     argMaxConfig3,
     avgPoolConfig3,
     batchMatMulConfig3,
+    batchToSpaceNDConfig3,
     castConfig3,
     ceilConfig3,
     clipByValueConfig2,
@@ -58816,6 +59611,7 @@ return a / b;`;
     conv2DConfig3,
     conv2DBackpropInputConfig3,
     cosConfig3,
+    coshConfig3,
     cropAndResizeConfig3,
     cumsumConfig3,
     depthToSpaceConfig3,
@@ -58877,6 +59673,7 @@ return a / b;`;
     sinConfig3,
     sliceConfig3,
     softmaxConfig3,
+    spaceToBatchNDConfig3,
     splitVConfig3,
     sqrtConfig3,
     squareConfig3,
@@ -59236,7 +60033,7 @@ return a / b;`;
     }
     customFetch = usePlatformFetch;
   }
-  var version9 = "3.7.0";
+  var version9 = "3.8.0";
   var WASM_PRIORITY = 2;
   registerBackend("wasm", async () => {
     const { wasm } = await init();
@@ -61327,7 +62124,7 @@ return a / b;`;
   }
 
   // package.json
-  var version10 = "1.3.1";
+  var version10 = "1.4.1";
 
   // src/xception/extractParams.ts
   function extractorsFactory2(extractWeights, paramMappings) {

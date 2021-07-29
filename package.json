@@ -1,6 +1,6 @@
 {
   "name": "@vladmandic/face-api",
-  "version": "1.3.1",
+  "version": "1.4.1",
   "description": "FaceAPI: AI-powered Face Detection & Rotation Tracking, Face Description & Recognition, Age & Gender & Emotion Prediction for Browser and NodeJS using TensorFlow/JS",
   "sideEffects": false,
   "main": "dist/face-api.node.js",
@@ -14,7 +14,7 @@
   "homepage": "https://vladmandic.github.io/face-api/demo/webcam.html",
   "license": "MIT",
   "engines": {
-    "node": ">=12.0.0"
+    "node": ">=14.0.0"
   },
   "repository": {
     "type": "git",
@@ -43,19 +43,19 @@
   ],
   "devDependencies": {
     "@canvas/image": "^1.0.1",
-    "@tensorflow/tfjs": "^3.7.0",
-    "@tensorflow/tfjs-backend-wasm": "^3.7.0",
-    "@tensorflow/tfjs-node": "^3.7.0",
-    "@tensorflow/tfjs-node-gpu": "^3.7.0",
-    "@types/node": "^15.12.3",
-    "@typescript-eslint/eslint-plugin": "^4.27.0",
-    "@typescript-eslint/parser": "^4.27.0",
+    "@tensorflow/tfjs": "^3.8.0",
+    "@tensorflow/tfjs-backend-wasm": "^3.8.0",
+    "@tensorflow/tfjs-node": "^3.8.0",
+    "@tensorflow/tfjs-node-gpu": "^3.8.0",
+    "@types/node": "^16.4.6",
+    "@typescript-eslint/eslint-plugin": "^4.28.5",
+    "@typescript-eslint/parser": "^4.28.5",
     "@vladmandic/pilogger": "^0.2.17",
     "canvas": "^2.8.0",
     "chokidar": "^3.5.2",
-    "dayjs": "^1.10.5",
-    "esbuild": "^0.12.9",
-    "eslint": "^7.28.0",
+    "dayjs": "^1.10.6",
+    "esbuild": "^0.12.16",
+    "eslint": "^7.31.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-json": "^3.0.0",
@@ -64,9 +64,9 @@
     "node-fetch": "^2.6.1",
     "rimraf": "^3.0.2",
     "seedrandom": "^3.0.5",
-    "simple-git": "^2.40.0",
+    "simple-git": "^2.41.2",
     "tslib": "^2.3.0",
-    "typedoc": "^0.21.0",
-    "typescript": "4.3.4"
+    "typedoc": "^0.21.4",
+    "typescript": "4.3.5"
   }
 }

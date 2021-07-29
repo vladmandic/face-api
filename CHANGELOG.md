@@ -9,6 +9,9 @@ Repository: **<git+https://github.com/vladmandic/face-api.git>**
 
 ## Changelog
 
+### **HEAD -> master** 2021/07/29 mandic00@live.com
+
+
 ### **1.4.1** 2021/07/29 mandic00@live.com
 
 

@@ -9,7 +9,6 @@
     ],
     "outDir": "types",
     "declaration": true,
-    "emitDeclarationOnly": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
@@ -35,7 +34,7 @@
     "readme": "none",
     "out": "typedoc",
     "entryPoints": "src/index.ts",
-    "logLevel": "Error",
-    "logger": "none"
+    "logLevel": "Verbose",
+    "logger": "none",
   }
 }

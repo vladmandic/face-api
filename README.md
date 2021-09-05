@@ -431,7 +431,7 @@ Build process uses script `build.js` that creates optimized build for each targe
 This is updated **face-api.js** with latest available TensorFlow/JS as the original is not compatible with **tfjs 2.0+**.  
 Forked from [face-api.js](https://github.com/justadudewhohacks/face-api.js) version **0.22.2** which was released on March 22nd, 2020  
 
-Currently based on **`TensorFlow/JS` 3.6.1**  
+Currently based on **`TensorFlow/JS` 3.9.0**  
 
 *Why?* I needed FaceAPI that does not cause version conflict with newer versions of TensorFlow  
 And since original FaceAPI was open-source, I've released this version as well  
@@ -457,7 +457,7 @@ Compared to [face-api.js](https://github.com/justadudewhohacks/face-api.js) vers
 - Compatible with `TensorFlow/JS 2.0+ & 3.0+`
 - Compatible with `WebGL`, `CPU` and `WASM` TFJS Browser backends
 - Compatible with both `tfjs-node` and `tfjs-node-gpu` TFJS NodeJS backends
-- Updated all type castings for TypeScript type checking to `TypeScript 4.3`
+- Updated all type castings for TypeScript type checking to `TypeScript 4.4`
 - Switched bundling from `UMD` to `ESM` + `CommonJS` with fallback to `IIFE`
   Resulting code is optimized per-platform instead of being universal
   Fully tree shakable when imported as an `ESM` module

@@ -6,8 +6,6 @@ const path = require('path');
 // eslint-disable-next-line import/no-extraneous-dependencies, node/no-unpublished-require
 const log = require('@vladmandic/pilogger');
 // eslint-disable-next-line import/no-extraneous-dependencies, node/no-unpublished-require
-const fetch = require('node-fetch').default;
-// eslint-disable-next-line import/no-extraneous-dependencies, node/no-unpublished-require
 const tf = require('@tensorflow/tfjs-node');
 const faceapi = require('../dist/face-api.node.js'); // this is equivalent to '@vladmandic/faceapi'
 
@@ -16,6 +14,7 @@ const imgPathRoot = './demo'; // modify to include your sample images
 const minConfidence = 0.15;
 const maxResults = 5;
 let optionsSSDMobileNet;
+let fetch; // dynamically imported later
 
 async function image(input) {
   // read input image file and create tensor to be used for processing
@@ -88,6 +87,8 @@ function print(face) {
 async function main() {
   log.header();
   log.info('FaceAPI single-process test');
+
+  fetch = (await import('node-fetch')).default;
 
   await faceapi.tf.setBackend('tensorflow');
   await faceapi.tf.enableProdMode();

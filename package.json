@@ -49,7 +49,7 @@
     "@types/node": "^16.7.13",
     "@typescript-eslint/eslint-plugin": "^4.31.0",
     "@typescript-eslint/parser": "^4.31.0",
-    "@vladmandic/build": "link:../build",
+    "@vladmandic/build": "^0.2.1",
     "@vladmandic/pilogger": "^0.2.18",
     "canvas": "^2.8.0",
     "chokidar": "^3.5.2",
@@ -69,5 +69,6 @@
     "typedoc": "^0.21.9",
     "typescript": "4.4.2"
   },
-  "dependencies": {}
+  "dependencies": {
+  }
 }

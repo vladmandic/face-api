@@ -33,7 +33,7 @@ export class DetectFaceLandmarksTaskBase<TReturn, TParentReturn> extends Composa
 }
 
 export class DetectAllFaceLandmarksTask<TSource extends WithFaceDetection<{}>> extends DetectFaceLandmarksTaskBase<WithFaceLandmarks<TSource>[], TSource[]> {
-  public async run(): Promise<WithFaceLandmarks<TSource>[]> {
+  public override async run(): Promise<WithFaceLandmarks<TSource>[]> {
     const parentResults = await this.parentTask;
     const detections = parentResults.map((res) => res.detection);
     const faces: Array<HTMLCanvasElement | tf.Tensor3D> = this.input instanceof tf.Tensor
@@ -60,7 +60,7 @@ export class DetectAllFaceLandmarksTask<TSource extends WithFaceDetection<{}>> e
 }
 
 export class DetectSingleFaceLandmarksTask<TSource extends WithFaceDetection<{}>> extends DetectFaceLandmarksTaskBase<WithFaceLandmarks<TSource> | undefined, TSource | undefined> {
-  public async run(): Promise<WithFaceLandmarks<TSource> | undefined> {
+  public override async run(): Promise<WithFaceLandmarks<TSource> | undefined> {
     const parentResult = await this.parentTask;
     if (!parentResult) {
       return undefined;

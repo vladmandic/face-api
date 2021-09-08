@@ -32,11 +32,11 @@ export class TinyFaceDetector extends TinyYolov2Base {
     return objectDetections.map((det) => new FaceDetection(det.score, det.relativeBox, { width: det.imageWidth, height: det.imageHeight }));
   }
 
-  protected getDefaultModelName(): string {
+  protected override getDefaultModelName(): string {
     return 'tiny_face_detector_model';
   }
 
-  protected extractParamsFromWeightMap(weightMap: tf.NamedTensorMap): { params: TinyYolov2NetParams, paramMappings: ParamMapping[] } {
+  protected override extractParamsFromWeightMap(weightMap: tf.NamedTensorMap): { params: TinyYolov2NetParams, paramMappings: ParamMapping[] } {
     return super.extractParamsFromWeightMap(weightMap);
   }
 }

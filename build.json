@@ -1,0 +1,151 @@
+{
+  "log": {
+    "enabled": false,
+    "file": "dev-server.log"
+  },
+  "clean": {
+    "enabled": true,
+    "locations": ["dist/*", "types/*", "typedoc/*"]
+  },
+  "lint": {
+    "enabled": true,
+    "locations": [ "src/**" ],
+    "rules": { }
+  },
+  "changelog": {
+    "enabled": true,
+    "log": "CHANGELOG.md"
+  },
+  "serve": {
+    "enabled": true,
+    "sslKey": "cert/https.key",
+    "sslCrt": "cert/https.crt",
+    "httpPort": 8000,
+    "httpsPort": 8001,
+    "documentRoot": ".",
+    "defaultFolder": "demo",
+    "defaultFile": "index.html"
+    },
+  "build": {
+    "enabled": true,
+    "global": {
+      "target": "es2018",
+      "sourcemap": true,
+      "banner": { "js": "/*\n  Face-API\n  homepage: <https://github.com/vladmandic/face-api>\n  author: <https://github.com/vladmandic>'\n*/\n" }
+    },
+    "production": {
+      "minify": false
+    },
+    "development": {
+      "minify": false
+    },
+    "targets": [
+      {
+          "platform": "node",
+          "format": "cjs",
+          "input": "src/tfjs/tf-node.ts",
+          "output": "dist/tfjs.esm.js",
+          "external": ["@tensorflow"]
+      },
+      {
+          "platform": "node",
+          "format": "cjs",
+          "input": "src/index.ts",
+          "output": "dist/face-api.node.js",
+          "external": ["@tensorflow"]
+      },
+      {
+          "platform": "node",
+          "format": "cjs",
+          "input": "src/tfjs/tf-node-gpu.ts",
+          "output": "dist/tfjs.esm.js",
+          "external": ["@tensorflow"]
+      },
+      {
+          "platform": "node",
+          "format": "cjs",
+          "input": "src/index.ts",
+          "output": "dist/face-api.node-gpu.js",
+          "external": ["@tensorflow"]
+      },
+      {
+          "platform": "node",
+          "format": "cjs",
+          "input": "src/tfjs/tf-node-cpu.ts",
+          "output": "dist/tfjs.esm.js",
+          "external": ["@tensorflow"]
+      },
+      {
+          "platform": "node",
+          "format": "cjs",
+          "input": "src/index.ts",
+          "output": "dist/face-api.node-cpu.js",
+          "external": ["@tensorflow"]
+      },
+      {
+          "platform": "browser",
+          "format": "esm",
+          "input": "src/tfjs/tf-browser.ts",
+          "output": "dist/tfjs.esm.js",
+          "external": ["fs","buffer","util","os","@tensorflow"]
+      },
+      {
+          "platform": "browser",
+          "format": "esm",
+          "input": "src/index.ts",
+          "output": "dist/face-api.esm-nobundle.js",
+          "external": ["fs","buffer","util","os","@tensorflow","tfjs.esm.js"]
+      },
+      {
+          "platform": "browser",
+          "format": "esm",
+          "input": "src/tfjs/tf-browser.ts",
+          "output": "dist/tfjs.esm.js",
+          "external": ["fs","buffer","util","os"]
+      },
+      {
+          "platform": "browser",
+          "format": "iife",
+          "globalName": "faceapi",
+          "input": "src/index.ts",
+          "output": "dist/face-api.js",
+          "external": ["fs","buffer","util","os"]
+      },
+      {
+          "platform": "browser",
+          "format": "esm",
+          "input": "src/index.ts",
+          "output": "dist/face-api.esm.js",
+          "external": ["fs","buffer","util","os"],
+          "typings": "types",
+          "typedoc": "typedoc"
+      }
+    ]
+  },
+  "watch": {
+    "enabled": true,
+    "locations": [ "src/**" ]
+  },
+  "typescript": {
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "alwaysStrict": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": false,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noPropertyAccessFromIndexSignature": false,
+    "noUncheckedIndexedAccess": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": true,
+    "preserveConstEnums": true,
+    "resolveJsonModule": true,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true
+  }
+}

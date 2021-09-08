@@ -1,9 +1,8 @@
-
-  /*
+/*
   Face-API
   homepage: <https://github.com/vladmandic/face-api>
   author: <https://github.com/vladmandic>'
-  */
+*/
 
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -1205,6 +1204,7 @@ var NetInput = class {
     this._canvases = [];
     this._treatAsBatchInput = false;
     this._inputDimensions = [];
+    this._inputSize = 0;
     if (!Array.isArray(inputs)) {
       throw new Error(`NetInput.constructor - expected inputs to be an Array of TResolvedNetInput or to be instanceof tf.Tensor4D, instead have ${inputs}`);
     }
@@ -1947,6 +1947,13 @@ var FaceProcessor = class extends NeuralNetwork {
 var FACE_EXPRESSION_LABELS = ["neutral", "happy", "sad", "angry", "fearful", "disgusted", "surprised"];
 var FaceExpressions = class {
   constructor(probabilities) {
+    this.neutral = 0;
+    this.happy = 0;
+    this.sad = 0;
+    this.angry = 0;
+    this.fearful = 0;
+    this.disgusted = 0;
+    this.surprised = 0;
     if (probabilities.length !== 7) {
       throw new Error(`FaceExpressions.constructor - expected probabilities.length to be 7, have: ${probabilities.length}`);
     }
@@ -2121,7 +2128,7 @@ function drawFaceLandmarks(canvasArg, faceLandmarks) {
 }
 
 // package.json
-var version = "1.4.2";
+var version = "1.5.1";
 
 // src/xception/extractParams.ts
 function extractorsFactory2(extractWeights, paramMappings) {

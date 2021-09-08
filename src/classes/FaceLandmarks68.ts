@@ -31,7 +31,7 @@ export class FaceLandmarks68 extends FaceLandmarks {
     return this.positions.slice(48, 68);
   }
 
-  protected getRefPointsForAlignment(): Point[] {
+  protected override getRefPointsForAlignment(): Point[] {
     return [
       this.getLeftEye(),
       this.getRightEye(),

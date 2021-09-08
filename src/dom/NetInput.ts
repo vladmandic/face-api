@@ -19,7 +19,7 @@ export class NetInput {
 
   private _inputDimensions: number[][] = []
 
-  private _inputSize: number
+  private _inputSize = 0
 
   constructor(inputs: Array<TResolvedNetInput>, treatAsBatchInput = false) {
     if (!Array.isArray(inputs)) {

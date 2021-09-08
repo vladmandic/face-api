@@ -24,7 +24,7 @@ export abstract class FaceProcessor<
     return this._faceFeatureExtractor;
   }
 
-  protected abstract getDefaultModelName(): string
+  protected abstract override getDefaultModelName(): string
 
   protected abstract getClassifierChannelsIn(): number
 
@@ -45,7 +45,7 @@ export abstract class FaceProcessor<
     });
   }
 
-  public dispose(throwOnRedispose = true) {
+  public override dispose(throwOnRedispose = true) {
     this.faceFeatureExtractor.dispose(throwOnRedispose);
     super.dispose(throwOnRedispose);
   }

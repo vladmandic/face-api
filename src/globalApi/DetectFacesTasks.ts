@@ -20,7 +20,7 @@ export class DetectFacesTaskBase<TReturn> extends ComposableTask<TReturn> {
 }
 
 export class DetectAllFacesTask extends DetectFacesTaskBase<FaceDetection[]> {
-  public async run(): Promise<FaceDetection[]> {
+  public override async run(): Promise<FaceDetection[]> {
     const { input, options } = this;
     let result;
     if (options instanceof TinyFaceDetectorOptions) result = nets.tinyFaceDetector.locateFaces(input, options);
@@ -62,7 +62,7 @@ export class DetectAllFacesTask extends DetectFacesTaskBase<FaceDetection[]> {
 }
 
 export class DetectSingleFaceTask extends DetectFacesTaskBase<FaceDetection | undefined> {
-  public async run(): Promise<FaceDetection | undefined> {
+  public override async run(): Promise<FaceDetection | undefined> {
     const faceDetections = await new DetectAllFacesTask(this.input, this.options);
     let faceDetectionWithHighestScore = faceDetections[0];
     faceDetections.forEach((faceDetection) => {

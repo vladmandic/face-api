@@ -18,7 +18,11 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "sourceMap": false,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "allowJs": false,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": true
   },
   "formatCodeOptions": { "indentSize": 2, "tabSize": 2 },
   "include": ["src"],

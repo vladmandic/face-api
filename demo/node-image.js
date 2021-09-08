@@ -41,7 +41,7 @@ async function main() {
     .withFaceExpressions()
     .withFaceDescriptors()
     .withAgeAndGender();
-  log.data('results:', result);
+  log.data('results:', result.length);
 }
 
 main();

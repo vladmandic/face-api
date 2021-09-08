@@ -21,7 +21,7 @@ export class ComputeFaceDescriptorsTaskBase<TReturn, TParentReturn> extends Comp
 }
 
 export class ComputeAllFaceDescriptorsTask<TSource extends WithFaceLandmarks<WithFaceDetection<{}>>> extends ComputeFaceDescriptorsTaskBase<WithFaceDescriptor<TSource>[], TSource[]> {
-  public async run(): Promise<WithFaceDescriptor<TSource>[]> {
+  public override async run(): Promise<WithFaceDescriptor<TSource>[]> {
     const parentResults = await this.parentTask;
     const descriptors = await extractAllFacesAndComputeResults<TSource, Float32Array[]>(
       parentResults,
@@ -43,7 +43,7 @@ export class ComputeAllFaceDescriptorsTask<TSource extends WithFaceLandmarks<Wit
 }
 
 export class ComputeSingleFaceDescriptorTask<TSource extends WithFaceLandmarks<WithFaceDetection<{}>>> extends ComputeFaceDescriptorsTaskBase<WithFaceDescriptor<TSource> | undefined, TSource | undefined> {
-  public async run(): Promise<WithFaceDescriptor<TSource> | undefined> {
+  public override async run(): Promise<WithFaceDescriptor<TSource> | undefined> {
     const parentResult = await this.parentTask;
     if (!parentResult) {
       return undefined;

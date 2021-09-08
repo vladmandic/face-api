@@ -1,9 +1,8 @@
-
-  /*
+/*
   Face-API
   homepage: <https://github.com/vladmandic/face-api>
   author: <https://github.com/vladmandic>'
-  */
+*/
 
 var __create = Object.create;
 var __defProp = Object.defineProperty;
@@ -862,9 +861,9 @@ var require_long = __commonJS({
   }
 });
 
-// (disabled):node_modules/.pnpm/node-fetch@2.6.1/node_modules/node-fetch/browser.js
+// (disabled):node_modules/.pnpm/node-fetch@2.6.2/node_modules/node-fetch/browser.js
 var require_browser = __commonJS({
-  "(disabled):node_modules/.pnpm/node-fetch@2.6.1/node_modules/node-fetch/browser.js"() {
+  "(disabled):node_modules/.pnpm/node-fetch@2.6.2/node_modules/node-fetch/browser.js"() {
   }
 });
 

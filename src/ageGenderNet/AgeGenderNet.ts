@@ -85,7 +85,7 @@ export class AgeGenderNet extends NeuralNetwork<NetParams> {
     return 'age_gender_model';
   }
 
-  public dispose(throwOnRedispose = true) {
+  public override dispose(throwOnRedispose = true) {
     this.faceFeatureExtractor.dispose(throwOnRedispose);
     super.dispose(throwOnRedispose);
   }

@@ -327,38 +327,45 @@ By default it starts HTTP server on port 8000 and HTTPS server on port 8001 and 
 - <https://localhost:8001/demo/index.html>
 - <https://localhost:8001/demo/webcam.html>
 
-```json
-2021-07-29 09:03:02 INFO:  @vladmandic/face-api version 1.3.1
-2021-07-29 09:03:02 INFO:  User: vlado Platform: linux Arch: x64 Node: v16.5.0
-2021-07-29 09:03:02 INFO:  Build: file startup all target: es2018
-2021-07-29 09:03:02 STATE: HTTP server listening: 8000
-2021-07-29 09:03:02 STATE: HTTP2 server listening: 8001
-2021-07-29 09:03:02 STATE: Build for: node type: tfjs: { imports: 1, importBytes: 143, outputBytes: 1327, outputFiles: 'dist/tfjs.esm.js' }
-2021-07-29 09:03:02 STATE: Build for: node type: node: { imports: 162, importBytes: 234303, outputBytes: 175090, outputFiles: 'dist/face-api.node.js' }
-2021-07-29 09:03:02 STATE: Monitoring: [ 'package.json', 'demo', 'src', [length]: 3 ]
-2021-07-29 09:03:02 STATE: Build for: nodeGPU type: tfjs: { imports: 1, importBytes: 147, outputBytes: 1335, outputFiles: 'dist/tfjs.esm.js' }
-2021-07-29 09:03:02 STATE: Build for: nodeGPU type: node: { imports: 162, importBytes: 234311, outputBytes: 175098, outputFiles: 'dist/face-api.node-gpu.js' }
-2021-07-29 09:03:02 STATE: Build for: nodeCPU type: tfjs: { imports: 1, importBytes: 138, outputBytes: 1326, outputFiles: 'dist/tfjs.esm.js' }
-2021-07-29 09:03:02 STATE: Build for: nodeCPU type: node: { imports: 162, importBytes: 234302, outputBytes: 175089, outputFiles: 'dist/face-api.node-cpu.js' }
-2021-07-29 09:03:02 STATE: Build for: browserNoBundle type: tfjs: { imports: 1, importBytes: 276, outputBytes: 277, outputFiles: 'dist/tfjs.esm.js' }
-2021-07-29 09:03:02 STATE: Build for: browserNoBundle type: esm: { imports: 162, importBytes: 233253, outputBytes: 168850, outputFiles: 'dist/face-api.esm-nobundle.js' }
-2021-07-29 09:03:03 STATE: Build for: browserBundle type: tfjs: { modules: 1352, moduleBytes: 4369745, imports: 7, importBytes: 276, outputBytes: 2362345, outputFiles: 'dist/tfjs.esm.js' }
-2021-07-29 09:03:03 STATE: Build for: browserBundle type: iife: { imports: 162, importBytes: 2595321, outputBytes: 2482864, outputFiles: 'dist/face-api.js' }
-2021-07-29 09:03:04 STATE: Build for: browserBundle type: esm: { imports: 162, importBytes: 2595321, outputBytes: 2360761, outputFiles: 'dist/face-api.esm.js' }
-2021-07-29 09:03:23 DATA:  GET/2.0 200 text/html; charset=utf-8 1269 /demo/webcam.html ::ffff:192.168.0.200
-2021-07-29 09:03:23 DATA:  GET/2.0 200 text/javascript; charset=utf-8 7971 /demo/webcam.js ::ffff:192.168.0.200
-2021-07-29 09:03:23 DATA:  GET/2.0 200 text/javascript; charset=utf-8 2360761 /dist/face-api.esm.js ::ffff:192.168.0.200
-2021-07-29 09:03:23 DATA:  GET/2.0 200 application/json; charset=utf-8 28233 /model/ssd_mobilenetv1_model-weights_manifest.json ::ffff:192.168.0.200
-2021-07-29 09:03:23 DATA:  GET/2.0 200 image/x-icon 5063 /favicon.ico ::ffff:192.168.0.200
-2021-07-29 09:03:23 DATA:  GET/2.0 200 application/octet-stream 5616957 /model/ssd_mobilenetv1_model.bin ::ffff:192.168.0.200
-2021-07-29 09:03:24 DATA:  GET/2.0 200 application/json; charset=utf-8 8392 /model/age_gender_model-weights_manifest.json ::ffff:192.168.0.200
-2021-07-29 09:03:24 DATA:  GET/2.0 200 application/octet-stream 429708 /model/age_gender_model.bin ::ffff:192.168.0.200
-2021-07-29 09:03:24 DATA:  GET/2.0 200 application/json; charset=utf-8 8485 /model/face_landmark_68_model-weights_manifest.json ::ffff:192.168.0.200
-2021-07-29 09:03:24 DATA:  GET/2.0 200 application/octet-stream 356840 /model/face_landmark_68_model.bin ::ffff:192.168.0.200
-2021-07-29 09:03:24 DATA:  GET/2.0 200 application/json; charset=utf-8 19615 /model/face_recognition_model-weights_manifest.json ::ffff:192.168.0.200
-2021-07-29 09:03:24 DATA:  GET/2.0 200 application/octet-stream 6444032 /model/face_recognition_model.bin ::ffff:192.168.0.200
-2021-07-29 09:03:25 DATA:  GET/2.0 200 application/json; charset=utf-8 6980 /model/face_expression_model-weights_manifest.json ::ffff:192.168.0.200
-2021-07-29 09:03:25 DATA:  GET/2.0 200 application/octet-stream 329468 /model/face_expression_model.bin ::ffff:192.168.0.200
+```js
+2021-09-08 13:41:06 INFO:  @vladmandic/face-api version 1.4.2
+2021-09-08 13:41:06 INFO:  User: vlado Platform: linux Arch: x64 Node: v16.8.0
+2021-09-08 13:41:06 INFO:  Application: { name: '@vladmandic/face-api', version: '1.4.2' }
+2021-09-08 13:41:06 INFO:  Environment: { profile: 'development', config: 'build.json', tsconfig: true, eslintrc: true, git: true }
+2021-09-08 13:41:06 INFO:  Toolchain: { esbuild: '0.12.25', typescript: '4.4.2', typedoc: '0.21.9', eslint: '7.32.0' }
+2021-09-08 13:41:06 STATE: WebServer: { ssl: false, port: 8000, root: '.' }
+2021-09-08 13:41:06 STATE: WebServer: { ssl: true, port: 8001, root: '.', sslKey: '/home/vlado/dev/build/cert/https.key', sslCrt: '/home/vlado/dev/build/cert/https.crt' }
+2021-09-08 13:41:06 STATE: Watch: { locations: [ 'test/src/**', 'src/**' ] }
+2021-09-08 13:41:06 STATE: Build: { type: 'development', format: 'cjs', platform: 'node', input: 'src/tfjs/tf-node.ts', output: 'dist/tfjs.esm.js', files: 1, inputBytes: 143, outputBytes: 1322 }
+2021-09-08 13:41:06 STATE: Build: { type: 'development', format: 'cjs', platform: 'node', input: 'src/index.ts', output: 'dist/face-api.node.js', files: 162, inputBytes: 234423, outputBytes: 175260 }
+2021-09-08 13:41:06 STATE: Build: { type: 'development', format: 'cjs', platform: 'node', input: 'src/tfjs/tf-node-gpu.ts', output: 'dist/tfjs.esm.js', files: 1, inputBytes: 147, outputBytes: 1330 }
+2021-09-08 13:41:06 STATE: Build: { type: 'development', format: 'cjs', platform: 'node', input: 'src/index.ts', output: 'dist/face-api.node-gpu.js', files: 162, inputBytes: 234431, outputBytes: 175268 }
+2021-09-08 13:41:06 STATE: Build: { type: 'development', format: 'cjs', platform: 'node', input: 'src/tfjs/tf-node-cpu.ts', output: 'dist/tfjs.esm.js', files: 1, inputBytes: 138, outputBytes: 1321 }
+2021-09-08 13:41:06 STATE: Build: { type: 'development', format: 'cjs', platform: 'node', input: 'src/index.ts', output: 'dist/face-api.node-cpu.js', files: 162, inputBytes: 234422, outputBytes: 175259 }
+2021-09-08 13:41:06 STATE: Build: { type: 'development', format: 'esm', platform: 'browser', input: 'src/tfjs/tf-browser.ts', output: 'dist/tfjs.esm.js', files: 1, inputBytes: 276, outputBytes: 272 }
+2021-09-08 13:41:06 STATE: Build: { type: 'development', format: 'esm', platform: 'browser', input: 'src/index.ts', output: 'dist/face-api.esm-nobundle.js', files: 162, inputBytes: 233373, outputBytes: 169020 }
+2021-09-08 13:41:07 STATE: Build: { type: 'development', format: 'esm', platform: 'browser', input: 'src/tfjs/tf-browser.ts', output: 'dist/tfjs.esm.js', files: 7, inputBytes: 276, outputBytes: 2371544 }
+2021-09-08 13:41:07 STATE: Build: { type: 'development', format: 'iife', platform: 'browser', input: 'src/index.ts', output: 'dist/face-api.js', files: 162, inputBytes: 2604645, outputBytes: 2486481 }
+2021-09-08 13:41:07 STATE: Build: { type: 'development', format: 'esm', platform: 'browser', input: 'src/index.ts', output: 'dist/face-api.esm.js', files: 162, inputBytes: 2604645, outputBytes: 2369658 }
+.
+.
+2021-09-08 13:41:14 DATA:  GET/2.0 200 text/html; charset=utf-8 1047 /demo/index.html ::1
+2021-09-08 13:41:14 DATA:  GET/2.0 200 text/javascript; charset=utf-8 6898 /demo/index.js ::1
+2021-09-08 13:41:14 DATA:  GET/2.0 200 text/javascript; charset=utf-8 2369658 /dist/face-api.esm.js ::1
+2021-09-08 13:41:14 DATA:  GET/2.0 200 application/octet-stream 6341199 /dist/face-api.esm.js.map ::1
+2021-09-08 13:41:14 DATA:  GET/2.0 200 application/json; charset=utf-8 3219 /model/tiny_face_detector_model-weights_manifest.json ::1
+2021-09-08 13:41:15 DATA:  GET/2.0 200 application/octet-stream 193321 /model/tiny_face_detector_model.bin ::1
+2021-09-08 13:41:15 DATA:  GET/2.0 200 application/json; charset=utf-8 28233 /model/ssd_mobilenetv1_model-weights_manifest.json ::1
+2021-09-08 13:41:15 DATA:  GET/2.0 200 application/octet-stream 5616957 /model/ssd_mobilenetv1_model.bin ::1
+2021-09-08 13:41:15 DATA:  GET/2.0 200 application/json; charset=utf-8 8392 /model/age_gender_model-weights_manifest.json ::1
+2021-09-08 13:41:15 DATA:  GET/2.0 200 application/octet-stream 429708 /model/age_gender_model.bin ::1
+2021-09-08 13:41:15 DATA:  GET/2.0 200 application/json; charset=utf-8 8485 /model/face_landmark_68_model-weights_manifest.json ::1
+2021-09-08 13:41:15 DATA:  GET/2.0 200 application/octet-stream 356840 /model/face_landmark_68_model.bin ::1
+2021-09-08 13:41:15 DATA:  GET/2.0 200 application/json; charset=utf-8 19615 /model/face_recognition_model-weights_manifest.json ::1
+2021-09-08 13:41:15 DATA:  GET/2.0 200 application/octet-stream 6444032 /model/face_recognition_model.bin ::1
+2021-09-08 13:41:16 DATA:  GET/2.0 200 application/json; charset=utf-8 6980 /model/face_expression_model-weights_manifest.json ::1
+2021-09-08 13:41:16 DATA:  GET/2.0 200 application/octet-stream 329468 /model/face_expression_model.bin ::1
+2021-09-08 13:41:16 DATA:  GET/2.0 200 image/jpg 144516 /demo/sample1.jpg ::1
 ```
 
 <br><hr><br>
@@ -386,34 +393,36 @@ npm install
 npm run build
 ```
 
-Build process uses script `build.js` that creates optimized build for each target:
+Build process uses `@vladmandic/build` module that creates optimized build for each target:
 
 ```text
 > @vladmandic/face-api@1.0.2 build
 > rimraf dist/* types/* typedoc/* && node server/build.js
 ```
 
-```json
-2021-08-31 12:19:35 INFO:  @vladmandic/face-api version 1.4.2
-2021-08-31 12:19:35 INFO:  User: vlado Platform: linux Arch: x64 Node: v16.5.0
-2021-08-31 12:19:35 INFO:  Toolchain: tfjs: 3.9.0 esbuild 0.12.24; typescript 4.4.2; typedoc: 0.21.9 eslint: 7.32.0
-2021-08-31 12:19:35 INFO:  Build: file startup all target: es2018
-2021-08-31 12:19:35 STATE: Build for: node type: tfjs: { imports: 1, importBytes: 143, outputBytes: 1327, outputFiles: 'dist/tfjs.esm.js' }
-2021-08-31 12:19:35 STATE: Build for: node type: node: { imports: 162, importBytes: 234303, outputBytes: 175090, outputFiles: 'dist/face-api.node.js' }
-2021-08-31 12:19:35 STATE: Build for: nodeGPU type: tfjs: { imports: 1, importBytes: 147, outputBytes: 1335, outputFiles: 'dist/tfjs.esm.js' }
-2021-08-31 12:19:35 STATE: Build for: nodeGPU type: node: { imports: 162, importBytes: 234311, outputBytes: 175098, outputFiles: 'dist/face-api.node-gpu.js' }
-2021-08-31 12:19:35 STATE: Build for: nodeCPU type: tfjs: { imports: 1, importBytes: 138, outputBytes: 1326, outputFiles: 'dist/tfjs.esm.js' }
-2021-08-31 12:19:35 STATE: Build for: nodeCPU type: node: { imports: 162, importBytes: 234302, outputBytes: 175089, outputFiles: 'dist/face-api.node-cpu.js' }
-2021-08-31 12:19:35 STATE: Build for: browserNoBundle type: tfjs: { imports: 1, importBytes: 276, outputBytes: 277, outputFiles: 'dist/tfjs.esm.js' }
-2021-08-31 12:19:35 STATE: Build for: browserNoBundle type: esm: { imports: 162, importBytes: 233253, outputBytes: 168850, outputFiles: 'dist/face-api.esm-nobundle.js' }
-2021-08-31 12:19:36 STATE: Build for: browserBundle type: tfjs: { modules: 1358, moduleBytes: 8966590, imports: 7, importBytes: 276, outputBytes: 2371549, outputFiles: 'dist/tfjs.esm.js' }
-2021-08-31 12:19:36 STATE: Build for: browserBundle type: iife: { imports: 162, importBytes: 2604525, outputBytes: 2491919, outputFiles: 'dist/face-api.js' }
-2021-08-31 12:19:37 STATE: Build for: browserBundle type: esm: { imports: 162, importBytes: 2604525, outputBytes: 2369488, outputFiles: 'dist/face-api.esm.js' }
-2021-08-31 12:19:37 INFO:  Running Linter: [ 'server/', 'demo/', 'src/', 'test/', [length]: 4 ]
-2021-08-31 12:19:58 INFO:  Linter complete: files: 183 errors: 0 warnings: 0
-2021-08-31 12:19:58 INFO:  Compile typings: [ 'src/index.ts', [length]: 1 ]
-2021-08-31 12:20:02 INFO:  Update Change log: [ '/home/vlado/dev/face-api/CHANGELOG.md', [length]: 1 ]
-2021-08-31 12:20:02 INFO:  Generate TypeDocs: [ 'src/index.ts', [length]: 1 ]
+```js
+2021-09-08 13:40:19 INFO:  @vladmandic/face-api version 1.4.2
+2021-09-08 13:40:19 INFO:  User: vlado Platform: linux Arch: x64 Node: v16.8.0
+2021-09-08 13:40:19 INFO:  Application: { name: '@vladmandic/face-api', version: '1.4.2' }
+2021-09-08 13:40:19 INFO:  Environment: { profile: 'production', config: 'build.json', tsconfig: true, eslintrc: true, git: true }
+2021-09-08 13:40:19 INFO:  Toolchain: { esbuild: '0.12.25', typescript: '4.4.2', typedoc: '0.21.9', eslint: '7.32.0' }
+2021-09-08 13:40:19 STATE: Clean: { locations: [ 'dist/*', 'types/*', 'typedoc/*', [length]: 3 ] }
+2021-09-08 13:40:19 STATE: Build: { type: 'production', format: 'cjs', platform: 'node', input: 'src/tfjs/tf-node.ts', output: 'dist/tfjs.esm.js', files: 1, inputBytes: 143, outputBytes: 1322 }
+2021-09-08 13:40:19 STATE: Build: { type: 'production', format: 'cjs', platform: 'node', input: 'src/index.ts', output: 'dist/face-api.node.js', files: 162, inputBytes: 234423, outputBytes: 175260 }
+2021-09-08 13:40:19 STATE: Build: { type: 'production', format: 'cjs', platform: 'node', input: 'src/tfjs/tf-node-gpu.ts', output: 'dist/tfjs.esm.js', files: 1, inputBytes: 147, outputBytes: 1330 }
+2021-09-08 13:40:19 STATE: Build: { type: 'production', format: 'cjs', platform: 'node', input: 'src/index.ts', output: 'dist/face-api.node-gpu.js', files: 162, inputBytes: 234431, outputBytes: 175268 }
+2021-09-08 13:40:19 STATE: Build: { type: 'production', format: 'cjs', platform: 'node', input: 'src/tfjs/tf-node-cpu.ts', output: 'dist/tfjs.esm.js', files: 1, inputBytes: 138, outputBytes: 1321 }
+2021-09-08 13:40:19 STATE: Build: { type: 'production', format: 'cjs', platform: 'node', input: 'src/index.ts', output: 'dist/face-api.node-cpu.js', files: 162, inputBytes: 234422, outputBytes: 175259 }
+2021-09-08 13:40:19 STATE: Build: { type: 'production', format: 'esm', platform: 'browser', input: 'src/tfjs/tf-browser.ts', output: 'dist/tfjs.esm.js', files: 1, inputBytes: 276, outputBytes: 272 }
+2021-09-08 13:40:19 STATE: Build: { type: 'production', format: 'esm', platform: 'browser', input: 'src/index.ts', output: 'dist/face-api.esm-nobundle.js', files: 162, inputBytes: 233373, outputBytes: 169020 }
+2021-09-08 13:40:19 STATE: Build: { type: 'production', format: 'esm', platform: 'browser', input: 'src/tfjs/tf-browser.ts', output: 'dist/tfjs.esm.js', files: 7, inputBytes: 276, outputBytes: 2371544 }
+2021-09-08 13:40:20 STATE: Build: { type: 'production', format: 'iife', platform: 'browser', input: 'src/index.ts', output: 'dist/face-api.js', files: 162, inputBytes: 2604645, outputBytes: 2486481 }
+2021-09-08 13:40:20 STATE: Build: { type: 'production', format: 'esm', platform: 'browser', input: 'src/index.ts', output: 'dist/face-api.esm.js', files: 162, inputBytes: 2604645, outputBytes: 2369658 }
+2021-09-08 13:40:22 STATE: Typings: { input: 'src/index.ts', output: 'types', files: 93 }
+2021-09-08 13:40:27 STATE: TypeDoc: { input: 'src/index.ts', output: 'typedoc', objects: 154 }
+2021-09-08 13:40:37 STATE: Lint: { locations: [ 'src/**', [length]: 1 ], files: 171, errors: 0, warnings: 0 }
+2021-09-08 13:40:37 STATE: ChangeLog: { repository: 'https://github.com/vladmandic/face-api', branch: 'master', output: 'CHANGELOG.md' }
+2021-09-08 13:40:37 INFO:  Profile production done
 ```
 
 <br><hr><br>

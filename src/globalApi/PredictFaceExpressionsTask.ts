@@ -26,7 +26,7 @@ export class PredictFaceExpressionsTaskBase<TReturn, TParentReturn> extends Comp
 }
 
 export class PredictAllFaceExpressionsTask<TSource extends WithFaceDetection<{}>> extends PredictFaceExpressionsTaskBase<WithFaceExpressions<TSource>[], TSource[]> {
-  public async run(): Promise<WithFaceExpressions<TSource>[]> {
+  public override async run(): Promise<WithFaceExpressions<TSource>[]> {
     const parentResults = await this.parentTask;
 
     const faceExpressionsByFace = await extractAllFacesAndComputeResults<TSource, FaceExpressions[]>(
@@ -49,7 +49,7 @@ export class PredictAllFaceExpressionsTask<TSource extends WithFaceDetection<{}>
 }
 
 export class PredictSingleFaceExpressionsTask<TSource extends WithFaceDetection<{}>> extends PredictFaceExpressionsTaskBase<WithFaceExpressions<TSource> | undefined, TSource | undefined> {
-  public async run(): Promise<WithFaceExpressions<TSource> | undefined> {
+  public override async run(): Promise<WithFaceExpressions<TSource> | undefined> {
     const parentResult = await this.parentTask;
     if (!parentResult) {
       return undefined;
@@ -71,7 +71,7 @@ export class PredictSingleFaceExpressionsTask<TSource extends WithFaceDetection<
 }
 
 export class PredictAllFaceExpressionsWithFaceAlignmentTask<TSource extends WithFaceLandmarks<WithFaceDetection<{}>>> extends PredictAllFaceExpressionsTask<TSource> {
-  withAgeAndGender() {
+  override withAgeAndGender() {
     return new PredictAllAgeAndGenderWithFaceAlignmentTask(this, this.input);
   }
 
@@ -81,7 +81,7 @@ export class PredictAllFaceExpressionsWithFaceAlignmentTask<TSource extends With
 }
 
 export class PredictSingleFaceExpressionsWithFaceAlignmentTask<TSource extends WithFaceLandmarks<WithFaceDetection<{}>>> extends PredictSingleFaceExpressionsTask<TSource> {
-  withAgeAndGender() {
+  override withAgeAndGender() {
     return new PredictSingleAgeAndGenderWithFaceAlignmentTask(this, this.input);
   }
 

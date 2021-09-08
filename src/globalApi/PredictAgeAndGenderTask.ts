@@ -27,7 +27,7 @@ export class PredictAgeAndGenderTaskBase<TReturn, TParentReturn> extends Composa
 }
 
 export class PredictAllAgeAndGenderTask<TSource extends WithFaceDetection<{}>> extends PredictAgeAndGenderTaskBase<WithAge<WithGender<TSource>>[], TSource[]> {
-  public async run(): Promise<WithAge<WithGender<TSource>>[]> {
+  public override async run(): Promise<WithAge<WithGender<TSource>>[]> {
     const parentResults = await this.parentTask;
     const ageAndGenderByFace = await extractAllFacesAndComputeResults<TSource, AgeAndGenderPrediction[]>(
       parentResults,
@@ -47,7 +47,7 @@ export class PredictAllAgeAndGenderTask<TSource extends WithFaceDetection<{}>> e
 }
 
 export class PredictSingleAgeAndGenderTask<TSource extends WithFaceDetection<{}>> extends PredictAgeAndGenderTaskBase<WithAge<WithGender<TSource>> | undefined, TSource | undefined> {
-  public async run(): Promise<WithAge<WithGender<TSource>> | undefined> {
+  public override async run(): Promise<WithAge<WithGender<TSource>> | undefined> {
     const parentResult = await this.parentTask;
     if (!parentResult) return undefined;
     const { age, gender, genderProbability } = await extractSingleFaceAndComputeResult<TSource, AgeAndGenderPrediction>(
@@ -65,7 +65,7 @@ export class PredictSingleAgeAndGenderTask<TSource extends WithFaceDetection<{}>
 }
 
 export class PredictAllAgeAndGenderWithFaceAlignmentTask<TSource extends WithFaceLandmarks<WithFaceDetection<{}>>> extends PredictAllAgeAndGenderTask<TSource> {
-  withFaceExpressions() {
+  override withFaceExpressions() {
     return new PredictAllFaceExpressionsWithFaceAlignmentTask(this, this.input);
   }
 
@@ -75,7 +75,7 @@ export class PredictAllAgeAndGenderWithFaceAlignmentTask<TSource extends WithFac
 }
 
 export class PredictSingleAgeAndGenderWithFaceAlignmentTask<TSource extends WithFaceLandmarks<WithFaceDetection<{}>>> extends PredictSingleAgeAndGenderTask<TSource> {
-  withFaceExpressions() {
+  override withFaceExpressions() {
     return new PredictSingleFaceExpressionsWithFaceAlignmentTask(this, this.input);
   }
 

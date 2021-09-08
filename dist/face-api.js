@@ -1,11 +1,10 @@
-
-  /*
+/*
   Face-API
   homepage: <https://github.com/vladmandic/face-api>
   author: <https://github.com/vladmandic>'
-  */
+*/
 
-var faceapi = (() => {
+(() => {
   var __defProp = Object.defineProperty;
   var __markAsModule = (target) => __defProp(target, "__esModule", { value: true });
   var __require = (x) => {
@@ -18,132 +17,6 @@ var faceapi = (() => {
     for (var name in all5)
       __defProp(target, name, { get: all5[name], enumerable: true });
   };
-
-  // src/index.ts
-  var src_exports = {};
-  __export(src_exports, {
-    AgeGenderNet: () => AgeGenderNet,
-    BoundingBox: () => BoundingBox,
-    Box: () => Box,
-    ComposableTask: () => ComposableTask,
-    ComputeAllFaceDescriptorsTask: () => ComputeAllFaceDescriptorsTask,
-    ComputeFaceDescriptorsTaskBase: () => ComputeFaceDescriptorsTaskBase,
-    ComputeSingleFaceDescriptorTask: () => ComputeSingleFaceDescriptorTask,
-    DetectAllFaceLandmarksTask: () => DetectAllFaceLandmarksTask,
-    DetectAllFacesTask: () => DetectAllFacesTask,
-    DetectFaceLandmarksTaskBase: () => DetectFaceLandmarksTaskBase,
-    DetectFacesTaskBase: () => DetectFacesTaskBase,
-    DetectSingleFaceLandmarksTask: () => DetectSingleFaceLandmarksTask,
-    DetectSingleFaceTask: () => DetectSingleFaceTask,
-    Dimensions: () => Dimensions,
-    FACE_EXPRESSION_LABELS: () => FACE_EXPRESSION_LABELS,
-    FaceDetection: () => FaceDetection,
-    FaceDetectionNet: () => FaceDetectionNet,
-    FaceExpressionNet: () => FaceExpressionNet,
-    FaceExpressions: () => FaceExpressions,
-    FaceLandmark68Net: () => FaceLandmark68Net,
-    FaceLandmark68TinyNet: () => FaceLandmark68TinyNet,
-    FaceLandmarkNet: () => FaceLandmarkNet,
-    FaceLandmarks: () => FaceLandmarks,
-    FaceLandmarks5: () => FaceLandmarks5,
-    FaceLandmarks68: () => FaceLandmarks68,
-    FaceMatch: () => FaceMatch,
-    FaceMatcher: () => FaceMatcher,
-    FaceRecognitionNet: () => FaceRecognitionNet,
-    Gender: () => Gender,
-    LabeledBox: () => LabeledBox,
-    LabeledFaceDescriptors: () => LabeledFaceDescriptors,
-    NetInput: () => NetInput,
-    NeuralNetwork: () => NeuralNetwork,
-    ObjectDetection: () => ObjectDetection,
-    Point: () => Point,
-    PredictedBox: () => PredictedBox,
-    Rect: () => Rect,
-    SsdMobilenetv1: () => SsdMobilenetv1,
-    SsdMobilenetv1Options: () => SsdMobilenetv1Options,
-    TinyFaceDetector: () => TinyFaceDetector,
-    TinyFaceDetectorOptions: () => TinyFaceDetectorOptions,
-    TinyYolov2: () => TinyYolov2,
-    TinyYolov2Options: () => TinyYolov2Options,
-    allFaces: () => allFaces,
-    allFacesSsdMobilenetv1: () => allFacesSsdMobilenetv1,
-    allFacesTinyYolov2: () => allFacesTinyYolov2,
-    awaitMediaLoaded: () => awaitMediaLoaded,
-    bufferToImage: () => bufferToImage,
-    computeFaceDescriptor: () => computeFaceDescriptor,
-    createCanvas: () => createCanvas2,
-    createCanvasFromMedia: () => createCanvasFromMedia,
-    createFaceDetectionNet: () => createFaceDetectionNet,
-    createFaceRecognitionNet: () => createFaceRecognitionNet,
-    createSsdMobilenetv1: () => createSsdMobilenetv1,
-    createTinyFaceDetector: () => createTinyFaceDetector,
-    createTinyYolov2: () => createTinyYolov2,
-    detectAllFaces: () => detectAllFaces,
-    detectFaceLandmarks: () => detectFaceLandmarks,
-    detectFaceLandmarksTiny: () => detectFaceLandmarksTiny,
-    detectLandmarks: () => detectLandmarks,
-    detectSingleFace: () => detectSingleFace,
-    draw: () => draw_exports,
-    env: () => env2,
-    euclideanDistance: () => euclideanDistance,
-    extendWithAge: () => extendWithAge,
-    extendWithFaceDescriptor: () => extendWithFaceDescriptor,
-    extendWithFaceDetection: () => extendWithFaceDetection,
-    extendWithFaceExpressions: () => extendWithFaceExpressions,
-    extendWithFaceLandmarks: () => extendWithFaceLandmarks,
-    extendWithGender: () => extendWithGender,
-    extractFaceTensors: () => extractFaceTensors,
-    extractFaces: () => extractFaces,
-    fetchImage: () => fetchImage,
-    fetchJson: () => fetchJson,
-    fetchNetWeights: () => fetchNetWeights,
-    fetchOrThrow: () => fetchOrThrow,
-    fetchVideo: () => fetchVideo,
-    getContext2dOrThrow: () => getContext2dOrThrow,
-    getMediaDimensions: () => getMediaDimensions,
-    imageTensorToCanvas: () => imageTensorToCanvas,
-    imageToSquare: () => imageToSquare,
-    inverseSigmoid: () => inverseSigmoid,
-    iou: () => iou,
-    isMediaElement: () => isMediaElement,
-    isMediaLoaded: () => isMediaLoaded,
-    isWithAge: () => isWithAge,
-    isWithFaceDetection: () => isWithFaceDetection,
-    isWithFaceExpressions: () => isWithFaceExpressions,
-    isWithFaceLandmarks: () => isWithFaceLandmarks,
-    isWithGender: () => isWithGender,
-    loadAgeGenderModel: () => loadAgeGenderModel,
-    loadFaceDetectionModel: () => loadFaceDetectionModel,
-    loadFaceExpressionModel: () => loadFaceExpressionModel,
-    loadFaceLandmarkModel: () => loadFaceLandmarkModel,
-    loadFaceLandmarkTinyModel: () => loadFaceLandmarkTinyModel,
-    loadFaceRecognitionModel: () => loadFaceRecognitionModel,
-    loadSsdMobilenetv1Model: () => loadSsdMobilenetv1Model,
-    loadTinyFaceDetectorModel: () => loadTinyFaceDetectorModel,
-    loadTinyYolov2Model: () => loadTinyYolov2Model,
-    loadWeightMap: () => loadWeightMap,
-    locateFaces: () => locateFaces,
-    matchDimensions: () => matchDimensions,
-    minBbox: () => minBbox,
-    nets: () => nets,
-    nonMaxSuppression: () => nonMaxSuppression2,
-    normalize: () => normalize,
-    padToSquare: () => padToSquare,
-    predictAgeAndGender: () => predictAgeAndGender,
-    recognizeFaceExpressions: () => recognizeFaceExpressions,
-    resizeResults: () => resizeResults,
-    resolveInput: () => resolveInput,
-    shuffleArray: () => shuffleArray,
-    sigmoid: () => sigmoid5,
-    ssdMobilenetv1: () => ssdMobilenetv1,
-    tf: () => tfjs_esm_exports,
-    tinyFaceDetector: () => tinyFaceDetector,
-    tinyYolov2: () => tinyYolov2,
-    toNetInput: () => toNetInput,
-    utils: () => utils_exports,
-    validateConfig: () => validateConfig,
-    version: () => version11
-  });
 
   // dist/tfjs.esm.js
   var tfjs_esm_exports = {};
@@ -1481,7 +1354,7 @@ var faceapi = (() => {
     }
   });
   var require_browser = __commonJS({
-    "(disabled):node_modules/.pnpm/node-fetch@2.6.1/node_modules/node-fetch/browser.js"() {
+    "(disabled):node_modules/.pnpm/node-fetch@2.6.2/node_modules/node-fetch/browser.js"() {
     }
   });
   var require_alea = __commonJS({
@@ -61370,6 +61243,7 @@ return a / b;`;
       this._canvases = [];
       this._treatAsBatchInput = false;
       this._inputDimensions = [];
+      this._inputSize = 0;
       if (!Array.isArray(inputs)) {
         throw new Error(`NetInput.constructor - expected inputs to be an Array of TResolvedNetInput or to be instanceof tf.Tensor4D, instead have ${inputs}`);
       }
@@ -62112,6 +61986,13 @@ return a / b;`;
   var FACE_EXPRESSION_LABELS = ["neutral", "happy", "sad", "angry", "fearful", "disgusted", "surprised"];
   var FaceExpressions = class {
     constructor(probabilities) {
+      this.neutral = 0;
+      this.happy = 0;
+      this.sad = 0;
+      this.angry = 0;
+      this.fearful = 0;
+      this.disgusted = 0;
+      this.surprised = 0;
       if (probabilities.length !== 7) {
         throw new Error(`FaceExpressions.constructor - expected probabilities.length to be 7, have: ${probabilities.length}`);
       }
@@ -62286,7 +62167,7 @@ return a / b;`;
   }
 
   // package.json
-  var version10 = "1.4.2";
+  var version10 = "1.5.1";
 
   // src/xception/extractParams.ts
   function extractorsFactory2(extractWeights, paramMappings) {
@@ -64522,7 +64403,6 @@ return a / b;`;
   var node = typeof process !== "undefined";
   var browser = typeof navigator !== "undefined" && typeof navigator.userAgent !== "undefined";
   var version11 = { faceapi: version10, node, browser };
-  return src_exports;
 })();
 /**
  * @license

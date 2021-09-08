@@ -1,6 +1,6 @@
 {
   "name": "@vladmandic/face-api",
-  "version": "1.4.2",
+  "version": "1.5.1",
   "description": "FaceAPI: AI-powered Face Detection & Rotation Tracking, Face Description & Recognition, Age & Gender & Emotion Prediction for Browser and NodeJS using TensorFlow/JS",
   "sideEffects": false,
   "main": "dist/face-api.node.js",
@@ -21,10 +21,9 @@
     "url": "git+https://github.com/vladmandic/face-api.git"
   },
   "scripts": {
-    "start": "node --trace-warnings demo/node.js",
-    "dev": "node --trace-warnings server/serve.js",
-    "build": "rimraf dist/* types/* typedoc/* && node server/build.js",
-    "lint": "eslint src/**/* demo/*.js server/*.js",
+    "start": "node --no-warnings demo/node.js",
+    "dev": "build development",
+    "build": "build production",
     "test": "node --trace-warnings test/test-node.js",
     "scan": "npx auditjs@latest ossi --dev --quiet"
   },
@@ -47,9 +46,10 @@
     "@tensorflow/tfjs-backend-wasm": "^3.9.0",
     "@tensorflow/tfjs-node": "^3.9.0",
     "@tensorflow/tfjs-node-gpu": "^3.9.0",
-    "@types/node": "^16.7.10",
-    "@typescript-eslint/eslint-plugin": "^4.30.0",
-    "@typescript-eslint/parser": "^4.30.0",
+    "@types/node": "^16.7.13",
+    "@typescript-eslint/eslint-plugin": "^4.31.0",
+    "@typescript-eslint/parser": "^4.31.0",
+    "@vladmandic/build": "link:../build",
     "@vladmandic/pilogger": "^0.2.18",
     "canvas": "^2.8.0",
     "chokidar": "^3.5.2",
@@ -68,5 +68,6 @@
     "tslib": "^2.3.1",
     "typedoc": "^0.21.9",
     "typescript": "4.4.2"
-  }
+  },
+  "dependencies": {}
 }

@@ -1,7 +1,9 @@
 {
   "log": {
     "enabled": false,
-    "file": "dev-server.log"
+    "debug": false,
+    "console": true,
+    "output": "dev-server.log"
   },
   "clean": {
     "enabled": true,
@@ -127,25 +129,6 @@
     "locations": [ "src/**" ]
   },
   "typescript": {
-    "allowUnreachableCode": false,
-    "allowUnusedLabels": false,
-    "alwaysStrict": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitAny": false,
-    "noImplicitOverride": true,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "noPropertyAccessFromIndexSignature": false,
-    "noUncheckedIndexedAccess": false,
-    "noUnusedLocals": false,
-    "noUnusedParameters": true,
-    "preserveConstEnums": true,
-    "resolveJsonModule": true,
-    "strictBindCallApply": true,
-    "strictFunctionTypes": true,
-    "strictNullChecks": true,
-    "strictPropertyInitialization": true
+    "allowJs": false
   }
 }

@@ -45,18 +45,15 @@ export class ComputeAllFaceDescriptorsTask<TSource extends WithFaceLandmarks<Wit
 export class ComputeSingleFaceDescriptorTask<TSource extends WithFaceLandmarks<WithFaceDetection<{}>>> extends ComputeFaceDescriptorsTaskBase<WithFaceDescriptor<TSource> | undefined, TSource | undefined> {
   public override async run(): Promise<WithFaceDescriptor<TSource> | undefined> {
     const parentResult = await this.parentTask;
-    if (!parentResult) {
-      return undefined;
-    }
+    if (!parentResult) return undefined;
     const descriptor = await extractSingleFaceAndComputeResult<TSource, Float32Array>(
       parentResult,
       this.input,
       (face) => nets.faceRecognitionNet.computeFaceDescriptor(face) as Promise<Float32Array>,
       null,
-      // eslint-disable-next-line no-shadow
+      // eslint-disable-next-line no-shadow, @typescript-eslint/no-shadow
       (parentResult) => parentResult.landmarks.align(null, { useDlibAlignment: true }),
     );
-
     return extendWithFaceDescriptor(parentResult, descriptor);
   }
 

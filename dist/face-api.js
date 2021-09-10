@@ -7,9 +7,7 @@
 (() => {
   var __defProp = Object.defineProperty;
   var __markAsModule = (target) => __defProp(target, "__esModule", { value: true });
-  var __require = (x) => {
-    if (typeof require !== "undefined")
-      return require(x);
+  var __require = typeof require !== "undefined" ? require : (x) => {
     throw new Error('Dynamic require of "' + x + '" is not supported');
   };
   var __export = (target, all5) => {
@@ -98,6 +96,7 @@
     FusedBatchNorm: () => FusedBatchNorm,
     FusedConv2D: () => FusedConv2D,
     FusedDepthwiseConv2D: () => FusedDepthwiseConv2D,
+    GPGPUContext: () => GPGPUContext,
     GatherNd: () => GatherNd,
     GatherV2: () => GatherV2,
     GraphModel: () => GraphModel,
@@ -126,6 +125,8 @@
     LogicalAnd: () => LogicalAnd,
     LogicalNot: () => LogicalNot,
     LogicalOr: () => LogicalOr,
+    MathBackendCPU: () => MathBackendCPU,
+    MathBackendWebGL: () => MathBackendWebGL,
     Max: () => Max,
     MaxPool: () => MaxPool,
     MaxPool3D: () => MaxPool3D,
@@ -307,6 +308,7 @@
     findBackendFactory: () => findBackendFactory,
     floor: () => floor,
     floorDiv: () => floorDiv,
+    forceHalfFloat: () => forceHalfFloat,
     fused: () => fused_ops_exports,
     gather: () => gather,
     gatherND: () => gatherND,
@@ -315,6 +317,7 @@
     getGradient: () => getGradient,
     getKernel: () => getKernel,
     getKernelsForBackend: () => getKernelsForBackend,
+    gpgpu_util: () => gpgpu_util_exports,
     grad: () => grad,
     grads: () => grads,
     greater: () => greater,
@@ -430,7 +433,9 @@
     setPlatform: () => setPlatform,
     setWasmPath: () => setWasmPath,
     setWasmPaths: () => setWasmPaths,
+    setWebGLContext: () => setWebGLContext,
     setdiff1dAsync: () => setdiff1dAsync,
+    shared: () => shared_exports,
     sigmoid: () => sigmoid,
     sign: () => sign,
     signal: () => signal,
@@ -489,11 +494,15 @@
     valueAndGrads: () => valueAndGrads,
     variable: () => variable,
     variableGrads: () => variableGrads,
-    version: () => version8,
-    version_converter: () => version3,
-    version_core: () => version,
-    version_layers: () => version2,
-    version_wasm: () => version9,
+    version: () => version16,
+    version_converter: () => version11,
+    version_core: () => version9,
+    version_cpu: () => version13,
+    version_layers: () => version10,
+    version_wasm: () => version15,
+    version_webgl: () => version14,
+    webgl: () => webgl,
+    webgl_util: () => webgl_util_exports,
     where: () => where,
     whereAsync: () => whereAsync,
     zeros: () => zeros,
@@ -506,9 +515,7 @@
   var __getProtoOf = Object.getPrototypeOf;
   var __hasOwnProp = Object.prototype.hasOwnProperty;
   var __markAsModule2 = (target) => __defProp2(target, "__esModule", { value: true });
-  var __require2 = (x) => {
-    if (typeof __require !== "undefined")
-      return __require(x);
+  var __require2 = typeof __require !== "undefined" ? __require : (x) => {
     throw new Error('Dynamic require of "' + x + '" is not supported');
   };
   var __commonJS = (cb, mod4) => function __require22() {
@@ -2651,7 +2658,7 @@
     }
   });
   var require_tfjs_backend_wasm_threaded_simd = __commonJS({
-    "node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.9.0/node_modules/@tensorflow/tfjs-backend-wasm/wasm-out/tfjs-backend-wasm-threaded-simd.js"(exports, module2) {
+    "node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.9.0_@tensorflow+tfjs-core@3.9.0/node_modules/@tensorflow/tfjs-backend-wasm/wasm-out/tfjs-backend-wasm-threaded-simd.js"(exports, module2) {
       var WasmBackendModuleThreadedSimd = function() {
         var _scriptDir = typeof document !== "undefined" && document.currentScript ? document.currentScript.src : void 0;
         if (typeof __filename !== "undefined")
@@ -4861,7 +4868,7 @@
     }
   });
   var require_tfjs_backend_wasm = __commonJS({
-    "node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.9.0/node_modules/@tensorflow/tfjs-backend-wasm/wasm-out/tfjs-backend-wasm.js"(exports, module2) {
+    "node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.9.0_@tensorflow+tfjs-core@3.9.0/node_modules/@tensorflow/tfjs-backend-wasm/wasm-out/tfjs-backend-wasm.js"(exports, module2) {
       var WasmBackendModule = function() {
         var _scriptDir = typeof document !== "undefined" && document.currentScript ? document.currentScript.src : void 0;
         if (typeof __filename !== "undefined")
@@ -6004,6 +6011,14 @@
         exports["WasmBackendModule"] = WasmBackendModule;
     }
   });
+  var version = "3.9.0";
+  var version2 = "3.9.0";
+  var version3 = "3.9.0";
+  var version4 = "3.9.0";
+  var version5 = "3.9.0";
+  var version6 = "3.9.0";
+  var version7 = "3.9.0";
+  var version8 = "3.9.0";
   var EPSILON_FLOAT32 = 1e-7;
   var EPSILON_FLOAT16 = 1e-4;
   var DataStorage = class {
@@ -10906,7 +10921,7 @@ Expected: ${expectedFlat}.`);
     }
     return a;
   }
-  var version = "3.9.0";
+  var version9 = "3.9.0";
   function enableProdMode() {
     env().set("PROD", true);
   }
@@ -17933,551 +17948,6 @@ Expected: ${expectedFlat}.`);
   for (const gradientConfig of gradConfigs) {
     registerGradient(gradientConfig);
   }
-  getGlobalTensorClass().prototype.abs = function() {
-    this.throwIfDisposed();
-    return abs(this);
-  };
-  getGlobalTensorClass().prototype.acos = function() {
-    this.throwIfDisposed();
-    return acos(this);
-  };
-  getGlobalTensorClass().prototype.acosh = function() {
-    this.throwIfDisposed();
-    return acosh(this);
-  };
-  getGlobalTensorClass().prototype.add = function(b) {
-    this.throwIfDisposed();
-    return add2(this, b);
-  };
-  getGlobalTensorClass().prototype.all = function(axis, keepDims) {
-    this.throwIfDisposed();
-    return all(this, axis, keepDims);
-  };
-  getGlobalTensorClass().prototype.any = function(axis, keepDims) {
-    this.throwIfDisposed();
-    return any(this, axis, keepDims);
-  };
-  getGlobalTensorClass().prototype.argMax = function(axis) {
-    this.throwIfDisposed();
-    return argMax(this, axis);
-  };
-  getGlobalTensorClass().prototype.argMin = function(axis) {
-    this.throwIfDisposed();
-    return argMin(this, axis);
-  };
-  getGlobalTensorClass().prototype.asScalar = function() {
-    this.throwIfDisposed();
-    assert(this.size === 1, () => "The array must have only 1 element.");
-    return reshape(this, []);
-  };
-  getGlobalTensorClass().prototype.asType = function(dtype) {
-    this.throwIfDisposed();
-    return cast(this, dtype);
-  };
-  getGlobalTensorClass().prototype.as1D = function() {
-    this.throwIfDisposed();
-    return reshape(this, [this.size]);
-  };
-  getGlobalTensorClass().prototype.as2D = function(rows, columns) {
-    this.throwIfDisposed();
-    return reshape(this, [rows, columns]);
-  };
-  getGlobalTensorClass().prototype.as3D = function(rows, columns, depth) {
-    this.throwIfDisposed();
-    return reshape(this, [rows, columns, depth]);
-  };
-  getGlobalTensorClass().prototype.as4D = function(rows, columns, depth, depth2) {
-    this.throwIfDisposed();
-    return reshape(this, [rows, columns, depth, depth2]);
-  };
-  getGlobalTensorClass().prototype.as5D = function(rows, columns, depth, depth2, depth3) {
-    this.throwIfDisposed();
-    return reshape(this, [rows, columns, depth, depth2, depth3]);
-  };
-  getGlobalTensorClass().prototype.asin = function() {
-    this.throwIfDisposed();
-    return asin(this);
-  };
-  getGlobalTensorClass().prototype.asinh = function() {
-    this.throwIfDisposed();
-    return asinh(this);
-  };
-  getGlobalTensorClass().prototype.atan = function() {
-    this.throwIfDisposed();
-    return atan(this);
-  };
-  getGlobalTensorClass().prototype.atan2 = function(b) {
-    this.throwIfDisposed();
-    return atan2(this, b);
-  };
-  getGlobalTensorClass().prototype.atanh = function() {
-    this.throwIfDisposed();
-    return atanh(this);
-  };
-  getGlobalTensorClass().prototype.avgPool = function(filterSize, strides, pad3, dimRoundingMode) {
-    this.throwIfDisposed();
-    return avgPool(this, filterSize, strides, pad3, dimRoundingMode);
-  };
-  getGlobalTensorClass().prototype.batchToSpaceND = function(blockShape, crops) {
-    this.throwIfDisposed();
-    return batchToSpaceND(this, blockShape, crops);
-  };
-  getGlobalTensorClass().prototype.batchNorm = function(mean4, variance, offset, scale22, varianceEpsilon) {
-    this.throwIfDisposed();
-    return batchNorm(this, mean4, variance, offset, scale22, varianceEpsilon);
-  };
-  getGlobalTensorClass().prototype.broadcastTo = function(shape) {
-    this.throwIfDisposed();
-    return broadcastTo(this, shape);
-  };
-  getGlobalTensorClass().prototype.cast = function(dtype) {
-    this.throwIfDisposed();
-    return cast(this, dtype);
-  };
-  getGlobalTensorClass().prototype.ceil = function() {
-    this.throwIfDisposed();
-    return ceil(this);
-  };
-  getGlobalTensorClass().prototype.clipByValue = function(min6, max6) {
-    this.throwIfDisposed();
-    return clipByValue(this, min6, max6);
-  };
-  getGlobalTensorClass().prototype.concat = function(x, axis) {
-    this.throwIfDisposed();
-    if (x instanceof Tensor) {
-      x = [x];
-    }
-    return concat([this, ...x], axis);
-  };
-  getGlobalTensorClass().prototype.conv1d = function(filter, stride, pad3, dataFormat, dilation, dimRoundingMode) {
-    this.throwIfDisposed();
-    return conv1d(this, filter, stride, pad3, dataFormat, dilation, dimRoundingMode);
-  };
-  getGlobalTensorClass().prototype.conv2dTranspose = function(filter, outputShape, strides, pad3, dimRoundingMode) {
-    this.throwIfDisposed();
-    return conv2dTranspose(this, filter, outputShape, strides, pad3, dimRoundingMode);
-  };
-  getGlobalTensorClass().prototype.conv2d = function(filter, strides, pad3, dataFormat, dilations, dimRoundingMode) {
-    this.throwIfDisposed();
-    return conv2d(this, filter, strides, pad3, dataFormat, dilations, dimRoundingMode);
-  };
-  getGlobalTensorClass().prototype.cos = function() {
-    this.throwIfDisposed();
-    return cos(this);
-  };
-  getGlobalTensorClass().prototype.cosh = function() {
-    this.throwIfDisposed();
-    return cosh(this);
-  };
-  getGlobalTensorClass().prototype.cumsum = function(axis, exclusive, reverse5) {
-    this.throwIfDisposed();
-    return cumsum(this, axis, exclusive, reverse5);
-  };
-  getGlobalTensorClass().prototype.depthToSpace = function(blockSize, dataFormat) {
-    this.throwIfDisposed();
-    return depthToSpace(this, blockSize, dataFormat);
-  };
-  getGlobalTensorClass().prototype.depthwiseConv2d = function(filter, strides, pad3, dataFormat, dilations, dimRoundingMode) {
-    this.throwIfDisposed();
-    return depthwiseConv2d(this, filter, strides, pad3, dataFormat, dilations, dimRoundingMode);
-  };
-  getGlobalTensorClass().prototype.dilation2d = function(filter, strides, pad3, dilations, dataFormat) {
-    this.throwIfDisposed();
-    return dilation2d(this, filter, strides, pad3, dilations, dataFormat);
-  };
-  getGlobalTensorClass().prototype.divNoNan = function(b) {
-    this.throwIfDisposed();
-    return divNoNan(this, b);
-  };
-  getGlobalTensorClass().prototype.div = function(b) {
-    this.throwIfDisposed();
-    return div(this, b);
-  };
-  getGlobalTensorClass().prototype.dot = function(b) {
-    this.throwIfDisposed();
-    return dot(this, b);
-  };
-  getGlobalTensorClass().prototype.elu = function() {
-    this.throwIfDisposed();
-    return elu(this);
-  };
-  getGlobalTensorClass().prototype.equal = function(b) {
-    this.throwIfDisposed();
-    return equal(this, b);
-  };
-  getGlobalTensorClass().prototype.erf = function() {
-    this.throwIfDisposed();
-    return erf(this);
-  };
-  getGlobalTensorClass().prototype.exp = function() {
-    this.throwIfDisposed();
-    return exp(this);
-  };
-  getGlobalTensorClass().prototype.expandDims = function(axis) {
-    this.throwIfDisposed();
-    return expandDims(this, axis);
-  };
-  getGlobalTensorClass().prototype.expm1 = function() {
-    this.throwIfDisposed();
-    return expm1(this);
-  };
-  getGlobalTensorClass().prototype.fft = function() {
-    this.throwIfDisposed();
-    return fft(this);
-  };
-  getGlobalTensorClass().prototype.flatten = function() {
-    this.throwIfDisposed();
-    return reshape(this, [this.size]);
-  };
-  getGlobalTensorClass().prototype.floor = function() {
-    this.throwIfDisposed();
-    return floor(this);
-  };
-  getGlobalTensorClass().prototype.floorDiv = function(b) {
-    this.throwIfDisposed();
-    return floorDiv(this, b);
-  };
-  getGlobalTensorClass().prototype.gather = function(indices, axis) {
-    this.throwIfDisposed();
-    return gather(this, indices, axis);
-  };
-  getGlobalTensorClass().prototype.greaterEqual = function(b) {
-    this.throwIfDisposed();
-    return greaterEqual(this, b);
-  };
-  getGlobalTensorClass().prototype.greater = function(b) {
-    this.throwIfDisposed();
-    return greater(this, b);
-  };
-  getGlobalTensorClass().prototype.ifft = function() {
-    this.throwIfDisposed();
-    return ifft(this);
-  };
-  getGlobalTensorClass().prototype.irfft = function() {
-    this.throwIfDisposed();
-    return irfft(this);
-  };
-  getGlobalTensorClass().prototype.isFinite = function() {
-    this.throwIfDisposed();
-    return isFinite2(this);
-  };
-  getGlobalTensorClass().prototype.isInf = function() {
-    this.throwIfDisposed();
-    return isInf(this);
-  };
-  getGlobalTensorClass().prototype.isNaN = function() {
-    this.throwIfDisposed();
-    return isNaN2(this);
-  };
-  getGlobalTensorClass().prototype.leakyRelu = function(alpha) {
-    this.throwIfDisposed();
-    return leakyRelu(this, alpha);
-  };
-  getGlobalTensorClass().prototype.lessEqual = function(b) {
-    this.throwIfDisposed();
-    return lessEqual(this, b);
-  };
-  getGlobalTensorClass().prototype.less = function(b) {
-    this.throwIfDisposed();
-    return less(this, b);
-  };
-  getGlobalTensorClass().prototype.localResponseNormalization = function(depthRadius, bias, alpha, beta) {
-    this.throwIfDisposed();
-    return localResponseNormalization(this, depthRadius, bias, alpha, beta);
-  };
-  getGlobalTensorClass().prototype.logSigmoid = function() {
-    this.throwIfDisposed();
-    return logSigmoid(this);
-  };
-  getGlobalTensorClass().prototype.logSoftmax = function(axis) {
-    this.throwIfDisposed();
-    return logSoftmax(this, axis);
-  };
-  getGlobalTensorClass().prototype.logSumExp = function(axis, keepDims) {
-    this.throwIfDisposed();
-    return logSumExp(this, axis, keepDims);
-  };
-  getGlobalTensorClass().prototype.log = function() {
-    this.throwIfDisposed();
-    return log5(this);
-  };
-  getGlobalTensorClass().prototype.log1p = function() {
-    this.throwIfDisposed();
-    return log1p(this);
-  };
-  getGlobalTensorClass().prototype.logicalAnd = function(b) {
-    this.throwIfDisposed();
-    return logicalAnd(this, b);
-  };
-  getGlobalTensorClass().prototype.logicalNot = function() {
-    this.throwIfDisposed();
-    return logicalNot(this);
-  };
-  getGlobalTensorClass().prototype.logicalOr = function(b) {
-    this.throwIfDisposed();
-    return logicalOr(this, b);
-  };
-  getGlobalTensorClass().prototype.logicalXor = function(b) {
-    this.throwIfDisposed();
-    return logicalXor(this, b);
-  };
-  getGlobalTensorClass().prototype.matMul = function(b, transposeA, transposeB) {
-    this.throwIfDisposed();
-    return matMul(this, b, transposeA, transposeB);
-  };
-  getGlobalTensorClass().prototype.maxPool = function(filterSize, strides, pad3, dimRoundingMode) {
-    this.throwIfDisposed();
-    return maxPool(this, filterSize, strides, pad3, dimRoundingMode);
-  };
-  getGlobalTensorClass().prototype.max = function(axis, keepDims) {
-    this.throwIfDisposed();
-    return max(this, axis, keepDims);
-  };
-  getGlobalTensorClass().prototype.maximum = function(b) {
-    this.throwIfDisposed();
-    return maximum(this, b);
-  };
-  getGlobalTensorClass().prototype.mean = function(axis, keepDims) {
-    this.throwIfDisposed();
-    return mean(this, axis, keepDims);
-  };
-  getGlobalTensorClass().prototype.min = function(axis, keepDims) {
-    this.throwIfDisposed();
-    return min(this, axis, keepDims);
-  };
-  getGlobalTensorClass().prototype.minimum = function(b) {
-    this.throwIfDisposed();
-    return minimum(this, b);
-  };
-  getGlobalTensorClass().prototype.mirrorPad = function(paddings, mode) {
-    this.throwIfDisposed();
-    return mirrorPad(this, paddings, mode);
-  };
-  getGlobalTensorClass().prototype.mod = function(b) {
-    this.throwIfDisposed();
-    return mod(this, b);
-  };
-  getGlobalTensorClass().prototype.mul = function(b) {
-    this.throwIfDisposed();
-    return mul(this, b);
-  };
-  getGlobalTensorClass().prototype.neg = function() {
-    this.throwIfDisposed();
-    return neg(this);
-  };
-  getGlobalTensorClass().prototype.norm = function(ord, axis, keepDims) {
-    this.throwIfDisposed();
-    return norm(this, ord, axis, keepDims);
-  };
-  getGlobalTensorClass().prototype.notEqual = function(b) {
-    this.throwIfDisposed();
-    return notEqual(this, b);
-  };
-  getGlobalTensorClass().prototype.oneHot = function(depth, onValue = 1, offValue = 0) {
-    this.throwIfDisposed();
-    return oneHot(this, depth, onValue, offValue);
-  };
-  getGlobalTensorClass().prototype.onesLike = function() {
-    this.throwIfDisposed();
-    return onesLike(this);
-  };
-  getGlobalTensorClass().prototype.pad = function(paddings, constantValue) {
-    this.throwIfDisposed();
-    return pad(this, paddings, constantValue);
-  };
-  getGlobalTensorClass().prototype.pool = function(windowShape, poolingType, padding, dilationRate, strides) {
-    this.throwIfDisposed();
-    return pool(this, windowShape, poolingType, padding, dilationRate, strides);
-  };
-  getGlobalTensorClass().prototype.pow = function(exp4) {
-    this.throwIfDisposed();
-    return pow(this, exp4);
-  };
-  getGlobalTensorClass().prototype.prelu = function(alpha) {
-    this.throwIfDisposed();
-    return prelu(this, alpha);
-  };
-  getGlobalTensorClass().prototype.prod = function(axis, keepDims) {
-    this.throwIfDisposed();
-    return prod(this, axis, keepDims);
-  };
-  getGlobalTensorClass().prototype.reciprocal = function() {
-    this.throwIfDisposed();
-    return reciprocal(this);
-  };
-  getGlobalTensorClass().prototype.relu = function() {
-    this.throwIfDisposed();
-    return relu(this);
-  };
-  getGlobalTensorClass().prototype.relu6 = function() {
-    this.throwIfDisposed();
-    return relu6(this);
-  };
-  getGlobalTensorClass().prototype.reshapeAs = function(x) {
-    this.throwIfDisposed();
-    return reshape(this, x.shape);
-  };
-  getGlobalTensorClass().prototype.reshape = function(shape) {
-    this.throwIfDisposed();
-    return reshape(this, shape);
-  };
-  getGlobalTensorClass().prototype.resizeBilinear = function(newShape2D, alignCorners, halfPixelCenters) {
-    this.throwIfDisposed();
-    return resizeBilinear(this, newShape2D, alignCorners, halfPixelCenters);
-  };
-  getGlobalTensorClass().prototype.resizeNearestNeighbor = function(newShape2D, alignCorners, halfFloatCenters) {
-    this.throwIfDisposed();
-    return resizeNearestNeighbor(this, newShape2D, alignCorners, halfFloatCenters);
-  };
-  getGlobalTensorClass().prototype.reverse = function(axis) {
-    this.throwIfDisposed();
-    return reverse(this, axis);
-  };
-  getGlobalTensorClass().prototype.rfft = function() {
-    this.throwIfDisposed();
-    return rfft(this);
-  };
-  getGlobalTensorClass().prototype.round = function() {
-    this.throwIfDisposed();
-    return round2(this);
-  };
-  getGlobalTensorClass().prototype.rsqrt = function() {
-    this.throwIfDisposed();
-    return rsqrt(this);
-  };
-  getGlobalTensorClass().prototype.selu = function() {
-    this.throwIfDisposed();
-    return selu(this);
-  };
-  getGlobalTensorClass().prototype.separableConv2d = function(depthwiseFilter, pointwiseFilter, strides, pad3, dilation, dataFormat) {
-    this.throwIfDisposed();
-    return separableConv2d(this, depthwiseFilter, pointwiseFilter, strides, pad3, dilation, dataFormat);
-  };
-  getGlobalTensorClass().prototype.sigmoid = function() {
-    this.throwIfDisposed();
-    return sigmoid(this);
-  };
-  getGlobalTensorClass().prototype.sign = function() {
-    this.throwIfDisposed();
-    return sign(this);
-  };
-  getGlobalTensorClass().prototype.sin = function() {
-    this.throwIfDisposed();
-    return sin(this);
-  };
-  getGlobalTensorClass().prototype.sinh = function() {
-    this.throwIfDisposed();
-    return sinh(this);
-  };
-  getGlobalTensorClass().prototype.slice = function(begin, size) {
-    this.throwIfDisposed();
-    return slice(this, begin, size);
-  };
-  getGlobalTensorClass().prototype.softmax = function(dim) {
-    this.throwIfDisposed();
-    return softmax(this, dim);
-  };
-  getGlobalTensorClass().prototype.softplus = function() {
-    this.throwIfDisposed();
-    return softplus(this);
-  };
-  getGlobalTensorClass().prototype.spaceToBatchND = function(blockShape, paddings) {
-    this.throwIfDisposed();
-    return spaceToBatchND(this, blockShape, paddings);
-  };
-  getGlobalTensorClass().prototype.split = function(numOrSizeSplits, axis) {
-    this.throwIfDisposed();
-    return split(this, numOrSizeSplits, axis);
-  };
-  getGlobalTensorClass().prototype.sqrt = function() {
-    this.throwIfDisposed();
-    return sqrt(this);
-  };
-  getGlobalTensorClass().prototype.square = function() {
-    this.throwIfDisposed();
-    return square(this);
-  };
-  getGlobalTensorClass().prototype.squaredDifference = function(b) {
-    this.throwIfDisposed();
-    return squaredDifference(this, b);
-  };
-  getGlobalTensorClass().prototype.squeeze = function(axis) {
-    this.throwIfDisposed();
-    return squeeze(this, axis);
-  };
-  getGlobalTensorClass().prototype.stack = function(x, axis) {
-    this.throwIfDisposed();
-    const tensorsToBeStacked = x instanceof Tensor ? [this, x] : [this, ...x];
-    return stack(tensorsToBeStacked, axis);
-  };
-  getGlobalTensorClass().prototype.step = function(alpha) {
-    this.throwIfDisposed();
-    return step(this, alpha);
-  };
-  getGlobalTensorClass().prototype.stridedSlice = function(begin, end, strides, beginMask, endMask, ellipsisMask, newAxisMask, shrinkAxisMask) {
-    this.throwIfDisposed();
-    return stridedSlice(this, begin, end, strides, beginMask, endMask, ellipsisMask, newAxisMask, shrinkAxisMask);
-  };
-  getGlobalTensorClass().prototype.sub = function(b) {
-    this.throwIfDisposed();
-    return sub(this, b);
-  };
-  getGlobalTensorClass().prototype.sum = function(axis, keepDims) {
-    this.throwIfDisposed();
-    return sum2(this, axis, keepDims);
-  };
-  getGlobalTensorClass().prototype.tan = function() {
-    this.throwIfDisposed();
-    return tan(this);
-  };
-  getGlobalTensorClass().prototype.tanh = function() {
-    this.throwIfDisposed();
-    return tanh2(this);
-  };
-  getGlobalTensorClass().prototype.tile = function(reps) {
-    this.throwIfDisposed();
-    return tile(this, reps);
-  };
-  getGlobalTensorClass().prototype.toBool = function() {
-    this.throwIfDisposed();
-    return cast(this, "bool");
-  };
-  getGlobalTensorClass().prototype.toFloat = function() {
-    this.throwIfDisposed();
-    return cast(this, "float32");
-  };
-  getGlobalTensorClass().prototype.toInt = function() {
-    this.throwIfDisposed();
-    return cast(this, "int32");
-  };
-  getGlobalTensorClass().prototype.topk = function(k, sorted) {
-    this.throwIfDisposed();
-    return topk(this, k, sorted);
-  };
-  getGlobalTensorClass().prototype.transpose = function(perm) {
-    this.throwIfDisposed();
-    return transpose(this, perm);
-  };
-  getGlobalTensorClass().prototype.unique = function(axis) {
-    this.throwIfDisposed();
-    return unique(this, axis);
-  };
-  getGlobalTensorClass().prototype.unsortedSegmentSum = function(segmentIds, numSegments) {
-    this.throwIfDisposed();
-    return unsortedSegmentSum(this, segmentIds, numSegments);
-  };
-  getGlobalTensorClass().prototype.unstack = function(axis) {
-    this.throwIfDisposed();
-    return unstack(this, axis);
-  };
-  getGlobalTensorClass().prototype.where = function(condition, x) {
-    this.throwIfDisposed();
-    return where(condition, this, x);
-  };
-  getGlobalTensorClass().prototype.zerosLike = function() {
-    this.throwIfDisposed();
-    return zerosLike(this);
-  };
   var exports_constraints_exports = {};
   __export2(exports_constraints_exports, {
     maxNorm: () => maxNorm,
@@ -21562,7 +21032,7 @@ Expected: ${expectedFlat}.`);
       return pyDict;
     }
   }
-  var version2 = "3.9.0";
+  var version10 = "3.9.0";
   function assertFeedCompatibility(key, val) {
     if (key.dtype == null || key.dtype === val.dtype) {
       return val;
@@ -22166,7 +21636,7 @@ Expected: ${expectedFlat}.`);
       const modelConfig = {};
       modelConfig["className"] = this.getClassName();
       modelConfig["config"] = theConfig;
-      modelConfig["kerasVersion"] = `tfjs-layers ${version2}`;
+      modelConfig["kerasVersion"] = `tfjs-layers ${version10}`;
       modelConfig["backend"] = "TensorFlow.js";
       return modelConfig;
     }
@@ -23958,7 +23428,7 @@ Expected: ${expectedFlat}.`);
       const modelArtifacts = {
         modelTopology: modelConfig,
         format: LAYERS_MODEL_FORMAT_NAME,
-        generatedBy: `TensorFlow.js tfjs-layers v${version2}`,
+        generatedBy: `TensorFlow.js tfjs-layers v${version10}`,
         convertedBy: null
       };
       const includeOptimizer = config == null ? false : config.includeOptimizer;
@@ -35581,7 +35051,7 @@ Expected: ${expectedFlat}.`);
     await model2.load();
     return model2;
   }
-  var version3 = "3.9.0";
+  var version11 = "3.9.0";
   var dist_exports = {};
   __export2(dist_exports, {
     CSVDataset: () => CSVDataset,
@@ -35594,7 +35064,7 @@ Expected: ${expectedFlat}.`);
     func: () => func,
     generator: () => generator,
     microphone: () => microphone,
-    version_data: () => version4,
+    version_data: () => version12,
     webcam: () => webcam,
     zip: () => zip
   });
@@ -37310,7 +36780,7 @@ Expected: ${expectedFlat}.`);
   async function microphone(microphoneConfig) {
     return MicrophoneIterator.create(microphoneConfig);
   }
-  var version4 = "3.9.0";
+  var version12 = "3.9.0";
   function assertNotComplex(tensor2, opName) {
     if (!Array.isArray(tensor2)) {
       tensor2 = [tensor2];
@@ -38806,7 +38276,7 @@ Expected: ${expectedFlat}.`);
       indices
     };
   }
-  var version5 = "3.9.0";
+  var version13 = "3.9.0";
   registerBackend("cpu", () => new MathBackendCPU(), 1);
   var elu4 = unaryKernelFunc(Elu, (xi) => xi >= 0 ? xi : Math.exp(xi) - 1);
   var eluConfig = {
@@ -43371,6 +42841,51 @@ Expected: ${expectedFlat}.`);
   for (const kernelConfig of kernelConfigs) {
     registerKernel(kernelConfig);
   }
+  var webgl_util_exports = {};
+  __export2(webgl_util_exports, {
+    assertNotComplex: () => assertNotComplex2,
+    bindCanvasToFramebuffer: () => bindCanvasToFramebuffer,
+    bindColorTextureToFramebuffer: () => bindColorTextureToFramebuffer,
+    bindTextureToProgramUniformSampler: () => bindTextureToProgramUniformSampler,
+    bindTextureUnit: () => bindTextureUnit,
+    bindVertexBufferToProgramAttribute: () => bindVertexBufferToProgramAttribute,
+    callAndCheck: () => callAndCheck,
+    canBeRepresented: () => canBeRepresented,
+    createFragmentShader: () => createFragmentShader,
+    createFramebuffer: () => createFramebuffer,
+    createProgram: () => createProgram,
+    createStaticIndexBuffer: () => createStaticIndexBuffer,
+    createStaticVertexBuffer: () => createStaticVertexBuffer,
+    createTexture: () => createTexture,
+    createVertexShader: () => createVertexShader,
+    getBatchDim: () => getBatchDim,
+    getExtensionOrThrow: () => getExtensionOrThrow,
+    getFramebufferErrorMessage: () => getFramebufferErrorMessage,
+    getMaxTexturesInShader: () => getMaxTexturesInShader,
+    getNumChannels: () => getNumChannels,
+    getProgramUniformLocation: () => getProgramUniformLocation,
+    getProgramUniformLocationOrThrow: () => getProgramUniformLocationOrThrow,
+    getRowsCols: () => getRowsCols,
+    getShapeAs3D: () => getShapeAs3D,
+    getTextureShapeFromLogicalShape: () => getTextureShapeFromLogicalShape,
+    getWebGLDisjointQueryTimerVersion: () => getWebGLDisjointQueryTimerVersion,
+    getWebGLErrorMessage: () => getWebGLErrorMessage,
+    getWebGLMaxTextureSize: () => getWebGLMaxTextureSize,
+    hasExtension: () => hasExtension,
+    isCapableOfRenderingToFloatTexture: () => isCapableOfRenderingToFloatTexture,
+    isDownloadFloatTextureEnabled: () => isDownloadFloatTextureEnabled,
+    isReshapeFree: () => isReshapeFree,
+    isWebGLFenceEnabled: () => isWebGLFenceEnabled,
+    isWebGLVersionEnabled: () => isWebGLVersionEnabled,
+    linkProgram: () => linkProgram,
+    resetMaxTextureSize: () => resetMaxTextureSize,
+    resetMaxTexturesInShader: () => resetMaxTexturesInShader,
+    unbindColorTextureFromFramebuffer: () => unbindColorTextureFromFramebuffer,
+    unbindTextureUnit: () => unbindTextureUnit,
+    validateFramebuffer: () => validateFramebuffer,
+    validateProgram: () => validateProgram,
+    validateTextureSize: () => validateTextureSize
+  });
   var contexts = {};
   var WEBGL_ATTRIBUTES = {
     alpha: false,
@@ -43638,6 +43153,12 @@ Expected: ${expectedFlat}.`);
     callAndCheck(gl, () => gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, data, gl.STATIC_DRAW));
     return buffer2;
   }
+  function getNumChannels() {
+    if (env().getNumber("WEBGL_VERSION") === 2) {
+      return 1;
+    }
+    return 4;
+  }
   function createTexture(gl) {
     return throwIfNull(gl, () => gl.createTexture(), "Unable to create WebGLTexture.");
   }
@@ -43671,6 +43192,11 @@ Expected: ${expectedFlat}.`);
     callAndCheck(gl, () => gl.activeTexture(gl.TEXTURE0 + textureUnit));
     callAndCheck(gl, () => gl.bindTexture(gl.TEXTURE_2D, texture));
   }
+  function unbindTextureUnit(gl, textureUnit) {
+    validateTextureUnit(gl, textureUnit);
+    callAndCheck(gl, () => gl.activeTexture(gl.TEXTURE0 + textureUnit));
+    callAndCheck(gl, () => gl.bindTexture(gl.TEXTURE_2D, null));
+  }
   function getProgramUniformLocationOrThrow(gl, program, uniformName) {
     return throwIfNull(gl, () => gl.getUniformLocation(program, uniformName), 'uniform "' + uniformName + '" not present in program.');
   }
@@ -43680,6 +43206,11 @@ Expected: ${expectedFlat}.`);
   function bindTextureToProgramUniformSampler(gl, texture, uniformSamplerLocation, textureUnit) {
     callAndCheck(gl, () => bindTextureUnit(gl, texture, textureUnit));
     callAndCheck(gl, () => gl.uniform1i(uniformSamplerLocation, textureUnit));
+  }
+  function bindCanvasToFramebuffer(gl) {
+    callAndCheck(gl, () => gl.bindFramebuffer(gl.FRAMEBUFFER, null));
+    callAndCheck(gl, () => gl.viewport(0, 0, gl.canvas.width, gl.canvas.height));
+    callAndCheck(gl, () => gl.scissor(0, 0, gl.canvas.width, gl.canvas.height));
   }
   function bindColorTextureToFramebuffer(gl, texture, framebuffer) {
     callAndCheck(gl, () => gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer));
@@ -43818,6 +43349,12 @@ Expected: ${expectedFlat}.`);
       MAX_TEXTURE_SIZE = gl.getParameter(gl.MAX_TEXTURE_SIZE);
     }
     return MAX_TEXTURE_SIZE;
+  }
+  function resetMaxTextureSize() {
+    MAX_TEXTURE_SIZE = null;
+  }
+  function resetMaxTexturesInShader() {
+    MAX_TEXTURES_IN_SHADER = null;
   }
   function getMaxTexturesInShader(webGLVersion) {
     if (MAX_TEXTURES_IN_SHADER == null) {
@@ -44016,7 +43553,7 @@ Expected: ${expectedFlat}.`);
   ENV3.registerFlag("TOPK_LAST_DIM_CPU_HANDOFF_SIZE_THRESHOLD", () => 1e5);
   ENV3.registerFlag("TOPK_K_CPU_HANDOFF_THRESHOLD", () => 128);
   function getGlslDifferences() {
-    let version102;
+    let version172;
     let attribute;
     let varyingVs;
     let varyingFs;
@@ -44027,7 +43564,7 @@ Expected: ${expectedFlat}.`);
     let defineSpecialInf;
     let defineRound;
     if (env().getNumber("WEBGL_VERSION") === 2) {
-      version102 = "#version 300 es";
+      version172 = "#version 300 es";
       attribute = "in";
       varyingVs = "out";
       varyingFs = "in";
@@ -44058,7 +43595,7 @@ Expected: ${expectedFlat}.`);
       }
     `;
     } else {
-      version102 = "";
+      version172 = "";
       attribute = "attribute";
       varyingVs = "varying";
       varyingFs = "varying";
@@ -44095,7 +43632,7 @@ Expected: ${expectedFlat}.`);
     `;
     }
     return {
-      version: version102,
+      version: version172,
       attribute,
       varyingVs,
       varyingFs,
@@ -46260,6 +45797,30 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
     `;
     }
   };
+  var gpgpu_util_exports = {};
+  __export2(gpgpu_util_exports, {
+    bindVertexProgramAttributeStreams: () => bindVertexProgramAttributeStreams,
+    createBufferFromOutputTexture: () => createBufferFromOutputTexture,
+    createFloat16MatrixTexture: () => createFloat16MatrixTexture,
+    createFloat16PackedMatrixTexture: () => createFloat16PackedMatrixTexture,
+    createFloat32MatrixTexture: () => createFloat32MatrixTexture,
+    createIndexBuffer: () => createIndexBuffer,
+    createPackedMatrixTexture: () => createPackedMatrixTexture,
+    createUnsignedBytesMatrixTexture: () => createUnsignedBytesMatrixTexture,
+    createVertexBuffer: () => createVertexBuffer,
+    createVertexShader: () => createVertexShader2,
+    downloadByteEncodedFloatMatrixFromOutputTexture: () => downloadByteEncodedFloatMatrixFromOutputTexture,
+    downloadFloat32MatrixFromBuffer: () => downloadFloat32MatrixFromBuffer,
+    downloadMatrixFromPackedOutputTexture: () => downloadMatrixFromPackedOutputTexture,
+    downloadPackedMatrixFromBuffer: () => downloadPackedMatrixFromBuffer,
+    getInternalFormatForFloat16MatrixTexture: () => getInternalFormatForFloat16MatrixTexture,
+    getInternalFormatForFloat16PackedMatrixTexture: () => getInternalFormatForFloat16PackedMatrixTexture,
+    getInternalFormatForFloat32MatrixTexture: () => getInternalFormatForFloat32MatrixTexture,
+    getInternalFormatForPackedMatrixTexture: () => getInternalFormatForPackedMatrixTexture,
+    getInternalFormatForUnsignedBytesMatrixTexture: () => getInternalFormatForUnsignedBytesMatrixTexture,
+    uploadDenseMatrixToTexture: () => uploadDenseMatrixToTexture,
+    uploadPixelDataToTexture: () => uploadPixelDataToTexture
+  });
   function createVertexShader2(gl) {
     const glsl = getGlslDifferences();
     const vertexShaderSource = `${glsl.version}
@@ -47958,10 +47519,14 @@ vec2 packedUVfrom3D(int texNumR, int texNumC,
       throw new Error(`Unknown dtype ${dtype}`);
     }
   }
-  var version6 = "3.9.0";
+  var version14 = "3.9.0";
+  function forceHalfFloat() {
+    env().set("WEBGL_FORCE_F16_TEXTURES", true);
+  }
   if (device_util_exports.isBrowser()) {
     registerBackend("webgl", () => new MathBackendWebGL(), 2);
   }
+  var webgl = { forceHalfFloat };
   var CHECK_NAN_SNIPPET2 = `
   if (isnan(a)) return a;
   if (isnan(b)) return b;
@@ -56921,16 +56486,6 @@ return a / b;`;
   for (const kernelConfig of kernelConfigs2) {
     registerKernel(kernelConfig);
   }
-  var version7 = "3.9.0";
-  var version8 = {
-    "tfjs-core": version,
-    "tfjs-backend-cpu": version5,
-    "tfjs-backend-webgl": version6,
-    "tfjs-data": version4,
-    "tfjs-layers": version2,
-    "tfjs-converter": version3,
-    "tfjs": version7
-  };
   var CppDType;
   (function(CppDType2) {
     CppDType2[CppDType2["float32"] = 0] = "float32";
@@ -57461,73 +57016,6 @@ return a / b;`;
     setupFunc: setup7,
     kernelFunc: batchMatMul3
   };
-  function concatImpl3(inputs, outShape, dtype, simplyConcat) {
-    const outVals = util_exports.getArrayFromDType(dtype, util_exports.sizeFromShape(outShape));
-    if (simplyConcat && dtype !== "string") {
-      let offset = 0;
-      inputs.forEach((input2) => {
-        const size = util_exports.sizeFromShape(input2.shape);
-        outVals.set(input2.vals, offset);
-        offset += size;
-      });
-    } else {
-      let colOffset = 0;
-      inputs.forEach((input2) => {
-        const decodedData = dtype === "string" ? backend_util_exports.fromUint8ToStringArray(input2.vals) : input2.vals;
-        let tIdx = 0;
-        for (let row = 0; row < input2.shape[0]; ++row) {
-          const resIdx = row * outShape[1] + colOffset;
-          for (let col = 0; col < input2.shape[1]; ++col) {
-            outVals[resIdx + col] = decodedData[tIdx++];
-          }
-        }
-        colOffset += input2.shape[1];
-      });
-    }
-    return outVals;
-  }
-  function rangeImpl2(start, stop, step5, dtype) {
-    const sameStartStop = start === stop;
-    const increasingRangeNegativeStep = start < stop && step5 < 0;
-    const decreasingRangePositiveStep = stop < start && step5 > 1;
-    if (sameStartStop || increasingRangeNegativeStep || decreasingRangePositiveStep) {
-      return util_exports.makeZerosTypedArray(0, dtype);
-    }
-    const numElements = Math.abs(Math.ceil((stop - start) / step5));
-    const values = util_exports.makeZerosTypedArray(numElements, dtype);
-    if (stop < start && step5 === 1) {
-      step5 = -1;
-    }
-    values[0] = start;
-    for (let i = 1; i < values.length; i++) {
-      values[i] = values[i - 1] + step5;
-    }
-    return values;
-  }
-  function sliceImpl2(vals, begin, size, shape, dtype) {
-    const isContinous = slice_util_exports.isSliceContinous(shape, begin, size);
-    const length = util_exports.sizeFromShape(size);
-    const xStrides = util_exports.computeStrides(shape);
-    if (isContinous) {
-      const flatOffset = slice_util_exports.computeFlatOffset(begin, xStrides);
-      if (dtype === "string") {
-        return vals.slice(flatOffset, flatOffset + length);
-      }
-      return vals.subarray(flatOffset, flatOffset + length);
-    }
-    const decodedData = dtype === "string" ? backend_util_exports.fromUint8ToStringArray(vals) : vals;
-    const inBuf = buffer(shape, dtype, decodedData);
-    const outBuf = buffer(size, dtype);
-    for (let i = 0; i < outBuf.size; ++i) {
-      const outLoc = outBuf.indexToLoc(i);
-      const inLoc = outLoc.map((idx, j) => idx + begin[j]);
-      outBuf.set(inBuf.get(...inLoc), ...outLoc);
-    }
-    if (dtype === "string") {
-      return backend_util_exports.fromStringArrayToUint8(outBuf.values);
-    }
-    return outBuf.values;
-  }
   function slice4(args) {
     const { inputs: { x }, attrs: { begin, size }, backend: backend2 } = args;
     const [begin_, size_] = slice_util_exports.parseSliceParams(x, begin, size);
@@ -57547,7 +57035,7 @@ return a / b;`;
       return out;
     }
     if (x.dtype === "string") {
-      const res = sliceImpl2(xVals, begin_, size_, x.shape, x.dtype);
+      const res = sliceImpl(xVals, begin_, size_, x.shape, x.dtype);
       outData.stringBytes = res;
       return out;
     }
@@ -57560,7 +57048,7 @@ return a / b;`;
     } else if (rank === 4) {
       slice4d2(xVals, xStrides[0], xStrides[1], xStrides[2], outVals, begin_, size_);
     } else {
-      const res = sliceImpl2(xVals, begin_, size_, x.shape, x.dtype);
+      const res = sliceImpl(xVals, begin_, size_, x.shape, x.dtype);
       outVals.set(res);
     }
     return out;
@@ -57707,7 +57195,7 @@ return a / b;`;
       });
       outShape = backend_util_exports.computeOutShape(inputs2D.map((t) => t.shape), 1);
       const simplyConcat = inputs2D[0].shape[0] === 1;
-      const outVals2 = concatImpl3(inputsValShapes, outShape, inputs[0].dtype, simplyConcat);
+      const outVals2 = concatImpl(inputsValShapes, outShape, inputs[0].dtype, simplyConcat);
       const finalOutShape = backend_util_exports.computeOutShape($inputs.map((t) => t.shape), axis);
       out.shape = finalOutShape;
       const outData = backend2.dataIdMap.get(out.dataId);
@@ -58980,7 +58468,7 @@ return a / b;`;
   var range5 = (args) => {
     const { backend: backend2, attrs } = args;
     const { start, stop, step: step5, dtype } = attrs;
-    const values = rangeImpl2(start, stop, step5, dtype);
+    const values = rangeImpl(start, stop, step5, dtype);
     const out = backend2.makeOutput([values.length], dtype);
     const outVals = backend2.typedArrayFromHeap(out);
     outVals.set(values);
@@ -60068,12 +59556,22 @@ return a / b;`;
     }
     customFetch = usePlatformFetch;
   }
-  var version9 = "3.9.0";
+  var version15 = "3.9.0";
   var WASM_PRIORITY = 2;
   registerBackend("wasm", async () => {
     const { wasm } = await init();
     return new BackendWasm(wasm);
   }, WASM_PRIORITY);
+  var version16 = {
+    tfjs: version,
+    "tfjs-core": version2,
+    "tfjs-data": version3,
+    "tfjs-layers": version4,
+    "tfjs-converter": version5,
+    "tfjs-backend-cpu": version6,
+    "tfjs-backend-webgl": version7,
+    "tfjs-backend-wasm": version8
+  };
 
   // src/draw/index.ts
   var draw_exports = {};
@@ -62167,7 +61665,7 @@ return a / b;`;
   }
 
   // package.json
-  var version10 = "1.5.1";
+  var version17 = "1.5.2";
 
   // src/xception/extractParams.ts
   function extractorsFactory2(extractWeights, paramMappings) {
@@ -64160,9 +63658,8 @@ return a / b;`;
   var ComputeSingleFaceDescriptorTask = class extends ComputeFaceDescriptorsTaskBase {
     async run() {
       const parentResult = await this.parentTask;
-      if (!parentResult) {
+      if (!parentResult)
         return void 0;
-      }
       const descriptor = await extractSingleFaceAndComputeResult(parentResult, this.input, (face) => nets.faceRecognitionNet.computeFaceDescriptor(face), null, (parentResult2) => parentResult2.landmarks.align(null, { useDlibAlignment: true }));
       return extendWithFaceDescriptor(parentResult, descriptor);
     }
@@ -64402,7 +63899,13 @@ return a / b;`;
   // src/index.ts
   var node = typeof process !== "undefined";
   var browser = typeof navigator !== "undefined" && typeof navigator.userAgent !== "undefined";
-  var version11 = { faceapi: version10, node, browser };
+  var version18 = { faceapi: version17, node, browser };
+  if (browser) {
+    ENV.set("CHECK_COMPUTATION_FOR_ERRORS", false);
+    ENV.set("WEBGL_CPU_FORWARD", true);
+    ENV.set("WEBGL_PACK_DEPTHWISECONV", false);
+    ENV.set("WEBGL_USE_SHAPES_UNIFORMS", true);
+  }
 })();
 /**
  * @license

@@ -1,6 +1,6 @@
 # @vladmandic/face-api  
 
-  Version: **1.5.1**  
+  Version: **1.5.2**  
   Description: **FaceAPI: AI-powered Face Detection & Rotation Tracking, Face Description & Recognition, Age & Gender & Emotion Prediction for Browser and NodeJS using TensorFlow/JS**  
   
   Author: **Vladimir Mandic <mandic00@live.com>**  
@@ -9,10 +9,14 @@
   
 ## Changelog
   
+### **1.5.2** 2021/09/10 mandic00@live.com
+
+
+### **origin/master** 2021/09/08 mandic00@live.com
+
+- redesign build platform
+
 ### **1.5.1** 2021/09/08 mandic00@live.com
-
-
-### **origin/master** 2021/09/05 mandic00@live.com
 
 
 ### **1.4.2** 2021/08/31 mandic00@live.com

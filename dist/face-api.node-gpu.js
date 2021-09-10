@@ -11,7 +11,10 @@ var __getOwnPropNames = Object.getOwnPropertyNames;
 var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __markAsModule = (target) => __defProp(target, "__esModule", { value: true });
-var __commonJS = (cb, mod) => function __require() {
+var __require = typeof require !== "undefined" ? require : (x) => {
+  throw new Error('Dynamic require of "' + x + '" is not supported');
+};
+var __commonJS = (cb, mod) => function __require2() {
   return mod || (0, cb[Object.keys(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
 };
 var __export = (target, all) => {
@@ -41,6 +44,9 @@ var require_tfjs_esm = __commonJS({
     var __getProtoOf2 = Object.getPrototypeOf;
     var __hasOwnProp2 = Object.prototype.hasOwnProperty;
     var __markAsModule2 = (target) => __defProp2(target, "__esModule", { value: true });
+    var __require2 = typeof require !== "undefined" ? require : (x) => {
+      throw new Error('Dynamic require of "' + x + '" is not supported');
+    };
     var __reExport2 = (target, module22, desc) => {
       if (module22 && typeof module22 === "object" || typeof module22 === "function") {
         for (let key of __getOwnPropNames2(module22))
@@ -2307,7 +2313,7 @@ function drawFaceLandmarks(canvasArg, faceLandmarks) {
 }
 
 // package.json
-var version = "1.5.1";
+var version = "1.5.2";
 
 // src/ageGenderNet/AgeGenderNet.ts
 var tf20 = __toModule(require_tfjs_esm());
@@ -4345,9 +4351,8 @@ var ComputeAllFaceDescriptorsTask = class extends ComputeFaceDescriptorsTaskBase
 var ComputeSingleFaceDescriptorTask = class extends ComputeFaceDescriptorsTaskBase {
   async run() {
     const parentResult = await this.parentTask;
-    if (!parentResult) {
+    if (!parentResult)
       return void 0;
-    }
     const descriptor = await extractSingleFaceAndComputeResult(parentResult, this.input, (face) => nets.faceRecognitionNet.computeFaceDescriptor(face), null, (parentResult2) => parentResult2.landmarks.align(null, { useDlibAlignment: true }));
     return extendWithFaceDescriptor(parentResult, descriptor);
   }
@@ -4588,6 +4593,12 @@ function resizeResults(results, dimensions) {
 var node = typeof process !== "undefined";
 var browser3 = typeof navigator !== "undefined" && typeof navigator.userAgent !== "undefined";
 var version2 = { faceapi: version, node, browser: browser3 };
+if (browser3) {
+  tf42.ENV.set("CHECK_COMPUTATION_FOR_ERRORS", false);
+  tf42.ENV.set("WEBGL_CPU_FORWARD", true);
+  tf42.ENV.set("WEBGL_PACK_DEPTHWISECONV", false);
+  tf42.ENV.set("WEBGL_USE_SHAPES_UNIFORMS", true);
+}
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   AgeGenderNet,

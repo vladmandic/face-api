@@ -9,9 +9,7 @@ var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __markAsModule = (target) => __defProp(target, "__esModule", { value: true });
-var __require = (x) => {
-  if (typeof require !== "undefined")
-    return require(x);
+var __require = typeof require !== "undefined" ? require : (x) => {
   throw new Error('Dynamic require of "' + x + '" is not supported');
 };
 var __export = (target, all) => {
@@ -30,11 +28,41 @@ var __reExport = (target, module2, desc) => {
 
 // dist/tfjs.esm.js
 var tfjs_esm_exports = {};
-__markAsModule(tfjs_esm_exports);
+__export(tfjs_esm_exports, {
+  data: () => data,
+  version: () => version
+});
 __reExport(tfjs_esm_exports, dist_star);
-__reExport(tfjs_esm_exports, tfjs_backend_wasm_star);
-import * as dist_star from "@tensorflow/tfjs/dist/index.js";
-import * as tfjs_backend_wasm_star from "@tensorflow/tfjs-backend-wasm";
+__reExport(tfjs_esm_exports, dist_star2);
+__reExport(tfjs_esm_exports, dist_star3);
+__reExport(tfjs_esm_exports, dist_star4);
+__reExport(tfjs_esm_exports, dist_star5);
+__reExport(tfjs_esm_exports, dist_star6);
+import { version as tfjsVersion } from "@tensorflow/tfjs/package.json";
+import { version as tfjsCoreVersion } from "@tensorflow/tfjs-core/package.json";
+import { version as tfjsDataVersion } from "@tensorflow/tfjs-data/package.json";
+import { version as tfjsLayersVersion } from "@tensorflow/tfjs-layers/package.json";
+import { version as tfjsConverterVersion } from "@tensorflow/tfjs-converter/package.json";
+import { version as tfjsBackendCPUVersion } from "@tensorflow/tfjs-backend-cpu/package.json";
+import { version as tfjsBackendWebGLVersion } from "@tensorflow/tfjs-backend-webgl/package.json";
+import { version as tfjsBackendWASMVersion } from "@tensorflow/tfjs-backend-wasm/package.json";
+import * as dist_star from "@tensorflow/tfjs-core/dist/index.js";
+import * as dist_star2 from "@tensorflow/tfjs-layers/dist/index.js";
+import * as dist_star3 from "@tensorflow/tfjs-converter/dist/index.js";
+import * as data from "@tensorflow/tfjs-data/dist/index.js";
+import * as dist_star4 from "@tensorflow/tfjs-backend-cpu/dist/index.js";
+import * as dist_star5 from "@tensorflow/tfjs-backend-webgl/dist/index.js";
+import * as dist_star6 from "@tensorflow/tfjs-backend-wasm/dist/index.js";
+var version = {
+  tfjs: tfjsVersion,
+  "tfjs-core": tfjsCoreVersion,
+  "tfjs-data": tfjsDataVersion,
+  "tfjs-layers": tfjsLayersVersion,
+  "tfjs-converter": tfjsConverterVersion,
+  "tfjs-backend-cpu": tfjsBackendCPUVersion,
+  "tfjs-backend-webgl": tfjsBackendWebGLVersion,
+  "tfjs-backend-wasm": tfjsBackendWASMVersion
+};
 
 // src/draw/index.ts
 var draw_exports = {};
@@ -1981,9 +2009,9 @@ var FaceExpressionNet = class extends FaceProcessor {
     const netInput = await toNetInput(input);
     const out = await this.forwardInput(netInput);
     const probabilitesByBatch = await Promise.all(tfjs_esm_exports.unstack(out).map(async (t) => {
-      const data = t.dataSync();
+      const data2 = t.dataSync();
       t.dispose();
-      return data;
+      return data2;
     }));
     out.dispose();
     const predictionsByBatch = probabilitesByBatch.map((probabilites) => new FaceExpressions(probabilites));
@@ -2128,7 +2156,7 @@ function drawFaceLandmarks(canvasArg, faceLandmarks) {
 }
 
 // package.json
-var version = "1.5.1";
+var version2 = "1.5.2";
 
 // src/xception/extractParams.ts
 function extractorsFactory2(extractWeights, paramMappings) {
@@ -4121,9 +4149,8 @@ var ComputeAllFaceDescriptorsTask = class extends ComputeFaceDescriptorsTaskBase
 var ComputeSingleFaceDescriptorTask = class extends ComputeFaceDescriptorsTaskBase {
   async run() {
     const parentResult = await this.parentTask;
-    if (!parentResult) {
+    if (!parentResult)
       return void 0;
-    }
     const descriptor = await extractSingleFaceAndComputeResult(parentResult, this.input, (face) => nets.faceRecognitionNet.computeFaceDescriptor(face), null, (parentResult2) => parentResult2.landmarks.align(null, { useDlibAlignment: true }));
     return extendWithFaceDescriptor(parentResult, descriptor);
   }
@@ -4363,7 +4390,13 @@ function resizeResults(results, dimensions) {
 // src/index.ts
 var node = typeof process !== "undefined";
 var browser3 = typeof navigator !== "undefined" && typeof navigator.userAgent !== "undefined";
-var version2 = { faceapi: version, node, browser: browser3 };
+var version3 = { faceapi: version2, node, browser: browser3 };
+if (browser3) {
+  tfjs_esm_exports.ENV.set("CHECK_COMPUTATION_FOR_ERRORS", false);
+  tfjs_esm_exports.ENV.set("WEBGL_CPU_FORWARD", true);
+  tfjs_esm_exports.ENV.set("WEBGL_PACK_DEPTHWISECONV", false);
+  tfjs_esm_exports.ENV.set("WEBGL_USE_SHAPES_UNIFORMS", true);
+}
 export {
   AgeGenderNet,
   BoundingBox,
@@ -4485,6 +4518,6 @@ export {
   toNetInput,
   utils_exports as utils,
   validateConfig,
-  version2 as version
+  version3 as version
 };
 //# sourceMappingURL=face-api.esm-nobundle.js.map

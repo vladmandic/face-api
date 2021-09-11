@@ -4723,4 +4723,3 @@ if (browser3) {
   validateConfig,
   version
 });
-//# sourceMappingURL=face-api.node-gpu.js.map

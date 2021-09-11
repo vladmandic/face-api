@@ -1,18 +1,18 @@
-# @vladmandic/face-api  
+# packageJson  
 
-  Version: **1.5.2**  
-  Description: **FaceAPI: AI-powered Face Detection & Rotation Tracking, Face Description & Recognition, Age & Gender & Emotion Prediction for Browser and NodeJS using TensorFlow/JS**  
+  Version: **undefined**  
+  Description: **undefined**  
   
-  Author: **Vladimir Mandic <mandic00@live.com>**  
-  License: **MIT**  
+  Author: **undefined**  
+  License: **undefined**  
   Repository: **<https://github.com/vladmandic/face-api>**  
   
 ## Changelog
   
+### **HEAD -> master** 2021/09/10 mandic00@live.com
+
+
 ### **1.5.2** 2021/09/10 mandic00@live.com
-
-
-### **origin/master** 2021/09/08 mandic00@live.com
 
 - redesign build platform
 
@@ -123,61 +123,111 @@
 
 - add badges
 - optimize for npm
-- 0.30.6
+
+### **0.30.6** 2021/03/08 mandic00@live.com
+
 - added typings for face angle
 - disable landmark printing
-- 0.30.5
+
+### **0.30.5** 2021/03/07 mandic00@live.com
+
 - enabled live demo on gitpages
-- 0.30.4
+
+### **0.30.4** 2021/03/07 mandic00@live.com
+
 - added face angle calculations
 - added documentation
 - package update
-- 0.30.3
-- 0.30.2
-- 0.30.1
-- 0.13.3
+
+### **0.30.3** 2021/03/04 mandic00@live.com
+
+
+### **0.30.2** 2021/02/26 mandic00@live.com
+
+
+### **0.30.1** 2021/02/25 mandic00@live.com
+
+
+### **0.13.3** 2021/02/21 mandic00@live.com
+
 - added note-cpu target
 - merge pull request #39 from xemle/feature/node-cpu
 - add node-cpu build for non supported systems of libtensorflow
-- 0.13.2
-- 0.13.1
-- 0.12.10
+
+### **0.13.2** 2021/02/20 mandic00@live.com
+
+
+### **0.13.1** 2021/02/20 mandic00@live.com
+
+
+### **0.12.10** 2021/02/20 mandic00@live.com
+
 - exception handling
-- 0.12.9
-- exception handling
-- 0.12.8
-- exception handling
+
+### **0.12.9** 2021/02/20 mandic00@live.com
+
+
+### **0.12.8** 2021/02/20 mandic00@live.com
+
 
 ### **0.12.7** 2021/02/17 mandic00@live.com
 
 - 0.12.7
-- 0.12.6
-- 0.12.5
-- 0.12.4
-- 0.12.3
-- 0.12.2
+
+### **0.12.6** 2021/02/13 mandic00@live.com
+
+
+### **0.12.5** 2021/02/12 mandic00@live.com
+
+
+### **0.12.4** 2021/02/06 mandic00@live.com
+
+
+### **0.12.3** 2021/02/06 mandic00@live.com
+
+
+### **0.12.2** 2021/02/02 mandic00@live.com
+
 
 ### **update for tfjs 3.0.0** 2021/01/29 mandic00@live.com
 
-- 0.12.1
+
+### **0.12.1** 2021/01/29 mandic00@live.com
+
 - rebuild
-- 0.11.6
+
+### **0.11.6** 2021/01/24 mandic00@live.com
+
 - add check for null face descriptor
 - merge pull request #34 from patrickhulce/patch-1
 - fix: return empty descriptor for zero-sized faces
-- 0.11.5
-- 0.11.4
-- 0.11.3
+
+### **0.11.5** 2021/01/22 mandic00@live.com
+
+
+### **0.11.4** 2021/01/22 mandic00@live.com
+
+
+### **0.11.3** 2021/01/20 mandic00@live.com
+
 - fix typo
 - enable full minification
-- 0.11.2
+
+### **0.11.2** 2021/01/12 mandic00@live.com
+
 - full rebuild
-- 0.11.1
+
+### **0.11.1** 2021/01/10 mandic00@live.com
+
 - added live webcam demo
-- 0.10.2
+
+### **0.10.2** 2021/01/03 mandic00@live.com
+
 - ts linting
 - version bump
-- 0.10.1
+
+### **0.10.1** 2020/12/23 mandic00@live.com
+
 - full re-lint and typings generation
 - rebuild
 

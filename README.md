@@ -133,8 +133,6 @@ Simply include latest version of `FaceAPI` directly from a CDN in your HTML:
    *without* TFJS pre-bundled
 - `dist/face-api.node-gpu.js`: CommonJS format for server-side NodeJS execution  
    *without* TFJS pre-bundled and optimized for CUDA GPU acceleration
-- `dist/face-api.node-cpu.js`: CommonJS format for server-side NodeJS execution  
-   *without* TFJS pre-bundled and using JS engine for platforms where tensorflow binary library version is not available
 
 Defaults are:
 

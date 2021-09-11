@@ -4520,4 +4520,3 @@ export {
   validateConfig,
   version3 as version
 };
-//# sourceMappingURL=face-api.esm-nobundle.js.map

@@ -3,23 +3,23 @@
     "enabled": false,
     "debug": false,
     "console": true,
-    "output": "dev-server.log"
+    "output": "build.log"
+  },
+  "profiles": {
+    "production": ["clean", "compile", "typings", "typedoc", "lint", "changelog"],
+    "development": ["serve", "watch", "compile"]
   },
   "clean": {
-    "enabled": true,
     "locations": ["dist/*", "types/*", "typedoc/*"]
   },
   "lint": {
-    "enabled": true,
     "locations": [ "src/**" ],
     "rules": { }
   },
   "changelog": {
-    "enabled": true,
     "log": "CHANGELOG.md"
   },
   "serve": {
-    "enabled": true,
     "sslKey": "cert/https.key",
     "sslCrt": "cert/https.crt",
     "httpPort": 8000,
@@ -29,98 +29,89 @@
     "defaultFile": "index.html"
     },
   "build": {
-    "enabled": true,
     "global": {
       "target": "es2018",
-      "sourcemap": true,
+      "sourcemap": false,
       "banner": { "js": "/*\n  Face-API\n  homepage: <https://github.com/vladmandic/face-api>\n  author: <https://github.com/vladmandic>'\n*/\n" }
-    },
-    "production": {
-      "minify": false
-    },
-    "development": {
-      "minify": false
     },
     "targets": [
       {
-          "platform": "node",
-          "format": "cjs",
-          "input": "src/tfjs/tf-node.ts",
-          "output": "dist/tfjs.esm.js",
-          "external": ["@tensorflow"]
+        "name": "tfjs/node/cpu",
+        "platform": "node",
+        "format": "cjs",
+        "input": "src/tfjs/tf-node.ts",
+        "output": "dist/tfjs.esm.js",
+        "external": ["@tensorflow"]
       },
       {
-          "platform": "node",
-          "format": "cjs",
-          "input": "src/index.ts",
-          "output": "dist/face-api.node.js",
-          "external": ["@tensorflow"]
+        "name": "faceapi/node/cpu",
+        "platform": "node",
+        "format": "cjs",
+        "input": "src/index.ts",
+        "output": "dist/face-api.node.js",
+        "external": ["@tensorflow"]
       },
       {
-          "platform": "node",
-          "format": "cjs",
-          "input": "src/tfjs/tf-node-gpu.ts",
-          "output": "dist/tfjs.esm.js",
-          "external": ["@tensorflow"]
+        "name": "tfjs/node/gpu",
+        "platform": "node",
+        "format": "cjs",
+        "input": "src/tfjs/tf-node-gpu.ts",
+        "output": "dist/tfjs.esm.js",
+        "external": ["@tensorflow"]
       },
       {
-          "platform": "node",
-          "format": "cjs",
-          "input": "src/index.ts",
-          "output": "dist/face-api.node-gpu.js",
-          "external": ["@tensorflow"]
+        "name": "faceapi/node/gpu",
+        "platform": "node",
+        "format": "cjs",
+        "input": "src/index.ts",
+        "output": "dist/face-api.node-gpu.js",
+        "external": ["@tensorflow"]
       },
       {
-          "platform": "node",
-          "format": "cjs",
-          "input": "src/tfjs/tf-node-cpu.ts",
-          "output": "dist/tfjs.esm.js",
-          "external": ["@tensorflow"]
+        "name": "tfjs/browser/esm/nobundle",
+        "platform": "browser",
+        "format": "esm",
+        "input": "src/tfjs/tf-browser.ts",
+        "output": "dist/tfjs.esm.js",
+        "external": ["fs","buffer","util","os","@tensorflow"]
       },
       {
-          "platform": "node",
-          "format": "cjs",
-          "input": "src/index.ts",
-          "output": "dist/face-api.node-cpu.js",
-          "external": ["@tensorflow"]
+        "name": "faceapi/browser/esm/nobundle",
+        "platform": "browser",
+        "format": "esm",
+        "input": "src/index.ts",
+        "output": "dist/face-api.esm-nobundle.js",
+        "external": ["fs","buffer","util","os","@tensorflow","tfjs.esm.js"]
       },
       {
-          "platform": "browser",
-          "format": "esm",
-          "input": "src/tfjs/tf-browser.ts",
-          "output": "dist/tfjs.esm.js",
-          "external": ["fs","buffer","util","os","@tensorflow"]
+        "name": "tfjs/browser/esm/bundle",
+        "platform": "browser",
+        "format": "esm",
+        "sourcemap": true,
+        "input": "src/tfjs/tf-browser.ts",
+        "output": "dist/tfjs.esm.js",
+        "external": ["fs","buffer","util","os"]
       },
       {
-          "platform": "browser",
-          "format": "esm",
-          "input": "src/index.ts",
-          "output": "dist/face-api.esm-nobundle.js",
-          "external": ["fs","buffer","util","os","@tensorflow","tfjs.esm.js"]
+        "name": "faceapi/browser/iife/bundle",
+        "platform": "browser",
+        "format": "iife",
+        "globalName": "faceapi",
+        "minify": true,
+        "input": "src/index.ts",
+        "output": "dist/face-api.js",
+        "external": ["fs","buffer","util","os"]
       },
       {
-          "platform": "browser",
-          "format": "esm",
-          "input": "src/tfjs/tf-browser.ts",
-          "output": "dist/tfjs.esm.js",
-          "external": ["fs","buffer","util","os"]
-      },
-      {
-          "platform": "browser",
-          "format": "iife",
-          "globalName": "faceapi",
-          "input": "src/index.ts",
-          "output": "dist/face-api.js",
-          "external": ["fs","buffer","util","os"]
-      },
-      {
-          "platform": "browser",
-          "format": "esm",
-          "input": "src/index.ts",
-          "output": "dist/face-api.esm.js",
-          "external": ["fs","buffer","util","os"],
-          "typings": "types",
-          "typedoc": "typedoc"
+        "name": "faceapi/browser/esm/bundle",
+        "platform": "browser",
+        "format": "esm",
+        "sourcemap": true,
+        "input": "src/index.ts",
+        "output": "dist/face-api.esm.js",
+        "external": ["fs","buffer","util","os"],
+        "typings": "types",
+        "typedoc": "typedoc"
       }
     ]
   },

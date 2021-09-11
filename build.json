@@ -79,6 +79,7 @@
         "name": "faceapi/browser/esm/nobundle",
         "platform": "browser",
         "format": "esm",
+        "sourcemap": true,
         "input": "src/index.ts",
         "output": "dist/face-api.esm-nobundle.js",
         "external": ["fs","buffer","util","os","@tensorflow","tfjs.esm.js"]

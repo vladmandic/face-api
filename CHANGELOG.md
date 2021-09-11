@@ -9,8 +9,9 @@
   
 ## Changelog
   
-### **HEAD -> master** 2021/09/10 mandic00@live.com
+### **HEAD -> master** 2021/09/11 mandic00@live.com
 
+- enable webgl uniforms
 
 ### **1.5.2** 2021/09/10 mandic00@live.com
 

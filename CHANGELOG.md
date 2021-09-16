@@ -9,7 +9,11 @@
   
 ## Changelog
   
-### **HEAD -> master** 2021/09/11 mandic00@live.com
+### **1.5.3** 2021/09/16 mandic00@live.com
+
+- simplify tfjs imports
+
+### **origin/master** 2021/09/11 mandic00@live.com
 
 - reduce bundle size
 - enable webgl uniforms

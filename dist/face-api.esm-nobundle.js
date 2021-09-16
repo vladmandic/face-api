@@ -2148,7 +2148,7 @@ function drawFaceLandmarks(canvasArg, faceLandmarks) {
 }
 
 // package.json
-var version10 = "1.5.2";
+var version10 = "1.5.3";
 
 // src/xception/extractParams.ts
 function extractorsFactory2(extractWeights, paramMappings) {

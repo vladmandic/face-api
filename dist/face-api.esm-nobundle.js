@@ -29,39 +29,31 @@ var __reExport = (target, module2, desc) => {
 // dist/tfjs.esm.js
 var tfjs_esm_exports = {};
 __export(tfjs_esm_exports, {
-  data: () => data,
-  version: () => version
+  version: () => version9
 });
 __reExport(tfjs_esm_exports, dist_star);
 __reExport(tfjs_esm_exports, dist_star2);
 __reExport(tfjs_esm_exports, dist_star3);
-__reExport(tfjs_esm_exports, dist_star4);
-__reExport(tfjs_esm_exports, dist_star5);
-__reExport(tfjs_esm_exports, dist_star6);
-import { version as tfjsVersion } from "@tensorflow/tfjs/package.json";
-import { version as tfjsCoreVersion } from "@tensorflow/tfjs-core/package.json";
-import { version as tfjsDataVersion } from "@tensorflow/tfjs-data/package.json";
-import { version as tfjsLayersVersion } from "@tensorflow/tfjs-layers/package.json";
-import { version as tfjsConverterVersion } from "@tensorflow/tfjs-converter/package.json";
-import { version as tfjsBackendCPUVersion } from "@tensorflow/tfjs-backend-cpu/package.json";
-import { version as tfjsBackendWebGLVersion } from "@tensorflow/tfjs-backend-webgl/package.json";
-import { version as tfjsBackendWASMVersion } from "@tensorflow/tfjs-backend-wasm/package.json";
-import * as dist_star from "@tensorflow/tfjs-core/dist/index.js";
-import * as dist_star2 from "@tensorflow/tfjs-layers/dist/index.js";
-import * as dist_star3 from "@tensorflow/tfjs-converter/dist/index.js";
-import * as data from "@tensorflow/tfjs-data/dist/index.js";
-import * as dist_star4 from "@tensorflow/tfjs-backend-cpu/dist/index.js";
-import * as dist_star5 from "@tensorflow/tfjs-backend-webgl/dist/index.js";
-import * as dist_star6 from "@tensorflow/tfjs-backend-wasm/dist/index.js";
-var version = {
-  tfjs: tfjsVersion,
-  "tfjs-core": tfjsCoreVersion,
-  "tfjs-data": tfjsDataVersion,
-  "tfjs-layers": tfjsLayersVersion,
-  "tfjs-converter": tfjsConverterVersion,
-  "tfjs-backend-cpu": tfjsBackendCPUVersion,
-  "tfjs-backend-webgl": tfjsBackendWebGLVersion,
-  "tfjs-backend-wasm": tfjsBackendWASMVersion
+import * as dist_star from "@tensorflow/tfjs/dist/index.js";
+import * as dist_star2 from "@tensorflow/tfjs-backend-webgl/dist/index.js";
+import * as dist_star3 from "@tensorflow/tfjs-backend-wasm/dist/index.js";
+var version = "3.9.0";
+var version2 = "3.9.0";
+var version3 = "3.9.0";
+var version4 = "3.9.0";
+var version5 = "3.9.0";
+var version6 = "3.9.0";
+var version7 = "3.9.0";
+var version8 = "3.9.0";
+var version9 = {
+  tfjs: version,
+  "tfjs-core": version2,
+  "tfjs-data": version3,
+  "tfjs-layers": version4,
+  "tfjs-converter": version5,
+  "tfjs-backend-cpu": version6,
+  "tfjs-backend-webgl": version7,
+  "tfjs-backend-wasm": version8
 };
 
 // src/draw/index.ts
@@ -2009,9 +2001,9 @@ var FaceExpressionNet = class extends FaceProcessor {
     const netInput = await toNetInput(input);
     const out = await this.forwardInput(netInput);
     const probabilitesByBatch = await Promise.all(tfjs_esm_exports.unstack(out).map(async (t) => {
-      const data2 = t.dataSync();
+      const data = t.dataSync();
       t.dispose();
-      return data2;
+      return data;
     }));
     out.dispose();
     const predictionsByBatch = probabilitesByBatch.map((probabilites) => new FaceExpressions(probabilites));
@@ -2156,7 +2148,7 @@ function drawFaceLandmarks(canvasArg, faceLandmarks) {
 }
 
 // package.json
-var version2 = "1.5.2";
+var version10 = "1.5.2";
 
 // src/xception/extractParams.ts
 function extractorsFactory2(extractWeights, paramMappings) {
@@ -4390,7 +4382,7 @@ function resizeResults(results, dimensions) {
 // src/index.ts
 var node = typeof process !== "undefined";
 var browser3 = typeof navigator !== "undefined" && typeof navigator.userAgent !== "undefined";
-var version3 = { faceapi: version2, node, browser: browser3 };
+var version11 = { faceapi: version10, node, browser: browser3 };
 if (browser3) {
   tfjs_esm_exports.ENV.set("CHECK_COMPUTATION_FOR_ERRORS", false);
   tfjs_esm_exports.ENV.set("WEBGL_CPU_FORWARD", true);
@@ -4518,6 +4510,6 @@ export {
   toNetInput,
   utils_exports as utils,
   validateConfig,
-  version3 as version
+  version11 as version
 };
 //# sourceMappingURL=face-api.esm-nobundle.js.map

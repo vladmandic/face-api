@@ -11,6 +11,7 @@
   
 ### **HEAD -> master** 2021/09/11 mandic00@live.com
 
+- reduce bundle size
 - enable webgl uniforms
 
 ### **1.5.2** 2021/09/10 mandic00@live.com

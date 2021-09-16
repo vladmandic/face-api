@@ -67,6 +67,14 @@
         "output": "dist/face-api.node-gpu.js",
         "external": ["@tensorflow"]
       },
+      { 
+        "name": "tfjs/browser/tf-version",
+        "platform": "browser",
+        "format": "esm",
+        "input": "src/tfjs/tf-version.ts",
+        "output": "dist/tfjs.version.js",
+        "external": ["fs", "os", "buffer", "util"]
+      },
       {
         "name": "tfjs/browser/esm/nobundle",
         "platform": "browser",

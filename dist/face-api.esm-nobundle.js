@@ -9,9 +9,13 @@ var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __markAsModule = (target) => __defProp(target, "__esModule", { value: true });
-var __require = typeof require !== "undefined" ? require : (x) => {
+var __require = /* @__PURE__ */ ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, {
+  get: (a, b) => (typeof require !== "undefined" ? require : a)[b]
+}) : x)(function(x) {
+  if (typeof require !== "undefined")
+    return require.apply(this, arguments);
   throw new Error('Dynamic require of "' + x + '" is not supported');
-};
+});
 var __export = (target, all) => {
   __markAsModule(target);
   for (var name in all)
@@ -2148,7 +2152,7 @@ function drawFaceLandmarks(canvasArg, faceLandmarks) {
 }
 
 // package.json
-var version10 = "1.5.3";
+var version10 = "1.5.4";
 
 // src/xception/extractParams.ts
 function extractorsFactory2(extractWeights, paramMappings) {
@@ -4303,21 +4307,17 @@ var FaceMatcher = class {
   constructor(inputs, distanceThreshold = 0.6) {
     this._distanceThreshold = distanceThreshold;
     const inputArray = Array.isArray(inputs) ? inputs : [inputs];
-    if (!inputArray.length) {
+    if (!inputArray.length)
       throw new Error("FaceRecognizer.constructor - expected atleast one input");
-    }
     let count = 1;
     const createUniqueLabel = () => `person ${count++}`;
     this._labeledDescriptors = inputArray.map((desc) => {
-      if (desc instanceof LabeledFaceDescriptors) {
+      if (desc instanceof LabeledFaceDescriptors)
         return desc;
-      }
-      if (desc instanceof Float32Array) {
+      if (desc instanceof Float32Array)
         return new LabeledFaceDescriptors(createUniqueLabel(), [desc]);
-      }
-      if (desc.descriptor && desc.descriptor instanceof Float32Array) {
+      if (desc.descriptor && desc.descriptor instanceof Float32Array)
         return new LabeledFaceDescriptors(createUniqueLabel(), [desc.descriptor]);
-      }
       throw new Error("FaceRecognizer.constructor - expected inputs to be of type LabeledFaceDescriptors | WithFaceDescriptor<any> | Float32Array | Array<LabeledFaceDescriptors | WithFaceDescriptor<any> | Float32Array>");
     });
   }
@@ -4335,12 +4335,12 @@ var FaceMatcher = class {
   }
   findBestMatch(queryDescriptor) {
     const bestMatch = this.matchDescriptor(queryDescriptor);
-    return bestMatch.distance < this.distanceThreshold ? bestMatch : new FaceMatch("unknown", bestMatch.distance);
+    return bestMatch.distance < this._distanceThreshold ? bestMatch : new FaceMatch("unknown", bestMatch.distance);
   }
   toJSON() {
     return {
-      distanceThreshold: this.distanceThreshold,
-      labeledDescriptors: this.labeledDescriptors.map((ld) => ld.toJSON())
+      distanceThreshold: this._distanceThreshold,
+      labeledDescriptors: this._labeledDescriptors.map((ld) => ld.toJSON())
     };
   }
   static fromJSON(json) {

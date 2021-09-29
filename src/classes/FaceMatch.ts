@@ -7,7 +7,6 @@ export interface IFaceMatch {
 
 export class FaceMatch implements IFaceMatch {
   private _label: string
-
   private _distance: number
 
   constructor(label: string, distance: number) {

@@ -11,10 +11,7 @@ var __getOwnPropNames = Object.getOwnPropertyNames;
 var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __markAsModule = (target) => __defProp(target, "__esModule", { value: true });
-var __require = typeof require !== "undefined" ? require : (x) => {
-  throw new Error('Dynamic require of "' + x + '" is not supported');
-};
-var __commonJS = (cb, mod) => function __require2() {
+var __commonJS = (cb, mod) => function __require() {
   return mod || (0, cb[Object.keys(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
 };
 var __export = (target, all) => {
@@ -44,9 +41,6 @@ var require_tfjs_esm = __commonJS({
     var __getProtoOf2 = Object.getPrototypeOf;
     var __hasOwnProp2 = Object.prototype.hasOwnProperty;
     var __markAsModule2 = (target) => __defProp2(target, "__esModule", { value: true });
-    var __require2 = typeof require !== "undefined" ? require : (x) => {
-      throw new Error('Dynamic require of "' + x + '" is not supported');
-    };
     var __reExport2 = (target, module22, desc) => {
       if (module22 && typeof module22 === "object" || typeof module22 === "function") {
         for (let key of __getOwnPropNames2(module22))
@@ -2313,7 +2307,7 @@ function drawFaceLandmarks(canvasArg, faceLandmarks) {
 }
 
 // package.json
-var version = "1.5.3";
+var version = "1.5.4";
 
 // src/ageGenderNet/AgeGenderNet.ts
 var tf20 = __toModule(require_tfjs_esm());
@@ -4513,21 +4507,17 @@ var FaceMatcher = class {
   constructor(inputs, distanceThreshold = 0.6) {
     this._distanceThreshold = distanceThreshold;
     const inputArray = Array.isArray(inputs) ? inputs : [inputs];
-    if (!inputArray.length) {
+    if (!inputArray.length)
       throw new Error("FaceRecognizer.constructor - expected atleast one input");
-    }
     let count = 1;
     const createUniqueLabel = () => `person ${count++}`;
     this._labeledDescriptors = inputArray.map((desc) => {
-      if (desc instanceof LabeledFaceDescriptors) {
+      if (desc instanceof LabeledFaceDescriptors)
         return desc;
-      }
-      if (desc instanceof Float32Array) {
+      if (desc instanceof Float32Array)
         return new LabeledFaceDescriptors(createUniqueLabel(), [desc]);
-      }
-      if (desc.descriptor && desc.descriptor instanceof Float32Array) {
+      if (desc.descriptor && desc.descriptor instanceof Float32Array)
         return new LabeledFaceDescriptors(createUniqueLabel(), [desc.descriptor]);
-      }
       throw new Error("FaceRecognizer.constructor - expected inputs to be of type LabeledFaceDescriptors | WithFaceDescriptor<any> | Float32Array | Array<LabeledFaceDescriptors | WithFaceDescriptor<any> | Float32Array>");
     });
   }
@@ -4545,12 +4535,12 @@ var FaceMatcher = class {
   }
   findBestMatch(queryDescriptor) {
     const bestMatch = this.matchDescriptor(queryDescriptor);
-    return bestMatch.distance < this.distanceThreshold ? bestMatch : new FaceMatch("unknown", bestMatch.distance);
+    return bestMatch.distance < this._distanceThreshold ? bestMatch : new FaceMatch("unknown", bestMatch.distance);
   }
   toJSON() {
     return {
-      distanceThreshold: this.distanceThreshold,
-      labeledDescriptors: this.labeledDescriptors.map((ld) => ld.toJSON())
+      distanceThreshold: this._distanceThreshold,
+      labeledDescriptors: this._labeledDescriptors.map((ld) => ld.toJSON())
     };
   }
   static fromJSON(json) {

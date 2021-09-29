@@ -39,7 +39,7 @@ export class FaceMatcher {
 
   public findBestMatch(queryDescriptor: Float32Array): FaceMatch {
     const bestMatch = this.matchDescriptor(queryDescriptor);
-    return bestMatch.distance < this._distanceThreshold ? bestMatch : new FaceMatch('unknown', bestMatch.distance);
+    return (bestMatch.distance < this._distanceThreshold) ? bestMatch : new FaceMatch('unknown', bestMatch.distance);
   }
 
   public toJSON(): any {

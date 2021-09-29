@@ -106,7 +106,7 @@ async function main() {
   await faceapi.nets.faceExpressionNet.loadFromDisk(modelPath);
   optionsSSDMobileNet = new faceapi.SsdMobilenetv1Options({ minConfidence, maxResults });
 
-  if (process.argv.length !== 3) {
+  if (process.argv.length !== 4) {
     const t0 = process.hrtime.bigint();
     const dir = fs.readdirSync(imgPathRoot);
     for (const img of dir) {

@@ -52,7 +52,7 @@
     "@tensorflow/tfjs-layers": "^3.9.0",
     "@tensorflow/tfjs-node": "^3.9.0",
     "@tensorflow/tfjs-node-gpu": "^3.9.0",
-    "@types/node": "^16.10.1",
+    "@types/node": "^16.10.2",
     "@typescript-eslint/eslint-plugin": "^4.32.0",
     "@typescript-eslint/parser": "^4.32.0",
     "@vladmandic/build": "^0.5.3",
@@ -70,7 +70,7 @@
     "node-fetch": "^3.0.0",
     "rimraf": "^3.0.2",
     "seedrandom": "^3.0.5",
-    "simple-git": "^2.45.1",
+    "simple-git": "^2.46.0",
     "tslib": "^2.3.1",
     "typedoc": "^0.22.4",
     "typescript": "4.4.3"

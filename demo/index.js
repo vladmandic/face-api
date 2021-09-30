@@ -9,12 +9,7 @@ const maxResults = 10; // maximum number of results to return
 const samples = ['sample1.jpg', 'sample2.jpg', 'sample3.jpg', 'sample4.jpg', 'sample5.jpg', 'sample6.jpg']; // sample images to be loaded using http
 
 // helper function to pretty-print json object to string
-function str(json) {
-  let text = '<font color="lightblue">';
-  text += json ? JSON.stringify(json).replace(/{|}|"|\[|\]/g, '').replace(/,/g, ', ') : '';
-  text += '</font>';
-  return text;
-}
+const str = (json) => (json ? JSON.stringify(json).replace(/{|}|"|\[|\]/g, '').replace(/,/g, ', ') : '');
 
 // helper function to print strings to html document as a log
 function log(...txt) {
@@ -110,12 +105,17 @@ async function main() {
   // initialize tfjs
   log('FaceAPI Test');
 
-  // if you want to use wasm backend location for wasm binaries must be specified
-  // await faceapi.tf.setWasmPaths('../node_modules/@tensorflow/tfjs-backend-wasm/dist/');
-  // await faceapi.tf.setBackend('wasm');
-
-  // default is webgl backend
-  await faceapi.tf.setBackend('webgl');
+  const params = new URLSearchParams(location.search);
+  log('url options:', params.toString());
+  if (params.has('backend')) {
+    const backend = params.get('backend');
+    await faceapi.tf.setWasmPaths('https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-wasm@3.9.0/dist/');
+    log('overriding backend:', backend);
+    await faceapi.tf.setBackend(backend);
+  } else {
+    // default is webgl backend
+    await faceapi.tf.setBackend('webgl');
+  }
 
   await faceapi.tf.enableProdMode();
   await faceapi.tf.ENV.set('DEBUG', false);
@@ -163,7 +163,7 @@ async function main() {
         .withFaceDescriptors()
         .withAgeAndGender();
       // print results to screen
-      print('TinyFace Detector', img, dataTinyYolo);
+      print('TinyFace:', img, dataTinyYolo);
       // actual model execution
       const dataSSDMobileNet = await faceapi
         .detectAllFaces(canvas, optionsSSDMobileNet)
@@ -172,7 +172,7 @@ async function main() {
         .withFaceDescriptors()
         .withAgeAndGender();
       // print results to screen
-      print('SSD MobileNet', img, dataSSDMobileNet);
+      print('SSDMobileNet:', img, dataSSDMobileNet);
     } catch (err) {
       log(`Image: ${img} Error during processing ${str(err)}`);
       // eslint-disable-next-line no-console

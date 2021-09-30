@@ -106,11 +106,10 @@ async function main() {
   log('FaceAPI Test');
 
   const params = new URLSearchParams(location.search);
-  log('url options:', params.toString());
   if (params.has('backend')) {
     const backend = params.get('backend');
     await faceapi.tf.setWasmPaths('https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-wasm@3.9.0/dist/');
-    log('overriding backend:', backend);
+    log(`Chosen backend: ${backend}`);
     await faceapi.tf.setBackend(backend);
   } else {
     // default is webgl backend

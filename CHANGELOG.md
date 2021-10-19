@@ -1,4 +1,4 @@
-# packageJson  
+#   
 
   Version: **undefined**  
   Description: **undefined**  
@@ -9,8 +9,13 @@
   
 ## Changelog
   
-### **HEAD -> master** 2021/09/29 mandic00@live.com
+### **1.5.5** 2021/10/19 mandic00@live.com
 
+
+### **origin/master** 2021/09/30 mandic00@live.com
+
+- allow backend change in demo via url params
+- add node-match demo
 - fix face matcher
 
 ### **1.5.4** 2021/09/29 mandic00@live.com

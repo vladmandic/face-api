@@ -17,17 +17,17 @@ export interface IDrawFaceLandmarksOptions {
 }
 
 export class DrawFaceLandmarksOptions {
-  public drawLines: boolean
+  public drawLines: boolean;
 
-  public drawPoints: boolean
+  public drawPoints: boolean;
 
-  public lineWidth: number
+  public lineWidth: number;
 
-  public pointSize: number
+  public pointSize: number;
 
-  public lineColor: string
+  public lineColor: string;
 
-  public pointColor: string
+  public pointColor: string;
 
   constructor(options: IDrawFaceLandmarksOptions = {}) {
     const {
@@ -43,9 +43,9 @@ export class DrawFaceLandmarksOptions {
 }
 
 export class DrawFaceLandmarks {
-  public faceLandmarks: FaceLandmarks
+  public faceLandmarks: FaceLandmarks;
 
-  public options: DrawFaceLandmarksOptions
+  public options: DrawFaceLandmarksOptions;
 
   constructor(
     faceLandmarks: FaceLandmarks,

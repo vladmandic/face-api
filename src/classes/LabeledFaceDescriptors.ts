@@ -1,7 +1,7 @@
 export class LabeledFaceDescriptors {
-  private _label: string
+  private _label: string;
 
-  private _descriptors: Float32Array[]
+  private _descriptors: Float32Array[];
 
   constructor(label: string, descriptors: Float32Array[]) {
     if (!(typeof label === 'string')) {

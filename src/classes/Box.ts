@@ -19,13 +19,13 @@ export class Box<BoxType = any> implements IBoundingBox, IRect {
     }
   }
 
-  private _x: number
+  private _x: number;
 
-  private _y: number
+  private _y: number;
 
-  private _width: number
+  private _width: number;
 
-  private _height: number
+  private _height: number;
 
   constructor(_box: IBoundingBox | IRect, allowNegativeDimensions = true) {
     const box = (_box || {}) as any;

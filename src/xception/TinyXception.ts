@@ -31,7 +31,7 @@ function mainBlock(x: tf.Tensor4D, params: MainBlockParams): tf.Tensor4D {
 }
 
 export class TinyXception extends NeuralNetwork<TinyXceptionParams> {
-  private _numMainBlocks: number
+  private _numMainBlocks: number;
 
   constructor(numMainBlocks: number) {
     super('TinyXception');

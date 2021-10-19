@@ -13,7 +13,7 @@ export abstract class FaceProcessor<
   TExtractorParams extends FaceFeatureExtractorParams | TinyFaceFeatureExtractorParams
 >
   extends NeuralNetwork<NetParams> {
-  protected _faceFeatureExtractor: IFaceFeatureExtractor<TExtractorParams>
+  protected _faceFeatureExtractor: IFaceFeatureExtractor<TExtractorParams>;
 
   constructor(_name: string, faceFeatureExtractor: IFaceFeatureExtractor<TExtractorParams>) {
     super(_name);

@@ -18,11 +18,11 @@ export interface IFaceLandmarks {
 }
 
 export class FaceLandmarks implements IFaceLandmarks {
-  protected _shift: Point
+  protected _shift: Point;
 
-  protected _positions: Point[]
+  protected _positions: Point[];
 
-  protected _imgDims: Dimensions
+  protected _imgDims: Dimensions;
 
   constructor(
     relativeFaceLandmarkPositions: Point[],

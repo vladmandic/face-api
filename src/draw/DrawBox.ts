@@ -11,13 +11,13 @@ export interface IDrawBoxOptions {
 }
 
 export class DrawBoxOptions {
-  public boxColor: string
+  public boxColor: string;
 
-  public lineWidth: number
+  public lineWidth: number;
 
-  public drawLabelOptions: DrawTextFieldOptions
+  public drawLabelOptions: DrawTextFieldOptions;
 
-  public label?: string
+  public label?: string;
 
   constructor(options: IDrawBoxOptions = {}) {
     const {
@@ -36,9 +36,9 @@ export class DrawBoxOptions {
 }
 
 export class DrawBox {
-  public box: Box
+  public box: Box;
 
-  public options: DrawBoxOptions
+  public options: DrawBoxOptions;
 
   constructor(
     box: IBoundingBox | IRect,

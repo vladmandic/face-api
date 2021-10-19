@@ -4,11 +4,11 @@ export interface ITinyYolov2Options {
 }
 
 export class TinyYolov2Options {
-  protected _name = 'TinyYolov2Options'
+  protected _name = 'TinyYolov2Options';
 
-  private _inputSize: number
+  private _inputSize: number;
 
-  private _scoreThreshold: number
+  private _scoreThreshold: number;
 
   constructor({ inputSize, scoreThreshold }: ITinyYolov2Options = {}) {
     this._inputSize = inputSize || 416;

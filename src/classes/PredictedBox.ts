@@ -15,9 +15,9 @@ export class PredictedBox extends LabeledBox {
     }
   }
 
-  private _score: number
+  private _score: number;
 
-  private _classScore: number
+  private _classScore: number;
 
   constructor(box: IBoundingBox | IRect | any, label: number, score: number, classScore: number) {
     super(box, label);

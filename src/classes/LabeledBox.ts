@@ -12,7 +12,7 @@ export class LabeledBox extends Box<LabeledBox> {
     }
   }
 
-  private _label: number
+  private _label: number;
 
   constructor(box: IBoundingBox | IRect | any, label: number) {
     super(box);

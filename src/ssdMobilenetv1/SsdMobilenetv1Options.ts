@@ -4,11 +4,11 @@ export interface ISsdMobilenetv1Options {
 }
 
 export class SsdMobilenetv1Options {
-  protected _name = 'SsdMobilenetv1Options'
+  protected _name = 'SsdMobilenetv1Options';
 
-  private _minConfidence: number
+  private _minConfidence: number;
 
-  private _maxResults: number
+  private _maxResults: number;
 
   constructor({ minConfidence, maxResults }: ISsdMobilenetv1Options = {}) {
     this._minConfidence = minConfidence || 0.5;

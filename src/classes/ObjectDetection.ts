@@ -3,15 +3,15 @@ import { Dimensions, IDimensions } from './Dimensions';
 import { IRect, Rect } from './Rect';
 
 export class ObjectDetection {
-  private _score: number
+  private _score: number;
 
-  private _classScore: number
+  private _classScore: number;
 
-  private _className: string
+  private _className: string;
 
-  private _box: Rect
+  private _box: Rect;
 
-  private _imageDims: Dimensions
+  private _imageDims: Dimensions;
 
   constructor(
     score: number,

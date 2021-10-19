@@ -10,7 +10,7 @@ import { NeuralNetwork } from '../NeuralNetwork';
 import { NetInput, TNetInput, toNetInput } from '../dom/index';
 
 export class AgeGenderNet extends NeuralNetwork<NetParams> {
-  private _faceFeatureExtractor: TinyXception
+  private _faceFeatureExtractor: TinyXception;
 
   constructor(faceFeatureExtractor: TinyXception = new TinyXception(2)) {
     super('AgeGenderNet');

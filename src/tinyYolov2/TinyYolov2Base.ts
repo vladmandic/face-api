@@ -24,7 +24,7 @@ import { DefaultTinyYolov2NetParams, MobilenetParams, TinyYolov2NetParams } from
 export class TinyYolov2Base extends NeuralNetwork<TinyYolov2NetParams> {
   public static DEFAULT_FILTER_SIZES = [3, 16, 32, 64, 128, 256, 512, 1024, 1024];
 
-  private _config: TinyYolov2Config
+  private _config: TinyYolov2Config;
 
   constructor(config: TinyYolov2Config) {
     super('TinyYolov2');

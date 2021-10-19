@@ -539,9 +539,8 @@ function normalize(x, meanRgb) {
 function padToSquare(imgTensor, isCenterImage = false) {
   return tfjs_esm_exports.tidy(() => {
     const [height, width] = imgTensor.shape.slice(1);
-    if (height === width) {
+    if (height === width)
       return imgTensor;
-    }
     const dimDiff = Math.abs(height - width);
     const paddingAmount = Math.round(dimDiff * (isCenterImage ? 0.5 : 1));
     const paddingAxis = height > width ? 2 : 1;
@@ -553,11 +552,7 @@ function padToSquare(imgTensor, isCenterImage = false) {
     const paddingTensorAppend = createPaddingTensor(paddingAmount);
     const remainingPaddingAmount = dimDiff - paddingTensorAppend.shape[paddingAxis];
     const paddingTensorPrepend = isCenterImage && remainingPaddingAmount ? createPaddingTensor(remainingPaddingAmount) : null;
-    const tensorsToStack = [
-      paddingTensorPrepend,
-      imgTensor,
-      paddingTensorAppend
-    ].filter((t) => !!t).map((t) => tfjs_esm_exports.cast(t, "float32"));
+    const tensorsToStack = [paddingTensorPrepend, imgTensor, paddingTensorAppend].filter((t) => !!t).map((t) => tfjs_esm_exports.cast(t, "float32"));
     return tfjs_esm_exports.concat(tensorsToStack, paddingAxis);
   });
 }
@@ -2152,7 +2147,7 @@ function drawFaceLandmarks(canvasArg, faceLandmarks) {
 }
 
 // package.json
-var version10 = "1.5.4";
+var version10 = "1.5.5";
 
 // src/xception/extractParams.ts
 function extractorsFactory2(extractWeights, paramMappings) {

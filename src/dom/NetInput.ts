@@ -9,17 +9,17 @@ import { imageToSquare } from './imageToSquare';
 import { TResolvedNetInput } from './types';
 
 export class NetInput {
-  private _imageTensors: Array<tf.Tensor3D | tf.Tensor4D> = []
+  private _imageTensors: Array<tf.Tensor3D | tf.Tensor4D> = [];
 
-  private _canvases: HTMLCanvasElement[] = []
+  private _canvases: HTMLCanvasElement[] = [];
 
-  private _batchSize: number
+  private _batchSize: number;
 
-  private _treatAsBatchInput = false
+  private _treatAsBatchInput = false;
 
-  private _inputDimensions: number[][] = []
+  private _inputDimensions: number[][] = [];
 
-  private _inputSize = 0
+  private _inputSize = 0;
 
   constructor(inputs: Array<TResolvedNetInput>, treatAsBatchInput = false) {
     if (!Array.isArray(inputs)) {

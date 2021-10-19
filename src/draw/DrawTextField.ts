@@ -25,17 +25,17 @@ export interface IDrawTextFieldOptions {
 }
 
 export class DrawTextFieldOptions implements IDrawTextFieldOptions {
-  public anchorPosition: AnchorPosition
+  public anchorPosition: AnchorPosition;
 
-  public backgroundColor: string
+  public backgroundColor: string;
 
-  public fontColor: string
+  public fontColor: string;
 
-  public fontSize: number
+  public fontSize: number;
 
-  public fontStyle: string
+  public fontStyle: string;
 
-  public padding: number
+  public padding: number;
 
   constructor(options: IDrawTextFieldOptions = {}) {
     const {
@@ -51,11 +51,11 @@ export class DrawTextFieldOptions implements IDrawTextFieldOptions {
 }
 
 export class DrawTextField {
-  public text: string[]
+  public text: string[];
 
-  public anchor : IPoint
+  public anchor : IPoint;
 
-  public options: DrawTextFieldOptions
+  public options: DrawTextFieldOptions;
 
   constructor(
     text: string | string[] | DrawTextField,

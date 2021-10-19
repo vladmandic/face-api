@@ -6,9 +6,9 @@ export interface IDimensions {
 }
 
 export class Dimensions implements IDimensions {
-  private _width: number
+  private _width: number;
 
-  private _height: number
+  private _height: number;
 
   constructor(width: number, height: number) {
     if (!isValidNumber(width) || !isValidNumber(height)) {

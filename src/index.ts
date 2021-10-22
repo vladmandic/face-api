@@ -30,6 +30,6 @@ export const version = { faceapi: pkg.version as string, node, browser };
 if (browser) {
   tf.ENV.set('CHECK_COMPUTATION_FOR_ERRORS', false);
   tf.ENV.set('WEBGL_CPU_FORWARD', true);
-  tf.ENV.set('WEBGL_PACK_DEPTHWISECONV', false);
+  // tf.ENV.set('WEBGL_PACK_DEPTHWISECONV', false);
   tf.ENV.set('WEBGL_USE_SHAPES_UNIFORMS', true);
 }

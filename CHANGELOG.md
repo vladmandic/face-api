@@ -9,11 +9,15 @@
   
 ## Changelog
   
+### **1.5.6** 2021/10/22 mandic00@live.com
+
+
+### **release: 1.5.5** 2021/10/19 mandic00@live.com
+
+
 ### **1.5.5** 2021/10/19 mandic00@live.com
 
-
-### **origin/master** 2021/09/30 mandic00@live.com
-
+- rebuild
 - allow backend change in demo via url params
 - add node-match demo
 - fix face matcher

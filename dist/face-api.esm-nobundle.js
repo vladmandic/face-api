@@ -41,14 +41,14 @@ __reExport(tfjs_esm_exports, dist_star3);
 import * as dist_star from "@tensorflow/tfjs/dist/index.js";
 import * as dist_star2 from "@tensorflow/tfjs-backend-webgl/dist/index.js";
 import * as dist_star3 from "@tensorflow/tfjs-backend-wasm/dist/index.js";
-var version = "3.9.0";
-var version2 = "3.9.0";
-var version3 = "3.9.0";
-var version4 = "3.9.0";
-var version5 = "3.9.0";
-var version6 = "3.9.0";
-var version7 = "3.9.0";
-var version8 = "3.9.0";
+var version = "3.10.0";
+var version2 = "3.10.0";
+var version3 = "3.10.0";
+var version4 = "3.10.0";
+var version5 = "3.10.0";
+var version6 = "3.10.0";
+var version7 = "3.10.0";
+var version8 = "3.10.0";
 var version9 = {
   tfjs: version,
   "tfjs-core": version2,
@@ -2147,7 +2147,7 @@ function drawFaceLandmarks(canvasArg, faceLandmarks) {
 }
 
 // package.json
-var version10 = "1.5.5";
+var version10 = "1.5.6";
 
 // src/xception/extractParams.ts
 function extractorsFactory2(extractWeights, paramMappings) {
@@ -4381,7 +4381,6 @@ var version11 = { faceapi: version10, node, browser: browser3 };
 if (browser3) {
   tfjs_esm_exports.ENV.set("CHECK_COMPUTATION_FOR_ERRORS", false);
   tfjs_esm_exports.ENV.set("WEBGL_CPU_FORWARD", true);
-  tfjs_esm_exports.ENV.set("WEBGL_PACK_DEPTHWISECONV", false);
   tfjs_esm_exports.ENV.set("WEBGL_USE_SHAPES_UNIFORMS", true);
 }
 export {

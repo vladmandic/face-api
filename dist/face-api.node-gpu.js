@@ -2302,7 +2302,7 @@ function drawFaceLandmarks(canvasArg, faceLandmarks) {
 }
 
 // package.json
-var version = "1.5.5";
+var version = "1.5.6";
 
 // src/ageGenderNet/AgeGenderNet.ts
 var tf20 = __toModule(require_tfjs_esm());
@@ -4581,7 +4581,6 @@ var version2 = { faceapi: version, node, browser: browser3 };
 if (browser3) {
   tf42.ENV.set("CHECK_COMPUTATION_FOR_ERRORS", false);
   tf42.ENV.set("WEBGL_CPU_FORWARD", true);
-  tf42.ENV.set("WEBGL_PACK_DEPTHWISECONV", false);
   tf42.ENV.set("WEBGL_USE_SHAPES_UNIFORMS", true);
 }
 // Annotate the CommonJS export names for ESM import in node:

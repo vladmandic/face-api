@@ -153,6 +153,7 @@ __export(tfjs_esm_exports, {
   OneHot: () => OneHot,
   OnesLike: () => OnesLike,
   Optimizer: () => Optimizer,
+  OptimizerConstructors: () => OptimizerConstructors,
   Pack: () => Pack,
   PadV2: () => PadV2,
   Pool: () => Pool,
@@ -2664,7 +2665,7 @@ var require_perf_hooks = __commonJS({
   }
 });
 var require_tfjs_backend_wasm_threaded_simd = __commonJS({
-  "node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.10.0_@tensorflow+tfjs-core@3.10.0/node_modules/@tensorflow/tfjs-backend-wasm/wasm-out/tfjs-backend-wasm-threaded-simd.js"(exports, module2) {
+  "node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.11.0_@tensorflow+tfjs-core@3.11.0/node_modules/@tensorflow/tfjs-backend-wasm/wasm-out/tfjs-backend-wasm-threaded-simd.js"(exports, module2) {
     var WasmBackendModuleThreadedSimd = function() {
       var _scriptDir = typeof document !== "undefined" && document.currentScript ? document.currentScript.src : void 0;
       if (typeof __filename !== "undefined")
@@ -4962,7 +4963,7 @@ var require_tfjs_backend_wasm_threaded_simd = __commonJS({
   }
 });
 var require_tfjs_backend_wasm = __commonJS({
-  "node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.10.0_@tensorflow+tfjs-core@3.10.0/node_modules/@tensorflow/tfjs-backend-wasm/wasm-out/tfjs-backend-wasm.js"(exports, module2) {
+  "node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@3.11.0_@tensorflow+tfjs-core@3.11.0/node_modules/@tensorflow/tfjs-backend-wasm/wasm-out/tfjs-backend-wasm.js"(exports, module2) {
     var WasmBackendModule = function() {
       var _scriptDir = typeof document !== "undefined" && document.currentScript ? document.currentScript.src : void 0;
       if (typeof __filename !== "undefined")
@@ -10383,7 +10384,15 @@ function fromPixels_(pixels, numChannels = 3) {
     vals = pixels.data;
   } else if (isImage || isVideo || isImageBitmap) {
     if (fromPixels2DContext == null) {
-      fromPixels2DContext = document.createElement("canvas").getContext("2d");
+      if (typeof document === "undefined") {
+        if (typeof OffscreenCanvas !== "undefined" && typeof OffscreenCanvasRenderingContext2D !== "undefined") {
+          fromPixels2DContext = new OffscreenCanvas(1, 1).getContext("2d");
+        } else {
+          throw new Error("Cannot parse input in current context. Reason: OffscreenCanvas Context2D rendering is not supported.");
+        }
+      } else {
+        fromPixels2DContext = document.createElement("canvas").getContext("2d");
+      }
     }
     fromPixels2DContext.canvas.width = width;
     fromPixels2DContext.canvas.height = height;
@@ -10623,6 +10632,8 @@ __export2(slice_util_exports, {
   stridesForAxis: () => stridesForAxis,
   stridesWithElidedDims: () => stridesWithElidedDims
 });
+var NEW_AXIS = -2;
+var SHRINK_AXIS = -1;
 function assertParamsValid(input2, begin, size) {
   const inputRank = input2.shape.length;
   assert(inputRank === begin.length, () => `Error in slice${inputRank}D: Length of begin ${begin} must match the rank of the array (${inputRank}).`);
@@ -10842,43 +10853,209 @@ function parseSliceParams(x, begin, size) {
   return [begin_, size_];
 }
 function sliceInfo(xShape, begin, end, strides, beginMask, endMask, ellipsisMask, newAxisMask, shrinkAxisMask) {
-  let $begin = begin.slice();
-  let $end = end.slice();
-  let $strides = strides;
+  let stridesNonNull;
   if (strides == null) {
-    $strides = new Array($begin.length);
+    stridesNonNull = new Array(begin.length);
+    stridesNonNull.fill(1);
+  } else {
+    stridesNonNull = strides;
   }
-  const ellipsisAxes = maskToAxes(ellipsisMask);
-  if (ellipsisAxes.length > 1) {
+  if (ellipsisMask != null && (ellipsisMask & ellipsisMask - 1) !== 0) {
     throw new Error("Multiple ellipses in slice is not allowed.");
   }
-  if (ellipsisMask !== 0 && newAxisMask !== 0) {
-    throw new Error("Using both ellipsisMask and newAxisMask is not yet supported.");
+  let ellipsisSeen = false;
+  const sparseSpec = {
+    dims: stridesNonNull.length,
+    numAddAxisAfterEllipsis: 0,
+    begin: begin.slice(),
+    end: end.slice(),
+    strides: stridesNonNull.slice(),
+    beginMask,
+    endMask,
+    ellipsisMask,
+    newAxisMask,
+    shrinkAxisMask
+  };
+  for (let i = 0; i < sparseSpec.dims; i++) {
+    if (ellipsisSeen && (1 << i & newAxisMask) !== 0) {
+      sparseSpec.numAddAxisAfterEllipsis++;
+    }
+    if (1 << i & ellipsisMask) {
+      ellipsisSeen = true;
+    }
   }
-  if (ellipsisMask !== 0 && shrinkAxisMask !== 0) {
-    throw new Error("Using both ellipsisMask and shrinkAxisMask is not yet supported.");
+  if (!ellipsisSeen) {
+    sparseSpec.ellipsisMask |= 1 << sparseSpec.dims;
+    sparseSpec.dims++;
   }
-  const numInterpolatedAxes = xShape.length - $begin.length;
-  const expandAxes = maskToAxes(newAxisMask);
-  const newShape = xShape.slice();
-  expandAxes.forEach((axis) => {
-    $begin[axis] = 0;
-    $end[axis] = 1;
-    newShape.splice(axis, 0, 1);
-  });
-  const { begin: normalizedBegin, end: normalizedEnd, strides: normalizedStrides } = getNormalizedAxes(newShape, ellipsisAxes, numInterpolatedAxes, $begin, $end, $strides, beginMask, endMask, ellipsisMask);
-  $begin = normalizedBegin;
-  $end = normalizedEnd;
-  $strides = normalizedStrides;
-  const shrinkAxes = maskToAxes(shrinkAxisMask);
-  shrinkAxes.forEach((axis) => {
-    $end[axis] = $begin[axis] + 1;
-    $strides[axis] = 1;
-  });
-  const size = computeOutShape($begin, $end, $strides);
-  const outShape = size.filter((_, axis) => shrinkAxes.indexOf(axis) === -1);
-  const nonStrided = $strides.every((v) => v === 1);
-  return { nonStrided, $begin, $end, $strides, size, newShape, outShape };
+  const denseSpec = {
+    dims: xShape.length,
+    beginMask: 0,
+    endMask: 0,
+    beginValid: false,
+    endValid: false
+  };
+  buildDenseSpec(sparseSpec, denseSpec);
+  let isIdentity = true;
+  let sliceDim0 = true;
+  let isSimpleSlice = true;
+  const processingShape = [];
+  const finalShape = [];
+  for (let i = 0; i < xShape.length; ++i) {
+    if (denseSpec.strides[i] === 0) {
+      throw Error(`strides[${i}] must be non-zero`);
+    }
+    const shrinkI = !!(denseSpec.shrinkAxisMask & 1 << i);
+    const dimI = xShape[i];
+    if (dimI === -1) {
+      processingShape.push(shrinkI ? 1 : -1);
+      continue;
+    }
+    const masks = [denseSpec.beginMask & 1 << i, denseSpec.endMask & 1 << i];
+    const validRange = [
+      denseSpec.strides[i] > 0 ? 0 : -1,
+      denseSpec.strides[i] > 0 ? dimI : dimI - 1
+    ];
+    if (shrinkI && denseSpec.strides[i] <= 0) {
+      throw Error("only stride 1 allowed on non-range indexing.");
+    }
+    isSimpleSlice = isSimpleSlice && denseSpec.strides[i] === 1;
+    const beginAndEndMasked = !!(denseSpec.beginMask & 1 << i && denseSpec.endMask & 1 << i);
+    if (denseSpec.beginValid && denseSpec.endValid) {
+      if (shrinkI) {
+        const xFwd = denseSpec.begin[i] < 0 ? dimI + denseSpec.begin[i] : denseSpec.begin[i];
+        denseSpec.begin[i] = xFwd;
+        denseSpec.end[i] = denseSpec.begin[i] + 1;
+        if (xFwd < 0 || xFwd >= dimI) {
+          throw Error(`slice index ${denseSpec.begin[i]} of dimension ${i} out of bounds.`);
+        }
+      } else {
+        denseSpec.begin[i] = canonical(denseSpec.begin[i], 0, denseSpec.strides[i], dimI, masks, validRange);
+        denseSpec.end[i] = canonical(denseSpec.end[i], 1, denseSpec.strides[i], dimI, masks, validRange);
+      }
+      const takeAllInDimension = denseSpec.strides[i] === 1 && denseSpec.begin[i] === 0 && denseSpec.end[i] === dimI;
+      isIdentity = isIdentity && takeAllInDimension;
+      sliceDim0 = sliceDim0 && (i === 0 && denseSpec.strides[i] === 1 || takeAllInDimension);
+    } else {
+      isIdentity = isIdentity && (denseSpec.strides[i] === 1 && beginAndEndMasked);
+      sliceDim0 = sliceDim0 && (i === 0 && denseSpec.strides[i] === 1 || beginAndEndMasked);
+    }
+    let intervalLength;
+    let knownInterval = false;
+    if (denseSpec.beginValid && denseSpec.endValid) {
+      intervalLength = denseSpec.end[i] - denseSpec.begin[i];
+      knownInterval = true;
+    } else if (shrinkI) {
+      intervalLength = 1;
+      knownInterval = true;
+    } else if (beginAndEndMasked) {
+      if (dimI >= 0) {
+        if (denseSpec.strides[i] < 0) {
+          intervalLength = -dimI;
+        } else {
+          intervalLength = dimI;
+        }
+        knownInterval = true;
+      }
+    }
+    if (knownInterval) {
+      let sizeI;
+      if (intervalLength === 0 || intervalLength < 0 !== denseSpec.strides[i] < 0) {
+        sizeI = 0;
+      } else {
+        sizeI = Math.trunc(intervalLength / denseSpec.strides[i]) + (intervalLength % denseSpec.strides[i] !== 0 ? 1 : 0);
+      }
+      processingShape.push(sizeI);
+    } else {
+      processingShape.push(-1);
+    }
+  }
+  for (let denseDim = 0; denseDim < denseSpec.finalShapeGatherIndices.length; ++denseDim) {
+    const gatherIndex = denseSpec.finalShapeGatherIndices[denseDim];
+    if (gatherIndex >= 0) {
+      finalShape.push(processingShape[gatherIndex]);
+    } else if (gatherIndex === NEW_AXIS) {
+      finalShape.push(1);
+    }
+  }
+  const finalShapeSparse = finalShape.filter((dim, i) => denseSpec.finalShapeGatherIndices[i] !== NEW_AXIS);
+  return {
+    finalShapeSparse,
+    finalShape,
+    isIdentity,
+    sliceDim0,
+    isSimpleSlice,
+    begin: denseSpec.begin,
+    end: denseSpec.end,
+    strides: denseSpec.strides
+  };
+}
+function buildDenseSpec(sparse3, dense2) {
+  dense2.beginMask = 0;
+  dense2.endMask = 0;
+  dense2.shrinkAxisMask = 0;
+  let fullIndex = 0;
+  dense2.beginValid = sparse3.begin != null;
+  dense2.endValid = sparse3.end != null;
+  dense2.begin = new Array(dense2.dims);
+  dense2.end = new Array(dense2.dims);
+  dense2.strides = new Array(dense2.dims);
+  dense2.finalShapeGatherIndices = [];
+  dense2.finalShapeGatherIndicesSparse = [];
+  dense2.inputShapeGatherIndicesSparse = new Array(dense2.dims);
+  for (let i = 0; i < sparse3.dims; i++) {
+    if (1 << i & sparse3.ellipsisMask) {
+      const nextIndex = Math.min(dense2.dims - (sparse3.dims - i) + 1 + sparse3.numAddAxisAfterEllipsis, dense2.dims);
+      for (; fullIndex < nextIndex; fullIndex++) {
+        dense2.begin[fullIndex] = 0;
+        dense2.end[fullIndex] = 0;
+        dense2.strides[fullIndex] = 1;
+        dense2.beginMask |= 1 << fullIndex;
+        dense2.endMask |= 1 << fullIndex;
+        dense2.finalShapeGatherIndices.push(fullIndex);
+        dense2.finalShapeGatherIndicesSparse.push(-1);
+        dense2.inputShapeGatherIndicesSparse[fullIndex] = i;
+      }
+    } else if (1 << i & sparse3.newAxisMask) {
+      dense2.finalShapeGatherIndices.push(NEW_AXIS);
+      dense2.finalShapeGatherIndicesSparse.push(-1);
+    } else {
+      if (fullIndex === dense2.begin.length) {
+        throw Error(`Index out of range using input dim ${fullIndex}; input has only ${dense2.dims} dims, ${dense2.begin.length}.`);
+      }
+      if (sparse3.begin != null) {
+        dense2.begin[fullIndex] = sparse3.begin[i];
+      }
+      if (sparse3.end != null) {
+        dense2.end[fullIndex] = sparse3.end[i];
+      }
+      dense2.strides[fullIndex] = sparse3.strides[i];
+      if (sparse3.beginMask & 1 << i) {
+        dense2.beginMask |= 1 << fullIndex;
+      }
+      if (sparse3.endMask & 1 << i) {
+        dense2.endMask |= 1 << fullIndex;
+      }
+      if (sparse3.shrinkAxisMask & 1 << i) {
+        dense2.finalShapeGatherIndices.push(SHRINK_AXIS);
+        dense2.finalShapeGatherIndicesSparse.push(-1);
+        dense2.shrinkAxisMask |= 1 << fullIndex;
+      } else {
+        dense2.finalShapeGatherIndices.push(fullIndex);
+        dense2.finalShapeGatherIndicesSparse.push(i);
+      }
+      dense2.inputShapeGatherIndicesSparse[fullIndex] = i;
+      fullIndex++;
+    }
+  }
+}
+function canonical(x, c, strideI, dimI, masks, validRange) {
+  if (masks[c]) {
+    return strideI > 0 ? validRange[c] : validRange[c + 1 & 1];
+  } else {
+    const xFwd = x < 0 ? dimI + x : x;
+    return xFwd < validRange[0] ? validRange[0] : xFwd > validRange[1] ? validRange[1] : xFwd;
+  }
 }
 var serialization_exports = {};
 __export2(serialization_exports, {
@@ -11024,7 +11201,7 @@ function encodeStrings(a) {
   }
   return a;
 }
-var version = "3.10.0";
+var version = "3.11.0";
 function enableProdMode() {
   env().set("PROD", true);
 }
@@ -21683,7 +21860,7 @@ function convertTsToPythonic(tsConfig, key) {
     return pyDict;
   }
 }
-var version2 = "3.10.0";
+var version2 = "3.11.0";
 function assertFeedCompatibility(key, val) {
   if (key.dtype == null || key.dtype === val.dtype) {
     return val;
@@ -38612,7 +38789,7 @@ async function loadGraphModel(modelUrl, options = {}) {
   await model2.load();
   return model2;
 }
-var version3 = "3.10.0";
+var version3 = "3.11.0";
 var dist_exports = {};
 __export2(dist_exports, {
   CSVDataset: () => CSVDataset,
@@ -40347,7 +40524,7 @@ async function webcam(webcamVideoElement, webcamConfig) {
 async function microphone(microphoneConfig) {
   return MicrophoneIterator.create(microphoneConfig);
 }
-var version4 = "3.10.0";
+var version4 = "3.11.0";
 function assertNotComplex(tensor2, opName) {
   if (!Array.isArray(tensor2)) {
     tensor2 = [tensor2];
@@ -45886,24 +46063,22 @@ function stridedSlice2(args) {
   const { x } = inputs;
   const { begin, end, strides, beginMask, endMask, ellipsisMask, newAxisMask, shrinkAxisMask } = attrs;
   assertNotComplex(x, "stridedSlice");
-  const { nonStrided, $begin, $strides, size, newShape, outShape } = slice_util_exports.sliceInfo(x.shape, begin, end, strides, beginMask, endMask, ellipsisMask, newAxisMask, shrinkAxisMask);
-  const $x = reshape3({ inputs: { x }, backend: backend2, attrs: { shape: newShape } });
+  const { finalShapeSparse, finalShape, isIdentity, sliceDim0, isSimpleSlice, begin: $begin, end: $end, strides: $strides } = slice_util_exports.sliceInfo(x.shape, begin, end, strides, beginMask, endMask, ellipsisMask, newAxisMask, shrinkAxisMask);
   let result;
-  if (nonStrided) {
-    const sliced = slice2({ inputs: { x: $x }, backend: backend2, attrs: { begin: $begin, size } });
-    result = reshape3({ inputs: { x: sliced }, backend: backend2, attrs: { shape: outShape } });
+  if (isIdentity) {
+    result = reshape3({ inputs: { x }, backend: backend2, attrs: { shape: finalShape } });
+  } else if (sliceDim0 || isSimpleSlice) {
+    util_exports.assert(x.shape.length >= 1, () => `Input must have rank at least 1, got: ${x.shape.length}`);
+    const size = slice_util_exports.computeOutShape($begin, $end, $strides);
+    const sliced = slice2({ inputs: { x }, backend: backend2, attrs: { begin: $begin, size } });
+    result = reshape3({ inputs: { x: sliced }, backend: backend2, attrs: { shape: finalShape } });
     backend2.disposeIntermediateTensorInfo(sliced);
-  } else if (outShape.some((axis) => axis === 0)) {
-    result = backend2.makeTensorInfo(outShape, x.dtype, []);
   } else {
-    const xBuf = backend2.bufferSync($x);
-    const outBuf = stridedSliceImpl(outShape, xBuf, $strides, $begin);
-    result = backend2.makeTensorInfo(outBuf.shape, outBuf.dtype, outBuf.values);
+    const xBuf = backend2.bufferSync(x);
+    const outBuf = stridedSliceImpl(finalShapeSparse, xBuf, $strides, $begin);
+    result = backend2.makeTensorInfo(finalShape, outBuf.dtype, outBuf.values);
   }
-  const resultReshaped = reshape3({ inputs: { x: result }, backend: backend2, attrs: { shape: outShape } });
-  backend2.disposeIntermediateTensorInfo($x);
-  backend2.disposeIntermediateTensorInfo(result);
-  return resultReshaped;
+  return result;
 }
 var stridedSliceConfig = {
   kernelName: StridedSlice,
@@ -51090,7 +51265,7 @@ function float32ToTypedArray(a, dtype) {
     throw new Error(`Unknown dtype ${dtype}`);
   }
 }
-var version5 = "3.10.0";
+var version5 = "3.11.0";
 function forceHalfFloat() {
   env().set("WEBGL_FORCE_F16_TEXTURES", true);
 }
@@ -59144,30 +59319,29 @@ function stridedSlice3(args) {
   const { inputs, backend: backend2, attrs } = args;
   const { x } = inputs;
   const { begin, end, strides, beginMask, endMask, ellipsisMask, newAxisMask, shrinkAxisMask } = attrs;
-  const { nonStrided, $begin, $strides, size, newShape, outShape } = slice_util_exports.sliceInfo(x.shape, begin, end, strides, beginMask, endMask, ellipsisMask, newAxisMask, shrinkAxisMask);
-  const $x = reshape4({ inputs: { x }, backend: backend2, attrs: { shape: newShape } });
+  const { finalShapeSparse, finalShape, isIdentity, sliceDim0, isSimpleSlice, begin: $begin, end: $end, strides: $strides } = slice_util_exports.sliceInfo(x.shape, begin, end, strides, beginMask, endMask, ellipsisMask, newAxisMask, shrinkAxisMask);
   let result;
-  if (nonStrided) {
-    const sliced = slice3({ inputs: { x: $x }, backend: backend2, attrs: { begin: $begin, size } });
-    result = reshape4({ inputs: { x: sliced }, backend: backend2, attrs: { shape: outShape } });
+  if (isIdentity) {
+    result = reshape4({ inputs: { x }, backend: backend2, attrs: { shape: finalShape } });
+  } else if (sliceDim0 || isSimpleSlice) {
+    util_exports.assert(x.shape.length >= 1, () => `Input must have rank at least 1, got: ${x.shape.length}`);
+    const size = slice_util_exports.computeOutShape($begin, $end, $strides);
+    const sliced = slice3({ inputs: { x }, backend: backend2, attrs: { begin: $begin, size } });
+    result = reshape4({ inputs: { x: sliced }, backend: backend2, attrs: { shape: finalShape } });
     backend2.disposeIntermediateTensorInfo(sliced);
-  } else if (outShape.some((axis) => axis === 0)) {
-    result = backend2.makeTensorInfo(outShape, x.dtype, []);
   } else {
-    const shouldExecuteOnCPU = backend2.shouldExecuteOnCPU([$x]);
+    const shouldExecuteOnCPU = backend2.shouldExecuteOnCPU([x]);
     if (shouldExecuteOnCPU) {
-      const xTexData = backend2.texData.get($x.dataId);
-      const values = xTexData.values;
-      const xBuf = buffer($x.shape, $x.dtype, values);
-      const resultValues = stridedSliceImplCPU(outShape, xBuf, $strides, $begin);
-      result = backend2.makeTensorInfo(outShape, $x.dtype, resultValues.values);
+      const values = backend2.readSync(x.dataId);
+      const xBuf = buffer(x.shape, x.dtype, values);
+      const resultValues = stridedSliceImplCPU(finalShapeSparse, xBuf, $strides, $begin);
+      result = backend2.makeTensorInfo(finalShape, x.dtype, resultValues.values);
     } else {
-      const program = new StridedSliceProgram($begin, $strides, outShape);
-      result = backend2.runWebGLProgram(program, [$x], $x.dtype);
+      const program = new StridedSliceProgram($begin, $strides, finalShapeSparse);
+      result = backend2.runWebGLProgram(program, [x], x.dtype);
     }
   }
-  const resultReshaped = reshape4({ inputs: { x: result }, backend: backend2, attrs: { shape: outShape } });
-  backend2.disposeIntermediateTensorInfo($x);
+  const resultReshaped = reshape4({ inputs: { x: result }, backend: backend2, attrs: { shape: finalShape } });
   backend2.disposeIntermediateTensorInfo(result);
   return resultReshaped;
 }
@@ -62457,65 +62631,32 @@ function setup41(backend2) {
 function stridedSlice4(args) {
   const { backend: backend2, inputs, attrs } = args;
   const { x } = inputs;
-  let { begin, end, strides } = attrs;
-  if (strides == null) {
-    strides = new Array(begin.length);
-  }
-  const { beginMask, endMask, ellipsisMask, newAxisMask, shrinkAxisMask } = attrs;
-  const ellipsisAxes = backend_util_exports.slice_util.maskToAxes(ellipsisMask);
-  if (ellipsisAxes.length > 1) {
-    throw new Error("Multiple ellipses in slice is not allowed.");
-  }
-  if (ellipsisMask !== 0 && newAxisMask !== 0) {
-    throw new Error("Using both ellipsisMask and newAxisMask is not yet supported.");
-  }
-  if (ellipsisMask !== 0 && shrinkAxisMask !== 0) {
-    throw new Error("Using both ellipsisMask and shrinkAxisMask is not yet supported.");
-  }
-  const numInterpolatedAxes = x.shape.length - begin.length;
-  const expandAxes = backend_util_exports.slice_util.maskToAxes(newAxisMask);
-  const newShape = x.shape.slice();
-  expandAxes.forEach((axis) => {
-    begin[axis] = 0;
-    end[axis] = 1;
-    newShape.splice(axis, 0, 1);
-  });
-  const xReshaped = reshape5({ inputs: { x }, attrs: { shape: newShape }, backend: backend2 });
-  const { begin: normalizedBegin, end: normalizedEnd, strides: normalizedStrides } = backend_util_exports.slice_util.getNormalizedAxes(xReshaped.shape, ellipsisAxes, numInterpolatedAxes, begin, end, strides, beginMask, endMask, ellipsisMask);
-  begin = normalizedBegin;
-  end = normalizedEnd;
-  strides = normalizedStrides;
-  const shrinkAxes = backend_util_exports.slice_util.maskToAxes(shrinkAxisMask);
-  shrinkAxes.forEach((axis) => {
-    end[axis] = begin[axis] + 1;
-    strides[axis] = 1;
-  });
-  const size = backend_util_exports.slice_util.computeOutShape(begin, end, strides);
-  const outShape = size.filter((_, axis) => shrinkAxes.indexOf(axis) === -1);
-  const nonStrided = strides.every((v) => v === 1);
-  if (nonStrided) {
-    const xSliced = slice4({ inputs: { x: xReshaped }, attrs: { begin, size }, backend: backend2 });
-    backend2.disposeData(xReshaped.dataId);
-    const reshaped2 = reshape5({ inputs: { x: xSliced }, attrs: { shape: outShape }, backend: backend2 });
-    backend2.disposeData(xSliced.dataId);
-    return reshaped2;
-  }
-  const out = backend2.makeOutput(outShape, "float32");
-  if (!outShape.some((axis) => axis === 0)) {
-    const xId = backend2.dataIdMap.get(xReshaped.dataId).id;
-    const xStridesBytes = new Uint8Array(new Int32Array(util_exports.computeStrides(xReshaped.shape)).buffer);
-    const beginBytes = new Uint8Array(new Int32Array(begin).buffer);
-    const endBytes = new Uint8Array(new Int32Array(end).buffer);
-    const stridesBytes = new Uint8Array(new Int32Array(strides).buffer);
-    const outputShapeBytes = new Uint8Array(new Int32Array(outShape).buffer);
-    const outStridesBytes = new Uint8Array(new Int32Array(util_exports.computeStrides(outShape)).buffer);
+  const { begin, end, strides, beginMask, endMask, ellipsisMask, newAxisMask, shrinkAxisMask } = attrs;
+  const { finalShapeSparse, finalShape, isIdentity, sliceDim0, isSimpleSlice, begin: $begin, end: $end, strides: $strides } = slice_util_exports.sliceInfo(x.shape, begin, end, strides, beginMask, endMask, ellipsisMask, newAxisMask, shrinkAxisMask);
+  let result;
+  if (isIdentity) {
+    result = reshape5({ inputs: { x }, backend: backend2, attrs: { shape: finalShape } });
+  } else if (sliceDim0 || isSimpleSlice) {
+    util_exports.assert(x.shape.length >= 1, () => `Input must have rank at least 1, got: ${x.shape.length}`);
+    const size = slice_util_exports.computeOutShape($begin, $end, $strides);
+    const sliced = slice4({ inputs: { x }, backend: backend2, attrs: { begin: $begin, size } });
+    result = reshape5({ inputs: { x: sliced }, backend: backend2, attrs: { shape: finalShape } });
+    backend2.disposeData(sliced.dataId);
+  } else {
+    const out = backend2.makeOutput(finalShapeSparse, "float32");
+    const xId = backend2.dataIdMap.get(x.dataId).id;
+    const xStridesBytes = new Uint8Array(new Int32Array(util_exports.computeStrides(x.shape)).buffer);
+    const beginBytes = new Uint8Array(new Int32Array($begin).buffer);
+    const endBytes = new Uint8Array(new Int32Array($end).buffer);
+    const stridesBytes = new Uint8Array(new Int32Array($strides).buffer);
+    const outputShapeBytes = new Uint8Array(new Int32Array(finalShapeSparse).buffer);
+    const outStridesBytes = new Uint8Array(new Int32Array(util_exports.computeStrides(finalShapeSparse)).buffer);
     const outId = backend2.dataIdMap.get(out.dataId).id;
-    wasmStridedSlice(xId, xStridesBytes, xReshaped.shape.length, beginBytes, endBytes, stridesBytes, outputShapeBytes, outStridesBytes, outShape.length, outId);
+    wasmStridedSlice(xId, xStridesBytes, x.shape.length, beginBytes, endBytes, stridesBytes, outputShapeBytes, outStridesBytes, finalShapeSparse.length, outId);
+    result = reshape5({ inputs: { x: out }, backend: backend2, attrs: { shape: finalShape } });
+    backend2.disposeData(out.dataId);
   }
-  backend2.disposeData(xReshaped.dataId);
-  const reshaped = reshape5({ inputs: { x: out }, attrs: { shape: outShape }, backend: backend2 });
-  backend2.disposeData(out.dataId);
-  return reshaped;
+  return result;
 }
 var stridedSliceConfig3 = {
   kernelName: StridedSlice,
@@ -63206,20 +63347,20 @@ function getThreadsCount() {
   }
   return actualThreadsCount;
 }
-var version8 = "3.10.0";
+var version8 = "3.11.0";
 var WASM_PRIORITY = 2;
 registerBackend("wasm", async () => {
   const { wasm } = await init();
   return new BackendWasm(wasm);
 }, WASM_PRIORITY);
-var version9 = "3.10.0";
-var version22 = "3.10.0";
-var version32 = "3.10.0";
-var version42 = "3.10.0";
-var version52 = "3.10.0";
-var version62 = "3.10.0";
-var version72 = "3.10.0";
-var version82 = "3.10.0";
+var version9 = "3.11.0";
+var version22 = "3.11.0";
+var version32 = "3.11.0";
+var version42 = "3.11.0";
+var version52 = "3.11.0";
+var version62 = "3.11.0";
+var version72 = "3.11.0";
+var version82 = "3.11.0";
 var version92 = {
   tfjs: version9,
   "tfjs-core": version22,
@@ -65318,7 +65459,7 @@ function drawFaceLandmarks(canvasArg, faceLandmarks) {
 }
 
 // package.json
-var version6 = "1.5.6";
+var version6 = "1.5.7";
 
 // src/xception/extractParams.ts
 function extractorsFactory2(extractWeights, paramMappings) {

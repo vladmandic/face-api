@@ -1,5 +1,4 @@
-import * as tf from '../../dist/tfjs.esm';
-
+import * as tf from '../../dist/tfjs.esm.js';
 import { fullyConnectedLayer } from '../common/fullyConnectedLayer';
 import { seperateWeightMaps } from '../faceProcessor/util';
 import { TinyXception } from '../xception/TinyXception';

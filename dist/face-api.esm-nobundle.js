@@ -4496,4 +4496,3 @@ export {
   validateConfig,
   version11 as version
 };
-//# sourceMappingURL=face-api.esm-nobundle.js.map

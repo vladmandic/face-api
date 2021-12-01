@@ -1,12 +1,12 @@
 {
   "name": "@vladmandic/face-api",
-  "version": "1.5.8",
+  "version": "1.6.0",
   "description": "FaceAPI: AI-powered Face Detection & Rotation Tracking, Face Description & Recognition, Age & Gender & Emotion Prediction for Browser and NodeJS using TensorFlow/JS",
   "sideEffects": false,
   "main": "dist/face-api.node.js",
   "module": "dist/face-api.esm.js",
   "browser": "dist/face-api.esm.js",
-  "types": "types/src/index.d.ts",
+  "types": "types/face-api.d.ts",
   "author": "Vladimir Mandic <mandic00@live.com>",
   "bugs": {
     "url": "https://github.com/vladmandic/face-api/issues"
@@ -23,7 +23,7 @@
   "scripts": {
     "start": "node --no-warnings demo/node.js",
     "dev": "build --profile development",
-    "build": "build --profile production",
+    "build": "node build.js",
     "test": "node --trace-warnings test/test-node.js",
     "scan": "npx auditjs@latest ossi --dev --quiet"
   },
@@ -42,10 +42,12 @@
   ],
   "devDependencies": {
     "@canvas/image": "^1.0.1",
+    "@microsoft/api-extractor": "^7.18.19",
     "@tensorflow/tfjs": "^3.11.0",
     "@tensorflow/tfjs-backend-cpu": "^3.11.0",
     "@tensorflow/tfjs-backend-wasm": "^3.11.0",
     "@tensorflow/tfjs-backend-webgl": "^3.11.0",
+    "@tensorflow/tfjs-backend-webgpu": "^0.0.1-alpha.8",
     "@tensorflow/tfjs-converter": "^3.11.0",
     "@tensorflow/tfjs-core": "^3.11.0",
     "@tensorflow/tfjs-data": "^3.11.0",
@@ -53,10 +55,12 @@
     "@tensorflow/tfjs-node": "^3.11.0",
     "@tensorflow/tfjs-node-gpu": "^3.11.0",
     "@types/node": "^16.11.11",
+    "@types/offscreencanvas": "^2019.6.4",
     "@typescript-eslint/eslint-plugin": "^5.5.0",
     "@typescript-eslint/parser": "^5.5.0",
     "@vladmandic/build": "^0.6.6",
     "@vladmandic/pilogger": "^0.3.5",
+    "@vladmandic/tfjs": "github:vladmandic/tfjs",
     "canvas": "^2.8.0",
     "chokidar": "^3.5.2",
     "dayjs": "^1.10.7",

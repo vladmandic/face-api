@@ -1368,7 +1368,7 @@ var require_long = __commonJS({
   }
 });
 var require_browser = __commonJS({
-  "(disabled):node_modules/.pnpm/node-fetch@2.6.5/node_modules/node-fetch/browser.js"() {
+  "(disabled):node_modules/.pnpm/node-fetch@2.6.6/node_modules/node-fetch/browser.js"() {
   }
 });
 var require_alea = __commonJS({
@@ -63738,12 +63738,7 @@ var Box = class {
 // src/classes/BoundingBox.ts
 var BoundingBox = class extends Box {
   constructor(left, top, right, bottom, allowNegativeDimensions = false) {
-    super({
-      left,
-      top,
-      right,
-      bottom
-    }, allowNegativeDimensions);
+    super({ left, top, right, bottom }, allowNegativeDimensions);
   }
 };
 
@@ -63892,12 +63887,7 @@ function inverseSigmoid(x) {
 // src/classes/Rect.ts
 var Rect = class extends Box {
   constructor(x, y, width, height, allowNegativeDimensions = false) {
-    super({
-      x,
-      y,
-      width,
-      height
-    }, allowNegativeDimensions);
+    super({ x, y, width, height }, allowNegativeDimensions);
   }
 };
 
@@ -64416,7 +64406,7 @@ function isMediaLoaded(media) {
 function awaitMediaLoaded(media) {
   return new Promise((resolve, reject) => {
     if (media instanceof env2.getEnv().Canvas || isMediaLoaded(media))
-      return resolve(null);
+      resolve(null);
     function onError(e) {
       if (!e.currentTarget)
         return;
@@ -65459,7 +65449,7 @@ function drawFaceLandmarks(canvasArg, faceLandmarks) {
 }
 
 // package.json
-var version6 = "1.5.7";
+var version6 = "1.5.8";
 
 // src/xception/extractParams.ts
 function extractorsFactory2(extractWeights, paramMappings) {

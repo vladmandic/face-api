@@ -7,10 +7,8 @@ export interface IBoundingBox {
   bottom: number
 }
 
-export class BoundingBox extends Box<BoundingBox> implements IBoundingBox {
+export class BoundingBox extends Box implements IBoundingBox {
   constructor(left: number, top: number, right: number, bottom: number, allowNegativeDimensions = false) {
-    super({
-      left, top, right, bottom,
-    }, allowNegativeDimensions);
+    super({ left, top, right, bottom }, allowNegativeDimensions);
   }
 }

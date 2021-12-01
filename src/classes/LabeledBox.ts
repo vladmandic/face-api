@@ -3,10 +3,9 @@ import { IBoundingBox } from './BoundingBox';
 import { Box } from './Box';
 import { IRect } from './Rect';
 
-export class LabeledBox extends Box<LabeledBox> {
+export class LabeledBox extends Box {
   public static assertIsValidLabeledBox(box: any, callee: string) {
     Box.assertIsValidBox(box, callee);
-
     if (!isValidNumber(box.label)) {
       throw new Error(`${callee} - expected property label (${box.label}) to be a number`);
     }

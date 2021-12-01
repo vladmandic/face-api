@@ -5,6 +5,6 @@ export interface IRect {
     width: number;
     height: number;
 }
-export declare class Rect extends Box<Rect> implements IRect {
+export declare class Rect extends Box implements IRect {
     constructor(x: number, y: number, width: number, height: number, allowNegativeDimensions?: boolean);
 }

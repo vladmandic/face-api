@@ -7,12 +7,7 @@ import { DrawTextField } from './DrawTextField';
 
 export type DrawFaceExpressionsInput = FaceExpressions | WithFaceExpressions<{}>
 
-export function drawFaceExpressions(
-  canvasArg: string | HTMLCanvasElement,
-  faceExpressions: DrawFaceExpressionsInput | Array<DrawFaceExpressionsInput>,
-  minConfidence = 0.1,
-  textFieldAnchor?: IPoint,
-) {
+export function drawFaceExpressions(canvasArg: string | HTMLCanvasElement, faceExpressions: DrawFaceExpressionsInput | Array<DrawFaceExpressionsInput>, minConfidence = 0.1, textFieldAnchor?: IPoint) {
   const faceExpressionsArray = Array.isArray(faceExpressions) ? faceExpressions : [faceExpressions];
 
   faceExpressionsArray.forEach((e) => {

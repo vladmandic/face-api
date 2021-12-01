@@ -31,6 +31,7 @@
     "@typescript-eslint/no-var-requires": "off",
     "camelcase": "off",
     "class-methods-use-this": "off",
+    "default-param-last": "off",
     "dot-notation": "off",
     "func-names": "off",
     "guard-for-in": "off",

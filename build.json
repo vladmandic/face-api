@@ -10,7 +10,7 @@
     "development": ["serve", "watch", "compile"]
   },
   "clean": {
-    "locations": ["dist/*", "types/*", "typedoc/*"]
+    "locations": ["dist/*", "types/src/*", "typedoc/*"]
   },
   "lint": {
     "locations": [ "src/**" ],

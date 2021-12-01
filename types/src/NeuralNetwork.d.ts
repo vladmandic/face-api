@@ -12,15 +12,15 @@ export declare abstract class NeuralNetwork<TNetParams> {
     reassignParamFromPath(paramPath: string, tensor: tf.Tensor): void;
     getParamList(): {
         path: string;
-        tensor: any;
+        tensor: tf.Tensor;
     }[];
     getTrainableParams(): {
         path: string;
-        tensor: any;
+        tensor: tf.Tensor;
     }[];
     getFrozenParams(): {
         path: string;
-        tensor: any;
+        tensor: tf.Tensor;
     }[];
     variable(): void;
     freeze(): void;

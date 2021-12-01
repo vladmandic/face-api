@@ -426,12 +426,7 @@ var Box = class {
 // src/classes/BoundingBox.ts
 var BoundingBox = class extends Box {
   constructor(left, top, right, bottom, allowNegativeDimensions = false) {
-    super({
-      left,
-      top,
-      right,
-      bottom
-    }, allowNegativeDimensions);
+    super({ left, top, right, bottom }, allowNegativeDimensions);
   }
 };
 
@@ -580,12 +575,7 @@ function inverseSigmoid(x) {
 // src/classes/Rect.ts
 var Rect = class extends Box {
   constructor(x, y, width, height, allowNegativeDimensions = false) {
-    super({
-      x,
-      y,
-      width,
-      height
-    }, allowNegativeDimensions);
+    super({ x, y, width, height }, allowNegativeDimensions);
   }
 };
 
@@ -1104,7 +1094,7 @@ function isMediaLoaded(media) {
 function awaitMediaLoaded(media) {
   return new Promise((resolve, reject) => {
     if (media instanceof env.getEnv().Canvas || isMediaLoaded(media))
-      return resolve(null);
+      resolve(null);
     function onError(e) {
       if (!e.currentTarget)
         return;
@@ -2147,7 +2137,7 @@ function drawFaceLandmarks(canvasArg, faceLandmarks) {
 }
 
 // package.json
-var version10 = "1.5.7";
+var version10 = "1.5.8";
 
 // src/xception/extractParams.ts
 function extractorsFactory2(extractWeights, paramMappings) {

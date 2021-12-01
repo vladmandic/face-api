@@ -51,7 +51,7 @@ export class FaceRecognitionNet extends NeuralNetwork<NetParams> {
       const globalAvg = out.mean([1, 2]) as tf.Tensor2D;
       const fullyConnected = tf.matMul(globalAvg, params.fc);
 
-      return fullyConnected;
+      return fullyConnected as tf.Tensor2D;
     });
   }
 
@@ -60,6 +60,7 @@ export class FaceRecognitionNet extends NeuralNetwork<NetParams> {
   }
 
   public async computeFaceDescriptor(input: TNetInput): Promise<Float32Array|Float32Array[]> {
+    // @ts-ignore
     if (input?.shape?.some((dim) => dim <= 0)) return new Float32Array(128);
     const netInput = await toNetInput(input);
     const faceDescriptorTensors = tf.tidy(() => tf.unstack(this.forwardInput(netInput)));

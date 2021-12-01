@@ -11,6 +11,7 @@
   
 ### **HEAD -> master** 2021/12/01 mandic00@live.com
 
+- rebuild
 
 ### **1.5.8** 2021/11/30 mandic00@live.com
 
@@ -26,7 +27,6 @@
 
 ### **1.5.5** 2021/10/19 mandic00@live.com
 
-- rebuild
 - allow backend change in demo via url params
 - add node-match demo
 - fix face matcher

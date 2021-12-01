@@ -1,5 +1,32 @@
 /// <reference types="node" />
 
+declare const add: typeof add_;
+
+/**
+ * Adds two `tf.Tensor`s element-wise, A + B. Supports broadcasting.
+ *
+ *
+ * ```js
+ * const a = tf.tensor1d([1, 2, 3, 4]);
+ * const b = tf.tensor1d([10, 20, 30, 40]);
+ *
+ * a.add(b).print();  // or tf.add(a, b)
+ * ```
+ *
+ * ```js
+ * // Broadcast add a with b.
+ * const a = tf.scalar(5);
+ * const b = tf.tensor1d([10, 20, 30, 40]);
+ *
+ * a.add(b).print();  // or tf.add(a, b)
+ * ```
+ * @param a The first `tf.Tensor` to add.
+ * @param b The second `tf.Tensor` to add. Must have the same type as `a`.
+ *
+ * @doc {heading: 'Operations', subheading: 'Arithmetic'}
+ */
+declare function add_<T extends Tensor>(a: Tensor | TensorLike, b: Tensor | TensorLike): T;
+
 export declare type AgeAndGenderPrediction = {
     age: number;
     gender: Gender;
@@ -55,12 +82,66 @@ declare interface ArrayMap {
     R6: number[][][][][][];
 }
 
+declare const avgPool: typeof avgPool_;
+
+/**
+ * Computes the 2D average pooling of an image.
+ *
+ * @param x The input tensor, of rank 4 or rank 3 of shape
+ *     `[batch, height, width, inChannels]`. If rank 3, batch of 1 is assumed.
+ * @param filterSize The filter size: `[filterHeight, filterWidth]`. If
+ *     `filterSize` is a single number, then `filterHeight == filterWidth`.
+ * @param strides The strides of the pooling: `[strideHeight, strideWidth]`. If
+ *     `strides` is a single number, then `strideHeight == strideWidth`.
+ * @param pad The type of padding algorithm:
+ *    - `same` and stride 1: output will be of same size as input,
+ *       regardless of filter size.
+ *    - `valid`: output will be smaller than input if filter is larger
+ *       than 1x1.
+ *    - For more info, see this guide:
+ *     [https://www.tensorflow.org/api_docs/python/tf/nn/convolution](
+ *         https://www.tensorflow.org/api_docs/python/tf/nn/convolution)
+ * @param dimRoundingMode A string from: 'ceil', 'round', 'floor'. If none is
+ *     provided, it will default to truncate.
+ */
+declare function avgPool_<T extends Tensor3D | Tensor4D>(x: T | TensorLike, filterSize: [number, number] | number, strides: [number, number] | number, pad: 'valid' | 'same' | number | conv_util.ExplicitPadding, dimRoundingMode?: 'floor' | 'round' | 'ceil'): T;
+
 export declare function awaitMediaLoaded(media: HTMLImageElement | HTMLVideoElement | HTMLCanvasElement): Promise<unknown>;
 
 export declare type BatchNorm = {
     sub: tf.Tensor1D;
     truediv: tf.Tensor1D;
 };
+
+declare const batchNorm: typeof batchNorm_;
+
+/**
+ * Batch normalization.
+ *
+ * As described in
+ * [http://arxiv.org/abs/1502.03167](http://arxiv.org/abs/1502.03167).
+ *
+ * Mean, variance, scale, and offset can be of two shapes:
+ *   - The same shape as the input.
+ *   - In the common case, the depth dimension is the last dimension of x, so
+ *     the values would be an `tf.Tensor1D` of shape [depth].
+ *
+ * Also available are stricter rank-specific methods with the same signature
+ * as this method that assert that parameters passed are of given rank
+ *   - `tf.batchNorm2d`
+ *   - `tf.batchNorm3d`
+ *   - `tf.batchNorm4d`
+ *
+ * @param x The input Tensor.
+ * @param mean A mean Tensor.
+ * @param variance A variance Tensor.
+ * @param offset An offset Tensor.
+ * @param scale A scale Tensor.
+ * @param varianceEpsilon A small float number to avoid dividing by 0.
+ *
+ * @doc {heading: 'Operations', subheading: 'Normalization'}
+ */
+declare function batchNorm_<R extends Rank>(x: Tensor<R> | TensorLike, mean: Tensor<R> | Tensor1D | TensorLike, variance: Tensor<R> | Tensor1D | TensorLike, offset?: Tensor<R> | Tensor1D | TensorLike, scale?: Tensor<R> | Tensor1D | TensorLike, varianceEpsilon?: number): Tensor<R>;
 
 export declare class BoundingBox extends Box implements IBoundingBox {
     constructor(left: number, top: number, right: number, bottom: number, allowNegativeDimensions?: boolean);
@@ -116,6 +197,40 @@ declare type BoxPredictionParams = {
 
 export declare function bufferToImage(buf: Blob): Promise<HTMLImageElement>;
 
+declare const cast: typeof cast_;
+
+/**
+ * Casts a `tf.Tensor` to a new dtype.
+ *
+ * ```js
+ * const x = tf.tensor1d([1.5, 2.5, 3]);
+ * tf.cast(x, 'int32').print();
+ * ```
+ * @param x The input tensor to be casted.
+ * @param dtype The dtype to cast the input tensor to.
+ *
+ * @doc {heading: 'Tensors', subheading: 'Transformations'}
+ */
+declare function cast_<T extends Tensor>(x: T | TensorLike, dtype: DataType): T;
+
+declare const clipByValue: typeof clipByValue_;
+
+/**
+ * Clips values element-wise. `max(min(x, clipValueMax), clipValueMin)`
+ *
+ * ```js
+ * const x = tf.tensor1d([-1, 2, -3, 4]);
+ *
+ * x.clipByValue(-2, 3).print();  // or tf.clipByValue(x, -2, 3)
+ * ```
+ * @param x The input tensor.
+ * @param clipValueMin Lower-bound of range to be clipped to.
+ * @param clipValueMax Upper-bound of range to be clipped to.
+ *
+ * @doc {heading: 'Operations', subheading: 'Basic math'}
+ */
+declare function clipByValue_<T extends Tensor>(x: T | TensorLike, clipValueMin: number, clipValueMax: number): T;
+
 export declare class ComposableTask<T> {
     then(onfulfilled: (value: T) => T | PromiseLike<T>): Promise<T>;
     run(): Promise<T>;
@@ -126,6 +241,46 @@ export declare class ComputeAllFaceDescriptorsTask<TSource extends WithFaceLandm
     withFaceExpressions(): PredictAllFaceExpressionsWithFaceAlignmentTask<WithFaceDescriptor<TSource>>;
     withAgeAndGender(): PredictAllAgeAndGenderWithFaceAlignmentTask<WithFaceDescriptor<TSource>>;
 }
+
+/**
+ * Computes the information for a forward pass of a convolution/pooling
+ * operation.
+ */
+declare function computeConv2DInfo(inShape: [number, number, number, number], filterShape: [number, number, number, number], strides: number | [number, number], dilations: number | [number, number], pad: 'same' | 'valid' | number | ExplicitPadding, roundingMode?: 'floor' | 'round' | 'ceil', depthwise?: boolean, dataFormat?: 'channelsFirst' | 'channelsLast'): Conv2DInfo;
+
+/**
+ * Computes the information for a forward pass of a 3D convolution/pooling
+ * operation.
+ */
+declare function computeConv3DInfo(inShape: [number, number, number, number, number], filterShape: [number, number, number, number, number], strides: number | [number, number, number], dilations: number | [number, number, number], pad: 'same' | 'valid' | number, depthwise?: boolean, dataFormat?: 'channelsFirst' | 'channelsLast', roundingMode?: 'floor' | 'round' | 'ceil'): Conv3DInfo;
+
+declare function computeDefaultPad(inputShape: [number, number] | [number, number, number, number], fieldSize: number, stride: number, dilation?: number): number;
+
+/**
+ *
+ * @param inputShape Input tensor shape is of the following dimensions:
+ *     `[batch, height, width, inChannels]`.
+ * @param filterShape The filter shape is of the following dimensions:
+ *     `[filterHeight, filterWidth, depth]`.
+ * @param strides The strides of the sliding window for each dimension of the
+ *     input tensor: `[strideHeight, strideWidth]`.
+ *     If `strides` is a single number,
+ *     then `strideHeight == strideWidth`.
+ * @param pad The type of padding algorithm.
+ *    - `same` and stride 1: output will be of same size as input,
+ *       regardless of filter size.
+ *    - `valid`: output will be smaller than input if filter is larger
+ *       than 1*1x1.
+ *    - For more info, see this guide:
+ *     [https://www.tensorflow.org/api_docs/python/tf/nn/convolution](
+ *          https://www.tensorflow.org/api_docs/python/tf/nn/convolution)
+ * @param dataFormat The data format of the input and output data.
+ *     Defaults to 'NHWC'.
+ * @param dilations The dilation rates: `[dilationHeight, dilationWidth]`.
+ *     Defaults to `[1, 1]`. If `dilations` is a single number, then
+ *     `dilationHeight == dilationWidth`.
+ */
+declare function computeDilation2DInfo(inputShape: [number, number, number, number], filterShape: [number, number, number], strides: number | [number, number], pad: 'same' | 'valid' | number, dataFormat: 'NHWC', dilations: number | [number, number]): Conv2DInfo;
 
 /**
  * Computes a 128 entry vector (face descriptor / face embeddings) from the face shown in an image,
@@ -145,6 +300,13 @@ export declare class ComputeFaceDescriptorsTaskBase<TReturn, TParentReturn> exte
     constructor(parentTask: ComposableTask<TParentReturn> | Promise<TParentReturn>, input: TNetInput);
 }
 
+declare function computePool2DInfo(inShape: [number, number, number, number], filterSize: [number, number] | number, strides: number | [number, number], dilations: number | [number, number], pad: 'same' | 'valid' | number | ExplicitPadding, roundingMode?: 'floor' | 'round' | 'ceil', dataFormat?: 'channelsFirst' | 'channelsLast'): Conv2DInfo;
+
+/**
+ * Computes the information for a forward pass of a pooling3D operation.
+ */
+declare function computePool3DInfo(inShape: [number, number, number, number, number], filterSize: number | [number, number, number], strides: number | [number, number, number], dilations: number | [number, number, number], pad: 'same' | 'valid' | number, roundingMode?: 'floor' | 'round' | 'ceil', dataFormat?: 'NDHWC' | 'NCDHW'): Conv3DInfo;
+
 declare function computeReshapedDimensions({ width, height }: IDimensions, inputSize: number): Dimensions;
 
 export declare class ComputeSingleFaceDescriptorTask<TSource extends WithFaceLandmarks<WithFaceDetection<{}>>> extends ComputeFaceDescriptorsTaskBase<WithFaceDescriptor<TSource> | undefined, TSource | undefined> {
@@ -152,6 +314,176 @@ export declare class ComputeSingleFaceDescriptorTask<TSource extends WithFaceLan
     withFaceExpressions(): PredictSingleFaceExpressionsWithFaceAlignmentTask<WithFaceDescriptor<TSource>>;
     withAgeAndGender(): PredictSingleAgeAndGenderWithFaceAlignmentTask<WithFaceDescriptor<TSource>>;
 }
+
+declare const concat: typeof concat_;
+
+/**
+ * Concatenates a list of `tf.Tensor`s along a given axis.
+ *
+ * The tensors ranks and types must match, and their sizes must match in all
+ * dimensions except `axis`.
+ *
+ * Also available are stricter rank-specific methods that assert that
+ * `tensors` are of the given rank:
+ *   - `tf.concat1d`
+ *   - `tf.concat2d`
+ *   - `tf.concat3d`
+ *   - `tf.concat4d`
+ *
+ * Except `tf.concat1d` (which does not have axis param), all methods have
+ * same signature as this method.
+ *
+ * ```js
+ * const a = tf.tensor1d([1, 2]);
+ * const b = tf.tensor1d([3, 4]);
+ * a.concat(b).print();  // or a.concat(b)
+ * ```
+ *
+ * ```js
+ * const a = tf.tensor1d([1, 2]);
+ * const b = tf.tensor1d([3, 4]);
+ * const c = tf.tensor1d([5, 6]);
+ * tf.concat([a, b, c]).print();
+ * ```
+ *
+ * ```js
+ * const a = tf.tensor2d([[1, 2], [10, 20]]);
+ * const b = tf.tensor2d([[3, 4], [30, 40]]);
+ * const axis = 1;
+ * tf.concat([a, b], axis).print();
+ * ```
+ * @param tensors A list of tensors to concatenate.
+ * @param axis The axis to concate along. Defaults to 0 (the first dim).
+ *
+ * @doc {heading: 'Tensors', subheading: 'Slicing and Joining'}
+ */
+declare function concat_<T extends Tensor>(tensors: Array<T | TensorLike>, axis?: number): T;
+
+declare const conv2d: typeof conv2d_;
+
+/**
+ * Computes a 2D convolution over the input x.
+ *
+ * @param x The input tensor, of rank 4 or rank 3, of shape
+ *     `[batch, height, width, inChannels]`. If rank 3, batch of 1 is
+ * assumed.
+ * @param filter The filter, rank 4, of shape
+ *     `[filterHeight, filterWidth, inDepth, outDepth]`.
+ * @param strides The strides of the convolution: `[strideHeight,
+ * strideWidth]`.
+ * @param pad The type of padding algorithm.
+ *    - `same` and stride 1: output will be of same size as input,
+ *       regardless of filter size.
+ *    - `valid`: output will be smaller than input if filter is larger
+ *       than 1x1.
+ *   - For more info, see this guide:
+ *     [https://www.tensorflow.org/api_docs/python/tf/nn/convolution](
+ *          https://www.tensorflow.org/api_docs/python/tf/nn/convolution)
+ * @param dataFormat: An optional string from: "NHWC", "NCHW". Defaults to
+ *     "NHWC". Specify the data format of the input and output data. With the
+ *     default format "NHWC", the data is stored in the order of: [batch,
+ *     height, width, channels].
+ * @param dilations The dilation rates: `[dilationHeight, dilationWidth]`
+ *     in which we sample input values across the height and width dimensions
+ *     in atrous convolution. Defaults to `[1, 1]`. If `dilations` is a single
+ *     number, then `dilationHeight == dilationWidth`. If it is greater than
+ *     1, then all values of `strides` must be 1.
+ * @param dimRoundingMode A string from: 'ceil', 'round', 'floor'. If none is
+ *     provided, it will default to truncate.
+ *
+ * @doc {heading: 'Operations', subheading: 'Convolution'}
+ */
+declare function conv2d_<T extends Tensor3D | Tensor4D>(x: T | TensorLike, filter: Tensor4D | TensorLike, strides: [number, number] | number, pad: 'valid' | 'same' | number | conv_util.ExplicitPadding, dataFormat?: 'NHWC' | 'NCHW', dilations?: [number, number] | number, dimRoundingMode?: 'floor' | 'round' | 'ceil'): T;
+
+/**
+ * Information about the forward pass of a convolution/pooling operation.
+ * It includes input and output shape, strides, filter size and padding
+ * information.
+ */
+declare type Conv2DInfo = {
+    batchSize: number;
+    inHeight: number;
+    inWidth: number;
+    inChannels: number;
+    outHeight: number;
+    outWidth: number;
+    outChannels: number;
+    dataFormat: 'channelsFirst' | 'channelsLast';
+    strideHeight: number;
+    strideWidth: number;
+    dilationHeight: number;
+    dilationWidth: number;
+    filterHeight: number;
+    filterWidth: number;
+    effectiveFilterHeight: number;
+    effectiveFilterWidth: number;
+    padInfo: PadInfo;
+    inShape: [number, number, number, number];
+    outShape: [number, number, number, number];
+    filterShape: [number, number, number, number];
+};
+
+/**
+ * Information about the forward pass of a 3D convolution/pooling operation.
+ * It includes input and output shape, strides, filter size and padding
+ * information.
+ */
+declare type Conv3DInfo = {
+    batchSize: number;
+    inDepth: number;
+    inHeight: number;
+    inWidth: number;
+    inChannels: number;
+    outDepth: number;
+    outHeight: number;
+    outWidth: number;
+    outChannels: number;
+    dataFormat: 'channelsFirst' | 'channelsLast';
+    strideDepth: number;
+    strideHeight: number;
+    strideWidth: number;
+    dilationDepth: number;
+    dilationHeight: number;
+    dilationWidth: number;
+    filterDepth: number;
+    filterHeight: number;
+    filterWidth: number;
+    effectiveFilterDepth: number;
+    effectiveFilterHeight: number;
+    effectiveFilterWidth: number;
+    padInfo: PadInfo3D;
+    inShape: [number, number, number, number, number];
+    outShape: [number, number, number, number, number];
+    filterShape: [number, number, number, number, number];
+};
+
+declare namespace conv_util {
+    export {
+        computeDilation2DInfo,
+        computePool2DInfo,
+        computePool3DInfo,
+        computeConv2DInfo,
+        computeConv3DInfo,
+        computeDefaultPad,
+        tupleValuesAreOne,
+        eitherStridesOrDilationsAreOne,
+        convertConv2DDataFormat,
+        ExplicitPadding,
+        PadInfo,
+        PadInfo3D,
+        Conv2DInfo,
+        Conv3DInfo
+    }
+}
+
+/**
+ * Convert Conv2D dataFormat from 'NHWC'|'NCHW' to
+ *    'channelsLast'|'channelsFirst'
+ * @param dataFormat in 'NHWC'|'NCHW' mode
+ * @return dataFormat in 'channelsLast'|'channelsFirst' mode
+ * @throws unknown dataFormat
+ */
+declare function convertConv2DDataFormat(dataFormat: 'NHWC' | 'NCHW'): 'channelsLast' | 'channelsFirst';
 
 declare type ConvLayerParams = {
     conv: ConvParams;
@@ -230,6 +562,55 @@ declare type DenseBlock3Params = {
 declare type DenseBlock4Params = DenseBlock3Params & {
     conv3: SeparableConvParams;
 };
+
+declare const depthwiseConv2d: typeof depthwiseConv2d_;
+
+/**
+ * Depthwise 2D convolution.
+ *
+ * Given a 4D `input` array and a `filter` array of shape
+ * `[filterHeight, filterWidth, inChannels, channelMultiplier]` containing
+ * `inChannels` convolutional filters of depth 1, this op applies a
+ * different filter to each input channel (expanding from 1 channel to
+ * `channelMultiplier` channels for each), then concatenates the results
+ * together. The output has `inChannels * channelMultiplier` channels.
+ *
+ * See
+ * [https://www.tensorflow.org/api_docs/python/tf/nn/depthwise_conv2d](
+ *     https://www.tensorflow.org/api_docs/python/tf/nn/depthwise_conv2d)
+ * for more details.
+ *
+ * @param x The input tensor, of rank 4 or rank 3, of shape
+ *     `[batch, height, width, inChannels]`. If rank 3, batch of 1 is
+ * assumed.
+ * @param filter The filter tensor, rank 4, of shape
+ *     `[filterHeight, filterWidth, inChannels, channelMultiplier]`.
+ * @param strides The strides of the convolution: `[strideHeight,
+ * strideWidth]`. If strides is a single number, then `strideHeight ==
+ * strideWidth`.
+ * @param pad The type of padding algorithm.
+ *   - `same` and stride 1: output will be of same size as input,
+ *       regardless of filter size.
+ *   - `valid`: output will be smaller than input if filter is larger
+ *       than 1x1.
+ *   - For more info, see this guide:
+ *     [https://www.tensorflow.org/api_docs/python/tf/nn/convolution](
+ *          https://www.tensorflow.org/api_docs/python/tf/nn/convolution)
+ * @param dilations The dilation rates: `[dilationHeight, dilationWidth]`
+ *     in which we sample input values across the height and width dimensions
+ *     in atrous convolution. Defaults to `[1, 1]`. If `rate` is a single
+ *     number, then `dilationHeight == dilationWidth`. If it is greater than
+ *     1, then all values of `strides` must be 1.
+ * @param dataFormat: An optional string from: "NHWC", "NCHW". Defaults to
+ *     "NHWC". Specify the data format of the input and output data. With the
+ *     default format "NHWC", the data is stored in the order of: [batch,
+ *     height, width, channels]. Only "NHWC" is currently supported.
+ * @param dimRoundingMode A string from: 'ceil', 'round', 'floor'. If none is
+ *     provided, it will default to truncate.
+ *
+ * @doc {heading: 'Operations', subheading: 'Convolution'}
+ */
+declare function depthwiseConv2d_<T extends Tensor3D | Tensor4D>(x: T | TensorLike, filter: Tensor4D | TensorLike, strides: [number, number] | number, pad: 'valid' | 'same' | number | ExplicitPadding, dataFormat?: 'NHWC' | 'NCHW', dilations?: [number, number] | number, dimRoundingMode?: 'floor' | 'round' | 'ceil'): T;
 
 export declare class DetectAllFaceLandmarksTask<TSource extends WithFaceDetection<{}>> extends DetectFaceLandmarksTaskBase<WithFaceLandmarks<TSource>[], TSource[]> {
     run(): Promise<WithFaceLandmarks<TSource>[]>;
@@ -322,6 +703,34 @@ export declare class Dimensions implements IDimensions {
     reverse(): Dimensions;
 }
 
+declare const div: typeof div_;
+
+/**
+ * Divides two `tf.Tensor`s element-wise, A / B. Supports broadcasting.
+ *
+ * ```js
+ * const a = tf.tensor1d([1, 4, 9, 16]);
+ * const b = tf.tensor1d([1, 2, 3, 4]);
+ *
+ * a.div(b).print();  // or tf.div(a, b)
+ * ```
+ *
+ * ```js
+ * // Broadcast div a with b.
+ * const a = tf.tensor1d([2, 4, 6, 8]);
+ * const b = tf.scalar(2);
+ *
+ * a.div(b).print();  // or tf.div(a, b)
+ * ```
+ *
+ * @param a The first tensor as the numerator.
+ * @param b The second tensor as the denominator. Must have the same dtype as
+ * `a`.
+ *
+ * @doc {heading: 'Operations', subheading: 'Arithmetic'}
+ */
+declare function div_<T extends Tensor>(a: Tensor | TensorLike, b: Tensor | TensorLike): T;
+
 declare namespace draw {
     export {
         drawContour,
@@ -410,6 +819,10 @@ declare class DrawTextFieldOptions implements IDrawTextFieldOptions {
     constructor(options?: IDrawTextFieldOptions);
 }
 
+declare function eitherStridesOrDilationsAreOne(strides: number | number[], dilations: number | number[]): boolean;
+
+declare let ENV: Environment_2;
+
 export declare const env: {
     getEnv: typeof getEnv;
     setEnv: typeof setEnv;
@@ -434,7 +847,76 @@ export declare type Environment = FileSystem_2 & {
     fetch: (url: string, init?: RequestInit) => Promise<Response>;
 };
 
+/**
+ * The environment contains evaluated flags as well as the registered platform.
+ * This is always used as a global singleton and can be retrieved with
+ * `tf.env()`.
+ *
+ * @doc {heading: 'Environment'}
+ */
+declare class Environment_2 {
+    global: any;
+    private flags;
+    private flagRegistry;
+    private urlFlags;
+    platformName: string;
+    platform: Platform;
+    getQueryParams: typeof getQueryParams;
+    constructor(global: any);
+    setPlatform(platformName: string, platform: Platform): void;
+    registerFlag(flagName: string, evaluationFn: FlagEvaluationFn, setHook?: (value: FlagValue) => void): void;
+    getAsync(flagName: string): Promise<FlagValue>;
+    get(flagName: string): FlagValue;
+    getNumber(flagName: string): number;
+    getBool(flagName: string): boolean;
+    getFlags(): Flags;
+    readonly features: Flags;
+    set(flagName: string, value: FlagValue): void;
+    private evaluateFlag;
+    setFlags(flags: Flags): void;
+    reset(): void;
+    private populateURLFlags;
+}
+
 export declare function euclideanDistance(arr1: number[] | Float32Array, arr2: number[] | Float32Array): number;
+
+declare const exp: typeof exp_;
+
+/**
+ * Computes exponential of the input `tf.Tensor` element-wise. `e ^ x`
+ *
+ * ```js
+ * const x = tf.tensor1d([1, 2, -3]);
+ *
+ * x.exp().print();  // or tf.exp(x)
+ * ```
+ * @param x The input tensor.
+ *
+ * @doc {heading: 'Operations', subheading: 'Basic math'}
+ */
+declare function exp_<T extends Tensor>(x: T | TensorLike): T;
+
+declare const expandDims: typeof expandDims_;
+
+/**
+ * Returns a `tf.Tensor` that has expanded rank, by inserting a dimension
+ * into the tensor's shape.
+ *
+ * ```js
+ * const x = tf.tensor1d([1, 2, 3, 4]);
+ * const axis = 1;
+ * x.expandDims(axis).print();
+ * ```
+ *
+ * @param x The input tensor whose dimensions to be expanded.
+ * @param axis The dimension index at which to insert shape of `1`. Defaults
+ *     to 0 (the first dimension).
+ *
+ * @doc {heading: 'Tensors', subheading: 'Transformations'}
+ */
+declare function expandDims_<T extends Tensor>(x: Tensor | TensorLike, axis?: number): T;
+
+declare type ExplicitPadding = [[number, number], [number, number], [number, number], [number, number]];
 
 export declare function extendWithAge<TSource>(sourceObj: TSource, age: number): WithAge<TSource>;
 
@@ -683,6 +1165,30 @@ declare type FileSystem_2 = {
 };
 export { FileSystem_2 as FileSystem }
 
+/**
+ * Creates a `tf.Tensor` filled with a scalar value.
+ *
+ * ```js
+ * tf.fill([2, 2], 4).print();
+ * ```
+ *
+ * @param shape An array of integers defining the output tensor shape.
+ * @param value The scalar value to fill the tensor with.
+ * @param dtype The type of an element in the resulting tensor. Defaults to
+ * 'float'.
+ *
+ * @doc {heading: 'Tensors', subheading: 'Creation'}
+ */
+declare function fill<R extends Rank>(shape: ShapeMap[R], value: number | string, dtype?: DataType): Tensor<R>;
+
+declare type FlagEvaluationFn = (() => FlagValue) | (() => Promise<FlagValue>);
+
+declare type Flags = {
+    [featureName: string]: FlagValue;
+};
+
+declare type FlagValue = number | boolean;
+
 export declare enum Gender {
     FEMALE = "female",
     MALE = "male"
@@ -695,6 +1201,10 @@ export declare function getContext2dOrThrow(canvasArg: string | HTMLCanvasElemen
 declare function getEnv(): Environment;
 
 export declare function getMediaDimensions(input: HTMLImageElement | HTMLCanvasElement | HTMLVideoElement | IDimensions): Dimensions;
+
+declare function getQueryParams(queryString: string): {
+    [key: string]: string;
+};
 
 export declare interface IBoundingBox {
     left: number;
@@ -869,6 +1379,55 @@ export declare function matchDimensions(input: IDimensions, reference: IDimensio
     height: number;
 };
 
+declare const matMul: typeof matMul_;
+
+/**
+ * Computes the dot product of two matrices, A * B. These must be matrices.
+ *
+ * ```js
+ * const a = tf.tensor2d([1, 2], [1, 2]);
+ * const b = tf.tensor2d([1, 2, 3, 4], [2, 2]);
+ *
+ * a.matMul(b).print();  // or tf.matMul(a, b)
+ * ```
+ * @param a First matrix in dot product operation.
+ * @param b Second matrix in dot product operation.
+ * @param transposeA If true, `a` is transposed before multiplication.
+ * @param transposeB If true, `b` is transposed before multiplication.
+ *
+ * @doc {heading: 'Operations', subheading: 'Matrices'}
+ */
+declare function matMul_<T extends Tensor>(a: Tensor | TensorLike, b: Tensor | TensorLike, transposeA?: boolean, transposeB?: boolean): T;
+
+declare const maxPool: typeof maxPool_;
+
+/**
+ * Computes the 2D max pooling of an image.
+ *
+ * @param x The input tensor, of rank 4 or rank 3 of shape
+ *     `[batch, height, width, inChannels]`. If rank 3, batch of 1 is assumed.
+ * @param filterSize The filter size: `[filterHeight, filterWidth]`. If
+ *     `filterSize` is a single number, then `filterHeight == filterWidth`.
+ * @param strides The strides of the pooling: `[strideHeight, strideWidth]`. If
+ *     `strides` is a single number, then `strideHeight == strideWidth`.
+ * @param dilations The dilation rates: `[dilationHeight, dilationWidth]`
+ *     in which we sample input values across the height and width dimensions
+ *     in dilated pooling. Defaults to `[1, 1]`. If `dilations` is a single
+ *     number, then `dilationHeight == dilationWidth`. If it is greater than
+ *     1, then all values of `strides` must be 1.
+ * @param pad The type of padding algorithm.
+ *    - `same` and stride 1: output will be of same size as input,
+ *       regardless of filter size.
+ *    - `valid`: output will be smaller than input if filter is larger
+ *       than 1x1.
+ *    - For more info, see this guide:
+ *     [https://www.tensorflow.org/api_docs/python/tf/nn/convolution](
+ *          https://www.tensorflow.org/api_docs/python/tf/nn/convolution)
+ * @param dimRoundingMode A string from: 'ceil', 'round', 'floor'. If none is
+ *     provided, it will default to truncate.
+ */
+declare function maxPool_<T extends Tensor3D | Tensor4D>(x: T | TensorLike, filterSize: [number, number] | number, strides: [number, number] | number, pad: 'valid' | 'same' | number | conv_util.ExplicitPadding, dimRoundingMode?: 'floor' | 'round' | 'ceil'): T;
+
 export declare function minBbox(pts: IPoint[]): BoundingBox;
 
 export declare type MobilenetParams = {
@@ -914,6 +1473,35 @@ declare namespace MobileNetV1 {
 }
 
 declare function monkeyPatch(env: Partial<Environment>): void;
+
+declare const mul: typeof mul_;
+
+/**
+ * Multiplies two `tf.Tensor`s element-wise, A * B. Supports broadcasting.
+ *
+ * We also expose `tf.mulStrict` which has the same signature as this op and
+ * asserts that `a` and `b` are the same shape (does not broadcast).
+ *
+ * ```js
+ * const a = tf.tensor1d([1, 2, 3, 4]);
+ * const b = tf.tensor1d([2, 3, 4, 5]);
+ *
+ * a.mul(b).print();  // or tf.mul(a, b)
+ * ```
+ *
+ * ```js
+ * // Broadcast mul a with b.
+ * const a = tf.tensor1d([1, 2, 3, 4]);
+ * const b = tf.scalar(5);
+ *
+ * a.mul(b).print();  // or tf.mul(a, b)
+ * ```
+ * @param a The first tensor to multiply.
+ * @param b The second tensor to multiply. Must have the same dtype as `a`.
+ *
+ * @doc {heading: 'Operations', subheading: 'Arithmetic'}
+ */
+declare function mul_<T extends Tensor>(a: Tensor | TensorLike, b: Tensor | TensorLike): T;
 
 /** @docalias {[name: string]: Tensor} */
 declare type NamedTensorMap = {
@@ -1075,6 +1663,53 @@ declare type OutputLayerParams = {
     extra_dim: tf.Tensor3D;
 };
 
+declare const pad: typeof pad_;
+
+/**
+ * Pads a `tf.Tensor` with a given value and paddings.
+ *
+ * This operation implements `CONSTANT` mode. For `REFLECT` and `SYMMETRIC`,
+ * refer to `tf.mirrorPad`
+ *
+ * Also available are stricter rank-specific methods with the same signature
+ * as this method that assert that `paddings` is of given length.
+ *   - `tf.pad1d`
+ *   - `tf.pad2d`
+ *   - `tf.pad3d`
+ *   - `tf.pad4d`
+ *
+ * ```js
+ * const x = tf.tensor1d([1, 2, 3, 4]);
+ * x.pad([[1, 2]]).print();
+ * ```
+ * @param x The tensor to pad.
+ * @param paddings An array of length `R` (the rank of the tensor), where
+ * each element is a length-2 tuple of ints `[padBefore, padAfter]`,
+ * specifying how much to pad along each dimension of the tensor.
+ * @param constantValue The pad value to use. Defaults to 0.
+ *
+ * @doc {heading: 'Tensors', subheading: 'Transformations'}
+ */
+declare function pad_<T extends Tensor>(x: T | TensorLike, paddings: Array<[number, number]>, constantValue?: number): T;
+
+declare type PadInfo = {
+    top: number;
+    left: number;
+    right: number;
+    bottom: number;
+    type: PadType;
+};
+
+declare type PadInfo3D = {
+    top: number;
+    left: number;
+    right: number;
+    bottom: number;
+    front: number;
+    back: number;
+    type: PadType;
+};
+
 /**
  * Pads the smaller dimension of an image tensor with zeros, such that width === height.
  *
@@ -1085,10 +1720,57 @@ declare type OutputLayerParams = {
  */
 export declare function padToSquare(imgTensor: tf.Tensor4D, isCenterImage?: boolean): tf.Tensor4D;
 
+/**
+ * @license
+ * Copyright 2020 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+/// <amd-module name="@tensorflow/tfjs-core/dist/ops/conv_util" />
+declare type PadType = 'SAME' | 'VALID' | 'NUMBER' | 'EXPLICIT';
+
 declare type ParamMapping = {
     originalPath?: string;
     paramPath: string;
 };
+
+/**
+ * At any given time a single platform is active and represents and
+ * implementation of this interface. In practice, a platform is an environment
+ * where TensorFlow.js can be executed, e.g. the browser or Node.js.
+ */
+declare interface Platform {
+    /**
+     * Makes an HTTP request.
+     * @param path The URL path to make a request to
+     * @param init The request init. See init here:
+     *     https://developer.mozilla.org/en-US/docs/Web/API/Request/Request
+     */
+    fetch(path: string, requestInits?: RequestInit, options?: RequestDetails): Promise<Response>;
+    /**
+     * Returns the current high-resolution time in milliseconds relative to an
+     * arbitrary time in the past. It works across different platforms (node.js,
+     * browsers).
+     */
+    now(): number;
+    /**
+     * Encode the provided string into an array of bytes using the provided
+     * encoding.
+     */
+    encode(text: string, encoding: string): Uint8Array;
+    /** Decode the provided bytes into a string using the provided encoding. */
+    decode(bytes: Uint8Array, encoding: string): string;
+}
 
 export declare class Point implements IPoint {
     private _x;
@@ -1234,6 +1916,63 @@ declare type ReductionBlockParams = {
     expansion_conv: ConvParams;
 };
 
+declare const relu: typeof relu_;
+
+/**
+ * Computes rectified linear element-wise: `max(x, 0)`.
+ *
+ * ```js
+ * const x = tf.tensor1d([-1, 2, -3, 4]);
+ *
+ * x.relu().print();  // or tf.relu(x)
+ * ```
+ * @param x The input tensor. If the dtype is `bool`, the output dtype will be
+ *     `int32'.
+ *
+ * @doc {heading: 'Operations', subheading: 'Basic math'}
+ */
+declare function relu_<T extends Tensor>(x: T | TensorLike): T;
+
+/**
+ * Additional options for Platform.fetch
+ */
+declare interface RequestDetails {
+    /**
+     * Is this request for a binary file (as opposed to a json file)
+     */
+    isBinary?: boolean;
+}
+
+declare const reshape: typeof reshape_;
+
+/**
+ * Reshapes a `tf.Tensor` to a given shape.
+ *
+ * Given an input tensor, returns a new tensor with the same values as the
+ * input tensor with shape `shape`.
+ *
+ * If one component of shape is the special value -1, the size of that
+ * dimension is computed so that the total size remains constant. In
+ * particular, a shape of [-1] flattens into 1-D. At most one component of
+ * shape can be -1.
+ *
+ * If shape is 1-D or higher, then the operation returns a tensor with shape
+ * shape filled with the values of tensor. In this case, the number of
+ * elements implied by shape must be the same as the number of elements in
+ * tensor.
+ *
+ * ```js
+ * const x = tf.tensor1d([1, 2, 3, 4]);
+ * x.reshape([2, 2]).print();
+ * ```
+ *
+ * @param x The input tensor to be reshaped.
+ * @param shape An array of integers defining the output tensor shape.
+ *
+ * @doc {heading: 'Tensors', subheading: 'Transformations'}
+ */
+declare function reshape_<R extends Rank>(x: Tensor | TensorLike, shape: ShapeMap[R]): Tensor<R>;
+
 declare type ResidualLayerParams = {
     conv1: ConvLayerParams;
     conv2: ConvLayerParams;
@@ -1245,10 +1984,82 @@ export declare function resolveInput(arg: string | any): any;
 
 declare function round(num: number, prec?: number): number;
 
+/** @doclink Tensor */
+declare type Scalar = Tensor<Rank.R0>;
+
+/**
+ * Creates rank-0 `tf.Tensor` (scalar) with the provided value and dtype.
+ *
+ * The same functionality can be achieved with `tf.tensor`, but in general
+ * we recommend using `tf.scalar` as it makes the code more readable.
+ *
+ * ```js
+ * tf.scalar(3.14).print();
+ * ```
+ *
+ * @param value The value of the scalar.
+ * @param dtype The data type.
+ *
+ * @doc {heading: 'Tensors', subheading: 'Creation'}
+ */
+declare function scalar(value: number | boolean | string | Uint8Array, dtype?: DataType): Scalar;
+
 declare type ScaleLayerParams = {
     weights: tf.Tensor1D;
     biases: tf.Tensor1D;
 };
+
+/** @docalias Function */
+declare type ScopeFn<T extends TensorContainer> = () => T;
+
+declare const separableConv2d: typeof separableConv2d_;
+
+/**
+ * 2-D convolution with separable filters.
+ *
+ * Performs a depthwise convolution that acts separately on channels followed
+ * by a pointwise convolution that mixes channels. Note that this is
+ * separability between dimensions [1, 2] and 3, not spatial separability
+ * between dimensions 1 and 2.
+ *
+ * See
+ * [https://www.tensorflow.org/api_docs/python/tf/nn/separable_conv2d](
+ *     https://www.tensorflow.org/api_docs/python/tf/nn/separable_conv2d)
+ * for more details.
+ *
+ * @param x The input tensor, of rank 4 or rank 3, of shape
+ *     `[batch, height, width, inChannels]`. If rank 3, batch of 1 is
+ * assumed.
+ * @param depthwiseFilter The depthwise filter tensor, rank 4, of shape
+ *     `[filterHeight, filterWidth, inChannels, channelMultiplier]`. This is
+ *     the filter used in the first step.
+ * @param pointwiseFilter The pointwise filter tensor, rank 4, of shape
+ *     `[1, 1, inChannels * channelMultiplier, outChannels]`. This is
+ *     the filter used in the second step.
+ * @param strides The strides of the convolution: `[strideHeight,
+ * strideWidth]`. If strides is a single number, then `strideHeight ==
+ * strideWidth`.
+ * @param pad The type of padding algorithm.
+ *   - `same` and stride 1: output will be of same size as input,
+ *       regardless of filter size.
+ *   - `valid`: output will be smaller than input if filter is larger
+ *       than 1x1.
+ *   - For more info, see this guide:
+ *     [https://www.tensorflow.org/api_docs/python/tf/nn/convolution](
+ *          https://www.tensorflow.org/api_docs/python/tf/nn/convolution)
+ * @param dilations The dilation rates: `[dilationHeight, dilationWidth]`
+ *     in which we sample input values across the height and width dimensions
+ *     in atrous convolution. Defaults to `[1, 1]`. If `rate` is a single
+ *     number, then `dilationHeight == dilationWidth`. If it is greater than
+ *     1, then all values of `strides` must be 1.
+ * @param dataFormat: An optional string from: "NHWC", "NCHW". Defaults to
+ *     "NHWC". Specify the data format of the input and output data. With the
+ *     default format "NHWC", the data is stored in the order of: [batch,
+ *     height, width, channels]. Only "NHWC" is currently supported.
+ *
+ * @doc {heading: 'Operations', subheading: 'Convolution'}
+ */
+declare function separableConv2d_<T extends Tensor3D | Tensor4D>(x: T | TensorLike, depthwiseFilter: Tensor4D | TensorLike, pointwiseFilter: Tensor4D | TensorLike, strides: [number, number] | number, pad: 'valid' | 'same', dilation?: [number, number] | number, dataFormat?: 'NHWC' | 'NCHW'): T;
 
 declare class SeparableConvParams {
     depthwise_filter: tf.Tensor4D;
@@ -1291,6 +2102,22 @@ export declare function shuffleArray(inputArray: any[]): any[];
 
 export declare function sigmoid(x: number): number;
 
+/**
+ * Computes sigmoid element-wise, `1 / (1 + exp(-x))`
+ *
+ * ```js
+ * const x = tf.tensor1d([0, -1, 2, -3]);
+ *
+ * x.sigmoid().print();  // or tf.sigmoid(x)
+ * ```
+ * @param x The input tensor.
+ *
+ * @doc {heading: 'Operations', subheading: 'Basic math'}
+ */
+declare function sigmoid_<T extends Tensor>(x: T | TensorLike): T;
+
+declare const sigmoid_2: typeof sigmoid_;
+
 declare interface SingleValueMap {
     bool: boolean;
     int32: number;
@@ -1298,6 +2125,77 @@ declare interface SingleValueMap {
     complex64: number;
     string: string;
 }
+
+declare const slice: typeof slice_;
+
+declare const slice3d: typeof slice3d_;
+
+/**
+ * Extracts a 3D slice from a 3D array starting at coordinates `begin` and
+ * is of size `size`. See `slice` for details.
+ */
+declare function slice3d_(x: Tensor3D | TensorLike, begin: [number, number, number], size: [number, number, number]): Tensor3D;
+
+/**
+ * Extracts a slice from a `tf.Tensor` starting at coordinates `begin`
+ * and is of size `size`.
+ *
+ * Also available are stricter rank-specific methods with the same signature
+ * as this method that assert that `x` is of the given rank:
+ *   - `tf.slice1d`
+ *   - `tf.slice2d`
+ *   - `tf.slice3d`
+ *   - `tf.slice4d`
+ *
+ * ```js
+ * const x = tf.tensor1d([1, 2, 3, 4]);
+ *
+ * x.slice([1], [2]).print();
+ * ```
+ *
+ * ```js
+ * const x = tf.tensor2d([1, 2, 3, 4], [2, 2]);
+ *
+ * x.slice([1, 0], [1, 2]).print();
+ * ```
+ * @param x The input `tf.Tensor` to slice from.
+ * @param begin The coordinates to start the slice from. The length can be
+ *     less than the rank of x - the rest of the axes will have implicit 0 as
+ *     start. Can also be a single number, in which case it specifies the
+ *     first axis.
+ * @param size The size of the slice. The length can be less than the rank of
+ *     x - the rest of the axes will have implicit -1. A value of -1 requests
+ *     the rest of the dimensions in the axis. Can also be a single number,
+ *     in which case it specifies the size of the first axis.
+ *
+ * @doc {heading: 'Tensors', subheading: 'Slicing and Joining'}
+ */
+declare function slice_<R extends Rank, T extends Tensor<R>>(x: T | TensorLike, begin: number | number[], size?: number | number[]): T;
+
+declare const softmax: typeof softmax_;
+
+/**
+ * Computes the softmax normalized vector given the logits.
+ *
+ * ```js
+ * const a = tf.tensor1d([1, 2, 3]);
+ *
+ * a.softmax().print();  // or tf.softmax(a)
+ * ```
+ *
+ * ```js
+ * const a = tf.tensor2d([2, 4, 6, 1, 2, 3], [2, 3]);
+ *
+ * a.softmax().print();  // or tf.softmax(a)
+ * ```
+ *
+ * @param logits The logits array.
+ * @param dim The dimension softmax would be performed on. Defaults to `-1`
+ *     which indicates the last dimension.
+ *
+ * @doc {heading: 'Operations', subheading: 'Normalization'}
+ */
+declare function softmax_<T extends Tensor>(logits: T | TensorLike, dim?: number): T;
 
 export declare class SsdMobilenetv1 extends NeuralNetwork<NetParams_4> {
     constructor();
@@ -1332,6 +2230,52 @@ export declare class SsdMobilenetv1Options {
     get minConfidence(): number;
     get maxResults(): number;
 }
+
+declare const stack: typeof stack_;
+
+/**
+ * Stacks a list of rank-`R` `tf.Tensor`s into one rank-`(R+1)` `tf.Tensor`.
+ *
+ * ```js
+ * const a = tf.tensor1d([1, 2]);
+ * const b = tf.tensor1d([3, 4]);
+ * const c = tf.tensor1d([5, 6]);
+ * tf.stack([a, b, c]).print();
+ * ```
+ *
+ * @param tensors A list of tensor objects with the same shape and dtype.
+ * @param axis The axis to stack along. Defaults to 0 (the first dim).
+ *
+ * @doc {heading: 'Tensors', subheading: 'Slicing and Joining'}
+ */
+declare function stack_<T extends Tensor>(tensors: Array<T | TensorLike>, axis?: number): Tensor;
+
+declare const sub: typeof sub_;
+
+/**
+ * Subtracts two `tf.Tensor`s element-wise, A - B. Supports broadcasting.
+ *
+ * ```js
+ * const a = tf.tensor1d([10, 20, 30, 40]);
+ * const b = tf.tensor1d([1, 2, 3, 4]);
+ *
+ * a.sub(b).print();  // or tf.sub(a, b)
+ * ```
+ *
+ * ```js
+ * // Broadcast subtract a with b.
+ * const a = tf.tensor1d([10, 20, 30, 40]);
+ * const b = tf.scalar(5);
+ *
+ * a.sub(b).print();  // or tf.sub(a, b)
+ * ```
+ * @param a The first `tf.Tensor` to subtract from.
+ * @param b The second `tf.Tensor` to be subtracted. Must have the same dtype as
+ * `a`.
+ *
+ * @doc {heading: 'Operations', subheading: 'Arithmetic'}
+ */
+declare function sub_<T extends Tensor>(a: Tensor | TensorLike, b: Tensor | TensorLike): T;
 
 declare type TDrawDetectionsInput = IRect | IBoundingBox | FaceDetection | WithFaceDetection<{}>;
 
@@ -1452,17 +2396,140 @@ declare class Tensor<R extends Rank = Rank> {
     variable(trainable?: boolean, name?: string, dtype?: DataType): Variable<R>;
 }
 
+/**
+ * Creates a `tf.Tensor` with the provided values, shape and dtype.
+ *
+ * ```js
+ * // Pass an array of values to create a vector.
+ * tf.tensor([1, 2, 3, 4]).print();
+ * ```
+ *
+ * ```js
+ * // Pass a nested array of values to make a matrix or a higher
+ * // dimensional tensor.
+ * tf.tensor([[1, 2], [3, 4]]).print();
+ * ```
+ *
+ * ```js
+ * // Pass a flat array and specify a shape yourself.
+ * tf.tensor([1, 2, 3, 4], [2, 2]).print();
+ * ```
+ *
+ * @param values The values of the tensor. Can be nested array of numbers,
+ *     or a flat array, or a `TypedArray`. If the values are strings,
+ *     they will be encoded as utf-8 and kept as `Uint8Array[]`.
+ * @param shape The shape of the tensor. Optional. If not provided,
+ *   it is inferred from `values`.
+ * @param dtype The data type.
+ *
+ * @doc {heading: 'Tensors', subheading: 'Creation'}
+ */
+declare function tensor<R extends Rank>(values: TensorLike, shape?: ShapeMap[R], dtype?: DataType): Tensor<R>;
+
 /** @doclink Tensor */
 declare type Tensor1D = Tensor<Rank.R1>;
+
+/**
+ * Creates rank-1 `tf.Tensor` with the provided values, shape and dtype.
+ *
+ * The same functionality can be achieved with `tf.tensor`, but in general
+ * we recommend using `tf.tensor1d` as it makes the code more readable.
+ *
+ * ```js
+ * tf.tensor1d([1, 2, 3]).print();
+ * ```
+ *
+ * @param values The values of the tensor. Can be array of numbers,
+ *     or a `TypedArray`.
+ * @param dtype The data type.
+ *
+ * @doc {heading: 'Tensors', subheading: 'Creation'}
+ */
+declare function tensor1d(values: TensorLike1D, dtype?: DataType): Tensor1D;
 
 /** @doclink Tensor */
 declare type Tensor2D = Tensor<Rank.R2>;
 
+/**
+ * Creates rank-2 `tf.Tensor` with the provided values, shape and dtype.
+ *
+ * The same functionality can be achieved with `tf.tensor`, but in general
+ * we recommend using `tf.tensor2d` as it makes the code more readable.
+ *
+ *  ```js
+ * // Pass a nested array.
+ * tf.tensor2d([[1, 2], [3, 4]]).print();
+ * ```
+ * ```js
+ * // Pass a flat array and specify a shape.
+ * tf.tensor2d([1, 2, 3, 4], [2, 2]).print();
+ * ```
+ *
+ * @param values The values of the tensor. Can be nested array of numbers,
+ *     or a flat array, or a `TypedArray`.
+ * @param shape The shape of the tensor. If not provided, it is inferred from
+ *     `values`.
+ * @param dtype The data type.
+ *
+ * @doc {heading: 'Tensors', subheading: 'Creation'}
+ */
+declare function tensor2d(values: TensorLike2D, shape?: [number, number], dtype?: DataType): Tensor2D;
+
 /** @doclink Tensor */
 declare type Tensor3D = Tensor<Rank.R3>;
 
+/**
+ * Creates rank-3 `tf.Tensor` with the provided values, shape and dtype.
+ *
+ * The same functionality can be achieved with `tf.tensor`, but in general
+ * we recommend using `tf.tensor3d` as it makes the code more readable.
+ *
+ *  ```js
+ * // Pass a nested array.
+ * tf.tensor3d([[[1], [2]], [[3], [4]]]).print();
+ * ```
+ * ```js
+ * // Pass a flat array and specify a shape.
+ * tf.tensor3d([1, 2, 3, 4], [2, 2, 1]).print();
+ * ```
+ *
+ * @param values The values of the tensor. Can be nested array of numbers,
+ *     or a flat array, or a `TypedArray`.
+ * @param shape The shape of the tensor. If not provided,  it is inferred from
+ *     `values`.
+ * @param dtype The data type.
+ *
+ * @doc {heading: 'Tensors', subheading: 'Creation'}
+ */
+declare function tensor3d(values: TensorLike3D, shape?: [number, number, number], dtype?: DataType): Tensor3D;
+
 /** @doclink Tensor */
 declare type Tensor4D = Tensor<Rank.R4>;
+
+/**
+ * Creates rank-4 `tf.Tensor` with the provided values, shape and dtype.
+ *
+ * The same functionality can be achieved with `tf.tensor`, but in general
+ * we recommend using `tf.tensor4d` as it makes the code more readable.
+ *
+ *  ```js
+ * // Pass a nested array.
+ * tf.tensor4d([[[[1], [2]], [[3], [4]]]]).print();
+ * ```
+ * ```js
+ * // Pass a flat array and specify a shape.
+ * tf.tensor4d([1, 2, 3, 4], [1, 2, 2, 1]).print();
+ * ```
+ *
+ * @param values The values of the tensor. Can be nested array of numbers,
+ *     or a flat array, or a `TypedArray`.
+ * @param shape The shape of the tensor. Optional. If not provided,
+ *   it is inferred from `values`.
+ * @param dtype The data type.
+ *
+ * @doc {heading: 'Tensors', subheading: 'Creation'}
+ */
+declare function tensor4d(values: TensorLike4D, shape?: [number, number, number, number], dtype?: DataType): Tensor4D;
 
 /** @doclink Tensor */
 declare type Tensor5D = Tensor<Rank.R5>;
@@ -1510,12 +2577,75 @@ declare class TensorBuffer<R extends Rank, D extends DataType = 'float32'> {
     toTensor(): Tensor<R>;
 }
 
+/**
+ * @docalias void|number|string|TypedArray|Tensor|Tensor[]|{[key:
+ * string]:Tensor|number|string}
+ */
+declare type TensorContainer = void | Tensor | string | number | boolean | TensorContainerObject | TensorContainerArray | Float32Array | Int32Array | Uint8Array;
+
+declare interface TensorContainerArray extends Array<TensorContainer> {
+}
+
+declare interface TensorContainerObject {
+    [x: string]: TensorContainer;
+}
+
 /** @docalias TypedArray|Array */
 declare type TensorLike = TypedArray | number | boolean | string | RecursiveArray<number | number[] | TypedArray> | RecursiveArray<boolean> | RecursiveArray<string> | Uint8Array[];
+
+/** @docalias TypedArray|Array */
+declare type TensorLike1D = TypedArray | number[] | boolean[] | string[] | Uint8Array[];
+
+/** @docalias TypedArray|Array */
+declare type TensorLike2D = TypedArray | number[] | number[][] | boolean[] | boolean[][] | string[] | string[][] | Uint8Array[] | Uint8Array[][];
+
+/** @docalias TypedArray|Array */
+declare type TensorLike3D = TypedArray | number[] | number[][][] | boolean[] | boolean[][][] | string[] | string[][][] | Uint8Array[] | Uint8Array[][][];
+
+/** @docalias TypedArray|Array */
+declare type TensorLike4D = TypedArray | number[] | number[][][][] | boolean[] | boolean[][][][] | string[] | string[][][][] | Uint8Array[] | Uint8Array[][][][];
 
 declare namespace tf {
     export {
         version_2 as version,
+        tensor,
+        tidy,
+        softmax,
+        unstack,
+        relu,
+        add,
+        conv2d,
+        cast,
+        zeros,
+        concat,
+        avgPool,
+        stack,
+        fill,
+        transpose,
+        tensor1d,
+        tensor2d,
+        tensor3d,
+        tensor4d,
+        maxPool,
+        matMul,
+        mul,
+        sub,
+        scalar,
+        div,
+        pad,
+        slice,
+        reshape,
+        slice3d,
+        expandDims,
+        depthwiseConv2d,
+        separableConv2d,
+        sigmoid_2 as sigmoid,
+        exp,
+        tile,
+        batchNorm,
+        clipByValue,
+        ENV,
+        Variable,
         Tensor,
         TensorLike,
         Rank,
@@ -1528,6 +2658,77 @@ declare namespace tf {
     }
 }
 export { tf }
+
+/**
+ * Executes the provided function `fn` and after it is executed, cleans up all
+ * intermediate tensors allocated by `fn` except those returned by `fn`.
+ * `fn` must not return a Promise (async functions not allowed). The returned
+ * result can be a complex object.
+ *
+ * Using this method helps avoid memory leaks. In general, wrap calls to
+ * operations in `tf.tidy` for automatic memory cleanup.
+ *
+ * NOTE: Variables do *not* get cleaned up when inside a tidy(). If you want to
+ * dispose variables, please use `tf.disposeVariables` or call dispose()
+ * directly on variables.
+ *
+ * ```js
+ * // y = 2 ^ 2 + 1
+ * const y = tf.tidy(() => {
+ *   // a, b, and one will be cleaned up when the tidy ends.
+ *   const one = tf.scalar(1);
+ *   const a = tf.scalar(2);
+ *   const b = a.square();
+ *
+ *   console.log('numTensors (in tidy): ' + tf.memory().numTensors);
+ *
+ *   // The value returned inside the tidy function will return
+ *   // through the tidy, in this case to the variable y.
+ *   return b.add(one);
+ * });
+ *
+ * console.log('numTensors (outside tidy): ' + tf.memory().numTensors);
+ * y.print();
+ * ```
+ *
+ * @param nameOrFn The name of the closure, or the function to execute.
+ *     If a name is provided, the 2nd argument should be the function.
+ *     If debug mode is on, the timing and the memory usage of the function
+ *     will be tracked and displayed on the console using the provided name.
+ * @param fn The function to execute.
+ *
+ * @doc {heading: 'Performance', subheading: 'Memory'}
+ */
+declare function tidy<T extends TensorContainer>(nameOrFn: string | ScopeFn<T>, fn?: ScopeFn<T>): T;
+
+declare const tile: typeof tile_;
+
+/**
+ * Construct a tensor by repeating it the number of times given by reps.
+ *
+ * This operation creates a new tensor by replicating `input` `reps`
+ * times. The output tensor's i'th dimension has `input.shape[i] *
+ * reps[i]` elements, and the values of `input` are replicated
+ * `reps[i]` times along the i'th dimension. For example, tiling
+ * `[a, b, c, d]` by `[2]` produces `[a, b, c, d, a, b, c, d]`.
+ *
+ * ```js
+ * const a = tf.tensor1d([1, 2]);
+ *
+ * a.tile([2]).print();    // or a.tile([2])
+ * ```
+ *
+ * ```js
+ * const a = tf.tensor2d([1, 2, 3, 4], [2, 2]);
+ *
+ * a.tile([1, 2]).print();  // or a.tile([1, 2])
+ * ```
+ * @param x The tensor to tile.
+ * @param reps Determines the number of replications per dimension.
+ *
+ * @doc {heading: 'Tensors', subheading: 'Slicing and Joining'}
+ */
+declare function tile_<T extends Tensor>(x: T | TensorLike, reps: number[]): T;
 
 export declare class TinyFaceDetector extends TinyYolov2Base {
     constructor();
@@ -1686,9 +2887,52 @@ export declare type TNetInputArg = string | TResolvedNetInput;
  */
 export declare function toNetInput(inputs: TNetInput): Promise<NetInput>;
 
+declare const transpose: typeof transpose_;
+
+/**
+ * Transposes the `tf.Tensor`. Permutes the dimensions according to `perm`.
+ *
+ * The returned `tf.Tensor`'s dimension `i` will correspond to the input
+ * dimension `perm[i]`. If `perm` is not given, it is set to `[n-1...0]`,
+ * where `n` is the rank of the input `tf.Tensor`. Hence by default, this
+ * operation performs a regular matrix transpose on 2-D input `tf.Tensor`s.
+ *
+ * ```js
+ * const a = tf.tensor2d([1, 2, 3, 4, 5, 6], [2, 3]);
+ *
+ * a.transpose().print();  // or tf.transpose(a)
+ * ```
+ *
+ * @param x The tensor to transpose.
+ * @param perm The permutation of the dimensions of a.
+ *
+ * @doc {heading: 'Operations', subheading: 'Matrices'}
+ */
+declare function transpose_<T extends Tensor>(x: T | TensorLike, perm?: number[]): T;
+
 export declare type TResolvedNetInput = TMediaElement | tf.Tensor3D | tf.Tensor4D;
 
+declare function tupleValuesAreOne(param: number | number[]): boolean;
+
 declare type TypedArray = Float32Array | Int32Array | Uint8Array;
+
+declare const unstack: typeof unstack_;
+
+/**
+ * Unstacks a `tf.Tensor` of rank-`R` into a list of rank-`(R-1)` `tf.Tensor`s.
+ *
+ * ```js
+ * const a = tf.tensor2d([1, 2, 3, 4], [2, 2]);
+ *
+ * tf.unstack(a).forEach(tensor => tensor.print());
+ * ```
+ *
+ * @param x A tensor object.
+ * @param axis The axis to unstack along. Defaults to 0 (the first dim).
+ *
+ * @doc {heading: 'Tensors', subheading: 'Slicing and Joining'}
+ */
+declare function unstack_(x: Tensor | TensorLike, axis?: number): Tensor[];
 
 declare namespace utils {
     export {
@@ -1780,5 +3024,20 @@ export declare type WithGender<TSource> = TSource & {
     gender: Gender;
     genderProbability: number;
 };
+
+/**
+ * Creates a `tf.Tensor` with all elements set to 0.
+ *
+ * ```js
+ * tf.zeros([2, 2]).print();
+ * ```
+ *
+ * @param shape An array of integers defining the output tensor shape.
+ * @param dtype The type of an element in the resulting tensor. Can
+ *     be 'float32', 'int32' or 'bool'. Defaults to 'float'.
+ *
+ * @doc {heading: 'Tensors', subheading: 'Creation'}
+ */
+declare function zeros<R extends Rank>(shape: ShapeMap[R], dtype?: DataType): Tensor<R>;
 
 export { }

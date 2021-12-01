@@ -13,7 +13,7 @@
     "locations": ["dist/*", "typedoc/*", "types/lib/src"]
   },
   "lint": {
-    "locations": [ "src/**" ],
+    "locations": [ "src/" ],
     "rules": { }
   },
   "changelog": {

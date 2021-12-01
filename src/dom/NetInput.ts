@@ -47,8 +47,9 @@ export class NetInput {
         return;
       }
 
+      // @ts-ignore
       const canvas = (input as any) instanceof env.getEnv().Canvas ? input : createCanvasFromMedia(input);
-      this._canvases[idx] = canvas;
+      this._canvases[idx] = canvas as HTMLCanvasElement;
       this._inputDimensions[idx] = [canvas.height, canvas.width, 3];
     });
   }
@@ -127,10 +128,10 @@ export class NetInput {
 
         if (input instanceof tf.Tensor) {
           let imgTensor = isTensor4D(input) ? input : tf.expandDims(input);
-          imgTensor = padToSquare(imgTensor, isCenterInputs);
+          imgTensor = padToSquare(imgTensor as tf.Tensor4D, isCenterInputs);
 
           if (imgTensor.shape[1] !== inputSize || imgTensor.shape[2] !== inputSize) {
-            imgTensor = tf.image.resizeBilinear(imgTensor, [inputSize, inputSize], false, false);
+            imgTensor = tf.image.resizeBilinear(imgTensor as tf.Tensor4D, [inputSize, inputSize], false, false);
           }
 
           return imgTensor.as3D(inputSize, inputSize, 3);

@@ -25,7 +25,7 @@ export function padToSquare(imgTensor: tf.Tensor4D, isCenterImage = false): tf.T
     const paddingTensorPrepend = isCenterImage && remainingPaddingAmount ? createPaddingTensor(remainingPaddingAmount) : null;
     const tensorsToStack = [paddingTensorPrepend, imgTensor, paddingTensorAppend]
       .filter((t) => !!t)
-      .map((t: tf.Tensor) => tf.cast(t, 'float32')) as tf.Tensor4D[];
+      .map((t) => tf.cast(t as tf.Tensor4D, 'float32')) as tf.Tensor4D[];
     return tf.concat(tensorsToStack, paddingAxis);
   });
 }

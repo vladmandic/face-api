@@ -11,6 +11,7 @@
   
 ### **HEAD -> master** 2021/12/01 mandic00@live.com
 
+- switch to custom tfjs and new typedefs
 - rebuild
 
 ### **1.5.8** 2021/11/30 mandic00@live.com

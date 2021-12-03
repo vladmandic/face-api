@@ -1,6 +1,6 @@
 export type FileSystem = {
   // eslint-disable-next-line no-unused-vars
-  readFile: (filePath: string) => Promise<Buffer>
+  readFile: (filePath: string) => Promise<any>
 }
 
 export type Environment = FileSystem & {

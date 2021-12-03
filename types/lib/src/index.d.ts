@@ -18,8 +18,4 @@ export * from './tinyYolov2/index';
 export * from './euclideanDistance';
 export * from './NeuralNetwork';
 export * from './resizeResults';
-export declare const version: {
-    faceapi: string;
-    node: boolean;
-    browser: boolean;
-};
+export declare const version: string;

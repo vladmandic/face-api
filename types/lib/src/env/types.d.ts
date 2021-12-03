@@ -1,6 +1,5 @@
-/// <reference types="node" />
 export declare type FileSystem = {
-    readFile: (filePath: string) => Promise<Buffer>;
+    readFile: (filePath: string) => Promise<any>;
 };
 export declare type Environment = FileSystem & {
     Canvas: typeof HTMLCanvasElement;

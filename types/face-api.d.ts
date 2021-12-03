@@ -1,5 +1,3 @@
-/// <reference types="node" />
-
 declare const add: typeof add_;
 
 /**
@@ -1161,7 +1159,7 @@ export declare function fetchOrThrow(url: string, init?: RequestInit): Promise<R
 export declare function fetchVideo(uri: string): Promise<HTMLVideoElement>;
 
 declare type FileSystem_2 = {
-    readFile: (filePath: string) => Promise<Buffer>;
+    readFile: (filePath: string) => Promise<any>;
 };
 export { FileSystem_2 as FileSystem }
 
@@ -2977,11 +2975,7 @@ declare class Variable<R extends Rank = Rank> extends Tensor<R> {
     dispose(): void;
 }
 
-export declare const version: {
-    faceapi: string;
-    node: boolean;
-    browser: boolean;
-};
+export declare const version: string;
 
 declare const version_2: {
     'tfjs-core': string;

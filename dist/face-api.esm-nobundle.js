@@ -21,11 +21,11 @@ var __export = (target, all) => {
   for (var name in all)
     __defProp(target, name, { get: all[name], enumerable: true });
 };
-var __reExport = (target, module2, desc) => {
-  if (module2 && typeof module2 === "object" || typeof module2 === "function") {
-    for (let key of __getOwnPropNames(module2))
+var __reExport = (target, module, desc) => {
+  if (module && typeof module === "object" || typeof module === "function") {
+    for (let key of __getOwnPropNames(module))
       if (!__hasOwnProp.call(target, key) && key !== "default")
-        __defProp(target, key, { get: () => module2[key], enumerable: !(desc = __getOwnPropDesc(module2, key)) || desc.enumerable });
+        __defProp(target, key, { get: () => module[key], enumerable: !(desc = __getOwnPropDesc(module, key)) || desc.enumerable });
   }
   return target;
 };
@@ -805,10 +805,15 @@ function createBrowserEnv() {
   };
 }
 
+// src/env/isNodejs.ts
+function isNodejs() {
+  return typeof global === "object" && typeof process !== "undefined" && process.versions != null && process.versions.node != null;
+}
+
 // src/env/createFileSystem.ts
 function createFileSystem(fs) {
   let requireFsError = "";
-  if (!fs) {
+  if (!fs && isNodejs()) {
     try {
       fs = __require("fs");
     } catch (err) {
@@ -820,9 +825,7 @@ function createFileSystem(fs) {
   }) : () => {
     throw new Error(`readFile - failed to require fs in nodejs environment with error: ${requireFsError}`);
   };
-  return {
-    readFile
-  };
+  return { readFile };
 }
 
 // src/env/createNodejsEnv.ts
@@ -869,11 +872,6 @@ function createNodejsEnv() {
 // src/env/isBrowser.ts
 function isBrowser() {
   return typeof window === "object" && typeof document !== "undefined" && typeof HTMLImageElement !== "undefined" && typeof HTMLCanvasElement !== "undefined" && typeof HTMLVideoElement !== "undefined" && typeof ImageData !== "undefined" && typeof CanvasRenderingContext2D !== "undefined";
-}
-
-// src/env/isNodejs.ts
-function isNodejs() {
-  return typeof global === "object" && typeof __require === "function" && typeof module !== "undefined" && typeof process !== "undefined" && !!process.version;
 }
 
 // src/env/index.ts
@@ -4365,14 +4363,7 @@ function resizeResults(results, dimensions) {
 }
 
 // src/index.ts
-var node = typeof process !== "undefined";
-var browser3 = typeof navigator !== "undefined" && typeof navigator.userAgent !== "undefined";
-var version11 = { faceapi: version10, node, browser: browser3 };
-if (browser3) {
-  tfjs_esm_exports.ENV.set("CHECK_COMPUTATION_FOR_ERRORS", false);
-  tfjs_esm_exports.ENV.set("WEBGL_CPU_FORWARD", true);
-  tfjs_esm_exports.ENV.set("WEBGL_USE_SHAPES_UNIFORMS", true);
-}
+var version11 = version10;
 export {
   AgeGenderNet,
   BoundingBox,

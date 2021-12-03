@@ -931,10 +931,15 @@ function createBrowserEnv() {
   };
 }
 
+// src/env/isNodejs.ts
+function isNodejs() {
+  return typeof global === "object" && typeof process !== "undefined" && process.versions != null && process.versions.node != null;
+}
+
 // src/env/createFileSystem.ts
 function createFileSystem(fs) {
   let requireFsError = "";
-  if (!fs) {
+  if (!fs && isNodejs()) {
     try {
       fs = require("fs");
     } catch (err) {
@@ -946,9 +951,7 @@ function createFileSystem(fs) {
   }) : () => {
     throw new Error(`readFile - failed to require fs in nodejs environment with error: ${requireFsError}`);
   };
-  return {
-    readFile
-  };
+  return { readFile };
 }
 
 // src/env/createNodejsEnv.ts
@@ -995,11 +998,6 @@ function createNodejsEnv() {
 // src/env/isBrowser.ts
 function isBrowser() {
   return typeof window === "object" && typeof document !== "undefined" && typeof HTMLImageElement !== "undefined" && typeof HTMLCanvasElement !== "undefined" && typeof HTMLVideoElement !== "undefined" && typeof ImageData !== "undefined" && typeof CanvasRenderingContext2D !== "undefined";
-}
-
-// src/env/isNodejs.ts
-function isNodejs() {
-  return typeof global === "object" && typeof require === "function" && typeof module !== "undefined" && typeof process !== "undefined" && !!process.version;
 }
 
 // src/env/index.ts
@@ -4565,14 +4563,7 @@ function resizeResults(results, dimensions) {
 }
 
 // src/index.ts
-var node = typeof process !== "undefined";
-var browser3 = typeof navigator !== "undefined" && typeof navigator.userAgent !== "undefined";
-var version2 = { faceapi: version, node, browser: browser3 };
-if (browser3) {
-  tf42.ENV.set("CHECK_COMPUTATION_FOR_ERRORS", false);
-  tf42.ENV.set("WEBGL_CPU_FORWARD", true);
-  tf42.ENV.set("WEBGL_USE_SHAPES_UNIFORMS", true);
-}
+var version2 = version;
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   AgeGenderNet,

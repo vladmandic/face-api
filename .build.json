@@ -89,8 +89,8 @@
         "platform": "browser",
         "format": "esm",
         "input": "src/index.ts",
-        "external": ["@tensorflow"],
-        "output": "dist/face-api.esm-nobundle.js"
+        "output": "dist/face-api.esm-nobundle.js",
+        "external": ["@tensorflow"]
       },
       {
         "name": "tfjs/browser/esm/bundle",

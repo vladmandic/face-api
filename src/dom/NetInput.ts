@@ -145,6 +145,7 @@ export class NetInput {
       });
 
       const batchTensor = tf.stack(inputTensors.map((t) => tf.cast(t, 'float32'))).as4D(this.batchSize, inputSize, inputSize, 3);
+      // const batchTensor = tf.stack(inputTensors.map((t) => tf.cast(t, 'float32'))) as tf.Tensor4D;
 
       return batchTensor;
     });

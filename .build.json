@@ -96,7 +96,7 @@
         "name": "tfjs/browser/esm/bundle",
         "platform": "browser",
         "format": "esm",
-        "input": "src/tfjs/tf-custom.ts",
+        "input": "src/tfjs/tf-browser.ts",
         "output": "dist/tfjs.esm.js"
       },
       {

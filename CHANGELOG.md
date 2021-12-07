@@ -9,7 +9,7 @@
   
 ## Changelog
   
-### **HEAD -> master** 2021/12/03 mandic00@live.com
+### **HEAD -> master** 2021/12/06 mandic00@live.com
 
 - release preview
 - switch to custom tfjs and new typedefs

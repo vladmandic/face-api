@@ -56,7 +56,7 @@ async function main() {
   await faceapi.tf.ENV.set('DEBUG', false);
   await faceapi.tf.ready();
 
-  log.state(`Version: TensorFlow/JS ${faceapi.tf?.version_core} FaceAPI ${faceapi.version.faceapi} Backend: ${faceapi.tf?.getBackend()}`);
+  log.state(`Version: TensorFlow/JS ${faceapi.tf?.version_core} FaceAPI ${faceapi.version} Backend: ${faceapi.tf?.getBackend()}`);
 
   log.info('Loading FaceAPI models');
   const modelPath = path.join(__dirname, modelPathRoot);

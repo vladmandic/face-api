@@ -57,6 +57,7 @@
     "no-restricted-syntax": "off",
     "no-return-assign": "off",
     "no-underscore-dangle": "off",
+    "no-promise-executor-return": "off",
     "node/no-missing-import": ["error", { "tryExtensions": [".js", ".json", ".ts"] }],
     "node/no-unpublished-import": "off",
     "node/no-unpublished-require": "off",

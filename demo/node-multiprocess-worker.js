@@ -53,7 +53,7 @@ async function main() {
   await faceapi.tf.enableProdMode();
   await faceapi.tf.ENV.set('DEBUG', false);
   await faceapi.tf.ready();
-  log.state('Worker: PID:', process.pid, `TensorFlow/JS ${faceapi.tf.version_core} FaceAPI ${faceapi.version.faceapi} Backend: ${faceapi.tf.getBackend()}`);
+  log.state('Worker: PID:', process.pid, `TensorFlow/JS ${faceapi.tf.version_core} FaceAPI ${faceapi.version} Backend: ${faceapi.tf.getBackend()}`);
 
   // and load and initialize facepi models
   const modelPath = path.join(__dirname, modelPathRoot);

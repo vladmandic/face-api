@@ -211,6 +211,23 @@ declare const cast: typeof cast_;
  */
 declare function cast_<T extends Tensor>(x: T | TensorLike, dtype: DataType): T;
 
+/**
+ * Check validity of pad when using dimRoundingMode.
+ * @param opDesc A string of op description
+ * @param pad The type of padding algorithm.
+ *   - `same` and stride 1: output will be of same size as input,
+ *       regardless of filter size.
+ *   - `valid` output will be smaller than input if filter is larger
+ *       than 1x1.
+ *   - For more info, see this guide:
+ *     [https://www.tensorflow.org/api_docs/python/tf/nn/convolution](
+ *          https://www.tensorflow.org/api_docs/python/tf/nn/convolution)
+ * @param dimRoundingMode A string from: 'ceil', 'round', 'floor'. If none is
+ *     provided, it will default to truncate.
+ * @throws unknown padding parameter
+ */
+declare function checkPadOnDimRoundingMode(opDesc: string, pad: 'valid' | 'same' | number | ExplicitPadding, dimRoundingMode?: 'floor' | 'round' | 'ceil'): void;
+
 declare const clipByValue: typeof clipByValue_;
 
 /**
@@ -466,6 +483,7 @@ declare namespace conv_util {
         tupleValuesAreOne,
         eitherStridesOrDilationsAreOne,
         convertConv2DDataFormat,
+        checkPadOnDimRoundingMode,
         ExplicitPadding,
         PadInfo,
         PadInfo3D,
@@ -608,7 +626,7 @@ declare const depthwiseConv2d: typeof depthwiseConv2d_;
  *
  * @doc {heading: 'Operations', subheading: 'Convolution'}
  */
-declare function depthwiseConv2d_<T extends Tensor3D | Tensor4D>(x: T | TensorLike, filter: Tensor4D | TensorLike, strides: [number, number] | number, pad: 'valid' | 'same' | number | ExplicitPadding, dataFormat?: 'NHWC' | 'NCHW', dilations?: [number, number] | number, dimRoundingMode?: 'floor' | 'round' | 'ceil'): T;
+declare function depthwiseConv2d_<T extends Tensor3D | Tensor4D>(x: T | TensorLike, filter: Tensor4D | TensorLike, strides: [number, number] | number, pad: 'valid' | 'same' | number | conv_util.ExplicitPadding, dataFormat?: 'NHWC' | 'NCHW', dilations?: [number, number] | number, dimRoundingMode?: 'floor' | 'round' | 'ceil'): T;
 
 export declare class DetectAllFaceLandmarksTask<TSource extends WithFaceDetection<{}>> extends DetectFaceLandmarksTaskBase<WithFaceLandmarks<TSource>[], TSource[]> {
     run(): Promise<WithFaceLandmarks<TSource>[]>;

@@ -41,14 +41,14 @@ __reExport(tfjs_esm_exports, dist_star3);
 import * as dist_star from "@tensorflow/tfjs/dist/index.js";
 import * as dist_star2 from "@tensorflow/tfjs-backend-webgl/dist/index.js";
 import * as dist_star3 from "@tensorflow/tfjs-backend-wasm/dist/index.js";
-var version = "3.11.0";
-var version2 = "3.11.0";
-var version3 = "3.11.0";
-var version4 = "3.11.0";
-var version5 = "3.11.0";
-var version6 = "3.11.0";
-var version7 = "3.11.0";
-var version8 = "3.11.0";
+var version = "3.12.0";
+var version2 = "3.12.0";
+var version3 = "3.12.0";
+var version4 = "3.12.0";
+var version5 = "3.12.0";
+var version6 = "3.12.0";
+var version7 = "3.12.0";
+var version8 = "3.12.0";
 var version9 = {
   tfjs: version,
   "tfjs-core": version2,
@@ -2135,7 +2135,7 @@ function drawFaceLandmarks(canvasArg, faceLandmarks) {
 }
 
 // package.json
-var version10 = "1.6.0";
+var version10 = "1.6.1";
 
 // src/xception/extractParams.ts
 function extractorsFactory2(extractWeights, paramMappings) {

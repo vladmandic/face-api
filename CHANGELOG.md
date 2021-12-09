@@ -9,8 +9,12 @@
   
 ## Changelog
   
-### **HEAD -> master** 2021/12/06 mandic00@live.com
+### **1.6.1** 2021/12/09 mandic00@live.com
 
+
+### **origin/master** 2021/12/06 mandic00@live.com
+
+- rebuild
 - release preview
 - switch to custom tfjs and new typedefs
 - rebuild

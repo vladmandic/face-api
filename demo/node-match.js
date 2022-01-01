@@ -1,8 +1,11 @@
 const fs = require('fs');
 const path = require('path');
-const tf = require('@tensorflow/tfjs-node');
 const log = require('@vladmandic/pilogger');
-const faceapi = require('../dist/face-api.node.js');
+
+// eslint-disable-next-line import/no-extraneous-dependencies, no-unused-vars, @typescript-eslint/no-unused-vars
+const tf = require('@tensorflow/tfjs-node'); // in nodejs environments tfjs-node is required to be loaded before face-api
+// const faceapi = require('@vladmandic/face-api'); // use this when face-api is installed as module (majority of use cases)
+const faceapi = require('../dist/face-api.node.js'); // use this when using face-api in dev mode
 
 let optionsSSDMobileNet;
 const minConfidence = 0.1;
@@ -13,6 +16,7 @@ const labeledFaceDescriptors = [];
 async function initFaceAPI() {
   await faceapi.nets.ssdMobilenetv1.loadFromDisk(modelPath);
   await faceapi.nets.faceLandmark68Net.loadFromDisk(modelPath);
+  await faceapi.nets.faceExpressionNet.loadFromDisk(modelPath);
   await faceapi.nets.faceRecognitionNet.loadFromDisk(modelPath);
   optionsSSDMobileNet = new faceapi.SsdMobilenetv1Options({ minConfidence, maxResults: 1 });
 }
@@ -22,6 +26,7 @@ async function getDescriptors(imageFile) {
   const tensor = tf.node.decodeImage(buffer, 3);
   const faces = await faceapi.detectAllFaces(tensor, optionsSSDMobileNet)
     .withFaceLandmarks()
+    .withFaceExpressions()
     .withFaceDescriptors();
   tf.dispose(tensor);
   return faces.map((face) => face.descriptor);

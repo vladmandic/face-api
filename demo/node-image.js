@@ -1,11 +1,12 @@
 const fs = require('fs');
 // eslint-disable-next-line import/no-extraneous-dependencies, node/no-unpublished-require
-const tf = require('@tensorflow/tfjs-node');
-// eslint-disable-next-line import/no-extraneous-dependencies, node/no-unpublished-require
 const image = require('@canvas/image'); // @canvas/image can decode jpeg, png, webp
-// eslint-disable-next-line import/no-extraneous-dependencies, node/no-unpublished-require
 const log = require('@vladmandic/pilogger');
-const faceapi = require('../dist/face-api.node.js'); // this is equivalent to '@vladmandic/faceapi'
+
+// eslint-disable-next-line import/no-extraneous-dependencies, no-unused-vars, @typescript-eslint/no-unused-vars
+const tf = require('@tensorflow/tfjs-node'); // in nodejs environments tfjs-node is required to be loaded before face-api
+// const faceapi = require('@vladmandic/face-api'); // use this when face-api is installed as module (majority of use cases)
+const faceapi = require('../dist/face-api.node.js'); // use this when using face-api in dev mode
 
 const modelPath = 'model/';
 const imageFile = 'demo/sample1.jpg';

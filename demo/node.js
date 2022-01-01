@@ -1,13 +1,12 @@
-// @ts-nocheck
-
 const fs = require('fs');
 const process = require('process');
 const path = require('path');
-// eslint-disable-next-line import/no-extraneous-dependencies, node/no-unpublished-require
 const log = require('@vladmandic/pilogger');
-// eslint-disable-next-line import/no-extraneous-dependencies, node/no-unpublished-require
-const tf = require('@tensorflow/tfjs-node');
-const faceapi = require('../dist/face-api.node.js'); // this is equivalent to '@vladmandic/faceapi'
+
+// eslint-disable-next-line import/no-extraneous-dependencies, no-unused-vars, @typescript-eslint/no-unused-vars
+const tf = require('@tensorflow/tfjs-node'); // in nodejs environments tfjs-node is required to be loaded before face-api
+// const faceapi = require('@vladmandic/face-api'); // use this when face-api is installed as module (majority of use cases)
+const faceapi = require('../dist/face-api.node.js'); // use this when using face-api in dev mode
 
 const modelPathRoot = '../model';
 const imgPathRoot = './demo'; // modify to include your sample images
@@ -118,7 +117,7 @@ async function main() {
       tensor.dispose();
     }
     const t1 = process.hrtime.bigint();
-    log.info('Processed', dir.length, 'images in', Math.trunc(parseInt(t1 - t0) / 1000 / 1000), 'ms');
+    log.info('Processed', dir.length, 'images in', Math.trunc(Number((t1 - t0)) / 1000 / 1000), 'ms');
   } else {
     const param = process.argv[2];
     if (fs.existsSync(param) || param.startsWith('http:') || param.startsWith('https:')) {

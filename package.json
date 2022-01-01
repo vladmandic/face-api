@@ -24,6 +24,7 @@
     "start": "node --no-warnings demo/node.js",
     "dev": "build --profile development",
     "build": "node build.js",
+    "lint": "eslint src/ demo/",
     "test": "node --trace-warnings test/test-node.js",
     "scan": "npx auditjs@latest ossi --dev --quiet"
   },

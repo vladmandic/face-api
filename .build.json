@@ -69,6 +69,22 @@
         "output": "dist/face-api.node-gpu.js",
         "external": ["@tensorflow"]
       },
+      {
+        "name": "tfjs/node/wasm",
+        "platform": "node",
+        "format": "cjs",
+        "input": "src/tfjs/tf-node-wasm.ts",
+        "output": "dist/tfjs.esm.js",
+        "external": ["@tensorflow"]
+      },
+      {
+        "name": "faceapi/node/wasm",
+        "platform": "node",
+        "format": "cjs",
+        "input": "src/index.ts",
+        "output": "dist/face-api.node-wasm.js",
+        "external": ["@tensorflow"]
+      },
       { 
         "name": "tfjs/browser/tf-version",
         "platform": "browser",

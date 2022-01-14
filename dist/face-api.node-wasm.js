@@ -12,54 +12,60 @@ var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __markAsModule = (target) => __defProp(target, "__esModule", { value: true });
 var __commonJS = (cb, mod) => function __require() {
-  return mod || (0, cb[Object.keys(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
+  return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
 };
 var __export = (target, all) => {
-  __markAsModule(target);
   for (var name in all)
     __defProp(target, name, { get: all[name], enumerable: true });
 };
-var __reExport = (target, module2, desc) => {
+var __reExport = (target, module2, copyDefault, desc) => {
   if (module2 && typeof module2 === "object" || typeof module2 === "function") {
     for (let key of __getOwnPropNames(module2))
-      if (!__hasOwnProp.call(target, key) && key !== "default")
+      if (!__hasOwnProp.call(target, key) && (copyDefault || key !== "default"))
         __defProp(target, key, { get: () => module2[key], enumerable: !(desc = __getOwnPropDesc(module2, key)) || desc.enumerable });
   }
   return target;
 };
-var __toModule = (module2) => {
-  return __reExport(__markAsModule(__defProp(module2 != null ? __create(__getProtoOf(module2)) : {}, "default", module2 && module2.__esModule && "default" in module2 ? { get: () => module2.default, enumerable: true } : { value: module2, enumerable: true })), module2);
+var __toESM = (module2, isNodeMode) => {
+  return __reExport(__markAsModule(__defProp(module2 != null ? __create(__getProtoOf(module2)) : {}, "default", !isNodeMode && module2 && module2.__esModule ? { get: () => module2.default, enumerable: true } : { value: module2, enumerable: true })), module2);
 };
+var __toCommonJS = /* @__PURE__ */ ((cache) => {
+  return (module2, temp) => {
+    return cache && cache.get(module2) || (temp = __reExport(__markAsModule({}), module2, 1), cache && cache.set(module2, temp), temp);
+  };
+})(typeof WeakMap !== "undefined" ? /* @__PURE__ */ new WeakMap() : 0);
 
 // dist/tfjs.esm.js
 var require_tfjs_esm = __commonJS({
-  "dist/tfjs.esm.js"(exports) {
-    var __create2 = Object.create;
+  "dist/tfjs.esm.js"(exports, module2) {
     var __defProp2 = Object.defineProperty;
     var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
     var __getOwnPropNames2 = Object.getOwnPropertyNames;
-    var __getProtoOf2 = Object.getPrototypeOf;
     var __hasOwnProp2 = Object.prototype.hasOwnProperty;
     var __markAsModule2 = (target) => __defProp2(target, "__esModule", { value: true });
-    var __reExport2 = (target, module22, desc) => {
+    var __reExport2 = (target, module22, copyDefault, desc) => {
       if (module22 && typeof module22 === "object" || typeof module22 === "function") {
         for (let key of __getOwnPropNames2(module22))
-          if (!__hasOwnProp2.call(target, key) && key !== "default")
+          if (!__hasOwnProp2.call(target, key) && (copyDefault || key !== "default"))
             __defProp2(target, key, { get: () => module22[key], enumerable: !(desc = __getOwnPropDesc2(module22, key)) || desc.enumerable });
       }
       return target;
     };
-    var __toModule2 = (module22) => {
-      return __reExport2(__markAsModule2(__defProp2(module22 != null ? __create2(__getProtoOf2(module22)) : {}, "default", module22 && module22.__esModule && "default" in module22 ? { get: () => module22.default, enumerable: true } : { value: module22, enumerable: true })), module22);
-    };
-    __markAsModule2(exports);
-    __reExport2(exports, __toModule2(require("@tensorflow/tfjs")));
-    __reExport2(exports, __toModule2(require("@tensorflow/tfjs-backend-wasm")));
+    var __toCommonJS2 = ((cache) => {
+      return (module22, temp) => {
+        return cache && cache.get(module22) || (temp = __reExport2(__markAsModule2({}), module22, 1), cache && cache.set(module22, temp), temp);
+      };
+    })(typeof WeakMap !== "undefined" ? /* @__PURE__ */ new WeakMap() : 0);
+    var tf_node_wasm_exports = {};
+    __reExport2(tf_node_wasm_exports, require("@tensorflow/tfjs"));
+    __reExport2(tf_node_wasm_exports, require("@tensorflow/tfjs-backend-wasm"));
+    module2.exports = __toCommonJS2(tf_node_wasm_exports);
   }
 });
 
 // src/index.ts
-__export(exports, {
+var src_exports = {};
+__export(src_exports, {
   AgeGenderNet: () => AgeGenderNet,
   BoundingBox: () => BoundingBox,
   Box: () => Box,
@@ -182,7 +188,7 @@ __export(exports, {
   validateConfig: () => validateConfig,
   version: () => version2
 });
-var tf42 = __toModule(require_tfjs_esm());
+var tf42 = __toESM(require_tfjs_esm());
 
 // src/draw/index.ts
 var draw_exports = {};
@@ -238,7 +244,7 @@ __export(utils_exports, {
   range: () => range,
   round: () => round
 });
-var tf = __toModule(require_tfjs_esm());
+var tf = __toESM(require_tfjs_esm());
 
 // src/classes/Dimensions.ts
 var Dimensions = class {
@@ -644,7 +650,7 @@ function nonMaxSuppression(boxes, scores, iouThreshold, isIOU = true) {
 }
 
 // src/ops/normalize.ts
-var tf2 = __toModule(require_tfjs_esm());
+var tf2 = __toESM(require_tfjs_esm());
 function normalize(x, meanRgb) {
   return tf2.tidy(() => {
     const [r, g, b] = meanRgb;
@@ -657,7 +663,7 @@ function normalize(x, meanRgb) {
 }
 
 // src/ops/padToSquare.ts
-var tf3 = __toModule(require_tfjs_esm());
+var tf3 = __toESM(require_tfjs_esm());
 function padToSquare(imgTensor, isCenterImage = false) {
   return tf3.tidy(() => {
     const [height, width] = imgTensor.shape.slice(1);
@@ -1075,13 +1081,13 @@ function getContext2dOrThrow(canvasArg) {
 }
 
 // src/draw/DrawTextField.ts
-var AnchorPosition;
-(function(AnchorPosition2) {
+var AnchorPosition = /* @__PURE__ */ ((AnchorPosition2) => {
   AnchorPosition2["TOP_LEFT"] = "TOP_LEFT";
   AnchorPosition2["TOP_RIGHT"] = "TOP_RIGHT";
   AnchorPosition2["BOTTOM_LEFT"] = "BOTTOM_LEFT";
   AnchorPosition2["BOTTOM_RIGHT"] = "BOTTOM_RIGHT";
-})(AnchorPosition || (AnchorPosition = {}));
+  return AnchorPosition2;
+})(AnchorPosition || {});
 var DrawTextFieldOptions = class {
   constructor(options = {}) {
     const {
@@ -1092,7 +1098,7 @@ var DrawTextFieldOptions = class {
       fontStyle,
       padding
     } = options;
-    this.anchorPosition = anchorPosition || AnchorPosition.TOP_LEFT;
+    this.anchorPosition = anchorPosition || "TOP_LEFT" /* TOP_LEFT */;
     this.backgroundColor = backgroundColor || "rgba(0, 0, 0, 0.5)";
     this.fontColor = fontColor || "rgba(255, 255, 255, 1)";
     this.fontSize = fontSize || 14;
@@ -1116,8 +1122,8 @@ var DrawTextField = class {
   }
   getUpperLeft(ctx, canvasDims) {
     const { anchorPosition } = this.options;
-    const isShiftLeft = anchorPosition === AnchorPosition.BOTTOM_RIGHT || anchorPosition === AnchorPosition.TOP_RIGHT;
-    const isShiftTop = anchorPosition === AnchorPosition.BOTTOM_LEFT || anchorPosition === AnchorPosition.BOTTOM_RIGHT;
+    const isShiftLeft = anchorPosition === "BOTTOM_RIGHT" /* BOTTOM_RIGHT */ || anchorPosition === "TOP_RIGHT" /* TOP_RIGHT */;
+    const isShiftTop = anchorPosition === "BOTTOM_LEFT" /* BOTTOM_LEFT */ || anchorPosition === "BOTTOM_RIGHT" /* BOTTOM_RIGHT */;
     const textFieldWidth = this.measureWidth(ctx);
     const textFieldHeight = this.measureHeight();
     const x = isShiftLeft ? this.anchor.x - textFieldWidth : this.anchor.x;
@@ -1168,7 +1174,7 @@ var DrawBoxOptions = class {
     this.lineWidth = lineWidth || 2;
     this.label = label;
     const defaultDrawLabelOptions = {
-      anchorPosition: AnchorPosition.BOTTOM_LEFT,
+      anchorPosition: "BOTTOM_LEFT" /* BOTTOM_LEFT */,
       backgroundColor: this.boxColor
     };
     this.drawLabelOptions = new DrawTextFieldOptions({ ...defaultDrawLabelOptions, ...drawLabelOptions });
@@ -1210,7 +1216,7 @@ function drawDetections(canvasArg, detections) {
 }
 
 // src/faceExpressionNet/FaceExpressionNet.ts
-var tf18 = __toModule(require_tfjs_esm());
+var tf18 = __toESM(require_tfjs_esm());
 
 // src/dom/isMediaLoaded.ts
 function isMediaLoaded(media) {
@@ -1297,7 +1303,7 @@ function createCanvasFromMedia(media, dims) {
 }
 
 // src/dom/imageTensorToCanvas.ts
-var tf4 = __toModule(require_tfjs_esm());
+var tf4 = __toESM(require_tfjs_esm());
 async function imageTensorToCanvas(imgTensor, canvas) {
   const targetCanvas = canvas || env.getEnv().createCanvasElement();
   const [height, width, numChannels] = imgTensor.shape.slice(isTensor4D(imgTensor) ? 1 : 0);
@@ -1314,7 +1320,7 @@ function isMediaElement(input) {
 }
 
 // src/dom/NetInput.ts
-var tf5 = __toModule(require_tfjs_esm());
+var tf5 = __toESM(require_tfjs_esm());
 
 // src/dom/imageToSquare.ts
 function imageToSquare(input, inputSize, centerImage = false) {
@@ -1483,7 +1489,7 @@ async function extractFaces(input, detections) {
 }
 
 // src/dom/extractFaceTensors.ts
-var tf6 = __toModule(require_tfjs_esm());
+var tf6 = __toESM(require_tfjs_esm());
 async function extractFaceTensors(imageTensor, detections) {
   if (!isTensor3D(imageTensor) && !isTensor4D(imageTensor)) {
     throw new Error("extractFaceTensors - expected image tensor to be 3D or 4D");
@@ -1560,7 +1566,7 @@ async function fetchVideo(uri) {
 }
 
 // src/dom/loadWeightMap.ts
-var tf7 = __toModule(require_tfjs_esm());
+var tf7 = __toESM(require_tfjs_esm());
 
 // src/common/getModelUris.ts
 function getModelUris(uri, defaultModelName) {
@@ -1605,10 +1611,10 @@ function matchDimensions(input, reference, useMediaDimensions = false) {
 }
 
 // src/faceFeatureExtractor/FaceFeatureExtractor.ts
-var tf15 = __toModule(require_tfjs_esm());
+var tf15 = __toESM(require_tfjs_esm());
 
 // src/NeuralNetwork.ts
-var tf8 = __toModule(require_tfjs_esm());
+var tf8 = __toESM(require_tfjs_esm());
 var NeuralNetwork = class {
   constructor(name) {
     this._params = void 0;
@@ -1724,10 +1730,10 @@ var NeuralNetwork = class {
 };
 
 // src/faceFeatureExtractor/denseBlock.ts
-var tf10 = __toModule(require_tfjs_esm());
+var tf10 = __toESM(require_tfjs_esm());
 
 // src/common/depthwiseSeparableConv.ts
-var tf9 = __toModule(require_tfjs_esm());
+var tf9 = __toESM(require_tfjs_esm());
 function depthwiseSeparableConv(x, params, stride) {
   return tf9.tidy(() => {
     let out = tf9.separableConv2d(x, params.depthwise_filter, params.pointwise_filter, stride, "same");
@@ -1759,7 +1765,7 @@ function denseBlock4(x, denseBlockParams, isFirstLayer = false, isScaleDown = tr
 }
 
 // src/common/convLayer.ts
-var tf11 = __toModule(require_tfjs_esm());
+var tf11 = __toESM(require_tfjs_esm());
 function convLayer(x, params, padding = "same", withRelu = false) {
   return tf11.tidy(() => {
     const out = tf11.add(tf11.conv2d(x, params.filters, [1, 1], padding), params.bias);
@@ -1777,7 +1783,7 @@ function disposeUnusedWeightTensors(weightMap, paramMappings) {
 }
 
 // src/common/extractConvParamsFactory.ts
-var tf12 = __toModule(require_tfjs_esm());
+var tf12 = __toESM(require_tfjs_esm());
 function extractConvParamsFactory(extractWeights, paramMappings) {
   return (channelsIn, channelsOut, filterSize, mappedPrefix) => {
     const filters = tf12.tensor4d(extractWeights(channelsIn * channelsOut * filterSize * filterSize), [filterSize, filterSize, channelsIn, channelsOut]);
@@ -1788,7 +1794,7 @@ function extractConvParamsFactory(extractWeights, paramMappings) {
 }
 
 // src/common/extractFCParamsFactory.ts
-var tf13 = __toModule(require_tfjs_esm());
+var tf13 = __toESM(require_tfjs_esm());
 function extractFCParamsFactory(extractWeights, paramMappings) {
   return (channelsIn, channelsOut, mappedPrefix) => {
     const fc_weights = tf13.tensor2d(extractWeights(channelsIn * channelsOut), [channelsIn, channelsOut]);
@@ -1802,7 +1808,7 @@ function extractFCParamsFactory(extractWeights, paramMappings) {
 }
 
 // src/common/extractSeparableConvParamsFactory.ts
-var tf14 = __toModule(require_tfjs_esm());
+var tf14 = __toESM(require_tfjs_esm());
 
 // src/common/types.ts
 var SeparableConvParams = class {
@@ -2006,10 +2012,10 @@ var FaceFeatureExtractor = class extends NeuralNetwork {
 };
 
 // src/faceProcessor/FaceProcessor.ts
-var tf17 = __toModule(require_tfjs_esm());
+var tf17 = __toESM(require_tfjs_esm());
 
 // src/common/fullyConnectedLayer.ts
-var tf16 = __toModule(require_tfjs_esm());
+var tf16 = __toESM(require_tfjs_esm());
 function fullyConnectedLayer(x, params) {
   return tf16.tidy(() => tf16.add(tf16.matMul(x, params.weights), params.bias));
 }
@@ -2291,13 +2297,13 @@ function drawFaceLandmarks(canvasArg, faceLandmarks) {
 }
 
 // package.json
-var version = "1.6.3";
+var version = "1.6.4";
 
 // src/ageGenderNet/AgeGenderNet.ts
-var tf20 = __toModule(require_tfjs_esm());
+var tf20 = __toESM(require_tfjs_esm());
 
 // src/xception/TinyXception.ts
-var tf19 = __toModule(require_tfjs_esm());
+var tf19 = __toESM(require_tfjs_esm());
 
 // src/xception/extractParams.ts
 function extractorsFactory2(extractWeights, paramMappings) {
@@ -2512,11 +2518,11 @@ function extractParamsFromWeightMap4(weightMap) {
 }
 
 // src/ageGenderNet/types.ts
-var Gender;
-(function(Gender2) {
+var Gender = /* @__PURE__ */ ((Gender2) => {
   Gender2["FEMALE"] = "female";
   Gender2["MALE"] = "male";
-})(Gender || (Gender = {}));
+  return Gender2;
+})(Gender || {});
 
 // src/ageGenderNet/AgeGenderNet.ts
 var AgeGenderNet = class extends NeuralNetwork {
@@ -2562,7 +2568,7 @@ var AgeGenderNet = class extends NeuralNetwork {
       const age = ageTensor.dataSync()[0];
       const probMale = genderTensor.dataSync()[0];
       const isMale = probMale > 0.5;
-      const gender = isMale ? Gender.MALE : Gender.FEMALE;
+      const gender = isMale ? "male" /* MALE */ : "female" /* FEMALE */;
       const genderProbability = isMale ? probMale : 1 - probMale;
       ageTensor.dispose();
       genderTensor.dispose();
@@ -2602,7 +2608,7 @@ var AgeGenderNet = class extends NeuralNetwork {
 };
 
 // src/faceLandmarkNet/FaceLandmark68NetBase.ts
-var tf21 = __toModule(require_tfjs_esm());
+var tf21 = __toESM(require_tfjs_esm());
 var FaceLandmark68NetBase = class extends FaceProcessor {
   postProcess(output, inputSize, originalDimensions) {
     const inputDimensions = originalDimensions.map(({ width, height }) => {
@@ -2668,7 +2674,7 @@ var FaceLandmark68Net = class extends FaceLandmark68NetBase {
 };
 
 // src/faceFeatureExtractor/TinyFaceFeatureExtractor.ts
-var tf22 = __toModule(require_tfjs_esm());
+var tf22 = __toESM(require_tfjs_esm());
 
 // src/faceFeatureExtractor/extractParamsFromWeightMapTiny.ts
 function extractParamsFromWeightMapTiny(weightMap) {
@@ -2760,13 +2766,13 @@ var FaceLandmarkNet = class extends FaceLandmark68Net {
 };
 
 // src/faceRecognitionNet/FaceRecognitionNet.ts
-var tf27 = __toModule(require_tfjs_esm());
+var tf27 = __toESM(require_tfjs_esm());
 
 // src/faceRecognitionNet/convLayer.ts
-var tf24 = __toModule(require_tfjs_esm());
+var tf24 = __toESM(require_tfjs_esm());
 
 // src/faceRecognitionNet/scaleLayer.ts
-var tf23 = __toModule(require_tfjs_esm());
+var tf23 = __toESM(require_tfjs_esm());
 function scale(x, params) {
   return tf23.add(tf23.mul(x, params.weights), params.biases);
 }
@@ -2790,7 +2796,7 @@ function convDown(x, params) {
 }
 
 // src/faceRecognitionNet/extractParams.ts
-var tf25 = __toModule(require_tfjs_esm());
+var tf25 = __toESM(require_tfjs_esm());
 function extractorsFactory3(extractWeights, paramMappings) {
   function extractFilterValues(numFilterValues, numFilters, filterSize) {
     const weights = extractWeights(numFilterValues);
@@ -2955,7 +2961,7 @@ function extractParamsFromWeightMap5(weightMap) {
 }
 
 // src/faceRecognitionNet/residualLayer.ts
-var tf26 = __toModule(require_tfjs_esm());
+var tf26 = __toESM(require_tfjs_esm());
 function residual(x, params) {
   let out = conv2(x, params.conv1);
   out = convNoRelu(out, params.conv2);
@@ -3069,7 +3075,7 @@ function extendWithAge(sourceObj, age) {
 
 // src/factories/WithGender.ts
 function isWithGender(obj) {
-  return (obj.gender === Gender.MALE || obj.gender === Gender.FEMALE) && isValidProbablitiy(obj.genderProbability);
+  return (obj.gender === "male" /* MALE */ || obj.gender === "female" /* FEMALE */) && isValidProbablitiy(obj.genderProbability);
 }
 function extendWithGender(sourceObj, gender, genderProbability) {
   const extension = { gender, genderProbability };
@@ -3077,10 +3083,10 @@ function extendWithGender(sourceObj, gender, genderProbability) {
 }
 
 // src/ssdMobilenetv1/SsdMobilenetv1.ts
-var tf34 = __toModule(require_tfjs_esm());
+var tf34 = __toESM(require_tfjs_esm());
 
 // src/ssdMobilenetv1/extractParams.ts
-var tf28 = __toModule(require_tfjs_esm());
+var tf28 = __toESM(require_tfjs_esm());
 function extractorsFactory5(extractWeights, paramMappings) {
   function extractDepthwiseConvParams(numChannels, mappedPrefix) {
     const filters = tf28.tensor4d(extractWeights(3 * 3 * numChannels), [3, 3, numChannels, 1]);
@@ -3350,10 +3356,10 @@ function extractParamsFromWeightMap6(weightMap) {
 }
 
 // src/ssdMobilenetv1/mobileNetV1.ts
-var tf30 = __toModule(require_tfjs_esm());
+var tf30 = __toESM(require_tfjs_esm());
 
 // src/ssdMobilenetv1/pointwiseConvLayer.ts
-var tf29 = __toModule(require_tfjs_esm());
+var tf29 = __toESM(require_tfjs_esm());
 function pointwiseConvLayer(x, params, strides) {
   return tf29.tidy(() => {
     let out = tf29.conv2d(x, params.filters, strides, "same");
@@ -3459,7 +3465,7 @@ function nonMaxSuppression2(boxes, scores, maxOutputSize, iouThreshold, scoreThr
 }
 
 // src/ssdMobilenetv1/outputLayer.ts
-var tf31 = __toModule(require_tfjs_esm());
+var tf31 = __toESM(require_tfjs_esm());
 function getCenterCoordinatesAndSizesLayer(x) {
   const vec = tf31.unstack(tf31.transpose(x, [1, 0]));
   const sizes = [
@@ -3501,10 +3507,10 @@ function outputLayer(boxPredictions, classPredictions, params) {
 }
 
 // src/ssdMobilenetv1/predictionLayer.ts
-var tf33 = __toModule(require_tfjs_esm());
+var tf33 = __toESM(require_tfjs_esm());
 
 // src/ssdMobilenetv1/boxPredictionLayer.ts
-var tf32 = __toModule(require_tfjs_esm());
+var tf32 = __toESM(require_tfjs_esm());
 function boxPredictionLayer(x, params) {
   return tf32.tidy(() => {
     const batchSize = x.shape[0];
@@ -3672,7 +3678,7 @@ var DEFAULT_MODEL_NAME = "tiny_yolov2_model";
 var DEFAULT_MODEL_NAME_SEPARABLE_CONV = "tiny_yolov2_separable_conv_model";
 
 // src/tinyYolov2/TinyYolov2Base.ts
-var tf39 = __toModule(require_tfjs_esm());
+var tf39 = __toESM(require_tfjs_esm());
 
 // src/tinyYolov2/config.ts
 var isNumber = (arg) => typeof arg === "number";
@@ -3698,10 +3704,10 @@ function validateConfig(config) {
 }
 
 // src/tinyYolov2/convWithBatchNorm.ts
-var tf36 = __toModule(require_tfjs_esm());
+var tf36 = __toESM(require_tfjs_esm());
 
 // src/tinyYolov2/leaky.ts
-var tf35 = __toModule(require_tfjs_esm());
+var tf35 = __toESM(require_tfjs_esm());
 function leaky(x) {
   return tf35.tidy(() => {
     const min = tf35.mul(x, tf35.scalar(0.10000000149011612));
@@ -3722,7 +3728,7 @@ function convWithBatchNorm(x, params) {
 }
 
 // src/tinyYolov2/depthwiseSeparableConv.ts
-var tf37 = __toModule(require_tfjs_esm());
+var tf37 = __toESM(require_tfjs_esm());
 function depthwiseSeparableConv2(x, params) {
   return tf37.tidy(() => {
     let out = tf37.pad(x, [[0, 0], [1, 1], [1, 1], [0, 0]]);
@@ -3733,7 +3739,7 @@ function depthwiseSeparableConv2(x, params) {
 }
 
 // src/tinyYolov2/extractParams.ts
-var tf38 = __toModule(require_tfjs_esm());
+var tf38 = __toESM(require_tfjs_esm());
 function extractorsFactory7(extractWeights, paramMappings) {
   const extractConvParams = extractConvParamsFactory(extractWeights, paramMappings);
   function extractBatchNormParams(size, mappedPrefix) {
@@ -4119,10 +4125,10 @@ var ComposableTask = class {
 };
 
 // src/globalApi/DetectFaceLandmarksTasks.ts
-var tf41 = __toModule(require_tfjs_esm());
+var tf41 = __toESM(require_tfjs_esm());
 
 // src/globalApi/extractFacesAndComputeResults.ts
-var tf40 = __toModule(require_tfjs_esm());
+var tf40 = __toESM(require_tfjs_esm());
 async function extractAllFacesAndComputeResults(parentResults, input, computeResults, extractedFaces, getRectForAlignment = ({ alignedRect }) => alignedRect) {
   const faceBoxes = parentResults.map((parentResult) => isWithFaceLandmarks(parentResult) ? getRectForAlignment(parentResult) : parentResult.detection);
   const faces = extractedFaces || (input instanceof tf40.Tensor ? await extractFaceTensors(input, faceBoxes) : await extractFaces(input, faceBoxes));
@@ -4565,6 +4571,7 @@ function resizeResults(results, dimensions) {
 
 // src/index.ts
 var version2 = version;
+module.exports = __toCommonJS(src_exports);
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   AgeGenderNet,

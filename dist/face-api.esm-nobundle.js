@@ -8,7 +8,6 @@ var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __markAsModule = (target) => __defProp(target, "__esModule", { value: true });
 var __require = /* @__PURE__ */ ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, {
   get: (a, b) => (typeof require !== "undefined" ? require : a)[b]
 }) : x)(function(x) {
@@ -17,14 +16,13 @@ var __require = /* @__PURE__ */ ((x) => typeof require !== "undefined" ? require
   throw new Error('Dynamic require of "' + x + '" is not supported');
 });
 var __export = (target, all) => {
-  __markAsModule(target);
   for (var name in all)
     __defProp(target, name, { get: all[name], enumerable: true });
 };
-var __reExport = (target, module, desc) => {
+var __reExport = (target, module, copyDefault, desc) => {
   if (module && typeof module === "object" || typeof module === "function") {
     for (let key of __getOwnPropNames(module))
-      if (!__hasOwnProp.call(target, key) && key !== "default")
+      if (!__hasOwnProp.call(target, key) && (copyDefault || key !== "default"))
         __defProp(target, key, { get: () => module[key], enumerable: !(desc = __getOwnPropDesc(module, key)) || desc.enumerable });
   }
   return target;
@@ -41,14 +39,14 @@ __reExport(tfjs_esm_exports, dist_star3);
 import * as dist_star from "@tensorflow/tfjs/dist/index.js";
 import * as dist_star2 from "@tensorflow/tfjs-backend-webgl/dist/index.js";
 import * as dist_star3 from "@tensorflow/tfjs-backend-wasm/dist/index.js";
-var version = "3.12.0";
-var version2 = "3.12.0";
-var version3 = "3.12.0";
-var version4 = "3.12.0";
-var version5 = "3.12.0";
-var version6 = "3.12.0";
-var version7 = "3.12.0";
-var version8 = "3.12.0";
+var version = "3.13.0";
+var version2 = "3.13.0";
+var version3 = "3.13.0";
+var version4 = "3.13.0";
+var version5 = "3.13.0";
+var version6 = "3.13.0";
+var version7 = "3.13.0";
+var version8 = "3.13.0";
 var version9 = {
   tfjs: version,
   "tfjs-core": version2,
@@ -948,13 +946,13 @@ function getContext2dOrThrow(canvasArg) {
 }
 
 // src/draw/DrawTextField.ts
-var AnchorPosition;
-(function(AnchorPosition2) {
+var AnchorPosition = /* @__PURE__ */ ((AnchorPosition2) => {
   AnchorPosition2["TOP_LEFT"] = "TOP_LEFT";
   AnchorPosition2["TOP_RIGHT"] = "TOP_RIGHT";
   AnchorPosition2["BOTTOM_LEFT"] = "BOTTOM_LEFT";
   AnchorPosition2["BOTTOM_RIGHT"] = "BOTTOM_RIGHT";
-})(AnchorPosition || (AnchorPosition = {}));
+  return AnchorPosition2;
+})(AnchorPosition || {});
 var DrawTextFieldOptions = class {
   constructor(options = {}) {
     const {
@@ -965,7 +963,7 @@ var DrawTextFieldOptions = class {
       fontStyle,
       padding
     } = options;
-    this.anchorPosition = anchorPosition || AnchorPosition.TOP_LEFT;
+    this.anchorPosition = anchorPosition || "TOP_LEFT" /* TOP_LEFT */;
     this.backgroundColor = backgroundColor || "rgba(0, 0, 0, 0.5)";
     this.fontColor = fontColor || "rgba(255, 255, 255, 1)";
     this.fontSize = fontSize || 14;
@@ -989,8 +987,8 @@ var DrawTextField = class {
   }
   getUpperLeft(ctx, canvasDims) {
     const { anchorPosition } = this.options;
-    const isShiftLeft = anchorPosition === AnchorPosition.BOTTOM_RIGHT || anchorPosition === AnchorPosition.TOP_RIGHT;
-    const isShiftTop = anchorPosition === AnchorPosition.BOTTOM_LEFT || anchorPosition === AnchorPosition.BOTTOM_RIGHT;
+    const isShiftLeft = anchorPosition === "BOTTOM_RIGHT" /* BOTTOM_RIGHT */ || anchorPosition === "TOP_RIGHT" /* TOP_RIGHT */;
+    const isShiftTop = anchorPosition === "BOTTOM_LEFT" /* BOTTOM_LEFT */ || anchorPosition === "BOTTOM_RIGHT" /* BOTTOM_RIGHT */;
     const textFieldWidth = this.measureWidth(ctx);
     const textFieldHeight = this.measureHeight();
     const x = isShiftLeft ? this.anchor.x - textFieldWidth : this.anchor.x;
@@ -1041,7 +1039,7 @@ var DrawBoxOptions = class {
     this.lineWidth = lineWidth || 2;
     this.label = label;
     const defaultDrawLabelOptions = {
-      anchorPosition: AnchorPosition.BOTTOM_LEFT,
+      anchorPosition: "BOTTOM_LEFT" /* BOTTOM_LEFT */,
       backgroundColor: this.boxColor
     };
     this.drawLabelOptions = new DrawTextFieldOptions({ ...defaultDrawLabelOptions, ...drawLabelOptions });
@@ -2135,7 +2133,7 @@ function drawFaceLandmarks(canvasArg, faceLandmarks) {
 }
 
 // package.json
-var version10 = "1.6.3";
+var version10 = "1.6.4";
 
 // src/xception/extractParams.ts
 function extractorsFactory2(extractWeights, paramMappings) {
@@ -2350,11 +2348,11 @@ function extractParamsFromWeightMap4(weightMap) {
 }
 
 // src/ageGenderNet/types.ts
-var Gender;
-(function(Gender2) {
+var Gender = /* @__PURE__ */ ((Gender2) => {
   Gender2["FEMALE"] = "female";
   Gender2["MALE"] = "male";
-})(Gender || (Gender = {}));
+  return Gender2;
+})(Gender || {});
 
 // src/ageGenderNet/AgeGenderNet.ts
 var AgeGenderNet = class extends NeuralNetwork {
@@ -2400,7 +2398,7 @@ var AgeGenderNet = class extends NeuralNetwork {
       const age = ageTensor.dataSync()[0];
       const probMale = genderTensor.dataSync()[0];
       const isMale = probMale > 0.5;
-      const gender = isMale ? Gender.MALE : Gender.FEMALE;
+      const gender = isMale ? "male" /* MALE */ : "female" /* FEMALE */;
       const genderProbability = isMale ? probMale : 1 - probMale;
       ageTensor.dispose();
       genderTensor.dispose();
@@ -2894,7 +2892,7 @@ function extendWithAge(sourceObj, age) {
 
 // src/factories/WithGender.ts
 function isWithGender(obj) {
-  return (obj.gender === Gender.MALE || obj.gender === Gender.FEMALE) && isValidProbablitiy(obj.genderProbability);
+  return (obj.gender === "male" /* MALE */ || obj.gender === "female" /* FEMALE */) && isValidProbablitiy(obj.genderProbability);
 }
 function extendWithGender(sourceObj, gender, genderProbability) {
   const extension = { gender, genderProbability };

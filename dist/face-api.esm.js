@@ -1359,7 +1359,7 @@ var require_long = __commonJS({
   }
 });
 var require_browser = __commonJS({
-  "(disabled):node_modules/.pnpm/node-fetch@2.6.6/node_modules/node-fetch/browser.js"() {
+  "(disabled):node_modules/.pnpm/node-fetch@2.6.7/node_modules/node-fetch/browser.js"() {
   }
 });
 var require_util = __commonJS({
@@ -66041,7 +66041,7 @@ function drawFaceLandmarks(canvasArg, faceLandmarks) {
 }
 
 // package.json
-var version5 = "1.6.4";
+var version5 = "1.6.5";
 
 // src/xception/extractParams.ts
 function extractorsFactory2(extractWeights, paramMappings) {

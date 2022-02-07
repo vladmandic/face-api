@@ -9,11 +9,15 @@
   
 ## Changelog
   
+### **1.6.5** 2022/02/07 mandic00@live.com
+
+
+### **origin/master** 2022/01/14 mandic00@live.com
+
+
 ### **1.6.4** 2022/01/14 mandic00@live.com
 
-
-### **origin/master** 2022/01/06 mandic00@live.com
-
+- add node with wasm build target
 
 ### **1.6.3** 2022/01/06 mandic00@live.com
 

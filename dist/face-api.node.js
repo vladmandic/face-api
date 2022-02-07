@@ -2296,7 +2296,7 @@ function drawFaceLandmarks(canvasArg, faceLandmarks) {
 }
 
 // package.json
-var version = "1.6.4";
+var version = "1.6.5";
 
 // src/ageGenderNet/AgeGenderNet.ts
 var tf20 = __toESM(require_tfjs_esm());

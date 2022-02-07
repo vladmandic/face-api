@@ -855,9 +855,9 @@ var require_long = __commonJS({
   }
 });
 
-// (disabled):node_modules/.pnpm/node-fetch@2.6.6/node_modules/node-fetch/browser.js
+// (disabled):node_modules/.pnpm/node-fetch@2.6.7/node_modules/node-fetch/browser.js
 var require_browser = __commonJS({
-  "(disabled):node_modules/.pnpm/node-fetch@2.6.6/node_modules/node-fetch/browser.js"() {
+  "(disabled):node_modules/.pnpm/node-fetch@2.6.7/node_modules/node-fetch/browser.js"() {
   }
 });
 

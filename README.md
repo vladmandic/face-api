@@ -55,7 +55,7 @@ Example can be accessed directly using Git pages using URL:
 
 NodeJS examples are:
 
-- `/demp/node-simple.js`:
+- `/demo/node-simple.js`:
   Simplest possible NodeJS demo for FaceAPI in under 30 lines of JavaScript code  
 - `/demo/node.js`:  
   Using `TFJS` native methods to load images without external dependencies  

@@ -108,7 +108,7 @@ async function main() {
   const params = new URLSearchParams(location.search);
   if (params.has('backend')) {
     const backend = params.get('backend');
-    await faceapi.tf.setWasmPaths('https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-wasm@3.14.0/dist/');
+    await faceapi.tf.setWasmPaths('https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-wasm@3.15.0/dist/');
     log(`Chosen backend: ${backend}`);
     await faceapi.tf.setBackend(backend);
   } else {

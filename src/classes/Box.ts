@@ -128,9 +128,7 @@ export class Box<BoxType = any> implements IBoundingBox, IRect {
       this.width + padX,
       this.height + padY,
     ];
-    return new Box({
-      x, y, width, height,
-    });
+    return new Box({ x, y, width, height });
   }
 
   public clipAtImageBorders(imgWidth: number, imgHeight: number): Box<BoxType> {
@@ -143,9 +141,7 @@ export class Box<BoxType = any> implements IBoundingBox, IRect {
     const clippedWidth = Math.min(newWidth, imgWidth - clippedX);
     const clippedHeight = Math.min(newHeight, imgHeight - clippedY);
 
-    return (new Box({
-      x: clippedX, y: clippedY, width: clippedWidth, height: clippedHeight,
-    })).floor();
+    return (new Box({ x: clippedX, y: clippedY, width: clippedWidth, height: clippedHeight })).floor();
   }
 
   public shift(sx: number, sy: number): Box<BoxType> {
@@ -153,9 +149,7 @@ export class Box<BoxType = any> implements IBoundingBox, IRect {
     const x = this.x + sx;
     const y = this.y + sy;
 
-    return new Box({
-      x, y, width, height,
-    });
+    return new Box({ x, y, width, height });
   }
 
   public padAtBorders(imageHeight: number, imageWidth: number) {
@@ -189,9 +183,7 @@ export class Box<BoxType = any> implements IBoundingBox, IRect {
       y = 1;
     }
 
-    return {
-      dy, edy, dx, edx, y, ey, x, ex, w, h,
-    };
+    return { dy, edy, dx, edx, y, ey, x, ex, w, h };
   }
 
   public calibrate(region: Box) {

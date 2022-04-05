@@ -9,11 +9,12 @@
   
 ## Changelog
   
+### **HEAD -> master** 2022/04/01 mandic00@live.com
+
+
 ### **1.6.7** 2022/04/01 mandic00@live.com
 
-
-### **origin/master** 2022/03/10 45914394+abdemirza@users.noreply.github.com
-
+- fixed typo error (#97)
 
 ### **1.6.6** 2022/03/04 mandic00@live.com
 

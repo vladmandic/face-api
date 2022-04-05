@@ -57,12 +57,9 @@ function calculateFaceAngle(mesh) {
   return angle;
 }
 
-export function extendWithFaceLandmarks<
-  TSource extends WithFaceDetection<{}>,
-  TFaceLandmarks extends FaceLandmarks = FaceLandmarks68 >(sourceObj: TSource, unshiftedLandmarks: TFaceLandmarks): WithFaceLandmarks<TSource, TFaceLandmarks> {
+export function extendWithFaceLandmarks<TSource extends WithFaceDetection<{}>, TFaceLandmarks extends FaceLandmarks = FaceLandmarks68 >(sourceObj: TSource, unshiftedLandmarks: TFaceLandmarks): WithFaceLandmarks<TSource, TFaceLandmarks> {
   const { box: shift } = sourceObj.detection;
   const landmarks = unshiftedLandmarks.shiftBy<TFaceLandmarks>(shift.x, shift.y);
-
   const rect = landmarks.align();
   const { imageDims } = sourceObj.detection;
   const alignedRect = new FaceDetection(sourceObj.detection.score, rect.rescale(imageDims.reverse()), imageDims);

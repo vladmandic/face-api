@@ -25,17 +25,11 @@ export async function extractFaceTensors(imageTensor: tf.Tensor3D | tf.Tensor4D,
 
   return tf.tidy(() => {
     const [imgHeight, imgWidth, numChannels] = imageTensor.shape.slice(isTensor4D(imageTensor) ? 1 : 0);
-
-    const boxes = detections
-      .map((det) => (det instanceof FaceDetection
-        ? det.forSize(imgWidth, imgHeight).box
-        : det))
+    const boxes = detections.map((det) => (det instanceof FaceDetection ? det.forSize(imgWidth, imgHeight).box : det))
       .map((box) => box.clipAtImageBorders(imgWidth, imgHeight));
-
-    const faceTensors = boxes.map(({
-      x, y, width, height,
-    }) => tf.slice3d(imageTensor.as3D(imgHeight, imgWidth, numChannels), [y, x, 0], [height, width, numChannels]));
-
+    const faceTensors = boxes
+      .filter((box) => box.width > 0 && box.height > 0)
+      .map(({ x, y, width, height }) => tf.slice3d(imageTensor.as3D(imgHeight, imgWidth, numChannels), [y, x, 0], [height, width, numChannels]));
     return faceTensors;
   });
 }

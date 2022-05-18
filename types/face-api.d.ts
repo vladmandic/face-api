@@ -1,3 +1,5 @@
+/// <reference types="@webgpu/types/dist" />
+
 declare const add: typeof add_;
 
 /**
@@ -546,10 +548,14 @@ export declare function createTinyYolov2(weights: Float32Array, withSeparableCon
  */
 declare type DataId = object;
 
-declare type DataToGPUOptions = DataToGPUWebGLOption;
+declare type DataToGPUOptions = DataToGPUWebGLOption | DataToGPUWebGPUOption;
 
 declare interface DataToGPUWebGLOption {
     customTexShape?: [number, number];
+}
+
+declare interface DataToGPUWebGPUOption {
+    customBufSize?: number;
 }
 
 /** @docalias 'float32'|'int32'|'bool'|'complex64'|'string' */
@@ -1231,7 +1237,9 @@ declare function getQueryParams(queryString: string): {
 declare interface GPUData {
     tensorRef: Tensor;
     texture?: WebGLTexture;
+    buffer?: GPUBuffer;
     texShape?: [number, number];
+    bufSize?: number;
 }
 
 export declare interface IBoundingBox {

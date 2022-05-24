@@ -548,14 +548,10 @@ export declare function createTinyYolov2(weights: Float32Array, withSeparableCon
  */
 declare type DataId = object;
 
-declare type DataToGPUOptions = DataToGPUWebGLOption | DataToGPUWebGPUOption;
+declare type DataToGPUOptions = DataToGPUWebGLOption;
 
 declare interface DataToGPUWebGLOption {
     customTexShape?: [number, number];
-}
-
-declare interface DataToGPUWebGPUOption {
-    customBufSize?: number;
 }
 
 /** @docalias 'float32'|'int32'|'bool'|'complex64'|'string' */
@@ -2398,6 +2394,9 @@ declare class Tensor<R extends Rank = Rank> {
      * For WebGL backend, the data will be stored on a densely packed texture.
      * This means that the texture will use the RGBA channels to store value.
      *
+     * For WebGPU backend, the data will be stored on a buffer. There is no
+     * parameter, so can not use an user defined size to create the buffer.
+     *
      * @param options:
      *     For WebGL,
      *         - customTexShape: Optional. If set, will use the user defined
@@ -2410,6 +2409,15 @@ declare class Tensor<R extends Rank = Rank> {
      *        texture: WebGLTexture,
      *        texShape: [number, number] // [height, width]
      *     }
+     *
+     *     For WebGPU backend, a GPUData contains the new buffer and
+     *     its information.
+     *     {
+     *        tensorRef: The tensor that is associated with this buffer,
+     *        buffer: GPUBuffer,
+     *        bufSize: number
+     *     }
+     *
      *     Remember to dispose the GPUData after it is used by
      *     `res.tensorRef.dispose()`.
      *
@@ -2966,10 +2974,11 @@ declare const transpose: typeof transpose_;
  *
  * @param x The tensor to transpose.
  * @param perm The permutation of the dimensions of a.
+ * @param conjugate Will conjugate complex input if true.
  *
  * @doc {heading: 'Operations', subheading: 'Matrices'}
  */
-declare function transpose_<T extends Tensor>(x: T | TensorLike, perm?: number[]): T;
+declare function transpose_<T extends Tensor>(x: T | TensorLike, perm?: number[], conjugate?: boolean): T;
 
 export declare type TResolvedNetInput = TMediaElement | tf.Tensor3D | tf.Tensor4D;
 

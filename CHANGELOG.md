@@ -15,9 +15,6 @@
 ### **1.6.9** 2022/05/18 mandic00@live.com
 
 
-### **origin/master** 2022/05/09 mandic00@live.com
-
-
 ### **1.6.8** 2022/05/09 mandic00@live.com
 
 - exclude impossible detected face boxes

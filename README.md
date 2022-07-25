@@ -397,37 +397,35 @@ npm run build
 
 Build process uses `@vladmandic/build` module that creates optimized build for each target:
 
-```text
-> @vladmandic/face-api@1.0.2 build
-> rimraf dist/* types/* typedoc/* && node server/build.js
-```
-
 ```js
-2022-01-14 09:54:23 INFO:  Application: { name: '@vladmandic/face-api', version: '1.6.4' }
-2022-01-14 09:54:23 INFO:  Environment: { profile: 'production', config: '.build.json', package: 'package.json', tsconfig: true, eslintrc: true, git: true }
-2022-01-14 09:54:23 INFO:  Toolchain: { build: '0.6.7', esbuild: '0.14.11', typescript: '4.5.4', typedoc: '0.22.10', eslint: '8.6.0' }
-2022-01-14 09:54:23 INFO:  Build: { profile: 'production', steps: [ 'clean', 'compile', 'typings', 'typedoc', 'lint', 'changelog' ] }
-2022-01-14 09:54:23 STATE: Clean: { locations: [ 'dist/*', 'typedoc/*', 'types/lib/src' ] }
-2022-01-14 09:54:23 STATE: Compile: { name: 'tfjs/node/cpu', format: 'cjs', platform: 'node', input: 'src/tfjs/tf-node.ts', output: 'dist/tfjs.esm.js', files: 1, inputBytes: 143, outputBytes: 1276 }
-2022-01-14 09:54:23 STATE: Compile: { name: 'faceapi/node/cpu', format: 'cjs', platform: 'node', input: 'src/index.ts', output: 'dist/face-api.node.js', files: 162, inputBytes: 234787, outputBytes: 175203 }
-2022-01-14 09:54:23 STATE: Compile: { name: 'tfjs/node/gpu', format: 'cjs', platform: 'node', input: 'src/tfjs/tf-node-gpu.ts', output: 'dist/tfjs.esm.js', files: 1, inputBytes: 147, outputBytes: 1296 }
-2022-01-14 09:54:23 STATE: Compile: { name: 'faceapi/node/gpu', format: 'cjs', platform: 'node', input: 'src/index.ts', output: 'dist/face-api.node-gpu.js', files: 162, inputBytes: 234807, outputBytes: 175219 }
-2022-01-14 09:54:23 STATE: Compile: { name: 'tfjs/node/wasm', format: 'cjs', platform: 'node', input: 'src/tfjs/tf-node-wasm.ts', output: 'dist/tfjs.esm.js', files: 1, inputBytes: 185, outputBytes: 1367 }
-2022-01-14 09:54:23 STATE: Compile: { name: 'faceapi/node/wasm', format: 'cjs', platform: 'node', input: 'src/index.ts', output: 'dist/face-api.node-wasm.js', files: 162, inputBytes: 234878, outputBytes: 175294 }
-2022-01-14 09:54:23 STATE: Compile: { name: 'tfjs/browser/tf-version', format: 'esm', platform: 'browser', input: 'src/tfjs/tf-version.ts', output: 'dist/tfjs.version.js', files: 1, inputBytes: 1063, outputBytes: 1662 }
-2022-01-14 09:54:23 STATE: Compile: { name: 'tfjs/browser/esm/nobundle', format: 'esm', platform: 'browser', input: 'src/tfjs/tf-browser.ts', output: 'dist/tfjs.esm.js', files: 2, inputBytes: 2172, outputBytes: 811 }
-2022-01-14 09:54:23 STATE: Compile: { name: 'faceapi/browser/esm/nobundle', format: 'esm', platform: 'browser', input: 'src/index.ts', output: 'dist/face-api.esm-nobundle.js', files: 162, inputBytes: 234322, outputBytes: 169437 }
-2022-01-14 09:54:24 STATE: Compile: { name: 'tfjs/browser/esm/bundle', format: 'esm', platform: 'browser', input: 'src/tfjs/tf-browser.ts', output: 'dist/tfjs.esm.js', files: 11, inputBytes: 2172, outputBytes: 2444105 }
-2022-01-14 09:54:24 STATE: Compile: { name: 'faceapi/browser/iife/bundle', format: 'iife', platform: 'browser', input: 'src/index.ts', output: 'dist/face-api.js', files: 162, inputBytes: 2677616, outputBytes: 1252572 }
-2022-01-14 09:54:24 STATE: Compile: { name: 'faceapi/browser/esm/bundle', format: 'esm', platform: 'browser', input: 'src/index.ts', output: 'dist/face-api.esm.js', files: 162, inputBytes: 2677616, outputBytes: 2435063 }
-2022-01-14 09:54:27 STATE: Typings: { input: 'src/index.ts', output: 'types/lib', files: 93 }
-2022-01-14 09:54:31 STATE: TypeDoc: { input: 'src/index.ts', output: 'typedoc', objects: 154, generated: true }
-2022-01-14 09:54:45 STATE: Lint: { locations: [ 'src/' ], files: 174, errors: 0, warnings: 0 }
-2022-01-14 09:54:45 STATE: ChangeLog: { repository: 'https://github.com/vladmandic/face-api', branch: 'master', output: 'CHANGELOG.md' }
-2022-01-14 09:54:45 INFO:  Done...
-2022-01-14 09:54:45 STATE: Copy: { input: 'types/lib/dist/tfjs.esm.d.ts' }
-2022-01-14 09:54:46 STATE: API-Extractor: { succeeeded: true, errors: 0, warnings: 414 }
-2022-01-14 09:54:46 INFO:  FaceAPI Build complete...
+> @vladmandic/face-api@1.7.1 build /home/vlado/dev/face-api
+> node build.js
+
+2022-07-25 08:21:05 INFO:  Application: { name: '@vladmandic/face-api', version: '1.7.1' }
+2022-07-25 08:21:05 INFO:  Environment: { profile: 'production', config: '.build.json', package: 'package.json', tsconfig: true, eslintrc: true, git: true }
+2022-07-25 08:21:05 INFO:  Toolchain: { build: '0.7.7', esbuild: '0.14.50', typescript: '4.7.4', typedoc: '0.23.9', eslint: '8.20.0' }
+2022-07-25 08:21:05 INFO:  Build: { profile: 'production', steps: [ 'clean', 'compile', 'typings', 'typedoc', 'lint', 'changelog' ] }
+2022-07-25 08:21:05 STATE: Clean: { locations: [ 'dist/*', 'typedoc/*', 'types/lib/src' ] }
+2022-07-25 08:21:05 STATE: Compile: { name: 'tfjs/node/cpu', format: 'cjs', platform: 'node', input: 'src/tfjs/tf-node.ts', output: 'dist/tfjs.esm.js', files: 1, inputBytes: 143, outputBytes: 614 }
+2022-07-25 08:21:05 STATE: Compile: { name: 'faceapi/node/cpu', format: 'cjs', platform: 'node', input: 'src/index.ts', output: 'dist/face-api.node.js', files: 162, inputBytes: 234137, outputBytes: 85701 }
+2022-07-25 08:21:05 STATE: Compile: { name: 'tfjs/node/gpu', format: 'cjs', platform: 'node', input: 'src/tfjs/tf-node-gpu.ts', output: 'dist/tfjs.esm.js', files: 1, inputBytes: 147, outputBytes: 618 }
+2022-07-25 08:21:05 STATE: Compile: { name: 'faceapi/node/gpu', format: 'cjs', platform: 'node', input: 'src/index.ts', output: 'dist/face-api.node-gpu.js', files: 162, inputBytes: 234141, outputBytes: 85705 }
+2022-07-25 08:21:05 STATE: Compile: { name: 'tfjs/node/wasm', format: 'cjs', platform: 'node', input: 'src/tfjs/tf-node-wasm.ts', output: 'dist/tfjs.esm.js', files: 1, inputBytes: 185, outputBytes: 670 }
+2022-07-25 08:21:05 STATE: Compile: { name: 'faceapi/node/wasm', format: 'cjs', platform: 'node', input: 'src/index.ts', output: 'dist/face-api.node-wasm.js', files: 162, inputBytes: 234193, outputBytes: 85755 }
+2022-07-25 08:21:05 STATE: Compile: { name: 'tfjs/browser/tf-version', format: 'esm', platform: 'browser', input: 'src/tfjs/tf-version.ts', output: 'dist/tfjs.version.js', files: 1, inputBytes: 1063, outputBytes: 400 }
+2022-07-25 08:21:05 STATE: Compile: { name: 'tfjs/browser/esm/nobundle', format: 'esm', platform: 'browser', input: 'src/tfjs/tf-browser.ts', output: 'dist/tfjs.esm.js', files: 2, inputBytes: 910, outputBytes: 527 }
+2022-07-25 08:21:05 STATE: Compile: { name: 'faceapi/browser/esm/nobundle', format: 'esm', platform: 'browser', input: 'src/index.ts', output: 'dist/face-api.esm-nobundle.js', files: 162, inputBytes: 234050, outputBytes: 82787 }
+2022-07-25 08:21:05 STATE: Compile: { name: 'tfjs/browser/esm/bundle', format: 'esm', platform: 'browser', input: 'src/tfjs/tf-browser.ts', output: 'dist/tfjs.esm.js', files: 11, inputBytes: 910, outputBytes: 1184871 }
+2022-07-25 08:21:05 STATE: Compile: { name: 'faceapi/browser/iife/bundle', format: 'iife', platform: 'browser', input: 'src/index.ts', output: 'dist/face-api.js', files: 162, inputBytes: 1418394, outputBytes: 1264631 }
+2022-07-25 08:21:05 STATE: Compile: { name: 'faceapi/browser/esm/bundle', format: 'esm', platform: 'browser', input: 'src/index.ts', output: 'dist/face-api.esm.js', files: 162, inputBytes: 1418394, outputBytes: 1264150 }
+2022-07-25 08:21:07 STATE: Typings: { input: 'src/index.ts', output: 'types/lib', files: 93 }
+2022-07-25 08:21:09 STATE: TypeDoc: { input: 'src/index.ts', output: 'typedoc', objects: 154, generated: true }
+2022-07-25 08:21:13 STATE: Lint: { locations: [ 'src/' ], files: 174, errors: 0, warnings: 0 }
+2022-07-25 08:21:14 STATE: ChangeLog: { repository: 'https://github.com/vladmandic/face-api', branch: 'master', output: 'CHANGELOG.md' }
+2022-07-25 08:21:14 INFO:  Done...
+2022-07-25 08:21:14 STATE: Copy: { input: 'types/lib/dist/tfjs.esm.d.ts' }
+2022-07-25 08:21:15 STATE: API-Extractor: { succeeeded: true, errors: 0, warnings: 417 }
+2022-07-25 08:21:15 INFO:  FaceAPI Build complete...
 ```
 
 <br><hr><br>

@@ -443,7 +443,7 @@ Build process uses `@vladmandic/build` module that creates optimized build for e
 This is updated **face-api.js** with latest available TensorFlow/JS as the original is not compatible with **tfjs 2.0+**.  
 Forked from [face-api.js](https://github.com/justadudewhohacks/face-api.js) version **0.22.2** which was released on March 22nd, 2020  
 
-Currently using **`TensorFlow/JS` 3.17.0**  
+Currently using **`TensorFlow/JS` 3.19.0**  
 
 *Why?* I needed FaceAPI that does not cause version conflict with newer versions of TensorFlow  
 And since original FaceAPI was open-source, I've released this version as well  

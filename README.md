@@ -314,6 +314,8 @@ Pretrained models and their weights are includes in `./model`.
 
 ## Test & Dev Web Server
 
+To install development dependencies, use `npm install --production=false`
+
 Built-in test&dev web server can be started using
 
 ```shell
@@ -389,7 +391,7 @@ cd face-api
 Then install all dependencies and run rebuild:
 
 ```shell
-npm install
+npm install --production=false
 npm run build
 ```
 

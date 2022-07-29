@@ -9,12 +9,16 @@
   
 ## Changelog
   
+### **HEAD -> master** 2022/07/26 mandic00@live.com
+
+
+### **release: 1.7.1** 2022/07/25 mandic00@live.com
+
+
 ### **1.7.1** 2022/07/25 mandic00@live.com
 
 - refactor dependencies
-
-### **origin/master** 2022/05/24 mandic00@live.com
-
+- full rebuild
 
 ### **1.6.11** 2022/05/24 mandic00@live.com
 

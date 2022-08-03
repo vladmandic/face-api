@@ -308,7 +308,7 @@ faceapi.env.monkeyPatch({ Canvas, Image, ImageData })
 
 ## Weights
 
-Pretrained models and their weights are includes in `./model`.
+Pretrained models and their weights are included in `./model`.
 
 <br><hr><br>
 
@@ -443,11 +443,11 @@ Build process uses `@vladmandic/build` module that creates optimized build for e
 This is updated **face-api.js** with latest available TensorFlow/JS as the original is not compatible with **tfjs 2.0+**.  
 Forked from [face-api.js](https://github.com/justadudewhohacks/face-api.js) version **0.22.2** which was released on March 22nd, 2020  
 
-*Why?* I needed FaceAPI that does not cause version conflict with newer versions of TensorFlow  
-And since original FaceAPI was open-source, I've released this version as well  
+*Why?* I needed a FaceAPI that does not cause version conflict with newer versions of TensorFlow  
+And since the original FaceAPI was open-source, I've released this version as well  
 
 Changes ended up being too large for a simple pull request and it ended up being a full-fledged version on its own  
-Plus many features were added since original inception  
+Plus many features were added since the original inception  
 
 Although a lot of work has gone into this version of `FaceAPI` and it will continue to be maintained,  
 at this time it is completely superseded by my newer library `Human` which covers the same use cases,  

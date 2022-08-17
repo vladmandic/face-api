@@ -258,7 +258,7 @@ If you want to GPU Accelerated execution in NodeJS, you must have CUDA libraries
 Then install appropriate version of `FaceAPI`:
 
 ```shell
-  npm install @tensorflow/tfjs-node
+  npm install @tensorflow/tfjs-node-gpu
   npm install @vladmandic/face-api 
 ```
 

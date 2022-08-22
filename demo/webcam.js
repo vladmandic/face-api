@@ -180,7 +180,7 @@ async function main() {
   log('FaceAPI WebCam Test');
 
   // if you want to use wasm backend location for wasm binaries must be specified
-  // await faceapi.tf.setWasmPaths('../node_modules/@tensorflow/tfjs-backend-wasm/dist/');
+  // await faceapi.tf.setWasmPaths(`https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-wasm@${faceapi.tf.version_core}/dist/`);
   // await faceapi.tf.setBackend('wasm');
 
   // default is webgl backend

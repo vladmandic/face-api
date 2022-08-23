@@ -1,3 +1,9 @@
+/**
+ * FaceAPI Demo for NodeJS
+ * - Starts multiple worker processes and uses them as worker pool to process all input images
+ * - Images are enumerated in main process and sent for processing to worker processes via ipc
+ */
+
 const fs = require('fs');
 const path = require('path');
 const log = require('@vladmandic/pilogger'); // this is my simple logger with few extra features

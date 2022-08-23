@@ -1,12 +1,18 @@
-const fs = require('fs');
-// eslint-disable-next-line import/no-extraneous-dependencies, node/no-unpublished-require
-const image = require('@canvas/image'); // @canvas/image can decode jpeg, png, webp
-const log = require('@vladmandic/pilogger');
+/**
+ * FaceAPI Demo for NodeJS
+ * - Uses external library [@canvas/image](https://www.npmjs.com/package/@canvas/image) to decode image
+ * - Loads image from provided param
+ * - Outputs results to console
+ */
 
-// eslint-disable-next-line import/no-extraneous-dependencies, no-unused-vars, @typescript-eslint/no-unused-vars
+// @canvas/image can decode jpeg, png, webp
+// must be installed manually as it just a demo dependency and not actual face-api dependency
+const image = require('@canvas/image'); // eslint-disable-line node/no-missing-require
+const fs = require('fs');
+const log = require('@vladmandic/pilogger');
 const tf = require('@tensorflow/tfjs-node'); // in nodejs environments tfjs-node is required to be loaded before face-api
-// const faceapi = require('@vladmandic/face-api'); // use this when face-api is installed as module (majority of use cases)
 const faceapi = require('../dist/face-api.node.js'); // use this when using face-api in dev mode
+// const faceapi = require('@vladmandic/face-api'); // use this when face-api is installed as module (majority of use cases)
 
 const modelPath = 'model/';
 const imageFile = 'demo/sample1.jpg';

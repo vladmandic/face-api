@@ -9,7 +9,7 @@
   
 ## Changelog
   
-### **HEAD -> master** 2022/08/16 mandic00@live.com
+### **HEAD -> master** 2022/08/22 mandic00@live.com
 
 
 ### **release: 1.7.1** 2022/07/25 mandic00@live.com

@@ -1,8 +1,14 @@
-import * as faceapi from '../dist/face-api.esm.js';
+/**
+ * FaceAPI Demo for Browsers
+ * Loaded via `index.html`
+ */
+
+import * as faceapi from '../dist/face-api.esm.js'; // use when in dev mode
+// import * as faceapi from '@vladmandic/face-api'; // use when downloading face-api as npm
 
 // configuration options
 const modelPath = '../model/'; // path to model folder that will be loaded using http
-// const modelPath = 'https://vladmandic.github.io/face-api/model/'; // path to model folder that will be loaded using http
+// const modelPath = 'https://cdn.jsdelivr.net/npm/@vladmandic/face-api/model/'; // path to model folder that will be loaded using http
 const imgSize = 800; // maximum image size in pixels
 const minScore = 0.3; // minimum score
 const maxResults = 10; // maximum number of results to return
@@ -13,8 +19,7 @@ const str = (json) => (json ? JSON.stringify(json).replace(/{|}|"|\[|\]/g, '').r
 
 // helper function to print strings to html document as a log
 function log(...txt) {
-  // eslint-disable-next-line no-console
-  console.log(...txt);
+  console.log(...txt); // eslint-disable-line no-console
   const div = document.getElementById('log');
   if (div) div.innerHTML += `<br>${txt}`;
 }
@@ -67,8 +72,7 @@ function faces(name, title, id, data) {
 
 // helper function to draw processed image and its results
 function print(title, img, data) {
-  // eslint-disable-next-line no-console
-  console.log('Results:', title, img, data);
+  console.log('Results:', title, img, data); // eslint-disable-line no-console
   const el = new Image();
   el.id = Math.floor(Math.random() * 100000).toString();
   el.src = img;
@@ -174,8 +178,7 @@ async function main() {
       print('SSDMobileNet:', img, dataSSDMobileNet);
     } catch (err) {
       log(`Image: ${img} Error during processing ${str(err)}`);
-      // eslint-disable-next-line no-console
-      console.error(err);
+      console.error(err); // eslint-disable-line no-console
     }
   }
 }

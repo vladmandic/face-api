@@ -1,13 +1,20 @@
+/**
+ * FaceAPI Demo for NodeJS
+ * - Uses external library [canvas](https://www.npmjs.com/package/canvas) to decode image
+ * - Loads image from provided param
+ * - Outputs results to console
+ */
+
+// canvas library provides full canvas (load/draw/write) functionality for nodejs
+// must be installed manually as it just a demo dependency and not actual face-api dependency
+const canvas = require('canvas'); // eslint-disable-line node/no-missing-require
 const fs = require('fs');
 const path = require('path');
 const process = require('process');
 const log = require('@vladmandic/pilogger');
-const canvas = require('canvas');
-
-// eslint-disable-next-line import/no-extraneous-dependencies, no-unused-vars, @typescript-eslint/no-unused-vars
 const tf = require('@tensorflow/tfjs-node'); // in nodejs environments tfjs-node is required to be loaded before face-api
-// const faceapi = require('@vladmandic/face-api'); // use this when face-api is installed as module (majority of use cases)
 const faceapi = require('../dist/face-api.node.js'); // use this when using face-api in dev mode
+// const faceapi = require('@vladmandic/face-api'); // use this when face-api is installed as module (majority of use cases)
 
 const modelPathRoot = '../model';
 const imgPathRoot = './demo'; // modify to include your sample images
@@ -50,11 +57,9 @@ async function main() {
   faceapi.env.monkeyPatch({ Canvas: canvas.Canvas, Image: canvas.Image, ImageData: canvas.ImageData });
 
   await faceapi.tf.setBackend('tensorflow');
-  await faceapi.tf.enableProdMode();
-  await faceapi.tf.ENV.set('DEBUG', false);
   await faceapi.tf.ready();
 
-  log.state(`Version: TensorFlow/JS ${faceapi.tf?.version_core} FaceAPI ${faceapi.version} Backend: ${faceapi.tf?.getBackend()}`);
+  log.state(`Version: FaceAPI ${faceapi.version} TensorFlow/JS ${tf.version_core} Backend: ${faceapi.tf?.getBackend()}`);
 
   log.info('Loading FaceAPI models');
   const modelPath = path.join(__dirname, modelPathRoot);

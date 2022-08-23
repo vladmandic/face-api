@@ -1,11 +1,16 @@
+/**
+ * FaceAPI Demo for NodeJS
+ * - Analyzes face descriptors from source (image file or folder containing multiple image files)
+ * - Analyzes face descriptor from target
+ * - Finds best match
+ */
+
 const fs = require('fs');
 const path = require('path');
 const log = require('@vladmandic/pilogger');
-
-// eslint-disable-next-line import/no-extraneous-dependencies, no-unused-vars, @typescript-eslint/no-unused-vars
 const tf = require('@tensorflow/tfjs-node'); // in nodejs environments tfjs-node is required to be loaded before face-api
-// const faceapi = require('@vladmandic/face-api'); // use this when face-api is installed as module (majority of use cases)
 const faceapi = require('../dist/face-api.node.js'); // use this when using face-api in dev mode
+// const faceapi = require('@vladmandic/face-api'); // use this when face-api is installed as module (majority of use cases)
 
 let optionsSSDMobileNet;
 const minConfidence = 0.1;
@@ -33,6 +38,8 @@ async function getDescriptors(imageFile) {
 }
 
 async function registerImage(inputFile) {
+  if (!inputFile.toLowerCase().endsWith('jpg') && !inputFile.toLowerCase().endsWith('png') && !inputFile.toLowerCase().endsWith('gif')) return;
+  log.data('Registered:', inputFile);
   const descriptors = await getDescriptors(inputFile);
   for (const descriptor of descriptors) {
     const labeledFaceDescriptor = new faceapi.LabeledFaceDescriptors(inputFile, [descriptor]);
@@ -60,14 +67,18 @@ async function main() {
   await initFaceAPI();
   log.info('Input:', process.argv[2]);
   if (fs.statSync(process.argv[2]).isFile()) {
-    await registerImage(process.argv[2]);
+    await registerImage(process.argv[2]); // register image
   } else if (fs.statSync(process.argv[2]).isDirectory()) {
     const dir = fs.readdirSync(process.argv[2]);
-    for (const f of dir) await registerImage(path.join(process.argv[2], f));
+    for (const f of dir) await registerImage(path.join(process.argv[2], f)); // register all images in a folder
   }
-  log.info('Descriptors:', labeledFaceDescriptors.length);
-  const bestMatch = await findBestMatch(process.argv[3]);
-  log.data('Match:', bestMatch);
+  log.info('Comparing:', process.argv[3], 'Descriptors:', labeledFaceDescriptors.length);
+  if (labeledFaceDescriptors.length > 0) {
+    const bestMatch = await findBestMatch(process.argv[3]); // find best match to all registered images
+    log.data('Match:', bestMatch);
+  } else {
+    log.warn('No registered faces');
+  }
 }
 
 main();

@@ -41,11 +41,6 @@
     "tensorflowjs",
     "tfjs"
   ],
-  "optionalDependencies": {
-    "@canvas/image": "^1.0.1",
-    "canvas": "^2.9.3",
-    "node-fetch": "^3.2.10"
-  },
   "devDependencies": {
     "@microsoft/api-extractor": "^7.29.3",
     "@tensorflow/tfjs": "^3.19.0",
@@ -59,10 +54,10 @@
     "@tensorflow/tfjs-layers": "^3.19.0",
     "@tensorflow/tfjs-node": "^3.19.0",
     "@tensorflow/tfjs-node-gpu": "^3.19.0",
-    "@types/node": "^18.7.9",
+    "@types/node": "^18.7.11",
     "@types/offscreencanvas": "^2019.7.0",
-    "@typescript-eslint/eslint-plugin": "^5.33.1",
-    "@typescript-eslint/parser": "^5.33.1",
+    "@typescript-eslint/eslint-plugin": "^5.34.0",
+    "@typescript-eslint/parser": "^5.34.0",
     "@vladmandic/build": "^0.7.10",
     "@vladmandic/pilogger": "^0.4.6",
     "@vladmandic/tfjs": "github:vladmandic/tfjs",

@@ -1,12 +1,18 @@
+/**
+ * FaceAPI Demo for NodeJS
+ * - Uses external library [node-fetch](https://www.npmjs.com/package/node-fetch) to load images via http
+ * - Loads image from provided param
+ * - Outputs results to console
+ */
+
 const fs = require('fs');
 const process = require('process');
 const path = require('path');
 const log = require('@vladmandic/pilogger');
 
-// eslint-disable-next-line import/no-extraneous-dependencies, no-unused-vars, @typescript-eslint/no-unused-vars
 const tf = require('@tensorflow/tfjs-node'); // in nodejs environments tfjs-node is required to be loaded before face-api
-// const faceapi = require('@vladmandic/face-api'); // use this when face-api is installed as module (majority of use cases)
 const faceapi = require('../dist/face-api.node.js'); // use this when using face-api in dev mode
+// const faceapi = require('@vladmandic/face-api'); // use this when face-api is installed as module (majority of use cases)
 
 const modelPathRoot = '../model';
 const imgPathRoot = './demo'; // modify to include your sample images
@@ -87,11 +93,9 @@ async function main() {
   log.header();
   log.info('FaceAPI single-process test');
 
-  fetch = (await import('node-fetch')).default;
+  fetch = (await import('node-fetch')).default; // eslint-disable-line node/no-missing-import
 
   await faceapi.tf.setBackend('tensorflow');
-  await faceapi.tf.enableProdMode();
-  await faceapi.tf.ENV.set('DEBUG', false);
   await faceapi.tf.ready();
 
   log.state(`Version: TensorFlow/JS ${faceapi.tf?.version_core} FaceAPI ${faceapi.version} Backend: ${faceapi.tf?.getBackend()}`);

@@ -1,8 +1,14 @@
-import * as faceapi from '../dist/face-api.esm.js';
+/**
+ * FaceAPI Demo for Browsers
+ * Loaded via `webcam.html`
+ */
+
+import * as faceapi from '../dist/face-api.esm.js'; // use when in dev mode
+// import * as faceapi from '@vladmandic/face-api'; // use when downloading face-api as npm
 
 // configuration options
 const modelPath = '../model/'; // path to model folder that will be loaded using http
-// const modelPath = 'https://vladmandic.github.io/face-api/model/'; // path to model folder that will be loaded using http
+// const modelPath = 'https://cdn.jsdelivr.net/npm/@vladmandic/face-api/model/'; // path to model folder that will be loaded using http
 const minScore = 0.2; // minimum score
 const maxResults = 5; // maximum number of results to return
 let optionsSSDMobileNet;
@@ -17,8 +23,7 @@ function str(json) {
 
 // helper function to print strings to html document as a log
 function log(...txt) {
-  // eslint-disable-next-line no-console
-  console.log(...txt);
+  console.log(...txt); // eslint-disable-line no-console
   const div = document.getElementById('log');
   if (div) div.innerHTML += `<br>${txt}`;
 }

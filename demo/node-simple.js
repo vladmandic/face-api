@@ -1,7 +1,13 @@
+/**
+ * FaceAPI Demo for NodeJS
+ * - Loads image
+ * - Outputs results to console
+ */
+
 const fs = require('fs');
 
-// const faceapi = require('@vladmandic/face-api'); // use this when face-api is installed as module (majority of use cases)
 const faceapi = require('../dist/face-api.node.js'); // use this when using face-api in dev mode
+// const faceapi = require('@vladmandic/face-api'); // use this when face-api is installed as module (majority of use cases)
 
 async function main() {
   await faceapi.nets.ssdMobilenetv1.loadFromDisk('model'); // load models from a specific patch
@@ -19,8 +25,7 @@ async function main() {
     .withFaceDescriptors()
     .withAgeAndGender();
   faceapi.tf.dispose([decodeT, expandT]); // dispose tensors to avoid memory leaks
-  // eslint-disable-next-line no-console
-  console.log({ result }); // print results
+  console.log({ result }); // eslint-disable-line no-console
 }
 
 main();

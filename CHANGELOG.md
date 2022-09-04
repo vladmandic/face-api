@@ -9,11 +9,12 @@
   
 ## Changelog
   
+### **HEAD -> master** 2022/08/24 mandic00@live.com
+
+
 ### **1.7.3** 2022/08/24 mandic00@live.com
 
-
-### **origin/master** 2022/08/23 mandic00@live.com
-
+- refresh release
 
 ### **1.7.2** 2022/08/23 mandic00@live.com
 

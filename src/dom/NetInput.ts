@@ -131,14 +131,14 @@ export class NetInput {
           imgTensor = padToSquare(imgTensor as tf.Tensor4D, isCenterInputs);
 
           if (imgTensor.shape[1] !== inputSize || imgTensor.shape[2] !== inputSize) {
-            imgTensor = tf.image.resizeBilinear(imgTensor as tf.Tensor4D, [inputSize, inputSize], false, false);
+            imgTensor = tf['image'].resizeBilinear(imgTensor as tf.Tensor4D, [inputSize, inputSize], false, false);
           }
 
           return imgTensor.as3D(inputSize, inputSize, 3);
         }
 
         if (input instanceof env.getEnv().Canvas) {
-          return tf.browser.fromPixels(imageToSquare(input, inputSize, isCenterInputs));
+          return tf['browser'].fromPixels(imageToSquare(input, inputSize, isCenterInputs));
         }
 
         throw new Error(`toBatchTensor - at batchIdx ${batchIdx}, expected input to be instanceof tf.Tensor or instanceof HTMLCanvasElement, instead have ${input}`);

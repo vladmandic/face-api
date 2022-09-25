@@ -269,18 +269,24 @@ And then use with:
   const faceapi = require('@vladmandic/face-api/dist/face-api.node-gpu.js'); // this loads face-api version with correct bindings for tfjs-node-gpu
 ```
 
-If you want to use `FaceAPI` in a NodeJS on platforms where NodeJS binary libraries are not supported, you can use JavaScript CPU backend.  
+If you want to use `FaceAPI` in a NodeJS on platforms where **tensorflow** binary libraries are not supported, you can use NodeJS **WASM** backend.  
 
 ```shell
   npm install @tensorflow/tfjs
+  npm install @tensorflow/tfjs-backend-wasm
   npm install @vladmandic/face-api 
 ```
 
 And then use with:
 
 ```js
-  const tf = require('@tensorflow/tfjs')
-  const faceapi = require('@vladmandic/face-api/dist/face-api.node-cpu.js');
+  const tf = require('@tensorflow/tfjs');
+  const wasm = require('@tensorflow/tfjs-backend-wasm');
+  const faceapi = require('@vladmandic/face-api/dist/face-api.node-wasm.js'); // use this when using face-api in dev mode
+  wasm.setWasmPaths('https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-wasm/dist/');
+  await tf.setBackend('wasm');
+  await tf.ready();
+  ...
 ```
 
 If you want to use graphical functions inside NodeJS,  

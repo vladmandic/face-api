@@ -1,6 +1,6 @@
 {
   "name": "@vladmandic/face-api",
-  "version": "1.7.3",
+  "version": "1.7.4",
   "description": "FaceAPI: AI-powered Face Detection & Rotation Tracking, Face Description & Recognition, Age & Gender & Emotion Prediction for Browser and NodeJS using TensorFlow/JS",
   "sideEffects": false,
   "main": "dist/face-api.node.js",
@@ -42,6 +42,7 @@
     "tfjs"
   ],
   "devDependencies": {
+    "@canvas/image": "^1.0.1",
     "@microsoft/api-extractor": "^7.31.0",
     "@tensorflow/tfjs": "^3.20.0",
     "@tensorflow/tfjs-backend-cpu": "^3.20.0",

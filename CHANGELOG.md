@@ -9,11 +9,12 @@
   
 ## Changelog
   
+### **HEAD -> master** 2022/09/25 mandic00@live.com
+
+
 ### **1.7.4** 2022/09/25 mandic00@live.com
 
-
-### **origin/master** 2022/09/14 mandic00@live.com
-
+- improve face compare performance
 
 ### **1.7.3** 2022/08/24 mandic00@live.com
 

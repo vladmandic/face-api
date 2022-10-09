@@ -9,7 +9,7 @@
   
 ## Changelog
   
-### **HEAD -> master** 2022/09/29 mandic00@live.com
+### **HEAD -> master** 2022/10/09 mandic00@live.com
 
 - create funding.yml
 - add node-wasm demo

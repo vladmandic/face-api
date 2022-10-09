@@ -124,7 +124,7 @@ declare const batchNorm: typeof batchNorm_;
  * Mean, variance, scale, and offset can be of two shapes:
  *   - The same shape as the input.
  *   - In the common case, the depth dimension is the last dimension of x, so
- *     the values would be an `tf.Tensor1D` of shape [depth].
+ *     the values would be a `tf.Tensor1D` of shape [depth].
  *
  * Also available are stricter rank-specific methods with the same signature
  * as this method that assert that parameters passed are of given rank
@@ -241,8 +241,8 @@ declare const clipByValue: typeof clipByValue_;
  * x.clipByValue(-2, 3).print();  // or tf.clipByValue(x, -2, 3)
  * ```
  * @param x The input tensor.
- * @param clipValueMin Lower-bound of range to be clipped to.
- * @param clipValueMax Upper-bound of range to be clipped to.
+ * @param clipValueMin Lower bound of range to be clipped to.
+ * @param clipValueMax Upper bound of range to be clipped to.
  *
  * @doc {heading: 'Operations', subheading: 'Basic math'}
  */
@@ -370,7 +370,7 @@ declare const concat: typeof concat_;
  * tf.concat([a, b], axis).print();
  * ```
  * @param tensors A list of tensors to concatenate.
- * @param axis The axis to concate along. Defaults to 0 (the first dim).
+ * @param axis The axis to concatenate along. Defaults to 0 (the first dim).
  *
  * @doc {heading: 'Tensors', subheading: 'Slicing and Joining'}
  */
@@ -932,7 +932,7 @@ declare const expandDims: typeof expandDims_;
  * x.expandDims(axis).print();
  * ```
  *
- * @param x The input tensor whose dimensions to be expanded.
+ * @param x The input tensor whose dimensions are to be expanded.
  * @param axis The dimension index at which to insert shape of `1`. Defaults
  *     to 0 (the first dimension).
  *
@@ -1701,7 +1701,7 @@ declare const pad: typeof pad_;
  * Pads a `tf.Tensor` with a given value and paddings.
  *
  * This operation implements `CONSTANT` mode. For `REFLECT` and `SYMMETRIC`,
- * refer to `tf.mirrorPad`
+ * refer to `tf.mirrorPad`.
  *
  * Also available are stricter rank-specific methods with the same signature
  * as this method that assert that `paddings` is of given length.
@@ -1802,6 +1802,7 @@ declare interface Platform {
     encode(text: string, encoding: string): Uint8Array;
     /** Decode the provided bytes into a string using the provided encoding. */
     decode(bytes: Uint8Array, encoding: string): string;
+    setTimeoutCustom?(functionRef: Function, delay: number): void;
 }
 
 export declare class Point implements IPoint {
@@ -1959,7 +1960,7 @@ declare const relu: typeof relu_;
  * x.relu().print();  // or tf.relu(x)
  * ```
  * @param x The input tensor. If the dtype is `bool`, the output dtype will be
- *     `int32'.
+ *     `int32`.
  *
  * @doc {heading: 'Operations', subheading: 'Basic math'}
  */
@@ -2395,7 +2396,7 @@ declare class Tensor<R extends Rank = Rank> {
      * This means that the texture will use the RGBA channels to store value.
      *
      * For WebGPU backend, the data will be stored on a buffer. There is no
-     * parameter, so can not use an user defined size to create the buffer.
+     * parameter, so can not use a user-defined size to create the buffer.
      *
      * @param options:
      *     For WebGL,
@@ -2776,9 +2777,9 @@ declare const tile: typeof tile_;
  * Construct a tensor by repeating it the number of times given by reps.
  *
  * This operation creates a new tensor by replicating `input` `reps`
- * times. The output tensor's i'th dimension has `input.shape[i] *
+ * times. The output tensor's `i`th dimension has `input.shape[i] *
  * reps[i]` elements, and the values of `input` are replicated
- * `reps[i]` times along the i'th dimension. For example, tiling
+ * `reps[i]` times along the `i`th dimension. For example, tiling
  * `[a, b, c, d]` by `[2]` produces `[a, b, c, d, a, b, c, d]`.
  *
  * ```js

@@ -469,7 +469,7 @@ but extends it with newer AI models, additional detection details, compatibility
 Compared to [face-api.js](https://github.com/justadudewhohacks/face-api.js) version **0.22.2**:
 
 - Compatible with `TensorFlow/JS 2.0+ & 3.0+`  
-  Currently using **`TensorFlow/JS` 3.21.0**  
+  Currently using **`TensorFlow/JS` 4.0**  
   Original `face-api.js` is based on `TFJS` **1.7.4**  
 - Compatible with `WebGL`, `CPU` and `WASM` TFJS Browser backends  
 - Compatible with both `tfjs-node` and `tfjs-node-gpu` TFJS NodeJS backends  

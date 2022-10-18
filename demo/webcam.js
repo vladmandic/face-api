@@ -47,7 +47,7 @@ function drawFaces(canvas, data, fps) {
     ctx.rect(person.detection.box.x, person.detection.box.y, person.detection.box.width, person.detection.box.height);
     ctx.stroke();
     ctx.globalAlpha = 1;
-    // const expression = person.expressions.sort((a, b) => Object.values(a)[0] - Object.values(b)[0]);
+    // draw text labels
     const expression = Object.entries(person.expressions).sort((a, b) => b[1] - a[1]);
     ctx.fillStyle = 'black';
     ctx.fillText(`gender: ${Math.round(100 * person.genderProbability)}% ${person.gender}`, person.detection.box.x, person.detection.box.y - 59);
@@ -66,7 +66,6 @@ function drawFaces(canvas, data, fps) {
     for (let i = 0; i < person.landmarks.positions.length; i++) {
       ctx.beginPath();
       ctx.arc(person.landmarks.positions[i].x, person.landmarks.positions[i].y, pointSize, 0, 2 * Math.PI);
-      // ctx.fillText(`${i}`, person.landmarks.positions[i].x + 4, person.landmarks.positions[i].y + 4);
       ctx.fill();
     }
   }
@@ -100,7 +99,6 @@ async function setupCamera() {
   const canvas = document.getElementById('canvas');
   if (!video || !canvas) return null;
 
-  let msg = '';
   log('Setting up camera');
   // setup webcam. note that navigator.mediaDevices requires that page is accessed via https
   if (!navigator.mediaDevices) {
@@ -108,21 +106,16 @@ async function setupCamera() {
     return null;
   }
   let stream;
-  const constraints = {
-    audio: false,
-    video: { facingMode: 'user', resizeMode: 'crop-and-scale' },
-  };
+  const constraints = { audio: false, video: { facingMode: 'user', resizeMode: 'crop-and-scale' } };
   if (window.innerWidth > window.innerHeight) constraints.video.width = { ideal: window.innerWidth };
   else constraints.video.height = { ideal: window.innerHeight };
   try {
     stream = await navigator.mediaDevices.getUserMedia(constraints);
   } catch (err) {
-    if (err.name === 'PermissionDeniedError' || err.name === 'NotAllowedError') msg = 'camera permission denied';
-    else if (err.name === 'SourceUnavailableError') msg = 'camera not available';
-    log(`Camera Error: ${msg}: ${err.message || err}`);
+    if (err.name === 'PermissionDeniedError' || err.name === 'NotAllowedError') log(`Camera Error: camera permission denied: ${err.message || err}`);
+    if (err.name === 'SourceUnavailableError') log(`Camera Error: camera not available: ${err.message || err}`);
     return null;
   }
-  // @ts-ignore
   if (stream) video.srcObject = stream;
   else {
     log('Camera Error: stream empty');
@@ -133,31 +126,23 @@ async function setupCamera() {
   if (settings.deviceId) delete settings.deviceId;
   if (settings.groupId) delete settings.groupId;
   if (settings.aspectRatio) settings.aspectRatio = Math.trunc(100 * settings.aspectRatio) / 100;
-  log(`Camera active: ${track.label}`); // ${str(constraints)}
+  log(`Camera active: ${track.label}`);
   log(`Camera settings: ${str(settings)}`);
   canvas.addEventListener('click', () => {
-    // @ts-ignore
     if (video && video.readyState >= 2) {
-      // @ts-ignore
       if (video.paused) {
-        // @ts-ignore
         video.play();
         detectVideo(video, canvas);
       } else {
-        // @ts-ignore
         video.pause();
       }
     }
-    // @ts-ignore
     log(`Camera state: ${video.paused ? 'paused' : 'playing'}`);
   });
   return new Promise((resolve) => {
     video.onloadeddata = async () => {
-      // @ts-ignore
       canvas.width = video.videoWidth;
-      // @ts-ignore
       canvas.height = video.videoHeight;
-      // @ts-ignore
       video.play();
       detectVideo(video, canvas);
       resolve(true);
@@ -175,7 +160,6 @@ async function setupFaceAPI() {
   await faceapi.nets.faceRecognitionNet.load(modelPath);
   await faceapi.nets.faceExpressionNet.load(modelPath);
   optionsSSDMobileNet = new faceapi.SsdMobilenetv1Options({ minConfidence: minScore, maxResults });
-
   // check tf engine state
   log(`Models loaded: ${str(faceapi.tf.engine().state.numTensors)} tensors`);
 }
@@ -190,14 +174,10 @@ async function main() {
 
   // default is webgl backend
   await faceapi.tf.setBackend('webgl');
-
-  await faceapi.tf.enableProdMode();
-  await faceapi.tf.ENV.set('DEBUG', false);
   await faceapi.tf.ready();
 
   // check version
   log(`Version: FaceAPI ${str(faceapi?.version || '(not loaded)')} TensorFlow/JS ${str(faceapi?.tf?.version_core || '(not loaded)')} Backend: ${str(faceapi?.tf?.getBackend() || '(not loaded)')}`);
-  // log(`Flags: ${JSON.stringify(faceapi?.tf?.ENV.flags || { tf: 'not loaded' })}`);
 
   await setupFaceAPI();
   await setupCamera();

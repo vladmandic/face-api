@@ -33,9 +33,7 @@ function faces(name, title, id, data) {
   canvas.style.position = 'absolute';
   canvas.style.left = `${img.offsetLeft}px`;
   canvas.style.top = `${img.offsetTop}px`;
-  // @ts-ignore
   canvas.width = img.width;
-  // @ts-ignore
   canvas.height = img.height;
   const ctx = canvas.getContext('2d');
   if (!ctx) return;
@@ -53,6 +51,7 @@ function faces(name, title, id, data) {
     ctx.beginPath();
     ctx.rect(person.detection.box.x, person.detection.box.y, person.detection.box.width, person.detection.box.height);
     ctx.stroke();
+    // draw text labels
     ctx.globalAlpha = 1;
     ctx.fillText(`${Math.round(100 * person.genderProbability)}% ${person.gender}`, person.detection.box.x, person.detection.box.y - 18);
     ctx.fillText(`${Math.round(person.age)} years`, person.detection.box.x, person.detection.box.y - 2);
@@ -143,16 +142,9 @@ async function main() {
   const engine = await faceapi.tf.engine();
   log(`TF Engine State: ${str(engine.state)}`);
 
-  // const testT = faceapi.tf.tensor([0]);
-  // const testF = testT.toFloat();
-  // console.log(testT.print(), testF.print());
-  // testT.dispose();
-  // testF.dispose();
-
   // loop through all images and try to process them
   log(`Start processing: ${samples.length} images ...<br>`);
   for (const img of samples) {
-    // new line
     document.body.appendChild(document.createElement('br'));
     // load and resize image
     const canvas = await image(img);
@@ -178,7 +170,6 @@ async function main() {
       print('SSDMobileNet:', img, dataSSDMobileNet);
     } catch (err) {
       log(`Image: ${img} Error during processing ${str(err)}`);
-      console.error(err); // eslint-disable-line no-console
     }
   }
 }

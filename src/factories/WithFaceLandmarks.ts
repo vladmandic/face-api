@@ -32,14 +32,10 @@ export function isWithFaceLandmarks(
 }
 
 function calculateFaceAngle(mesh) {
-  /*
-    AUTHORED BY: SOHAIB AHMED
-    https://github.com/TheSohaibAhmed/
-  */
-
   // Helper to convert radians to degrees
   // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
   const degrees = (radians) => (radians * 180) / Math.PI;
+  const calcLengthBetweenTwoPoints = (a, b) => Math.sqrt((a._x - b._x) ** 2 + (a._y - b._y) ** 2);
 
   const angle = {
     roll: <number | undefined>undefined,
@@ -47,29 +43,19 @@ function calculateFaceAngle(mesh) {
     yaw: <number | undefined>undefined,
   };
 
-  if (!mesh || !mesh._positions || mesh._positions.length !== 68) return angle;
-  const pt = mesh._positions;
-
-  function calcLengthBetweenTwoPoints(a, b) {
-    return Math.sqrt((a._x - b._x) ** 2 + (a._y - b._y) ** 2);
-  }
   const calcYaw = (leftPoint, midPoint, rightPoint) => {
     // Calc x-distance from left side of the face ("ear") to facial midpoint ("nose")
     const leftToMidpoint = Math.floor(leftPoint._x - midPoint._x);
-
     // Calc x-distance from facial midpoint ("nose") to the right side of the face ("ear")
     const rightToMidpoint = Math.floor(midPoint._x - rightPoint._x);
-
     // Difference in distances coincidentally approximates to angles
-    const distanceApproximatesToAngle = leftToMidpoint - rightToMidpoint;
-    return distanceApproximatesToAngle;
+    return leftToMidpoint - rightToMidpoint;
   };
 
   const calcRoll = (lever, pivot) => {
     // When rolling, the head seems to pivot from the nose/lips/chin area.
     // So, we'll choose any two points from the facial midline, where the first point should be the pivot, and the other "lever"
     // Plan/Execution: get the hypotenuse & opposite sides of a 90deg triangle ==> Calculate angle in radians
-
     const hypotenuse = Math.hypot(pivot._x - lever._x, pivot._y - lever._y);
     const opposite = pivot._y - lever._y;
     const angleInRadians = Math.asin(opposite / hypotenuse);
@@ -103,25 +89,20 @@ function calculateFaceAngle(mesh) {
     return result;
   };
 
+  if (!mesh || !mesh._positions || mesh._positions.length !== 68) return angle;
+  const pt = mesh._positions;
   angle.roll = calcRoll(pt[27], pt[66]);
   angle.pitch = calcPitch(pt[14], pt[30], pt[2]);
   angle.yaw = calcYaw(pt[14], pt[33], pt[2]);
-
   return angle;
 }
 
-export function extendWithFaceLandmarks<
-  TSource extends WithFaceDetection<{}>,
-  TFaceLandmarks extends FaceLandmarks = FaceLandmarks68
->(
+export function extendWithFaceLandmarks<TSource extends WithFaceDetection<{}>, TFaceLandmarks extends FaceLandmarks = FaceLandmarks68>(
   sourceObj: TSource,
   unshiftedLandmarks: TFaceLandmarks,
 ): WithFaceLandmarks<TSource, TFaceLandmarks> {
   const { box: shift } = sourceObj.detection;
-  const landmarks = unshiftedLandmarks.shiftBy<TFaceLandmarks>(
-    shift.x,
-    shift.y,
-  );
+  const landmarks = unshiftedLandmarks.shiftBy<TFaceLandmarks>(shift.x, shift.y);
   const rect = landmarks.align();
   const { imageDims } = sourceObj.detection;
   const alignedRect = new FaceDetection(
@@ -130,13 +111,6 @@ export function extendWithFaceLandmarks<
     imageDims,
   );
   const angle = calculateFaceAngle(unshiftedLandmarks);
-
-  const extension = {
-    landmarks,
-    unshiftedLandmarks,
-    alignedRect,
-    angle,
-  };
-
+  const extension = { landmarks, unshiftedLandmarks, alignedRect, angle };
   return { ...sourceObj, ...extension };
 }

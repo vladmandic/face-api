@@ -9,6 +9,9 @@
   
 ## Changelog
   
+### **HEAD -> master** 2022/10/14 mandic00@live.com
+
+
 ### **1.7.5** 2022/10/09 mandic00@live.com
 
 - create funding.yml

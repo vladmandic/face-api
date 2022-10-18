@@ -4,4 +4,31 @@
   author: <https://github.com/vladmandic>'
 */
 
-var e="4.0.0";var s="4.0.0";var t="4.0.0";var i="4.0.0";var n="4.0.0";var r="4.0.0";var l="4.0.0";var a="4.0.0";var G={tfjs:e,"tfjs-core":s,"tfjs-data":t,"tfjs-layers":i,"tfjs-converter":n,"tfjs-backend-cpu":r,"tfjs-backend-webgl":l,"tfjs-backend-wasm":a};export{G as version};
+
+// node_modules/.pnpm/@tensorflow+tfjs-core@4.0.0/node_modules/@tensorflow/tfjs-core/package.json
+var version = "4.0.0";
+
+// node_modules/.pnpm/@tensorflow+tfjs-converter@4.0.0_hdmpc5coifabqk2ogondqkcwg4/node_modules/@tensorflow/tfjs-converter/package.json
+var version2 = "4.0.0";
+
+// node_modules/.pnpm/@tensorflow+tfjs-backend-cpu@4.0.0_hdmpc5coifabqk2ogondqkcwg4/node_modules/@tensorflow/tfjs-backend-cpu/package.json
+var version3 = "4.0.0";
+
+// node_modules/.pnpm/@tensorflow+tfjs-backend-webgl@4.0.0_hdmpc5coifabqk2ogondqkcwg4/node_modules/@tensorflow/tfjs-backend-webgl/package.json
+var version4 = "4.0.0";
+
+// node_modules/.pnpm/@tensorflow+tfjs-backend-wasm@4.0.0_hdmpc5coifabqk2ogondqkcwg4/node_modules/@tensorflow/tfjs-backend-wasm/package.json
+var version5 = "4.0.0";
+
+// src/tfjs/tf-version.ts
+var version6 = {
+  tfjs: version,
+  "tfjs-core": version,
+  "tfjs-converter": version2,
+  "tfjs-backend-cpu": version3,
+  "tfjs-backend-webgl": version4,
+  "tfjs-backend-wasm": version5
+};
+export {
+  version6 as version
+};

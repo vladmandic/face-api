@@ -37,6 +37,13 @@
       "banner": { "js": "/*\n  Face-API\n  homepage: <https://github.com/vladmandic/face-api>\n  author: <https://github.com/vladmandic>'\n*/\n" }
     },
     "targets": [
+      { 
+        "name": "tfjs/browser/tf-version",
+        "platform": "browser",
+        "format": "esm",
+        "input": "src/tfjs/tf-version.ts",
+        "output": "dist/tfjs.version.js"
+      },
       {
         "name": "tfjs/node/cpu",
         "platform": "node",
@@ -84,13 +91,6 @@
         "input": "src/index.ts",
         "output": "dist/face-api.node-wasm.js",
         "external": ["@tensorflow"]
-      },
-      { 
-        "name": "tfjs/browser/tf-version",
-        "platform": "browser",
-        "format": "esm",
-        "input": "src/tfjs/tf-version.ts",
-        "output": "dist/tfjs.version.js"
       },
       {
         "name": "tfjs/browser/esm/nobundle",

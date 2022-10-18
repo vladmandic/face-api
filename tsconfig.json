@@ -36,7 +36,7 @@
   },
   "formatCodeOptions": { "indentSize": 2, "tabSize": 2 },
   "include": ["src"],
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules/**"],
   "typedocOptions": {
     "excludePrivate": true,
     "excludeExternals": true,

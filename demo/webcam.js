@@ -28,8 +28,11 @@ function log(...txt) {
   if (div) div.innerHTML += `<br>${txt}`;
 }
 
+
+
 // helper function to draw detected faces
 function drawFaces(canvas, data, fps) {
+  console.log(data);
   const ctx = canvas.getContext('2d');
   if (!ctx) return;
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -59,9 +62,11 @@ function drawFaces(canvas, data, fps) {
     ctx.fillText(`expression: ${Math.round(100 * expression[0][1])}% ${expression[0][0]}`, person.detection.box.x, person.detection.box.y - 42);
     ctx.fillText(`age: ${Math.round(person.age)} years`, person.detection.box.x, person.detection.box.y - 24);
     ctx.fillText(`roll:${person.angle.roll}° pitch:${person.angle.pitch}° yaw:${person.angle.yaw}°`, person.detection.box.x, person.detection.box.y - 6);
+    // draw person's name - M.S. 30/10/2022 
+    ctx.fillText(`${person.label}`, person.landmarks.positions[person.landmarks.positions.length - 1].x, person.landmarks.positions[person.landmarks.positions.length - 1].y + 95);
     // draw face points for each face
     ctx.globalAlpha = 0.8;
-    ctx.fillStyle = 'lightblue';
+    ctx.fillStyle = 'red';
     const pointSize = 2;
     for (let i = 0; i < person.landmarks.positions.length; i++) {
       ctx.beginPath();
@@ -71,30 +76,83 @@ function drawFaces(canvas, data, fps) {
   }
 }
 
-async function detectVideo(video, canvas) {
+
+
+const labels = ['Matan', 'Yehuda', 'Yoni_Open'];
+
+/**
+ * 
+ * @param {*} labels names of people that their photos exists 
+ * @returns encoding version of photos of the given labels array
+ */
+async function getLabelFaceDescriptions(labels = ['Matan', 'Yehuda', 'Yoni_Open']) {
+  return await Promise.all(
+    labels.map(async label => {
+      // fetch image data from urls and convert blob to HTMLImage element
+      const imgUrl = `${label}.jpg`
+      const img = await faceapi.fetchImage(imgUrl)
+
+      // detect the face with the highest score in the image and compute it's landmarks and face descriptor
+      const fullFaceDescription = await faceapi.detectSingleFace(img).withFaceLandmarks().withFaceDescriptor()
+
+      if (!fullFaceDescription) {
+        throw new Error(`no faces detected for ${label}`)
+      }
+
+      const faceDescriptors = [fullFaceDescription.descriptor]
+      return new faceapi.LabeledFaceDescriptors(label, faceDescriptors)
+    })
+  )
+}
+
+
+async function detectVideo(video, canvas, facesLables) {
   if (!video || video.paused) return false;
   const t0 = performance.now();
-  faceapi
+
+
+  const fullFaceDescriptions = faceapi
     .detectAllFaces(video, optionsSSDMobileNet)
     .withFaceLandmarks()
     .withFaceExpressions()
-    // .withFaceDescriptors()
-    .withAgeAndGender()
-    .then((result) => {
-      const fps = 1000 / (performance.now() - t0);
-      drawFaces(canvas, result, fps.toLocaleString());
-      requestAnimationFrame(() => detectVideo(video, canvas));
-      return true;
-    })
-    .catch((err) => {
-      log(`Detect Error: ${str(err)}`);
+    .withAgeAndGender().withFaceDescriptors();
+
+  console.log(fullFaceDescriptions);
+
+  fullFaceDescriptions.then(async result => {
+    console.log(result);
+    // log(fullFaceDescriptions); // TODO function to write entering person table per one
+
+    try {
+      // const fps = 1000 / (performance.now() - t0);
+      // 0.6 is a good distance threshold value to judge
+      // whether the descriptors match or not
+      const maxDescriptorDistance = 0.6;
+      const faceMatcher = new faceapi.FaceMatcher(facesLables, maxDescriptorDistance);
+      const recognitionResults = (await result).map(fd => faceMatcher.findBestMatch(fd.descriptor));
+
+
+      recognitionResults.forEach((bestMatch, i) => {
+        const text = bestMatch.toString();
+        // log(fullFaceDescriptions); // TODO function to write entering person table per one
+        console.log(text);
+        const fps = 1000 / (performance.now() - t0);
+        result[i]['label'] = text; // attached label to recognized person
+        drawFaces(canvas, result, fps.toLocaleString());
+        requestAnimationFrame(() => detectVideo(video, canvas, facesLables));
+
+        return true;
+      });
+    } catch (error) {
+      log(`Detect Error: ${str(error)}`);
+      console.error(error);
       return false;
-    });
-  return false;
+    }
+  })
 }
 
 // just initialize everything and call main function
-async function setupCamera() {
+async function setupCamera(facesLables) {
   const video = document.getElementById('video');
   const canvas = document.getElementById('canvas');
   if (!video || !canvas) return null;
@@ -132,7 +190,7 @@ async function setupCamera() {
     if (video && video.readyState >= 2) {
       if (video.paused) {
         video.play();
-        detectVideo(video, canvas);
+        detectVideo(video, canvas, facesLables);
       } else {
         video.pause();
       }
@@ -144,7 +202,7 @@ async function setupCamera() {
       canvas.width = video.videoWidth;
       canvas.height = video.videoHeight;
       video.play();
-      detectVideo(video, canvas);
+      detectVideo(video, canvas, facesLables);
       resolve(true);
     };
   });
@@ -159,6 +217,7 @@ async function setupFaceAPI() {
   await faceapi.nets.faceLandmark68Net.load(modelPath);
   await faceapi.nets.faceRecognitionNet.load(modelPath);
   await faceapi.nets.faceExpressionNet.load(modelPath);
+
   optionsSSDMobileNet = new faceapi.SsdMobilenetv1Options({ minConfidence: minScore, maxResults });
   // check tf engine state
   log(`Models loaded: ${str(faceapi.tf.engine().state.numTensors)} tensors`);
@@ -173,14 +232,16 @@ async function main() {
   // await faceapi.tf.setBackend('wasm');
 
   // default is webgl backend
-  await faceapi.tf.setBackend('webgl');
+  await faceapi.tf.setBackend('webgl'); //TODO check webgl in tensorflow
   await faceapi.tf.ready();
+  await setupFaceAPI();
+  let facesLables = await getLabelFaceDescriptions(labels);
 
   // check version
   log(`Version: FaceAPI ${str(faceapi?.version || '(not loaded)')} TensorFlow/JS ${str(faceapi?.tf?.version_core || '(not loaded)')} Backend: ${str(faceapi?.tf?.getBackend() || '(not loaded)')}`);
 
-  await setupFaceAPI();
-  await setupCamera();
+  await setupCamera(facesLables);
+
 }
 
 // start processing as soon as page is loaded

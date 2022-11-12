@@ -9,10 +9,10 @@
   
 ## Changelog
   
+### **HEAD -> master** 2022/10/18 mandic00@live.com
+
+
 ### **1.7.6** 2022/10/18 mandic00@live.com
-
-
-### **origin/master** 2022/10/18 mandic00@live.com
 
 - fix face angles (yaw, pitch, & roll) accuracy (#130)
 

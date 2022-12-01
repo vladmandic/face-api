@@ -103,6 +103,8 @@ declare const avgPool: typeof avgPool_;
  *         https://www.tensorflow.org/api_docs/python/tf/nn/convolution)
  * @param dimRoundingMode A string from: 'ceil', 'round', 'floor'. If none is
  *     provided, it will default to truncate.
+ *
+ * @doc {heading: 'Operations', subheading: 'Convolution'}
  */
 declare function avgPool_<T extends Tensor3D | Tensor4D>(x: T | TensorLike, filterSize: [number, number] | number, strides: [number, number] | number, pad: 'valid' | 'same' | number | conv_util.ExplicitPadding, dimRoundingMode?: 'floor' | 'round' | 'ceil'): T;
 
@@ -3297,7 +3299,7 @@ declare namespace Tensor { }
  *
  * @doc {heading: 'Tensors', subheading: 'Classes'}
  */
-declare class Tensor<R extends Rank = Rank> {
+declare class Tensor<R extends Rank = Rank> implements TensorInfo {
     /** Unique id of this tensor. */
     readonly id: number;
     /**
@@ -3692,6 +3694,13 @@ declare interface TensorContainerArray extends Array<TensorContainer> {
 
 declare interface TensorContainerObject {
     [x: string]: TensorContainer;
+}
+
+/** Holds metadata for a given tensor. */
+declare interface TensorInfo {
+    dataId: DataId;
+    shape: number[];
+    dtype: DataType;
 }
 
 /** @docalias TypedArray|Array */

@@ -1,14 +1,14 @@
 import * as tf from '../../dist/tfjs.esm';
-export declare type ExtractWeightsFunction = (numWeights: number) => Float32Array;
-export declare type ParamMapping = {
+export type ExtractWeightsFunction = (numWeights: number) => Float32Array;
+export type ParamMapping = {
     originalPath?: string;
     paramPath: string;
 };
-export declare type ConvParams = {
+export type ConvParams = {
     filters: tf.Tensor4D;
     bias: tf.Tensor1D;
 };
-export declare type FCParams = {
+export type FCParams = {
     weights: tf.Tensor2D;
     bias: tf.Tensor1D;
 };

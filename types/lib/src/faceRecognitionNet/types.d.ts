@@ -1,18 +1,18 @@
 import * as tf from '../../dist/tfjs.esm';
 import { ConvParams } from '../common/index';
-export declare type ScaleLayerParams = {
+export type ScaleLayerParams = {
     weights: tf.Tensor1D;
     biases: tf.Tensor1D;
 };
-export declare type ConvLayerParams = {
+export type ConvLayerParams = {
     conv: ConvParams;
     scale: ScaleLayerParams;
 };
-export declare type ResidualLayerParams = {
+export type ResidualLayerParams = {
     conv1: ConvLayerParams;
     conv2: ConvLayerParams;
 };
-export declare type NetParams = {
+export type NetParams = {
     conv32_down: ConvLayerParams;
     conv32_1: ResidualLayerParams;
     conv32_2: ResidualLayerParams;

@@ -1,5 +1,5 @@
 import { Point } from '../classes/Point';
-export declare type TinyYolov2Config = {
+export type TinyYolov2Config = {
     withSeparableConvs: boolean;
     iouThreshold: number;
     anchors: Point[];

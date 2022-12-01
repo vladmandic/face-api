@@ -1,15 +1,15 @@
 import * as tf from '../../dist/tfjs.esm';
 import { ConvParams } from '../common/index';
 import { SeparableConvParams } from '../common/types';
-export declare type BatchNorm = {
+export type BatchNorm = {
     sub: tf.Tensor1D;
     truediv: tf.Tensor1D;
 };
-export declare type ConvWithBatchNorm = {
+export type ConvWithBatchNorm = {
     conv: ConvParams;
     bn: BatchNorm;
 };
-export declare type MobilenetParams = {
+export type MobilenetParams = {
     conv0: SeparableConvParams | ConvParams;
     conv1: SeparableConvParams;
     conv2: SeparableConvParams;
@@ -20,7 +20,7 @@ export declare type MobilenetParams = {
     conv7?: SeparableConvParams;
     conv8: ConvParams;
 };
-export declare type DefaultTinyYolov2NetParams = {
+export type DefaultTinyYolov2NetParams = {
     conv0: ConvWithBatchNorm;
     conv1: ConvWithBatchNorm;
     conv2: ConvWithBatchNorm;
@@ -31,4 +31,4 @@ export declare type DefaultTinyYolov2NetParams = {
     conv7: ConvWithBatchNorm;
     conv8: ConvParams;
 };
-export declare type TinyYolov2NetParams = DefaultTinyYolov2NetParams | MobilenetParams;
+export type TinyYolov2NetParams = DefaultTinyYolov2NetParams | MobilenetParams;

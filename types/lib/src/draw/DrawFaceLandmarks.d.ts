@@ -24,5 +24,5 @@ export declare class DrawFaceLandmarks {
     constructor(faceLandmarks: FaceLandmarks, options?: IDrawFaceLandmarksOptions);
     draw(canvasArg: string | HTMLCanvasElement | CanvasRenderingContext2D): void;
 }
-export declare type DrawFaceLandmarksInput = FaceLandmarks | WithFaceLandmarks<WithFaceDetection<{}>>;
+export type DrawFaceLandmarksInput = FaceLandmarks | WithFaceLandmarks<WithFaceDetection<{}>>;
 export declare function drawFaceLandmarks(canvasArg: string | HTMLCanvasElement, faceLandmarks: DrawFaceLandmarksInput | Array<DrawFaceLandmarksInput>): void;

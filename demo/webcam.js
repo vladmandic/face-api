@@ -116,8 +116,9 @@ async function setupCamera() {
     if (err.name === 'SourceUnavailableError') log(`Camera Error: camera not available: ${err.message || err}`);
     return null;
   }
-  if (stream) video.srcObject = stream;
-  else {
+  if (stream) {
+    video.srcObject = stream;
+  } else {
     log('Camera Error: stream empty');
     return null;
   }
@@ -169,15 +170,21 @@ async function main() {
   log('FaceAPI WebCam Test');
 
   // if you want to use wasm backend location for wasm binaries must be specified
-  // await faceapi.tf.setWasmPaths(`https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-wasm@${faceapi.tf.version_core}/dist/`);
-  // await faceapi.tf.setBackend('wasm');
+  // await faceapi.tf?.setWasmPaths(`https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-wasm@${faceapi.tf.version_core}/dist/`);
+  // await faceapi.tf?.setBackend('wasm');
+  // log(`WASM SIMD: ${await faceapi.tf?.env().getAsync('WASM_HAS_SIMD_SUPPORT')} Threads: ${await faceapi.tf?.env().getAsync('WASM_HAS_MULTITHREAD_SUPPORT') ? 'Multi' : 'Single'}`);
 
   // default is webgl backend
   await faceapi.tf.setBackend('webgl');
   await faceapi.tf.ready();
 
+  // tfjs optimizations
+  if (faceapi.tf?.env().flagRegistry.CANVAS2D_WILL_READ_FREQUENTLY) faceapi.tf.env().set('CANVAS2D_WILL_READ_FREQUENTLY', true);
+  if (faceapi.tf?.env().flagRegistry.WEBGL_EXP_CONV) faceapi.tf.env().set('WEBGL_EXP_CONV', true);
+  if (faceapi.tf?.env().flagRegistry.WEBGL_EXP_CONV) faceapi.tf.env().set('WEBGL_EXP_CONV', true);
+
   // check version
-  log(`Version: FaceAPI ${str(faceapi?.version || '(not loaded)')} TensorFlow/JS ${str(faceapi?.tf?.version_core || '(not loaded)')} Backend: ${str(faceapi?.tf?.getBackend() || '(not loaded)')}`);
+  log(`Version: FaceAPI ${str(faceapi?.version || '(not loaded)')} TensorFlow/JS ${str(faceapi.tf?.version_core || '(not loaded)')} Backend: ${str(faceapi.tf?.getBackend() || '(not loaded)')}`);
 
   await setupFaceAPI();
   await setupCamera();

@@ -1,7 +1,7 @@
-export declare type FileSystem = {
+export type FileSystem = {
     readFile: (filePath: string) => Promise<any>;
 };
-export declare type Environment = FileSystem & {
+export type Environment = FileSystem & {
     Canvas: typeof HTMLCanvasElement;
     CanvasRenderingContext2D: typeof CanvasRenderingContext2D;
     Image: typeof HTMLImageElement;

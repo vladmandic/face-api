@@ -1,5 +1,5 @@
 import { FaceDetection } from '../classes/FaceDetection';
-export declare type WithFaceDetection<TSource> = TSource & {
+export type WithFaceDetection<TSource> = TSource & {
     detection: FaceDetection;
 };
 export declare function isWithFaceDetection(obj: any): obj is WithFaceDetection<{}>;

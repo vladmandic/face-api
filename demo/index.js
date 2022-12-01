@@ -108,19 +108,20 @@ async function main() {
   // initialize tfjs
   log('FaceAPI Test');
 
-  const params = new URLSearchParams(location.search);
-  if (params.has('backend')) {
-    const backend = params.get('backend');
-    await faceapi.tf.setWasmPaths('https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-wasm@3.19.0/dist/');
-    log(`Chosen backend: ${backend}`);
-    await faceapi.tf.setBackend(backend);
-  } else {
-    // default is webgl backend
-    await faceapi.tf.setBackend('webgl');
-  }
+  // if you want to use wasm backend location for wasm binaries must be specified
+  // await faceapi.tf?.setWasmPaths(`https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-wasm@${faceapi.tf.version_core}/dist/`);
+  // await faceapi.tf?.setBackend('wasm');
+  // log(`WASM SIMD: ${await faceapi.tf?.env().getAsync('WASM_HAS_SIMD_SUPPORT')} Threads: ${await faceapi.tf?.env().getAsync('WASM_HAS_MULTITHREAD_SUPPORT') ? 'Multi' : 'Single'}`);
 
+  // default is webgl backend
+  await faceapi.tf.setBackend('webgl');
+  await faceapi.tf.ready();
+
+  // tfjs optimizations
+  if (faceapi.tf?.env().flagRegistry.CANVAS2D_WILL_READ_FREQUENTLY) faceapi.tf.env().set('CANVAS2D_WILL_READ_FREQUENTLY', true);
+  if (faceapi.tf?.env().flagRegistry.WEBGL_EXP_CONV) faceapi.tf.env().set('WEBGL_EXP_CONV', true);
+  if (faceapi.tf?.env().flagRegistry.WEBGL_EXP_CONV) faceapi.tf.env().set('WEBGL_EXP_CONV', true);
   await faceapi.tf.enableProdMode();
-  await faceapi.tf.ENV.set('DEBUG', false);
   await faceapi.tf.ready();
 
   // check version

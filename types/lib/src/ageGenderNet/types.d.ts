@@ -4,16 +4,16 @@ export declare enum Gender {
     FEMALE = "female",
     MALE = "male"
 }
-export declare type AgeAndGenderPrediction = {
+export type AgeAndGenderPrediction = {
     age: number;
     gender: Gender;
     genderProbability: number;
 };
-export declare type NetOutput = {
+export type NetOutput = {
     age: tf.Tensor1D;
     gender: tf.Tensor2D;
 };
-export declare type NetParams = {
+export type NetParams = {
     fc: {
         age: FCParams;
         gender: FCParams;

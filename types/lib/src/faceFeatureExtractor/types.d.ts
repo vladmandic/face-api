@@ -2,33 +2,33 @@ import * as tf from '../../dist/tfjs.esm';
 import { NetInput, TNetInput } from '../index';
 import { ConvParams, SeparableConvParams } from '../common/index';
 import { NeuralNetwork } from '../NeuralNetwork';
-export declare type BatchNormParams = {
+export type BatchNormParams = {
     mean: tf.Tensor1D;
     variance: tf.Tensor1D;
     scale: tf.Tensor1D;
     offset: tf.Tensor1D;
 };
-export declare type ConvWithBatchNormParams = BatchNormParams & {
+export type ConvWithBatchNormParams = BatchNormParams & {
     filter: tf.Tensor4D;
 };
-export declare type SeparableConvWithBatchNormParams = {
+export type SeparableConvWithBatchNormParams = {
     depthwise: ConvWithBatchNormParams;
     pointwise: ConvWithBatchNormParams;
 };
-export declare type DenseBlock3Params = {
+export type DenseBlock3Params = {
     conv0: SeparableConvParams | ConvParams;
     conv1: SeparableConvParams;
     conv2: SeparableConvParams;
 };
-export declare type DenseBlock4Params = DenseBlock3Params & {
+export type DenseBlock4Params = DenseBlock3Params & {
     conv3: SeparableConvParams;
 };
-export declare type TinyFaceFeatureExtractorParams = {
+export type TinyFaceFeatureExtractorParams = {
     dense0: DenseBlock3Params;
     dense1: DenseBlock3Params;
     dense2: DenseBlock3Params;
 };
-export declare type FaceFeatureExtractorParams = {
+export type FaceFeatureExtractorParams = {
     dense0: DenseBlock4Params;
     dense1: DenseBlock4Params;
     dense2: DenseBlock4Params;

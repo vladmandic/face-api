@@ -1,4 +1,4 @@
-export declare type WithAge<TSource> = TSource & {
+export type WithAge<TSource> = TSource & {
     age: number;
 };
 export declare function isWithAge(obj: any): obj is WithAge<{}>;

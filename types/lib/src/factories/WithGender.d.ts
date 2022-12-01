@@ -1,5 +1,5 @@
 import { Gender } from '../ageGenderNet/types';
-export declare type WithGender<TSource> = TSource & {
+export type WithGender<TSource> = TSource & {
     gender: Gender;
     genderProbability: number;
 };

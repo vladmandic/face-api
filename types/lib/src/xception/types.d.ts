@@ -1,15 +1,15 @@
 import { ConvParams, SeparableConvParams } from '../common/index';
-export declare type ReductionBlockParams = {
+export type ReductionBlockParams = {
     separable_conv0: SeparableConvParams;
     separable_conv1: SeparableConvParams;
     expansion_conv: ConvParams;
 };
-export declare type MainBlockParams = {
+export type MainBlockParams = {
     separable_conv0: SeparableConvParams;
     separable_conv1: SeparableConvParams;
     separable_conv2: SeparableConvParams;
 };
-export declare type TinyXceptionParams = {
+export type TinyXceptionParams = {
     entry_flow: {
         conv_in: ConvParams;
         reduction_block_0: ReductionBlockParams;

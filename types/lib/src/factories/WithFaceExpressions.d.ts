@@ -1,5 +1,5 @@
 import { FaceExpressions } from '../faceExpressionNet/FaceExpressions';
-export declare type WithFaceExpressions<TSource> = TSource & {
+export type WithFaceExpressions<TSource> = TSource & {
     expressions: FaceExpressions;
 };
 export declare function isWithFaceExpressions(obj: any): obj is WithFaceExpressions<{}>;

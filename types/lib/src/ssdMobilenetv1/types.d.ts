@@ -1,6 +1,6 @@
 import * as tf from '../../dist/tfjs.esm';
 import { ConvParams } from '../common/index';
-export declare type PointwiseConvParams = {
+export type PointwiseConvParams = {
     filters: tf.Tensor4D;
     batch_norm_offset: tf.Tensor1D;
 };
@@ -33,11 +33,11 @@ export declare namespace MobileNetV1 {
         conv_13: ConvPairParams;
     };
 }
-export declare type BoxPredictionParams = {
+export type BoxPredictionParams = {
     box_encoding_predictor: ConvParams;
     class_predictor: ConvParams;
 };
-export declare type PredictionLayerParams = {
+export type PredictionLayerParams = {
     conv_0: PointwiseConvParams;
     conv_1: PointwiseConvParams;
     conv_2: PointwiseConvParams;
@@ -53,10 +53,10 @@ export declare type PredictionLayerParams = {
     box_predictor_4: BoxPredictionParams;
     box_predictor_5: BoxPredictionParams;
 };
-export declare type OutputLayerParams = {
+export type OutputLayerParams = {
     extra_dim: tf.Tensor3D;
 };
-export declare type NetParams = {
+export type NetParams = {
     mobilenetv1: MobileNetV1.Params;
     prediction_layer: PredictionLayerParams;
     output_layer: OutputLayerParams;

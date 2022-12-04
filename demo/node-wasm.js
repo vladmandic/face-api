@@ -27,7 +27,7 @@ async function readImage(imageFile) {
 }
 
 async function main() {
-  wasm.setWasmPaths('https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-wasm/dist/');
+  wasm.setWasmPaths('https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-wasm/dist/', true);
   await tf.setBackend('wasm');
   await tf.ready();
   console.log(`Version: FaceAPI ${faceapi.version} TensorFlow/JS ${tf.version_core} Backend: ${faceapi.tf.getBackend()}`); // eslint-disable-line no-console
@@ -38,13 +38,16 @@ async function main() {
   await faceapi.nets.faceExpressionNet.loadFromDisk('model');
   const options = new faceapi.SsdMobilenetv1Options({ minConfidence: 0.1, maxResults: 10 }); // set model options
   const tensor = await readImage('demo/sample1.jpg');
+  const t0 = performance.now();
   const result = await faceapi.detectAllFaces(tensor, options) // run detection
     .withFaceLandmarks()
     .withFaceExpressions()
     .withFaceDescriptors()
     .withAgeAndGender();
   tf.dispose(tensor); // dispose tensors to avoid memory leaks
-  console.log({ result }); // eslint-disable-line no-console
+  const t1 = performance.now();
+  console.log('time', t1 - t0); // eslint-disable-line no-console
+  console.log(result); // eslint-disable-line no-console
 }
 
 main();

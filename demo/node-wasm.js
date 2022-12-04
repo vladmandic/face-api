@@ -46,8 +46,8 @@ async function main() {
     .withAgeAndGender();
   tf.dispose(tensor); // dispose tensors to avoid memory leaks
   const t1 = performance.now();
-  console.log('time', t1 - t0); // eslint-disable-line no-console
-  console.log(result); // eslint-disable-line no-console
+  console.log('Time', t1 - t0); // eslint-disable-line no-console
+  console.log('Result', result); // eslint-disable-line no-console
 }
 
 main();

@@ -551,6 +551,7 @@ declare namespace conv_util {
         computeDefaultPad,
         tupleValuesAreOne,
         eitherStridesOrDilationsAreOne,
+        stridesOrDilationsArePositive,
         convertConv2DDataFormat,
         checkPadOnDimRoundingMode,
         ExplicitPadding,
@@ -2688,6 +2689,7 @@ declare interface Platform {
     /** Decode the provided bytes into a string using the provided encoding. */
     decode(bytes: Uint8Array, encoding: string): string;
     setTimeoutCustom?(functionRef: Function, delay: number): void;
+    isTypedArray(a: unknown): a is Float32Array | Int32Array | Uint8Array | Uint8ClampedArray;
 }
 
 export declare class Point implements IPoint {
@@ -3091,6 +3093,7 @@ declare function setEnv(env: Environment): void;
  * =============================================================================
  */
 /// <amd-module name="@tensorflow/tfjs-core/dist/types" />
+/// <reference types="@webgpu/types/dist" />
 /** @docalias number[] */
 declare interface ShapeMap {
     R0: number[];
@@ -3253,6 +3256,8 @@ declare const stack: typeof stack_;
  * @doc {heading: 'Tensors', subheading: 'Slicing and Joining'}
  */
 declare function stack_<T extends Tensor>(tensors: Array<T | TensorLike>, axis?: number): Tensor;
+
+declare function stridesOrDilationsArePositive(values: number | number[]): boolean;
 
 declare const sub: typeof sub_;
 
@@ -3507,27 +3512,104 @@ declare class Tensor<R extends Rank = Rank> implements TensorInfo {
  *
  * const tex = a.dataToGPU();
  * ```
+ *
+ * ```js
+ * // Pass a `WebGPUData` object and specify a shape yourself.
+ *
+ * // This makes it possible for TF.js applications to avoid GPU / CPU sync.
+ * // For example, if your application includes a preprocessing step on the GPU,
+ * // you could upload the GPU output directly to TF.js, rather than first
+ * // downloading the values. Unlike WebGL, this optionally supports zero copy
+ * // by WebGPUData.zeroCopy. When zeroCopy is false or undefined(default), this
+ * // passing GPUBuffer can be destroyed after tensor is created. When zeroCopy
+ * // is true, this GPUBuffer is bound directly by the tensor, so do not destroy
+ * // this GPUBuffer until all access is done.
+ *
+ * // Example for WebGPU:
+ * function createGPUBufferFromData(device, data, dtype) {
+ *   const bytesPerElement = 4;
+ *   const sizeInBytes = data.length * bytesPerElement;
+ *
+ *   const gpuWriteBuffer = device.createBuffer({
+ *     mappedAtCreation: true,
+ *     size: sizeInBytes,
+ *     usage: GPUBufferUsage.MAP_WRITE | GPUBufferUsage.COPY_SRC
+ *   });
+ *   const arrayBuffer = gpuWriteBuffer.getMappedRange();
+ *   if (dtype === 'float32') {
+ *     new Float32Array(arrayBuffer).set(data);
+ *   } else if (dtype === 'int32') {
+ *     new Int32Array(arrayBuffer).set(data);
+ *   } else {
+ *     throw new Error(
+ *         `Creating tensor from GPUBuffer only supports` +
+ *         `'float32'|'int32' dtype, while the dtype is ${dtype}.`);
+ *   }
+ *   gpuWriteBuffer.unmap();
+ *
+ *   const gpuReadBuffer = device.createBuffer({
+ *     mappedAtCreation: false,
+ *     size: sizeInBytes,
+ *     usage: GPUBufferUsage.COPY_DST | GPUBufferUsage.STORAGE |
+ *         GPUBufferUsage.COPY_SRC
+ *   });
+ *
+ *   const copyEncoder = device.createCommandEncoder();
+ *   copyEncoder.copyBufferToBuffer(
+ *       gpuWriteBuffer, 0, gpuReadBuffer, 0, sizeInBytes);
+ *   const copyCommands = copyEncoder.finish();
+ *   device.queue.submit([copyCommands]);
+ *   gpuWriteBuffer.destroy();
+ *   return gpuReadBuffer;
+ * }
+ *
+ * const dtype = 'float32';
+ * const device = tf.backend().device;
+ * const aData = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+ * const bData = [1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4];
+ * const expected = [2, 4, 6, 8, 6, 8, 10, 12, 10, 12, 14, 16, 14, 16, 18, 20];
+ * const aBuffer = createGPUBufferFromData(device, aData, dtype);
+ * const shape = [aData.length];
+ * // To use zeroCopy, use {buffer: aBuffer, zeroCopy: true} instead and destroy
+ * // aBuffer untill all access is done.
+ * const a = tf.tensor({buffer: aBuffer}, shape, dtype);
+ * const b = tf.tensor(bData, shape, dtype);
+ * const result = tf.add(a, b);
+ * a.dispose();
+ * b.dispose();
+ * result.dispose();
+ * aBuffer.destroy();
+ * ```
  * @param values The values of the tensor. Can be nested array of numbers,
- *     or a flat array, or a `TypedArray`, or a `WebGLData` object. If the
- * values are strings, they will be encoded as utf-8 and kept as `Uint8Array[]`.
- * If the values is a `WebGLData` object, the dtype could only be 'float32' or
- * 'int32' and the object has to have: 1. texture, a `WebGLTexture`, the texture
- * must share the same `WebGLRenderingContext` with TFJS's WebGL backend (you
- * could create a custom WebGL backend from your texture's canvas) and the
- * internal texture format for the input texture must be floating point or
- * normalized integer; 2. height, the height of the texture; 3. width, the width
- * of the texture; 4. channels, a non-empty subset of 'RGBA', indicating the
- * values of which channels will be passed to the tensor, such as 'R' or 'BR'
- * (The order of the channels affect the order of tensor values. ). (If the
- * values passed from texture is less than the tensor size, zeros will be padded
- * at the rear.)
+ *     or a flat array, or a `TypedArray`, or a `WebGLData` object, or a
+ * `WebGPUData` object. If the values are strings, they will be encoded as utf-8
+ * and kept as `Uint8Array[]`. If the values is a `WebGLData` object, the dtype
+ * could only be 'float32' or 'int32' and the object has to have: 1. texture, a
+ * `WebGLTexture`, the texture must share the same `WebGLRenderingContext` with
+ * TFJS's WebGL backend (you could create a custom WebGL backend from your
+ * texture's canvas) and the internal texture format for the input texture must
+ * be floating point or normalized integer; 2. height, the height of the
+ * texture; 3. width, the width of the texture; 4. channels, a non-empty subset
+ * of 'RGBA', indicating the values of which channels will be passed to the
+ * tensor, such as 'R' or 'BR' (The order of the channels affect the order of
+ * tensor values. ). (If the values passed from texture is less than the tensor
+ * size, zeros will be padded at the rear.). If the values is a `WebGPUData`
+ * object, the dtype could only be 'float32' or 'int32 and the object has to
+ * have: buffer, a `GPUBuffer`. The buffer must: 1. share the same `GPUDevice`
+ * with TFJS's WebGPU backend; 2. buffer.usage should at least support
+ * GPUBufferUsage.STORAGE | GPUBufferUsage.COPY_SRC; 3. buffer.size should not
+ * be smaller than the byte size of tensor shape. WebGPUData optionally supports
+ * zero copy by flag zeroCopy. When zeroCopy is false or undefined(default),
+ * this passing GPUBuffer can be destroyed after tensor is created. When
+ * zeroCopy is true, this GPUBuffer is bound directly by the tensor, so do not
+ * destroy this GPUBuffer until all access is done.
  * @param shape The shape of the tensor. Optional. If not provided,
  *   it is inferred from `values`.
  * @param dtype The data type.
  *
  * @doc {heading: 'Tensors', subheading: 'Creation'}
  */
-declare function tensor<R extends Rank>(values: TensorLike | WebGLData, shape?: ShapeMap[R], dtype?: DataType): Tensor<R>;
+declare function tensor<R extends Rank>(values: TensorLike | WebGLData | WebGPUData, shape?: ShapeMap[R], dtype?: DataType): Tensor<R>;
 
 /** @doclink Tensor */
 declare type Tensor1D = Tensor<Rank.R1>;
@@ -4158,6 +4240,20 @@ declare interface WebGLData {
     height: number;
     width: number;
     channels: WebGLChannels;
+}
+
+/**
+ * Type for representing a buffer data to create a tensor. Buffer usage should
+ * at least support GPUBufferUsage.STORAGE | GPUBufferUsage.COPY_SRC. When
+ * zeroCopy is false or undefined (default), this GPUBuffer will be copied to
+ * the tensor's resource buffer. When zeroCopy is true, tensor will use this
+ * GPUBuffer as tensor's resource buffer, user should not destroy this GPUBuffer
+ * until all access is done. If not specified at creating a tensor, tensor type
+ * is float32.
+ */
+declare interface WebGPUData {
+    buffer: GPUBuffer;
+    zeroCopy?: boolean;
 }
 
 /**

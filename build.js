@@ -3,11 +3,42 @@ const log = require('@vladmandic/pilogger');
 const Build = require('@vladmandic/build').Build;
 const APIExtractor = require('@microsoft/api-extractor');
 
-// eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-function copy(src, dst) {
-  if (!fs.existsSync(src)) return;
+const regEx = [
+  { search: 'types="@webgpu/types/dist"', replace: 'path="../src/types/webgpu.d.ts"' },
+  { search: 'types="offscreencanvas"', replace: 'path="../src/types/offscreencanvas.d.ts"' },
+];
+
+function copyFile(src, dst) {
+  if (!fs.existsSync(src)) {
+    log.warn('Copy:', { input: src, output: dst });
+    return;
+  }
+  log.state('Copy:', { input: src, output: dst });
   const buffer = fs.readFileSync(src);
   fs.writeFileSync(dst, buffer);
+}
+
+function writeFile(str, dst) {
+  log.state('Write:', { output: dst });
+  fs.writeFileSync(dst, str);
+}
+
+function regExFile(src, entries) {
+  if (!fs.existsSync(src)) {
+    log.warn('Filter:', { src });
+    return;
+  }
+  log.state('Filter:', { input: src });
+  for (const entry of entries) {
+    const buffer = fs.readFileSync(src, 'UTF-8');
+    const lines = buffer.split(/\r?\n/);
+    const out = [];
+    for (const line of lines) {
+      if (line.includes(entry.search)) out.push(line.replace(entry.search, entry.replace));
+      else out.push(line);
+    }
+    fs.writeFileSync(src, out.join('\n'));
+  }
 }
 
 const apiIgnoreList = ['ae-forgotten-export', 'ae-unresolved-link', 'tsdoc-param-tag-missing-hyphen'];
@@ -18,7 +49,7 @@ async function main() {
   await build.run('production');
   // patch tfjs typedefs
   log.state('Copy:', { input: 'types/lib/dist/tfjs.esm.d.ts' });
-  copy('types/lib/dist/tfjs.esm.d.ts', 'dist/tfjs.esm.d.ts');
+  copyFile('types/lib/dist/tfjs.esm.d.ts', 'dist/tfjs.esm.d.ts');
   // run api-extractor to create typedef rollup
   const extractorConfig = APIExtractor.ExtractorConfig.loadFileAndPrepare('api-extractor.json');
   const extractorResult = APIExtractor.Extractor.invoke(extractorConfig, {
@@ -33,16 +64,13 @@ async function main() {
     },
   });
   log.state('API-Extractor:', { succeeeded: extractorResult.succeeded, errors: extractorResult.errorCount, warnings: extractorResult.warningCount });
-  // distribute typedefs
-  /*
-  log.state('Copy:', { input: 'types/human.d.ts' });
-  copy('types/human.d.ts', 'dist/human.esm-nobundle.d.ts');
-  copy('types/human.d.ts', 'dist/human.esm.d.ts');
-  copy('types/human.d.ts', 'dist/human.d.ts');
-  copy('types/human.d.ts', 'dist/human.node-gpu.d.ts');
-  copy('types/human.d.ts', 'dist/human.node.d.ts');
-  copy('types/human.d.ts', 'dist/human.node-wasm.d.ts');
-  */
+  regExFile('types/face-api.d.ts', regEx);
+  writeFile('export * from \'../types/face-api\';', 'dist/face-api.esm-nobundle.d.ts');
+  writeFile('export * from \'../types/face-api\';', 'dist/face-api.esm.d.ts');
+  writeFile('export * from \'../types/face-api\';', 'dist/face-api.d.ts');
+  writeFile('export * from \'../types/face-api\';', 'dist/face-api.node.d.ts');
+  writeFile('export * from \'../types/face-api\';', 'dist/face-api.node-gpu.d.ts');
+  writeFile('export * from \'../types/face-api\';', 'dist/face-api.node-wasm.d.ts');
   log.info('FaceAPI Build complete...');
 }
 

@@ -1,4 +1,4 @@
-/// <reference types="@webgpu/types/dist" />
+/// <reference path="../src/types/webgpu.d.ts" />
 
 declare const add: typeof add_;
 
@@ -3093,7 +3093,7 @@ declare function setEnv(env: Environment): void;
  * =============================================================================
  */
 /// <amd-module name="@tensorflow/tfjs-core/dist/types" />
-/// <reference types="@webgpu/types/dist" />
+/// <reference path="../src/types/webgpu.d.ts" />
 /** @docalias number[] */
 declare interface ShapeMap {
     R0: number[];
@@ -4072,9 +4072,7 @@ export declare class TinyYolov2Options {
 
 export declare type TMediaElement = HTMLImageElement | HTMLVideoElement | HTMLCanvasElement;
 
-export declare type TNetInput = TNetInputArg | Array<TNetInputArg> | NetInput | tf.Tensor4D;
-
-export declare type TNetInputArg = string | TResolvedNetInput;
+export declare type TNetInput = string | TResolvedNetInput | Array<string | TResolvedNetInput> | NetInput;
 
 /**
  * Validates the input to make sure, they are valid net inputs and awaits all media elements
@@ -4150,7 +4148,7 @@ declare const transpose: typeof transpose_;
  */
 declare function transpose_<T extends Tensor>(x: T | TensorLike, perm?: number[], conjugate?: boolean): T;
 
-export declare type TResolvedNetInput = TMediaElement | tf.Tensor3D | tf.Tensor4D;
+export declare type TResolvedNetInput = TMediaElement | Tensor3D | Tensor4D;
 
 declare function tupleValuesAreOne(param: number | number[]): boolean;
 

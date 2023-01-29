@@ -1,11 +1,9 @@
-import * as tf from '../../dist/tfjs.esm';
+import type { Tensor3D, Tensor4D } from '../../dist/tfjs.esm';
 
 import { NetInput } from './NetInput';
 
 export type TMediaElement = HTMLImageElement | HTMLVideoElement | HTMLCanvasElement
 
-export type TResolvedNetInput = TMediaElement | tf.Tensor3D | tf.Tensor4D
+export type TResolvedNetInput = TMediaElement | Tensor3D | Tensor4D
 
-export type TNetInputArg = string | TResolvedNetInput
-
-export type TNetInput = TNetInputArg | Array<TNetInputArg> | NetInput | tf.Tensor4D
+export type TNetInput = string | TResolvedNetInput | Array<string | TResolvedNetInput> | NetInput

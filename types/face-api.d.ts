@@ -1360,7 +1360,7 @@ export { FileSystem_2 as FileSystem }
  * @param shape An array of integers defining the output tensor shape.
  * @param value The scalar value to fill the tensor with.
  * @param dtype The type of an element in the resulting tensor. Defaults to
- * 'float'.
+ *     'float32' if the given param value is a number, otherwise 'string'.
  *
  * @doc {heading: 'Tensors', subheading: 'Creation'}
  */
@@ -3563,6 +3563,9 @@ declare class Tensor<R extends Rank = Rank> implements TensorInfo {
  *   return gpuReadBuffer;
  * }
  *
+ * await tf.setBackend('webgpu').catch(
+ *     () => {throw new Error(
+ *         'Failed to use WebGPU backend. Please use Chrome Canary to run.')});
  * const dtype = 'float32';
  * const device = tf.backend().device;
  * const aData = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
@@ -3913,13 +3916,13 @@ declare const tile: typeof tile_;
  * ```js
  * const a = tf.tensor1d([1, 2]);
  *
- * a.tile([2]).print();    // or a.tile([2])
+ * a.tile([2]).print();    // or tf.tile(a, [2])
  * ```
  *
  * ```js
  * const a = tf.tensor2d([1, 2, 3, 4], [2, 2]);
  *
- * a.tile([1, 2]).print();  // or a.tile([1, 2])
+ * a.tile([1, 2]).print();  // or tf.tile(a, [1,2])
  * ```
  * @param x The tensor to tile.
  * @param reps Determines the number of replications per dimension.

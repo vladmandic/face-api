@@ -446,7 +446,7 @@ Build process uses `@vladmandic/build` module that creates optimized build for e
 
 ## Note
 
-This is updated **face-api.js** with latest available TensorFlow/JS as the original is not compatible with **tfjs 2.0+**.  
+This is updated **face-api.js** with latest available TensorFlow/JS as the original is not compatible with **tfjs >=2.0**.  
 Forked from [face-api.js](https://github.com/justadudewhohacks/face-api.js) version **0.22.2** which was released on March 22nd, 2020  
 
 *Why?* I needed a FaceAPI that does not cause version conflict with newer versions of TensorFlow  
@@ -468,8 +468,8 @@ but extends it with newer AI models, additional detection details, compatibility
 
 Compared to [face-api.js](https://github.com/justadudewhohacks/face-api.js) version **0.22.2**:
 
-- Compatible with `TensorFlow/JS 2.0+ & 3.0+`  
-  Currently using **`TensorFlow/JS` 4.0**  
+- Compatible with `TensorFlow/JS 2.0+, 3.0+ and 4.0+`  
+  Currently using **`TensorFlow/JS` 4.3**  
   Original `face-api.js` is based on `TFJS` **1.7.4**  
 - Compatible with `WebGL`, `CPU` and `WASM` TFJS Browser backends  
 - Compatible with both `tfjs-node` and `tfjs-node-gpu` TFJS NodeJS backends  

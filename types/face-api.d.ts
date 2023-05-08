@@ -772,9 +772,9 @@ declare function depthwiseConv2d_<T extends Tensor3D | Tensor4D>(x: T | TensorLi
 
 export declare class DetectAllFaceLandmarksTask<TSource extends WithFaceDetection<{}>> extends DetectFaceLandmarksTaskBase<WithFaceLandmarks<TSource>[], TSource[]> {
     run(): Promise<WithFaceLandmarks<TSource>[]>;
-    withFaceExpressions(): PredictAllFaceExpressionsWithFaceAlignmentTask<WithFaceLandmarks<TSource, FaceLandmarks68>>;
-    withAgeAndGender(): PredictAllAgeAndGenderWithFaceAlignmentTask<WithFaceLandmarks<TSource, FaceLandmarks68>>;
-    withFaceDescriptors(): ComputeAllFaceDescriptorsTask<WithFaceLandmarks<TSource, FaceLandmarks68>>;
+    withFaceExpressions(): PredictAllFaceExpressionsWithFaceAlignmentTask<WithFaceLandmarks<TSource>>;
+    withAgeAndGender(): PredictAllAgeAndGenderWithFaceAlignmentTask<WithFaceLandmarks<TSource>>;
+    withFaceDescriptors(): ComputeAllFaceDescriptorsTask<WithFaceLandmarks<TSource>>;
 }
 
 export declare function detectAllFaces(input: TNetInput, options?: FaceDetectionOptions): DetectAllFacesTask;
@@ -833,9 +833,9 @@ export declare function detectSingleFace(input: TNetInput, options?: FaceDetecti
 
 export declare class DetectSingleFaceLandmarksTask<TSource extends WithFaceDetection<{}>> extends DetectFaceLandmarksTaskBase<WithFaceLandmarks<TSource> | undefined, TSource | undefined> {
     run(): Promise<WithFaceLandmarks<TSource> | undefined>;
-    withFaceExpressions(): PredictSingleFaceExpressionsWithFaceAlignmentTask<WithFaceLandmarks<TSource, FaceLandmarks68>>;
-    withAgeAndGender(): PredictSingleAgeAndGenderWithFaceAlignmentTask<WithFaceLandmarks<TSource, FaceLandmarks68>>;
-    withFaceDescriptor(): ComputeSingleFaceDescriptorTask<WithFaceLandmarks<TSource, FaceLandmarks68>>;
+    withFaceExpressions(): PredictSingleFaceExpressionsWithFaceAlignmentTask<WithFaceLandmarks<TSource>>;
+    withAgeAndGender(): PredictSingleAgeAndGenderWithFaceAlignmentTask<WithFaceLandmarks<TSource>>;
+    withFaceDescriptor(): ComputeSingleFaceDescriptorTask<WithFaceLandmarks<TSource>>;
 }
 
 export declare class DetectSingleFaceTask extends DetectFacesTaskBase<FaceDetection | undefined> {
@@ -1049,6 +1049,7 @@ declare class Environment_2 {
     get(flagName: string): FlagValue;
     getNumber(flagName: string): number;
     getBool(flagName: string): boolean;
+    getString(flagName: string): string;
     getFlags(): Flags;
     get features(): Flags;
     set(flagName: string, value: FlagValue): void;
@@ -1372,7 +1373,7 @@ declare type Flags = {
     [featureName: string]: FlagValue;
 };
 
-declare type FlagValue = number | boolean;
+declare type FlagValue = number | boolean | string;
 
 /**
  * Creates an IOHandler that loads model artifacts from memory.
@@ -1553,7 +1554,6 @@ declare interface GPUData {
     texture?: WebGLTexture;
     buffer?: GPUBuffer;
     texShape?: [number, number];
-    bufSize?: number;
 }
 
 /**
@@ -3387,12 +3387,10 @@ declare class Tensor<R extends Rank = Rank> implements TensorInfo {
      *        texShape: [number, number] // [height, width]
      *     }
      *
-     *     For WebGPU backend, a GPUData contains the new buffer and
-     *     its information.
+     *     For WebGPU backend, a GPUData contains the new buffer.
      *     {
      *        tensorRef: The tensor that is associated with this buffer,
      *        buffer: GPUBuffer,
-     *        bufSize: number
      *     }
      *
      *     Remember to dispose the GPUData after it is used by

@@ -1,4 +1,3 @@
-import { FaceLandmarks68 } from '../classes/FaceLandmarks68';
 import { TNetInput } from '../dom/index';
 import { FaceLandmark68Net } from '../faceLandmarkNet/FaceLandmark68Net';
 import { FaceLandmark68TinyNet } from '../faceLandmarkNet/FaceLandmark68TinyNet';
@@ -17,13 +16,13 @@ export declare class DetectFaceLandmarksTaskBase<TReturn, TParentReturn> extends
 }
 export declare class DetectAllFaceLandmarksTask<TSource extends WithFaceDetection<{}>> extends DetectFaceLandmarksTaskBase<WithFaceLandmarks<TSource>[], TSource[]> {
     run(): Promise<WithFaceLandmarks<TSource>[]>;
-    withFaceExpressions(): PredictAllFaceExpressionsWithFaceAlignmentTask<WithFaceLandmarks<TSource, FaceLandmarks68>>;
-    withAgeAndGender(): PredictAllAgeAndGenderWithFaceAlignmentTask<WithFaceLandmarks<TSource, FaceLandmarks68>>;
-    withFaceDescriptors(): ComputeAllFaceDescriptorsTask<WithFaceLandmarks<TSource, FaceLandmarks68>>;
+    withFaceExpressions(): PredictAllFaceExpressionsWithFaceAlignmentTask<WithFaceLandmarks<TSource>>;
+    withAgeAndGender(): PredictAllAgeAndGenderWithFaceAlignmentTask<WithFaceLandmarks<TSource>>;
+    withFaceDescriptors(): ComputeAllFaceDescriptorsTask<WithFaceLandmarks<TSource>>;
 }
 export declare class DetectSingleFaceLandmarksTask<TSource extends WithFaceDetection<{}>> extends DetectFaceLandmarksTaskBase<WithFaceLandmarks<TSource> | undefined, TSource | undefined> {
     run(): Promise<WithFaceLandmarks<TSource> | undefined>;
-    withFaceExpressions(): PredictSingleFaceExpressionsWithFaceAlignmentTask<WithFaceLandmarks<TSource, FaceLandmarks68>>;
-    withAgeAndGender(): PredictSingleAgeAndGenderWithFaceAlignmentTask<WithFaceLandmarks<TSource, FaceLandmarks68>>;
-    withFaceDescriptor(): ComputeSingleFaceDescriptorTask<WithFaceLandmarks<TSource, FaceLandmarks68>>;
+    withFaceExpressions(): PredictSingleFaceExpressionsWithFaceAlignmentTask<WithFaceLandmarks<TSource>>;
+    withAgeAndGender(): PredictSingleAgeAndGenderWithFaceAlignmentTask<WithFaceLandmarks<TSource>>;
+    withFaceDescriptor(): ComputeSingleFaceDescriptorTask<WithFaceLandmarks<TSource>>;
 }

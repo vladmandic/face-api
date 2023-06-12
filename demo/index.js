@@ -35,7 +35,7 @@ function faces(name, title, id, data) {
   canvas.style.top = `${img.offsetTop}px`;
   canvas.width = img.width;
   canvas.height = img.height;
-  const ctx = canvas.getContext('2d');
+  const ctx = canvas.getContext('2d', { willReadFrequently: true });
   if (!ctx) return;
   // draw title
   ctx.font = '1rem sans-serif';
@@ -94,7 +94,7 @@ async function image(url) {
       const canvas = document.createElement('canvas');
       canvas.height = img.height;
       canvas.width = img.width;
-      const ctx = canvas.getContext('2d');
+      const ctx = canvas.getContext('2d', { willReadFrequently: true });
       if (ctx) ctx.drawImage(img, 0, 0, img.width, img.height);
       // return generated canvas to be used by tfjs during detection
       resolve(canvas);

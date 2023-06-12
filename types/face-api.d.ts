@@ -201,6 +201,7 @@ declare namespace browser {
     export {
         fromPixelsAsync,
         toPixels,
+        draw_2 as draw,
         fromPixels
     }
 }
@@ -310,6 +311,37 @@ declare function clipByValue_<T extends Tensor>(x: T | TensorLike, clipValueMin:
 export declare class ComposableTask<T> {
     then(onfulfilled: (value: T) => T | PromiseLike<T>): Promise<T>;
     run(): Promise<T>;
+}
+
+/**
+ * Wraps a list of ArrayBuffers into a `slice()`-able object without allocating
+ * a large ArrayBuffer.
+ *
+ * Allocating large ArrayBuffers (~2GB) can be unstable on Chrome. TFJS loads
+ * its weights as a list of (usually) 4MB ArrayBuffers and then slices the
+ * weight tensors out of them. For small models, it's safe to concatenate all
+ * the weight buffers into a single ArrayBuffer and then slice the weight
+ * tensors out of it, but for large models, a different approach is needed.
+ */
+declare class CompositeArrayBuffer {
+    private shards;
+    private previousShardIndex;
+    private bufferUniformSize?;
+    readonly byteLength: number;
+    /**
+     * Concatenate a number of ArrayBuffers into one.
+     *
+     * @param buffers An array of ArrayBuffers to concatenate, or a single
+     *     ArrayBuffer.
+     * @returns Result of concatenating `buffers` in order.
+     */
+    static join(buffers?: ArrayBuffer[] | ArrayBuffer): ArrayBuffer;
+    constructor(buffers?: ArrayBuffer | ArrayBuffer[] | TypedArray | TypedArray[]);
+    slice(start?: number, end?: number): ArrayBuffer;
+    /**
+     * Get the index of the shard that contains the byte at `byteIndex`.
+     */
+    private findShardForByte;
 }
 
 export declare class ComputeAllFaceDescriptorsTask<TSource extends WithFaceLandmarks<WithFaceDetection<{}>>> extends ComputeFaceDescriptorsTaskBase<WithFaceDescriptor<TSource>[], TSource[]> {
@@ -438,10 +470,26 @@ declare function concat_<T extends Tensor>(tensors: Array<T | TensorLike>, axis?
 /**
  * Concatenate a number of ArrayBuffers into one.
  *
- * @param buffers A number of array buffers to concatenate.
+ * @param buffers An array of ArrayBuffers to concatenate, or a single
+ *     ArrayBuffer.
  * @returns Result of concatenating `buffers` in order.
+ *
+ * @deprecated Use tf.io.CompositeArrayBuffer.join() instead.
  */
-declare function concatenateArrayBuffers(buffers: ArrayBuffer[]): ArrayBuffer;
+declare function concatenateArrayBuffers(buffers: ArrayBuffer[] | ArrayBuffer): ArrayBuffer;
+
+declare interface ContextOptions {
+    /**
+     * Optional.  If the canvas has created a context, it would not make effects.
+     * If it is not set, it would be variable based on the current backend.
+     */
+    contextType?: string;
+    /**
+     * Optional. A WebGLContextAttributes configuration. If the canvas has created
+     * a context, it would not make effects.
+     */
+    contextAttributes?: WebGLContextAttributes;
+}
 
 declare const conv2d: typeof conv2d_;
 
@@ -689,15 +737,16 @@ declare interface DataTypeMap {
  *
  * This function is the reverse of `encodeWeights`.
  *
- * @param buffer A flat ArrayBuffer carrying the binary values of the tensors
- *   concatenated in the order specified in `specs`.
+ * @param weightData A flat ArrayBuffer or an array of ArrayBuffers carrying the
+ *   binary values of the tensors concatenated in the order specified in
+ *   `specs`.
  * @param specs Specifications of the names, dtypes and shapes of the tensors
  *   whose value are encoded by `buffer`.
  * @return A map from tensor name to tensor value, with the names corresponding
  *   to names in `specs`.
  * @throws Error, if any of the tensors has unsupported dtype.
  */
-declare function decodeWeights(buffer: ArrayBuffer, specs: WeightsManifestEntry[]): NamedTensorMap;
+declare function decodeWeights(weightData: WeightData, specs: WeightsManifestEntry[]): NamedTensorMap;
 
 export declare type DefaultTinyYolov2NetParams = {
     conv0: ConvWithBatchNorm;
@@ -912,6 +961,28 @@ declare namespace draw {
 }
 export { draw }
 
+/**
+ * Draws a `tf.Tensor` to a canvas.
+ *
+ * When the dtype of the input is 'float32', we assume values in the range
+ * [0-1]. Otherwise, when input is 'int32', we assume values in the range
+ * [0-255].
+ *
+ * @param image The tensor to draw on the canvas. Must match one of
+ * these shapes:
+ *   - Rank-2 with shape `[height, width`]: Drawn as grayscale.
+ *   - Rank-3 with shape `[height, width, 1]`: Drawn as grayscale.
+ *   - Rank-3 with shape `[height, width, 3]`: Drawn as RGB with alpha set in
+ *     `imageOptions` (defaults to 1, which is opaque).
+ *   - Rank-3 with shape `[height, width, 4]`: Drawn as RGBA.
+ * @param canvas The canvas to draw to.
+ * @param options The configuration arguments for image to be drawn and the
+ *     canvas to draw to.
+ *
+ * @doc {heading: 'Browser', namespace: 'browser'}
+ */
+declare function draw_2(image: Tensor2D | Tensor3D | TensorLike, canvas: HTMLCanvasElement, options?: DrawOptions): void;
+
 declare class DrawBox {
     box: Box;
     options: DrawBoxOptions;
@@ -954,6 +1025,17 @@ declare class DrawFaceLandmarksOptions {
     lineColor: string;
     pointColor: string;
     constructor(options?: IDrawFaceLandmarksOptions);
+}
+
+declare interface DrawOptions {
+    /**
+     * Optional. An object of options to customize the values of image tensor.
+     */
+    imageOptions?: ImageOptions;
+    /**
+     * Optional. An object to configure the context of the canvas to draw to.
+     */
+    contextOptions?: ContextOptions;
 }
 
 declare class DrawTextField {
@@ -1396,7 +1478,7 @@ declare type FlagValue = number | boolean | string;
  *
  * @returns A passthrough `IOHandler` that simply loads the provided data.
  */
-declare function fromMemory(modelArtifacts: {} | ModelArtifacts, weightSpecs?: WeightsManifestEntry[], weightData?: ArrayBuffer, trainingConfig?: TrainingConfig): IOHandler;
+declare function fromMemory(modelArtifacts: {} | ModelArtifacts, weightSpecs?: WeightsManifestEntry[], weightData?: WeightData, trainingConfig?: TrainingConfig): IOHandler;
 
 /**
  * Creates an IOHandler that loads model artifacts from memory.
@@ -1419,7 +1501,7 @@ declare function fromMemory(modelArtifacts: {} | ModelArtifacts, weightSpecs?: W
  *
  * @returns A passthrough `IOHandlerSync` that simply loads the provided data.
  */
-declare function fromMemorySync(modelArtifacts: {} | ModelArtifacts, weightSpecs?: WeightsManifestEntry[], weightData?: ArrayBuffer, trainingConfig?: TrainingConfig): IOHandlerSync;
+declare function fromMemorySync(modelArtifacts: {} | ModelArtifacts, weightSpecs?: WeightsManifestEntry[], weightData?: WeightData, trainingConfig?: TrainingConfig): IOHandlerSync;
 
 declare const fromPixels: typeof fromPixels_;
 
@@ -1511,7 +1593,7 @@ export declare function getMediaDimensions(input: HTMLImageElement | HTMLCanvasE
  */
 declare function getModelArtifactsForJSON(modelJSON: ModelJSON, loadWeights: (weightsManifest: WeightsManifestConfig) => Promise<[
 WeightsManifestEntry[],
-ArrayBuffer
+WeightData
 ]>): Promise<ModelArtifacts>;
 
 /**
@@ -1520,12 +1602,12 @@ ArrayBuffer
  * @param modelJSON Object containing the parsed JSON of `model.json`
  * @param weightSpecs The list of WeightsManifestEntry for the model. Must be
  *     passed if the modelJSON has a weightsManifest.
- * @param weightData An ArrayBuffer of weight data for the model corresponding
- *     to the weights in weightSpecs. Must be passed if the modelJSON has a
- *     weightsManifest.
+ * @param weightData An ArrayBuffer or array of ArrayBuffers of weight data for
+ *     the model corresponding to the weights in weightSpecs. Must be passed if
+ *     the modelJSON has a weightsManifest.
  * @returns A Promise of the `ModelArtifacts`, as described by the JSON file.
  */
-declare function getModelArtifactsForJSONSync(modelJSON: ModelJSON, weightSpecs?: WeightsManifestEntry[], weightData?: ArrayBuffer): ModelArtifacts;
+declare function getModelArtifactsForJSONSync(modelJSON: ModelJSON, weightSpecs?: WeightsManifestEntry[], weightData?: WeightData): ModelArtifacts;
 
 /**
  * Populate ModelArtifactsInfo fields for a model with JSON topology.
@@ -1702,6 +1784,15 @@ declare const image: {
     transform: (image: TensorLike | Tensor4D, transforms: TensorLike | Tensor2D, interpolation?: "bilinear" | "nearest", fillMode?: "reflect" | "nearest" | "constant" | "wrap", fillValue?: number, outputShape?: [number, number]) => Tensor4D;
 };
 
+declare interface ImageOptions {
+    /**
+     * Optional. A number in range [0-1]. If the image is a 2D tensor or a 3D
+     * tensor with 1 or 3 channels, the alpha channels would set as its value;
+     * otherwise, it would not make effects.
+     */
+    alpha?: number;
+}
+
 export declare function imageTensorToCanvas(imgTensor: tf.Tensor, canvas?: HTMLCanvasElement): Promise<HTMLCanvasElement>;
 
 export declare function imageToSquare(input: HTMLImageElement | HTMLCanvasElement, inputSize: number, centerImage?: boolean): HTMLCanvasElement;
@@ -1718,6 +1809,7 @@ declare namespace io {
         removeModel,
         browserFiles,
         browserHTTPRequest,
+        CompositeArrayBuffer,
         concatenateArrayBuffers,
         decodeWeights,
         encodeWeights,
@@ -1748,6 +1840,7 @@ declare namespace io {
         SaveHandler,
         SaveResult,
         TrainingConfig,
+        WeightData,
         WeightGroup,
         weightsLoaderFactory,
         WeightsManifestConfig,
@@ -2139,10 +2232,12 @@ declare interface ModelArtifacts {
      */
     weightSpecs?: WeightsManifestEntry[];
     /**
-     * Binary buffer for all weight values concatenated in the order specified
-     * by `weightSpecs`.
+     * Binary buffer(s) for all weight values in the order specified by
+     * `weightSpecs`. This may be a single ArrayBuffer of all the weights
+     * concatenated together or an Array of ArrayBuffers containing the weights
+     * (weights may be sharded across multiple ArrayBuffers).
      */
-    weightData?: ArrayBuffer;
+    weightData?: WeightData;
     /**
      * Hard-coded format name for models saved from TensorFlow.js or converted
      * by TensorFlow.js Converter.
@@ -3468,11 +3563,14 @@ declare class Tensor<R extends Rank = Rank> implements TensorInfo {
  * // downloading the values.
  *
  * // Example for WebGL2:
- * const customCanvas = document.createElement('canvas');
- * const customBackend = new tf.MathBackendWebGL(customCanvas);
- * tf.registerBackend('custom-webgl', () => customBackend);
+ * if (tf.findBackend('custom-webgl') == null) {
+ *   const customCanvas = document.createElement('canvas');
+ *   const customBackend = new tf.MathBackendWebGL(customCanvas);
+ *   tf.registerBackend('custom-webgl', () => customBackend);
+ * }
+ * const savedBackend = tf.getBackend();
  * await tf.setBackend('custom-webgl');
- * const gl = customBackend.gpgpu.gl;
+ * const gl = tf.backend().gpgpu.gl;
  * const texture = gl.createTexture();
  * const tex2d = gl.TEXTURE_2D;
  * const width = 2;
@@ -3499,6 +3597,7 @@ declare class Tensor<R extends Rank = Rank> implements TensorInfo {
  *
  * const logicalShape = [height * width * 2];
  * const a = tf.tensor({texture, height, width, channels: 'BR'}, logicalShape);
+ * a.print();
  * // Tensor value will be [2, 0, 6, 4, 10, 8, 14, 12], since [2, 0] is the
  * // values of 'B' and 'R' channels of Pixel0, [6, 4] is the values of 'B' and
  * 'R'
@@ -3509,6 +3608,7 @@ declare class Tensor<R extends Rank = Rank> implements TensorInfo {
  * // so:
  *
  * const tex = a.dataToGPU();
+ * await tf.setBackend(savedBackend);
  * ```
  *
  * ```js
@@ -3561,6 +3661,7 @@ declare class Tensor<R extends Rank = Rank> implements TensorInfo {
  *   return gpuReadBuffer;
  * }
  *
+ * const savedBackend = tf.getBackend();
  * await tf.setBackend('webgpu').catch(
  *     () => {throw new Error(
  *         'Failed to use WebGPU backend. Please use Chrome Canary to run.')});
@@ -3576,10 +3677,12 @@ declare class Tensor<R extends Rank = Rank> implements TensorInfo {
  * const a = tf.tensor({buffer: aBuffer}, shape, dtype);
  * const b = tf.tensor(bData, shape, dtype);
  * const result = tf.add(a, b);
+ * result.print();
  * a.dispose();
  * b.dispose();
  * result.dispose();
  * aBuffer.destroy();
+ * await tf.setBackend(savedBackend);
  * ```
  * @param values The values of the tensor. Can be nested array of numbers,
  *     or a flat array, or a `TypedArray`, or a `WebGLData` object, or a
@@ -4254,6 +4357,8 @@ declare interface WebGPUData {
     buffer: GPUBuffer;
     zeroCopy?: boolean;
 }
+
+declare type WeightData = ArrayBuffer | ArrayBuffer[];
 
 /**
  * Group to which the weight belongs.

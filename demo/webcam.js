@@ -30,7 +30,7 @@ function log(...txt) {
 
 // helper function to draw detected faces
 function drawFaces(canvas, data, fps) {
-  const ctx = canvas.getContext('2d');
+  const ctx = canvas.getContext('2d', { willReadFrequently: true });
   if (!ctx) return;
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   // draw title

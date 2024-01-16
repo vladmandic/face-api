@@ -58,7 +58,7 @@ export function extractParamsFromWeightMap(
     reduction_block_1: entry_flow_reduction_block_1,
   };
 
-  const middle_flow = {};
+  const middle_flow: Record<`main_block_${number}`, MainBlockParams> = {};
   range(numMainBlocks, 0, 1).forEach((idx) => {
     middle_flow[`main_block_${idx}`] = extractMainBlockParams(`middle_flow/main_block_${idx}`);
   });

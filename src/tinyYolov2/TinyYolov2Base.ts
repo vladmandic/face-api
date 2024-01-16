@@ -19,7 +19,7 @@ import { extractParams } from './extractParams';
 import { extractParamsFromWeightMap } from './extractParamsFromWeightMap';
 import { leaky } from './leaky';
 import { ITinyYolov2Options, TinyYolov2Options } from './TinyYolov2Options';
-import { DefaultTinyYolov2NetParams, MobilenetParams, TinyYolov2NetParams } from './types';
+import { DefaultTinyYolov2NetParams, MobilenetParams, TinyYolov2ExtractBoxesResult, TinyYolov2NetParams } from './types';
 
 export class TinyYolov2Base extends NeuralNetwork<TinyYolov2NetParams> {
   public static DEFAULT_FILTER_SIZES = [3, 16, 32, 64, 128, 256, 512, 1024, 1024];
@@ -183,9 +183,9 @@ export class TinyYolov2Base extends NeuralNetwork<TinyYolov2NetParams> {
       return [boxes, scores, classScores];
     });
 
-    const results = [] as any;
-    const scoresData = await scoresTensor.array();
-    const boxesData = await boxesTensor.array();
+    const results: TinyYolov2ExtractBoxesResult[] = [];
+    const scoresData = await scoresTensor.array() as number[][][][];
+    const boxesData = await boxesTensor.array() as number[][][][];
     for (let row = 0; row < numCells; row++) {
       for (let col = 0; col < numCells; col++) {
         for (let anchor = 0; anchor < numBoxes; anchor++) {

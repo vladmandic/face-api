@@ -18,7 +18,7 @@ export type TinyXceptionParams = {
     reduction_block_0: ReductionBlockParams
     reduction_block_1: ReductionBlockParams
   }
-  middle_flow: any,
+  middle_flow: Record<`main_block_${number}`, MainBlockParams>,
   exit_flow: {
     reduction_block: ReductionBlockParams
     separable_conv: SeparableConvParams

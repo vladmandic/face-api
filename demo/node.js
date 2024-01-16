@@ -93,6 +93,7 @@ async function main() {
   log.header();
   log.info('FaceAPI single-process test');
 
+  // eslint-disable-next-line node/no-extraneous-import
   fetch = (await import('node-fetch')).default; // eslint-disable-line node/no-missing-import
 
   await faceapi.tf.setBackend('tensorflow');

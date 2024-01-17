@@ -1,6 +1,6 @@
 {
   "name": "@vladmandic/face-api",
-  "version": "1.7.12",
+  "version": "1.7.13",
   "description": "FaceAPI: AI-powered Face Detection & Rotation Tracking, Face Description & Recognition, Age & Gender & Emotion Prediction for Browser and NodeJS using TensorFlow/JS",
   "sideEffects": false,
   "main": "dist/face-api.node.js",

@@ -1,4 +1,5 @@
 /// <reference path="../src/types/webgpu.d.ts" />
+/// <reference types="node" />
 
 declare const add: typeof add_;
 
@@ -1221,7 +1222,7 @@ export declare function extractFaces(input: TNetInput, detections: Array<FaceDet
  */
 export declare function extractFaceTensors(imageTensor: tf.Tensor3D | tf.Tensor4D, detections: Array<FaceDetection | Rect>): Promise<tf.Tensor3D[]>;
 
-export declare const FACE_EXPRESSION_LABELS: string[];
+export declare const FACE_EXPRESSION_LABELS: readonly ["neutral", "happy", "sad", "angry", "fearful", "disgusted", "surprised"];
 
 export declare class FaceDetection extends ObjectDetection implements IFaceDetecion {
     constructor(score: number, relativeBox: Rect, imageDims: IDimensions);
@@ -1239,7 +1240,7 @@ export declare class FaceExpressionNet extends FaceProcessor<FaceFeatureExtracto
     constructor(faceFeatureExtractor?: FaceFeatureExtractor);
     forwardInput(input: NetInput | tf.Tensor4D): tf.Tensor2D;
     forward(input: TNetInput): Promise<tf.Tensor2D>;
-    predictExpressions(input: TNetInput): Promise<any>;
+    predictExpressions(input: TNetInput): Promise<FaceExpressions | FaceExpressions[]>;
     protected getDefaultModelName(): string;
     protected getClassifierChannelsIn(): number;
     protected getClassifierChannelsOut(): number;
@@ -1255,7 +1256,7 @@ export declare class FaceExpressions {
     surprised: number;
     constructor(probabilities: number[] | Float32Array);
     asSortedArray(): {
-        expression: string;
+        expression: "neutral" | "happy" | "sad" | "angry" | "fearful" | "disgusted" | "surprised";
         probability: number;
     }[];
 }
@@ -1431,7 +1432,7 @@ export declare function fetchOrThrow(url: string, init?: RequestInit): Promise<R
 export declare function fetchVideo(uri: string): Promise<HTMLVideoElement>;
 
 declare type FileSystem_2 = {
-    readFile: (filePath: string) => Promise<any>;
+    readFile: (filePath: string) => Promise<string | Buffer>;
 };
 export { FileSystem_2 as FileSystem }
 
@@ -2113,6 +2114,12 @@ declare function loadWeights(manifest: WeightsManifestConfig, filePathPrefix?: s
 
 export declare const locateFaces: (input: TNetInput, options: SsdMobilenetv1Options) => Promise<FaceDetection[]>;
 
+declare type MainBlockParams = {
+    separable_conv0: SeparableConvParams;
+    separable_conv1: SeparableConvParams;
+    separable_conv2: SeparableConvParams;
+};
+
 export declare function matchDimensions(input: IDimensions, reference: IDimensions, useMediaDimensions?: boolean): {
     width: number;
     height: number;
@@ -2616,15 +2623,15 @@ export declare abstract class NeuralNetwork<TNetParams> {
     reassignParamFromPath(paramPath: string, tensor: tf.Tensor): void;
     getParamList(): {
         path: string;
-        tensor: tf.Tensor;
+        tensor: tf.Tensor<tf.Rank>;
     }[];
     getTrainableParams(): {
         path: string;
-        tensor: tf.Tensor;
+        tensor: tf.Tensor<tf.Rank>;
     }[];
     getFrozenParams(): {
         path: string;
-        tensor: tf.Tensor;
+        tensor: tf.Tensor<tf.Rank>;
     }[];
     variable(): void;
     freeze(): void;
@@ -2834,8 +2841,8 @@ export declare const predictAgeAndGender: (input: TNetInput) => Promise<AgeAndGe
 declare class PredictAgeAndGenderTaskBase<TReturn, TParentReturn> extends ComposableTask<TReturn> {
     protected parentTask: ComposableTask<TParentReturn> | Promise<TParentReturn>;
     protected input: TNetInput;
-    protected extractedFaces?: any[] | undefined;
-    constructor(parentTask: ComposableTask<TParentReturn> | Promise<TParentReturn>, input: TNetInput, extractedFaces?: any[] | undefined);
+    protected extractedFaces?: (tf.Tensor3D | HTMLCanvasElement)[] | undefined;
+    constructor(parentTask: ComposableTask<TParentReturn> | Promise<TParentReturn>, input: TNetInput, extractedFaces?: (tf.Tensor3D | HTMLCanvasElement)[] | undefined);
 }
 
 declare class PredictAllAgeAndGenderTask<TSource extends WithFaceDetection<{}>> extends PredictAgeAndGenderTaskBase<WithAge<WithGender<TSource>>[], TSource[]> {
@@ -2870,8 +2877,8 @@ export declare class PredictedBox extends LabeledBox {
 declare class PredictFaceExpressionsTaskBase<TReturn, TParentReturn> extends ComposableTask<TReturn> {
     protected parentTask: ComposableTask<TParentReturn> | Promise<TParentReturn>;
     protected input: TNetInput;
-    protected extractedFaces?: any[] | undefined;
-    constructor(parentTask: ComposableTask<TParentReturn> | Promise<TParentReturn>, input: TNetInput, extractedFaces?: any[] | undefined);
+    protected extractedFaces?: (tf.Tensor3D | HTMLCanvasElement)[] | undefined;
+    constructor(parentTask: ComposableTask<TParentReturn> | Promise<TParentReturn>, input: TNetInput, extractedFaces?: (tf.Tensor3D | HTMLCanvasElement)[] | undefined);
 }
 
 declare type PredictionLayerParams = {
@@ -3316,8 +3323,14 @@ declare function softmax_<T extends Tensor>(logits: T | TensorLike, dim?: number
 
 export declare class SsdMobilenetv1 extends NeuralNetwork<NetParams_4> {
     constructor();
-    forwardInput(input: NetInput): any;
-    forward(input: TNetInput): Promise<any>;
+    forwardInput(input: NetInput): {
+        boxes: tf.Tensor2D[];
+        scores: tf.Tensor1D[];
+    };
+    forward(input: TNetInput): Promise<{
+        boxes: tf.Tensor2D[];
+        scores: tf.Tensor1D[];
+    }>;
     locateFaces(input: TNetInput, options?: ISsdMobilenetv1Options): Promise<FaceDetection[]>;
     protected getDefaultModelName(): string;
     protected extractParamsFromWeightMap(weightMap: tf.NamedTensorMap): {
@@ -4116,7 +4129,7 @@ declare type TinyXceptionParams = {
         reduction_block_0: ReductionBlockParams;
         reduction_block_1: ReductionBlockParams;
     };
-    middle_flow: any;
+    middle_flow: Record<`main_block_${number}`, MainBlockParams>;
     exit_flow: {
         reduction_block: ReductionBlockParams;
         separable_conv: SeparableConvParams;
@@ -4165,7 +4178,7 @@ declare class TinyYolov2Base extends NeuralNetwork<TinyYolov2NetParams> {
         params: TinyYolov2NetParams;
         paramMappings: ParamMapping[];
     };
-    protected extractBoxes(outputTensor: tf.Tensor4D, inputBlobDimensions: Dimensions, scoreThreshold?: number): Promise<any>;
+    protected extractBoxes(outputTensor: tf.Tensor4D, inputBlobDimensions: Dimensions, scoreThreshold?: number): Promise<TinyYolov2ExtractBoxesResult[]>;
     private extractPredictedClass;
 }
 
@@ -4178,6 +4191,16 @@ export declare type TinyYolov2Config = {
     withClassScores?: boolean;
     filterSizes?: number[];
     isFirstLayerConv2d?: boolean;
+};
+
+export declare type TinyYolov2ExtractBoxesResult = {
+    box: BoundingBox;
+    score: number;
+    classScore: number;
+    label: number;
+    row: number;
+    col: number;
+    anchor: number;
 };
 
 export declare type TinyYolov2NetParams = DefaultTinyYolov2NetParams | MobilenetParams;

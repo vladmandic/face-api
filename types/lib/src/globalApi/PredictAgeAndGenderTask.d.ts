@@ -1,3 +1,4 @@
+import * as tf from '../../dist/tfjs.esm';
 import { TNetInput } from '../dom/index';
 import { WithAge } from '../factories/WithAge';
 import { WithFaceDetection } from '../factories/WithFaceDetection';
@@ -9,8 +10,8 @@ import { PredictAllFaceExpressionsTask, PredictAllFaceExpressionsWithFaceAlignme
 export declare class PredictAgeAndGenderTaskBase<TReturn, TParentReturn> extends ComposableTask<TReturn> {
     protected parentTask: ComposableTask<TParentReturn> | Promise<TParentReturn>;
     protected input: TNetInput;
-    protected extractedFaces?: any[] | undefined;
-    constructor(parentTask: ComposableTask<TParentReturn> | Promise<TParentReturn>, input: TNetInput, extractedFaces?: any[] | undefined);
+    protected extractedFaces?: (tf.Tensor3D | HTMLCanvasElement)[] | undefined;
+    constructor(parentTask: ComposableTask<TParentReturn> | Promise<TParentReturn>, input: TNetInput, extractedFaces?: (tf.Tensor3D | HTMLCanvasElement)[] | undefined);
 }
 export declare class PredictAllAgeAndGenderTask<TSource extends WithFaceDetection<{}>> extends PredictAgeAndGenderTaskBase<WithAge<WithGender<TSource>>[], TSource[]> {
     run(): Promise<WithAge<WithGender<TSource>>[]>;

@@ -1,4 +1,4 @@
-export declare const FACE_EXPRESSION_LABELS: string[];
+export declare const FACE_EXPRESSION_LABELS: readonly ["neutral", "happy", "sad", "angry", "fearful", "disgusted", "surprised"];
 export declare class FaceExpressions {
     neutral: number;
     happy: number;
@@ -9,7 +9,7 @@ export declare class FaceExpressions {
     surprised: number;
     constructor(probabilities: number[] | Float32Array);
     asSortedArray(): {
-        expression: string;
+        expression: "neutral" | "happy" | "sad" | "angry" | "fearful" | "disgusted" | "surprised";
         probability: number;
     }[];
 }

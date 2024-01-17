@@ -1,4 +1,5 @@
 import * as tf from '../../dist/tfjs.esm';
+import { BoundingBox } from '../classes';
 
 import { ConvParams } from '../common/index';
 import { SeparableConvParams } from '../common/types';
@@ -38,3 +39,13 @@ export type DefaultTinyYolov2NetParams = {
 }
 
 export type TinyYolov2NetParams = DefaultTinyYolov2NetParams | MobilenetParams
+
+export type TinyYolov2ExtractBoxesResult = {
+  box: BoundingBox;
+  score: number;
+  classScore: number;
+  label: number;
+  row: number;
+  col: number;
+  anchor: number;
+}

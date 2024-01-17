@@ -3,11 +3,9 @@ import { createFileSystem } from './createFileSystem';
 import { Environment } from './types';
 
 export function createNodejsEnv(): Environment {
-  // eslint-disable-next-line dot-notation
-  const Canvas = global['Canvas'] || global.HTMLCanvasElement;
+  const Canvas: (new () => HTMLCanvasElement) = (global as any)['Canvas'] || global.HTMLCanvasElement;
   const Image = global.Image || global.HTMLImageElement;
-  // eslint-disable-next-line dot-notation
-  const Video = global['Video'] || global.HTMLVideoElement;
+  const Video: (new () => HTMLVideoElement) = (global as any)['Video'] || global.HTMLVideoElement;
 
   const createCanvasElement = () => {
     if (Canvas) return new Canvas();

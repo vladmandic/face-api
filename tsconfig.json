@@ -15,7 +15,7 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "noFallthroughCasesInSwitch": true,
-    "noImplicitAny": false,
+    "noImplicitAny": true,
     "noImplicitOverride": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
@@ -32,7 +32,7 @@
     "strictBindCallApply": true,
     "strictFunctionTypes": true,
     "strictNullChecks": true,
-    "strictPropertyInitialization": true,
+    "strictPropertyInitialization": true
   },
   "formatCodeOptions": { "indentSize": 2, "tabSize": 2 },
   "include": ["src"],
@@ -49,6 +49,6 @@
     "readme": "none",
     "out": "typedoc",
     "logLevel": "Verbose",
-    "logger": "none",
+    "logger": "none"
   }
 }

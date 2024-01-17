@@ -13,7 +13,8 @@ export function createFileSystem(fs?: any): FileSystem {
   }
 
   const readFile = fs
-    ? (filePath: string) => new Promise((resolve, reject) => { fs.readFile(filePath, (err: any, buffer) => (err ? reject(err) : resolve(buffer))); })
+    // eslint-disable-next-line no-undef
+    ? (filePath: string) => new Promise<string | Buffer>((resolve, reject) => { fs.readFile(filePath, (err: NodeJS.ErrnoException | null, buffer: string | Buffer) => (err ? reject(err) : resolve(buffer))); })
     : () => { throw new Error(`readFile - failed to require fs in nodejs environment with error: ${requireFsError}`); };
   return { readFile };
 }

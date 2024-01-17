@@ -48,7 +48,6 @@
     "theme": "default",
     "readme": "none",
     "out": "typedoc",
-    "logLevel": "Verbose",
-    "logger": "none"
+    "logLevel": "Verbose"
   }
 }

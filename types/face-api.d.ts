@@ -748,6 +748,8 @@ declare interface DataTypeMap {
  */
 declare function decodeWeights(weightData: WeightData, specs: WeightsManifestEntry[]): NamedTensorMap;
 
+declare function decodeWeightsStream(weightStream: ReadableStream<ArrayBuffer>, specs: WeightsManifestEntry[]): Promise<NamedTensorMap>;
+
 export declare type DefaultTinyYolov2NetParams = {
     conv0: ConvWithBatchNorm;
     conv1: ConvWithBatchNorm;
@@ -1772,6 +1774,7 @@ declare const image: {
     grayscaleToRGB: <T extends Tensor2D | Tensor3D | Tensor4D | Tensor5D | Tensor6D>(image: TensorLike | T) => T;
     resizeNearestNeighbor: <T_1 extends Tensor3D | Tensor4D>(images: TensorLike | T_1, size: [number, number], alignCorners?: boolean, halfPixelCenters?: boolean) => T_1;
     resizeBilinear: <T_2 extends Tensor3D | Tensor4D>(images: TensorLike | T_2, size: [number, number], alignCorners?: boolean, halfPixelCenters?: boolean) => T_2;
+    rgbToGrayscale: <T_3 extends Tensor2D | Tensor3D | Tensor4D | Tensor5D | Tensor6D>(image: TensorLike | T_3) => T_3;
     rotateWithOffset: (image: TensorLike | Tensor4D, radians: number, fillValue?: number | [number, number, number], center?: number | [number, number]) => Tensor4D;
     cropAndResize: (image: TensorLike | Tensor4D, boxes: TensorLike | Tensor2D, boxInd: TensorLike | Tensor1D, cropSize: [number, number], method?: "bilinear" | "nearest", extrapolationValue?: number) => Tensor4D;
     nonMaxSuppression: (boxes: TensorLike | Tensor2D, scores: TensorLike | Tensor1D, maxOutputSize: number, iouThreshold?: number, scoreThreshold?: number) => Tensor1D;
@@ -1812,6 +1815,7 @@ declare namespace io {
         CompositeArrayBuffer,
         concatenateArrayBuffers,
         decodeWeights,
+        decodeWeightsStream,
         encodeWeights,
         fromMemory,
         fromMemorySync,
@@ -2035,7 +2039,7 @@ declare interface LoadOptions {
     /**
      * A function used to override the `window.fetch` function.
      */
-    fetchFunc?: Function;
+    fetchFunc?: typeof fetch;
     /**
      * Strict loading model: whether extraneous weights or missing
      * weights should trigger an `Error`.
@@ -2081,6 +2085,11 @@ declare interface LoadOptions {
      * With this func you can convert the weight file name to any URL.
      */
     weightUrlConverter?: (weightFileName: string) => Promise<string>;
+    /**
+     * Whether to stream the model directly to the backend or cache all its
+     * weights on CPU first. Useful for large models.
+     */
+    streamWeights?: boolean;
 }
 
 export declare const loadSsdMobilenetv1Model: (url: string) => Promise<void>;
@@ -2238,6 +2247,12 @@ declare interface ModelArtifacts {
      * (weights may be sharded across multiple ArrayBuffers).
      */
     weightData?: WeightData;
+    /**
+     * Returns a stream of the weights. Some models are too large to fit in
+     * V8's memory heap, and `getWeightStream` loads their weights without storing
+     * them all in memory at the same time.
+     */
+    getWeightStream?: () => ReadableStream<ArrayBuffer>;
     /**
      * Hard-coded format name for models saved from TensorFlow.js or converted
      * by TensorFlow.js Converter.
@@ -3419,6 +3434,8 @@ declare class Tensor<R extends Rank = Rank> implements TensorInfo {
     kept: boolean;
     /** The id of the scope this tensor is being tracked in. */
     scopeId: number;
+    /** The keras mask that some keras layers attach to the tensor */
+    kerasMask?: Tensor;
     /**
      * Number of elements to skip in each dimension when indexing. See
      * https://docs.scipy.org/doc/numpy/reference/generated/\

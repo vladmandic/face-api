@@ -6,7 +6,7 @@
     "output": "build.log"
   },
   "profiles": {
-    "production": ["clean", "compile", "typings", "typedoc", "lint", "changelog"],
+    "production": ["compile", "typedoc", "lint", "changelog"],
     "development": ["serve", "watch", "compile"]
   },
   "clean": {

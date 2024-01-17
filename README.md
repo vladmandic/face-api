@@ -469,11 +469,11 @@ but extends it with newer AI models, additional detection details, compatibility
 Compared to [face-api.js](https://github.com/justadudewhohacks/face-api.js) version **0.22.2**:
 
 - Compatible with `TensorFlow/JS 2.0+, 3.0+ and 4.0+`  
-  Currently using **`TensorFlow/JS` 4.3**  
+  Currently using **`TensorFlow/JS` 4.16**  
   Original `face-api.js` is based on `TFJS` **1.7.4**  
 - Compatible with `WebGL`, `CPU` and `WASM` TFJS Browser backends  
 - Compatible with both `tfjs-node` and `tfjs-node-gpu` TFJS NodeJS backends  
-- Updated all type castings for TypeScript type checking to `TypeScript 4.8`  
+- Updated all type castings for TypeScript type checking to `TypeScript 5.3`  
 - Switched bundling from `UMD` to `ESM` + `CommonJS` with fallback to `IIFE`  
   Resulting code is optimized per-platform instead of being universal  
   Fully tree shakable when imported as an `ESM` module  

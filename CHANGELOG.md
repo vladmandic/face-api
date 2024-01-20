@@ -9,14 +9,15 @@
   
 ## Changelog
   
-### **HEAD -> master** 2024/01/17 mandic00@live.com
+### **HEAD -> master** 2024/01/20 mandic00@live.com
 
+- fixing leaking eventhandlers when using htmlcanvaselement
+- rebuild types
+- rebuild
 
 ### **1.7.13** 2024/01/17 mandic00@live.com
 
-
-### **origin/master** 2024/01/17 mandic00@live.com
-
+- merge pull request #186 from khwalkowicz/master
 - feat: enable noimplicitany
 
 ### **release: 1.7.12** 2023/06/12 mandic00@live.com

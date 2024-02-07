@@ -138,7 +138,15 @@ export class NetInput {
         }
 
         if (input instanceof env.getEnv().Canvas) {
-          return tf['browser'].fromPixels(imageToSquare(input, inputSize, isCenterInputs));
+          const outputCanvas = imageToSquare(input, inputSize, isCenterInputs);
+          const result = tf['browser'].fromPixels(outputCanvas);
+
+          outputCanvas.width = 1;
+          outputCanvas.height = 1;
+          const ctx: CanvasRenderingContext2D | null = outputCanvas.getContext('2d');
+          if (ctx) ctx.clearRect(0, 0, 1, 1);
+
+          return result;
         }
 
         throw new Error(`toBatchTensor - at batchIdx ${batchIdx}, expected input to be instanceof tf.Tensor or instanceof HTMLCanvasElement, instead have ${input}`);

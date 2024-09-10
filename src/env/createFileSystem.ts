@@ -5,7 +5,7 @@ export function createFileSystem(fs?: any): FileSystem {
   let requireFsError = '';
   if (!fs && isNodejs()) {
     try {
-      // eslint-disable-next-line global-require
+      // eslint-disable-next-line global-require, @typescript-eslint/no-require-imports
       fs = require('fs');
     } catch (err) {
       requireFsError = (err as any).toString();

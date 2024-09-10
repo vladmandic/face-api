@@ -1,6 +1,6 @@
 # @vladmandic/face-api  
 
-  Version: **1.7.13**  
+  Version: **1.7.14**  
   Description: **FaceAPI: AI-powered Face Detection & Rotation Tracking, Face Description & Recognition, Age & Gender & Emotion Prediction for Browser and NodeJS using TensorFlow/JS**  
   
   Author: **Vladimir Mandic <mandic00@live.com>**  
@@ -9,8 +9,12 @@
   
 ## Changelog
   
-### **HEAD -> master** 2024/01/20 mandic00@live.com
+### **1.7.14** 2024/09/10 mandic00@live.com
 
+
+### **origin/master** 2024/01/20 mandic00@live.com
+
+- merge pull request #188 from rebser/master
 - fixing leaking eventhandlers when using htmlcanvaselement
 - rebuild types
 - rebuild

@@ -10,8 +10,8 @@ import { PredictAllFaceExpressionsTask, PredictAllFaceExpressionsWithFaceAlignme
 export declare class PredictAgeAndGenderTaskBase<TReturn, TParentReturn> extends ComposableTask<TReturn> {
     protected parentTask: ComposableTask<TParentReturn> | Promise<TParentReturn>;
     protected input: TNetInput;
-    protected extractedFaces?: (tf.Tensor3D | HTMLCanvasElement)[] | undefined;
-    constructor(parentTask: ComposableTask<TParentReturn> | Promise<TParentReturn>, input: TNetInput, extractedFaces?: (tf.Tensor3D | HTMLCanvasElement)[] | undefined);
+    protected extractedFaces?: Array<HTMLCanvasElement | tf.Tensor3D> | undefined;
+    constructor(parentTask: ComposableTask<TParentReturn> | Promise<TParentReturn>, input: TNetInput, extractedFaces?: Array<HTMLCanvasElement | tf.Tensor3D> | undefined);
 }
 export declare class PredictAllAgeAndGenderTask<TSource extends WithFaceDetection<{}>> extends PredictAgeAndGenderTaskBase<WithAge<WithGender<TSource>>[], TSource[]> {
     run(): Promise<WithAge<WithGender<TSource>>[]>;

@@ -1,4 +1,3 @@
-/// <reference types="node" />
 export type FileSystem = {
     readFile: (filePath: string) => Promise<string | Buffer>;
 };

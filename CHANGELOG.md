@@ -14,9 +14,7 @@
 
 ### **1.7.14** 2024/09/10 mandic00@live.com
 
-
-### **origin/master** 2024/01/20 mandic00@live.com
-
+- rebuild
 - merge pull request #188 from rebser/master
 - fixing leaking eventhandlers when using htmlcanvaselement
 - rebuild types

@@ -29,6 +29,7 @@
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/no-var-requires": "off",
     "@typescript-eslint/no-empty-object-type": "off",
+    "@typescript-eslint/no-require-imports": "off",
     "camelcase": "off",
     "class-methods-use-this": "off",
     "default-param-last": "off",

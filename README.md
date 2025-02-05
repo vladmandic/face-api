@@ -104,8 +104,11 @@ NodeJS examples are:
 2021-03-14 08:42:09 STATE:  Main: worker exit: 1888019 0
 ```
 
-Note that `@tensorflow/tfjs-node` or `@tensorflow/tfjs-node-gpu`  
-must be installed before using any **NodeJS** examples
+### NodeJS Notes
+- Supported NodeJS versions are **14** up to **22**  
+  NodeJS version **23** and higher are not supported due to incompatibility with TensorFlow/JS  
+- `@tensorflow/tfjs-node` or `@tensorflow/tfjs-node-gpu`  
+  must be installed before using any **NodeJS** examples  
 
 <br><hr><br>
 
